@@ -1,0 +1,52 @@
+[project]
+name = "archimedes"
+version = "0.1.0"
+description = "Cyber threat intelligence analyst — Claude Code runtime + interfaces"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Proprietary" }
+authors = [{ name = "Ryan" }]
+
+# Core runtime deps — minimal. The agent itself is Claude Code; Python is only
+# used for the Discord bot, Flask dashboard, helper scripts, and scheduler glue.
+dependencies = [
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+    "requests>=2.31",
+    "splunk-sdk>=2.0",          # Splunk REST API queries
+]
+
+[project.optional-dependencies]
+discord = [
+    "discord.py>=2.3",
+]
+dashboard = [
+    "flask>=3.0",
+    "flask-wtf>=1.2",
+    "markdown>=3.5",
+]
+dev = [
+    "pytest>=7.4",
+    "pytest-cov>=4.1",
+    "ruff>=0.1",
+    "mypy>=1.7",
+]
+all = [
+    "archimedes[discord,dashboard,dev]",
+]
+
+[project.scripts]
+archimedes-regen-ioc = "scripts.regenerate_ioc_index:main"
+archimedes-migrate-actor = "scripts.migrate_actor:main"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N"]
+ignore = ["E501"]  # handled by formatter
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"

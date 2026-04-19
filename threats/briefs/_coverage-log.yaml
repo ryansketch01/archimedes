@@ -1,0 +1,59 @@
+# threats/briefs/_coverage-log.yaml
+#
+# Anti-repetition log. The briefer reads this before every brief to enforce
+# the resurface rules in doctrine/INTEL-BRIEF-STANDARDS.md.
+#
+# Every item included in any brief gets an entry here. Before including
+# something in a new brief, the briefer:
+#   1. Loads this log
+#   2. Checks if the topic has been covered within last 7 days
+#   3. If yes, applies resurface_if conditions — include only if met
+#   4. If included as resurface, flag with UPDATE: prefix
+
+version: 1
+last_updated: 2026-04-18
+
+# ============================================================================
+# Entry schema (for reference — no actual entries yet at scaffold time)
+# ============================================================================
+#
+# entries:
+#   - id: 2026-04-18-am-001
+#     covered_in: [2026-04-18-morning]
+#     headline: "UNC1549 targets U.S. aerospace suppliers with new phishing infra"
+#     topic_tags: [unc1549, iran, aerospace, phishing]
+#     related_actors: ["004"]
+#     related_vulns: []
+#     related_campaigns: []
+#     finding_ids: [finding-2026-04-18-0012]
+#     resurface_if:
+#       - new_victims_confirmed
+#       - attribution_changes
+#       - patch_released_for_associated_cve
+#       - actor_ttps_evolve
+#       - first_party_ioc_hit
+#     first_covered: 2026-04-18
+#     last_covered: 2026-04-18
+#     retraction: null              # populated if item is later retracted
+
+entries: []
+
+# ============================================================================
+# Valid resurface_if conditions
+# ============================================================================
+# The briefer evaluates these against each incoming candidate finding.
+# Any one condition being met unlocks resurfacing with UPDATE: flag.
+_schema:
+  valid_resurface_conditions:
+    - new_victims_confirmed           # additional victim disclosed
+    - new_attribution                 # new actor attribution
+    - attribution_changes             # attribution revised
+    - patch_released                  # patch released for the CVE
+    - patch_released_for_associated_cve
+    - actor_ttps_evolve               # new tooling/infra/targeting
+    - arrests_or_indictments          # law enforcement action
+    - escalation_to_exploitation      # PoC → active exploitation
+    - first_party_ioc_hit             # observed in our telemetry
+    - geopolitical_escalation         # conflict material change
+    - ransom_paid_or_refused          # ransomware resolution
+    - seven_days_elapsed_and_evolving # 7+ days since last mention, still moving

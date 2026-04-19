@@ -1,0 +1,121 @@
+# infrastructure/watchlists/aerospace-defense.yaml
+#
+# Tier-1 A&D primes and major defense contractors under active monitoring.
+# Collector uses this file to prioritize findings that mention any of these entities.
+# Matching is performed on name, aliases, subsidiaries, and domains.
+#
+# Add new companies via human edit + git commit. Agent cannot edit this file.
+
+version: 1
+last_updated: 2026-04-18
+notes: |
+  Includes parent companies and major subsidiaries that operate independently
+  enough to appear in reporting by their own name (e.g., Collins Aerospace
+  under RTX). Watchlist match triggers higher-priority handling in the 
+  collector and pre-flight check requirement for brief inclusion.
+
+companies:
+  - name: "Lockheed Martin"
+    tickers: [LMT]
+    aliases: ["Lockheed", "LMT", "Skunk Works"]
+    tier: prime
+    subsidiaries: ["Sikorsky"]
+    domains: [lockheedmartin.com, sikorsky.com]
+  
+  - name: "Boeing"
+    tickers: [BA]
+    aliases: ["The Boeing Company", "Boeing Defense"]
+    tier: prime
+    subsidiaries: ["Boeing Defense, Space & Security", "Spectrolab"]
+    domains: [boeing.com]
+  
+  - name: "RTX Corporation"
+    tickers: [RTX]
+    aliases: ["Raytheon", "Raytheon Technologies", "Collins Aerospace", "Pratt & Whitney", "Pratt and Whitney"]
+    tier: prime
+    subsidiaries: ["Raytheon", "Collins Aerospace", "Pratt & Whitney"]
+    domains: [rtx.com, raytheon.com, collinsaerospace.com, prattwhitney.com]
+  
+  - name: "Northrop Grumman"
+    tickers: [NOC]
+    aliases: ["Northrop", "NGC"]
+    tier: prime
+    subsidiaries: ["Scaled Composites"]
+    domains: [northropgrumman.com]
+  
+  - name: "General Dynamics"
+    tickers: [GD]
+    aliases: ["GD", "General Dynamics Corporation"]
+    tier: prime
+    subsidiaries: ["General Dynamics Mission Systems", "Gulfstream Aerospace", "Electric Boat", "Bath Iron Works"]
+    domains: [gd.com, gulfstream.com, gdmissionsystems.com]
+  
+  - name: "BAE Systems"
+    tickers: [BAESY, "BA.L"]
+    aliases: ["British Aerospace", "BAE"]
+    tier: prime
+    subsidiaries: ["BAE Systems Inc.", "BAE Systems Air"]
+    domains: [baesystems.com]
+  
+  - name: "L3Harris Technologies"
+    tickers: [LHX]
+    aliases: ["L3Harris", "L3", "Harris Corporation"]
+    tier: prime
+    subsidiaries: ["Aerojet Rocketdyne"]
+    domains: [l3harris.com, aerojetrocketdyne.com]
+  
+  - name: "Leidos"
+    tickers: [LDOS]
+    aliases: ["Leidos Holdings"]
+    tier: prime
+    subsidiaries: ["Dynetics"]
+    domains: [leidos.com, dynetics.com]
+  
+  - name: "SAIC"
+    tickers: [SAIC]
+    aliases: ["Science Applications International Corporation"]
+    tier: prime
+    subsidiaries: []
+    domains: [saic.com]
+  
+  - name: "Thales Group"
+    tickers: ["HO.PA", THLLY]
+    aliases: ["Thales"]
+    tier: prime
+    subsidiaries: ["Thales Defense & Security"]
+    domains: [thalesgroup.com]
+  
+  - name: "GE Aerospace"
+    tickers: [GE]
+    aliases: ["General Electric Aerospace", "GE Aviation"]
+    tier: prime
+    subsidiaries: []
+    domains: [geaerospace.com]
+  
+  - name: "Safran"
+    tickers: ["SAF.PA", SAFRY]
+    aliases: []
+    tier: prime
+    subsidiaries: ["Safran Electronics & Defense", "Safran Aircraft Engines"]
+    domains: [safran-group.com]
+  
+  - name: "Honeywell Aerospace"
+    tickers: [HON]
+    aliases: ["Honeywell"]
+    tier: prime
+    subsidiaries: []
+    domains: [honeywell.com, aerospace.honeywell.com]
+  
+  - name: "Airbus"
+    tickers: ["AIR.PA", EADSY]
+    aliases: ["Airbus Group", "Airbus Defence and Space"]
+    tier: prime
+    subsidiaries: ["Airbus Defence and Space", "Airbus Helicopters"]
+    domains: [airbus.com]
+  
+  - name: "Elbit Systems"
+    tickers: [ESLT]
+    aliases: ["Elbit"]
+    tier: prime
+    subsidiaries: ["Elbit Systems of America"]
+    domains: [elbitsystems.com]

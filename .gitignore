@@ -1,0 +1,60 @@
+# Secrets
+.env
+.env.local
+*.key
+*.pem
+secrets.yaml
+
+# Claude Code
+.claude/cache/
+.claude/sessions/
+.claude/.credentials
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# Node (for any JS interfaces)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# Local scratch
+scratch/
+tmp/
+_working/
+
+# Quarantined material (legal policy — never commit)
+quarantine/
+!quarantine/.gitkeep
+
+# Generated files that regenerate nightly
+threats/iocs/_master-index.yaml
+
+# Agent runtime state
+infrastructure/source-health.yaml
+infrastructure/flash-queue.yaml
+infrastructure/policy-violations.yaml
+
+# Test output
+tests/output/
+tests/fixtures/*.real

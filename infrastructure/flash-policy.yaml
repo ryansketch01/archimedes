@@ -1,0 +1,96 @@
+# infrastructure/flash-policy.yaml
+#
+# Machine-readable FLASH alert policy. Source of truth is doctrine/FLASH-POLICY.md;
+# this file is consumed by the scheduler and briefer for programmatic enforcement.
+
+version: 1
+last_updated: 2026-04-18
+
+active_hours:
+  start: "09:00"
+  end: "21:00"
+  timezone: "America/New_York"
+
+outside_active_hours:
+  behavior: queue
+  queue_file: infrastructure/flash-queue.yaml
+  archive_file: infrastructure/flash-queue-archive.yaml
+  catchup_sweep: "09:00"
+  staleness_hours: 12
+
+critical_override:
+  enabled: true
+  description: "Bypass quiet hours only if ALL conditions below are simultaneously true."
+  conditions_all_of:
+    - name: cvss_10
+      field: cvss_score
+      operator: ">="
+      value: 10.0
+    - name: active_exploitation
+      field: exploitation_status
+      operator: "=="
+      value: active
+    - name: tracked_actor
+      field: tracked_actor_involved
+      operator: "=="
+      value: true
+    - name: ad_watchlist_hit
+      field: ad_watchlist_targeted
+      operator: "=="
+      value: true
+
+triggers:
+  - id: critical-cve-exploited
+    description: "Critical CVE with active exploitation"
+    conditions_all_of:
+      - cvss_score: ">=9.0"
+      - exploitation_status: active
+      - source_grade: A
+  
+  - id: tracked-actor-attribution
+    description: "New attribution for a tracked actor"
+    conditions_all_of:
+      - new_attribution: true
+      - tracked_actor_involved: true
+  
+  - id: first-party-ioc-hit
+    description: "IOC match in first-party Splunk telemetry"
+    conditions_all_of:
+      - splunk_match: true
+      - ioc_tracked: true
+      - match_age_hours: "<=24"
+  
+  - id: tracked-actor-ttp-change
+    description: "New tooling/targeting/infrastructure for a tracked actor"
+    conditions_all_of:
+      - source_grade: ["A", "B"]
+      - attributable: true
+      - ttp_delta: true
+  
+  - id: ad-sector-campaign
+    description: "Active multi-victim campaign vs. A&D sector"
+    conditions_all_of:
+      - campaign_active: true
+      - multi_victim: true
+      - ad_sector_targeted: true
+  
+  - id: zero-day-no-patch
+    description: "Zero-day disclosed without patch available"
+    conditions_all_of:
+      - patch_available: false
+      - exploitation_confirmed_or_imminent: true
+    conditions_any_of:
+      - cvss_score: ">=8.0"
+      - wide_deployment: true
+
+anti_noise:
+  one_flash_per_topic_hours: 24
+  minimum_grade: B2
+  red_team_required_for_wep: very-likely
+  weekly_flash_count_review_threshold: 10
+
+logging:
+  splunk_event_type: flash_evaluation
+  log_all_evaluations: true          # even those that don't ship
+  log_queue_operations: true
+  log_override_bypasses: true

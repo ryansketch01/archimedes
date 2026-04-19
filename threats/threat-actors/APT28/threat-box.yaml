@@ -1,0 +1,246 @@
+# threats/threat-actors/APT28/threat-box.yaml
+#
+# Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
+# Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
+#
+# This scoring is a first-pass draft by the actor-profiler. Per doctrine,
+# HIGH threat levels require human sign-off before commit. reviewed_by is
+# null until /approve-scoring 006 is invoked in Discord.
+
+actor_id: "006"
+actor_name: "APT28"
+target_profile: "ad-prime-v1"
+scored_at: 2026-04-18
+scored_by: session-1-scaffold
+reviewed_by: null                     # awaiting /approve-scoring 006
+scoring_version: 1
+
+# ============================================================================
+# Espionage — weighted 35%
+# ============================================================================
+scores:
+  espionage:
+    intent:
+      score: 5
+      label: target-specific
+      evidence: |
+        Two decades of documented operations targeting NATO defense ministries,
+        weapons suppliers, and Ukraine aid logistics. Specific targeting of
+        named A&D primes and defense ministries in DoJ 2018 indictment and
+        NSA/CISA May 2025 advisory on GRU Unit 26165 logistics targeting.
+        The operational objective — collection of defense and military
+        intelligence — is achievable only within our target's network.
+      sources: [doj-2018-indictment, mitre-g0007, nsa-cisa-2025-05]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Active hostilities via Ukraine war; sustained sanctions regime; no diplomatic constraints."
+    capability:
+      score: 5
+      label: significant
+      evidence: |
+        X-Agent, AUTHENTIC ANTICS, GooseEgg, Operation RoundPress, CVE-2026-21509
+        active campaigns — all confirmed by multiple trusted sources (Microsoft MSTIC,
+        Palo Alto Unit 42, UK NCSC, ESET, Trellix). Documented active use within
+        last 24 months. Multiple A-grade sources.
+      sources: [mstic-2024, unit-42-2024, ncsc-uk-2025, eset-2025, trellix-2026-02]
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: |
+        Custom tooling per campaign. COM hijacking via novel CLSID. Living-off-the-land
+        in M365 via OAuth token theft (AUTHENTIC ANTICS). Cloud-storage-as-C2 to defeat
+        perimeter detection.
+    ioc_corroboration:
+      observed: false
+      capability_bonus_applied: 0
+      note: "No first-party IOC hits at time of initial scoring."
+    final_intent: 5
+    final_capability: 5
+    composite: 10
+    threat_level: HIGH
+
+# ============================================================================
+# Supply Chain — weighted 20%
+# ============================================================================
+  supply_chain:
+    intent:
+      score: 4
+      label: ideology-association
+      evidence: |
+        Known targeting of NATO logistics and aid supply chain supporting Ukraine
+        (NSA/CISA May 2025 advisory). While not solely supply-chain-focused, A&D
+        primes are reached via trusted relationship compromise (T1199) of
+        suppliers and government accounts.
+      sources: [nsa-cisa-2025-05, mitre-g0007]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Same as espionage."
+    capability:
+      score: 4
+      label: credible
+      evidence: |
+        Documented use of compromised government accounts as relay (T1199).
+        Webmail compromise pivot (Operation RoundPress) enables supplier-to-prime
+        lateral movement. Not the primary mission but demonstrated capability.
+      sources: [eset-2025, mitre-g0007]
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "Webmail XSS zero-days, OAuth abuse — high-skill supply-chain tradecraft."
+    ioc_corroboration:
+      observed: false
+      capability_bonus_applied: 0
+    final_intent: 4
+    final_capability: 4
+    composite: 8
+    threat_level: HIGH
+
+# ============================================================================
+# Destructive — weighted 15%
+# ============================================================================
+  destructive:
+    intent:
+      score: 2
+      label: regional-association
+      evidence: |
+        APT28's mission profile is espionage and hack-and-leak, NOT destructive
+        operations. Sister unit GRU 74455 (Sandworm) handles destructive work.
+        APT28 has demonstrated the ability to destroy logs (T1070.001) in service
+        of defensive evasion but has not staged destructive attacks against A&D targets.
+      sources: [mitre-g0007, mstic-2024]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Same as espionage."
+    capability:
+      score: 3
+      label: limited
+      evidence: |
+        Event log clearing (T1070.001) demonstrated. Could pivot to destructive with
+        existing access, but no documented history of APT28 wiping target systems
+        in campaigns against A&D sector.
+      sources: [mitre-g0007]
+    novelty:
+      modifier: -1
+      label: semi-custom
+      evidence: "Destructive actions would likely use existing access, not novel destructive tooling."
+    ioc_corroboration:
+      observed: false
+      capability_bonus_applied: 0
+    final_intent: 2
+    final_capability: 2
+    composite: 4
+    threat_level: LOW
+
+# ============================================================================
+# Disruptive — weighted 15%
+# ============================================================================
+  disruptive:
+    intent:
+      score: 2
+      label: regional-association
+      evidence: |
+        APT28's disruption profile is information warfare (hack-and-leak) rather
+        than availability attacks. Not historically associated with DDoS or
+        availability disruption against defense targets.
+      sources: [mitre-g0007]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Same as espionage."
+    capability:
+      score: 3
+      label: limited
+      evidence: |
+        Router compromise (Jaguar Tooth) could enable disruption, but historical
+        use has been for espionage/relay, not availability attacks.
+    novelty:
+      modifier: -1
+      label: semi-custom
+    ioc_corroboration:
+      observed: false
+      capability_bonus_applied: 0
+    final_intent: 2
+    final_capability: 2
+    composite: 4
+    threat_level: LOW
+
+# ============================================================================
+# Cyber-Crime — weighted 15%
+# ============================================================================
+  cyber_crime:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      evidence: |
+        APT28 is a state-sponsored espionage actor, not financially motivated.
+        No documented ransomware or extortion operations. Any monetary element
+        would be incidental.
+      sources: [mitre-g0007]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Same as espionage."
+    capability:
+      score: 1
+      label: not-capable
+      evidence: "No documented cybercrime tradecraft or infrastructure."
+    novelty:
+      modifier: -2
+      label: commodity
+    ioc_corroboration:
+      observed: false
+      capability_bonus_applied: 0
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+
+# ============================================================================
+# Overall
+# ============================================================================
+# Weighted: espionage 35% + supply_chain 20% + destructive 15% + disruptive 15% + cyber_crime 15%
+# = (10 × 0.35) + (8 × 0.20) + (4 × 0.15) + (4 × 0.15) + (2 × 0.15)
+# = 3.50 + 1.60 + 0.60 + 0.60 + 0.30
+# = 6.60
+#
+# NOTE: A focused A&D prime will care mostly about the espionage score.
+# APT28's espionage composite of 10 is the operationally relevant number.
+# The weighted overall reflects the breadth of threat, not the apex threat.
+overall_score: 6.60
+overall_threat_level: MEDIUM
+primary_threat_vector: espionage
+primary_threat_level: HIGH
+
+confidence:
+  admiralty: A1
+  notes: |
+    Attribution confirmed by multiple governments (US, UK, EU), sustained reporting
+    from industry (Microsoft, Mandiant, Unit 42, NCSC, ESET), DoJ 2018 indictment
+    with named GRU officers. Two decades of public reporting. No meaningful
+    attribution ambiguity.
+
+# ============================================================================
+# Review policy
+# ============================================================================
+review_policy:
+  interval_days: 90
+  last_reviewed: 2026-04-18
+  next_review_due: 2026-07-17
+  review_triggers:
+    - new_attribution_from_a_source
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation
+
+# ============================================================================
+# History
+# ============================================================================
+history:
+  - scored_at: 2026-04-18
+    scorer: session-1-scaffold
+    change: "initial"
+    note: "First-pass exemplar scoring for Session 1 migration. Awaiting human sign-off."

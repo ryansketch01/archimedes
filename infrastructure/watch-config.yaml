@@ -1,0 +1,76 @@
+# infrastructure/watch-config.yaml
+#
+# Standing sections that appear in every scheduled brief, even when empty.
+# The briefer reads this file to know what sections to always include.
+#
+# To add a new standing section, add an entry below. To disable one, set
+# `active: false` rather than deleting — preserves history.
+
+version: 1
+last_updated: 2026-04-18
+
+standing_sections:
+
+  - id: ad-sector
+    emoji: "✈️"
+    title: "Sector Focus: Aerospace & Defense"
+    active: true
+    always_include: true
+    brief_types: [morning, afternoon, weekly_synthesis, actor_summary, detection_weekly]
+    sector_tags: [aerospace, defense, a-and-d, a&d, dib, cmmc, itar, ear]
+    company_watchlist: infrastructure/watchlists/aerospace-defense.yaml
+    silent_day_template: |
+      No new sector-specific threats against watchlist companies in the reporting window.
+      Tracked actors with historical A&D targeting: APT28, UNC1549, Lazarus, APT41, Salt Typhoon.
+    order: 3
+
+  - id: iran-cyber
+    emoji: "🇮🇷"
+    title: "Iran Cyber Watch"
+    active: true
+    always_include: true
+    brief_types: [morning, afternoon, weekly_synthesis, actor_summary]
+    actor_ids: ["004", "011", "014", "022"]         # UNC1549, Charming Kitten, Handala Hack, MuddyWater
+    actor_tags: [iran, irgc, mois, iranian, irgc-io]
+    geographic_tags: [iran, iraq, syria, israel, lebanon]
+    silent_day_template: |
+      No new activity from tracked Iranian actors (UNC1549, Charming Kitten, Handala Hack, MuddyWater) in the last 48h.
+    order: 5
+
+# Additional standing sections — populate as needed by editing this file.
+# Suggested future entries:
+#
+#  - id: critical-infrastructure
+#    emoji: "⚡"
+#    title: "Critical Infrastructure Watch"
+#    active: false  # enable when ready
+#    actor_ids: ["007", "008"]  # Sandworm, Volt Typhoon
+#
+#  - id: supply-chain
+#    emoji: "🔗"
+#    title: "Supply Chain Watch"
+#    active: false
+#
+#  - id: ransomware
+#    emoji: "💰"
+#    title: "Ransomware Watch"
+#    active: false
+#    actor_ids: ["015", "016", "018", "020"]  # LockBit, REvil, Cl0p, BlackCat
+#
+#  - id: china-cyber
+#    emoji: "🇨🇳"
+#    title: "China Cyber Watch"
+#    active: false
+#    actor_ids: ["008", "010", "017", "019"]
+#
+#  - id: russia-cyber
+#    emoji: "🇷🇺"
+#    title: "Russia Cyber Watch"
+#    active: false
+#    actor_ids: ["006", "007", "009"]
+#
+#  - id: dprk-financial
+#    emoji: "🇰🇵"
+#    title: "DPRK Financial Ops"
+#    active: false
+#    actor_ids: ["002", "003"]  # Stardust Chollima, Lazarus

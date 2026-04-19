@@ -1,0 +1,33 @@
+# infrastructure/authorized-targets.yaml
+#
+# The ONLY targets where active reconnaissance is permitted.
+# Everything not listed here is subject to passive-only rules per doctrine/LEGAL-POLICY.md.
+#
+# CRITICAL: The agent cannot add entries to this file. All additions require
+# human edit + git commit. Entries should include authorization basis.
+#
+# Seeded empty — add entries as needed.
+
+version: 1
+last_updated: 2026-04-18
+
+authorized_for_active_recon: []
+
+# Example entry format (uncomment and modify when adding):
+#
+# authorized_for_active_recon:
+#   - type: domain                  # domain | ip | ip_range | asn
+#     value: "example.lab"
+#     authorization: "Owner — Ryan (lab environment)"
+#     scope: "Full active recon authorized"
+#     expires: 2027-04-18            # or null for permanent
+#     added: 2026-04-18
+#     added_by: ryan
+#
+#   - type: ip_range
+#     value: "192.168.100.0/24"
+#     authorization: "Home lab network"
+#     scope: "Internal infrastructure only"
+#     expires: null
+#     added: 2026-04-18
+#     added_by: ryan

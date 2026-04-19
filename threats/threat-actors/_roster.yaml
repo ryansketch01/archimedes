@@ -1,0 +1,350 @@
+# threats/threat-actors/_roster.yaml
+#
+# Master list of all tracked threat actors.
+# Migrated from C3PO intel-repository — 22 actors as of Session 1.
+#
+# The collector and grader read this file to resolve actor aliases during
+# raw signal processing. The briefer uses it to link actor references to
+# their profile directories.
+#
+# Adding a new actor requires /new-actor command, which triggers:
+#   1. Human approval
+#   2. Initial profile stub
+#   3. Roster entry here
+#   4. First-pass profile within 7 days
+#   5. Threat-box scoring within 14 days (human sign-off for HIGH)
+
+version: 1
+last_updated: 2026-04-18
+source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
+
+actors:
+  - id: "001"
+    primary_name: "TeamPCP"
+    aliases: []
+    attribution:
+      nation: unknown
+      service: null
+    type: "Cybercriminal"
+    threat_level: HIGH
+    tracked_since: 2026-03-18
+    dossier: threats/threat-actors/TeamPCP/
+    last_reviewed: 2026-03-18
+    next_review_due: 2026-06-16
+
+  - id: "002"
+    primary_name: "Stardust Chollima"
+    aliases: [BlueNoroff, APT38, Sapphire Sleet, CopperCore Chollima]
+    attribution:
+      nation: KP
+      service: "DPRK State (financial)"
+    type: "Nation-State / Financial APT"
+    threat_level: HIGH
+    tracked_since: 2026-03-18
+    dossier: threats/threat-actors/Stardust-Chollima/
+    last_reviewed: 2026-03-18
+    next_review_due: 2026-06-16
+
+  - id: "003"
+    primary_name: "Lazarus Group"
+    aliases: [Hidden Cobra, Zinc, Diamond Sleet, Labyrinth Chollima, Guardians of Peace]
+    attribution:
+      nation: KP
+      service: "Reconnaissance General Bureau"
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: 2026-04-01
+    dossier: threats/threat-actors/Lazarus-Group/
+    last_reviewed: 2026-04-01
+    next_review_due: 2026-06-30
+
+  - id: "004"
+    primary_name: "UNC1549"
+    aliases: [Tortoiseshell, Smoke Sandstorm, Imperial Kitten, Crimson Sandstorm]
+    attribution:
+      nation: IR
+      service: IRGC
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: 2026-04-02
+    dossier: threats/threat-actors/UNC1549/
+    last_reviewed: 2026-04-02
+    next_review_due: 2026-07-01
+
+  - id: "005"
+    primary_name: "GlassWorm"
+    aliases: []
+    attribution:
+      nation: unknown
+      service: null
+    type: "Cybercriminal"
+    threat_level: HIGH
+    tracked_since: 2026-04-02
+    dossier: threats/threat-actors/GlassWorm/
+    last_reviewed: 2026-04-02
+    next_review_due: 2026-07-01
+
+  - id: "006"
+    primary_name: "APT28"
+    aliases:
+      - Fancy Bear
+      - Forest Blizzard
+      - Sofacy
+      - Sednit
+      - Pawn Storm
+      - STRONTIUM
+      - FROZENLAKE
+      - BlueDelta
+      - Fighting Ursa
+      - Iron Twilight
+      - GruesomeLarch
+      - UAC-0001
+      - TG-4127
+      - Tsar Team
+      - Group 74
+    attribution:
+      nation: RU
+      service: GRU
+      unit: "Unit 26165 (85th GTsSS)"
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: 2026-04-03
+    dossier: threats/threat-actors/APT28/
+    last_reviewed: 2026-04-03
+    next_review_due: 2026-07-02
+    mitre_attack_id: G0007
+
+  - id: "007"
+    primary_name: "Sandworm"
+    aliases: [APT44, Seashell Blizzard, Iron Viking, BlackEnergy Group, Telebots, Voodoo Bear]
+    attribution:
+      nation: RU
+      service: GRU
+      unit: "Unit 74455 (Main Centre for Special Technologies)"
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: 2026-04-04
+    dossier: threats/threat-actors/Sandworm/
+    last_reviewed: 2026-04-04
+    next_review_due: 2026-07-03
+
+  - id: "008"
+    primary_name: "Volt Typhoon"
+    aliases: [Vanguard Panda, BRONZE SILHOUETTE, Insidious Taurus, DEV-0391]
+    attribution:
+      nation: CN
+      service: "PLA"
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: 2026-04-05
+    dossier: threats/threat-actors/Volt-Typhoon/
+    last_reviewed: 2026-04-05
+    next_review_due: 2026-07-04
+
+  - id: "009"
+    primary_name: "APT29"
+    aliases: [Cozy Bear, The Dukes, NOBELIUM, Midnight Blizzard, UNC2452, Iron Hemlock, Cloaked Ursa, BlueBravo]
+    attribution:
+      nation: RU
+      service: SVR
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: 2026-04-06
+    dossier: threats/threat-actors/APT29/
+    last_reviewed: 2026-04-06
+    next_review_due: 2026-07-05
+
+  - id: "010"
+    primary_name: "Salt Typhoon"
+    aliases: [GhostEmperor, FamousSparrow, UNC2286, Earth Estries]
+    attribution:
+      nation: CN
+      service: MSS
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: 2026-04-07
+    dossier: threats/threat-actors/Salt-Typhoon/
+    last_reviewed: 2026-04-07
+    next_review_due: 2026-07-06
+
+  - id: "011"
+    primary_name: "Charming Kitten"
+    aliases: [APT35, Magic Hound, Mint Sandstorm, Phosphorus, Newscaster, Ajax Security Team, Yellow Garuda]
+    attribution:
+      nation: IR
+      service: "IRGC-IO"
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: 2026-04-08
+    dossier: threats/threat-actors/Charming-Kitten/
+    last_reviewed: 2026-04-08
+    next_review_due: 2026-07-07
+
+  - id: "012"
+    primary_name: "Miyako"
+    aliases: []
+    attribution:
+      nation: unknown
+      service: null
+    type: "Initial Access Broker"
+    threat_level: HIGH
+    tracked_since: 2026-04-08
+    dossier: threats/threat-actors/Miyako/
+    last_reviewed: 2026-04-08
+    next_review_due: 2026-07-07
+
+  - id: "013"
+    primary_name: "Scattered Spider"
+    aliases: [UNC3944, Octo Tempest, 0ktapus, Scatter Swine, Muddled Libra, Starfraud]
+    attribution:
+      nation: unknown
+      service: null
+    type: "Cybercriminal"
+    threat_level: HIGH
+    tracked_since: 2026-04-09
+    dossier: threats/threat-actors/Scattered-Spider/
+    last_reviewed: 2026-04-09
+    next_review_due: 2026-07-08
+
+  - id: "014"
+    primary_name: "Handala Hack"
+    aliases: [Void Manticore, Storm-0842, DEV-0842]
+    attribution:
+      nation: IR
+      service: MOIS
+    type: "Nation-State / Hacktivist"
+    threat_level: HIGH
+    tracked_since: null
+    dossier: threats/threat-actors/Handala-Hack/
+    last_reviewed: null
+    next_review_due: 2026-04-25
+    note: "Profile pending — tracked via #actor-review, not yet reviewed"
+
+  - id: "015"
+    primary_name: "LockBit"
+    aliases: ["LockBit 2.0", "LockBit 3.0", "LockBit Black", "LockBit Green", "LockBit Red"]
+    attribution:
+      nation: RU
+      service: null
+    type: "Cybercriminal (RaaS)"
+    threat_level: HIGH
+    tracked_since: 2026-04-11
+    dossier: threats/threat-actors/LockBit/
+    last_reviewed: 2026-04-11
+    next_review_due: 2026-07-10
+
+  - id: "016"
+    primary_name: "REvil"
+    aliases: [Sodinokibi, Pinchy Spider, GOLD SOUTHFIELD]
+    attribution:
+      nation: RU
+      service: null
+    type: "Cybercriminal (RaaS)"
+    threat_level: MEDIUM
+    tracked_since: 2026-04-12
+    dossier: threats/threat-actors/REvil/
+    last_reviewed: 2026-04-12
+    next_review_due: 2026-07-11
+    note: "Disrupted 2022, occasional resurgence claims — historical tracking"
+
+  - id: "017"
+    primary_name: "APT40"
+    aliases: [Leviathan, TEMP.Jumper, Bronze Mohawk, Gingham Typhoon, TEMP.Periscope]
+    attribution:
+      nation: CN
+      service: MSS
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: null
+    dossier: threats/threat-actors/APT40/
+    last_reviewed: null
+    next_review_due: 2026-04-25
+    note: "Profile pending — tracked via #actor-review, not yet reviewed"
+
+  - id: "018"
+    primary_name: "Cl0p"
+    aliases: [TA505, FIN11, GOLD TAHOE]
+    attribution:
+      nation: RU
+      service: null
+    type: "Cybercriminal (RaaS)"
+    threat_level: HIGH
+    tracked_since: 2026-04-14
+    dossier: threats/threat-actors/Cl0p/
+    last_reviewed: 2026-04-14
+    next_review_due: 2026-07-13
+
+  - id: "019"
+    primary_name: "APT41"
+    aliases: [Double Dragon, Winnti, BARIUM, Brass Typhoon, Wicked Panda, HOODOO]
+    attribution:
+      nation: CN
+      service: MSS
+    type: "Nation-State APT + Cybercriminal"
+    threat_level: HIGH
+    tracked_since: 2026-04-15
+    dossier: threats/threat-actors/APT41/
+    last_reviewed: 2026-04-15
+    next_review_due: 2026-07-14
+
+  - id: "020"
+    primary_name: "BlackCat / ALPHV"
+    aliases: [Noberus, ALPHV, BlackCat]
+    attribution:
+      nation: unknown
+      service: null
+      note: "Russian-speaking per operational language"
+    type: "Cybercriminal (RaaS)"
+    threat_level: HIGH
+    tracked_since: null
+    dossier: threats/threat-actors/BlackCat/
+    last_reviewed: null
+    next_review_due: 2026-04-25
+    note: "Profile pending"
+
+  - id: "021"
+    primary_name: "Payouts King"
+    aliases: [PayoutsKing]
+    attribution:
+      nation: unknown
+      service: null
+    type: "Cybercriminal"
+    threat_level: HIGH
+    tracked_since: null
+    dossier: threats/threat-actors/Payouts-King/
+    last_reviewed: null
+    next_review_due: 2026-04-25
+    note: "Profile pending"
+
+  - id: "022"
+    primary_name: "MuddyWater"
+    aliases: [Mango Sandstorm, Static Kitten, Mercury, Seedworm, Earth Vetala, TEMP.Zagros, Boggy Serpens]
+    attribution:
+      nation: IR
+      service: MOIS
+    type: "Nation-State APT"
+    threat_level: HIGH
+    tracked_since: null
+    dossier: threats/threat-actors/MuddyWater/
+    last_reviewed: null
+    next_review_due: 2026-04-25
+    note: "Profile pending"
+
+# ============================================================================
+# Quick-lookup indices (regenerated when roster changes)
+# ============================================================================
+_meta:
+  total_actors: 22
+  by_threat_level:
+    HIGH: 21
+    MEDIUM: 1
+    LOW: 0
+  by_nation:
+    RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
+    CN: 4          # Volt Typhoon, Salt Typhoon, APT40, APT41
+    IR: 4          # UNC1549, Charming Kitten, Handala, MuddyWater
+    KP: 2          # Stardust Chollima, Lazarus
+    unknown: 7     # TeamPCP, GlassWorm, Miyako, Scattered Spider, BlackCat, Payouts King, (LockBit/Cl0p attributed RU)
+  profiles_migrated: 1         # APT28 only at v1
+  profiles_pending: 5          # Handala, APT40, BlackCat, Payouts King, MuddyWater
+  scoring_complete: 0          # threat-box.yaml files — all pending

@@ -1,0 +1,513 @@
+# infrastructure/source-grades.yaml
+#
+# Agent-queryable pre-assigned source reliability grades.
+# Source of truth for doctrine is doctrine/INTEL-GRADING.md — this file
+# is generated from that. Do not hand-edit without updating the doctrine.
+#
+# The grader reads this file for every finding to resolve source reliability.
+# The collector reads this file to know which sources are active vs. disabled.
+
+version: 1
+last_updated: 2026-04-18
+doctrine_version: "1.0.0"
+
+# ============================================================================
+# Government & Official Bodies
+# ============================================================================
+government_sources:
+  - id: cisa-advisories
+    name: "CISA Advisories"
+    category: government
+    grade: A
+    active: true
+    rationale: "Official U.S. gov, technically verified before publication"
+    urls:
+      - https://www.cisa.gov/news-events/cybersecurity-advisories
+    rss: https://www.cisa.gov/cybersecurity-advisories/all.xml
+  
+  - id: cisa-kev
+    name: "CISA Known Exploited Vulnerabilities"
+    category: government
+    grade: A
+    active: true
+    rationale: "Authoritative list of exploited CVEs with patch deadlines"
+    urls:
+      - https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+    json_feed: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+  
+  - id: nsa-cnsa
+    name: "NSA / CNSA Advisories"
+    category: government
+    grade: A
+    active: true
+    rationale: "Authoritative, technically vetted"
+    urls:
+      - https://www.nsa.gov/Press-Room/Press-Releases-Statements/
+  
+  - id: fbi-flash
+    name: "FBI Flash Alerts"
+    category: government
+    grade: A
+    active: true
+    rationale: "Law enforcement intelligence, operationally verified"
+    urls:
+      - https://www.ic3.gov/Media/News/Index
+  
+  - id: mitre-attack
+    name: "MITRE ATT&CK"
+    category: reference
+    grade: A
+    active: true
+    rationale: "Curated, community-verified TTP knowledge base"
+    urls:
+      - https://attack.mitre.org/
+  
+  - id: dod-cmmc
+    name: "DoD / CMMC Bulletins"
+    category: government
+    grade: B
+    active: true
+    rationale: "Official but sometimes delayed or sanitized"
+  
+  - id: nvd
+    name: "NVD / CVE Database"
+    category: reference
+    grade: A
+    active: true
+    rationale: "Authoritative for the CVE record itself"
+    urls:
+      - https://nvd.nist.gov/
+
+# ============================================================================
+# Tier-1 Threat Intel Firms
+# ============================================================================
+vendor_sources:
+  - id: mandiant
+    name: "Mandiant / Google Threat Intel"
+    category: vendor
+    grade: A
+    active: true
+    rationale: "Industry gold standard, APT tracking, rigorous attribution"
+    urls:
+      - https://www.mandiant.com/resources/blog
+      - https://cloud.google.com/blog/topics/threat-intelligence
+  
+  - id: crowdstrike
+    name: "CrowdStrike"
+    category: vendor
+    grade: A
+    active: true
+    rationale: "Excellent APT naming/tracking, Global Threat Report"
+    urls:
+      - https://www.crowdstrike.com/blog/
+  
+  - id: recorded-future
+    name: "Recorded Future"
+    category: vendor
+    grade: A
+    active: true
+    rationale: "Deep OSINT + dark web coverage, high accuracy"
+    urls:
+      - https://www.recordedfuture.com/blog
+  
+  - id: mstic
+    name: "Microsoft MSTIC / MSRC"
+    category: vendor
+    grade: A
+    active: true
+    rationale: "Nation-state tracking, Defender telemetry-backed"
+    urls:
+      - https://www.microsoft.com/en-us/security/blog/threat-intelligence/
+      - https://msrc.microsoft.com/blog/
+  
+  - id: unit42
+    name: "Palo Alto Unit 42"
+    category: vendor
+    grade: A
+    active: true
+    rationale: "Strong technical research, consistent track record"
+    urls:
+      - https://unit42.paloaltonetworks.com/
+  
+  - id: sans-isc
+    name: "SANS Internet Storm Center"
+    category: vendor
+    grade: B
+    active: true
+    rationale: "Quality research but community-contributed"
+    urls:
+      - https://isc.sans.edu/
+
+# ============================================================================
+# Security Media & Researchers
+# ============================================================================
+media_sources:
+  - id: krebs
+    name: "Krebs on Security"
+    category: media
+    grade: B
+    active: true
+    rationale: "Strong track record, well-sourced, occasional single-source reports"
+    urls:
+      - https://krebsonsecurity.com/
+    rss: https://krebsonsecurity.com/feed/
+  
+  - id: the-record
+    name: "The Record (Recorded Future)"
+    category: media
+    grade: B
+    active: true
+    rationale: "Quality journalism, usually well-sourced"
+    urls:
+      - https://therecord.media/
+    rss: https://therecord.media/feed/
+  
+  - id: bleepingcomputer
+    name: "BleepingComputer"
+    category: media
+    grade: B
+    active: true
+    rationale: "Fast and accurate on CVEs/ransomware, sometimes light on context"
+    urls:
+      - https://www.bleepingcomputer.com/
+    rss: https://www.bleepingcomputer.com/feed/
+  
+  - id: wired-security
+    name: "Wired (security desk)"
+    category: media
+    grade: B
+    active: true
+    rationale: "Good journalism, secondary source"
+    urls:
+      - https://www.wired.com/category/security/
+  
+  - id: ars-security
+    name: "Ars Technica (security)"
+    category: media
+    grade: B
+    active: true
+    rationale: "Good journalism, secondary source"
+    urls:
+      - https://arstechnica.com/security/
+  
+  - id: github-advisories
+    name: "GitHub Security Advisories"
+    category: reference
+    grade: B
+    active: true
+    rationale: "Technically vetted, varies by maintainer"
+    urls:
+      - https://github.com/advisories
+
+# ============================================================================
+# Technical Enrichment Sources (dual-grade: facts vs. attribution)
+# ============================================================================
+technical_sources:
+  - id: shodan
+    name: "Shodan"
+    category: enrichment
+    grade_facts: A
+    grade_attribution: F
+    active: true
+    rationale: "Authoritative on infrastructure state, no attribution ability"
+    api_required: true
+  
+  - id: censys
+    name: "Censys"
+    category: enrichment
+    grade_facts: A
+    grade_attribution: F
+    active: true
+    rationale: "Same as Shodan"
+    api_required: true
+  
+  - id: virustotal
+    name: "VirusTotal"
+    category: enrichment
+    grade_facts: B
+    grade_attribution: F
+    active: true
+    rationale: "Vendor consensus, false positives happen"
+    api_required: true
+  
+  - id: urlscan
+    name: "urlscan.io"
+    category: enrichment
+    grade_facts: B
+    grade_attribution: F
+    active: true
+    rationale: "Accurate for what it captures, limited context"
+    api_required: true
+  
+  - id: whois-rdap
+    name: "WHOIS / RDAP"
+    category: enrichment
+    grade_facts: A
+    grade_attribution: F
+    active: true
+    rationale: "Authoritative registration data"
+  
+  - id: hibp
+    name: "Have I Been Pwned"
+    category: enrichment
+    grade_facts: A
+    grade_attribution: F
+    active: true
+    rationale: "Pwned Passwords + breach list authoritative; attribution F"
+    api_required: true
+  
+  - id: threatfox
+    name: "ThreatFox (abuse.ch)"
+    category: enrichment
+    grade_facts: B
+    grade_attribution: B
+    active: true
+    rationale: "Community-contributed, generally solid IOCs"
+    api_required: true
+  
+  - id: malwarebazaar
+    name: "MalwareBazaar (abuse.ch)"
+    category: enrichment
+    grade_facts: B
+    grade_attribution: B
+    active: true
+    rationale: "Sample confirmed real, context varies"
+    api_required: true
+  
+  - id: github-codesearch
+    name: "GitHub Code Search"
+    category: enrichment
+    grade_facts: B
+    grade_attribution: F
+    active: true
+    rationale: "Code presence yes, intent no"
+    api_required: true
+  
+  - id: intelx
+    name: "Intelligence X"
+    category: enrichment
+    grade_facts: C
+    grade_attribution: C
+    active: false
+    rationale: "Aggregator, depends on original source"
+    api_required: true
+    note: "Disabled at v1; enable in Tier 2"
+  
+  - id: dehashed
+    name: "DeHashed"
+    category: enrichment
+    grade_facts: B
+    grade_attribution: F
+    active: false
+    rationale: "Breach data is real, recency/accuracy varies"
+    api_required: true
+    note: "Disabled at v1; enable in Tier 2"
+
+# ============================================================================
+# First-Party Telemetry (highest grade for attribution-to-environment)
+# ============================================================================
+first_party_sources:
+  - id: splunk-archimedes
+    name: "Archimedes Splunk index"
+    category: first_party
+    grade_facts: A
+    grade_attribution: A
+    active: true
+    rationale: "First-party observation on your network"
+    host: localhost
+    index: archimedes
+  
+  - id: splunk-defenseclaw
+    name: "DefenseClaw via Splunk"
+    category: first_party
+    grade_facts: A
+    grade_attribution: A
+    active: true
+    rationale: "First-party observation on your network"
+    host: localhost
+    index: defenseclaw_local
+
+# ============================================================================
+# X / Twitter (via RSS bridges)
+# ============================================================================
+social_x_sources:
+  - id: x-cisagov
+    name: "CISA (@CISAgov)"
+    category: social
+    grade: A
+    active: true
+    rationale: "Official government channel"
+    account: CISAgov
+  
+  - id: x-gossithedog
+    name: "Kevin Beaumont (@GossiTheDog)"
+    category: social
+    grade: B
+    active: true
+    rationale: "Well-known, usually right, occasionally early/unconfirmed"
+    account: GossiTheDog
+  
+  - id: x-swiftonsecurity
+    name: "SwiftOnSecurity"
+    category: social
+    grade: B
+    active: true
+    rationale: "Strong signal, trusted voice, sometimes satirical"
+    account: SwiftOnSecurity
+  
+  - id: x-vxunderground
+    name: "vx-underground"
+    category: social
+    grade: C
+    active: true
+    rationale: "Valuable malware/actor content but sensationalized at times"
+    account: vxunderground
+  
+  - id: x-falconfeedsio
+    name: "FalconFeeds.io"
+    category: social
+    grade: C
+    active: true
+    rationale: "Fast ransomware/dark web feed, limited vetting"
+    account: FalconFeedsIO
+  
+  - id: x-unknown-researchers
+    name: "Unknown/new researcher accounts (dynamic)"
+    category: social
+    grade: F
+    active: false
+    rationale: "No track record yet — assess per-item"
+  
+  - id: x-anonymous-claims
+    name: "Anonymous threat claims on X (dynamic)"
+    category: social
+    grade: E
+    active: false
+    rationale: "Assume unreliable until corroborated"
+
+# ============================================================================
+# YouTube (via API)
+# ============================================================================
+youtube_sources:
+  - id: yt-mandiant
+    name: "Mandiant / Google Cloud Security"
+    category: youtube
+    grade: A
+    active: true
+    rationale: "Same credibility as written reports"
+    channel: "GoogleCloudTech"
+  
+  - id: yt-cisagov
+    name: "CISA"
+    category: youtube
+    grade: A
+    active: true
+    rationale: "Official government channel"
+    channel: "CISAgov"
+  
+  - id: yt-crowdstrike
+    name: "CrowdStrike"
+    category: youtube
+    grade: A
+    active: true
+    channel: "crowdstrike"
+  
+  - id: yt-john-hammond
+    name: "John Hammond"
+    category: youtube
+    grade: B
+    active: true
+    rationale: "Technically strong, educational focus"
+    channel: "_JohnHammond"
+  
+  - id: yt-simply-cyber
+    name: "Simply Cyber"
+    category: youtube
+    grade: B
+    active: true
+    rationale: "CTI methodology content"
+    channel: "SimplyCyber"
+  
+  - id: yt-blackhat
+    name: "Black Hat"
+    category: youtube
+    grade: B
+    active: true
+    rationale: "Peer-reviewed conference content"
+    channel: "BlackHatOfficialYT"
+  
+  - id: yt-defcon
+    name: "DEF CON"
+    category: youtube
+    grade: B
+    active: true
+    channel: "DEFCONConference"
+  
+  - id: yt-adam-goss
+    name: "Adam Goss"
+    category: youtube
+    grade: B
+    active: true
+    rationale: "CTI practitioner, methodologically sound"
+    channel: "AdamGoss"
+
+# ============================================================================
+# OSINT / Open Web
+# ============================================================================
+osint_sources:
+  - id: iran-monitor
+    name: "Iran Monitor"
+    category: osint
+    grade: C
+    active: true
+    rationale: "Useful Iran-focused tracking but agenda/bias possible — cross-reference"
+    urls:
+      - https://www.iranmonitor.org/
+  
+  - id: cyberwarrior76
+    name: "CyberWarrior76 (Substack)"
+    category: osint
+    grade: C
+    active: true
+    rationale: "Structured reports with MITRE mappings, but not primary source"
+    urls:
+      - https://cyberwarrior76.substack.com/
+  
+  - id: dark-web-leak-sites
+    name: "Dark web forums / leak sites (monitoring only)"
+    category: osint
+    grade: D
+    active: false
+    rationale: "Occasionally accurate, often exaggerated — monitor, don't act"
+    note: "Deferred from v1; requires Tor-isolated subagent"
+  
+  - id: pastebin-dumps
+    name: "Pastebin / anonymous dumps"
+    category: osint
+    grade: E
+    active: false
+    rationale: "Assume unreliable unless corroborated by A/B source"
+  
+  - id: telegram-unverified
+    name: "New/unverified Telegram channels"
+    category: osint
+    grade: F
+    active: false
+    rationale: "Unknown track record"
+
+# ============================================================================
+# Summary counts (agent-queryable)
+# ============================================================================
+_meta:
+  total_sources: 42
+  active_sources: 33
+  by_grade:
+    A: 18
+    B: 14
+    C: 4
+    D: 1
+    E: 2
+    F: 3
+  review_schedule:
+    next_review: 2026-07-18
+    review_interval_days: 90

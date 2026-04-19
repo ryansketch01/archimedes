@@ -1,0 +1,406 @@
+# threats/threat-actors/APT28/iocs.yaml
+#
+# Agent-queryable sidecar to iocs.md. The actor-profiler writes both files
+# in sync. iocs.md is human-readable source-of-record; this file is the
+# machine-readable mirror used for _master-index.yaml regeneration and
+# /ioc-hunt queries.
+
+actor_id: "006"
+actor_name: APT28
+last_updated: 2026-04-03
+admiralty_grade: A1
+tlp: CLEAR
+source_of_record: iocs.md
+
+ttl:
+  network_infrastructure: 90    # days — domains/IPs expire from "active"
+  file_hashes: 730              # hashes don't expire, may lose relevance
+  registry: never               # TTP-level, persistent value
+  scheduled_task: never
+  cloud_service: never
+  vulnerabilities: never        # CVEs are forever
+
+# ============================================================================
+# CVEs
+# ============================================================================
+indicators:
+
+  - id: apt28-cve-2026-21509
+    type: cve
+    value: CVE-2026-21509
+    cvss: null
+    product: "Microsoft Office"
+    description: "OLE/WebDAV security bypass; weaponized within 24h of disclosure"
+    status: kev
+    first_seen: 2026-01
+    related_malware: [SimpleLoader, CovenantGrunt]
+    related_campaign: "CVE-2026-21509 Wave"
+    source_brief: trellix-2026-02
+
+  - id: apt28-cve-2024-11182
+    type: cve
+    value: CVE-2024-11182
+    cvss: null
+    product: "MDaemon Webmail"
+    description: "XSS zero-day used in Operation RoundPress"
+    status: kev
+    first_seen: 2024
+    related_campaign: "Operation RoundPress"
+    source_brief: eset-roundpress
+
+  - id: apt28-cve-2023-23397
+    type: cve
+    value: CVE-2023-23397
+    cvss: 9.8
+    product: "Microsoft Outlook"
+    description: "NTLM hash theft on receipt; no user interaction required"
+    status: kev
+    first_seen: 2023-03
+    source_brief: unit-42-2023
+
+  - id: apt28-cve-2023-43770
+    type: cve
+    value: CVE-2023-43770
+    cvss: 6.1
+    product: "Roundcube"
+    description: "XSS → malicious JS injection → credential exfiltration"
+    status: patch_now
+    first_seen: 2023
+    related_campaign: "Operation RoundPress"
+
+  - id: apt28-cve-2023-38831
+    type: cve
+    value: CVE-2023-38831
+    cvss: 7.8
+    product: "WinRAR"
+    description: "Code execution via malicious archive"
+    status: patch_now
+    first_seen: 2023
+
+  - id: apt28-cve-2022-38028
+    type: cve
+    value: CVE-2022-38028
+    cvss: 7.8
+    product: "Windows Print Spooler"
+    description: "SYSTEM privilege escalation (GooseEgg)"
+    status: patch_now
+    first_seen: 2022
+    related_malware: [GooseEgg]
+    source_brief: microsoft-gooseegg-2024
+
+  - id: apt28-cve-2017-6742
+    type: cve
+    value: CVE-2017-6742
+    cvss: 8.8
+    product: "Cisco IOS SNMP"
+    description: "RCE via SNMP; Jaguar Tooth malware deployment"
+    status: legacy
+    first_seen: 2017
+    related_malware: [Jaguar Tooth]
+
+# ============================================================================
+# Delivery Domains
+# ============================================================================
+
+  - id: apt28-domain-wellnesscaremed
+    type: domain
+    value: wellnesscaremed.com
+    resolved_ip: 23.227.202.14
+    first_seen: 2026-01
+    last_seen: 2026-02
+    campaign: "CVE-2026-21509 Wave"
+    role: delivery
+    source_brief: trellix-2026-02
+
+  - id: apt28-domain-wellnessmedcare
+    type: domain
+    value: wellnessmedcare.org
+    resolved_ip: 193.187.148.169
+    first_seen: 2026-01
+    last_seen: 2026-02
+    campaign: "CVE-2026-21509 Wave"
+    role: delivery
+    source_brief: trellix-2026-02
+
+  - id: apt28-domain-freefoodaid
+    type: domain
+    value: freefoodaid.com
+    resolved_ip: 159.253.120.2
+    first_seen: 2026-01
+    last_seen: 2026-02
+    campaign: "CVE-2026-21509 Wave"
+    role: staging
+    source_brief: trellix-2026-02
+
+  - id: apt28-domain-longsauce
+    type: domain
+    value: longsauce.com
+    resolved_ip: 72.62.185.31
+    first_seen: 2026-01
+    last_seen: 2026-02
+    campaign: "CVE-2026-21509 Wave"
+    role: staging
+    source_brief: trellix-2026-02
+
+# ============================================================================
+# Password Spray IPs
+# ============================================================================
+
+  - id: apt28-ip-70-34-253-247
+    type: ipv4
+    value: 70.34.253.247
+    first_seen: 2024-08
+    last_seen: 2024-09
+    role: spray
+    source_brief: nsa-cisa-2024-08
+
+  - id: apt28-ip-91-149-253-118
+    type: ipv4
+    value: 91.149.253.118
+    first_seen: 2024-08
+    last_seen: 2024-09
+    role: spray
+    source_brief: nsa-cisa-2024-08
+
+  - id: apt28-ip-212-127-78-170
+    type: ipv4
+    value: 212.127.78.170
+    first_seen: 2024-08
+    last_seen: 2024-09
+    role: spray
+    source_brief: nsa-cisa-2024-08
+
+# ============================================================================
+# File Hashes — Malicious Documents (CVE-2026-21509 lures)
+# ============================================================================
+
+  - id: apt28-hash-bulleten-h-sha256
+    type: sha256
+    value: c91183175ce77360006f964841eb4048cf37cb82103f2573e262927be4c7607f
+    md5: 7c396677848776f9824ebe408bbba943
+    filename: "BULLETEN_H.doc"
+    role: lure_document
+    related_campaign: "CVE-2026-21509 Wave"
+    related_malware: [SimpleLoader]
+    source_brief: trellix-2026-02
+
+  - id: apt28-hash-courses-sha256
+    type: sha256
+    value: 1ed863a32372160b3a25549aad25d48d5352d9b4f58d4339408c4eea69807f50
+    md5: 2f7b4dca1c79e525aef8da537294a6c4
+    filename: "Courses.doc"
+    role: lure_document
+    related_campaign: "CVE-2026-21509 Wave"
+    source_brief: trellix-2026-02
+
+  - id: apt28-hash-operinformativ-163
+    type: sha256
+    value: b7342b03d7642c894ebad639b9b53fd851d7958298f454283c18748051946585
+    md5: 41c51784f6d601ffd0e09b7d59ff6025
+    filename: "OperInformativ_163.doc"
+    role: lure_document
+    related_campaign: "CVE-2026-21509 Wave"
+    source_brief: trellix-2026-02
+
+  - id: apt28-hash-operinformation
+    type: sha256
+    value: baad1153e58c86aa1dc9346cdd06be53b5dd2a6cf76202536d6721c934008f8e
+    md5: 6408276cdfd12a1d5d3ed7256bfba639
+    filename: "OperInformation.doc"
+    role: lure_document
+    related_campaign: "CVE-2026-21509 Wave"
+    source_brief: trellix-2026-02
+
+  - id: apt28-hash-1301
+    type: sha256
+    value: 969d2776df0674a1cca0f74c2fccbc43802b4f2b62ecccecc26ed538e9565eae
+    md5: b6a86f44d0a3fa5a5ac979d691189f2d
+    filename: "1301.doc"
+    role: lure_document
+    related_campaign: "CVE-2026-21509 Wave"
+    source_brief: trellix-2026-02
+
+  - id: apt28-hash-1291
+    type: sha256
+    value: fd3f13db41cd5b442fa26ba8bc0e9703ed243b3516374e3ef89be71cbf07436b
+    md5: d47261e52335b516a777da368208ee91
+    filename: "1291.doc"
+    role: lure_document
+    related_campaign: "CVE-2026-21509 Wave"
+    source_brief: trellix-2026-02
+
+  - id: apt28-hash-intl-weapons-51
+    type: sha256
+    value: 8b0ab7f7f48bf847c3af570da7dd3e26eda9e4c4ab38c492b1b798294d7f53a5
+    md5: c306e0a3ec528368f0b0332104148266
+    filename: "International Weapons Smuggling...51.doc"
+    role: lure_document
+    related_campaign: "CVE-2026-21509 Wave"
+    source_brief: trellix-2026-02
+
+  - id: apt28-hash-oper-intl-weapons
+    type: sha256
+    value: 968756e62052f9af80934b599994addbab29f8dc2615c47cda512bae48771019
+    md5: 0df3fde016f3c0974d4aa01b06724a33
+    filename: "Oper Informativ Possible International Weapons.doc"
+    role: lure_document
+    related_campaign: "CVE-2026-21509 Wave"
+    source_brief: trellix-2026-02
+
+# ============================================================================
+# File Hashes — Malware Binaries
+# ============================================================================
+
+  - id: apt28-hash-simpleloader
+    type: sha256
+    value: a876f648991711e44a8dcf888a271880c6c930e5138f284cd6ca6128eca56ba1
+    md5: e4a5c4b205e1b80dc20d9a2fb4126d06
+    filename: "EhStoreShell.dll"
+    malware: SimpleLoader
+    role: com_hijack_payload
+    related_campaign: "CVE-2026-21509 Wave"
+    source_brief: trellix-2026-02
+
+  - id: apt28-hash-notdoor
+    type: sha256
+    value: 7ccf7e8050c66eed69f35159042d8043032f8afe48ae1f51fce75ce2c51395f2
+    md5: 337cecf067ecf0609b943b54fb246ed2
+    filename: "VbaProject.OTM"
+    malware: NotDoor
+    role: outlook_vba_backdoor
+    source_brief: trellix-2026-02
+
+# ============================================================================
+# Registry Keys (AUTHENTIC ANTICS persistence)
+# ============================================================================
+
+  - id: apt28-registry-authentic-antics-locale
+    type: registry_key
+    value: "HKCU\\Software\\Microsoft\\Office\\16.0\\Outlook\\Logging\\Locale"
+    malware: "AUTHENTIC ANTICS"
+    purpose: "OAuth token storage"
+    source_brief: ncsc-uk-2025
+
+  - id: apt28-registry-authentic-antics-counter
+    type: registry_key
+    value: "HKCU\\Software\\Microsoft\\Office\\16.0\\Outlook\\Logging\\Counter"
+    malware: "AUTHENTIC ANTICS"
+    purpose: "Next scheduled run timestamp"
+    source_brief: ncsc-uk-2025
+
+# ============================================================================
+# COM CLSID
+# ============================================================================
+
+  - id: apt28-clsid-simpleloader
+    type: clsid
+    value: "{D9144DCD-E998-4ECA-AB6A-DCD83CCBA16D}"
+    malware: SimpleLoader
+    purpose: "COM hijacking"
+    source_brief: trellix-2026-02
+
+# ============================================================================
+# Scheduled Tasks
+# ============================================================================
+
+  - id: apt28-task-onedrivehealth
+    type: scheduled_task
+    value: OneDriveHealth
+    malware: SimpleLoader
+    description: "Triggers 60s post-registration; kills/relaunches explorer.exe; self-deletes"
+    source_brief: trellix-2026-02
+
+# ============================================================================
+# Cloud C2 Services
+# ============================================================================
+
+  - id: apt28-cloud-c2-filen
+    type: cloud_service
+    value: filen.io
+    role: c2
+    malware: CovenantGrunt
+    campaign: "CVE-2026-21509 Wave"
+    detection_note: "Filter by process context, not domain — legitimate use exists"
+    source_brief: trellix-2026-02
+
+  - id: apt28-cloud-c2-koofr
+    type: cloud_service
+    value: koofr.net
+    role: c2_historical
+    detection_note: "Filter by process context, not domain"
+
+  - id: apt28-cloud-c2-icedrive
+    type: cloud_service
+    value: icedrive.net
+    role: c2_historical
+    detection_note: "Filter by process context, not domain"
+
+# ============================================================================
+# URLs / network checks
+# ============================================================================
+
+  - id: apt28-url-gstatic-check
+    type: url
+    value: "http://www.gstatic.com/generate_204"
+    role: connectivity_check
+    malware: "AUTHENTIC ANTICS"
+    note: "Abuse of legitimate Google domain for connectivity check"
+    source_brief: ncsc-uk-2025
+
+# ============================================================================
+# Archive filenames (WinRAR CVE-2023-38831 campaigns)
+# ============================================================================
+
+  - id: apt28-archive-calc-war
+    type: filename
+    value: calc.war.zip
+    role: exploit_delivery
+    related_cve: CVE-2023-38831
+
+  - id: apt28-archive-roadmap
+    type: filename
+    value: Roadmap.zip
+    role: exploit_delivery
+    related_cve: CVE-2023-38831
+
+# ============================================================================
+# Hunt Queries
+# ============================================================================
+hunt_queries:
+
+  - id: authentic-antics-persistence
+    platform: windows_event_logs
+    title: "Hunt for AUTHENTIC ANTICS persistence"
+    query_type: eventlog
+    query: |
+      EventID=4657
+      TargetObject="HKCU\\Software\\Microsoft\\Office\\16.0\\Outlook\\Logging\\*"
+    related_malware: [AUTHENTIC ANTICS]
+
+  - id: simpleloader-com-hijack
+    platform: edr
+    title: "Hunt for COM hijacking (SimpleLoader)"
+    query_type: edr
+    query: |
+      clsid:{D9144DCD-E998-4ECA-AB6A-DCD83CCBA16D}
+      OR process:explorer.exe AND dll_path:user_writable
+      OR scheduled_task:OneDriveHealth
+    related_malware: [SimpleLoader]
+
+  - id: password-spray-m365
+    platform: m365
+    title: "Hunt for password spray (M365)"
+    query_type: m365_signin
+    query: |
+      failed_logins > 300/hour
+      AND distinct_accounts > 10
+      AND source_ip IN (tor_exit_nodes OR known_vpn_ranges)
+
+  - id: cloud-c2-process-context
+    platform: edr
+    title: "Hunt for cloud C2 abuse"
+    query_type: edr
+    query: |
+      https_connection TO (filen.io, koofr.net, icedrive.net)
+      AND process NOT IN (browser_processes, known_cloud_clients)
+    related_malware: [CovenantGrunt]

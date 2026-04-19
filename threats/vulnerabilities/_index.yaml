@@ -1,0 +1,58 @@
+# threats/vulnerabilities/_index.yaml
+#
+# Active zero-days and critical CVEs under ongoing tracking.
+# The vuln-tracker subagent maintains this file and the per-vuln dossiers.
+#
+# Migrated from C3PO ZD-001/002/003 entries. Additional vulns added as
+# they emerge via FLASH triggers or vuln-tracker weekly review.
+
+version: 1
+last_updated: 2026-04-18
+
+vulnerabilities:
+
+  - id: ZD-001
+    name: BlueHammer
+    type: LPE
+    platform: "Windows 10/11/Server"
+    cve: CVE-2026-33825
+    cvss: null
+    patch_status: patched
+    dossier: threats/vulnerabilities/BlueHammer/profile.md
+    tracked_since: 2026-03
+    last_reviewed: null
+    next_review_due: 2026-04-25
+    note: "Patched as of 2026 Patch Tuesday. Monitoring for in-the-wild exploitation."
+
+  - id: ZD-002
+    name: RedSun
+    type: LPE
+    platform: "Windows 10/11/Server 2019+"
+    cve: null
+    cvss: null
+    patch_status: unpatched
+    dossier: threats/vulnerabilities/RedSun/profile.md
+    tracked_since: 2026-03
+    last_reviewed: null
+    next_review_due: 2026-04-25
+    note: "Zero-day. No patch available. Monitoring vendor response."
+
+  - id: ZD-003
+    name: UnDefend
+    type: "DoS / Defender Update Block"
+    platform: "Windows 10/11/Server 2019+"
+    cve: null
+    cvss: null
+    patch_status: unpatched
+    dossier: threats/vulnerabilities/UnDefend/profile.md
+    tracked_since: 2026-03
+    last_reviewed: null
+    next_review_due: 2026-04-25
+    note: "Blocks Defender updates. Facilitates follow-on exploitation."
+
+_meta:
+  total_tracked: 3
+  patched: 1
+  unpatched: 2
+  active_exploitation: 0          # update as FLASH briefs reveal exploitation
+  dossiers_migrated: 0            # all dossiers pending migration

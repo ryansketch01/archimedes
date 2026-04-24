@@ -33,13 +33,13 @@ motivation:
   - influence-operations
   - nato-collection
   - ukraine-war-intelligence
-threat_level: HIGH
+threat_level: MEDIUM
 admiralty_grade: A1
 tlp: CLEAR
-dossier_version: 1
-last_updated: 2026-04-03
-last_reviewed: 2026-04-03
-next_review_due: 2026-07-02
+dossier_version: 2
+last_updated: 2026-04-24
+last_reviewed: 2026-04-18
+next_review_due: 2026-07-17
 profile_path: threats/threat-actors/APT28/
 iocs_path: threats/threat-actors/APT28/iocs.md
 threat_box_path: threats/threat-actors/APT28/threat-box.yaml
@@ -49,6 +49,16 @@ related_actors:
   - "003"      # Lazarus — parallel dream-job spearphishing
 migrated_from: "intel-repository/threats/threat-actors/APT28"
 ---
+
+## Dossier notes
+
+**2026-04-24 — methodology migration.** `threat_level` changed from HIGH to
+MEDIUM to match the weighted-overall of 6.60 in `threat-box.yaml`. This
+reflects the Session 2A decision that weighted-overall determines authority
+level rather than per-category maxima. APT28's espionage composite remains
+10 (per-category HIGH) — see `primary_threat_level: HIGH` in
+`threat-box.yaml`. Scoring values themselves were not changed; only the
+headline threat_level field was brought into sync with doctrine.
 
 # APT28 — Threat Actor Profile
 

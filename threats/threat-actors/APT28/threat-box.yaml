@@ -3,16 +3,18 @@
 # Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
 # Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
 #
-# This scoring is a first-pass draft by the actor-profiler. Per doctrine,
-# HIGH threat levels require human sign-off before commit. reviewed_by is
-# null until /approve-scoring 006 is invoked in Discord.
+# Session 2A decision (weighted overall determines authority) resolves the
+# original approval gate. Overall weighted 6.60 = MEDIUM, which per the
+# threat-box-scoring skill authority table = actor-profiler-autonomous-
+# with-notification. No /approve-scoring required. See history entry for
+# 2026-04-24.
 
 actor_id: "006"
 actor_name: "APT28"
 target_profile: "ad-prime-v1"
 scored_at: 2026-04-18
 scored_by: session-1-scaffold
-reviewed_by: null                     # awaiting /approve-scoring 006
+reviewed_by: methodology-migration-2026-04-24
 scoring_version: 1
 
 # ============================================================================
@@ -244,3 +246,13 @@ history:
     scorer: session-1-scaffold
     change: "initial"
     note: "First-pass exemplar scoring for Session 1 migration. Awaiting human sign-off."
+  - scored_at: 2026-04-24
+    scorer: methodology-migration
+    change: "closed-session-1-gate"
+    note: |
+      Session 2A decided: weighted overall determines authority level, not per-category.
+      APT28 overall 6.60 = MEDIUM, which does not require /approve-scoring under the
+      new rule. reviewed_by transitioned from null to methodology-migration-2026-04-24.
+      Scoring values themselves unchanged. Next full rescoring under the new
+      methodology will occur via actor-profiler when Session 3 MCPs enable the
+      full review cycle.

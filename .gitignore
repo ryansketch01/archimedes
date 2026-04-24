@@ -44,7 +44,7 @@ tmp/
 _working/
 
 # Quarantined material (legal policy — never commit)
-quarantine/
+quarantine/*
 !quarantine/.gitkeep
 
 # Generated files that regenerate nightly

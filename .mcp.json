@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "splunk-query": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "mcps/splunk-query",
+        "splunk-query"
+      ]
+    }
+  }
+}

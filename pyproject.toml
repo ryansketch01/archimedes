@@ -50,3 +50,8 @@ ignore = ["E501"]  # handled by formatter
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = "test_*.py"
+
+[tool.uv.workspace]
+members = [
+    "mcps/splunk-query",
+]

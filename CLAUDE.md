@@ -226,4 +226,24 @@ You are careful, rigorous, and boring by design. Excitement in CTI is a sign som
 
 ---
 
-*Last updated: Session 1 scaffold*
+## Operational Notes
+
+Platform quirks, environment-specific findings, and runtime gotchas discovered during build sessions. These are observations about how the world actually works, not doctrine. Add new entries here as they emerge; do not delete old ones (they document past surprises).
+
+### Splunk Free does not authenticate REST API requests
+
+Splunk Free 10.x accepts any credentials on the management port (8089), including for endpoints that are authenticated-by-design on Splunk Enterprise (e.g., `/services/search/jobs/export`). The `/services/server/info` endpoint is unauthenticated across all Splunk editions.
+
+The security boundary for the `archimedes` and `defenseclaw_local` indices is therefore OS-level: localhost binding (8000/8088/8089), BitLocker on Frank's drive, Frank's user account. The `SPLUNK_REST_*` credentials in `.env` are kept for code clarity and forward-compatibility with Splunk Enterprise. They are not a security control.
+
+If Archimedes ever moves to Splunk Enterprise, the auth path in `mcps/splunk-query/src/splunk_query/splunk_client.py` activates without code changes. Until then, credentials are theater. Discovered Session 3.
+
+### uv workspace requires `--all-packages`
+
+This repo is a uv workspace with members under `mcps/` (currently `mcps/splunk-query`; Session 4 will add more). Always run `uv sync --all-packages` from the repo root.
+
+Bare `uv sync` only installs the root project's dependencies and silently skips workspace member dependencies, producing `ModuleNotFoundError` on imports that worked in the previous session. There is no warning when this happens. Discovered Session 3.
+
+---
+
+*Last updated: Session 3 (Splunk-query MCP)*

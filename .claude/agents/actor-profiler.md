@@ -538,7 +538,7 @@ Threat-box-scoring IOC corroboration bonus comes from Splunk observation. Always
 - **SAT origination** — analyst owns (except sat-kac during reviews)
 - **Brief writing** — briefer composes briefs
 - **Git commits, Splunk events, Discord posts** — librarian owns these
-- **Regenerating `_master-index.yaml`** — librarian runs `regenerate-ioc-index.py` after your iocs.yaml updates
+- **Regenerating `_master-index.yaml`** — librarian runs `regenerate_ioc_index.py` after your iocs.yaml updates
 - **Attribution origination** — Hard Rule 2
 
 ## Context discipline

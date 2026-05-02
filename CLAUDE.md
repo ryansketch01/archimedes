@@ -248,9 +248,9 @@ Bare `uv sync` only installs the root project's dependencies and silently skips 
 
 On Frank, Splunk HEC (`SPLUNK_HEC_URL`, port 8088) is plain HTTP. The REST management API (`SPLUNK_REST_URL`, port 8089) is HTTPS with a self-signed cert. Two different protocols, two different ports, two different auth schemes (HEC token vs. basic auth).
 
-Consequence: `SPLUNK_VERIFY_SSL` (or `SPLUNK_REST_VERIFY_SSL`) is REST-only. Setting it does nothing for HEC because there is no TLS to verify on 8088. If HEC is ever moved to HTTPS, `scripts/splunk-log.py` will need its own verify flag — don't assume the REST flag covers it.
+Consequence: `SPLUNK_VERIFY_SSL` (or `SPLUNK_REST_VERIFY_SSL`) is REST-only. Setting it does nothing for HEC because there is no TLS to verify on 8088. If HEC is ever moved to HTTPS, `scripts/splunk_log.py` will need its own verify flag — don't assume the REST flag covers it.
 
-This is also why the splunk-query MCP (read path, REST/8089) and `scripts/splunk-log.py` (write path, HEC/8088) are intentionally separate codepaths sharing only the .env. The "single Splunk client" abstraction would have been a thin sum of two unrelated clients. Discovered Session 4.
+This is also why the splunk-query MCP (read path, REST/8089) and `scripts/splunk_log.py` (write path, HEC/8088) are intentionally separate codepaths sharing only the .env. The "single Splunk client" abstraction would have been a thin sum of two unrelated clients. Discovered Session 4.
 
 ### `.env.example` schema is stale
 

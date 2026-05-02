@@ -208,7 +208,7 @@ When extracted IOCs are about to be committed to an actor's `iocs.yaml`:
 3. Graded claims return with digraphs
 4. Only claims meeting the B2 threshold get merged into actor profile
 5. All IOCs, regardless of attribution confidence, go to `threats/raw-signal/` first
-6. Librarian runs `scripts/regenerate-ioc-index.py` to update `_master-index.yaml`
+6. Librarian runs `scripts/regenerate_ioc_index.py` to update `_master-index.yaml`
 
 This means the IOC extraction skill should NEVER claim attribution itself — only surface the claim for grading.
 

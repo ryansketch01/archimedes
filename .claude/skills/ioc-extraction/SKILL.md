@@ -326,11 +326,11 @@ Grader will enrich later if context becomes available.
 ## Interaction with other skills
 
 - `admiralty-grading` consumes the `attribution_claims` array to grade each attribution separately
-- The `_master-index.yaml` regeneration script (`scripts/regenerate-ioc-index.py`) consumes the schema-compliant `indicators` array
+- The `_master-index.yaml` regeneration script (`scripts/regenerate_ioc_index.py`) consumes the schema-compliant `indicators` array
 - `actor-profiler` takes the extracted IOCs and merges them into `threats/threat-actors/<actor>/iocs.yaml`
 
 ## References
 
 - `references/ioc-patterns.md` — detailed regex patterns and edge cases for each IOC type (load on demand)
 - `threats/threat-actors/APT28/iocs.yaml` — canonical schema example
-- `scripts/regenerate-ioc-index.py` — downstream consumer that validates schema
+- `scripts/regenerate_ioc_index.py` — downstream consumer that validates schema

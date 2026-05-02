@@ -35,10 +35,6 @@ all = [
     "archimedes[discord,dashboard,dev]",
 ]
 
-[project.scripts]
-archimedes-regen-ioc = "scripts.regenerate_ioc_index:main"
-archimedes-migrate-actor = "scripts.migrate_actor:main"
-
 [tool.ruff]
 line-length = 100
 target-version = "py311"
@@ -50,6 +46,10 @@ ignore = ["E501"]  # handled by formatter
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 python_files = "test_*.py"
+# Add repo root to sys.path so `from scripts import ...` works in tests
+# without resorting to importlib.util workarounds. Pairs with
+# scripts/__init__.py making `scripts` a real package.
+pythonpath = ["."]
 
 [tool.uv.workspace]
 members = [

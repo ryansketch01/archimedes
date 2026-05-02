@@ -1,7 +1,4 @@
-"""Unit tests for scripts/splunk-log.py.
-
-The script file is hyphenated (matches sibling scripts in scripts/), so
-we load it as a module via importlib.util rather than a plain import.
+"""Unit tests for scripts/splunk_log.py.
 
 These tests do not touch the network. The only test that exercises the
 HEC transport uses a fake requests.Session.
@@ -10,7 +7,6 @@ HEC transport uses a fake requests.Session.
 from __future__ import annotations
 
 import argparse
-import importlib.util
 import io
 import json
 import sys
@@ -19,21 +15,12 @@ from typing import Any
 
 import pytest
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
-SCRIPT_PATH = REPO_ROOT / "scripts" / "splunk-log.py"
-
-
-def _load_module():
-    spec = importlib.util.spec_from_file_location("splunk_log", SCRIPT_PATH)
-    assert spec is not None and spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+from scripts import splunk_log as splunk_log_module
 
 
 @pytest.fixture(scope="module")
 def splunk_log():
-    return _load_module()
+    return splunk_log_module
 
 
 # ---------- parse_event_input ----------
@@ -94,14 +81,14 @@ def test_build_payload_minimal(splunk_log):
         index="archimedes",
         sourcetype="archimedes:operation",
         host="frank",
-        source="archimedes/scripts/splunk-log.py",
+        source="archimedes/scripts/splunk_log.py",
     )
     assert payload == {
         "event": {"k": "v"},
         "index": "archimedes",
         "sourcetype": "archimedes:operation",
         "host": "frank",
-        "source": "archimedes/scripts/splunk-log.py",
+        "source": "archimedes/scripts/splunk_log.py",
     }
 
 

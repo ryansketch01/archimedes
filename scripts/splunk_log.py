@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-splunk-log.py — Send a single event to the Archimedes Splunk HEC.
+splunk_log.py — Send a single event to the Archimedes Splunk HEC.
 
 Used by Claude Code hooks (the librarian subagent) to ship pipeline
 telemetry to the archimedes index. Mirrors:
-  - scripts/regenerate-ioc-index.py — CLI shape, REPO_ROOT pattern, stderr errors
+  - scripts/regenerate_ioc_index.py — CLI shape, REPO_ROOT pattern, stderr errors
   - mcps/splunk-query — .env loading via python-dotenv
 
 Stays narrow on purpose. The splunk-query MCP is the read path (REST API,
@@ -12,12 +12,12 @@ port 8089). This is the write path (HEC, port 8088). Different ports,
 different auth, different audiences (LLM analysis vs. orchestration plumbing).
 
 Usage:
-    python scripts/splunk-log.py --event '{"phase":"morning-brief"}'
-    python scripts/splunk-log.py --event-file path/to/event.json
-    cat event.json | python scripts/splunk-log.py --event-stdin
+    python scripts/splunk_log.py --event '{"phase":"morning-brief"}'
+    python scripts/splunk_log.py --event-file path/to/event.json
+    cat event.json | python scripts/splunk_log.py --event-stdin
 
     # Override the default sourcetype for this event
-    python scripts/splunk-log.py --event '{...}' --sourcetype archimedes:brief
+    python scripts/splunk_log.py --event '{...}' --sourcetype archimedes:brief
 
 Environment (loaded from <repo>/.env via find_dotenv walk-up):
     SPLUNK_HEC_URL          Full URL incl. /services/collector/event
@@ -169,7 +169,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--host", default=None, help="Host field (default: socket.gethostname())")
     parser.add_argument(
         "--source",
-        default="archimedes/scripts/splunk-log.py",
+        default="archimedes/scripts/splunk_log.py",
         help="Source field (default: this script)",
     )
     parser.add_argument("--timeout", type=float, default=10.0, help="HEC timeout in seconds")

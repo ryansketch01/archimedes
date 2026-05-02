@@ -55,4 +55,5 @@ python_files = "test_*.py"
 members = [
     "mcps/splunk-query",
     "mcps/virustotal",
+    "mcps/shodan-mcp",
 ]

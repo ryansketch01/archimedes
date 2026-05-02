@@ -162,6 +162,8 @@ def main() -> None:
 
     try:
         mcp.run()
+    except KeyboardInterrupt:
+        pass
     finally:
         global _client
         if _client is not None:

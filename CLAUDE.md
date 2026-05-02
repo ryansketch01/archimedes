@@ -254,10 +254,16 @@ This is also why the splunk-query MCP (read path, REST/8089) and `scripts/splunk
 
 ### `.env.example` schema is stale
 
-`.env.example` uses port-based variables (`SPLUNK_HOST`, `SPLUNK_HEC_PORT`, `SPLUNK_USER`, `SPLUNK_PASSWORD`, `SPLUNK_VERIFY_SSL`). The actual `.env` and the splunk-query MCP both use URL-based variables (`SPLUNK_HEC_URL`, `SPLUNK_REST_URL`, `SPLUNK_REST_USER`, `SPLUNK_REST_PASSWORD`, `SPLUNK_REST_VERIFY_SSL`).
+`.env.example` used port-based variables (`SPLUNK_HOST`, `SPLUNK_HEC_PORT`, `SPLUNK_USER`, `SPLUNK_PASSWORD`, `SPLUNK_VERIFY_SSL`). The actual `.env` and the splunk-query MCP both use URL-based variables (`SPLUNK_HEC_URL`, `SPLUNK_REST_URL`, `SPLUNK_REST_USER`, `SPLUNK_REST_PASSWORD`, `SPLUNK_REST_VERIFY_SSL`).
 
-If a future session bootstraps a fresh checkout from `.env.example` it will produce config that doesn't match what the code reads. Refresh the example file before standing up another machine. Noted Session 4; deferred to Session 5+.
+If a future session bootstraps a fresh checkout from `.env.example` it will produce config that doesn't match what the code reads. Noted Session 4; **resolved Session 5** — `.env.example` now mirrors the real schema and labels active vs aspirational vars.
+
+### Shodan dev plan does not deduct credits for `lookup_host`
+
+Empirical: two `lookup_host` calls (8.8.8.8, 1.1.1.1) produced zero deduction in `query_credits` (100 → 100), with a 60s+ re-check to rule out billing lag. Shodan's published docs say each `lookup_host` should cost 1 credit. Observed Session 4, reproduced Session 5.
+
+Could be a dev-plan perk, a quota that resets faster than we observe, or a Shodan accounting quirk. Either way, do not budget against the published cost on this plan — measure empirically before relying on credit math. The free tools (`lookup_internetdb`, `count_hosts`) remain the safer first move when the use case allows.
 
 ---
 
-*Last updated: Session 4 (HEC write path)*
+*Last updated: Session 5 (verification + cleanups)*

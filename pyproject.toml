@@ -54,4 +54,5 @@ python_files = "test_*.py"
 [tool.uv.workspace]
 members = [
     "mcps/splunk-query",
+    "mcps/virustotal",
 ]

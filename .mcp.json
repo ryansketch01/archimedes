@@ -8,6 +8,15 @@
         "mcps/splunk-query",
         "splunk-query"
       ]
+    },
+    "virustotal": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "mcps/virustotal",
+        "virustotal"
+      ]
     }
   }
 }

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-04-18
+last_updated: 2026-05-03
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -36,7 +36,26 @@ last_updated: 2026-04-18
 #     last_covered: 2026-04-18
 #     retraction: null              # populated if item is later retracted
 
-entries: []
+entries:
+  - id: 2026-05-03-am-quiet
+    covered_in: [2026-05-03-morning]
+    headline: "Quiet-window posture report — no graded non-test findings overnight"
+    topic_tags: [quiet-window, posture-report, empty-corpus]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: []
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-03
+    last_covered: 2026-05-03
+    retraction: null
+    test: false
+    notes: |
+      No real findings existed in the pipeline at 08:00 EDT. Two raw-signal
+      items and two findings files carrying `test: true` were excluded per
+      operator directive. Brief documents the empty window honestly rather
+      than padding or skipping the cadence.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -258,6 +258,18 @@ This is also why the splunk-query MCP (read path, REST/8089) and `scripts/splunk
 
 If a future session bootstraps a fresh checkout from `.env.example` it will produce config that doesn't match what the code reads. Noted Session 4; **resolved Session 5** — `.env.example` now mirrors the real schema and labels active vs aspirational vars.
 
+### PowerShell 5.1 has three encoding/redirect gotchas that bit the scheduler wrapper
+
+`scripts/run_phase.ps1` ran into all three on first attempt. Document so future Windows-side scripting doesn't relearn:
+
+1. **`[System.IO.File]::WriteAllText` with `[System.Text.Encoding]::UTF8` writes a BOM.** Python's `json.loads` rejects a BOM as invalid JSON ("Unexpected UTF-8 BOM"). Workaround: `New-Object System.Text.UTF8Encoding $false`, then pass that as the encoding argument.
+
+2. **Piping objects to native exes via stdin is unreliable.** `$json | & python script.py` may deliver empty stdin even when `$json` is a non-empty string. Use a temp file + `--event-file` argument instead.
+
+3. **`2>&1` on a native exe under `$ErrorActionPreference = 'Stop'` aborts the script.** Native stderr lines get wrapped in NativeCommandError objects, and Stop preference treats those as terminating errors. Either drop `2>&1` (let stderr flow to parent) or set `$ErrorActionPreference = 'Continue'` around the call.
+
+Bonus 4th gotcha: `Tee-Object` on PS 5.1 has no `-Encoding` parameter (UTF-16 LE BOM default), and `Add-Content -Encoding UTF8` still writes a BOM. Use `[System.IO.File]::AppendAllText` with the explicit no-BOM UTF-8 encoding object. Discovered Session 7.
+
 ### Shodan dev plan does not deduct credits for `lookup_host`
 
 Empirical: two `lookup_host` calls (8.8.8.8, 1.1.1.1) produced zero deduction in `query_credits` (100 → 100), with a 60s+ re-check to rule out billing lag. Shodan's published docs say each `lookup_host` should cost 1 credit. Observed Session 4, reproduced Session 5.
@@ -266,4 +278,4 @@ Could be a dev-plan perk, a quota that resets faster than we observe, or a Shoda
 
 ---
 
-*Last updated: Session 5 (verification + cleanups)*
+*Last updated: Session 7 (scheduler + headless wrapper)*

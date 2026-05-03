@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!--
+  Archimedes Task Scheduler template.
+
+  Substitute the following placeholders before importing:
+    __PHASE__        e.g. "morning-brief"
+    __TIME__         ISO timestamp for first run, e.g. "2026-05-08T08:00:00"
+    __REPO_ROOT__    absolute repo path on Frank, e.g.
+                     "C:\Users\rtske\Projects\archimedes"
+
+  Import:
+    schtasks /Create /XML <this-file> /TN "Archimedes\__PHASE__" \
+             /RU rtske /RP <password>
+
+  See infrastructure/scheduler/README.md for full procedure.
+-->
+<Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>Archimedes scheduled phase: __PHASE__</Description>
+    <Author>Archimedes</Author>
+    <URI>\Archimedes\__PHASE__</URI>
+  </RegistrationInfo>
+
+  <Triggers>
+    <CalendarTrigger>
+      <StartBoundary>__TIME__</StartBoundary>
+      <Enabled>true</Enabled>
+      <ScheduleByDay>
+        <DaysInterval>1</DaysInterval>
+      </ScheduleByDay>
+    </CalendarTrigger>
+  </Triggers>
+
+  <Principals>
+    <Principal id="Author">
+      <UserId>rtske</UserId>
+      <LogonType>Password</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>true</RunOnlyIfNetworkAvailable>
+    <IdleSettings>
+      <StopOnIdleEnd>false</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>true</WakeToRun>
+    <ExecutionTimeLimit>PT30M</ExecutionTimeLimit>
+    <Priority>7</Priority>
+    <RestartOnFailure>
+      <Interval>PT5M</Interval>
+      <Count>1</Count>
+    </RestartOnFailure>
+  </Settings>
+
+  <Actions Context="Author">
+    <Exec>
+      <Command>powershell.exe</Command>
+      <Arguments>-NoProfile -ExecutionPolicy Bypass -File "__REPO_ROOT__\scripts\run_phase.ps1" -Phase __PHASE__</Arguments>
+      <WorkingDirectory>__REPO_ROOT__</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>

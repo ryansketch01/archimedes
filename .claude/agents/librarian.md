@@ -195,7 +195,10 @@ Mode 2 append; Mode 3 process and archive superseded/expired entries to `infrast
    └─ If content-safety issue → halt, flag
 3. Log Splunk event: run_complete for the brief-generation run
 4. Invoke Discord post:
-   └─ bash .claude/hooks/discord-post.sh --channel intel-briefs --file <target_file>
+   └─ bash .claude/hooks/discord-post.sh --channel intel-briefs --message-file <target_file>
+   (Note: Discord enforces a 2000-character per-message limit. If the brief
+   exceeds 2000 chars, post a short summary message with a link to the
+   committed git path instead of the full brief body.)
 5. Log Splunk event: brief_published
 6. git add the brief + coverage-log.yaml + any related files
 7. git commit -m "Publish <type> brief YYYY-MM-DD\n\nrun_id: <run_id>"
@@ -215,7 +218,7 @@ Mode 2 append; Mode 3 process and archive superseded/expired entries to `infrast
    └─ quiet_hours_queued: true AND critical_override: false → QUEUE
 
    If POST:
-     ├─ bash discord-post.sh --channel flash-alerts --file <target_file>
+     ├─ bash .claude/hooks/discord-post.sh --channel flash-alerts --message-file <target_file>
      ├─ Log brief_published event with critical_override flag
      ├─ git add + commit + push
      └─ Return posted summary
@@ -307,7 +310,9 @@ Mode 2 append; Mode 3 process and archive superseded/expired entries to `infrast
 ```
 1. Receive telemetry_event structure
 2. Sanitize: no secrets, no credential content, no raw prompt text
-3. Invoke bash .claude/hooks/splunk-log.sh --event-type <type> --event-data <json>
+3. Invoke bash .claude/hooks/splunk-log.sh --event '<json-with-event_type-field>' --sourcetype 'archimedes:operation'
+   (The hook accepts --event '<json>' OR --event-file <path> OR --event-stdin.
+   The event_type field belongs INSIDE the JSON object, not as a separate flag.)
 4. Hook writes to Splunk archimedes index via HEC
 5. No commit; telemetry doesn't commit to git (tracked in Splunk only)
 6. Return summary
@@ -458,7 +463,7 @@ artifacts: [threats/briefs/2026-04-23-morning.md, threats/briefs/_coverage-log.y
 **Process:**
 1. Read brief, content-safety scan passes
 2. Log run_complete event for briefer
-3. `bash .claude/hooks/discord-post.sh --channel intel-briefs --file threats/briefs/2026-04-23-morning.md`
+3. `bash .claude/hooks/discord-post.sh --channel intel-briefs --message-file threats/briefs/2026-04-23-morning.md`
 4. Log brief_published
 5. `git add threats/briefs/2026-04-23-morning.md threats/briefs/_coverage-log.yaml`
 6. `git commit -m "Publish morning brief 2026-04-23\n\nrun_id: morning-20260423-080000"`

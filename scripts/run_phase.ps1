@@ -58,15 +58,22 @@ $ErrorActionPreference = 'Stop'
 # Phase -> prompt mapping. Short prompts; trust the orchestrator to
 # consult CLAUDE.md and follow doctrine. See docs/handoffs/session-7-prep.md
 # for the rationale on prompt brevity.
+# All production prompts include the test-fixture exclusion clause so
+# unattended runs operate only on real signal. Test fixtures are
+# left in place (they have ttl_expires_at and test: true frontmatter)
+# but never propagate to briefs or Discord. Discovered Session 8
+# Stage G: orchestrator otherwise stops to ask which signal to use.
+$TestExclusion = ' Skip any raw-signal, findings, or briefs marked test: true.'
+
 $PhasePrompts = @{
-    'pre-brief-morning'    = 'Run pre-brief collection for the 08:00 morning brief per CLAUDE.md Pipeline - Scheduled Brief.'
-    'morning-brief'        = 'Run the 08:00 morning brief pipeline per CLAUDE.md. Grade, analyze, brief, deliver.'
-    'alert-sweep-noon'     = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Exit silently if no triggers.'
-    'pre-brief-afternoon'  = 'Run pre-brief collection for the 16:00 afternoon brief per CLAUDE.md Pipeline - Scheduled Brief.'
-    'afternoon-brief'      = 'Run the 16:00 afternoon brief pipeline per CLAUDE.md. Grade, analyze, brief, deliver.'
-    'alert-sweep-evening'  = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Exit silently if no triggers.'
-    'alert-sweep-midnight' = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Quiet hours active - queue any triggers.'
-    'alert-sweep-dawn'     = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Quiet hours active - queue any triggers.'
+    'pre-brief-morning'    = 'Run pre-brief collection for the 08:00 morning brief per CLAUDE.md Pipeline - Scheduled Brief.' + $TestExclusion
+    'morning-brief'        = 'Run the 08:00 morning brief pipeline per CLAUDE.md. Grade, analyze, brief, deliver.' + $TestExclusion
+    'alert-sweep-noon'     = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Exit silently if no triggers.' + $TestExclusion
+    'pre-brief-afternoon'  = 'Run pre-brief collection for the 16:00 afternoon brief per CLAUDE.md Pipeline - Scheduled Brief.' + $TestExclusion
+    'afternoon-brief'      = 'Run the 16:00 afternoon brief pipeline per CLAUDE.md. Grade, analyze, brief, deliver.' + $TestExclusion
+    'alert-sweep-evening'  = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Exit silently if no triggers.' + $TestExclusion
+    'alert-sweep-midnight' = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Quiet hours active - queue any triggers.' + $TestExclusion
+    'alert-sweep-dawn'     = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Quiet hours active - queue any triggers.' + $TestExclusion
     'smoke-test'           = 'Reply with the literal string OK and nothing else.'
 }
 

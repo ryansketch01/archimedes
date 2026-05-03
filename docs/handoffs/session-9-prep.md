@@ -284,4 +284,12 @@ let the librarian post it. Halt manually, surface to Ryan.
 ---
 
 *Drafted at end of Session 8 (2026-05-03). Targeted for Session 9
-start (Wed 2026-05-06).*
+start (Mon 2026-05-04). Pulled in 3 days from the original Wed
+2026-05-06 target. Sessions 9 and 10 will run same-day, collapsing
+the original sprint plan from 5 sessions over 5 days into Sessions
+9+10 in one sitting — production schedule enables Monday EOD,
+first unattended brief fires Tue 2026-05-05 at 08:00 EDT (3 days
+ahead of the original Friday 2026-05-08 launch). Build in a
+mid-day pause between the two sessions to verify Session 9 stuck
+before turning on the schedule. See `docs/handoffs/session-10-prep.md`
+for the immediate follow-on plan.*

@@ -1,0 +1,336 @@
+# threats/threat-actors/APT34/threat-box.yaml
+#
+# Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
+# Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
+#
+# Computed via .claude/skills/threat-box-scoring/scripts/compute-threat-box.py
+# Authority: actor-profiler-autonomous-with-notification (overall weighted 4.9
+# rounds to 5 → MEDIUM). Per-category espionage composite = 8 (HIGH category-
+# level) but per Session 2A methodology decision, overall weighted determines
+# the authority gate. No /approve-scoring required.
+
+actor_id: "023"
+actor_name: "APT34"
+target_profile: "ad-prime-v1"
+scored_at: 2026-05-01
+scored_by: actor-profiler
+reviewed_by: auto-committed
+scoring_version: 1
+
+# ============================================================================
+# Espionage — weighted 35%
+# ============================================================================
+scores:
+  espionage:
+    intent:
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        APT34 is documented by Mandiant, Palo Alto Unit 42, Trend Micro, and
+        Symantec as a sustained Iranian state-aligned espionage actor focused
+        on Middle East government, telecommunications, energy, and finance,
+        with documented A&D-adjacent targeting of regional defense ministries
+        and aerospace research entities (notably Israeli targets per Mandiant
+        Crambus 2023 reporting). Targeting of US A&D primes specifically is
+        NOT documented in public reporting; A&D-prime exposure is sectoral
+        and supply-chain-mediated rather than direct. Scored Intent=3
+        (sector-association) rather than 5 (target-specific) — the latter
+        would require A-grade evidence of direct ad-prime-v1 targeting,
+        which is absent.
+      sources:
+        - mandiant-2017-apt34
+        - unit-42-oilrig-2018
+        - symantec-crambus-2023
+        - trendmicro-menorah-2023
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran — sustained sanctions regime, no diplomatic constraints, active regional cyber confrontation through 2024-2025."
+    capability:
+      score: 5
+      label: significant
+      novelty_modifier: 0
+      evidence: |
+        Multiple A-grade sources document active espionage tradecraft within
+        the last 24 months: Trend Micro and Unit 42 disclosed MENORAH C#
+        backdoor against Saudi government targets in 2023-2024; Symantec
+        documented an eight-month dwell-time intrusion (PowerExchange,
+        compromised Exchange transport agent C2) in a Middle East government
+        network in 2023. Decade of continuous tooling evolution (Helminth,
+        ISMAgent, OopsIE, BONDUPDATER, RGDoor, DNSpionage/Karkoff, Saitama,
+        SideTwist, MARLIN, MENORAH, PowerExchange). Capability against
+        ad-prime-v1's technology stack (Windows, Exchange, IIS, Office) is
+        significant in the abstract — what's lower is targeting interest, not
+        capability.
+      sources:
+        - trendmicro-menorah-2023
+        - symantec-crambus-2023
+        - unit-42-saitama-2022
+        - cisco-talos-dnspionage-2019
+        - mandiant-2017-apt34
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: |
+        Custom-developed tooling per campaign (MENORAH, MARLIN, PowerExchange,
+        SideTwist). DNS-tunneling C2 across multiple toolkits raises detection
+        difficulty above commodity-malware baseline. PowerExchange's use of
+        compromised Exchange transport agents as covert C2 represents novel
+        living-off-the-land tradecraft against M365/Exchange-heavy environments.
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party APT34 infrastructure observations in defenseclaw_local at time of initial scoring 2026-05-01."
+    final_intent: 3
+    final_capability: 5
+    composite: 8
+    threat_level: HIGH
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Supply Chain — weighted 20%
+# ============================================================================
+  supply_chain:
+    intent:
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        APT34 has documented use of compromised regional ministries and
+        telecommunications providers as relays into partner networks
+        (T1199 Trusted Relationship). For ad-prime-v1 specifically, this
+        manifests as a credible supply-chain risk via: (1) joint ventures
+        with GCC defense ministries, (2) MENA-region subsidiaries, (3)
+        shared regional telecom or cloud infrastructure. The intent is not
+        ad-prime-v1-specific (Intent=5 unsupported), but it does map to the
+        broader A&D / defense-adjacent sector via partner compromise.
+      sources:
+        - mandiant-2017-apt34
+        - symantec-crambus-2023
+        - unit-42-oilrig-2018
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Same as espionage — Iran, no constraints."
+    capability:
+      score: 4
+      label: credible
+      novelty_modifier: 1
+      evidence: |
+        Documented capability to compromise regional infrastructure and use
+        it as relay (T1199). Multiple Mandiant and Unit 42 reports document
+        intrusion sets pivoting through compromised regional partners.
+        Capability is credible but not at the level of operators known for
+        running large-scale supplier-chain compromise (e.g., APT41 hardware
+        supply chain). Scored 4 (credible) rather than 5 (significant)
+        because supply-chain-into-ad-prime-v1 chain has not been documented
+        end-to-end in public reporting.
+      sources:
+        - mandiant-2017-apt34
+        - symantec-crambus-2023
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Compromised-infrastructure-as-relay is moderate-skill tradecraft; not commodity, but not novel either."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party APT34 supply-chain-related observations as of 2026-05-01."
+    final_intent: 3
+    final_capability: 3
+    composite: 6
+    threat_level: MEDIUM
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Destructive — weighted 15%
+# ============================================================================
+  destructive:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        APT34's mission profile is intelligence collection, not destructive
+        operations. No documented APT34 deployment of wipers or destructive
+        attacks against any target sector in public Mandiant, Unit 42,
+        Symantec, or Trend Micro reporting. Destructive activity against
+        ad-prime-v1 would be off-mission for this actor cluster; if
+        destructive intent emerges from Iran, sister clusters (e.g., MOIS
+        or IRGC operators with documented wiper history) are the more
+        likely vector.
+      sources:
+        - mandiant-2017-apt34
+        - mitre-attack-g0049
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Same as espionage."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        Feasibility-only assessment. APT34's existing access tradecraft
+        (long dwell, privileged credential acquisition) could support a
+        pivot to destructive action if tasked, but the group has no
+        documented destructive tradecraft, no wiper malware in public
+        reporting, and no indication this is in their toolkit.
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Hypothetical destructive action would likely use existing access rather than novel destructive tooling."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party APT34 observations."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Disruptive — weighted 15%
+# ============================================================================
+  disruptive:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        APT34 has no documented availability-attack history. The group's
+        operational signature is long-dwell intelligence collection, which
+        is the opposite of disruption — operators preserve target uptime
+        and detection blindness rather than disrupt it. No documented
+        DDoS, ransomware, or service-disruption operations attributable
+        to APT34 in public reporting.
+      sources:
+        - mandiant-2017-apt34
+        - mitre-attack-g0049
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Same as espionage."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        Feasibility-only. Existing access could enable disruptive action,
+        but the group has no documented disruption tradecraft.
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Hypothetical disruption would use existing access, not novel disruptive tooling."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party APT34 observations."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Cyber-Crime — weighted 15%
+# ============================================================================
+  cyber_crime:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        APT34 is a state-aligned espionage actor with no documented
+        financial motivation. No documented ransomware, extortion, or
+        monetization operations attributable to APT34 in public reporting.
+        Iran-aligned criminal ransomware is a separate ecosystem from
+        APT34's mission profile.
+      sources:
+        - mandiant-2017-apt34
+        - mitre-attack-g0049
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Same as espionage."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 2
+      evidence: "No documented criminal tradecraft, ransomware deployment, or monetization infrastructure."
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "Hypothetical criminal pivot would presumably use commodity tooling (no evidence of even this)."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party APT34 observations."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Overall
+# ============================================================================
+overall:
+  weighted_score: 4.9
+  weights_used:
+    espionage: 0.35
+    supply_chain: 0.20
+    destructive: 0.15
+    disruptive: 0.15
+    cyber_crime: 0.15
+  threat_level: MEDIUM
+  authority_level: actor-profiler-autonomous-with-notification
+
+# Note: A focused A&D prime should care most about the espionage composite (8 = HIGH category-level).
+# The weighted 4.9 reflects breadth: APT34 is highly capable in espionage but has no documented
+# destructive / disruptive / cyber-crime activity, which dilutes the overall when averaged across
+# all five categories. The per-category HIGH on espionage is the operationally relevant number for
+# defenders even though authority is determined by the weighted overall.
+primary_threat_vector: espionage
+primary_threat_level: HIGH
+
+confidence:
+  admiralty: A2
+  notes: |
+    Attribution and tooling well-documented across multiple A-grade sources
+    (Mandiant, Unit 42, Symantec, Trend Micro, Cisco Talos, Microsoft).
+    Targeting-of-ad-prime-v1-specifically evidence is sparse, which is why
+    Intent on espionage is 3 rather than 5. Confidence in the scoring is
+    A2 — high attribution confidence, slightly lower confidence in the
+    targeting-intent calibration against ad-prime-v1 specifically.
+
+# ============================================================================
+# Review policy
+# ============================================================================
+review_policy:
+  interval_days: 90
+  last_reviewed: 2026-05-01
+  next_review_due: 2026-07-30
+  review_triggers:
+    - new_attribution_from_a_source
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation
+
+status: scored
+
+# ============================================================================
+# History
+# ============================================================================
+history:
+  - scored_at: 2026-05-01
+    scorer: actor-profiler
+    change: initial
+    note: |
+      First-pass scoring at dossier creation (Session 9 pre-work).
+      Overall weighted 4.9 = MEDIUM, authority = actor-profiler-autonomous-
+      with-notification. Espionage per-category composite = 8 (HIGH).
+      No /approve-scoring required under current methodology.

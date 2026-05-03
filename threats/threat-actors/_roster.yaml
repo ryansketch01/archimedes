@@ -15,7 +15,7 @@
 #   5. Threat-box scoring within 14 days (human sign-off for HIGH)
 
 version: 1
-last_updated: 2026-04-18
+last_updated: 2026-05-01
 source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
 
 actors:
@@ -330,21 +330,47 @@ actors:
     next_review_due: 2026-04-25
     note: "Profile pending"
 
+  - id: "023"
+    primary_name: "APT34"
+    aliases:
+      - OilRig
+      - Helix Kitten
+      - Cobalt Gypsy
+      - Crambus
+      - Hazel Sandstorm
+      - EUROPIUM
+      - IRN2
+      - ITG13
+      - Greenbug
+    attribution:
+      nation: IR
+      service: MOIS
+      unit: "ITSecTeam (per third-party reporting; not officially confirmed)"
+    type: "Nation-State APT"
+    threat_level: MEDIUM         # overall weighted 4.9 → MEDIUM; per-category espionage HIGH (composite 8)
+    tracked_since: 2026-05-01
+    dossier: threats/threat-actors/APT34/
+    last_reviewed: 2026-05-01
+    next_review_due: 2026-07-30
+    mitre_attack_id: G0049
+    note: "Session 9 pre-work intake. First-pass profile + initial scoring complete; auto-committed (MEDIUM)."
+
 # ============================================================================
 # Quick-lookup indices (regenerated when roster changes)
 # ============================================================================
 _meta:
-  total_actors: 22
+  total_actors: 23
   by_threat_level:
     HIGH: 21
-    MEDIUM: 1
+    MEDIUM: 2          # REvil, APT34
     LOW: 0
   by_nation:
     RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
     CN: 4          # Volt Typhoon, Salt Typhoon, APT40, APT41
-    IR: 4          # UNC1549, Charming Kitten, Handala, MuddyWater
+    IR: 5          # UNC1549, Charming Kitten, Handala, MuddyWater, APT34
     KP: 2          # Stardust Chollima, Lazarus
     unknown: 7     # TeamPCP, GlassWorm, Miyako, Scattered Spider, BlackCat, Payouts King, (LockBit/Cl0p attributed RU)
   profiles_migrated: 1         # APT28 only at v1
   profiles_pending: 5          # Handala, APT40, BlackCat, Payouts King, MuddyWater
-  scoring_complete: 0          # threat-box.yaml files — all pending
+  profiles_first_pass: 1       # APT34 (Session 9 pre-work)
+  scoring_complete: 1          # APT34 first-pass scoring (initial). APT28 awaits methodology rerun.

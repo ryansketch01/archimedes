@@ -1,0 +1,209 @@
+# threats/threat-actors/APT34/iocs.yaml
+#
+# Agent-queryable sidecar to iocs.md. Initial first-pass scaffold for Session 9
+# pre-work — sparse by design. Indicators populate as collector / grader feed
+# APT34-attributed findings into the dossier.
+#
+# Hard Rule 2: every indicator carries a source_brief reference back to its
+# original public reporting; nothing here is Archimedes-originated.
+
+actor_id: "023"
+actor_name: APT34
+last_updated: 2026-05-01
+admiralty_grade: A2
+tlp: CLEAR
+source_of_record: iocs.md
+
+ttl:
+  network_infrastructure: 90    # days — domains/IPs expire from "active"
+  file_hashes: 730              # hashes don't expire, may lose relevance
+  registry: never               # TTP-level, persistent value
+  scheduled_task: never
+  cloud_service: never
+  vulnerabilities: never        # CVEs are forever
+
+# ============================================================================
+# CVEs historically exploited or implicated by public APT34 reporting
+# ============================================================================
+indicators:
+
+  - id: apt34-cve-2017-11882
+    type: cve
+    value: CVE-2017-11882
+    cvss: 7.8
+    product: "Microsoft Office Equation Editor"
+    description: "Memory corruption RCE; APT34 commonly weaponized in spearphishing 2017–2019"
+    status: legacy
+    first_seen: 2017-11
+    related_campaign: "Mandiant 2017 disclosure / Unit 42 OilRig 2018"
+    source_brief: unit-42-oilrig-2018
+
+  - id: apt34-cve-2017-0199
+    type: cve
+    value: CVE-2017-0199
+    cvss: 7.8
+    product: "Microsoft Office / WordPad"
+    description: "RTF/HTA RCE used in early OilRig campaigns"
+    status: legacy
+    first_seen: 2017
+    source_brief: mandiant-2017-apt34
+
+# ============================================================================
+# Backdoor file hashes (representative, per public reporting)
+# ============================================================================
+# NOTE: First-pass scaffold. Full hash lists from Trend Micro MENORAH report,
+# Symantec Crambus report, and Unit 42 Saitama report should be ingested
+# during the next collector pass against APT34.
+
+  - id: apt34-menorah-family
+    type: malware_family
+    value: MENORAH
+    description: "Modular C# backdoor; anti-sandbox checks; documented against Saudi government 2023–2024"
+    first_seen: 2023-09
+    related_campaign: "MENORAH deployment"
+    source_brief: trendmicro-menorah-2023
+
+  - id: apt34-saitama-family
+    type: malware_family
+    value: Saitama
+    description: ".NET backdoor with DNS-based C2; anti-analysis-heavy; used against Jordanian gov 2022"
+    first_seen: 2022-05
+    related_campaign: "Out to Sea"
+    source_brief: unit-42-saitama-2022
+
+  - id: apt34-powerexchange-family
+    type: malware_family
+    value: PowerExchange
+    description: "Backdoor that uses compromised Exchange transport agent for covert C2 via internal email"
+    first_seen: 2023
+    related_campaign: "Crambus 2023 intrusion"
+    source_brief: symantec-crambus-2023
+
+  - id: apt34-sidetwist-family
+    type: malware_family
+    value: SideTwist
+    description: "C-language backdoor with multiple variants documented since 2021"
+    first_seen: 2021
+    source_brief: mandiant-apt34-2021
+
+# ============================================================================
+# DNS-tunneling C2 patterns (TTP-level indicators)
+# ============================================================================
+
+  - id: apt34-dns-c2-pattern
+    type: detection_pattern
+    value: dns_tunneling_c2
+    description: |
+      APT34 toolkits (Helminth, BONDUPDATER, DNSpionage, Karkoff, Saitama) all
+      use DNS as a C2 channel. Hunt indicator: anomalous outbound DNS query
+      volume to atypical TLDs (.icu, .top, .tk, dynamic DNS providers) with
+      high subdomain entropy. Not a static IOC; a behavioral hunt pattern.
+    source_brief: cisco-talos-dnspionage-2019
+
+# ============================================================================
+# Compromised Exchange / IIS persistence patterns
+# ============================================================================
+
+  - id: apt34-rgdoor-iis-module
+    type: detection_pattern
+    value: rgdoor_iis_module
+    description: |
+      RGDoor persists as a custom IIS module providing covert C2 via HTTP
+      cookies. Hunt: inventory IIS modules on perimeter web servers; alert
+      on unsigned, new, or modified modules.
+    source_brief: unit-42-rgdoor-2018
+
+  - id: apt34-powerexchange-transport-agent
+    type: detection_pattern
+    value: exchange_transport_agent
+    description: |
+      PowerExchange installs as a custom Exchange transport agent. Hunt:
+      inventory installed transport agents on Exchange servers; alert on
+      unsigned or unfamiliar agents.
+    source_brief: symantec-crambus-2023
+
+# ============================================================================
+# Hunt queries
+# ============================================================================
+hunt_queries:
+
+  - id: apt34-hunt-dns-c2
+    platform: splunk
+    title: "Hunt for APT34 DNS-tunneling C2 patterns"
+    query_type: spl
+    query: |
+      index=defenseclaw_local sourcetype=dns
+      | eval subdomain_label=mvindex(split(query, "."), 0)
+      | eval label_len=len(subdomain_label)
+      | where label_len >= 30
+      | stats count by src, query, label_len
+      | sort - count
+      # FP consideration: legitimate CDN, telemetry, AV vendor DNS may have
+      # long subdomain labels — tune by allowlisting known-good resolvers.
+
+  - id: apt34-hunt-exchange-transport-agent
+    platform: edr
+    title: "Hunt for unsigned or unfamiliar Exchange transport agents"
+    query_type: pseudo
+    query: |
+      ON HOSTS WHERE role = exchange_server:
+        ENUMERATE installed transport agents
+        ALERT IF agent.signed = false OR agent.publisher NOT IN allowlist
+      # FP consideration: legitimate hygiene/anti-spam vendors install agents.
+      # Allowlist enterprise-approved publishers.
+
+  - id: apt34-hunt-iis-module-integrity
+    platform: edr
+    title: "Hunt for new or modified IIS modules on perimeter web servers"
+    query_type: pseudo
+    query: |
+      ON HOSTS WHERE role = web_server AND service = iis:
+        BASELINE installed IIS modules with file hash
+        ALERT IF new module added OR module file hash changed
+        ALERT IF module is unsigned
+      # FP consideration: legitimate patching/upgrades. Baseline must be
+      # refreshed during scheduled change windows.
+
+# ============================================================================
+# Sources
+# ============================================================================
+sources:
+  - id: mandiant-2017-apt34
+    title: "APT34 — A previously unidentified Iranian threat actor (Mandiant, 2017)"
+    url: "https://www.mandiant.com/resources/blog/apt34-new-targeted-attack-middle-east"
+    grade: A1
+
+  - id: unit-42-oilrig-2018
+    title: "Palo Alto Unit 42 OilRig research index"
+    url: "https://unit42.paloaltonetworks.com/tag/oilrig/"
+    grade: A1
+
+  - id: cisco-talos-dnspionage-2019
+    title: "DNSpionage Brings Out the Karkoff (Cisco Talos, 2019)"
+    url: "https://blog.talosintelligence.com/dnspionage-brings-out-the-karkoff/"
+    grade: A1
+
+  - id: unit-42-saitama-2022
+    title: "Out to Sea — Saitama Backdoor (Palo Alto Unit 42, 2022)"
+    url: "https://unit42.paloaltonetworks.com/saitama-backdoor/"
+    grade: A1
+
+  - id: symantec-crambus-2023
+    title: "Crambus — New Campaign in Middle East (Symantec, 2023)"
+    url: "https://symantec-enterprise-blogs.security.com/threat-intelligence/crambus-middle-east-government"
+    grade: A1
+
+  - id: trendmicro-menorah-2023
+    title: "APT34 deploys new MENORAH malware (Trend Micro, 2023)"
+    url: "https://www.trendmicro.com/en_us/research/23/i/apt34-deploys-phishing-attack-with-new-malware.html"
+    grade: A1
+
+  - id: unit-42-rgdoor-2018
+    title: "RGDoor — Webshell variant for IIS (Palo Alto Unit 42, 2018)"
+    url: "https://unit42.paloaltonetworks.com/unit42-oopsie-oilrig-uses-threedollars-deliver-new-trojan/"
+    grade: A1
+
+  - id: mandiant-apt34-2021
+    title: "Mandiant ongoing APT34 / SideTwist tracking"
+    url: "https://www.mandiant.com/"
+    grade: A2

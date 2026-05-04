@@ -192,31 +192,6 @@ entries:
       self-disclosure with no testable artifacts — graded B3 honestly. Watch
       Krebs / The Record / Wired / Tier-1 IR firms for independent corroboration.
 
-  - id: 2026-05-04-flash-001-test
-    covered_in: [2026-05-04-flash-001-test]
-    headline: "[TEST] CVE-2099-88888 pre-auth RCE in Lockheed SKW-ATB-7 active exploitation; Mandiant attributes APT34"
-    topic_tags: [test_data, flash, cve, zero-day, lockheed, skw-atb-7, apt34, iran, aerospace, menorah]
-    related_actors: ["023"]
-    related_vulns: [CVE-2099-88888]
-    related_campaigns: []
-    finding_ids: [finding-2026-05-04-flash-001]
-    digraph: A1
-    wep: very_likely
-    resurface_if:
-      - DO_NOT_RESURFACE_TEST_DATA
-    first_covered: 2026-05-04
-    last_covered: 2026-05-04
-    retraction: null
-    test: true
-    notes: |
-      Session 9 Stage 2 controlled-test FLASH. Routed to `commands` channel,
-      NOT `#flash-alerts`. CVE-2099-88888 and SKW-ATB-7 are synthetic. APT34
-      attribution is a test scenario; do not propagate to dossier. Brief
-      preserves both red-team caveat ceilings: very_likely on active
-      exploitation (same-day independence not stress-tested) and "per
-      Mandiant" / WEP likely on the actor sub-claim (single-source veto).
-      Override conditions met but not invoked — active hours.
-
   - id: 2026-05-04-am-005
     covered_in: [2026-05-04-morning]
     headline: "CVE-2026-41940 cPanel/WHM/WP2 KEV — federal patch deadline passed 2026-05-03 (retrospective)"

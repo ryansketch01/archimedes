@@ -11,6 +11,112 @@ only after Session 9 ships a real morning brief AND a real FLASH
 brief end-to-end. **If Session 9 doesn't ship clean, Session 10
 defers** — production launch slips to Tue/Wed.
 
+---
+
+## Cold-start summary (refreshed end-of-Session-9, 2026-05-04 EOD)
+
+**Status: Session 9 shipped clean. Session 10 is GO.**
+
+If you're opening this file in a fresh Claude Code conversation, read
+in this order before doing anything:
+
+1. `CLAUDE.md` (auto-loaded — confirms project charter, hard rules)
+2. `docs/handoffs/session-9.md` (yesterday's full retrospective —
+   what just shipped, what state the corpus is in)
+3. The rest of THIS file (Session 10 plan)
+4. `infrastructure/scheduler/README.md` + `archimedes-task-template.xml`
+   (the procedural mechanics)
+5. `scripts/run_phase.ps1` (skim — the wrapper Task Scheduler will
+   invoke)
+
+### What landed on `origin/main` end-of-Session-9 (`6b86ad8`)
+
+15 Sprint commits banked. The five from today (Mon 2026-05-04):
+
+```
+6b86ad8 Session 9: real-data pipeline + FLASH validated; cleanup
+4281224 flash: 2026-05-04 Stage-2 test FLASH (synthetic — APT34/CVE-2099-88888)
+f950ffa brief: 2026-05-04 morning — 5 findings (Copy Fail LPE, MOVEit, ShaiWorm, Trellix, cPanel)
+4ea7e25 raw-signal: 2026-05-04 pre-brief collection (5 items)
+dec04fe brief: 2026-05-04 morning — quiet window, no findings
+```
+
+`origin/main` is at `6b86ad8`, working tree clean, all four test
+scopes pass.
+
+### Session 9 proved the pipeline works under real-data conditions
+
+End-to-end verified (see `session-9.md` for full detail):
+
+- Wrapper invocation produces a valid brief on empty corpus
+  (Stage 1A — quiet-window brief)
+- `pre-brief-morning` collects real OSINT and writes raw-signal
+  (Stage 1B — 5 items pulled from CISA KEV, MSTIC, Mandiant,
+  BleepingComputer, The Record)
+- Full grader → analyst → red-team → briefer → librarian chain
+  works on real findings (Stage 1C — 768-word real-content brief
+  shipped to `#commands` via controlled override)
+- FLASH pipeline shape works end-to-end (Stage 2 — synthetic seed
+  fired 3 triggers, A1 brief composed correctly)
+- Hard Rule compliance held under real-data conditions (Mandiant
+  attribution recorded as Mandiant's claim, not originated;
+  librarian summarized + linked because brief exceeded Discord
+  2000-char limit)
+- Test-fixture exclusion clause in wrapper prompts works
+  (Session-8 synthetic data correctly skipped during real runs)
+
+### Session 9 surfaced infrastructure gaps to know about
+
+These do NOT block Session 10 — collector handles them gracefully —
+but they matter for the May 8 Splunk Ops scheduled agent and
+beyond:
+
+- `infrastructure/source-health.yaml` does not exist. Collector
+  recommended bootstrap with seed entries (CISA stale, others
+  healthy). Defer.
+- Collector's `tools:` list references 6 nonexistent MCP tool
+  names (`mcp__shodan__search`, `mcp__censys__search`, etc.).
+  Silent fallback to WebFetch worked but is fragile. Defer to
+  Session 11+ when those MCPs land.
+- `archimedes` Splunk index has only ops/scheduler data — no
+  detection-pipeline ingest yet, so first-party-IOC FLASH triggers
+  cannot fire. Will be designed by the May 8 Splunk Ops agent.
+
+### Session 10 prep design questions — Session 9 informs the answers
+
+| Q | Original lean | Updated based on Session 9 |
+|---|---|---|
+| Q1 (install all 8 vs stage) | A — install all immediately | **Confirmed A.** Pipeline validated; no value in staging. |
+| Q2 (manual trigger after install?) | yes — fire alert-sweep-noon | **Confirmed.** Alert-sweep prompt is cheapest; same pattern as the wrapper validations Session 9 ran. |
+| Q3 (dead-man's-switch alert) | B — defer to May 8 agent | **Confirmed.** May 8 agent now reviews against 3 days of real production telemetry — better signal. |
+| Q4 (first-day cadence pause?) | let all 8 fire | **Confirmed.** Alert sweeps mostly exit silently; cheap if they break. |
+
+### Discord channel routing — useful for Session 10 manual triggers
+
+Session 9 discovered that `discord-post.sh` accepts symbolic channel
+names natively via `--channel <name>`. The librarian can route to
+`#commands` instead of the production channel without code edits or
+wrapper changes. Pattern: when manually triggering a task in
+Session 10 Stage 2 (validation), instruct the orchestrator to use
+`--channel commands` to keep the test post out of `#intel-briefs` /
+`#flash-alerts`.
+
+### What Session 10 should NOT redo
+
+Already done; do not repeat:
+
+- **Pre-session OSINT quota check** — done end of Session 9 morning
+  (Shodan 100/100, VT 0/500). Stays valid for Tuesday's first
+  unattended run.
+- **APT34 dossier** — committed `081d237` Sun 2026-05-03. Don't
+  re-run `/new-actor`.
+- **Subagent audit for stale paths** — done in Session 8. The
+  librarian flag fixes landed `e57b21b`.
+- **Test fixture exclusion clauses on production wrappers** —
+  active in `run_phase.ps1` for all 8 phase prompts.
+
+---
+
 ## Session 10 deliverable
 
 By end of Monday:

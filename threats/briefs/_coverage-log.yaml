@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-04
+last_updated: 2026-05-04T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -70,20 +70,153 @@ entries:
     first_covered: 2026-05-04
     last_covered: 2026-05-04
     retraction: null
+    superseded_by: 2026-05-04-morning
+    superseded_reason: "Quiet-window post was authored before raw signal was committed; backfilled morning brief now carries five graded findings."
     test: false
     notes: |
-      Second consecutive morning with zero promotable findings. Treated as a
-      separate quiet-window observation rather than a resurface/UPDATE of the
-      2026-05-03 entry — only one day elapsed and the seven_days_elapsed_and_evolving
-      trigger has not fired. Pipeline state remains healthy: collector ran on
-      schedule; grader and red-team stood down on empty input, not on failure.
-      No corpus items currently carry `test: true`, so the operator-directed
-      test-flag exclusion was a no-op this run but remains in force.
+      Original entry preserved for audit. The 2026-05-04 morning brief was
+      reissued (same brief_id, supersedes self) once raw signal was committed
+      and graded into five findings. See 2026-05-04-am-001..005 below.
 
-      Posture flag: if the 2026-05-05 morning window also clears empty, that
-      becomes three consecutive quiet windows and warrants a source-health
-      review request rather than another silent-day brief. Tracking, not
-      escalating, at this point.
+  - id: 2026-05-04-am-001
+    covered_in: [2026-05-04-morning]
+    headline: "Linux kernel 'Copy Fail' (CVE-2026-31431) confirmed exploited per CISA KEV + MSTIC; federal deadline 2026-05-15"
+    topic_tags: [cve, linux-kernel, lpe, kev, copy-fail, algif_aead, af_alg, kubernetes, cicd]
+    related_actors: []
+    related_vulns: [CVE-2026-31431]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-04-0001]
+    digraph: A1
+    wep: almost_certainly
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - patch_released
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+    first_covered: 2026-05-04
+    last_covered: 2026-05-04
+    retraction: null
+    test: false
+    notes: |
+      Red-team conditional sign-off was honored in the brief: active-exploitation
+      claim attributed to CISA KEV and MSTIC (not stated bare); composite framing
+      hedged as consistent with historical Linux LPE post-disclosure patterns;
+      KAC A3 detection-in-telemetry caveat carried; A&D operational reach scoped
+      to local-attacker contexts (CI/CD, multi-tenant Kubernetes, ML clusters).
+      Tripwire watch: watchlist disclosure → FLASH-bypass-quiet-hours candidate.
+
+  - id: 2026-05-04-am-002
+    covered_in: [2026-05-04-morning]
+    headline: "Progress MOVEit Automation auth bypass (CVE-2026-4670, CVSS 9.8) + LPE (CVE-2026-5174); Airbus reporter; patches available"
+    topic_tags: [cve, moveit, mft, progress, auth-bypass, supplier-flow, cmmc, airbus]
+    related_actors: []
+    related_vulns: [CVE-2026-4670, CVE-2026-5174]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-04-0002]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - escalation_to_exploitation
+      - new_attribution
+      - new_victims_confirmed
+      - first_party_ioc_hit
+      - public_poc_release
+    first_covered: 2026-05-04
+    last_covered: 2026-05-04
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied; WEP capped at "likely". Hard Rule 2 honored —
+      no current Cl0p attribution; 2023 precedent framed as worst-case template,
+      not imminent recurrence. Analyst-leading hypotheses (slow opportunistic
+      uptake, selective targeting by unattributed actor, each at roughly even
+      chance) carried in prose ahead of the precedent reference. CMMC framing
+      hedged as "potential CMMC-relevant exposure where Automation is deployed
+      in supplier-facing flows." Public PoC release is the high-priority
+      tripwire flagged in the brief.
+
+  - id: 2026-05-04-am-003
+    covered_in: [2026-05-04-morning]
+    headline: "PyTorch Lightning 2.6.3 backdoor drops 'ShaiWorm' credential stealer; reverted to 2.6.1"
+    topic_tags: [supply-chain, pypi, pytorch-lightning, shaiworm, credential-stealer, ml, ci-cd, sbom]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [shaiworm]
+    finding_ids: [finding-2026-05-04-0003]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - first_party_ioc_hit
+      - new_iocs_published
+      - additional_compromised_packages_disclosed
+    first_covered: 2026-05-04
+    last_covered: 2026-05-04
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied (BleepingComputer relays MSTIC, not independent);
+      WEP capped at "likely". Analyst caveats carried: "small number of devices"
+      qualified as "per Microsoft Defender telemetry" with explicit undercount
+      note for non-Defender Linux EDR and researcher Macs; rotation imperative
+      scoped to environments where 2.6.3 was pulled AND stealer-chain network
+      preconditions were met (not blanket); SBOM-diff retained as actionable
+      detection step. Tripwire: MSTIC follow-up with hashes/C2 → re-grade to A1
+      candidate.
+
+  - id: 2026-05-04-am-004
+    covered_in: [2026-05-04-morning]
+    headline: "Trellix discloses source-code repo breach; no customer/corporate data compromise reported (monitoring)"
+    topic_tags: [breach, security-vendor, trellix, source-code, monitoring]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-04-0004]
+    digraph: B3
+    wep: roughly_even_chance
+    resurface_if:
+      - new_attribution
+      - independent_corroboration
+      - product_line_specificity_disclosed
+      - ad_customer_disclosure
+    first_covered: 2026-05-04
+    last_covered: 2026-05-04
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-only per finding inclusion (daily_brief_monitoring,
+      weekly_synthesis). Did NOT lead with this; placed in Other Signal with
+      explicit re-grade triggers. Single B-grade source on generic vendor
+      self-disclosure with no testable artifacts — graded B3 honestly. Watch
+      Krebs / The Record / Wired / Tier-1 IR firms for independent corroboration.
+
+  - id: 2026-05-04-am-005
+    covered_in: [2026-05-04-morning]
+    headline: "CVE-2026-41940 cPanel/WHM/WP2 KEV — federal patch deadline passed 2026-05-03 (retrospective)"
+    topic_tags: [cve, cpanel, whm, wp2, kev, auth-bypass, deadline-passed]
+    related_actors: []
+    related_vulns: [CVE-2026-41940]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-04-0005]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - escalation_to_exploitation
+      - new_victims_confirmed
+      - ad_adjacent_compromise
+    first_covered: 2026-05-04
+    last_covered: 2026-05-04
+    retraction: null
+    test: false
+    notes: |
+      Surfaced retrospectively in Other Signal — KEV listing is 4 days old,
+      deadline 1 day past, no new overnight development to justify FLASH or
+      Active Threats placement. Direct A&D exposure low (primes do not run
+      cPanel for production hosting); recommended lightweight asset-inventory
+      check for marketing microsites / contractor portals / third-party-hosted
+      vendor pages.
 
 # ============================================================================
 # Valid resurface_if conditions

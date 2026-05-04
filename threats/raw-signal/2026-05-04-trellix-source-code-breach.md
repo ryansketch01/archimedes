@@ -18,7 +18,9 @@ triage_tags: [non_flash, security-vendor-breach, supply-chain-risk, ongoing-inve
 iocs_extracted: false
 iocs_count: 0
 text_word_count: 215
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-05-04-0004
+promoted_at: 2026-05-04T15:14:00-04:00
 ttl_expires_at: 2026-08-02T07:55:00-04:00
 test: false
 ---

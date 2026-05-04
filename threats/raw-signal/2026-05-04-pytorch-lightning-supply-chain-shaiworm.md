@@ -20,7 +20,9 @@ triage_tags: [non_flash, supply-chain, dev-toolchain, credential-theft, broad-de
 iocs_extracted: false
 iocs_count: 0
 text_word_count: 240
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-05-04-0003
+promoted_at: 2026-05-04T15:11:00-04:00
 ttl_expires_at: 2026-08-02T07:52:00-04:00
 test: false
 ---

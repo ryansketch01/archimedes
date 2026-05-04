@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-03
+last_updated: 2026-05-04
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -56,6 +56,34 @@ entries:
       items and two findings files carrying `test: true` were excluded per
       operator directive. Brief documents the empty window honestly rather
       than padding or skipping the cadence.
+
+  - id: 2026-05-04-am-quiet
+    covered_in: [2026-05-04-morning]
+    headline: "Second consecutive quiet-window posture report — corpus cleared empty again"
+    topic_tags: [quiet-window, posture-report, empty-corpus, consecutive-quiet]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: []
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-04
+    last_covered: 2026-05-04
+    retraction: null
+    test: false
+    notes: |
+      Second consecutive morning with zero promotable findings. Treated as a
+      separate quiet-window observation rather than a resurface/UPDATE of the
+      2026-05-03 entry — only one day elapsed and the seven_days_elapsed_and_evolving
+      trigger has not fired. Pipeline state remains healthy: collector ran on
+      schedule; grader and red-team stood down on empty input, not on failure.
+      No corpus items currently carry `test: true`, so the operator-directed
+      test-flag exclusion was a no-op this run but remains in force.
+
+      Posture flag: if the 2026-05-05 morning window also clears empty, that
+      becomes three consecutive quiet windows and warrants a source-health
+      review request rather than another silent-day brief. Tracking, not
+      escalating, at this point.
 
 # ============================================================================
 # Valid resurface_if conditions

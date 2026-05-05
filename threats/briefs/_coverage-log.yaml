@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-04T08:00:00-04:00
+last_updated: 2026-05-05T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -217,6 +217,189 @@ entries:
       cPanel for production hosting); recommended lightweight asset-inventory
       check for marketing microsites / contractor portals / third-party-hosted
       vendor pages.
+
+  - id: 2026-05-05-am-001
+    covered_in: [2026-05-05-morning]
+    headline: "UNC1549 expands recruiter-lure campaign onto US/UK/FR aerospace and defense primes (Feb–Apr 2026), per Mandiant"
+    topic_tags: [actor, unc1549, iran, irgc, recruiter-lure, linkedin, minibike, minibus, aerospace, defense, primes]
+    related_actors: ["004"]
+    related_vulns: []
+    related_campaigns: [unc1549-recruiter-lure-2026]
+    finding_ids: [finding-2026-05-05-0001]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - first_party_ioc_hit
+      - independent_corroboration
+    first_covered: 2026-05-05
+    last_covered: 2026-05-05
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied — Mandiant only effective primary source;
+      WEP capped at "likely". ACH on alternative attributions (false-flag,
+      Iranian-cluster confusion) ran in finding; Mandiant's UNC1549
+      attribution survives pressure-testing. Hard Rule 2 honored — all
+      attribution language traces to Mandiant. Eleven IOCs published; first-
+      party Splunk silent over -30d. Tripwire: independent A/B-grade vendor
+      corroborating attribution would lift veto and allow "very likely".
+
+  - id: 2026-05-05-am-002
+    covered_in: [2026-05-05-morning]
+    headline: "Charming Kitten / Mint Sandstorm Q2 2026 OAuth-consent credential-harvest campaign vs. defense-policy think tanks (CrowdStrike + MSTIC corroborated)"
+    topic_tags: [actor, charming-kitten, mint-sandstorm, iran, irgc-io, oauth, consent-grant, entra, credential-harvest, think-tanks, brookings, rusi, atlantic-council]
+    related_actors: ["011"]
+    related_vulns: []
+    related_campaigns: [charming-kitten-q2-2026-oauth]
+    finding_ids: [finding-2026-05-05-0002]
+    digraph: A1
+    wep: very_likely
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - prime_direct_oauth_consent_observation
+      - first_party_ioc_hit
+      - vendor_clarifies_scope
+    first_covered: 2026-05-05
+    last_covered: 2026-05-05
+    retraction: null
+    test: false
+    notes: |
+      Independent A-grade corroboration (CrowdStrike Falcon + Microsoft
+      Entra/Defender). Red-team caveat carried explicitly: campaign as
+      reported is BOUNDED to think tanks / Iran-nuclear researchers / MENA
+      journalists; NO defense prime named as victim by either vendor.
+      Generalization of OAuth consent-grant tradecraft to prime mailbox
+      risk is forward-looking and mechanism-based (Entra consent dialogs
+      are platform-generic), not observed prime-direct activity. A&D moves
+      framed as Entra audit-log hunt + admin-consent posture confirmation.
+
+  - id: 2026-05-05-am-003
+    covered_in: [2026-05-05-morning]
+    headline: "Fortinet FortiManager CVE-2026-29841 added to CISA KEV with ransomware-known flag; federal patch deadline 2026-05-25"
+    topic_tags: [cve, fortinet, fortimanager, kev, fgfm, rce, management-plane, ransomware-flag, mandiant, edge]
+    related_actors: []
+    related_vulns: [CVE-2026-29841]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-05-0003]
+    digraph: A1
+    wep: very_likely
+    wep_split:
+      cve_record: very_likely
+      active_exploitation: likely
+    resurface_if:
+      - mandiant_iocs_published
+      - escalation_to_widespread_exploitation
+      - new_victims_confirmed
+      - first_party_ioc_hit
+      - independent_third_actor_naming
+      - cisa_or_vendor_actor_naming
+    first_covered: 2026-05-05
+    last_covered: 2026-05-05
+    retraction: null
+    test: false
+    notes: |
+      Red-team caveat carried explicitly: WEP split between CVE record
+      (very likely; Fortinet PSIRT + CISA + NVD multiply corroborated) and
+      active-exploitation intensity (likely; CISA-Mandiant independence
+      may share an upstream incident path per KAC A6). Brief did NOT use
+      "widespread" or "active campaign" language — Mandiant scoped to
+      "limited number". Ransomware-known flag attributed to CISA's claim;
+      no actor named (Hard Rule 2). Mandiant IOC publication is the high-
+      priority re-grade tripwire.
+
+  - id: 2026-05-05-am-004
+    covered_in: [2026-05-05-morning]
+    headline: "Microsoft IIS HTTP.sys CVE-2026-30445 pre-auth RCE zero-day under 'limited, targeted' exploitation; patch ships 2026-05-13"
+    topic_tags: [cve, microsoft, iis, http.sys, http2, zero-day, msrc, pre-auth-rce, sharepoint, exchange, patch-tuesday]
+    related_actors: []
+    related_vulns: [CVE-2026-30445]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-05-0004]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - patch_released
+      - public_poc_release
+      - escalation_to_exploitation
+      - kev_addition
+      - independent_corroboration
+      - actor_named_post_patch
+      - first_party_ioc_hit
+    first_covered: 2026-05-05
+    last_covered: 2026-05-05
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied (CISA acknowledgment is process notice,
+      not independent telemetry); WEP capped at "likely". Brief framed
+      8-day pre-patch window as the active mitigation window with three
+      tiered moves (inventory, patch 2026-05-13, interim disable HTTP/2).
+      No actor named (Hard Rule 2 — MSRC withheld). Tripwire: public PoC
+      pre-Patch-Tuesday or second A-grade vendor corroborating exploitation
+      lifts veto and may trigger FLASH escalation.
+
+  - id: 2026-05-05-am-005
+    covered_in: [2026-05-05-morning]
+    headline: "Siemens SIMATIC S7-1500 / S7-1200 CVE-2026-22118 (CVSS 9.1) auth bypass — patched, no exploitation observed"
+    topic_tags: [cve, siemens, simatic, s7-1500, s7-1200, plc, profinet, dcp, auth-bypass, ot, ics, claroty, coordinated-disclosure]
+    related_actors: []
+    related_vulns: [CVE-2026-22118]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-05-0005]
+    digraph: A1
+    wep: very_likely
+    wep_scope: "CVE record only — exploitation not observed"
+    resurface_if:
+      - escalation_to_exploitation
+      - kev_addition
+      - first_attack_report
+      - public_poc_release
+    first_covered: 2026-05-05
+    last_covered: 2026-05-05
+    retraction: null
+    test: false
+    notes: |
+      Red-team caveat carried explicitly: "very likely" WEP scoped strictly
+      to CVE record / patch availability. Brief framed as precautionary
+      patch on standard ICS change-control timeline, NOT as active-
+      exploitation response. "Defense and aerospace plants" framing
+      attributed to Claroty quote relayed by BleepingComputer (not CISA
+      or Siemens). Coverage gap acknowledged: Archimedes lacks first-party
+      OT/PROFINET telemetry. Placed in Other Signal — not Active Threats.
+
+  - id: 2026-05-05-am-006
+    covered_in: [2026-05-05-morning]
+    headline: "Cisco ASA / Firepower CVE-2026-20381 patched same day; SANS reports 5x scanning spike post-advisory"
+    topic_tags: [cve, cisco, asa, firepower, ftd, ssl-vpn, ikev2, pre-auth-rce, sans, scanning, vpn-concentrator, cmmc]
+    related_actors: []
+    related_vulns: [CVE-2026-20381]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-05-0006]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - public_poc_release
+      - first_honeypot_exploit_attempt
+      - escalation_to_exploitation
+      - kev_addition
+      - first_party_ioc_hit
+      - independent_corroboration
+    first_covered: 2026-05-05
+    last_covered: 2026-05-05
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied on operational claim — only SANS reports
+      scanning telemetry; WEP capped at "likely". Forward language
+      anchored on historical Cisco SSL-VPN baseline (CVE-2018-0101,
+      ArcaneDoor 2024) — 1–4 weeks weaponization. CMMC offsite-engineer
+      remote-access framing carried as A&D direct relevance. FLASH
+      tripwire: public PoC publication or first SANS-confirmed exploit
+      attempt promotes on the next sweep.
 
 # ============================================================================
 # Valid resurface_if conditions

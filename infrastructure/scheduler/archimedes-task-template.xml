@@ -55,7 +55,7 @@
     <Hidden>false</Hidden>
     <RunOnlyIfIdle>false</RunOnlyIfIdle>
     <WakeToRun>true</WakeToRun>
-    <ExecutionTimeLimit>PT30M</ExecutionTimeLimit>
+    <ExecutionTimeLimit>PT60M</ExecutionTimeLimit>
     <Priority>7</Priority>
     <RestartOnFailure>
       <Interval>PT5M</Interval>

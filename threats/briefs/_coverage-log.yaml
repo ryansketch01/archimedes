@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-05T08:00:00-04:00
+last_updated: 2026-05-05T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -400,6 +400,128 @@ entries:
       remote-access framing carried as A&D direct relevance. FLASH
       tripwire: public PoC publication or first SANS-confirmed exploit
       attempt promotes on the next sweep.
+
+  - id: 2026-05-05-pm-001
+    covered_in: [2026-05-05-afternoon]
+    headline: "MSTIC: unattributed multi-stage 'code of conduct' AitM phishing campaign — 35K recipients / 13K orgs / 92% US (April 14–16, 2026 burst); cross-references morning's Charming Kitten OAuth as same Entra session-token-theft mechanism class, distinct cluster"
+    topic_tags: [mstic, aitm, adversary-in-the-middle, session-token-theft, entra, m365, oauth, phishing, code-of-conduct, compliance-pretext, mfa-bypass, healthcare, finance, professional-services, technology, mechanism-overlap]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [mstic-aitm-code-of-conduct-2026]
+    related_findings: [finding-2026-05-05-0002]
+    related_findings_relationship: mechanism_overlap_distinct_cluster
+    finding_ids: [finding-2026-05-05-0007]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - new_attribution
+      - storm_designation_assigned
+      - independent_corroboration
+      - new_victims_confirmed
+      - first_party_ioc_hit
+      - ad_sector_observation_disclosed
+      - new_iocs_published
+    first_covered: 2026-05-05
+    last_covered: 2026-05-05
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied (SecurityWeek relays MSTIC, not independent);
+      WEP capped at "likely". Hard Rule 2 honored — Microsoft assigns no
+      Storm-NNNN, no nation-state, no actor; brief carries activity as
+      unattributed. Sector-discipline preserved: Microsoft's named-sectors
+      list (healthcare / finance / professional services / tech) is reproduced
+      verbatim with explicit "defense, aerospace, and government are not on
+      Microsoft's named-sectors list" disclaimer; A&D mechanism reasoning
+      is forward-looking (compliance pretext routes to legal / HR / ethics-
+      office mailboxes) and clearly framed as such. Cross-referenced to
+      finding-2026-05-05-0002 (Charming Kitten OAuth, morning brief) as
+      mechanism overlap (same Entra session-token-theft class) but distinct
+      cluster — different operator, pretext, sectors, IOC sets. DO NOT MERGE
+      preserved. 13 IOCs published; first-party Splunk silent over -30d.
+      Tripwire: a second A-grade vendor publishing independent observation
+      regrades to A1 and fires red-team review.
+
+  - id: 2026-05-05-pm-002
+    covered_in: [2026-05-05-afternoon]
+    headline: "DAEMON Tools trojanized in supply-chain attack — backdoor delivered via official site since 2026-04-08; thousands of first-stage infections, ~12 second-stage victims in RU/BY/TH (retail/scientific/government/manufacturing); QUIC RAT to Russian educational institute"
+    topic_tags: [supply-chain, daemon-tools, vendor-distribution, trojanized-installer, code-signing-trust, quic-rat, info-stealer, backdoor, retail, scientific, government, manufacturing, russia, belarus, thailand, language-inference]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [daemon-tools-supply-chain-2026]
+    finding_ids: [finding-2026-05-05-0008]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - originating_research_published
+      - hashes_or_c2_published
+      - new_victims_confirmed
+      - new_geography_disclosed
+      - us_or_ad_sector_observation
+      - first_party_ioc_hit
+      - actor_named_post_disclosure
+      - independent_corroboration
+    first_covered: 2026-05-05
+    last_covered: 2026-05-05
+    retraction: null
+    test: false
+    notes: |
+      Single B-grade source (BleepingComputer); originating research not
+      named in article body. WEP capped at "likely". Hard Rule 2 honored —
+      "researchers believe the attacker is Chinese speaking" recorded as
+      source's reported claim only (code-string language inference, not
+      attribution); no roster actor invoked despite Chinese-speaking signal.
+      US victims and aerospace/defense vertical explicitly NOT named by
+      source — brief reproduces that disclaimer. A&D framing scoped to
+      indirect software-bench inventory hunt (DAEMON Tools is widely
+      deployed engineering / R&D tooling at primes); signed-binary trust-
+      path bypass during four-week active window noted as "very likely
+      flowed past EDR" (probability of past evasion, not forward
+      exploitation claim). Hunt surface limited to filename + version-
+      string (no hashes, C2, or IPs published in source). Tripwire:
+      originating researcher firm publishing with hashes regrades to B1 / A1
+      and fires red-team review.
+
+  - id: 2026-05-05-pm-003
+    covered_in: [2026-05-05-afternoon]
+    headline: "Ollama CVE-2026-7482 'Bleeding Llama' — heap OOB read in GGUF loader (CVSS 9.3); ~300K exposed instances; patched in 0.17.1; no exploitation observed"
+    topic_tags: [cve, ollama, bleeding-llama, gguf-loader, heap-oob-read, ai-infrastructure, self-hosted-inference, default-bind-all-interfaces, no-auth-default, port-11434, exposure, cyera, securityweek, precautionary-patch]
+    related_actors: []
+    related_vulns: [CVE-2026-7482]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-05-0009]
+    digraph: B2
+    wep: likely
+    vuln_tracker_handoff:
+      cve: CVE-2026-7482
+      in_index: false
+      proposed_for_index: true
+    resurface_if:
+      - nvd_record_published
+      - public_poc_release
+      - escalation_to_exploitation
+      - kev_addition
+      - independent_corroboration
+      - first_party_ioc_hit
+      - shodan_or_censys_independent_count
+      - cyera_grade_assigned_in_source_grades_yaml
+    first_covered: 2026-05-05
+    last_covered: 2026-05-05
+    retraction: null
+    test: false
+    notes: |
+      Single-effective source chain: Cyera (originating, provisional C —
+      not in source-grades.yaml) → SecurityWeek (relay, B). WEP capped at
+      "likely". CVE record load-bearing claim treated as B-equivalent per
+      vendor self-disclosure rule. No FLASH trigger — no exploitation, no
+      actor, no A&D-direct campaign per FLASH-POLICY.md. Brief framed as
+      precautionary patch on a 14-day window, not active-exploitation
+      response. A&D framing scoped to self-hosted prime AI / R&D inference
+      programs (default port 11434 listener inventory). 300K exposure
+      figure carries explicit "methodology not independently verified"
+      caveat. Vuln-tracker handoff flagged in finding for index addition.
+      Tripwire: NVD record publication or second A-grade vendor independent
+      analysis regrades to A2 / B1.
 
 # ============================================================================
 # Valid resurface_if conditions

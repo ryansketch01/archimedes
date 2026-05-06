@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-06T12:55:00-04:00
+last_updated: 2026-05-06T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -1033,6 +1033,178 @@ entries:
       caught (a) check 8 word-count overruns at 380, 360, 337 → 297;
       (b) check 12 quote-discipline violation on scare-quoted modifier
       fragments → remediated to one verbatim Rapid7 sentence only.
+
+  - id: 2026-05-06-pm-continuing-coverage
+    covered_in: [2026-05-06-afternoon]
+    brief_file: threats/briefs/2026-05-06-afternoon.md
+    headline: "Continuing-coverage afternoon brief — no new graded findings since 12:00 EDT MuddyWater FLASH; two auto-downgrade clocks running, four patch-backlog deadlines tracked"
+    topic_tags:
+      - continuing-coverage
+      - empty-corpus-window
+      - degraded-brief
+      - cadence-honored
+      - auto-downgrade-clocks-running
+      - patch-backlog-status
+      - iran-cyber-watch-silent-day
+      - actor-profiler-handoff-tracked
+      - vuln-tracker-handoff-tracked
+      - weekly-synthesis-pattern-held
+    related_actors: ["022"]
+    related_vulns: [CVE-2026-0300, CVE-2026-30445, CVE-2026-29841, CVE-2026-20381, CVE-2026-31431]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-06-FLASH-0001, finding-2026-05-06-FLASH-0002]
+    findings_new_today: 0
+    findings_carried_status_only: 2
+    digraph: continuing_coverage
+    wep: continuing_coverage
+    auto_downgrade_clocks_carried:
+      - finding_id: finding-2026-05-06-FLASH-0001
+        topic: PAN-OS CVE-2026-0300
+        trigger_at: 2026-05-09T06:14:00-04:00
+        status: running
+        confirming_signal: none
+        disconfirming_signal: none
+      - finding_id: finding-2026-05-06-FLASH-0002
+        topic: MuddyWater #022 Rapid7 attribution
+        trigger_at: 2026-05-09T12:18:00-04:00
+        status: running
+        confirming_signal: none
+        disconfirming_signal: none
+    patch_backlog_deadlines_carried:
+      - cve: CVE-2026-30445
+        product: Microsoft IIS HTTP.sys
+        deadline: 2026-05-13
+        deadline_type: patch_tuesday_release
+        days_remaining_at_compose: 7
+      - cve: CVE-2026-29841
+        product: Fortinet FortiManager
+        deadline: 2026-05-25
+        deadline_type: cisa_kev_federal
+        days_remaining_at_compose: 19
+      - cve: CVE-2026-20381
+        product: Cisco ASA / Firepower
+        deadline: 7d_sans_scanning_watch
+        deadline_type: prime_suggested_window
+        days_remaining_at_compose: 6
+      - cve: CVE-2026-31431
+        product: Linux kernel "Copy Fail"
+        deadline: 2026-05-15
+        deadline_type: cisa_kev_federal
+        days_remaining_at_compose: 9
+    pending_handoffs_carried:
+      vuln_tracker:
+        proposed_id: ZD-004
+        cve: CVE-2026-0300
+        in_index: false
+        proposed_for_index: true
+      actor_profiler:
+        actor_id: "022"
+        primary_name: MuddyWater
+        first_pass_profile_deadline: 2026-05-13
+        threat_box_scoring_deadline: 2026-05-20
+        next_review_due_lapsed_days_at_compose: 11
+        high_composite_requires_human_signoff: true
+    weekly_synthesis_pattern_held:
+      pattern: two_single_source_veto_FLASHes_one_day
+      do_not_mutual_validate: true
+      surface_in: 2026-05-10-weekly-synthesis
+      rationale: |
+        PAN-OS CVE-2026-0300 (vendor-only-disclosure) and Rapid7 MuddyWater
+        attribution (moderate vendor self-rating) both fired single-source-
+        veto load-bearing FLASHes within 6 hours. That is an operational
+        pattern about advisory-shape distribution, not corroborating signal.
+        Surfaced in this brief as a tracking note only; pattern observation
+        belongs at the weekly synthesis layer (2026-05-10), not at the
+        finding layer.
+    iran_cyber_watch_status: silent_day_template_form
+    iran_cyber_watch_rationale: |
+      No new activity from tracked Iranian actors in the last 4 hours.
+      MuddyWater (#022) Q2-2026 US intrusion carried in the 12:00 FLASH;
+      no resurface conditions met since.
+    first_party_splunk_status_at_compose: |
+      PAN-OS CVE-2026-0300: zero hunt surface (no PAN-OS sourcetype ingest
+      configured). MuddyWater 19 IOCs: -30d sweep against 4 IPv4 + 3 domain
+      queryable IOCs returned 0 events in archimedes and defenseclaw_local
+      indices. 9 SHA256 hashes not directly queryable against current
+      sourcetypes. Silent telemetry is absence-of-evidence per Hard Rule 8,
+      NOT disconfirming signal.
+    resurface_if:
+      - new_graded_finding_emerges_in_evening_sweep
+      - second_ab_grade_independent_confirmation_pan_os
+      - second_ab_grade_independent_confirmation_muddywater
+      - new_iocs_published_pan_os
+      - cisa_kev_addition_pan_os
+      - first_party_splunk_hit_post_ioc_ingest_muddywater
+      - cisa_or_fbi_advisory_pickup_muddywater
+      - rapid7_followon_high_confidence_upgrade_muddywater
+      - public_poc_release_iis_http_sys
+      - mandiant_iocs_published_fortimanager
+      - first_sans_confirmed_exploit_attempt_cisco_asa
+      - kev_addition_any_carried_cve
+      - patch_released_pan_os
+    first_covered: 2026-05-06
+    last_covered: 2026-05-06
+    retraction: null
+    test: false
+    notes: |
+      Continuing-coverage afternoon brief composed at 16:00 EDT after grader
+      returned no_new_candidates for the 12:00-16:00 EDT window. All 16
+      raw-signal files in scope were already promoted; rejection log
+      unchanged. The 06:00 FLASH and 08:00 morning brief absorbed PAN-OS
+      CVE-2026-0300; the 12:00 FLASH posted MuddyWater (#022) Rapid7
+      attribution. Per CLAUDE.md ("ship a degraded brief with a clear
+      caveat rather than skip the cadence silently") and INTEL-OPERATIONS
+      failure-handling default, the brief honors the 16:00 cadence as a
+      continuing-coverage status report.
+
+      Anti-repetition discipline:
+      - PAN-OS (this morning's brief) and MuddyWater (12:00 FLASH) NOT
+        re-detailed — carried as status only with auto-downgrade clock
+        countdown and tripwires referenced.
+      - Yesterday's six morning findings (UNC1549, Charming Kitten,
+        FortiManager KEV, IIS HTTP.sys, Siemens SIMATIC, Cisco ASA) and
+        yesterday's three afternoon findings (MSTIC AitM, DAEMON Tools,
+        Ollama Bleeding Llama) NOT resurfaced — no resurface_if trigger
+        fired in the 12:00-16:00 EDT window.
+      - Patch backlog deadlines named in Vulnerabilities section as
+        date-list status only, no re-detail of CVE substance.
+
+      Hard Rule 2 honored throughout — no actor language originated;
+      MuddyWater attribution carried at moderate confidence per Rapid7
+      only; no first-time attribution claims anywhere in the brief.
+
+      Hard Rule 6 honored — zero direct quotes in this brief
+      (continuing-coverage briefs typically need none).
+
+      Hard Rule 8 honored — first-party Splunk silence on PAN-OS hunt
+      surface and -30d MuddyWater IOC sweep both noted explicitly as
+      absence-of-evidence, not disconfirming signal.
+
+      INTEL-BRIEF-STANDARDS Rule 7 (WEP vocabulary) honored — only
+      "likely" surfaced as carried WEP from upstream findings; no
+      colloquial "most likely", "probably", or "could be" anywhere.
+
+      Pattern observation (two single-source-veto FLASHes one day)
+      flagged for weekly synthesis (2026-05-10), explicitly NOT framed
+      as mutual validation in the body. Honors the same red-team
+      discipline the 06:00 FLASH and 12:00 FLASH applied to the same
+      pattern in their own composition.
+
+      Iran Cyber Watch carried via silent-day template form (no new
+      activity since 12:00 MuddyWater FLASH). MuddyWater profile-pending
+      status surfaced in the section with actor-profiler handoff
+      timeline (first-pass 2026-05-13, threat-box 2026-05-20, HIGH
+      composite requires /approve-scoring per Hard Rule 5).
+
+      Pre-flight: 12/12 passed on iteration 1. No banned phrases, no
+      WEP-vocabulary violations, no quote-discipline issues (zero
+      quotes), word count 612 within 400-800 morning/afternoon target.
+
+      Librarian handoff: this brief contains NO new IOCs, NO new
+      findings, NO new actor-profile or vuln-dossier creations to
+      execute. Single artifact to commit and post — the brief file at
+      threats/briefs/2026-05-06-afternoon.md. Coverage log already
+      updated by briefer.
 
 # ============================================================================
 # Valid resurface_if conditions

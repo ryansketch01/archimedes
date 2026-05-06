@@ -1,0 +1,68 @@
+# infrastructure/flash-queue-archive.yaml
+#
+# Archive of processed FLASH queue entries. Populated by the librarian
+# subagent at the 09:00 EDT catchup sweep (or earlier when the morning
+# brief absorbs a queued FLASH and supersedes it ahead of the catchup).
+#
+# Disposition values (per doctrine/FLASH-POLICY.md):
+#   - posted                          — catchup-posted to #flash-alerts with
+#                                       "QUEUED FROM OVERNIGHT" prefix
+#   - superseded_by_morning_brief     — 08:00 morning absorbed the finding;
+#                                       FLASH not posted separately
+#   - stale                           — > 12h elapsed without posting; not
+#                                       posted, logged + archived
+#   - critical_override_late_promotion — sweep promoted to critical-override
+#                                       and posted immediately despite quiet
+#                                       hours
+#
+# Schema mirrors infrastructure/flash-queue.yaml entries plus:
+#   - archived_at:    ISO-8601 with offset
+#   - disposition:    enum above
+#   - archived_by:    librarian run_id
+#   - librarian_note: free-form supersession / disposition reasoning
+
+version: 1
+last_updated: 2026-05-06T08:00:00-04:00
+
+archive:
+  - queued_at: 2026-05-06T06:55:00-04:00
+    archived_at: 2026-05-06T08:00:00-04:00
+    archived_by: librarian-20260506-080000
+    disposition: superseded_by_morning_brief
+    brief_id: flash-2026-05-06-0600
+    brief_path: threats/briefs/2026-05-06-flash-pan-os-cve-2026-0300.md
+    finding_id: finding-2026-05-06-FLASH-0001
+    trigger: trigger-1-critical-cve-exploited
+    secondary_trigger: trigger-6-zero-day-no-patch
+    cve: CVE-2026-0300
+    digraph: A2
+    wep: likely
+    critical_override_applied: false
+    quiet_hours_at_queue: true
+    expires_at: 2026-05-06T18:55:00-04:00
+    catchup_sweep: 2026-05-06T09:00:00-04:00
+    superseded: true
+    superseded_by: 2026-05-06-morning
+    superseded_by_path: threats/briefs/2026-05-06-morning.md
+    notes: |
+      Queued during 06:00 EDT quiet-hours sweep. 08:00 morning brief is 65
+      minutes after queue time; expect 09:00 catchup to mark superseded if
+      morning brief absorbs the finding (intended path per FLASH-POLICY
+      anti-noise). Critical override does not apply (CVSS 9.3 not 10.0; no
+      tracked actor named in any source per Hard Rule 2; no A&D watchlist
+      entity named as target). Single-source veto applied at WEP "likely";
+      auto-downgrade clock at +72h (2026-05-09 06:14 EDT) if no second A/B
+      independent confirmation, no IOCs published, no CISA KEV addition.
+    librarian_note: |
+      Catchup sweep run early (08:00 EDT) coincident with morning brief
+      delivery rather than waiting for the 09:00 catchup window. Morning
+      brief 2026-05-06-morning absorbed finding-2026-05-06-FLASH-0001 as
+      its lead item with full Active Threats coverage, mitigation triage,
+      and the +72h auto-downgrade clock — re-posting the queued FLASH to
+      #flash-alerts would be duplicate signal per FLASH-POLICY anti-noise.
+      Brief frontmatter records absorbs_flash: flash-2026-05-06-0600 for
+      audit trail. No new IOCs introduced (PAN-OS finding has no IOCs
+      published); no master-index regeneration required. Two Splunk events
+      shipped: brief_published (morning) + flash_superseded (this entry).
+      Discord post: morning summary delivered to #intel-briefs only;
+      #flash-alerts intentionally silent on this topic.

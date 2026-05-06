@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-06T06:55:00-04:00
+last_updated: 2026-05-06T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -524,8 +524,9 @@ entries:
       analysis regrades to A2 / B1.
 
   - id: 2026-05-06-flash-001
-    covered_in: [flash-2026-05-06-0600]
+    covered_in: [flash-2026-05-06-0600, 2026-05-06-morning]
     brief_file: threats/briefs/2026-05-06-flash-pan-os-cve-2026-0300.md
+    published_in_briefs: [flash-2026-05-06-0600, 2026-05-06-morning]
     headline: "Palo Alto Networks PAN-OS User-ID Authentication Portal CVE-2026-0300 (CVSS 9.3) — vendor-disclosed limited targeting; no patch; vendor-only observation; FLASH queued not posted"
     topic_tags:
       - cve
@@ -641,6 +642,106 @@ entries:
       sentence plus two scare-quoted modifier fragments). Remediated by
       paraphrasing the modifier emphasis without quotation marks; one quote
       from PA retained verbatim (11 words).
+
+  - id: 2026-05-06-am-001
+    covered_in: [2026-05-06-morning]
+    brief_file: threats/briefs/2026-05-06-morning.md
+    headline: "PAN-OS CVE-2026-0300 absorbed from queued 06:00 FLASH — vendor-disclosed limited exploitation; +72h auto-downgrade clock to 2026-05-09 06:14 EDT; A2/likely under single-source veto"
+    topic_tags:
+      - cve
+      - palo-alto-networks
+      - pan-os
+      - user-id-authentication-portal
+      - captive-portal
+      - pre-auth-rce
+      - zero-day
+      - no-patch
+      - vendor-self-disclosure
+      - single-source-veto
+      - shadowserver-surface
+      - flash-absorbed
+      - quiet-hours-supersession
+    related_actors: []
+    related_vulns: [CVE-2026-0300]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-06-FLASH-0001]
+    digraph: A2
+    wep: likely
+    flash_absorption:
+      absorbs_flash_brief: flash-2026-05-06-0600
+      flash_brief_path: threats/briefs/2026-05-06-flash-pan-os-cve-2026-0300.md
+      supersession_action_owner: librarian
+      supersession_marker_target: infrastructure/flash-queue.yaml
+      expected_marker: "superseded:true at 09:00 EDT catchup sweep"
+    auto_downgrade_clock:
+      trigger_at: 2026-05-09T06:14:00-04:00
+      conditions_for_downgrade_all_of:
+        - no_second_ab_grade_independent_confirmation
+        - no_iocs_published
+        - no_cisa_kev_addition
+      consequence: re-grade to C3 'possibly true' in next sweep
+    correlation_callouts:
+      - related_finding_id: finding-2026-05-05-0004
+        relationship: structural_parallel_advisory_shape
+        explicit_non_linkage: true
+        callout_text: |
+          Vendor-disclosed pre-auth-RCE on a perimeter component, no IOCs,
+          no actor, multi-week patch tail — second instance this week.
+          Findings are NOT mutually validating; surfaced as a recurring
+          advisory shape for weekly synthesis, not as a campaign claim.
+    resurface_if:
+      - kev_addition
+      - new_iocs_published
+      - second_ab_grade_independent_confirmation
+      - independent_corroboration
+      - patch_released
+      - escalation_to_widespread_exploitation
+      - new_victims_confirmed
+      - new_attribution
+      - public_poc_release
+      - first_party_ioc_hit
+    first_covered: 2026-05-06
+    last_covered: 2026-05-06
+    retraction: null
+    test: false
+    notes: |
+      Morning brief absorbed the queued 06:00 FLASH (flash-2026-05-06-0600)
+      per FLASH-POLICY anti-noise expectation. Librarian responsibility:
+      mark flash-queue.yaml entry superseded:true at 09:00 catchup sweep
+      and archive to flash-queue-archive.yaml. Briefer did NOT mark
+      supersession itself per orchestrator instruction — supersession is
+      a queue-side decision.
+
+      Anti-repetition discipline: yesterday's six morning findings
+      (UNC1549, Charming Kitten, FortiManager KEV, IIS HTTP.sys, Siemens
+      SIMATIC, Cisco ASA) and yesterday's three afternoon findings
+      (MSTIC AitM, DAEMON Tools, Ollama Bleeding Llama) were NOT
+      resurfaced — no resurface_if trigger fired overnight. Patch
+      backlog deadlines (FortiManager 2026-05-25, IIS 2026-05-13, Cisco
+      ASA 7d, Linux kernel CVE-2026-31431 KEV 2026-05-15) named in
+      Vulnerabilities section as date-list status only, no re-detail.
+      Iran Cyber Watch carried via silent_day_template form (no new
+      activity in last 48h).
+
+      Correlation callout to finding-2026-05-05-0004 (HTTP.sys 0day) was
+      held out of the 06:00 FLASH per red-team explicit instruction
+      (avoid mutual-validation reading in stand-alone alert) and surfaced
+      here in Other Signal with explicit "NOT mutually validating"
+      framing. Pattern flagged for weekly synthesis (Sunday 2026-05-10),
+      not for finding-level claim.
+
+      Hard Rule 2 honored throughout — no actor language anywhere on
+      PAN-OS finding. Hard Rule 6 honored — one quote from PSIRT
+      (11 words, verbatim, preserves "limited" and targeting modifiers);
+      BleepingComputer paraphrased only. Hard Rule 8 honored — first-
+      party Splunk silent telemetry noted as absence-of-evidence with
+      "no PAN-OS sourcetype ingest currently configured" disclosure.
+
+      Pre-flight: 12/12 passed on iteration 2; iteration 1 flagged
+      Rule 7 (WEP vocabulary) on "default-secure posture is the most
+      likely status at mature primes" — colloquial "most likely" is
+      not a WEP term. Remediated to "default-secure posture is likely
+      the status at mature primes" (Rule 7 compliant).
 
 # ============================================================================
 # Valid resurface_if conditions

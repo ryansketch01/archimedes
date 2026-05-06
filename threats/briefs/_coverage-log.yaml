@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-05T16:00:00-04:00
+last_updated: 2026-05-06T06:55:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -522,6 +522,125 @@ entries:
       caveat. Vuln-tracker handoff flagged in finding for index addition.
       Tripwire: NVD record publication or second A-grade vendor independent
       analysis regrades to A2 / B1.
+
+  - id: 2026-05-06-flash-001
+    covered_in: [flash-2026-05-06-0600]
+    brief_file: threats/briefs/2026-05-06-flash-pan-os-cve-2026-0300.md
+    headline: "Palo Alto Networks PAN-OS User-ID Authentication Portal CVE-2026-0300 (CVSS 9.3) — vendor-disclosed limited targeting; no patch; vendor-only observation; FLASH queued not posted"
+    topic_tags:
+      - cve
+      - palo-alto-networks
+      - pan-os
+      - user-id-authentication-portal
+      - captive-portal
+      - pre-auth-rce
+      - zero-day
+      - no-patch
+      - vendor-self-disclosure
+      - single-source-veto
+      - shadowserver-surface
+      - flash
+      - flash-queued
+      - quiet-hours
+    related_actors: []
+    related_vulns: [CVE-2026-0300]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-06-FLASH-0001]
+    digraph: A2
+    wep: likely
+    flash_metadata:
+      brief_id: flash-2026-05-06-0600
+      flash_trigger_primary: trigger-1-critical-cve-exploited
+      flash_trigger_secondary: trigger-6-zero-day-no-patch
+      flash_trigger_resolution: "Both triggers fire on same topic; absorbed per anti-noise rule (one FLASH per trigger topic per 24h)"
+      quiet_hours_at_compose: true
+      critical_override_applied: false
+      critical_override_conditions_met: 1
+      critical_override_conditions_required: 4
+      critical_override_failures:
+        - cvss_10_0_required_observed_9_3
+        - tracked_actor_involved_required_no_actor_named
+        - watchlist_sector_targeted_required_no_ad_entity_named
+      disposition: queued
+      queue_target: infrastructure/flash-queue.yaml
+      queue_catchup_sweep: 2026-05-06T09:00:00-04:00
+      expected_supersession_by: 2026-05-06-morning
+    vuln_tracker_handoff:
+      proposed_id: ZD-004
+      cve: CVE-2026-0300
+      proposed_dossier_path: threats/vulnerabilities/PAN-OS-CVE-2026-0300/
+      in_index: false
+      proposed_for_index: true
+    auto_downgrade_clock:
+      trigger_at: 2026-05-09T06:14:00-04:00
+      conditions_for_downgrade_all_of:
+        - no_second_ab_grade_independent_confirmation
+        - no_iocs_published
+        - no_cisa_kev_addition
+      consequence: re-grade to C3 'possibly true' in next sweep
+    resurface_if:
+      - kev_addition
+      - new_iocs_published
+      - second_ab_grade_independent_confirmation
+      - independent_corroboration
+      - patch_released
+      - escalation_to_widespread_exploitation
+      - new_victims_confirmed
+      - new_attribution
+      - public_poc_release
+      - first_party_ioc_hit
+    first_covered: 2026-05-06
+    last_covered: 2026-05-06
+    retraction: null
+    test: false
+    notes: |
+      FLASH composed at 06:55 EDT inside quiet hours (21:00-09:00 EDT) and
+      QUEUED to infrastructure/flash-queue.yaml for the 09:00 catchup sweep.
+      Critical override does not apply: CVSS 9.3 (not 10.0); no tracked actor
+      named in any source (Hard Rule 2 prevents origination); no A&D watchlist
+      entity named as target. Inferential A&D relevance does not satisfy the
+      override condition. Standard quiet-hours rules govern.
+
+      The 08:00 morning brief is 65 minutes from compose time; per FLASH-POLICY
+      anti-noise rule, the morning briefer will likely absorb this finding,
+      after which the 09:00 catchup will mark this FLASH superseded:true and
+      archive to flash-queue-archive.yaml. Composing the FLASH anyway because
+      supersession is a queue-side decision, not a compose-side one.
+
+      Red-team caveats honored verbatim per PUBLISH-WITH-CHANGES disposition:
+      (1) Lead frames vendor-only-disclosure + workaround-urgency, NOT
+      "active exploitation" full-stop. (2) PSIRT verbatim quote preserves
+      "limited" prevalence cap and "targeting [...] exposed to untrusted IPs"
+      targeting clause; both modifiers operationally load-bearing. (3)
+      Mitigation triage posed as a question — "is your User-ID Authentication
+      Portal reachable from untrusted IPs?" — because mature DIB and prime
+      estates default to trusted-zone-only, in which case the vendor's
+      workaround is already in place. (4) Shadowserver 5,800+ figure carried
+      with explicit "not segmented by deployment maturity, does NOT measure
+      prime / DIB exposure" disclaimer; treated as upper-bound surface, not
+      A&D-direct risk. (5) No actor language anywhere (Hard Rule 2). (6) +72h
+      auto-downgrade clock (2026-05-09 06:14 EDT) explicit in body and
+      frontmatter — re-grade to C3 if no second A/B-grade confirmation, no
+      IOCs, no CISA KEV. (7) Tripwires for re-grade up: KEV addition, IOC
+      publication, second A/B-grade independent observation. (8) Structural
+      parallel to finding-2026-05-05-0004 (HTTP.sys 0day) deliberately NOT
+      surfaced in this FLASH — red-team explicitly held it for weekly
+      synthesis to avoid the two findings reading as mutually validating.
+
+      Single-source veto applied (BleepingComputer relays PA; Shadowserver
+      independent on surface only, not on exploitation). WEP capped at
+      "likely". Quote discipline: one PA quote, 11 words; BleepingComputer
+      paraphrased only. Hard Rule 6 honored.
+
+      Vuln-tracker handoff flagged: open dossier ZD-004 at
+      threats/vulnerabilities/PAN-OS-CVE-2026-0300/ on first execution; this
+      will be the first tracked vuln in _index.yaml carrying the active-
+      exploitation flag (increments _meta.active_exploitation 0 -> 1).
+      Pre-flight: 12/12 passed on iteration 2; iteration 1 caught a Rule 7
+      violation (three quoted fragments from the PA source — the verbatim
+      sentence plus two scare-quoted modifier fragments). Remediated by
+      paraphrasing the modifier emphasis without quotation marks; one quote
+      from PA retained verbatim (11 words).
 
 # ============================================================================
 # Valid resurface_if conditions

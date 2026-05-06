@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-06T08:00:00-04:00
+last_updated: 2026-05-06T12:55:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -742,6 +742,297 @@ entries:
       likely status at mature primes" — colloquial "most likely" is
       not a WEP term. Remediated to "default-secure posture is likely
       the status at mature primes" (Rule 7 compliant).
+
+  - id: 2026-05-06-flash-002
+    covered_in: [flash-2026-05-06-1200]
+    brief_file: threats/briefs/2026-05-06-flash-muddywater-rapid7.md
+    published_in_briefs: [flash-2026-05-06-1200]
+    headline: "Rapid7 attributes 2026-05 US intrusion to MuddyWater (#022, Iran/MOIS per citation chain) at moderate confidence — Chaos ransomware false flag, Game.exe RAT, Donald Gay code-signing cluster, Microsoft Teams interactive screen-share tradecraft; +72h auto-downgrade clock to 2026-05-09 12:18 EDT; A2/likely under stacked single-source-veto + vendor-moderate-confidence constraints"
+    topic_tags:
+      - actor
+      - muddywater
+      - "022"
+      - iran
+      - mois
+      - rapid7
+      - ir-engagement
+      - moderate-confidence
+      - chaos-ransomware
+      - false-flag
+      - no-encryption
+      - dls-facade
+      - game-exe
+      - darkcomp
+      - ms-upd
+      - stagecomp
+      - donald-gay
+      - code-signing-abuse
+      - microsoft-teams
+      - interactive-screen-share
+      - it-support-persona
+      - mfa-device-add
+      - quick-assist
+      - pythonw-injection
+      - operation-olalampo
+      - construction
+      - manufacturing
+      - business-services
+      - tradecraft-portability
+      - single-source-veto
+      - vendor-moderate-self-rating
+      - double-constraint
+      - profile-pending
+      - actor-profiler-handoff
+      - flash
+      - flash-active-hours
+    related_actors: ["022"]
+    related_actor_profile_status: pending
+    related_vulns: []
+    related_campaigns: [muddywater-q2-2026-us-intrusion]
+    finding_ids: [finding-2026-05-06-FLASH-0002]
+    digraph: A2
+    wep: likely
+    wep_split:
+      espionage_shape_observation: likely
+      actor_specific_cluster_id: likely_with_moderate_vendor_self_rating
+    flash_metadata:
+      brief_id: flash-2026-05-06-1200
+      flash_trigger_primary: trigger-2-new-attribution
+      flash_trigger_secondary: trigger-4-tracked-actor-ttp-change
+      flash_trigger_resolution: |
+        Triggers 2 (new attribution to a tracked roster actor) and 4
+        (tracked-actor TTP / tooling / infrastructure change from A/B-grade
+        source) fired concurrently on the same MuddyWater Q2-2026 topic.
+        Per FLASH-POLICY anti-noise rule "one FLASH per trigger topic per
+        24h," both resolved to a single FLASH led on the new-attribution
+        angle, with the TTP-change detail in the body.
+      quiet_hours_at_compose: false
+      compose_time_local: "2026-05-06T12:55:00-04:00"
+      active_hours_window: "09:00-21:00 EDT"
+      critical_override_evaluated: true
+      critical_override_applied: false
+      critical_override_conditions_met: 2
+      critical_override_conditions_required: 4
+      critical_override_failures:
+        - cvss_10_0_required_no_cve_component
+        - watchlist_sector_targeted_required_no_ad_entity_named
+      critical_override_passes:
+        - active_exploitation_active_ir_engagement_per_rapid7
+        - tracked_actor_involved_muddywater_022
+      disposition: posted-immediately
+      queue_target: null
+      queue_catchup_sweep: null
+      single_source_veto_applied: true
+      double_constraint_note: |
+        WEP "likely" is doing double-duty: single-source veto (Rapid7 sole
+        originating; SecurityWeek and BleepingComputer pure relays) AND
+        Rapid7's own self-rated "moderate confidence" (vendor-IR convention
+        treats "moderate" as one band below ceiling). Both pressures argue
+        for the same cap; surfaced separately to the reader rather than
+        absorbed silently into one likely cap.
+    actor_profiler_handoff:
+      required: true
+      actor_id: "022"
+      primary_name: MuddyWater
+      current_profile_status: pending
+      first_pass_profile_deadline: 2026-05-13
+      threat_box_scoring_deadline: 2026-05-20
+      high_composite_requires_human_signoff: true
+      high_composite_signoff_command: /approve-scoring
+      hard_rule_2_constraint: |
+        Actor-profiler must cite Rapid7 explicitly on every Q2-2026
+        campaign claim drawn from this finding. No surface (TTP, tooling,
+        infrastructure) may become MuddyWater-canonical via single-source
+        absorption until a second A/B-grade vendor independently confirms.
+    ioc_handoff:
+      required: true
+      count: 19
+      breakdown:
+        sha256: 9
+        domain: 3
+        ipv4: 4
+        onion: 1
+        code_signing_certificate: 1
+      retroactive_sweep_requested: true
+      forward_detection_requested: true
+      first_party_splunk_status_at_compose: |
+        -30d query against the 4 IPv4 IOCs and 3 domain IOCs returned 0
+        events in archimedes and defenseclaw_local indices. SHA256 hashes
+        not directly queryable against current sourcetypes (no malware-
+        detection telemetry in scope). Silent Splunk is NOT disconfirming
+        per analyst KAC doctrine; absence of evidence is not evidence of
+        absence (Hard Rule 8).
+    auto_downgrade_clock:
+      trigger_at: 2026-05-09T12:18:00-04:00
+      conditions_for_downgrade_all_of:
+        - no_second_ab_grade_independent_confirmation
+        - no_first_party_splunk_hit_post_ioc_ingest
+        - no_cisa_or_fbi_advisory_pickup
+      consequence: re-grade to C3 'possibly true' in next sweep
+    tripwires_for_regrade_up:
+      - second_ab_grade_independent_confirmation
+      - first_party_splunk_hit_post_ioc_ingest
+      - cisa_or_fbi_advisory_pickup
+      - rapid7_followon_high_confidence_upgrade
+    explicit_non_linkage:
+      - related_brief: flash-2026-05-06-0600
+        related_finding: finding-2026-05-06-FLASH-0001
+        related_topic: PAN-OS CVE-2026-0300
+        relationship: structural_parallel_only
+        do_not_mutual_validate: true
+        rationale: |
+          Different topic, no shared evidence, no shared actor. Both
+          findings are single-source-veto load-bearing FLASHes — that is
+          an operational pattern, not corroborating signal. Pattern
+          observation held for weekly synthesis (2026-05-10), not surfaced
+          in this FLASH.
+      - related_brief: 2026-05-06-morning
+        related_topic: PAN-OS CVE-2026-0300 absorption
+        relationship: same_day_adjacent_brief_no_topical_overlap
+        do_not_mutual_validate: true
+        rationale: |
+          Today's morning brief absorbed the queued 06:00 PAN-OS FLASH.
+          Different topic, different finding cluster. Surfacing as same-day
+          adjacent would suggest a multi-incident posture; this FLASH is a
+          standalone Trigger-2 + Trigger-4 publication.
+      - related_brief: 2026-05-05-morning
+        related_finding: finding-2026-05-05-0001
+        related_topic: UNC1549 CMMC-adjacent campaign
+        relationship: different_iranian_actor_no_shared_evidence
+        do_not_mutual_validate: true
+        rationale: |
+          UNC1549 is IRGC; MuddyWater is MOIS. No shared evidence, no
+          shared infrastructure, different campaign timeline. Stacking
+          "multiple Iranian campaigns this week" across separate findings
+          is a presentation choice that risks implying corroboration where
+          none exists. Held back from cross-reference per red-team
+          must_fix #6.
+      - related_brief: 2026-05-05-afternoon
+        related_finding: finding-2026-05-05-0007
+        related_topic: MSTIC AitM code-of-conduct phishing
+        relationship: mechanism_overlap_distinct_cluster_no_validation
+        do_not_mutual_validate: true
+        rationale: |
+          M365 / Entra session-token-theft mechanism class touches the
+          same platform attack surface as the Teams interactive
+          screen-share tradecraft surfaced here, but the actor, pretext,
+          sectors, and IOC sets are entirely distinct. Mechanism overlap
+          is an analytical observation for weekly synthesis, not
+          finding-level cross-validation in this FLASH.
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - attribution_changes
+      - actor_ttps_evolve
+      - first_party_ioc_hit
+      - escalation_to_exploitation
+      - independent_corroboration
+      - second_ab_grade_independent_confirmation
+      - cisa_or_fbi_advisory_pickup
+      - rapid7_followon_high_confidence_upgrade
+      - new_iocs_published
+      - profile_first_pass_published
+    first_covered: 2026-05-06
+    last_covered: 2026-05-06
+    retraction: null
+    test: false
+    notes: |
+      FLASH composed at 12:55 EDT inside active hours (09:00-21:00 EDT).
+      Posted directly per FLASH-POLICY standard rules; no quiet-hours
+      queueing required. Critical override does not apply: 2 of 4
+      conditions met (active exploitation via active IR engagement;
+      tracked actor MuddyWater #022). 2 of 4 fail: no CVE component
+      (CVSS 10.0 inapplicable); no A&D watchlist entity named (Rapid7
+      names construction, manufacturing, business services — inferential
+      A&D relevance does not satisfy the override condition).
+
+      Triggers 2 and 4 fire concurrently on the same MuddyWater Q2-2026
+      topic; per FLASH-POLICY anti-noise rule "one FLASH per trigger
+      topic per 24h," both resolve to a single FLASH led on
+      new-attribution (operationally consequential headline for an
+      Iran/MOIS-attributed actor with no prior Archimedes profile),
+      with TTP-change detail in the body.
+
+      Red-team disposition PUBLISH-WITH-CHANGES honored verbatim — all
+      seven must_fix and two should_fix revisions applied:
+      (1) Headline includes "moderate confidence" qualifier; actor name
+      appears with source attribution and confidence modifier together,
+      never alone.
+      (2) Two sub-claims disaggregated explicitly: "Defensible read"
+      (espionage shape, observable from forensics — TTP-and-objective
+      reading more defensible) and "Moderate-confidence read" (actor
+      cluster — Rapid7's specific MuddyWater identification at
+      moderate confidence; alternative Iranian-cluster and
+      mixed-composition readings explicitly noted).
+      (3) A&D relevance leads on tradecraft portability, NOT
+      actor/sector specificity. Body explicitly states "No aerospace,
+      defense, or A&D watchlist entity is named." Platform-generic
+      M365 / Teams audit moves prescribed; no extrapolation of
+      construction/manufacturing/business services to A&D primes.
+      (4) +72h auto-downgrade clock (2026-05-09 12:18 EDT) explicit in
+      both body and frontmatter; conditions enumerated; consequence
+      stated (re-grade to C3 'possibly true').
+      (5) Rapid7 verbatim quote preserved with "moderate" intact:
+      "Moderate confidence in attributing the incident to MuddyWater."
+      (8 words; one quote per source per Hard Rule 6). BleepingComputer
+      and SecurityWeek paraphrased only as relays.
+      (6) NO mutual-validation with flash-2026-05-06-0600 / finding-
+      2026-05-06-FLASH-0001 (PAN-OS), 2026-05-06-morning brief, finding-
+      2026-05-05-0001 (UNC1549), or finding-2026-05-05-0007 (MSTIC AitM).
+      All four explicit_non_linkage entries committed to frontmatter and
+      coverage log; not surfaced in body. Pattern observations held for
+      weekly synthesis (2026-05-10).
+      (7) MuddyWater profile-pending status surfaced in body with
+      actor-profiler handoff timeline (first-pass within 7 days,
+      threat-box within 14 days, HIGH composite requires
+      /approve-scoring per Hard Rule 5).
+      Should_fix items: contrarian-ACH surface (alternative Iranian-
+      cluster and mixed-composition readings open) embedded in
+      moderate-confidence read paragraph; profile-pending baseline
+      gap flagged.
+
+      First-party Splunk silence over -30d on tracked IOCs noted
+      explicitly as absence-of-evidence per Hard Rule 8, not as
+      disconfirming. 19 IOCs handed to librarian for
+      _master-index.yaml ingestion and forward-looking detection;
+      retroactive sweep requested.
+
+      Hard Rule 2 binding: attribution carried exactly as Rapid7
+      stated ("Moderate confidence in attributing the incident to
+      MuddyWater"). MOIS service affiliation traces through Rapid7's
+      citation chain to US Government background attribution only;
+      Archimedes does not originate or strengthen. Contrarian ACH
+      surfaces alternative Iranian-cluster readings as
+      cluster-imprecision in Rapid7's own moderate confidence — NOT
+      as alternative actor attribution by Archimedes.
+
+      Hard Rule 6 quote discipline: 12/12 pre-flight pass on iteration
+      6; iteration 5 flagged Rule 12 violation — three quoted fragments
+      from Rapid7 (verbatim sentence + scare-quoted "IT Support" persona
+      term + scare-quoted "moderate" modifier) exceeded the one-quote-
+      per-source rule, mirroring the PAN-OS FLASH iteration-1 violation
+      pattern. Remediated by paraphrasing "IT Support" persona to
+      "Teams persona masquerading as internal IT support" and removing
+      scare quotes from "moderate" modifier reference. Verbatim Rapid7
+      sentence retained as the single quote (8 words, well within the
+      15-word ceiling).
+
+      Word count: 297 (body prose excluding H1 title and source URL
+      bullet list, per PAN-OS FLASH convention). Within 150-300 FLASH
+      target. Iterations 1-3 ran over (380, 360, 337) before
+      sufficient compression preserved all seven must_fix substance.
+
+      Actor-profiler handoff: first substantive A-grade-equivalent
+      Archimedes intel against MuddyWater (#022) since intake.
+      next_review_due was 2026-04-25 (11 days lapsed at compose time).
+      First-pass profile due by 2026-05-13; threat-box scoring by
+      2026-05-20. HIGH composite triggers human sign-off via
+      /approve-scoring per Hard Rule 5.
+
+      Pre-flight: 12/12 passed on iteration 6; intermediate iterations
+      caught (a) check 8 word-count overruns at 380, 360, 337 → 297;
+      (b) check 12 quote-discipline violation on scare-quoted modifier
+      fragments → remediated to one verbatim Rapid7 sentence only.
 
 # ============================================================================
 # Valid resurface_if conditions

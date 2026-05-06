@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-04-18
+last_updated: 2026-05-06
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -138,6 +138,18 @@ vendor_sources:
     urls:
       - https://isc.sans.edu/
 
+  - id: rapid7
+    name: "Rapid7 (Labs / IR blog)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-06
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-06-FLASH-0002 (MuddyWater attribution at moderate confidence). Pending human ratification per source-grade-log.md 2026-05-06 entry. Tier-1 IR practice, peer-reviewed publications."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.rapid7.com/blog/
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -189,6 +201,18 @@ media_sources:
     rationale: "Good journalism, secondary source"
     urls:
       - https://arstechnica.com/security/
+
+  - id: securityweek
+    name: "SecurityWeek"
+    category: media
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-06
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-06-FLASH-0002 as a relay of Rapid7's MuddyWater attribution. Pending human ratification per source-grade-log.md 2026-05-06 entry. Operator can ratify at B or downgrade to C if context-thin relay-only profile is observed across more findings."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.securityweek.com/
   
   - id: github-advisories
     name: "GitHub Security Advisories"
@@ -499,15 +523,18 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 42
-  active_sources: 33
+  total_sources: 44
+  active_sources: 35
   by_grade:
-    A: 18
-    B: 14
+    A: 19
+    B: 15
     C: 4
     D: 1
     E: 2
     F: 3
+  awaiting_ratification:
+    - rapid7
+    - securityweek
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

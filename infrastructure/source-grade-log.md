@@ -50,6 +50,19 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-06 — palo-alto-psirt — recommendation pending review (no grade change applied this run)
+
+**Type:** New-source recommendation (not applied)
+**Source ID (proposed):** `palo-alto-psirt`
+**Proposed grade:** A (category: vendor)
+**Reason:** Grader on `finding-2026-05-06-FLASH-0003` recommends adding `palo-alto-psirt` as a dedicated source-grades.yaml id. PSIRT advisories currently graded under `unit42` parent-org id by FLASH-0001 precedent. Dedicated id is cleaner: PSIRT and Unit 42 publish on different cadences and methodologies (PSIRT = product-fact authority; Unit 42 = threat research). Non-blocking — this run continues to grade PAN PSIRT under the unit42 parent-org id per FLASH-0001 precedent.
+**Supporting findings:** [finding-2026-05-06-FLASH-0001, finding-2026-05-06-FLASH-0003]
+**Action this run:** Logged for human review. NOT added to `source-grades.yaml` and NOT posted to `#actor-review` — non-blocking, deliberate-review item.
+**Reviewer:** Awaiting Ryan decision (add as A, add as B, or decline)
+**Next review:** Bundle with the 2026-05-13 Rapid7 / SecurityWeek ratification window.
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

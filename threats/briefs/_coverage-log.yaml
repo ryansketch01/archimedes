@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-06T16:00:00-04:00
+last_updated: 2026-05-06T18:18:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -1205,6 +1205,277 @@ entries:
       execute. Single artifact to commit and post — the brief file at
       threats/briefs/2026-05-06-afternoon.md. Coverage log already
       updated by briefer.
+
+  - id: 2026-05-06-flash-1800-001
+    covered_in: [flash-2026-05-06-1800]
+    brief_file: threats/briefs/2026-05-06-flash-1800.md
+    published_in_briefs: [flash-2026-05-06-1800]
+    headline: "UPDATE: PAN-OS CVE-2026-0300 — CISA KEV adds (BOD 22-01 deadline triggered), Palo Alto publishes patch ETAs (2026-05-13 / 2026-05-28) + Threat ID 510019, public exploit code released; A1 / very likely (procedural facts) + likely (operational claim) under red-team double-track WEP discipline"
+    update_resurface: true
+    parent_finding: finding-2026-05-06-FLASH-0001
+    topic_tags:
+      - cve
+      - palo-alto-networks
+      - pan-os
+      - user-id-authentication-portal
+      - captive-portal
+      - pre-auth-rce
+      - kev
+      - kev-addition
+      - bod-22-01
+      - patch-eta-published
+      - threat-id-510019
+      - threat-prevention-signature
+      - public-poc-released
+      - exploit-code-released
+      - multi-victim-signal-secondary-reporting
+      - single-source-veto-lifted
+      - corroboration-arrival
+      - augment-not-retract
+      - resurface-update
+      - flash-active-hours
+      - red-team-wep-split
+    related_actors: []
+    related_vulns: [CVE-2026-0300]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-06-FLASH-0003]
+    digraph: A1
+    wep_split:
+      procedural_facts: very_likely
+      operational_claim: likely
+    flash_metadata:
+      brief_id: flash-2026-05-06-1800
+      flash_trigger_primary: trigger-1-critical-cve-exploited
+      flash_trigger_re_firing_path: independent_of_flash_0001
+      flash_trigger_resolution: |
+        Trigger 1 fires standalone via the KEV pathway. Anti-noise rule
+        "one FLASH per trigger topic per 24h" does not bar this brief
+        because the afternoon-brief coverage entry (2026-05-06-pm-
+        continuing-coverage) explicitly pre-registered KEV addition +
+        patch availability as resurface-eligible conditions. Both fired
+        in the 16:00-18:00 EDT window; resurface FLASH authorized.
+      quiet_hours_at_compose: false
+      compose_time_local: "2026-05-06T18:18:00-04:00"
+      active_hours_window: "09:00-21:00 EDT"
+      critical_override_evaluated: true
+      critical_override_applied: false
+      critical_override_conditions_met: 2
+      critical_override_conditions_required: 4
+      critical_override_failures:
+        - cvss_10_0_required_observed_9_3
+        - tracked_actor_involved_required_no_actor_named
+        - watchlist_sector_targeted_required_no_ad_entity_named
+      critical_override_passes:
+        - active_exploitation_kev_confirmed
+        - active_exploitation_vendor_confirmed
+      disposition: posted-immediately
+      queue_target: null
+      queue_catchup_sweep: null
+      single_source_veto_applied: false
+      single_source_veto_lift_rationale: |
+        Three independent A/B-grade sources arrived in the 16:00-18:00 EDT
+        window: CISA KEV (A) on the federal-determination sub-claim,
+        Palo Alto PSIRT (A) on the patch-ETA + Threat-Prevention-signature
+        sub-claims, and The Record (B) on the multi-victim sub-claim.
+        Veto formally lifts. Substantive corroboration depth on the
+        operational claim remains weaker than the A1 letter grade implies
+        per red-team contrarian ACH; brief carries WEP split (procedural
+        facts: very_likely; operational claim: likely) to honor that.
+      red_team_wep_split: true
+      red_team_wep_split_rationale: |
+        Procedural facts (KEV listed, patches scheduled, PoC released,
+        TP signature published) are very_likely confidence — observable
+        events with multi-source confirmation. Operational claim
+        ("active multi-victim exploitation occurring at scale") sits at
+        likely — KEV addition for vendor-disclosed 0days is procedurally
+        downstream of vendor advisory, ETA publication is normal lifecycle,
+        The Record is cascade-shaped secondary reporting published 4h
+        post-KEV.
+    supersession:
+      type: augment_not_retract
+      supersedes_finding: finding-2026-05-06-FLASH-0001
+      supersedes_coverage_entry: 2026-05-06-pm-continuing-coverage
+      prior_digraph: A2
+      prior_wep: likely
+      this_digraph: A1
+      this_wep_split:
+        procedural_facts: very_likely
+        operational_claim: likely
+      rationale: |
+        finding-2026-05-06-FLASH-0001 NOT retracted — its grading was
+        correct under vendor-only-disclosure conditions. This UPDATE
+        augments with KEV addition + patch ETAs + public PoC release +
+        multi-victim signal that arrived in the 16:00-18:00 EDT window.
+        The two findings together form the canonical lineage for
+        CVE-2026-0300 in the Archimedes corpus.
+    auto_downgrade_clock_carry:
+      prior_clock_finding: finding-2026-05-06-FLASH-0001
+      prior_clock_trigger_at: 2026-05-09T06:14:00-04:00
+      prior_clock_status: cancelled_by_corroboration_arrival
+      cancellation_rationale: |
+        FLASH-0001's auto-downgrade clock was conditioned on absence-of-
+        three: no KEV addition, no IOCs published, no second A/B-grade
+        independent confirmation in 72h. KEV addition + second A-grade
+        independent confirmation BOTH fire in the first 12 hours of the
+        72h window. Auto-downgrade clock cancelled by corroboration
+        arrival, NOT by timeout.
+      this_finding_carries_clock: false
+      this_finding_clock_rationale: |
+        A1 / split-WEP (very_likely procedural / likely operational)
+        with three independent A/B-grade sources is not a candidate for
+        auto-downgrade. New tripwires focus on patch-shipment confirmation
+        and follow-on attribution; see tripwires_for_further_movement.
+    tripwires_for_further_movement:
+      - mandiant_volexity_unit42_compromise_iocs_published
+      - greynoise_censys_scanner_vs_targeted_disaggregation
+      - named_victim_first_hand_ir_publishes
+      - first_party_splunk_hit_post_pan_os_ingest
+      - second_tier_one_threat_intel_firm_independent_confirmation
+      - patch_shipment_2026_05_13_actuals_vs_eta
+      - patch_shipment_2026_05_28_actuals_vs_eta
+      - first_a_b_grade_actor_attribution_to_tracked_roster
+    lineage_chain:
+      - flash-2026-05-06-0600         # original FLASH (queued)
+      - 2026-05-06-morning            # absorbed FLASH coverage
+      - 2026-05-06-afternoon          # continuing coverage; pre-registered resurface tripwires
+      - flash-2026-05-06-1800         # this UPDATE (resurface FLASH on tripwire fire)
+    vuln_tracker_handoff:
+      action: update_existing_dossier
+      proposed_dossier_id: ZD-004
+      cve: CVE-2026-0300
+      proposed_dossier_path: threats/vulnerabilities/PAN-OS-CVE-2026-0300/
+      state_changes_to_apply:
+        - field: kev_listed
+          to: true
+          kev_dateAdded: 2026-05-06
+        - field: patch_status
+          to: patches_scheduled
+          patch_etas: ["2026-05-13", "2026-05-28"]
+        - field: detection_signatures_published
+          to: true
+          detection_signatures: ["PAN Threat Prevention ID 510019 (PAN-OS 11.1+)"]
+        - field: digraph_supersession
+          from: A2
+          to: A1
+        - field: wep_supersession
+          from: likely
+          to: split_very_likely_procedural_likely_operational
+      remove_watch_signals:
+        - auto_downgrade_clock_at_2026-05-09T06:14
+        - second_ab_grade_independent_confirmation_pan_os
+        - cisa_kev_addition_pan_os
+        - patch_released_pan_os
+    resurface_if:
+      - patch_actually_ships_2026_05_13
+      - patch_actually_ships_2026_05_28
+      - new_victims_confirmed
+      - new_attribution
+      - first_a_b_grade_actor_attribution_published
+      - mandiant_volexity_unit42_compromise_iocs_published
+      - first_party_splunk_hit_post_pan_os_ingest
+      - greynoise_censys_scanner_vs_targeted_disaggregation
+      - patch_slip_or_eta_revision
+      - public_advisories_from_cisa_or_fbi_actor_naming
+    first_covered: 2026-05-06
+    last_covered: 2026-05-06
+    retraction: null
+    test: false
+    notes: |
+      FLASH UPDATE / RESURFACE composed at 18:18 EDT inside active hours
+      (09:00-21:00 EDT). Posted directly per FLASH-POLICY standard rules;
+      no quiet-hours queueing required. Critical override does not apply:
+      2 of 4 conditions met (active exploitation now KEV-confirmed +
+      vendor-confirmed). 2 of 4 fail: CVSS 9.3 (not 10.0); no actor
+      named (Hard Rule 2 prevents origination); no A&D watchlist entity
+      named.
+
+      Anti-repetition discipline honored: this is an UPDATE: prefix brief
+      explicitly resurfacing a covered topic. Pre-registered resurface
+      conditions in the afternoon-brief coverage entry
+      (2026-05-06-pm-continuing-coverage) — cisa_kev_addition_pan_os and
+      patch_released_pan_os — both fired in the 16:00-18:00 EDT window.
+      CVE substance (CVSS 9.3, GlobalProtect / User-ID Authentication
+      Portal pre-auth RCE, vulnerable versions, mitigations) NOT
+      re-detailed; reader is assumed to have seen prior coverage.
+      Lineage chain stated explicitly in body footer: 06:00 FLASH →
+      08:00 morning (absorbed) → 16:00 afternoon (continuing coverage) →
+      18:00 UPDATE (this brief).
+
+      Red-team disposition PUBLISH-WITH-CHANGES (qualify) honored
+      verbatim — all four must_fix and one should_fix revisions applied:
+      (1) Multi-victim claim NOT led with. Operational read paragraph
+      explicitly frames as secondary reporting, notes 4h post-KEV
+      publication timing, names the absence of first-hand IR statements.
+      The Record's verbatim wording carried in Sources block (10 words,
+      under 15-word ceiling).
+      (2) KEV framed as "BOD 22-01 federal mitigation deadline triggered"
+      (operational consequence framing). NOT framed as "federal authority
+      independently confirms exploitation" — operational read paragraph
+      explicitly notes KEV addition for vendor-disclosed 0days is
+      procedurally downstream of the vendor advisory.
+      (3) Public PoC release surfaced explicitly — fourth bullet in
+      "What changed" section, AND named in lead sentence, AND carried
+      forward to mixed-composition caveat.
+      (4) WEP split applied: "very likely" only on procedural facts;
+      "likely" on operational claim. The two are explicitly disaggregated
+      in the italic header AND in section labels ("(procedural facts,
+      very likely)" vs "Operational read (likely, not very likely)").
+      (5) FLASH-0001 contrarian-ACH H4 (vendor-characterization-leans-
+      aggressive) and H5 (mixed-composition activity) carried forward
+      verbatim in Caveats paragraph — NOT treated as retired by upgrade.
+      H4 framed as "leans aggressive at roughly even chance" with WEP
+      anchor; H5 framed as "very likely mixed-composition" with WEP
+      anchor.
+
+      Hard Rule 2 honored: no actor language anywhere. Multi-victim
+      signal NOT extrapolated to any actor class (nation-state,
+      criminal-IAB, opportunistic). KEV listing carries no attribution.
+
+      Hard Rule 6 honored: one quote from The Record (10 words, verbatim
+      from finding's source-language section). Zero quotes from CISA KEV
+      (catalog field name + value rendered as code-formatted citation,
+      not prose quotation). Zero quotes from Palo Alto PSIRT (paraphrased
+      only). Earlier draft included scare-quoted "limited" modifier
+      fragment in caveats paragraph — removed at iteration to prevent
+      Rule 12 violation pattern (matches PAN-OS 06:00 FLASH iteration-1
+      and MuddyWater 12:00 FLASH iteration-5 quote-discipline failures).
+
+      Hard Rule 7 (credentials): clean. No credential material in any
+      source.
+
+      Hard Rule 8 (first-party precedence): preserved. PAN-OS sourcetype
+      remains unconfigured in defenseclaw_local; first-party Splunk
+      silent on hunt surface. Absence-of-evidence convention applied at
+      finding level (FLASH-0003 first_party_precedence block) and
+      surfaced implicitly by virtue of brief carrying no first-party
+      claim.
+
+      Pre-flight: 12/12 passed on iteration 1. No banned phrases
+      detected. WEP discipline clean ("very likely" / "likely" / "very
+      likely" / "roughly even chance" all canonical). Earlier draft
+      attempt at "may lean aggressive" caught at composition stage as
+      bare-hedge violation per check 7; remediated to "leans aggressive
+      at roughly even chance" inline before pre-flight scan.
+      Word count 299 (body prose, FLASH convention from PAN-OS 06:00
+      brief = 291 and MuddyWater 12:00 brief = 297) — within standard
+      FLASH 150-300 target and well within the orchestrator's 250-450
+      resurface-UPDATE allowance.
+
+      Librarian handoff: post to #flash-alerts immediately (within
+      active hours, no queue). Forward to Splunk for finding lifecycle
+      logging. Commit to git. Update vuln-tracker dossier ZD-004 with
+      state-changes per finding-FLASH-0003 vuln_tracker_handoff block —
+      first execution of dossier creation if not already created from
+      morning brief; state-update path otherwise.
+
+      Pattern observation for weekly synthesis (2026-05-10): single-
+      source-veto-FLASH followed by tripwire-fire-resurface-FLASH within
+      12 hours is a clean case study of the corroboration-arrival
+      mechanism working as designed. FLASH-0001's pre-registered
+      watch_signals named the exact conditions that fired; the
+      auto-downgrade clock cancellation by corroboration was anticipated
+      in FLASH-0001 frontmatter. NOT mutual-validation with other FLASHes
+      this week — this is single-topic lineage, not cross-finding pattern.
 
 # ============================================================================
 # Valid resurface_if conditions

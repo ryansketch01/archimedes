@@ -6,8 +6,8 @@
 # Migrated from C3PO ZD-001/002/003 entries. Additional vulns added as
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
-version: 1
-last_updated: 2026-04-18
+version: 2
+last_updated: 2026-05-06
 
 vulnerabilities:
 
@@ -50,9 +50,51 @@ vulnerabilities:
     next_review_due: 2026-04-25
     note: "Blocks Defender updates. Facilitates follow-on exploitation."
 
+  - id: ZD-004
+    name: "PAN-OS User-ID Authentication Portal pre-auth RCE"
+    type: "Pre-auth RCE (out-of-bounds write / buffer overflow)"
+    platform: "Palo Alto Networks PAN-OS — User-ID Authentication Portal (Captive Portal); PA-Series and VM-Series firewalls"
+    cve: CVE-2026-0300
+    cvss: 9.3
+    patch_status: patches_scheduled
+    patch_etas:
+      - eta_date: 2026-05-13
+        branches: ["PAN-OS 10.2", "PAN-OS 11.1"]
+      - eta_date: 2026-05-28
+        branches: ["PAN-OS 11.2", "PAN-OS 12.1"]
+    kev: true
+    kev_added: 2026-05-06
+    kev_due_date: 2026-05-27
+    exploitation_status: in_the_wild_confirmed_kev_listed_multi_victim_signal
+    public_exploit_available: true
+    detection_signatures_published: true
+    digraph: A1
+    wep_split:
+      procedural_facts: very_likely
+      operational_claim: likely
+    related_actors: []
+    related_findings:
+      - finding-2026-05-06-FLASH-0001
+      - finding-2026-05-06-FLASH-0003
+    related_briefs:
+      - flash-2026-05-06-0600
+      - 2026-05-06-morning
+      - 2026-05-06-afternoon
+      - flash-2026-05-06-1800
+    ad_relevance: medium
+    dossier: threats/vulnerabilities/PAN-OS-CVE-2026-0300/profile.md
+    tracking: threats/vulnerabilities/PAN-OS-CVE-2026-0300/tracking.yaml
+    tracked_since: 2026-05-06
+    last_reviewed: 2026-05-06
+    next_review_due: 2026-05-13
+    note: "First Archimedes-tracked active-exploitation CVE. KEV-listed; patches staggered across May 2026; public exploit code released; no actor attribution. See tracking.yaml for state history and watch_signals."
+
 _meta:
-  total_tracked: 3
+  total_tracked: 4
   patched: 1
   unpatched: 2
-  active_exploitation: 0          # update as FLASH briefs reveal exploitation
-  dossiers_migrated: 0            # all dossiers pending migration
+  patches_scheduled: 1
+  active_exploitation: 1          # ZD-004 PAN-OS CVE-2026-0300 (KEV-listed, multi-victim signal)
+  kev_listed: 1                   # ZD-004 PAN-OS CVE-2026-0300
+  public_exploit_available: 1     # ZD-004 PAN-OS CVE-2026-0300
+  dossiers_migrated: 1            # ZD-004 created from FLASH-0001 + FLASH-0003 evidence base; ZD-001/002/003 still pending C3PO migration

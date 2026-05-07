@@ -1,0 +1,236 @@
+# threats/threat-actors/MuddyWater/threat-box.yaml
+#
+# Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
+# Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
+#
+# STATUS: TEMPLATE ONLY — initial scoring DEFERRED.
+#
+# Per operator direction (2026-05-06 Mode-1 scaffold), the threat-box-scoring
+# skill was NOT invoked at dossier creation. Rationale: MuddyWater is an
+# active Iranian APT (MOIS) with US-pivot 2026 campaign per Rapid7 2026-05-06.
+# The campaign carries TWO STACKED CONFIDENCE CONSTRAINTS:
+#   1. Single-source veto (Rapid7 alone is originating; relays are non-independent)
+#   2. Vendor-self-rated moderate confidence (Rapid7's own attribution ceiling)
+#
+# Plus: a 72-hour auto-downgrade clock is registered (~2026-05-09 12:00 EDT).
+# If by that time no second A/B-grade vendor corroborates, no first-party
+# Splunk hit lands, and no CISA/FBI advisory picks up, the source finding
+# auto-downgrades to C3 "possibly true" per RETRACTION-POLICY.
+#
+# A first-pass scoring is more sensitive to the resolution of the auto-downgrade
+# clock than the other two actors in the 2026-05-06 batch (UNC1549, Charming
+# Kitten). Likely scoring outcome: HIGH overall (especially if the source
+# finding survives the 72h test), which triggers Hard Rule 5 (/approve-scoring).
+# Leaving this template empty defers the scoring decision to a deliberate
+# /update-tracking pass (after the 72h clock resolves) with the human gate
+# intact.
+#
+# CRITICAL SCORING DISCIPLINE (carried forward from finding-2026-05-06-FLASH-0002
+# red-team review specific revisions):
+#   - Espionage Intent must be scored against Rapid7's NAMED victim ecosystem
+#     (US construction / manufacturing / business services). NO defense primes
+#     named. Do NOT extrapolate manufacturing into defense manufacturing.
+#   - Capability scoring should distinguish the espionage-shaped TTP-and-
+#     objective observation (more defensible) from the actor-specific cluster
+#     identification (moderate-confidence). Custom RAT investment (Game.exe /
+#     Darkcomp) supports state-tradecraft Capability regardless of which
+#     specific Iranian cluster is involved.
+#   - The contrarian ACH places H2 (different MOIS-linked cluster) and H6
+#     (mixed-composition) at zero inconsistencies alongside H1 at one. H2 and
+#     H6 cannot be promoted as alternative actor attributions per Hard Rule 2;
+#     they surface as cluster-imprecision in Rapid7's moderate-confidence
+#     framing. Scoring construction must respect this.
+
+actor_id: "022"
+actor_name: "MuddyWater"
+also_tracked_as:
+  - Mango Sandstorm
+  - Static Kitten
+  - Mercury
+  - Seedworm
+  - Earth Vetala
+target_profile: "ad-prime-v1"
+status: pending_initial_scoring
+scored_at: null
+scored_by: null
+reviewed_by: null
+scoring_version: 0
+
+# ============================================================================
+# Score categories — TEMPLATE (all values null pending /update-tracking)
+# ============================================================================
+scores:
+  espionage:
+    intent:
+      score: null
+      label: null
+      willingness_modifier: null
+      evidence: null
+      sources: []
+    willingness:
+      modifier: null
+      label: null
+      evidence: null
+    capability:
+      score: null
+      label: null
+      novelty_modifier: null
+      evidence: null
+      sources: []
+    novelty:
+      modifier: null
+      label: null
+      evidence: null
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: |
+        No first-party MuddyWater observations as of 2026-05-06 (collector
+        queried -30d for the 4 IPv4 + 3 domain IOCs published by Rapid7;
+        zero hits. The 9 SHA256 hashes are not directly queryable against
+        current sourcetypes pending _master-index.yaml ingestion). Silent
+        Splunk is not disconfirming.
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+    scoring_note: |
+      Espionage Intent must be scored against Rapid7's NAMED victim ecosystem:
+      US construction, manufacturing, business services. NO defense primes
+      named. NO A&D watchlist entity named. The brief / dossier / scoring
+      must NOT extrapolate manufacturing into defense manufacturing without
+      source basis. The mechanism-portability A&D-relevance bridge (Microsoft
+      Teams + MFA device-add tradecraft) is a separate consideration handled
+      via Capability + Novelty modifiers, NOT via Intent inflation.
+
+  supply_chain:
+    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
+    willingness: { modifier: null, label: null, evidence: null }
+    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
+    novelty: { modifier: null, label: null, evidence: null }
+    ioc_corroboration: { observed: false, bonus_category: null, note: null }
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+    scoring_note: |
+      Historical MuddyWater pattern includes IT-service-provider compromise
+      as relay; consistent with broader Iranian-ecosystem T1199 Trusted
+      Relationship usage. Score against documented historical pattern, not
+      against 2026 supply-chain claims (none made by Rapid7).
+
+  destructive:
+    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
+    willingness: { modifier: null, label: null, evidence: null }
+    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
+    novelty: { modifier: null, label: null, evidence: null }
+    ioc_corroboration: { observed: false, bonus_category: null, note: null }
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+    scoring_note: |
+      The Chaos-ransomware-without-encryption tradecraft is FALSE-FLAG
+      THEATER per Rapid7, NOT genuine destructive intent. Score destructive
+      LOW. The 'data encrypted for impact' artifact category fired
+      (T1486 in TTPs) but per Rapid7's assessment was deployed for
+      espionage cover, not for actual data destruction. Do NOT inflate
+      destructive scoring on the basis of the false-flag artifacts.
+
+  disruptive:
+    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
+    willingness: { modifier: null, label: null, evidence: null }
+    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
+    novelty: { modifier: null, label: null, evidence: null }
+    ioc_corroboration: { observed: false, bonus_category: null, note: null }
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+
+  cyber_crime:
+    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
+    willingness: { modifier: null, label: null, evidence: null }
+    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
+    novelty: { modifier: null, label: null, evidence: null }
+    ioc_corroboration: { observed: false, bonus_category: null, note: null }
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+    scoring_note: |
+      MuddyWater is state-aligned MOIS espionage actor — not a financially-
+      motivated criminal cluster. Score cyber-crime LOW. The Chaos-
+      ransomware-without-encryption tradecraft does NOT make MuddyWater a
+      criminal actor; it makes it an espionage actor using criminal-shaped
+      cover. Mission profile remains intelligence collection per Rapid7
+      assessment.
+
+# ============================================================================
+# Overall — TEMPLATE
+# ============================================================================
+overall:
+  weighted_score: null
+  weights_used:
+    espionage: 0.35
+    supply_chain: 0.20
+    destructive: 0.15
+    disruptive: 0.15
+    cyber_crime: 0.15
+  threat_level: null
+  authority_level: null
+primary_threat_vector: null
+primary_threat_level: null
+
+confidence:
+  admiralty: null
+  notes: |
+    SCORING CONFIDENCE will be capped by source-finding constraints when
+    /update-tracking runs:
+      - Single-source veto on Rapid7 attribution (likely persists at
+        scoring time unless a second A/B-grade vendor corroborates by
+        ~2026-05-09 12:00 EDT)
+      - Rapid7 self-rated moderate confidence on the cluster identification
+      - 72-hour auto-downgrade clock pending
+    Confidence in scoring construction will track confidence in the source
+    finding at scoring time. If the source finding auto-downgrades to C3
+    by /update-tracking time, scoring narratives must reflect that downgrade.
+
+# ============================================================================
+# Review policy
+# ============================================================================
+review_policy:
+  interval_days: 90
+  last_reviewed: 2026-05-06
+  next_review_due: 2026-08-04
+  review_triggers:
+    - new_attribution_from_a_source        # second A/B-grade vendor confirming = lifts single-source veto
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation          # first-party Splunk hit on any of the 19 IOCs once ingested
+    - retraction_policy_trigger            # 72h auto-downgrade if no corroboration
+
+# ============================================================================
+# History
+# ============================================================================
+history:
+  - scored_at: 2026-05-06
+    scorer: actor-profiler
+    change: template_scaffolded
+    note: |
+      Mode-1 dossier scaffold per operator direction 2026-05-06. Threat-box-
+      scoring skill NOT invoked. Initial scoring deferred to a deliberate
+      /update-tracking pass after the 72-hour auto-downgrade clock resolves
+      (~2026-05-09 12:00 EDT). Two stacked confidence constraints noted:
+      single-source veto + vendor-moderate-confidence. Critical scoring
+      discipline carried forward from red-team specific revisions: do NOT
+      extrapolate Rapid7's named victim sectors (US construction /
+      manufacturing / business services) to A&D primes; do NOT inflate
+      destructive on the basis of false-flag Chaos artifacts; do NOT
+      inflate cyber-crime on the basis of the Chaos-shaped cover.

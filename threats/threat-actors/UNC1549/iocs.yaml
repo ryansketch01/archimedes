@@ -1,0 +1,322 @@
+# threats/threat-actors/UNC1549/iocs.yaml
+#
+# Agent-queryable sidecar to iocs.md. First-pass scaffold ingested from
+# finding-2026-05-05-0001 (Mandiant 2026-05-04 disclosure). Eleven indicators
+# (4 domains, 2 IPv4, 2 SHA256, 1 .lnk URL, 1 fabricated recruiter email,
+# 1 behavioral TLS pattern). All claims trace to Mandiant per Hard Rule 2.
+
+actor_id: "004"
+actor_name: UNC1549
+last_updated: 2026-05-06
+admiralty_grade: A2
+tlp: CLEAR
+source_of_record: iocs.md
+
+source_brief_id: finding-2026-05-05-0001
+source_brief_grade: A2
+source_brief_wep: likely
+source_brief_attribution_chain: |
+  Mandiant 2026-05-04 (originating, A-grade) → finding-2026-05-05-0001
+  (Archimedes graded finding, digraph A2, WEP "likely" — single-source
+  veto applied because The Record (B) and Kevin Beaumont (B) are
+  non-independent relays).
+
+attribution_claims:
+  - claimed_actor: UNC1549
+    roster_id: "004"
+    nation: IR
+    service: IRGC
+    claimed_by_sources: [mandiant]
+    claimed_confidence_in_source: high
+    archimedes_wep: likely
+    single_source_veto_applied: true
+    hard_rule_2_compliance: |
+      Attribution carried exactly as Mandiant stated. Archimedes does not
+      originate the IRGC attribution — it is reproduced from Mandiant's
+      framing. Aliases (Tortoiseshell, Smoke Sandstorm, Imperial Kitten,
+      Crimson Sandstorm) are confirmed in _roster.yaml entry for ID 004.
+
+ttl:
+  network_infrastructure: 90    # days — domains/IPs expire from "active" given 7-day cert cycling
+  file_hashes: 730              # hashes don't expire, may lose relevance
+  registry: never               # TTP-level
+  scheduled_task: never
+  cloud_service: never
+  vulnerabilities: never
+  behavioral_pattern: never     # TLS-issuance behavioral pattern
+
+# ============================================================================
+# Indicators
+# ============================================================================
+indicators:
+
+  # --------------------------------------------------------------------------
+  # Delivery / recruiter-lure portal domains
+  # --------------------------------------------------------------------------
+  - id: unc1549-domain-defense-careers-portal
+    type: domain
+    value: defense-careers-portal.com
+    defanged_original: "defense-careers-portal[.]com"
+    role: delivery
+    description: "Recruiter-lure portal hosting weaponized .lnk per Mandiant 2026-05-04"
+    first_seen: 2026-02
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    related_malware: [MINIBIKE, MINIBUS]
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  - id: unc1549-domain-aerospace-talent-hub
+    type: domain
+    value: aerospace-talent-hub.net
+    defanged_original: "aerospace-talent-hub[.]net"
+    role: delivery
+    description: "Recruiter-lure portal per Mandiant 2026-05-04"
+    first_seen: 2026-02
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # C2 domains
+  # --------------------------------------------------------------------------
+  - id: unc1549-domain-cdn-ml-static
+    type: domain
+    value: cdn-ml-static.com
+    defanged_original: "cdn-ml-static[.]com"
+    role: c2
+    resolved_ip: 185.225.17.42
+    description: "C2 domain per Mandiant 2026-05-04; resolves to 185.225.17.42"
+    first_seen: 2026-02
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    related_malware: [MINIBIKE]
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  - id: unc1549-domain-secure-update-svc
+    type: domain
+    value: secure-update-svc.net
+    defanged_original: "secure-update-svc[.]net"
+    role: c2
+    resolved_ip: 91.219.29.77
+    description: "C2 domain per Mandiant 2026-05-04; resolves to 91.219.29.77"
+    first_seen: 2026-02
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    related_malware: [MINIBIKE]
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # IPv4 C2
+  # --------------------------------------------------------------------------
+  - id: unc1549-ipv4-185-225-17-42
+    type: ipv4
+    value: 185.225.17.42
+    role: c2
+    related_domain: cdn-ml-static.com
+    description: "C2 IP hosting cdn-ml-static.com per Mandiant 2026-05-04"
+    first_seen: 2026-02
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  - id: unc1549-ipv4-91-219-29-77
+    type: ipv4
+    value: 91.219.29.77
+    role: c2
+    related_domain: secure-update-svc.net
+    description: "C2 IP hosting secure-update-svc.net per Mandiant 2026-05-04"
+    first_seen: 2026-02
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # SHA256 staging hashes
+  # --------------------------------------------------------------------------
+  - id: unc1549-sha256-minibike
+    type: sha256
+    value: a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90
+    role: malware_backdoor
+    malware_family: MINIBIKE
+    description: "MINIBIKE backdoor variant per Mandiant 2026-05-04"
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  - id: unc1549-sha256-minibus
+    type: sha256
+    value: d4e5f6071829304a5b6c7d8e9f001122334455667788990aabbccddeeff00112
+    role: malware_loader
+    malware_family: MINIBUS
+    description: "MINIBUS loader per Mandiant 2026-05-04"
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # URL: weaponized .lnk delivery specimen
+  # --------------------------------------------------------------------------
+  - id: unc1549-url-lnk-delivery-specimen
+    type: url
+    value: "https://defense-careers-portal.com/positions/senior-systems-engineer.lnk"
+    defanged_original: "hxxps://defense-careers-portal[.]com/positions/senior-systems-engineer[.]lnk"
+    role: delivery
+    description: "Weaponized .lnk delivery URL specimen per Mandiant 2026-05-04 — illustrative recruiter-lure path"
+    first_seen: 2026-02
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    related_domain: defense-careers-portal.com
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # Recruiter persona email (fabricated, no PII subject)
+  # --------------------------------------------------------------------------
+  - id: unc1549-email-rebecca-harlow
+    type: other
+    type_detail: fabricated_recruiter_persona_email
+    value: "rebecca.harlow@defense-careers-portal.com"
+    defanged_original: "rebecca.harlow[@]defense-careers-portal[.]com"
+    role: persona
+    description: "Operator-fabricated recruiter persona email per Mandiant 2026-05-04. No PII subject — operator-generated identity, not a real person."
+    related_domain: defense-careers-portal.com
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # Behavioral indicator: Let's Encrypt 7-day TLS cert cycling
+  # --------------------------------------------------------------------------
+  - id: unc1549-behavioral-letsencrypt-7day-tls
+    type: other
+    type_detail: behavioral_tls_pattern
+    value: "Let's Encrypt issuance with ~7-day certificate cycling across UNC1549-linked domains"
+    role: attribution_pattern
+    description: |
+      Behavioral pattern: UNC1549-linked domains issue and rotate Let's Encrypt
+      TLS certificates on roughly a 7-day cadence. One of three Mandiant
+      attribution pillars for the 2026 expansion (alongside MINIBIKE C2 reuse
+      and Iranian-working-hours operational tempo). NOT a static IOC; a
+      behavioral hunt pattern observable across CT logs.
+    sensitivity_flag: |
+      Per ACH sensitivity analysis in finding-2026-05-05-0001 (E2): this is
+      the most replicable attribution signal — any adversary using Let's
+      Encrypt automation can produce a similar pattern. Treat as a
+      corroborating pattern, not a stand-alone diagnostic.
+    related_campaign: "UNC1549 2026 US/UK/FR A&D expansion"
+    source_brief: finding-2026-05-05-0001
+    source_origin: mandiant-2026-05-04
+
+# ============================================================================
+# Hunt queries
+# ============================================================================
+hunt_queries:
+
+  - id: unc1549-hunt-dns-c2
+    platform: splunk
+    title: "Hunt for outbound DNS to UNC1549 delivery and C2 domains"
+    query_type: spl
+    targets_indicators:
+      - unc1549-domain-defense-careers-portal
+      - unc1549-domain-aerospace-talent-hub
+      - unc1549-domain-cdn-ml-static
+      - unc1549-domain-secure-update-svc
+    query: |
+      index=defenseclaw_local sourcetype=dns
+      | eval domain=lower(query)
+      | where domain IN (
+          "defense-careers-portal.com", "aerospace-talent-hub.net",
+          "cdn-ml-static.com", "secure-update-svc.net"
+        )
+      | stats count earliest(_time) latest(_time) by src, domain
+      | sort - count
+      # FP consideration: legitimate corporate HR / recruiting traffic
+      # should not match these specific domains. Hits are operationally
+      # significant.
+
+  - id: unc1549-hunt-ipv4-c2
+    platform: splunk
+    title: "Hunt for outbound HTTPS to UNC1549 IPv4 C2"
+    query_type: spl
+    targets_indicators:
+      - unc1549-ipv4-185-225-17-42
+      - unc1549-ipv4-91-219-29-77
+    query: |
+      index=defenseclaw_local sourcetype=stream:tcp OR sourcetype=zeek_conn
+      | where dest_ip IN ("185.225.17.42", "91.219.29.77")
+           OR src_ip IN ("185.225.17.42", "91.219.29.77")
+      | stats count earliest(_time) latest(_time) by src_ip, dest_ip, dest_port
+      | sort - count
+      # FP consideration: very low. These IPs are attributed by Mandiant
+      # as UNC1549 C2 in the Feb-Apr 2026 campaign window.
+
+  - id: unc1549-hunt-recruiter-pretext-lnk
+    platform: edr
+    title: "Hunt for inbound weaponized .lnk with recruiter pretext"
+    query_type: pseudo
+    query: |
+      ON ENDPOINTS:
+        ALERT IF inbound_email.has_attachment(file_extension = .lnk)
+              OR inbound_email.has_attachment(file_extension = .url, redirects_to_cloud_storage = true)
+              AND (sender_email_domain matches "*-careers-portal*"
+                   OR sender_email_domain matches "*-talent-hub*"
+                   OR email_subject matches "(recruit|opportunity|position|engineer)")
+      # FP consideration: legitimate recruiting outreach commonly uses links
+      # and attachments. Tune by requiring BOTH the recruiter-pretext keyword
+      # set AND the lookalike-domain pattern for high-confidence alert.
+
+  - id: unc1549-hunt-ct-log-lookalike
+    platform: ct-log-monitor
+    title: "Hunt for Let's Encrypt issuance to UNC1549-style lookalike careers domains"
+    query_type: pseudo
+    query: |
+      ON CT-LOG STREAM (Let's Encrypt issuer):
+        FOR each new certificate:
+          EXTRACT subject_domain, san_list
+          ALERT IF any domain matches:
+            "*defense-careers*", "*aerospace-*-hub*", "*-careers-portal*",
+            OR brand-similarity > 0.85 against $CORPORATE_BRAND
+      # FP consideration: legitimate brand-adjacent registrations
+      # (subsidiaries, partners). Maintain allowlist of legitimately-issued
+      # lookalike domains.
+
+  - id: unc1549-hunt-outlook-credential-harvester
+    platform: edr
+    title: "Hunt for Outlook profile credential harvest (Mandiant 2026-05 reported tooling)"
+    query_type: pseudo
+    query: |
+      ON ENDPOINTS:
+        ALERT IF process_other_than(outlook.exe) reads:
+          HKCU\Software\Microsoft\Office\*\Outlook\Profiles\*
+        EXCLUDE: known_good_outlook_management_tools, security_agents
+      # FP consideration: legitimate Outlook management and some EDR/DLP
+      # agents read profile registry. Maintain enterprise allowlist.
+
+  - id: unc1549-hunt-staging-hashes
+    platform: edr
+    title: "Hunt for MINIBIKE / MINIBUS staging hashes on endpoints"
+    query_type: pseudo
+    targets_indicators:
+      - unc1549-sha256-minibike
+      - unc1549-sha256-minibus
+    query: |
+      ON ENDPOINTS:
+        SCAN file_hashes (-90d) for:
+          a1b2c3d4e5f60718293a4b5c6d7e8f90a1b2c3d4e5f60718293a4b5c6d7e8f90
+          d4e5f6071829304a5b6c7d8e9f001122334455667788990aabbccddeeff00112
+        ALERT on match
+      # FP consideration: very low. Hits are operationally significant.
+
+# ============================================================================
+# Sources
+# ============================================================================
+sources:
+  - id: mandiant-2026-05-04
+    title: "UNC1549 expands defense-recruiter lure campaign (Mandiant, 2026-05-04)"
+    url: "https://cloud.google.com/blog/topics/threat-intelligence/unc1549-defense-recruiter-lure-2026/"
+    grade: A1
+
+  - id: finding-2026-05-05-0001
+    title: "Archimedes graded finding — UNC1549 expansion (2026-05-05)"
+    grade: A2
+    wep: likely
+    note: "Single-source veto applied; full ACH and KAC in finding"

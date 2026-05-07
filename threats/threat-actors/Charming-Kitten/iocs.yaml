@@ -1,0 +1,340 @@
+# threats/threat-actors/Charming-Kitten/iocs.yaml
+#
+# Agent-queryable sidecar to iocs.md. First-pass scaffold ingested from
+# finding-2026-05-05-0002 (CrowdStrike + Microsoft MSTIC concurrent
+# 2026-05-04 publication). Six indicators (3 domains, 1 IPv4, 1 SHA256,
+# 1 OAuth-application behavioral indicator). All claims trace to cited
+# public sources per Hard Rule 2.
+
+actor_id: "011"
+actor_name: Charming Kitten
+also_tracked_as:
+  - Mint Sandstorm        # Microsoft taxonomy
+  - APT35                 # MITRE / Mandiant taxonomy
+  - Magic Hound           # CrowdStrike historical
+  - Phosphorus            # Microsoft former
+last_updated: 2026-05-06
+admiralty_grade: A1
+tlp: CLEAR
+source_of_record: iocs.md
+
+source_brief_id: finding-2026-05-05-0002
+source_brief_grade: A1
+source_brief_wep: very_likely
+source_brief_attribution_chain: |
+  CrowdStrike 2026-05-04 (originating, A-grade, Falcon-derived telemetry,
+  attributes to "Charming Kitten") + Microsoft MSTIC 2026-05-04 (originating,
+  A-grade, Defender + Entra-derived telemetry, attributes to "Mint Sandstorm")
+  → finding-2026-05-05-0002 (Archimedes graded finding, digraph A1, WEP
+  "very likely" — concurrent independent A-grade attribution; corroboration
+  test passes; single-source veto NOT applied).
+source_brief_red_team: |
+  red-team-analyst issued recommendation: qualify. Required briefer caveats
+  distinguish (a) attribution of named campaign to Charming Kitten / Mint
+  Sandstorm — solid at A1 / very likely — from (b) generalization of OAuth
+  consent-grant tradecraft to prime mailbox risk — forward-looking,
+  mechanism-based, NOT observed prime-direct. The behavioral OAuth indicator
+  below carries this distinction in its detection_scope field.
+
+attribution_claims:
+  - claimed_actor: Charming Kitten
+    roster_id: "011"
+    nation: IR
+    service: "IRGC-IO"
+    claimed_by_sources: [crowdstrike-2026-05-04]
+    claimed_confidence_in_source: high
+    archimedes_wep: very_likely
+    hard_rule_2_compliance: |
+      Attribution carried as CrowdStrike stated. Archimedes does not
+      originate the IRGC-IO attribution; it is reproduced from CrowdStrike's
+      framing.
+  - claimed_actor: Mint Sandstorm
+    roster_id: "011"
+    nation: IR
+    service: "IRGC-IO"
+    claimed_by_sources: [mstic-2026-05-04]
+    claimed_confidence_in_source: high
+    archimedes_wep: very_likely
+    alias_note: |
+      Charming Kitten ↔ Mint Sandstorm are confirmed aliases for cluster ID
+      011 per _roster.yaml. Both attributions resolve to the same cluster.
+
+ttl:
+  network_infrastructure: 90    # days
+  file_hashes: 730
+  oauth_application: never      # tradecraft pattern, not bounded by infrastructure rotation
+  registry: never
+  scheduled_task: never
+  cloud_service: never
+  vulnerabilities: never
+  behavioral_pattern: never
+
+# ============================================================================
+# Indicators
+# ============================================================================
+indicators:
+
+  # --------------------------------------------------------------------------
+  # OAuth phishing / credential-capture domains
+  # --------------------------------------------------------------------------
+  - id: charming-kitten-domain-login-microsoft365-secure
+    type: domain
+    value: login-microsoft365-secure.com
+    defanged_original: "login-microsoft365-secure[.]com"
+    role: oauth_phishing_landing
+    description: "OAuth phishing landing mimicking Microsoft 365 login per CrowdStrike + MSTIC 2026-05-04"
+    first_seen: 2026-02
+    related_campaign: "Charming Kitten Q2 2026 OAuth-consent campaign"
+    source_brief: finding-2026-05-05-0002
+    source_origin:
+      - crowdstrike-2026-05-04
+      - mstic-2026-05-04
+
+  - id: charming-kitten-domain-m365-policy-review
+    type: domain
+    value: m365-policy-review.org
+    defanged_original: "m365-policy-review[.]org"
+    role: oauth_phishing_landing
+    description: "OAuth phishing landing — paper-draft / policy-review pretext per CrowdStrike + MSTIC 2026-05-04"
+    first_seen: 2026-02
+    related_campaign: "Charming Kitten Q2 2026 OAuth-consent campaign"
+    source_brief: finding-2026-05-05-0002
+    source_origin:
+      - crowdstrike-2026-05-04
+      - mstic-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # C2 domain (HYPERSCRAPE 2026 variant)
+  # --------------------------------------------------------------------------
+  - id: charming-kitten-domain-hyperscrape-update
+    type: domain
+    value: hyperscrape-update.net
+    defanged_original: "hyperscrape-update[.]net"
+    role: c2
+    resolved_ip: 194.87.44.99
+    description: "HYPERSCRAPE 2026 variant C2 domain per CrowdStrike + MSTIC 2026-05-04"
+    first_seen: 2026-02
+    related_campaign: "Charming Kitten Q2 2026 OAuth-consent campaign"
+    related_malware: [HYPERSCRAPE]
+    source_brief: finding-2026-05-05-0002
+    source_origin:
+      - crowdstrike-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # IPv4 C2
+  # --------------------------------------------------------------------------
+  - id: charming-kitten-ipv4-194-87-44-99
+    type: ipv4
+    value: 194.87.44.99
+    role: c2
+    related_domain: hyperscrape-update.net
+    description: "C2 IP hosting hyperscrape-update.net per CrowdStrike + MSTIC 2026-05-04"
+    first_seen: 2026-02
+    related_campaign: "Charming Kitten Q2 2026 OAuth-consent campaign"
+    source_brief: finding-2026-05-05-0002
+    source_origin:
+      - crowdstrike-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # SHA256 staging
+  # --------------------------------------------------------------------------
+  - id: charming-kitten-sha256-hyperscrape-2026
+    type: sha256
+    value: 7a8b9c0d1e2f3041526374859607a1b2c3d4e5f60718293a4b5c6d7e8f9001122
+    role: malware_credential_exfil
+    malware_family: HYPERSCRAPE
+    description: |
+      HYPERSCRAPE 2026 variant — credential-and-mailbox exfiltration tool.
+      Originally documented by Mandiant 2022; first publicly-reported
+      update since that disclosure surfaces in CrowdStrike + MSTIC
+      2026-05-04 reporting.
+    related_campaign: "Charming Kitten Q2 2026 OAuth-consent campaign"
+    source_brief: finding-2026-05-05-0002
+    source_origin:
+      - crowdstrike-2026-05-04
+      - mstic-2026-05-04
+
+  # --------------------------------------------------------------------------
+  # OAuth application consent — behavioral indicator (T1528)
+  # --------------------------------------------------------------------------
+  # This is the most operationally consequential indicator class in the dossier.
+  - id: charming-kitten-behavioral-oauth-policy-review-tool
+    type: other
+    type_detail: oauth_application_consent
+    value: |
+      Attacker-controlled OAuth application — display name "Policy Review Tool"
+      requesting Mail.Read + Mail.ReadWrite scopes via Entra ID consent dialog.
+      Persistence survives password resets.
+    role: persistence
+    mitre_attack_technique: T1528
+    mitre_attack_url: "https://attack.mitre.org/techniques/T1528/"
+    description: |
+      Attacker registers an Entra ID application with deceptive display name
+      ("Policy Review Tool" observed) and requests delegated Mail.Read +
+      Mail.ReadWrite permission scopes. Targets click through OAuth consent
+      dialog; application receives access tokens for the user's mailbox.
+      Persistence survives password resets — the tradecraft is the
+      operationally consequential 2026 delta from prior credential-phishing-
+      only operations.
+    detection_scope: |
+      MECHANISM-LEVEL — NOT actor-specific. The OAuth consent-grant tradecraft
+      is platform-generic. Hunt for unauthorized consent-to-application events
+      with high-risk Mail scopes regardless of which actor is currently
+      executing the technique. The "Policy Review Tool" display name is the
+      observed-2026 specific instance; future variants will use different
+      deceptive display names.
+    detection_artifacts:
+      - "Add service principal events for unfamiliar publishers"
+      - "Consent to application events with Mail.Read or Mail.ReadWrite scopes outside admin-consent flow"
+      - "New OAuth applications with policy-review / paper-draft / research-collaboration framing in display name"
+      - "High-risk scope grants from non-admin users"
+    related_campaign: "Charming Kitten Q2 2026 OAuth-consent campaign"
+    red_team_distinction: |
+      Red-team review on finding-2026-05-05-0002 issued required briefer
+      caveats. The OAuth tradecraft is FORWARD-LOOKING / MECHANISM-BASED
+      A&D risk — NOT observed prime-direct activity. Vendors named
+      think-tank, academic, journalist victims; no defense primes named
+      as victims. Brief / dossier consumers must keep this distinction
+      explicit.
+    source_brief: finding-2026-05-05-0002
+    source_origin:
+      - mstic-2026-05-04
+
+# ============================================================================
+# Hunt queries
+# ============================================================================
+hunt_queries:
+
+  - id: charming-kitten-hunt-entra-consent-mail-scopes
+    platform: m365
+    title: "Hunt for Entra ID consent-to-application events with high-risk Mail scopes"
+    query_type: kql
+    targets_indicators:
+      - charming-kitten-behavioral-oauth-policy-review-tool
+    priority: highest
+    note: |
+      This is the highest-priority hunt for any A&D prime estate per the red-team
+      qualify directive in finding-2026-05-05-0002. The hunt is mechanism-level,
+      not actor-specific.
+    query: |
+      AuditLogs
+      | where TimeGenerated > ago(90d)
+      | where OperationName in ("Consent to application", "Add app role assignment grant to user")
+      | extend ConsentScopes = tostring(parse_json(tostring(TargetResources[0].modifiedProperties))[0].newValue)
+      | where ConsentScopes has_any ("Mail.Read", "Mail.ReadWrite", "Mail.Send", "Mail.ReadWrite.All")
+      | where Result == "success"
+      | project TimeGenerated, OperationName, InitiatedBy, TargetResources, ConsentScopes
+      | order by TimeGenerated desc
+      // FP consideration: legitimate enterprise applications (Outlook mobile,
+      // third-party email clients, productivity suites) consent to Mail scopes
+      // routinely. Tune by allowlisting verified enterprise OAuth apps; alert
+      // on consent grants to applications NOT in the enterprise allowlist.
+
+  - id: charming-kitten-hunt-deceptive-oauth-app-registrations
+    platform: m365
+    title: "Hunt for new OAuth application registrations with deceptive display names"
+    query_type: kql
+    targets_indicators:
+      - charming-kitten-behavioral-oauth-policy-review-tool
+    query: |
+      AuditLogs
+      | where TimeGenerated > ago(90d)
+      | where OperationName in ("Add service principal", "Add application")
+      | extend AppDisplayName = tostring(TargetResources[0].displayName)
+      | where AppDisplayName has_any (
+          "Policy Review", "Research Tool", "Paper Review",
+          "Conference Tool", "Academic", "Collaboration",
+          "Document Review"
+        )
+      | project TimeGenerated, OperationName, AppDisplayName, InitiatedBy, TargetResources
+      // FP consideration: legitimate enterprise tooling may match these substrings.
+      // Triage seed, not high-confidence alert. Pair with consent-event correlation.
+
+  - id: charming-kitten-hunt-dns-c2
+    platform: splunk
+    title: "Hunt for outbound DNS to Charming Kitten OAuth phishing and HYPERSCRAPE C2 domains"
+    query_type: spl
+    targets_indicators:
+      - charming-kitten-domain-login-microsoft365-secure
+      - charming-kitten-domain-m365-policy-review
+      - charming-kitten-domain-hyperscrape-update
+    query: |
+      index=defenseclaw_local sourcetype=dns
+      | eval domain=lower(query)
+      | where domain IN (
+          "login-microsoft365-secure.com",
+          "m365-policy-review.org",
+          "hyperscrape-update.net"
+        )
+      | stats count earliest(_time) latest(_time) by src, domain
+      | sort - count
+      # FP consideration: very low. Hits are operationally significant.
+
+  - id: charming-kitten-hunt-ipv4-c2
+    platform: splunk
+    title: "Hunt for outbound HTTPS to Charming Kitten C2 IPv4"
+    query_type: spl
+    targets_indicators:
+      - charming-kitten-ipv4-194-87-44-99
+    query: |
+      index=defenseclaw_local sourcetype=stream:tcp OR sourcetype=zeek_conn
+      | where dest_ip = "194.87.44.99" OR src_ip = "194.87.44.99"
+      | stats count earliest(_time) latest(_time) by src_ip, dest_ip, dest_port
+      | sort - count
+      # FP consideration: very low. Hits are operationally significant.
+
+  - id: charming-kitten-hunt-hyperscrape-hash
+    platform: edr
+    title: "Hunt for HYPERSCRAPE 2026 variant staging hash"
+    query_type: pseudo
+    targets_indicators:
+      - charming-kitten-sha256-hyperscrape-2026
+    query: |
+      ON ENDPOINTS:
+        SCAN file_hashes (-90d) for:
+          7a8b9c0d1e2f3041526374859607a1b2c3d4e5f60718293a4b5c6d7e8f9001122
+        ALERT on match
+      # FP consideration: very low. Hits are operationally significant.
+
+  - id: charming-kitten-conditional-access-posture-audit
+    platform: m365
+    title: "Posture audit — Conditional Access enforcement for high-risk OAuth scopes"
+    query_type: pseudo
+    note: "Preventive posture audit, not a detection hunt. Pair with consent-event hunt."
+    query: |
+      QUERY Entra Conditional Access:
+        CHECK whether policy enforces "Block consent from unverified publishers"
+        CHECK whether admin-consent is required for Mail.Read / Mail.ReadWrite scopes
+        CHECK whether MFA is required for OAuth consent flows
+        ALERT IF any of the above is NOT enforced
+
+# ============================================================================
+# Sources
+# ============================================================================
+sources:
+  - id: crowdstrike-2026-05-04
+    title: "Charming Kitten think-tank credential harvest 2026 Q2 (CrowdStrike, 2026-05-04)"
+    url: "https://www.crowdstrike.com/blog/charming-kitten-thinktank-credential-harvest-2026-q2/"
+    grade: A1
+
+  - id: mstic-2026-05-04
+    title: "Mint Sandstorm Q2 2026 credential harvest (Microsoft MSTIC, 2026-05-04)"
+    url: "https://www.microsoft.com/en-us/security/blog/2026/05/mint-sandstorm-q2-2026-credential-harvest/"
+    grade: A1
+
+  - id: mandiant-hyperscrape-2022
+    title: "HYPERSCRAPE original disclosure (Mandiant, 2022)"
+    url: "https://cloud.google.com/blog/topics/threat-intelligence/"
+    grade: A1
+    note: "Specific 2022 post URL via Mandiant blog index"
+
+  - id: mitre-t1528
+    title: "MITRE ATT&CK T1528 — Steal Application Access Token"
+    url: "https://attack.mitre.org/techniques/T1528/"
+    grade: A1
+
+  - id: finding-2026-05-05-0002
+    title: "Archimedes graded finding — Charming Kitten / Mint Sandstorm Q2 2026 (2026-05-05)"
+    grade: A1
+    wep: very_likely
+    note: "Independent corroboration test passes; red-team review qualify with required briefer caveats"

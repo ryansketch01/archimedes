@@ -1,0 +1,179 @@
+# threats/threat-actors/Charming-Kitten/threat-box.yaml
+#
+# Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
+# Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
+#
+# STATUS: TEMPLATE ONLY — initial scoring DEFERRED.
+#
+# Per operator direction (2026-05-06 Mode-1 scaffold), the threat-box-scoring
+# skill was NOT invoked at dossier creation. Rationale: Charming Kitten is an
+# active Iranian APT (IRGC-IO) with concurrent A1 attribution corroboration in
+# the 2026-05-04 reporting and platform-portable OAuth consent-grant tradecraft.
+# Likely to score HIGH overall. HIGH triggers Hard Rule 5 (/approve-scoring
+# gate). Leaving this template empty defers the scoring decision to a
+# deliberate /update-tracking pass with the human gate intact rather than
+# auto-running scoring at scaffold time.
+#
+# Note: the red-team `qualify` directive on finding-2026-05-05-0002 carries
+# forward into scoring construction. The OAuth tradecraft is mechanism-level
+# A&D risk, not observed prime-direct activity. Espionage Intent should be
+# scored against the named victim ecosystem (think tanks, researchers,
+# journalists), NOT extrapolated to A&D primes — that distinction is
+# load-bearing for any defensible scoring.
+
+actor_id: "011"
+actor_name: "Charming Kitten"
+also_tracked_as:
+  - Mint Sandstorm
+  - APT35
+  - Magic Hound
+  - Phosphorus
+target_profile: "ad-prime-v1"
+status: pending_initial_scoring
+scored_at: null
+scored_by: null
+reviewed_by: null
+scoring_version: 0
+
+# ============================================================================
+# Score categories — TEMPLATE (all values null pending /update-tracking)
+# ============================================================================
+scores:
+  espionage:
+    intent:
+      score: null
+      label: null
+      willingness_modifier: null
+      evidence: null
+      sources: []
+    willingness:
+      modifier: null
+      label: null
+      evidence: null
+    capability:
+      score: null
+      label: null
+      novelty_modifier: null
+      evidence: null
+      sources: []
+    novelty:
+      modifier: null
+      label: null
+      evidence: null
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party Charming Kitten infrastructure observations as of 2026-05-06 (collector queried -30d for the six CrowdStrike + MSTIC IOCs; zero hits)."
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+    scoring_note: |
+      Espionage Intent must be scored against named victim ecosystem (defense-
+      policy think tanks, Iran-nuclear researchers, MENA security journalists)
+      per CrowdStrike + MSTIC 2026-05-04. No defense primes named as victims.
+      The OAuth consent-grant tradecraft generalization to prime mailboxes is
+      forward-looking, mechanism-based, NOT observed — per red-team qualify
+      directive. Do NOT extrapolate think-tank Intent into A&D-direct Intent
+      without source basis.
+
+  supply_chain:
+    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
+    willingness: { modifier: null, label: null, evidence: null }
+    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
+    novelty: { modifier: null, label: null, evidence: null }
+    ioc_corroboration: { observed: false, bonus_category: null, note: null }
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+
+  destructive:
+    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
+    willingness: { modifier: null, label: null, evidence: null }
+    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
+    novelty: { modifier: null, label: null, evidence: null }
+    ioc_corroboration: { observed: false, bonus_category: null, note: null }
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+
+  disruptive:
+    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
+    willingness: { modifier: null, label: null, evidence: null }
+    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
+    novelty: { modifier: null, label: null, evidence: null }
+    ioc_corroboration: { observed: false, bonus_category: null, note: null }
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+
+  cyber_crime:
+    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
+    willingness: { modifier: null, label: null, evidence: null }
+    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
+    novelty: { modifier: null, label: null, evidence: null }
+    ioc_corroboration: { observed: false, bonus_category: null, note: null }
+    final_intent: null
+    final_capability: null
+    composite: null
+    threat_level: null
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Overall — TEMPLATE
+# ============================================================================
+overall:
+  weighted_score: null
+  weights_used:
+    espionage: 0.35
+    supply_chain: 0.20
+    destructive: 0.15
+    disruptive: 0.15
+    cyber_crime: 0.15
+  threat_level: null
+  authority_level: null
+primary_threat_vector: null
+primary_threat_level: null
+
+confidence:
+  admiralty: null
+  notes: null
+
+# ============================================================================
+# Review policy
+# ============================================================================
+review_policy:
+  interval_days: 90
+  last_reviewed: 2026-05-06
+  next_review_due: 2026-08-04
+  review_triggers:
+    - new_attribution_from_a_source
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation
+
+# ============================================================================
+# History
+# ============================================================================
+history:
+  - scored_at: 2026-05-06
+    scorer: actor-profiler
+    change: template_scaffolded
+    note: |
+      Mode-1 dossier scaffold per operator direction 2026-05-06. Threat-box-
+      scoring skill NOT invoked. Initial scoring deferred to a deliberate
+      /update-tracking pass to preserve the Hard Rule 5 /approve-scoring gate
+      should HIGH overall be computed (likely outcome given active 2026
+      campaign with concurrent A1 attribution and platform-portable OAuth
+      tradecraft per finding-2026-05-05-0002). Red-team qualify directive
+      from the source finding propagates into scoring construction:
+      espionage Intent must NOT extrapolate think-tank victims into A&D-
+      direct targeting.

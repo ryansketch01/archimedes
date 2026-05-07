@@ -14,8 +14,8 @@
 #   4. First-pass profile within 7 days
 #   5. Threat-box scoring within 14 days (human sign-off for HIGH)
 
-version: 1
-last_updated: 2026-05-01
+version: 2
+last_updated: 2026-05-06
 source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
 
 actors:
@@ -68,8 +68,9 @@ actors:
     threat_level: HIGH
     tracked_since: 2026-04-02
     dossier: threats/threat-actors/UNC1549/
-    last_reviewed: 2026-04-02
-    next_review_due: 2026-07-01
+    last_reviewed: 2026-05-06
+    next_review_due: 2026-08-04
+    note: "First-pass profile created 2026-05-06 from finding-2026-05-05-0001 (Mandiant 2026-05-04 expansion disclosure). Threat-box scoring is TEMPLATE pending /update-tracking pass."
 
   - id: "005"
     primary_name: "GlassWorm"
@@ -177,8 +178,10 @@ actors:
     threat_level: HIGH
     tracked_since: 2026-04-08
     dossier: threats/threat-actors/Charming-Kitten/
-    last_reviewed: 2026-04-08
-    next_review_due: 2026-07-07
+    last_reviewed: 2026-05-06
+    next_review_due: 2026-08-04
+    mitre_attack_id: G0059
+    note: "First-pass profile created 2026-05-06 from finding-2026-05-05-0002 (CrowdStrike + MSTIC concurrent A1 attribution). Threat-box scoring is TEMPLATE pending /update-tracking pass. Red-team qualify directive on prime-tradecraft-portability vs observed-prime-targeting carried into dossier."
 
   - id: "012"
     primary_name: "Miyako"
@@ -318,17 +321,18 @@ actors:
 
   - id: "022"
     primary_name: "MuddyWater"
-    aliases: [Mango Sandstorm, Static Kitten, Mercury, Seedworm, Earth Vetala, TEMP.Zagros, Boggy Serpens]
+    aliases: [Mango Sandstorm, Static Kitten, Mercury, MERCURY, Seedworm, Earth Vetala, TEMP.Zagros, Boggy Serpens]
     attribution:
       nation: IR
       service: MOIS
     type: "Nation-State APT"
     threat_level: HIGH
-    tracked_since: null
+    tracked_since: 2026-05-06
     dossier: threats/threat-actors/MuddyWater/
-    last_reviewed: null
-    next_review_due: 2026-04-25
-    note: "Profile pending"
+    last_reviewed: 2026-05-06
+    next_review_due: 2026-08-04
+    mitre_attack_id: G0069
+    note: "First-pass profile created 2026-05-06 from finding-2026-05-06-FLASH-0002 (Rapid7 single-source veto, WEP likely, red-team qualify, 72h auto-downgrade clock ~2026-05-09 12:00 EDT). All 2026-campaign surfaces carry attribution caveat (Rapid7 moderate confidence) and are NOT promoted as MuddyWater-canonical pending second A/B-grade source. Threat-box scoring is TEMPLATE pending /update-tracking pass after 72h clock resolves."
 
   - id: "023"
     primary_name: "APT34"
@@ -371,6 +375,7 @@ _meta:
     KP: 2          # Stardust Chollima, Lazarus
     unknown: 7     # TeamPCP, GlassWorm, Miyako, Scattered Spider, BlackCat, Payouts King, (LockBit/Cl0p attributed RU)
   profiles_migrated: 1         # APT28 only at v1
-  profiles_pending: 5          # Handala, APT40, BlackCat, Payouts King, MuddyWater
-  profiles_first_pass: 1       # APT34 (Session 9 pre-work)
-  scoring_complete: 1          # APT34 first-pass scoring (initial). APT28 awaits methodology rerun.
+  profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King (MuddyWater no longer pending — first-pass 2026-05-06)
+  profiles_first_pass: 4       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch)
+  scoring_complete: 1          # APT34 first-pass scoring (initial). UNC1549, Charming Kitten, MuddyWater carry TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
+  scoring_template_only: 3     # UNC1549, Charming Kitten, MuddyWater — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.

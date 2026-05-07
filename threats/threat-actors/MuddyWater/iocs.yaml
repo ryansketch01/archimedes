@@ -1,0 +1,599 @@
+# threats/threat-actors/MuddyWater/iocs.yaml
+#
+# Agent-queryable sidecar to iocs.md. First-pass scaffold ingested from
+# finding-2026-05-06-FLASH-0002 (Rapid7 2026-05-06). 19 indicators total:
+# 9 SHA256, 3 domains, 4 IPv4, 1 onion, 1 code-signing certificate, plus
+# behavioral / mechanism-level indicators carried per actor-profiler standard.
+#
+# ATTRIBUTION CAVEAT: Every indicator below is sourced from Rapid7's "moderate
+# confidence" attribution. Single-source veto applies (SecurityWeek and
+# BleepingComputer are pure relays). Two confidence constraints stack:
+# vendor-self-rated moderate + single-source veto. 72-hour auto-downgrade
+# clock registered (~2026-05-09 12:00 EDT). Indicators are NOT promoted as
+# MuddyWater-canonical until a second A/B-grade vendor independently
+# corroborates.
+
+actor_id: "022"
+actor_name: MuddyWater
+also_tracked_as:
+  - Mango Sandstorm        # Microsoft taxonomy
+  - Static Kitten          # Anomali / older taxonomy
+  - Mercury                # Microsoft former
+  - Seedworm               # Symantec taxonomy
+  - Earth Vetala           # Trend Micro taxonomy
+  - TEMP.Zagros            # Mandiant historical
+  - Boggy Serpens          # Older taxonomy
+last_updated: 2026-05-06
+admiralty_grade: A2
+tlp: CLEAR
+source_of_record: iocs.md
+
+source_brief_id: finding-2026-05-06-FLASH-0002
+source_brief_grade: A2
+source_brief_wep: likely
+source_brief_attribution_chain: |
+  Rapid7 2026-05-06 (originating, A-grade provisional pending source-grades.yaml
+  ratification) → finding-2026-05-06-FLASH-0002 (Archimedes graded finding,
+  digraph A2, WEP "likely" — single-source veto applied because SecurityWeek
+  and BleepingComputer are non-independent relays). MOIS service affiliation
+  reproduces Rapid7's citation chain to US Government background attribution.
+source_brief_red_team: |
+  red-team-analyst issued recommendation: PUBLISH-WITH-CHANGES (qualify).
+  Required briefer caveats: distinguish (a) the espionage-shaped TTP-and-
+  objective observation (more defensible) from (b) the actor-specific cluster
+  identification (moderate-confidence claim); contrarian ACH places H2
+  (different MOIS-linked Iranian cluster) and H6 (mixed-composition) at zero
+  inconsistencies alongside H1 (MuddyWater specifically) at one inconsistency;
+  72-hour auto-downgrade clock registered (~2026-05-09 12:00 EDT).
+attribution_caveat_binding: |
+  Every campaign-2026 surface below is carried as "Rapid7 attributes ... at
+  moderate confidence." None are promoted as MuddyWater-canonical until a
+  second A/B-grade vendor (Mandiant, Unit 42, MSTIC, CrowdStrike, Recorded
+  Future, Volexity) independently confirms. Hunts driven from these
+  indicators are operationally appropriate; corpus-level absorption of these
+  surfaces as MuddyWater-canonical is not.
+
+attribution_claims:
+  - claimed_actor: MuddyWater
+    roster_id: "022"
+    nation: IR
+    service: MOIS
+    claimed_by_sources: [rapid7-2026-05-06]
+    claimed_confidence_in_source: moderate
+    archimedes_wep: likely
+    single_source_veto_applied: true
+    hard_rule_2_compliance: |
+      Attribution carried EXACTLY as Rapid7 stated ("moderate confidence in
+      attributing the incident to MuddyWater"). Archimedes does NOT originate
+      or strengthen the attribution. The MOIS service affiliation is reproduced
+      from Rapid7's framing (which itself cites US Government background
+      attribution).
+    contrarian_ach_alternatives_surfaced:
+      - "H2 — different MOIS-linked / MOIS-adjacent Iranian cluster sharing tooling and code-signing lineage (zero inconsistencies, ranked 1 in contrarian ACH)"
+      - "H6 — mixed-composition engagement with state-tradecraft and criminal Chaos-affiliate components both present (zero inconsistencies, ranked 2)"
+      - "H1 — MuddyWater specifically per Rapid7 (one inconsistency from Rapid7's own moderate-confidence self-rating, ranked 3)"
+    hard_rule_2_binding_on_alternatives: |
+      Contrarian ACH alternatives are surfaced as "Rapid7's attribution may be
+      cluster-imprecise" — NOT as Archimedes attributing to a different specific
+      actor. Hard Rule 2 binding preserved.
+
+ttl:
+  network_infrastructure: 90    # days
+  file_hashes: 730
+  registry: never
+  scheduled_task: never
+  cloud_service: never
+  vulnerabilities: never
+  code_signing_certificate: never  # Donald Gay / Amy Cherne lineage is long-running pattern
+  behavioral_pattern: never
+  onion_address: 365             # Tor hidden services have higher persistence than clearnet but still rotate
+
+# ============================================================================
+# Indicators
+# ============================================================================
+indicators:
+
+  # --------------------------------------------------------------------------
+  # Domains
+  # --------------------------------------------------------------------------
+  - id: muddywater-domain-moonzonet
+    type: domain
+    value: moonzonet.com
+    defanged_original: "moonzonet[.]com"
+    role: c2
+    description: "ms_upd.exe loader C2 per Rapid7 2026-05-06 (moderate confidence)"
+    first_seen: 2026
+    related_campaign: "MuddyWater Q2 2026 US campaign (Rapid7-attributed, moderate confidence)"
+    related_malware: [ms_upd.exe]
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-domain-uploadfiler
+    type: domain
+    value: uploadfiler.com
+    defanged_original: "uploadfiler[.]com"
+    role: c2
+    port: 443
+    description: "Game.exe / Darkcomp custom RAT C2 on port 443 per Rapid7 2026-05-06"
+    first_seen: 2026
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    related_malware: [Game.exe, Darkcomp]
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-domain-adm-pulse
+    type: domain
+    value: adm-pulse.com
+    defanged_original: "adm-pulse[.]com"
+    role: phishing
+    description: "Quick Assist phishing infrastructure per Rapid7 2026-05-06"
+    first_seen: 2026
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  # --------------------------------------------------------------------------
+  # IPv4 addresses
+  # --------------------------------------------------------------------------
+  - id: muddywater-ipv4-77-110-107-235
+    type: ipv4
+    value: 77.110.107.235
+    role: source_ip
+    description: "Microsoft Teams social engineering source IP per Rapid7 2026-05-06"
+    first_seen: 2026
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-ipv4-93-123-39-127
+    type: ipv4
+    value: 93.123.39.127
+    role: source_ip
+    description: "Microsoft Teams social engineering source IP per Rapid7 2026-05-06"
+    first_seen: 2026
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-ipv4-172-86-126-208
+    type: ipv4
+    value: 172.86.126.208
+    role: hosting
+    description: "ms_upd.exe hosting IP per Rapid7 2026-05-06"
+    first_seen: 2026
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    related_malware: [ms_upd.exe]
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-ipv4-116-203-208-186
+    type: ipv4
+    value: 116.203.208.186
+    role: contact
+    description: "pythonw.exe outbound contact IP per Rapid7 2026-05-06"
+    first_seen: 2026
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  # --------------------------------------------------------------------------
+  # Onion address (Chaos DLS facade)
+  # --------------------------------------------------------------------------
+  - id: muddywater-onion-chaos-dls-facade
+    type: other
+    type_detail: tor_onion_address
+    value: hptqq2o2qjva7lcaaq67w36jihzivkaitkexorauw7b2yul2z6zozpqd.onion
+    defanged_original: "hptqq2o2qjva7lcaaq67w36jihzivkaitkexorauw7b2yul2z6zozpqd[.]onion"
+    role: chaos_dls_facade
+    description: |
+      Chaos ransomware dedicated leak site (DLS) facade per Rapid7 2026-05-06.
+      Used as extortion theater — no actual victim leak per Rapid7. The
+      espionage-shaped reading is partially independent of the MuddyWater
+      attribution per red-team contrarian ACH.
+    first_seen: 2026
+    related_campaign: "MuddyWater Q2 2026 US campaign — Chaos false flag"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  # --------------------------------------------------------------------------
+  # SHA256 hashes — custom tooling
+  # --------------------------------------------------------------------------
+  - id: muddywater-sha256-game-exe
+    type: sha256
+    value: 1319d474d19eb386841732c728acf0c5fe64aa135101c6ceee1bd0369ecf97b6
+    filename: Game.exe
+    role: malware_custom_rat
+    malware_family: Darkcomp
+    description: |
+      Custom 12-command RAT (Rapid7 internal name: Darkcomp) masquerading as
+      Microsoft WebView2. C2 to uploadfiler[.]com on 443.
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-sha256-ms-upd-exe
+    type: sha256
+    value: 24857fe82f454719cd18bcbe19b0cfa5387bee1022008b7f5f3a8be9f05e4d14
+    filename: ms_upd.exe
+    role: malware_loader
+    description: "Loader; C2 to moonzonet[.]com per Rapid7 2026-05-06"
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-sha256-visualwincomp
+    type: sha256
+    value: c86ab27100f2a2939ac0d4a8af511f0a1a8116ba856100aae03bc2ad6cb0f1e0
+    filename: visualwincomp.txt
+    role: payload_or_config
+    description: "Payload or config artifact per Rapid7 2026-05-06"
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-sha256-webview2loader-dll
+    type: sha256
+    value: a47cd0dc12f0152d8f05b79e5c86bac9231f621db7b0e90a32f87b98b4e82f3a
+    filename: WebView2Loader.dll
+    role: dll_sideload
+    description: "DLL sideload component per Rapid7 2026-05-06"
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  # --------------------------------------------------------------------------
+  # SHA256 hashes — legitimate binaries repurposed / abused
+  # --------------------------------------------------------------------------
+  - id: muddywater-sha256-webview2-exe
+    type: sha256
+    value: 3df9dcc45d2a3b1f639e40d47eceeafb229f6d9e7f0adcd8f1731af1563ffb90
+    filename: WebView2.exe
+    role: legitimate_binary_repurposed
+    description: |
+      Legitimate Microsoft WebView2 binary repurposed by operator. Hash is
+      useful for retroactive endpoint hunt; do NOT block by hash — pair
+      hash match with parent-process / network anomaly.
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-sha256-dwagent-exe
+    type: sha256
+    value: cd098eddb23f2d2f6c42271ca82803b0d5ac950cb82a9b8ae0928e83945a53df
+    filename: dwagent.exe
+    role: legitimate_remote_access_tool
+    description: "DWAgent abused for persistence per Rapid7 2026-05-06. Pair hash match with anomalous behavior."
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-sha256-dwagsvc-exe
+    type: sha256
+    value: a3bac548b5bc91c526b4d6707623ddbd1a675aa952f0d1f9a0aa6f7230f09f23
+    filename: dwagsvc.exe
+    role: legitimate_remote_access_tool
+    description: "DWAgent service component per Rapid7 2026-05-06"
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-sha256-dwaglnc-exe
+    type: sha256
+    value: 86e0197389f0573eb83ff53991f337d416124c7c8bd727721ef3d396cd5f65d
+    filename: dwaglnc.exe
+    role: legitimate_remote_access_tool
+    description: "DWAgent component per Rapid7 2026-05-06"
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-sha256-anydesk-exe
+    type: sha256
+    value: bfc1675ee1e358db8356f515aaded7962923e426aa0a0a1c0eddfc4dab053f89
+    filename: AnyDesk.exe
+    role: legitimate_remote_access_tool
+    description: "AnyDesk abused for remote access per Rapid7 2026-05-06"
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  # --------------------------------------------------------------------------
+  # Code-signing certificate
+  # --------------------------------------------------------------------------
+  - id: muddywater-cert-donald-gay
+    type: other
+    type_detail: code_signing_certificate
+    value: "B674578D4BDB24CD58BF2DC884EAA658B7AA250C"
+    cert_subject: "Donald Gay"
+    cert_issuer: "Microsoft ID Verified CS AOC CA 02"
+    cert_status: "time-invalid (revoked shortly after deployment)"
+    role: malware_signing
+    description: |
+      "Donald Gay" code-signing certificate per Rapid7 2026-05-06. Long-running
+      MuddyWater code-signing pattern alongside "Amy Cherne" lineage on
+      Microsoft ID Verified CS AOC CA 02 issuer. Certs in this pattern are
+      typically time-invalid or revoked shortly post-deployment.
+    related_campaign: "MuddyWater Q2 2026 US campaign + historical Donald Gay / Amy Cherne lineage"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  # --------------------------------------------------------------------------
+  # Behavioral / mechanism-level indicators
+  # --------------------------------------------------------------------------
+  - id: muddywater-behavioral-teams-it-support-screenshare
+    type: other
+    type_detail: behavioral_social_engineering_pattern
+    value: "Microsoft Teams interactive screen-share with 'IT Support' persona for live credential harvest"
+    role: initial_access
+    mitre_attack_technique: T1566.003
+    related_attack_techniques: [T1056]
+    description: |
+      Operator engages target via Microsoft Teams meeting under "IT Support"
+      persona; uses interactive screen-share for live credential capture
+      during apparent troubleshooting session.
+    detection_scope: |
+      MECHANISM-LEVEL — NOT MuddyWater-specific. Documented in 2025-2026
+      reporting across multiple actors (Scattered Spider, Storm-1811, generic
+      IAB tradecraft). Hunt as mechanism-level surface regardless of attribution.
+    related_campaign: "MuddyWater Q2 2026 US campaign + multiple historical sources"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-behavioral-mfa-device-add-manipulation
+    type: other
+    type_detail: behavioral_persistence_pattern
+    value: "Attacker-controlled device added to victim MFA registration"
+    role: persistence
+    mitre_attack_technique: T1556.006
+    description: |
+      Operator harvests credentials, then adds attacker-controlled device to
+      the victim's MFA configuration to maintain persistence; surfaces in
+      Entra ID audit logs as 'Add registered device' / 'Update authentication
+      method' events.
+    detection_scope: |
+      MECHANISM-LEVEL — NOT MuddyWater-specific. Hunt as mechanism-level surface.
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-behavioral-pythonw-suspended-process-injection
+    type: other
+    type_detail: behavioral_injection_pattern
+    value: "pythonw.exe creates suspended child processes and injects code"
+    role: defense_evasion
+    mitre_attack_technique: T1055
+    description: |
+      Long-running MuddyWater pattern continued in 2026 reporting. pythonw.exe
+      (or other Python interpreters) creates suspended child processes and
+      writes memory to the suspended targets.
+    detection_scope: |
+      Behavioral — somewhat MuddyWater-associated historically but not unique.
+      Tune for production-fleet (non-developer) endpoints to avoid FP.
+    related_campaign: "MuddyWater Q2 2026 + multiple historical sources"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+  - id: muddywater-behavioral-chaos-false-flag-no-encryption
+    type: other
+    type_detail: behavioral_false_flag_pattern
+    value: "Chaos ransomware deployed without actual file encryption + fake DLS facade"
+    role: impact_theater
+    mitre_attack_technique: T1486
+    related_attack_techniques: [T1657]
+    description: |
+      Operationally striking 2026 pattern per Rapid7: Chaos-branded ransom note
+      and fake DLS onion address deployed without actual file encryption.
+      Espionage objectives (custom RAT, persistence, credential harvest, MFA
+      manipulation) wrapped in commodity-ransomware extortion theater.
+    detection_scope: |
+      ALERT TRIAGE DISCIPLINE — if a Chaos-branded ransom note appears in
+      environment without corresponding actual file encryption, treat as
+      espionage-with-cover until proven otherwise. The "no encryption"
+      outcome is not by itself diagnostic — it can also be implementation
+      failure or EDR-blocked encryption by a genuine criminal Chaos affiliate.
+      The combination with other state-tradecraft surfaces (custom RAT
+      investment, persistence, credential harvest, MFA manipulation) supports
+      the espionage reading. Espionage-shaped reading is partially independent
+      of the MuddyWater actor attribution per red-team contrarian ACH.
+    related_campaign: "MuddyWater Q2 2026 US campaign"
+    source_brief: finding-2026-05-06-FLASH-0002
+    source_origin: rapid7-2026-05-06
+
+# ============================================================================
+# Hunt queries
+# ============================================================================
+hunt_queries:
+
+  - id: muddywater-hunt-dns-c2
+    platform: splunk
+    title: "Hunt for outbound DNS to MuddyWater 2026 domains"
+    query_type: spl
+    targets_indicators:
+      - muddywater-domain-moonzonet
+      - muddywater-domain-uploadfiler
+      - muddywater-domain-adm-pulse
+    query: |
+      index=defenseclaw_local sourcetype=dns
+      | eval domain=lower(query)
+      | where domain IN (
+          "moonzonet.com",
+          "uploadfiler.com",
+          "adm-pulse.com"
+        )
+      | stats count earliest(_time) latest(_time) by src, domain
+      | sort - count
+      # FP consideration: very low. Hits are operationally significant.
+
+  - id: muddywater-hunt-ipv4-c2
+    platform: splunk
+    title: "Hunt for outbound to MuddyWater 2026 IPv4 IOCs"
+    query_type: spl
+    targets_indicators:
+      - muddywater-ipv4-77-110-107-235
+      - muddywater-ipv4-93-123-39-127
+      - muddywater-ipv4-172-86-126-208
+      - muddywater-ipv4-116-203-208-186
+    query: |
+      index=defenseclaw_local sourcetype=stream:tcp OR sourcetype=zeek_conn
+      | where dest_ip IN ("77.110.107.235", "93.123.39.127", "172.86.126.208", "116.203.208.186")
+           OR src_ip IN ("77.110.107.235", "93.123.39.127", "172.86.126.208", "116.203.208.186")
+      | stats count earliest(_time) latest(_time) by src_ip, dest_ip, dest_port
+      | sort - count
+      # FP consideration: very low. Hits are operationally significant.
+
+  - id: muddywater-hunt-teams-external-screenshare-mechanism
+    platform: m365
+    title: "Hunt for Teams meetings with screen-share initiated by external accounts (mechanism-level)"
+    query_type: kql
+    targets_indicators:
+      - muddywater-behavioral-teams-it-support-screenshare
+    note: "Mechanism-level hunt — applies regardless of attribution."
+    query: |
+      TeamsMeetings
+      | where TimeGenerated > ago(90d)
+      | where IsExternalParticipantPresent == true
+      | where ScreenShareDuration > 0
+      | where ExternalParticipantTenant !in (allowlisted_partner_tenants)
+      | project TimeGenerated, OrganizerUser, ExternalParticipantUser, ExternalParticipantTenant, ScreenShareDuration
+      | order by TimeGenerated desc
+      // FP consideration: legitimate external-partner Teams collaborations.
+      // Tune by maintaining an allowlist of partner tenants.
+
+  - id: muddywater-hunt-mfa-device-add-mechanism
+    platform: m365
+    title: "Hunt for MFA device-add events (mechanism-level)"
+    query_type: kql
+    targets_indicators:
+      - muddywater-behavioral-mfa-device-add-manipulation
+    note: "Mechanism-level hunt — applies regardless of attribution."
+    query: |
+      AuditLogs
+      | where TimeGenerated > ago(90d)
+      | where OperationName in ("Add registered device", "Update authentication method", "User registered security info")
+      | where InitiatedByActor != "Self-service password reset"
+      | project TimeGenerated, OperationName, InitiatedBy, TargetResources, Result
+      | order by TimeGenerated desc
+      // FP consideration: legitimate device adds during normal user lifecycle.
+      // Pair with sign-in anomaly correlation and recent password-reset signal.
+
+  - id: muddywater-hunt-pythonw-suspended-process
+    platform: edr
+    title: "Hunt for pythonw.exe creating suspended child processes (long-running MuddyWater pattern)"
+    query_type: pseudo
+    targets_indicators:
+      - muddywater-behavioral-pythonw-suspended-process-injection
+    query: |
+      ON ENDPOINTS:
+        ALERT IF process_name = "pythonw.exe" creates_child_process_with(creation_flag = CREATE_SUSPENDED)
+        AND child_process_memory_write_count > 0
+      # FP consideration: legitimate developer tooling can match. Tune for
+      # production endpoints (non-developer fleet); pair with parent-process
+      # / user-context correlation.
+
+  - id: muddywater-hunt-donald-gay-cert
+    platform: edr
+    title: "Hunt for Donald Gay code-signing certificate lineage on endpoints"
+    query_type: pseudo
+    targets_indicators:
+      - muddywater-cert-donald-gay
+    query: |
+      ON ENDPOINTS:
+        ENUMERATE binaries signed by Microsoft ID Verified CS AOC CA 02
+        ALERT IF cert.subject_name = "Donald Gay" OR cert.thumbprint = "B674578D4BDB24CD58BF2DC884EAA658B7AA250C"
+        ALERT IF cert.valid_window < 30 days AND cert.revoked = true
+      # FP consideration: legitimate developer-signed binaries with short
+      # cert validity; tune by issuing-CA + subject-pattern combination.
+
+  - id: muddywater-hunt-game-exe-webview2-masquerade
+    platform: edr
+    title: "Hunt for Game.exe / WebView2 masquerade pattern"
+    query_type: pseudo
+    targets_indicators:
+      - muddywater-sha256-game-exe
+      - muddywater-sha256-webview2loader-dll
+    query: |
+      ON ENDPOINTS:
+        ALERT IF binary_name = "Game.exe"
+             OR (binary_loads_module("WebView2Loader.dll")
+                 AND binary_path NOT IN known_microsoft_paths
+                 AND binary_outbound_connection_to_non_microsoft_destination = true)
+      # FP consideration: legitimate WebView2 use in non-standard paths;
+      # tune for outbound destination as the high-confidence pivot.
+
+  - id: muddywater-hunt-sha256-sweep
+    platform: edr
+    title: "Hunt for all 9 MuddyWater 2026 SHA256 hashes on endpoints"
+    query_type: pseudo
+    targets_indicators:
+      - muddywater-sha256-game-exe
+      - muddywater-sha256-ms-upd-exe
+      - muddywater-sha256-visualwincomp
+      - muddywater-sha256-webview2loader-dll
+      - muddywater-sha256-webview2-exe
+      - muddywater-sha256-dwagent-exe
+      - muddywater-sha256-dwagsvc-exe
+      - muddywater-sha256-dwaglnc-exe
+      - muddywater-sha256-anydesk-exe
+    query: |
+      ON ENDPOINTS:
+        SCAN file_hashes (-90d) for the 9 SHA256 hashes from MuddyWater Q2 2026 IOC set
+        ALERT on match
+      # FP consideration: legitimate-binary hashes (DWAgent, AnyDesk, WebView2)
+      # may match in legitimate use. Pair hash-match with parent-process /
+      # network anomaly correlation; do NOT treat hash-match alone as malicious
+      # for the legitimate-binary set.
+
+  - id: muddywater-hunt-onion-chaos-dls
+    platform: splunk
+    title: "Hunt for Chaos DLS facade onion address"
+    query_type: spl
+    targets_indicators:
+      - muddywater-onion-chaos-dls-facade
+    query: |
+      index=defenseclaw_local sourcetype=tor_logs OR sourcetype=proxy
+      | where url_or_query contains "hptqq2o2qjva7lcaaq67w36jihzivkaitkexorauw7b2yul2z6zozpqd"
+      | stats count earliest(_time) latest(_time) by src_ip
+      # FP consideration: very low. Hits are operationally significant.
+
+# ============================================================================
+# Sources
+# ============================================================================
+sources:
+  - id: rapid7-2026-05-06
+    title: "MuddyWater operation — Iranian APT intrusion masquerading as Chaos ransomware (Rapid7, 2026-05-06)"
+    url: "https://www.rapid7.com/blog/"
+    grade: A
+    grade_provisional: true
+    note: |
+      Provisional A pending source-grades.yaml ratification by librarian per
+      finding-2026-05-06-FLASH-0002 librarian handoff. Falls back to B if
+      human review downgrades — either tier qualifies the FLASH eligibility
+      threshold.
+
+  - id: securityweek-2026-05-06
+    title: "Iranian APT Intrusion Masquerades as Chaos Ransomware Attack (SecurityWeek, 2026-05-06)"
+    url: "https://www.securityweek.com/iranian-apt-intrusion-masquerades-as-chaos-ransomware-attack/"
+    grade: B
+    role: relay
+    note: "Relay of Rapid7's report; not independent corroboration"
+
+  - id: bleepingcomputer-2026-05-06
+    title: "MuddyWater hackers use Chaos ransomware as a decoy in attacks (BleepingComputer, 2026-05-06)"
+    url: "https://www.bleepingcomputer.com/news/security/muddywater-hackers-use-chaos-ransomware-as-a-decoy-in-attacks/"
+    grade: B
+    role: relay
+    note: "Relay of Rapid7's report; not independent corroboration"
+
+  - id: mitre-attack-g0069
+    title: "MITRE ATT&CK G0069 — MuddyWater"
+    url: "https://attack.mitre.org/groups/G0069/"
+    grade: A1
+
+  - id: finding-2026-05-06-FLASH-0002
+    title: "Archimedes graded finding — MuddyWater 2026 Q2 US campaign (FLASH 2026-05-06)"
+    grade: A2
+    wep: likely
+    note: |
+      Single-source veto applied; red-team review qualify with required
+      briefer caveats; 72-hour auto-downgrade clock registered (~2026-05-09
+      12:00 EDT) per RETRACTION-POLICY.

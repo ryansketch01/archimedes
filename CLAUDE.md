@@ -276,6 +276,63 @@ Empirical: two `lookup_host` calls (8.8.8.8, 1.1.1.1) produced zero deduction in
 
 Could be a dev-plan perk, a quota that resets faster than we observe, or a Shodan accounting quirk. Either way, do not budget against the published cost on this plan — measure empirically before relying on credit math. The free tools (`lookup_internetdb`, `count_hosts`) remain the safer first move when the use case allows.
 
+### `schtasks /Create /XML` strictly requires UTF-16 LE BOM
+
+The XML imported via `schtasks /Create /XML <file>` MUST be UTF-16 LE with a byte-order mark (`FF FE` first two bytes). UTF-8 — with or without BOM — is rejected at parse time with:
+
+```
+ERROR: The task XML is malformed.
+(1,2)::ERROR: incorrect document syntax
+```
+
+The `(1,2)` means parse failure at row 1 column 2 — `schtasks` hits the BOM bytes (or first byte of UTF-8) and chokes before reading the angle bracket it expects. The XML declaration's `encoding="..."` is informational; `schtasks` decides encoding from the BOM, not the declaration.
+
+Practical consequences for the `archimedes-task-template.xml` substitution pipeline:
+
+- **Template file on disk** is UTF-8 bytes (git-friendly, IDE-friendly), declaration says `encoding="UTF-16"`. The bytes-vs-declaration mismatch is intentional and never reaches `schtasks`.
+- **Substituted output** must be UTF-16 LE BOM. Use `[System.IO.File]::WriteAllText($path, $xml, [System.Text.Encoding]::Unicode)` — `::Unicode` is .NET's UTF-16 LE-with-BOM.
+- **Verify bytes** before importing if uncertain: first 6 bytes should be `FF FE 3C 00 3F 00`.
+
+The PowerShell substitution pattern in `infrastructure/scheduler/README.md` reflects this. Bit me Session 11 (Wednesday's "fix" to the declaration was wrong direction, surfaced when Thursday's pre-brief task install failed). Discovered + correctly resolved Session 11 (commit `7d2224a`).
+
+### Librarian `git push` is non-deterministic; mitigated structurally via wrapper catchup
+
+The librarian subagent's `git push origin main` step (Mode 1 procedure step 8 in `.claude/agents/librarian.md`) executes inconsistently across invocations despite identical doctrine. Empirical pattern across 5 days of unattended ops:
+
+- 2026-05-04 morning: pushed
+- 2026-05-05 afternoon: held (wrapper log: "Push to `origin/main` is held pending your authorization")
+- 2026-05-06 all 6 phases: pushed cleanly
+- 2026-05-07 midnight FLASH + morning brief: held (no explanation in logs)
+
+Splunk `git_committed` event emission is also intermittent — 2026-05-06 had 6 commits but only 3 events emitted; 2026-05-07 had 2 commits and 0 events. Doctrine is unambiguous on both ("git push origin main" + "Log Splunk event: git_committed") but execution varies invocation-to-invocation.
+
+**Mitigation: don't try to root-cause; make the system robust.** `scripts/run_phase.ps1` runs `git push origin main` at the end of every phase (after `claude -p` exits, before logging the `completed` event). If the librarian already pushed, the wrapper-level push is a no-op ("Everything up-to-date"). If the librarian held, the wrapper catches up before the next phase fires. The `completed` event includes a `catchup_push_exit` field for dashboard visibility:
+
+- `0` = pushed successfully (or no-op)
+- `>0` = git push failed (auth/network/conflict — investigate)
+- `-2` = PS-level exception (cmd not found, etc.)
+- `-1` = legacy buggy version (wrapper reported -1 for clean no-ops because `2>&1` wrapped git's stderr "Everything up-to-date" as NativeCommandError; superseded by commit `116ccf2`)
+
+Discovered + mitigated Session 11. Root cause of the librarian's variance is opaque without intercepting subagent reasoning; the structural mitigation is the actionable answer.
+
+### `source-health.yaml` field ownership: runtime vs operator-set
+
+`source-health.yaml` is collector runtime state (gitignored), but operators bootstrap it with durable context that survives individual fetch outcomes. The collector must distinguish:
+
+**Runtime fields (collector writes):** `status`, `last_successful_fetch`, `failure_count`, `stale_since`, `last_error`. These reflect the most recent fetch attempt.
+
+**Operator-set fields (preserve verbatim):** `notes` and any unrecognized keys. These carry standing operational context — e.g. *"Auth-key verified live 2026-05-05 (895 recent IOCs returned). MCP not built; collector uses WebFetch with Auth-Key header."*
+
+Without the preservation rule, operator notes silently erode every time the collector touches the entry. The collector subagent definition (`.claude/agents/collector.md`, "After fetching" section) codifies this — read existing entry, modify only runtime fields, re-emit with original keys intact. Codified Session 11.
+
+### AbuseIPDB and abuse.ch are different services
+
+`abuseipdb.com` (variable name `ABUSEIPDB_API_KEY`) — IP reputation database. Returns `abuseConfidenceScore`, total reports, ISP. Free tier: 1000 IP checks/day.
+
+`abuse.ch` (variable name `ABUSECH_API_KEY`) — unified Auth-Key for ThreatFox + MalwareBazaar + URLhaus + FeodoTracker. Different organization, different APIs, different keys.
+
+Easy to confuse by name similarity. Bit me Session 11 — operator pasted the abuse.ch key onto the `ABUSEIPDB_API_KEY` line; surfaced when the live test against ThreatFox failed with "key not present." If you find yourself confused which to use, check what the source actually does: AbuseIPDB returns an IP confidence score; abuse.ch returns IOCs (IPs, domains, hashes, malware family).
+
 ---
 
-*Last updated: Session 7 (scheduler + headless wrapper)*
+*Last updated: Session 11 (backlog sweep — RSS Bridge MCP, prompt scope-creep fix, schtasks UTF-16 gotcha, wrapper catchup push, field-ownership rule, AbuseIPDB)*

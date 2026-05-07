@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-07T00:50:00-04:00
+last_updated: 2026-05-07T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -1478,11 +1478,15 @@ entries:
       this week — this is single-topic lineage, not cross-finding pattern.
 
   - id: 2026-05-07-flash-0000-001
-    covered_in: [flash-2026-05-07-0000]
+    covered_in: [flash-2026-05-07-0000, 2026-05-07-morning]
     brief_file: threats/briefs/2026-05-07-flash-0000-pan-os-cl-sta-1132.md
     published_in_briefs: []
     queued: true
-    queue_status: pending_catchup_at_2026-05-07T09:00
+    queue_status: superseded_by_morning_brief_pending_09_00_catchup_archive
+    superseded_by: 2026-05-07-morning
+    supersession_action_owner: librarian
+    supersession_marker_target: infrastructure/flash-queue.yaml
+    supersession_expected_at: 2026-05-07T09:00:00-04:00
     headline: "UPDATE: PAN-OS CVE-2026-0300 — Unit 42 IR layer adds CL-STA-1132 cluster designation, 4 C2/staging IPs, EarthWorm SHA256, ReverseSocks5 staging URL, and three novel post-exploitation TTPs (SAML flood HA failover, log/coredump anti-forensics, AD enumeration); A2 / very likely (procedural) + likely (operational) under continuing single-source veto on the IR-layer sub-claims"
     update_resurface: true
     parent_finding: finding-2026-05-07-FLASH-0001
@@ -1695,6 +1699,263 @@ entries:
       cluster IOCs cannot be ingested without actor cross-walk).
       Coverage-log entry committed pre-09:00 catchup so morning brief's
       anti-repetition check sees the queued topic.
+
+  - id: 2026-05-07-am-001
+    covered_in: [2026-05-07-morning]
+    brief_file: threats/briefs/2026-05-07-morning.md
+    headline: "UPDATE: PAN-OS CVE-2026-0300 — Unit 42 IR layer absorbed from queued 00:50 FLASH; CL-STA-1132 cluster designation, four C2/staging IPs, EarthWorm SHA256, ReverseSocks5 staging URL, three novel post-exploitation TTPs (SAML flood HA failover, log/coredump anti-forensics, AD enumeration of domain root + DomainDnsZones); A2 / very likely (procedural) + likely (operational) under continuing single-source veto on IR-layer sub-claims"
+    update_resurface: true
+    parent_finding: finding-2026-05-07-FLASH-0001
+    parent_findings_in_lineage:
+      - finding-2026-05-06-FLASH-0001
+      - finding-2026-05-06-FLASH-0003
+    topic_tags:
+      - cve
+      - palo-alto-networks
+      - pan-os
+      - user-id-authentication-portal
+      - captive-portal
+      - pre-auth-rce
+      - cl-sta-1132
+      - unit42-ir-layer
+      - ir-grade-confirmation
+      - cluster-designation-no-roster-cross-walk
+      - novel-iocs
+      - earthworm
+      - reversesocks5
+      - saml-flood-ha-failover
+      - log-coredump-anti-forensics
+      - ad-enumeration-domainroot-domaindnszones
+      - second-a-grade-independent-confirmation
+      - single-source-veto-on-ir-sub-claims
+      - resurface-update
+      - flash-absorbed
+      - quiet-hours-supersession
+      - hard-rule-2-no-cross-walk
+      - master-index-ingestion-deferred
+    related_actors: []
+    related_vulns: [CVE-2026-0300]
+    related_clusters:
+      - cluster_id: CL-STA-1132
+        cross_walk_to_roster: null
+        confidence_language_from_source: "likely state-sponsored"
+        archimedes_treatment: claim_not_assertion
+    related_campaigns: []
+    finding_ids: [finding-2026-05-07-FLASH-0001]
+    digraph: A2
+    wep_split:
+      procedural_facts: very_likely
+      operational_claim: likely
+    flash_absorption:
+      absorbs_flash_brief: flash-2026-05-07-0000
+      flash_brief_path: threats/briefs/2026-05-07-flash-0000-pan-os-cl-sta-1132.md
+      supersession_action_owner: librarian
+      supersession_marker_target: infrastructure/flash-queue.yaml
+      expected_marker: "superseded:true at 09:00 EDT catchup sweep"
+    supersession:
+      type: augment_not_retract
+      supersedes_finding: finding-2026-05-06-FLASH-0003
+      supersedes_coverage_entry: 2026-05-06-flash-1800-001
+      prior_digraph: A1
+      prior_wep_split:
+        procedural_facts: very_likely
+        operational_claim: likely
+      this_digraph: A2
+      this_wep_split:
+        procedural_facts: very_likely
+        operational_claim: likely
+      rationale: |
+        FLASH-0003 not retracted — its grading was correct under the
+        KEV/PSIRT/Record corroboration set available at 18:00 EDT
+        2026-05-06. This morning brief absorbs the queued 00:50 IR-layer
+        FLASH (flash-2026-05-07-0000) into the lineage; digraph carried
+        at A2 because IR-layer sub-claims (cluster, IOCs, TTPs) are
+        single-source on Unit 42 even though parent CVE-2026-0300
+        active-exploitation claim remains A1 on three A/B sources.
+    auto_downgrade_clock_carry:
+      prior_clock_status: cancelled_by_corroboration_arrival_at_flash_1800
+      cancellation_finding: finding-2026-05-06-FLASH-0003
+      this_finding_carries_clock: false
+    lineage_chain:
+      - flash-2026-05-06-0600
+      - 2026-05-06-morning
+      - 2026-05-06-afternoon
+      - flash-2026-05-06-1800
+      - flash-2026-05-07-0000
+      - 2026-05-07-morning
+    correlation_callouts:
+      - related_finding_ids: [finding-2026-05-06-FLASH-0001, finding-2026-05-06-FLASH-0003]
+        relationship: lineage_chain_fifth_touch
+        callout_text: |
+          Fifth touch on CVE-2026-0300 in 24 hours. Each resurface fired
+          pre-registered tripwires; doctrine-permitted single-CVE lineage,
+          not cross-topic noise. Pattern flagged for weekly synthesis
+          2026-05-10 as a corroboration-arrival case study.
+    iocs_referenced:
+      ipv4:
+        - 67.206.213.86
+        - 136.0.8.48
+        - 146.70.100.69
+        - 149.104.66.84
+      url:
+        - "http://146.70.100.69:8000/php_sess"
+        - "https://github.com/Acebond/ReverseSocks5/releases/download/v2.2.0/ReverseSocks5-v2.2.0-linux-amd64.tar.gz"
+      sha256:
+        - e11f69b49b6f2e829454371c31ebf86893f82a042dae3f2faf63dcd84f97a584
+      detection_pattern:
+        - "SAML authentication flood inducing PAN-OS HA failover"
+        - "Crash kernel message + core dump scrubbing on PAN-OS host"
+        - "Active Directory enumeration of domain root and DomainDnsZones objects"
+      master_index_ingestion_status: deferred_no_actor_cross_walk
+      ingestion_deferral_rationale: |
+        CL-STA-1132 has no cross-walk to any roster actor. Hard Rule 2
+        prevents Archimedes from originating the cross-walk. Master-index
+        regeneration script ingests by owning roster actor; cluster-scoped
+        IOCs without a tracked owner cannot enter the quarter-hourly
+        Splunk sweep until either (a) A/B-grade source cross-walks
+        CL-STA-1132 to a tracked roster actor, or (b) a vuln-scoped
+        ingestion path is added. Brief instructs defenders to hunt
+        against IOC values directly in the meantime.
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -7d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      followup_required: re_query_at_minus_30d_post_master_index_update_if_cross_walk_arrives
+    patch_backlog_deadlines_carried:
+      - cve: CVE-2026-30445
+        product: Microsoft IIS HTTP.sys
+        deadline: 2026-05-13
+        days_remaining_at_compose: 6
+      - cve: CVE-2026-0300
+        product: PAN-OS 10.2 / 11.1
+        deadline: 2026-05-13
+        days_remaining_at_compose: 6
+      - cve: CVE-2026-31431
+        product: Linux kernel "Copy Fail"
+        deadline: 2026-05-15
+        days_remaining_at_compose: 8
+      - cve: CVE-2026-29841
+        product: Fortinet FortiManager
+        deadline: 2026-05-25
+        days_remaining_at_compose: 18
+      - cve: CVE-2026-0300
+        product: PAN-OS 11.2 / 12.1
+        deadline: 2026-05-28
+        days_remaining_at_compose: 21
+    iran_cyber_watch_status: silent_day_template_form
+    iran_cyber_watch_rationale: |
+      No new activity from tracked Iranian actors in the last 18h.
+      MuddyWater (#022) Q2-2026 US intrusion attribution from Rapid7
+      carried in 2026-05-06 12:00 FLASH; auto-downgrade clock running
+      to 2026-05-09 12:18 EDT, no resurface conditions met since.
+    weekly_synthesis_pattern_held:
+      pattern: cve_2026_0300_lineage_corroboration_arrival_velocity
+      surface_in: 2026-05-10-weekly-synthesis
+      rationale: |
+        Five touches on a single CVE in 24h is doctrine-permitted under
+        resurface conditions but represents a clean case study of
+        corroboration arrival velocity: vendor disclosure → KEV → patch
+        ETAs + PoC → IR analysis, all A-grade, inside 48h. Pattern
+        observation belongs at the weekly synthesis layer, not the
+        finding layer.
+    resurface_if:
+      - second_ir_firm_publishes_cl_sta_1132_or_matching_iocs
+      - mandiant_volexity_crowdstrike_mstic_cross_walk_to_tracked_actor
+      - first_party_splunk_hit_post_master_index_update
+      - first_a_b_grade_actor_attribution_to_tracked_roster
+      - new_victims_named_with_ad_sector
+      - patch_actually_ships_2026_05_13
+      - patch_actually_ships_2026_05_28
+      - greynoise_censys_targeted_vs_scanner_disaggregation
+      - public_advisories_from_cisa_or_fbi_actor_naming
+      - additional_iocs_published_extending_cl_sta_1132
+    first_covered: 2026-05-07
+    last_covered: 2026-05-07
+    retraction: null
+    test: false
+    notes: |
+      Morning brief absorbed the queued 00:50 IR-layer FLASH
+      (flash-2026-05-07-0000) per FLASH-POLICY anti-noise expectation.
+      Librarian responsibility: mark flash-queue.yaml entry
+      flash-2026-05-07-0000 superseded:true at 09:00 catchup sweep and
+      archive to flash-queue-archive.yaml with disposition
+      superseded_by_morning_brief. Briefer did NOT mark supersession
+      itself per orchestrator instruction — supersession is a queue-
+      side decision.
+
+      Anti-repetition discipline:
+      - CVE-2026-0300 substance covered four times in prior 24h
+        (2026-05-06 06:00 FLASH, 2026-05-06 morning, 2026-05-06
+        afternoon, 2026-05-06 18:00 FLASH). Lead and Active Threats
+        ONLY surface what is NEW from the Unit 42 IR layer (cluster,
+        4 IPs, hash, URL, 3 TTPs) and what defenders need to do
+        operationally with it. CVE substance, vulnerable versions,
+        mitigation architecture NOT re-detailed — reader assumed to
+        have prior coverage. Lineage chain stated explicitly in Other
+        Signal as analyst observation.
+      - MuddyWater (#022, 2026-05-06 12:00 FLASH) NOT re-covered;
+        Iran Cyber Watch carried via silent-day template form with
+        auto-downgrade clock countdown reference only. No resurface
+        conditions met in the 18h window since the FLASH posted.
+      - 2026-05-04 morning findings (Linux kernel "Copy Fail",
+        MOVEit Automation auth bypass, PyTorch Lightning ShaiWorm,
+        Trellix breach, cPanel/WHM/WP2 KEV) NOT resurfaced — none
+        had resurface conditions met overnight.
+      - 2026-05-05 morning findings (UNC1549, Charming Kitten OAuth,
+        FortiManager KEV, IIS HTTP.sys 0day, Siemens SIMATIC, Cisco
+        ASA) and 2026-05-05 afternoon findings (MSTIC AitM, DAEMON
+        Tools supply chain, Ollama Bleeding Llama) NOT resurfaced —
+        none had resurface conditions met overnight.
+      - Patch backlog deadlines named in Vulnerabilities section as
+        date-list status only, no re-detail of CVE substance.
+      - Resurface conditions for IR-layer absorption met three of
+        three from finding-2026-05-07-FLASH-0001: new IOCs published,
+        second A-grade IR-side independent confirmation, novel TTPs
+        published.
+
+      Hard Rule 2 honored throughout — CL-STA-1132 framed as Unit 42
+      internal cluster claim; "likely state-sponsored" attributed to
+      Unit 42; no nation-state inference; EarthWorm and ReverseSocks5
+      commodity status called out explicitly in the Tooling bullet to
+      prevent reader cross-walk from "Chinese-developed EarthWorm +
+      likely-state-sponsored + novel TTPs" to an un-stated nation-state
+      attribution. SAML-flood-HA-failover not framed as fingerprint.
+
+      Hard Rule 6 honored — one quote from Unit 42 ("only limited
+      exploitation," 3 words). Cluster designation CL-STA-1132 and
+      confidence-language "likely state-sponsored" treated as factual
+      citation of identifiers, not narrative quotation.
+
+      Hard Rule 8 honored — first-party Splunk silence on the four
+      Unit 42 IPs at -7d documented as absence-of-evidence per
+      convention; master-index ingestion deferral and -30d re-query
+      followup explicitly surfaced in body and frontmatter.
+
+      Master-index ingestion deferred per Hard Rule 2 cross-walk
+      gap — cluster-scoped IOCs without tracked roster owner cannot
+      enter the quarter-hourly Splunk sweep until cross-walk arrives.
+      Brief instructs defenders to hunt against IOC values directly.
+
+      WEP split discipline carried: very_likely on procedural facts
+      (Unit 42 published this content), likely on operational claim
+      (CL-STA-1132 conducting active limited exploitation). Lineage
+      parent claim (CVE-2026-0300 actively exploited) remains A1 with
+      three independent A/B sources from FLASH-0003; this brief does
+      not re-grade the parent claim.
+
+      Pattern observation (fifth touch on single CVE in 24h)
+      explicitly framed in Other Signal as analyst observation, not
+      as cross-topic noise. Held for weekly synthesis 2026-05-10 as
+      corroboration-arrival velocity case study.
+
+      Pre-flight: 12/12 passed on iteration 2; iteration 1 ran over
+      word-count target at ~840 (target 400-800). Compressed in three
+      sections (Why it matters, A&D Sector Focus tightening, Other
+      Signal lineage observation) to ~752 within target. No banned
+      phrases detected. WEP discipline clean ("very likely" / "likely"
+      canonical throughout). Quote discipline clean — single 3-word
+      Unit 42 quote, no other quoted material from any source.
 
 # ============================================================================
 # Valid resurface_if conditions

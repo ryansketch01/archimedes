@@ -125,24 +125,110 @@ Per INTEL-OPERATIONS telemetry list:
 - `command_executed` — slash commands
 - `policy_violation` — Hard Rule violation attempts
 
-Event structure (shipped as JSON via HEC):
+Event envelope shipped to HEC:
 ```json
 {
   "time": "2026-04-23T08:00:12-04:00",
   "host": "archimedes",
   "sourcetype": "archimedes:operation",
   "index": "archimedes",
-  "event": {
-    "event_type": "brief_published",
-    "run_id": "morning-20260423-080000",
-    "brief_id": "2026-04-23-morning",
-    "brief_type": "morning",
-    "findings_count": 7,
-    "word_count": 634,
-    "preflight_result": "passed"
-  }
+  "event": { ...event-specific fields... }
 }
 ```
+
+The `event` body's field set varies by event_type. Document and
+honor the per-type schemas below.
+
+#### brief_published — required minimum field set
+
+Every `brief_published` event MUST include these fields. Dashboard
+panels and scheduled monitors depend on this floor.
+
+| Field | Type | Notes |
+|---|---|---|
+| `event_type` | str | Always `"brief_published"` |
+| `run_id` | str | Librarian run_id |
+| `brief_id` | str | `YYYY-MM-DD-{morning,afternoon,weekly,...}` or `flash-YYYY-MM-DD-HHMM` |
+| `brief_type` | str | `morning` / `afternoon` / `flash` / `weekly` / `actor-summary` / `threat-detection-weekly` / `retraction` |
+| `preflight_result` | str | `passed` / `failed` |
+| `tlp` | str | `CLEAR` / `GREEN` / `AMBER` / `RED` |
+| `discord_channel` | str | Channel name (e.g. `intel-briefs`) — required when posted |
+| `discord_message_id` | str \| null | Message ID if posted; `null` if queued or not posted |
+| `discord_post_status` | int \| null | HTTP status from discord-post.sh; `null` if not posted |
+
+If a brief was queued or held, `discord_message_id` and
+`discord_post_status` SHOULD be `null` rather than absent. Absence
+is ambiguous; explicit `null` says "did not post."
+
+#### brief_published — additional fields by brief_type
+
+Each brief_type has its own meaningful additions. Include the ones
+relevant to what actually happened:
+
+**Scheduled briefs (morning / afternoon):**
+- `findings_count` — int; new findings shipped in this brief (0 for status-only days)
+- `findings_referenced` — list of finding_ids
+- `word_count` — int
+- `brief_path` — relative path to the .md
+- `absorbs_flash` — list of flash brief_ids absorbed; omit if none
+- `related_vulns` — list of CVE ids touched
+- `proposed_vuln_dossier` — list of CVE ids the brief recommends vuln-tracker scaffold
+
+**FLASH briefs:**
+- `finding_id` — single finding (FLASH = single-topic by definition)
+- `digraph` — Admiralty grade (e.g. `A1`)
+- `wep` — WEP ceiling
+- `flash_trigger_primary` — trigger ID that fired
+- `flash_trigger_secondary` — list of additional triggers; omit if none
+- `single_source_veto_applied` — bool
+- `quiet_hours_at_compose` — bool
+- `critical_override_evaluated` — bool
+- `critical_override_applied` — bool
+- `disposition` — `posted` / `queued` / `superseded`
+- `queue_target` — `flash-queue` / `null` if posted directly
+- `anti_noise_lock_topic` — topic key used for dedup
+- `anti_noise_lock_until` — ISO timestamp when lock expires
+- `auto_downgrade_clock_at` — ISO timestamp when auto-downgrade fires (if applicable)
+- `ioc_count` — int
+- `ioc_breakdown` — dict by IOC type
+
+**FLASH UPDATE briefs (subkind=update):**
+- `kind` — `flash`
+- `subkind` — `update` / `correction` / `supersession`
+- `supersedes` — prior FLASH brief_id
+- `supersession_type` — reason
+
+**Continuing-coverage briefs (afternoons that carry status only):**
+- `disposition` — `continuing-coverage` / `status-only`
+- `findings_new_today` — 0
+- `findings_carried_status_only` — list of finding_ids being status-tracked
+- `auto_downgrade_clocks_carried` — list
+- `patch_backlog_deadlines_carried` — list
+
+#### Why heterogeneity is OK (within limits)
+
+The event body is a JSON object; sparse fields are fine. What's NOT OK:
+- Missing the required minimum (above) — breaks dashboards
+- Renaming fields between events (`discord_status` vs `discord_post_status`
+  vs `discord` object) — pick the names above and stick to them
+- Inconsistent value shapes (sometimes int, sometimes string) — pick a
+  type per field and stay there
+
+When unsure whether to include a field: **if it would help an operator
+debug a failed run at 08:30 EDT tomorrow morning, include it.** If it's
+analytical color, skip it (the brief itself has that).
+
+#### Other event_types (canonical schemas pending)
+
+`finding_promoted`, `finding_rejected`, `ioc_added`, `source_health_change`,
+`grade_revision`, `run_start`, `run_complete`, `run_failed`,
+`command_executed`, `policy_violation`, `flash_queued`, `flash_superseded`,
+`vuln_dossier_created`, `git_committed`, `ioc_index_regen_check`,
+`ioc_ingestion_deferred`, `flash_evaluation`, `flash_sweep` — minimum
+schemas for these are not yet defined. Use a similar pattern: required
+core (event_type, run_id, principal IDs of the subject) plus type-specific
+additions. Session 11 backlog item: enumerate all observed event_types
+and lock canonical minimums for each.
 
 ### Discord posts (via `.claude/hooks/discord-post.sh`)
 

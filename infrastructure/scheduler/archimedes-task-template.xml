@@ -34,7 +34,21 @@
   <Principals>
     <Principal id="Author">
       <UserId>rtske</UserId>
-      <LogonType>Password</LogonType>
+      <!--
+        LogonType: InteractiveToken (default)
+          - Works with PIN / Windows Hello accounts (no stored password required)
+          - Task fires while rtske is logged in (locked screen is fine)
+          - Trade-off: WakeToRun=true is INEFFECTIVE — Task Scheduler cannot
+            wake Frank from sleep without a stored credential. 00:00 / 06:00
+            sweeps may miss if Frank is asleep at trigger time.
+
+        Override to Password if you have a local account password and want
+        overnight wake-from-sleep behavior:
+          - Change <LogonType>InteractiveToken</LogonType> to <LogonType>Password</LogonType>
+          - Re-import: schtasks /Create /XML <file> /TN "Archimedes\<phase>" /RU rtske /RP <password>
+          - WakeToRun=true then becomes effective.
+      -->
+      <LogonType>InteractiveToken</LogonType>
       <RunLevel>LeastPrivilege</RunLevel>
     </Principal>
   </Principals>

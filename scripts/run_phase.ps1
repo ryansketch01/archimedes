@@ -185,14 +185,44 @@ try {
 $EndTime = Get-Date
 $DurationSec = [int](($EndTime - $StartTime).TotalSeconds)
 
+# --- Catchup push: ensure any commits the librarian made are on origin/main ---
+# The librarian's `git push` step (Mode 1 procedure step 8) is empirically
+# non-deterministic — Wed 2026-05-06 auto-pushed all 6 phases cleanly, Tue
+# afternoon and Thu morning held 1-2 commits without explanation despite
+# identical doctrine. This wrapper-level push is belt-and-suspenders:
+#   - If the librarian already pushed, `git push` is a no-op ("Everything
+#     up-to-date") and exit 0
+#   - If the librarian held, this catches up before the next phase fires
+#   - Push failure (network, auth) is non-fatal — claude phase itself
+#     succeeded, commits stay local until next phase or operator catches up
+# Telemetry: catchup_push_exit field added to the completed event so dash-
+# board panels can surface push reliability without guessing.
+$PushExit = 0
+$PushOutput = ""
+Push-Location $RepoRoot
+try {
+    $PushOutput = & git push origin main 2>&1 | Out-String
+    $PushExit = $LASTEXITCODE
+} catch {
+    $PushExit = -1
+    $PushOutput = "exception: $($_.Exception.Message)"
+} finally {
+    Pop-Location
+}
+
+# Append push result to log file (visible in interactive runs and Task Scheduler captures)
+$utf8NoBomPushLog = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::AppendAllText($LogFile, "`r`n[run_phase.ps1] catchup push exit=$PushExit`r`n$PushOutput`r`n", $utf8NoBomPushLog)
+
 # --- Post-flight: log "completed" event ---
 $endEvent = @{
-    run_id       = $RunId
-    phase        = $Phase
-    status       = if ($ClaudeExit -eq 0) { 'completed' } else { 'failed' }
-    exit_code    = $ClaudeExit
-    duration_sec = $DurationSec
-    log_file     = $LogFile
+    run_id            = $RunId
+    phase             = $Phase
+    status            = if ($ClaudeExit -eq 0) { 'completed' } else { 'failed' }
+    exit_code         = $ClaudeExit
+    duration_sec      = $DurationSec
+    log_file          = $LogFile
+    catchup_push_exit = $PushExit
 }
 [void](Send-SplunkEvent -EventData $endEvent)
 

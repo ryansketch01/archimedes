@@ -66,10 +66,10 @@ $ErrorActionPreference = 'Stop'
 $TestExclusion = ' Skip any raw-signal, findings, or briefs marked test: true.'
 
 $PhasePrompts = @{
-    'pre-brief-morning'    = 'Run pre-brief collection for the 08:00 morning brief per CLAUDE.md Pipeline - Scheduled Brief.' + $TestExclusion
+    'pre-brief-morning'    = 'Pre-brief COLLECTION ONLY for 08:00 morning brief. Invoke the collector subagent only — do NOT invoke grader, analyst, red-team-analyst, briefer, or librarian. Output: raw-signal files written to threats/raw-signal/ per the collector subagent definition. Do NOT grade, do NOT promote findings, do NOT compose any brief, do NOT post to Discord, do NOT commit, do NOT update _coverage-log.yaml. The 08:00 morning-brief phase consumes your raw-signal output and runs the rest of the pipeline. Return after raw-signal files are written.' + $TestExclusion
     'morning-brief'        = 'Run the 08:00 morning brief pipeline per CLAUDE.md. Grade, analyze, brief, deliver.' + $TestExclusion
     'alert-sweep-noon'     = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Exit silently if no triggers.' + $TestExclusion
-    'pre-brief-afternoon'  = 'Run pre-brief collection for the 16:00 afternoon brief per CLAUDE.md Pipeline - Scheduled Brief.' + $TestExclusion
+    'pre-brief-afternoon'  = 'Pre-brief COLLECTION ONLY for 16:00 afternoon brief. Invoke the collector subagent only — do NOT invoke grader, analyst, red-team-analyst, briefer, or librarian. Output: raw-signal files written to threats/raw-signal/ per the collector subagent definition. Do NOT grade, do NOT promote findings, do NOT compose any brief, do NOT post to Discord, do NOT commit, do NOT update _coverage-log.yaml. The 16:00 afternoon-brief phase consumes your raw-signal output and runs the rest of the pipeline. Return after raw-signal files are written.' + $TestExclusion
     'afternoon-brief'      = 'Run the 16:00 afternoon brief pipeline per CLAUDE.md. Grade, analyze, brief, deliver.' + $TestExclusion
     'alert-sweep-evening'  = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Exit silently if no triggers.' + $TestExclusion
     'alert-sweep-midnight' = 'Run a FLASH alert sweep per doctrine/FLASH-POLICY.md. Quiet hours active - queue any triggers.' + $TestExclusion

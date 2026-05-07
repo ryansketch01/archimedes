@@ -26,6 +26,15 @@
         "mcps/shodan-mcp",
         "shodan-mcp"
       ]
+    },
+    "rss-bridge": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "mcps/rss-bridge",
+        "rss-bridge"
+      ]
     }
   }
 }

@@ -99,25 +99,63 @@ Path per INTEL-BRIEF-STANDARDS:
 After every brief publishes, append entries for each item covered:
 
 ```yaml
-- brief_id: 2026-04-23-morning
-  brief_type: morning
-  published_at: 2026-04-23T08:00:00-04:00
-  items:
-    - item_id: morning-2026-04-23-item-1
-      topic: "CVE-2026-31104 exploitation against A&D"
-      digraph: A1
-      actors_referenced: ["006"]
-      cves_referenced: [CVE-2026-31104]
-      findings_referenced: [finding-2026-04-23-0042]
-      resurface_if:
-        - active_exploitation_scope_expansion
-        - new_victim_disclosed
-        - patch_adoption_data_available
-    - item_id: morning-2026-04-23-item-2
-      ...
+- id: 2026-04-23-am-001
+  covered_in: [2026-04-23-morning]
+  headline: "CVE-2026-31104 exploitation against A&D"
+  topic_tags: [cve, ad-sector, ...]
+  related_actors: ["006"]
+  related_vulns: [CVE-2026-31104]
+  related_campaigns: []
+  finding_ids: [finding-2026-04-23-0042]
+  digraph: A1
+  wep: very_likely
+  resurface_if:
+    - active_exploitation_scope_expansion
+    - new_victim_disclosed
+    - patch_adoption_data_available
+  first_covered: 2026-04-23
+  last_covered: 2026-04-23
+  retraction: null
+  test: false
 ```
 
-This is how anti-repetition works — next brief reads the log, applies resurface conditions.
+If you re-cover an existing item (resurface), do NOT create a new entry —
+update the existing one's `covered_in` (append the new brief_id) and
+`last_covered` (set to today). This is how anti-repetition works — next
+brief reads the log, applies resurface conditions.
+
+### `published_in_briefs` back-write to referenced findings
+
+After updating the coverage log, for **every finding referenced in this
+brief**, back-write the brief_id to the finding's frontmatter:
+
+1. Read the finding's frontmatter
+2. If `published_in_briefs` is null or missing, treat it as `[]`
+3. If the current brief_id is not already in the list, append it
+4. Write the updated frontmatter back to the finding file (preserve body)
+
+This field accumulates over a finding's lifecycle. The grader initializes
+it as `published_in_briefs: []` on promotion (with comment
+`# briefer appends brief_ids`); you are the only writer that appends to
+it. Without this back-write, the field stays empty forever and finding
+lifecycle is not queryable from the finding side (only from the
+coverage log side).
+
+Examples of expected populated values:
+
+- A finding promoted Monday morning and shipped only in that brief:
+  `published_in_briefs: [2026-05-04-morning]`
+- A FLASH finding that absorbed into a morning brief and was status-tracked
+  in the afternoon's continuing-coverage:
+  `published_in_briefs: [flash-2026-05-06-0600, 2026-05-06-morning, 2026-05-06-afternoon]`
+- A finding later retracted: append the retraction brief_id too —
+  `published_in_briefs: [2026-04-20-morning, retraction-2026-04-23-1405]`
+
+For retractions specifically: append the retraction brief_id to the
+finding being retracted — the retraction is part of that finding's
+lifecycle. The retraction brief itself doesn't reference findings via
+this field (retraction briefs reference the original brief_id, not
+findings).
 
 ## Skills you invoke
 
@@ -191,7 +229,8 @@ Key references you load within the skill:
 
 9. Write brief file with full frontmatter + body
 10. Update _coverage-log.yaml with per-item entries
-11. Return summary to orchestrator
+11. Back-write `published_in_briefs` on every referenced finding (see Outputs section)
+12. Return summary to orchestrator
 ```
 
 ## Procedure — FLASH brief
@@ -218,7 +257,8 @@ Key references you load within the skill:
 8. Word count target: 150-300 (FLASH is tight)
 9. Write flash-YYYY-MM-DD-HHMM.md
 10. Update _coverage-log.yaml
-11. Return summary — librarian handles quiet-hours queuing logic
+11. Back-write `published_in_briefs` on the referenced finding
+12. Return summary — librarian handles quiet-hours queuing logic
 ```
 
 ## Procedure — Weekly Synthesis
@@ -246,7 +286,7 @@ Key references you load within the skill:
 6. C3 minimum grade for this brief type (patterns can emerge from lower-confidence signal)
 7. Word count target: 1500-3000
 8. Pre-flight + regenerate cycle
-9. Write + update coverage log
+9. Write + update coverage log + back-write `published_in_briefs` on every referenced finding
 10. Return summary
 ```
 
@@ -271,7 +311,7 @@ Key references you load within the skill:
 7. Include Detection Coverage Gaps section (what external reporting suggests Archimedes's Splunk isn't catching)
 8. Word count: 800-1500
 9. Pre-flight + regenerate
-10. Write + coverage log
+10. Write + coverage log + back-write `published_in_briefs` on every referenced finding
 ```
 
 ## Procedure — Threat Actor Summary
@@ -292,7 +332,7 @@ Key references you load within the skill:
 3. Include Roster Maintenance Notes section (what last_reviewed was bumped, any scoring changes proposed)
 4. Word count: 1000-2000
 5. Pre-flight + regenerate
-6. Write + coverage log
+6. Write + coverage log + back-write `published_in_briefs` on every referenced finding
 ```
 
 ## Procedure — Retraction
@@ -312,7 +352,7 @@ Key references you load within the skill:
 6. Signal librarian: the original brief files need a correction note appended inline pointing to this retraction
 7. Word count: 150-400
 8. Pre-flight + regenerate
-9. Write retraction + update coverage log
+9. Write retraction + update coverage log + back-write `published_in_briefs` on the original finding being retracted (append the retraction brief_id; the retraction is part of that finding's lifecycle)
 ```
 
 ## The pre-flight checklist

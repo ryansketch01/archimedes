@@ -49,7 +49,7 @@ def collect_indicators() -> tuple[dict, dict]:
             with open(ioc_yaml) as f:
                 data = yaml.safe_load(f)
         except Exception as e:
-            print(f"  ⚠ failed to parse {ioc_yaml}: {e}", file=sys.stderr)
+            print(f"  WARNING: failed to parse {ioc_yaml}: {e}", file=sys.stderr)
             continue
 
         if not data:
@@ -126,7 +126,7 @@ def write_index(lookup: dict, stats: dict, cross_actor: dict, dry_run: bool) -> 
     dumped = yaml.safe_dump(output, sort_keys=False, default_flow_style=False, width=120)
 
     if dry_run:
-        print("--- DRY RUN — would write to:", INDEX_PATH)
+        print("--- DRY RUN -- would write to:", INDEX_PATH)
         print(dumped[:2000] + ("\n... [truncated]" if len(dumped) > 2000 else ""))
         return
 
@@ -137,7 +137,7 @@ def write_index(lookup: dict, stats: dict, cross_actor: dict, dry_run: bool) -> 
         "# DO NOT HAND-EDIT.\n\n"
         + dumped
     )
-    print(f"✅ Wrote {INDEX_PATH}")
+    print(f"OK: Wrote {INDEX_PATH}")
     print(f"   {stats['total_indicators']} indicators across {stats['total_actors_with_iocs']} actors")
     print(f"   {stats['cross_actor_indicators']} cross-actor indicators")
     print(f"   {stats['kev_count']} CISA KEV-listed CVEs")

@@ -198,21 +198,29 @@ $DurationSec = [int](($EndTime - $StartTime).TotalSeconds)
 # Telemetry: catchup_push_exit field added to the completed event so dash-
 # board panels can surface push reliability without guessing.
 $PushExit = 0
-$PushOutput = ""
 Push-Location $RepoRoot
 try {
-    $PushOutput = & git push origin main 2>&1 | Out-String
+    # Do NOT use 2>&1 here. git push prints "Everything up-to-date" to stderr,
+    # PS 5.1 wraps that as NativeCommandError under $ErrorActionPreference=Stop,
+    # and we'd misreport a clean no-op as exit=-1. Let stderr flow to parent;
+    # Task Scheduler captures both streams. We only care about the exit code.
+    & git push origin main | ForEach-Object {
+        # stdout lines (rare for git push) get appended to our log
+        $_
+    }
     $PushExit = $LASTEXITCODE
 } catch {
-    $PushExit = -1
-    $PushOutput = "exception: $($_.Exception.Message)"
+    # Reachable only on PS-level exceptions (cmd not found, etc.) — not git
+    # exit codes. -2 is distinct from -1 (the prior bug's signature) so any
+    # leftover -1 in old Splunk events is unambiguously the old bug.
+    $PushExit = -2
 } finally {
     Pop-Location
 }
 
 # Append push result to log file (visible in interactive runs and Task Scheduler captures)
 $utf8NoBomPushLog = New-Object System.Text.UTF8Encoding $false
-[System.IO.File]::AppendAllText($LogFile, "`r`n[run_phase.ps1] catchup push exit=$PushExit`r`n$PushOutput`r`n", $utf8NoBomPushLog)
+[System.IO.File]::AppendAllText($LogFile, "`r`n[run_phase.ps1] catchup push exit=$PushExit`r`n", $utf8NoBomPushLog)
 
 # --- Post-flight: log "completed" event ---
 $endEvent = @{

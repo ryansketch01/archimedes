@@ -38,10 +38,21 @@ See "Logon type decision" below for the trade-off.
 
 ### Recommended substitution (PowerShell)
 
-This pattern reads the UTF-8 source template and writes UTF-8 output
-matching the declaration (which is `encoding="UTF-8"` since 2026-05-06):
+**Encoding rule:** `schtasks /Create /XML` strictly requires **UTF-16 LE
+with BOM**, regardless of what the file's XML declaration claims.
+UTF-8 (with or without BOM) is rejected at parse time with
+`"ERROR: The task XML is malformed. (1,2)::ERROR: incorrect document
+syntax"` — the parser hits the BOM bytes or first byte of UTF-8
+content, not the angle bracket it expects.
+
+The template on disk is stored as UTF-8 bytes (git-friendly,
+IDE-friendly) but its declaration claims `encoding="UTF-16"` so that
+the bytes-and-declaration are consistent ONLY in the substituted
+output (where they're both UTF-16). The template's bytes-vs-declaration
+mismatch is intentional and never reaches `schtasks`.
 
 ```powershell
+# Read the template as UTF-8 (matches its actual bytes)
 $template = [System.IO.File]::ReadAllText(
     "C:\Users\rtske\Projects\archimedes\infrastructure\scheduler\archimedes-task-template.xml",
     [System.Text.Encoding]::UTF8)
@@ -55,10 +66,24 @@ $xml = $template `
     .Replace('__TIME__', $time) `
     .Replace('__REPO_ROOT__', $repo)
 
+# CRITICAL: write as UTF-16 LE WITH BOM. [System.Text.Encoding]::Unicode
+# is .NET's UTF-16 LE-with-BOM. Anything else (UTF-8, UTF-8 with BOM,
+# UTF-16 BE) will be rejected by schtasks with the (1,2) error above.
 [System.IO.File]::WriteAllText(
     "$env:TEMP\archimedes-$phase.xml",
     $xml,
-    [System.Text.Encoding]::UTF8)
+    [System.Text.Encoding]::Unicode)
+```
+
+**Verify the bytes** before importing if you're unsure — the file
+should start with `FF FE 3C 00 3F 00` (UTF-16 LE BOM + `<?` in
+UTF-16 LE):
+
+```powershell
+$bytes = [System.IO.File]::ReadAllBytes("$env:TEMP\archimedes-$phase.xml") |
+    Select-Object -First 6
+($bytes | ForEach-Object { '{0:X2}' -f $_ }) -join ' '
+# Expected: FF FE 3C 00 3F 00
 ```
 
 ### Import (default — InteractiveToken, no password)

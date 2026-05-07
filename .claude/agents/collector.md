@@ -201,10 +201,49 @@ The skill returns structured IOC entries + attribution claims. Paste its full YA
 
 ### After fetching
 
-- Success → update `last_successful_fetch` timestamp
-- Timeout / 5xx error → increment `failure_count`; if ≥2, mark `stale`
-- Rate limit (429) → back off per `Retry-After` header; log but do not mark stale
-- Auth error (401/403) → mark `stale` immediately, flag for human review
+Update the source's entry in `source-health.yaml` with the outcome:
+
+- Success → set `status: healthy`, `last_successful_fetch: <now>`,
+  `failure_count: 0`, `stale_since: null`, `last_error: null`
+- Timeout / 5xx error → increment `failure_count`; if ≥2, set
+  `status: stale`, `stale_since: <today>`, `last_error: <short reason>`
+- Rate limit (429) → back off per `Retry-After` header; log but do not
+  mark stale (rate limits are usually transient)
+- Auth error (401/403) → set `status: stale` immediately, set
+  `last_error: <auth error description>`, flag for human review
+
+#### Field ownership: operator vs runtime
+
+The schema has two classes of fields per source entry:
+
+**Runtime fields (you write these):**
+`status`, `last_successful_fetch`, `failure_count`, `stale_since`,
+`last_error`.
+
+**Operator-set fields (preserve verbatim — never touch):**
+`notes` and any other fields that aren't in the runtime list above.
+
+Why this split: `notes` carries durable context that the operator
+authored — e.g. *"Auth-key verified live 2026-05-05 (895 recent IOCs
+returned). MCP not built; collector uses WebFetch with Auth-Key
+header."* That context survives the source's individual fetch outcomes
+and is more reliable than re-deriving it from runtime signals every
+run. If you overwrite `notes`, the operator's documentation erodes
+silently and the next operator (human or LLM) loses the reasoning.
+
+Concrete pattern when updating an entry:
+
+1. Read the existing entry (it may have a `notes:` field, or not)
+2. Modify only the runtime fields per the rules above
+3. Re-emit the entry with all original keys intact, including any
+   `notes:` value carried through unchanged
+4. If a new operator-set field appears that you don't recognize,
+   preserve it. Do not silently drop unknown keys.
+
+The `last_error` field is runtime — it describes the most recent
+fetch failure and should reflect the latest attempt. `notes:` is
+durable — it describes the source's standing operational context
+(missing MCP, special handling, known quirks).
 
 ### Source types you handle
 

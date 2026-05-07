@@ -9,14 +9,90 @@
 # resurfaces via higher-grade sources.
 
 version: 1
-last_updated: 2026-05-05
+last_updated: 2026-05-07
 
-entries: []
+entries:
+  - rejection_id: reject-2026-05-07-0001
+    rejected_at: 2026-05-07T16:21:00-04:00
+    grading_run_id: afternoon-20260507-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-07-pm-002-muddywater-chaos-ransomware-decoy
+    cluster_topic: "BleepingComputer (feed-listing only): MuddyWater allegedly uses Chaos ransomware as decoy in Microsoft Teams social-engineering campaign"
+    rejection_reasons:
+      - source_chain_unverified_full_body_not_fetched
+      - corroboration_status_pending_verification
+      - novel_attribution_corroboration_blocked_by_relay_uncertainty
+      - 72h_attribution_veto_clock_currently_active_on_subject_actor
+    rejection_detail: >
+      Cluster fails to clear B2 action-item or C3 monitoring threshold for
+      promotion. Specific reasoning:
+
+        (1) Source chain unverified. Article body was not fetched in this
+            sweep — only feed-listing surfaced. Without full-body fetch,
+            cannot determine whether BleepingComputer is relaying Rapid7's
+            prior MuddyWater attribution (which would NOT count as
+            independent corroboration per INTEL-GRADING.md "Two sources are
+            NOT independent if one is a rewrite/aggregation of the other")
+            or citing a different originating source (which COULD count as
+            second B/A-grade attribution).
+
+        (2) Active 72h attribution-veto clock on the subject. MuddyWater
+            (roster id 022) is currently under a 72h auto-downgrade clock
+            on the 2026-campaign attribution per Rapid7 single-source
+            veto, resolving ~2026-05-09 12:00 EDT per _roster.yaml note.
+            All 2026-campaign surfaces carry attribution caveat (Rapid7
+            moderate confidence) and are NOT promoted as MuddyWater-
+            canonical pending second A/B-grade independent source. Given
+            the relay-uncertainty in (1), promoting this cluster as a
+            second-source corroboration of MuddyWater attribution would
+            be premature and risk Hard Rule 2 violation.
+
+        (3) Zero IOCs in the available source text. No IPs, no domains,
+            no hashes, no specific victim, no specific CVE referenced, no
+            date range. Defender-actionability is null without IOC content.
+
+        (4) MuddyWater dossier is first-pass with TEMPLATE threat-box
+            scoring; promoting an attribution-corroboration finding into
+            an unsettled dossier risks compounding the corroboration
+            uncertainty.
+
+      Recommended re-grading path:
+        (a) Collector re-fetches full BleepingComputer article body in
+            next sweep window. Identifies originating source chain
+            explicitly.
+        (b) IF originating source is Rapid7 → relay-only confirmation,
+            does NOT lift the 72h veto, can be cataloged in raw-signal
+            archive but does not promote.
+        (c) IF originating source is independent of Rapid7 (e.g., another
+            vendor — CrowdStrike, Mandiant, ESET, MSTIC) → re-grade as
+            potential second B/A-grade corroboration. Could lift 72h
+            veto in MuddyWater's favor before 2026-05-09 12:00 EDT clock
+            resolves.
+
+      If this claim resurfaces with a verified independent source chain,
+      regrade.
+
+    sources:
+      - source_yaml_id: bleepingcomputer
+        grade: B
+        role: relay_only_full_body_not_fetched
+    would_be_digraph: B3_pending_source_chain_verification
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table (rejected-
+      finding retention). Re-graders: see /investigate MuddyWater workflow
+      if claim resurfaces, or wait for next BleepingComputer fetch with
+      article body. Specifically note that this rejection is PROCEDURAL
+      (corroboration-state pending verification), not substantive — the
+      claim itself may well be true; we simply cannot grade it cleanly
+      without the source-chain detail.
 
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 0
-  most_recent_run: afternoon-20260505-160000
-  most_recent_run_rejections: 0
+  total_rejections: 1
+  most_recent_run: afternoon-20260507-160000
+  most_recent_run_rejections: 1
+  prior_run: afternoon-20260505-160000
+  prior_run_rejections: 0

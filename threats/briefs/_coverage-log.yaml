@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-07T08:00:00-04:00
+last_updated: 2026-05-07T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -1956,6 +1956,385 @@ entries:
       phrases detected. WEP discipline clean ("very likely" / "likely"
       canonical throughout). Quote discipline clean — single 3-word
       Unit 42 quote, no other quoted material from any source.
+
+  - id: 2026-05-07-pm-001
+    covered_in: [2026-05-07-afternoon]
+    brief_file: threats/briefs/2026-05-07-afternoon.md
+    headline: "vm2 sandbox escape multi-CVE cluster — CVE-2026-26956 (RCE-on-host via WebAssembly exception handling) + 6 companions; 1.3M weekly npm downloads; Node.js 25 + WASM + JSTag affected; patches available (vm2 3.10.5+); no exploitation reported"
+    topic_tags:
+      - cve
+      - vm2
+      - npm
+      - sandbox-escape
+      - webassembly
+      - rce-on-host
+      - supply-chain
+      - dev-tooling
+      - ci-cd
+      - dib-build-surface
+      - coordinated-multi-cve
+      - ai-assisted-vuln-discovery
+    related_actors: []
+    related_vulns:
+      - CVE-2026-26956
+      - CVE-2026-44001
+      - CVE-2026-43997
+      - CVE-2026-43999
+      - CVE-2026-44005
+      - CVE-2026-44006
+      - CVE-2026-44007
+    related_campaigns: []
+    finding_ids: [finding-2026-05-07-0002]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - escalation_to_exploitation
+      - new_attribution
+      - first_party_ioc_hit
+      - kev_addition
+      - cvss_enrichment_changes_severity_class
+      - second_npm_sandbox_library_clusters_in_pattern
+    first_covered: 2026-05-07
+    last_covered: 2026-05-07
+    retraction: null
+    test: false
+
+  - id: 2026-05-07-pm-002
+    covered_in: [2026-05-07-flash-0000-pan-os-cl-sta-1132, 2026-05-07-morning, 2026-05-07-afternoon]
+    brief_file: threats/briefs/2026-05-07-afternoon.md
+    headline: "UPDATE: PAN-OS CVE-2026-0300 — exploitation backdated to April 9 per BleepingComputer relaying Unit 42 customer notification (~4 weeks pre-PSIRT-disclosure); EarthWorm tunneling tool tooling-overlap with Volt Typhoon, APT41, CL-STA-0046, UAT-8337 (Hard Rule 2: not actor cross-walk); Shadowserver internet-exposed VM-series exposure refreshed to 5,400+ from 5,800+"
+    update_resurface: true
+    parent_finding: finding-2026-05-07-FLASH-0001
+    parent_findings_in_lineage:
+      - finding-2026-05-06-FLASH-0001
+      - finding-2026-05-06-FLASH-0003
+    topic_tags:
+      - cve
+      - palo-alto-networks
+      - pan-os
+      - cve-2026-0300
+      - cl-sta-1132
+      - earthworm
+      - tooling-overlap-not-cross-walk
+      - hard-rule-2-no-cross-walk
+      - exploitation-backdated
+      - shadowserver-exposure-refresh
+      - update-on-flash-finding
+      - update_history-extension
+    related_actors: []
+    related_vulns: [CVE-2026-0300]
+    related_clusters:
+      - cluster_id: CL-STA-1132
+        cross_walk_to_roster: null
+        confidence_language_from_source: "likely state-sponsored"
+        archimedes_treatment: claim_not_assertion
+    related_campaigns: []
+    finding_ids: [finding-2026-05-07-FLASH-0001]
+    digraph: A2
+    wep_split:
+      procedural_facts: very_likely
+      operational_claim: likely
+    update_resurface_conditions_met:
+      - additional_iocs_published_extending_cl_sta_1132_or_evidence_layer
+      - exposure_metric_refresh_shadowserver
+      - exploitation_history_backdated_with_verifiable_quote
+    resurface_if:
+      - second_ir_firm_publishes_cl_sta_1132_or_matching_iocs
+      - mandiant_volexity_crowdstrike_mstic_cross_walk_to_tracked_actor
+      - first_party_splunk_hit_post_master_index_update
+      - first_a_b_grade_actor_attribution_to_tracked_roster
+      - new_victims_named_with_ad_sector
+      - patch_actually_ships_2026_05_13
+      - patch_actually_ships_2026_05_28
+      - greynoise_censys_targeted_vs_scanner_disaggregation
+      - public_advisories_from_cisa_or_fbi_actor_naming
+      - additional_iocs_published_extending_cl_sta_1132
+    first_covered: 2026-05-07
+    last_covered: 2026-05-07
+    retraction: null
+    test: false
+    notes: |
+      Afternoon brief carries an UPDATE block on the morning's PAN-OS
+      coverage. Update_resurface met three conditions: (1) Unit 42
+      customer notification quoted verbatim establishing first-observed-
+      attempt at April 9 (predating PSIRT disclosure by ~4 weeks);
+      (2) EarthWorm tooling-provenance context — tool historically
+      observed in operations attributed to Volt Typhoon (#008), APT41
+      (#019), CL-STA-0046 (Cisco Talos cluster, not in roster), and
+      UAT-8337 (Cisco Talos cluster, not in roster); (3) Shadowserver
+      internet-exposed VM-series PAN-OS count refreshed to 5,400+ from
+      5,800+. Hard Rule 2 honored — tooling-overlap framed as NOT
+      actor cross-walk; EarthWorm is publicly available across actor
+      classes; recorded for actor-profiler review only. Sixth touch on
+      CVE-2026-0300 in 36h (FLASH-0001 06:00, morning absorb,
+      FLASH-0003 18:00 KEV, FLASH-0007 00:50 IR-layer, 08:00 morning
+      absorb, this 16:00 afternoon UPDATE). Pattern flagged for weekly
+      synthesis 2026-05-10 as corroboration-arrival velocity case study.
+
+  - id: 2026-05-07-pm-003
+    covered_in: [2026-05-07-afternoon]
+    brief_file: threats/briefs/2026-05-07-afternoon.md
+    headline: "Cisco May 2026 advisory bundle — 5 high-severity CVEs (Unity Connection SSRF/RCE-as-root, SG350 SNMP DoS, Crosswork/NSO DoS-requires-manual-reboot, IoT FND DoS) + 7 medium CVEs across IoT FND/Slido/Prime/ISE/ECE; no exploitation; CMDB cross-check Unity Connection and ISE in DefenseClaw stack"
+    topic_tags:
+      - cve
+      - cisco
+      - vendor-advisory-bundle
+      - unity-connection
+      - ssrf-to-rce-root
+      - sg350
+      - snmp-dos
+      - crosswork-nso
+      - iot-field-network-director
+      - ise
+      - patch-cycle-monitoring
+      - no-exploitation
+      - cmdb-asset-inventory-recommended
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20034
+      - CVE-2026-20035
+      - CVE-2026-20185
+      - CVE-2026-20188
+      - CVE-2026-20167
+    related_campaigns: []
+    finding_ids: [finding-2026-05-07-0001]
+    digraph: B3
+    wep: likely
+    resurface_if:
+      - escalation_to_exploitation
+      - kev_addition
+      - cvss_enrichment_changes_severity_class
+      - first_party_ioc_hit
+      - cmdb_lookup_confirms_unity_connection_or_ise_in_stack
+    first_covered: 2026-05-07
+    last_covered: 2026-05-07
+    retraction: null
+    test: false
+
+  - id: 2026-05-07-pm-004
+    covered_in: [2026-05-07-afternoon]
+    brief_file: threats/briefs/2026-05-07-afternoon.md
+    headline: "AI-tradecraft watch (1/2): Sophos via BleepingComputer — counterfeit claude-pro[.]com site delivers new Beagle Windows backdoor via DLL-sideloading chain (NOVupdate.exe + avk.dll + DonutLoader); C2 license[.]claude-pro[.]com on Alibaba Cloud (8.217.190.58); Sophos hedges PlugX-operator overlap (Hard Rule 2: not cross-walked)"
+    topic_tags:
+      - malware-family
+      - beagle-backdoor
+      - donutloader
+      - dll-sideloading
+      - signed-binary-abuse
+      - ai-brand-impersonation-lure
+      - claude-pro-counterfeit
+      - alibaba-cloud-c2
+      - plugx-tooling-overlap-hedged
+      - hard-rule-2-no-cross-walk
+      - ai-tradecraft-watch-cluster
+      - dib-developer-targeting-inferential
+      - sophos-provisional-a-grade
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-07-0003]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    iocs_added:
+      domain:
+        - claude-pro.com
+        - license.claude-pro.com
+      ipv4:
+        - 8.217.190.58
+      filename:
+        - Claude-Pro-windows-x64.zip
+        - NOVupdate.exe
+        - avk.dll
+      malware_family:
+        - Beagle
+        - DonutLoader
+      master_index_ingestion_status: pending_librarian
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -7d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      followup_required: re_query_at_minus_30d_post_master_index_update
+    resurface_if:
+      - second_a_b_grade_independent_observation_of_beagle
+      - first_party_splunk_hit_on_any_beagle_ioc
+      - sophos_or_other_a_b_publishes_firmer_attribution
+      - ad_sector_or_watchlist_entity_named_as_beagle_target
+      - new_ai_brand_impersonation_variant_observed
+    first_covered: 2026-05-07
+    last_covered: 2026-05-07
+    retraction: null
+    test: false
+
+  - id: 2026-05-07-pm-005
+    covered_in: [2026-05-07-afternoon]
+    brief_file: threats/briefs/2026-05-07-afternoon.md
+    headline: "AI-tradecraft watch (2/2): Dragos via SecurityWeek — generative-AI-assisted OT intrusion at Monterrey municipal water utility (January 2026); Claude AI used during live attack to identify OT assets; TAT26-12 with Dragos attribution-disclaimer; BACKUPOSINT v9.0 APEX PREDATOR custom Python framework (17K lines, 49 modules); password-spray vNode SCADA single-password authentication"
+    topic_tags:
+      - ot-ics
+      - vnode-scada
+      - iiot-management-plane
+      - password-spray-initial-access
+      - single-password-authentication-config-hygiene
+      - generative-ai-assisted-live-intrusion
+      - claude-ai-during-attack
+      - backuposint-custom-framework-first-disclosure
+      - tat26-12-dragos-cluster
+      - attribution-explicitly-disclaimed
+      - ai-tradecraft-watch-cluster
+      - threat-detection-weekly-case-study
+      - dragos-provisional-a-grade
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-07-0006]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    related_clusters:
+      - cluster_id: TAT26-12
+        cross_walk_to_roster: null
+        confidence_language_from_source: "remains unidentified, with no links established to any known state or criminal group"
+        archimedes_treatment: claim_not_assertion
+    detection_engineering_handoff:
+      target_brief: 2026-05-13-threat-detection-weekly
+      case_study_themes:
+        - ai-assisted-recon-during-ot-intrusion
+        - single-password-auth-on-ot-management-plane
+        - custom-tooling-framework-first-disclosure
+    resurface_if:
+      - second_ot_research_vendor_publishes_tat26_12_or_backuposint_observation
+      - dragos_publishes_backuposint_binary_hashes_or_network_signatures
+      - tat26_12_cross_walked_to_state_or_criminal_group_by_a_b_grade_source
+      - ad_sector_or_watchlist_ot_environment_named_as_tat26_12_target
+    first_covered: 2026-05-07
+    last_covered: 2026-05-07
+    retraction: null
+    test: false
+
+  - id: 2026-05-07-pm-006
+    covered_in: [2026-05-07-afternoon]
+    brief_file: threats/briefs/2026-05-07-afternoon.md
+    headline: "DPRK monitoring / roster gap: ESET via The Record — APT37 (Scarcruft) Sqgame Android supply-chain compromise since November 2024; BirdCall backdoor (Android + Windows); ethnic-Korean targeting in Yanbian, China (likely refugees and defectors per ESET); APT37 not in Archimedes roster — current DPRK actors are RGB-attributed, APT37 is MSS, structural gap; /new-actor candidacy recommended"
+    topic_tags:
+      - dprk
+      - apt37
+      - scarcruft
+      - redeyes
+      - reaper
+      - group123
+      - sqgame
+      - android-supply-chain
+      - birdcall
+      - civil-society-targeting
+      - yanbian
+      - mss-attribution-vs-rgb
+      - roster-gap
+      - new-actor-candidacy
+      - eset-provisional-a-grade
+      - off-a-d-monitoring
+    related_actors:
+      - actor_name: APT37
+        aliases: [Scarcruft, RedEyes, Reaper, Group123]
+        nation: KP
+        in_roster: false
+        candidate_for_new_actor: true
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-07-0004]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    actor_profiler_handoff:
+      action: new_actor_candidacy_recommended
+      candidate: APT37
+    resurface_if:
+      - second_a_b_grade_independent_birdcall_or_sqgame_observation
+      - ad_adjacent_civil_society_or_policy_research_org_named_as_apt37_target
+      - operator_approves_new_actor_apt37_candidacy
+    first_covered: 2026-05-07
+    last_covered: 2026-05-07
+    retraction: null
+    test: false
+
+  - id: 2026-05-07-pm-007
+    covered_in: [2026-05-07-afternoon]
+    brief_file: threats/briefs/2026-05-07-afternoon.md
+    headline: "Russian critical-infra adjacency: Polish ABW via The Record — water-treatment ICS attacks across 5 Polish municipalities + 2024-2025 attacks on Polish rail / ATC / PAP / energy; ABW attributes to 'Russian special services' generally; ABW does NOT name Sandworm (007), APT28 (006), or APT29 (009); Archimedes does not cross-walk on inferential TTP match (Hard Rule 2); A&D-adjacency inferential via Poland-as-aid-logistics-hub"
+    topic_tags:
+      - russia
+      - polish-abw-attribution
+      - water-treatment-ics
+      - critical-infrastructure
+      - polish-rail-atc-pap-energy
+      - russian-special-services-general-attribution
+      - hard-rule-2-no-cross-walk
+      - sandworm-apt28-apt29-not-named-by-abw
+      - poland-as-aid-logistics-hub
+      - a-d-adjacency-inferential
+      - off-a-d-monitoring
+    related_actors:
+      - actor_name: "[unspecified — Russian special services]"
+        nation: RU
+        in_roster: false
+        archimedes_treatment: report_abw_attribution_not_originate
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-07-0005]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    actor_profiler_handoff:
+      action: adjacent_attribution_context_note
+      affected_dossiers:
+        - actor_id: "007"
+          primary_name: Sandworm
+        - actor_id: "006"
+          primary_name: APT28
+        - actor_id: "009"
+          primary_name: APT29
+    resurface_if:
+      - mandiant_crowdstrike_mstic_eset_publishes_specific_tracked_actor_attribution
+      - abw_publishes_followup_technical_bulletin_with_iocs_or_cve
+      - cyberdefence24_pro_russian_hacktivist_group_named_publicly
+      - ad_prime_or_dib_adjacent_entity_named_as_victim_in_a_b_grade_source
+      - additional_polish_critical_infra_targets_disclosed
+    first_covered: 2026-05-07
+    last_covered: 2026-05-07
+    retraction: null
+    test: false
+
+  - id: 2026-05-07-pm-thematic-ai-tradecraft
+    covered_in: [2026-05-07-afternoon]
+    brief_file: threats/briefs/2026-05-07-afternoon.md
+    headline: "Thematic: AI-tradecraft watch — two independent vendor reports in same cycle (Sophos: AI-brand-impersonation as initial-access lure; Dragos: generative-AI use during live OT intrusion); different attack-chain positions; emerging cluster pattern flagged for weekly synthesis"
+    thematic_grouping: true
+    topic_tags:
+      - ai-tradecraft
+      - ai-brand-impersonation
+      - generative-ai-during-live-intrusion
+      - emerging-pattern
+      - same-cycle-independent-vendor-confirmation
+      - methodological-cluster
+      - weekly-synthesis-handoff
+    related_findings: [finding-2026-05-07-0003, finding-2026-05-07-0006]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-07-0003, finding-2026-05-07-0006]
+    weekly_synthesis_pattern_held:
+      pattern: ai_tradecraft_watch_two_attack_chain_positions_same_cycle
+      surface_in: 2026-05-10-weekly-synthesis
+      threat_detection_weekly_handoff: 2026-05-13-threat-detection-weekly
+    resurface_if:
+      - third_ai_tradecraft_observation_in_same_quarter
+      - ad_dib_environment_named_as_ai_tradecraft_target
+      - first_party_splunk_hit_on_ai_lure_or_ai_recon_indicator
+    first_covered: 2026-05-07
+    last_covered: 2026-05-07
+    retraction: null
+    test: false
 
 # ============================================================================
 # Valid resurface_if conditions

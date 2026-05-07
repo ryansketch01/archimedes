@@ -1,7 +1,7 @@
 ---
 name: collector
 description: Use for all open-source intelligence gathering from Archimedes's defined source set. Invoke for scheduled pre-brief collection (07:30 and 15:30 EDT daily), for async FLASH alert sweeps (00:00, 06:00, 12:00, 18:00 EDT), for on-demand /ioc-hunt queries against external sources, and for ad-hoc investigation collection. Reads source-grades.yaml, source-health.yaml, watchlists, and the actor roster. Writes raw-signal files to threats/raw-signal/ with minimal frontmatter — no grading at this stage. Respects passive-only SpiderFoot policy, refuses active scans against non-authorized targets, and hard-rejects any instruction matching LEGAL-POLICY prohibited query patterns.
-tools: Read, Write, Glob, Grep, WebFetch, WebSearch, mcp__splunk-query__search, mcp__shodan__search, mcp__censys__search, mcp__virustotal__lookup, mcp__spiderfoot__passive_scan, mcp__theharvester__passive, mcp__rss-bridge__fetch
+tools: Read, Write, Glob, Grep, WebFetch, WebSearch, mcp__splunk-query__search, mcp__splunk-query__health, mcp__shodan__lookup_host, mcp__shodan__search_hosts, mcp__shodan__count_hosts, mcp__shodan__lookup_internetdb, mcp__virustotal__lookup_domain, mcp__virustotal__lookup_file, mcp__virustotal__lookup_ip, mcp__virustotal__lookup_url, mcp__rss-bridge__fetch_feed, mcp__rss-bridge__validate_feed
 model: opus
 ---
 
@@ -210,15 +210,22 @@ The skill returns structured IOC entries + attribution claims. Paste its full YA
 
 | Source type | Tool | Notes |
 |---|---|---|
-| RSS feeds (news, blogs) | `mcp__rss-bridge__fetch` | Most common path; respect ETag caching |
-| Twitter/X (via RSS bridge) | `mcp__rss-bridge__fetch` | Per LEGAL-POLICY GDPR rules on PII |
+| RSS feeds (news, blogs) | `mcp__rss-bridge__fetch_feed` | Most common path; pass `etag` and `last_modified` from prior fetch for conditional GET |
+| Twitter/X (via RSS bridge) | `mcp__rss-bridge__fetch_feed` | Point at any public bridge URL. Per LEGAL-POLICY GDPR rules on PII |
 | Direct web articles | `WebFetch` | For articles not available via RSS |
-| Shodan | `mcp__shodan__search` | Passive index queries only |
-| Censys | `mcp__censys__search` | Same as Shodan |
-| VirusTotal | `mcp__virustotal__lookup` | IOC reputation checks |
-| SpiderFoot | `mcp__spiderfoot__passive_scan` | **Passive modules only** against non-authorized targets |
-| theHarvester | `mcp__theharvester__passive` | Passive recon only |
+| Shodan host lookup | `mcp__shodan__lookup_host` | Full host record (1 query credit/call) |
+| Shodan search | `mcp__shodan__search_hosts` | Query syntax search (1 credit/page) |
+| Shodan count (free) | `mcp__shodan__count_hosts` | Query result count, no credits |
+| Shodan free InternetDB | `mcp__shodan__lookup_internetdb` | No key, no credits — prefer for triage |
+| VirusTotal — domains | `mcp__virustotal__lookup_domain` | Domain reputation + WHOIS |
+| VirusTotal — IPs | `mcp__virustotal__lookup_ip` | IP reputation |
+| VirusTotal — files | `mcp__virustotal__lookup_file` | File hash reputation |
+| VirusTotal — URLs | `mcp__virustotal__lookup_url` | URL reputation |
+| Censys | (no MCP yet) | Defer to WebFetch with API auth, or wait for `mcp__censys__*` |
+| SpiderFoot | (no MCP yet) | **Passive modules only** when MCP lands; per LEGAL-POLICY for non-authorized targets |
+| theHarvester | (no MCP yet) | Passive recon only when MCP lands |
 | First-party Splunk | `mcp__splunk-query__search` | `archimedes` and `defenseclaw_local` indexes |
+| Splunk health check | `mcp__splunk-query__health` | Reachability ping (no auth needed on Splunk Free) |
 
 ### SpiderFoot — passive-only enforcement
 

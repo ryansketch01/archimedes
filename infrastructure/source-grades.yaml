@@ -306,7 +306,16 @@ technical_sources:
     active: true
     rationale: "Code presence yes, intent no"
     api_required: true
-  
+
+  - id: abuseipdb
+    name: "AbuseIPDB"
+    category: enrichment
+    grade_facts: B
+    grade_attribution: F
+    active: true
+    rationale: "Community-contributed IP reputation database; solid for IP triage, occasional false positives from misclassified scanners"
+    api_required: true
+
   - id: intelx
     name: "Intelligence X"
     category: enrichment
@@ -523,11 +532,11 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 44
-  active_sources: 35
+  total_sources: 45
+  active_sources: 36
   by_grade:
     A: 19
-    B: 15
+    B: 16
     C: 4
     D: 1
     E: 2

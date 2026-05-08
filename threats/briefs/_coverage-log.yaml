@@ -2336,6 +2336,241 @@ entries:
     retraction: null
     test: false
 
+  - id: 2026-05-08-am-001
+    covered_in: [2026-05-08-morning]
+    brief_file: threats/briefs/2026-05-08-morning.md
+    headline: "Ivanti EPMM CVE-2026-6973 — A1 admin-auth-required RCE in on-prem EPMM, KEV-listed with 2026-05-10 federal patch deadline (48h at compose); 'a very limited number of customers' exploited per Ivanti; SecurityWeek introduces editorial chained-exploitation hypothesis with Jan 2026 unauth RCEs CVE-2026-1281 / CVE-2026-1340 against non-rotated customers; cloud variants (Neurons, EPM, Sentry) NOT affected; Shadowserver >850 exposed EPMM IPs pre-disclosure (508 Europe, 182 NA); SecurityWeek 'Chinese threat actors often suspected' framed as editorial pattern-of-history NOT attribution (Hard Rule 2); red-team adjusted forward predictive WEP from very_likely to likely on effective-single-source on exploitation claim"
+    topic_tags:
+      - cve
+      - ivanti
+      - epmm
+      - cve-2026-6973
+      - kev
+      - kev-deadline-2026-05-10
+      - admin-auth-required-rce
+      - on-prem-only
+      - chained-exploitation-hypothesis
+      - editorial-inference-not-vendor-confirmed
+      - cve-2026-1281
+      - cve-2026-1340
+      - credential-rotation-mitigation
+      - shadowserver-exposure
+      - chinese-threat-actor-pattern-of-history
+      - hard-rule-2-no-attribution-promotion
+      - red-team-wep-adjusted
+      - effective-single-source-on-exploitation
+      - dib-on-prem-mdm-inferential
+    related_actors:
+      - actor: "Chinese threat actors (unspecified)"
+        in_roster: false
+        claimed_by: securityweek
+        archimedes_treatment: editorial_pattern_not_attribution_hard_rule_2
+    related_vulns:
+      - CVE-2026-6973
+      - CVE-2026-1281
+      - CVE-2026-1340
+      - CVE-2026-5786
+      - CVE-2026-5787
+      - CVE-2026-5788
+      - CVE-2026-7821
+    related_campaigns: []
+    finding_ids: [finding-2026-05-08-0002]
+    digraph: A1
+    wep_split:
+      procedural_facts: very_likely
+      forward_predictive: likely
+    red_team_review_complete: true
+    red_team_outcome: qualify
+    analyst_review_complete: true
+    vuln_tracker_handoff:
+      action: add_to_vulnerabilities_index
+      cve: CVE-2026-6973
+      pattern: same_as_pan_os_cve_2026_0300
+    resurface_if:
+      - ivanti_or_cisa_revises_exploitation_scope_upward
+      - independent_ir_firm_publishes_corroborating_telemetry
+      - a_grade_source_attributes_exploitation_to_tracked_actor
+      - first_party_splunk_hit_on_epmm_indicators
+      - kev_deadline_misses_widely_in_dib
+      - second_a_b_grade_source_confirms_chain_hypothesis
+      - new_victims_named_with_ad_sector
+      - patch_adoption_data_published_by_shadowserver_or_cisa
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
+  - id: 2026-05-08-am-002
+    covered_in: [2026-05-08-morning]
+    brief_file: threats/briefs/2026-05-08-morning.md
+    headline: "Linux kernel 'Dirty Frag' LPE zero-day disclosed by Hyunwoo Kim (@v4bel) — deterministic-no-race PoC public, no CVE assigned, no patch, all major enterprise distros affected (Ubuntu / RHEL / CentOS Stream / AlmaLinux / openSUSE Tumbleweed / Fedora) via algif_aead crypto interface (~9-year-old code path); mitigation (disable esp4 / esp6 / rxrpc) breaks IPsec VPNs and AFS; same subsystem family as Copy Fail (CVE-2026-31431) which reached CISA KEV ~3 weeks post-disclosure with confirmed active exploitation; ACH H1 'follows Copy Fail curve' rests on single-data-point base rate, medium-brittleness; tripwire 2026-05-22 (if no A-grade exploitation by then, downgrade WEP to roughly_even_chance)"
+    topic_tags:
+      - cve-pending
+      - linux-kernel
+      - lpe
+      - zero-day
+      - dirty-frag
+      - algif_aead
+      - af_alg
+      - deterministic-no-race
+      - public-poc
+      - no-patch
+      - copy-fail-adjacency
+      - kev-adjacency
+      - ipsec-mitigation-breaks-vpns
+      - afs-mitigation-breaks-filesystem
+      - single-data-point-base-rate-caveat
+      - tripwire-2026-05-22
+      - bleepingcomputer-sans-isc-partial-independence
+    related_actors: []
+    related_vulns:
+      - CVE-2026-31431
+    related_campaigns: []
+    finding_ids: [finding-2026-05-08-0001]
+    digraph: B2
+    wep: likely
+    analyst_review_complete: true
+    tripwires:
+      - date: 2026-05-22
+        condition: no_a_grade_exploitation_report_surfaces
+        effect: downgrade_wep_likely_to_roughly_even_chance_h4_competitive_with_h1
+      - condition: any_a_grade_source_reports_in_the_wild_dirty_frag_exploitation
+        effect: flash_trigger_6_fires_rerun_ach_wep_can_rise_to_very_likely
+      - condition: metasploit_or_crackmapexec_integrates_dirty_frag_module
+        effect: elevate_h2_faster_than_copy_fail_curve
+      - condition: major_distro_ships_patch_ahead_of_cve_assignment
+        effect: compresses_exposure_window_reduces_h1_h2_forward_weps
+      - condition: cve_assignment_by_nvd_mitre
+        effect: procedural_log_in_vulnerabilities_index
+    resurface_if:
+      - a_grade_source_reports_in_the_wild_exploitation
+      - cve_assignment_by_nvd_mitre
+      - major_distro_ships_patch
+      - exploitation_module_in_metasploit_or_crackmapexec
+      - first_party_splunk_hit
+      - tripwire_2026_05_22_evaluation
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
+  - id: 2026-05-08-am-003
+    covered_in: [2026-05-08-morning]
+    brief_file: threats/briefs/2026-05-08-morning.md
+    headline: "PCPJack worm framework — credential-theft cloud-native worm with deterministic TeamPCP infection-removal behavior; SentinelLabs originating research (provisional A grade) relayed by BleepingComputer + SecurityWeek; targets cloud-native dev infrastructure (AWS, Docker, Kubernetes, Redis, RayML, MongoDB); initial access via 5 CVEs (CVE-2025-29927 Next.js, CVE-2025-55182 React2Shell, CVE-2026-1357 WPVivid, CVE-2025-9501 W3 Total Cache, CVE-2025-48703 CentOS Web Panel); SentinelOne hedged 'could be a former operator who is deeply familiar with the group's tooling' (verbatim 14 words); single-source veto applied; ACH cannot distinguish former-operator-splinter from external reverse-engineering of partly-public TeamPCP samples; collector follow-up required for SentinelOne primary report URL (IOCs, sample hashes, S3 staging URLs not surfaced in either relay)"
+    topic_tags:
+      - actor-adjacent
+      - pcpjack-worm
+      - teampcp-displacement
+      - cloud-native-worm
+      - credential-theft
+      - aws-docker-kubernetes-redis-rayml-mongodb
+      - dev-build-infrastructure-targeting
+      - five-cve-initial-access
+      - cve-2025-29927-nextjs
+      - cve-2025-55182-react2shell
+      - cve-2026-1357-wpvivid
+      - cve-2025-9501-w3-total-cache
+      - cve-2025-48703-centos-web-panel
+      - hedged-attribution-could-be
+      - hard-rule-2-no-promotion
+      - single-source-veto-applied
+      - sentinelone-provisional-a-grade
+      - relay-distortion-risk
+      - collector-followup-sentinelone-primary-url
+      - actor-profiler-handoff-teampcp-competitive-landscape
+    related_actors:
+      - actor: "PCPJack operator (hedged: 'could be a former TeamPCP operator')"
+        in_roster: false
+        claimed_by: sentinelone-provisional
+        archimedes_treatment: record_verbatim_no_promotion_hard_rule_2
+      - actor_id: "001"
+        actor_name: TeamPCP
+        relationship: claimed_displacement_target
+        threat_level_change_pending: false
+        threat_level_change_pending_rationale: pending_second_source_corroboration
+    related_vulns:
+      - CVE-2025-29927
+      - CVE-2025-55182
+      - CVE-2026-1357
+      - CVE-2025-9501
+      - CVE-2025-48703
+    related_campaigns: []
+    finding_ids: [finding-2026-05-08-0003]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    actor_profiler_handoff:
+      action: log_competitive_landscape_data_point_no_threat_level_change
+      affected_dossier: 001-teampcp
+      gate: second_source_corroboration_required_before_lifting_veto
+    collector_followup:
+      action: fetch_sentinelone_primary_report_url
+      purpose: surface_full_ioc_list_sample_hashes_s3_payload_staging_urls
+      blocking_for_master_index_ingestion: true
+    provisional_source_grades_pending_operator_ratification:
+      - source_id: sentinelone
+        proposed_grade: A
+        precedent_finding: finding-2026-05-06-FLASH-0002
+    resurface_if:
+      - second_independent_a_b_grade_publishes_pcpjack_analysis
+      - sentinelone_primary_report_yields_iocs_or_attribution_markers
+      - first_party_splunk_hit_on_pcpjack_iocs
+      - teampcp_campaign_tempo_measurably_decreases_q2_q3
+      - ad_environment_named_in_pcpjack_victim_set
+      - second_source_disputes_attribution_h2_strengthens
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
+  - id: 2026-05-08-am-004
+    covered_in: [2026-05-08-morning]
+    brief_file: threats/briefs/2026-05-08-morning.md
+    headline: "ClaudeBleed (LayerX provisional C-grade research via SecurityWeek B-grade relay) — trust-boundary flaw in Anthropic Claude Chrome extension allowing co-resident hostile extension to inject prompts, forge user-approval confirmations via DOM manipulation, pivot to authenticated Gmail / GitHub / Google Drive sessions; Anthropic shipped partial patch, LayerX states 'privileged'-mode switch bypasses fix; no CVE, no CVSS, no exploitation; single-source veto applied (LayerX sole primary); third AI-tradecraft data point in 2 weeks (Anthropic Threat Report 2026-05-06; Sophos/Beagle 2026-05-07; ClaudeBleed 2026-05-08) — defensive flip-side: AI agents becoming attack surface; Archimedes runs Claude Code, NOT Chrome extension, so no Archimedes-operations exposure"
+    topic_tags:
+      - ai-tradecraft-watch-cluster
+      - claude-chrome-extension
+      - claudebleed
+      - trust-boundary-violation
+      - prompt-injection
+      - dom-manipulation-confirmation-forgery
+      - anthropic-partial-patch
+      - privileged-mode-bypass
+      - ai-agent-takeover
+      - layerx-provisional-c-grade
+      - single-source-veto-applied
+      - third-ai-tradecraft-observation-in-2-weeks
+      - emerging-pattern
+      - archimedes-not-affected-runs-claude-code
+      - monitoring-tier-c3
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-08-0004]
+    digraph: C3
+    wep: roughly_even_chance
+    single_source_veto_applied: true
+    provisional_source_grades_pending_operator_ratification:
+      - source_id: layerx
+        proposed_grade: C
+        upgrade_rule: three_corroborated_hits_in_rolling_90_day_window_for_c_to_b
+    weekly_synthesis_pattern_held:
+      pattern: ai_tradecraft_watch_three_attack_chain_positions_in_two_weeks
+      surface_in: 2026-05-10-weekly-synthesis
+      threat_detection_weekly_handoff: 2026-05-13-threat-detection-weekly
+    resurface_if:
+      - anthropic_publishes_their_own_advisory
+      - mstic_mandiant_google_cloud_security_publish_independent_ai_agent_extension_research
+      - cve_assigned_to_claudebleed
+      - second_a_b_grade_corroborates_layerx
+      - first_party_splunk_hit_on_claudebleed_indicators_if_iocs_surface
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

@@ -64,6 +64,9 @@ disposition: |
   attribution within the 72h window, that would be a candidate to
   lift the single-source veto and adjust WEP. Today's relay does NOT
   qualify.
+promoted: false
+rejected_at: 2026-05-08T08:30:00-04:00
+rejection_id: reject-2026-05-08-0001
 ---
 
 # The Record relay — MuddyWater/Chaos ransomware (2026-05-07 17:30 EDT)

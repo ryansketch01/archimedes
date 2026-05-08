@@ -64,6 +64,9 @@ disposition: |
   context on the cloud-credential-theft threat-actor competitive
   landscape. May warrant earlier review if a second source confirms
   PCPJack is meaningfully reducing TeamPCP's victim base.
+promoted: true
+promoted_to_finding: finding-2026-05-08-0003
+promoted_at: 2026-05-08T08:18:00-04:00
 ---
 
 # PCPJack worm vs TeamPCP cloud infrastructure — collector observation

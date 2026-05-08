@@ -63,6 +63,35 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-08 — SentinelOne / SentinelLabs — (none) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `sentinelone`
+**Reason:** First Archimedes-corpus citation as the originating source on `finding-2026-05-08-0003` (PCPJack worm research — credential-stealing worm targeting cloud-native dev infrastructure; deterministic TeamPCP-displacement behavior; hedged "could be a former operator" language). Sole primary on the finding; BleepingComputer and SecurityWeek relay. SentinelLabs is widely treated as Tier-1 vendor research alongside Mandiant / CrowdStrike / Unit 42 / MSTIC — peer-reviewed publications, named analyst bylines, deep technical telemetry-grounded reporting. Proposed grade A by the grader on that peer-tier assumption.
+**Supporting findings:** [finding-2026-05-08-0003]
+**Posted to:** Discord `#actor-review` (message id pending — see librarian Splunk telemetry for this run)
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade sentinelone A` (or operator downgrade)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding 0003 is digraph A2 / WEP likely with single-source-veto active (SentinelOne sole primary on attribution). Provisional A grading is what holds the A2 digraph — operator downgrade to B would re-grade 0003 to B2 and the WEP cap would still apply (single-source-veto load-bearing). Operator decline (no grade) would force grader to re-evaluate 0003 on next sweep with no source-grade resolved.
+**Collector follow-up flagged:** SentinelOne primary report URL not surfaced by WebFetch in the 2026-05-08 morning collection cycle — relays cite the SentinelLabs research but the primary URL was not reachable / surfaced. Flag for next collection sweep; PCPJack-specific IOCs (S3 payload URLs, sample hashes, C2 endpoints) deferred until primary fetched.
+**Next review:** ratification target 2026-05-15 (7 days; bundled with the next ratification sweep)
+
+---
+
+## 2026-05-08 — LayerX Security — (none) → C (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `layerx`
+**Reason:** First Archimedes-corpus citation as the originating source on `finding-2026-05-08-0004` (ClaudeBleed — trust-boundary flaw in Anthropic's Claude Chrome extension; co-resident hostile-extension prompt injection / DOM-confirmation forgery / authenticated-session pivot). Sole primary; SecurityWeek relay. Unknown vendor — no prior Archimedes-corpus citation, no peer-reviewed-publication track record observed at first surface, browser-security commercial origin creates a structural conflict-of-interest concern with the vulnerability class they research (browser/extension trust-boundary issues are exactly the surface LayerX sells products for). Proposed grade C by the grader as a conservative starting grade pending track-record accumulation. Operator may upgrade to B on observation of consistent technical rigor across multiple findings, or hold at C if a context-thin commercial-research profile emerges.
+**Supporting findings:** [finding-2026-05-08-0004]
+**Posted to:** Discord `#actor-review` (message id pending — see librarian Splunk telemetry for this run)
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade layerx C` (or operator upgrade to B)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding 0004 is digraph C3 / WEP roughly_even_chance with single-source-veto active (LayerX sole primary, SecurityWeek relay). Provisional C grading is what holds the C3 digraph — this is the floor, no further downgrade path on grade alone. Operator upgrade to B would re-grade 0004 to B3 and lift the WEP slightly (still single-source-veto-capped).
+**Next review:** ratification target 2026-05-15 (7 days; bundled with SentinelOne and the open Rapid7 / SecurityWeek window)
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

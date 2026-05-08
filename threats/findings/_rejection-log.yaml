@@ -9,9 +9,178 @@
 # resurfaces via higher-grade sources.
 
 version: 1
-last_updated: 2026-05-07
+last_updated: 2026-05-08
 
 entries:
+  - rejection_id: reject-2026-05-08-0001
+    rejected_at: 2026-05-08T08:30:00-04:00
+    grading_run_id: morning-20260508-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-07-flash-1800-002-the-record-muddywater-relay
+      - raw-2026-05-08-am-003-the-record-muddywater-chaos-rapid7-relay
+    cluster_topic: "The Record (Jonathan Greig) two-publication relay of Rapid7's MuddyWater / Chaos-decoy attribution; no new evidence, no new IOCs, no new TTPs, attribution remains Rapid7 single-source"
+    rejection_reasons:
+      - relay_only_independence_test_fails
+      - no_new_evidence_added
+      - 72h_attribution_veto_clock_currently_active_on_subject_actor
+      - anti_noise_repeat_topic_within_24h_window
+      - hard_rule_2_attribution_origination_risk
+    rejection_detail: >
+      Cluster fails to clear B2 action-item or C3 monitoring threshold for
+      promotion. Specific reasoning:
+
+        (1) Both raw-signal items in the cluster are pure relays of
+            Rapid7's 2026-05-06 MuddyWater Chaos-ransomware-decoy
+            attribution (already absorbed by finding-2026-05-06-FLASH-0002
+            and an active 72h auto-downgrade clock per _roster.yaml note
+            022, resolution ~2026-05-09 12:00 EDT). The Record
+            (raw-2026-05-07-flash-1800-002 published 2026-05-07T17:30
+            EDT and raw-2026-05-08-am-003 published 2026-05-07T21:30
+            UTC) explicitly attributes to Rapid7 in both pieces, names
+            the Rapid7 IR analysts (Alexandra Blia, Ivan Feigl), and
+            reproduces Rapid7's confidence language. Per
+            INTEL-GRADING.md "Two sources are NOT independent if one is
+            a rewrite/aggregation of the other," The Record's coverage
+            is a rewrite of Rapid7 — independence test fails.
+
+        (2) No new evidence. No new IOCs. No new TTPs beyond what
+            Rapid7 disclosed. Historical-context additions in The
+            Record articles (FBI warnings on Iranian/ransomware
+            partnerships, Pay2Key Pay2Key healthcare February
+            incident, Stryker medical device damage) are framing,
+            not new attribution or new TTP for this campaign.
+
+        (3) 72h attribution-veto clock currently active. Promoting a
+            relay-only second-source-coverage finding during the
+            active veto window would risk the appearance of
+            independent corroboration where none exists. The Record's
+            two articles do NOT advance the corroboration count toward
+            72h clock resolution.
+
+        (4) Anti-noise rule applies. Same MuddyWater Chaos-decoy
+            topic was the 2026-05-06 12:00 EDT FLASH and was the
+            2026-05-07 afternoon brief discussion. Two further relay
+            articles in 24h does NOT promote to fresh finding —
+            material content (FBI warning context) folds into update
+            history of finding-2026-05-06-FLASH-0002 if briefer
+            chooses, but a separate finding would compound the
+            apparent attribution weight without adding evidence.
+
+        (5) Hard Rule 2 attribution origination risk. Promoting two
+            relay articles as a corroborating-finding cluster could
+            be misread as Archimedes weighting the MuddyWater
+            attribution upward despite single-source primary state.
+            Hard Rule 2 prohibits such weighting.
+
+      Recommended re-grading path:
+        (a) If a second independent A/B-grade vendor (Mandiant, MSTIC,
+            CrowdStrike, Unit 42, ESET, Sophos) publishes
+            corroborating MuddyWater attribution for the
+            2026-Chaos-decoy campaign before 2026-05-09 12:00 EDT,
+            re-grade and lift 72h veto.
+        (b) If 72h clock expires without independent corroboration,
+            briefer applies the auto-downgrade per _roster.yaml note
+            022.
+        (c) Today's relay-only items contribute zero to (a) or (b).
+
+    sources:
+      - source_yaml_id: the-record
+        grade: B
+        role: relay_only_of_rapid7
+    would_be_digraph: B3_with_independence_test_failed
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table. Mirror of
+      reject-2026-05-07-0001 reasoning pattern (procedural rejection,
+      not substantive — claim itself may be true, but cannot be promoted
+      as corroborating evidence). Both raw-signal items reference the
+      72h clock explicitly in their own flash_trigger_evaluation blocks.
+
+  - rejection_id: reject-2026-05-08-0002
+    rejected_at: 2026-05-08T08:32:00-04:00
+    grading_run_id: morning-20260508-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-08-am-007-trellix-ransomhouse-claim
+    cluster_topic: "RansomHouse names Trellix on leak site claiming breach with screenshots of internal services; Trellix acknowledges but denies source-code/distribution-process compromise; no A&D nexus claimed"
+    rejection_reasons:
+      - non_roster_actor_no_tracked_attribution
+      - single_source_uncorroborated
+      - no_a_and_d_nexus
+      - hard_rule_2_actor_attribution_self_claimed_only
+      - novel_attribution_origination_risk_if_promoted
+    rejection_detail: >
+      Cluster fails to clear B2 action-item threshold and is borderline
+      C3 monitoring. Specific reasoning:
+
+        (1) RansomHouse is NOT in threats/threat-actors/_roster.yaml as
+            of 2026-05-08. The actor-on-victim attribution is
+            self-claimed by RansomHouse on its own leak site —
+            self-attribution by a criminal actor is not corroborating
+            evidence per INTEL-GRADING.md (treated as E-grade if
+            considered as a source at all). Trellix has acknowledged
+            "the situation" but denied source-code/distribution-
+            process compromise; Trellix has neither confirmed nor
+            denied RansomHouse's identity claim.
+
+        (2) Single secondary source (SecurityWeek). No second-source
+            corroboration in the available window. Independence test
+            cannot pass on a single-relay cluster.
+
+        (3) No A&D nexus claimed. Trellix is a security vendor (XDR/
+            EDR provider) with broad customer base including some A&D
+            primes but no specific defense-contractor implication.
+            Article notes "potential connection" to Checkmarx / Aqua
+            Security / Bitwarden supply-chain incidents but
+            establishes NO confirmed link.
+
+        (4) Hard Rule 2 — promoting the RansomHouse-claims-Trellix
+            attribution to a finding would risk Archimedes
+            originating the attribution at higher confidence than the
+            evidence base supports (RansomHouse's own claim + Trellix's
+            partial acknowledgement is not the same as confirmed
+            RansomHouse responsibility for a Trellix breach). Per
+            attribution standards: "If only one source attributes,
+            the brief says 'per [source]' — never implies broader
+            consensus." Promoting this would imply broader consensus.
+
+        (5) Existing Trellix coverage. finding-2026-05-04-0004 (Trellix
+            source-code repository hack disclosure 2026-05-04) is on
+            the books. The RansomHouse claim could plausibly be
+            related — it could be the same incident with attribution
+            now surfaced — or it could be a separate breach claim
+            piggybacking on the earlier disclosure. SecurityWeek does
+            not establish which. Promoting a RansomHouse-named
+            attribution finding without resolving this ambiguity risks
+            confusing the Trellix-incident timeline.
+
+      Recommended re-grading path:
+        (a) If a second independent A/B-grade source corroborates
+            the RansomHouse-claims-Trellix attribution — for example,
+            Trellix's own incident-response disclosure naming
+            RansomHouse, or A-grade vendor research linking
+            RansomHouse to the Trellix screenshots — re-grade.
+        (b) If RansomHouse meets /new-actor criteria (sustained
+            activity, A&D-nexus pattern, >3 victims of strategic
+            relevance), actor-profiler may evaluate roster addition.
+        (c) Watch finding-2026-05-04-0004 update_history for any
+            Trellix follow-up disclosure that links to RansomHouse.
+
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        role: relay_of_ransomhouse_self_claim
+    would_be_digraph: B4_at_best_actor_self_claim_uncorroborated
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      RansomHouse is well-known externally as a data-extortion group
+      active for several years; not adding to roster is a /new-actor
+      decision, not a grader determination. Flag remains for
+      actor-profiler review queue. The Trellix-vendor breach pattern
+      is operationally relevant to A&D defenders running Trellix
+      products (vendor advisory monitoring) but does not promote on
+      this raw-signal alone.
+
   - rejection_id: reject-2026-05-07-0001
     rejected_at: 2026-05-07T16:21:00-04:00
     grading_run_id: afternoon-20260507-160000
@@ -91,8 +260,8 @@ entries:
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 1
-  most_recent_run: afternoon-20260507-160000
-  most_recent_run_rejections: 1
-  prior_run: afternoon-20260505-160000
-  prior_run_rejections: 0
+  total_rejections: 3
+  most_recent_run: morning-20260508-080000
+  most_recent_run_rejections: 2
+  prior_run: afternoon-20260507-160000
+  prior_run_rejections: 1

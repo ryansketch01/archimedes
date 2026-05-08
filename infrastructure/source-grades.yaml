@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-06
+last_updated: 2026-05-08
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -150,6 +150,19 @@ vendor_sources:
     urls:
       - https://www.rapid7.com/blog/
 
+  - id: sentinelone
+    name: "SentinelOne / SentinelLabs"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-08
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-08-0003 (PCPJack worm research; sole primary on credential-stealer / TeamPCP-displacement attribution). Tier-1 vendor research peer (Mandiant / CrowdStrike / Unit 42 / MSTIC tier). SentinelLabs publishes peer-reviewed APT and malware research with named analyst bylines. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.sentinelone.com/labs/
+      - https://www.sentinelone.com/blog/
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -213,6 +226,18 @@ media_sources:
     active: true
     urls:
       - https://www.securityweek.com/
+
+  - id: layerx
+    name: "LayerX Security"
+    category: vendor
+    grade: C
+    provisional: true
+    provisional_since: 2026-05-08
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-08-0004 (ClaudeBleed Chrome-extension trust-boundary research; sole primary, SecurityWeek relay). Unknown vendor — no prior peer-reviewed track record observed in Archimedes corpus, no named-analyst-byline research history visible at first surface. Browser-security-vendor commercial origin (potential conflict-of-interest with the vulnerability class they research). Provisional C is conservative starting grade pending track-record observation. Operator may upgrade to B if subsequent findings show consistent technical rigor, or hold at C if context-thin commercial-research profile is observed."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://layerxsecurity.com/
   
   - id: github-advisories
     name: "GitHub Security Advisories"
@@ -532,18 +557,20 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 45
-  active_sources: 36
+  total_sources: 47
+  active_sources: 38
   by_grade:
-    A: 19
+    A: 20
     B: 16
-    C: 4
+    C: 5
     D: 1
     E: 2
     F: 3
   awaiting_ratification:
     - rapid7
     - securityweek
+    - sentinelone
+    - layerx
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

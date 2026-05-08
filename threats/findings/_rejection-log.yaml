@@ -256,12 +256,94 @@ entries:
       claim itself may well be true; we simply cannot grade it cleanly
       without the source-chain detail.
 
+  - rejection_id: reject-2026-05-08-0003
+    rejected_at: 2026-05-08T16:36:00-04:00
+    grading_run_id: afternoon-20260508-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-08-pm-007-pamdoora-linux-backdoor-russian-cybercrime-forum
+    cluster_topic: "PamDOORa Linux PAM-stack backdoor source code marketed by 'darkworm' on Russian cybercrime forum for $900; SecurityWeek 'In Other News' one-line digest only; no primary research surfaced; no IOCs of operational value"
+    rejection_reasons:
+      - no_primary_research_identified
+      - single_source_aggregator_relay_only
+      - no_iocs_of_operational_value
+      - cannot_be_judged_without_primary_source
+      - below_c3_monitoring_threshold
+    rejection_detail: >
+      Cluster fails to clear C3 monitoring threshold for promotion.
+      Specific reasoning:
+
+        (1) SecurityWeek's "In Other News" column carries a one-line
+            digest item flagging PamDOORa being marketed by underground
+            forum handle 'darkworm' for $900. Collector explicitly
+            notes "primary research not yet identified in this sweep —
+            likely from a smaller researcher or vendor that
+            SecurityWeek aggregated." Without primary research,
+            grading the technical claims is not possible — closest
+            defensible grade is B6 (B-grade media source, but
+            information cannot be judged at all without primary
+            research). B6 falls below C3 monitoring threshold.
+
+        (2) Single-source effective: SecurityWeek aggregator-relay
+            only. No second-source corroboration. Independence test
+            cannot be evaluated without identifying the primary
+            researcher. The "darkworm" forum handle is underground-
+            marketplace observation only — not actor attribution
+            (forum handles are interchangeable / disposable).
+
+        (3) No IOCs of operational value. The article body provides
+            no hashes, no specific PAM module names, no file paths,
+            no detection signatures. PAM-backdoor pattern is real
+            and well-known, but pattern is not operational defender
+            content without specific malware artifacts. The
+            "audit /etc/pam.d/* and /lib/security/" mitigation is
+            generic Linux hygiene guidance applicable to all PAM
+            backdoors, not specific to PamDOORa.
+
+        (4) Source-code-for-sale signal is interesting but low-
+            confidence. $900 underground pricing suggests broad
+            availability rather than bespoke nation-state tooling;
+            Russian-forum origin is conventional for commodity
+            Linux-server tooling. The signal-noise ratio is too low
+            for finding promotion without primary research.
+
+        (5) A&D-target relevance: indirect at best. PAM backdoors
+            apply to any Linux estate — A&D primes operate large
+            Linux server fleets, but no specific A&D targeting is
+            reported. Generic-relevance signals do not promote in
+            isolation.
+
+      Recommended re-grading path:
+        (a) If a primary research source surfaces for PamDOORa
+            (vendor analysis, named researcher publication,
+            sandbox report) with technical artifacts (hashes,
+            file paths, configurations), re-grade.
+        (b) If primary research includes specific A&D targeting
+            or specific IOCs that overlap with first-party Splunk
+            telemetry, FLASH-evaluate.
+        (c) Otherwise the signal stays in raw-signal archive
+            (90-day retention) and may be re-surfaced via
+            keyword tracking.
+
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        role: aggregator_relay_only_no_primary_identified
+    would_be_digraph: B6_cannot_be_judged_without_primary_research
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      Procedural rejection — claim itself may be true (PAM-backdoor
+      pattern is well-established and PamDOORa-specific malware may
+      well exist) but cannot be graded cleanly without primary
+      research. If PamDOORa resurfaces via A/B-grade primary research
+      source, regrade. Signal worth keyword-tracking for next 30 days.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 3
-  most_recent_run: morning-20260508-080000
-  most_recent_run_rejections: 2
-  prior_run: afternoon-20260507-160000
-  prior_run_rejections: 1
+  total_rejections: 4
+  most_recent_run: afternoon-20260508-160000
+  most_recent_run_rejections: 1
+  prior_run: morning-20260508-080000
+  prior_run_rejections: 2

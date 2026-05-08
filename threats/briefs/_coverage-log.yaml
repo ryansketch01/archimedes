@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-07T16:00:00-04:00
+last_updated: 2026-05-08T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -2566,6 +2566,374 @@ entries:
       - cve_assigned_to_claudebleed
       - second_a_b_grade_corroborates_layerx
       - first_party_splunk_hit_on_claudebleed_indicators_if_iocs_surface
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
+  - id: 2026-05-08-pm-001
+    covered_in: [2026-05-08-afternoon]
+    brief_file: threats/briefs/2026-05-08-afternoon.md
+    headline: "UPDATE — MSTIC declares Dirty Frag (CVE-2026-43284 xfrm-ESP / CVE-2026-43500 RxRPC) under active attack; xfrm-ESP patched upstream commit f4c50a4034e6 merged 2026-05-07; RxRPC half UNPATCHED; defenders in half-patched state; mitigation = modprobe blocklist of rxrpc on systems that don't require it (breaks AFS/Coda); active-attack claim rests on Microsoft Defender telemetry alone — single-source veto applies on in-the-wild leg, WEP capped at likely; 72h tripwire — second A-grade vendor active-attack confirmation lifts veto; MSTIC compares chain mechanically to Copy Fail (CVE-2026-31431); material posture escalation from morning's PoC-public framing"
+    topic_tags:
+      - cve
+      - linux-kernel
+      - lpe
+      - dirty-frag
+      - cve-2026-43284
+      - cve-2026-43500
+      - xfrm-esp
+      - rxrpc
+      - half-patched-state
+      - mstic
+      - active-attack-confirmed
+      - sans-isc
+      - single-source-veto-applied
+      - update-on-2026-05-08-am-002
+      - copy-fail-comparison
+      - 72h-tripwire-second-vendor
+      - rxrpc-patch-tempo-uncertain
+      - ipsec-xfrm-appliances
+      - openshift-build-farms
+    related_actors: []
+    related_vulns:
+      - CVE-2026-43284
+      - CVE-2026-43500
+      - CVE-2026-31431
+    related_campaigns: []
+    finding_ids: [finding-2026-05-08-0005]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_sat: sat-kac
+    update_relationship:
+      updates_id: 2026-05-08-am-002
+      update_type: material_posture_escalation
+      what_changed: "morning posture was PoC-public/exploitation-imminent at B2/likely; afternoon posture is MSTIC-declared active attack at A2/likely with single-source veto on in-the-wild leg"
+    tripwires:
+      - condition: second_a_grade_vendor_active_attack_confirmation_within_72h
+        effect: single_source_veto_lifts_wep_can_rise_to_very_likely
+      - condition: rxrpc_upstream_patch_lands
+        effect: closes_half_patched_window
+      - condition: ad_environment_specific_exploitation_report
+        effect: flash_trigger_candidate
+    qualifying_caveats_carried:
+      - rxrpc_patch_tempo_uncertain_30d_window_may_extend
+      - rxrpc_module_not_loaded_by_default_on_most_distros_realistic_exposure_narrower
+      - active_attack_rests_on_mstic_alone_pending_72h_corroboration
+      - ad_linux_estate_heterogeneous_risk_concentrates_on_traditional_build_farm_and_ipsec_appliances
+    resurface_if:
+      - second_a_grade_vendor_active_attack_confirmation
+      - rxrpc_upstream_patch_release
+      - first_party_splunk_hit_on_dirty_frag_indicators
+      - ad_environment_specific_exploitation_report
+      - tripwire_72h_evaluation_no_second_vendor
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
+  - id: 2026-05-08-pm-002
+    covered_in: [2026-05-08-afternoon]
+    brief_file: threats/briefs/2026-05-08-afternoon.md
+    headline: "UPDATE — Ivanti EPMM CVE-2026-6973: Shadowserver tags ~800+ internet-exposed appliances; Ivanti recommends credential rotation on previously-suspected appliances; recurrence pattern — third exploited EPMM CVE in 4 months following CVE-2026-1281 (Jan) and CVE-2026-1340 (Apr); federal patch deadline holds at midnight 2026-05-11 EDT (~56h from compose); CyberScoop relay's prior-CVE attribution context (China- and Iran-attributed groups for the Jan/Apr CVEs) recorded as historical context for prior CVEs only — NOT transferred to CVE-2026-6973 (Hard Rule 2)"
+    topic_tags:
+      - cve
+      - ivanti
+      - epmm
+      - cve-2026-6973
+      - kev
+      - shadowserver-exposure-count
+      - serial-target-pattern
+      - third-cve-in-four-months
+      - cve-2026-1281
+      - cve-2026-1340
+      - credential-rotation-mitigation
+      - bleepingcomputer
+      - cyberscoop-relay
+      - hard-rule-2-no-attribution-transfer
+      - update-on-2026-05-08-am-001
+      - kev-deadline-2026-05-11-midnight-edt
+      - single-source-veto-applied
+    related_actors: []
+    related_vulns:
+      - CVE-2026-6973
+      - CVE-2026-1281
+      - CVE-2026-1340
+    related_campaigns: []
+    finding_ids: [finding-2026-05-08-0007]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    update_relationship:
+      updates_id: 2026-05-08-am-001
+      update_type: operational_telemetry_layered_on_a1_parent
+      what_changed: "morning A1 finding established CVE/KEV/exploitation status; afternoon B2 finding adds Shadowserver 800+ exposure count, recurrence pattern (3 EPMM CVEs in 4 months), Ivanti credential-rotation guidance"
+    vuln_tracker_handoff:
+      action: append_to_proposed_cve_2026_6973_dossier
+      add_fields:
+        - exposure_telemetry: "Shadowserver ~800+ internet-exposed EPMM appliances at 2026-05-08"
+        - serial_target_history: [CVE-2026-1281, CVE-2026-1340, CVE-2026-6973]
+        - patch_backlog_deadline: 2026-05-11T00:00:00-04:00
+    resurface_if:
+      - patch_adoption_data_published_by_shadowserver
+      - independent_exposure_count_corroboration
+      - ivanti_revises_exploitation_scope_upward
+      - kev_deadline_misses_widely_in_dib
+      - first_party_splunk_hit_on_epmm_indicators
+      - new_victims_named_with_ad_sector
+      - a_grade_source_attributes_exploitation_to_tracked_actor
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
+  - id: 2026-05-08-pm-003
+    covered_in: [2026-05-08-afternoon]
+    brief_file: threats/briefs/2026-05-08-afternoon.md
+    headline: "CISA adds CVE-2026-42208 (BerriAI LiteLLM pre-auth SQL injection, CVSS 9.3) to KEV with aggressive 3-day federal patch deadline (2026-05-11) — applies to FCEB agencies under BOD 22-01, NOT directly to A&D contractors; pre-window Sysdig honeypot telemetry (single primary observation channel) observed first exploitation 26h after disclosure; Bishop Fox technical analysis on Authorization Bearer header SQL-concat mechanism; targeted tables litellm_credentials.credential_values + litellm_config = upstream LLM API key theft pivot; A&D LiteLLM install base unknown to Archimedes, ITAR shops typically air-gap, Tier-2/3 supplier exposure unbounded; red-team downgraded WEP from very_likely to likely on laundered-pipeline source-independence (effective single Sysdig observation channel laundered through CISA KEV / Bishop Fox / NVD); KAC reinforced demote-from-lead recommendation"
+    topic_tags:
+      - cve
+      - cve-2026-42208
+      - litellm
+      - berriai
+      - kev
+      - kev-3day-deadline
+      - fcec-bod-22-01-scope-not-ad
+      - pre-auth-sqli
+      - cvss-9-3
+      - sysdig-honeypot
+      - bishop-fox
+      - cisa-kev
+      - llm-api-key-theft
+      - ai-supply-chain-pivot
+      - laundered-pipeline-source-independence
+      - red-team-wep-adjusted-very-likely-to-likely
+      - kac-converges-with-red-team
+      - ad-relevance-caveat-required
+      - inventory-check-posture
+      - second-active-exploitation-kev-in-24h
+      - single-source-veto-applied
+    related_actors: []
+    related_vulns:
+      - CVE-2026-42208
+    related_campaigns: []
+    finding_ids: [finding-2026-05-08-0006]
+    digraph: A1
+    wep: likely
+    red_team_review_complete: true
+    red_team_outcome: qualify
+    analyst_review_complete: true
+    analyst_sat: sat-kac
+    single_source_veto_applied: true
+    paired_with_in_brief: 2026-05-08-pm-002
+    pairing_rationale: "vuln-update block — two KEV-listed exploited CVEs in 24h (Ivanti EPMM + LiteLLM); briefer per red-team + KAC guidance demoted LiteLLM from candidate-lead to vuln-update-block paired with Ivanti EPMM"
+    vuln_tracker_handoff:
+      action: open_dossier_proposed_zd-005
+      cve: CVE-2026-42208
+      pattern: ai_supply_chain_pivot_via_gateway_compromise
+    resurface_if:
+      - second_independent_exploitation_telemetry_source
+      - ad_contractor_litellm_exposure_disclosure
+      - cisa_names_specific_federal_agency_as_exploited_target
+      - first_party_splunk_hit_on_litellm_indicators
+      - third_ai_gateway_kev_listing_in_quarter
+      - patch_v_1_83_7_adoption_data_published
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
+  - id: 2026-05-08-pm-004
+    covered_in: [2026-05-08-afternoon]
+    brief_file: threats/briefs/2026-05-08-afternoon.md
+    headline: "Polish Internal Security Agency (ABW) attributes five 2025 water-utility ICS breaches to APT28 (#006), APT29, and Belarusian-linked UNC1151; ICS-modify capability achieved at some sites creating risk to public water supply; attack vectors per ABW = weak password policies + internet-exposed ICS; ANALYST OPERATIONAL-DOCTRINE CAVEAT — Sandworm (GRU Unit 74455) is canonical GRU ICS-modify actor, APT28 (Unit 26165 SIGINT) and APT29 (SVR geopolitical espionage) doing ICS-modify is non-canonical; SAT-ACH ranks shorthand-naming + cooperative-tasking + hacktivist-only readings collectively more probable than literal direct-GRU/SVR attribution but Archimedes does not originate alternative attribution per Hard Rule 2; UNC1151 (Belarusian-linked Ghostwriter operator per Mandiant historical) is /new-actor candidate; A&D read-through = same hygiene failures apply to A&D-prime SCADA/OT estates"
+    topic_tags:
+      - geo-pivot
+      - poland
+      - abw
+      - water-utility-ics
+      - ics-modify
+      - apt28
+      - apt29
+      - unc1151
+      - ghostwriter
+      - hacktivist-persona-as-state-front
+      - operational-doctrine-caveat
+      - sandworm-canonical-gru-ics
+      - hard-rule-2-no-archimedes-alternative-attribution
+      - sat-ach-ranks-shorthand-or-cooperative-tasking
+      - new-actor-candidate-unc1151
+      - ad-ot-hygiene-readthrough
+      - foreign-government-source-provisional-b
+      - single-source-veto-applied
+    related_actors:
+      - actor: APT28
+        in_roster: true
+        actor_id: "006"
+        claimed_by: abw-via-securityweek
+        archimedes_treatment: record_per_hard_rule_2_with_operational_doctrine_caveat
+      - actor: APT29
+        in_roster: true
+        claimed_by: abw-via-securityweek
+        archimedes_treatment: record_per_hard_rule_2_with_operational_doctrine_caveat
+      - actor: UNC1151
+        in_roster: false
+        claimed_by: abw-via-securityweek
+        archimedes_treatment: record_per_hard_rule_2_new_actor_candidate
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-08-0009]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_sat: sat-ach
+    provisional_source_grades_pending_operator_ratification:
+      - source_id: abw
+        proposed_grade: B
+        note: foreign government national security agency, first corpus citation
+    actor_profiler_handoff:
+      action: queue_unc1151_new_actor_review
+      attribution_per_mandiant_historical: belarusian_kgb_ghostwriter_ta445
+    resurface_if:
+      - abw_publishes_more_detailed_advisory_distinguishing_precise_vs_shorthand_attribution
+      - a_grade_vendor_independently_attributes_polish_water_incidents_to_apt28_or_apt29
+      - a_grade_vendor_publishes_apt28_or_apt29_ics_modify_evidence_in_other_incident
+      - polish_water_iocs_match_sandworm_tradecraft
+      - first_party_splunk_hit_on_named_ttps
+      - apt28_or_apt29_threat_box_score_revisited
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
+  - id: 2026-05-08-pm-005
+    covered_in: [2026-05-08-afternoon]
+    brief_file: threats/briefs/2026-05-08-afternoon.md
+    headline: "Operation Silent Rotor — Rust-based 64-bit Windows malware spear-phishing campaign against Eurasian unmanned aviation sector professionals timed to April 2026 Moscow drone forum; Russian-language lures masquerading as Russian Aeronautical Information Center (CAI) order confirmations; lure archive includes Boeing 737 navigation database + NOTAM datasets — KAC caveat: this is AUDIENCE-TARGETING (Boeing 737 dominates Russian/CIS commercial fleets, natural lure choice for aviation professionals) NOT Boeing-targeting indicator; Seqrite Labs explicit non-attribution preserved per Hard Rule 2; ACH on operator-origin (Russian internal vs false-flag vs hostile-to-Russia) deferred per analyst-subagent halt-doctrine — would originate attribution Seqrite has declined; UAV-sector watchlist relevance MEDIUM via standing watch; C2 cdn.kleymarket.ru / 45.142.36.76 (AS48347 MTW-AS Moscow) registered ~9 days before analysis = short-lived infrastructure"
+    topic_tags:
+      - campaign
+      - operation-silent-rotor
+      - rust-malware
+      - uav-sector
+      - eurasian-unmanned-aviation
+      - moscow-drone-forum-2026
+      - russian-language-lures
+      - cai-russian-aeronautical
+      - boeing-737-aliasing-audience-targeting-not-boeing-targeting
+      - notam-datasets
+      - seqrite-labs-provisional-c
+      - explicit-non-attribution
+      - hard-rule-2-non-attribution-preserved
+      - operator-origin-ach-deferred-halt-doctrine
+      - kac-applied
+      - short-lived-c2-9-day-window
+      - as48347-mtw-as-moscow
+      - new-campaign-tag-archimedes-corpus
+      - single-source-veto-applied
+      - uav-sector-standing-watch-candidate
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [operation-silent-rotor]
+    finding_ids: [finding-2026-05-08-0010]
+    digraph: C2
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_sat: sat-kac
+    ach_deferred: true
+    ach_deferral_reason: "Operator-origin ACH would require Archimedes to originate attribution among (a) Russian internal/factional, (b) false-flag-by-non-Russian, (c) hostile-to-Russia harvesting — none of which Seqrite (only primary source) has claimed. Per Hard Rule 2 + analyst-subagent halt-condition doctrine, ACH halted; KAC surfaces load-bearing assumptions without crossing rule."
+    provisional_source_grades_pending_operator_ratification:
+      - source_id: seqrite-labs
+        proposed_grade: C
+        upgrade_rule: three_corroborated_hits_in_rolling_90_day_window_for_c_to_b
+    ioc_enrichment_opportunity:
+      action: cross_check_sha256_hashes_against_virustotal
+      hashes:
+        - 5936f42ffd7fa7896eeae725b60a5d26bbf3e584712671ef5da0138ee5d58f60
+        - fdef9e489f773319f55f92f712d1b7b5447d59a632b8f4173d1b161d3759ad92
+        - 57e26f6e3b311a1064c946b69159ee05abedf9228b2f95c65536429e7ac7fb24
+        - a7bd8869293212e1671df90d2d41b96d4933eb9408b1111bd830e111a91bb202
+        - 2064ef387ac9e51ba72b32004d99e8a0b291dbab24ed8db30f437abf1b40cb49
+        - 89f8e42c825d09a0a50e99bbf7304d7037be33ea362a57d34f87fa7981f80126
+    resurface_if:
+      - second_ab_grade_vendor_corroborates_seqrite_research
+      - vt_enrichment_surfaces_tracked_actor_overlap
+      - additional_uav_sector_campaign_observation_in_same_quarter
+      - first_party_splunk_hit_on_silent_rotor_iocs
+      - boeing_named_as_actual_target_in_subsequent_research
+      - sha256_hash_overlap_with_known_actor_tooling
+    first_covered: 2026-05-08
+    last_covered: 2026-05-08
+    retraction: null
+    test: false
+
+  - id: 2026-05-08-pm-006
+    covered_in: [2026-05-08-afternoon]
+    brief_file: threats/briefs/2026-05-08-afternoon.md
+    headline: "RansomHouse publicly claims responsibility for Trellix breach via darkweb leak-site posting with screenshots; asserts intrusion date 2026-04-17 + claims data encryption; Trellix has acknowledged 'aware of claims of responsibility' but neither confirmed RansomHouse identity nor encryption claim, and Trellix's earlier denial of source-code release / distribution-process compromise stands; per Hard Rule 2 Archimedes records procedural fact 'RansomHouse publicly claimed responsibility per BleepingComputer / SecurityWeek' — does NOT promote 'RansomHouse breached Trellix'; analyst SAT-ACH ranks H1 (legitimate compromise) first with zero inconsistencies (specific intrusion date, encryption claim consistent with Mario/MrAgent tooling, established 2022-onward RansomHouse track record including 740K-record Askul Corporation extortion, 3-week intrusion-to-claim tempo match), fabrication ranks last; Trellix's investigating-not-dismissing posture weakens fabrication hypothesis without confirming RansomHouse identity; RansomHouse is /new-actor candidate; supersedes morning AM-007 rejection (reject-2026-05-08-0002) which lacked public attribution"
+    topic_tags:
+      - extortion
+      - ransomhouse
+      - trellix
+      - security-vendor-breach
+      - data-extortion-public-claim
+      - hard-rule-2-procedural-fact-only
+      - sat-ach-h1-legitimate-ranks-first
+      - h3-fabrication-ranks-last
+      - new-actor-candidate-ransomhouse
+      - mario-encryptor
+      - mragent
+      - askul-corporation-740k-precedent
+      - 3-week-intrusion-to-claim-tempo
+      - trellix-source-code-denial-stands
+      - update-on-2026-05-04-am-004
+      - supersedes-reject-2026-05-08-0002
+      - single-source-veto-on-substantive-truth
+    related_actors:
+      - actor: RansomHouse
+        in_roster: false
+        claimed_by: bleepingcomputer-citing-ransomhouse-self-claim
+        archimedes_treatment: record_per_hard_rule_2_no_promotion_new_actor_candidate
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-08-0008]
+    digraph: B2
+    wep_split:
+      procedural_fact: likely
+      substantive_truth_claim: roughly_even_chance
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_sat: sat-ach
+    update_relationship:
+      updates_id: 2026-05-04-am-004
+      update_type: actor_attribution_claim_layered_on_b3_disclosure
+      what_changed: "May-04 finding established Trellix self-disclosure of breach without attribution at B3/roughly even chance; afternoon piece adds RansomHouse public attribution-claim + Trellix follow-up acknowledgment, promoted at B2/likely on procedural fact only"
+    actor_profiler_handoff:
+      action: queue_ransomhouse_new_actor_review
+      profile_creation_triggers_met:
+        - sustained_activity_since_2022
+        - prior_high_profile_victim_askul_corporation_740k_records
+        - own_encryption_tooling_mario_mragent
+        - now_claimed_against_major_security_vendor_trellix
+    tripwires:
+      - condition: trellix_confirms_ransomhouse_identity_in_subsequent_disclosure
+        effect: h1_hardens_to_very_likely_rerun_ach_with_confirmed_attribution
+      - condition: trellix_dismisses_ransomhouse_claim_as_fraudulent
+        effect: h3_jumps_to_leading_position_rerun_ach
+      - condition: independent_a_b_grade_vendor_links_ransomhouse_to_trellix_screenshots
+        effect: h1_hardens_single_source_veto_lifts
+      - condition: trellix_discloses_intrusion_date_materially_different_from_2026_04_17
+        effect: h1_weakens_h2_h4_gain_weight_rerun_ach
+    resurface_if:
+      - trellix_publishes_ir_disclosure_with_intrusion_date_confirmation
+      - independent_vendor_research_links_ransomhouse_to_trellix
+      - ransomhouse_publishes_data_dump
+      - trellix_confirms_or_dismisses_ransomhouse_attribution
+      - first_party_splunk_hit_on_trellix_indicators
+      - ad_contractor_uses_trellix_and_discloses_impact
     first_covered: 2026-05-08
     last_covered: 2026-05-08
     retraction: null

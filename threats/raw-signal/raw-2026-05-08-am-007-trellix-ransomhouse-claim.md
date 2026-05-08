@@ -65,9 +65,20 @@ iocs_extracted: true
 iocs_count: 0
 text_word_count: 175
 publication_window_match: in_window
-promoted: false
-rejected_at: 2026-05-08T08:32:00-04:00
-rejection_id: reject-2026-05-08-0002
+promoted: true
+promoted_to_finding: finding-2026-05-08-0008
+promoted_at: 2026-05-08T16:26:00-04:00
+prior_status: rejected_morning_run
+prior_rejection_id: reject-2026-05-08-0002
+prior_rejection_superseded_at: 2026-05-08T16:26:00-04:00
+prior_rejection_supersession_reason: >
+  Afternoon collection (raw-2026-05-08-pm-005) added material new content
+  (RansomHouse public attribution claim with screenshots, April 17
+  intrusion date, encryption claim, Trellix follow-up acknowledgment
+  "aware of claims of responsibility"). Cluster reconsidered as procedural-
+  fact-only finding at B2 / likely with strict Hard Rule 2 framing.
+  Morning rejection rationale (reject-2026-05-08-0002) stands for the
+  morning state of evidence; afternoon state is materially different.
 ttl_expires_at: 2026-08-06T07:38:00-04:00
 ---
 

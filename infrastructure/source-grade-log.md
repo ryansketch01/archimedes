@@ -92,6 +92,36 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-08 — Polish Internal Security Agency (ABW) — (none) → B (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `abw`
+**Reason:** First Archimedes-corpus citation as the originating source on `finding-2026-05-08-0009` (Polish water-utility ICS breach attribution to APT28 / APT29 / UNC1151 — five facilities at Jabłonna Lacka, Szczytno, Małdyty, Tolkmicko, Sierakowo; weak password policies and internet-exposed ICS as attack vectors; ICS-modify capability claimed at some sites). Foreign government national security agency — official-body category. Proposed grade B by the briefer/grader, conservative starting grade for a foreign-government source where attribution methodology is not visible to Archimedes (ABW did not publish technical IOCs or methodology with this advisory; relayed via SecurityWeek with no independent corroboration). Operator may ratify at B, upgrade toward A if subsequent ABW outputs include verifiable technical content, or downgrade if attribution patterns prove non-canonical.
+**Operational caveat:** the brief and finding flag that Sandworm (GRU Unit 74455) is the canonical GRU ICS-modify actor; APT28 (Unit 26165, SIGINT) and APT29 (SVR, geopolitical espionage) doing ICS-modify is non-canonical. Analyst SAT-ACH on finding 0009 ranks shorthand-naming, cooperative-tasking, and hacktivist-with-cooperative-capability readings collectively more probable than literal direct-GRU/SVR attribution. ABW's grade does not load-bear on the WEP — the procedural fact "ABW publicly attributed" carries at B2/likely; the substantive attribution claim is preserved-with-caveat per Hard Rule 2 (Archimedes does not originate alternative attribution).
+**Supporting findings:** [finding-2026-05-08-0009]
+**Posted to:** Discord `#actor-review` (message id pending — see librarian Splunk telemetry for this run)
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade abw B` (or operator upgrade to A / downgrade to C)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding 0009 is digraph B2 / WEP likely on the procedural fact only. Provisional B grading is what holds the B2 digraph — operator downgrade to C would re-grade to C2 (still WEP-likely floor on procedural fact). Substantive attribution truth-claim is preserved-with-caveat regardless of ABW grade.
+**Next review:** ratification target 2026-05-15 (7 days; bundled with SentinelOne / LayerX / Seqrite Labs and the open Rapid7 / SecurityWeek window)
+
+---
+
+## 2026-05-08 — Seqrite Labs (Quick Heal) — (none) → C (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `seqrite-labs`
+**Reason:** First Archimedes-corpus citation as the originating source on `finding-2026-05-08-0010` (Operation Silent Rotor — Rust malware vs Eurasian UAV sector; Russian-language lures masquerading as Russian Aeronautical Information Center order confirmations; Boeing-aliased decoy content as audience-targeting not Boeing-targeting; C2 on `cdn[.]kleymarket[.]ru` AS48347 MTW-AS Moscow). Sole primary; SecurityWeek In Other News column relay. Tier-2 AV/EDR research firm (Indian-origin, Quick Heal parent). Technical depth-rich primary on this finding (named C2 domain + IPv4 set + SHA-256 hashes + lure-document analysis + AS attribution). No prior Archimedes-corpus track record to assess; provisional C is conservative starting grade per the same precedent as LayerX (2026-05-08). Operator may upgrade to B if subsequent findings show consistent technical rigor and accuracy, or hold at C if context-thin commercial-research profile is observed across more findings.
+**Methodological positive:** Seqrite explicitly does NOT attribute the campaign to a tracked actor — campaign-attribution restraint is a positive signal for an unknown vendor's analytical discipline.
+**Supporting findings:** [finding-2026-05-08-0010]
+**Posted to:** Discord `#actor-review` (message id pending — see librarian Splunk telemetry for this run)
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade seqrite-labs C` (or operator upgrade to B)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding 0010 is digraph C2 / WEP likely with single-source-veto active (Seqrite sole primary). Provisional C grading is what holds the C2 digraph — this is the floor, no further downgrade path on grade alone. Operator upgrade to B would re-grade 0010 to B2 and lift the WEP cap slightly (still single-source-veto-capped).
+**Next review:** ratification target 2026-05-15 (7 days; bundled with SentinelOne / LayerX / ABW and the open Rapid7 / SecurityWeek window)
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

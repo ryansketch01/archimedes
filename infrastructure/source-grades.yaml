@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-08
+last_updated: 2026-05-08T16:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -77,6 +77,18 @@ government_sources:
     rationale: "Authoritative for the CVE record itself"
     urls:
       - https://nvd.nist.gov/
+
+  - id: abw
+    name: "Polish Internal Security Agency (ABW)"
+    category: government
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-08
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-08-0009 (Polish water-utility ICS breach attribution to APT28 / APT29 / UNC1151). Foreign government national security agency — official-body category. Proposed grade B by the briefer/grader, conservative starting grade for a foreign-government source where attribution methodology is not visible to Archimedes (ABW did not publish technical IOCs or methodology with this advisory; relayed via SecurityWeek). Operator may ratify at B, upgrade toward A if subsequent ABW outputs include verifiable technical content, or downgrade if attribution patterns prove non-canonical (the operational-doctrine caveat in finding 0009 ranks shorthand-naming and cooperative-tasking readings more probable than literal direct-GRU/SVR ICS-modify attribution)."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.gov.pl/web/sluzby-specjalne/abw
 
 # ============================================================================
 # Tier-1 Threat Intel Firms
@@ -162,6 +174,18 @@ vendor_sources:
     urls:
       - https://www.sentinelone.com/labs/
       - https://www.sentinelone.com/blog/
+
+  - id: seqrite-labs
+    name: "Seqrite Labs (Quick Heal)"
+    category: vendor
+    grade: C
+    provisional: true
+    provisional_since: 2026-05-08
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-08-0010 (Operation Silent Rotor — Rust malware vs Eurasian UAV sector; sole primary, SecurityWeek In Other News column relay). Tier-2 AV/EDR research firm (Indian-origin; Quick Heal parent). Technical depth-rich primary on this finding (named C2 domain + IPv4 set + SHA-256 hashes + lure-document analysis + AS attribution). No prior Archimedes-corpus track record to assess; provisional C is conservative starting grade per the same precedent as LayerX (2026-05-08). Operator may upgrade to B if subsequent findings show consistent technical rigor and accuracy, or hold at C if context-thin commercial-research profile is observed across more findings. The campaign-attribution restraint Seqrite displayed on Silent Rotor (explicitly NOT attributing to a tracked actor) is a positive methodological signal."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.seqrite.com/blog/
 
 # ============================================================================
 # Security Media & Researchers
@@ -557,12 +581,12 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 47
-  active_sources: 38
+  total_sources: 49
+  active_sources: 40
   by_grade:
     A: 20
-    B: 16
-    C: 5
+    B: 17       # +1 abw (provisional)
+    C: 6        # +1 seqrite-labs (provisional)
     D: 1
     E: 2
     F: 3
@@ -571,6 +595,8 @@ _meta:
     - securityweek
     - sentinelone
     - layerx
+    - abw           # provisional B; first cited 2026-05-08-0009
+    - seqrite-labs  # provisional C; first cited 2026-05-08-0010
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

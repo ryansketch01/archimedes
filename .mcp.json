@@ -53,6 +53,15 @@
         "mcps/censys",
         "censys"
       ]
+    },
+    "theharvester": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "mcps/theharvester",
+        "theharvester-mcp"
+      ]
     }
   }
 }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!--
+  Archimedes Discord listener Task Scheduler entry.
+
+  Different shape from the daily phase tasks (archimedes-task-template.xml):
+    - LogonTrigger (runs at user logon, not on a clock)
+    - ExecutionTimeLimit: PT0S (run forever; the listener is a daemon)
+    - RestartOnFailure: PT5M / 999 (effectively infinite restarts on crash)
+    - MultipleInstancesPolicy: IgnoreNew (prevent doubled-up listeners)
+
+  Substitute the following placeholders before importing (none for v1 —
+  the values are all stable on Frank). Edit the XML directly if any of
+  these need to change:
+    UserId: rtske
+    Repo path: C:\Users\rtske\Projects\archimedes
+
+  Import (UTF-16 LE BOM required — see CLAUDE.md operational notes):
+    schtasks /Create /XML <utf-16-le-bom-file> /TN "Archimedes\discord-listener"
+
+  Verify:
+    schtasks /Query /TN "Archimedes\discord-listener" /FO LIST /V
+
+  Manual start (instead of waiting for next logon):
+    schtasks /Run /TN "Archimedes\discord-listener"
+
+  Stop:
+    schtasks /End /TN "Archimedes\discord-listener"
+
+  See infrastructure/scheduler/README.md for the encoding gotcha and
+  the InteractiveToken vs Password decision (this task uses
+  InteractiveToken — listener requires interactive session because the
+  bot has the operator's account context for log directory, .env access,
+  uv-managed Python env, and `claude` CLI auth).
+-->
+<Task version="1.4" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>Archimedes Discord listener — long-running daemon bridging /commands channel to claude -p</Description>
+    <Author>Archimedes</Author>
+    <URI>\Archimedes\discord-listener</URI>
+  </RegistrationInfo>
+
+  <Triggers>
+    <LogonTrigger>
+      <Enabled>true</Enabled>
+      <UserId>rtske</UserId>
+    </LogonTrigger>
+  </Triggers>
+
+  <Principals>
+    <Principal id="Author">
+      <UserId>rtske</UserId>
+      <LogonType>InteractiveToken</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+
+  <Settings>
+    <!-- Single-instance enforcement: Discord rejects duplicate gateway connections,
+         and we'd burn unnecessary memory if two listeners ran. -->
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>true</RunOnlyIfNetworkAvailable>
+
+    <IdleSettings>
+      <StopOnIdleEnd>false</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+
+    <!-- PT0S = no execution time limit. The listener is a daemon; it runs
+         until killed or crashes. -->
+    <ExecutionTimeLimit>PT0S</ExecutionTimeLimit>
+
+    <Priority>7</Priority>
+
+    <!-- Restart on crash: every 5 minutes, up to 999 times. Effectively
+         infinite — Discord gateway can drop connections under network
+         partition or service degradation, and the listener should keep
+         coming back. -->
+    <RestartOnFailure>
+      <Interval>PT5M</Interval>
+      <Count>999</Count>
+    </RestartOnFailure>
+  </Settings>
+
+  <Actions Context="Author">
+    <Exec>
+      <Command>powershell.exe</Command>
+      <Arguments>-NoProfile -ExecutionPolicy Bypass -Command "Set-Location 'C:\Users\rtske\Projects\archimedes'; uv run python scripts/discord_listener.py"</Arguments>
+      <WorkingDirectory>C:\Users\rtske\Projects\archimedes</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>

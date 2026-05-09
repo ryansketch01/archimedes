@@ -32,13 +32,13 @@ motivation:
   - data-theft
   - mois-tasking
   - dual-use-with-criminal-cover
-threat_level: HIGH                 # Carried from _roster.yaml; threat-box.yaml is TEMPLATE
-admiralty_grade: A2                # Per finding-2026-05-06-FLASH-0002 — Rapid7 (provisional A) + single-source veto applied
+threat_level: LOW                  # weighted overall 4.15 → LOW per /update-tracking 2026-05-09; espionage category MEDIUM (composite 7). Operator-anticipated HIGH did NOT materialize — disciplined Intent=3 binding (no A&D primes named in source) keeps Espionage from ceiling; four floor categories dilute via doctrine weighting.
+admiralty_grade: A2                # Per finding-2026-05-06-FLASH-0002 — Rapid7 (provisional A) + single-source veto applied; persists post-72h-clock with no independent corroboration
 tlp: CLEAR
-dossier_version: 1
-last_updated: 2026-05-06
-last_reviewed: 2026-05-06
-next_review_due: 2026-08-04
+dossier_version: 2
+last_updated: 2026-05-09
+last_reviewed: 2026-05-09
+next_review_due: 2026-08-07
 profile_path: threats/threat-actors/MuddyWater/
 iocs_path: threats/threat-actors/MuddyWater/iocs.md
 threat_box_path: threats/threat-actors/MuddyWater/threat-box.yaml
@@ -53,10 +53,27 @@ notes_first_pass: |
   red-team review qualify with required briefer caveats and 72h auto-downgrade
   clock). All attribution and TTP claims inherit from cited sources per Hard
   Rule 2; the MOIS service affiliation is reproduced from Rapid7's citation
-  chain (which itself cites US Government background attribution). Threat-box
-  scoring is TEMPLATE pending /update-tracking pass with /approve-scoring gate.
-  Attribution Notes section preserves the contrarian-ACH cluster-imprecision
-  caveat and the false-flag-via-Chaos-ransomware concern explicitly.
+  chain (which itself cites US Government background attribution). Attribution
+  Notes section preserves the contrarian-ACH cluster-imprecision caveat and
+  the false-flag-via-Chaos-ransomware concern explicitly.
+notes_scoring_2026_05_09: |
+  Threat-box scoring complete 2026-05-09 via /update-tracking Mode 2.
+  Weighted overall 4.15 → LOW → auto-committed. Espionage category alone
+  composite 7 (MEDIUM); four floor categories dilute via doctrine weighting.
+  Hard Rule 5 gate did NOT fire. Operator-anticipated HIGH did NOT materialize
+  — Intent=3 (Sector Association) binding per red-team specific revisions
+  (NO defense primes named in Rapid7 victimology; NO A&D extrapolation
+  permitted) kept Espionage from ceiling. 72h auto-downgrade clock fired
+  ~2026-05-09 12:00 EDT with no independent A/B-grade vendor corroboration;
+  single-source veto persists. First-party Splunk re-queried 2026-05-09 PM
+  sweep against all 7 directly-queryable IOCs (4 IPv4 + 3 domains): zero
+  hits over -30d. The 9 SHA256 hashes still pending _master-index.yaml
+  ingestion. Per RETRACTION-POLICY, source finding-2026-05-06-FLASH-0002
+  should auto-downgrade to C3 "possibly true" (librarian handoff). Scoring
+  construction is robust against this downgrade: Capability=5 anchors on
+  long-running multi-A-grade pre-2026 documentation; Intent=3 anchors on
+  historical MENA sector pattern (multi-A-grade) and does not depend on
+  the attribution-caveated 2026 US-pivot.
 ---
 
 # MuddyWater — Threat Actor Profile

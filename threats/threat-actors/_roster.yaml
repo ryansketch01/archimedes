@@ -15,7 +15,7 @@
 #   5. Threat-box scoring within 14 days (human sign-off for HIGH)
 
 version: 2
-last_updated: 2026-05-09        # /update-tracking Charming Kitten (#011) — LOW (auto-commit)
+last_updated: 2026-05-09        # /update-tracking MuddyWater (#022) — LOW (auto-commit, weighted 4.15)
 source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
 
 actors:
@@ -326,13 +326,13 @@ actors:
       nation: IR
       service: MOIS
     type: "Nation-State APT"
-    threat_level: HIGH
+    threat_level: LOW            # weighted overall 4.15 (LOW) per /update-tracking 2026-05-09; espionage category MEDIUM (composite 7). Intent=3 Sector Association bound by red-team qualify directive — Rapid7 names no A&D primes; historical MENA pattern is sector-shaped not target-specific. Capability=5 anchors on long-running multi-A-grade pre-2026 documentation, robust against 72h auto-downgrade clock fire on source finding.
     tracked_since: 2026-05-06
     dossier: threats/threat-actors/MuddyWater/
-    last_reviewed: 2026-05-06
-    next_review_due: 2026-08-04
+    last_reviewed: 2026-05-09
+    next_review_due: 2026-08-07
     mitre_attack_id: G0069
-    note: "First-pass profile created 2026-05-06 from finding-2026-05-06-FLASH-0002 (Rapid7 single-source veto, WEP likely, red-team qualify, 72h auto-downgrade clock ~2026-05-09 12:00 EDT). All 2026-campaign surfaces carry attribution caveat (Rapid7 moderate confidence) and are NOT promoted as MuddyWater-canonical pending second A/B-grade source. Threat-box scoring is TEMPLATE pending /update-tracking pass after 72h clock resolves."
+    note: "First-pass profile created 2026-05-06 from finding-2026-05-06-FLASH-0002 (Rapid7 single-source veto, WEP likely, red-team qualify, 72h auto-downgrade clock). Threat-box scoring 2026-05-09 via /update-tracking (Mode 2): weighted 4.15 → LOW → auto-commit. Espionage composite 7 (category MEDIUM); four floor categories dilute via doctrine weighting. Hard Rule 5 gate did NOT fire. 72h clock fired ~2026-05-09 12:00 EDT with no independent A/B-grade corroboration (The Record / BleepingComputer / SecurityWeek all pure relay); single-source veto persists. Splunk first-party zero hits over -30d on 2026-05-09 PM sweep across 7 queryable IOCs. Per RETRACTION-POLICY source finding should auto-downgrade to C3 'possibly true' (librarian handoff). Scoring construction robust to the downgrade — Capability=5 anchors on pre-2026 multi-A-grade docs; Intent=3 anchors on historical MENA sector pattern."
 
   - id: "023"
     primary_name: "APT34"
@@ -390,9 +390,9 @@ actors:
 _meta:
   total_actors: 24
   by_threat_level:
-    HIGH: 20
+    HIGH: 19
     MEDIUM: 3          # REvil, APT34, UNC1549
-    LOW: 1             # Charming Kitten (per /update-tracking 2026-05-09; espionage category HIGH but weighted overall LOW)
+    LOW: 2             # Charming Kitten, MuddyWater (per /update-tracking 2026-05-09; both espionage category MEDIUM/HIGH but weighted overall LOW)
   by_nation:
     RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
     CN: 4          # Volt Typhoon, Salt Typhoon, APT40, APT41
@@ -402,5 +402,5 @@ _meta:
   profiles_migrated: 1         # APT28 only at v1
   profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King
   profiles_first_pass: 5       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09)
-  scoring_complete: 3          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — third workflow validation pass; red-team qualify directive bound Espionage Intent=4 producing weighted LOW despite category-level HIGH on espionage). MuddyWater, APT37 carry TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
-  scoring_template_only: 2     # MuddyWater, APT37 — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.
+  scoring_complete: 4          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — red-team qualify Intent=4 → weighted LOW despite category HIGH); MuddyWater (2026-05-09 /update-tracking, initial LOW — fourth workflow validation pass; red-team qualify Intent=3 Sector Association bound, 72h clock fired with no corroboration, weighted LOW despite category MEDIUM on espionage). APT37 carries TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
+  scoring_template_only: 1     # APT37 — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.

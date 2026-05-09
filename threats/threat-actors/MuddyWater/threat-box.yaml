@@ -3,218 +3,523 @@
 # Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
 # Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
 #
-# STATUS: TEMPLATE ONLY — initial scoring DEFERRED.
+# Scored 2026-05-09 via /update-tracking (Mode 2). Replaces 2026-05-06 TEMPLATE
+# scaffold. Weighted overall 4.15 → LOW → auto-commit per doctrine authority
+# table. Espionage category alone scores composite 7 (MEDIUM) — preserved in
+# the per-category table but does NOT trigger Hard Rule 5 gate; only weighted
+# overall does, and weighted overall is LOW.
 #
-# Per operator direction (2026-05-06 Mode-1 scaffold), the threat-box-scoring
-# skill was NOT invoked at dossier creation. Rationale: MuddyWater is an
-# active Iranian APT (MOIS) with US-pivot 2026 campaign per Rapid7 2026-05-06.
-# The campaign carries TWO STACKED CONFIDENCE CONSTRAINTS:
-#   1. Single-source veto (Rapid7 alone is originating; relays are non-independent)
-#   2. Vendor-self-rated moderate confidence (Rapid7's own attribution ceiling)
+# Operator-anticipated outcome was HIGH; actual computation lands LOW for two
+# stacked disciplinary reasons:
 #
-# Plus: a 72-hour auto-downgrade clock is registered (~2026-05-09 12:00 EDT).
-# If by that time no second A/B-grade vendor corroborates, no first-party
-# Splunk hit lands, and no CISA/FBI advisory picks up, the source finding
-# auto-downgrades to C3 "possibly true" per RETRACTION-POLICY.
+#   1. ESPIONAGE INTENT CAPS AT 3 (Sector Association), NOT 5 (Target-Specific).
+#      Per the source-finding red-team specific revisions carried into the
+#      dossier, Rapid7 names US construction / manufacturing / business services
+#      as victim sectors. NO defense primes. NO A&D watchlist entity. The brief
+#      / dossier / scoring MUST NOT extrapolate manufacturing into defense
+#      manufacturing without source basis. Per the methodology evidence-minimum
+#      table, Intent=5 requires "at least 1 A-grade source documenting targeting
+#      of ad-prime-v1 profile" — that source does not exist for MuddyWater.
+#      Intent=4 (Ideology) is also weakly supported — historical MuddyWater
+#      pattern is regional MENA, not anti-Western ideology-driven against the
+#      US specifically. Intent=3 (Sector Association) is the honest read with
+#      multiple A-grade source support (MITRE G0069, Microsoft Mango Sandstorm,
+#      Unit 42, Symantec Seedworm, ClearSky, Trend Micro Earth Vetala) for
+#      historical MENA government / telco / oil-and-gas sector targeting; the
+#      2026 Rapid7-attributed US-pivot is also sector-association in the US
+#      (broad services, not A&D-specific).
 #
-# A first-pass scoring is more sensitive to the resolution of the auto-downgrade
-# clock than the other two actors in the 2026-05-06 batch (UNC1549, Charming
-# Kitten). Likely scoring outcome: HIGH overall (especially if the source
-# finding survives the 72h test), which triggers Hard Rule 5 (/approve-scoring).
-# Leaving this template empty defers the scoring decision to a deliberate
-# /update-tracking pass (after the 72h clock resolves) with the human gate
-# intact.
+#   2. 72-HOUR AUTO-DOWNGRADE CLOCK FIRED. The clock on finding-2026-05-06-
+#      FLASH-0002 was set to ~2026-05-09 12:00 EDT. Scoring runs at 2026-05-09
+#      after the window. NO independent A/B-grade vendor (Mandiant, Unit 42,
+#      MSTIC, CrowdStrike, Recorded Future, Volexity) corroborated by the
+#      deadline. The Record + BleepingComputer + SecurityWeek post-disclosure
+#      coverage is pure relay (independence test failed in raw-2026-05-07-pm-002
+#      grading; The Record relay 2026-05-07 1730 EDT credits Rapid7 directly).
+#      First-party Splunk: zero hits across 7 directly-queryable IOCs (4 IPv4
+#      + 3 domains) over -30d on 2026-05-09 PM sweep; 9 SHA256 still not
+#      directly queryable against current sourcetypes pending malware-detection
+#      telemetry. No CISA / FBI advisory picked up. Per RETRACTION-POLICY, the
+#      source finding should auto-downgrade to C3 "possibly true" (librarian
+#      handoff). Single-source veto remains in force; WEP capped at "likely"
+#      with vendor-self-rated moderate confidence stacking the cap.
 #
-# CRITICAL SCORING DISCIPLINE (carried forward from finding-2026-05-06-FLASH-0002
-# red-team review specific revisions):
-#   - Espionage Intent must be scored against Rapid7's NAMED victim ecosystem
-#     (US construction / manufacturing / business services). NO defense primes
-#     named. Do NOT extrapolate manufacturing into defense manufacturing.
-#   - Capability scoring should distinguish the espionage-shaped TTP-and-
-#     objective observation (more defensible) from the actor-specific cluster
-#     identification (moderate-confidence). Custom RAT investment (Game.exe /
-#     Darkcomp) supports state-tradecraft Capability regardless of which
-#     specific Iranian cluster is involved.
-#   - The contrarian ACH places H2 (different MOIS-linked cluster) and H6
-#     (mixed-composition) at zero inconsistencies alongside H1 at one. H2 and
-#     H6 cannot be promoted as alternative actor attributions per Hard Rule 2;
-#     they surface as cluster-imprecision in Rapid7's moderate-confidence
-#     framing. Scoring construction must respect this.
+# The disciplined Intent=3 + Capability=5 - Novelty=1 produces Espionage
+# composite 7 (MEDIUM category-level). The four floor categories (supply chain
+# 4 LOW, destructive 2 LOW, disruptive 2 LOW, cyber-crime 2 LOW) dilute via
+# doctrine weighting to overall 4.15 → LOW. This is the third workflow
+# validation pass after UNC1549 (5.4 MEDIUM) and Charming Kitten (4.45 LOW).
+#
+# Critical scoring discipline carried forward (verbatim from TEMPLATE
+# scoring_note fields, all upheld):
+#   - Espionage Intent scored against Rapid7's NAMED victim ecosystem; no A&D
+#     extrapolation. UPHELD: Intent=3 not 5.
+#   - Capability distinguishes espionage-shaped TTP-and-objective observation
+#     (more defensible) from actor-specific cluster identification (moderate-
+#     confidence). UPHELD: Capability=5 anchors on long-running pre-2026
+#     MuddyWater capability across multiple A-grade sources, NOT on the
+#     attribution-caveated 2026 Game.exe / Darkcomp tooling alone.
+#   - Destructive remains LOW despite T1486 firing on Chaos artifacts. UPHELD:
+#     destructive composite 2 (floor).
+#   - Cyber-crime remains LOW despite Chaos-shaped cover. UPHELD: cyber-crime
+#     composite 2 (floor).
+#   - Contrarian ACH H2/H6 (cluster-imprecision) surfaced in evidence narrative
+#     as confidence cap, NOT as alternative actor scoring claims. UPHELD.
 
 actor_id: "022"
 actor_name: "MuddyWater"
-also_tracked_as:
-  - Mango Sandstorm
-  - Static Kitten
-  - Mercury
-  - Seedworm
-  - Earth Vetala
 target_profile: "ad-prime-v1"
-status: pending_initial_scoring
-scored_at: null
-scored_by: null
-reviewed_by: null
-scoring_version: 0
+status: scored
+scored_at: "2026-05-09"
+scored_by: "actor-profiler"
+reviewed_by: "auto-committed"
+scoring_version: 1
 
 # ============================================================================
-# Score categories — TEMPLATE (all values null pending /update-tracking)
+# Score categories
 # ============================================================================
 scores:
+
+  # --------------------------------------------------------------------------
+  # Espionage — composite 7 → MEDIUM (category-level; weighted overall LOW)
+  # --------------------------------------------------------------------------
   espionage:
     intent:
-      score: null
-      label: null
-      willingness_modifier: null
-      evidence: null
-      sources: []
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        Intent=3 (Sector Association) is the binding-with-red-team-qualify
+        scoring outcome — NOT Intent=5 (Target-Specific) and NOT Intent=4
+        (Ideology Association).
+
+        Intent=5 (Target-Specific) is NOT met. Per the methodology evidence-
+        minimum table, Intent=5 requires "at least 1 A-grade source documenting
+        targeting of ad-prime-v1 profile" — i.e., direct documented targeting
+        of a US aerospace and defense prime. That source does not exist for
+        MuddyWater in the current corpus. Rapid7 2026-05-06 (the only 2026
+        US-pivot source) names US construction, manufacturing, and business
+        services as victim sectors. Rapid7 explicitly does NOT specify defense
+        manufacturing. Per the source-finding red-team specific revisions
+        carried into the dossier (and into this scoring's preserved discipline
+        notes from the TEMPLATE), the scoring MUST NOT extrapolate
+        construction / manufacturing / business services into A&D-direct
+        targeting. Historical MuddyWater pre-2026 reporting (Unit 42, Symantec
+        Seedworm, Trend Micro Earth Vetala, ClearSky, Microsoft Mango
+        Sandstorm, Mandiant) targets MENA government, telecommunications, and
+        oil-and-gas — none of which is ad-prime-v1.
+
+        Intent=4 (Ideology Association) is also a poor fit. Per the methodology,
+        Ideology Association applies when "actor targets based on association
+        with a specific ideology" — typically anti-NATO / anti-Western /
+        pro-nation-state ideology demonstrated through targeting Western
+        defense-policy think tanks, journalists, dissidents (cf. Charming
+        Kitten Q2 2026 pattern). Historical MuddyWater pattern is REGIONAL
+        MENA government / telco / oil-and-gas, not ideology-driven against
+        US/Western targets. The 2026 Rapid7-attributed US-pivot, even if
+        confirmed, is sector-shaped (construction / manufacturing / business
+        services), not ideology-shaped (think tanks / journalists / academics
+        not named).
+
+        Intent=3 (Sector Association) is the honest binding read. Multiple
+        A-grade sources (MITRE G0069, Microsoft Mango Sandstorm, Unit 42,
+        Symantec Seedworm, ClearSky, Trend Micro Earth Vetala) document
+        sustained MuddyWater sector-association targeting of MENA government,
+        telecommunications, and oil-and-gas across 2017–2025. The 2026 Rapid7-
+        attributed US-pivot is also sector-association in the US (broad
+        services). Either historical-MENA or 2026-US framings support
+        Intent=3; neither supports Intent=4 or Intent=5 against ad-prime-v1.
+
+        Carry forward: H2 contrarian ACH (different MOIS-linked Iranian
+        cluster sharing tooling and code-signing lineage) and H6 (mixed-
+        composition state + criminal Chaos affiliate) remain at zero
+        inconsistencies vs H1 (MuddyWater specifically) at one. Per Hard
+        Rule 2 these surface as cluster-imprecision in Rapid7's moderate-
+        confidence framing, not as alternative actor attributions. Scoring
+        respects this binding by anchoring Intent in HISTORICAL MuddyWater
+        documentation (multi-source A-grade) which is robust regardless of
+        the 2026 attribution dispute.
+      sources:
+        - mitre-attack-g0069
+        - microsoft-mango-sandstorm-research
+        - unit42-muddywater-research
+        - symantec-seedworm-research
+        - clearsky-muddywater-research
+        - trend-micro-earth-vetala-research
+        - finding-2026-05-06-FLASH-0002
     willingness:
-      modifier: null
-      label: null
-      evidence: null
+      modifier: 0
+      label: no-constraints
+      evidence: |
+        Iran (MOIS) — strained US diplomatic relations, sanctions regime,
+        active hostilities backdrop. No Willingness modifier reduction.
     capability:
-      score: null
-      label: null
-      novelty_modifier: null
-      evidence: null
-      sources: []
+      score: 5
+      label: significant
+      novelty_modifier: 1
+      evidence: |
+        Capability=5 (Significant) is well-met. The methodology evidence-
+        minimum table requires "Multiple A-grade sources AND documented
+        active use within last 24 months." MuddyWater satisfies both criteria
+        across multiple A-grade sources AND active 2024-2026 documentation —
+        with the explicit caveat that the 2026 attribution carries Rapid7
+        single-source veto + vendor-moderate-confidence stack.
+
+        Capability scoring anchors on the LONG-RUNNING pre-2026 MuddyWater
+        capability documentation, which is robust regardless of the 2026
+        attribution dispute:
+          - POWERSTATS PowerShell backdoor (Unit 42, Trend Micro 2017-2018)
+          - Mori / SHARPSTATS / DELPHSTATS loaders/backdoors (multiple vendors)
+          - PhonyC2 framework documentation
+          - Donald Gay / Amy Cherne code-signing certificate lineage on
+            Microsoft ID Verified CS AOC CA 02 issuer (long-running pattern)
+          - pythonw.exe code injection into suspended processes (long-running)
+          - Microsoft Teams "IT Support" persona social engineering (multiple
+            vendors, 2024-2025 reporting before Rapid7 2026)
+          - Legitimate-tool abuse (DWAgent, AnyDesk, Quick Assist) sustained
+            across multiple campaigns
+          - ZeroLogon (CVE-2020-1472) and Exchange ProxyLogon/ProxyShell era
+            exploitation documented across multiple vendors
+
+        2026-specific tooling additions (Game.exe / Darkcomp custom 12-command
+        RAT; ms_upd.exe loader; Stagecomp staging component; pythonw.exe
+        suspended-process injection in 2026 context) carry the Rapid7
+        single-source attribution caveat per Hard Rule 2 and are NOT
+        promoted as MuddyWater-canonical pending second A/B-grade vendor
+        confirmation. Capability=5 is justified WITHOUT relying on the
+        attribution-caveated 2026 surfaces — the pre-2026 capability is
+        already at Significant ceiling.
+
+        Per the source finding red-team specific revisions: "the espionage-
+        shaped TTP-and-objective observation is more defensible than the
+        actor-specific cluster identification." Capability=5 lives at the
+        more-defensible end of that distinction.
+      sources:
+        - mitre-attack-g0069
+        - microsoft-mango-sandstorm-research
+        - unit42-muddywater-research
+        - symantec-seedworm-research
+        - clearsky-muddywater-research
+        - trend-micro-earth-vetala-research
+        - finding-2026-05-06-FLASH-0002
     novelty:
-      modifier: null
-      label: null
-      evidence: null
+      modifier: 1
+      label: semi-custom
+      evidence: |
+        Novelty=-1 (Semi-Custom) reflects the documented MuddyWater tooling
+        mix: meaningful custom RAT investment (POWERSTATS, Mori,
+        SHARPSTATS / DELPHSTATS, PhonyC2, and 2026 Game.exe / Darkcomp per
+        Rapid7-attribution-caveated reporting) sits alongside heavy reliance
+        on legitimate-tool abuse (DWAgent, AnyDesk, Microsoft Quick Assist),
+        commodity Microsoft Teams social engineering tradecraft (mechanism-
+        portable across multiple actors per 2025-2026 reporting on Scattered
+        Spider and Storm-1811 patterns), and commodity Chaos ransomware
+        (whether deployed as genuine extortion or false-flag theater). The
+        custom-RAT investment argues against -2 (Commodity); the
+        legitimate-tool / mechanism-portable / Chaos-commodity mix argues
+        against -0 (Custom/Advanced). Semi-Custom is the honest middle
+        position. Defenders have detection signatures for the legitimate-tool
+        and commodity portions of the toolchain, which materially reduces
+        the actor's effective capability against well-defended targets.
     ioc_corroboration:
       observed: false
       bonus_category: null
       note: |
-        No first-party MuddyWater observations as of 2026-05-06 (collector
-        queried -30d for the 4 IPv4 + 3 domain IOCs published by Rapid7;
-        zero hits. The 9 SHA256 hashes are not directly queryable against
-        current sourcetypes pending _master-index.yaml ingestion). Silent
-        Splunk is not disconfirming.
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+        First-party Splunk: zero hits across all 7 directly-queryable IOCs
+        (4 IPv4 + 3 domains) over -30d window when re-queried 2026-05-09 PM
+        sweep. The 9 SHA256 hashes are still not directly queryable against
+        current sourcetypes (no malware-detection telemetry in scope) pending
+        _master-index.yaml ingestion. The defenseclaw_local index has shown
+        zero non-archimedes-internal events for eight consecutive sweeps —
+        index appears dormant for live security telemetry. Silent Splunk is
+        not disconfirming (per analyst KAC doctrine). No IOC corroboration
+        bonus applied. If forward-looking detections fire on any of the 19
+        IOCs once ingested, that fires `first_party_ioc_observation` review
+        trigger and rescoring.
+    final_intent: 3
+    final_capability: 4
+    composite: 7
+    threat_level: MEDIUM
     ioc_bonus_applied: 0
-    scoring_note: |
-      Espionage Intent must be scored against Rapid7's NAMED victim ecosystem:
-      US construction, manufacturing, business services. NO defense primes
-      named. NO A&D watchlist entity named. The brief / dossier / scoring
-      must NOT extrapolate manufacturing into defense manufacturing without
-      source basis. The mechanism-portability A&D-relevance bridge (Microsoft
-      Teams + MFA device-add tradecraft) is a separate consideration handled
-      via Capability + Novelty modifiers, NOT via Intent inflation.
 
+  # --------------------------------------------------------------------------
+  # Supply Chain — composite 4 → LOW
+  # --------------------------------------------------------------------------
   supply_chain:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        Intent=2 (Regional Association) is the honest read. Historical
+        MuddyWater pattern includes IT-service-provider compromise as relay
+        into customer environments (T1199 Trusted Relationship), documented
+        across multiple A-grade sources including Symantec Seedworm and
+        Unit 42 reporting. This is consistent with broader Iranian-ecosystem
+        T1199 usage. However, supply-chain compromise is NOT MuddyWater's
+        primary MO — it surfaces opportunistically alongside spearphishing
+        and exploit-public-facing as initial-access vectors. The 2026 Rapid7
+        report does NOT make any supply-chain compromise claim. Intent=3
+        (Sector Association) would require supply-chain-specific sector
+        targeting beyond opportunistic IT-service-provider relay, which is
+        not documented.
+      sources:
+        - mitre-attack-g0069
+        - symantec-seedworm-research
+        - unit42-muddywater-research
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/MOIS — same as espionage; no constraints."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 1
+      evidence: |
+        Capability=3 (Limited) — some evidence across a few incidents (T1199
+        Trusted Relationship usage documented in MuddyWater historical
+        reporting; IT-service-provider relay observed in regional engagements)
+        but no extensive, sustained, multi-target supply-chain prosecution
+        comparable to APT29 SolarWinds or APT41 software supply-chain
+        operations. Capability=4 (Credible) would require multiple campaigns
+        or one extensively documented; that bar is not met.
+      sources:
+        - mitre-attack-g0069
+        - symantec-seedworm-research
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: |
+        T1199 usage when documented uses commodity remote-access tooling
+        (DWAgent, AnyDesk, RDP) against compromised relay; semi-custom by
+        the same logic as espionage Novelty.
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party supply-chain-specific Splunk observations."
+    final_intent: 2
+    final_capability: 2
+    composite: 4
+    threat_level: LOW
     ioc_bonus_applied: 0
-    scoring_note: |
-      Historical MuddyWater pattern includes IT-service-provider compromise
-      as relay; consistent with broader Iranian-ecosystem T1199 Trusted
-      Relationship usage. Score against documented historical pattern, not
-      against 2026 supply-chain claims (none made by Rapid7).
 
+  # --------------------------------------------------------------------------
+  # Destructive — composite 2 → LOW (FLOOR; preserved per scoring discipline)
+  # --------------------------------------------------------------------------
   destructive:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
-    ioc_bonus_applied: 0
-    scoring_note: |
-      The Chaos-ransomware-without-encryption tradecraft is FALSE-FLAG
-      THEATER per Rapid7, NOT genuine destructive intent. Score destructive
-      LOW. The 'data encrypted for impact' artifact category fired
-      (T1486 in TTPs) but per Rapid7's assessment was deployed for
-      espionage cover, not for actual data destruction. Do NOT inflate
-      destructive scoring on the basis of the false-flag artifacts.
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent=1 (Target of Opportunity) — destructive operations are NOT
+        MuddyWater's MO. Mission profile is intelligence collection per
+        sustained A-grade source consensus (Microsoft, Unit 42, Symantec,
+        Trend Micro, ClearSky, Mandiant) and per Rapid7 2026-05-06 explicit
+        assessment. The Chaos-ransomware-without-encryption pattern in
+        Rapid7 2026 reporting is FALSE-FLAG THEATER deployed for espionage
+        cover, NOT genuine destructive intent. Per the source-finding red-
+        team specific revisions and the TEMPLATE scoring discipline note
+        carried forward verbatim: "Do NOT inflate destructive scoring on
+        the basis of the false-flag artifacts."
 
+        Floor preserved: even with the T1486 (Data Encrypted for Impact)
+        artifact firing in the 2026 reporting, the artifact category fired
+        WITHOUT actual encryption. Destructive scoring is anchored on actual
+        documented destructive intent, of which there is none for MuddyWater.
+      sources:
+        - finding-2026-05-06-FLASH-0002
+        - microsoft-mango-sandstorm-research
+        - unit42-muddywater-research
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/MOIS — same as espionage."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 2
+      evidence: |
+        Capability=2 (Possible) — feasibility confirmed (Chaos artifact
+        deployment in 2026 Rapid7 reporting demonstrates the operator can
+        drop ransomware payloads, even as theater) but no genuine destructive
+        outcomes documented. Capability=3 (Limited) would require some
+        evidence of actual destructive incidents, which is not documented.
+      sources:
+        - finding-2026-05-06-FLASH-0002
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: |
+        Chaos ransomware family is a low-tier commodity ransomware with
+        multiple criminal affiliates in 2025-2026. Defenders have
+        established signatures.
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party destructive-related Splunk observations."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  # --------------------------------------------------------------------------
+  # Disruptive — composite 2 → LOW (FLOOR)
+  # --------------------------------------------------------------------------
   disruptive:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent=1 (Target of Opportunity) — disruptive operations are NOT
+        MuddyWater's MO. Some sparse historical regional patterns may exist
+        in Iraqi-government-targeting context but availability disruption
+        is not documented as a primary objective in any of the multi-source
+        A-grade reporting. Mission profile remains intelligence collection.
+      sources:
+        - mitre-attack-g0069
+        - unit42-muddywater-research
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/MOIS — same as espionage."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        Capability=2 (Possible) — feasibility based on remote-access tooling
+        and code execution capability documented elsewhere. No actual
+        disruptive outcomes documented against US targets.
+      sources:
+        - mitre-attack-g0069
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Same toolchain mix as espionage Novelty."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party disruptive-related Splunk observations."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
 
+  # --------------------------------------------------------------------------
+  # Cyber-Crime — composite 2 → LOW (FLOOR; preserved per scoring discipline)
+  # --------------------------------------------------------------------------
   cyber_crime:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent=1 (Target of Opportunity) — MuddyWater is state-aligned MOIS
+        espionage actor, NOT financially-motivated criminal cluster. Per
+        Rapid7 2026-05-06 explicit assessment, the Chaos-ransomware-without-
+        encryption pattern is FALSE-FLAG THEATER for espionage cover, NOT
+        genuine extortion. The fake DLS onion address (Chaos DLS facade
+        IOC `muddywater-onion-chaos-dls-facade`) was deployed without actual
+        victim leak — extortion theater per Rapid7. Per the TEMPLATE
+        scoring_note carried forward verbatim: "MuddyWater is state-aligned
+        MOIS espionage actor — not a financially-motivated criminal cluster.
+        Score cyber-crime LOW. The Chaos-ransomware-without-encryption
+        tradecraft does NOT make MuddyWater a criminal actor; it makes it
+        an espionage actor using criminal-shaped cover."
+
+        Floor preserved.
+      sources:
+        - finding-2026-05-06-FLASH-0002
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/MOIS — same as espionage."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 2
+      evidence: |
+        Capability=2 (Possible) — Chaos ransomware deployment feasibility
+        demonstrated in 2026 Rapid7 reporting (even as theater). No actual
+        criminal extortion outcomes documented — fake DLS facade with no
+        victim leak per Rapid7.
+      sources:
+        - finding-2026-05-06-FLASH-0002
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "Chaos ransomware is commodity (multiple criminal affiliates 2025-2026)."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party cyber-crime-related Splunk observations."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
-    scoring_note: |
-      MuddyWater is state-aligned MOIS espionage actor — not a financially-
-      motivated criminal cluster. Score cyber-crime LOW. The Chaos-
-      ransomware-without-encryption tradecraft does NOT make MuddyWater a
-      criminal actor; it makes it an espionage actor using criminal-shaped
-      cover. Mission profile remains intelligence collection per Rapid7
-      assessment.
 
 # ============================================================================
-# Overall — TEMPLATE
+# Overall
 # ============================================================================
 overall:
-  weighted_score: null
+  weighted_score: 4.15
   weights_used:
     espionage: 0.35
     supply_chain: 0.20
     destructive: 0.15
     disruptive: 0.15
     cyber_crime: 0.15
-  threat_level: null
-  authority_level: null
-primary_threat_vector: null
-primary_threat_level: null
+  threat_level: LOW
+  authority_level: actor-profiler-autonomous
+
+primary_threat_vector: espionage
+primary_threat_level: MEDIUM      # category-level — espionage composite 7
 
 confidence:
-  admiralty: null
+  admiralty: A2
   notes: |
-    SCORING CONFIDENCE will be capped by source-finding constraints when
-    /update-tracking runs:
-      - Single-source veto on Rapid7 attribution (likely persists at
-        scoring time unless a second A/B-grade vendor corroborates by
-        ~2026-05-09 12:00 EDT)
+    Scoring confidence inherits source-finding constraints in force at
+    scoring time:
+      - Single-source veto on Rapid7 attribution PERSISTS at scoring time.
+        72-hour auto-downgrade clock fired ~2026-05-09 12:00 EDT with no
+        independent A/B-grade vendor (Mandiant, Unit 42, MSTIC, CrowdStrike,
+        Recorded Future, Volexity) corroborating. The Record + BleepingComputer
+        + SecurityWeek post-disclosure coverage is pure relay.
       - Rapid7 self-rated moderate confidence on the cluster identification
-      - 72-hour auto-downgrade clock pending
-    Confidence in scoring construction will track confidence in the source
-    finding at scoring time. If the source finding auto-downgrades to C3
-    by /update-tracking time, scoring narratives must reflect that downgrade.
+        STACKS with single-source veto.
+      - First-party Splunk: zero hits over -30d on 2026-05-09 PM sweep across
+        all 7 directly-queryable IOCs.
+    Per RETRACTION-POLICY, finding-2026-05-06-FLASH-0002 should auto-downgrade
+    to C3 "possibly true" (librarian handoff). However, the SCORING is robust
+    against this auto-downgrade because Capability anchors on long-running
+    pre-2026 MuddyWater capability (multiple A-grade sources, robust
+    regardless of 2026 attribution dispute), and Intent=3 (Sector Association)
+    is supported by historical MENA pattern alone (multi-A-grade) and does
+    NOT depend on the 2026-attribution-caveated US-pivot. If the source
+    finding auto-downgrades, the 2026-specific tooling (Game.exe / Darkcomp,
+    Donald Gay 2026 cert deployment, moonzonet[.]com / uploadfiler[.]com /
+    adm-pulse[.]com) loses its MuddyWater-canonical claim, but the scoring
+    construction remains sound.
 
 # ============================================================================
 # Review policy
 # ============================================================================
 review_policy:
   interval_days: 90
-  last_reviewed: 2026-05-06
-  next_review_due: 2026-08-04
+  last_reviewed: "2026-05-09"
+  next_review_due: "2026-08-07"
   review_triggers:
-    - new_attribution_from_a_source        # second A/B-grade vendor confirming = lifts single-source veto
+    - new_attribution_from_a_source        # second A/B-grade vendor confirming the 2026 campaign would lift single-source veto and trigger rescoring
     - new_tooling_documented
     - cve_exploitation_linked_to_actor
     - major_campaign_disclosure
-    - first_party_ioc_observation          # first-party Splunk hit on any of the 19 IOCs once ingested
-    - retraction_policy_trigger            # 72h auto-downgrade if no corroboration
+    - first_party_ioc_observation          # first-party Splunk hit on any of the 19 IOCs once ingested triggers immediate rescoring
+    - retraction_policy_trigger            # auto-downgrade of source finding triggers re-evaluation of attribution-caveated surfaces
 
 # ============================================================================
 # History
@@ -225,12 +530,28 @@ history:
     change: template_scaffolded
     note: |
       Mode-1 dossier scaffold per operator direction 2026-05-06. Threat-box-
-      scoring skill NOT invoked. Initial scoring deferred to a deliberate
-      /update-tracking pass after the 72-hour auto-downgrade clock resolves
-      (~2026-05-09 12:00 EDT). Two stacked confidence constraints noted:
-      single-source veto + vendor-moderate-confidence. Critical scoring
-      discipline carried forward from red-team specific revisions: do NOT
-      extrapolate Rapid7's named victim sectors (US construction /
-      manufacturing / business services) to A&D primes; do NOT inflate
-      destructive on the basis of false-flag Chaos artifacts; do NOT
-      inflate cyber-crime on the basis of the Chaos-shaped cover.
+      scoring skill NOT invoked. Initial scoring deferred to /update-tracking
+      pass after the 72-hour auto-downgrade clock resolves (~2026-05-09 12:00
+      EDT). Critical scoring discipline registered: do NOT extrapolate
+      construction / manufacturing / business services to A&D primes; do NOT
+      inflate destructive on Chaos artifacts; do NOT inflate cyber-crime on
+      Chaos-shaped cover.
+
+  - scored_at: 2026-05-09
+    scorer: actor-profiler
+    change: initial_scoring_complete
+    note: |
+      /update-tracking Mode 2 invocation against actor #022. Replaces 2026-05-06
+      TEMPLATE. Weighted overall 4.15 → LOW → auto-commit per doctrine
+      authority table. Espionage category alone composite 7 (MEDIUM); four
+      floor categories (supply chain 4 LOW, destructive 2 LOW, disruptive 2
+      LOW, cyber-crime 2 LOW) dilute via doctrine weighting to overall LOW.
+      Hard Rule 5 gate did NOT fire. Operator-anticipated HIGH did NOT
+      materialize — the disciplined Intent=3 binding on Espionage (per
+      red-team specific revisions: NO defense primes named, NO A&D
+      extrapolation) keeps Espionage from ceiling. 72h auto-downgrade clock
+      fired with no independent A/B-grade corroboration; single-source veto
+      persists; first-party Splunk zero hits over -30d. Scoring construction
+      anchors Capability on long-running pre-2026 multi-A-grade documentation
+      (robust regardless of 2026 attribution dispute) and Intent on historical
+      MENA sector pattern (multi-A-grade, robust without needing 2026 US-pivot).

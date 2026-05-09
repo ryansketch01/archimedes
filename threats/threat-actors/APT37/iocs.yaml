@@ -1,0 +1,450 @@
+# threats/threat-actors/APT37/iocs.yaml
+#
+# Agent-queryable sidecar to iocs.md. Initial first-pass scaffold (2026-05-09)
+# from finding-2026-05-07-0004 (ESET via The Record — BirdCall / Sqgame
+# supply-chain campaign). Sparse by design — historical IOC appendices from
+# FireEye/Mandiant 2018, Kaspersky 2016–2018, Cisco Talos 2017–ongoing, and
+# Volexity 2021 ingest on next collector pass against APT37.
+#
+# Hard Rule 2: every indicator carries a source_brief reference back to its
+# original public reporting; nothing here is Archimedes-originated.
+#
+# Hard Rule 4: no active scanning of Sqgame infrastructure performed at
+# scaffold time. Passive-only enrichment per LEGAL-POLICY.md. Sqgame is NOT
+# in authorized-targets.yaml.
+
+actor_id: "024"
+actor_name: APT37
+last_updated: 2026-05-09
+admiralty_grade: A2
+tlp: CLEAR
+source_of_record: iocs.md
+
+ttl:
+  network_infrastructure: 90    # days — domains/IPs expire from "active"
+  file_hashes: 730              # hashes don't expire, may lose relevance
+  registry: never               # TTP-level, persistent value
+  scheduled_task: never
+  cloud_service: never
+  vulnerabilities: never        # CVEs are forever
+  malware_family: never         # family identifiers are persistent
+  targeting_pattern: never
+  distribution_pattern: never
+
+# ============================================================================
+# CVEs historically exploited (zero-day) by APT37
+# ============================================================================
+indicators:
+
+  - id: apt37-cve-2018-4878
+    type: cve
+    value: CVE-2018-4878
+    cvss: 9.8
+    product: "Adobe Flash Player"
+    description: "Use-after-free RCE; APT37 exploited as zero-day Jan–Feb 2018 against South Korean targets. Adobe issued out-of-band patch APSB18-03."
+    status: legacy_patched_eol
+    first_seen: 2018-01
+    related_campaign: "Adobe Flash zero-day Jan–Feb 2018"
+    source_brief: cisco-talos-rokrat-2018
+
+  - id: apt37-cve-2016-4117
+    type: cve
+    value: CVE-2016-4117
+    cvss: 9.8
+    product: "Adobe Flash Player"
+    description: "Type-confusion RCE; APT37 (then ScarCruft) exploited as zero-day 2016. Kaspersky Operation Daybreak."
+    status: legacy_patched_eol
+    first_seen: 2016-05
+    related_campaign: "Operation Daybreak"
+    source_brief: kaspersky-operation-daybreak-2016
+
+# ============================================================================
+# Malware families (TTP-tier persistent indicators)
+# ============================================================================
+
+  - id: apt37-birdcall-android
+    type: malware_family
+    value: BirdCall
+    platform: Android
+    description: |
+      Android backdoor delivered via compromised Sqgame APK supply-chain since
+      November 2024. Targets ethnic Koreans in Yanbian Korean Autonomous
+      Prefecture, China — likely North Korean refugees and defectors per ESET.
+      Distributed via web-browser download from compromised Sqgame site
+      (NOT Google Play).
+    first_seen: 2024-11
+    related_campaign: "Sqgame supply-chain"
+    source_brief: eset-via-the-record-2026-05-07
+
+  - id: apt37-birdcall-windows
+    type: malware_family
+    value: BirdCall (Windows variant)
+    platform: Windows
+    description: "Windows variant of BirdCall referenced in ESET reporting; technical details limited in source text excerpt."
+    first_seen: 2024-11
+    related_campaign: "Sqgame supply-chain"
+    source_brief: eset-via-the-record-2026-05-07
+
+  - id: apt37-rokrat
+    type: malware_family
+    value: RokRAT
+    platform: Windows
+    description: |
+      Signature APT37 Windows RAT since 2017; modular, cloud-platform C2
+      (pCloud, Yandex Disk, Dropbox); multiple variants and packers across
+      2017–2024. Earlier mobile/Android variants documented separately.
+    first_seen: 2017-04
+    related_campaign: "RokRAT continuity (multi-campaign)"
+    source_brief: cisco-talos-rokrat-2017
+
+  - id: apt37-bluelight
+    type: malware_family
+    value: BLUELIGHT
+    platform: Windows
+    description: |
+      Backdoor with cloud-platform C2; Volexity 2021 InkySquid disclosure;
+      delivered via strategic-website-compromise of South Korean newspaper.
+    first_seen: 2021-08
+    related_campaign: "InkySquid (Volexity 2021)"
+    source_brief: volexity-inkysquid-2021
+
+  - id: apt37-karae
+    type: malware_family
+    value: KARAE
+    platform: Windows
+    description: "First-stage downloader documented in FireEye/Mandiant 2018 disclosure"
+    first_seen: pre-2018
+    source_brief: fireeye-apt37-reaper-2018
+
+  - id: apt37-dogcall
+    type: malware_family
+    value: DOGCALL
+    platform: Windows
+    description: "Secondary backdoor documented in FireEye/Mandiant 2018 disclosure"
+    first_seen: pre-2018
+    source_brief: fireeye-apt37-reaper-2018
+
+  - id: apt37-coraldeck
+    type: malware_family
+    value: CORALDECK
+    platform: Windows
+    description: "Exfiltration tool; archives victim files for upload (FireEye 2018)"
+    first_seen: pre-2018
+    source_brief: fireeye-apt37-reaper-2018
+
+  - id: apt37-pooraim
+    type: malware_family
+    value: POORAIM
+    platform: Windows
+    description: "Backdoor using AOL Instant Messenger as C2 channel (FireEye 2018; historical)"
+    first_seen: pre-2018
+    source_brief: fireeye-apt37-reaper-2018
+
+  - id: apt37-ruhappy
+    type: malware_family
+    value: RUHAPPY
+    platform: Windows
+    description: |
+      Suspected wiper with possible MBR-overwrite capability documented in
+      FireEye 2018. Disruptive intent observed historically; not in primary
+      current-generation operations.
+    first_seen: pre-2018
+    source_brief: fireeye-apt37-reaper-2018
+
+  - id: apt37-slowdrift
+    type: malware_family
+    value: SLOWDRIFT
+    platform: Windows
+    description: "Cloud-C2 downloader documented in FireEye 2018 disclosure"
+    first_seen: pre-2018
+    source_brief: fireeye-apt37-reaper-2018
+
+  - id: apt37-konni-cluster-overlap
+    type: malware_family
+    value: Konni (cluster overlap)
+    platform: Windows + Android
+    description: |
+      Konni cluster has documented overlap with APT37 in some reporting; cluster
+      boundaries with Kimsuky remain debated in public reporting. Counted as
+      overlap rather than APT37-exclusive capability per Hard Rule 2.
+    first_seen: 2014
+    source_brief: multi-vendor-konni-tracking
+
+# ============================================================================
+# Compromised supply-chain platform — Sqgame (per ESET)
+# ============================================================================
+
+  - id: apt37-sqgame-platform
+    type: compromised_platform
+    value: Sqgame (card-game platform)
+    role: compromised_distribution_platform
+    description: |
+      Compromised legitimate Android-card-game distribution platform. Exact
+      domain not surfaced in The Record's article excerpt. Compromise window
+      opens at least November 2024 per ESET. ESET notified Sqgame in
+      December 2025; remediation status not stated in source. Passive DNS /
+      VirusTotal enrichment recommended to surface specific domain.
+    first_seen: 2024-11
+    related_campaign: "Sqgame supply-chain"
+    source_brief: eset-via-the-record-2026-05-07
+    enrichment_notes: |
+      Per Hard Rule 4, no active scanning of Sqgame infrastructure performed.
+      Sqgame is NOT in authorized-targets.yaml; passive-only enrichment.
+
+# ============================================================================
+# Targeting and distribution patterns (TTP-tier, no specific IOCs)
+# ============================================================================
+
+  - id: apt37-targeting-yanbian-ethnic-koreans
+    type: targeting_pattern
+    value: "Ethnic Koreans in Yanbian Korean Autonomous Prefecture, China"
+    role: victim_demographic_civil_society
+    description: |
+      ESET assesses targeting concentrated on ethnic Koreans in Yanbian Korean
+      Autonomous Prefecture (China), likely including North Korean refugees
+      and defectors. Civil-society / human-rights targeting consistent with
+      DPRK regime objectives toward defector tracking and coercion.
+    source_brief: eset-via-the-record-2026-05-07
+
+  - id: apt37-distribution-android-sideload
+    type: distribution_pattern
+    value: "Android APK web-browser sideload (NOT Google Play)"
+    role: initial_access_vector_supply_chain
+    description: |
+      Compromised APKs delivered via web-browser download from compromised
+      gaming platform — NOT through Google Play. Bypasses Google Play vetting;
+      consumer-Android security model relies on user accepting sideload
+      warning as the only friction point. T1474.003 / T1195.002.
+    source_brief: eset-via-the-record-2026-05-07
+
+  - id: apt37-distribution-strategic-web-compromise
+    type: distribution_pattern
+    value: "Strategic website compromise (Korean-language news / civil-society)"
+    role: initial_access_vector_drive_by
+    description: |
+      Volexity InkySquid 2021 documented APT37 compromising South Korean
+      newspaper website to deliver BLUELIGHT to readership. T1189 drive-by
+      compromise. Consistent with civil-society / journalist targeting.
+    source_brief: volexity-inkysquid-2021
+
+  - id: apt37-distribution-hwp-spearphishing
+    type: distribution_pattern
+    value: "Korean-language HWP (Hancom Office) document-borne spearphishing"
+    role: initial_access_vector_phishing
+    description: |
+      Historical APT37 spearphishing infrastructure leans heavily on weaponized
+      HWP documents for South Korean and Korean-diaspora targets. T1566.001
+      with HWP-specific exploit chains.
+    source_brief: cisco-talos-group123-2018
+
+# ============================================================================
+# Cloud-platform C2 abuse patterns (durable behavioral indicators)
+# ============================================================================
+
+  - id: apt37-cloud-c2-pcloud
+    type: cloud_service
+    value: pCloud API
+    role: bidirectional_c2_channel
+    description: |
+      RokRAT and adjacent implants use pCloud API as C2 channel. Blends C2
+      traffic into legitimate cloud-storage HTTPS traffic. T1102.002.
+    source_brief: cisco-talos-rokrat-2017
+
+  - id: apt37-cloud-c2-yandex-disk
+    type: cloud_service
+    value: Yandex Disk
+    role: bidirectional_c2_channel
+    description: |
+      RokRAT variants documented using Yandex Disk for C2 and exfiltration.
+      T1102.002 + T1567.002.
+    source_brief: cisco-talos-rokrat-2017
+
+  - id: apt37-cloud-c2-dropbox
+    type: cloud_service
+    value: Dropbox API
+    role: bidirectional_c2_channel
+    description: |
+      RokRAT and BLUELIGHT variants documented using Dropbox API for C2 and
+      exfiltration. T1102.002.
+    source_brief: volexity-inkysquid-2021
+
+  - id: apt37-cloud-exfil-google-drive
+    type: cloud_service
+    value: Google Drive
+    role: exfiltration_destination
+    description: "Documented across multiple APT37 campaigns; T1567.002."
+    source_brief: multi-vendor-apt37-tracking
+
+# ============================================================================
+# Detection patterns (TTP-tier hunt patterns, not static IOCs)
+# ============================================================================
+
+  - id: apt37-detection-cloud-c2-pattern
+    type: detection_pattern
+    value: cloud_storage_c2_abuse
+    description: |
+      Anomalous outbound HTTPS volume to pCloud, Yandex Disk, Dropbox, Google
+      Drive APIs from non-developer / non-marketing endpoints. High
+      bidirectional volume from endpoints without business reason. Behavioral
+      pattern; not a static IOC.
+    source_brief: cisco-talos-rokrat-2017
+
+  - id: apt37-detection-android-sideload-pattern
+    type: detection_pattern
+    value: android_sideload_managed_device
+    description: |
+      Sideload-warning behavior is the only friction between compromised
+      Sqgame-pattern APK and victim infection. Hunt for non-Play app
+      installations on managed Android devices with corporate access.
+    source_brief: eset-via-the-record-2026-05-07
+
+  - id: apt37-detection-hwp-execution-pattern
+    type: detection_pattern
+    value: hwp_execution_from_email
+    description: |
+      HWP file execution from email-delivered files in non-Korea-business-unit
+      contexts. Behavioral hunt for atypical user-role HWP exposure.
+    source_brief: cisco-talos-group123-2018
+
+# ============================================================================
+# Hunt queries
+# ============================================================================
+hunt_queries:
+
+  - id: apt37-hunt-cloud-c2-volume
+    platform: splunk
+    title: "Hunt for APT37 cloud-storage C2 abuse (pCloud / Yandex Disk / Dropbox)"
+    query_type: spl
+    query: |
+      index=defenseclaw_local sourcetype=proxy OR sourcetype=firewall
+      | search dest_domain IN ("api.pcloud.com", "*.pcloud.com",
+                                "cloud-api.yandex.net", "webdav.yandex.com",
+                                "*.dropboxapi.com")
+      | stats count, sum(bytes_out) as exfil_bytes by user, src_ip, dest_domain
+      | where exfil_bytes > 10485760
+      | sort - exfil_bytes
+      # FP consideration: legitimate user use of pCloud/Yandex/Dropbox is
+      # common. Tune by allowlisting known-business-purpose users; focus on
+      # non-developer / non-marketing endpoints with high bidirectional
+      # volume.
+
+  - id: apt37-hunt-hwp-execution
+    platform: splunk
+    title: "Hunt for HWP execution from email (Korean-language spearphishing)"
+    query_type: spl
+    query: |
+      index=defenseclaw_local sourcetype=endpoint
+      | search (process_name="hwp.exe" OR process_name="Hwp70.exe"
+                OR file_extension=".hwp" OR file_extension=".hwpx")
+      | eval lure_origin = case(parent_process_name="OUTLOOK.EXE", "email",
+                                 parent_process_name="chrome.exe", "browser",
+                                 parent_process_name="firefox.exe", "browser",
+                                 1=1, "other")
+      | where lure_origin = "email"
+      | stats count by user, host, file_path
+      # FP consideration: legitimate business reasons for HWP files exist
+      # for Korea-touching units. Tune by user-role / business-unit
+      # allowlist.
+
+  - id: apt37-hunt-strategic-web-compromise
+    platform: pseudo
+    title: "Strategic-website-compromise hunt (Korean-language news visit + endpoint persistence)"
+    query_type: pseudo
+    query: |
+      JOIN proxy_logs WHERE dest_domain IN (<korean-language-news-site-list>)
+      WITH endpoint_logs WHERE process_create OR file_create
+      WITHIN 5 minutes of proxy_log.time
+      GROUP BY user, host
+      ALERT IF endpoint event includes new persistence (Run key, scheduled task)
+             OR new outbound connection to non-news domain
+      # FP consideration: legitimate Korean-language news consumption is
+      # benign. Hunt for the COMBINATION of Korean-news visit + immediate
+      # endpoint persistence event.
+
+  - id: apt37-hunt-android-sideload-managed
+    platform: edr
+    title: "Mobile sideload posture review for managed Android devices"
+    query_type: pseudo
+    query: |
+      ON ANDROID DEVICES under MDM:
+        CHECK setting: install_unknown_sources
+        ALERT IF install_unknown_sources = enabled for any user
+        ENUMERATE installed apps NOT FROM Google Play
+        ALERT IF any non-Play app installed in last 90 days
+      # FP consideration: enterprise app stores and side-loaded LOB apps are
+      # legitimate on managed devices. Tune by allowlisting known-good
+      # enterprise sources. Focus on personal-profile / BYOD with corp
+      # access.
+
+  - id: apt37-hunt-rokrat-bluelight-process-pattern
+    platform: edr
+    title: "RokRAT / BLUELIGHT process-pattern hunt (Office/HWP → PowerShell → cloud C2)"
+    query_type: pseudo
+    query: |
+      ON HOSTS:
+        ALERT IF process tree:
+          - Office product (winword.exe, excel.exe) OR HWP (hwp.exe)
+          - spawns powershell.exe with encoded command (T1059.001 + T1027)
+          - spawns child process making outbound connection to cloud-storage API
+          WITHIN 60 seconds
+      # FP consideration: legitimate macros that integrate with cloud
+      # services are rare in normal corporate use. Tune by user role.
+
+# ============================================================================
+# Sources
+# ============================================================================
+sources:
+
+  - id: eset-via-the-record-2026-05-07
+    title: "ESET (relayed via The Record): APT37 Sqgame supply-chain — BirdCall Android + Windows backdoor (2026-05-07)"
+    url: "https://therecord.media/north-korean-hackers-target-ethnic-koreans-in-china"
+    grade: A2
+    note: "ESET originating research (A grade per source-grades.yaml ratification commit a49c576). The Record relay (B). Effective grade A2 with single-source-veto noted in finding-2026-05-07-0004."
+    finding_ref: finding-2026-05-07-0004
+
+  - id: fireeye-apt37-reaper-2018
+    title: "APT37 (REAPER): The Overlooked North Korean Actor (FireEye / Mandiant, Feb 2018)"
+    url: "https://www.mandiant.com/resources/reports/apt37-overlooked-north-korean-actor"
+    grade: A1
+
+  - id: cisco-talos-rokrat-2017
+    title: "ROKRAT Reloaded (Cisco Talos, 2017)"
+    url: "https://blog.talosintelligence.com/rokrat-reloaded/"
+    grade: A1
+
+  - id: cisco-talos-group123-2018
+    title: "Korea In The Crosshairs / Group123 (Cisco Talos, 2018)"
+    url: "https://blog.talosintelligence.com/korea-in-crosshairs/"
+    grade: A1
+
+  - id: kaspersky-operation-daybreak-2016
+    title: "Operation Daybreak — ScarCruft and the CVE-2016-4117 Flash zero-day (Kaspersky, 2016)"
+    url: "https://securelist.com/operation-daybreak/75100/"
+    grade: A1
+
+  - id: kaspersky-scarcruft-evolves-2018
+    title: "ScarCruft continues to evolve — Bluetooth harvester and tooling updates (Kaspersky, 2018)"
+    url: "https://securelist.com/scarcruft-continues-to-evolve-introduces-bluetooth-harvester/90729/"
+    grade: A1
+
+  - id: volexity-inkysquid-2021
+    title: "InkySquid — North Korean APT exploits browser exploits and BLUELIGHT (Volexity, 2021)"
+    url: "https://www.volexity.com/blog/2021/08/17/north-korean-apt-inkysquid-infects-victims-using-browser-exploits/"
+    grade: A1
+
+  - id: cisco-talos-rokrat-2018
+    title: "Cisco Talos RokRAT continuity / Adobe Flash CVE-2018-4878 weaponization (2018)"
+    url: "https://blog.talosintelligence.com/who-wasnt-responsible-for-olympic/"
+    grade: A1
+
+  - id: multi-vendor-apt37-tracking
+    title: "Multi-vendor APT37 tracking — Mandiant, Kaspersky, Cisco Talos, Volexity, ESET ongoing"
+    url: "https://attack.mitre.org/groups/G0067/"
+    grade: A1
+    note: "MITRE ATT&CK G0067 maintained as multi-vendor synthesis."
+
+  - id: multi-vendor-konni-tracking
+    title: "Multi-vendor Konni-cluster tracking (overlap with APT37 / Kimsuky)"
+    url: "https://attack.mitre.org/software/S0356/"
+    grade: A2
+    note: "Konni-cluster boundaries between APT37 and Kimsuky remain debated in public reporting."

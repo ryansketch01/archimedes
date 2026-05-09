@@ -15,7 +15,7 @@
 #   5. Threat-box scoring within 14 days (human sign-off for HIGH)
 
 version: 2
-last_updated: 2026-05-06
+last_updated: 2026-05-09
 source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
 
 actors:
@@ -359,23 +359,48 @@ actors:
     mitre_attack_id: G0049
     note: "Session 9 pre-work intake. First-pass profile + initial scoring complete; auto-committed (MEDIUM)."
 
+  - id: "024"
+    primary_name: "APT37"
+    aliases:
+      - ScarCruft
+      - Scarcruft
+      - Reaper
+      - Group123
+      - InkySquid
+      - RedEyes
+      - Ricochet Chollima
+      - ATK4
+      - StarCruft
+      - Operation Daybreak
+    attribution:
+      nation: KP
+      service: "MSS (Ministry of State Security) — per ESET via The Record 2026 framing; earlier reporting (FireEye/Mandiant 2018, Kaspersky, Cisco Talos, Volexity) attributed broadly to 'North Korean state interests' without specifying MSS vs. RGB"
+    type: "Nation-State APT"
+    threat_level: HIGH         # roster-intake placeholder; threat-box.yaml is TEMPLATE pending /update-tracking with /approve-scoring gate
+    tracked_since: 2026-05-09
+    dossier: threats/threat-actors/APT37/
+    last_reviewed: 2026-05-09
+    next_review_due: 2026-08-07
+    mitre_attack_id: G0067
+    note: "First-pass profile created 2026-05-09 from finding-2026-05-07-0004 (ESET via The Record — BirdCall / Sqgame Android supply-chain compromise targeting ethnic Koreans in Yanbian, China). Threat-box scoring is TEMPLATE pending /update-tracking with /approve-scoring gate (HIGH likely). A&D-prime relevance is INDIRECT/STRUCTURAL (mobile capability + civil-society partner exposure + DPRK roster gap closure); A&D-direct targeting is undocumented in public reporting. Closes structural gap in roster — prior DPRK coverage was RGB-only (Lazarus, Stardust Chollima); APT37 is MSS-attributed per recent reporting."
+
 # ============================================================================
 # Quick-lookup indices (regenerated when roster changes)
 # ============================================================================
 _meta:
-  total_actors: 23
+  total_actors: 24
   by_threat_level:
-    HIGH: 21
+    HIGH: 22
     MEDIUM: 2          # REvil, APT34
     LOW: 0
   by_nation:
     RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
     CN: 4          # Volt Typhoon, Salt Typhoon, APT40, APT41
     IR: 5          # UNC1549, Charming Kitten, Handala, MuddyWater, APT34
-    KP: 2          # Stardust Chollima, Lazarus
+    KP: 3          # Stardust Chollima, Lazarus, APT37
     unknown: 7     # TeamPCP, GlassWorm, Miyako, Scattered Spider, BlackCat, Payouts King, (LockBit/Cl0p attributed RU)
   profiles_migrated: 1         # APT28 only at v1
-  profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King (MuddyWater no longer pending — first-pass 2026-05-06)
-  profiles_first_pass: 4       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch)
-  scoring_complete: 1          # APT34 first-pass scoring (initial). UNC1549, Charming Kitten, MuddyWater carry TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
-  scoring_template_only: 3     # UNC1549, Charming Kitten, MuddyWater — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.
+  profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King
+  profiles_first_pass: 5       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09)
+  scoring_complete: 1          # APT34 first-pass scoring (initial). UNC1549, Charming Kitten, MuddyWater, APT37 carry TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
+  scoring_template_only: 4     # UNC1549, Charming Kitten, MuddyWater, APT37 — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.

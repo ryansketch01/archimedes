@@ -235,16 +235,113 @@ def prompt_for_ioc_hunt(args: str) -> str:
     )
 
 
-# Registry: command name -> prompt builder. Add entries here as new commands
-# are wired up (e.g. /new-actor, /update-tracking, /flash, /brief).
+def prompt_for_new_actor(args: str) -> str:
+    name = args.strip()
+    if not name:
+        raise ValueError(
+            "/new-actor requires an actor name (e.g. 'APT45', 'Sandworm', "
+            "'UNC9999'). Optionally include a triggering finding id as a "
+            "second token: `/new-actor APT45 finding-2026-05-09-0007`."
+        )
+    return (
+        f"Run /new-actor {name} per the on-demand command workflow in CLAUDE.md. "
+        "Spawn the actor-profiler subagent to scaffold a full 5-file dossier per "
+        "doctrine/ACTOR-PROFILE-STANDARD.md. If a triggering finding is named, "
+        "use it as the source for IOC ingestion; otherwise pull from canonical "
+        "OSINT (Mandiant / MITRE ATT&CK / Talos / Volexity / Unit 42) for the "
+        "first-pass profile. Add the actor to threats/threat-actors/_roster.yaml "
+        "at the next available id with full aliases and mitre_attack_id if known. "
+        "Leave threat-box.yaml as TEMPLATE (null scores) per scaffold convention; "
+        "scoring follows in a separate /update-tracking pass. Per Hard Rule 2, "
+        "do NOT originate attribution — every claim must trace to a cited "
+        "source. Return a Smart Brevity summary under 1800 chars: actor id, "
+        "dossier path, IOC count, attribution lineage."
+    )
+
+
+def prompt_for_update_tracking(args: str) -> str:
+    target = args.strip()
+    if not target:
+        return (
+            "Run /update-tracking per the on-demand command workflow in CLAUDE.md "
+            "with no target specified — pick the actor whose `last_reviewed` is "
+            "oldest in _roster.yaml (or whose `next_review_due` has passed). "
+            "Spawn the actor-profiler to refresh that actor's dossier from the "
+            "last 90 days of corpus evidence and re-run threat-box scoring. If "
+            "the new score is HIGH, do NOT auto-commit — return the proposed "
+            "score summary so the operator can review and approve via "
+            "/approve-scoring. Return a Smart Brevity summary under 1800 chars: "
+            "actor id, what changed, new threat-box overall, gate status."
+        )
+    return (
+        f"Run /update-tracking against actor {target} per the on-demand command "
+        "workflow in CLAUDE.md. Spawn the actor-profiler to refresh the dossier "
+        "from the last 90 days of corpus evidence and re-run threat-box scoring "
+        "via the threat-box-scoring skill. Apply IOC corroboration bonus from "
+        "Splunk first-party hits (both archimedes + defenseclaw_local indexes). "
+        "If the new score is HIGH, do NOT auto-commit — return the proposed "
+        "score summary so the operator can approve via /approve-scoring. If "
+        "MEDIUM/LOW, the librarian auto-commits per Mode 4. Return a Smart "
+        "Brevity summary under 1800 chars: actor id, what changed, new "
+        "threat-box overall, gate status."
+    )
+
+
+def prompt_for_approve_scoring(args: str) -> str:
+    actor_id = args.strip()
+    if not actor_id:
+        raise ValueError(
+            "/approve-scoring requires an actor id (e.g. '011' or 'APT37'). "
+            "This is the operator-confirmation half of the Hard Rule 5 gate — "
+            "the proposed HIGH threat-box score should already be visible in "
+            "#actor-review with the AWAITING /approve-scoring tag."
+        )
+    return (
+        f"Run /approve-scoring {actor_id} per the on-demand command workflow in "
+        "CLAUDE.md. The operator has reviewed the pending HIGH threat-box "
+        "scoring for this actor (visible in #actor-review per Hard Rule 5) and "
+        "is authorizing the librarian to commit the threat-box.yaml change to "
+        "main. Spawn the librarian in Mode 4 with pending_approval=false. "
+        "Verify the review branch (review/actor-<id>-scoring-<date>) exists and "
+        "matches the proposed score before merging. Update _roster.yaml's "
+        "scoring_pending_approval flag to false and increment "
+        "_meta.scoring_complete. Per Hard Rule 5 enforcement: refuse if no "
+        "matching review branch exists or if the proposed score is not HIGH. "
+        "Return a Smart Brevity summary under 1800 chars: actor id, commit "
+        "hash, new threat_level on main."
+    )
+
+
+# Registry: command name -> prompt builder. Each entry bridges to claude -p.
+# Add new commands here; the on_message handler picks them up automatically.
 COMMAND_HANDLERS: dict[str, Callable[[str], str]] = {
     "investigate": prompt_for_investigate,
     "ioc-hunt": prompt_for_ioc_hunt,
+    "new-actor": prompt_for_new_actor,
+    "update-tracking": prompt_for_update_tracking,
+    "approve-scoring": prompt_for_approve_scoring,
 }
 
-# /ping is special: handled in-process without invoking claude. Useful as
-# a liveness probe without burning API tokens.
+# Inline commands handled in-process without invoking claude. Useful as
+# liveness / discoverability primitives without burning API tokens.
 PING_COMMAND = "ping"
+HELP_COMMAND = "help"
+
+HELP_TEXT = (
+    "**Archimedes Discord listener — available commands**\n\n"
+    "**Inline (no `claude -p`, instant):**\n"
+    "  `/ping` — liveness probe; replies pong\n"
+    "  `/help` — this message\n\n"
+    "**Bridge to `claude -p` (run `~10s`–`~5min` depending on scope):**\n"
+    "  `/ioc-hunt <indicator>` — IP / domain / hash / URL lookup vs corpus + Splunk + external\n"
+    "  `/investigate <target>` — deep dive on actor / CVE / campaign / domain / hash\n"
+    "  `/new-actor <name> [<finding-id>]` — scaffold a new actor dossier\n"
+    "  `/update-tracking [<actor>]` — refresh dossier + re-score (oldest actor if no arg)\n"
+    "  `/approve-scoring <actor-id>` — operator confirmation for HIGH-scoring gate (Hard Rule 5)\n\n"
+    "**State tracking via reactions:** 👀 received → ✅ success / ❌ failure\n"
+    "**Auth:** only the configured operator user ID, only this channel.\n"
+    "**Long output:** truncated at ~1800 chars; full output in `logs/discord-listener/`."
+)
 
 
 # ---------------------------------------------------------------------------
@@ -375,7 +472,7 @@ def build_client(
         if cmd is None:
             return  # not a command; ignore silently
 
-        # Liveness probe — handle inline, no claude
+        # Inline commands — handled in-process, no claude invocation
         if cmd == PING_COMMAND:
             logger.info("/ping from operator")
             try:
@@ -386,6 +483,15 @@ def build_client(
                 )
             except discord.HTTPException as e:
                 logger.warning("/ping reply failed: %s", e)
+            return
+
+        if cmd == HELP_COMMAND:
+            logger.info("/help from operator")
+            try:
+                await message.add_reaction(REACTION_OK)
+                await message.reply(HELP_TEXT, mention_author=False)
+            except discord.HTTPException as e:
+                logger.warning("/help reply failed: %s", e)
             return
 
         if cmd not in COMMAND_HANDLERS:

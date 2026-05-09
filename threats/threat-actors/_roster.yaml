@@ -15,7 +15,7 @@
 #   5. Threat-box scoring within 14 days (human sign-off for HIGH)
 
 version: 2
-last_updated: 2026-05-09
+last_updated: 2026-05-09        # /update-tracking Charming Kitten (#011) — LOW (auto-commit)
 source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
 
 actors:
@@ -175,13 +175,13 @@ actors:
       nation: IR
       service: "IRGC-IO"
     type: "Nation-State APT"
-    threat_level: HIGH
+    threat_level: LOW            # weighted overall 4.45 (LOW) per /update-tracking 2026-05-09; espionage category HIGH (composite 9). Intent=4 Ideology bound by red-team qualify directive — no A-grade source documents prime-direct targeting required for Intent=5.
     tracked_since: 2026-04-08
     dossier: threats/threat-actors/Charming-Kitten/
-    last_reviewed: 2026-05-06
-    next_review_due: 2026-08-04
+    last_reviewed: 2026-05-09
+    next_review_due: 2026-08-07
     mitre_attack_id: G0059
-    note: "First-pass profile created 2026-05-06 from finding-2026-05-05-0002 (CrowdStrike + MSTIC concurrent A1 attribution). Threat-box scoring is TEMPLATE pending /update-tracking pass. Red-team qualify directive on prime-tradecraft-portability vs observed-prime-targeting carried into dossier."
+    note: "First-pass profile created 2026-05-06 from finding-2026-05-05-0002 (CrowdStrike + MSTIC concurrent A1 attribution). Threat-box scoring 2026-05-09 via /update-tracking (Mode 2): weighted 4.45 → LOW → auto-commit. Espionage composite 9 (category HIGH) but weighted overall LOW because Intent=4 (Ideology) — bound by red-team qualify directive — keeps Espionage from ceiling 10, and four floor categories dilute via doctrine weighting. Operator-anticipated HIGH did NOT materialize; the disciplined Intent=4 outcome is the qualify directive doing what it was meant to do. Splunk first-party zero hits over -30d at scoring time."
 
   - id: "012"
     primary_name: "Miyako"
@@ -390,9 +390,9 @@ actors:
 _meta:
   total_actors: 24
   by_threat_level:
-    HIGH: 21
+    HIGH: 20
     MEDIUM: 3          # REvil, APT34, UNC1549
-    LOW: 0
+    LOW: 1             # Charming Kitten (per /update-tracking 2026-05-09; espionage category HIGH but weighted overall LOW)
   by_nation:
     RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
     CN: 4          # Volt Typhoon, Salt Typhoon, APT40, APT41
@@ -402,5 +402,5 @@ _meta:
   profiles_migrated: 1         # APT28 only at v1
   profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King
   profiles_first_pass: 5       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09)
-  scoring_complete: 2          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM — workflow validation pass). Charming Kitten, MuddyWater, APT37 carry TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
-  scoring_template_only: 3     # Charming Kitten, MuddyWater, APT37 — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.
+  scoring_complete: 3          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — third workflow validation pass; red-team qualify directive bound Espionage Intent=4 producing weighted LOW despite category-level HIGH on espionage). MuddyWater, APT37 carry TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
+  scoring_template_only: 2     # MuddyWater, APT37 — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.

@@ -3,156 +3,446 @@
 # Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
 # Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
 #
-# STATUS: TEMPLATE ONLY — initial scoring DEFERRED.
+# Scored 2026-05-09 via /update-tracking (Mode 2). Replaces 2026-05-06
+# TEMPLATE scaffold. Weighted overall 4.45 → LOW → auto-commit per
+# doctrine authority table. Espionage category alone scores composite 9
+# (HIGH) — preserved in the per-category table but does NOT trigger Hard
+# Rule 5 gate; only weighted overall does, and weighted overall is LOW.
 #
-# Per operator direction (2026-05-06 Mode-1 scaffold), the threat-box-scoring
-# skill was NOT invoked at dossier creation. Rationale: Charming Kitten is an
-# active Iranian APT (IRGC-IO) with concurrent A1 attribution corroboration in
-# the 2026-05-04 reporting and platform-portable OAuth consent-grant tradecraft.
-# Likely to score HIGH overall. HIGH triggers Hard Rule 5 (/approve-scoring
-# gate). Leaving this template empty defers the scoring decision to a
-# deliberate /update-tracking pass with the human gate intact rather than
-# auto-running scoring at scaffold time.
+# Operator-anticipated outcome was HIGH; actual computation lands LOW
+# because the red-team `qualify` directive on finding-2026-05-05-0002
+# binds Espionage Intent to 4 (Ideology Association) rather than 5
+# (Target-Specific). Vendors named think-tank, academic, and journalist
+# victims — NO defense primes. Per Hard Rule 2 and the source-finding
+# red-team directive, prime-direct targeting cannot be inferred from
+# mechanism-portable OAuth consent-grant tradecraft. Intent=5 would have
+# required at least one A-grade source documenting targeting of
+# ad-prime-v1; that source does not exist for Charming Kitten in the
+# current corpus. The disciplined Intent=4 + Capability=5 produces
+# Espionage composite 9 (still HIGH category-level), but the four floor
+# categories dilute via doctrine weighting to overall 4.45 LOW.
 #
-# Note: the red-team `qualify` directive on finding-2026-05-05-0002 carries
-# forward into scoring construction. The OAuth tradecraft is mechanism-level
-# A&D risk, not observed prime-direct activity. Espionage Intent should be
-# scored against the named victim ecosystem (think tanks, researchers,
-# journalists), NOT extrapolated to A&D primes — that distinction is
-# load-bearing for any defensible scoring.
+# First-party Splunk: zero hits across all 6 IOCs over -30d (queried
+# 2026-05-09 against archimedes + defenseclaw_local). Also zero hits on
+# OAuth consent-grant audit-log signals (Mail.ReadWrite, Consent to
+# application). No IOC corroboration bonus applied.
 
 actor_id: "011"
 actor_name: "Charming Kitten"
-also_tracked_as:
-  - Mint Sandstorm
-  - APT35
-  - Magic Hound
-  - Phosphorus
 target_profile: "ad-prime-v1"
-status: pending_initial_scoring
-scored_at: null
-scored_by: null
-reviewed_by: null
-scoring_version: 0
+status: scored
+scored_at: "2026-05-09"
+scored_by: "actor-profiler"
+reviewed_by: "auto-committed"
+scoring_version: 1
 
 # ============================================================================
-# Score categories — TEMPLATE (all values null pending /update-tracking)
+# Score categories
 # ============================================================================
 scores:
+
+  # --------------------------------------------------------------------------
+  # Espionage — composite 9 → HIGH (category-level only; weighted overall LOW)
+  # --------------------------------------------------------------------------
   espionage:
     intent:
-      score: null
-      label: null
-      willingness_modifier: null
-      evidence: null
-      sources: []
+      score: 4
+      label: ideology-association
+      willingness_modifier: 0
+      evidence: |
+        Intent=4 (Ideology Association) is the binding-with-red-team-qualify
+        scoring outcome, NOT Intent=5 (Target-Specific). The Q2 2026 vendor
+        reporting (CrowdStrike + MSTIC 2026-05-04, both A-grade) explicitly
+        names victims as US/UK/Israeli defense-policy think tanks (Brookings,
+        RUSI, Atlantic Council), Iran-nuclear-program researchers, and
+        MENA-security journalists. NO defense primes are named as victims.
+        Per the methodology evidence-minimum table, Intent=5 requires "at
+        least 1 A-grade source documenting targeting of ad-prime-v1
+        specifically" — that source does not exist for Charming Kitten in
+        the current corpus. Extrapolating from the named think-tank victim
+        list to ad-prime-v1 targeting is exactly what the red-team `qualify`
+        directive on finding-2026-05-05-0002 prohibits ("brief must NOT
+        characterize prime-direct OAuth-consent activity as observed or
+        attributed; treat it strictly as a generalizable mechanism-level
+        risk").
+
+        Intent=4 (Ideology Association) is well-supported by 2 A-grade
+        sources (CrowdStrike + MSTIC concurrent 2026-05-04 attribution)
+        documenting sustained 2014-2026 IRGC-IO ideology-driven targeting
+        of the Iran-policy ecosystem (think tanks, researchers, journalists,
+        dissidents). The motivation chain is unambiguous: Iran-policy
+        formation in the West → policy advisors and researchers who shape it
+        → IRGC-IO collection priority. This is ideology-association
+        targeting (anti-Iran-policy-formation, anti-Western), not
+        sector-association (Charming Kitten does NOT target the broader
+        defense/manufacturing sector indiscriminately) and not
+        target-specific (no documented prime-direct targeting).
+
+        A&D-prime relevance is second-order and mechanism-portability-driven
+        — the OAuth consent-grant tradecraft is platform-generic and would
+        apply to any Entra ID tenant — but mechanism portability is a
+        Capability/Novelty consideration, NOT an Intent consideration
+        against ad-prime-v1. Per the source finding's red-team review:
+        "tradecraft portability is plausible-but-not-evidenced" against
+        primes specifically.
+      sources:
+        - finding-2026-05-05-0002
+        - crowdstrike-2026-05-04
+        - mstic-2026-05-04
     willingness:
-      modifier: null
-      label: null
-      evidence: null
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran (IRGC-IO cluster) — strained US relations, active sanctions, no diplomatic constraints on cyber-espionage operations. Doctrine willingness floor for Russia/China/Iran/DPRK clusters."
     capability:
-      score: null
-      label: null
-      novelty_modifier: null
-      evidence: null
-      sources: []
+      score: 5
+      label: significant
+      novelty_modifier: 0
+      evidence: |
+        Capability=5 minimum requires "Multiple A-grade sources AND
+        documented active use within last 24 months." Both met decisively:
+
+        (1) Multi-source A-grade lineage spanning 2014-2026 — CrowdStrike
+        (2026-05-04 concurrent attribution + prior Charming Kitten tracking),
+        Microsoft MSTIC (2026-05-04 + sustained Phosphorus/Mint Sandstorm
+        tracking), Mandiant (HYPERSCRAPE original 2022 disclosure +
+        APT35/G0059 baseline), Google TAG (Iran-cyber quarterly reporting),
+        CERTFA (long-running Iranian-dissident-targeting documentation), and
+        US government / DOJ reporting (2017 Mesri indictment context).
+
+        (2) Active use within 24 months — the Q2 2026 campaign (Feb-Apr
+        2026) is by definition active within the window. Evidence covers
+        full kill-chain: initial access (LinkedIn / fake-conference /
+        fake-research-collaboration personas + OAuth phishing landings on
+        Microsoft-lookalike domains), execution (updated PowerShell loader
+        per CrowdStrike), persistence (T1528 OAuth application access tokens
+        via attacker-controlled "Policy Review Tool" app — survives password
+        resets), credential access (HYPERSCRAPE 2026 variant — first
+        publicly-documented update since 2022), defense evasion (lookalike
+        domains, deceptive OAuth app display names), collection / exfil
+        (HYPERSCRAPE mailbox download via captured tokens; T1567 cloud-hosted
+        credential exfiltration C2).
+
+        The HYPERSCRAPE 2022 → 2026 update arc and the OAuth consent-grant
+        tradecraft pivot together demonstrate sustained capability evolution
+        — not a one-off campaign, but a maturing operational program.
+      sources:
+        - finding-2026-05-05-0002
+        - crowdstrike-2026-05-04
+        - mstic-2026-05-04
+        - mandiant-hyperscrape-2022
+        - mitre-g0059
     novelty:
-      modifier: null
-      label: null
-      evidence: null
+      modifier: 0
+      label: custom-advanced
+      evidence: |
+        Custom-advanced (Novelty=0). HYPERSCRAPE is an operator-controlled
+        custom credential-and-mailbox-exfiltration tool not publicly
+        observed in non-Charming-Kitten hands per Mandiant 2022 + CrowdStrike
+        + MSTIC 2026-05-04. The 2026 variant is custom-evolved tooling, not
+        commodity. The OAuth consent-grant tradecraft (T1528) is a
+        platform-leveraging persistence path requiring custom attacker-app
+        registration with deceptive display names and tailored social-
+        engineering pretext — defenders cannot rely on commodity AV
+        signatures because the persistence artifact is an Entra ID
+        application registration, not a malware binary. Detection requires
+        Entra audit-log hunts and admin-consent posture, neither of which is
+        signature-based commodity coverage. The novelty-as-defensive-
+        difficulty framing per doctrine fits: defenders without proactive
+        Entra audit posture have weak detection signal regardless of how
+        well-staffed their EDR is.
     ioc_corroboration:
       observed: false
       bonus_category: null
-      note: "No first-party Charming Kitten infrastructure observations as of 2026-05-06 (collector queried -30d for the six CrowdStrike + MSTIC IOCs; zero hits)."
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+      note: |
+        First-party Splunk negative: queried archimedes + defenseclaw_local
+        for all 6 published IOCs (login-microsoft365-secure.com,
+        m365-policy-review.org, hyperscrape-update.net, 194.87.44.99,
+        HYPERSCRAPE 2026 SHA256, "Policy Review Tool" OAuth app pattern)
+        over -30d on 2026-05-09. Zero hits across both indices. Also
+        queried OAuth consent-grant audit-log signals (Mail.ReadWrite,
+        Consent to application) — zero hits. Per Hard Rule 8 doctrine:
+        silent telemetry is not contradicting evidence; first-party
+        precedence not invoked; no Capability bonus applied. This is the
+        most defensively consequential indicator class in the dossier — a
+        future first-party hit on the OAuth consent-grant pattern would
+        be especially actionable and would trigger immediate review-cycle
+        re-engagement.
+    final_intent: 4
+    final_capability: 5
+    composite: 9
+    threat_level: HIGH
     ioc_bonus_applied: 0
-    scoring_note: |
-      Espionage Intent must be scored against named victim ecosystem (defense-
-      policy think tanks, Iran-nuclear researchers, MENA security journalists)
-      per CrowdStrike + MSTIC 2026-05-04. No defense primes named as victims.
-      The OAuth consent-grant tradecraft generalization to prime mailboxes is
-      forward-looking, mechanism-based, NOT observed — per red-team qualify
-      directive. Do NOT extrapolate think-tank Intent into A&D-direct Intent
-      without source basis.
 
+  # --------------------------------------------------------------------------
+  # Supply Chain — composite 2 → LOW
+  # --------------------------------------------------------------------------
   supply_chain:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent floor (=1). The Supply Chain category per doctrine asks
+        "Can/will they compromise our suppliers, contractors, or shared
+        software to reach us?" — i.e., classic supply-chain compromise.
+        The OAuth consent-grant tradecraft is NOT a supply-chain mechanism;
+        it is a direct user-consent attack against the target tenant's
+        own users (or those of a peer/partner organization). It does not
+        compromise a supplier or shared-software dependency to reach the
+        target. The think-tank → prime lateral-pretext hypothesis (ACH H2
+        in finding-2026-05-05-0002) is also NOT classic supply chain — it
+        is social engineering via a compromised peer in the same ecosystem,
+        not a supplier compromise.
+
+        No documented Charming Kitten supply-chain operations against A&D
+        primes or their suppliers exist in the public reporting corpus.
+        Charming Kitten's mission profile is persona-driven credential-
+        phishing for direct intelligence collection — not supply-chain
+        access brokering or shared-software compromise. Floor scoring is
+        correct and disciplined.
+
+        Methodology surfacing note: the operator request flagged "around
+        Supply-chain since OAuth consent doesn't fit the classic supply-
+        chain-compromise definition" — confirmed: Supply Chain category
+        does NOT capture the OAuth consent-grant risk, which is
+        Espionage-mechanism-portability and lives in the Espionage scoring
+        narrative. Avoiding the temptation to inflate Supply Chain Intent
+        to capture mechanism-portability is correct doctrine application.
+      sources: []
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/IRGC-IO — willingness floor irrespective of category; no diplomatic brake on supply-chain operations if cluster pivoted, but no current intent."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: |
+        Capability=1 floor — no documented Charming Kitten supply-chain
+        capability in the public reporting corpus. The doctrine red-flag
+        check applies: the temptation to score Capability=3 "because
+        nation-states can do supply-chain ops" is explicitly disqualified
+        by methodology — that is not evidence of capability X. HYPERSCRAPE
+        and the OAuth-consent tradecraft are direct-target tools, not
+        supply-chain compromise tools.
+      sources: []
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "N/A — no supply-chain capability scored; novelty modifier neutral."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party Splunk hits; no supply-chain-specific IOCs in published indicator set."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
 
+  # --------------------------------------------------------------------------
+  # Destructive — composite 2 → LOW
+  # --------------------------------------------------------------------------
   destructive:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent floor (=1). No documented destructive operations attributed
+        to Charming Kitten across CrowdStrike, MSTIC, Mandiant, Google TAG,
+        or CERTFA reporting from 2014 through 2026. The IRGC-IO mission
+        profile is intelligence collection — persona-driven credential
+        harvest and mailbox content extraction. Iranian destructive
+        operations sit in MOIS-aligned clusters (MuddyWater, roster ID
+        022) and MOIS-adjacent hacktivist clusters (Handala Hack, roster
+        ID 014) — distinct service tasking, distinct mission profiles.
+        Charming Kitten's profile.md captures this distinction explicitly.
+      sources: []
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/IRGC-IO — willingness floor; no diplomatic brake if cluster pivoted to destructive ops."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: |
+        Capability=1 floor. No evidence of Charming Kitten destructive
+        capability (wipers, integrity-corruption tooling) in the public
+        reporting corpus. Doctrine red-flag check applies — capability is
+        not estimated upward without evidence.
+      sources: []
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "N/A — no destructive capability scored."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party Splunk hits; no destructive-mode IOCs in published indicator set."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
 
+  # --------------------------------------------------------------------------
+  # Disruptive — composite 2 → LOW
+  # --------------------------------------------------------------------------
   disruptive:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent floor (=1). No documented disruptive operations (DDoS,
+        availability-denial, ICS/OT-targeting) attributed to Charming
+        Kitten in the public reporting corpus. The cluster's documented
+        operational mode is sustained low-volume credential-phishing for
+        intelligence collection — not availability denial. Charming Kitten
+        does not appear in IRGC operational repertoires that include
+        disruptive ops; that profile sits with Sandworm-class actors
+        (Russia) and is distinct from IRGC-IO mission tasking.
+      sources: []
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/IRGC-IO — willingness floor."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: "Capability=1 floor. No documented evidence of Charming Kitten disruptive capability against A&D-relevant infrastructure. Doctrine red-flag check: nation-state status does not count as evidence of capability X."
+      sources: []
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "N/A — no disruptive capability scored."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party Splunk hits; no disruptive-mode IOCs."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
 
+  # --------------------------------------------------------------------------
+  # Cyber-Crime — composite 2 → LOW
+  # --------------------------------------------------------------------------
   cyber_crime:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent floor (=1). Charming Kitten is an IRGC-IO state-intelligence
+        cluster — espionage and intelligence collection motivation. No
+        documented financially-motivated operations (ransomware, extortion,
+        BEC, IP-resale) attributed to the cluster in the public reporting
+        corpus. Iranian financially-motivated cyber sits in distinct
+        ecosystem clusters (criminal-affiliated, MOIS-adjacent monetization
+        operations), not within the IRGC-IO mission profile. Floor scoring
+        is correct.
+      sources: []
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/IRGC-IO — willingness floor."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: "Capability=1 floor. No documented evidence of Charming Kitten cyber-crime capability."
+      sources: []
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "N/A — no cyber-crime capability scored."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party Splunk hits; no cyber-crime IOCs."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
 
 # ============================================================================
-# Overall — TEMPLATE
+# Overall — weighted 4.45 → LOW → auto-commit
 # ============================================================================
 overall:
-  weighted_score: null
+  weighted_score: 4.45
   weights_used:
     espionage: 0.35
     supply_chain: 0.20
     destructive: 0.15
     disruptive: 0.15
     cyber_crime: 0.15
-  threat_level: null
-  authority_level: null
-primary_threat_vector: null
-primary_threat_level: null
+  threat_level: LOW
+  authority_level: actor-profiler-autonomous
+  computation: |
+    espionage:    9 × 0.35 = 3.15
+    supply_chain: 2 × 0.20 = 0.40
+    destructive:  2 × 0.15 = 0.30
+    disruptive:   2 × 0.15 = 0.30
+    cyber_crime:  2 × 0.15 = 0.30
+                            ------
+    weighted_score            4.45 → rounds to 4 → LOW (band 2-4)
+
+primary_threat_vector: espionage
+primary_threat_level: HIGH        # category-level — does NOT trigger Hard Rule 5 gate per doctrine
+primary_vector_note: |
+  Espionage is the dominant threat vector — composite 9 (category-level
+  HIGH). Per THREAT-BOX-METHODOLOGY.md and skill doctrine, the Hard Rule 5
+  /approve-scoring gate is keyed on the WEIGHTED OVERALL only, not on any
+  per-category HIGH. Charming Kitten's overall posture is LOW because the
+  four non-espionage categories are at floor (LOW), and the espionage
+  composite of 9 (rather than 10 as for UNC1549) is constrained by the
+  red-team qualify directive on Intent=4 (Ideology) rather than 5
+  (Target-Specific). The 0.35 espionage weight × 9 = 3.15 is not enough
+  alone to push weighted overall above the 4.5 threshold required to
+  round into MEDIUM.
+
+  Operator-anticipated outcome was HIGH; actual computation lands LOW.
+  This is the red-team `qualify` directive doing exactly what it was
+  meant to do — preventing over-scoring on Intent extrapolation from
+  named think-tank victims to unobserved prime-direct targeting.
 
 confidence:
-  admiralty: null
-  notes: null
+  admiralty: A1
+  notes: |
+    Inherits A1 admiralty grade from finding-2026-05-05-0002 (concurrent
+    A-grade independent corroboration: CrowdStrike + Microsoft MSTIC
+    publish 2026-05-04 with separate evidence bases; neither cites the
+    other; corroboration test passes). Scoring evidence anchors on the
+    same A1 corpus. Confidence caveats:
+      - Red-team `qualify` directive on the source finding is binding —
+        Espionage Intent must NOT extrapolate think-tank victims into
+        prime-direct targeting. This binding is preserved in the
+        Intent=4 scoring.
+      - First-party Splunk silent across all 6 IOCs and OAuth
+        consent-grant audit-log patterns over -30d. Silent telemetry is
+        not contradicting; no IOC bonus.
+      - The ACH H3 leader (tradecraft-portability) on the source finding
+        is at WEP "likely" — sufficient for forward-defensive language
+        on Capability/Novelty but NOT for Intent escalation.
+      - KAC A1 (prime-tier Entra audit-log coverage) classified `test`
+        on the source finding; remains a coverage attestation question
+        not blocking. A future Splunk hit on OAuth consent-grant audit
+        events would invoke first-party precedence and trigger
+        immediate review-cycle re-engagement.
 
 # ============================================================================
 # Review policy
 # ============================================================================
 review_policy:
   interval_days: 90
-  last_reviewed: 2026-05-06
-  next_review_due: 2026-08-04
+  last_reviewed: 2026-05-09
+  next_review_due: 2026-08-07
   review_triggers:
     - new_attribution_from_a_source
     - new_tooling_documented
@@ -168,12 +458,27 @@ history:
     scorer: actor-profiler
     change: template_scaffolded
     note: |
-      Mode-1 dossier scaffold per operator direction 2026-05-06. Threat-box-
-      scoring skill NOT invoked. Initial scoring deferred to a deliberate
-      /update-tracking pass to preserve the Hard Rule 5 /approve-scoring gate
-      should HIGH overall be computed (likely outcome given active 2026
-      campaign with concurrent A1 attribution and platform-portable OAuth
-      tradecraft per finding-2026-05-05-0002). Red-team qualify directive
-      from the source finding propagates into scoring construction:
-      espionage Intent must NOT extrapolate think-tank victims into A&D-
-      direct targeting.
+      Mode-1 dossier scaffold per operator direction 2026-05-06. Threat-
+      box-scoring skill NOT invoked at scaffold time; initial scoring
+      deferred to a deliberate /update-tracking pass to preserve the
+      Hard Rule 5 /approve-scoring gate should HIGH overall be computed.
+  - scored_at: 2026-05-09
+    scorer: actor-profiler
+    change: initial_scoring
+    note: |
+      Initial scoring run via /update-tracking (Mode 2). Computed
+      weighted 4.45 → LOW → auto-commit. Espionage composite 9
+      (category HIGH) but doctrine keys gate on weighted overall only,
+      and weighted overall is LOW. Espionage Intent=4 (Ideology) — NOT
+      5 (Target-Specific) — per the red-team `qualify` directive on
+      finding-2026-05-05-0002 binding Espionage Intent against Charming
+      Kitten's named think-tank victim ecosystem, not extrapolated to
+      ad-prime-v1. Intent=5 would have required at least 1 A-grade
+      source documenting prime-direct targeting; that source does not
+      exist in the current corpus. Splunk first-party check (-30d, all
+      6 IOCs, both indices, plus OAuth consent-grant audit-log
+      patterns) returned zero hits — no IOC corroboration bonus
+      applied. Roster threat_level previously HIGH (intake-conservative);
+      updates to LOW to match computed weighted overall. Operator
+      anticipated HIGH; the disciplined Intent=4 outcome is the red-team
+      qualify directive doing exactly what it was meant to do.

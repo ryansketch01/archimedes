@@ -26,13 +26,13 @@ motivation:
   - persona-driven-credential-harvest
   - intelligence-collection-on-iran-policy-adversaries
   - defense-policy-and-academic-targeting
-threat_level: HIGH                 # Carried from _roster.yaml; threat-box.yaml is TEMPLATE
+threat_level: LOW                  # Per /update-tracking 2026-05-09 — weighted overall 4.45 → LOW (auto-commit). Espionage category alone scores composite 9 (HIGH category-level); per-category HIGH does not trigger Hard Rule 5 gate.
 admiralty_grade: A1                # Per finding-2026-05-05-0002 — concurrent A-grade independent corroboration
 tlp: CLEAR
-dossier_version: 1
-last_updated: 2026-05-06
-last_reviewed: 2026-05-06
-next_review_due: 2026-08-04
+dossier_version: 2
+last_updated: 2026-05-09
+last_reviewed: 2026-05-09
+next_review_due: 2026-08-07
 profile_path: threats/threat-actors/Charming-Kitten/
 iocs_path: threats/threat-actors/Charming-Kitten/iocs.md
 threat_box_path: threats/threat-actors/Charming-Kitten/threat-box.yaml
@@ -45,8 +45,17 @@ notes_first_pass: |
   First-pass dossier authored 2026-05-06 from finding-2026-05-05-0002 (CrowdStrike +
   Microsoft MSTIC concurrent 2026-05-04 publication, digraph A1, WEP "very likely",
   red-team review qualify with required briefer caveats). All attribution and TTP
-  claims inherit from cited sources per Hard Rule 2. Threat-box scoring is TEMPLATE
-  pending /update-tracking pass with /approve-scoring gate.
+  claims inherit from cited sources per Hard Rule 2.
+notes_scoring: |
+  /update-tracking Mode 2 run 2026-05-09 — weighted overall 4.45 → LOW → auto-commit.
+  Espionage composite 9 (category HIGH) but doctrine keys gate on weighted overall
+  only. Espionage Intent=4 (Ideology) — NOT 5 (Target-Specific) — per the red-team
+  qualify directive on the source finding binding Intent against named think-tank
+  victim ecosystem rather than extrapolating to ad-prime-v1. Operator-anticipated
+  HIGH outcome did NOT materialize; the disciplined Intent=4 outcome is the qualify
+  directive doing what it was meant to do. Splunk first-party check zero hits over
+  -30d on all 6 IOCs and OAuth consent-grant audit-log patterns — no IOC bonus.
+  See threat-box.md for full per-category narrative.
 ---
 
 # Charming Kitten — Threat Actor Profile

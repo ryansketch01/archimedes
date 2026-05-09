@@ -333,6 +333,44 @@ Without the preservation rule, operator notes silently erode every time the coll
 
 Easy to confuse by name similarity. Bit me Session 11 — operator pasted the abuse.ch key onto the `ABUSEIPDB_API_KEY` line; surfaced when the live test against ThreatFox failed with "key not present." If you find yourself confused which to use, check what the source actually does: AbuseIPDB returns an IP confidence score; abuse.ch returns IOCs (IPs, domains, hashes, malware family).
 
+### Windows `python` shims are MS Store stubs; use `uv run --with` for ad-hoc scripts
+
+Bare `python`, `python3`, and `py` on this Windows host resolve to Microsoft Store **WindowsApps stubs** that prompt the user to install Python rather than executing. The local uv-managed Python at `~/.local/bin/python3.12.exe` works but doesn't have project dependencies (e.g., PyYAML) on its global path.
+
+This bites any subagent or operator who tries to run a one-off Python script outside the project's normal test/sync flow. The 2026-05-09 actor-profiler `/update-tracking` runs hit this when invoking `scripts/compute-threat-box.py` — the script imports PyYAML and would have failed even if the bare `python` ran.
+
+**Working invocation pattern** for ad-hoc scripts that need project deps:
+
+```bash
+uv run --with pyyaml python scripts/<name>.py [args]
+```
+
+Or, when invoking from outside the repo root (e.g., subagents in worktrees):
+
+```bash
+uv run --project /c/Users/rtske/Projects/archimedes --with pyyaml python ...
+```
+
+For scripts that are part of the regular workspace (e.g., `regenerate_ioc_index.py`), `uv run python <path>` works without `--with` because uv resolves project deps automatically.
+
+`scripts/run_phase.ps1` already uses `& uv run python scripts/splunk_log.py ...` for the same reason — Task Scheduler invocations don't get bare-`python` either. Discovered Session 11; recurred Session 12 (UNC1549 + Charming Kitten scoring runs).
+
+### Threat-box methodology is conservatively bounded; HIGH outcomes are rare
+
+Empirical observation across the first two scoring runs:
+
+- **UNC1549 (#004):** weighted 5.4 → MEDIUM. Espionage category at ceiling (composite 10, HIGH) but diluted by floor-scored destructive/disruptive/cyber-crime.
+- **Charming Kitten (#011):** weighted 4.45 → **LOW**, despite the operator anticipating HIGH given concurrent A1 attribution from CrowdStrike + MSTIC and OAuth tradecraft directly applicable to A&D M365.
+
+The methodology's evidence-minimum table requires Intent=5 (Target-Specific) to have **at least 1 A-grade source documenting targeting of the operator's specific profile** — not mechanism portability, not extrapolation. Charming Kitten's source named think tanks / journalists / researchers, NOT defense primes, so Intent capped at 4 (Ideology). Even the alternative-reading Intent=5 wouldn't have lifted overall to HIGH given the four floor-scored categories.
+
+Two practical implications:
+
+1. **The Hard Rule 5 `/approve-scoring` gate is hard to trigger synthetically.** Two of two scaffolded actors (UNC1549, CK) auto-committed despite the operator's pre-flight expectation that CK would land HIGH. The gate path will likely first exercise on a real-world finding where Mandiant or Unit 42 explicitly names a defense-prime victim and the actor's tradecraft also has destructive or supply-chain elements (e.g., a future Volt-Typhoon-shaped actor).
+2. **Don't read overall MEDIUM/LOW as "this actor isn't dangerous."** UNC1549's per-category Espionage scored composite 10 (HIGH) — the same number a maximally-bad actor in that category would score. Defensive prioritization should consider the **primary_threat_vector** + per-category breakdown alongside the weighted overall, not the weighted overall in isolation. Both UNC1549's and Charming Kitten's `threat-box.md` files explicitly call this out.
+
+Discovered Session 12 (first two `/update-tracking` runs).
+
 ---
 
-*Last updated: Session 11 (backlog sweep — RSS Bridge MCP, prompt scope-creep fix, schtasks UTF-16 gotcha, wrapper catchup push, field-ownership rule, AbuseIPDB)*
+*Last updated: Session 12 (`/update-tracking` for UNC1549 + Charming Kitten — MEDIUM and LOW; APT37 scaffold; unattributed/ bucket engineering + Beagle/CL-STA-1132 ingestion; Sophos/ESET/Dragos source-grade ratification; Windows python-shim gotcha; threat-box methodology-conservatism observation)*

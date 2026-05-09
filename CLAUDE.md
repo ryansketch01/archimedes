@@ -371,6 +371,22 @@ Two practical implications:
 
 Discovered Session 12 (first two `/update-tracking` runs).
 
+### theHarvester subprocess needs `PYTHONHOME` scrubbed; 4.10.1 JSON is `cmd`/`hosts`/`shodan` only
+
+Two unrelated 4.10.1 quirks the subprocess runner has to handle, both surfaced during live validation:
+
+1. **`uv run` poisons subprocess Python env.** When `mcps/theharvester` runs under `uv run`, uv exports `PYTHONHOME` and `PYTHONPATH` pointing at its managed Python interpreter. theHarvester's `uv tool install` wrapper inherits those, then tries to load its own bundled stdlib against uv's Python core, producing `AssertionError: SRE module mismatch` on `import re` — before any source plugin runs. Fix is one block of code in `harvester_runner.py`:
+   ```python
+   env = os.environ.copy()
+   for var in ("PYTHONHOME", "PYTHONPATH", "PYTHONSTARTUP", "PYTHONUSERBASE"):
+       env.pop(var, None)
+   ```
+   Any future MCP that wraps a `uv tool install`'d Python CLI under `uv run` will need the same scrub.
+
+2. **JSON output shape changed in 4.10.1.** The tool now writes only `cmd`, `hosts`, and `shodan` at top level (with `hosts` as `"name:ip"` strings). Older parsers expected separate top-level `ips` / `vhosts` / `asns` arrays — those keys are gone. Runner now probes both shapes; when 4.10.1 applies, `distinct_ips` is folded out of the host strings (deduplicated, order preserved). Live test microsoft.com via hackertarget: 550 hosts → 532 distinct IPs after the fix (was 0 before).
+
+Bonus 3rd quirk: `crtsh` from this Windows host returns 0 results for established domains where it should return thousands (microsoft.com, example.com). Other sources (`hackertarget`, `otx`) work fine. theHarvester-side or network-side; not the MCP. Use `hackertarget` as the smoke-test source going forward, not `crtsh`. Discovered Session 13.
+
 ---
 
-*Last updated: Session 12 (`/update-tracking` for UNC1549 + Charming Kitten — MEDIUM and LOW; APT37 scaffold; unattributed/ bucket engineering + Beagle/CL-STA-1132 ingestion; Sophos/ESET/Dragos source-grade ratification; Windows python-shim gotcha; threat-box methodology-conservatism observation)*
+*Last updated: Session 13 (theHarvester MCP live-validated against 4.10.1; PYTHONHOME scrub + 4.10.1 JSON shape handling; crtsh from this host is unreliable, use hackertarget for smoke tests)*

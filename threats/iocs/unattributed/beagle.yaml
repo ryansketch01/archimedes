@@ -1,0 +1,220 @@
+# threats/iocs/unattributed/beagle.yaml
+#
+# Unattributed cluster — IOCs surfaced by Sophos research (relayed via
+# BleepingComputer) on a counterfeit Claude AI distribution site
+# delivering the previously-undocumented Beagle Windows backdoor.
+#
+# Sophos hedges with "the same operators behind PlugX might be
+# experimenting with a new payload." This is hedged speculation, not
+# attribution. Hard Rule 2 forbids Archimedes from originating a
+# cross-walk to APT41 (roster id 019) or any other PlugX-using actor
+# on the basis of that hedge. Filed here pending corroboration.
+
+cluster_id: beagle
+cluster_name: "Beagle backdoor (fake-Claude-AI watering hole)"
+first_seen: 2026-05-07
+last_updated: 2026-05-09
+admiralty_grade: B3
+tlp: CLEAR
+
+provenance:
+  - source: finding-2026-05-07-0003
+    note: >
+      BleepingComputer (Bill Toulas, 2026-05-07) relaying Sophos research.
+      Sophos hedges PlugX-operator overlap with "might be experimenting
+      with a new payload" — explicitly does NOT attribute Beagle to
+      APT41 or any other tracked PlugX-using cluster. Single-source
+      single-vendor (Sophos via BleepingComputer); single-source veto
+      applied at finding level; WEP capped at "likely." Hard Rule 2
+      forbids Archimedes from upgrading the hedge to an attribution.
+
+notes: |
+  Beagle is a previously-undocumented Windows backdoor staged behind a
+  counterfeit Anthropic / Claude AI distribution site (claude-pro[.]com).
+  Targeting profile: software developers seeking Claude / Claude-Code
+  tooling. Lure copy markets a "high-performance relay service designed
+  specifically for Claude-Code developers."
+
+  Distribution chain:
+    1. Counterfeit site claude-pro[.]com offers Claude-Pro-windows-x64.zip
+       (505 MB).
+    2. ZIP contains an MSI installer.
+    3. MSI drops signed G Data updater binary NOVupdate.exe (used for
+       DLL-sideloading; legitimate binary repurposed).
+    4. NOVupdate.exe sideloads avk.dll (malicious DLL).
+    5. avk.dll loads NOVupdate.exe.dat (encrypted payload) — DonutLoader
+       first stage.
+    6. DonutLoader executes Beagle.
+
+  Beagle command set: uninstall, cmd, upload, download, mkdir, rename,
+  ls, rm. Consistent with a foothold-establishment backdoor; no native
+  lateral-movement, credential-dumping, or persistence mechanisms in
+  the published command catalog.
+
+  C2: license[.]claude-pro[.]com over TCP/443 + UDP/8080, AES-encrypted,
+  hosted on Alibaba Cloud range (8.217.190.58).
+
+  Hedged-overlap caveat (PRESERVED, NOT promoted):
+    Sophos quote: "The same operators behind PlugX might be
+    experimenting with a new payload." PlugX is publicly observed across
+    multiple China-nexus actors (APT41 / roster 019 plus others outside
+    the Archimedes roster) and is not uniquely diagnostic of any one
+    tracked actor. Recorded here as tooling-overlap context only.
+
+  A&D-adjacency (inferential, NOT source-stated):
+    - No A&D entity named as target. Sophos describes targeting as
+      "software developers."
+    - DIB primes and Tier-1/2 suppliers increasingly run AI coding
+      assistants in dev toolchains; AI-brand-impersonation lures could
+      scale across the industry.
+    - Foothold on developer endpoints is a high-leverage pivot point
+      (source repos, CI/CD credentials, signing keys).
+
+  To migrate this cluster to actor-attributed:
+    - Mandiant / CrowdStrike / Unit 42 / MSTIC publishes corroborating
+      attribution to a roster actor (or names a new actor for
+      /new-actor scaffolding)
+    - First-party Splunk hit on these IOCs ties them to a roster actor's
+      infrastructure or campaign
+    - Second A/B-grade source independently confirms the PlugX-operator
+      overlap with firmer attribution language
+
+  First-party Splunk status at finding creation (2026-05-07): clean on
+  dest_ip=8.217.190.58, domain=claude-pro.com, domain=license.claude-pro.com
+  (last 7d, both archimedes and defenseclaw_local indices). Re-query
+  warranted after master-index regeneration.
+
+ttl:
+  network_infrastructure: 90    # days
+  file_artifacts: 730           # filenames not as durable as hashes
+  malware_families: never
+
+indicators:
+  - id: beagle-domain-001
+    type: domain
+    value: claude-pro.com
+    defanged_original: "claude-pro[.]com"
+    role: distribution_site_counterfeit
+    description: "Counterfeit Anthropic / Claude AI brand impersonation site delivering Claude-Pro-windows-x64.zip (505MB)"
+    first_seen: 2026-05-07
+    source: finding-2026-05-07-0003
+    source_attribution: ["Sophos", "BleepingComputer"]
+
+  - id: beagle-domain-002
+    type: domain
+    value: license.claude-pro.com
+    defanged_original: "license[.]claude-pro[.]com"
+    role: c2
+    description: "Beagle C2 hostname; subdomain of the counterfeit distribution site"
+    c2_protocols: ["TCP/443", "UDP/8080", "AES-encrypted"]
+    first_seen: 2026-05-07
+    source: finding-2026-05-07-0003
+    source_attribution: ["Sophos", "BleepingComputer"]
+
+  - id: beagle-ipv4-001
+    type: ipv4
+    value: 8.217.190.58
+    role: c2_hosting
+    description: "Beagle C2 IP, Alibaba Cloud range per Sophos via BleepingComputer"
+    asn_context: "Alibaba Cloud"
+    first_seen: 2026-05-07
+    source: finding-2026-05-07-0003
+    source_attribution: ["Sophos", "BleepingComputer"]
+
+  - id: beagle-filename-001
+    type: filename
+    value: Claude-Pro-windows-x64.zip
+    role: malware_distribution_archive
+    description: "505MB malicious archive served from claude-pro[.]com; contains MSI installer that drops sideloading chain"
+    size: "505MB"
+    first_seen: 2026-05-07
+    source: finding-2026-05-07-0003
+    source_attribution: ["Sophos", "BleepingComputer"]
+
+  - id: beagle-filename-002
+    type: filename
+    value: NOVupdate.exe
+    role: signed_loader_for_sideloading
+    description: "Legitimate G Data updater binary repurposed for DLL-sideloading of avk.dll"
+    detection_caveat: "Legitimate signed binary; presence alone is not diagnostic. Correlate with avk.dll sideload path and surrounding chain."
+    first_seen: 2026-05-07
+    source: finding-2026-05-07-0003
+    source_attribution: ["Sophos", "BleepingComputer"]
+
+  - id: beagle-filename-003
+    type: filename
+    value: avk.dll
+    role: malicious_sideloaded_dll
+    description: "Malicious DLL sideloaded by NOVupdate.exe; loads encrypted DonutLoader payload from NOVupdate.exe.dat"
+    first_seen: 2026-05-07
+    source: finding-2026-05-07-0003
+    source_attribution: ["Sophos", "BleepingComputer"]
+
+  - id: beagle-malware-001
+    type: malware_family
+    value: Beagle
+    role: backdoor_new_family
+    description: "Newly-named Windows backdoor per Sophos. Foothold-establishment command set."
+    capabilities: ["uninstall", "cmd", "upload", "download", "mkdir", "rename", "ls", "rm"]
+    c2_protocols: ["TCP/443", "UDP/8080", "AES-encrypted"]
+    first_seen: 2026-05-07
+    source: finding-2026-05-07-0003
+    source_attribution: ["Sophos"]
+    notes: >
+      Sophos hedges "might be experimenting" PlugX-operator overlap.
+      Hard Rule 2 — Archimedes does not promote the hedge to attribution.
+
+  - id: beagle-malware-002
+    type: malware_family
+    value: DonutLoader
+    role: first_stage_loader
+    description: "Encrypted first-stage loader executed via avk.dll sideload chain; deploys Beagle backdoor"
+    first_seen: 2026-05-07
+    source: finding-2026-05-07-0003
+    source_attribution: ["Sophos"]
+
+hunt_queries:
+  - id: beagle-hunt-c2-domain
+    platform: splunk
+    title: "Beagle C2 domain hunt — claude-pro infrastructure"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (dest_host="*claude-pro.com" OR domain="*claude-pro.com" OR query="*claude-pro.com")
+      | stats count by user, src_ip, dest_host, _time
+      | sort -_time
+    notes: >
+      False-positive consideration: claude-pro.com is the counterfeit
+      site; legitimate Claude / Anthropic infrastructure uses claude.ai
+      / anthropic.com. Any hit on *claude-pro.com is high-fidelity.
+
+  - id: beagle-hunt-c2-ip
+    platform: splunk
+    title: "Beagle C2 IP hunt — Alibaba Cloud 8.217.190.58"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (dest_ip="8.217.190.58" OR src_ip="8.217.190.58")
+      | stats count by src_ip, dest_ip, dest_port, _time
+      | sort -_time
+    notes: >
+      Alibaba Cloud IP range. Limited legitimate traffic from a US
+      defense contractor environment expected — any match warrants
+      investigation.
+
+  - id: beagle-hunt-sideload-chain
+    platform: edr
+    title: "Beagle sideload chain — NOVupdate.exe loading avk.dll"
+    query_type: pseudo_kql
+    query: |
+      DeviceProcessEvents
+      | where FileName =~ "NOVupdate.exe"
+      | join kind=inner DeviceImageLoadEvents on DeviceId
+      | where InitiatingProcessFileName =~ "NOVupdate.exe"
+        and FileName =~ "avk.dll"
+      | project DeviceId, AccountName, Timestamp, FolderPath
+    notes: >
+      NOVupdate.exe is a legitimate G Data binary; presence alone is
+      benign. The diagnostic signal is the sideload of avk.dll FROM
+      NOVupdate.exe. Correlate with download origin (claude-pro.com)
+      and surrounding archive name (Claude-Pro-windows-x64.zip).

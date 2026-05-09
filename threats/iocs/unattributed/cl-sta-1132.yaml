@@ -1,0 +1,272 @@
+# threats/iocs/unattributed/cl-sta-1132.yaml
+#
+# Unattributed cluster — Unit 42's internal cluster designation for the
+# activity exploiting CVE-2026-0300 (PAN-OS Captive Portal unauthenticated
+# RCE, CVSS 9.3). Unit 42 characterizes CL-STA-1132 as "likely
+# state-sponsored" but does NOT name a nation-state and does NOT cross-
+# walk to any actor in the Archimedes _roster.yaml.
+#
+# Hard Rule 2 — Archimedes does not originate the cross-walk to a tracked
+# actor. CL-STA-1132 is recorded as a vendor-internal cluster designation
+# only. If Mandiant / Volexity / CrowdStrike / MSTIC publishes
+# corroborating attribution, or if an A&D-sector victim is named, the
+# IOC set may be migrated to a roster actor (or a /new-actor scaffold).
+
+cluster_id: cl-sta-1132
+cluster_name: "CL-STA-1132 (Unit 42 cluster — PAN-OS CVE-2026-0300 exploitation)"
+first_seen: 2026-05-06
+last_updated: 2026-05-09
+admiralty_grade: A2
+tlp: CLEAR
+
+provenance:
+  - source: finding-2026-05-07-FLASH-0001
+    note: >
+      Unit 42 IR-grade threat brief ("Threat Brief: Exploitation of
+      PAN-OS Captive Portal Zero-Day for Unauthenticated Remote Code
+      Execution," 2026-05-06). Unit 42 quote: "only limited
+      exploitation." Two firewall devices compromised at one
+      organization; no sector named. CL-STA-1132 is a Unit-42-internal
+      cluster designation; Unit 42 explicitly characterizes the cluster
+      as "likely state-sponsored" but names no nation-state and does
+      NOT cross-walk to any tracked actor. Single-source IR observation
+      at finding-creation time; single-source veto applied; WEP capped
+      at "likely" on operational claim.
+
+notes: |
+  CL-STA-1132 is the Unit 42 cluster designation for the actor
+  conducting limited exploitation of CVE-2026-0300 — an unauthenticated
+  RCE in the PAN-OS User-ID Authentication Portal (Captive Portal),
+  CVSS 9.3, added to CISA KEV on 2026-05-06. Patches: 2026-05-13 (first
+  affected release line), 2026-05-28 (full coverage).
+
+  Operational scope (per Unit 42 IR observation):
+    - Two firewall devices compromised at a single organization
+    - "Only limited exploitation" — direct quote
+    - No sector identified; no A&D / DIB claim
+    - No multi-victim claim
+
+  Tradecraft signature (Unit 42 published TTPs — note: TTPs are
+  defender-actionable knowledge but are NOT IOCs and live in the notes
+  section, not the indicators list):
+    - SAML authentication flood inducing PAN-OS HA failover to a
+      secondary firewall device (operational evasion technique)
+    - Systematic log sanitization including crash kernel messages and
+      core dumps (anti-forensics)
+    - Active Directory enumeration targeting domain root and
+      DomainDnsZones objects (recon staging for downstream lateral
+      movement)
+    - Use of EarthWorm tunneling tool (publicly available
+      Chinese-developed tunnel; tooling alone is not nation-state
+      diagnostic)
+    - Use of ReverseSocks5 v2.2.0 (open-source SOCKS5 reverse-tunnel
+      tool) delivered via GitHub release URL
+
+  Hedged-attribution caveat (PRESERVED, NOT promoted):
+    Unit 42 calls CL-STA-1132 "likely state-sponsored" without naming
+    a nation-state. EarthWorm is publicly available and is observed
+    across multiple threat clusters. Tooling overlap alone does not
+    constitute attribution. Hard Rule 2 forbids Archimedes from
+    upgrading "likely state-sponsored" to a nation-state attribution
+    or cross-walking to a roster actor.
+
+  A&D-relevance:
+    - PAN-OS firewalls are widespread in DIB perimeter architecture.
+      An unauthenticated RCE on the management/captive-portal interface
+      is a high-value foothold against any A&D environment running
+      affected releases.
+    - Unit 42 explicitly states no A&D sector targeting observed in
+      the limited exploitation cluster. A&D relevance is therefore
+      defensive (patch + hunt) rather than victim-confirmed.
+
+  To migrate this cluster to actor-attributed:
+    - Mandiant / Volexity / CrowdStrike / MSTIC publishes independent
+      observation of CL-STA-1132 activity (matching IOCs / TTPs) with
+      attribution language firmer than Unit 42's "likely state-
+      sponsored"
+    - A&D-sector or watchlist entity is named as a CL-STA-1132 victim
+    - CL-STA-1132 is cross-walked to a tracked roster actor by an
+      A-grade source
+    - First-party Splunk hit on these IOCs ties them to a roster
+      actor's infrastructure
+
+  First-party Splunk status at finding creation (2026-05-07 00:18 EDT):
+    Master-index swept, zero hits across 82 IPv4 + domain indicators
+    (last 24h, archimedes index). The four CL-STA-1132 IPs and the
+    GitHub URL were NOT in master-index at sweep time; re-query
+    warranted post-master-index regeneration.
+
+ttl:
+  network_infrastructure: 90    # days — IPs/URLs cycle
+  file_hashes: 730              # hash relevance decays slowly
+  vulnerabilities: never        # CVEs are forever
+
+indicators:
+  - id: cl-sta-1132-cve-001
+    type: cve
+    value: CVE-2026-0300
+    cvss: 9.3
+    product: "PAN-OS"
+    affected_component: "User-ID Authentication Portal (Captive Portal)"
+    description: "Unauthenticated RCE in PAN-OS Captive Portal; weaponized in CL-STA-1132 exploitation cluster"
+    status: kev
+    kev_added: 2026-05-06
+    exploitation: confirmed_active_limited
+    patch_dates:
+      first_release_line: 2026-05-13
+      full_coverage: 2026-05-28
+    first_seen: 2026-05-06
+    source: finding-2026-05-07-FLASH-0001
+    source_attribution: ["Palo Alto Unit 42", "Palo Alto PSIRT", "CISA KEV"]
+
+  - id: cl-sta-1132-ipv4-001
+    type: ipv4
+    value: 67.206.213.86
+    role: c2_or_staging
+    description: "CL-STA-1132 C2/staging infrastructure per Unit 42 IR observation"
+    first_seen: 2026-05
+    source: finding-2026-05-07-FLASH-0001
+    source_attribution: ["Palo Alto Unit 42"]
+
+  - id: cl-sta-1132-ipv4-002
+    type: ipv4
+    value: 136.0.8.48
+    role: c2_or_staging
+    description: "CL-STA-1132 C2/staging infrastructure per Unit 42 IR observation"
+    first_seen: 2026-05
+    source: finding-2026-05-07-FLASH-0001
+    source_attribution: ["Palo Alto Unit 42"]
+
+  - id: cl-sta-1132-ipv4-003
+    type: ipv4
+    value: 146.70.100.69
+    role: c2_staging
+    description: "CL-STA-1132 C2 staging server; hosts staging endpoint at port 8000/php_sess"
+    first_seen: 2026-05
+    source: finding-2026-05-07-FLASH-0001
+    source_attribution: ["Palo Alto Unit 42"]
+
+  - id: cl-sta-1132-ipv4-004
+    type: ipv4
+    value: 149.104.66.84
+    role: c2_or_staging
+    description: "CL-STA-1132 C2/staging infrastructure per Unit 42 IR observation"
+    first_seen: 2026-05
+    source: finding-2026-05-07-FLASH-0001
+    source_attribution: ["Palo Alto Unit 42"]
+
+  - id: cl-sta-1132-url-001
+    type: url
+    value: "http://146.70.100.69:8000/php_sess"
+    defanged_original: "hxxp[:]//146.70.100[.]69:8000/php_sess"
+    role: c2_staging_endpoint
+    description: "Specific staging endpoint hosted on 146.70.100.69 port 8000"
+    first_seen: 2026-05
+    source: finding-2026-05-07-FLASH-0001
+    source_attribution: ["Palo Alto Unit 42"]
+
+  - id: cl-sta-1132-url-002
+    type: url
+    value: "https://github.com/Acebond/ReverseSocks5/releases/download/v2.2.0/ReverseSocks5-v2.2.0-linux-amd64.tar.gz"
+    role: second_stage_tooling_delivery
+    description: "Open-source ReverseSocks5 v2.2.0 GitHub release URL fetched as second-stage tunneling tool"
+    related_tool: ReverseSocks5
+    detection_caveat: >
+      Open-source tool with legitimate research / red-team use. URL-fetch
+      alone produces false positives. Correlate with PAN-OS host process
+      context, surrounding exploitation timeline, or co-occurrence with
+      EarthWorm hash.
+    first_seen: 2026-05
+    source: finding-2026-05-07-FLASH-0001
+    source_attribution: ["Palo Alto Unit 42"]
+
+  - id: cl-sta-1132-sha256-001
+    type: sha256
+    value: e11f69b49b6f2e829454371c31ebf86893f82a042dae3f2faf63dcd84f97a584
+    role: post_exploitation_tooling
+    description: "EarthWorm tunneling tool — publicly available Chinese-developed tunnel; tooling alone is not attribution-diagnostic"
+    related_malware: EarthWorm
+    first_seen: 2026-05
+    source: finding-2026-05-07-FLASH-0001
+    source_attribution: ["Palo Alto Unit 42"]
+    notes: >
+      EarthWorm is publicly available; presence does not by itself
+      establish nation-state attribution. Use as post-exploitation
+      hunting signal, not attribution evidence. Hard Rule 2 holds.
+
+hunt_queries:
+  - id: cl-sta-1132-hunt-c2-ips
+    platform: splunk
+    title: "CL-STA-1132 C2/staging IP hunt"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (dest_ip IN ("67.206.213.86","136.0.8.48","146.70.100.69","149.104.66.84")
+       OR src_ip IN ("67.206.213.86","136.0.8.48","146.70.100.69","149.104.66.84"))
+      | stats count, earliest(_time) as first_seen, latest(_time) as last_seen
+        by src_ip, dest_ip, dest_port
+      | sort -last_seen
+    notes: >
+      Any hit warrants investigation. Cross-reference with PAN-OS
+      management / data-plane traffic and CVE-2026-0300 exploitation
+      timeline (post 2026-05-06).
+
+  - id: cl-sta-1132-hunt-staging-url
+    platform: splunk
+    title: "CL-STA-1132 staging endpoint hunt — port 8000/php_sess"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (uri="*php_sess*" AND dest_port=8000)
+      OR url="http://146.70.100.69:8000/php_sess"
+      | stats count by src_ip, dest_ip, uri, _time
+      | sort -_time
+    notes: >
+      php_sess endpoint on port 8000 is unusual; combined with the
+      specific IP it is high-fidelity. Pattern alone (php_sess + 8000)
+      may produce false positives in non-firewall environments.
+
+  - id: cl-sta-1132-hunt-earthworm-hash
+    platform: edr
+    title: "EarthWorm hash hunt on PAN-OS-adjacent hosts"
+    query_type: pseudo_kql
+    query: |
+      DeviceFileEvents
+      | where SHA256 == "e11f69b49b6f2e829454371c31ebf86893f82a042dae3f2faf63dcd84f97a584"
+      | project DeviceId, FileName, FolderPath, Timestamp, InitiatingProcessFileName
+    notes: >
+      Hash hunt is high-fidelity. EarthWorm is publicly available so
+      hits should be investigated as post-exploitation signal, not
+      attributed to CL-STA-1132 by hash alone.
+
+  - id: cl-sta-1132-hunt-saml-flood
+    platform: pan-os
+    title: "PAN-OS SAML authentication flood inducing HA failover"
+    query_type: pseudo_query
+    query: |
+      Look for: high-rate SAML authentication request bursts targeting
+      User-ID Authentication Portal, followed by HA failover event in
+      PAN-OS system logs. Anomalous volume relative to baseline SAML
+      traffic. Correlate with subsequent crash-kernel-message / core-
+      dump deletion events on the failed-over device.
+    notes: >
+      TTP-level hunt, not IOC-based. False-positive consideration:
+      legitimate HA failover events are common; the diagnostic signal
+      is the SAML burst preceding the failover plus log scrubbing on
+      the previously-active device.
+
+  - id: cl-sta-1132-hunt-ad-recon
+    platform: edr
+    title: "Active Directory enumeration of domain root + DomainDnsZones"
+    query_type: pseudo_kql
+    query: |
+      DeviceEvents
+      | where ActionType == "LdapSearch"
+        and (SearchFilter contains "DomainDnsZones"
+             or SearchFilter contains "DC=,DC=" )
+      | project DeviceId, AccountName, Timestamp, SearchFilter,
+                InitiatingProcessFileName
+    notes: >
+      LDAP queries against domain root + DomainDnsZones are not common
+      from non-AD-tooling processes. Correlate with PAN-OS-host-derived
+      credential usage to filter benign administrator activity.

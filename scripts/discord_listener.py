@@ -312,6 +312,57 @@ def prompt_for_approve_scoring(args: str) -> str:
     )
 
 
+def prompt_for_cve(args: str) -> str:
+    cve_id = args.strip()
+    if not cve_id:
+        raise ValueError(
+            "/cve requires a CVE ID (e.g. 'CVE-2026-0300' or '2026-0300'). "
+            "Routes to vuln-tracker for research; scaffolds a dossier if "
+            "A&D-relevant and not already tracked."
+        )
+    # Normalize "2026-0300" -> "CVE-2026-0300" so prompt always carries the
+    # canonical form. Defensive only — claude can also handle the bare form.
+    normalized = cve_id if cve_id.upper().startswith("CVE-") else f"CVE-{cve_id}"
+    return (
+        f"Run /cve {normalized} per the on-demand command workflow. Spawn the "
+        "vuln-tracker subagent.\n\n"
+        "Step 1 — existing-dossier check. Search threats/vulnerabilities/ "
+        "(any subdirectory; dossier IDs vary — VT-NNN, ZD-NNN, etc.) for a "
+        "dossier whose frontmatter or body references this CVE. If found:\n"
+        "  - Return the existing dossier summary: bottom-line state, CVSS + "
+        "    KEV status, patch availability, affected products, A&D "
+        "    relevance, actor attribution from finding cross-references.\n"
+        "  - Note last-updated timestamp. If stale (>14 days) AND the CVE "
+        "    is in an active state (active exploitation, no patch, KEV "
+        "    deadline approaching), refresh from NVD + vendor advisory + "
+        "    CISA KEV before returning the summary.\n\n"
+        "Step 2 — if no dossier exists. Research from canonical sources: "
+        "NVD record, vendor advisory, CISA KEV, and any Tier-1 vendor "
+        "reporting (Mandiant / Unit 42 / MSTIC / Talos / Volexity / Rapid7 "
+        "/ Sophos / ESET / Dragos). Determine A&D relevance via three "
+        "questions:\n"
+        "  - Does the affected product run in defense-contractor or "
+        "    aerospace environments?\n"
+        "  - Is it part of the supply chain (build tooling, CI/CD, code "
+        "    signing, OT/ICS, satellite/spacecraft components)?\n"
+        "  - Is it being exploited or anticipated to be exploited against "
+        "    A&D targets?\n\n"
+        "If A&D-relevant: scaffold a vulnerability dossier per the "
+        "vuln-tracker's standard layout (frontmatter with CVE / CVSS / "
+        "state / patch / vendor / products / KEV / A&D-relevance, plus "
+        "research notes body). If NOT A&D-relevant: return a brief NVD-"
+        "style summary without scaffolding — don't bloat the corpus with "
+        "irrelevant CVEs.\n\n"
+        "Hard Rule 2: don't originate exploitation attribution. If the CVE "
+        "is exploited, cite the originating source (CISA KEV adds it via "
+        "CISA, vendor reports cite vendors, etc.).\n\n"
+        "Return a Smart Brevity summary under 1800 chars: bottom-line "
+        "state, CVSS + KEV, patch availability, A&D relevance verdict, "
+        "exploitation attribution if any, dossier path if scaffolded or "
+        "refreshed."
+    )
+
+
 # Registry: command name -> prompt builder. Each entry bridges to claude -p.
 # Add new commands here; the on_message handler picks them up automatically.
 COMMAND_HANDLERS: dict[str, Callable[[str], str]] = {
@@ -320,6 +371,7 @@ COMMAND_HANDLERS: dict[str, Callable[[str], str]] = {
     "new-actor": prompt_for_new_actor,
     "update-tracking": prompt_for_update_tracking,
     "approve-scoring": prompt_for_approve_scoring,
+    "cve": prompt_for_cve,
 }
 
 # Inline commands handled in-process without invoking claude. Useful as
@@ -335,6 +387,7 @@ HELP_TEXT = (
     "**Bridge to `claude -p` (run `~10s`–`~5min` depending on scope):**\n"
     "  `/ioc-hunt <indicator>` — IP / domain / hash / URL lookup vs corpus + Splunk + external\n"
     "  `/investigate <target>` — deep dive on actor / CVE / campaign / domain / hash\n"
+    "  `/cve <cve-id>` — vulnerability research; scaffolds a dossier if A&D-relevant\n"
     "  `/new-actor <name> [<finding-id>]` — scaffold a new actor dossier\n"
     "  `/update-tracking [<actor>]` — refresh dossier + re-score (oldest actor if no arg)\n"
     "  `/approve-scoring <actor-id>` — operator confirmation for HIGH-scoring gate (Hard Rule 5)\n\n"

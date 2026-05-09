@@ -44,6 +44,15 @@
         "mcps/urlscan",
         "urlscan"
       ]
+    },
+    "censys": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "mcps/censys",
+        "censys"
+      ]
     }
   }
 }

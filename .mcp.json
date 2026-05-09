@@ -35,6 +35,15 @@
         "mcps/rss-bridge",
         "rss-bridge"
       ]
+    },
+    "urlscan": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "mcps/urlscan",
+        "urlscan"
+      ]
     }
   }
 }

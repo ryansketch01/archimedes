@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-08T16:00:00-04:00
+last_updated: 2026-05-09T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -2337,7 +2337,7 @@ entries:
     test: false
 
   - id: 2026-05-08-am-001
-    covered_in: [2026-05-08-morning]
+    covered_in: [2026-05-08-morning, 2026-05-09-morning]
     brief_file: threats/briefs/2026-05-08-morning.md
     headline: "Ivanti EPMM CVE-2026-6973 — A1 admin-auth-required RCE in on-prem EPMM, KEV-listed with 2026-05-10 federal patch deadline (48h at compose); 'a very limited number of customers' exploited per Ivanti; SecurityWeek introduces editorial chained-exploitation hypothesis with Jan 2026 unauth RCEs CVE-2026-1281 / CVE-2026-1340 against non-rotated customers; cloud variants (Neurons, EPM, Sentry) NOT affected; Shadowserver >850 exposed EPMM IPs pre-disclosure (508 Europe, 182 NA); SecurityWeek 'Chinese threat actors often suspected' framed as editorial pattern-of-history NOT attribution (Hard Rule 2); red-team adjusted forward predictive WEP from very_likely to likely on effective-single-source on exploitation claim"
     topic_tags:
@@ -2396,9 +2396,16 @@ entries:
       - new_victims_named_with_ad_sector
       - patch_adoption_data_published_by_shadowserver_or_cisa
     first_covered: 2026-05-08
-    last_covered: 2026-05-08
+    last_covered: 2026-05-09
     retraction: null
     test: false
+    notes: |
+      Resurfaced 2026-05-09-morning as Active Threats lead — T-40h
+      deadline countdown (Sunday midnight 2026-05-11 EDT). Material
+      time-sensitive update: deadline imminent, not new exploitation
+      signal. No new actor attribution, no scope revision overnight.
+      Carry-only digraph and WEP — A1 procedural / likely forward
+      predictive both unchanged.
 
   - id: 2026-05-08-am-002
     covered_in: [2026-05-08-morning]
@@ -2572,7 +2579,7 @@ entries:
     test: false
 
   - id: 2026-05-08-pm-001
-    covered_in: [2026-05-08-afternoon]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "UPDATE — MSTIC declares Dirty Frag (CVE-2026-43284 xfrm-ESP / CVE-2026-43500 RxRPC) under active attack; xfrm-ESP patched upstream commit f4c50a4034e6 merged 2026-05-07; RxRPC half UNPATCHED; defenders in half-patched state; mitigation = modprobe blocklist of rxrpc on systems that don't require it (breaks AFS/Coda); active-attack claim rests on Microsoft Defender telemetry alone — single-source veto applies on in-the-wild leg, WEP capped at likely; 72h tripwire — second A-grade vendor active-attack confirmation lifts veto; MSTIC compares chain mechanically to Copy Fail (CVE-2026-31431); material posture escalation from morning's PoC-public framing"
     topic_tags:
@@ -2630,12 +2637,19 @@ entries:
       - ad_environment_specific_exploitation_report
       - tripwire_72h_evaluation_no_second_vendor
     first_covered: 2026-05-08
-    last_covered: 2026-05-08
+    last_covered: 2026-05-09
     retraction: null
     test: false
+    notes_2026_05_09: |
+      Resurfaced 2026-05-09-morning as Active Threats T-48h tripwire
+      countdown. 24h elapsed at compose; 48h remaining on the 72h
+      second-vendor confirmation window. No second A-grade vendor
+      surfaced overnight. RxRPC patch tempo unchanged; xfrm-ESP fix
+      rolling through distros. Carry-only — no new development beyond
+      time elapsed.
 
   - id: 2026-05-08-pm-002
-    covered_in: [2026-05-08-afternoon]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "UPDATE — Ivanti EPMM CVE-2026-6973: Shadowserver tags ~800+ internet-exposed appliances; Ivanti recommends credential rotation on previously-suspected appliances; recurrence pattern — third exploited EPMM CVE in 4 months following CVE-2026-1281 (Jan) and CVE-2026-1340 (Apr); federal patch deadline holds at midnight 2026-05-11 EDT (~56h from compose); CyberScoop relay's prior-CVE attribution context (China- and Iran-attributed groups for the Jan/Apr CVEs) recorded as historical context for prior CVEs only — NOT transferred to CVE-2026-6973 (Hard Rule 2)"
     topic_tags:
@@ -2685,12 +2699,17 @@ entries:
       - new_victims_named_with_ad_sector
       - a_grade_source_attributes_exploitation_to_tracked_actor
     first_covered: 2026-05-08
-    last_covered: 2026-05-08
+    last_covered: 2026-05-09
     retraction: null
     test: false
+    notes_2026_05_09: |
+      Resurfaced as part of 2026-05-09-morning Active Threats T-40h
+      lead. Operational telemetry layer (Shadowserver count, recurrence
+      pattern, credential rotation guidance) absorbed into the parent
+      A1 finding's deadline-countdown framing; not re-detailed.
 
   - id: 2026-05-08-pm-003
-    covered_in: [2026-05-08-afternoon]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "CISA adds CVE-2026-42208 (BerriAI LiteLLM pre-auth SQL injection, CVSS 9.3) to KEV with aggressive 3-day federal patch deadline (2026-05-11) — applies to FCEB agencies under BOD 22-01, NOT directly to A&D contractors; pre-window Sysdig honeypot telemetry (single primary observation channel) observed first exploitation 26h after disclosure; Bishop Fox technical analysis on Authorization Bearer header SQL-concat mechanism; targeted tables litellm_credentials.credential_values + litellm_config = upstream LLM API key theft pivot; A&D LiteLLM install base unknown to Archimedes, ITAR shops typically air-gap, Tier-2/3 supplier exposure unbounded; red-team downgraded WEP from very_likely to likely on laundered-pipeline source-independence (effective single Sysdig observation channel laundered through CISA KEV / Bishop Fox / NVD); KAC reinforced demote-from-lead recommendation"
     topic_tags:
@@ -2741,12 +2760,16 @@ entries:
       - third_ai_gateway_kev_listing_in_quarter
       - patch_v_1_83_7_adoption_data_published
     first_covered: 2026-05-08
-    last_covered: 2026-05-08
+    last_covered: 2026-05-09
     retraction: null
     test: false
+    notes_2026_05_09: |
+      Status-only carry in 2026-05-09-morning patch-backlog deadline list
+      (FCEB-only scope reiterated). No new exploitation telemetry; no A&D
+      contractor disclosure; no resurface trigger met beyond date roll.
 
   - id: 2026-05-08-pm-004
-    covered_in: [2026-05-08-afternoon]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "Polish Internal Security Agency (ABW) attributes five 2025 water-utility ICS breaches to APT28 (#006), APT29, and Belarusian-linked UNC1151; ICS-modify capability achieved at some sites creating risk to public water supply; attack vectors per ABW = weak password policies + internet-exposed ICS; ANALYST OPERATIONAL-DOCTRINE CAVEAT — Sandworm (GRU Unit 74455) is canonical GRU ICS-modify actor, APT28 (Unit 26165 SIGINT) and APT29 (SVR geopolitical espionage) doing ICS-modify is non-canonical; SAT-ACH ranks shorthand-naming + cooperative-tasking + hacktivist-only readings collectively more probable than literal direct-GRU/SVR attribution but Archimedes does not originate alternative attribution per Hard Rule 2; UNC1151 (Belarusian-linked Ghostwriter operator per Mandiant historical) is /new-actor candidate; A&D read-through = same hygiene failures apply to A&D-prime SCADA/OT estates"
     topic_tags:
@@ -2805,12 +2828,16 @@ entries:
       - first_party_splunk_hit_on_named_ttps
       - apt28_or_apt29_threat_box_score_revisited
     first_covered: 2026-05-08
-    last_covered: 2026-05-08
+    last_covered: 2026-05-09
     retraction: null
     test: false
+    notes_2026_05_09: |
+      Status-only carry in 2026-05-09-morning Actor Activity. No new
+      activity overnight; no resurface trigger met. UNC1151 remains
+      pending /new-actor review.
 
   - id: 2026-05-08-pm-005
-    covered_in: [2026-05-08-afternoon]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "Operation Silent Rotor — Rust-based 64-bit Windows malware spear-phishing campaign against Eurasian unmanned aviation sector professionals timed to April 2026 Moscow drone forum; Russian-language lures masquerading as Russian Aeronautical Information Center (CAI) order confirmations; lure archive includes Boeing 737 navigation database + NOTAM datasets — KAC caveat: this is AUDIENCE-TARGETING (Boeing 737 dominates Russian/CIS commercial fleets, natural lure choice for aviation professionals) NOT Boeing-targeting indicator; Seqrite Labs explicit non-attribution preserved per Hard Rule 2; ACH on operator-origin (Russian internal vs false-flag vs hostile-to-Russia) deferred per analyst-subagent halt-doctrine — would originate attribution Seqrite has declined; UAV-sector watchlist relevance MEDIUM via standing watch; C2 cdn.kleymarket.ru / 45.142.36.76 (AS48347 MTW-AS Moscow) registered ~9 days before analysis = short-lived infrastructure"
     topic_tags:
@@ -2866,12 +2893,15 @@ entries:
       - boeing_named_as_actual_target_in_subsequent_research
       - sha256_hash_overlap_with_known_actor_tooling
     first_covered: 2026-05-08
-    last_covered: 2026-05-08
+    last_covered: 2026-05-09
     retraction: null
     test: false
+    notes_2026_05_09: |
+      Status-only carry in 2026-05-09-morning Actor Activity (carry-only
+      mention). No new development overnight; no resurface trigger met.
 
   - id: 2026-05-08-pm-006
-    covered_in: [2026-05-08-afternoon]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "RansomHouse publicly claims responsibility for Trellix breach via darkweb leak-site posting with screenshots; asserts intrusion date 2026-04-17 + claims data encryption; Trellix has acknowledged 'aware of claims of responsibility' but neither confirmed RansomHouse identity nor encryption claim, and Trellix's earlier denial of source-code release / distribution-process compromise stands; per Hard Rule 2 Archimedes records procedural fact 'RansomHouse publicly claimed responsibility per BleepingComputer / SecurityWeek' — does NOT promote 'RansomHouse breached Trellix'; analyst SAT-ACH ranks H1 (legitimate compromise) first with zero inconsistencies (specific intrusion date, encryption claim consistent with Mario/MrAgent tooling, established 2022-onward RansomHouse track record including 740K-record Askul Corporation extortion, 3-week intrusion-to-claim tempo match), fabrication ranks last; Trellix's investigating-not-dismissing posture weakens fabrication hypothesis without confirming RansomHouse identity; RansomHouse is /new-actor candidate; supersedes morning AM-007 rejection (reject-2026-05-08-0002) which lacked public attribution"
     topic_tags:
@@ -2935,9 +2965,161 @@ entries:
       - first_party_splunk_hit_on_trellix_indicators
       - ad_contractor_uses_trellix_and_discloses_impact
     first_covered: 2026-05-08
-    last_covered: 2026-05-08
+    last_covered: 2026-05-09
     retraction: null
     test: false
+    notes_2026_05_09: |
+      Status-only carry in 2026-05-09-morning Other Signal. No new
+      development overnight; Trellix forthcoming IR disclosure remains
+      the adjudicating tripwire.
+
+  - id: 2026-05-08-am-003-pcpjack-carry
+    covered_in: [2026-05-08-morning, 2026-05-09-morning]
+    brief_file: threats/briefs/2026-05-08-morning.md
+    headline: "Status-only carry of 2026-05-08-am-003 (PCPJack worm framework / TeamPCP-displacement claim)"
+    pointer_to_primary_entry: 2026-05-08-am-003
+    related_actors:
+      - actor: "PCPJack operator"
+        in_roster: false
+      - actor_id: "001"
+        actor_name: TeamPCP
+    finding_ids: [finding-2026-05-08-0003]
+    digraph: A2
+    wep: likely
+    first_covered: 2026-05-09
+    last_covered: 2026-05-09
+    retraction: null
+    test: false
+    notes: |
+      Carry-only pointer entry. The substantive entry is
+      2026-05-08-am-003. Created today because the original entry's
+      covered_in did not include 2026-05-09-morning and the original
+      entry shape did not include a notes field; this pointer captures
+      the status-only mention in 2026-05-09-morning Other Signal.
+
+  - id: 2026-05-09-am-001
+    covered_in: [2026-05-09-morning]
+    brief_file: threats/briefs/2026-05-09-morning.md
+    headline: "OpenC3 COSMOS spacecraft / satellite C2 software — five-CVE cluster (CVE-2026-42087/42088/42084/42085/42086), two Critical 9.6 (SQLi in Time-Series Database tsdb_lookup; Script Runner privilege escalation via shared container network), one High 8.1 (password reset bypass via session-token reuse), two Medium; vendor-disclosed via GHSAs 2026-04-20, NVD records last-modified 2026-05-08 (in window); patched in 7.0.0-rc3 / 7.0.0; vendor-named user base includes NASA and BAE Systems (Tier-1 prime, watchlist-resident) with SBSS satellite program heritage; no in-the-wild exploitation reported by any source; none on CISA KEV at compose; single-source veto applied (NVD + GHSA share CNA-process evidence basis); WEP capped at likely; KAC surfaced four qualify-class assumptions including critical upgrade-tempo (A2) and material deployment-density (A1); analyst recommends monitoring-item placement with upgrade-tempo caveat in lead position"
+    topic_tags:
+      - cve-cluster
+      - openc3-cosmos
+      - spacecraft-c2
+      - satellite-c2
+      - cve-2026-42087
+      - cve-2026-42088
+      - cve-2026-42084
+      - cve-2026-42085
+      - cve-2026-42086
+      - sqli-tsdb-lookup
+      - script-runner-container-escape
+      - password-reset-session-token
+      - nasa
+      - bae-systems
+      - tier-1-prime
+      - sbss-satellite-program
+      - vendor-self-attestation-uncorroborated
+      - cna-process-shared-evidence-basis
+      - single-source-veto-applied
+      - kac-applied
+      - upgrade-tempo-caveat-load-bearing
+      - deployment-density-caveat
+      - hard-rule-8-silent-splunk-not-disconfirming
+      - hard-rule-2-no-attribution-no-actor-named
+      - monitoring-item-not-action
+      - new-corpus-vuln-tracker-handoff
+      - first-spacecraft-c2-cluster-in-corpus
+    related_actors: []
+    related_vulns:
+      - CVE-2026-42087
+      - CVE-2026-42088
+      - CVE-2026-42084
+      - CVE-2026-42085
+      - CVE-2026-42086
+    related_campaigns: []
+    finding_ids: [finding-2026-05-09-0001]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_sat: sat-kac
+    red_team_review_required: false
+    red_team_review_threshold_basis: "WEP ceiling 'likely' below 'very likely' threshold; not required"
+    vuln_tracker_handoff:
+      action: open_dossier
+      proposed_path: threats/vulnerabilities/OpenC3-COSMOS-2026-Cluster/
+      cluster_keyed_on: fix_version_7.0.0_boundary
+      rationale: |
+        Five CVEs share a fix-version (7.0.0-rc3 / 7.0.0). Operational
+        unit-of-tracking is "estate running pre-7.0.0 OpenC3 COSMOS"
+        rather than per-CVE. Single cluster dossier preferred over
+        five per-CVE entries.
+    qualifying_caveats_carried:
+      - upgrade_tempo_30day_envelope_may_not_apply_for_spacecraft_c2_change_control
+      - deployment_density_at_named_primes_not_independently_corroborated
+      - no_exploitation_reported_in_collected_sources_visibility_caveat_per_hard_rule_8
+      - single_source_veto_rests_on_standard_cna_workflow_nvd_enrichment_could_lift
+    tripwires:
+      - condition: cisa_kev_addition_for_any_of_the_five_cves
+        effect: lifts_single_source_veto_on_exploitation_status_leg_via_cisa_independent_determination
+      - condition: second_vendor_independent_technical_analysis_published
+        effect: lifts_veto_on_technical_detail_leg_triggers_red_team_review_threshold_check
+      - condition: nasa_or_bae_systems_public_statement_on_cosmos_posture
+        effect: corroborates_vendor_user_base_claim_resolves_a1_directly
+      - condition: mission_script_regression_or_change_control_signal_observed_in_collection
+        effect: resolves_a2_directly
+    weekly_synthesis_pattern_held:
+      pattern: first_spacecraft_c2_software_cluster_in_archimedes_corpus_a&d_relevant_class
+      surface_in: 2026-05-10-weekly-synthesis
+    resurface_if:
+      - cisa_kev_addition_for_any_of_the_five_cves
+      - second_vendor_independent_technical_analysis_published
+      - nasa_or_bae_systems_public_statement_on_cosmos_posture
+      - first_party_splunk_hit_on_openc3_indicators
+      - mission_script_regression_or_change_control_signal_observed
+      - patch_adoption_data_published
+      - ad_contractor_disclosure_of_cosmos_deployment_or_compromise
+      - new_actor_attribution_to_any_of_the_five_cves
+    first_covered: 2026-05-09
+    last_covered: 2026-05-09
+    retraction: null
+    test: false
+    notes: |
+      New corpus item. First spacecraft / satellite C2 software entry
+      in Archimedes vuln-tracking. Placed in Vulnerabilities section
+      AND Sector Focus: A&D in 2026-05-09-morning brief — A&D-direct
+      relevance via vendor-named NASA + BAE Systems user base, but
+      framed strictly as monitoring item per analyst recommendation
+      because (a) no exploitation reported, (b) deployment density at
+      named primes not independently corroborated, (c) upgrade tempo
+      is the operational variable.
+
+      KAC remediation status: proceed with qualifying caveats. Two
+      load-bearing-and-fragile assumptions surfaced — A2 (upgrade
+      tempo, critical centrality, low confidence) and A1 (deployment
+      density, material centrality, low confidence). Both classify
+      as "qualify" not "test"; neither blocks the assessment. Brief
+      framing carries upgrade-tempo caveat in lead position per
+      analyst recommendation.
+
+      Hard Rule 8 honored: silent first-party Splunk over -30d on
+      openc3 / cosmos / 5 CVE markers framed as absence-of-evidence
+      (no spacecraft-C2 instrumentation in scope), NOT disconfirming.
+
+      Hard Rule 2 honored: no actor named in any source; no
+      exploitation reported; no actor-profiler trigger fired. ACH
+      skipped per analyst doctrine — running ACH would require
+      originating attribution against tracked roster actors.
+
+      Vuln-tracker handoff: open cluster dossier at
+      threats/vulnerabilities/OpenC3-COSMOS-2026-Cluster/ on first
+      execution. Track for KEV addition (none of five KEV-listed at
+      compose). Watch for second-vendor technical analysis or
+      NASA / BAE Systems public statement.
+
+      Pre-flight: 12/12 passed on iteration 1. No banned phrases, no
+      WEP-vocabulary violations, zero direct quotes (Hard Rule 6
+      trivially clean), word count 752 within 400-800 morning target.
 
 # ============================================================================
 # Valid resurface_if conditions

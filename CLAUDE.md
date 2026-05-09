@@ -387,6 +387,20 @@ Two unrelated 4.10.1 quirks the subprocess runner has to handle, both surfaced d
 
 Bonus 3rd quirk: `crtsh` from this Windows host returns 0 results for established domains where it should return thousands (microsoft.com, example.com). Other sources (`hackertarget`, `otx`) work fine. theHarvester-side or network-side; not the MCP. Use `hackertarget` as the smoke-test source going forward, not `crtsh`. Discovered Session 13.
 
+### SpiderFoot 4.0.0 API shapes are not what its docs suggest
+
+Three live-discovered quirks during the SpiderFoot MCP's first end-to-end test against a self-hosted `sf.py -l 127.0.0.1:5001`. Each one breaks naive integration; tests written against the docs alone wouldn't have caught them:
+
+1. **`/ping` returns `["SUCCESS", "<version>"]` (JSON list), not the literal `"pong"`.** Common older docs and forum threads describe `/ping` returning `pong`. The 4.0.0 endpoint returns a JSON 2-element list with the version string in slot 1. Health checks must accept both.
+
+2. **`/scanstatus` returns a 7-element positional list, not 6.** The 4.0.0 shape is `[name, target, created, started, ended, status, riskmatrix]` where `riskmatrix` is `{"HIGH":n, "MEDIUM":n, "LOW":n, "INFO":n}`. Older docs reference 6-element shapes without the `created` timestamp — naive parsers reading `body[4]` as status will pull the `ended` timestamp ("2026-05-09 17:13:25") instead of the literal `"FINISHED"`, polling forever and timing out.
+
+3. **`/scaneventresultexport?type=json&dialect=json` is not a JSON endpoint.** It 200s with HTML `"Error"` because `filetype` (not `type`) is the file-format param and only accepts `csv` / `xlsx`. The actual JSON endpoint is `/scaneventresults?id=X&eventType=ALL`, which returns a list-of-positional-lists where each row is 11 elements: `[last_seen, data, source_data, module, conf, vis, risk, hash, fp, _, event_type]`. Event type at index 10, data at 1, module at 3.
+
+Bonus 4th: `sfp_crt` (cert transparency) iterates every CT entry for the target one cert at a time with 30s per-cert read timeouts. On a busy domain (microsoft.com, example.com) it'll run for 10+ minutes. Don't include `sfp_crt` in fast-path scans — `sfp_certspotter` is much faster for the same intel. Live test on example.com with `sfp_dnsresolve + sfp_whois` finished in 20s; same target with `sfp_crt` added was still running at 5min and was cancelled.
+
+Discovered + fixed Session 13 during the SpiderFoot MCP's first live validation (commit `26f87f7` shipped with mock-only assumptions that didn't match real SF 4.0.0; live-fix follow-up corrects the client + tests against real-world payloads).
+
 ---
 
-*Last updated: Session 13 (theHarvester MCP live-validated against 4.10.1; PYTHONHOME scrub + 4.10.1 JSON shape handling; crtsh from this host is unreliable, use hackertarget for smoke tests)*
+*Last updated: Session 13 (theHarvester MCP live-validated against 4.10.1; SpiderFoot MCP live-validated against 4.0.0 — three API-shape fixes applied; PYTHONHOME scrub; crtsh from this host is unreliable; sfp_crt is slow on busy domains)*

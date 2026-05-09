@@ -194,8 +194,9 @@ class SpiderFootClient:
           3. If /ping isn't available (older builds), GET /scanlist
              directly and treat 200 as a confirmation.
         """
+        ping_body: Any = None
         try:
-            status, text, _body = self._get("ping")
+            status, text, ping_body = self._get("ping")
         except SpiderFootAuthError as e:
             return HealthOutput(
                 reachable=True,
@@ -216,13 +217,25 @@ class SpiderFootClient:
             # by setting status/text to non-OK values.
             status, text = 404, ""
 
-        # /ping returned something. SpiderFoot returns 'pong' on the
-        # canonical endpoint; some forks return JSON with a version.
+        # /ping shapes seen in the wild:
+        #   - SpiderFoot 4.0.0:    JSON list ["SUCCESS", "<version>"]
+        #   - Older / forks:       plain text "pong"
+        #   - Some builds:         JSON dict {"version": "..."}
         version: str | None = None
         ping_ok = False
         if status == 200:
-            stripped = text.strip().lower()
-            if "pong" in stripped:
+            if isinstance(ping_body, list) and len(ping_body) >= 1:
+                if str(ping_body[0]).upper() == "SUCCESS":
+                    ping_ok = True
+                    if len(ping_body) >= 2:
+                        version = str(ping_body[1])
+            elif isinstance(ping_body, dict):
+                # Best-effort version extraction
+                version = ping_body.get("version") or ping_body.get("spiderfoot_version")
+                if version is not None:
+                    ping_ok = True
+                    version = str(version)
+            elif text.strip().lower() == "pong" or "pong" in text.strip().lower():
                 ping_ok = True
 
         # If /ping wasn't recognized, fall through to /scanlist as the
@@ -368,49 +381,118 @@ class SpiderFootClient:
     def get_scan_status(self, scan_id: str) -> dict[str, Any]:
         """Return the SpiderFoot status payload for a scan.
 
-        Modern SpiderFoot returns a dict like:
-          {"id": "...", "name": "...", "status": "RUNNING", "started": "...",
-           "ended": "", "events_count": 42}
-        Older versions return a positional list — we normalize.
+        SpiderFoot 4.0.0 returns a 7-element positional list:
+          [name, target, created, started, ended, status, riskmatrix]
+        where `status` is the literal "FINISHED" / "RUNNING" / etc.
+        and `riskmatrix` is {"HIGH": int, "MEDIUM": int, "LOW": int, "INFO": int}.
+
+        Some forks / older builds return shorter positional lists or
+        dict-shaped payloads; we accept all three.
         """
         status, _text, body = self._get("scanstatus", params={"id": scan_id})
+
         if isinstance(body, dict):
             return body
-        if isinstance(body, list) and len(body) >= 6:
-            # [name, target, started, ended, status, events_count]
-            return {
-                "id": scan_id,
-                "name": body[0],
-                "target": body[1],
-                "started": body[2],
-                "ended": body[3],
-                "status": body[4],
-                "events_count": body[5] if len(body) > 5 else None,
-            }
+
+        if isinstance(body, list):
+            # SpiderFoot 4.0.0 shape: [name, target, created, started, ended, status, riskmatrix]
+            if len(body) >= 7:
+                return {
+                    "id": scan_id,
+                    "name": body[0],
+                    "target": body[1],
+                    "created": body[2],
+                    "started": body[3],
+                    "ended": body[4],
+                    "status": body[5],
+                    "riskmatrix": body[6] if len(body) > 6 else None,
+                }
+            # Older fallback: [name, target, started, ended, status, events_count]
+            if len(body) >= 6:
+                return {
+                    "id": scan_id,
+                    "name": body[0],
+                    "target": body[1],
+                    "started": body[2],
+                    "ended": body[3],
+                    "status": body[4],
+                    "events_count": body[5],
+                }
+            # /scanstatus returns [] when the scan_id is unknown
+            if not body:
+                raise SpiderFootRequestError(
+                    f"SpiderFoot has no record of scan {scan_id}. "
+                    "Most likely the scan_id is wrong or the scan was deleted."
+                )
+
         raise SpiderFootRequestError(
             f"Unexpected /scanstatus response shape: status={status} body={body!r}"
         )
 
     def export_results(self, scan_id: str) -> list[dict[str, Any]]:
-        """Pull all events for a scan as a JSON list.
+        """Pull all events for a scan as a normalized list of dicts.
 
-        SpiderFoot's `/scaneventresultexport?id=X&type=json&dialect=json`
-        returns a list of event records. Each record's shape:
-          {"generated": <ts>, "data": "<value>", "module": "sfp_crt",
-           "source": "<upstream event type>", "type": "DOMAIN_NAME", ...}
+        Endpoint: `/scaneventresults?id=<scan_id>&eventType=ALL`. Note
+        this is NOT the same as `/scaneventresultexport`, which is the
+        CSV/Excel download endpoint and does NOT support JSON output
+        in SpiderFoot 4.0.0 (it 200s with HTML "Error" instead).
+
+        SpiderFoot 4.0.0 returns each event as an 11-element list:
+          [0] last_seen (formatted timestamp)
+          [1] data (the value)
+          [2] source data (upstream event's data — usually the target)
+          [3] source module (e.g., 'sfp_dnsresolve' or 'SpiderFoot UI'
+              for the seed events; '' for ROOT)
+          [4] confidence (0-100)
+          [5] visibility (0-100)
+          [6] risk (0=info, ...)
+          [7] hash id
+          [8] false_positive (0/1)
+          [9] reserved
+          [10] event type (e.g., 'IP_ADDRESS', 'DOMAIN_NAME', 'ROOT')
+
+        We normalize each row to the shape `_normalize_events` expects
+        (keys: type, data, module, source, generated, fp).
         """
-        params = {"id": scan_id, "type": "json", "dialect": "json"}
-        status, _text, body = self._get("scaneventresultexport", params=params)
+        params = {"id": scan_id, "eventType": "ALL"}
+        status, _text, body = self._get("scaneventresults", params=params)
+
         if body is None:
             return []
+
+        rows: list[Any]
         if isinstance(body, list):
-            return [r for r in body if isinstance(r, dict)]
-        # Some forks return {"events": [...]} — accept that too.
-        if isinstance(body, dict) and isinstance(body.get("events"), list):
-            return [r for r in body["events"] if isinstance(r, dict)]
-        raise SpiderFootRequestError(
-            f"Unexpected /scaneventresultexport shape: status={status} type={type(body).__name__}"
-        )
+            rows = body
+        elif isinstance(body, dict) and isinstance(body.get("events"), list):
+            rows = body["events"]
+        else:
+            raise SpiderFootRequestError(
+                f"Unexpected /scaneventresults shape: status={status} "
+                f"type={type(body).__name__}"
+            )
+
+        normalized: list[dict[str, Any]] = []
+        for r in rows:
+            if isinstance(r, dict):
+                # Fork that already returns dict-shaped rows
+                normalized.append(r)
+                continue
+            if not isinstance(r, list) or len(r) < 11:
+                continue
+            event_type = str(r[10]) if r[10] is not None else ""
+            # Skip ROOT pseudo-events — they're SpiderFoot's record of the
+            # target itself and aren't useful intel.
+            if event_type == "ROOT":
+                continue
+            normalized.append({
+                "generated": r[0],
+                "data": r[1],
+                "source": r[2],
+                "module": r[3],
+                "fp": r[8],
+                "type": event_type,
+            })
+        return normalized
 
     # ---------- orchestration ----------
 

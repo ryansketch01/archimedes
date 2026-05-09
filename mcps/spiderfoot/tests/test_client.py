@@ -63,17 +63,32 @@ def auth_client() -> Iterator[SpiderFootClient]:
 
 
 @respx.mock
-def test_health_reachable_no_auth(client: SpiderFootClient) -> None:
-    respx.get(f"{BASE}/ping").mock(return_value=httpx.Response(200, text="pong"))
+def test_health_reachable_no_auth_modern_4_0(client: SpiderFootClient) -> None:
+    """SpiderFoot 4.0.0 /ping returns JSON list ['SUCCESS', '<version>']."""
+    respx.get(f"{BASE}/ping").mock(
+        return_value=httpx.Response(200, json=["SUCCESS", "4.0.0"])
+    )
     h = client.health()
     assert h.reachable is True
     assert h.authenticated is None  # no auth configured
+    assert h.spiderfoot_version == "4.0.0"
+    assert h.message == "OK"
+
+
+@respx.mock
+def test_health_reachable_legacy_pong(client: SpiderFootClient) -> None:
+    """Older builds / forks may return plain text 'pong' on /ping."""
+    respx.get(f"{BASE}/ping").mock(return_value=httpx.Response(200, text="pong"))
+    h = client.health()
+    assert h.reachable is True
     assert h.message == "OK"
 
 
 @respx.mock
 def test_health_reachable_with_auth_accepted(auth_client: SpiderFootClient) -> None:
-    respx.get(f"{BASE}/ping").mock(return_value=httpx.Response(200, text="pong"))
+    respx.get(f"{BASE}/ping").mock(
+        return_value=httpx.Response(200, json=["SUCCESS", "4.0.0"])
+    )
     respx.get(f"{BASE}/scanlist").mock(return_value=httpx.Response(200, json=[]))
     h = auth_client.health()
     assert h.reachable is True
@@ -200,8 +215,34 @@ def test_get_scan_status_dict(client: SpiderFootClient) -> None:
 
 
 @respx.mock
-def test_get_scan_status_list_normalized(client: SpiderFootClient) -> None:
-    """Older SpiderFoot returns a positional list; client normalizes to dict."""
+def test_get_scan_status_modern_7_element_list(client: SpiderFootClient) -> None:
+    """SpiderFoot 4.0.0 /scanstatus returns 7 elements:
+    [name, target, created, started, ended, status, riskmatrix]
+    Verified live against SpiderFoot 4.0.0 (Session 13)."""
+    respx.get(f"{BASE}/scanstatus").mock(
+        return_value=httpx.Response(
+            200,
+            json=[
+                "scan-name",
+                "example.com",
+                "2026-05-09 12:00:00",  # created
+                "2026-05-09 12:00:01",  # started
+                "2026-05-09 12:00:33",  # ended
+                "FINISHED",             # status
+                {"HIGH": 0, "MEDIUM": 0, "LOW": 0, "INFO": 0},  # riskmatrix
+            ],
+        )
+    )
+    body = client.get_scan_status("X1")
+    assert body["status"] == "FINISHED"
+    assert body["target"] == "example.com"
+    assert body["created"] == "2026-05-09 12:00:00"
+    assert body["riskmatrix"]["HIGH"] == 0
+
+
+@respx.mock
+def test_get_scan_status_legacy_6_element_list(client: SpiderFootClient) -> None:
+    """Older / forked SpiderFoot returns 6 elements (no `created` field)."""
     respx.get(f"{BASE}/scanstatus").mock(
         return_value=httpx.Response(
             200,
@@ -212,6 +253,14 @@ def test_get_scan_status_list_normalized(client: SpiderFootClient) -> None:
     assert body["status"] == "FINISHED"
     assert body["target"] == "example.com"
     assert body["events_count"] == 42
+
+
+@respx.mock
+def test_get_scan_status_unknown_scan_id_raises(client: SpiderFootClient) -> None:
+    """SpiderFoot returns [] for unknown scan_id — surface as a clear error."""
+    respx.get(f"{BASE}/scanstatus").mock(return_value=httpx.Response(200, json=[]))
+    with pytest.raises(SpiderFootRequestError, match="no record"):
+        client.get_scan_status("UNKNOWN")
 
 
 @respx.mock
@@ -227,28 +276,53 @@ def test_get_scan_status_unexpected_raises(client: SpiderFootClient) -> None:
 
 
 @respx.mock
-def test_export_results_list(client: SpiderFootClient) -> None:
-    respx.get(f"{BASE}/scaneventresultexport").mock(
+def test_export_results_modern_positional_list(client: SpiderFootClient) -> None:
+    """SpiderFoot 4.0.0 /scaneventresults returns list-of-lists.
+    Each row: [last_seen, data, source_data, module, conf, vis, risk,
+              hash, fp, reserved, event_type]
+    Verified live against SpiderFoot 4.0.0 (Session 13)."""
+    respx.get(f"{BASE}/scaneventresults").mock(
         return_value=httpx.Response(
             200,
             json=[
-                {"type": "DOMAIN_NAME", "data": "sub.example.com",
-                 "module": "sfp_crt", "source": "INTERNET_NAME",
-                 "generated": "2026-05-09 12:00:01"},
-                {"type": "IP_ADDRESS", "data": "203.0.113.5",
-                 "module": "sfp_dnsresolve", "source": "DOMAIN_NAME",
-                 "generated": "2026-05-09 12:00:05"},
+                # last_seen, data, src_data, module, conf, vis, risk, hash, fp, _, type
+                ["2026-05-09 12:00:01", "sub.example.com", "example.com",
+                 "sfp_crt", 100, 100, 0, "h1", 0, 0, "DOMAIN_NAME"],
+                ["2026-05-09 12:00:05", "203.0.113.5", "example.com",
+                 "sfp_dnsresolve", 100, 100, 0, "h2", 0, 0, "IP_ADDRESS"],
+                # ROOT pseudo-event must be filtered out
+                ["2026-05-09 12:00:00", "example.com", "example.com",
+                 "", 100, 100, 0, "ROOT", 0, 0, "ROOT"],
             ],
         )
     )
     out = client.export_results("X1")
-    assert len(out) == 2
+    assert len(out) == 2  # ROOT skipped
     assert out[0]["type"] == "DOMAIN_NAME"
+    assert out[0]["data"] == "sub.example.com"
+    assert out[0]["module"] == "sfp_crt"
+    assert out[1]["type"] == "IP_ADDRESS"
+
+
+@respx.mock
+def test_export_results_uses_scaneventresults_not_export_endpoint(client: SpiderFootClient) -> None:
+    """Critical: the JSON-friendly endpoint is /scaneventresults, NOT
+    /scaneventresultexport. The latter returns CSV/Excel and 200s with
+    HTML 'Error' when asked for JSON. Live-verified Session 13."""
+    route = respx.get(f"{BASE}/scaneventresults").mock(
+        return_value=httpx.Response(200, json=[])
+    )
+    client.export_results("X1")
+    assert route.called
+    sent_params = dict(route.calls.last.request.url.params)
+    assert sent_params["id"] == "X1"
+    assert sent_params["eventType"] == "ALL"
 
 
 @respx.mock
 def test_export_results_dict_wrapped(client: SpiderFootClient) -> None:
-    respx.get(f"{BASE}/scaneventresultexport").mock(
+    """Forks that return {'events': [...]} are accepted."""
+    respx.get(f"{BASE}/scaneventresults").mock(
         return_value=httpx.Response(
             200,
             json={"events": [{"type": "DOMAIN_NAME", "data": "x",
@@ -261,7 +335,7 @@ def test_export_results_dict_wrapped(client: SpiderFootClient) -> None:
 
 @respx.mock
 def test_export_results_empty(client: SpiderFootClient) -> None:
-    respx.get(f"{BASE}/scaneventresultexport").mock(
+    respx.get(f"{BASE}/scaneventresults").mock(
         return_value=httpx.Response(200, json=[])
     )
     assert client.export_results("X1") == []
@@ -275,28 +349,45 @@ def test_run_passive_scan_happy_path(client: SpiderFootClient) -> None:
     respx.post(f"{BASE}/startscan").mock(
         return_value=httpx.Response(200, json=["SUCCESS", "SCAN-1"])
     )
-    # Two RUNNING polls then FINISHED
+    # Status polling — 7-element SpiderFoot 4.0.0 shape:
+    # [name, target, created, started, ended, status, riskmatrix]
     respx.get(f"{BASE}/scanstatus").mock(
         side_effect=[
-            httpx.Response(200, json={"id": "SCAN-1", "status": "RUNNING"}),
-            httpx.Response(200, json={"id": "SCAN-1", "status": "RUNNING"}),
-            httpx.Response(200, json={"id": "SCAN-1", "status": "FINISHED"}),
+            httpx.Response(
+                200,
+                json=["happy", "example.com", "12:00:00", "12:00:01", "",
+                      "RUNNING", {"HIGH": 0, "MEDIUM": 0, "LOW": 0, "INFO": 0}],
+            ),
+            httpx.Response(
+                200,
+                json=["happy", "example.com", "12:00:00", "12:00:01", "",
+                      "RUNNING", {"HIGH": 0, "MEDIUM": 0, "LOW": 0, "INFO": 0}],
+            ),
+            httpx.Response(
+                200,
+                json=["happy", "example.com", "12:00:00", "12:00:01", "12:00:33",
+                      "FINISHED", {"HIGH": 0, "MEDIUM": 0, "LOW": 0, "INFO": 0}],
+            ),
         ]
     )
-    respx.get(f"{BASE}/scaneventresultexport").mock(
+    # /scaneventresults positional list shape (verified live SF 4.0.0):
+    respx.get(f"{BASE}/scaneventresults").mock(
         return_value=httpx.Response(
             200,
             json=[
-                {"type": "DOMAIN_NAME", "data": "a.example.com",
-                 "module": "sfp_crt", "source": "INTERNET_NAME"},
-                {"type": "DOMAIN_NAME", "data": "b.example.com",
-                 "module": "sfp_crt", "source": "INTERNET_NAME"},
-                {"type": "DOMAIN_NAME", "data": "a.example.com",  # duplicate
-                 "module": "sfp_crt", "source": "INTERNET_NAME"},
-                {"type": "IP_ADDRESS", "data": "203.0.113.5",
-                 "module": "sfp_dnsresolve", "source": "DOMAIN_NAME"},
-                {"type": "EMAILADDR", "data": "abuse@example.com",
-                 "module": "sfp_whois", "source": "DOMAIN_NAME"},
+                ["12:00:02", "a.example.com", "example.com",
+                 "sfp_crt", 100, 100, 0, "h1", 0, 0, "DOMAIN_NAME"],
+                ["12:00:03", "b.example.com", "example.com",
+                 "sfp_crt", 100, 100, 0, "h2", 0, 0, "DOMAIN_NAME"],
+                ["12:00:04", "a.example.com", "example.com",  # duplicate
+                 "sfp_crt", 100, 100, 0, "h3", 0, 0, "DOMAIN_NAME"],
+                ["12:00:05", "203.0.113.5", "example.com",
+                 "sfp_dnsresolve", 100, 100, 0, "h4", 0, 0, "IP_ADDRESS"],
+                ["12:00:06", "abuse@example.com", "example.com",
+                 "sfp_whois", 100, 100, 0, "h5", 0, 0, "EMAILADDR"],
+                # ROOT must be filtered out
+                ["12:00:00", "example.com", "example.com",
+                 "", 100, 100, 0, "ROOT", 0, 0, "ROOT"],
             ],
         )
     )
@@ -323,15 +414,21 @@ def test_run_passive_scan_timeout_returns_partial(client: SpiderFootClient) -> N
     respx.post(f"{BASE}/startscan").mock(
         return_value=httpx.Response(200, json=["SUCCESS", "TIMEOUT-1"])
     )
-    # Always RUNNING, never finishes
+    # Always RUNNING, never finishes (modern 7-element shape)
     respx.get(f"{BASE}/scanstatus").mock(
-        return_value=httpx.Response(200, json={"id": "TIMEOUT-1", "status": "RUNNING"})
-    )
-    respx.get(f"{BASE}/scaneventresultexport").mock(
         return_value=httpx.Response(
             200,
-            json=[{"type": "DOMAIN_NAME", "data": "partial.example.com",
-                   "module": "sfp_crt", "source": "INTERNET_NAME"}],
+            json=["timeout", "example.com", "12:00:00", "12:00:01", "",
+                  "RUNNING", {"HIGH": 0, "MEDIUM": 0, "LOW": 0, "INFO": 0}],
+        )
+    )
+    respx.get(f"{BASE}/scaneventresults").mock(
+        return_value=httpx.Response(
+            200,
+            json=[
+                ["12:00:02", "partial.example.com", "example.com",
+                 "sfp_crt", 100, 100, 0, "h1", 0, 0, "DOMAIN_NAME"],
+            ],
         )
     )
 

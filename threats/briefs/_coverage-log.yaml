@@ -744,9 +744,9 @@ entries:
       the status at mature primes" (Rule 7 compliant).
 
   - id: 2026-05-06-flash-002
-    covered_in: [flash-2026-05-06-1200]
+    covered_in: [flash-2026-05-06-1200, 2026-05-09-afternoon]
     brief_file: threats/briefs/2026-05-06-flash-muddywater-rapid7.md
-    published_in_briefs: [flash-2026-05-06-1200]
+    published_in_briefs: [flash-2026-05-06-1200, 2026-05-09-afternoon]
     headline: "Rapid7 attributes 2026-05 US intrusion to MuddyWater (#022, Iran/MOIS per citation chain) at moderate confidence — Chaos ransomware false flag, Game.exe RAT, Donald Gay code-signing cluster, Microsoft Teams interactive screen-share tradecraft; +72h auto-downgrade clock to 2026-05-09 12:18 EDT; A2/likely under stacked single-source-veto + vendor-moderate-confidence constraints"
     topic_tags:
       - actor
@@ -933,7 +933,7 @@ entries:
       - new_iocs_published
       - profile_first_pass_published
     first_covered: 2026-05-06
-    last_covered: 2026-05-06
+    last_covered: 2026-05-09
     retraction: null
     test: false
     notes: |
@@ -2337,7 +2337,7 @@ entries:
     test: false
 
   - id: 2026-05-08-am-001
-    covered_in: [2026-05-08-morning, 2026-05-09-morning]
+    covered_in: [2026-05-08-morning, 2026-05-09-morning, 2026-05-09-afternoon]
     brief_file: threats/briefs/2026-05-08-morning.md
     headline: "Ivanti EPMM CVE-2026-6973 — A1 admin-auth-required RCE in on-prem EPMM, KEV-listed with 2026-05-10 federal patch deadline (48h at compose); 'a very limited number of customers' exploited per Ivanti; SecurityWeek introduces editorial chained-exploitation hypothesis with Jan 2026 unauth RCEs CVE-2026-1281 / CVE-2026-1340 against non-rotated customers; cloud variants (Neurons, EPM, Sentry) NOT affected; Shadowserver >850 exposed EPMM IPs pre-disclosure (508 Europe, 182 NA); SecurityWeek 'Chinese threat actors often suspected' framed as editorial pattern-of-history NOT attribution (Hard Rule 2); red-team adjusted forward predictive WEP from very_likely to likely on effective-single-source on exploitation claim"
     topic_tags:
@@ -2406,6 +2406,12 @@ entries:
       signal. No new actor attribution, no scope revision overnight.
       Carry-only digraph and WEP — A1 procedural / likely forward
       predictive both unchanged.
+
+      Re-resurfaced 2026-05-09-afternoon as Active Threats T-32h
+      countdown (8h elapsed since AM compose). PM collector sweep
+      clean — no new exploitation telemetry, no Ivanti scope revision,
+      no Shadowserver update. Pure tempo-carry; digraph and WEP
+      unchanged.
 
   - id: 2026-05-08-am-002
     covered_in: [2026-05-08-morning]
@@ -2579,7 +2585,7 @@ entries:
     test: false
 
   - id: 2026-05-08-pm-001
-    covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning, 2026-05-09-afternoon]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "UPDATE — MSTIC declares Dirty Frag (CVE-2026-43284 xfrm-ESP / CVE-2026-43500 RxRPC) under active attack; xfrm-ESP patched upstream commit f4c50a4034e6 merged 2026-05-07; RxRPC half UNPATCHED; defenders in half-patched state; mitigation = modprobe blocklist of rxrpc on systems that don't require it (breaks AFS/Coda); active-attack claim rests on Microsoft Defender telemetry alone — single-source veto applies on in-the-wild leg, WEP capped at likely; 72h tripwire — second A-grade vendor active-attack confirmation lifts veto; MSTIC compares chain mechanically to Copy Fail (CVE-2026-31431); material posture escalation from morning's PoC-public framing"
     topic_tags:
@@ -2647,6 +2653,12 @@ entries:
       surfaced overnight. RxRPC patch tempo unchanged; xfrm-ESP fix
       rolling through distros. Carry-only — no new development beyond
       time elapsed.
+
+      Re-resurfaced 2026-05-09-afternoon as Active Threats T-40h
+      tripwire countdown. 32h elapsed at compose, 40h remaining on
+      the 72h window. No second A-grade vendor surfaced this
+      afternoon. Single-source veto on the in-the-wild leg holds;
+      WEP stays at likely. Pure tempo-carry.
 
   - id: 2026-05-08-pm-002
     covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
@@ -2998,7 +3010,7 @@ entries:
       the status-only mention in 2026-05-09-morning Other Signal.
 
   - id: 2026-05-09-am-001
-    covered_in: [2026-05-09-morning]
+    covered_in: [2026-05-09-morning, 2026-05-09-afternoon]
     brief_file: threats/briefs/2026-05-09-morning.md
     headline: "OpenC3 COSMOS spacecraft / satellite C2 software — five-CVE cluster (CVE-2026-42087/42088/42084/42085/42086), two Critical 9.6 (SQLi in Time-Series Database tsdb_lookup; Script Runner privilege escalation via shared container network), one High 8.1 (password reset bypass via session-token reuse), two Medium; vendor-disclosed via GHSAs 2026-04-20, NVD records last-modified 2026-05-08 (in window); patched in 7.0.0-rc3 / 7.0.0; vendor-named user base includes NASA and BAE Systems (Tier-1 prime, watchlist-resident) with SBSS satellite program heritage; no in-the-wild exploitation reported by any source; none on CISA KEV at compose; single-source veto applied (NVD + GHSA share CNA-process evidence basis); WEP capped at likely; KAC surfaced four qualify-class assumptions including critical upgrade-tempo (A2) and material deployment-density (A1); analyst recommends monitoring-item placement with upgrade-tempo caveat in lead position"
     topic_tags:
@@ -3120,6 +3132,126 @@ entries:
       Pre-flight: 12/12 passed on iteration 1. No banned phrases, no
       WEP-vocabulary violations, zero direct quotes (Hard Rule 6
       trivially clean), word count 752 within 400-800 morning target.
+
+      Re-resurfaced 2026-05-09-afternoon as Vulnerabilities status-
+      carry. No movement on any of the three tripwire conditions
+      (no KEV addition, no second-vendor analysis, no NASA / BAE
+      Systems statement). Vuln-tracker dossier handoff remains
+      pending. Single-source veto holds. Digraph A2 / WEP likely
+      unchanged.
+
+  - id: 2026-05-09-pm-muddywater-downgrade
+    covered_in: [2026-05-09-afternoon]
+    brief_file: threats/briefs/2026-05-09-afternoon.md
+    headline: "MuddyWater (#022) Rapid7-attribution 72h auto-downgrade clock fired unbroken at 12:18 EDT 2026-05-09 — finding-2026-05-06-FLASH-0002 actor-cluster identification leg regrades A2 'likely' → C3 'possibly true' on no second A/B-grade vendor confirmation, no first-party Splunk hit on the 7 IP/domain IOCs (SHA256 hashes not queryable against current sourcetypes), no CISA / FBI advisory pickup; IR-derived campaign forensics (Game.exe RAT, Donald Gay code-signing cluster, Teams interactive screen-share, Chaos false-flag pattern) hold A2 — Rapid7 first-party engagement evidence not contingent on cross-vendor confirmation; actor-profiler handoff: history-note on the regrade and threat-box input recalibration when first-pass profile lands by 2026-05-13"
+    topic_tags:
+      - actor
+      - muddywater
+      - "022"
+      - iran
+      - mois
+      - rapid7
+      - auto-downgrade-clock-fired
+      - 72h-clock
+      - regrade-a2-to-c3
+      - attribution-leg-only
+      - campaign-forensics-hold-a2
+      - single-source-veto-confirmed
+      - no-second-vendor-confirmation
+      - no-first-party-splunk-hit
+      - no-cisa-fbi-advisory
+      - actor-profiler-history-note
+      - threat-box-recalibration
+      - tripwires-up-unchanged
+      - status-carry-only
+      - clean-pm-sweep
+    related_actors: ["022"]
+    related_actor_profile_status: pending
+    related_vulns: []
+    related_campaigns: [muddywater-q2-2026-us-intrusion]
+    finding_ids: [finding-2026-05-06-FLASH-0002]
+    digraph: C3
+    digraph_pre_downgrade: A2
+    wep: possibly_true
+    wep_pre_downgrade: likely
+    downgrade_scope: attribution_leg_only_campaign_forensics_hold_a2
+    update_relationship:
+      updates_id: 2026-05-06-flash-002
+      update_type: scheduled_auto_downgrade_clock_fired_unbroken
+      what_changed: "Per finding-2026-05-06-FLASH-0002 stated downgrade conditions, the 72h auto-downgrade clock (set at FLASH compose 2026-05-06 12:18 EDT) fired unbroken at 2026-05-09 12:18 EDT. All three downgrade triggers met: no second A/B-grade independent confirmation, no first-party Splunk hit post-IOC ingest, no CISA / FBI advisory pickup. Attribution leg regrades A2 likely → C3 possibly true. IR-derived campaign forensics (TTPs, IOCs, code-signing cluster, false-flag pattern) hold at A2."
+    actor_profiler_handoff:
+      required: true
+      actor_id: "022"
+      action: history_note_entry_on_regrade_and_threat_box_input_recalibration
+      first_pass_profile_deadline: 2026-05-13
+      threat_box_scoring_deadline: 2026-05-20
+    tripwires_for_regrade_up:
+      - second_ab_grade_independent_confirmation
+      - first_party_splunk_hit_post_ioc_ingest
+      - cisa_or_fbi_advisory_pickup
+      - rapid7_followon_high_confidence_upgrade
+    resurface_if:
+      - second_ab_grade_independent_confirmation
+      - first_party_splunk_hit_post_ioc_ingest
+      - cisa_or_fbi_advisory_pickup
+      - rapid7_followon_high_confidence_upgrade
+      - new_iocs_published
+      - profile_first_pass_published
+      - new_attribution
+      - new_victims_confirmed
+    first_covered: 2026-05-09
+    last_covered: 2026-05-09
+    retraction: null
+    test: false
+    notes: |
+      Status-carry brief composed under STATUS-CARRY disposition —
+      collector PM sweep returned clean (sentinel raw-2026-05-09-pm-
+      000), grader confirmed zero new promotions, no new findings
+      since 2026-05-09 morning brief. Brief lead is the MuddyWater
+      auto-downgrade clock expiry; no fresh corpus to lead with.
+
+      The downgrade applies ONLY to the actor-cluster identification
+      leg of finding-2026-05-06-FLASH-0002. The IR-derived campaign
+      forensics (Game.exe / Darkcomp custom RAT and 12-command set,
+      Donald Gay code-signing cluster including thumbprint
+      B674578D4BDB24CD58BF2DC884EAA658B7AA250C, ms_upd.exe / Stagecomp
+      / Game.exe tooling lineage, Microsoft Teams interactive
+      screen-share live-credential-harvest tradecraft, attacker-
+      controlled MFA device-add manipulation, Quick Assist phishing,
+      pythonw.exe code injection into suspended processes, Chaos
+      ransomware false-flag without actual encryption) hold at A2 —
+      these are Rapid7 first-party IR engagement forensics and do not
+      depend on cross-vendor confirmation for their grade. The split
+      digraph (campaign forensics A2 / actor identification C3) is
+      what the auto-downgrade mechanism was designed to produce: the
+      directly-observable forensic evidence is graded on its own
+      merit; the attribution leap from forensics to a named actor
+      cluster requires independent corroboration that did not arrive.
+
+      Pre-flight: 12/12 passed on iteration 1. No banned phrases.
+      Standing sections present (Sector Focus: A&D and Iran Cyber
+      Watch with the MuddyWater downgrade as today's only Iran-cyber
+      development; UNC1549 / Charming Kitten / Handala Hack 48h-
+      silent). All claims at WEP "likely" or "possibly true" — no
+      single-source veto violations. Zero direct quotes (Hard Rule 6
+      trivially clean). Word count 645 inside 400-800 afternoon
+      target, intentionally tighter than morning's 752 per status-
+      carry disposition.
+
+      Hard Rule 8 honored: silent first-party Splunk on EPMM, Dirty-
+      Frag, MuddyWater, OpenC3 COSMOS markers framed as absence-of-
+      evidence, NOT disconfirming. The MuddyWater first-party-Splunk-
+      silence is one of the three downgrade-clock conditions and is
+      load-bearing in this specific case (per FLASH finding's stated
+      downgrade conditions); silence here is a planned-for outcome of
+      the watch posture, not a Hard-Rule-8 contradiction.
+
+      Hard Rule 2 honored: the regrade does not originate or
+      strengthen attribution; it documents the absence of independent
+      corroboration after a defined window and adjusts confidence
+      downward accordingly. Rapid7's "moderate confidence" attribution
+      remains the only attribution claim on record; no new attribution
+      hypothesized.
 
 # ============================================================================
 # Valid resurface_if conditions

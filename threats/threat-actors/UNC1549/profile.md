@@ -23,13 +23,13 @@ motivation:
   - long-term-access
   - regional-strategic-collection
   - aerospace-and-defense-targeting
-threat_level: HIGH                 # Carried from _roster.yaml entry; threat-box.yaml is TEMPLATE pending /update-tracking
+threat_level: MEDIUM               # Weighted overall 5.4 (MEDIUM) per threat-box.yaml scored 2026-05-09; espionage category 🔴 HIGH (composite 10), see threat-box.md
 admiralty_grade: A2                # Mandiant A; single-source veto applied per finding-2026-05-05-0001 (WEP capped at "likely")
 tlp: CLEAR
-dossier_version: 1
-last_updated: 2026-05-06
-last_reviewed: 2026-05-06
-next_review_due: 2026-08-04
+dossier_version: 2
+last_updated: 2026-05-09
+last_reviewed: 2026-05-09
+next_review_due: 2026-08-07
 profile_path: threats/threat-actors/UNC1549/
 iocs_path: threats/threat-actors/UNC1549/iocs.md
 threat_box_path: threats/threat-actors/UNC1549/threat-box.yaml
@@ -41,8 +41,15 @@ notes_first_pass: |
   First-pass dossier authored 2026-05-06 from finding-2026-05-05-0001 (Mandiant 2026-05-04
   publication, single-source veto applied, WEP "likely"). All attribution and TTP claims
   inherit from Mandiant per Hard Rule 2 — Archimedes does not originate attribution.
-  Threat-box scoring is TEMPLATE pending deliberate /update-tracking pass with the human
-  /approve-scoring gate intact.
+notes_initial_scoring: |
+  Initial threat-box scoring run 2026-05-09 via /update-tracking (Mode 2). Weighted overall
+  5.4 → MEDIUM → auto-commit (no /approve-scoring gate engaged; gate keys on weighted overall
+  only per doctrine). Espionage category alone scored composite 10 (🔴 HIGH) on direct
+  A&D-prime targeting + significant custom-tooling capability — preserved in per-category
+  table; defensive prioritization should treat UNC1549 as a top-tier espionage threat against
+  A&D primes regardless of overall MEDIUM label. Splunk first-party check (-30d, all 11 IOCs,
+  archimedes + defenseclaw_local) returned zero hits — no IOC corroboration bonus applied.
+  See threat-box.md for full scoring narrative.
 ---
 
 # UNC1549 — Threat Actor Profile
@@ -178,7 +185,7 @@ This profile is a first-pass scaffold built from the eleven IOCs published by Ma
 - Behavioral indicator: Let's Encrypt 7-day TLS cycling pattern
 - Recruiter persona email (fabricated, no PII subject)
 
-**No first-party Splunk observations of UNC1549 infrastructure as of 2026-05-06** — collector queried `defenseclaw_local` and `archimedes` indices for the eleven Mandiant IOCs over -30d window with zero hits. Silent telemetry, not disconfirming.
+**No first-party Splunk observations of UNC1549 infrastructure as of 2026-05-09** — actor-profiler re-queried `defenseclaw_local` and `archimedes` indices for the eleven Mandiant IOCs over -30d window during the 2026-05-09 scoring pass; zero hits across both indices, consistent with the 2026-05-06 collector check. Silent telemetry, not disconfirming.
 
 Mandiant's eleven published IOCs are likely a published subset rather than a complete indicator set (KAC assumption A3 in finding-2026-05-05-0001). Hunt should treat the published IOCs as the operationally-actionable seed and not as an exhaustive list.
 
@@ -237,6 +244,7 @@ UNC1549 is the highest direct-targeting Iranian APT for the Archimedes profile i
 ---
 
 *First-pass profile authored 2026-05-06 by `actor-profiler` from finding-2026-05-05-0001.
-All attribution and TTP claims herein inherit from cited sources per Hard Rule 2 — Archimedes
-does not originate attribution. Threat-box scoring is TEMPLATE pending /update-tracking pass
-with /approve-scoring gate.*
+Initial threat-box scoring run 2026-05-09 via /update-tracking (Mode 2): weighted overall
+5.4 → MEDIUM → auto-commit; espionage category-level 🔴 HIGH (composite 10). All attribution
+and TTP claims herein inherit from cited sources per Hard Rule 2 — Archimedes does not
+originate attribution.*

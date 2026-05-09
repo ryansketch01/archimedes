@@ -3,141 +3,338 @@
 # Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
 # Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
 #
-# STATUS: TEMPLATE ONLY — initial scoring DEFERRED.
+# Scored 2026-05-09 via /update-tracking (Mode 2). Replaces 2026-05-06
+# TEMPLATE scaffold. Weighted overall 5.4 → MEDIUM → auto-commit per
+# doctrine authority table. Espionage category alone scores composite 10
+# (HIGH) — preserved in the per-category table but does NOT trigger Hard
+# Rule 5 gate; only weighted overall does.
 #
-# Per operator direction (2026-05-06 Mode-1 scaffold), the threat-box-scoring
-# skill was NOT invoked at dossier creation. Rationale: UNC1549 is the most
-# A&D-direct Iranian APT in the 2026 corpus and is likely to score HIGH
-# overall. HIGH triggers Hard Rule 5 (/approve-scoring gate). Leaving this
-# template empty defers the scoring decision to a deliberate /update-tracking
-# pass with the human gate intact rather than auto-running scoring at
-# scaffold time.
-#
-# Next action: /update-tracking will pick up this actor (next_review_due
-# 2026-08-04 puts it in the standard 90-day cadence; an early /update-tracking
-# can be invoked sooner if operator wishes). Threat-box-scoring skill runs
-# at that time. If HIGH overall is computed, reviewed_by stays null and
-# librarian posts to #actor-review for /approve-scoring.
+# First-party Splunk: zero hits across all 11 IOCs over -30d (queried
+# 2026-05-09 against archimedes + defenseclaw_local). No IOC corroboration
+# bonus applied.
 
 actor_id: "004"
 actor_name: "UNC1549"
 target_profile: "ad-prime-v1"
-status: pending_initial_scoring
-scored_at: null
-scored_by: null
-reviewed_by: null
-scoring_version: 0
+status: scored
+scored_at: "2026-05-09"
+scored_by: "actor-profiler"
+reviewed_by: "auto-committed"
+scoring_version: 1
 
 # ============================================================================
-# Score categories — TEMPLATE (all values null pending /update-tracking)
+# Score categories
 # ============================================================================
 scores:
+
+  # --------------------------------------------------------------------------
+  # Espionage — composite 10 → HIGH (category-level only; weighted overall MEDIUM)
+  # --------------------------------------------------------------------------
   espionage:
     intent:
-      score: null
-      label: null
-      willingness_modifier: null
-      evidence: null
-      sources: []
+      score: 5
+      label: target-specific
+      willingness_modifier: 0
+      evidence: |
+        Mandiant 2026-05-04 (A-grade) explicitly documents UNC1549's Feb-Apr
+        2026 recruiter-lure campaign targeting categories that map directly
+        onto the ad-prime-v1 profile: "a major US space and defense
+        contractor" and "a European missile systems integrator." This is
+        targeting based on objectives achievable ONLY within A&D primes
+        (classified/sensitive R&D, ITAR-controlled programs, missile-systems
+        IP). Per methodology evidence-minimum table, Intent=5 requires "at
+        least 1 A-grade source documenting targeting of our specific
+        profile" — single-A-grade-source threshold met by Mandiant. Note:
+        finding-2026-05-05-0001 WEP is capped at "likely" via single-source
+        veto; this caps Archimedes confidence in the attribution itself, not
+        the underlying targeting evidence — the evidence-minimum is about
+        source grade, not WEP. Backstopped by Mandiant 2024 baseline
+        (UNC1549 published cluster identification with Israeli A&D core
+        targeting), Symantec 2019 (Tortoiseshell IT-supplier compromise
+        with aviation-customer downstream), and analyst SAT-ACH on 2026-05
+        finding (H1 = UNC1549-as-claimed scored zero inconsistencies).
+      sources:
+        - finding-2026-05-05-0001
+        - mandiant-2026-05-04
+        - mandiant-2024-baseline
+        - symantec-tortoiseshell-2019
     willingness:
-      modifier: null
-      label: null
-      evidence: null
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran (IRGC-aligned cluster) — strained US relations, active sanctions, no diplomatic constraints on cyber-espionage operations against US defense industrial base."
     capability:
-      score: null
-      label: null
-      novelty_modifier: null
-      evidence: null
-      sources: []
+      score: 5
+      label: significant
+      novelty_modifier: 0
+      evidence: |
+        Capability=5 minimum requires multiple A-grade sources AND
+        documented active use within last 24 months. Both met:
+        (1) Multi-source A-grade lineage — Mandiant (2024 baseline +
+        2026-05-04 expansion), Microsoft (Smoke Sandstorm tracking),
+        CrowdStrike (Imperial Kitten tracking), and Symantec (Tortoiseshell
+        2019 attribution). (2) Active use within 24 months — the
+        Feb-Apr 2026 campaign is, by definition, active within the
+        window; MINIBIKE C2 protocol reuse from 2024-2025 ops is one of
+        Mandiant's three attribution pillars. Capability evidence covers
+        full kill-chain: initial access (LinkedIn recruiter persona +
+        lookalike careers portals + weaponized .lnk via cloud storage),
+        execution (PowerShell + custom MINIBIKE), persistence (registry
+        Run keys, scheduled tasks), credential access (custom Outlook
+        profile credential harvester documented in Mandiant 2026-05),
+        C2 (HTTPS to UNC1549 domains with Let's Encrypt 7-day cycling),
+        collection/exfil (Outlook email harvest + C2 channel exfil).
+      sources:
+        - finding-2026-05-05-0001
+        - mandiant-2026-05-04
+        - mandiant-2024-baseline
+        - microsoft-smoke-sandstorm
+        - crowdstrike-imperial-kitten
+        - symantec-tortoiseshell-2019
     novelty:
-      modifier: null
-      label: null
-      evidence: null
+      modifier: 0
+      label: custom-advanced
+      evidence: "Custom MINIBIKE backdoor + MINIBUS loader + Outlook profile credential harvester — per Mandiant 2026-05-04 and ACH evidence E5 in finding-2026-05-05-0001, the toolchain is not publicly observed in non-UNC1549 hands. Detection signatures are limited to vendor/community sharing rather than commodity AV coverage. Custom-advanced is the correct novelty band."
     ioc_corroboration:
       observed: false
       bonus_category: null
-      note: "No first-party UNC1549 infrastructure observations as of 2026-05-06 (collector queried -30d for the eleven Mandiant IOCs; zero hits)."
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+      note: "First-party Splunk negative: queried archimedes + defenseclaw_local for all 11 IOCs (4 domains, 2 IPv4, 2 SHA256, 1 URL, 1 persona email, MINIBIKE/MINIBUS strings) over -30d on 2026-05-09. Zero hits across both indices. Per Hard Rule 8 doctrine: silent telemetry is not contradicting evidence; first-party precedence not invoked; no Capability bonus applied."
+    final_intent: 5
+    final_capability: 5
+    composite: 10
+    threat_level: HIGH
     ioc_bonus_applied: 0
 
+  # --------------------------------------------------------------------------
+  # Supply Chain — composite 5 → MEDIUM
+  # --------------------------------------------------------------------------
   supply_chain:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        UNC1549's 2026 campaign is direct recruiter-lure against A&D primes,
+        not supply-chain-mediated. Historical Tortoiseshell precedent
+        (Symantec 2019) documented IT-supplier compromise with aviation
+        customers downstream — a sector-association supply-chain pattern —
+        but this is dated and has not visibly persisted into the 2024-2026
+        UNC1549 tradecraft signature. Mandiant 2026-05-04 reporting frames
+        the cluster's current operational mode as direct-prime targeting,
+        not supplier-pivot. Intent scored Regional Association rather than
+        Sector Association because current evidence does not show
+        UNC1549 actively pursuing A&D supply-chain compromise — the
+        2019 precedent is too old and tradecraft has demonstrably shifted.
+      sources:
+        - symantec-tortoiseshell-2019
+        - finding-2026-05-05-0001
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/IRGC — same posture as espionage; no diplomatic constraints if supply-chain operations resumed."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 0
+      evidence: |
+        Capability=3 (Limited) reflects the historical Symantec 2019
+        attribution of Tortoiseshell IT-supplier compromise — feasibility
+        confirmed via documented prior activity, but limited to one
+        documented campaign era and now ~6 years stale. Custom toolchain
+        (MINIBIKE/MINIBUS) is reusable across operational modes if UNC1549
+        chose to pivot back to supplier compromise, but no current evidence
+        of supply-chain capability deployment in 2024-2026 reporting.
+      sources:
+        - symantec-tortoiseshell-2019
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "If supply-chain mode were resumed, custom MINIBIKE/MINIBUS toolchain would carry forward — same novelty posture as espionage."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party Splunk hits across UNC1549 IOCs; no supply-chain-specific IOCs in published indicator set."
+    final_intent: 2
+    final_capability: 3
+    composite: 5
+    threat_level: MEDIUM
     ioc_bonus_applied: 0
 
+  # --------------------------------------------------------------------------
+  # Destructive — composite 2 → LOW
+  # --------------------------------------------------------------------------
   destructive:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        No documented destructive operations attributed to UNC1549 in
+        Mandiant 2024 baseline, Mandiant 2026-05-04 expansion, Microsoft
+        Smoke Sandstorm tracking, CrowdStrike Imperial Kitten tracking, or
+        Symantec Tortoiseshell historical reporting. Profile.md notes
+        destructive operations sit in adjacent Iranian clusters (MOIS-
+        aligned MuddyWater, MOIS-adjacent Handala Hack), not within the
+        UNC1549 (IRGC-aligned) cluster's documented mission profile.
+        Intent=1 (Target-of-Opportunity) is the floor; no evidence of
+        targeted destructive intent against ad-prime-v1.
+      sources: []
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/IRGC — willingness floor irrespective of category; no diplomatic brake on destructive operations if cluster pivoted."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: "No evidence of UNC1549 destructive capability in the public reporting corpus. Capability=1 is the doctrine floor when no documented capability exists. Doctrine red-flag check: the temptation to score Capability=3 'because nation-states can do destructive ops' is explicitly disqualified by the methodology — that's not evidence of capability X."
+      sources: []
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "N/A — no destructive capability scored; novelty modifier neutral."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party Splunk hits; no destructive-mode IOCs in published indicator set."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
 
+  # --------------------------------------------------------------------------
+  # Disruptive — composite 2 → LOW
+  # --------------------------------------------------------------------------
   disruptive:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        No documented disruptive operations (DDoS, network-availability
+        attacks, ICS/OT disruption) attributed to UNC1549 across the
+        public reporting corpus. UNC1549's documented operational mode is
+        sustained low-volume espionage, not availability denial.
+        Intent=1 (Target-of-Opportunity) reflects the absence of
+        disruptive intent evidence.
+      sources: []
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/IRGC — willingness floor; no diplomatic brake."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: "No documented evidence of UNC1549 disruptive capability against A&D-relevant infrastructure. Capability=1 floor per doctrine — no evidence is not estimated upward."
+      sources: []
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "N/A — no disruptive capability scored."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party Splunk hits; no disruptive-mode IOCs."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
 
+  # --------------------------------------------------------------------------
+  # Cyber-Crime — composite 2 → LOW
+  # --------------------------------------------------------------------------
   cyber_crime:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        UNC1549 is an IRGC-aligned nation-state cluster with espionage and
+        long-term-access motivation per Mandiant. No documented financially-
+        motivated operations (ransomware, extortion, BEC, IP-resale).
+        Iranian financially-motivated cyber sits in MOIS-adjacent and
+        criminal ecosystem clusters, not within UNC1549's mission profile.
+        Intent=1 floor — no evidence of cyber-crime intent against
+        ad-prime-v1.
+      sources: []
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran/IRGC — willingness floor; no diplomatic brake."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: "No documented evidence of UNC1549 cyber-crime capability. Capability=1 floor per doctrine."
+      sources: []
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "N/A — no cyber-crime capability scored."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party Splunk hits; no cyber-crime IOCs."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
 
 # ============================================================================
-# Overall — TEMPLATE
+# Overall — weighted 5.4 → MEDIUM → auto-commit
 # ============================================================================
 overall:
-  weighted_score: null
+  weighted_score: 5.4
   weights_used:
     espionage: 0.35
     supply_chain: 0.20
     destructive: 0.15
     disruptive: 0.15
     cyber_crime: 0.15
-  threat_level: null
-  authority_level: null
-primary_threat_vector: null
-primary_threat_level: null
+  threat_level: MEDIUM
+  authority_level: actor-profiler-autonomous-with-notification
+  computation: |
+    espionage:    10 × 0.35 = 3.50
+    supply_chain:  5 × 0.20 = 1.00
+    destructive:   2 × 0.15 = 0.30
+    disruptive:    2 × 0.15 = 0.30
+    cyber_crime:   2 × 0.15 = 0.30
+                            ------
+    weighted_score             5.40 → MEDIUM (5-7 band, rounded = 5)
+
+primary_threat_vector: espionage
+primary_threat_level: HIGH        # category-level — does NOT trigger Hard Rule 5 gate per doctrine
+primary_vector_note: |
+  Espionage is the dominant threat vector — composite 10 (category-level
+  HIGH). Per THREAT-BOX-METHODOLOGY.md and skill-doctrine, the Hard Rule 5
+  /approve-scoring gate is keyed on the WEIGHTED OVERALL only, not on any
+  per-category HIGH. UNC1549's overall posture is MEDIUM because the
+  non-espionage categories are at floor (LOW) and dilute the espionage
+  composite via the weighting.
 
 confidence:
-  admiralty: null
-  notes: null
+  admiralty: A2
+  notes: |
+    Inherits A2 admiralty grade from finding-2026-05-05-0001 (Mandiant
+    A-grade source with single-source veto applied; WEP capped at
+    "likely"). Scoring evidence is anchored on Mandiant's high-confidence
+    attribution survived through analyst SAT-ACH (H1 zero inconsistencies)
+    and KAC (3 sound, 3 qualify, 1 test — A4 coverage attestation, async,
+    not blocking). Confidence caveats: TLS-issuance attribution pillar is
+    the most replicable adversary-mimicry vector; MINIBIKE source-code
+    leak (currently no evidence) would force re-examination of all
+    UNC1549-attributed activity per ACH tripwire.
 
 # ============================================================================
 # Review policy
 # ============================================================================
 review_policy:
   interval_days: 90
-  last_reviewed: 2026-05-06
-  next_review_due: 2026-08-04
+  last_reviewed: 2026-05-09
+  next_review_due: 2026-08-07
   review_triggers:
     - new_attribution_from_a_source
     - new_tooling_documented
@@ -153,8 +350,20 @@ history:
     scorer: actor-profiler
     change: template_scaffolded
     note: |
-      Mode-1 dossier scaffold per operator direction 2026-05-06. Threat-box-
-      scoring skill NOT invoked. Initial scoring deferred to a deliberate
-      /update-tracking pass to preserve the Hard Rule 5 /approve-scoring gate
-      should HIGH overall be computed (likely outcome given UNC1549 is the
-      most A&D-direct Iranian APT in the 2026 corpus per finding-2026-05-05-0001).
+      Mode-1 dossier scaffold per operator direction 2026-05-06. Threat-
+      box-scoring skill NOT invoked at scaffold time; initial scoring
+      deferred to a deliberate /update-tracking pass to preserve the
+      Hard Rule 5 /approve-scoring gate should HIGH overall be computed.
+  - scored_at: 2026-05-09
+    scorer: actor-profiler
+    change: initial_scoring
+    note: |
+      Initial scoring run via /update-tracking (Mode 2). Computed
+      weighted 5.4 → MEDIUM → auto-commit. Espionage composite 10
+      (category HIGH) but doctrine keys gate on weighted overall only.
+      Splunk first-party check (-30d, all 11 IOCs, both indices) returned
+      zero hits — no IOC corroboration bonus applied. Roster threat_level
+      previously HIGH (intake-conservative); updated to MEDIUM to match
+      computed weighted overall. No KAC test classifications surfaced
+      (assumptions A1-A7 from finding-2026-05-05-0001 are within the
+      90-day reuse window; full KAC rerun deferred to next cycle).

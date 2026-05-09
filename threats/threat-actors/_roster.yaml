@@ -65,12 +65,12 @@ actors:
       nation: IR
       service: IRGC
     type: "Nation-State APT"
-    threat_level: HIGH
+    threat_level: MEDIUM         # weighted overall 5.4 (MEDIUM) per /update-tracking 2026-05-09; espionage category HIGH (composite 10)
     tracked_since: 2026-04-02
     dossier: threats/threat-actors/UNC1549/
-    last_reviewed: 2026-05-06
-    next_review_due: 2026-08-04
-    note: "First-pass profile created 2026-05-06 from finding-2026-05-05-0001 (Mandiant 2026-05-04 expansion disclosure). Threat-box scoring is TEMPLATE pending /update-tracking pass."
+    last_reviewed: 2026-05-09
+    next_review_due: 2026-08-07
+    note: "First-pass profile created 2026-05-06 from finding-2026-05-05-0001 (Mandiant 2026-05-04 expansion). Initial threat-box scoring 2026-05-09 via /update-tracking (Mode 2): weighted 5.4 → MEDIUM → auto-commit. Espionage category alone is HIGH (composite 10) on direct A&D-prime targeting; non-espionage categories at floor dilute via doctrine weighting. Splunk first-party check zero hits over -30d at scoring time."
 
   - id: "005"
     primary_name: "GlassWorm"
@@ -390,8 +390,8 @@ actors:
 _meta:
   total_actors: 24
   by_threat_level:
-    HIGH: 22
-    MEDIUM: 2          # REvil, APT34
+    HIGH: 21
+    MEDIUM: 3          # REvil, APT34, UNC1549
     LOW: 0
   by_nation:
     RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
@@ -402,5 +402,5 @@ _meta:
   profiles_migrated: 1         # APT28 only at v1
   profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King
   profiles_first_pass: 5       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09)
-  scoring_complete: 1          # APT34 first-pass scoring (initial). UNC1549, Charming Kitten, MuddyWater, APT37 carry TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
-  scoring_template_only: 4     # UNC1549, Charming Kitten, MuddyWater, APT37 — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.
+  scoring_complete: 2          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM — workflow validation pass). Charming Kitten, MuddyWater, APT37 carry TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
+  scoring_template_only: 3     # Charming Kitten, MuddyWater, APT37 — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.

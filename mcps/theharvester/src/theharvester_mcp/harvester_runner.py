@@ -34,6 +34,7 @@ from theharvester_mcp.exceptions import (
     TheHarvesterTimeoutError,
 )
 from theharvester_mcp.models import (
+    _ALLOWLIST_LOWERCASE_MAP,
     PASSIVE_SOURCE_ALLOWLIST,
     AsnEntry,
     EnumerateOutput,
@@ -44,9 +45,12 @@ from theharvester_mcp.models import (
 def _validate_sources(sources: list[str]) -> list[str]:
     """Filter sources against the passive-only allowlist.
 
-    Refuses ANY source not in the allowlist with a TheHarvesterPolicyError.
-    Returns the filtered list (preserves order; deduplicates while
-    preserving first occurrence).
+    Case-insensitive on input (caller can pass "securitytrails" or
+    "SecurityTrails") but emits the canonical case theHarvester expects
+    (`securityTrails` for that one specifically; the rest are lowercase).
+    Sources outside the allowlist raise TheHarvesterPolicyError.
+
+    Returns the deduplicated, case-canonicalized list. Order preserved.
     """
     seen: set[str] = set()
     cleaned: list[str] = []
@@ -57,19 +61,23 @@ def _validate_sources(sources: list[str]) -> list[str]:
             continue
         if s_lower in seen:
             continue
-        if s_lower not in PASSIVE_SOURCE_ALLOWLIST:
-            rejected.append(s_lower)
+        canonical = _ALLOWLIST_LOWERCASE_MAP.get(s_lower)
+        if canonical is None:
+            # Preserve the operator's original casing in the error message
+            # so they see exactly what they typed.
+            rejected.append(s.strip())
             continue
         seen.add(s_lower)
-        cleaned.append(s_lower)
+        cleaned.append(canonical)
 
     if rejected:
         raise TheHarvesterPolicyError(
             f"Source(s) not on the passive-only allowlist: {', '.join(rejected)}. "
             f"Allowed: {', '.join(PASSIVE_SOURCE_ALLOWLIST)}. "
-            "Sources outside the allowlist are refused per Hard Rule 4 — they may "
-            "perform active recon against unauthorized targets. Operator must "
-            "invoke them outside this MCP if needed."
+            "Sources outside the allowlist are refused per Hard Rule 4 (active "
+            "recon) and LEGAL-POLICY (PII-heavy sources like dehashed / hunter / "
+            "haveibeenpwned). Operator must invoke them outside this MCP if "
+            "needed for an authorized investigation."
         )
 
     if not cleaned:
@@ -229,6 +237,17 @@ def run_theharvester(
         "-f", str(output_basename),
     ]
 
+    # Scrub Python-specific env vars before invoking theHarvester. When this
+    # MCP runs under `uv run`, uv exports PYTHONHOME / PYTHONPATH pointing
+    # at its managed Python; theHarvester's tool-venv wrapper would inherit
+    # those and try to load its bundled standard library against uv's
+    # Python core, producing "AssertionError: SRE module mismatch" at re
+    # module import. Stripping these vars lets theHarvester's wrapper pick
+    # up its own Python correctly.
+    env = os.environ.copy()
+    for var in ("PYTHONHOME", "PYTHONPATH", "PYTHONSTARTUP", "PYTHONUSERBASE"):
+        env.pop(var, None)
+
     start = time.monotonic()
     try:
         proc = subprocess.run(
@@ -237,6 +256,7 @@ def run_theharvester(
             text=True,
             timeout=config.theharvester_timeout_seconds,
             check=False,
+            env=env,
         )
     except subprocess.TimeoutExpired as e:
         if not keep_output:
@@ -271,18 +291,38 @@ def run_theharvester(
             shutil.rmtree(tmpdir, ignore_errors=True)
         raise
 
-    # theHarvester JSON shape varies. Try common locations:
+    # theHarvester JSON shape varies across versions. 4.10.1 emits only
+    # `cmd`, `hosts`, and `shodan` at top level (with hosts as
+    # "hostname:ip" strings). Older versions had separate top-level
+    # `ips` / `vhosts` / `asns` keys. Probe both — when the modern
+    # shape applies, derive distinct_ips from the parsed hosts so the
+    # output isn't artificially empty.
     hosts_raw = data.get("hosts") or data.get("host") or []
     ips_raw = data.get("ips") or data.get("ip") or []
     vhosts_raw = data.get("vhost") or data.get("vhosts") or []
     asns_raw = data.get("asns") or data.get("asn") or []
 
+    parsed_hosts = _normalize_hosts(hosts_raw)
+
+    # Top-level ips array first; if absent, fold IPs out of the hosts
+    # list (4.10.1 only embeds them there).
+    if ips_raw:
+        distinct_ips = _normalize_strings(ips_raw)
+    else:
+        seen_ips: set[str] = set()
+        distinct_ips = []
+        for h in parsed_hosts:
+            for ip in h.ips:
+                if ip and ip not in seen_ips:
+                    seen_ips.add(ip)
+                    distinct_ips.append(ip)
+
     output = EnumerateOutput(
         domain=domain.strip(),
         sources_queried=cleaned_sources,
         duration_seconds=round(duration, 2),
-        hosts=_normalize_hosts(hosts_raw),
-        distinct_ips=_normalize_strings(ips_raw),
+        hosts=parsed_hosts,
+        distinct_ips=distinct_ips,
         vhosts=_normalize_strings(vhosts_raw),
         asns=_normalize_asns(asns_raw),
         raw_output_path=str(json_path) if keep_output else None,

@@ -37,55 +37,84 @@ class AsnEntry(BaseModel):
 # ---------- enumerate ----------
 
 
-# Passive-only source allowlist. Sources here run only OSINT queries
-# against third-party indexes (cert transparency, search engines,
-# threat-intel feeds), not direct probes against the target. Sources
-# OUTSIDE this list are refused by enumerate() with TheHarvesterPolicyError.
+# Passive-only source allowlist. Reviewed against theHarvester 4.10.1
+# (verified live 2026-05-09). Case is PRESERVED as theHarvester
+# expects — most sources are lowercase but `securityTrails` is
+# camelCase, and the argparse choices are case-sensitive.
 #
-# Reviewed against theHarvester's source list as of 2026-05. Sources
-# that require API keys are included here — theHarvester silently
-# skips them if the operator hasn't configured api-keys.yaml, which
-# is fine.
+# Inclusion criteria:
+#   - Passive (queries third-party OSINT, not direct probes against target)
+#   - Returns infrastructure data (hosts, ips, vhosts, asns), NOT primarily PII
+#
+# PII-heavy sources EXCLUDED from this allowlist per LEGAL-POLICY:
+#   dehashed, haveibeenpwned, hunter, leakix, leaklookup, rocketreach, tomba
+# These return primarily breach data / email enumeration. Operator
+# may invoke them outside this MCP for authorized investigations.
 PASSIVE_SOURCE_ALLOWLIST: tuple[str, ...] = (
-    "anubis",
     "baidu",
-    "bing",
-    "bingapi",
+    "bevigil",
+    "bitbucket",
     "brave",
     "bufferoverun",
+    "builtwith",
     "censys",
     "certspotter",
+    "chaos",
+    "commoncrawl",
+    "criminalip",
     "crtsh",
     "dnsdumpster",
     "duckduckgo",
+    "fofa",
+    "fullhunt",
     "github-code",
+    "gitlab",
     "hackertarget",
+    "hudsonrock",
     "hunterhow",
     "intelx",
+    "mojeek",
+    "netlas",
+    "onyphe",
     "otx",
+    "pentesttools",
     "projectdiscovery",
     "rapiddns",
-    "securitytrails",
+    "robtex",
+    "securityscorecard",
+    "securityTrails",  # case-sensitive — matches theHarvester's argparse choice
     "shodan",
-    "sitedossier",
+    "subdomaincenter",
     "subdomainfinderc99",
-    "threatminer",
-    "tomba",
+    "thc",
+    "threatcrowd",
     "urlscan",
+    "venacus",
     "virustotal",
+    "waybackarchive",
+    "whoisxml",
+    "windvane",
     "yahoo",
     "zoomeye",
 )
 
+# Lowercase -> canonical-case map for case-insensitive caller input
+# normalization. Callers can pass "securitytrails" or "SecurityTrails"
+# and we translate to the canonical "securityTrails" that theHarvester
+# expects.
+_ALLOWLIST_LOWERCASE_MAP: dict[str, str] = {
+    s.lower(): s for s in PASSIVE_SOURCE_ALLOWLIST
+}
+
 # Default source set when caller passes none. Sticks to keyless
 # sources so the MCP works on a fresh theHarvester install without
-# api-keys.yaml configured.
+# api-keys.yaml configured. All verified to exist in 4.10.1.
 DEFAULT_SOURCES: tuple[str, ...] = (
     "crtsh",
     "otx",
     "hackertarget",
     "rapiddns",
-    "sitedossier",
+    "certspotter",
     "duckduckgo",
 )
 

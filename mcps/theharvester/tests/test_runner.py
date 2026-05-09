@@ -53,6 +53,17 @@ def test_validate_sources_lowercases_and_dedups() -> None:
     assert out == ["crtsh", "otx"]
 
 
+def test_validate_sources_canonicalizes_securitytrails_case() -> None:
+    """theHarvester expects camelCase `securityTrails`; the MCP accepts
+    any case from caller and emits the canonical form."""
+    out = _validate_sources(["securitytrails"])
+    assert out == ["securityTrails"]
+    out = _validate_sources(["SECURITYTRAILS"])
+    assert out == ["securityTrails"]
+    out = _validate_sources(["securityTrails"])
+    assert out == ["securityTrails"]
+
+
 def test_validate_sources_empty_input_raises() -> None:
     with pytest.raises(TheHarvesterPolicyError, match="No valid sources"):
         _validate_sources([])
@@ -203,6 +214,42 @@ def test_run_theharvester_happy_path(
     assert out.vhosts == ["api.example.com"]
     assert out.asns[0].asn == "AS13335"
     assert out.duration_seconds is not None and out.duration_seconds >= 0
+
+
+@patch("theharvester_mcp.harvester_runner.subprocess.run")
+@patch("theharvester_mcp.harvester_runner.shutil.which", return_value="/fake/theHarvester")
+@patch("theharvester_mcp.harvester_runner.tempfile.mkdtemp")
+def test_run_theharvester_modern_410_shape_derives_ips_from_hosts(
+    mock_mkdtemp: MagicMock,
+    mock_which: MagicMock,
+    mock_run: MagicMock,
+    tmp_path: Path,
+) -> None:
+    """theHarvester 4.10.1 emits only `cmd`, `hosts`, `shodan` at top
+    level. distinct_ips must be derived from the host strings."""
+    mock_mkdtemp.return_value = str(tmp_path)
+
+    def fake_run(cmd, **kw):
+        f_idx = cmd.index("-f")
+        basename = Path(cmd[f_idx + 1])
+        json_path = Path(str(basename) + ".json")
+        json_path.write_text(json.dumps({
+            "cmd": "-d microsoft.com -b hackertarget -l 20",
+            "hosts": [
+                "a.microsoft.com:1.2.3.4",
+                "b.microsoft.com:5.6.7.8",
+                "c.microsoft.com:1.2.3.4",  # duplicate IP
+            ],
+            "shodan": [],
+        }), encoding="utf-8")
+        return MagicMock(returncode=0, stdout="", stderr="")
+
+    mock_run.side_effect = fake_run
+
+    out = run_theharvester(_config(), domain="microsoft.com", sources=["hackertarget"])
+    assert len(out.hosts) == 3
+    # Distinct IPs derived from host list, dupes collapsed, order preserved
+    assert out.distinct_ips == ["1.2.3.4", "5.6.7.8"]
 
 
 @patch("theharvester_mcp.harvester_runner.subprocess.run")

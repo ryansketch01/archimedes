@@ -62,6 +62,15 @@
         "mcps/theharvester",
         "theharvester-mcp"
       ]
+    },
+    "spiderfoot": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "mcps/spiderfoot",
+        "spiderfoot-mcp"
+      ]
     }
   }
 }

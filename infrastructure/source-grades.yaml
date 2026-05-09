@@ -187,6 +187,36 @@ vendor_sources:
     urls:
       - https://www.seqrite.com/blog/
 
+  - id: sophos
+    name: "Sophos / Sophos X-Ops"
+    category: vendor
+    grade: A
+    active: true
+    rationale: "Tier-1 vendor research practice. SophosLabs / X-Ops publish peer-reviewed APT and malware research with first-party EDR telemetry and named-analyst bylines. Ratified Session 11 (2026-05-07) per finding-2026-05-07-0003 librarian handoff — originating research on PCJack worm cluster, cited via BleepingComputer relay."
+    ratified_at: 2026-05-07
+    urls:
+      - https://news.sophos.com/
+
+  - id: eset
+    name: "ESET / WeLiveSecurity"
+    category: vendor
+    grade: A
+    active: true
+    rationale: "Tier-1 vendor research practice. ESET research publishes named-analyst-byline APT and malware analysis with first-party EDR telemetry; long track record on East Asian and Eastern European APT clusters. Ratified Session 11 (2026-05-07) per finding-2026-05-07-0004 librarian handoff — originating research on APT37 Birdcall Android (Filip Jurčacko), cited via The Record relay."
+    ratified_at: 2026-05-07
+    urls:
+      - https://www.welivesecurity.com/
+
+  - id: dragos
+    name: "Dragos"
+    category: vendor
+    grade: A
+    active: true
+    rationale: "Tier-1 ICS/OT research practice with first-party industrial-environment telemetry. Named-analyst bylines, peer-reviewed publication, OT-focused customer base providing visibility no IT-only vendor matches. Ratified Session 11 (2026-05-07) per finding-2026-05-07-0006 librarian handoff — Mexican water OT intrusion / TAT26-12 Claude AI tradecraft research, cited via SecurityWeek relay."
+    ratified_at: 2026-05-07
+    urls:
+      - https://www.dragos.com/blog/
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -581,10 +611,10 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 49
-  active_sources: 40
+  total_sources: 52
+  active_sources: 43
   by_grade:
-    A: 20
+    A: 23       # +3 sophos, eset, dragos (ratified Session 11)
     B: 17       # +1 abw (provisional)
     C: 6        # +1 seqrite-labs (provisional)
     D: 1

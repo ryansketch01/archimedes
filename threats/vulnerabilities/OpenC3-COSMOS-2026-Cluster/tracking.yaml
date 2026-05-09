@@ -1,0 +1,565 @@
+# threats/vulnerabilities/OpenC3-COSMOS-2026-Cluster/tracking.yaml
+#
+# Structured tracking data for the OpenC3 COSMOS five-CVE cluster.
+# Maintained by vuln-tracker subagent. Profile prose is in profile.md;
+# this file is the machine-readable state.
+
+dossier_id: VT-005
+cluster_name: OpenC3-COSMOS-2026-Cluster
+last_updated: 2026-05-09
+tracking_version: 1
+created_from:
+  trigger: vuln_tracker_handoff_from_grader
+  source_finding: finding-2026-05-09-0001
+  finding_digraph: A2
+  finding_wep: likely
+  related_brief: 2026-05-09-morning
+  cluster_keying_principle: >
+    Single cluster dossier keyed on the fix-version 7.0.0 boundary,
+    not five per-CVE entries. Operational unit-of-tracking is "estate
+    running pre-7.0.0 OpenC3 COSMOS." All five CVEs share disclosure
+    date (vendor GHSAs 2026-04-20), share fix release (7.0.0-rc3 /
+    7.0.0), and share the upgrade-tempo operational variable.
+
+# ============================================================================
+# CVE roster
+# ============================================================================
+
+cves:
+  - cve_id: CVE-2026-42087
+    severity: critical
+    cvss_v3_base: 9.6
+    cvss_v3_vector: "AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:N"
+    cvss_v4_base: null
+    cvss_v4_vector: null
+    cwe: [CWE-89]
+    component: "Time-Series Database (cvt_model.rb tsdb_lookup function)"
+    class: "SQL injection"
+    ghsa_id: GHSA-v529-vhwc-wfc5
+    ghsa_url: https://github.com/OpenC3/cosmos/security/advisories/GHSA-v529-vhwc-wfc5
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2026-42087
+    affected_range: "6.7.0 through 7.0.0-rc2"
+    fixed_in: ["7.0.0-rc3", "7.0.0"]
+    in_kev: false
+    exploitation_status: not_observed
+    public_exploit_available: vendor_ghsa_poc_only
+
+  - cve_id: CVE-2026-42088
+    severity: critical
+    cvss_v3_base: 9.6
+    cvss_v3_vector: null            # not authoritatively captured at dossier creation
+    cvss_v4_base: null
+    cvss_v4_vector: null
+    cwe: [CWE-269]
+    component: "Script Runner Tool / openc3-COSMOS-script-runner-api container-share network"
+    class: "Privilege escalation via container-network trust-boundary failure"
+    ghsa_id: GHSA-2wvh-87g2-89hr
+    ghsa_url: https://github.com/OpenC3/cosmos/security/advisories/GHSA-2wvh-87g2-89hr
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2026-42088
+    affected_range: "6.7.0 through 7.0.0-rc2"
+    fixed_in: ["7.0.0-rc3", "7.0.0"]
+    in_kev: false
+    exploitation_status: not_observed
+    public_exploit_available: vendor_ghsa_poc_only
+
+  - cve_id: CVE-2026-42084
+    severity: high
+    cvss_v3_base: 8.1
+    cvss_v3_vector: null
+    cvss_v4_base: null
+    cvss_v4_vector: null
+    cwe: []                         # not authoritatively populated; vendor GHSA describes session-token-reuse auth bypass (CWE-287/CWE-384 class)
+    component: "Password change endpoint"
+    class: "Authentication bypass / session token reuse"
+    ghsa_id: GHSA-wgx6-g857-jjf7
+    ghsa_url: https://github.com/OpenC3/cosmos/security/advisories/GHSA-wgx6-g857-jjf7
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2026-42084
+    affected_range: "pre-6.10.5 and 7.0.0-rc1 / -rc2"
+    fixed_in: ["7.0.0-rc3", "7.0.0"]
+    in_kev: false
+    exploitation_status: not_observed
+    public_exploit_available: vendor_ghsa_poc_only
+
+  - cve_id: CVE-2026-42085
+    severity: medium
+    cvss_v3_base: 4.3
+    cvss_v3_vector: null
+    cvss_v4_base: null
+    cvss_v4_vector: null
+    cwe: []                         # not authoritatively populated; vendor GHSA describes arbitrary file write (CWE-22/CWE-73 class)
+    component: "save_tool_config()"
+    class: "Arbitrary file write to /plugins"
+    ghsa_id: GHSA-4jvx-93h3-f45h
+    ghsa_url: https://github.com/OpenC3/cosmos/security/advisories/GHSA-4jvx-93h3-f45h
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2026-42085
+    affected_range: "6.7.0 through 7.0.0-rc2"
+    fixed_in: ["7.0.0-rc3", "7.0.0"]
+    in_kev: false
+    exploitation_status: not_observed
+    public_exploit_available: vendor_ghsa_poc_only
+
+  - cve_id: CVE-2026-42086
+    severity: medium
+    cvss_v3_base: 4.6
+    cvss_v3_vector: null
+    cvss_v4_base: null
+    cvss_v4_vector: null
+    cwe: []                         # not authoritatively populated; vendor GHSA describes self-XSS via unsafe eval (CWE-79/CWE-95 class)
+    component: "Command Sender UI"
+    class: "Self-XSS via unsafe eval()"
+    ghsa_id: GHSA-ffq5-qpvf-xq7x
+    ghsa_url: https://github.com/OpenC3/cosmos/security/advisories/GHSA-ffq5-qpvf-xq7x
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2026-42086
+    affected_range: "6.7.0 through 7.0.0-rc2"
+    fixed_in: ["7.0.0-rc3", "7.0.0"]
+    in_kev: false
+    exploitation_status: not_observed
+    public_exploit_available: vendor_ghsa_poc_only
+
+# ============================================================================
+# Authoritative records (primary canonical sources)
+# ============================================================================
+
+vendor_advisory:
+  source: openc3-github-advisories
+  source_grade_yaml_id: github-advisories
+  source_grade_letter: B
+  source_grade_note: >
+    GHSAs are vendor-published (OpenC3 maintainers wrote them as the
+    technical primary), which is the highest-confidence GHSA category
+    per the source-grades.yaml notes.
+  advisory_index_url: https://github.com/OpenC3/cosmos/security/advisories
+  first_published: 2026-04-20
+  last_updated: 2026-04-20
+  last_pulled: 2026-05-09T08:14:00-04:00
+
+nvd:
+  cve_record_publication_date: 2026-05-04
+  cve_record_last_modified: 2026-05-08T19:53:16Z
+  source_grade_yaml_id: nvd
+  source_grade_letter: A
+  ingestion_lag_note: >
+    Standard CNA-to-NVD ingestion lag (~14 days from GHSA publication
+    2026-04-20 to NVD record publication 2026-05-04). Last modified
+    2026-05-08 within the morning brief collection window which is
+    why the cluster surfaced today rather than at GHSA publication.
+  last_pulled: 2026-05-09T08:14:00-04:00
+  independence_caveat: >
+    NVD records are downstream of the vendor GHSAs via the standard CNA
+    process. NVD and the GHSAs share a common technical evidence basis.
+    For CVE-record-existence-and-registration claims NVD alone is A1;
+    for technical-detail claims (CWE, CVSS vector, attack path,
+    affected versions) the effective state is single-primary-with-NVD-
+    mirror. Single-source veto applied per finding-2026-05-09-0001.
+    Direct record-level comparison to test for substantive NVD enrichment
+    is a deferred vuln-tracker task.
+
+kev:
+  any_cve_in_kev: false
+  cves_in_kev: []
+  last_checked: 2026-05-09
+  last_checked_run_id: pre-brief-20260509-073000
+  watch_signal_active: true
+  watch_signal_note: >
+    Track CISA KEV catalog for addition of any of the five CVEs. KEV
+    addition is the primary tripwire that would lift the single-source
+    veto on the source finding's exploitation-status leg via CISA's
+    independent determination.
+
+# ============================================================================
+# Affected products and versions
+# ============================================================================
+
+affected_products:
+  - vendor: OpenC3
+    product: COSMOS
+    description: >
+      Open-source command-and-control software for spacecraft, satellite
+      constellations, and embedded systems integration / test / operations.
+    versions_affected_cluster_wide: "6.7.0 through 7.0.0-rc2"
+    per_cve_version_variations:
+      - cve: CVE-2026-42087
+        range: "6.7.0 through 7.0.0-rc2"
+      - cve: CVE-2026-42088
+        range: "6.7.0 through 7.0.0-rc2"
+      - cve: CVE-2026-42084
+        range: "pre-6.10.5 and 7.0.0-rc1 / -rc2"
+      - cve: CVE-2026-42085
+        range: "6.7.0 through 7.0.0-rc2"
+      - cve: CVE-2026-42086
+        range: "6.7.0 through 7.0.0-rc2"
+    fixed_versions: ["7.0.0-rc3", "7.0.0"]
+    fix_release_date: 2026-04-20
+
+# ============================================================================
+# Deployment context (vendor-attested, single-source)
+# ============================================================================
+
+vendor_user_base_claim:
+  source: openc3-vendor-positioning-page
+  source_url: https://openc3.com/
+  source_grade: vendor_self_attestation
+  treatment: supporting_context_not_corroboration
+  named_users:
+    - name: "NASA"
+      a_d_watchlist_match: false
+      a_d_watchlist_match_note: "Government agency, not a watchlist company; analytically equivalent to A&D-target relevance"
+    - name: "BAE Systems"
+      a_d_watchlist_match: true
+      a_d_watchlist_match_tier: prime
+      a_d_watchlist_match_ticker: BAESY
+    - name: "Astroscale"
+      a_d_watchlist_match: false
+    - name: "AST Space"
+      a_d_watchlist_match: false
+    - name: "MethaneSAT"
+      a_d_watchlist_match: false
+    - name: "Turion Space"
+      a_d_watchlist_match: false
+  program_heritage:
+    - program: "SBSS (Space-Based Space Surveillance) satellite program"
+      attestation: "publicly documented in vendor materials"
+  deployment_density_status: not_independently_corroborated
+  deployment_density_note: >
+    Vendor positioning page names users; does not establish current
+    production deployment status, version posture, or operational
+    reachability to mission systems at any specific named organization.
+    Independent corroboration (NASA / BAE Systems public statement, DoD
+    SBOM disclosure, third-party A&D software survey) is not available
+    in current collection window. The user-base claim is supporting
+    context for A&D relevance, not corroborated deployment evidence.
+
+# ============================================================================
+# Exploitation state
+# ============================================================================
+
+exploitation_status: not_observed
+exploitation_status_history:
+  - on: 2026-05-09
+    status: not_observed
+    sources:
+      - cisa-kev (no listing as of 2026-05-09 06:01 sweep)
+      - splunk-metadata-sweep-zero-events
+      - no-third-party-vendor-or-government-bulletin
+    note: "Initial state at dossier creation."
+
+exploitation_first_observed: null
+exploitation_telemetry_posture_note: >
+  Splunk first-party metadata sweep across archimedes + defenseclaw_local
+  indices over -30d window confirms zero events matching openc3, cosmos,
+  CVE-2026-42087, CVE-2026-42088, CVE-2026-42084, CVE-2026-42085,
+  CVE-2026-42086. Neither index carries OpenC3 COSMOS deployment
+  telemetry or related ICS/spacecraft-C2 instrumentation in scope.
+  Silent Splunk is NOT disconfirming per Hard Rule 8 doctrine. The
+  "no exploitation observed" status is bounded by visibility into
+  spacecraft-C2 enclaves, which are routinely high-segmentation and
+  under-represented in public threat feeds.
+
+public_exploit:
+  available: partial
+  type: vendor_ghsa_embedded_poc
+  first_observed: 2026-04-20
+  source: openc3-github-advisories
+  note: >
+    PoC content is embedded in the vendor GHSAs (e.g., the canonical
+    `' OR 1=1 --` SQLi pattern for CVE-2026-42087, container-network
+    attack-step descriptions for CVE-2026-42088). Per Hard Rule 3 / Rule 6,
+    PoC content is NOT reproduced in this dossier beyond pointers to
+    the public advisory URLs. No standalone weaponized exploit code
+    (Metasploit module, exploit-DB entry, public Git repo) is reported
+    in current collection. Disclosure-to-weaponization gap is narrow
+    given the detail level of the GHSAs (parameter names, function
+    references).
+
+# ============================================================================
+# Patch and mitigation state
+# ============================================================================
+
+patch_status: patches_available
+patch_release_date: 2026-04-20
+patches:
+  - release_date: 2026-04-20
+    vendor: OpenC3
+    fixed_versions: ["7.0.0-rc3", "7.0.0"]
+    covers_cves:
+      - CVE-2026-42087
+      - CVE-2026-42088
+      - CVE-2026-42084
+      - CVE-2026-42085
+      - CVE-2026-42086
+    note: >
+      Single fix release closes all five CVEs. Full 7.0.0 release
+      published the same day as the rc3.
+
+mitigation_available: true
+upgrade_tempo_caveat: >
+  6.x → 7.0 is a major-version bump. Spacecraft-C2 environments
+  commonly gate major upgrades behind mission-script regression-test
+  campaigns and flight-software change-control boards (NASA-class
+  change control commonly extends to 90+ days; mid-mission baselines
+  may defer indefinitely until next launch / next mission phase).
+  The federal-typical 30-day patch envelope may not apply when the
+  patch is a major-version bump in a flight-relevant integration.
+  Vendor has not published interim mitigations for pre-7.0.0 estates
+  that cannot complete the upgrade in the federal-typical envelope.
+  General least-privilege compensating controls are described in
+  profile.md "Defense recommendations" but are not vendor-attested.
+
+detection_signatures_published: false
+detection_signatures_published_note: >
+  No vendor-published detection signatures (in-line IPS/IDS rules) for
+  this cluster as of 2026-05-09. Conceptual hunt sketches in profile.md
+  "Detection opportunities" are class-derived from the vendor GHSA
+  descriptions, not vendor-attested detections.
+
+compromise_iocs_published: false
+compromise_iocs_published_note: >
+  No compromise IOCs published by any source. No third-party IR finding,
+  no government bulletin, no security firm telemetry. Watch for Mandiant,
+  Unit 42, CrowdStrike, SentinelLabs, Bishop Fox, Praetorian, or
+  comparable researcher publication that would surface IOCs and lift
+  the single-source veto.
+
+# ============================================================================
+# Attribution (Hard Rule 2 enforcement)
+# ============================================================================
+
+attribution:
+  source_attributed: false
+  archimedes_originated: false
+  related_actors: []
+  note: >
+    No actor named in any source covering this cluster. No exploitation
+    reported. No campaign reporting. Per Hard Rule 2, Archimedes does
+    not originate attribution. Vuln-tracker records vulnerability-
+    disclosure facts only. If a future cited source attributes
+    exploitation to a tracked actor, this dossier will be updated
+    with the source-grade and citation; until then, attribution
+    remains empty.
+
+# ============================================================================
+# Grading state and history (digraph + WEP — inherited from source finding)
+# ============================================================================
+
+grading:
+  current_digraph: A2
+  current_wep: likely
+  current_wep_basis: >
+    Inherited from source finding-2026-05-09-0001. A2 with single-source
+    veto applied caps WEP at "likely" per INTEL-GRADING.md WEP ceiling
+    table. No state-change events have occurred to lift the veto.
+  single_source_veto_applied: true
+  single_source_veto_basis: >
+    NVD CVE records and OpenC3 vendor GHSAs share a common technical
+    evidence basis via the standard CNA process. No independent third-
+    party technical analysis exists.
+
+grading_history:
+  - on: 2026-05-09
+    finding: finding-2026-05-09-0001
+    digraph: A2
+    wep: likely
+    single_source_veto: applied
+    note: "Initial state at dossier creation. Grader run morning-20260509-080000."
+
+# ============================================================================
+# Watch signals — tripwires for state-change update and brief inclusion
+# ============================================================================
+
+watch_signals:
+  - id: ws-1
+    name: kev_addition
+    description: >
+      CISA KEV catalog adds any of the five CVEs.
+    significance: >
+      Lifts single-source veto on the exploitation-status leg via CISA's
+      independent determination. Triggers state_change update of this
+      dossier, KAC rerun on the source finding with visibility assumption
+      strengthened, and brief inclusion as state-change item.
+    cves_to_monitor:
+      - CVE-2026-42087
+      - CVE-2026-42088
+      - CVE-2026-42084
+      - CVE-2026-42085
+      - CVE-2026-42086
+    last_checked: 2026-05-09
+    triggered: false
+
+  - id: ws-2
+    name: third_party_technical_analysis
+    description: >
+      Independent third-party technical analysis published by Mandiant,
+      Unit 42, CrowdStrike, SentinelLabs, Bishop Fox, Praetorian, or
+      comparable researcher.
+    significance: >
+      Lifts single-source veto on the technical-detail leg by adding
+      non-CNA-derived analysis. Triggers KAC rerun on the source
+      finding with A4 (NVD/GHSA independence) classification revisited
+      and red-team review threshold check.
+    sources_to_monitor:
+      - mandiant
+      - unit42
+      - crowdstrike
+      - sentinellabs
+      - bishop-fox
+      - praetorian
+      - other-researcher-blog-via-rss-bridge
+    last_checked: 2026-05-09
+    triggered: false
+
+  - id: ws-3
+    name: nasa_or_bae_systems_public_statement
+    description: >
+      NASA or BAE Systems public statement on COSMOS deployment posture
+      (deployment confirmation, version status, upgrade plan, or
+      affirmative non-use).
+    significance: >
+      Corroborates the vendor user-base claim independently. Resolves
+      A1 (deployment density) directly and triggers KAC rerun on the
+      source finding.
+    sources_to_monitor:
+      - nasa-official-statements
+      - bae-systems-press-releases
+      - sec-filings-bae
+      - cisa-aerospace-isac-bulletins
+    last_checked: 2026-05-09
+    triggered: false
+
+  - id: ws-4
+    name: weaponized_public_exploit
+    description: >
+      Standalone weaponized exploit code published outside the GHSAs
+      (Metasploit module, exploit-DB entry, public Git repo).
+    significance: >
+      Materially broadens the actor population probing the surface.
+      Strengthens any exploitation-likelihood framing in briefs.
+    sources_to_monitor:
+      - exploit-db
+      - github-public-repos
+      - metasploit-modules
+      - twitter-x-infosec
+    last_checked: 2026-05-09
+    triggered: false
+
+  - id: ws-5
+    name: in_the_wild_exploitation_observed
+    description: >
+      In-the-wild exploitation observation in any source (vendor IR,
+      government bulletin, security firm telemetry, news reporting).
+    significance: >
+      Converts the cluster from disclosure-tracking to exploitation-
+      tracking. Materially changes operational urgency framing.
+    sources_to_monitor:
+      - palo-alto-psirt-equivalent-vendor-ir-disclosures
+      - cisa-advisories
+      - mandiant-blog
+      - unit42-blog
+      - the-record
+      - bleepingcomputer
+    last_checked: 2026-05-09
+    triggered: false
+
+  - id: ws-6
+    name: nvd_enrichment_test
+    description: >
+      Direct record-level comparison of NVD content against vendor GHSAs
+      to test for substantive NVD analyst-derived enrichment.
+    significance: >
+      If NVD content shows substantive analyst-added content beyond the
+      GHSAs (different CWE classification, additional references,
+      modified CVSS vector), the independence claim could weaken and
+      single-source veto could be partially lifted. Deferred task —
+      not a tripwire on external state but on vuln-tracker workflow.
+    test_type: deferred_vuln_tracker_task
+    triggered: false
+
+# ============================================================================
+# Cross-references
+# ============================================================================
+
+related_findings:
+  - finding-2026-05-09-0001
+
+related_briefs:
+  - brief_id: 2026-05-09-morning
+    type: scheduled_morning_brief
+    role: source_disclosure_publication
+    status: planned
+
+related_raw_signal:
+  - raw-2026-05-09-am-001-openc3-cosmos-cve-cluster-spacecraft-c2
+
+# ============================================================================
+# A&D relevance
+# ============================================================================
+
+ad_relevance: high
+ad_relevance_rationale: >
+  OpenC3 COSMOS is spacecraft / satellite / constellation command-and-
+  control software. Vendor-named user base includes NASA and BAE Systems
+  (Tier-1 prime on aerospace-defense watchlist) alongside Astroscale,
+  AST Space, MethaneSAT, Turion Space. SBSS satellite program heritage.
+  Software function maps directly to the A&D-target profile from
+  CLAUDE.md (aircraft, spacecraft, missile, defense systems R&D).
+  Operational risk: COSMOS deployments at A&D primes typically sit in
+  spacecraft-test-and-operations enclaves with reachability to live
+  mission systems. Caveat: vendor user-base claim is single-source
+  self-attestation; deployment density and version posture across the
+  named user base are NOT independently corroborated in current
+  collection window.
+
+# ============================================================================
+# Data gaps (open items at dossier creation)
+# ============================================================================
+
+data_gaps:
+  - id: gap-1
+    description: "CWE classifications for CVE-2026-42084 / -42085 / -42086 not authoritatively populated in NVD records visible at dossier creation."
+    severity: low
+    resolution_path: "Re-pull NVD on next periodic refresh; capture analyst-added CWE enrichment if any."
+  - id: gap-2
+    description: "CVSS v4 vectors not captured for any of the five CVEs in the source materials reviewed."
+    severity: low
+    resolution_path: "NVD may add v4 vectors over time; re-pull on next periodic refresh."
+  - id: gap-3
+    description: "Per-CVE NVD reference list (third-party advisory mirrors, exploit-DB references) not enumerated."
+    severity: low
+    resolution_path: "GHSA URLs are primary canonical references; NVD reference enumeration deferred to next refresh."
+  - id: gap-4
+    description: "Independent corroboration of vendor user-base claim (NASA, BAE Systems, et al.) not available."
+    severity: medium
+    resolution_path: "Watch signal ws-3 monitors for NASA / BAE Systems public statement. No active pull-side resolution available; passive monitoring only."
+  - id: gap-5
+    description: "Deployment-density estimate for A&D Tier-1 / Tier-2 estates not directly observable."
+    severity: medium
+    resolution_path: "No third-party A&D-software survey in collection. Resolution would require either operator-side public statement (ws-3) or commissioned market research, neither of which is in scope."
+  - id: gap-6
+    description: "Upgrade tempo evidence for spacecraft-C2 6.x → 7.0 transitions not directly observable."
+    severity: medium
+    resolution_path: "Watch GitHub issue tracker velocity on 7.0 issues, vendor case studies dated post-7.0; longer collection horizon required."
+  - id: gap-7
+    description: "First-party exploitation telemetry not in scope — Splunk indices do not carry OpenC3 COSMOS deployment instrumentation."
+    severity: low
+    resolution_path: "Hard Rule 8 silent-Splunk-is-not-disconfirming applies. No resolution path within current Splunk source coverage."
+  - id: gap-8
+    description: "NVD/GHSA independence test not performed by direct record-level comparison."
+    severity: medium
+    resolution_path: "Deferred vuln-tracker task ws-6. Comparison would test whether NVD adds substantive analyst-derived content beyond the vendor GHSAs; if yes, single-source veto could be partially lifted on technical-detail leg."
+
+# ============================================================================
+# Refresh schedule
+# ============================================================================
+
+refresh_schedule:
+  next_periodic_refresh_due: 2026-05-16
+  refresh_cadence: weekly_during_active_tracking
+  refresh_actions:
+    - "Re-fetch NVD for all five CVEs (capture any CWE enrichment, CVSS v4, reference additions)"
+    - "Check CISA KEV catalog for any addition (ws-1)"
+    - "Check Mandiant / Unit 42 / CrowdStrike / SentinelLabs / Bishop Fox / Praetorian for technical analysis (ws-2)"
+    - "Check NASA and BAE Systems public communications for COSMOS posture statements (ws-3)"
+    - "Check exploit-DB / Metasploit / public GitHub for weaponized PoC (ws-4)"
+    - "Check vendor IR disclosures and government bulletins for in-the-wild observations (ws-5)"
+    - "If first refresh: perform NVD/GHSA independence comparison (ws-6) as one-time deferred task"
+
+tlp: CLEAR

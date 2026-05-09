@@ -7,7 +7,7 @@
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
 version: 2
-last_updated: 2026-05-06
+last_updated: 2026-05-09
 
 vulnerabilities:
 
@@ -89,12 +89,63 @@ vulnerabilities:
     next_review_due: 2026-05-13
     note: "First Archimedes-tracked active-exploitation CVE. KEV-listed; patches staggered across May 2026; public exploit code released; no actor attribution. See tracking.yaml for state history and watch_signals."
 
+  - id: VT-005
+    name: "OpenC3 COSMOS 2026 five-CVE cluster"
+    type: "Cluster — SQLi (Critical 9.6) + container-network privesc (Critical 9.6) + auth bypass (High 8.1) + arbitrary file write (Medium 4.3) + self-XSS (Medium 4.6)"
+    platform: "OpenC3 COSMOS — open-source command-and-control software for spacecraft, satellites, constellations, embedded systems integration / test / operations"
+    cve_cluster:
+      - CVE-2026-42087    # Critical 9.6 SQL injection (CWE-89, TSDB tsdb_lookup)
+      - CVE-2026-42088    # Critical 9.6 Script Runner privesc (CWE-269, container-network)
+      - CVE-2026-42084    # High 8.1 password reset bypass via session token reuse
+      - CVE-2026-42085    # Medium 4.3 arbitrary file write to /plugins
+      - CVE-2026-42086    # Medium 4.6 self-XSS in Command Sender via eval()
+    cvss_max: 9.6
+    affected_versions: "6.7.0 through 7.0.0-rc2"
+    fixed_in: ["7.0.0-rc3", "7.0.0"]
+    patch_status: patched
+    patch_release_date: 2026-04-20
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    exploitation_status: not_observed
+    public_exploit_available: vendor_ghsa_poc_only
+    detection_signatures_published: false
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    related_actors: []
+    related_findings:
+      - finding-2026-05-09-0001
+    related_briefs:
+      - 2026-05-09-morning
+    ad_relevance: high
+    ad_relevance_rationale: >
+      Spacecraft / satellite C2 software with vendor-attested user base
+      including NASA and BAE Systems (Tier-1 prime on aerospace-defense
+      watchlist). SBSS satellite program heritage. Maps directly to the
+      A&D-target profile from CLAUDE.md.
+    dossier: threats/vulnerabilities/OpenC3-COSMOS-2026-Cluster/profile.md
+    tracking: threats/vulnerabilities/OpenC3-COSMOS-2026-Cluster/tracking.yaml
+    tracked_since: 2026-05-09
+    last_reviewed: 2026-05-09
+    next_review_due: 2026-05-16
+    note: >
+      Single cluster dossier keyed on the fix-version 7.0.0 boundary,
+      not five per-CVE entries. Operational unit-of-tracking is "estate
+      running pre-7.0.0 OpenC3 COSMOS." No in-the-wild exploitation
+      reported. None of the five CVEs is on CISA KEV as of 2026-05-09.
+      Watch signals: KEV addition; third-party technical analysis
+      (Mandiant / Unit 42 / CrowdStrike / SentinelLabs / Bishop Fox /
+      Praetorian); NASA or BAE Systems public statement on COSMOS
+      deployment posture. See tracking.yaml watch_signals for full set.
+
 _meta:
-  total_tracked: 4
-  patched: 1
-  unpatched: 2
-  patches_scheduled: 1
+  total_tracked: 5
+  patched: 2                      # ZD-001 BlueHammer; VT-005 OpenC3 COSMOS cluster
+  unpatched: 2                    # ZD-002 RedSun; ZD-003 UnDefend
+  patches_scheduled: 1            # ZD-004 PAN-OS CVE-2026-0300
   active_exploitation: 1          # ZD-004 PAN-OS CVE-2026-0300 (KEV-listed, multi-victim signal)
   kev_listed: 1                   # ZD-004 PAN-OS CVE-2026-0300
-  public_exploit_available: 1     # ZD-004 PAN-OS CVE-2026-0300
-  dossiers_migrated: 1            # ZD-004 created from FLASH-0001 + FLASH-0003 evidence base; ZD-001/002/003 still pending C3PO migration
+  public_exploit_available: 1     # ZD-004 PAN-OS CVE-2026-0300 (full weaponized exploit code)
+  vendor_ghsa_poc_only: 1         # VT-005 OpenC3 COSMOS cluster (PoC embedded in vendor advisories only)
+  dossiers_migrated: 2            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster. ZD-001/002/003 still pending C3PO migration.

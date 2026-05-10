@@ -2337,7 +2337,7 @@ entries:
     test: false
 
   - id: 2026-05-08-am-001
-    covered_in: [2026-05-08-morning, 2026-05-09-morning, 2026-05-09-afternoon]
+    covered_in: [2026-05-08-morning, 2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning]
     brief_file: threats/briefs/2026-05-08-morning.md
     headline: "Ivanti EPMM CVE-2026-6973 — A1 admin-auth-required RCE in on-prem EPMM, KEV-listed with 2026-05-10 federal patch deadline (48h at compose); 'a very limited number of customers' exploited per Ivanti; SecurityWeek introduces editorial chained-exploitation hypothesis with Jan 2026 unauth RCEs CVE-2026-1281 / CVE-2026-1340 against non-rotated customers; cloud variants (Neurons, EPM, Sentry) NOT affected; Shadowserver >850 exposed EPMM IPs pre-disclosure (508 Europe, 182 NA); SecurityWeek 'Chinese threat actors often suspected' framed as editorial pattern-of-history NOT attribution (Hard Rule 2); red-team adjusted forward predictive WEP from very_likely to likely on effective-single-source on exploitation claim"
     topic_tags:
@@ -2396,7 +2396,7 @@ entries:
       - new_victims_named_with_ad_sector
       - patch_adoption_data_published_by_shadowserver_or_cisa
     first_covered: 2026-05-08
-    last_covered: 2026-05-09
+    last_covered: 2026-05-10
     retraction: null
     test: false
     notes: |
@@ -2412,6 +2412,20 @@ entries:
       clean — no new exploitation telemetry, no Ivanti scope revision,
       no Shadowserver update. Pure tempo-carry; digraph and WEP
       unchanged.
+
+      Re-resurfaced 2026-05-10-morning as Active Threats LEAD —
+      T-12h deadline countdown (EOB today 2026-05-10). Three
+      consecutive FLASH cycles before the brief (2026-05-09 18:00,
+      2026-05-10 00:00, 2026-05-10 06:00) all clean; pre-brief
+      sweep clean. No new exploitation telemetry, no Ivanti scope
+      revision, no Shadowserver update across the 16h since the
+      2026-05-09 afternoon brief. Digraph A1 procedural / WEP likely
+      forward predictive both unchanged. Material framing update
+      added: past midnight tonight EDT the posture for unpatched
+      on-prem fleet flips to federal-non-compliance plus standing
+      exploitation risk. This is the third consecutive sweep cycle
+      with zero net-new in-window items; deadline tempo is the
+      lead-justification.
 
   - id: 2026-05-08-am-002
     covered_in: [2026-05-08-morning]
@@ -2585,7 +2599,7 @@ entries:
     test: false
 
   - id: 2026-05-08-pm-001
-    covered_in: [2026-05-08-afternoon, 2026-05-09-morning, 2026-05-09-afternoon]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "UPDATE — MSTIC declares Dirty Frag (CVE-2026-43284 xfrm-ESP / CVE-2026-43500 RxRPC) under active attack; xfrm-ESP patched upstream commit f4c50a4034e6 merged 2026-05-07; RxRPC half UNPATCHED; defenders in half-patched state; mitigation = modprobe blocklist of rxrpc on systems that don't require it (breaks AFS/Coda); active-attack claim rests on Microsoft Defender telemetry alone — single-source veto applies on in-the-wild leg, WEP capped at likely; 72h tripwire — second A-grade vendor active-attack confirmation lifts veto; MSTIC compares chain mechanically to Copy Fail (CVE-2026-31431); material posture escalation from morning's PoC-public framing"
     topic_tags:
@@ -2660,6 +2674,16 @@ entries:
       afternoon. Single-source veto on the in-the-wild leg holds;
       WEP stays at likely. Pure tempo-carry.
 
+      Re-resurfaced 2026-05-10-morning as Active Threats T-16h
+      tripwire countdown. 56h elapsed at compose, 16h remaining
+      on the 72h window which closes 2026-05-10 16:00 EDT this
+      afternoon. No second A-grade vendor surfaced overnight or
+      across the three intervening FLASH cycles (18:00 / 00:00 /
+      06:00). Single-source veto on the in-the-wild leg holds;
+      WEP stays at likely. If the window closes unbroken at 16:00
+      EDT today the veto carries forward with reinforced caveat
+      into the afternoon brief disposition.
+
   - id: 2026-05-08-pm-002
     covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
     brief_file: threats/briefs/2026-05-08-afternoon.md
@@ -2721,7 +2745,7 @@ entries:
       A1 finding's deadline-countdown framing; not re-detailed.
 
   - id: 2026-05-08-pm-003
-    covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "CISA adds CVE-2026-42208 (BerriAI LiteLLM pre-auth SQL injection, CVSS 9.3) to KEV with aggressive 3-day federal patch deadline (2026-05-11) — applies to FCEB agencies under BOD 22-01, NOT directly to A&D contractors; pre-window Sysdig honeypot telemetry (single primary observation channel) observed first exploitation 26h after disclosure; Bishop Fox technical analysis on Authorization Bearer header SQL-concat mechanism; targeted tables litellm_credentials.credential_values + litellm_config = upstream LLM API key theft pivot; A&D LiteLLM install base unknown to Archimedes, ITAR shops typically air-gap, Tier-2/3 supplier exposure unbounded; red-team downgraded WEP from very_likely to likely on laundered-pipeline source-independence (effective single Sysdig observation channel laundered through CISA KEV / Bishop Fox / NVD); KAC reinforced demote-from-lead recommendation"
     topic_tags:
@@ -2772,13 +2796,25 @@ entries:
       - third_ai_gateway_kev_listing_in_quarter
       - patch_v_1_83_7_adoption_data_published
     first_covered: 2026-05-08
-    last_covered: 2026-05-09
+    last_covered: 2026-05-10
     retraction: null
     test: false
     notes_2026_05_09: |
       Status-only carry in 2026-05-09-morning patch-backlog deadline list
       (FCEB-only scope reiterated). No new exploitation telemetry; no A&D
       contractor disclosure; no resurface trigger met beyond date roll.
+
+      Re-status-only-carried 2026-05-09-afternoon in patch-backlog
+      deadlines list. No movement.
+    notes_2026_05_10: |
+      Resurfaced 2026-05-10-morning as Vulnerabilities-section item
+      (T-40h KEV deadline tomorrow). Status-carry framing — no new
+      exploitation telemetry beyond original Sysdig honeypot
+      observation channel; single-source veto on the exploitation leg
+      holds; WEP stays at likely. FCEB-only scope reiterated; A&D
+      framing is inventory-check posture for shops that proxy LLM
+      API traffic through LiteLLM. Deadline tempo (T-40h tomorrow
+      midnight) is the resurface trigger.
 
   - id: 2026-05-08-pm-004
     covered_in: [2026-05-08-afternoon, 2026-05-09-morning]
@@ -3010,7 +3046,7 @@ entries:
       the status-only mention in 2026-05-09-morning Other Signal.
 
   - id: 2026-05-09-am-001
-    covered_in: [2026-05-09-morning, 2026-05-09-afternoon]
+    covered_in: [2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning]
     brief_file: threats/briefs/2026-05-09-morning.md
     headline: "OpenC3 COSMOS spacecraft / satellite C2 software — five-CVE cluster (CVE-2026-42087/42088/42084/42085/42086), two Critical 9.6 (SQLi in Time-Series Database tsdb_lookup; Script Runner privilege escalation via shared container network), one High 8.1 (password reset bypass via session-token reuse), two Medium; vendor-disclosed via GHSAs 2026-04-20, NVD records last-modified 2026-05-08 (in window); patched in 7.0.0-rc3 / 7.0.0; vendor-named user base includes NASA and BAE Systems (Tier-1 prime, watchlist-resident) with SBSS satellite program heritage; no in-the-wild exploitation reported by any source; none on CISA KEV at compose; single-source veto applied (NVD + GHSA share CNA-process evidence basis); WEP capped at likely; KAC surfaced four qualify-class assumptions including critical upgrade-tempo (A2) and material deployment-density (A1); analyst recommends monitoring-item placement with upgrade-tempo caveat in lead position"
     topic_tags:
@@ -3093,7 +3129,7 @@ entries:
       - ad_contractor_disclosure_of_cosmos_deployment_or_compromise
       - new_actor_attribution_to_any_of_the_five_cves
     first_covered: 2026-05-09
-    last_covered: 2026-05-09
+    last_covered: 2026-05-10
     retraction: null
     test: false
     notes: |
@@ -3140,8 +3176,18 @@ entries:
       pending. Single-source veto holds. Digraph A2 / WEP likely
       unchanged.
 
+      Re-re-resurfaced 2026-05-10-morning as Vulnerabilities
+      status-carry (third brief). Still no movement on any of the
+      three tripwire conditions across the 16h since the 2026-05-09
+      afternoon brief and the three intervening clean FLASH cycles.
+      Vuln-tracker dossier handoff remains pending. Single-source
+      veto holds. Digraph A2 / WEP likely unchanged. Sector Focus:
+      A&D framing carried unchanged from prior briefs (operator
+      inventory and 7.0.0 upgrade prioritization, treated as
+      major-version migration not routine patch).
+
   - id: 2026-05-09-pm-muddywater-downgrade
-    covered_in: [2026-05-09-afternoon]
+    covered_in: [2026-05-09-afternoon, 2026-05-10-morning]
     brief_file: threats/briefs/2026-05-09-afternoon.md
     headline: "MuddyWater (#022) Rapid7-attribution 72h auto-downgrade clock fired unbroken at 12:18 EDT 2026-05-09 — finding-2026-05-06-FLASH-0002 actor-cluster identification leg regrades A2 'likely' → C3 'possibly true' on no second A/B-grade vendor confirmation, no first-party Splunk hit on the 7 IP/domain IOCs (SHA256 hashes not queryable against current sourcetypes), no CISA / FBI advisory pickup; IR-derived campaign forensics (Game.exe RAT, Donald Gay code-signing cluster, Teams interactive screen-share, Chaos false-flag pattern) hold A2 — Rapid7 first-party engagement evidence not contingent on cross-vendor confirmation; actor-profiler handoff: history-note on the regrade and threat-box input recalibration when first-pass profile lands by 2026-05-13"
     topic_tags:
@@ -3200,7 +3246,7 @@ entries:
       - new_attribution
       - new_victims_confirmed
     first_covered: 2026-05-09
-    last_covered: 2026-05-09
+    last_covered: 2026-05-10
     retraction: null
     test: false
     notes: |
@@ -3252,6 +3298,23 @@ entries:
       downward accordingly. Rapid7's "moderate confidence" attribution
       remains the only attribution claim on record; no new attribution
       hypothesized.
+
+      Resurfaced 2026-05-10-morning Actor Activity section under
+      MATERIAL UPDATE — MuddyWater (#022) roster threat-level set
+      to LOW at 2026-05-09 19:01 EDT per /update-tracking (red-team
+      qualify Intent=3). The threat-box update occurred ~3h after
+      the 2026-05-09 afternoon brief published; this morning is the
+      first brief carrying the roster-status downgrade. Material
+      update meets the resurface threshold beyond pure tempo-carry.
+      Finding-card supersession (A2 → C3 on the actor-cluster
+      identification leg) remains pending via librarian per
+      RETRACTION-POLICY — librarian will execute the finding-card
+      downgrade in this commit chain. Tripwires-up unchanged.
+      Digraph C3 (attribution leg) / WEP possibly_true held;
+      campaign forensics A2 / WEP likely held. Iran Cyber Watch
+      standing section called out the roster downgrade as today's
+      only Iran-cyber development; UNC1549 / Charming Kitten /
+      Handala Hack 48h-silent.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -122,6 +122,22 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-10 — Trendyol Group / Berk Albayrak — (none) → C (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `trendyol-group-albayrak`
+**Reason:** First Archimedes-corpus citation as the originating source on `finding-2026-05-10-0001` (MacSync macOS infostealer surfaced via Google Ads malvertising for "Claude mac download" search query, plus abuse of real Anthropic `claude.ai/share/...` shared-chat URLs as in-lure instruction page; `curl | sh` shell-loader chain through `customroofingcontractors[.]com` → `bernasibutuwqu2[.]com`). Sole primary; BleepingComputer (Ax Sharma) relay. Researcher Berk Albayrak is a security engineer at Trendyol Group (Turkey's largest e-commerce platform). Legitimate corporate security organization with a real security team — rules out F — but not a Tier-1 vendor research practice with peer-reviewed APT/malware track record — rules out A/B. No prior Archimedes-corpus citations; no peer-reviewed APT or malware research history visible at first surface. Provisional C is the conservative starting grade per the same precedent as LayerX (2026-05-08) and Seqrite Labs (2026-05-08). Operator may upgrade to B if subsequent findings show consistent technical rigor and accuracy, or hold at C if context-thin commercial-research profile is observed across more findings.
+**Methodological positive on first surface:** Source makes NO threat-actor attribution. Source explicitly flags the "MacSync" family designation as researcher-coined working name, not vendor-consensus naming. Campaign-attribution restraint and naming-discipline are positive signals for analytical maturity on an unknown vendor's first surface.
+**Supporting findings:** [finding-2026-05-10-0001]
+**Posted to:** Not posted to Discord `#actor-review` this run — provisional C is the LayerX/Seqrite-precedent floor and not a downgrade-path that requires sign-off; operator can review at the bundled 2026-05-15 ratification window.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade trendyol-group-albayrak C` (or operator upgrade to B)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding 0001 is digraph B3 (BleepingComputer-relay floor at B; credibility 3 for single-source-uncorroborated) / WEP "likely" capped by single-source veto on procedural facts, "roughly even chance" on operational claims (split-WEP per analyst KAC). Trendyol-Albayrak's grade does not load-bear on the finding's WEP — relay floor at BleepingComputer's B is what holds B3. Operator upgrade of Trendyol to B would not change the digraph (BleepingComputer relay floor still B); operator hold at C is the no-op case.
+**Detection-engineering caveat (carried verbatim from finding):** the two `claude.ai/share/...` URLs in the IOC set are share-ID-level IOCs ONLY. Wholesale `claude.ai` blocking would break legitimate Anthropic enterprise platform use; attackers can mint new share-IDs at will. Defensive value is share-ID telemetry plus user-education on AI-brand-impersonation social engineering, NOT domain blocklisting.
+**Next review:** ratification target 2026-05-17 (7 days; bundled with the open SentinelOne / LayerX / ABW / Seqrite Labs / Rapid7 / SecurityWeek window)
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

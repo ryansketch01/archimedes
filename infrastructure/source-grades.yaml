@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-08T16:00:00-04:00
+last_updated: 2026-05-10T16:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -186,6 +186,18 @@ vendor_sources:
     active: true
     urls:
       - https://www.seqrite.com/blog/
+
+  - id: trendyol-group-albayrak
+    name: "Trendyol Group / Berk Albayrak"
+    category: vendor
+    grade: C
+    provisional: true
+    provisional_since: 2026-05-10
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-10-0001 (MacSync macOS infostealer via Google Ads malvertising + Anthropic claude.ai/share/... shared-chat URL abuse; sole primary, BleepingComputer relay by Ax Sharma). Originating researcher Berk Albayrak is a security engineer at Trendyol Group (Turkey's largest e-commerce platform). Legitimate corporate security organization with a real security team — NOT an anonymous source (rules out F) — but NOT a Tier-1 vendor research practice with peer-reviewed APT/malware track record (rules out A/B). No prior Archimedes-corpus citations; no peer-reviewed APT or malware research history visible at first surface. Provisional C is the conservative starting grade per the same precedent as LayerX (2026-05-08) and Seqrite Labs (2026-05-08). Methodological positive on first surface: source makes NO threat-actor attribution and explicitly hedges the 'MacSync' family designation as researcher-coined working name (campaign-attribution restraint). Operator may upgrade to B if subsequent findings show consistent technical rigor and accuracy, or hold at C if context-thin commercial-research profile is observed across more findings."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.trendyol.com/
 
   - id: sophos
     name: "Sophos / Sophos X-Ops"
@@ -611,12 +623,12 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 52
-  active_sources: 43
+  total_sources: 53
+  active_sources: 44
   by_grade:
     A: 23       # +3 sophos, eset, dragos (ratified Session 11)
     B: 17       # +1 abw (provisional)
-    C: 6        # +1 seqrite-labs (provisional)
+    C: 7        # +1 seqrite-labs (provisional 2026-05-08), +1 trendyol-group-albayrak (provisional 2026-05-10)
     D: 1
     E: 2
     F: 3
@@ -625,8 +637,9 @@ _meta:
     - securityweek
     - sentinelone
     - layerx
-    - abw           # provisional B; first cited 2026-05-08-0009
-    - seqrite-labs  # provisional C; first cited 2026-05-08-0010
+    - abw                       # provisional B; first cited 2026-05-08-0009
+    - seqrite-labs              # provisional C; first cited 2026-05-08-0010
+    - trendyol-group-albayrak   # provisional C; first cited 2026-05-10-0001
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

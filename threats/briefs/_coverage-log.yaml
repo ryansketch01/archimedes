@@ -2337,7 +2337,7 @@ entries:
     test: false
 
   - id: 2026-05-08-am-001
-    covered_in: [2026-05-08-morning, 2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning]
+    covered_in: [2026-05-08-morning, 2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning, 2026-05-10-afternoon]
     brief_file: threats/briefs/2026-05-08-morning.md
     headline: "Ivanti EPMM CVE-2026-6973 — A1 admin-auth-required RCE in on-prem EPMM, KEV-listed with 2026-05-10 federal patch deadline (48h at compose); 'a very limited number of customers' exploited per Ivanti; SecurityWeek introduces editorial chained-exploitation hypothesis with Jan 2026 unauth RCEs CVE-2026-1281 / CVE-2026-1340 against non-rotated customers; cloud variants (Neurons, EPM, Sentry) NOT affected; Shadowserver >850 exposed EPMM IPs pre-disclosure (508 Europe, 182 NA); SecurityWeek 'Chinese threat actors often suspected' framed as editorial pattern-of-history NOT attribution (Hard Rule 2); red-team adjusted forward predictive WEP from very_likely to likely on effective-single-source on exploitation claim"
     topic_tags:
@@ -2599,7 +2599,7 @@ entries:
     test: false
 
   - id: 2026-05-08-pm-001
-    covered_in: [2026-05-08-afternoon, 2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning, 2026-05-10-afternoon]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "UPDATE — MSTIC declares Dirty Frag (CVE-2026-43284 xfrm-ESP / CVE-2026-43500 RxRPC) under active attack; xfrm-ESP patched upstream commit f4c50a4034e6 merged 2026-05-07; RxRPC half UNPATCHED; defenders in half-patched state; mitigation = modprobe blocklist of rxrpc on systems that don't require it (breaks AFS/Coda); active-attack claim rests on Microsoft Defender telemetry alone — single-source veto applies on in-the-wild leg, WEP capped at likely; 72h tripwire — second A-grade vendor active-attack confirmation lifts veto; MSTIC compares chain mechanically to Copy Fail (CVE-2026-31431); material posture escalation from morning's PoC-public framing"
     topic_tags:
@@ -2745,7 +2745,7 @@ entries:
       A1 finding's deadline-countdown framing; not re-detailed.
 
   - id: 2026-05-08-pm-003
-    covered_in: [2026-05-08-afternoon, 2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning]
+    covered_in: [2026-05-08-afternoon, 2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning, 2026-05-10-afternoon]
     brief_file: threats/briefs/2026-05-08-afternoon.md
     headline: "CISA adds CVE-2026-42208 (BerriAI LiteLLM pre-auth SQL injection, CVSS 9.3) to KEV with aggressive 3-day federal patch deadline (2026-05-11) — applies to FCEB agencies under BOD 22-01, NOT directly to A&D contractors; pre-window Sysdig honeypot telemetry (single primary observation channel) observed first exploitation 26h after disclosure; Bishop Fox technical analysis on Authorization Bearer header SQL-concat mechanism; targeted tables litellm_credentials.credential_values + litellm_config = upstream LLM API key theft pivot; A&D LiteLLM install base unknown to Archimedes, ITAR shops typically air-gap, Tier-2/3 supplier exposure unbounded; red-team downgraded WEP from very_likely to likely on laundered-pipeline source-independence (effective single Sysdig observation channel laundered through CISA KEV / Bishop Fox / NVD); KAC reinforced demote-from-lead recommendation"
     topic_tags:
@@ -3046,7 +3046,7 @@ entries:
       the status-only mention in 2026-05-09-morning Other Signal.
 
   - id: 2026-05-09-am-001
-    covered_in: [2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning]
+    covered_in: [2026-05-09-morning, 2026-05-09-afternoon, 2026-05-10-morning, 2026-05-10-afternoon]
     brief_file: threats/briefs/2026-05-09-morning.md
     headline: "OpenC3 COSMOS spacecraft / satellite C2 software — five-CVE cluster (CVE-2026-42087/42088/42084/42085/42086), two Critical 9.6 (SQLi in Time-Series Database tsdb_lookup; Script Runner privilege escalation via shared container network), one High 8.1 (password reset bypass via session-token reuse), two Medium; vendor-disclosed via GHSAs 2026-04-20, NVD records last-modified 2026-05-08 (in window); patched in 7.0.0-rc3 / 7.0.0; vendor-named user base includes NASA and BAE Systems (Tier-1 prime, watchlist-resident) with SBSS satellite program heritage; no in-the-wild exploitation reported by any source; none on CISA KEV at compose; single-source veto applied (NVD + GHSA share CNA-process evidence basis); WEP capped at likely; KAC surfaced four qualify-class assumptions including critical upgrade-tempo (A2) and material deployment-density (A1); analyst recommends monitoring-item placement with upgrade-tempo caveat in lead position"
     topic_tags:
@@ -3187,7 +3187,7 @@ entries:
       major-version migration not routine patch).
 
   - id: 2026-05-09-pm-muddywater-downgrade
-    covered_in: [2026-05-09-afternoon, 2026-05-10-morning]
+    covered_in: [2026-05-09-afternoon, 2026-05-10-morning, 2026-05-10-afternoon]
     brief_file: threats/briefs/2026-05-09-afternoon.md
     headline: "MuddyWater (#022) Rapid7-attribution 72h auto-downgrade clock fired unbroken at 12:18 EDT 2026-05-09 — finding-2026-05-06-FLASH-0002 actor-cluster identification leg regrades A2 'likely' → C3 'possibly true' on no second A/B-grade vendor confirmation, no first-party Splunk hit on the 7 IP/domain IOCs (SHA256 hashes not queryable against current sourcetypes), no CISA / FBI advisory pickup; IR-derived campaign forensics (Game.exe RAT, Donald Gay code-signing cluster, Teams interactive screen-share, Chaos false-flag pattern) hold A2 — Rapid7 first-party engagement evidence not contingent on cross-vendor confirmation; actor-profiler handoff: history-note on the regrade and threat-box input recalibration when first-pass profile lands by 2026-05-13"
     topic_tags:
@@ -3315,6 +3315,187 @@ entries:
       standing section called out the roster downgrade as today's
       only Iran-cyber development; UNC1549 / Charming Kitten /
       Handala Hack 48h-silent.
+
+  - id: 2026-05-10-pm-001
+    covered_in: [2026-05-10-afternoon]
+    brief_file: threats/briefs/2026-05-10-afternoon.md
+    headline: "MONITORING — MacSync macOS infostealer surfaces via Google Ads malvertising for 'Claude mac download' query plus abuse of real Anthropic claude.ai/share/... shared-chat URLs as in-lure instruction page (per Trendyol Group researcher Berk Albayrak via BleepingComputer); curl|sh shell-loader chain through customroofingcontractors[.]com → bernasibutuwqu2[.]com; VirusTotal corroborates artifact maliciousness on 3 of 5 IOCs (8/25/24 engine consensus on redirector domain + two shell-loader hashes) but does NOT corroborate campaign narrative or family designation; single-source veto applied (single-vendor research relayed by single publisher, no second independent vendor in window); split-WEP per analyst KAC — likely on procedural facts (campaign exists, IOCs malicious), roughly even chance on operational claims (Claude.ai-share-abuse tradecraft, MacSync family designation, pattern-evolution framing); A&D-relevance demoted from Beagle-dossier developer-pivot inheritance to general-industry-watch only (consumer-discovery lure, not developer-targeted; macOS exposure in A&D-prime dev fleets bounded; no source-named A&D entity); pattern-overlap with finding-2026-05-07-0003 Beagle is TTP-evolution observation only, NOT same-operator inference per Hard Rule 2 (zero infrastructure / hash / capability overlap); detection-engineering caveat: claude.ai/share/... URLs are share-ID-level IOCs only, NOT a license to wholesale-block claude.ai (would break legitimate Anthropic enterprise use; attackers can mint new share-IDs at will)"
+    topic_tags:
+      - macos
+      - infostealer
+      - macsync
+      - researcher-coined-name-not-vendor-consensus
+      - google-ads-malvertising
+      - sponsored-placement-redirect
+      - curl-pipe-sh-shell-loader
+      - ai-brand-impersonation-anthropic
+      - claude-ai-share-url-abuse
+      - legitimate-platform-feature-misuse
+      - share-id-level-ioc-only
+      - no-domain-blocklisting-of-claude-ai
+      - bleepingcomputer-relay
+      - trendyol-group-berk-albayrak
+      - trendyol-group-provisional-c-grade-handoff
+      - single-vendor-relay
+      - single-source-veto-applied
+      - vt-corroborates-artifact-maliciousness-only
+      - kac-applied
+      - split-wep-treatment
+      - procedural-facts-likely
+      - operational-claims-roughly-even-chance
+      - ad-relevance-general-industry-watch-only
+      - no-developer-pivot-inheritance
+      - hard-rule-2-no-attribution-originated
+      - hard-rule-2-pattern-overlap-not-same-operator
+      - pattern-overlap-with-beagle-2026-05-07-0003
+      - ai-tradecraft-watch-cluster
+      - monitoring-tier-only
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-10-0001]
+    digraph: B3
+    wep_split:
+      procedural_facts_leg: likely
+      operational_claims_leg: roughly_even_chance
+      a_and_d_relevance_leg: general_industry_watch_only_no_developer_pivot_inheritance
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_sat: sat-kac
+    red_team_review_required: false
+    red_team_review_threshold_basis: "WEP ceiling 'likely' below 'very likely' threshold; not required"
+    iocs_added:
+      domain:
+        - customroofingcontractors.com
+        - bernasibutuwqu2.com
+        - briskinternet.com
+      url:
+        - "https://claude.ai/share/9aac1046-a39e-4618-8265-f54c4be863f7"
+        - "https://claude.ai/share/eb2db455-1d47-4baf-8671-0a689e165902"
+      sha256:
+        - ed5ed79a674972d1506dd8d68e8e13658125267ade86bfcb1ab794e2b49e50ac
+        - a833ad989b68dad582a1b591b8cf63466e79c850ff72916cf5d4c4a7f6bc650e
+      master_index_ingestion_status: pending_librarian
+      detection_engineering_caveat: |
+        claude.ai/share/... URLs are share-ID-level IOCs ONLY. Wholesale
+        claude.ai blocking would break legitimate Anthropic enterprise
+        use and is not the recommended action. Defensive value is
+        share-ID telemetry plus user-education on AI-brand-impersonation
+        social engineering, not domain blocklisting.
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      hard_rule_8_framing: silence_is_not_disconfirming_no_macos_endpoint_telemetry_in_scope
+    pattern_relationship:
+      related_finding: finding-2026-05-07-0003
+      related_brief: 2026-05-07-afternoon
+      related_topic: Beagle Windows backdoor via counterfeit claude-pro[.]com watering hole
+      relationship: ttp_pattern_overlap_ai_brand_impersonation_anthropic_lure_family
+      do_not_cross_walk_to_attribution: true
+      do_not_inherit_developer_pivot_framing: true
+      hard_rule_2_status: clean
+      cross_walk_evidence_summary:
+        platform: different (Beagle Windows / MacSync macOS)
+        infrastructure: zero overlap
+        hash_overlap: zero
+        post_compromise_capability: backdoor (Beagle) vs infostealer (MacSync)
+        lure_mechanism: counterfeit-distribution-site (Beagle) vs sponsored-ad-malvertising-plus-real-claude-ai-share-url (MacSync)
+        originating_research: Sophos via BleepingComputer (Beagle) vs Trendyol Group via BleepingComputer (MacSync)
+    librarian_handoffs:
+      - action: add_provisional_source_grade
+        target: source-grades.yaml
+        entry: trendyol_group_berk_albayrak
+        provisional_grade: C
+        rationale: "Unknown corporate research team; first surface in Archimedes corpus; no peer-reviewed APT/malware research history visible. Trendyol is Turkey's largest e-commerce platform with a real security team; not Tier-1 vendor research practice. C-provisional pending track record."
+      - action: regenerate_master_ioc_index
+        target: threats/iocs/_master-index.yaml
+        new_iocs_count: 7
+        new_ioc_categories: [domain, url, sha256]
+      - action: optional_evaluate_ttp_watch_entry
+        target: threats/iocs/unattributed/beagle.yaml
+        proposal: "Operator decision per analyst KAC and PM-000 sentinel — whether to expand current Beagle unattributed cluster into a broader TTP-watch entry for AI-brand-impersonation-Anthropic lures across operators. Two campaigns in 4 days, zero file/infra overlap, suggests pattern-level rather than operator-level grouping. Hard Rule 2 does NOT block pattern-level grouping. NOT a librarian-autonomous action; surfaces for operator decision."
+    qualifying_caveats_carried:
+      - developing_pattern_framing_softened_to_open_question_per_a1_kac
+      - beagle_developer_pivot_inheritance_dropped_per_a2_kac
+      - all_technical_narrative_attributed_to_trendyol_via_bleepingcomputer_per_a3_kac
+      - vt_corroborates_artifact_maliciousness_only_not_campaign_narrative_per_a4_kac
+      - split_wep_likely_for_procedural_roughly_even_chance_for_operational_per_a6_kac
+      - claude_ai_share_abuse_leg_carries_per_trendyol_research_not_independently_verified_caveat_per_a7_kac
+    resurface_if:
+      - second_independent_vendor_publishes_corroborating_macsync_research
+      - mandiant_or_crowdstrike_or_unit42_or_mstic_or_eset_or_sentinellabs_or_objective_see_or_patrick_wardle_publishes_macsync_or_renames_to_known_macos_family
+      - third_ai_brand_impersonation_anthropic_campaign_observed_within_quarter
+      - parallel_cursor_copilot_chatgpt_gemini_brand_impersonation_corpus_comparison_completes
+      - first_party_splunk_hit_on_any_macsync_ioc
+      - ad_dib_environment_named_as_macsync_target
+      - anthropic_publishes_share_url_abuse_advisory_or_telemetry
+      - claude_ai_share_id_telemetry_observed_in_a_b_grade_corpus
+    weekly_synthesis_pattern_held:
+      pattern: ai_brand_impersonation_anthropic_lure_family_two_campaigns_in_4_days_no_operator_link_pattern_observation_only
+      surface_in: 2026-05-10-weekly-synthesis
+      framing_per_kac: open_question_not_declarative_pattern
+    first_covered: 2026-05-10
+    last_covered: 2026-05-10
+    retraction: null
+    test: false
+    notes: |
+      New corpus item, monitoring tier. Single-vendor relay (Trendyol
+      via BleepingComputer); single-source veto applied; cluster
+      capped at B3 with effective-relay-floor logic per
+      finding-2026-05-07-0003 (Beagle) precedent.
+
+      Analyst KAC produced 2 sound / 5 qualify / 1 test classification
+      across 8 surfaced assumptions. Brief copy applied all qualifying
+      caveats verbatim:
+      (1) Drop "developing tradecraft pattern" declarative framing;
+      soften to open question whether 4-day cadence signals
+      Anthropic-specific pattern or commodity operators tracking
+      general AI-tool search volume (A1).
+      (2) Drop Beagle-dossier developer-endpoint-pivot-as-A&D-supply-
+      chain-risk inheritance; carry as general-industry-watch only on
+      consumer-discovery lure profile and bounded macOS A&D-prime
+      dev-fleet exposure (A2).
+      (3) Attribute all technical narrative to Trendyol via
+      BleepingComputer; flag MacSync as researcher-coined naming, not
+      vendor-consensus (A3).
+      (4) VT corroboration framed as artifact-maliciousness only, NOT
+      campaign-narrative corroboration (A4).
+      (5) Split-WEP applied: likely for procedural facts, roughly even
+      chance for operational claims (A6).
+      (6) Claude.ai-share-abuse leg carries explicit "per Trendyol
+      research, share URLs not independently verified by Archimedes,
+      Anthropic likely removed the adversarial chats since publication"
+      caveat (A7 test/qualified-in-place; not blocking, monitoring-tier
+      tolerable).
+      (7) Hard Rule 2 binding: source makes NO threat-actor
+      attribution; pattern overlap with Beagle is TTP-evolution
+      observation only, NOT same-operator inference (A8 sound).
+
+      Detection-engineering posture explicit: claude.ai/share/... URLs
+      are share-ID-level IOCs ONLY. Defensive value is share-ID
+      telemetry + user-education on AI-brand-impersonation social
+      engineering, NOT domain blocklisting.
+
+      Hard Rule 8 honored: silent first-party Splunk over -30d on
+      MacSync 7-IOC set framed as absence-of-evidence (no macOS-
+      endpoint telemetry in scope), NOT disconfirming.
+
+      Pre-flight: 12/12 passed on iteration 1 after one micro-edit
+      (replaced bare "may have removed" with WEP-compliant "has
+      likely removed" on the Anthropic-share-removal caveat). No
+      banned phrases, zero direct quotes from external sources
+      (Hard Rule 6 trivially clean), word count 712 inside 400-800
+      afternoon target, single-source veto respected (no
+      "very likely"+ claims), all standing sections present.
+
+      Librarian handoffs: (a) add Trendyol-Group / Berk Albayrak to
+      source-grades.yaml at provisional C; (b) regenerate
+      _master-index.yaml on the 7 new IOCs; (c) operator decision —
+      whether to expand threats/iocs/unattributed/beagle.yaml into a
+      broader AI-brand-impersonation-Anthropic-lure-family TTP-watch
+      entry (NOT autonomous; surfaces for operator).
 
 # ============================================================================
 # Valid resurface_if conditions

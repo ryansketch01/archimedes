@@ -15,7 +15,7 @@
 #   5. Threat-box scoring within 14 days (human sign-off for HIGH)
 
 version: 2
-last_updated: 2026-05-09        # /update-tracking MuddyWater (#022) — LOW (auto-commit, weighted 4.15)
+last_updated: 2026-05-10        # /update-tracking APT37 (#024) — MEDIUM (auto-commit, weighted 4.9); follows /update-tracking MuddyWater (#022) 2026-05-09 — LOW (auto-commit, weighted 4.15)
 source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
 
 actors:
@@ -376,13 +376,13 @@ actors:
       nation: KP
       service: "MSS (Ministry of State Security) — per ESET via The Record 2026 framing; earlier reporting (FireEye/Mandiant 2018, Kaspersky, Cisco Talos, Volexity) attributed broadly to 'North Korean state interests' without specifying MSS vs. RGB"
     type: "Nation-State APT"
-    threat_level: HIGH         # roster-intake placeholder; threat-box.yaml is TEMPLATE pending /update-tracking with /approve-scoring gate
+    threat_level: MEDIUM         # weighted overall 4.9 (MEDIUM) per /update-tracking 2026-05-10; espionage category HIGH (composite 8). Intent=3 Sector Association bound by evidence-minimum table — no A-grade source documents A&D-prime-direct targeting required for Intent=5. Operator-anticipated HIGH did NOT materialize; the disciplined Intent=3 outcome is the doctrine working as designed for an actor whose dominant targeting is civil-society / defectors / Korean-language journalists / regional industrial sectors.
     tracked_since: 2026-05-09
     dossier: threats/threat-actors/APT37/
-    last_reviewed: 2026-05-09
-    next_review_due: 2026-08-07
+    last_reviewed: 2026-05-10
+    next_review_due: 2026-08-08
     mitre_attack_id: G0067
-    note: "First-pass profile created 2026-05-09 from finding-2026-05-07-0004 (ESET via The Record — BirdCall / Sqgame Android supply-chain compromise targeting ethnic Koreans in Yanbian, China). Threat-box scoring is TEMPLATE pending /update-tracking with /approve-scoring gate (HIGH likely). A&D-prime relevance is INDIRECT/STRUCTURAL (mobile capability + civil-society partner exposure + DPRK roster gap closure); A&D-direct targeting is undocumented in public reporting. Closes structural gap in roster — prior DPRK coverage was RGB-only (Lazarus, Stardust Chollima); APT37 is MSS-attributed per recent reporting."
+    note: "First-pass profile created 2026-05-09 from finding-2026-05-07-0004 (ESET via The Record — BirdCall / Sqgame Android supply-chain compromise targeting ethnic Koreans in Yanbian, China). Threat-box scoring 2026-05-10 via /update-tracking (Mode 2): weighted 4.9 → MEDIUM → auto-commit. Espionage composite 8 (category HIGH) but weighted overall MEDIUM because Intent=3 (Sector Association) — bound by evidence-minimum table — keeps Espionage from ceiling 10, and three floor categories (destructive 2, disruptive 2, cyber-crime 2) plus supply-chain MEDIUM (composite 6) dilute via doctrine weighting. Hard Rule 5 gate did NOT fire. Operator-anticipated HIGH did NOT materialize. A&D-prime relevance remains INDIRECT/STRUCTURAL (mobile capability + civil-society partner exposure + DPRK roster gap closure); A&D-direct targeting is undocumented in public reporting. Splunk first-party zero hits over -30d on 2026-05-10 sweep across primary search set. Closes structural gap in roster — prior DPRK coverage was RGB-only (Lazarus, Stardust Chollima); APT37 is MSS-attributed per recent reporting."
 
 # ============================================================================
 # Quick-lookup indices (regenerated when roster changes)
@@ -390,8 +390,8 @@ actors:
 _meta:
   total_actors: 24
   by_threat_level:
-    HIGH: 19
-    MEDIUM: 3          # REvil, APT34, UNC1549
+    HIGH: 18
+    MEDIUM: 4          # REvil, APT34, UNC1549, APT37 (per /update-tracking 2026-05-10; espionage composite 8 HIGH at category tier but weighted overall MEDIUM)
     LOW: 2             # Charming Kitten, MuddyWater (per /update-tracking 2026-05-09; both espionage category MEDIUM/HIGH but weighted overall LOW)
   by_nation:
     RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
@@ -402,5 +402,5 @@ _meta:
   profiles_migrated: 1         # APT28 only at v1
   profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King
   profiles_first_pass: 5       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09)
-  scoring_complete: 4          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — red-team qualify Intent=4 → weighted LOW despite category HIGH); MuddyWater (2026-05-09 /update-tracking, initial LOW — fourth workflow validation pass; red-team qualify Intent=3 Sector Association bound, 72h clock fired with no corroboration, weighted LOW despite category MEDIUM on espionage). APT37 carries TEMPLATE threat-box pending /update-tracking with /approve-scoring gate. APT28 awaits methodology rerun.
-  scoring_template_only: 1     # APT37 — threat-box.yaml structurally scaffolded with null values; HIGH likely on /update-tracking pass; Hard Rule 5 gate preserved.
+  scoring_complete: 5          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — red-team qualify Intent=4 → weighted LOW despite category HIGH); MuddyWater (2026-05-09 /update-tracking, initial LOW — fourth workflow validation pass; red-team qualify Intent=3 Sector Association bound, 72h clock fired with no corroboration, weighted LOW despite category MEDIUM on espionage); APT37 (2026-05-10 /update-tracking, initial MEDIUM — fifth workflow validation pass; evidence-minimum-table-bound Intent=3 Sector Association, espionage category HIGH composite 8 but weighted overall MEDIUM because Intent=3 keeps espionage from ceiling 10 and three floor categories plus supply-chain MEDIUM dilute via doctrine weighting; Hard Rule 5 gate did NOT fire). APT28 awaits methodology rerun.
+  scoring_template_only: 0     # APT37 scored 2026-05-10; no remaining TEMPLATE-only dossiers.

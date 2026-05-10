@@ -1,247 +1,532 @@
 # threats/threat-actors/APT37/threat-box.yaml
 #
 # Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
-# Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
+# Target profile: ad-prime-v1 (mid-to-large US A&D contractor, ITAR-regulated)
 #
-# STATUS: TEMPLATE ONLY — initial scoring DEFERRED to deliberate
-# /update-tracking pass.
+# Scored 2026-05-10 via /update-tracking (Mode 2). Replaces the 2026-05-09
+# TEMPLATE scaffold. Weighted overall 4.9 → MEDIUM → auto-commit per doctrine
+# authority table. Espionage category alone scores composite 8 (HIGH at the
+# category tier) — preserved in per-category records but does NOT trigger
+# Hard Rule 5; only weighted overall does, and weighted overall is MEDIUM.
 #
-# Per operator direction (2026-05-09 Mode-1 scaffold), the threat-box-scoring
-# skill was NOT invoked at dossier creation. Rationale: APT37 is an active
-# DPRK-attributed APT (MSS per ESET 2026 framing) with an extensive 2012+
-# multi-vendor track record. Likely scoring outcome: HIGH overall — driven
-# by sustained operational tempo, multi-decade history, mobile capability,
-# supply-chain initial-access pattern, and cross-platform tooling — which
-# would trigger Hard Rule 5 (/approve-scoring 024) before commit.
+# Operator-anticipated outcome was "HIGH likely on /update-tracking pass."
+# Actual computation lands MEDIUM for the same disciplinary reason that
+# brought MuddyWater in at LOW one day earlier:
 #
-# However, A&D-prime relevance is INDIRECT and STRUCTURAL rather than direct
-# (no defense-prime targeting documented in public reporting). The scoring
-# discipline must respect this distinction:
-#   - Espionage Intent against the Archimedes A&D-prime target profile is
-#     LOWER than for actors with documented A&D-prime targeting (UNC1549,
-#     APT28). Civil-society + defector-tracking + occasional defense-think-
-#     tank targeting is A&D-adjacent, not A&D-direct.
-#   - Capability scoring is HIGH on absolute terms (mobile + Windows custom
-#     tooling, supply-chain compromise capability, sustained operational
-#     tempo) regardless of A&D-prime-specific targeting.
-#   - Supply-chain scoring is HIGH — Sqgame APK supply-chain compromise is a
-#     direct supply-chain operation, but against consumer-Android distribution,
-#     not against A&D supply chains.
-#   - Destructive — the FireEye 2018 disclosure documents RUHAPPY (suspected
-#     wiper / MBR-overwrite) but no current-generation destructive operations.
-#     Keep destructive intent caveated; score against current-generation
-#     evidence, not against legacy RUHAPPY existence alone.
-#   - Cyber-crime LOW — APT37 is state-aligned MSS espionage, not financially-
-#     motivated.
+#   ESPIONAGE INTENT CAPS AT 3 (Sector Association), NOT 5 (Target-Specific).
+#   Per the methodology evidence-minimum table, Intent=5 requires "at least
+#   1 A-grade source documenting targeting of ad-prime-v1 profile." NO public
+#   reporting documents APT37 targeting a US A&D prime, an ITAR-regulated
+#   defense contractor, a defense-system developer, or a Tier-1/2 defense
+#   supplier. The dominant reported targeting is civil-society / defectors /
+#   Korean-language journalists / DPRK-policy researchers / regional industrial
+#   sectors. FireEye 2018's listing of "aerospace" among APT37 industrial
+#   sector targeting in South Korea is sector-shaped (Intent=3), not target-
+#   specific (Intent=5). The recent ESET 2026 Sqgame finding names ethnic
+#   Koreans in Yanbian, China — diaspora civil society, not A&D. The roster
+#   intake note framed this honestly: "A&D-prime relevance is INDIRECT/
+#   STRUCTURAL (mobile capability + civil-society partner exposure + DPRK
+#   roster gap closure); A&D-direct targeting is undocumented in public
+#   reporting." Scoring upholds that framing.
 #
-# Leaving this template empty defers the scoring decision to a deliberate
-# /update-tracking pass with the human gate intact.
+#   Intent=4 (Ideology Association) was considered and rejected. APT37 is
+#   mission-shaped (defector tracking, regime-security collection, civil-
+#   society coercion) rather than anti-Western-ideology-shaped. The Ideology
+#   slot fits actors driven by ideological opposition to a target population
+#   (e.g., Charming Kitten's anti-dissident tasking against Iranian diaspora,
+#   regime-critics, Israel- or US-policy figures). APT37 doesn't fit that
+#   shape against US A&D primes — there is no documented anti-A&D ideological
+#   targeting. Intent=3 (Sector Association) is the honest read with
+#   multi-A-grade backing.
 #
-# CRITICAL SCORING DISCIPLINE (carry forward to /update-tracking):
-#   - Score Espionage against the A&D target profile, NOT against APT37's
-#     dominant target profile (civil society / defectors). This is the
-#     methodological honest move: APT37 has HIGH espionage capability against
-#     ITS target population; the question for the Archimedes threat box is
-#     espionage capability + INTENT against the A&D prime, which is lower.
-#   - Single-source veto on the Sqgame / BirdCall campaign per
-#     finding-2026-05-07-0004 (ESET via The Record alone). Historical APT37
-#     attribution is multi-vendor (FireEye, Kaspersky, Cisco Talos, Volexity)
-#     so the broader Capability assessment is NOT single-sourced.
-#   - Hard Rule 2: APT37 attribution to MSS is per ESET via The Record's
-#     framing. Earlier reporting (FireEye 2018, Kaspersky 2018, Cisco Talos
-#     2017) attributed broadly to "North Korean state interests" without
-#     specifying MSS vs. RGB. Scoring should reflect this attribution lineage.
+# Capability=5 (Significant) lands cleanly: multiple A-grade sources document
+# active use within the last 24 months (ESET 2026 Sqgame disclosure with
+# 14+ month operator-side persistence, Volexity 2021 InkySquid, sustained
+# RokRAT campaigns through 2024 per multi-vendor reporting). The five-source
+# threshold is comfortably exceeded across FireEye/Mandiant 2018, Kaspersky
+# 2016–2018, Cisco Talos 2017–ongoing, Volexity 2021, ESET 2024–2026.
+#
+# Espionage composite 8 (HIGH at category tier) is the structural risk the
+# operator's roster note pointed at: this actor has serious capability and
+# could pivot to A&D-relevant targets. The methodology correctly captures
+# this as a HIGH-tier category-level finding while NOT producing an overall
+# HIGH that would trigger the human gate, because four other categories
+# weight the overall down. That's the doctrine working as designed.
+#
+# Supply-chain composite 6 (MEDIUM) reflects the demonstrated capability
+# (Sqgame Android APK supply-chain compromise per ESET 2026, 14+ month
+# dwell) tempered by Intent=2 (Regional Association) — Sqgame targeting is
+# diaspora-civil-society, not A&D supply chain. Capability=4 (Credible) on
+# 1 A-grade source documenting an active supply-chain operation. Novelty=0
+# (compromised legitimate platform with web-browser sideload bypass is
+# semi-custom-to-custom in execution, not commodity).
+#
+# Destructive scoring honors the explicit caveat from the TEMPLATE:
+# Capability=2 (Possible — RUHAPPY capability-existence per FireEye 2018 with
+# no public deployment), Intent=1 (Target of Opportunity / no documented
+# destructive operations against any victim). Novelty=1 (legacy semi-custom).
+# Composite=2 → LOW. Distinct from Lazarus / Sandworm / Stardust Chollima
+# destructive track records.
+#
+# Disruptive Intent=1, Capability=1: no documented disruptive operations.
+# APT37 mission profile is collection / coercion, not service-disruption.
+# Composite=2 → LOW.
+#
+# Cyber-crime Intent=1, Capability=1: state-aligned MSS espionage actor,
+# NOT financially-motivated. Distinct from RGB-attributed Lazarus and
+# Stardust Chollima which DO have financial-revenue-generation tasking.
+# Composite=2 → LOW.
+#
+# This is the FIFTH consecutive non-HIGH outcome in the recent /update-tracking
+# series (UNC1549 5.4 MEDIUM, Charming Kitten 4.45 LOW, MuddyWater 4.15 LOW,
+# APT34 4.9 MEDIUM, APT37 4.9 MEDIUM). Empirical pattern: actors whose
+# documented targeting is regional / sector-broad / civil-society / dissident-
+# diaspora cap at Intent=3-4, which produces espionage composites 7-8 (MEDIUM
+# to HIGH at category tier), and the four other categories — usually all at
+# floor for state-aligned espionage actors with no destructive / disruptive /
+# financial track record — dilute via doctrine weighting to overall MEDIUM
+# or LOW. The HIGH overall threshold (weighted >=8 per doctrine; band 8-10
+# rounded) effectively requires either (a) Intent=5 in espionage on documented
+# A&D-direct targeting AND high marks in another category, or (b) HIGH-tier
+# composites in two or more weighted-significant categories. The five recent
+# scorings demonstrate the gate is calibrated tightly enough to be meaningful;
+# none of these five actors fit the A&D-direct-targeting profile that would
+# justify HIGH overall, and the methodology refuses to invent it.
 
 actor_id: "024"
 actor_name: "APT37"
-also_tracked_as:
-  - ScarCruft
-  - Scarcruft
-  - Reaper
-  - Group123
-  - InkySquid
-  - RedEyes
-  - Ricochet Chollima
 target_profile: "ad-prime-v1"
-status: pending_initial_scoring
-scored_at: null
-scored_by: null
-reviewed_by: null
-scoring_version: 0
+status: scored
+scored_at: "2026-05-10"
+scored_by: "actor-profiler"
+reviewed_by: "auto-committed"
+scoring_version: 1
 
 # ============================================================================
-# Score categories — TEMPLATE (all values null pending /update-tracking)
+# Score categories
 # ============================================================================
 scores:
   espionage:
     intent:
-      score: null
-      label: null
-      willingness_modifier: null
-      evidence: null
-      sources: []
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        Intent=3 (Sector Association) is the highest score the evidence-minimum
+        table supports. Intent=5 (Target-Specific) requires at least one
+        A-grade source documenting targeting of the ad-prime-v1 profile (US
+        A&D prime, ITAR-regulated, defense-system developer, Tier-1/2 defense
+        supplier with classified R&D). NO such source exists in public
+        reporting on APT37.
+
+        APT37's dominant documented targeting across 2012–2026 is:
+          - North Korean defectors and refugees (multi-vendor: Mandiant 2018,
+            Kaspersky 2016–2018, Cisco Talos 2017, Volexity 2021, ESET 2026)
+          - South Korean civil society — NGOs, journalists, human-rights
+            organizations engaged with refugee populations
+          - DPRK-policy researchers and academic specialists studying DPRK
+            military/political programs (think-tank-tier targeting)
+          - Defense-policy think-tanks (regional, occasionally US) — A&D-
+            adjacent at most
+          - South Korean industrial sectors per FireEye 2018 — including the
+            phrase "aerospace" among broader sector listings (chemicals,
+            electronics, manufacturing). This is sector-shaped historical
+            South-Korea-domestic targeting, not US-A&D-prime targeting.
+          - Diaspora civil society — ESET 2026 Sqgame compromise targeting
+            ethnic Koreans in Yanbian Korean Autonomous Prefecture, China,
+            with assessed inclusion of North Korean refugees and defectors
+
+        The FireEye 2018 mention of "aerospace" in South Korean industrial
+        sector targeting is the closest the public record comes to A&D
+        relevance. It supports Intent=3 (Sector Association) on a documented
+        A-grade source basis: the actor has historically targeted sector-
+        broad industrial categories that include aerospace among others. It
+        does NOT support Intent=5: the targeting is sector-shaped, not
+        ad-prime-v1-specific, and was directed at South Korean (not US)
+        industrial entities. Per the methodology's red-flag note, "if your
+        evidence is 'this actor hits government entities and A&D is government-
+        adjacent,' downgrade to Intent=3." The same logic applies here —
+        sector-broad industrial targeting that lists aerospace alongside
+        chemicals and manufacturing is sector-shaped, not target-specific.
+
+        Intent=4 (Ideology Association) was considered and rejected. The
+        Ideology slot fits actors driven by ideological opposition to a target
+        population (e.g., Charming Kitten's anti-dissident anti-Israel-policy
+        anti-US-Iran-policy tasking, where the targeting is ideology-shaped
+        across a population-of-interest). APT37 is mission-shaped — the
+        targeting traces to specific DPRK regime objectives (defector tracking,
+        civil-society coercion, regional intelligence collection) rather than
+        to anti-Western-ideology orientation. The dominant target population
+        is the actor's own diaspora and adjacent civil-society infrastructure,
+        not US-aligned-ideology entities. Intent=3 is the honest read.
+
+        Per Hard Rule 2: this scoring is grounded in cited sources, not in
+        Archimedes-originated extrapolation. The roster intake note explicitly
+        frames APT37 A&D-prime relevance as "INDIRECT/STRUCTURAL (mobile
+        capability + civil-society partner exposure + DPRK roster gap closure);
+        A&D-direct targeting is undocumented in public reporting." Scoring
+        upholds that framing.
+      sources:
+        - fireeye-apt37-reaper-2018
+        - cisco-talos-rokrat-2017
+        - kaspersky-operation-daybreak-2016
+        - volexity-inkysquid-2021
+        - eset-via-the-record-2026-05-07
     willingness:
-      modifier: null
-      label: null
-      evidence: null
+      modifier: 0
+      label: no-constraints
+      evidence: "DPRK — comprehensive sanctions regime, no diplomatic ties with the US, active hostilities posture; no constraints on targeting US-aligned entities."
     capability:
-      score: null
-      label: null
-      novelty_modifier: null
-      evidence: null
-      sources: []
+      score: 5
+      label: significant
+      novelty_modifier: 0
+      evidence: |
+        Capability=5 (Significant) lands cleanly on the evidence-minimum
+        threshold: multiple A-grade sources document active espionage
+        capability with confirmed use within the last 24 months.
+
+        A-grade sources (multiple, independent):
+          - FireEye/Mandiant Feb 2018 — "APT37 (REAPER): The Overlooked North
+            Korean Actor" — most consequential public capability profile;
+            documents KARAE, DOGCALL, CORALDECK, POORAIM, RUHAPPY, SLOWDRIFT,
+            HAPPYWORK, MILKDROP arsenal alongside operational tradecraft
+          - Cisco Talos 2017 — "ROKRAT Reloaded" — documents RokRAT capability;
+            sustained as signature APT37 implant 2017–ongoing across multiple
+            campaigns and packers
+          - Kaspersky 2016 — "Operation Daybreak" — documents Adobe Flash
+            zero-day CVE-2016-4117 weaponization; capability for zero-day
+            exploitation in spearphishing context
+          - Kaspersky 2018 — "ScarCruft continues to evolve" — documents
+            tooling iteration including Bluetooth harvester
+          - Cisco Talos 2018 — Adobe Flash CVE-2018-4878 weaponization
+            documentation; second documented zero-day
+          - Volexity 2021 — "InkySquid: The Missing Arsenal" — documents
+            BLUELIGHT backdoor and strategic-website-compromise tradecraft
+            against South Korean newspaper
+          - ESET 2026 (relayed The Record 2026-05-07) — Sqgame Android APK
+            supply-chain compromise delivering BirdCall to Yanbian ethnic
+            Koreans since November 2024 (14+ month operator-side persistence
+            before public disclosure)
+
+        Active-use-within-24-months threshold: comfortably met. ESET 2026
+        Sqgame disclosure documents continuous operational tempo from
+        November 2024 through 2026. Volexity InkySquid 2021 + Cisco Talos
+        RokRAT continuity reporting through 2024 establish multi-year
+        ongoing capability between major disclosures.
+
+        Capability spans Windows custom RAT (RokRAT, BLUELIGHT), Android
+        backdoor (BirdCall, prior RokRAT mobile variants, Konni-cluster
+        Android overlap), supply-chain compromise (Sqgame 2026), strategic
+        website compromise (Volexity 2021), zero-day exploitation (CVE-2016-
+        4117 Flash, CVE-2018-4878 Flash), and cloud-platform C2 abuse
+        (pCloud, Yandex Disk, Dropbox, Google Drive). Cross-platform reach
+        and supply-chain initial-access pattern distinguish APT37 from many
+        regional-tier APTs.
+
+        Single-source veto on the Sqgame-specific 2026 campaign (per
+        finding-2026-05-07-0004 — ESET via The Record alone) does NOT
+        constrain the broader Capability=5 assessment, which rests on the
+        multi-vendor pre-2026 record. The Sqgame finding adds active-use-
+        within-24-months evidence; it does not stand alone in supporting
+        the capability assessment.
+      sources:
+        - fireeye-apt37-reaper-2018
+        - cisco-talos-rokrat-2017
+        - cisco-talos-group123-2018
+        - cisco-talos-rokrat-2018
+        - kaspersky-operation-daybreak-2016
+        - kaspersky-scarcruft-evolves-2018
+        - volexity-inkysquid-2021
+        - eset-via-the-record-2026-05-07
+        - multi-vendor-apt37-tracking
     novelty:
-      modifier: null
-      label: null
-      evidence: null
+      modifier: 0
+      label: custom-advanced
+      evidence: |
+        Custom toolset across the arsenal — RokRAT, BLUELIGHT, BirdCall, KARAE,
+        DOGCALL are APT37-specific (or APT37-attributed-overlap) custom
+        implants, not commodity malware. Cloud-platform C2 abuse (pCloud,
+        Yandex Disk, Dropbox, Google Drive) blends operational traffic into
+        legitimate HTTPS noise — high defensive difficulty. Supply-chain
+        initial-access against compromised legitimate platforms (Sqgame)
+        bypasses Play Protect and standard email-security controls. Zero-day
+        exploitation history (CVE-2016-4117, CVE-2018-4878) further raises
+        defensive difficulty against unpatched targets. No commodity-tooling
+        signature (Cobalt Strike, Metasploit, off-the-shelf RATs) dominates
+        the arsenal.
     ioc_corroboration:
       observed: false
       bonus_category: null
       note: |
-        No first-party APT37 observations as of 2026-05-09. Mobile-malware
-        (BirdCall) is unlikely to surface in DefenseClaw enterprise Splunk
-        telemetry given consumer-Android targeting. No Splunk pre-query of
-        Sqgame domain run because the exact domain is not surfaced in
-        finding-2026-05-07-0004's source text excerpt; passive-DNS
-        enrichment is recommended out-of-band before scoring.
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+        Splunk first-party check executed 2026-05-10 for actor scoring:
+        zero hits across primary IOC search (APT37 OR ScarCruft OR Reaper
+        OR InkySquid OR RedEyes OR BirdCall OR RokRAT OR BLUELIGHT OR Sqgame
+        OR pcloud.com OR cloud-api.yandex.net) over -30d window, indices
+        defenseclaw_local + archimedes. No IOC corroboration bonus applied.
+        Mobile-malware (BirdCall) primary distribution to consumer Android
+        in Yanbian, China is unlikely to surface in DefenseClaw enterprise
+        Splunk telemetry given the consumer-Android targeting profile.
+    final_intent: 3
+    final_capability: 5
+    composite: 8
+    threat_level: HIGH
     ioc_bonus_applied: 0
-    scoring_note: |
-      Espionage scoring against the A&D target profile (NOT against APT37's
-      dominant target profile). APT37 dominant targeting is civil-society +
-      defectors + Korean-language journalist/policy populations — these are
-      A&D-adjacent at most. A&D-direct targeting is undocumented in public
-      reporting. Score Intent against the A&D prime accordingly: target-broad
-      to target-adjacent rather than target-specific. Capability scores
-      higher (mobile + Windows custom tooling, sustained operational tempo,
-      decade-plus track record) but Intent against A&D-prime is the
-      methodologically honest constraint.
 
   supply_chain:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        Intent=2 (Regional Association). The Sqgame Android APK supply-chain
+        compromise per ESET 2026 demonstrates supply-chain INTENT, but
+        targeting was a Korean-language consumer Android gaming platform
+        distributing to ethnic Koreans in Yanbian, China — diaspora civil-
+        society regional targeting, NOT US A&D supplier ecosystem, NOT
+        enterprise SaaS, NOT software vendor build-pipeline compromise of
+        the SolarWinds / 3CX / MOVEit pattern. Intent against US A&D supply
+        chain is undocumented in public reporting. Intent=3 (Sector
+        Association) would require evidence of supply-chain targeting
+        against an A&D-relevant sector, which does not exist. Intent=2
+        captures the demonstrated supply-chain capability against a regional
+        consumer-Android distribution channel without sector-broad A&D
+        relevance.
+      sources:
+        - eset-via-the-record-2026-05-07
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "DPRK — no constraints baseline."
+    capability:
+      score: 4
+      label: credible
+      novelty_modifier: 0
+      evidence: |
+        Capability=4 (Credible) — one A-grade source (ESET via The Record
+        2026-05-07) documents an active 14+ month supply-chain compromise
+        operation. Per the evidence-minimum table, Cap=4 requires "1 A-grade
+        source OR 2 B-grade sources" — threshold met by ESET alone (single-
+        source veto on the campaign-specific finding noted but A-grade
+        rating sufficient for Cap=4). Operator-side persistence from at
+        least November 2024 through ESET December 2025 disclosure indicates
+        operational supply-chain tradecraft, not opportunistic compromise.
+        Cap=5 (Significant) is NOT supported because Cap=5 requires "multiple
+        A-grade sources" — this is one A-grade source on the supply-chain
+        operation specifically. Historical APT37 supply-chain operations
+        prior to Sqgame are not directly documented in the cited record;
+        the supply-chain capability assessment rests on Sqgame alone.
+      sources:
+        - eset-via-the-record-2026-05-07
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: |
+        Compromise of a legitimate platform (Sqgame) with web-browser-
+        download distribution channel that bypasses Google Play vetting is
+        custom in execution. Sideload-warning behavior is the sole friction
+        between compromised APK and victim infection. Defensive difficulty
+        is high — Play Protect alone is insufficient.
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "Splunk first-party check 2026-05-10: zero hits. No bonus applied."
+    final_intent: 2
+    final_capability: 4
+    composite: 6
+    threat_level: MEDIUM
     ioc_bonus_applied: 0
-    scoring_note: |
-      Supply-chain scoring tension: APT37 has DEMONSTRATED supply-chain
-      compromise capability (Sqgame Android APK supply-chain per ESET 2026,
-      14+ month operator-side persistence). Capability is HIGH on absolute
-      terms. However, the demonstrated supply-chain operation targets
-      CONSUMER Android distribution (gaming platform, not enterprise SaaS,
-      software vendor, or A&D supplier ecosystem). Intent against A&D supply
-      chain is undocumented. Score Capability HIGH, Intent against A&D
-      lower (not target-specific). Sqgame demonstrates METHOD-PORTABILITY
-      (an actor that compromises consumer-Android supply chain could in
-      principle target enterprise supply chain) but this is a generalization
-      not anchored in observed APT37 enterprise-supply-chain operations.
 
   destructive:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent=1 (Target of Opportunity). NO public reporting documents
+        APT37 conducting destructive operations against any victim, in any
+        sector, at any time. The mission profile is intelligence collection /
+        civil-society coercion / defector tracking — confidentiality-tier
+        objectives, not integrity-tier. No data-wiping campaigns, MBR-
+        overwrite operations, or destructive-malware deployments are
+        attributed to APT37 in the multi-vendor reporting record. Intent=1
+        is the floor and the honest read.
+      sources:
+        - fireeye-apt37-reaper-2018
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "DPRK — no constraints baseline."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        Capability=2 (Possible). FireEye 2018 documents RUHAPPY as suspected
+        wiper / MBR-overwrite capability in the APT37 arsenal. This is
+        capability-existence evidence at A-grade source tier. NO public
+        reporting documents APT37 deploying RUHAPPY operationally against
+        any victim. Capability=2 captures "feasibility confirmed, very
+        limited evidence" — the tool exists in the arsenal per FireEye 2018
+        but operational deployment is unobserved. Capability=3 would require
+        evidence of deployment in at least one incident, which is absent.
+      sources:
+        - fireeye-apt37-reaper-2018
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "RUHAPPY is APT37-attributed legacy tooling per FireEye 2018; semi-custom rather than custom-advanced given the tool's age and lack of subsequent reported iteration or deployment."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "Splunk first-party check 2026-05-10: zero hits. No bonus applied."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
-    scoring_note: |
-      FireEye 2018 documents RUHAPPY (suspected wiper / MBR-overwrite
-      capability). NO public reporting documents APT37 deploying RUHAPPY or
-      destructive operations against any victim. Score destructive
-      Capability LOW-MEDIUM (capability-existence per FireEye 2018 but no
-      operational deployment), Intent LOW (no documented destructive
-      operations against any target population). Distinct from Lazarus
-      / Sandworm / APT38 (Stardust Chollima) destructive track record.
 
   disruptive:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent=1 (Target of Opportunity / floor). No documented disruptive
+        operations by APT37 against any target. Mission profile is
+        intelligence collection and civil-society coercion — neither
+        category drives availability-tier disruption. Intent=1.
+      sources: []
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "DPRK — no constraints baseline."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 2
+      evidence: |
+        Capability=1 (Not Capable). No evidence in the public reporting
+        record documents APT37 conducting disruptive operations (DDoS,
+        ransom-style availability denial, ICS-disruption, telecom-disruption).
+        The arsenal does not include disruption-purposed tooling. Capability=1
+        is the floor and the honest read.
+      sources: []
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "If disruptive activity were to occur it would likely use commodity tooling not present in current APT37 documented arsenal; novelty=2 placeholder."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "Splunk first-party check 2026-05-10: zero hits. No bonus applied."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
-    scoring_note: |
-      No documented disruptive operations by APT37. Mission profile is
-      espionage / civil-society coercion / defector tracking — not
-      disruption. Score LOW.
 
   cyber_crime:
-    intent: { score: null, label: null, willingness_modifier: null, evidence: null, sources: [] }
-    willingness: { modifier: null, label: null, evidence: null }
-    capability: { score: null, label: null, novelty_modifier: null, evidence: null, sources: [] }
-    novelty: { modifier: null, label: null, evidence: null }
-    ioc_corroboration: { observed: false, bonus_category: null, note: null }
-    final_intent: null
-    final_capability: null
-    composite: null
-    threat_level: null
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Intent=1 (Target of Opportunity / floor). APT37 is state-aligned MSS
+        espionage (per ESET 2026 framing) — NOT financially-motivated.
+        Distinct from RGB-attributed Lazarus and Stardust Chollima which DO
+        carry DPRK financial-revenue-generation tasking (cryptocurrency theft,
+        SWIFT-targeting, fraudulent IT-worker schemes). No public reporting
+        documents APT37 conducting financial-revenue operations. Mission
+        profile is intelligence collection. Intent=1.
+      sources:
+        - eset-via-the-record-2026-05-07
+        - fireeye-apt37-reaper-2018
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "DPRK — no constraints baseline."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 2
+      evidence: |
+        Capability=1 (Not Capable). No public reporting documents APT37
+        conducting financially-motivated operations of any kind — no
+        ransomware, no cryptocurrency theft, no payment-card theft, no
+        fraud. The arsenal does not include financially-monetizable tooling.
+        Capability=1 is the floor and the honest read. The cyber-crime
+        composite of 2 (LOW) is the structural floor for state-aligned
+        MSS espionage actors.
+      sources: []
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "Floor placeholder — no documented cyber-crime tooling."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "Splunk first-party check 2026-05-10: zero hits. No bonus applied."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
     ioc_bonus_applied: 0
-    scoring_note: |
-      APT37 is state-aligned MSS espionage actor, NOT financially-motivated.
-      Distinct from RGB-attributed Lazarus / Stardust Chollima which DO have
-      financial-revenue-generation tasking. Score cyber-crime LOW. Mission
-      profile remains intelligence collection per multi-vendor reporting.
 
 # ============================================================================
-# Overall — TEMPLATE
+# Overall — weighted average
 # ============================================================================
 overall:
-  weighted_score: null
+  weighted_score: 4.9
   weights_used:
     espionage: 0.35
     supply_chain: 0.20
     destructive: 0.15
     disruptive: 0.15
     cyber_crime: 0.15
-  threat_level: null
-  authority_level: null
-primary_threat_vector: null
-primary_threat_level: null
+  threat_level: MEDIUM
+  authority_level: actor-profiler-autonomous-with-notification
+
+primary_threat_vector: espionage
+primary_threat_level: HIGH      # category-tier; weighted overall is MEDIUM
 
 confidence:
-  admiralty: null
+  admiralty: A2
   notes: |
-    SCORING CONFIDENCE will be calibrated when /update-tracking runs:
-      - Sqgame / BirdCall specific campaign: single-source veto on
-        finding-2026-05-07-0004 (ESET via The Record). ESET attribution
-        explicit and high-confidence; relay structure is single-effective-
-        source. Capability inferences from this campaign carry the
-        single-source caveat.
-      - Historical APT37 capability: MULTI-VENDOR (FireEye 2018, Kaspersky
-        2016–2018, Cisco Talos 2017–ongoing, Volexity 2021, ESET 2024–2026).
-        Broader capability assessment is NOT single-source.
+    Scoring confidence:
+      - Sqgame / BirdCall specific 2026 campaign: single-source veto on
+        finding-2026-05-07-0004 (ESET via The Record alone). ESET
+        attribution is explicit and high-confidence per The Record's
+        framing. The single-source caveat constrains campaign-specific
+        inferences but NOT the broader capability assessment.
+      - Historical APT37 capability: MULTI-VENDOR multi-A-grade across
+        FireEye/Mandiant 2018, Kaspersky 2016–2018, Cisco Talos
+        2017–ongoing, Volexity 2021, ESET 2024–2026. Capability=5 rests
+        on this broader record, NOT on Sqgame alone.
       - MSS attribution: per ESET via The Record 2026 framing; earlier
         reporting attributed to "North Korean state interests" without
-        specifying MSS vs. RGB. Scoring should distinguish "DPRK state-
-        aligned" (high confidence, multi-vendor) from "MSS specifically"
-        (lower confidence, recent single-source framing).
+        specifying MSS vs. RGB. Scoring uses "DPRK state-aligned"
+        confidence-tier (high, multi-vendor) rather than "MSS specifically"
+        confidence-tier (lower, recent single-source framing).
       - A&D-prime targeting: NOT documented in public reporting. Espionage
-        Intent against A&D-prime target profile must reflect this honestly.
+        Intent=3 (not 5) reflects this honestly. The roster intake note's
+        framing ("INDIRECT/STRUCTURAL relevance, A&D-direct targeting
+        undocumented") binds the scoring to honest evidence.
+      - Splunk first-party: zero hits over -30d on 2026-05-10 sweep across
+        the primary search set. No IOC corroboration bonus applied to any
+        category. Sparse-IOC-set caveat: full IOC inventory still anchored
+        to the Sqgame finding plus malware-family TTP-tier records;
+        passive-DNS / VirusTotal enrichment of Sqgame domain remains
+        recommended out-of-band per iocs.yaml.
 
 # ============================================================================
 # Review policy
 # ============================================================================
 review_policy:
   interval_days: 90
-  last_reviewed: 2026-05-09
-  next_review_due: 2026-08-07
+  last_reviewed: "2026-05-10"
+  next_review_due: "2026-08-08"
   review_triggers:
-    - new_attribution_from_a_source        # second A/B-grade vendor confirming Sqgame attribution = lifts single-source veto
+    - new_attribution_from_a_source        # second A/B-grade vendor confirming Sqgame attribution lifts single-source veto
     - new_tooling_documented
     - cve_exploitation_linked_to_actor
     - major_campaign_disclosure
@@ -252,22 +537,43 @@ review_policy:
 # History
 # ============================================================================
 history:
-  - scored_at: 2026-05-09
+  - scored_at: "2026-05-09"
     scorer: actor-profiler
     change: template_scaffolded
     note: |
-      Mode-1 dossier scaffold per operator direction 2026-05-09. Threat-box-
-      scoring skill NOT invoked. Initial scoring deferred to deliberate
-      /update-tracking pass with /approve-scoring gate. Likely HIGH overall
-      driven by sustained 2012+ operational tempo, multi-vendor track record,
-      mobile + Windows custom tooling, supply-chain capability, and cross-
-      platform reach. CRITICAL DISCIPLINE: score Espionage Intent against
-      A&D target profile (NOT against APT37 dominant target profile).
-      Civil-society / defector / journalist targeting is A&D-adjacent, not
-      A&D-direct; A&D-prime targeting is undocumented in public reporting.
-      Sqgame supply-chain demonstrates supply-chain capability against
-      consumer Android, not against A&D supply chain — score Capability
-      higher than Intent. Destructive scoring should reflect RUHAPPY
-      capability-existence per FireEye 2018 but NO operational deployment;
-      keep destructive caveated. Cyber-crime LOW (state-aligned MSS espionage,
-      not financially-motivated; distinct from RGB Lazarus/Stardust Chollima).
+      Mode-1 dossier scaffold per operator direction. Threat-box-scoring
+      skill NOT invoked at scaffold time. Initial scoring deferred to
+      deliberate /update-tracking pass with /approve-scoring gate
+      (HIGH likely flagged in roster).
+
+  - scored_at: "2026-05-10"
+    scorer: actor-profiler
+    change: initial_scoring
+    note: |
+      /update-tracking (Mode 2) executed 2026-05-10. Weighted overall 4.9
+      → MEDIUM → auto-commit per doctrine authority table. Hard Rule 5
+      gate did NOT fire. Espionage category-tier composite 8 (HIGH)
+      preserved per-category but does not trigger the gate; only weighted
+      overall does. Operator-anticipated HIGH did not materialize for the
+      same disciplinary reason that brought MuddyWater in at LOW the prior
+      day: per the methodology evidence-minimum table, Intent=5 (Target-
+      Specific) requires "at least 1 A-grade source documenting targeting
+      of ad-prime-v1 profile" and no such source exists for APT37.
+      A&D-direct targeting is undocumented in public reporting — the
+      dominant target profile is civil society / defectors / Korean-
+      language journalists / DPRK-policy researchers / regional industrial
+      sectors. FireEye 2018's listing of "aerospace" among South Korean
+      industrial sector targeting supports Intent=3 (Sector Association),
+      not Intent=5. Capability=5 lands cleanly on multi-A-grade sustained
+      record. Espionage Intent=3 + Capability=5 = composite 8 (HIGH at
+      category tier). Supply-chain Intent=2 + Capability=4 = composite 6
+      (MEDIUM). Three floor categories (destructive 2, disruptive 2,
+      cyber-crime 2) dilute via doctrine weighting to overall 4.9 →
+      MEDIUM. This is the FIFTH consecutive non-HIGH outcome in the recent
+      /update-tracking series (UNC1549 5.4 MEDIUM, Charming Kitten 4.45
+      LOW, MuddyWater 4.15 LOW, APT34 4.9 MEDIUM, APT37 4.9 MEDIUM)
+      validating that the HIGH gate is calibrated tightly enough to be
+      meaningful — none of these five actors fit the A&D-direct-targeting
+      profile that would justify HIGH overall, and the methodology refuses
+      to invent it. Splunk first-party zero hits over -30d at scoring time
+      across the primary search set.

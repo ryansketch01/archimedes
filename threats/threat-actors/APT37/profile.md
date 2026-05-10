@@ -27,13 +27,13 @@ motivation:
   - civil-society-coercion
   - defector-tracking
   - regional-strategic-collection
-threat_level: HIGH                  # roster carries HIGH; threat-box.yaml is TEMPLATE pending /update-tracking with /approve-scoring gate
+threat_level: MEDIUM                # weighted overall 4.9 (MEDIUM) per /update-tracking 2026-05-10; espionage category HIGH (composite 8). Intent=3 Sector Association bound by evidence-minimum table — no A-grade source documents A&D-prime-direct targeting required for Intent=5; FireEye 2018 "aerospace" mention in South Korean industrial sector targeting is sector-shaped, not target-specific.
 admiralty_grade: A2
 tlp: CLEAR
-dossier_version: 1
-last_updated: 2026-05-09
-last_reviewed: 2026-05-09
-next_review_due: 2026-08-07
+dossier_version: 2
+last_updated: 2026-05-10
+last_reviewed: 2026-05-10
+next_review_due: 2026-08-08
 profile_path: threats/threat-actors/APT37/
 iocs_path: threats/threat-actors/APT37/iocs.md
 threat_box_path: threats/threat-actors/APT37/threat-box.yaml
@@ -41,14 +41,26 @@ related_actors:
   - "003"      # Lazarus Group — DPRK counterpart (RGB-attributed; operationally distinct from APT37/MSS)
   - "002"      # Stardust Chollima — DPRK financial sub-cluster (RGB; distinct from APT37)
 notes_for_session_10: |
-  First-pass dossier created from finding-2026-05-07-0004 (ESET via The Record;
-  BirdCall / Sqgame supply-chain campaign). Profile is first-pass scaffold from
-  public reporting. All attribution inherits from cited sources per Hard Rule 2 —
-  no Archimedes-originated attribution. ESET attribution to APT37 is explicit
-  high confidence per The Record's framing; historical DPRK lineage attribution
-  predates Archimedes (FireEye/Mandiant 2018, Kaspersky 2016–2018, Cisco Talos
-  2017, Volexity 2021). Threat-box scoring is TEMPLATE pending deliberate
-  /update-tracking pass with /approve-scoring gate (HIGH likely).
+  First-pass dossier created 2026-05-09 from finding-2026-05-07-0004 (ESET via
+  The Record; BirdCall / Sqgame supply-chain campaign). All attribution
+  inherits from cited sources per Hard Rule 2 — no Archimedes-originated
+  attribution. ESET attribution to APT37 is explicit high confidence per
+  The Record's framing; historical DPRK lineage attribution predates Archimedes
+  (FireEye/Mandiant 2018, Kaspersky 2016–2018, Cisco Talos 2017, Volexity 2021).
+
+  Threat-box scoring completed 2026-05-10 via /update-tracking (Mode 2):
+  weighted overall 4.9 → MEDIUM → auto-commit per doctrine authority table.
+  Hard Rule 5 gate did NOT fire. Espionage category-tier composite 8 (HIGH)
+  preserved per-category but does not trigger the gate; only weighted overall
+  does. Operator-anticipated HIGH did NOT materialize for the same disciplinary
+  reason that brought MuddyWater in at LOW one day earlier: per the methodology
+  evidence-minimum table, Intent=5 (Target-Specific) requires "at least 1
+  A-grade source documenting targeting of ad-prime-v1 profile" and no such
+  source exists for APT37. A&D-direct targeting is undocumented in public
+  reporting. FireEye 2018's listing of "aerospace" among South Korean industrial
+  sector targeting supports Intent=3 (Sector Association), not Intent=5.
+  Capability=5 lands cleanly on multi-A-grade sustained record. Splunk first-
+  party zero hits over -30d at scoring time across the primary search set.
 ---
 
 # APT37 — Threat Actor Profile

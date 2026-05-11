@@ -343,7 +343,13 @@ entries:
 # ============================================================================
 _meta:
   total_rejections: 4
-  most_recent_run: afternoon-20260508-160000
-  most_recent_run_rejections: 1
-  prior_run: morning-20260508-080000
-  prior_run_rejections: 2
+  most_recent_run: morning-20260511-080000
+  most_recent_run_rejections: 0
+  most_recent_run_note: >
+    morning-20260511-080000 produced 0 rejections; 2 promotions
+    (finding-2026-05-11-0001 cluster of Checkmarx Jenkins AST +
+    SailPoint GitHub at B2; finding-2026-05-11-0002 HookedWing
+    SOCRadar at C3). All un-promoted raw-signal in the window
+    cleared the C3 monitoring threshold or higher.
+  prior_run: afternoon-20260508-160000
+  prior_run_rejections: 1

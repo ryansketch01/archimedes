@@ -39,7 +39,9 @@ triage_tags:
 iocs_extracted: false   # Specific IOCs (24 C&C servers, 100+ GitHub domains, dozen+ distribution domains) NOT in the SecurityWeek piece; would require WebFetch on SOCRadar primary publication for extraction
 iocs_count: 0
 text_word_count: 1100
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-05-11-0002
+promoted_at: 2026-05-11T08:10:00-04:00
 ttl_expires_at: 2026-08-09T00:08:00-04:00
 ---
 

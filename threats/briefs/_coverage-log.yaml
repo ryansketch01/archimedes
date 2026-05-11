@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-09T08:00:00-04:00
+last_updated: 2026-05-11T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -3496,6 +3496,347 @@ entries:
       whether to expand threats/iocs/unattributed/beagle.yaml into a
       broader AI-brand-impersonation-Anthropic-lure-family TTP-watch
       entry (NOT autonomous; surfaces for operator).
+
+  - id: 2026-05-11-am-001
+    covered_in: [2026-05-11-morning]
+    brief_file: threats/briefs/2026-05-11-morning.md
+    headline: "Checkmarx warned of malicious Jenkins AST plugin published to Jenkins Marketplace (Friday 2026-05-09; remediation 2.0.13-848.v76e89de8a_053 over weekend) and SailPoint disclosed April 20 GitHub repository access via unnamed third-party app vulnerability — two SecurityWeek vendor-self-disclosure relays 18 minutes apart (Ionut Arghire same-author); Hard Rule 2 framings load-bearing: Checkmarx → TeamPCP restatement per prior reporting; SailPoint → TeamPCP 'possible but unconfirmed per SecurityWeek' (rumored, not endorsed); two incidents framed as PARALLEL events NOT coordinated campaign; analyst SAT-ACH ranks single-coordinated-TeamPCP-campaign hypothesis last (four inconsistencies), leading hypotheses (coincident SEC 8-K window timing / opportunistic exploitation of cross-actor vendor-as-supply-chain-target pattern) tied at zero inconsistencies; KAC 1 sound / 5 qualify / 2 test classifications, A4 (SailPoint third-party app identity) is single highest-value pending observation; zero IOCs in either disclosure; new TeamPCP operational detail (Jenkins AST Marketplace distribution channel) — first appearance of CI/CD-pipeline-poisoning in TeamPCP TTP register; Lapsus$ second corpus reference, /new-actor candidate pending operator decision"
+    topic_tags:
+      - supply-chain
+      - vendor-self-disclosure
+      - checkmarx
+      - jenkins-ast-plugin
+      - jenkins-marketplace
+      - ci-cd-pipeline-poisoning
+      - sailpoint
+      - github-repo-access
+      - iga
+      - cmmc
+      - itar-program-access-governance
+      - securityweek
+      - ionut-arghire
+      - same-author-publication-run
+      - sec-8k-monday-cadence
+      - parallel-events-not-coordinated-campaign
+      - hard-rule-2-framings-load-bearing
+      - teampcp-restatement
+      - teampcp-sailpoint-rumored-unconfirmed
+      - single-source-veto-applied
+      - sat-ach-h1-coordinated-campaign-ranks-last
+      - sat-kac-a3-a4-test-class
+      - zero-iocs-in-either-disclosure
+      - teampcp-new-operational-detail-jenkins-marketplace
+      - lapsus-dollar-second-corpus-reference
+      - lapsus-new-actor-candidate
+      - dib-cicd-structural-exposure
+    related_actors:
+      - actor_id: "001"
+        actor_name: TeamPCP
+        in_roster: true
+        relationship: checkmarx_jenkins_ast_per_securityweek_per_prior_reporting_restatement
+        archimedes_treatment: restatement_no_promotion_hard_rule_2
+        ttp_register_update_queued: ci_cd_pipeline_poisoning_via_jenkins_marketplace
+      - actor_id: "001"
+        actor_name: TeamPCP
+        relationship: sailpoint_third_party_app_compromise_possible_but_unconfirmed_per_securityweek
+        archimedes_treatment: rumored_not_endorsed_hard_rule_2
+      - actor: "Lapsus$ / DEV-0537 / Strawberry Tempest"
+        in_roster: false
+        relationship: prior_april_2026_checkmarx_data_release_restatement_per_securityweek
+        archimedes_treatment: record_per_hard_rule_2_no_promotion_new_actor_candidate
+        cumulative_corpus_references: 2
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-11-0001]
+    digraph: B2
+    wep_split:
+      procedural_facts: likely
+      relational_layer_h2_vs_h4: roughly_even_chance_undetermined
+      single_coordinated_campaign_reading: unlikely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_sat: [sat-ach, sat-kac]
+    ach_summary:
+      hypotheses_evaluated: 5
+      ranking:
+        H2_coincident_sec_window: rank_1_tied_zero_inconsistencies
+        H4_opportunistic_separate_actors: rank_1_tied_zero_inconsistencies
+        H5_null_undetermined: rank_1_tied_zero_inconsistencies_by_construction
+        H3_downstream_collateral_chain: rank_4_two_inconsistencies
+        H1_single_coordinated_teampcp_campaign: rank_5_four_inconsistencies
+      load_bearing_evidence: [E4_no_shared_iocs, E7_cross_actor_2026_pattern, E8_third_party_app_corporate_euphemism]
+    kac_summary:
+      classifications: {sound: 1, qualify: 5, test: 2, reject: 0}
+      load_bearing_assumptions:
+        - A3_vendor_as_supply_chain_target_signature_specificity_test_class
+        - A4_sailpoint_third_party_app_identity_test_class_single_highest_value_pending_observation
+    red_team_review_required: false
+    red_team_review_threshold_basis: wep_ceiling_likely_below_very_likely_threshold
+    iocs_added:
+      hashes: []
+      domains: []
+      ips: []
+      cves: []
+      notes: |
+        Zero IOCs in either SecurityWeek relay. Hunt opportunities
+        deferred pending Checkmarx primary security advisory (malicious
+        Jenkins AST plugin SHA-256) and SailPoint primary disclosure
+        (third-party app identity / CVE / IOCs).
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits_on_keyword_sweep: 0
+      keywords: [SailPoint, Checkmarx, Jenkins]
+      hard_rule_8_framing: silence_is_not_disconfirming_no_telemetry_into_third_party_vendor_environments
+    actor_profiler_handoffs:
+      - actor_id: "001"
+        actor_name: TeamPCP
+        action: update_ttp_register_with_ci_cd_pipeline_poisoning_via_jenkins_marketplace
+        new_operational_detail: jenkins_ast_plugin_distribution_channel
+        first_appearance_in_corpus: true
+        sailpoint_treatment: rumored_unconfirmed_do_not_promote_to_confirmed_victim
+      - actor: "Lapsus$ / DEV-0537 / Strawberry Tempest"
+        in_roster: false
+        action: new_actor_candidate_cumulative_reference_threshold_check
+        cumulative_references: 2
+        operator_decision_required: true
+        recommended_action: new_actor_lapsus_command_pending_operator
+    librarian_handoffs:
+      - action: commit_brief_plus_finding_card_plus_coverage_log_update
+      - action: back_write_published_in_briefs_to_finding_2026_05_11_0001
+        value: "[2026-05-11-morning]"
+    tripwires:
+      - condition: checkmarx_publishes_primary_security_advisory_with_malicious_plugin_sha256
+        effect: enables_splunk_first_party_hunt_potential_rerun_ach_with_new_evidence
+      - condition: sailpoint_or_third_party_investigator_publishes_third_party_app_identity
+        effect: single_highest_value_pending_observation_h3_or_h4_confirms_collapse_rank_1_cluster
+      - condition: ab_grade_third_party_research_publishes_corroborated_attribution_either_incident
+        effect: lifts_wep_cap_single_source_veto_resolves_on_that_incident
+      - condition: lapsus_or_separate_extortion_group_publicly_claims_sailpoint_data
+        effect: hypothesis_completion_event_supports_h4_or_h2_operator_consider_new_actor_lapsus_on_second_reference_threshold
+    resurface_if:
+      - checkmarx_publishes_primary_security_advisory_with_iocs
+      - sailpoint_publishes_third_party_app_identity_or_cve
+      - second_ab_grade_research_corroborates_either_attribution
+      - first_party_splunk_hit_on_jenkins_ast_or_sailpoint_indicators
+      - independent_research_links_sailpoint_to_teampcp_ecosystem
+      - independent_research_attributes_sailpoint_to_separate_actor
+      - lapsus_or_other_extortion_group_claims_sailpoint_data
+      - ad_prime_named_as_either_incident_victim
+      - operator_acts_on_new_actor_lapsus_candidate
+    first_covered: 2026-05-11
+    last_covered: 2026-05-11
+    retraction: null
+    test: false
+    notes: |
+      Two-incident parallel-events cluster, Hard Rule 2 load-bearing
+      throughout. Briefer treatment preserved verbatim framings:
+      Checkmarx Jenkins AST → TeamPCP per SecurityWeek per prior
+      reporting (restatement, not new attribution); SailPoint →
+      TeamPCP per SecurityWeek "possible but unconfirmed" (rumored,
+      not endorsed); Lapsus$ second-wave Checkmarx artifacts per
+      SecurityWeek per prior reporting; do NOT collapse parallel
+      events into single-campaign reading.
+
+      Analyst SAT-ACH placed single-coordinated-TeamPCP-campaign
+      hypothesis last (four inconsistencies: absence of shared IOCs,
+      absence of third-party corroboration, cross-actor 2026 pattern,
+      generic third-party-app corporate-euphemism language). Three
+      hypotheses tied at zero inconsistencies (H2 coincident SEC
+      8-K window, H4 opportunistic separate actors, H5 null /
+      undetermined). 18-minute SecurityWeek-relay proximity most
+      parsimoniously explained by SEC 8-K Monday cadence + single-
+      author publication run, NOT operator coordination.
+
+      KAC surfaced 8 assumptions: 1 sound (A7 Splunk silence is non-
+      disconfirming), 5 qualify (A1 TeamPCP operational currency,
+      A2 Jenkins AST chain continuity, A5 SecurityWeek same-author
+      pattern-proximity, A6 SEC 8-K cadence pattern, A8 Lapsus$ data
+      provenance), 2 test (A3 vendor-as-supply-chain-target signature
+      specificity, A4 SailPoint third-party app identity). A4 is the
+      single highest-value pending observation — if app identity
+      lands inside TeamPCP-named ecosystem (Trivy / Checkmarx / Aqua
+      / Bitwarden) H3/H1 rise sharply; if unrelated SaaS, H4 confirms.
+
+      WEP split: procedural facts (Checkmarx warned, SailPoint
+      disclosed) hold at likely per grader's B2 digraph; relational
+      layer (H2 vs H4) carries roughly even chance, undetermined;
+      single-coordinated-campaign reading carries unlikely.
+
+      Single-source veto applied: SecurityWeek is sole effective
+      relay for both incidents; attribution and technical-detail
+      claims capped at likely. Splunk first-party clean across -30d
+      keyword sweep on SailPoint OR Checkmarx OR Jenkins tokens —
+      13th consecutive sweep with dormant non-archimedes-internal
+      stream. Per Hard Rule 8, silence is not disconfirming
+      (Archimedes holds no telemetry into Checkmarx, SailPoint, or
+      affected third-party environments).
+
+      New operational detail in TeamPCP TTP register: Jenkins AST
+      plugin Marketplace distribution channel is first appearance of
+      CI/CD-pipeline-poisoning in the corpus (zero prior mentions
+      of "Jenkins AST" or "Checkmarx Jenkins" before 2026-05-11).
+      Actor-profiler handoff queued; SailPoint linkage NOT promoted
+      to confirmed TeamPCP victim — records rumored-unconfirmed
+      framing only.
+
+      Lapsus$ / DEV-0537 / Strawberry Tempest is the /new-actor
+      candidate on second-corpus-reference threshold (first via
+      finding-2026-05-08-0003 lineage; now via this finding).
+      Operator decision required for /new-actor formal tracking.
+
+      A&D / DIB relevance is capability-level / structural — Jenkins
+      widely deployed in DIB DevSecOps; SailPoint IGA widely deployed
+      for CMMC / NIST 800-171 / ITAR-program access governance — no
+      A&D-prime victim named in either disclosure. Briefer did not
+      promote structural exposure to targeting-level relevance.
+
+      Pre-flight: 12/12 passed on iteration 2 after one regeneration
+      pass on Check 12 (quote discipline). Initial draft used the
+      SecurityWeek "possible but unconfirmed" quote three times
+      across the lead, Active Threats item, and Actor Activity item;
+      regenerated to keep one verbatim use (SailPoint item per Hard
+      Rule 2 load-bearing requirement) and paraphrased the lead +
+      Actor Activity references. Initial draft also used two SOCRadar
+      quotes ("not random" + "high geopolitical relevance"); kept
+      "not random" and paraphrased the geopolitical-relevance framing.
+      Final body has SecurityWeek = 1 quote (3 words); SOCRadar =
+      1 quote (2 words); all <15 words, ≤1 per source.
+
+      Zero banned phrases. Standing sections present (Sector Focus:
+      A&D and Iran Cyber Watch — UNC1549 / Charming Kitten / Handala
+      Hack / MuddyWater all 48h silent; MuddyWater roster threat-
+      level LOW status carry per /update-tracking 2026-05-09 19:01
+      EDT). All forward claims use WEP vocabulary. No "very likely"+
+      claims in body — single-source veto respected. Word count 731
+      inside 400-800 morning target.
+
+  - id: 2026-05-11-am-002
+    covered_in: [2026-05-11-morning]
+    brief_file: threats/briefs/2026-05-11-morning.md
+    headline: "MONITORING — SOCRadar documents 4-year multi-sector phishing campaign 'Operation HookedWing' affecting 500+ organizations across 7 sectors (aviation, critical infrastructure, energy, financial, government, logistics, technology); aggregate infrastructure scale (~24 C&C servers, 100+ GitHub-hosted domains, dozen+ distribution domains on other platforms); TTPs include Outlook-themed lures 2022-2024, French-language expansion 2024-2025, full-screen pre-loaders with org-name personalization, geolocation filtering; SOCRadar declines threat-actor attribution and describes targeting as 'not random' with high geopolitical relevance framing — wording stops short of attribution and Archimedes does not promote; 'aviation sector token' covers commercial travel / airline / airport-authority scope, NOT A&D-prime targeting; no defense-aviation prime named as victim; SOCRadar first Archimedes-corpus citation, provisional C grade; relayed by SecurityWeek (Ionut Arghire); zero specific IOCs in the relay; primary publication retrieval deferred"
+    topic_tags:
+      - phishing-campaign
+      - operation-hookedwing
+      - researcher-coined-campaign-name
+      - 4-year-sustained-campaign
+      - 500-plus-orgs
+      - 7-sector-multi-sector
+      - aviation-sector-token-not-ad-prime-targeting
+      - github-hosted-infrastructure
+      - 100-plus-github-domains
+      - 24-cnc-servers
+      - outlook-themed-lures
+      - french-language-expansion-2024-2025
+      - org-name-personalized-preloader
+      - curated-not-commodity-targeting
+      - geolocation-filtering
+      - sandbox-filtering
+      - no-attribution-by-source
+      - socradar-provisional-c-grade-first-corpus-citation
+      - securityweek-relay
+      - single-source-veto-applied
+      - hard-rule-2-no-attribution-originated
+      - hard-rule-2-aviation-token-scope-distinction
+      - high-geopolitical-relevance-framing-not-promoted
+      - monitoring-tier-only
+      - primary-publication-retrieval-deferred
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [operation-hookedwing]
+    finding_ids: [finding-2026-05-11-0002]
+    digraph: C3
+    wep: roughly_even_chance
+    single_source_veto_applied: true
+    analyst_review_required: false
+    analyst_review_skipped_basis: c3_with_no_attribution_claims_no_first_party_contradiction_no_sat_warranted_at_this_digraph
+    red_team_review_required: false
+    red_team_review_threshold_basis: wep_ceiling_roughly_even_chance_well_below_very_likely_threshold
+    iocs_added:
+      hashes: []
+      domains: []
+      ips: []
+      cves: []
+      notes: |
+        Aggregate infrastructure counts only (24 C&C, 100+ GitHub-hosted
+        domains, dozen+ distribution domains on other platforms). No
+        specific IOCs in the SecurityWeek relay. Deferred to SOCRadar
+        primary publication retrieval.
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits_on_keyword_sweep: 0
+      keywords: [HookedWing, SOCRadar]
+      hard_rule_8_framing: silence_is_not_disconfirming_no_telemetry_plus_campaign_name_token_unlikely_to_surface_in_either_index
+    librarian_handoffs:
+      - action: add_provisional_source_grade
+        target: source-grades.yaml
+        entry: socradar
+        provisional_grade: C
+        awaiting_ratification: true
+        rationale: "Turkey-headquartered XTI vendor producing public threat research since approximately 2020; no prior Archimedes-corpus citations; first surface. Methodological positive: SOCRadar made NO threat-actor attribution and explicitly framed Operation HookedWing as researcher-coined working name (campaign-attribution restraint). Parallels LayerX / Seqrite Labs / Trendyol Group / Berk Albayrak precedent pattern."
+      - action: back_write_published_in_briefs_to_finding_2026_05_11_0002
+        value: "[2026-05-11-morning]"
+      - action: optional_collector_followup_socradar_primary_retrieval
+        target_url_root: socradar.io/research_or_-labs_subdomain
+        purpose: surface_specific_iocs_for_potential_flash_re_evaluation
+        not_blocking_morning_brief: true
+    resurface_if:
+      - socradar_primary_publication_retrieved_with_specific_iocs
+      - second_ab_grade_independent_research_corroborates_hookedwing
+      - first_party_splunk_hit_on_hookedwing_infrastructure_post_ioc_extraction
+      - third_party_research_attributes_hookedwing_to_named_actor
+      - ad_prime_named_as_hookedwing_victim
+      - aviation_sector_distinction_collapses_with_defense_aviation_victim_disclosure
+      - new_iocs_published_by_socradar_or_relay
+      - new_sectors_added_to_500_plus_org_scope
+    first_covered: 2026-05-11
+    last_covered: 2026-05-11
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier C3 promotion. Single-source veto applied —
+      SOCRadar is single effective primary; SecurityWeek is relay
+      (paraphrase of SOCRadar primary, not independent corroboration).
+      WEP ceiling capped at roughly even chance per C3 digraph for
+      substantive technical claims; procedural fact (SOCRadar
+      published the research) is grade-supported.
+
+      Hard Rule 2 framings preserved verbatim by briefer:
+      (1) Operation HookedWing is researcher-coined working name
+          (SOCRadar) — NO nation / service / alias / actor-group
+          assignment;
+      (2) SOCRadar describes targeting as "not random" and frames
+          campaign as having high geopolitical relevance — wording
+          stops short of attribution, Archimedes does not promote;
+      (3) "Aviation sector token" covers commercial travel + airline
+          + airport-authority scope — NOT A&D-prime targeting; no
+          defense-aviation prime is named as victim. Briefer framing
+          explicit on this distinction per finding-binding requirement.
+
+      SOCRadar source-grade handoff: add to source-grades.yaml as
+      provisional-C, awaiting_ratification: true, with this finding
+      as precedent. Parallels LayerX (2026-05-08) / Seqrite Labs
+      (2026-05-08) / Trendyol Group / Berk Albayrak (2026-05-10)
+      precedent pattern. Methodological positive on first surface
+      (campaign-attribution restraint despite "high geopolitical
+      relevance" wording) is positive indicator for eventual
+      upgrade-to-B path.
+
+      Splunk first-party clean across -30d keyword sweep on
+      HookedWing OR SOCRadar tokens. Per Hard Rule 8 framing,
+      silence here is doubly non-diagnostic: (a) no telemetry into
+      affected third-party environments, (b) the campaign-name
+      token would not surface in archimedes or defenseclaw_local
+      indices regardless of underlying activity. Hunt opportunity
+      deferred to SOCRadar primary publication retrieval.
+
+      Pre-flight: 12/12 passed (see 2026-05-11-am-001 notes for the
+      one regeneration pass on Check 12 quote discipline — affects
+      this finding's "not random" quote retention plus paraphrase
+      of "high geopolitical relevance" to non-quoted form).
 
 # ============================================================================
 # Valid resurface_if conditions

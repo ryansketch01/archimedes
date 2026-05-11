@@ -57,7 +57,9 @@ triage_tags:
 iocs_extracted: false   # SecurityWeek piece provides version numbers (legitimate: 2.0.13-829.vc72453fa_1c16; remediation: 2.0.13-848.v76e89de8a_053) but NO malicious-version hash, NO C2 domain, NO payload behavior detail
 iocs_count: 0
 text_word_count: 950
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-05-11-0001
+promoted_at: 2026-05-11T08:08:00-04:00
 ttl_expires_at: 2026-08-09T06:08:00-04:00
 ---
 

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-11T08:00:00-04:00
+last_updated: 2026-05-11T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -193,7 +193,7 @@ entries:
       Krebs / The Record / Wired / Tier-1 IR firms for independent corroboration.
 
   - id: 2026-05-04-am-005
-    covered_in: [2026-05-04-morning]
+    covered_in: [2026-05-04-morning, 2026-05-11-afternoon]
     headline: "CVE-2026-41940 cPanel/WHM/WP2 KEV — federal patch deadline passed 2026-05-03 (retrospective)"
     topic_tags: [cve, cpanel, whm, wp2, kev, auth-bypass, deadline-passed]
     related_actors: []
@@ -207,7 +207,9 @@ entries:
       - new_victims_confirmed
       - ad_adjacent_compromise
     first_covered: 2026-05-04
-    last_covered: 2026-05-04
+    last_covered: 2026-05-11
+    superseded_by: 2026-05-11-pm-003
+    superseded_reason: "Resurface basis met: escalation_to_exploitation (active mass-exploitation envelope per QiAnXin XLab 2,000+ source IPs) + first actor attribution (Mr_Rot13) + first IOC set in corpus. See 2026-05-11-pm-003 for the active-exploitation re-cover."
     retraction: null
     test: false
     notes: |
@@ -217,6 +219,12 @@ entries:
       cPanel for production hosting); recommended lightweight asset-inventory
       check for marketing microsites / contractor portals / third-party-hosted
       vendor pages.
+
+      2026-05-11 resurface: active mass-exploitation envelope per QiAnXin
+      XLab (2,000+ source IPs) plus first actor attribution (Mr_Rot13 per
+      XLab provisional-C first Archimedes citation) plus first IOC set
+      (cp.dene[.]com, wrned[.]com, wpsock[.]com, helper.php SHA-256
+      2d7d121d…74583a). See 2026-05-11-pm-003 for the UPDATE entry.
 
   - id: 2026-05-05-am-001
     covered_in: [2026-05-05-morning]
@@ -3837,6 +3845,538 @@ entries:
       one regeneration pass on Check 12 quote discipline — affects
       this finding's "not random" quote retention plus paraphrase
       of "high geopolitical relevance" to non-quoted form).
+
+  - id: 2026-05-11-pm-001
+    covered_in: [2026-05-11-afternoon]
+    brief_file: threats/briefs/2026-05-11-afternoon.md
+    headline: "Google GTIG attributes 'first known in-the-wild AI-generated zero-day exploit' — 2FA bypass against unnamed open-source web admin tool; unattributed actor (SecurityWeek 'prominent cybercrime group'); coordinated disclosure underway; vendor/product/CVE/IOCs all withheld; AI-authorship inferred from hallucinated CVSS embedded in exploit code + Gemini ruled out; broader GTIG AI Threat Tracker references adjacent-cases actors TeamPCP / APT45 / UNC2814 / APT27 / UNC5673 / UNC6201 as restatements of prior MSTIC / Mandiant reporting (Hard Rule 2, not new attribution); single A-grade primary (GTIG) + three relays (BleepingComputer, SecurityWeek, The Hacker News) fail independence test; analyst SAT-ACH ranks AI-assisted refinement + AI-written PoC ahead of novel-AI-discovered framing on parsimony grounds (2FA bypass on web admin tool is well-trodden vulnerability class); KAC narrative-shaping watching brief (GTIG co-published defender-positioning piece in same cycle); WEP capped at likely (procedural) / roughly even chance (novel-AI-discovered framing)"
+    topic_tags:
+      - ai-generated-zero-day
+      - gtig
+      - mandiant
+      - 2fa-bypass
+      - coordinated-disclosure
+      - hallucinated-cvss-fingerprint
+      - ai-tradecraft-adoption
+      - threat-class-precedent
+      - single-source-veto-applied
+      - hard-rule-2-gtig-claim-not-archimedes-endorsed
+      - hard-rule-2-adjacent-cases-restatements
+      - sat-ach-novel-discovery-vs-refinement-vs-poc-generation
+      - sat-ach-h1-novel-discovery-roughly-even-chance
+      - sat-kac-a7-narrative-shaping-qualify
+      - sat-kac-a5-first-in-the-wild-visibility-assumption
+      - bleepingcomputer-relay
+      - securityweek-relay
+      - hacker-news-relay
+      - independence-test-failed
+      - splunk-information-absent-not-information-negative
+      - ad-prime-direct-exposure-nil
+      - structural-shift-narrative
+    related_actors:
+      - actor_id: "001"
+        actor_name: TeamPCP
+        in_roster: true
+        relationship: gtig_adjacent_case_restatement_of_prior_trivy_checkmarx_bitwarden_aqua_jenkins_ast_chain
+        archimedes_treatment: restatement_no_promotion_hard_rule_2
+      - actor: "APT45 (DPRK)"
+        in_roster: false
+        relationship: gtig_adjacent_case_ai_for_cve_analysis_and_poc_validation
+        archimedes_treatment: cumulative_reference_threshold_for_new_actor_consideration
+      - actor: "UNC2814 (China-linked)"
+        in_roster: false
+        relationship: gtig_adjacent_case_ai_for_embedded_device_vulnerability_research
+        archimedes_treatment: cumulative_reference_threshold_for_new_actor_consideration
+      - actor: "APT27 (China)"
+        in_roster: false
+        relationship: gtig_adjacent_case
+        archimedes_treatment: cumulative_reference_threshold_for_new_actor_consideration
+      - actor: "UNC5673"
+        in_roster: false
+        relationship: gtig_adjacent_case
+        archimedes_treatment: noted_no_action
+      - actor: "UNC6201"
+        in_roster: false
+        relationship: gtig_adjacent_case
+        archimedes_treatment: noted_no_action
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-11-0003]
+    digraph: A2
+    wep_split:
+      procedural_gtig_published: likely
+      novel_ai_discovered_framing_per_ach: roughly_even_chance
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_sat: [sat-ach, sat-kac]
+    red_team_review_required: false
+    red_team_review_threshold_basis: wep_ceiling_likely_below_very_likely_threshold
+    iocs_added:
+      hashes: []
+      domains: []
+      ips: []
+      cves: []
+      notes: |
+        Zero IOCs across all three relays — Google withholds vendor / product /
+        CVE / domain / hash content during coordinated disclosure. Information-
+        absent, not information-negative. Splunk first-party check returned no
+        signal but with empty IOC set the check is non-diagnostic.
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits_on_keyword_sweep: 0
+      keywords: [GTIG, AI-generated, hallucinated-CVSS, 2FA-bypass]
+      hard_rule_8_framing: information_absent_not_information_negative_no_iocs_to_query
+    actor_profiler_handoffs:
+      - actor: "APT45 / UNC2814 / APT27"
+        action: new_actor_candidate_cumulative_reference_threshold_check
+        operator_decision_required: true
+    librarian_handoffs:
+      - action: back_write_published_in_briefs_to_finding_2026_05_11_0003
+        value: "[2026-05-11-afternoon]"
+    tripwires:
+      - condition: cve_assignment_and_vendor_disclosure
+        effect: rerun_ach_with_specific_vuln_anchor_potentially_resolve_h1_vs_h2_h3
+      - condition: second_ab_grade_primary_research_practice_examines_exploit_code
+        effect: single_source_veto_resolves_wep_could_lift_to_very_likely
+      - condition: gtig_publishes_hallucinated_cvss_detection_methodology
+        effect: defender_heuristic_operationalizable_e2_diagnostic_value_strengthens
+      - condition: independent_reverse_engineering_reveals_vuln_class_is_known_re_skin
+        effect: h3_elevates_to_rank_1_framing_should_be_retracted_or_reframed
+    resurface_if:
+      - cve_assignment_and_vendor_disclosure
+      - second_ab_grade_research_independently_examines_exploit_code
+      - gtig_publishes_hallucinated_cvss_detection_methodology
+      - independent_examination_contradicts_ai_authorship
+      - first_party_ioc_hit_post_disclosure
+      - actor_attribution_emerges
+    first_covered: 2026-05-11
+    last_covered: 2026-05-11
+    retraction: null
+    test: false
+    notes: |
+      Lead item, A2 likely. Hard Rule 2 load-bearing throughout — Google's
+      "AI-generated" framing reported as GTIG's claim, not Archimedes-endorsed.
+      Single A-grade primary (GTIG/Mandiant cloud.google.com publication);
+      three relays (BleepingComputer, SecurityWeek, The Hacker News) all
+      paraphrases of same primary — independence test failed, single-source
+      veto applied, WEP capped at likely per grader.
+
+      Analyst SAT-ACH ranks two parsimony-favored alternative readings
+      (H2 AI-assisted refinement of known-class bug; H3 AI-written PoC for
+      known-class bug) ahead of GTIG's strongest H1 framing (novel
+      AI-discovered vulnerability) — 2FA bypass on web admin tool is a
+      well-trodden vuln class. Novel-discovery reading carries roughly
+      even chance and is not ruled out; GTIG likely holds non-public
+      evidence that could distinguish.
+
+      KAC surfaces 8 assumptions: 3 sound (A4 TeamPCP continuity, A6
+      coordinated-disclosure timeline, A8 adjacent-cases attribution),
+      4 qualify (A1 GTIG visibility into actor tooling, A3 methodology
+      false-positive rate, A5 first-in-the-wild visibility assumption,
+      A7 Google commercial/regulatory positioning narrative-shaping),
+      1 test (A2 genuine novelty of 2FA-bypass mechanism — resolves on
+      CVE assignment).
+
+      Six adjacent-cases actors named: TeamPCP (#001, roster — restatement
+      per prior Trivy / Checkmarx / Bitwarden / Aqua / Jenkins AST chain),
+      APT45 / UNC2814 / APT27 / UNC5673 / UNC6201 (not in roster). APT45,
+      UNC2814, APT27 hit /new-actor cumulative-reference threshold;
+      flagged for actor-profiler queue.
+
+      No IOCs published; Splunk first-party check is information-absent
+      not information-negative per Hard Rule 8 application norm.
+
+      Pre-flight 13/13 passed; one regeneration pass needed (Check 5
+      banned phrases — "in recent weeks" replaced with explicit time
+      anchor; "most notably" rephrased; Check 12 quote discipline —
+      converted analyst framing labels from quoted to unquoted, kept
+      one GTIG quote 'AI-generated' (1 word) and one SecurityWeek quote
+      'prominent cybercrime group' (3 words); each external source
+      quoted exactly once). Check 8 word count required aggressive
+      cuts (initial draft ~1100 words → ~770 final) to fit 400-800
+      afternoon-brief target across 4 substantive findings.
+
+  - id: 2026-05-11-pm-002
+    covered_in: [2026-05-11-afternoon]
+    brief_file: threats/briefs/2026-05-11-afternoon.md
+    headline: "UK ICO fines South Staffordshire Water £963,900 ($1.3M) for the 2022 Cl0p ransomware intrusion that exposed 633,887 customer records — 22-month dwell time (initial access via malicious email September 2020 → ZeroLogon CVE-2020-1472 to domain admin May 2022 → discovery July 2022 → 4.1TB published on Cl0p leak site August 2022); ICO restates the 2022 Cl0p leak-site attribution without publishing new technical evidence — regulatory closure tier, not new threat intelligence; sector is UK water utility (CNI), NOT A&D; Cl0p's broader 2022 MOVEit / GoAnywhere campaigns did touch A&D primes per separate reporting, but South Staffs is a separate utility-sector breach; 22-month dwell outlier-long even by Cl0p standards; actor-profiler handoff queued to add South Staffs to Cl0p historical-victim list and document long-dwell pre-positioning tradecraft; no rescore"
+    topic_tags:
+      - regulatory-closure
+      - uk-ico-fine
+      - south-staffordshire-water
+      - cl0p
+      - cl0p-roster-018
+      - 22-month-dwell-outlier-long
+      - long-dwell-pre-positioning
+      - zerologon-cve-2020-1472
+      - water-utility-not-ad
+      - cni-uk-water
+      - 633887-records
+      - 4-1tb-leak-site
+      - 2022-attribution-restated
+      - no-new-technical-evidence
+      - ico-regulatory-action
+      - the-record-relay
+      - alexander-martin-byline
+      - single-source-veto-applied
+      - hard-rule-2-cl0p-attribution-restated-not-archimedes-originated
+      - no-rescore-no-promotion
+      - actor-profiler-handoff-historical-victim-list
+    related_actors:
+      - actor_id: "018"
+        actor_name: Cl0p
+        in_roster: true
+        relationship: 2022_south_staffs_water_intrusion_restated_via_ico_regulatory_action
+        archimedes_treatment: restatement_no_rescore_actor_profiler_handoff_for_historical_victim_list
+    related_vulns:
+      - CVE-2020-1472
+    related_campaigns: []
+    finding_ids: [finding-2026-05-11-0004]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_required: false
+    red_team_review_required: false
+    iocs_added:
+      hashes: []
+      domains: []
+      ips: []
+      cves: []
+      notes: |
+        ICO regulatory action publishes no IOCs. ZeroLogon (CVE-2020-1472)
+        named as historical vector but NOT in current Archimedes _index.yaml
+        scope (active 2026 threat-tracked CVEs only).
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits_on_keyword_sweep: 0
+      keywords: [Cl0p, "South Staffordshire", ZeroLogon, CVE-2020-1472]
+      hard_rule_8_framing: silence_is_not_disconfirming_no_telemetry_into_uk_water_utility_environment
+    actor_profiler_handoffs:
+      - actor_id: "018"
+        actor_name: Cl0p
+        action: add_south_staffordshire_water_to_historical_victim_list
+        document_long_dwell_pre_positioning_pattern: true
+        rescore: false
+    librarian_handoffs:
+      - action: back_write_published_in_briefs_to_finding_2026_05_11_0004
+        value: "[2026-05-11-afternoon]"
+    resurface_if:
+      - new_victims_confirmed_cl0p
+      - new_attribution
+      - second_ab_grade_research_corroborates_ico_attribution_with_new_technical_artifacts
+      - first_party_splunk_hit_on_cl0p_indicators
+      - cl0p_rescore_event
+    first_covered: 2026-05-11
+    last_covered: 2026-05-11
+    retraction: null
+    test: false
+    notes: |
+      Regulatory-tier closure on a 2022 incident, not new threat intelligence.
+      ICO restates the 2022 Cl0p leak-site attribution and contemporaneous
+      third-party research without publishing new technical evidence — Hard
+      Rule 2 honored, no new attribution claim. Single-source veto applied
+      (The Record relaying ICO; no second A/B-grade primary corroborated the
+      2026-05-11 regulatory closure at this sweep).
+
+      Cl0p remains HIGH threat-level per existing _roster.yaml entry #018;
+      no rescore triggered. Actor-profiler handoff queued: add South Staffs
+      to Cl0p historical-victim list and document the 22-month long-dwell
+      pre-positioning pattern (outlier-long even by Cl0p standards).
+
+      Briefer placed item in Actor Activity section (Cl0p is rostered actor)
+      rather than Other Signal; framing emphasized regulatory closure +
+      historical-tradecraft pattern rather than presenting as new campaign.
+
+      A&D-relevance: NONE direct (UK water utility, not A&D). Cl0p's broader
+      2022 MOVEit / GoAnywhere campaigns DID touch A&D primes (Lockheed,
+      Boeing per separate 2023 reporting) — South Staffs is a separate
+      utility-sector breach, the cross-reference is contextual only.
+
+  - id: 2026-05-11-pm-003
+    covered_in: [2026-05-04-morning, 2026-05-11-afternoon]
+    brief_file: threats/briefs/2026-05-11-afternoon.md
+    update_flag: true
+    update_basis: escalation_to_exploitation_plus_first_actor_attribution_plus_first_ioc_set
+    pointer_to_primary_entry: 2026-05-04-am-005
+    headline: "UPDATE — QiAnXin XLab attributes active mass-exploitation campaign against cPanel/WHM CVE-2026-41940 (KEV-listed 2026-04-30) to previously low-profile actor 'Mr_Rot13' deploying cross-platform (Linux + Windows) Filemanager backdoor on compromised hosting environments; 2,000+ attacker source IPs worldwide; named-domain C2 infrastructure (cp.dene[.]com loader / wrned[.]com credential exfil / wpsock[.]com Filemanager staging) plus helper.php SHA-256 2d7d121dfcca6c17130ef605124869bf84ce77bee343ada78e0db2236174583a; infrastructure dating October 2020 (~5.5 years of historical operations per XLab characterization); ROT13-encoded credential exfiltration cited as the alias derivation; XLab provisional-C first Archimedes-corpus citation; The Hacker News paraphrase relay (not independent); CVE itself anchored at A1 via CISA KEV separate independent fact (KEV-add 2026-04-30); SAT-ACH cannot distinguish Mr_Rot13-as-discrete-actor (H1, XLab framing) from Mr_Rot13-as-shared-persona (H2, narrowly leading on inconsistency count) or commodity opportunistic exploitation (H3, base-rate favored) — full misattribution (H4) least likely but not eliminated; SAT-KAC surfaces 3 load-bearing test/qualify assumptions (A1 XLab telemetry isolation methodology, A2 Filemanager backdoor uniqueness, A3 ROT13 persona authenticity); A&D-prime exposure LOW (cPanel is consumer/SMB hosting class) — Tier-2/Tier-3 supplier public-CMS marketing-site footprint sits within scope; asset-inventory check is the proportional posture; Mr_Rot13 flagged for /new-actor candidate queue but NOT rostered pending independent corroboration"
+    topic_tags:
+      - update-on-2026-05-04-am-005
+      - escalation-to-exploitation
+      - first-actor-attribution-on-cve
+      - first-ioc-set-on-cve
+      - cve-2026-41940
+      - cpanel-whm
+      - kev-listed-2026-04-30
+      - auth-bypass
+      - mr-rot13
+      - filemanager-backdoor
+      - cross-platform-linux-windows
+      - mass-exploitation-2000-plus-source-ips
+      - rot13-encoded-credential-exfil
+      - infrastructure-october-2020
+      - qianxin-xlab-provisional-c-grade
+      - first-archimedes-corpus-citation-xlab
+      - hacker-news-relay
+      - cisa-kev-a1-anchor
+      - hard-rule-2-mr-rot13-per-xlab-not-archimedes-endorsed
+      - sat-ach-h1-discrete-vs-h2-shared-vs-h3-commodity
+      - sat-ach-h2-narrowly-leading-roughly-even-chance
+      - sat-kac-a1-a2-test-class-a3-qualify
+      - sat-kac-load-bearing-assumptions
+      - new-actor-candidate-queue
+      - not-rostered-pending-corroboration
+      - ad-prime-exposure-low-cpanel-consumer-smb
+      - tier-2-3-supplier-marketing-site-footprint
+      - asset-inventory-check-proportional-posture
+      - single-source-veto-applied
+      - splunk-first-party-silent-30d-full-ioc-set
+    related_actors:
+      - actor: "Mr_Rot13"
+        in_roster: false
+        relationship: discrete_actor_attribution_per_qianxin_xlab_via_hacker_news_provisional_c_first_corpus_citation
+        archimedes_treatment: rumored_per_xlab_not_endorsed_new_actor_candidate_pending_independent_corroboration
+        operator_decision_required: true
+    related_vulns:
+      - CVE-2026-41940
+    related_campaigns: []
+    finding_ids: [finding-2026-05-11-0005]
+    digraph_split:
+      mr_rot13_attribution_and_iocs: C3
+      cve_itself: A1
+    wep_split:
+      mr_rot13_framing: roughly_even_chance
+      cve_active_exploitation: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_sat: [sat-ach, sat-kac]
+    red_team_review_required: false
+    red_team_review_threshold_basis: wep_ceiling_roughly_even_chance_well_below_very_likely_threshold
+    iocs_added:
+      hashes:
+        - sha256: 2d7d121dfcca6c17130ef605124869bf84ce77bee343ada78e0db2236174583a
+          role: helper.php Filemanager artifact (PHP web-shell variant on cPanel-compromised hosts)
+          attribution_claim: Mr_Rot13 (per QiAnXin XLab via The Hacker News)
+          grade_facts: B
+          grade_attribution: C
+      domains:
+        - value: cp.dene.com
+          defanged: cp.dene[.]com
+          role: Go-based infector / loader delivery
+          attribution_claim: Mr_Rot13
+          grade_facts: B
+          grade_attribution: C
+        - value: wrned.com
+          defanged: wrned[.]com
+          role: Credential exfiltration endpoint (ROT13-encoded POST destination)
+          attribution_claim: Mr_Rot13
+          grade_facts: B
+          grade_attribution: C
+        - value: wpsock.com
+          defanged: wpsock[.]com
+          role: Filemanager backdoor delivery / staging
+          attribution_claim: Mr_Rot13
+          grade_facts: B
+          grade_attribution: C
+      ips: []
+      cves:
+        - CVE-2026-41940
+      notes: |
+        First IOC set in the Archimedes corpus for CVE-2026-41940. CVE
+        itself anchored at A1 via CISA KEV (2026-04-30); Mr_Rot13
+        attribution chain and the operational IOCs are C3 per XLab
+        single-source provisional grade. Librarian handoff: regenerate
+        _master-index.yaml to include the 3 domains + SHA-256.
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits_on_keyword_sweep: 0
+      keywords: [Mr_Rot13, "cp.dene", wrned, wpsock, helper.php, CVE-2026-41940, "2d7d121d"]
+      hard_rule_8_framing: silence_is_not_disconfirming_cpanel_estate_typically_outside_ad_prime_production
+    actor_profiler_handoffs:
+      - actor: "Mr_Rot13"
+        action: new_actor_candidate_queue_do_not_roster_pending_independent_corroboration
+        operator_decision_required: true
+    librarian_handoffs:
+      - action: add_provisional_source_grade
+        target: source-grades.yaml
+        entry: qianxin-xlab
+        provisional_grade: C
+        awaiting_ratification: true
+        rationale: |
+          QiAnXin XLab — threat-intelligence and offensive-security publication
+          arm of QiAnXin Technology Group (Chinese cybersecurity vendor); first
+          encounter in Archimedes corpus 2026-05-11. Methodological positives
+          on first surface: named specific threat actor with operational detail
+          and IOC set, cross-platform technical analysis (Linux + Windows),
+          transparent reasoning chain (ROT13-encoded credential exfil → alias
+          derivation), multi-domain C2 attribution with named-domain
+          specificity. Parallels LayerX / Seqrite Labs / Trendyol Group /
+          SOCRadar provisional-C precedent.
+      - action: back_write_published_in_briefs_to_finding_2026_05_11_0005
+        value: "[2026-05-11-afternoon]"
+      - action: add_cve_to_vuln_tracker_index
+        cve: CVE-2026-41940
+        recommended_id: VT-006
+        kev_status: listed_2026-04-30
+        public_exploit_available: true
+        mass_exploitation_observed: true
+        named_actor_attribution_at_provisional_c: Mr_Rot13
+        ad_relevance_bound: LOW_cpanel_consumer_smb_marketing_site_tier_only
+    tripwires:
+      - condition: second_ab_grade_research_corroborates_mr_rot13_plus_filemanager_plus_iocs
+        effect: e5_flips_h1_becomes_leading_wep_could_lift_to_likely_pending_grader_re_grade
+      - condition: second_research_publishes_mr_rot13_with_different_ioc_set_or_contradicting_tradecraft
+        effect: h2_shared_persona_gains_diagnostic_support_h1_weakens
+      - condition: qianxin_xlab_issues_correction_or_retraction
+        effect: e1_weight_degrades_h4_misattribution_rises_trigger_retraction_review
+      - condition: first_party_splunk_hit_on_any_named_ioc
+        effect: hard_rule_8_first_party_precedence_engages_rerun_ach_with_first_party_weighted_plus_3
+      - condition: named_iocs_appear_in_second_source_under_different_actor_attribution
+        effect: h2_or_h4_gains_support_h1_weakens
+    resurface_if:
+      - second_ab_grade_research_corroborates_or_contradicts_xlab_attribution
+      - xlab_issues_correction_or_retraction
+      - first_party_splunk_hit_on_named_iocs
+      - named_iocs_appear_under_different_actor_attribution
+      - ad_prime_or_named_tier_1_supplier_confirmed_cpanel_compromise
+      - new_iocs_published_by_xlab_or_corroborating_research
+      - mr_rot13_displaces_or_collapses_into_existing_roster_actor
+    first_covered: 2026-05-04
+    last_covered: 2026-05-11
+    retraction: null
+    test: false
+    notes: |
+      UPDATE re-cover of 2026-05-04-am-005 (CVE-2026-41940 KEV deadline-
+      passed retrospective). Resurface basis: escalation_to_exploitation
+      met (active mass-exploitation envelope per XLab 2,000+ source IPs)
+      + first actor attribution (Mr_Rot13) + first IOC set in corpus.
+
+      Hard Rule 2 load-bearing: Mr_Rot13 attribution explicitly framed
+      as "per QiAnXin XLab" / "per XLab via The Hacker News" throughout;
+      Archimedes does not endorse discrete-actor framing per analyst
+      SAT-ACH inability to distinguish discrete-actor (H1) from shared-
+      persona (H2) or commodity opportunistic exploitation (H3) at
+      better than roughly_even_chance precision.
+
+      Decoupled-grade brief framing: CVE itself discussed at A1 confidence
+      (active mass exploitation, CISA KEV anchor independent of actor
+      attribution); Mr_Rot13 + IOCs discussed at C3 with explicit XLab-
+      sourced framing and Archimedes-non-endorsement language.
+
+      QiAnXin XLab source-grade handoff: add to source-grades.yaml as
+      provisional-C, awaiting_ratification: true, with this finding as
+      precedent. Methodological positives on first surface (named actor
+      with detailed IOC set, transparent reasoning chain, cross-platform
+      technical analysis, multi-domain C2 attribution with named-domain
+      specificity) are positive indicators for eventual upgrade-to-B
+      path. Parallels LayerX / Seqrite Labs / Trendyol Group / SOCRadar
+      provisional-C precedent pattern.
+
+      Vuln-tracker handoff: add CVE-2026-41940 to _index.yaml as tracked
+      CVE (VT-006 or similar) with KEV-listed status, public exploit
+      available, mass-exploitation observed, 2,000+ source IPs scope, and
+      Mr_Rot13 named-actor association at provisional-C confidence.
+      A&D-relevance bound: LOW. cPanel/WHM not common in A&D-prime
+      production estates; Tier-2/Tier-3 supplier marketing-site footprint
+      sits within scope; reputational / defacement risk applies to that
+      tier, ITAR/CMMC-controlled-data exfiltration risk does NOT.
+
+      Splunk first-party check across full IOC set (3 domains + SHA-256
+      + CVE keyword + actor name) returned zero hits on both indexes
+      -30d. Sentinel pm-000 14th consecutive PM sweep dormant on non-
+      archimedes-internal stream pattern. Per Hard Rule 8, silence is
+      not disconfirming — cPanel estate typically outside A&D-prime
+      production estate, so absence is expected regardless of campaign
+      reality.
+
+      Five tripwires defined for resolution monitoring: second A/B-grade
+      research corroborates / contradicts XLab; XLab issues correction;
+      first-party Splunk observes any IOC; named IOCs appear under
+      different actor attribution; new IOCs published.
+
+  - id: 2026-05-11-pm-004
+    covered_in: [2026-05-11-afternoon]
+    brief_file: threats/briefs/2026-05-11-afternoon.md
+    headline: "MONITORING — FCC Office of Engineering and Technology pushes foreign-router and foreign-drone software/firmware update-ban deadlines to a unified 2029-01-01 (extending router deadline 2027-03-01 and drone deadline 2027-01-01 by approximately 22-25 months); FCC cites public-interest considerations on patch availability and unspecified national-security concerns regarding overseas manufacturing; no specific foreign vendors named (implied vendor universe per public regulatory history is DJI, Huawei, ZTE, Hytera, Hikvision, Dahua); A&D-relevance capability-level only (counter-UAS product lines at primes RTX / L3Harris / Northrop Grumman / Lockheed Martin / Leidos; DIB / CMMC foreign-vendor cyber-risk posture parallel; DJI / Chinese-vendor DoD-prohibition history); no named A&D primes, tracked actors, CVEs, or IOCs involved; deadline extension likely a contextual signal of regulatory-implementation slippage on foreign-vendor cyber-risk frameworks worth watching for DIB / CMMC enforcement parallels"
+    topic_tags:
+      - regulatory-policy
+      - fcc-oet
+      - foreign-router-ban-extension
+      - foreign-drone-ban-extension
+      - deadline-extension-2029-01-01
+      - implementation-difficulty-signal
+      - counter-uas-business-segment-capability-level
+      - dib-cmmc-foreign-vendor-parallel
+      - dji-dod-prohibition-history
+      - chinese-vendor-covered-list
+      - capability-level-not-targeting-level
+      - no-vendors-named-by-fcc
+      - no-iocs-no-tracked-actors-no-cves
+      - the-record-relay
+      - suzanne-smalley-byline
+      - single-source-veto-applied
+      - monitoring-tier-not-flash-eligible
+      - ad-prime-counter-uas-product-lines-rtx-l3harris-grumman-lockheed-leidos
+      - regulatory-implementation-slippage-watching-brief
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-11-0006]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_required: false
+    red_team_review_required: false
+    iocs_added:
+      hashes: []
+      domains: []
+      ips: []
+      cves: []
+      notes: |
+        Regulatory-policy news with zero IOCs of operational defender value.
+        No threat-actor TTP / tooling / infrastructure observation.
+    splunk_first_party:
+      status: not_applicable
+      reason: no_iocs_no_actor_names_no_cves_no_first_party_telemetry_relates_to_regulatory_deadline_extension
+    librarian_handoffs:
+      - action: back_write_published_in_briefs_to_finding_2026_05_11_0006
+        value: "[2026-05-11-afternoon]"
+    resurface_if:
+      - federal_register_publication_or_fcc_gov_direct_source_publication_corroborates
+      - second_media_outlet_covers_announcement_independently
+      - specific_foreign_vendors_named_in_regulatory_text
+      - parallel_dib_cmmc_implementation_slippage_announced
+      - ad_prime_publicly_comments_on_extension_impact
+      - counter_uas_market_dynamics_shift_disclosed
+    first_covered: 2026-05-11
+    last_covered: 2026-05-11
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier B3 inclusion. Regulatory-policy news, not threat-
+      intelligence finding in the conventional sense — but A&D-adjacent
+      at capability / policy level (counter-UAS business segments at
+      primes, DIB / CMMC foreign-vendor cyber-risk posture parallel,
+      DJI / Chinese-vendor DoD-prohibition history). Briefer placed in
+      Other Signal section with explicit MONITORING tag.
+
+      Single-source veto applied: The Record (Suzanne Smalley) relaying
+      FCC OET announcement; no independent A/B-grade corroboration of
+      the deadline extension in the available window at sweep. Federal
+      Register publication or fcc.gov direct-source publication would
+      independently anchor the procedural fact.
+
+      No threat elevation, no FLASH-eligible signal, no tracked-actor /
+      tracked-CVE coupling. The deadline extension itself, given for
+      administrative-implementation-difficulty reasons, is a contextual
+      signal of broader regulatory-implementation slippage on foreign-
+      vendor cyber-risk frameworks — productive watching-brief question
+      is whether that slippage propagates to DIB / CMMC enforcement.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -343,13 +343,36 @@ entries:
 # ============================================================================
 _meta:
   total_rejections: 4
-  most_recent_run: morning-20260511-080000
+  most_recent_run: afternoon-20260511-160000
   most_recent_run_rejections: 0
   most_recent_run_note: >
-    morning-20260511-080000 produced 0 rejections; 2 promotions
-    (finding-2026-05-11-0001 cluster of Checkmarx Jenkins AST +
-    SailPoint GitHub at B2; finding-2026-05-11-0002 HookedWing
-    SOCRadar at C3). All un-promoted raw-signal in the window
-    cleared the C3 monitoring threshold or higher.
-  prior_run: afternoon-20260508-160000
-  prior_run_rejections: 1
+    afternoon-20260511-160000 produced 0 rejections; 4 promotions:
+    finding-2026-05-11-0003 (Google GTIG AI-generated zero-day at A2,
+    single-source veto applied — three relays of one GTIG primary fail
+    independence test; WEP ceiling likely; analyst_review_required true
+    for multi-actor attribution-claim surface);
+    finding-2026-05-11-0004 (UK ICO Cl0p / South Staffordshire Water
+    £963.9K fine at B3, single Record relay of ICO; WEP ceiling likely;
+    Cl0p tracked roster #018 HIGH restated attribution from 2022, no
+    rescore implied);
+    finding-2026-05-11-0005 (cPanel CVE-2026-41940 mass exploitation
+    by Mr_Rot13 with Filemanager backdoor at C3, QiAnXin XLab
+    provisional-C primary via The Hacker News relay; WEP ceiling
+    roughly even chance; CVE itself anchored A1 via CISA KEV;
+    analyst_review_required true for Mr_Rot13 attribution corroboration
+    and /new-actor candidate review);
+    finding-2026-05-11-0006 (FCC foreign-router and foreign-drone
+    update-ban deadline extension to 2029 at B3, single Record relay
+    of FCC OET; WEP ceiling likely; A&D-adjacent capability-level
+    policy signal; no actor / CVE / IOC).
+    All un-promoted raw-signal in the window cleared the C3 monitoring
+    threshold or higher; pm-000 sentinel sweep summary marked
+    promotion_not_applicable per grader procedure.
+    Two librarian handoffs queued: (1) add QiAnXin XLab to
+    source-grades.yaml as provisional-C entry (parallels LayerX /
+    Seqrite Labs / Trendyol Group / SOCRadar precedent);
+    (2) vuln-tracker review for adding CVE-2026-41940 to _index.yaml
+    as VT-006 or similar (KEV-listed, public exploit available,
+    mass-exploitation observed).
+  prior_run: morning-20260511-080000
+  prior_run_rejections: 0

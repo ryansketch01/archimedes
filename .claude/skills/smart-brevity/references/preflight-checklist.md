@@ -20,7 +20,7 @@ The `briefer` subagent loads this reference at the end of every brief draft. It 
 
 ---
 
-## The 12 Checks
+## The 13 Checks
 
 ### 1. Source URL present on every item
 
@@ -179,6 +179,33 @@ For v1 scheduled briefs, standing sections are:
 
 This is a **Hard Rule per CLAUDE.md** — copyright compliance, not style preference.
 
+### 13. Discord Summary section present and compliant (scheduled briefs only)
+
+**What to check:** Every scheduled brief (morning, afternoon, weekly synthesis, threat detection weekly, threat actor summary) ends with a `## 📣 Discord Summary` section that meets the Layer 2 spec in `doctrine/INTEL-BRIEF-STANDARDS.md`. FLASH briefs and retractions are exempt (they're already short enough to post as-is).
+
+**Pass criteria (scheduled briefs):**
+- The `## 📣 Discord Summary` heading exists and is the LAST heading in the file (extractable by reading from heading to EOF)
+- Opens with a time-anchored greeting (e.g., `Good morning. Here's your 0800 brief — 2026-05-11.`) with NO themed-character voice
+- Every bullet uses `**[Headline text](source-url)**` format — the headline IS the hyperlink, target is the source article URL
+- All dates rendered in natural language ("Friday May 9," "April 20," "patches May 13 & 28") — NO ISO format ("2026-05-09")
+- Smart Brevity rules (Rules 1, 4, 5, 7 from this checklist) apply — banned phrases zero, active voice, lead with impact, bold the "what"
+- No Admiralty digraph, no WEP vocabulary, no finding-id citations (those stay in Layer 1)
+- No standing-section "no new activity" boilerplate (Layer 1 still carries those)
+- Hard Rule 2 framings preserved where load-bearing ("per X per prior reporting," "Archimedes does not endorse")
+- Total Layer 2 word count between 150 and 300 words
+
+**Pass criteria (FLASH / retraction):** Section absent (exempt).
+
+**Fail action:**
+- Section missing on a scheduled brief → compose it from Layer 1 content per the spec
+- Themed-character voice detected → strip and re-write straight professional
+- ISO dates inside Layer 2 → convert to natural language
+- Headline not hyperlinked or pointing at wrong target → fix link
+- Word count out of band → compress (over) or expand from Layer 1 (under, but rare — Layer 1 always has more material to draw from)
+- Standing-section boilerplate present → remove (Layer 1 keeps it)
+
+This check is the doctrine enforcement boundary for the Discord post format. The librarian extracts and posts this section directly — non-compliance here means a non-compliant Discord post.
+
 ---
 
 ## Pass/Fail Output Format
@@ -237,9 +264,13 @@ checks:
     name: quote_discipline
     result: pass
     detail: "2 quotes, 2 sources, max 12 words per quote"
+  - id: 13
+    name: discord_summary_layer_2
+    result: pass
+    detail: "section present, 187 words, 4 bullets, all natural-language dates, all source-linked headlines"
 summary:
-  total_checks: 12
-  passed: 11
+  total_checks: 13
+  passed: 12
   failed: 1
   blocking: true
   action_required: "Regenerate active-threats section to remove banned phrase at line 27"

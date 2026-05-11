@@ -20,21 +20,80 @@
 
 ## Layered Format
 
-Every brief has **three layers** that the briefer subagent produces:
+Every brief has **two layers** that the briefer subagent produces, plus an optional third:
 
 ### Layer 1 — Canonical brief (the permanent record)
 
-Markdown file in `threats/briefs/YYYY-MM-DD-{type}.md`. Full structure, all sections, all metadata. This is what gets committed to git and becomes the audit record.
+Markdown file in `threats/briefs/YYYY-MM-DD-{type}.md`. Full structure, all sections, all metadata, all doctrine citations, all WEP / digraph / Hard Rule framings. This is the analyst-grade record that gets committed to git and becomes the audit trail. Word count target per brief type (see table above).
 
-### Layer 2 — Discord embed (the delivery format)
+### Layer 2 — Discord summary (the delivery format)
 
-A rendering of the canonical brief into Discord's embed format. Has character limits (4096/embed, 6000 total, 25 fields max). The Discord bot performs this conversion; the briefer does not produce Discord-specific output directly.
+A short, mobile-readable summary embedded as `## 📣 Discord Summary` at the bottom of every scheduled brief. This is what the librarian extracts and posts to `#intel-briefs`. **Smart Brevity, natural-language dates, source-linked headlines, no themed character.** Target 150–300 words total regardless of full-brief length (well under Discord's 2000-char per-message limit). See the dedicated section below for the format spec.
 
-### Layer 3 — Dashboard view (optional human read)
+### Layer 3 — Dashboard view (deferred — not built)
 
-Same canonical brief, rendered as HTML in the Flask dashboard with links, hover cards on actor references, and filter controls.
+Originally planned: HTML rendering of the canonical brief on a Flask dashboard with hover cards on actor references and filter controls. Deferred indefinitely; the Discord listener (`/cve`, `/investigate`, `/ioc-hunt`, etc.) and the markdown-in-git corpus together cover the interactive-query and browse needs. Reserved dependencies remain in `pyproject.toml [dashboard]` for future build.
 
-**One source of truth, three renderings.** The briefer produces Layer 1 only.
+**One source of truth, two active renderings.** The briefer produces Layers 1 and 2 in the same markdown file; the librarian extracts Layer 2 at post time.
+
+---
+
+## Discord Summary Section (Layer 2 spec)
+
+Every scheduled brief (morning, afternoon, weekly synthesis, threat detection weekly, threat actor summary) ends with a `## 📣 Discord Summary` section. FLASH briefs are already short enough to post as-is and do NOT carry a separate summary section.
+
+### Format rules
+
+1. **Open with a one-line greeting that anchors the time.** Example: `Good morning. Here's your 0800 brief — 2026-05-11.` No themed character voice (no "Rebel scum," no in-character bot personality). Just the time anchor and date.
+2. **Section headers use the same emoji as Layer 1** (🚨 Active Threats, 🔓 Vulnerabilities, ✈️ Sector Focus, 🕵️ Actor Activity, 🇮🇷 Iran Cyber Watch, 📰 Other Signal). Skip any section that's empty for the Discord post — standing-section "no new activity" boilerplate stays in Layer 1 but does NOT appear in Layer 2.
+3. **One bullet per finding.** Format:
+   ```
+   • **[Plain-English headline that summarizes the item](https://source.example.com/article)** — Natural-language summary body with concrete dates, actor names, CVE IDs, and the action a reader should take.
+   ```
+   The headline IS the hyperlink. Target the source article URL, not the finding-id (the finding-id citation belongs in Layer 1).
+4. **Natural-language dates.** Convey freshness — readers should know at a glance how old the intel is.
+   - ✅ "Checkmarx warned Friday May 9..."
+   - ✅ "SailPoint disclosed an April 20 incident..."
+   - ✅ "Patches arrive May 13 & 28..."
+   - ❌ "Checkmarx warned 2026-05-09..."
+   - ❌ "SailPoint disclosed at 2026-04-20T00:00:00-04:00..."
+5. **Smart Brevity discipline** (same rules as Layer 1):
+   - Lead with impact, not context
+   - Active voice
+   - One idea per bullet, one sentence per body (Discord-summary bodies may run to two sentences if the action call needs its own clause)
+   - Cut filler phrases ("It's worth noting that," "Additionally," "In other news," etc.)
+   - Numbers and specificity over adjectives and hedging
+   - Bold the "what" so a scanning reader can catch it
+6. **Italic emphasis** on urgent calls to action: `*apply vendor mitigations right now*` or `*patch by EOD*`.
+7. **Length target 150–300 words.** A 700-word Layer 1 should collapse to ~200 words in Layer 2. If Layer 2 runs longer than 300 words, you're keeping too much; the canonical brief in Layer 1 carries the depth.
+8. **Hard Rule 2 framings** ("per X per prior reporting," "Archimedes does not endorse") are PRESERVED in Layer 2 when they're load-bearing — the Discord audience needs to know what's attribution vs. what's relay. Keep them, but tighten the phrasing.
+9. **Digraph / WEP / finding-id citations** belong in Layer 1, NOT Layer 2. Discord readers don't need the Admiralty grade in the channel; the analyst-grade record carries it.
+10. **No standing-section boilerplate.** If Iran Cyber Watch had no new activity, omit it from Discord. Layer 1 still carries the "silent day" entry per `infrastructure/watch-config.yaml`.
+
+### Example — Discord Summary section
+
+```markdown
+## 📣 Discord Summary
+
+Good morning. Here's your 0800 brief — 2026-05-11.
+
+🚨 **Active Threats**
+
+• **[Checkmarx Jenkins AST plugin compromised in supply-chain attack](https://www.securityweek.com/checkmarx-jenkins-ast-plugin-compromised-in-supply-chain-attack/)** — Checkmarx warned Friday May 9 of a malicious Jenkins AST plugin on the Jenkins Marketplace; weekend variants surfaced on GitHub. Remediation `2.0.13-848` is out. **DIB CI/CD owners:** pin Jenkins instances to the fix version and capture plugin hashes now for backfill when IOCs land.
+
+• **[SailPoint discloses GitHub repository hack](https://www.securityweek.com/sailpoint-discloses-github-repository-hack/)** — SailPoint disclosed an April 20 incident in which a third-party-app vulnerability opened a subset of its GitHub repos. No production customer data accessed; some customer info was in the repos with extent undisclosed. SecurityWeek floats a possible TeamPCP link per prior reporting; *Archimedes does not endorse the linkage.*
+
+🔓 **Vulnerabilities**
+
+• **CVE-2026-6973 (Ivanti EPMM on-prem):** federal patch deadline expired last night. Unpatched on-prem fleet now carries federal non-compliance posture plus standing exploitation risk.
+• **CVE-2026-42208 (BerriAI LiteLLM):** KEV deadline closes today (FCEB scope). Shops proxying LLM API traffic through LiteLLM should inventory and patch *by EOD*.
+```
+
+That's ~190 words covering two findings + two carry-over CVE deadlines from a 731-word Layer 1 brief. Mobile-readable, source-linked, natural-language dates, no themed voice.
+
+### What the librarian does with it
+
+The librarian's Mode 1 procedure (see `.claude/agents/librarian.md`) extracts the content under `## 📣 Discord Summary` from the canonical brief and posts that text to `#intel-briefs`. The full canonical brief stays in git as the analyst-grade record; the Discord post is the executive summary. If the Discord summary is missing, the librarian halts the post step and flags the briefer's output as non-compliant.
 
 ---
 
@@ -185,9 +244,13 @@ tlp: CLEAR
 ---
 
 *Sources hyperlinked inline. Admiralty digraph noted per item. TLP:CLEAR unless flagged.*
+
+## 📣 Discord Summary
+
+[Layer 2 — Smart Brevity summary for the Discord post. 150–300 words. See "Discord Summary Section (Layer 2 spec)" above. The librarian extracts this section content and posts to #intel-briefs; the rest of the brief stays in git as the analyst-grade record.]
 ```
 
-**Section order is fixed.** Standing sections (Sector Focus, Iran Cyber Watch) always appear even if empty — use the `silent_day_template` from `infrastructure/watch-config.yaml`.
+**Section order is fixed.** Standing sections (Sector Focus, Iran Cyber Watch) always appear in Layer 1 even if empty — use the `silent_day_template` from `infrastructure/watch-config.yaml`. The `## 📣 Discord Summary` section is always the LAST section in the file so it's trivially extractable by the librarian (read from heading to EOF).
 
 ---
 
@@ -239,6 +302,7 @@ tlp: CLEAR
 - [ ] TLP noted where non-CLEAR
 - [ ] Single-source veto respected (no "very likely" or higher from one source)
 - [ ] Every quote under 15 words, max one quote per source
+- [ ] `## 📣 Discord Summary` section present, last in file, 150–300 words, headlines link to source URLs, dates in natural language, no themed-character voice (scheduled briefs only — FLASH briefs post as-is)
 
 ---
 

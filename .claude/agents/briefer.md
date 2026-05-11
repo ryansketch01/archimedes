@@ -223,14 +223,28 @@ Key references you load within the skill:
    ├─ Must pass "earn the reader's attention" test
    └─ If the lead reads like filler, regenerate
 
-8. Run pre-flight checklist (12 items, load from smart-brevity reference)
+8. Compose the `## 📣 Discord Summary` section (Layer 2):
+   ├─ MUST be the last section in the file
+   ├─ MUST follow INTEL-BRIEF-STANDARDS "Discord Summary Section (Layer 2 spec)"
+   ├─ Greeting line anchors the time: "Good morning. Here's your 0800 brief — YYYY-MM-DD."
+   ├─ One bullet per finding; headline IS the hyperlink to the source article URL
+   ├─ Natural-language dates ("Friday May 9," "April 20," "patches May 13 & 28") — NOT ISO ("2026-05-09")
+   ├─ Smart Brevity rules apply (lead with impact, active voice, cut filler, bold the "what")
+   ├─ Italic emphasis on urgent action calls (*right now*, *by EOD*)
+   ├─ Hard Rule 2 framings preserved when load-bearing ("per X per prior reporting," "Archimedes does not endorse")
+   ├─ Digraph / WEP / finding-id citations stay in Layer 1; OMIT from Layer 2
+   ├─ Skip standing sections that had zero new activity (Layer 1 still carries the silent-day entry)
+   ├─ No themed-character voice (no in-character bot persona; just clean professional)
+   └─ Target 150–300 words total; if longer, you're keeping too much
+
+9. Run pre-flight checklist (13 items now — load from smart-brevity reference; the new item is Layer 2 compliance)
    ├─ If all pass → proceed
    └─ If any fail → identify specific section, regenerate, re-run checklist
 
-9. Write brief file with full frontmatter + body
-10. Update _coverage-log.yaml with per-item entries
-11. Back-write `published_in_briefs` on every referenced finding (see Outputs section)
-12. Return summary to orchestrator
+10. Write brief file with full frontmatter + body (Layer 1 + Layer 2 in the same .md)
+11. Update _coverage-log.yaml with per-item entries
+12. Back-write `published_in_briefs` on every referenced finding (see Outputs section)
+13. Return summary to orchestrator
 ```
 
 ## Procedure — FLASH brief

@@ -275,23 +275,45 @@ Mode 2 append; Mode 3 process and archive superseded/expired entries to `infrast
 
 ```
 1. Receive target_file (brief .md path) and run_id
-2. LEGAL-POLICY content scan:
+2. LEGAL-POLICY content scan on the FULL canonical brief (Layer 1):
    ├─ Check for credential patterns (passwords, hashes labeled as credentials)
    ├─ Check TLP level (CLEAR or GREEN only for auto-post)
    └─ If content-safety issue → halt, flag
 3. Log Splunk event: run_complete for the brief-generation run
-4. Invoke Discord post:
-   └─ bash .claude/hooks/discord-post.sh --channel intel-briefs --message-file <target_file>
-   (Note: Discord enforces a 2000-character per-message limit. If the brief
-   exceeds 2000 chars, post a short summary message with a link to the
-   committed git path instead of the full brief body.)
-5. Log Splunk event: brief_published
-6. git add the brief + coverage-log.yaml + any related files
-7. git commit -m "Publish <type> brief YYYY-MM-DD\n\nrun_id: <run_id>"
-8. git push origin main
-9. Log Splunk event: git_committed
-10. Return summary
+4. Extract the Discord Summary section (Layer 2):
+   ├─ Locate the heading `## 📣 Discord Summary` in target_file
+   ├─ Capture all content from the heading line through end-of-file
+   ├─ If heading is missing on a scheduled brief → HALT, flag briefer output as
+   │   non-compliant per INTEL-BRIEF-STANDARDS preflight check #13
+   ├─ Write the extracted section to a temp file (e.g.,
+   │   $TMPDIR/discord-post-<run_id>.md)
+   ├─ Sanity-check: 150-300 words, no themed-character voice, no ISO dates
+   │   in the body (heuristic match on the YYYY-MM-DD pattern outside the
+   │   greeting line — flag if found, do NOT auto-correct; briefer owns Layer 2)
+   └─ Discord enforces a 2000-character per-message limit; Layer 2 spec keeps
+       us well under that, so no truncation logic needed
+5. Invoke Discord post on the EXTRACTED Layer 2:
+   └─ bash .claude/hooks/discord-post.sh --channel intel-briefs --message-file <temp_file>
+   (The canonical Layer 1 brief stays in git as the analyst-grade record; only
+   Layer 2 hits Discord.)
+6. Log Splunk event: brief_published
+   ├─ Include layer_2_word_count and layer_1_word_count for telemetry parity
+   └─ Include discord_post_status from the hook
+7. git add the brief + coverage-log.yaml + any related files
+8. git commit -m "Publish <type> brief YYYY-MM-DD\n\nrun_id: <run_id>"
+9. git push origin main
+10. Log Splunk event: git_committed
+11. Clean up the temp Layer 2 file
+12. Return summary
 ```
+
+### Why the split
+
+Layer 1 is the analyst-grade record — full doctrine framings, WEP / digraph / finding-id citations, single-source-veto annotations, Splunk first-party caveats, Hard Rule 2 attribution discipline. It belongs in git for red-team review and 90-day audit.
+
+Layer 2 is the executive summary for the Discord channel — Smart Brevity, natural-language dates, source-linked headlines, mobile-readable. It belongs in `#intel-briefs` for the operator's scan-on-phone experience.
+
+**One canonical file, one Discord post, two audiences.** The librarian is the demultiplexer.
 
 ## Procedure — Mode 2 (post FLASH brief)
 

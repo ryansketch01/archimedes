@@ -235,7 +235,10 @@ Key references you load within the skill:
    ├─ Digraph / WEP / finding-id citations stay in Layer 1; OMIT from Layer 2
    ├─ Skip standing sections that had zero new activity (Layer 1 still carries the silent-day entry)
    ├─ No themed-character voice (no in-character bot persona; just clean professional)
-   └─ Target 150–300 words total; if longer, you're keeping too much
+   ├─ Target 150–300 words total; if longer, you're keeping too much
+   └─ Hard ceiling ≤1900 characters (Discord limit is 2000; URLs eat chars
+       fast — author within the ceiling on first pass to avoid librarian
+       bounce + regen cycle)
 
 9. Run pre-flight checklist (13 items now — load from smart-brevity reference; the new item is Layer 2 compliance)
    ├─ If all pass → proceed

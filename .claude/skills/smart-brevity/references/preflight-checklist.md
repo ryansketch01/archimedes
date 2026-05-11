@@ -193,6 +193,7 @@ This is a **Hard Rule per CLAUDE.md** — copyright compliance, not style prefer
 - No standing-section "no new activity" boilerplate (Layer 1 still carries those)
 - Hard Rule 2 framings preserved where load-bearing ("per X per prior reporting," "Archimedes does not endorse")
 - Total Layer 2 word count between 150 and 300 words
+- Total Layer 2 character count ≤1900 (hard ceiling — leaves headroom for the librarian's preview/flag prefix on Discord's 2000-char per-message limit). If word count is in band but char count >1900, regenerate with tighter bullets — URLs eat characters fast and a 290-word draft with multiple SecurityWeek/vendor URLs can blow the ceiling
 
 **Pass criteria (FLASH / retraction):** Section absent (exempt).
 
@@ -267,7 +268,7 @@ checks:
   - id: 13
     name: discord_summary_layer_2
     result: pass
-    detail: "section present, 187 words, 4 bullets, all natural-language dates, all source-linked headlines"
+    detail: "section present, 240 words, 1973 chars (≤1900 ceiling met), 5 bullets, all natural-language dates, all source-linked headlines"
 summary:
   total_checks: 13
   passed: 12

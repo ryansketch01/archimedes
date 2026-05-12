@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-12T08:00:00-04:00
+last_updated: 2026-05-12T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -4971,6 +4971,213 @@ entries:
       and could raise WEP above "likely"; (3) public PoC for CVE-2026-
       41551 is high-velocity-class given unusual unauthenticated
       network-vector profile.
+
+  - id: 2026-05-12-pm-001
+    covered_in: [2026-05-12-afternoon]
+    headline: "MSTIC 'Undermining the Trust Boundary' — 123-day MSP supply-chain intrusion case study; HPE Operations Agent legitimate-tool abuse; no actor attribution"
+    topic_tags: [mstic, msp-supply-chain, t1199, trusted-relationship, hpe-operations-agent, legitimate-tool-abuse, password-filter-dll, network-provider-dll, lsa-notification-package, aspx-web-shell, internet-facing-iis, dwell-123-day, no-attribution, hard-rule-2, defender-xdr-hunting-queries, behavior-based-detection]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-12-0005]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - independent_ir_corroboration_with_overlapping_iocs_or_tradecraft
+      - mstic_follow_on_publication_naming_actor
+      - hash_or_infrastructure_attribution_emerges
+      - first_party_ioc_hit_post_master_index_sync
+      - second_ir_case_study_publishing_hpe_oa_abuse
+      - new_victims_disclosed
+    first_covered: 2026-05-12
+    last_covered: 2026-05-12
+    retraction: null
+    test: false
+    notes: |
+      Lead item of the afternoon brief per analyst recommendation
+      (supply-chain-risk framing, not tradecraft-case-study and not
+      attribution). Single-source veto applied — MSTIC is the only
+      effective primary; WEP capped at "likely" per veto. Hard Rule 2
+      load-bearing throughout — Microsoft uses generic "the threat
+      actor" language and originates no attribution; this finding
+      and brief originate none either. SAT-ACH across six hypotheses
+      (APT29, Sandworm, Salt Typhoon, MuddyWater, untracked nation-
+      state, sophisticated criminal/IAB-hybrid) returned non-diagnostic
+      — every published evidence row scored consistent or neutral
+      across every hypothesis. SAT-KAC produced five qualifying caveats
+      (most consequential: A2 HPE OA deployment in A&D is unverified;
+      relevance framing emphasizes the MSP-delegated enterprise-
+      management-agent CLASS over HPE OA specifically). Brief honors
+      analyst's framing directive: filename IOCs flagged as evadable;
+      detection priority on the three Defender XDR behavior hunts
+      (LSA notification-package, custom network-provider, web-shell
+      persistence). Tripwires: independent IR corroboration (Mandiant /
+      CrowdStrike / Unit 42 / Kroll / Secureworks) with overlapping
+      IOCs or tradecraft lifts single-source veto and may elevate WEP.
+
+  - id: 2026-05-12-pm-002
+    covered_in: [2026-05-12-afternoon]
+    headline: "CISA six-advisory ICS batch — ABB AC500 V3 CVSS 9.8 cryptographic-parser RCE leads (CVE-2025-15467); plus ABB WebPro SNMP, ABB Automation Builder, Subnet PowerSYSTEM Center, Fuji Electric Tellus"
+    topic_tags: [cisa, ics-advisories, ics-26-132, abb, ac500-v3, subnet-solutions, powersystem-center, fuji-electric, tellus, abb-webpro-snmp, abb-automation-builder, cryptographic-parser, oob-write, aes-gcm, publicly-reported-vulnerability, no-itw, kev-no-entry, firmware-updates-available, backstop-reach-validation]
+    related_actors: []
+    related_vulns: [CVE-2025-15467, CVE-2025-2595, CVE-2025-41659, CVE-2025-41691, CVE-2026-26289, CVE-2026-33570, CVE-2026-35504, CVE-2026-35555, CVE-2026-8108, CVE-2024-41975]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-12-0006]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - kev_addition_any_cluster_cve
+      - third_party_ics_research_independent_analysis_dragos_claroty_nozomi_otorio
+      - public_poc_release_cve_2025_15467
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - ad_supplier_ot_environment_named_as_target
+      - new_victims_confirmed
+    first_covered: 2026-05-12
+    last_covered: 2026-05-12
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied. CISA + affected vendors (ABB / Subnet
+      Solutions / Fuji Electric) are the single coordinated-disclosure
+      chain. NVD will mirror per CNA submission. WEP capped at "likely."
+
+      Hard Rule 2 honored — no actor attribution in any advisory.
+      Hard Rule 6 honored — one short quote of CISA's standard phrasing
+      "publicly reported vulnerability" (3 words) used to convey CISA's
+      framing that this indicates prior third-party disclosure of the
+      underlying flaw and NOT active ITW exploitation; KEV is the
+      authority for ITW claims and confirms no entry for any cluster
+      CVE.
+
+      Hard Rule 8 first-party Splunk: clean across all 10 CVE IDs +
+      product strings over -30d. Silence is structurally expected —
+      DefenseClaw likely does not extend to OT segments. Visibility
+      gap flagged.
+
+      Procedural validation: this batch was published at 08:00 EDT —
+      just after the 07:30 morning sweep boundary — and surfaced via
+      the 15:30 pre-brief backstop-reach window. Corroborates the
+      source-cadence-resilience design from the collector Mode-1
+      procedure.
+
+      Tripwires: (1) any KEV catalog addition; (2) Dragos / Claroty /
+      Nozomi / OTORIO / SCADAfence independent analysis on CVE-2025-
+      15467 (the 9.8 headliner) lifts veto and may elevate WEP;
+      (3) public PoC on CVE-2025-15467 is plausible given the
+      cryptographic-parser bug class and "publicly reported"
+      framing.
+
+  - id: 2026-05-12-pm-003
+    covered_in: [2026-05-12-afternoon]
+    headline: "Fortinet PSIRT — two Critical unauthenticated RCE-class CVEs: FortiSandbox missing-auth GUI (CVE-2026-26083, FG-IR-26-136) and FortiAuthenticator improper-access-control crafted-request code execution (CVE-2026-44277)"
+    topic_tags: [fortinet, fortinet-psirt, fortisandbox, fortiauthenticator, fg-ir-26-136, unauth-rce, missing-authorization, improper-access-control, no-itw, kev-no-entry, identity-infrastructure, vpn-mfa, cac-piv, federal-contracting, cmmc-dib]
+    related_actors: []
+    related_vulns: [CVE-2026-26083, CVE-2026-44277]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-12-0004]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - kev_addition
+      - public_poc_release
+      - n_day_research_publication_watchtowr_horizon3_assetnote_rapid7_greynoise
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - ad_supplier_disclosure_with_either_cve_named
+      - greynoise_scanning_observation_post_disclosure
+      - new_victims_confirmed
+    first_covered: 2026-05-12
+    last_covered: 2026-05-12
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied. Fortinet PSIRT is the single
+      originating advisory channel; BleepingComputer is pure relay.
+      WEP capped at "likely" per veto.
+
+      Hard Rule 2 honored — no actor attribution; BleepingComputer's
+      editorial about Fortinet historical exploitation framed
+      explicitly as historical-pattern observation, NOT a current
+      ITW claim against CVE-2026-26083 or CVE-2026-44277.
+
+      Hard Rule 6 honored — one short BleepingComputer quote
+      ("Fortinet vulnerabilities are frequently exploited in
+      ransomware and cyber-espionage attacks", 10 words) used to
+      convey historical context with explicit framing that it is
+      NOT current ITW claim. Within 15-word limit; one quote per
+      source.
+
+      Hard Rule 8 first-party Splunk: clean across both CVEs +
+      FortiSandbox / FortiAuthenticator product strings -30d.
+      Network-appliance management-plane visibility gap flagged.
+
+      CVSS scores not exposed via PSIRT index this sweep (FG-IR-26-136
+      detail page returned ECONNREFUSED — intermittent server-side
+      issue, not workflow-blocking). Tomorrow's NVD lag-fill window
+      should backfill CVSS + CWE.
+
+      Tripwires: (1) Watchtowr / Horizon3.ai / Assetnote / Rapid7 /
+      GreyNoise n-day analysis on either CVE within 24-72h is
+      historically common for high-profile Fortinet unauth RCE
+      disclosures (CVE-2022-40684, CVE-2023-27997 precedents);
+      (2) KEV addition; (3) public PoC; (4) GreyNoise scanning
+      observation. Any independent analysis lifts veto and may
+      elevate WEP above "likely."
+
+      Source-grade-log candidate: fortinet-psirt at provisional A
+      first cite (analogous to siemens-productcert / sap-advisory
+      first-corpus-surface treatment this morning).
+
+  - id: 2026-05-12-pm-004
+    covered_in: [2026-05-12-afternoon]
+    headline: "Microsoft May 2026 Patch Tuesday — 137 CVEs (120 Windows + 17 Edge/Chromium), 17+ Critical; headliners CVE-2026-41096 Windows DNS Client RCE and CVE-2026-40364 / 40361 Word preview-pane RCE pair; no zero-days, no in-the-wild exploitation per Microsoft"
+    topic_tags: [microsoft, msrc, patch-tuesday, may-2026, windows-dns-client, netlogon, sharepoint, sso-plugin-jira-confluence, dynamics-365, hyper-v, word-preview-pane, m365-copilot, no-zero-days, no-itw, kev-no-entry, single-source-veto]
+    related_actors: []
+    related_vulns: [CVE-2026-41096, CVE-2026-41089, CVE-2026-40365, CVE-2026-41103, CVE-2026-40364, CVE-2026-40361, CVE-2026-40366, CVE-2026-40367, CVE-2026-40358, CVE-2026-40363, CVE-2026-42831, CVE-2026-42898, CVE-2026-32161, CVE-2026-35421, CVE-2026-40402, CVE-2026-40403, CVE-2026-26164]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-12-0003]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - kev_addition_any_cluster_cve
+      - mandiant_crowdstrike_unit42_mstic_post_patch_tuesday_exploitation_analysis
+      - public_poc_cve_2026_41096_dns_client
+      - public_poc_cve_2026_40364_or_40361_word_preview_pane
+      - public_poc_cve_2026_41089_netlogon
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - nvd_records_published
+      - new_victims_confirmed
+    first_covered: 2026-05-12
+    last_covered: 2026-05-12
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied. MSRC Update Guide is the single
+      effective origin; BleepingComputer, SecurityWeek, and SANS ISC
+      are all relays of the same primary. WEP capped at "likely."
+
+      Hard Rule 2 honored — no actor attribution; Microsoft attributes
+      none for any of the 17+ Criticals.
+      Hard Rule 6 honored — no direct quotes from external sources in
+      the brief body (BleepingComputer's "fundamental infrastructure
+      attack vector" framing paraphrased; SecurityWeek's preview-pane-
+      exploitable framing paraphrased).
+
+      Hard Rule 8 first-party Splunk: clean across the 17+ Critical
+      CVE IDs over -30d. Windows endpoint telemetry surface visibility
+      gap flagged — DefenseClaw instrumentation may not yet cover
+      Windows endpoint exploitation surfaces where Patch Tuesday CVEs
+      would be observable.
+
+      Tripwires: (1) any KEV catalog addition; (2) Mandiant /
+      CrowdStrike / Unit 42 / Trend Micro ZDI / Qualys post-Patch-
+      Tuesday exploitation analysis on any of the 17+ Criticals lifts
+      veto; (3) public PoC on CVE-2026-41096 (DNS Client universal
+      surface), the CVE-2026-40364 / 40361 Word preview-pane pair,
+      or CVE-2026-41089 Netlogon (Zerologon-class precedent) are
+      highest-PoC-velocity-class candidates per historical precedent.
 
 # ============================================================================
 # Valid resurface_if conditions

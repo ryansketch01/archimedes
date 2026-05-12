@@ -9,7 +9,7 @@
 # resurfaces via higher-grade sources.
 
 version: 1
-last_updated: 2026-05-12
+last_updated: 2026-05-12  # afternoon-20260512-160000 added run summary; no new rejection entries
 
 entries:
   - rejection_id: reject-2026-05-08-0001
@@ -484,9 +484,133 @@ entries:
 # ============================================================================
 _meta:
   total_rejections: 6
-  most_recent_run: morning-20260512-080000
-  most_recent_run_rejections: 2
+  most_recent_run: afternoon-20260512-160000
+  most_recent_run_rejections: 0
   most_recent_run_note: >
+    afternoon-20260512-160000 produced 0 rejections and 4 promotions.
+    All four content raw-signals from the 15:30 pre-brief sweep
+    cleared B2+ inclusion threshold; no items fell below C3 monitoring
+    threshold.
+
+    Promotions:
+      finding-2026-05-12-0003 (Microsoft May 2026 Patch Tuesday; 137
+        CVEs / 120 Windows-only + 17 Edge/Chromium cumulative; 17+
+        Criticals incl. CVE-2026-41096 Windows DNS Client RCE
+        [bleepingcomputer headliner], CVE-2026-40364 + CVE-2026-40361
+        Word RCE preview-pane pair [securityweek headliner],
+        CVE-2026-41089 Netlogon RCE, CVE-2026-40365 SharePoint RCE
+        authenticated-network, CVE-2026-41103 SSO Plugin Critical EoP,
+        CVE-2026-42898 Dynamics 365 on-prem RCE, CVE-2026-40402
+        Hyper-V EoP, CVE-2026-26164 M365 Copilot info-disclosure, plus
+        seven additional Office/Word/Windows-graphics Criticals; B2
+        anchored on BleepingComputer + SecurityWeek relay tier with
+        MSRC A-grade primary underneath; single-source veto applied —
+        MSRC single CNA chain; WEP ceiling likely; no zero-days, no
+        ITW per vendor; structural A&D relevance via universal
+        Windows endpoint + AD/DNS + Office productivity deployment
+        across all primes; analyst_review and red_team_review both
+        false).
+      finding-2026-05-12-0004 (Fortinet PSIRT May 2026 critical RCE
+        pair; CVE-2026-26083 FortiSandbox missing-authorization
+        unauthenticated GUI access [FG-IR-26-136] + CVE-2026-44277
+        FortiAuthenticator improper-access-control unauthenticated
+        crafted-request code execution; B2 anchored on BleepingComputer
+        relay tier with Fortinet PSIRT provisional-A first-corpus-
+        surface primary underneath; single-source veto applied —
+        Fortinet single CNA chain; WEP ceiling likely; no ITW per
+        vendor; CVSS v3 scores not exposed in PSIRT index summary
+        this sweep — vuln-tracker NVD-lag backfill action; structural
+        A&D relevance via FortiSandbox perimeter-appliance + FortiAuthenticator
+        MFA / CAC/PIV integration deployment; analyst_review and
+        red_team_review both false; one librarian handoff queued for
+        fortinet-psirt source-grade-log entry).
+      finding-2026-05-12-0005 (MSTIC Microsoft Incident Response
+        "Undermining the trust boundary" IR case study; 123-day-
+        dwell-time stealthy intrusion via compromised third-party IT
+        services provider; HPE Operations Agent legitimate-tool abuse
+        as delivery mechanism [NOT a vulnerability in HPE OA]; MITRE
+        ATT&CK T1199 Trusted Relationship; multi-vector credential
+        harvesting [password filter DLL on DCs + network provider DLL
+        on member workstations] + ASPX web shell persistence on
+        internet-facing IIS; 8 file IOCs + 2 paths + 1 redacted domain
+        published; 3 Microsoft Defender XDR advanced hunting queries
+        provided; A2 anchored on MSTIC A-grade Tier-1 vendor research
+        primary; single-source veto applied — single MSTIC publication
+        with no third-party telemetry corroboration; WEP ceiling
+        likely; no actor attribution by Microsoft [generic "the threat
+        actor" language]; Hard Rule 2 compliance — Archimedes does
+        not originate attribution; tradecraft-class correspondence to
+        APT29 / Sandworm / Salt Typhoon / MuddyWater documented for
+        analyst awareness only; structural A&D relevance via MSP-
+        outsourcing-pattern inference + CMMC compliance scoping +
+        HPE OA deployment plausibility; **analyst_review_required:
+        true** — two latent load-bearing assumption layers warrant
+        analyst attention even at "likely" WEP tier: SAT-ACH on
+        attribution hypothesis set [or affirmative declination per
+        Hard Rule 2]; SAT-KAC on structural-A&D-relevance inference.
+        red_team_review_required: false [WEP at likely, below very
+        likely threshold]).
+      finding-2026-05-12-0006 (CISA 2026-05-12 ICS Advisory batch;
+        six advisories ICSA-26-132-01 through ICSA-26-132-06 across
+        three vendors and four product families: ABB AC500 V3 PLC
+        [ICSA-26-132-05 CVE-2025-15467 CVSS 9.8 OOBW HEADLINER +
+        ICSA-26-132-03 4-CVE cluster CVSS 8.3]; ABB WebPro SNMP Card
+        PowerValue [ICSA-26-132-06 CVSS 8.8 multi-class]; ABB
+        Automation Builder Gateway [ICSA-26-132-04 CVE-2024-41975
+        CVSS 5.3]; Subnet Solutions PowerSYSTEM Center [ICSA-26-132-02
+        4-CVE cluster CVE-2026-26289 / 33570 / 35504 / 35555 CVSS
+        8.2]; Fuji Electric Tellus [ICSA-26-132-01 CVE-2026-8108
+        CVSS 7.8 kernel-driver priv-esc]; A2 anchored on CISA A-grade
+        primary; single-source veto applied — CISA + vendors single
+        coordinated-disclosure chain; WEP ceiling likely; no ITW per
+        any advisory; CVE-2025-15467 "publicly reported vulnerability"
+        phrasing is CISA's standard language for prior third-party
+        disclosure of underlying flaw, NOT an ITW claim [KEV catalog
+        confirms zero entries]; structural A&D relevance via ABB /
+        Subnet / Fuji deployment across manufacturing / test-range /
+        weapon-system-integration-lab environments; analyst_review
+        and red_team_review both false; backstop-reach-to-morning-
+        brief window validated [batch published 08:00 EDT just after
+        07:30 morning sweep boundary]; three librarian handoffs
+        queued for vendor source-grade-log entries [abb-advisories,
+        subnet-solutions-advisories, fuji-electric-advisories
+        provisional A]).
+
+    Three librarian handoffs queued from afternoon-20260512-160000:
+      (1) Add `fortinet-psirt` to source-grades.yaml at provisional
+          A grade (parallels MSRC / Siemens ProductCERT / SAP advisory
+          / Palo Alto PSIRT / Ivanti PSIRT precedent for vendor
+          official-advisory tier; rationale in finding-2026-05-12-0004
+          source-grade-log block). PSIRT RSS endpoint status
+          unverified this sweep; operator decision needed on direct-
+          PSIRT-URL WebFetch fallback codification alongside RSS feed.
+      (2) Add `abb-advisories`, `subnet-solutions-advisories`, and
+          `fuji-electric-advisories` to source-grades.yaml at
+          provisional A grade (rationale in finding-2026-05-12-0006
+          source-grade-log block). Operator decisions deferred on
+          whether to onboard any as standing sources beyond CISA-
+          coordinated advisory channel.
+      (3) vuln-tracker review for adding ~29 CVEs to _index.yaml
+          across the four findings: 17 from MSRC May Patch Tuesday
+          (CVE-2026-41096 DNS Client RCE highest priority); 2 from
+          Fortinet PSIRT (CVE-2026-26083 FortiSandbox + CVE-2026-44277
+          FortiAuthenticator both HIGH priority given unauthenticated
+          profile); 0 from MSTIC PM-003 (no CVE involved — legitimate-
+          tool abuse); 10 from CISA ICS batch (CVE-2025-15467 ABB
+          AC500 V3 OOBW CVSS 9.8 highest priority) + 1 advisory-level
+          entry for ICSA-26-132-06 (ABB WebPro SNMP Card; individual
+          CVE IDs need extraction from full CISA advisory body).
+
+    Analyst handoff (NOT blocking afternoon brief):
+      finding-2026-05-12-0005 (MSTIC trust-boundary) carries
+      analyst_review_required: true — two SAT-ACH / SAT-KAC items
+      flagged for downstream analyst pickup. WEP capped at "likely"
+      per single-source veto; analyst review is structural-assumption
+      surfacing work, not WEP-elevation work. red_team_review_required:
+      false on this finding (WEP below very-likely threshold).
+
+  prior_run_replaced_below: morning-20260512-080000
+  prior_run_2_note: >
     morning-20260512-080000 produced 2 rejections and 2 promotions
     (plus 1 pre-existing FLASH-queue finding flowed through from
     overnight 06:00 FLASH sweep, untouched by this grading run).

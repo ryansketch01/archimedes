@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-11T16:00:00-04:00
+last_updated: 2026-05-12T06:18:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -4377,6 +4377,298 @@ entries:
       signal of broader regulatory-implementation slippage on foreign-
       vendor cyber-risk frameworks — productive watching-brief question
       is whether that slippage propagates to DIB / CMMC enforcement.
+
+  - id: 2026-05-12-flash-0600-001
+    covered_in: [flash-2026-05-12-0600]
+    brief_file: threats/briefs/2026-05-12-flash-0600-teampcp-mini-shai-hulud.md
+    headline: "Mini Shai-Hulud — TeamPCP-attributed npm/PyPI worm publishing validly-attested malicious packages via OIDC token hijack; 169-172 packages compromised across @tanstack / @uipath / @mistralai / @opensearch-project / @squawk / @tallyui / DraftLab npm namespaces plus PyPI guardrails-ai + mistralai; CVE-2026-45321 CVSS 9.6 / GHSA-g7cv-rxg3-hmpx; first publicly documented npm worm to produce validly-attested malicious packages within the Shai-Hulud family lineage per Wiz + Snyk characterization; maintainer same-day reversion; SLSA-attestation trust posture broken; 19 @squawk aviation-developer packages hit incidentally via worm maintainer-enumeration, not strategic A&D targeting"
+    topic_tags:
+      - flash
+      - flash_queued_quiet_hours
+      - flash_critical_override_failed_cvss_below_10_no_ad_watchlist_target
+      - supply-chain
+      - npm
+      - pypi
+      - mini-shai-hulud
+      - shai-hulud-family-lineage
+      - oidc-token-hijack
+      - slsa-attestation-bypass
+      - slsa-trust-posture-broken
+      - worm-class-self-propagation
+      - dual-ecosystem-propagation
+      - tanstack
+      - uipath
+      - mistralai
+      - opensearch-project
+      - squawk-aviation-data-incidental
+      - tallyui
+      - draftlab
+      - guardrails-ai
+      - country-aware-russian-locale-check-inherited
+      - session-network-deaddrop-new-infra-class
+      - catbox-staging
+      - cve-2026-45321
+      - cvss-9-6
+      - ghsa-g7cv-rxg3-hmpx
+      - kev-very-likely-pending
+      - teampcp-restatement-per-wiz-stepsecurity-snyk-relay
+      - attribution-effective-two-source-wiz-stepsecurity
+      - snyk-relays-stepsecurity-not-independent-third
+      - novelty-claim-family-scope-not-npm-ecosystem-scope
+      - capability-progression-organic-or-composite-handoff-ambiguity
+      - cross-reference-finding-0003-family-lineage-not-actor-lineage
+      - mstic-has-not-named-actor-for-shai-hulud-family
+      - hard-rule-2-framings-load-bearing
+      - red-team-qualify-no-publication-block
+      - dib-cicd-structural-exposure-even-with-attestation-policy
+      - sbom-scan-version-pin-ioc-watch-defender-floor
+    related_actors:
+      - actor_id: "001"
+        actor_name: TeamPCP
+        in_roster: true
+        relationship: mini_shai_hulud_attribution_per_wiz_high_confidence_and_stepsecurity_origination_with_snyk_relay
+        archimedes_treatment: restatement_no_archimedes_origination_hard_rule_2
+        attribution_independence_posture: effective_two_source_wiz_plus_stepsecurity_snyk_relays_not_third
+        ttp_register_update_queued: worm_class_self_propagation_plus_slsa_attestation_bypass_plus_session_network_deaddrop_new_for_actor_capability_progression_or_composite_handoff_both_consistent
+        new_aliases_pending_operator_decision: [DeadCatx3, PCPcat, ShellForce, CipherForce]
+    related_vulns:
+      - cve: CVE-2026-45321
+        cvss: 9.6
+        ghsa: GHSA-g7cv-rxg3-hmpx
+        kev_status: pending_very_likely_per_active_mass_exploitation
+        librarian_action: add_to_threats_vulnerabilities_index_yaml_post_publication
+    related_campaigns:
+      - mini-shai-hulud-2026-05-12
+      - shai-hulud-family-lineage
+    finding_ids: [finding-2026-05-12-FLASH-0001]
+    digraph: A2
+    digraph_layered:
+      procedural_facts: A1
+      teampcp_attribution: A2
+      novelty_slsa_breaking_claim: A2
+    wep: likely
+    wep_split:
+      procedural_facts: very_likely
+      worm_propagation_dual_ecosystem: very_likely
+      teampcp_attribution: likely
+      novelty_first_documented_slsa_breaking: likely
+    single_source_veto_applied: false
+    single_source_veto_rationale: "Procedural-facts layer cleared by 8+ independent vendor research firms. Attribution layer at effective-two-source (Wiz + StepSecurity; Snyk relays StepSecurity). Veto floor cleared; conservative WEP cap at 'likely' applied via cautious-grading on attribution-methodology overlap risk."
+    analyst_review_complete: true
+    analyst_sat: [sat-ach, sat-kac]
+    ach_summary:
+      hypotheses_evaluated: 5
+      ranking:
+        H1_teampcp_per_wiz_stepsecurity: rank_1_tied_with_H5_two_inconsistencies_E5_E6_capability_progression
+        H5_composite_teampcp_plus_emerging_worm_tooling: rank_1_tied_with_H1_zero_inconsistencies_no_source_advances
+        H3_null_opportunistic: rank_3_zero_inconsistencies_by_construction
+        H2_copycat: rank_4_two_inconsistencies
+        H4_false_flag: rank_4_two_inconsistencies
+      load_bearing_evidence: [E2_wiz_high_confidence_attribution, E5_worm_capability_not_in_prior_teampcp_history, E6_slsa_bypass_capability_not_in_prior_teampcp_history, E13_finding_0003_was_mstic_family_attribution_not_actor_attribution]
+    kac_summary:
+      classifications: {sound: 7, qualify: 3, test: 1, reject: 0}
+      load_bearing_assumptions:
+        - A1_capability_progression_organic_or_composite_handoff_qualify
+        - A2_novelty_first_documented_negative_claim_family_scope_qualify
+        - A4_squawk_aviation_incidental_not_strategic_targeting_qualify
+        - A5_wiz_stepsecurity_methodology_independence_test_non_blocking
+    red_team_review_required: true
+    red_team_review_required_basis: very_likely_threshold_met_on_procedural_facts_and_worm_propagation_sub_claims_plus_operator_enumerated_challenges
+    red_team_outcome: qualify
+    red_team_publication_blocked: false
+    red_team_composition_constraints_applied_by_briefer:
+      - novelty_claim_framing_scoped_to_family_lineage_not_npm_ecosystem
+      - attribution_independence_narrative_wiz_plus_stepsecurity_snyk_relay_surfaced_in_body_prose
+      - capability_progression_organic_or_composite_handoff_caveat_carried
+      - cross_reference_to_finding_0003_described_as_family_lineage_not_actor_lineage
+      - squawk_aviation_incidental_via_worm_maintainer_enumeration_caveat_preserved
+    iocs_added:
+      cves: [CVE-2026-45321]
+      ghsa: [GHSA-g7cv-rxg3-hmpx]
+      domains:
+        - filev2.getsession.org
+        - seed1.getsession.org
+        - seed2.getsession.org
+        - seed3.getsession.org
+        - api.masscan.cloud
+        - git-tanstack.com
+      ips:
+        - 83.142.209.194
+      staging_urls:
+        - litter.catbox.moe/h8nc9u.js
+        - litter.catbox.moe/7rrc6l.mjs
+      sha256_hashes:
+        - ab4fcadaec49c03278063dd269ea5eef82d24f2124a8e15d7b90f2fa8601266c
+        - 2ec78d556d696e208927cc503d48e4b5eb56b31abc2870c2ed2e98d6be27fc96
+        - 2258284d65f63829bd67eaba01ef6f1ada2f593f9bbe41678b2df360bd90d3df
+      session_recipient_ids:
+        - 05f9e609d79eed391015e11380dee4b5c9ead0b6e2e7f0134e6e51767a87323026
+      pbkdf2_salts:
+        - svksjrhjkcejg
+      compromised_package_namespaces_npm:
+        - "@tanstack (42 packages / 84 versions)"
+        - "@uipath"
+        - "@mistralai"
+        - "@opensearch-project"
+        - "@squawk (19 aviation data packages — incidental via worm enumeration)"
+        - "@tallyui (connector-medusa, connector-vendure)"
+        - DraftLab
+      compromised_packages_pypi:
+        - guardrails-ai@0.10.1
+        - mistralai@2.4.6
+      notes: |
+        Librarian: add the full IOC set to threats/iocs/_master-index.yaml.
+        Quarter-hour Splunk IOC sweep will re-fire across these indicators
+        once the master-index sync runs. Sixteenth consecutive sweep with
+        the dormant non-archimedes-internal stream pattern.
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits_on_in_scope_iocs: 0
+      consecutive_dormant_sweeps: 16
+      hard_rule_8_framing: silence_is_not_disconfirming_iocs_new_master_index_sync_pending
+    flash_evaluation:
+      triggers_fired:
+        - trigger_1_critical_cve_exploited
+        - trigger_4_tracked_actor_ttp_change
+      triggers_failed:
+        - trigger_2_new_attribution
+        - trigger_3_first_party_ioc_hit
+        - trigger_5_explicit_ad_sector_targeting
+        - trigger_6_zero_day_no_patch
+      critical_override_applied: false
+      critical_override_conditions_met: 2_of_4
+      cvss_value: 9.6
+      cvss_10_0_floor: false
+      active_exploitation: true
+      tracked_actor_involved: true
+      ad_watchlist_targeted: false
+      quiet_hours_at_compose: true
+      posting_path: queue_for_catchup
+      expected_post_window: "09:00 EDT catchup sweep — librarian must check for supersession by 08:00 morning brief before posting"
+      anti_noise_distinction_2026_05_11_checkmarx_jenkins: distinct_topic_per_8_dimension_test_at_finding_level
+    actor_profiler_handoffs:
+      - actor_id: "001"
+        actor_name: TeamPCP
+        action: update_ttp_register_with_worm_class_self_propagation_plus_slsa_attestation_bypass_plus_session_network_deaddrop_plus_dual_ecosystem_npm_pypi_propagation
+        new_capability_layer: first_publicly_documented_npm_worm_producing_validly_attested_malicious_packages_within_shai_hulud_family_lineage_per_wiz_snyk_stepsecurity
+        capability_progression_caveat: organic_development_or_composite_handoff_both_consistent_with_cited_sources
+        aliases_pending_operator_decision: [DeadCatx3, PCPcat, ShellForce, CipherForce]
+        next_update_tracking_action: intra_high_band_reassessment_capability_intent_categories
+    librarian_handoffs:
+      - action: queue_brief_to_infrastructure_flash_queue_yaml_for_09_00_catchup_sweep
+        queue_entry:
+          queued_at: 2026-05-12T06:18:00-04:00
+          brief_id: flash-2026-05-12-0600
+          trigger: trigger_1_critical_cve_exploited_plus_trigger_4_tracked_actor_ttp_change
+          expires_at: 2026-05-12T18:18:00-04:00
+          superseded: false
+          quiet_hours_queued_reason: 06_00_inside_2100_to_0900_window_cvss_below_10_no_ad_watchlist_target_critical_override_fails
+        supersession_check_required: true
+        supersession_check_target: 2026-05-12-morning
+      - action: add_iocs_to_threats_iocs_master_index_yaml_post_publication
+      - action: add_cve_2026_45321_to_threats_vulnerabilities_index_yaml_post_publication
+      - action: back_write_published_in_briefs_to_finding_2026_05_12_FLASH_0001
+        value: "[flash-2026-05-12-0600]"
+      - action: operator_decision_pending_teampcp_alias_update
+        candidate_aliases: [DeadCatx3, PCPcat, ShellForce, CipherForce]
+    hard_rule_2_framings_load_bearing:
+      - "TeamPCP attribution: per Wiz + StepSecurity (Snyk relays StepSecurity, not independent third)"
+      - "Novelty claim: per Wiz and Snyk; scoped to Shai-Hulud family lineage; Archimedes does not originate"
+      - "Capability progression: organic OR composite-handoff readings both consistent with cited sources"
+      - "Cross-reference to finding-0003: same Shai-Hulud family lineage per MSTIC family attribution. MSTIC has NOT named an actor for the Shai-Hulud family in public reporting visible to Archimedes."
+    tripwires:
+      - condition: mandiant_crowdstrike_or_unit_42_publishes_independent_teampcp_attribution_without_stepsecurity_citation_chain
+        effect: lifts_attribution_wep_from_likely_to_very_likely
+      - condition: wiz_publishes_methodological_detail_on_high_confidence_call_telemetry_vs_lineage_pattern
+        effect: resolves_a5_independence_question_either_way
+      - condition: industry_peer_review_surfaces_prior_art_for_validly_attested_npm_malicious_packages
+        effect: forces_novelty_claim_retraction_or_qualification
+      - condition: first_party_splunk_hit_on_mini_shai_hulud_iocs_over_next_7_to_14_days_post_master_index_sync
+        effect: lifts_per_hard_rule_8_first_party_telemetry_observation
+      - condition: mstic_publishes_active_attack_2026_05_12_mini_shai_hulud_post_with_attribution_language
+        effect: strongest_tripwire_lifts_attribution_wep
+      - condition: a_d_prime_publicly_confirms_squawk_or_compromised_package_in_sdlc_dependency_tree
+        effect: shifts_ad_relevance_reading_from_incidental_to_direct
+      - condition: maintainer_targeting_pattern_emerges_in_subsequent_reporting
+        effect: shifts_squawk_aviation_reading_from_incidental_to_targeted
+    resurface_if:
+      - independent_a_grade_third_source_attributes_to_teampcp_without_stepsecurity_citation_chain
+      - mstic_publishes_active_attack_2026_05_12_mini_shai_hulud_post
+      - additional_compromised_packages_disclosed_beyond_172
+      - additional_compromised_namespaces_disclosed_beyond_current_set
+      - first_party_splunk_hit_on_any_published_ioc
+      - cve_2026_45321_listed_on_cisa_kev
+      - ad_prime_publicly_confirms_compromised_package_in_sdlc_dependency_tree
+      - prior_art_disclosure_invalidates_first_documented_negative_claim
+      - actor_ttps_evolve
+      - new_attribution
+      - escalation_to_exploitation
+    first_covered: 2026-05-12
+    last_covered: 2026-05-12
+    retraction: null
+    test: false
+    notes: |
+      Quiet-hours FLASH (composed 06:18 EDT, inside 21:00-09:00 EDT
+      window). Critical override fails 2 of 4 conditions: CVSS 9.6 below
+      10.0 floor; no A&D watchlist entity named as target (the 19
+      @squawk aviation-developer packages are incidental via worm
+      maintainer-enumeration, not strategic A&D targeting). Brief queues
+      to infrastructure/flash-queue.yaml for the 09:00 catchup sweep
+      per FLASH-POLICY quiet-hours behavior. Librarian must check for
+      supersession by the 08:00 morning brief before posting; if
+      morning brief absorbs Mini Shai-Hulud coverage (very likely given
+      operational significance), mark superseded and archive.
+
+      Distinct topic from 2026-05-11 Checkmarx Jenkins AST plugin FLASH
+      per 8-dimension comparison at finding level (victim ecosystem
+      npm+PyPI vs Jenkins; scale 169-172 packages vs 1 plugin;
+      capability worm + valid attestation vs point-strike stolen creds;
+      CVE-2026-45321 vs none; originating research StepSecurity+Wiz+Snyk
+      multi-firm vs Checkmarx PSIRT self-disclosure; worm enumeration vs
+      none; SLSA-attestation breaking first documented vs N/A; Hacker
+      News headline framing). FLASH anti-noise rule "one FLASH per
+      topic per 24h" applies per TOPIC not per ACTOR.
+
+      Red-team applied 5 composition constraints (all required to apply
+      verbatim per orchestrator instruction): novelty-claim framing
+      sourced to Wiz+Snyk and scoped to Shai-Hulud family lineage (not
+      npm-ecosystem); attribution-independence narrative surfaces Wiz +
+      StepSecurity originating chain and Snyk relay-not-independent
+      posture in body prose; capability-progression caveat (organic OR
+      composite handoff) carried into Impact prose; cross-reference to
+      finding-0003 described as "same Shai-Hulud family lineage per
+      MSTIC family attribution" with explicit "MSTIC has not named an
+      actor for the family in public reporting visible to Archimedes"
+      caveat; @squawk aviation framed as incidental via worm
+      maintainer-enumeration, not strategic A&D targeting.
+
+      Pre-flight: 13/13 passed on second iteration. First iteration
+      failed on check 8 (word count — initial draft ran 816 words,
+      well over 300 FLASH ceiling; regenerated with aggressive
+      compression of sources/related blocks and removal of body-level
+      trigger-evaluation prose that belongs in frontmatter only).
+      Final body word count: 299 (target 150-300).
+
+      Analyst SAT-ACH and SAT-KAC complete; red-team review qualify
+      with no publication block. Both reviews persisted in
+      threats/findings/finding-2026-05-12-FLASH-0001.md. WEP caps
+      survived contrarian scrutiny — procedural facts and worm
+      propagation at very_likely; TeamPCP attribution and novelty
+      claim at likely. No WEP adjustment applied.
+
+      Hard Rule 8 absence-of-evidence convention applies on Splunk
+      first-party query (sixteenth consecutive sweep with dormant
+      non-archimedes-internal stream pattern; IOCs new, master-index
+      sync pending). Hard Rule 2 framings load-bearing throughout
+      (TeamPCP attribution restated per Wiz + StepSecurity, not
+      Archimedes-originated; novelty claim scoped to Shai-Hulud family
+      lineage per Wiz + Snyk characterization, not generalized to
+      npm-ecosystem; capability progression presented as organic-or-
+      composite-handoff ambiguity, not as TeamPCP-capability-advance
+      assertion; finding-0003 lineage described as family-level not
+      actor-level since MSTIC has not named an actor for the family).
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-10T16:00:00-04:00
+last_updated: 2026-05-12T06:30:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -198,6 +198,90 @@ vendor_sources:
     active: true
     urls:
       - https://www.trendyol.com/
+
+  - id: wiz-research
+    name: "Wiz Research"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-12
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-12-FLASH-0001 (Mini Shai-Hulud npm + PyPI worm; co-primary on TeamPCP high-confidence attribution + IOC publication + lineage analysis). Tier-1 cloud-security research practice with named-research-team bylines, peer-reviewed publications, established methodology. Recent track record on supply-chain attack analysis (SAP CAP Mini Shai-Hulud coverage 2026; ongoing npm ecosystem research). Wiz's 'high confidence' attribution language matches the evidentiary standard of Tier-1 vendor research (Mandiant, CrowdStrike, Unit 42 tier). Provisional A consistent with the precedent applied to SentinelOne (2026-05-08 first surface), Sophos / ESET / Dragos (Session 11 ratifications). Pending human ratification per source-grade-log.md 2026-05-12 entry."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.wiz.io/blog
+
+  - id: snyk
+    name: "Snyk"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-12
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-12-FLASH-0001 (Mini Shai-Hulud npm + PyPI worm; co-primary with named-analyst byline Stephen Thoemmes). Tier-1 application-security research practice. CVE coordination role (originating CVE-2026-45321 assignment + GHSA-g7cv-rxg3-hmpx publication on this surface). Cross-references peer analyses with discipline (Upwind Security deobfuscation, Unit 42 baseline tracking, StepSecurity attribution citation). AppSec research practice with consistent technical rigor and ecosystem visibility. Provisional A consistent with the precedent applied to SentinelOne (2026-05-08), Sophos / ESET / Dragos (Session 11 ratifications). Pending human ratification per source-grade-log.md 2026-05-12 entry."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://snyk.io/blog/
+
+  - id: stepsecurity
+    name: "StepSecurity"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-12
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-12-FLASH-0001 (Mini Shai-Hulud npm + PyPI worm). CI/CD-security specialist vendor research practice; originating attribution source for TeamPCP on the Mini Shai-Hulud campaign per Wiz + Snyk citations. Narrower technical scope than Tier-1 vendor research but consistent rigor in published analyses. First Archimedes-corpus citation — provisional B is conservative starting grade per Tier-2-vendor-research precedent. Pending human ratification per source-grade-log.md 2026-05-12 entry."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.stepsecurity.io/blog
+
+  - id: semgrep
+    name: "Semgrep"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-12
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-12-FLASH-0001 (Mini Shai-Hulud npm + PyPI worm; coordinated supply-chain attack analysis layer). Established code-security vendor with named-engineer bylines and consistent technical rigor. Provisional B is conservative starting grade for first surface in the corpus. Pending human ratification per source-grade-log.md 2026-05-12 entry."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://semgrep.dev/blog
+
+  - id: onapsis
+    name: "Onapsis"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-12
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-12-FLASH-0001 (Mini Shai-Hulud lineage context). SAP-security specialist with published earlier 2026 SAP CAP Mini Shai-Hulud coverage feeding the Shai-Hulud-family attribution lineage. Named-vendor research. Tier-2 specialist scope. Provisional B is conservative starting grade for first surface in the corpus. Pending human ratification per source-grade-log.md 2026-05-12 entry."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://onapsis.com/blog/
+
+  - id: aikido-security
+    name: "Aikido Security"
+    category: vendor
+    grade: C
+    provisional: true
+    provisional_since: 2026-05-12
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-12-FLASH-0001 (Mini Shai-Hulud npm + PyPI worm; cluster-corroboration layer). Application-security vendor research; first surface in the Archimedes corpus. Provisional C per LayerX / Seqrite / Trendyol / Albayrak precedent — conservative starting grade for vendor-research firms without prior corpus track record. Operator may upgrade to B if subsequent findings show consistent technical rigor and accuracy. Pending human ratification per source-grade-log.md 2026-05-12 entry."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.aikido.dev/blog
+
+  - id: safedep
+    name: "SafeDep"
+    category: vendor
+    grade: C
+    provisional: true
+    provisional_since: 2026-05-12
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-12-FLASH-0001 (Mini Shai-Hulud npm + PyPI worm; cluster-corroboration layer). First-surface npm security vendor with no prior Archimedes-corpus track record. Provisional C per same precedent as Aikido above (LayerX / Seqrite / Trendyol / Albayrak conservative starting grade for unknown vendor-research firms). Operator may upgrade to B if subsequent findings show consistent technical rigor and accuracy. Pending human ratification per source-grade-log.md 2026-05-12 entry."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://safedep.io/blog
 
   - id: sophos
     name: "Sophos / Sophos X-Ops"
@@ -623,12 +707,12 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 53
-  active_sources: 44
+  total_sources: 60        # +7 wiz-research, snyk, stepsecurity, semgrep, onapsis, aikido-security, safedep (provisional 2026-05-12)
+  active_sources: 51       # +7 above
   by_grade:
-    A: 23       # +3 sophos, eset, dragos (ratified Session 11)
-    B: 17       # +1 abw (provisional)
-    C: 7        # +1 seqrite-labs (provisional 2026-05-08), +1 trendyol-group-albayrak (provisional 2026-05-10)
+    A: 25       # +2 wiz-research, snyk (provisional 2026-05-12)
+    B: 20       # +3 stepsecurity, semgrep, onapsis (provisional 2026-05-12)
+    C: 9        # +2 aikido-security, safedep (provisional 2026-05-12)
     D: 1
     E: 2
     F: 3
@@ -640,6 +724,13 @@ _meta:
     - abw                       # provisional B; first cited 2026-05-08-0009
     - seqrite-labs              # provisional C; first cited 2026-05-08-0010
     - trendyol-group-albayrak   # provisional C; first cited 2026-05-10-0001
+    - wiz-research              # provisional A; first cited 2026-05-12-FLASH-0001
+    - snyk                      # provisional A; first cited 2026-05-12-FLASH-0001
+    - stepsecurity              # provisional B; first cited 2026-05-12-FLASH-0001
+    - semgrep                   # provisional B; first cited 2026-05-12-FLASH-0001
+    - onapsis                   # provisional B; first cited 2026-05-12-FLASH-0001
+    - aikido-security           # provisional C; first cited 2026-05-12-FLASH-0001
+    - safedep                   # provisional C; first cited 2026-05-12-FLASH-0001
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

@@ -122,6 +122,30 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-12 — Mini Shai-Hulud cluster (7 new sources) — (none) → A/A/B/B/B/C/C (all provisional, awaiting ratification)
+
+**Type:** New source(s) — provisional (bulk-bundle for one finding)
+**Source IDs:** `wiz-research` (A), `snyk` (A), `stepsecurity` (B), `semgrep` (B), `onapsis` (B), `aikido-security` (C), `safedep` (C)
+**Reason:** First Archimedes-corpus citation for all seven via `finding-2026-05-12-FLASH-0001` (Mini Shai-Hulud npm + PyPI worm; CVE-2026-45321 / GHSA-g7cv-rxg3-hmpx; TeamPCP attribution per Wiz + StepSecurity, with Snyk relaying StepSecurity; ~172 packages compromised across @tanstack / @uipath / @mistralai / @opensearch-project / @squawk / @tallyui / DraftLab namespaces + PyPI guardrails-ai@0.10.1 / mistralai@2.4.6). Grades anchor on the named-research-firm primaries (Wiz + Snyk) rather than the aggregating relay (The Hacker News). Per INTEL-GRADING independence doctrine, the relay does not contribute independent grade-weight — grading anchors on the underlying research.
+
+  - **Wiz Research (provisional A):** Tier-1 cloud-security research practice with named-research-team bylines, peer-reviewed publications, established methodology. Recent track record on supply-chain attack analysis (SAP CAP Mini Shai-Hulud coverage 2026; ongoing npm ecosystem research). High-confidence TeamPCP attribution language matches the evidentiary standard of Tier-1 vendor research (Mandiant, CrowdStrike, Unit 42 tier). Precedent: SentinelOne (2026-05-08 first surface) / Sophos / ESET / Dragos (Session 11 ratifications).
+  - **Snyk (provisional A):** Tier-1 application-security research practice with named-analyst byline (Stephen Thoemmes). CVE coordination role on this surface (originating CVE-2026-45321 + GHSA-g7cv-rxg3-hmpx publication). Cross-references peer analyses with discipline. AppSec research practice with consistent technical rigor and ecosystem visibility.
+  - **StepSecurity (provisional B):** CI/CD-security specialist vendor research practice; originating attribution source for TeamPCP on this campaign per Wiz + Snyk citations. Narrower technical scope than Tier-1 vendor research but consistent rigor. Conservative starting grade per Tier-2-vendor-research precedent.
+  - **Semgrep (provisional B):** Established code-security vendor with named-engineer bylines; coordinated supply-chain attack analysis on this surface. Conservative starting grade.
+  - **Onapsis (provisional B):** SAP-security specialist with published earlier 2026 SAP CAP Mini Shai-Hulud coverage feeding the Shai-Hulud-family lineage. Tier-2 specialist scope. Conservative starting grade.
+  - **Aikido Security (provisional C):** Application-security vendor research; first surface. Conservative C per LayerX / Seqrite / Trendyol / Albayrak precedent for vendor-research firms without prior corpus track record.
+  - **SafeDep (provisional C):** First-surface npm security vendor; conservative C per same precedent as Aikido above.
+
+**Methodological positive on first surface (cluster-level):** Multiple sources operating with attribution-naming discipline. Wiz's "behind prior SAP, Checkmarx, and other compromises" framing is lineage-pattern reasoning explicitly scoped to TeamPCP per their internal cluster, not Archimedes-origination. Snyk's CVE-coordination role surfaces ecosystem-wide responsiveness. StepSecurity originating the TeamPCP attribution and Wiz citing it (rather than parallel attribution) was correctly identified by the grader as an attribution-independence concern — Snyk's TeamPCP attribution is a relay of StepSecurity's, not independent corroboration. The analyst SAT-ACH analysis flagged this assumption (A5) as Test classification — the load-bearing assumption for the entire attribution layer.
+**Supporting findings:** [finding-2026-05-12-FLASH-0001]
+**Posted to:** Not posted to Discord `#actor-review` this run — none of the seven are downgrades. The five non-A entries (StepSecurity/Semgrep/Onapsis/Aikido/SafeDep) are first-surface provisional entries at the conservative tier; the two A-grade provisionals (Wiz, Snyk) follow the SentinelOne / Sophos / ESET / Dragos precedent for Tier-1 vendor research with named bylines and don't require sign-off-before-commit (operator ratification window applies).
+**Reviewer:** Awaiting Ryan ratification via bundled `/approve-source-grade` calls (target 2026-05-17 with the open SentinelOne / LayerX / ABW / Seqrite Labs / Trendyol-Albayrak / Rapid7 / SecurityWeek window)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml` for all seven
+**Effect on referencing finding:** Finding FLASH-0001 is digraph A2 (anchored on Wiz + Unit42 + MSTIC + Snyk A-grade backbone with StepSecurity B-grade redundancy and Aikido/SafeDep C-grade redundancy; credibility 2 for confirmed-by-other-sources at procedural-fact layer, partly-uncorroborated at attribution layer); WEP "likely" cap held by Snyk-relays-StepSecurity attribution-independence concern. Grader-conservative WEP cap survives operator hold of any source at the proposed grade. Operator downgrade of Wiz from A to B would shift the attribution-layer source-mix and could trigger single-source-veto re-evaluation on the TeamPCP claim.
+**Next review:** ratification target 2026-05-17 (5 days; bundled with the open provisional-source backlog)
+
+---
+
 ## 2026-05-10 — Trendyol Group / Berk Albayrak — (none) → C (provisional, awaiting ratification)
 
 **Type:** New source — provisional

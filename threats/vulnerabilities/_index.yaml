@@ -7,7 +7,7 @@
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
 version: 2
-last_updated: 2026-05-09
+last_updated: 2026-05-12
 
 vulnerabilities:
 
@@ -139,13 +139,111 @@ vulnerabilities:
       Praetorian); NASA or BAE Systems public statement on COSMOS
       deployment posture. See tracking.yaml watch_signals for full set.
 
+  - id: VT-006
+    name: "Mini Shai-Hulud — npm + PyPI self-propagating worm (CVE-2026-45321)"
+    type: "Supply-chain compromise — npm + PyPI worm with SLSA-attestation breaking, OIDC token hijack, dual-ecosystem self-propagation"
+    platform: "npm registry + PyPI registry; downstream consumers in any SDLC pulling affected package versions"
+    cve: CVE-2026-45321
+    cvss: 9.6
+    ghsa: GHSA-g7cv-rxg3-hmpx
+    affected_packages_partial:
+      - "@tanstack (42 packages / 84 versions)"
+      - "@uipath (multiple packages)"
+      - "@mistralai (multiple packages)"
+      - "@opensearch-project (multiple packages)"
+      - "@squawk (19 aviation data packages including @squawk/flightplan, @squawk/weather, @squawk/mcp)"
+      - "@tallyui (connector-medusa, connector-vendure)"
+      - "DraftLab"
+      - "PyPI guardrails-ai@0.10.1"
+      - "PyPI mistralai@2.4.6"
+    compromised_count: "~172 packages (figure carries Snyk + Wiz scan-cadence dependence)"
+    patch_status: rolling_unpublishes_and_revocations
+    patch_release_date: 2026-05-11
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    kev_pending: true             # Anticipated KEV addition; CISA has not added as of 2026-05-12 06:00 EDT
+    exploitation_status: in_the_wild_self_propagating_worm
+    public_exploit_available: in_the_wild_worm_code_itself
+    detection_signatures_published: true
+    digraph: A2
+    digraph_layered:
+      procedural_facts: A1
+      teampcp_attribution: A2
+      novelty_slsa_breaking_claim: A2
+    wep_split:
+      procedural_facts: very_likely
+      worm_propagation_dual_ecosystem: very_likely
+      teampcp_attribution: likely
+      novelty_first_documented_slsa_breaking: likely
+    related_actors:
+      - "001"                     # TeamPCP (per Wiz + StepSecurity attribution, Snyk relays StepSecurity)
+    related_findings:
+      - finding-2026-05-12-FLASH-0001
+      - finding-2026-05-04-0003   # PyTorch Lightning ShaiWorm — Shai-Hulud family lineage predecessor
+    related_briefs:
+      - flash-2026-05-12-0600
+    related_raw_signals:
+      - raw-2026-05-12-flash-0600-001-teampcp-mini-shai-hulud-npm-pypi-worm
+      - raw-2026-05-11-flash-0600-001   # Checkmarx Jenkins AST plugin (same actor, distinct topic 24h prior)
+    ad_relevance: medium_indirect_via_squawk_aviation_ecosystem
+    ad_relevance_rationale: >
+      @squawk namespace contains 19 aviation data packages (per Snyk byline
+      analysis) — @squawk/flightplan, @squawk/weather, @squawk/mcp handle
+      real aviation-domain functionality, not name-coincidence. However,
+      the worm's mechanism is maintainer-enumeration-driven, not sector-
+      targeted: @squawk packages were hit because their maintainer was on
+      the worm's propagation path, NOT because Mini Shai-Hulud was
+      selectively designed to compromise aviation tooling. A&D-prime
+      dependency-graph reach into Boeing / Airbus / Honeywell Aerospace /
+      Safran SDLC is unverified at finding-creation time. If A&D-prime
+      A-grade firms publish customer-impact statements over the next 24–
+      72 hours, ad_relevance shifts upward. Until then: indirect / medium.
+    novel_capability_layers:
+      - "SLSA provenance attestation breakage (worm publishes malicious packages WITH valid SLSA attestations on cryptographic supply-chain integrity)"
+      - "Self-propagating worm class (vs. prior Shai-Hulud generations as point-strike)"
+      - "Dual-ecosystem propagation (npm AND PyPI)"
+      - "Session-network exfiltration (vs. prior GitHub-hosted dead-drops + direct attacker domains)"
+      - "PBKDF2 campaign-salt-based execution guardrails (country-aware Russian locale check)"
+      - "GitHub author identity spoofing of npm-bot pattern (claude@users.noreply.github.com)"
+    iocs_in_master_index: true
+    ioc_count: 17                 # 1 CVE + 1 GHSA + 6 C2 domains + 1 C2 IP + 2 staging URLs + 3 SHA-256 hashes + 1 Session ID + 1 PBKDF2 salt + 1 GitHub author identity
+    dossier: null                 # Not yet scaffolded; recommend vuln-tracker create on next pass
+    tracking: null                # Not yet scaffolded
+    tracked_since: 2026-05-12
+    last_reviewed: 2026-05-12
+    next_review_due: 2026-05-19
+    note: >
+      Second active-exploitation CVE in the Archimedes corpus (after PAN-OS
+      CVE-2026-0300). KEV-pending (CISA has not yet added; collector should
+      monitor /known-exploited-vulnerabilities.json on next sweep). Worm
+      itself IS the in-the-wild exploitation — no separate PoC distribution
+      path. CVE coordination via Snyk; GHSA published by Snyk Security
+      team. Three potentially-cross-cited TeamPCP campaigns within 8 days:
+      2026-05-04 PyTorch Lightning ShaiWorm (family-lineage predecessor;
+      MSTIC primary; A2 single-source-veto), 2026-05-11 Checkmarx Jenkins
+      AST plugin (same actor, distinct topic per 8-dimension comparison),
+      2026-05-12 Mini Shai-Hulud (this entry). Recommend vuln-tracker
+      scaffold a full dossier (profile.md + tracking.yaml) on next pass.
+      Watch signals: KEV addition; A&D-prime customer-impact statement
+      naming @squawk or @tanstack downstream-dependency exposure;
+      attribution shift (Snyk's TeamPCP attribution is a relay of
+      StepSecurity's, not independent — second independent A-grade source
+      on attribution layer would resolve the analyst-flagged A5 Test
+      assumption); additional capability layers (e.g., npm-internal
+      worm-disinfection patches breaking, PyPI worm-disinfection-tooling
+      breaking, or worm acquiring a third ecosystem); active SLSA-
+      attestation-bypass advisory from npm or sigstore.
+
 _meta:
-  total_tracked: 5
+  total_tracked: 6
   patched: 2                      # ZD-001 BlueHammer; VT-005 OpenC3 COSMOS cluster
   unpatched: 2                    # ZD-002 RedSun; ZD-003 UnDefend
   patches_scheduled: 1            # ZD-004 PAN-OS CVE-2026-0300
-  active_exploitation: 1          # ZD-004 PAN-OS CVE-2026-0300 (KEV-listed, multi-victim signal)
+  rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
+  active_exploitation: 2          # ZD-004 PAN-OS CVE-2026-0300 + VT-006 Mini Shai-Hulud worm
   kev_listed: 1                   # ZD-004 PAN-OS CVE-2026-0300
-  public_exploit_available: 1     # ZD-004 PAN-OS CVE-2026-0300 (full weaponized exploit code)
+  kev_pending: 1                  # VT-006 Mini Shai-Hulud (CVE-2026-45321 not yet on CISA KEV as of 2026-05-12 06:00 EDT)
+  public_exploit_available: 2     # ZD-004 PAN-OS + VT-006 (worm IS the in-the-wild exploitation)
   vendor_ghsa_poc_only: 1         # VT-005 OpenC3 COSMOS cluster (PoC embedded in vendor advisories only)
-  dossiers_migrated: 2            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster. ZD-001/002/003 still pending C3PO migration.
+  dossiers_migrated: 2            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster. ZD-001/002/003 still pending C3PO migration; VT-006 Mini Shai-Hulud dossier not yet scaffolded (recommend vuln-tracker next pass).

@@ -1,0 +1,322 @@
+# threats/threat-actors/TeamPCP/iocs.yaml
+#
+# Agent-queryable sidecar for TeamPCP roster entry #001 (HIGH).
+# Initial scaffold 2026-05-12 from finding-2026-05-12-FLASH-0001 (Mini
+# Shai-Hulud npm + PyPI self-propagating worm, CVE-2026-45321, GHSA-g7cv-
+# rxg3-hmpx). Earlier-known TeamPCP campaigns (PyTorch Lightning ShaiWorm
+# 2026-05-04 per MSTIC; Checkmarx Jenkins AST plugin 2026-05-11 per
+# Checkmarx PSIRT) are tracked at the family-lineage level but did not
+# emit per-actor IOC sidecar entries before this scaffold.
+#
+# Hard Rule 2: every indicator carries a source_brief reference back to
+# its original public reporting; nothing here is Archimedes-originated.
+# TeamPCP attribution itself is per Wiz + StepSecurity public attribution
+# (Snyk relays StepSecurity's attribution; the layer is two-source on
+# attribution, not three-source). Operator may downgrade this scaffold's
+# trust if the second-independent-A-grade attribution-corroboration
+# concern flagged by the analyst SAT-ACH (assumption A5 Test) materializes
+# as a methodological retraction by Wiz or StepSecurity.
+#
+# Hard Rule 4: no active scanning of TeamPCP infrastructure performed at
+# scaffold time. Passive-only enrichment per LEGAL-POLICY.md. TeamPCP
+# infrastructure (filev2.getsession.org, 83.142.209.194, etc.) is NOT in
+# authorized-targets.yaml.
+
+actor_id: "001"
+actor_name: TeamPCP
+last_updated: 2026-05-12
+admiralty_grade: A2
+admiralty_grade_layered:
+  procedural_facts: A1
+  teampcp_attribution: A2
+  novelty_slsa_breaking_tooling_claim: A2
+tlp: CLEAR
+source_of_record: "finding-2026-05-12-FLASH-0001 (Mini Shai-Hulud); TeamPCP dossier not yet scaffolded"
+
+ttl:
+  network_infrastructure: 90    # days — domains/IPs expire from "active"
+  file_hashes: 730              # hashes don't expire, may lose relevance
+  cve: never                    # CVEs are forever
+  ghsa: never                   # GHSA IDs are forever
+  malware_family: never         # family identifiers are persistent
+  campaign_identifier: never
+  exfil_identifier: never       # Session-network recipient IDs persistent
+  campaign_salt: never          # PBKDF2 salts are campaign-uniqueness markers
+
+# ============================================================================
+# CVE / GHSA — Mini Shai-Hulud campaign
+# ============================================================================
+indicators:
+
+  - id: teampcp-cve-2026-45321
+    type: cve
+    value: CVE-2026-45321
+    cvss: 9.6
+    product: "npm + PyPI ecosystem (Mini Shai-Hulud worm)"
+    description: >
+      Supply-chain compromise CVE for the Mini Shai-Hulud self-propagating
+      worm. Encompasses dual-ecosystem (npm + PyPI) worm propagation via
+      OIDC token hijack from compromised maintainer GitHub Actions workflows,
+      with SLSA-attestation breakage (worm publishes validly-attested
+      malicious packages). ~172 packages compromised across @tanstack /
+      @uipath / @mistralai / @opensearch-project / @squawk / @tallyui /
+      DraftLab npm namespaces + PyPI guardrails-ai / mistralai.
+    status: not_yet_on_kev          # CISA KEV addition anticipated
+    ghsa: GHSA-g7cv-rxg3-hmpx
+    first_seen: 2026-05-11           # 19:20 UTC initial compromise burst per Wiz timestamping
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-ghsa-g7cv-rxg3-hmpx
+    type: ghsa
+    value: GHSA-g7cv-rxg3-hmpx
+    description: >
+      GitHub Security Advisory published by Snyk Security team in
+      coordination with CVE-2026-45321. Covers the npm-ecosystem Mini
+      Shai-Hulud worm propagation chain.
+    status: published
+    cve: CVE-2026-45321
+    first_seen: 2026-05-12
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+# ============================================================================
+# Malware families / campaign identifiers
+# ============================================================================
+
+  - id: teampcp-mini-shai-hulud
+    type: malware_family
+    value: "Mini Shai-Hulud"
+    platform: "npm + PyPI registries; downstream SDLC consumers"
+    description: >
+      Self-propagating supply-chain worm; member of the Shai-Hulud
+      family per MSTIC family attribution (MSTIC has not publicly named
+      an actor for the family). Mini Shai-Hulud distinguishes from prior
+      Shai-Hulud generations by: (1) self-propagating worm class vs. prior
+      point-strike; (2) dual-ecosystem npm + PyPI propagation; (3) SLSA-
+      attestation breakage; (4) Session-network exfiltration (vs. prior
+      GitHub-hosted dead-drops); (5) PBKDF2 campaign-salt execution
+      guardrails with Russian-locale check.
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+# ============================================================================
+# C2 infrastructure — domains (network_infrastructure TTL 90d)
+# ============================================================================
+
+  - id: teampcp-c2-filev2-getsession-org
+    type: domain
+    value: filev2.getsession.org
+    role: c2
+    description: "Session-network file-share endpoint used by Mini Shai-Hulud for exfiltration. Primary Session-network destination per Wiz + Snyk."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-c2-seed1-getsession-org
+    type: domain
+    value: seed1.getsession.org
+    role: c2
+    description: "Session-network seed/discovery endpoint used by Mini Shai-Hulud."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-c2-seed2-getsession-org
+    type: domain
+    value: seed2.getsession.org
+    role: c2
+    description: "Session-network seed/discovery endpoint used by Mini Shai-Hulud."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-c2-seed3-getsession-org
+    type: domain
+    value: seed3.getsession.org
+    role: c2
+    description: "Session-network seed/discovery endpoint used by Mini Shai-Hulud."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-c2-api-masscan-cloud
+    type: domain
+    value: api.masscan.cloud
+    role: c2
+    description: "Attacker-controlled API endpoint used by Mini Shai-Hulud worm callbacks. Distinct from legitimate masscan tooling."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-c2-git-tanstack-com
+    type: domain
+    value: git-tanstack.com
+    role: c2
+    description: "Typosquat domain mimicking @tanstack legitimate infrastructure. Used by Mini Shai-Hulud during the @tanstack 42-package compromise. Likely recent registration (defender enrichment via WHOIS/RDAP recommended)."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+# ============================================================================
+# C2 infrastructure — IP (network_infrastructure TTL 90d)
+# ============================================================================
+
+  - id: teampcp-c2-83-142-209-194
+    type: ipv4
+    value: 83.142.209.194
+    role: c2
+    description: "Mini Shai-Hulud worm C2 IP. AbuseIPDB + Shodan InternetDB passive enrichment recommended (no credit cost on free tier)."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+# ============================================================================
+# Dead-drop / staging URLs (network_infrastructure TTL 90d)
+# ============================================================================
+
+  - id: teampcp-staging-catbox-h8nc9u
+    type: url
+    value: "https://litter.catbox.moe/h8nc9u.js"
+    role: staging
+    description: "Dead-drop staging URL hosting first-stage worm JavaScript payload. catbox.moe is a legitimate file-host service abused by the worm; wholesale blocking would break legitimate use — share-ID-level IOC only."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-staging-catbox-7rrc6l
+    type: url
+    value: "https://litter.catbox.moe/7rrc6l.mjs"
+    role: staging
+    description: "Dead-drop staging URL hosting first-stage worm ESM JavaScript payload (.mjs). Same catbox.moe-abuse pattern as above; share-ID-level IOC only."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+# ============================================================================
+# File hashes — SHA-256 (file_hashes TTL 730d)
+# ============================================================================
+
+  - id: teampcp-sha256-router-init-v1
+    type: sha256
+    value: ab4fcadaec49c03278063dd269ea5eef82d24f2124a8e15d7b90f2fa8601266c
+    filename: router_init.js
+    description: "Mini Shai-Hulud router_init.js v1 — first-stage worm bootstrapping module."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-sha256-router-init-v2
+    type: sha256
+    value: 2ec78d556d696e208927cc503d48e4b5eb56b31abc2870c2ed2e98d6be27fc96
+    filename: router_init.js
+    description: "Mini Shai-Hulud router_init.js v2 — variant emitted later in the 2026-05-11 compromise burst. Indicates iterative worm-payload evolution within a single campaign window."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-sha256-setup-mjs
+    type: sha256
+    value: 2258284d65f63829bd67eaba01ef6f1ada2f593f9bbe41678b2df360bd90d3df
+    filename: setup.mjs
+    description: "Mini Shai-Hulud setup.mjs — ESM-flavored bootstrapping module loaded by some compromised packages."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+# ============================================================================
+# Exfiltration identifiers (exfil_identifier TTL never)
+# ============================================================================
+
+  - id: teampcp-session-recipient
+    type: other
+    other_subtype: session_recipient_id
+    value: 05f9e609d79eed391015e11380dee4b5c9ead0b6e2e7f0134e6e51767a87323026
+    role: exfiltration
+    description: >
+      Session-network recipient ID — exfiltration destination for stolen
+      credentials, cloud tokens, browser data captured by the Mini Shai-
+      Hulud worm. Session is a Signal-fork messaging network; the
+      recipient ID is the worm operator's identifier. Detection-engineering
+      value: outbound DNS to *.getsession.org domains coupled with this
+      recipient identifier in network metadata = high-confidence active
+      Mini Shai-Hulud worm infection signal.
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+# ============================================================================
+# Campaign metadata (campaign_salt TTL never)
+# ============================================================================
+
+  - id: teampcp-pbkdf2-salt-svksjrhjkcejg
+    type: other
+    other_subtype: pbkdf2_campaign_salt
+    value: svksjrhjkcejg
+    role: campaign_identifier
+    description: >
+      PBKDF2 campaign salt used by Mini Shai-Hulud for derive-on-execute
+      guardrail logic (country-aware Russian-locale check; if locale
+      matches, payload disarms). Campaign-uniqueness marker — any future
+      sample referencing this salt is provably the same campaign rather
+      than a copycat. Useful for grader/analyst attribution discipline
+      on subsequent surfaces.
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+# ============================================================================
+# Attacker identity spoofing pattern (other / detection_pattern)
+# ============================================================================
+
+  - id: teampcp-github-author-spoof
+    type: detection_pattern
+    value: "claude@users.noreply.github.com"
+    description: >
+      GitHub author identity used in commits pushed by the Mini Shai-Hulud
+      worm to compromised repositories. Spoofs the npm-bot pattern (with
+      a "claude" prefix unrelated to Anthropic the company) to evade
+      casual review. Detection-engineering value: GitHub repo commit
+      authors with this exact email + commits adding suspicious
+      package.json scripts = high-confidence detection signal for ongoing
+      worm propagation. Note: also abused as Anthropic-brand-impersonation
+      social engineering — same threat actor brand-confusion pattern as
+      MacSync 2026-05-10 finding's claude.ai/share/... URL abuse.
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+# ============================================================================
+# Compromised package namespaces (distribution_pattern)
+# ============================================================================
+
+  - id: teampcp-compromised-npm-tanstack
+    type: distribution_pattern
+    value: "@tanstack (42 packages / 84 versions)"
+    description: "Compromised npm namespace — full enumeration list available in finding-2026-05-12-FLASH-0001 raw-signal frontmatter."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-compromised-npm-squawk
+    type: distribution_pattern
+    value: "@squawk (19 aviation data packages: @squawk/flightplan, @squawk/weather, @squawk/mcp, ...)"
+    description: >
+      Compromised npm namespace with aviation-domain functionality. The
+      maintainer-enumeration mechanism (not sector-targeting) drove this
+      namespace's inclusion in the worm's propagation path. A&D-prime
+      SDLC dependency-graph reach unverified as of this scaffold; flagged
+      for analyst follow-up if Boeing / Airbus / Honeywell Aerospace /
+      Safran publish customer-impact statements.
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001
+
+  - id: teampcp-compromised-pypi-guardrails
+    type: distribution_pattern
+    value: "PyPI guardrails-ai@0.10.1"
+    description: "Compromised PyPI package version. Worm's PyPI-ecosystem propagation surface (vs. prior Shai-Hulud generations as npm-only)."
+    first_seen: 2026-05-11
+    related_campaign: "Mini Shai-Hulud (npm + PyPI worm)"
+    source_brief: finding-2026-05-12-FLASH-0001

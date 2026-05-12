@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-12T06:18:00-04:00
+last_updated: 2026-05-12T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -4379,8 +4379,10 @@ entries:
       is whether that slippage propagates to DIB / CMMC enforcement.
 
   - id: 2026-05-12-flash-0600-001
-    covered_in: [flash-2026-05-12-0600]
+    covered_in: [flash-2026-05-12-0600, 2026-05-12-morning]
     brief_file: threats/briefs/2026-05-12-flash-0600-teampcp-mini-shai-hulud.md
+    superseded_by: 2026-05-12-am-001
+    superseded_reason: "08:00 morning brief absorbed Mini Shai-Hulud as Active Threats lead per FLASH-POLICY anti-noise rule; queued FLASH at flash-queue.yaml should be marked superseded:true at the 09:00 catchup sweep by librarian."
     headline: "Mini Shai-Hulud — TeamPCP-attributed npm/PyPI worm publishing validly-attested malicious packages via OIDC token hijack; 169-172 packages compromised across @tanstack / @uipath / @mistralai / @opensearch-project / @squawk / @tallyui / DraftLab npm namespaces plus PyPI guardrails-ai + mistralai; CVE-2026-45321 CVSS 9.6 / GHSA-g7cv-rxg3-hmpx; first publicly documented npm worm to produce validly-attested malicious packages within the Shai-Hulud family lineage per Wiz + Snyk characterization; maintainer same-day reversion; SLSA-attestation trust posture broken; 19 @squawk aviation-developer packages hit incidentally via worm maintainer-enumeration, not strategic A&D targeting"
     topic_tags:
       - flash
@@ -4669,6 +4671,306 @@ entries:
       composite-handoff ambiguity, not as TeamPCP-capability-advance
       assertion; finding-0003 lineage described as family-level not
       actor-level since MSTIC has not named an actor for the family).
+
+  - id: 2026-05-12-am-001
+    covered_in: [2026-05-12-morning]
+    brief_file: threats/briefs/2026-05-12-morning.md
+    headline: "Mini Shai-Hulud npm+PyPI worm absorbed from queued 06:00 FLASH — CVE-2026-45321 CVSS 9.6 / GHSA-g7cv-rxg3-hmpx; 169-172 packages compromised across @tanstack / @uipath / @mistralai / @opensearch-project / @squawk / @tallyui / DraftLab npm namespaces plus PyPI guardrails-ai@0.10.1 + mistralai@2.4.6; first publicly documented validly-attested supply-chain worm within Shai-Hulud family lineage per Wiz + Snyk characterization (scoped to family, not npm-ecosystem); TeamPCP (#001 HIGH) attributed by Wiz + StepSecurity with Snyk relaying StepSecurity; effective two-source attribution layer, conservative WEP cap at likely on attribution and novelty; procedural facts and dual-ecosystem worm propagation at very_likely; capability progression organic OR composite handoff both consistent with cited sources; @squawk aviation hit incidental via worm enumeration, not strategic A&D targeting"
+    topic_tags:
+      - supply-chain
+      - npm
+      - pypi
+      - mini-shai-hulud
+      - shai-hulud-family-lineage
+      - oidc-token-hijack
+      - slsa-attestation-bypass
+      - slsa-trust-posture-broken
+      - worm-class-self-propagation
+      - dual-ecosystem-propagation
+      - tanstack
+      - uipath
+      - mistralai
+      - opensearch-project
+      - squawk-aviation-data-incidental
+      - tallyui
+      - draftlab
+      - guardrails-ai
+      - country-aware-russian-locale-check-inherited
+      - session-network-deaddrop-new-infra-class
+      - catbox-staging
+      - cve-2026-45321
+      - cvss-9-6
+      - ghsa-g7cv-rxg3-hmpx
+      - teampcp-restatement-per-wiz-stepsecurity-snyk-relay
+      - attribution-effective-two-source-wiz-stepsecurity
+      - snyk-relays-stepsecurity-not-independent-third
+      - novelty-claim-family-scope-not-npm-ecosystem-scope
+      - capability-progression-organic-or-composite-handoff-ambiguity
+      - cross-reference-finding-0003-family-lineage-not-actor-lineage
+      - mstic-has-not-named-actor-for-shai-hulud-family
+      - hard-rule-2-framings-load-bearing
+      - flash-absorbed
+      - quiet-hours-supersession
+    related_actors:
+      - actor_id: "001"
+        actor_name: TeamPCP
+        in_roster: true
+        relationship: mini_shai_hulud_attribution_per_wiz_high_confidence_and_stepsecurity_origination_with_snyk_relay
+        archimedes_treatment: restatement_no_archimedes_origination_hard_rule_2
+        attribution_independence_posture: effective_two_source_wiz_plus_stepsecurity_snyk_relays_not_third
+        ttp_register_update_queued: worm_class_self_propagation_plus_slsa_attestation_bypass_plus_session_network_deaddrop_new_for_actor
+        new_aliases_pending_operator_decision: [DeadCatx3, PCPcat, ShellForce, CipherForce]
+    related_vulns:
+      - CVE-2026-45321
+    related_campaigns:
+      - mini-shai-hulud-2026-05-12
+      - shai-hulud-family-lineage
+    finding_ids: [finding-2026-05-12-FLASH-0001]
+    digraph: A2
+    digraph_layered:
+      procedural_facts: A1
+      teampcp_attribution: A2
+      novelty_slsa_breaking_claim: A2
+    wep: likely
+    wep_split:
+      procedural_facts: very_likely
+      worm_propagation_dual_ecosystem: very_likely
+      teampcp_attribution: likely
+      novelty_first_documented_slsa_breaking: likely
+    flash_absorption:
+      absorbs_flash_brief: flash-2026-05-12-0600
+      flash_brief_path: threats/briefs/2026-05-12-flash-0600-teampcp-mini-shai-hulud.md
+      supersession_action_owner: librarian
+      supersession_marker_target: infrastructure/flash-queue.yaml
+      expected_marker: "superseded:true at 09:00 EDT catchup sweep"
+    single_source_veto_applied: false
+    analyst_review_complete: true
+    analyst_sat: [sat-ach, sat-kac]
+    red_team_review_complete: true
+    red_team_outcome: qualify
+    correlation_callouts:
+      - related_finding_id: finding-2026-05-04-0003
+        relationship: same_shai_hulud_family_lineage
+        explicit_family_not_actor_lineage: true
+        callout_text: |
+          Same Shai-Hulud family lineage per MSTIC family attribution.
+          Note: MSTIC has NOT named an actor for the family in public
+          reporting visible to Archimedes; cross-reference is family-
+          level, not actor-level. TeamPCP-specific attribution on
+          npm supply-chain spree begins with the late-March/April
+          2026 Trivy/Checkmarx reporting and 2026-05-11 Checkmarx
+          Jenkins.
+    resurface_if:
+      - independent_a_grade_third_source_attributes_to_teampcp_without_stepsecurity_citation_chain
+      - mstic_publishes_active_attack_2026_05_12_mini_shai_hulud_post
+      - additional_compromised_packages_disclosed_beyond_172
+      - additional_compromised_namespaces_disclosed_beyond_current_set
+      - first_party_splunk_hit_on_any_published_ioc
+      - cve_2026_45321_listed_on_cisa_kev
+      - ad_prime_publicly_confirms_compromised_package_in_sdlc_dependency_tree
+      - prior_art_disclosure_invalidates_first_documented_negative_claim
+      - actor_ttps_evolve
+      - new_attribution
+      - escalation_to_exploitation
+    first_covered: 2026-05-12
+    last_covered: 2026-05-12
+    retraction: null
+    test: false
+    notes: |
+      Morning brief absorbed the queued 06:00 FLASH (flash-2026-05-12-0600)
+      per FLASH-POLICY anti-noise expectation. Librarian responsibility:
+      mark infrastructure/flash-queue.yaml entry superseded:true at 09:00
+      catchup sweep with superseded_by: 2026-05-12-morning; archive
+      disposition superseded_by_morning_brief.
+
+      Red-team's five composition constraints from the FLASH carried into
+      the morning brief verbatim: (1) novelty claim scoped to Shai-Hulud
+      family lineage per Wiz + Snyk characterization, not generalized to
+      npm-ecosystem; (2) Wiz + StepSecurity attribution chain surfaced
+      with Snyk-relays-StepSecurity not-independent posture explicit; (3)
+      capability progression carried as organic-OR-composite-handoff
+      ambiguity per analyst A1; (4) cross-reference to finding-0003
+      described as family-level lineage (MSTIC has not named an actor for
+      the family); (5) @squawk aviation hit framed as incidental via
+      worm maintainer-enumeration, not strategic A&D targeting.
+
+      Hard Rule 8 first-party Splunk: clean across all IOCs at compose;
+      17th consecutive sweep with dormant non-archimedes-internal stream;
+      master-index sync pending for Mini Shai-Hulud IOC ingestion (6 C2
+      domains, 1 C2 IP, 3 SHA-256, 2 catbox staging URLs, 1 Session ID).
+
+  - id: 2026-05-12-am-002
+    covered_in: [2026-05-12-morning]
+    brief_file: threats/briefs/2026-05-12-morning.md
+    headline: "SAP May 2026 Patch Day — 15 Security Notes including two CRITICALs (CVE-2026-34263 Commerce Cloud missing-auth unauthenticated code execution; CVE-2026-34260 S/4HANA SQL injection enabling unauthorized DB access); no in-the-wild exploitation observed per vendor; not KEV-listed; single-source veto applied (SAP advisory single effective primary; BleepingComputer pure relay; NVD downstream CNA mirror); structural A&D relevance via S/4HANA ERP backbone at all primes (Airbus at-scale + active migration programs at Lockheed Martin / Boeing / BAE Systems); no specific prime named"
+    topic_tags:
+      - cve
+      - sap
+      - sap-may-2026-patch-day
+      - patch-tuesday
+      - cve-2026-34263
+      - cve-2026-34260
+      - sap-commerce-cloud
+      - sap-s4hana
+      - missing-authentication-unauthenticated-code-execution
+      - sql-injection
+      - critical-severity
+      - no-exploitation-observed-per-vendor
+      - not-kev-listed
+      - single-source-veto-applied
+      - bleepingcomputer-relay
+      - sap-corporate-advisory-provisional-a-pending-ratification
+      - nvd-cna-mirror
+      - structural-ad-relevance-s4hana-erp-backbone
+      - no-specific-prime-named
+      - vuln-tracker-handoff-cve-2026-34263
+      - vuln-tracker-handoff-cve-2026-34260
+      - onapsis-watchtowr-pathlock-securitybridge-watch
+    related_actors: []
+    related_vulns:
+      - CVE-2026-34263
+      - CVE-2026-34260
+    related_campaigns: []
+    finding_ids: [finding-2026-05-12-0001]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_required: false
+    red_team_review_required: false
+    vuln_tracker_handoff:
+      action: open_dossier_for_two_criticals
+      cves: [CVE-2026-34263, CVE-2026-34260]
+      direct_vendor_advisory_fetch_required: true
+      url: https://support.sap.com/en/my-support/knowledge-base/security-notes-news/may-2026.html
+    resurface_if:
+      - onapsis_watchtowr_securitybridge_pathlock_publishes_independent_analysis
+      - escalation_to_exploitation
+      - kev_addition
+      - first_party_ioc_hit
+      - new_victims_confirmed
+      - ad_prime_specifically_named_as_impacted
+      - public_poc_release
+    first_covered: 2026-05-12
+    last_covered: 2026-05-12
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied. SAP corporate advisory is the single
+      effective origin for severity / scope / no-exploitation-observed
+      claims. BleepingComputer relays. NVD mirrors the CVE records from
+      SAP's CNA submission. WEP capped at "likely" per veto.
+
+      Hard Rule 2 honored — no actor attribution; SAP advisory cites
+      none, no third-party research has attributed at grading time.
+      Hard Rule 6 honored — no direct quotes from BleepingComputer or
+      SAP in the brief; entirely paraphrased.
+
+      Tripwire: Onapsis / Watchtowr / SecurityBridge / Pathlock are
+      SAP-security-specialist research practices that typically publish
+      independent technical analysis within 24-72h of SAP Patch Day for
+      high-CVSS CVEs. Watch next 2 sweep cycles for follow-on; if IOCs
+      or exploitation analysis published, this finding can be re-graded
+      to clear single-source veto.
+
+  - id: 2026-05-12-am-003
+    covered_in: [2026-05-12-morning]
+    brief_file: threats/briefs/2026-05-12-morning.md
+    headline: "Siemens May 2026 Patch Tuesday — five CVEs across three product families; CVE-2026-41551 (SSA-357982) ROS# .NET library path traversal CVSS 9.1 v3.1 / 9.3 v4.0 UNAUTHENTICATED is the headliner with arbitrary file read AND write impact (unusual unauthenticated profile for Siemens advisories; robotics middleware relevant to military UGV / UAV ground control / collaborative defense manufacturing); CVE-2025-40949 (SSA-081142) RUGGEDCOM ROX command injection CVSS 9.1 authenticated PR:H root-level on 11 ruggedized models; three SIMATIC CVEs round out cluster (CVE-2026-22924 CN 4100 resource exhaustion 8.8; CVE-2026-25786 + CVE-2026-25787 stored XSS pair 9.1 each); no in-the-wild exploitation observed per vendor; none KEV-listed; single-source veto applied (Siemens ProductCERT single originating advisory channel + NVD CNA mirror)"
+    topic_tags:
+      - cve
+      - siemens
+      - siemens-may-2026-patch-tuesday
+      - patch-tuesday
+      - cve-2026-41551
+      - ssa-357982
+      - ros-sharp
+      - dotnet-library-for-ros
+      - robot-operating-system-middleware
+      - unauthenticated-path-traversal-cwe-23
+      - cvss-9-1-v3-9-3-v4
+      - arbitrary-file-read-and-write
+      - aerospace-defense-robotics-rd-context
+      - military-ugv-uav-ground-control
+      - collaborative-defense-manufacturing-robotics
+      - cve-2025-40949
+      - ssa-081142
+      - ruggedcom-rox
+      - cwe-78-os-command-injection
+      - authenticated-pr-high-root-level
+      - 11-affected-models
+      - cve-2026-22924
+      - simatic-cn-4100-resource-exhaustion
+      - cve-2026-25786
+      - cve-2026-25787
+      - simatic-plc-hmi-stored-xss-pair
+      - no-exploitation-observed-per-vendor
+      - not-kev-listed
+      - single-source-veto-applied
+      - siemens-productcert-provisional-a-pending-ratification
+      - nvd-cna-mirror
+      - dragos-claroty-nozomi-otorio-watch
+      - cisa-ics-cert-follow-on-watch
+      - structural-ad-relevance-ot-defense-manufacturing
+      - vuln-tracker-handoff-five-cves
+    related_actors: []
+    related_vulns:
+      - CVE-2026-41551
+      - CVE-2025-40949
+      - CVE-2026-22924
+      - CVE-2026-25786
+      - CVE-2026-25787
+    related_campaigns: []
+    finding_ids: [finding-2026-05-12-0002]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_required: false
+    red_team_review_required: false
+    vuln_tracker_handoff:
+      action: open_dossier_for_five_cves_with_cve_2026_41551_priority
+      cves: [CVE-2026-41551, CVE-2025-40949, CVE-2026-22924, CVE-2026-25786, CVE-2026-25787]
+      priority_cve: CVE-2026-41551
+      priority_rationale: unauthenticated_9.1_path_traversal_unusual_for_siemens_advisory_shape
+      ssa_ids: [SSA-357982, SSA-081142]
+      remediation_urls:
+        - https://github.com/siemens/ros-sharp/releases/tag/2.2.2
+    resurface_if:
+      - cisa_ics_cert_cross_reference_advisory_published
+      - dragos_claroty_nozomi_otorio_publishes_independent_telemetry
+      - public_poc_release_cve_2026_41551
+      - escalation_to_exploitation
+      - kev_addition
+      - first_party_ioc_hit
+      - ad_supplier_ot_environment_named_as_target
+      - new_victims_confirmed
+    first_covered: 2026-05-12
+    last_covered: 2026-05-12
+    retraction: null
+    test: false
+    notes: |
+      Single-source veto applied. Siemens ProductCERT is the single
+      originating advisory channel (SSA-081142 + SSA-357982 same-day
+      same-vendor disclosure). NVD mirrors via Siemens CNA submission.
+      WEP capped at "likely" per veto.
+
+      Hard Rule 2 honored — no actor attribution; Siemens advisories
+      cite none; no third-party research has attributed at grading time.
+      Hard Rule 6 honored — no direct quotes; entirely paraphrased
+      (one short verbatim phrase "harsh and climatically demanding
+      environments" considered and rejected for the brief; not used).
+
+      Hard Rule 8 first-party Splunk: clean across all five CVEs +
+      RUGGEDCOM/SIMATIC/ROS# product strings -30d. Silence is not
+      disconfirming — DefenseClaw instrumentation may not extend to OT
+      segments where these devices live; visibility gap flagged.
+
+      Tripwires: (1) CISA ICS-CERT cross-reference advisories typically
+      published within 24-72h of high-CVSS Siemens disclosures; (2)
+      Dragos / Claroty / Nozomi / OTORIO independent telemetry on CVE-
+      2026-41551 (the unauthenticated 9.1 headliner) would lift veto
+      and could raise WEP above "likely"; (3) public PoC for CVE-2026-
+      41551 is high-velocity-class given unusual unauthenticated
+      network-vector profile.
 
 # ============================================================================
 # Valid resurface_if conditions

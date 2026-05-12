@@ -9,7 +9,7 @@
 # resurfaces via higher-grade sources.
 
 version: 1
-last_updated: 2026-05-09
+last_updated: 2026-05-12
 
 entries:
   - rejection_id: reject-2026-05-08-0001
@@ -338,41 +338,220 @@ entries:
       research. If PamDOORa resurfaces via A/B-grade primary research
       source, regrade. Signal worth keyword-tracking for next 30 days.
 
+  - rejection_id: reject-2026-05-12-0001
+    rejected_at: 2026-05-12T08:12:00-04:00
+    grading_run_id: morning-20260512-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-12-flash-0000-001-cpanel-cve-2026-41940-mr-rot13-mass-exploitation-non-flash
+    cluster_topic: "cPanel CVE-2026-41940 active mass-exploitation by Mr_Rot13 (QiAnXin XLab via Hacker News overnight 00:00 FLASH relay) — duplicate restatement of finding-2026-05-11-0005 already promoted via PM-003 raw-signal in 2026-05-11 afternoon brief"
+    rejection_reasons:
+      - duplicate_of_existing_finding
+      - anti_noise_24h_window_collision
+      - no_new_iocs_no_independent_a_grade_corroboration_no_novel_ttps
+      - relay_only_independence_test_fails
+    rejection_detail: >
+      Cluster fails promotion because the underlying claims are already
+      captured in finding-2026-05-11-0005 (promoted from raw-2026-05-11-pm-003
+      in the 2026-05-11 afternoon brief). The two raw-signal files cite
+      the same primary research source (QiAnXin XLab), the same actor
+      attribution (Mr_Rot13), the same IOC set (domains cp.dene[.]com,
+      wrned[.]com, wpsock[.]com; SHA-256
+      2d7d121dfcca6c17130ef605124869bf84ce77bee343ada78e0db2236174583a;
+      Filemanager backdoor; Go-based infector + SSH key implant TTP
+      chain), and the same vendor (cPanel/WHM) and CVE (CVE-2026-41940
+      KEV-listed 2026-04-30 with knownRansomwareCampaignUse=Known).
+
+      The 00:00 FLASH sweep specifically flagged this as a relay
+      restatement of the pre-existing PM-003 raw-signal that fed
+      finding-2026-05-11-0005. Per the FLASH-POLICY anti-noise rule
+      "one signal per topic per 24h" and the grader's independence-
+      test discipline (relays of the same primary do not corroborate
+      each other), the cluster does not clear promotion.
+
+      Specific anti-noise resurface-conditions checked:
+        - New IOCs published in the 00:00 relay vs PM-003 promoted
+          set: false (same three domains, same hash, same backdoor
+          family name)
+        - Independent A-grade corroboration vs QiAnXin XLab primary:
+          false (Hacker News is the same B-grade relay class)
+        - Novel post-exploitation TTPs documented: false (same Go-
+          infector + SSH-key-implant + Filemanager backdoor chain)
+
+      All three resurface conditions fail; anti-noise rejection
+      applies cleanly. Finding-2026-05-11-0005 remains the canonical
+      reference for this campaign in the corpus.
+
+    sources:
+      - source_yaml_id: hacker-news
+        grade: B   # provisional B media-relay tier
+        role: relay_of_qianxin_xlab_primary
+      - source_yaml_id: qianxin-xlab
+        grade: C   # provisional C first-surface vendor research
+        role: primary_research_originator_same_as_finding_2026_05_11_0005
+    would_be_digraph: C3_per_underlying_finding_anchor
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      Procedural anti-noise rejection — claim is true and already
+      promoted at finding-2026-05-11-0005. Re-evaluate only if a
+      genuinely new layer surfaces (A-grade independent corroboration
+      by Mandiant/CrowdStrike/Unit42/MSTIC; novel post-exploitation
+      TTPs beyond Go-infector + SSH-key + Filemanager; new IOC set
+      not already in finding-2026-05-11-0005; A&D-prime named as
+      victim; first-party Splunk hit on the existing IOC set).
+
+  - rejection_id: reject-2026-05-12-0002
+    rejected_at: 2026-05-12T08:13:00-04:00
+    grading_run_id: morning-20260512-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-12-flash-0000-002-gtig-ai-developed-zero-day-2fa-bypass-mass-exploitation-non-flash
+    cluster_topic: "Google GTIG AI Threat Tracker — first known in-the-wild AI-developed zero-day 2FA bypass exploit (overnight 00:00 FLASH relay) — duplicate restatement of finding-2026-05-11-0003 already promoted via PM-001 raw-signal in 2026-05-11 afternoon brief"
+    rejection_reasons:
+      - duplicate_of_existing_finding
+      - anti_noise_24h_window_collision
+      - same_primary_disclosure_event_gtig_2026_05_11
+      - no_new_evidence_added_in_relay
+    rejection_detail: >
+      Cluster fails promotion because the underlying claims are already
+      captured in finding-2026-05-11-0003 (promoted from raw-2026-05-11-pm-001
+      in the 2026-05-11 afternoon brief). Both raw-signal files cite the
+      same Google Threat Intelligence Group (GTIG) primary publication
+      "GTIG AI Threat Tracker: Adversaries Leverage AI for Vulnerability
+      Exploitation, Augmented Operations, and Initial Access"
+      (cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-
+      exploitation-initial-access, 2026-05-11), the same novelty claim
+      (first known AI-developed zero-day for mass exploitation), the
+      same 2FA-bypass vulnerability class on the same unnamed open-
+      source web-based system administration tool, the same hallucinated-
+      CVSS-score forensic fingerprint, the same coordinated-disclosure
+      framing (patched at time of GTIG publication), and the same
+      multi-actor adjacent-cases section (TeamPCP / UNC6780 restated;
+      APT45 / APT27 / UNC2814 / UNC5673 / UNC6201 / Russian "Operation
+      Overload" /new-actor candidates).
+
+      The 00:00 FLASH sweep specifically flagged this as a relay-class
+      restatement of the pre-existing PM-001 raw-signal that fed
+      finding-2026-05-11-0003. The overnight relays observed
+      (BleepingComputer Bill Toulas, SecurityWeek Eduard Kovacs,
+      Hacker News Ravie Lakshmanan, SiliconANGLE, Infosecurity
+      Magazine, PYMNTS, blog.google) all trace to the same single
+      GTIG primary disclosure event on 2026-05-11. None contribute
+      independent telemetry or research.
+
+      Specific anti-noise resurface-conditions checked:
+        - New IOCs published in 00:00 relay vs PM-001 promoted set:
+          false (no IOCs anywhere — Google coordinated-disclosure
+          withholds vendor/product/CVE)
+        - Independent A-grade corroboration vs Mandiant/GTIG primary:
+          false (relay outlets are B-grade or below)
+        - Novel post-disclosure operational detail: false (same
+          coordinated-disclosure framing, same "foiled before mass
+          exploitation phase" framing)
+
+      All three resurface conditions fail; anti-noise rejection
+      applies cleanly. Finding-2026-05-11-0003 remains the canonical
+      reference for the AI-developed-zero-day-2FA-bypass intelligence
+      in the corpus.
+
+    sources:
+      - source_yaml_id: mandiant
+        grade: A   # GTIG is the Mandiant/Google Cloud blog organization
+        role: primary_research_originator_same_as_finding_2026_05_11_0003
+      - source_yaml_id: bleepingcomputer
+        grade: B
+        role: relay_of_gtig_primary
+      - source_yaml_id: securityweek
+        grade: B
+        role: relay_of_gtig_primary
+      - source_yaml_id: hacker-news
+        grade: B
+        role: relay_of_gtig_primary
+    would_be_digraph: A2_per_underlying_finding_anchor
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      Procedural anti-noise rejection — claim is well-supported and
+      already promoted at finding-2026-05-11-0003. Re-evaluate only
+      if a genuinely new layer surfaces: GTIG or vendor publishes
+      the specific CVE / vendor / product disclosure (post-
+      coordinated-disclosure-window), vendor IR publishes IOCs from
+      the foiled exploitation operation, A&D-prime IR public report
+      surfaces with this CVE named, or first-party Splunk hit on
+      whatever vendor signature ultimately emerges.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 4
-  most_recent_run: afternoon-20260511-160000
-  most_recent_run_rejections: 0
+  total_rejections: 6
+  most_recent_run: morning-20260512-080000
+  most_recent_run_rejections: 2
   most_recent_run_note: >
-    afternoon-20260511-160000 produced 0 rejections; 4 promotions:
-    finding-2026-05-11-0003 (Google GTIG AI-generated zero-day at A2,
-    single-source veto applied — three relays of one GTIG primary fail
-    independence test; WEP ceiling likely; analyst_review_required true
-    for multi-actor attribution-claim surface);
-    finding-2026-05-11-0004 (UK ICO Cl0p / South Staffordshire Water
-    £963.9K fine at B3, single Record relay of ICO; WEP ceiling likely;
-    Cl0p tracked roster #018 HIGH restated attribution from 2022, no
-    rescore implied);
-    finding-2026-05-11-0005 (cPanel CVE-2026-41940 mass exploitation
-    by Mr_Rot13 with Filemanager backdoor at C3, QiAnXin XLab
-    provisional-C primary via The Hacker News relay; WEP ceiling
-    roughly even chance; CVE itself anchored A1 via CISA KEV;
-    analyst_review_required true for Mr_Rot13 attribution corroboration
-    and /new-actor candidate review);
-    finding-2026-05-11-0006 (FCC foreign-router and foreign-drone
-    update-ban deadline extension to 2029 at B3, single Record relay
-    of FCC OET; WEP ceiling likely; A&D-adjacent capability-level
-    policy signal; no actor / CVE / IOC).
-    All un-promoted raw-signal in the window cleared the C3 monitoring
-    threshold or higher; pm-000 sentinel sweep summary marked
-    promotion_not_applicable per grader procedure.
-    Two librarian handoffs queued: (1) add QiAnXin XLab to
-    source-grades.yaml as provisional-C entry (parallels LayerX /
-    Seqrite Labs / Trendyol Group / SOCRadar precedent);
-    (2) vuln-tracker review for adding CVE-2026-41940 to _index.yaml
-    as VT-006 or similar (KEV-listed, public exploit available,
-    mass-exploitation observed).
-  prior_run: morning-20260511-080000
+    morning-20260512-080000 produced 2 rejections and 2 promotions
+    (plus 1 pre-existing FLASH-queue finding flowed through from
+    overnight 06:00 FLASH sweep, untouched by this grading run).
+
+    Rejections:
+      reject-2026-05-12-0001 (raw-2026-05-12-flash-0000-001 cPanel /
+        Mr_Rot13 / CVE-2026-41940 overnight FLASH non-FLASH relay) —
+        anti-noise duplicate of finding-2026-05-11-0005 (PM-003) from
+        2026-05-11 afternoon brief; same QiAnXin XLab primary, same
+        Mr_Rot13 attribution, same IOC set, same TTPs; all three
+        resurface conditions fail.
+      reject-2026-05-12-0002 (raw-2026-05-12-flash-0000-002 GTIG AI-
+        developed zero-day 2FA bypass overnight FLASH non-FLASH relay) —
+        anti-noise duplicate of finding-2026-05-11-0003 (PM-001) from
+        2026-05-11 afternoon brief; same GTIG primary disclosure event,
+        same novelty claim, same multi-actor adjacent-cases set; all
+        three resurface conditions fail.
+
+    Promotions:
+      finding-2026-05-12-0001 (SAP May 2026 Patch Day; CVE-2026-34263
+        Commerce Cloud unauth code execution + CVE-2026-34260 S/4HANA
+        SQL injection; B2 anchored on BleepingComputer relay of SAP
+        corporate advisory; NVD cross-corroboration on CVE existence;
+        single-source veto applied — SAP-as-CNA single-origin chain;
+        WEP ceiling likely; no exploitation observed per vendor;
+        structural A&D relevance via universal ERP deployment across
+        primes; analyst_review and red_team_review both false).
+      finding-2026-05-12-0002 (Siemens May 2026 Patch Tuesday cluster;
+        SSA-081142 CVE-2025-40949 RUGGEDCOM ROX authenticated command
+        injection 9.1 + SSA-357982 CVE-2026-41551 ROS# UNAUTHENTICATED
+        path traversal 9.1 v3.1 / 9.3 v4.0 [HEADLINER] + SIMATIC
+        cluster CVE-2026-22924 / CVE-2026-25786 / CVE-2026-25787; A2
+        anchored on Siemens ProductCERT provisional-A first surface
+        plus NVD CVE-record cross-corroboration; single-source veto
+        applied — Siemens-as-CNA single-origin chain; WEP ceiling
+        likely; no exploitation observed per vendor; structural A&D
+        relevance via Siemens-as-Tier1-supplier plus ROS# robotics-
+        R&D context; analyst_review and red_team_review both false).
+
+    Flow-through from overnight (NOT a 08:00 grading-run action):
+      finding-2026-05-12-FLASH-0001 (TeamPCP Mini Shai-Hulud npm + PyPI
+        worm; CVE-2026-45321 CVSS 9.6; promoted via 06:00 FLASH-grade
+        fast-path; queued to infrastructure/flash-queue.yaml for 09:00
+        catchup post per quiet-hours rule). Orchestrator and librarian
+        own the queue-supersede vs separate-post disposition at 09:00.
+
+    Three librarian handoffs queued from morning-20260512-080000:
+      (1) Add `sap-advisory` to source-grades.yaml at provisional A
+          grade (parallels MSRC / Siemens ProductCERT / Palo Alto
+          PSIRT / Ivanti PSIRT precedent for vendor official-advisory
+          tier; rationale in finding-2026-05-12-0001 source-grade-log
+          block).
+      (2) Add `siemens-productcert` to source-grades.yaml at
+          provisional A grade (same precedent; rationale in
+          finding-2026-05-12-0002 source-grade-log block). Operator
+          decision needed on a working RSS endpoint (current
+          cert-portal.siemens.com/productcert/rss/advisories.rss
+          observed stale at January 2026 dates) versus codifying the
+          direct-SSA-URL WebFetch fallback.
+      (3) vuln-tracker review for adding seven CVEs to _index.yaml
+          across the two findings: CVE-2026-34263, CVE-2026-34260
+          (SAP); CVE-2025-40949, CVE-2026-41551, CVE-2026-22924,
+          CVE-2026-25786, CVE-2026-25787 (Siemens). HIGHEST PRIORITY:
+          CVE-2026-41551 (Siemens ROS# UNAUTHENTICATED 9.1) given
+          the unusual unauthenticated profile and aerospace/defense
+          robotics R&D structural relevance.
+  prior_run: afternoon-20260511-160000
   prior_run_rejections: 0

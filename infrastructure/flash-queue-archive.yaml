@@ -22,9 +22,85 @@
 #   - librarian_note: free-form supersession / disposition reasoning
 
 version: 1
-last_updated: 2026-05-06T08:00:00-04:00
+last_updated: 2026-05-12T08:00:00-04:00
 
 archive:
+  - queued_at: 2026-05-12T06:30:00-04:00
+    archived_at: 2026-05-12T08:00:00-04:00
+    archived_by: librarian-20260512-080000
+    disposition: superseded_by_morning_brief
+    brief_id: flash-2026-05-12-0600
+    brief_path: threats/briefs/2026-05-12-flash-0600-teampcp-mini-shai-hulud.md
+    finding_id: finding-2026-05-12-FLASH-0001
+    trigger: trigger-1-critical-cve-exploited
+    secondary_trigger: trigger-4-tracked-actor-ttp-change
+    cve: CVE-2026-45321
+    digraph: A2
+    wep:
+      procedural_facts: very_likely
+      worm_propagation: very_likely
+      teampcp_attribution: likely
+      novelty_slsa_breaking_claim: likely
+    critical_override_applied: false
+    critical_override_evaluation:
+      cvss_10_0_floor: false        # CVSS 9.6 < 10.0
+      active_exploitation: true
+      tracked_actor_involved: true   # TeamPCP #001 HIGH
+      ad_watchlist_targeted: false   # @squawk aviation incidental, no watchlist prime named
+      conditions_met: 2_of_4
+    quiet_hours_at_queue: true
+    expires_at: 2026-05-12T18:30:00-04:00
+    catchup_sweep: 2026-05-12T09:00:00-04:00
+    superseded: true
+    superseded_by: 2026-05-12-morning
+    superseded_at: 2026-05-12T08:00:00-04:00
+    superseded_by_path: threats/briefs/2026-05-12-morning.md
+    notes: |
+      First TeamPCP supply-chain FLASH on the Mini Shai-Hulud campaign (npm + PyPI
+      worm; ~172 packages compromised in mass-exploitation pattern; CVE-2026-45321
+      CVSS 9.6; GHSA-g7cv-rxg3-hmpx). Distinct topic from the 2026-05-11 06:00
+      Checkmarx Jenkins AST plugin FLASH per 8-dimension comparison (different
+      ecosystem npm+PyPI vs. Jenkins Marketplace, different scale 172 vs. 1, different
+      capability layer self-propagating worm vs. single-strike, different CVE, different
+      originating research StepSecurity+Wiz+Snyk vs. Checkmarx PSIRT). Anti-noise rule
+      "one FLASH per topic per 24h" applies per-topic not per-actor — distinct topic
+      clears the rule.
+
+      Critical override evaluation: 2 of 4 conditions met. Active exploitation YES
+      (Wiz/Snyk/StepSecurity live-scan corroborated). Tracked actor YES (TeamPCP #001
+      HIGH). CVSS 9.6 < 10.0 floor (FAIL hard threshold). No A&D watchlist entity
+      named as target — @squawk aviation-developer ecosystem (19 packages) hit
+      appears incidental via worm enumeration not strategic targeting (red-team
+      constraint preserved this reading; FAIL). Override fails by CVSS floor and
+      A&D-watchlist-entity-named test.
+
+      Disposition prediction: 08:00 morning brief is very likely to absorb this
+      content as a lead/Active Threats item given operational significance and
+      A-grade source backbone. Predict 09:00 catchup sweep marks superseded:true,
+      superseded_by: 2026-05-12-morning, archive disposition
+      superseded_by_morning_brief. If morning brief omits the Mini Shai-Hulud
+      coverage for any reason, catchup posts with "QUEUED FROM OVERNIGHT" prefix
+      to #flash-alerts.
+
+      Anti-noise rule 4 self-review flag: TeamPCP-attributed FLASH count in 7-day
+      window approaches the documented 10/week threshold. Pattern observation
+      surfaced for weekly synthesis (2026-05-17) — concentrated TeamPCP cadence
+      (PyTorch Lightning ShaiWorm 2026-05-04 -> Checkmarx Jenkins 2026-05-11 ->
+      Mini Shai-Hulud 2026-05-12) suggests an active campaign window worth
+      longitudinal treatment, not noise.
+    librarian_note: |
+      Disposition confirmed: morning brief 2026-05-12-morning absorbed
+      finding-2026-05-12-FLASH-0001 as the Active Threats lead item with full
+      coverage of attribution (TeamPCP via Wiz + StepSecurity; Snyk relays),
+      CVE-2026-45321 / CVSS 9.6, the SLSA-attestation-bypass novelty caveat
+      (per Wiz/Snyk, scoped to Shai-Hulud family lineage), and the DIB CI/CD
+      action set. Brief frontmatter records absorbs_flash: flash-2026-05-12-0600
+      and the supersession_action_owner: librarian assignment. Re-posting the
+      queued FLASH to #flash-alerts at the 09:00 catchup would be duplicate
+      signal per FLASH-POLICY anti-noise. Catchup sweep run early (08:00 EDT)
+      coincident with morning brief delivery rather than waiting for the 09:00
+      window — same pattern as the 2026-05-06 PAN-OS supersession.
+
   - queued_at: 2026-05-06T06:55:00-04:00
     archived_at: 2026-05-06T08:00:00-04:00
     archived_by: librarian-20260506-080000

@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-13T14:45:00-04:00
+last_updated: 2026-05-13T18:25:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -284,6 +284,19 @@ vendor_sources:
       - https://businessinsights.bitdefender.com/
       - https://www.bitdefender.com/blog/labs/
 
+  - id: symantec
+    name: "Symantec (Threat Hunter Team / Carbon Black)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-13
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-13-FLASH-1800-0001 (Symantec attributes Q1 2026 multi-victim espionage campaign to MuddyWater / Seedworm — South Korean electronics maker case study + 8 additional victims across MENA gov/aviation + SEA industrial + LatAm financial + global education; new ChromElevator credential-theft malware + two novel DLL sideloading pairs Fortemedia fmapp + SentinelOne sentinelmemoryscanner + Node.js orchestration + sendit.sh exfil). Sole originating primary; BleepingComputer (Bill Toulas 17:59 EDT in-window), Industrial Cyber, and The Hacker News are pure relays (single-source veto applied at grader / WEP capped at 'likely'). Tier-1 vendor research practice — Symantec Threat Hunter Team + Carbon Black joint byline, Broadcom-owned, first-party EDR telemetry (SEP + Carbon Black), long-running Seedworm taxonomy primacy since 2018 (MITRE G0069 attribution lineage). Symantec's own attribution language is softer than formal moderate/high confidence ('widely believed to be linked' to Iran MOIS) — hedge preserved verbatim per Hard Rule 2. Provisional A consistent with the precedent applied to SentinelOne (2026-05-08 first surface), Wiz Research + Snyk (2026-05-12), Bitdefender (2026-05-13 14:30), Sophos / ESET / Dragos (Session 11 ratifications). SECOND provisional-A first-citation on 2026-05-13 (Bitdefender at 14:30 was the first). Pending human ratification per source-grade-log.md 2026-05-13 entry. 72h ratification clock to 2026-05-16T18:25:00-04:00."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.security.com/threat-intelligence
+      - https://symantec-enterprise-blogs.security.com/threat-intelligence
+
   - id: safedep
     name: "SafeDep"
     category: vendor
@@ -401,7 +414,32 @@ media_sources:
     active: true
     urls:
       - https://layerxsecurity.com/
-  
+
+  - id: industrialcyber-co
+    name: "Industrial Cyber"
+    category: media
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-13
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-13-FLASH-1800-0001 as a relay of Symantec's MuddyWater / Seedworm Q1 2026 multi-victim attribution. ICS/OT-focused security media outlet. Conservative provisional B starting grade for the media-relay tier per same precedent as SecurityWeek (2026-05-06)."
+    relay_layer_conflation_observed_2026_05_13: |
+      Relay-layer conflation observed on first-citation surface. Industrial Cyber's coverage of the
+      Symantec MuddyWater Q1 2026 multi-victim campaign introduced a "U.S. defense and aerospace
+      software supplier with Israeli operations" victim claim that is NOT present in the Symantec
+      primary (https://www.security.com/threat-intelligence/iran-seedworm-electronics). Treated by
+      Archimedes grader / briefer / red-team as cross-campaign conflation with the separate March 2026
+      Symantec Dindoor/Fakeset US-critical-infrastructure campaign (different malware family, different
+      victim set). The A&D-supplier claim was NOT propagated into finding-2026-05-13-FLASH-1800-0001
+      per Hard Rule 2 (no first-time attribution origination via relay). Re-evaluates only if Symantec
+      primary updates to name an A&D-supplier victim, or if an independent A/B-grade source corroborates
+      the claim with explicit A&D-prime naming within the 24-72h post-disclosure window (deadline
+      2026-05-16 18:00 EDT). If the conflation pattern recurs on subsequent Industrial Cyber relays,
+      consider downgrade to C.
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://industrialcyber.co/
+
   - id: github-advisories
     name: "GitHub Security Advisories"
     category: reference
@@ -720,11 +758,11 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 61        # +1 bitdefender (provisional 2026-05-13); +7 wiz-research, snyk, stepsecurity, semgrep, onapsis, aikido-security, safedep (provisional 2026-05-12)
-  active_sources: 52       # +1 bitdefender; +7 above
+  total_sources: 63        # +2 symantec (provisional A 2026-05-13 18:25), industrialcyber-co (provisional B 2026-05-13 18:25); +1 bitdefender (provisional 2026-05-13 14:30); +7 wiz-research, snyk, stepsecurity, semgrep, onapsis, aikido-security, safedep (provisional 2026-05-12)
+  active_sources: 54       # +2 symantec + industrialcyber-co; +1 bitdefender; +7 above
   by_grade:
-    A: 26       # +1 bitdefender (provisional 2026-05-13); +2 wiz-research, snyk (provisional 2026-05-12)
-    B: 20       # +3 stepsecurity, semgrep, onapsis (provisional 2026-05-12)
+    A: 27       # +1 symantec (provisional 2026-05-13 18:25); +1 bitdefender (provisional 2026-05-13 14:30); +2 wiz-research, snyk (provisional 2026-05-12)
+    B: 21       # +1 industrialcyber-co (provisional 2026-05-13 18:25); +3 stepsecurity, semgrep, onapsis (provisional 2026-05-12)
     C: 9        # +2 aikido-security, safedep (provisional 2026-05-12)
     D: 1
     E: 2
@@ -745,6 +783,8 @@ _meta:
     - aikido-security           # provisional C; first cited 2026-05-12-FLASH-0001
     - safedep                   # provisional C; first cited 2026-05-12-FLASH-0001
     - bitdefender               # provisional A; first cited 2026-05-13-FLASH-0001
+    - symantec                  # provisional A; first cited 2026-05-13-FLASH-1800-0001 (72h ratification clock to 2026-05-16T18:25:00-04:00)
+    - industrialcyber-co        # provisional B with relay-layer-conflation-observed-2026-05-13 caveat; first cited 2026-05-13-FLASH-1800-0001
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

@@ -9,9 +9,185 @@
 # resurfaces via higher-grade sources.
 
 version: 1
-last_updated: 2026-05-13  # afternoon-20260513-160000 added run summary; no new rejection entries
+last_updated: 2026-05-13  # flash-grade-20260513-180500 added 2 collector-side discard entries (Exim CVE-2026-45185 + Dream Market arrest) per FLASH sweep audit-trail discipline + 1 promotion (Symantec MuddyWater ChromElevator)
 
 entries:
+  - rejection_id: reject-2026-05-13-0001
+    rejected_at: 2026-05-13T18:00:00-04:00
+    grading_run_id: flash-grade-20260513-180500
+    rejected_by: collector_discard_logged_by_grader   # collector pre-discarded at Mode 1; grader formalizes audit-trail entry per LEGAL-POLICY 1-year retention discipline
+    raw_signal_members: []                            # collector did not create a per-candidate raw-signal for this item; documented in sentinel raw-2026-05-13-flash-1800-000 sources_queried.bleepingcomputer block
+    raw_signal_sweep_context:
+      - raw-2026-05-13-flash-1800-000-sentinel-flash-candidate-sweep
+    cluster_topic: "CVE-2026-45185 — Exim 4.97 → 4.99.2 use-after-free in TLS shutdown during BDAT chunking (XBOW researcher Federico Kirschbaum / AI-LLM PoC narrative); BleepingComputer (Bill Toulas) 2026-05-13 16:23 EDT in-window"
+    rejection_reasons:
+      - flash_trigger_1_critical_cve_exploited_fails_active_exploitation_false
+      - flash_trigger_6_zero_day_no_patch_fails_patch_shipped_one_day_before_disclosure
+      - poc_only_no_in_the_wild_exploitation_per_article
+      - cvss_not_assigned_in_article
+    rejection_detail: >
+      Cluster fails to meet ANY FLASH trigger threshold and is therefore
+      not promoted to a finding at FLASH severity. Specific reasoning:
+
+        (1) CVE-2026-45185 is a real critical-class CVE in Exim 4.97
+            through 4.99.2 (use-after-free in TLS shutdown during BDAT
+            chunking). Exim is widely deployed across enterprise MTAs
+            including some A&D estates. BUT:
+              - PATCH SHIPPED 2026-05-12 in Exim 4.99.3, one day BEFORE
+                the BleepingComputer disclosure on 2026-05-13.
+                Pre-patch active-exploitation window did NOT exist.
+              - CVSS score NOT ASSIGNED in the article (no NVD entry
+                or vendor CVSS at time of publication).
+              - NO in-the-wild exploitation reported. The article
+                explicitly frames the disclosure as a theoretical /
+                AI-LLM proof-of-concept narrative built around XBOW
+                researcher Federico Kirschbaum's work. The
+                researcher's own quoted hedge ("I don't think LLMs
+                alone are quite ready to write exploits") forecloses
+                the active-exploitation framing.
+
+        (2) FLASH Trigger 1 (critical-CVE-exploited) FAILS on the
+            active_exploitation false condition AND on the no-pre-
+            patch-window condition. Either fail alone is sufficient
+            to reject Trigger 1.
+
+        (3) FLASH Trigger 6 (zero-day-no-patch) FAILS on the
+            patch_status: patched condition. A vulnerability with a
+            shipped vendor patch one day before disclosure is by
+            definition not a zero-day-no-patch surface.
+
+        (4) Related-but-distinct from CVE-2026-40364 Exim BDAT cohort
+            already in 2026-05-12 corpus (finding-2026-05-12-0003
+            Microsoft Patch Tuesday + finding-2026-05-12-0004 Fortinet
+            PSIRT did NOT cover Exim; the CVE-2026-40364 reference is
+            from collector cross-corpus survey at non-finding tier).
+            Anti-noise is secondary; primary rejection is no-
+            qualifying-FLASH-trigger.
+
+        (5) Disposition: signal logged to vuln-tracker review queue
+            for routine /vuln-monitor cycle pickup (NOT FLASH-tier).
+            Exim CVE-2026-45185 may warrant a routine vulnerabilities/
+            _index.yaml entry if subsequent telemetry surfaces post-
+            patch-availability exploitation (BadWinmail / Outlook
+            NTLM / MonikerLink historical class precedent — patched
+            CVEs can be weaponized weeks-to-years after patch shipping
+            against laggard estates). Routine /vuln-monitor pickup
+            handles that path; FLASH pipeline is not the right channel.
+
+      Recommended re-grading path:
+        (a) If in-the-wild exploitation is reported by an A/B-grade
+            source within 14-30 days post-patch, re-evaluate for
+            Trigger 1 (critical-CVE-exploited) with the active-
+            exploitation condition now satisfied.
+        (b) If A&D-prime targeting via Exim 4.97-4.99.2 surfaces in
+            any A/B-grade source, re-evaluate for Trigger 5 (A&D-
+            sector campaign).
+        (c) Routine vuln-tracker pickup handles the non-FLASH path
+            for tracking the CVE itself.
+
+    sources:
+      - source_yaml_id: bleepingcomputer
+        grade: B
+        role: media_relay_xbow_researcher_research
+      - source_yaml_id: xbow-provisional   # NOT in source-grades.yaml; researcher first-corpus-surface but not invoked as primary on this rejected candidate so no provisional grade proposed
+        grade: F   # placeholder; would require provisional-grade evaluation if XBOW becomes citation-load-bearing on a promoted finding
+        role: originating_research_referenced_by_bleepingcomputer
+    would_be_digraph: B3_at_best_poc_only_no_itw_no_cvss
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      Procedural rejection at FLASH-tier — the CVE itself is real
+      and the disclosure is valid; just does not clear any FLASH
+      trigger. Re-grade if in-the-wild exploitation is subsequently
+      reported. Routine vuln-tracker pickup for non-FLASH CVE
+      tracking. This rejection entry exists primarily for audit-
+      trail completeness per LEGAL-POLICY retention discipline;
+      collector pre-discarded at Mode 1, grader formalizes the
+      audit entry for traceability.
+
+  - rejection_id: reject-2026-05-13-0002
+    rejected_at: 2026-05-13T18:00:00-04:00
+    grading_run_id: flash-grade-20260513-180500
+    rejected_by: collector_discard_logged_by_grader   # collector pre-discarded at Mode 1; grader formalizes audit-trail entry per LEGAL-POLICY 1-year retention discipline
+    raw_signal_members: []                            # collector did not create a per-candidate raw-signal for this item; documented in sentinel raw-2026-05-13-flash-1800-000 sources_queried.the-record block
+    raw_signal_sweep_context:
+      - raw-2026-05-13-flash-1800-000-sentinel-flash-candidate-sweep
+    cluster_topic: "Alleged Dream Market admin arrested in Germany after US indictment — Owe Martin Andresen, 2013-2019 Dream Market admin, money laundering charges ~$2M cryptocurrency + gold bars; The Record 2026-05-13 15:54 EDT in-window"
+    rejection_reasons:
+      - historical_law_enforcement_action_no_active_threat
+      - no_tracked_actor_per_roster_yaml
+      - no_a_and_d_relevance
+      - no_cve_no_ioc_no_ttp_content
+      - mode_1_default_no_qualifying_inclusion_signal
+    rejection_detail: >
+      Cluster fails to meet ANY FLASH trigger threshold AND fails
+      to meet the C3 monitoring threshold for routine brief
+      inclusion. Specific reasoning:
+
+        (1) Subject is a historical dark-web-marketplace law-
+            enforcement action: Owe Martin Andresen, identified by
+            DOJ unsealed indictment as a 2013-2019 administrator of
+            Dream Market (dark-web marketplace shuttered 2019),
+            arrested in Germany pending extradition to the US.
+            Charges include money laundering of approximately
+            $2 million in cryptocurrency and physical gold bars.
+            The arrest is operationally recent (2026-05-13 disclosure)
+            but the underlying activity is from 2013-2019 and the
+            marketplace has been offline for 6+ years.
+
+        (2) No tracked actor in threats/threat-actors/_roster.yaml.
+            Andresen is not associated with any of the 24 roster
+            entries (no nation-state, no ransomware family, no IAB
+            cluster). Dream Market historically hosted commodity
+            criminal listings (drugs, fraud, malware-as-a-service);
+            individual administrator arrests do not advance any
+            tracked-actor profile.
+
+        (3) No A&D relevance. Dream Market is not associated with
+            any aerospace-defense-watchlist entity, nor with any
+            documented A&D-sector targeting in any prior corpus
+            coverage.
+
+        (4) No CVE, no IOC, no TTP content. The article is
+            journalistic coverage of a law-enforcement action; it
+            does not surface technical artifacts (no infrastructure
+            attribution, no malware, no exploitation methodology).
+            Defender-actionability is null.
+
+        (5) Mode 1 default — no qualifying inclusion signal.
+            Without tracked actor, A&D relevance, technical
+            artifact, or active-threat framing, the cluster does
+            not clear any inclusion threshold (FLASH, B2 action,
+            C3 monitoring, or weekly-synthesis).
+
+      Recommended re-grading path:
+        (a) If Andresen or any Dream Market alumni surface in
+            future A/B-grade reporting linked to a tracked actor
+            or A&D-relevant operation, re-evaluate.
+        (b) Otherwise the signal stays in raw-signal archive
+            (90-day retention) via the sentinel sweep file. No
+            further action required.
+
+    sources:
+      - source_yaml_id: the-record
+        grade: B
+        role: media_coverage_law_enforcement_action_historical
+    would_be_digraph: B6_cannot_be_judged_no_threat_intel_content
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      Procedural rejection — claim itself is true and well-sourced
+      (US DOJ indictment + German arrest), but does not meet any
+      FLASH or routine-brief inclusion criterion because it is
+      historical law-enforcement activity without technical
+      content, tracked-actor linkage, or A&D relevance. The
+      Record's coverage is a legitimate B-grade journalism piece;
+      the rejection is on inclusion-criteria grounds, not on
+      source reliability or claim credibility. This rejection
+      entry exists primarily for audit-trail completeness per
+      LEGAL-POLICY retention discipline; collector pre-discarded
+      at Mode 1, grader formalizes the audit entry for
+      traceability.
+
+
   - rejection_id: reject-2026-05-08-0001
     rejected_at: 2026-05-08T08:30:00-04:00
     grading_run_id: morning-20260508-080000
@@ -483,10 +659,186 @@ entries:
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 6
-  most_recent_run: afternoon-20260513-160000
-  most_recent_run_rejections: 0
+  total_rejections: 8
+  most_recent_run: flash-grade-20260513-180500
+  most_recent_run_rejections: 2
   most_recent_run_note: >
+    flash-grade-20260513-180500 (FLASH fast-path single-item grading) produced
+    1 promotion and 2 collector-side discard audit-trail entries (formalized
+    by grader per LEGAL-POLICY 1-year retention discipline; collector pre-
+    discarded at Mode 1 during the 18:00 EDT FLASH sweep).
+
+    Promotion:
+      finding-2026-05-13-FLASH-1800-0001 (Symantec Threat Hunter Team
+        attributes Q1 2026 multi-victim espionage campaign to MuddyWater /
+        Seedworm including South Korean electronics manufacturer case study
+        Feb 20-27 intrusion timeline + 8 additional victims across MENA,
+        Southeast Asia, Latin America, multi-country education;
+        substantive tradecraft deltas — new ChromElevator post-exploitation
+        credential-theft malware family + two novel DLL sideloading pairs
+        [Fortemedia fmapp.exe + SentinelOne sentinelmemoryscanner.exe
+        component impersonation = defensive-EDR brand impersonation] +
+        Node.js runtime as PowerShell orchestration layer + target-set
+        geographic expansion from MENA anchor + sendit.sh public file-
+        transfer exfil pattern + ~90s C2 beacon cadence with ~36h mid-
+        intrusion inactivity gap and ~1 week dwell time; A2 anchored on
+        Symantec A-grade provisional first-corpus-citation primary;
+        single-source veto applied on attribution + TTP-delta + campaign-
+        scope layers — Symantec single effective source with all three
+        relays [BleepingComputer Toulas in-window 17:59 EDT + Industrial
+        Cyber + Hacker News] failing independence test as Symantec
+        rewrites; WEP ceiling likely on attribution + TTP-delta +
+        campaign-scope; WEP very_likely on procedural intrusion-timeline
+        facts and VT-confirmed C2 infrastructure facts; Symantec's softer-
+        than-formal "widely believed to be linked" IR-MOIS attribution
+        hedge preserved verbatim per Hard Rule 2 doctrine; Industrial
+        Cyber relay-introduced "U.S. defense and aerospace software
+        supplier" victim claim NOT propagated per Hard Rule 2 — treated
+        as cross-campaign conflation with separate March 2026 Symantec
+        Dindoor/Fakeset US-critical-infrastructure campaign; FLASH
+        Trigger 2 [tracked-actor-attribution] + Trigger 4 [tracked-actor-
+        TTP-change] both match cleanly; Trigger 5 [A&D-sector campaign]
+        FAILS per Symantec-primary-only A&D-victim absence; Critical
+        Override FAILS on CVSS-10 floor + A&D-watchlist-named-victim;
+        quiet hours INACTIVE [18:25 EDT inside 09:00-21:00 EDT active
+        window] so FLASH posting permitted regardless of Critical
+        Override status; **analyst_review_required: true** — SAT-ACH on
+        attribution layer [4 hypotheses including IR-MOIS-correct,
+        Seedworm-family-but-IR-MOIS-overstated, different-Iran-nexus-
+        cluster, false-flag] + SAT-KAC on "Q1 2026 MuddyWater unified
+        operational arc" load-bearing assumption [combined with Rapid7
+        2026-05-06 MENA Chaos-decoy disclosure and separate March 2026
+        Symantec Dindoor/Fakeset US-CI disclosure] + Hard Rule 2
+        compliance check on attribution-framing language preservation
+        through to FLASH brief; red_team_review_required: false [WEP at
+        likely, below very-likely threshold] but two discretionary
+        brittleness candidates flagged for red-team-analyst attention
+        [campaign-scope claim resting entirely on Symantec's published
+        case-roster and SentinelOne-component-DLL-sideloading-as-brand-
+        impersonation reading]; concurrent finding-2026-05-13-FLASH-0001
+        [14:30 FLASH Bitdefender Salt Typhoon Azerbaijan] noted as
+        independent campaign with one coincidence-only observation —
+        TWO separate APT clusters impersonating SentinelOne defensive
+        product in same ~12h disclosure window [Salt Typhoon via
+        sentinelonepro[.]com C2 domain vs. MuddyWater via
+        sentinelmemoryscanner.exe + sentinelagentcore.dll component
+        sideloading]; COINCIDENTAL not attribution-linked; six librarian
+        handoffs queued — see below).
+
+    Collector-side discard audit entries (per LEGAL-POLICY retention):
+      reject-2026-05-13-0001 (CVE-2026-45185 Exim 4.97-4.99.2 use-after-
+        free in TLS shutdown during BDAT chunking; BleepingComputer
+        2026-05-13 16:23 EDT in-window; XBOW researcher Federico
+        Kirschbaum / AI-LLM PoC narrative; PATCHED in Exim 4.99.3 on
+        2026-05-12 one day before disclosure; CVSS not assigned in
+        article; NO in-the-wild exploitation per article; Trigger 1
+        FAILS on active_exploitation false + no-pre-patch-window;
+        Trigger 6 FAILS on patch_status patched; routed to vuln-tracker
+        review queue for routine /vuln-monitor cycle pickup at non-FLASH
+        tier; would-be digraph B3 at best).
+      reject-2026-05-13-0002 (Alleged Dream Market admin arrested in
+        Germany after US indictment — Owe Martin Andresen, 2013-2019
+        Dream Market admin, money laundering ~$2M cryptocurrency + gold
+        bars; The Record 2026-05-13 15:54 EDT in-window; historical
+        law-enforcement action with no tracked actor, no A&D relevance,
+        no CVE, no IOC, no TTP content; fails Mode 1 default inclusion
+        criteria across FLASH, B2 action, C3 monitoring tiers; would-be
+        digraph B6 cannot-be-judged-no-threat-intel-content).
+
+    Six librarian handoffs queued from flash-grade-20260513-180500:
+      (1) Add `symantec` to source-grades.yaml `vendor_sources` at
+          provisional A grade (parallels SentinelOne 2026-05-08, Wiz
+          Research + Snyk 2026-05-12, Bitdefender 2026-05-13 14:30
+          provisional-A precedent series; rationale in finding-
+          2026-05-13-FLASH-1800-0001 source-reliability block). Also
+          add to source-health.yaml. Note this is the SECOND
+          provisional-A first-citation today (Bitdefender at 14:30;
+          Symantec at 18:25) — operator's source-grade-log review
+          should batch both.
+      (2) Add `industrialcyber-co` to source-grades.yaml at provisional
+          B media-relay tier (first Archimedes-corpus citation as relay
+          source via this finding's cross-relay survey; relay-layer
+          conflation observation noted — Industrial Cyber introduced a
+          claim NOT in the Symantec primary — operator may consider
+          holding at provisional C if this conflation pattern is
+          observed again on subsequent surfaces, or ratify at B if
+          conflation appears to be one-off article-author error rather
+          than systemic methodological weakness).
+      (3) IOC index update — add C2 IOCs (timetrakr.cloud, sendit.sh,
+          179.43.177.220, 178.128.233.36) to threats/iocs/_master-index.yaml
+          from finding-2026-05-13-FLASH-1800-0001 IOC set; tag with
+          finding ID + MuddyWater + Seedworm + ChromElevator. Note
+          collector flagged 4 additional C2 IPs in Symantec primary not
+          surfaced in BleepingComputer relay + 13 SHA-256 hashes across
+          the DLL sideloading pairs not enumerated in relay — operator
+          / collector follow-up to fetch full IOC set from
+          security.com/threat-intelligence/iran-seedworm-electronics
+          for complete actor-profiler dossier ingestion.
+      (4) actor-profiler /update-tracking input: MuddyWater (id 022)
+          receives material new-TTP and new-IOC ingestion ahead of
+          next_review_due 2026-08-07. New malware family ChromElevator
+          + two novel DLL sideloading pairs (Fortemedia fmapp.exe ↔
+          fmapp.dll; SentinelOne sentinelmemoryscanner.exe ↔
+          sentinelagentcore.dll) + Node.js as PowerShell orchestration
+          layer + sendit.sh exfil pattern + target-set geographic
+          expansion (East Asia electronics + Southeast Asia industrial
+          + Latin America financial + multi-country education) to
+          ingest into profile.md TTP block and iocs.yaml. Per
+          operational-notes "threat-box methodology is conservatively
+          bounded; HIGH outcomes are rare" — this disclosure does NOT
+          name A&D primes, so Intent score under threat-box-methodology
+          likely stays at 3 Sector Association or moves conservatively
+          to 4; HIGH outcome not predicted from this disclosure alone.
+          Per Hard Rule 5: if a /update-tracking run on MuddyWater
+          proposes HIGH threat level (unlikely), operator sign-off via
+          /approve-scoring required before commit; auto-commit applies
+          otherwise.
+      (5) vuln-tracker review queue input: CVE-2026-45185 Exim 4.97-
+          4.99.2 UAF in TLS shutdown during BDAT chunking, PATCHED in
+          Exim 4.99.3 on 2026-05-12. Routine /vuln-monitor pickup at
+          non-FLASH tier. Historical class precedent: BadWinmail /
+          Outlook NTLM / MonikerLink / CVE-2023-23397 — patched CVEs
+          can be weaponized weeks-to-years after patch shipping against
+          laggard estates. Watch 14-30 days post-patch for in-the-wild
+          exploitation reporting; re-evaluate FLASH eligibility if ITW
+          surfaces with A/B-grade source.
+      (6) RETRACTION-POLICY / 72h auto-downgrade-clock observation:
+          finding-2026-05-13-FLASH-1800-0001 enters 72h post-disclosure
+          observation window with deadline 2026-05-16T18:25:00-04:00.
+          Symantec provisional-A source-grade ratification clock runs
+          in parallel (same 72h deadline). If by 2026-05-16 18:25 EDT
+          no independent A/B-grade vendor cross-corroboration has
+          surfaced (Mandiant / CrowdStrike / Unit 42 / MSTIC / ESET /
+          Sophos / Cisco Talos / Recorded Future / SentinelLabs /
+          Group-IB-followup), grader should evaluate auto-downgrade of
+          attribution-leg from A2/likely toward C3/possibly_true per
+          finding-2026-05-06-FLASH-0002 supersession-template precedent
+          on the actor-cluster identification leg (campaign-forensics
+          leg remains A2/likely on Symantec direct EDR/IR telemetry
+          regardless). This is informational at promotion time; clock
+          is in the finding's recalibration_watch block.
+
+    Analyst handoffs (NOT blocking FLASH brief composition):
+      finding-2026-05-13-FLASH-1800-0001 carries analyst_review_required:
+      true — SAT-ACH on attribution layer (4-hypothesis set including
+      IR-MOIS-correct, Seedworm-family-but-IR-MOIS-overstated, different-
+      Iran-nexus-cluster, false-flag) + SAT-KAC on "Q1 2026 MuddyWater
+      unified operational arc" load-bearing assumption (combined picture
+      across finding-2026-05-06-FLASH-0002 Rapid7 MENA Chaos-decoy +
+      this Symantec multi-continent ChromElevator + separate March 2026
+      Symantec Dindoor/Fakeset US-CI disclosure) + Hard Rule 2 compliance
+      check on attribution-framing language preservation through to
+      FLASH brief composition. WEP capped at "likely" per single-source
+      veto on attribution + TTP-delta + campaign-scope; analyst review
+      is structural-assumption surfacing + Hard Rule 2 compliance work,
+      not WEP-elevation work. red_team_review_required: false (WEP at
+      likely, below very-likely threshold) but two discretionary
+      brittleness candidates flagged for red-team-analyst attention if
+      WEP recalibrates upward within the 24-72h post-disclosure window.
+
+  prior_run: afternoon-20260513-160000
+  prior_run_rejections: 0
+  prior_run_note: >
     afternoon-20260513-160000 produced 0 rejections and 2 promotions.
     Both productive raw-signals from the 15:30 pre-brief sweep
     cleared C3+ inclusion threshold (one at B2-action-item, one at

@@ -23,10 +23,21 @@ also_tracked_as:
   - Earth Vetala           # Trend Micro taxonomy
   - TEMP.Zagros            # Mandiant historical
   - Boggy Serpens          # Older taxonomy
-last_updated: 2026-05-06
+last_updated: 2026-05-13
 admiralty_grade: A2
 tlp: CLEAR
 source_of_record: iocs.md
+
+# 2026-05-13 librarian appendix — Symantec MuddyWater Q1 2026 multi-victim
+# ChromElevator campaign IOCs added via finding-2026-05-13-FLASH-1800-0001:
+#   - 2 C2 domains (timetrakr[.]cloud, sendit[.]sh)
+#   - 2 C2 IPs (179.43.177.220 AS51852 Private Layer CH, 178.128.233.36 AS14061 DigitalOcean CA)
+# Operator/actor-profiler follow-up pending for the additional 4 IPs + 13 SHA-256
+# hashes in the Symantec primary that did NOT surface in the BleepingComputer
+# relay. The two novel DLL sideloading pairs (Fortemedia fmapp + SentinelOne
+# sentinelmemoryscanner) + ChromElevator malware family + Node.js orchestration
+# + sendit.sh exfil pattern are TTP-tier additions for the dossier (handoff
+# queued; not added to this iocs.yaml at the librarian step).
 
 source_brief_id: finding-2026-05-06-FLASH-0002
 source_brief_grade: A2
@@ -175,6 +186,85 @@ indicators:
     related_campaign: "MuddyWater Q2 2026 US campaign"
     source_brief: finding-2026-05-06-FLASH-0002
     source_origin: rapid7-2026-05-06
+
+  # --------------------------------------------------------------------------
+  # 2026-05-13 — Symantec Q1 2026 multi-victim ChromElevator campaign IOCs
+  # Surfaced in BleepingComputer relay; full Symantec primary set is 6 IPs +
+  # 13 SHA-256 hashes — additional 4 IPs + the SHA-256 set are operator-
+  # follow-up via actor-profiler dossier ingest (handoff queued).
+  # Single-source-veto applies: Symantec is sole originating primary; relays
+  # (BleepingComputer / Industrial Cyber / The Hacker News) add no separate
+  # evidence basis. WEP capped at 'likely' per finding-2026-05-13-FLASH-1800-0001.
+  # --------------------------------------------------------------------------
+  - id: muddywater-domain-timetrakr-cloud
+    type: domain
+    value: timetrakr.cloud
+    defanged_original: "timetrakr[.]cloud"
+    role: c2_primary
+    description: |
+      C2 domain per Symantec Threat Hunter Team 2026-05-13. VT 5/92 malicious
+      (ESET + Fortinet + ADMINUSLabs + ArcSight Threat Intelligence + SOCRadar).
+      WHOIS creation 2026-01-18, last-update 2026-01-23 — ~1 month before Feb 20
+      South Korean intrusion onset (campaign-specific registration signal).
+      Likely brand-impersonation of time-tracking SaaS (timetrakr is not a
+      known legitimate brand pattern).
+    first_seen: 2026-01-18
+    whois_creation: 2026-01-18
+    whois_last_update: 2026-01-23
+    vt_malicious_engines: 5
+    vt_total_engines: 92
+    related_campaign: "MuddyWater Q1 2026 multi-victim ChromElevator campaign (Symantec-attributed; 'widely believed to be linked' to Iran MOIS)"
+    source_brief: finding-2026-05-13-FLASH-1800-0001
+    source_origin: symantec-2026-05-13
+
+  - id: muddywater-domain-sendit-sh
+    type: domain
+    value: sendit.sh
+    defanged_original: "sendit[.]sh"
+    role: exfiltration_living_off_trusted_cloud
+    description: |
+      Public file-transfer service abused for exfiltration per Symantec 2026-05-13.
+      "Associated with malicious activity per VirusTotal" (Symantec framing).
+      NOT actor-owned infrastructure — living-off-trusted-cloud-service pattern.
+      Do NOT block by FQDN; build egress/DLP policy on egress-flow + payload
+      anomaly + parent-process correlation instead.
+    first_seen: 2026
+    related_campaign: "MuddyWater Q1 2026 multi-victim ChromElevator campaign"
+    source_brief: finding-2026-05-13-FLASH-1800-0001
+    source_origin: symantec-2026-05-13
+
+  - id: muddywater-ipv4-179-43-177-220
+    type: ipv4
+    value: 179.43.177.220
+    role: c2_staging
+    description: |
+      C2 staging IP per Symantec 2026-05-13. AS51852 Private Layer INC
+      Switzerland (known bulletproof-hosting AS, commonly used for APT staging).
+      VT 5/92 malicious (ADMINUSLabs + CRDF + ESET + Fortinet + alphaMountain.ai).
+    asn: 51852
+    as_owner: "Private Layer INC"
+    country: CH
+    vt_malicious_engines: 5
+    vt_total_engines: 92
+    related_campaign: "MuddyWater Q1 2026 multi-victim ChromElevator campaign"
+    source_brief: finding-2026-05-13-FLASH-1800-0001
+    source_origin: symantec-2026-05-13
+
+  - id: muddywater-ipv4-178-128-233-36
+    type: ipv4
+    value: 178.128.233.36
+    role: c2_staging
+    description: |
+      C2 staging IP per Symantec 2026-05-13. AS14061 DigitalOcean Canada
+      (commodity VPS staging). VT 3/92 malicious (ADMINUSLabs + ESET + Fortinet).
+    asn: 14061
+    as_owner: "DigitalOcean, LLC"
+    country: CA
+    vt_malicious_engines: 3
+    vt_total_engines: 92
+    related_campaign: "MuddyWater Q1 2026 multi-victim ChromElevator campaign"
+    source_brief: finding-2026-05-13-FLASH-1800-0001
+    source_origin: symantec-2026-05-13
 
   # --------------------------------------------------------------------------
   # Onion address (Chaos DLS facade)
@@ -597,3 +687,48 @@ sources:
       Single-source veto applied; red-team review qualify with required
       briefer caveats; 72-hour auto-downgrade clock registered (~2026-05-09
       12:00 EDT) per RETRACTION-POLICY.
+
+  - id: symantec-2026-05-13
+    title: "Iran's Seedworm targeting electronics in South Korea, plus multiple regions (Symantec Threat Hunter Team / Carbon Black, 2026-05-13)"
+    url: "https://www.security.com/threat-intelligence/iran-seedworm-electronics"
+    grade: A
+    grade_provisional: true
+    note: |
+      Provisional A pending source-grades.yaml ratification (symantec id added
+      2026-05-13 18:25; 72h ratification clock to 2026-05-16T18:25:00-04:00).
+      Symantec attribution language preserved verbatim: "widely believed to be
+      linked" to Iran MOIS — softer than formal moderate/high confidence.
+      Single-source veto applied (BleepingComputer / Industrial Cyber / The Hacker
+      News are pure relays; Industrial Cyber relay-introduced A&D-supplier claim
+      NOT propagated per Hard Rule 2). Falls back to B if human review downgrades.
+
+  - id: bleepingcomputer-2026-05-13
+    title: "Iranian hackers targeted major South Korean electronics maker (BleepingComputer, 2026-05-13)"
+    url: "https://www.bleepingcomputer.com/news/security/iranian-hackers-targeted-major-south-korean-electronics-maker/"
+    grade: B
+    role: relay
+    note: "Relay of Symantec's 2026-05-13 report; not independent corroboration. Bill Toulas byline."
+
+  - id: industrialcyber-co-2026-05-13
+    title: "Industrial Cyber coverage of Symantec MuddyWater / Seedworm Q1 2026 multi-victim campaign (2026-05-13)"
+    url: "https://industrialcyber.co/"
+    grade: B
+    role: relay
+    note: |
+      Relay of Symantec's 2026-05-13 report; not independent corroboration.
+      RELAY-LAYER CONFLATION OBSERVED: introduced 'U.S. defense and aerospace
+      software supplier with Israeli operations' victim claim NOT present in
+      the Symantec primary. Treated as cross-campaign conflation with separate
+      March 2026 Symantec Dindoor/Fakeset US-critical-infrastructure campaign.
+      Claim NOT propagated per Hard Rule 2.
+
+  - id: finding-2026-05-13-FLASH-1800-0001
+    title: "Archimedes graded finding — Symantec MuddyWater Q1 2026 multi-victim ChromElevator campaign (FLASH 2026-05-13 18:00)"
+    grade: A2
+    wep: likely
+    note: |
+      Single-source veto applied (Symantec sole originating primary; three
+      relays add no separate evidence basis). WEP capped at "likely" until
+      a second independent IR-grade source publishes matching IOCs + cluster
+      cross-walk with own telemetry. Recalibration watch through 2026-05-16
+      18:00 EDT.

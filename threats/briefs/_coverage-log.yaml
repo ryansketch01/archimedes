@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-13T16:00:00-04:00
+last_updated: 2026-05-13T18:10:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -5975,6 +5975,240 @@ entries:
       unchanged; this entry exists only to document the anti-noise
       treatment in the afternoon brief and to update last_covered
       tracking.
+
+  - id: 2026-05-13-flash-1800-001
+    covered_in: [flash-2026-05-13-1800]
+    brief_file: threats/briefs/2026-05-13-flash-1800-symantec-muddywater-chromelevator-multi-victim.md
+    headline: "Symantec attributes Q1 2026 nine-victim espionage campaign to MuddyWater (Seedworm / Static Kitten, id 022, 'widely believed to be linked' to Iran MOIS) with new ChromElevator credential-theft family, two novel DLL sideloading pairs (Fortemedia fmapp.exe + SentinelOne sentinelmemoryscanner.exe / sentinelagentcore.dll defensive-EDR brand impersonation), Node.js orchestration of PowerShell, sendit.sh exfil, ~90s C2 beacons; South Korean electronics maker Feb 20–27 case study + 8 additional victims across MENA + Southeast Asia + Latin America + global education; A2 / likely under single-source veto"
+    topic_tags:
+      - flash
+      - flash-1800
+      - symantec
+      - symantec-threat-hunter-team
+      - symantec-provisional-a
+      - second-provisional-a-first-citation-2026-05-13
+      - muddywater
+      - seedworm
+      - static-kitten
+      - iran-mois
+      - widely-believed-to-be-linked-hedge-preserved
+      - hard-rule-2-attribution-language-load-bearing
+      - chromelevator
+      - chromelevator-new-malware-family
+      - credential-theft
+      - dll-sideloading
+      - fortemedia-fmapp
+      - sentinelone-sentinelmemoryscanner-sentinelagentcore
+      - defensive-edr-brand-impersonation
+      - node-js-powershell-orchestration
+      - socks5-tunneling
+      - sendit-sh-cloud-exfil
+      - living-off-trusted-cloud
+      - 90-second-beacon-cadence
+      - 36-hour-mid-intrusion-silence
+      - q1-2026-multi-victim-campaign
+      - south-korean-electronics-maker
+      - middle-east-aviation-government
+      - southeast-asia-industrial-manufacturing
+      - latin-america-financial-services
+      - global-education
+      - geographic-expansion-beyond-mena-anchor
+      - target-set-expansion-supplier-tier-electronics
+      - structural-ad-relevance-only
+      - no-ad-victim-named
+      - industrial-cyber-relay-conflation
+      - industrial-cyber-ad-supplier-claim-not-propagated
+      - cross-campaign-conflation-dindoor-fakeset-march-2026
+      - hard-rule-2-load-bearing
+      - bleepingcomputer-toulas-1759-edt-relay
+      - thehackernews-relay
+      - independence-test-fails
+      - single-source-veto-applied
+      - wep-capped-at-likely-on-attribution-ttp-scope
+      - wep-very-likely-on-procedural-and-vt-infra
+      - virustotal-c2-infra-corroboration
+      - timetrakr-cloud-c2-domain
+      - 179-43-177-220-private-layer-ch-bulletproof
+      - 178-128-233-36-digitalocean-ca
+      - splunk-first-party-clean-30d
+      - 22nd-consecutive-dormant-sweep
+      - silence-is-not-disconfirming
+      - cross-cluster-observation-sentinelone-brand-impersonation
+      - cross-cluster-with-famoussparrow-1430-flash
+      - coincidental-not-attribution-linked
+      - actor-profiler-handoff-queued
+      - mitre-attack-t1059-001-powershell
+      - mitre-attack-t1059-007-javascript
+      - trigger-2-tracked-actor-attribution
+      - trigger-4-tracked-actor-ttp-change
+      - critical-override-not-applied
+      - quiet-hours-inactive-1810-edt
+    related_actors:
+      - actor_id: "022"
+        actor_name: MuddyWater
+        aliases_cited_in_source: [Seedworm, "Static Kitten"]
+        aliases_in_roster: [Mango Sandstorm, Static Kitten, Mercury, MERCURY, Seedworm, Earth Vetala, TEMP.Zagros, Boggy Serpens]
+        in_roster: true
+        dossier_status: profile_on_disk_actor_profiler_handoff_queued
+        treatment: attributed_by_symantec_widely_believed_to_be_linked_to_iran_mois_hedge_preserved
+      - actor_id: "010"
+        actor_name: Salt Typhoon
+        relationship: cross_cluster_observation_sentinelone_brand_impersonation_coincidental_NOT_attribution_linked
+        cross_cluster_basis: "Same ~12h disclosure window: MuddyWater uses SentinelOne component DLL sideloading (sentinelmemoryscanner.exe + sentinelagentcore.dll); Salt Typhoon FamousSparrow uses sentinelonepro[.]com C2 domain (finding-2026-05-13-FLASH-0001, 14:30 EDT). Different actors, different mechanism, different campaigns."
+    related_vulns: []   # No CVE named in Symantec primary or relays
+    related_campaigns:
+      - muddywater-q1-2026-multi-victim-chromelevator
+    finding_ids:
+      - finding-2026-05-13-FLASH-1800-0001
+    digraph: A2
+    digraph_layered:
+      symantec_attribution: A2
+      symantec_ttp_delta: A2
+      symantec_campaign_scope: A2
+      procedural_intrusion_timeline_facts: A1
+      c2_infrastructure_vt_facts: B1
+    wep: likely
+    wep_layered:
+      procedural_intrusion_timeline_facts: very_likely
+      c2_infrastructure_vt_facts: very_likely
+      symantec_originated_campaign_disclosure: very_likely
+      attribution_muddywater_seedworm_iran_mois: likely
+      ttp_delta_chromelevator_dll_sideloading_nodejs: likely
+      operational_claim_campaign_scope_geographic_expansion: likely
+    single_source_veto_applied: true
+    single_source_veto_rationale: "Symantec is the sole originating source on attribution + TTP-delta + campaign-scope. BleepingComputer (Toulas, 17:59 EDT in-window), Industrial Cyber, and The Hacker News are pure Symantec relays — independence test fails. Symantec's softer 'widely believed to be linked' hedge (below formal moderate/high confidence) is preserved verbatim per Hard Rule 2."
+    triggers_fired:
+      - trigger_2_tracked_actor_attribution
+      - trigger_4_tracked_actor_ttp_change
+    triggers_failed:
+      - trigger_1_critical_cve_exploited
+      - trigger_3_first_party_ioc_hit
+      - trigger_5_ad_sector_campaign
+      - trigger_6_zero_day_no_patch
+    critical_override_applied: false
+    critical_override_conditions_met: 1_of_4   # tracked_actor only
+    quiet_hours_at_compose: false
+    posting_path: immediate_post_quiet_hours_inactive
+    relay_layer_conflation_handled:
+      source: industrialcyber-provisional
+      relay_introduced_claim: "U.S. defense and aerospace software supplier with Israeli operations victim"
+      claim_grade: C4
+      handling: NOT_propagated_per_hard_rule_2
+      hard_rule_2_basis: "Claim is absent from Symantec primary; aligns with separate March 2026 Symantec/HelpNetSecurity Dindoor/Fakeset US-critical-infrastructure MuddyWater campaign (distinct tooling, distinct victim set). Treated as cross-campaign conflation. Industrial Cyber discloses no independent sourcing for the addition."
+      reconsideration_trigger: "Symantec primary update naming A&D-supplier victim OR independent A/B-grade corroboration with explicit A&D-prime naming within 24-72h post-disclosure window (deadline 2026-05-16 18:00 EDT)."
+    hard_rule_2_framings_load_bearing:
+      - "Symantec attribution language preserved verbatim: 'widely believed to be linked' to Iran MOIS — softer than formal moderate/high confidence"
+      - "MuddyWater / Seedworm / Static Kitten alias relationships pre-existing in _roster.yaml id 022 — not originated by Archimedes here"
+      - "Industrial Cyber relay-introduced A&D-supplier claim NOT propagated — treated as conflation with separate March 2026 Dindoor/Fakeset campaign"
+      - "Coincident SentinelOne brand-impersonation with Salt Typhoon FamousSparrow is a cross-cluster observation, NOT an attribution link"
+      - "BleepingComputer / Industrial Cyber / The Hacker News explicitly cite Symantec as origin and add no separate evidence basis — single-effective-source"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "actor aliases + ChromElevator + fmapp / sentinelmemoryscanner / sentinelagentcore filename tokens + timetrakr.cloud + sendit.sh + 179.43.177.220 + 178.128.233.36"
+      consecutive_dormant_sweep_count: 22
+      hard_rule_8_framing: silence_is_not_disconfirming
+    provisional_source_grade_block:
+      - source_yaml_id: symantec
+        proposed_grade: A
+        rationale: "Tier-1 vendor research practice — Symantec Threat Hunter Team + Carbon Black joint byline, Broadcom-owned, first-party EDR telemetry, long-running Seedworm taxonomy primacy since 2018 (MITRE G0069 attribution cite). Second provisional-A first-citation on 2026-05-13 (Bitdefender at 14:30 was the first). Pending operator ratification."
+    actor_profiler_handoff_queued: true
+    actor_profiler_handoff_reason: "MuddyWater (#022) profile.md exists; last_reviewed 2026-05-09; next_review_due 2026-08-07. This disclosure adds ChromElevator + two novel DLL sideloading pairs + Node.js orchestration + sendit.sh exfil pattern + target-set geographic expansion ahead of next-review-due. Ingestion handoff queued."
+    recalibration_watch:
+      watch_for: "Within 24-72h: cross-corroboration of attribution + campaign scope by Mandiant / Google Threat Intel / CrowdStrike / MSTIC / Unit 42 / ESET / Sophos / Cisco Talos / Recorded Future / SentinelLabs / Group-IB follow-up. Matching IOCs + campaign cross-walk with own telemetry lifts to A1 and WEP 'very likely' pending red-team review."
+      deadline: 2026-05-16T18:00:00-04:00
+      symantec_source_grade_ratification_clock: 2026-05-16T18:25:00-04:00
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - attribution_changes
+      - second_ab_grade_source_corroborates_lifts_wep_to_very_likely
+      - mandiant_crowdstrike_unit42_mstic_eset_sophos_talos_recorded_future_sentinellabs_groupib_follow_up
+      - symantec_primary_update_names_ad_supplier_victim
+      - independent_ab_grade_corroborates_industrial_cyber_ad_supplier_claim
+      - ad_prime_named_as_victim_in_followup_reporting
+      - first_party_ioc_hit
+      - escalation_to_active_exploitation_in_new_window
+      - chromelevator_additional_disclosure_followup
+      - new_dll_sideloading_pair_observation
+      - muddywater_threat_box_intent_score_re_evaluation_outcome
+    first_covered: 2026-05-13
+    last_covered: 2026-05-13
+    retraction: null
+    test: false
+    notes: |
+      FLASH triggered on Trigger 2 (tracked-actor attribution; MuddyWater
+      id 022) + Trigger 4 (tracked-actor TTP change — ChromElevator
+      family + two novel DLL sideloading pairs + Node.js orchestration
+      + geographic expansion). Critical override does NOT apply (only
+      1 of 4 conditions met — tracked_actor; no CVE-class indicator,
+      A&D watchlist not named, exploitation is retrospective Q1 2026
+      per Symantec). Quiet hours INACTIVE at 18:10 EDT compose —
+      immediate post path.
+
+      Hard Rule 2 LOAD-BEARING. Three attribution-language framings
+      preserved verbatim in the brief:
+      (1) Symantec's "widely believed to be linked" hedge — softer
+          than formal moderate/high confidence; not collapsed to
+          "Symantec confirms" or "Archimedes assesses Iran MOIS".
+      (2) Industrial Cyber's relay-introduced "U.S. defense and
+          aerospace software supplier" victim claim is NOT in the
+          Symantec primary and is NOT propagated. Treated as cross-
+          campaign conflation with the separate March 2026 Symantec
+          Dindoor/Fakeset US-critical-infrastructure campaign. Recorded
+          in finding relay_layer_conflation block; absent from brief
+          body, IOC table, and A&D-relevance discussion. Clean
+          restraint exercised; Hard Rule 2 compliance verified at
+          collector + grader + briefer layers.
+      (3) Cross-cluster SentinelOne brand-impersonation observation
+          with Salt Typhoon FamousSparrow (14:30 FLASH) is preserved
+          as COINCIDENTAL — not collapsed to "linked to" or any form
+          of attribution chain. Different actors (Iran MOIS vs China
+          MSS), different mechanism (DLL sideloading vs C2 domain),
+          different campaigns.
+
+      Hard Rule 6 — one direct quote in body: "widely believed to be
+      linked" (5 words, Symantec, single quote per source). Compliant.
+
+      Hard Rule 8 — Splunk first-party silent over -30d on full IOC
+      set across both indexes (archimedes + defenseclaw_local). 22nd
+      consecutive dormant non-archimedes-internal sweep. Silence is
+      not disconfirming.
+
+      Pre-flight: 13/13 passed on iteration 2. Iteration 1 failed
+      Check 8 (word count overrun ~513 / 296 frontmatter claim →
+      actual 292 body words after second regeneration). Iteration 2
+      cut Impact + Action + Related sections; word_count corrected
+      to 292 (within FLASH 150-300 band). All other checks passed on
+      iteration 1.
+
+      Actor-profiler handoff queued for MuddyWater (#022) — ingest
+      ChromElevator family + two DLL sideloading pairs (Fortemedia
+      fmapp + SentinelOne sentinelmemoryscanner/sentinelagentcore) +
+      Node.js orchestration + sendit.sh exfil + target-set geographic
+      expansion. Potentially re-evaluate Intent score (currently
+      Intent=3 Sector Association). Operational note: threat-box
+      methodology is conservatively bounded; HIGH outcomes are rare,
+      and this disclosure does NOT name A&D primes — Intent likely
+      stays at 3 or moves conservatively to 4. Hard Rule 5
+      /approve-scoring gate unlikely to trigger.
+
+      Cross-cluster SentinelOne brand-impersonation observation
+      flagged for grader + actor-profiler + detection-engineering
+      handoff (next Threat Detection Weekly 2026-05-20). Both legs
+      remain DISTINCT findings; the cross-cluster note is pattern-
+      level only.
+
+      Symantec source-grade ratification pending — provisional A
+      consistent with SentinelOne / Wiz / Snyk / Bitdefender (earlier
+      today) / Sophos / ESET / Dragos provisional-then-ratified
+      precedent. Librarian must add to source-grades.yaml and
+      source-health.yaml post-publication. SECOND provisional-A
+      first-citation of the operational day (Bitdefender at 14:30
+      FLASH was the first); Tier-1 vendor research onboarding cadence
+      continues.
 
 # ============================================================================
 # Valid resurface_if conditions

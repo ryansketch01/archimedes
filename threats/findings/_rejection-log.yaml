@@ -9,7 +9,7 @@
 # resurfaces via higher-grade sources.
 
 version: 1
-last_updated: 2026-05-12  # afternoon-20260512-160000 added run summary; no new rejection entries
+last_updated: 2026-05-13  # morning-20260513-080000 added run summary; no new rejection entries
 
 entries:
   - rejection_id: reject-2026-05-08-0001
@@ -484,9 +484,105 @@ entries:
 # ============================================================================
 _meta:
   total_rejections: 6
-  most_recent_run: afternoon-20260512-160000
+  most_recent_run: morning-20260513-080000
   most_recent_run_rejections: 0
   most_recent_run_note: >
+    morning-20260513-080000 produced 0 rejections and 2 promotions.
+    Both productive raw-signals from the 07:30 pre-brief sweep
+    cleared B2 inclusion threshold; no items fell below C3 monitoring
+    threshold. Sentinel raw-signal (raw-2026-05-13-am-000) processed
+    as audit-trail-only per design (promoted: false; sentinel_
+    disposition: audit_trail_only_no_promotable_claim) — operational
+    record, not a promotable claim cluster.
+
+    Promotions:
+      finding-2026-05-13-0001 (CVE-2026-40361 Outlook zero-click UAF
+        editorial-layer extension to parent finding-2026-05-12-0003;
+        SecurityWeek Eduard Kovacs editorial relay of Haifei Li /
+        Expmon research with explicit CVE-2015-6172 BadWinmail
+        historical equivalence + PoC-only / no-working-exploit / no-
+        ITW status clarification; B2 anchored on SecurityWeek
+        provisional-B relay tier with MSRC A-grade procedural-mirror
+        underneath and Haifei Li / Expmon provisional-A first-corpus-
+        surface researcher; single-source veto applied — SecurityWeek
+        single editorial-layer origin on the load-bearing claims;
+        WEP ceiling likely; structural A&D relevance via universal
+        M365 Outlook enterprise deployment across all 15 primes;
+        forward-looking weaponization-risk framing via BadWinmail
+        + Outlook NTLM + MonikerLink historical 2-4-week tracked-
+        actor weaponization precedent; analyst_review and red_team_
+        review both false; librarian handoff queued for Haifei Li /
+        Expmon source-grade-log provisional-A ratification).
+
+      finding-2026-05-13-0002 (Foxconn cyberattack confirmation
+        2026-05-12 + Nitrogen ransomware leak-site claim 2026-05-11;
+        8 TB / 11M files claimed including alleged Intel + Apple +
+        Google + Dell + Nvidia customer data — criminal-source
+        F-grade self-claim per LEGAL-POLICY pending independent
+        verification; Mount Pleasant Wisconsin facility outage
+        2026-05-01; fourth Foxconn ransomware attack since 2020
+        [DoppelPaymer 2020, LockBit 2022, LockBit 2024, Nitrogen
+        2026]; B2 anchored on Wired wired-security B grade + The
+        Record B grade + The Register / 9to5Mac / Focus Taiwan
+        provisional-B first-corpus-surfaces + Foxconn first-party
+        A1 corporate confirmation; single-source veto applied on
+        editorial-analytical layer [Nitrogen Conti-2-builder lineage
+        + possible BlackCat/ALPHV affiliation] trace back to common
+        security-research analyses; WEP ceiling likely; no A&D-
+        prime named in Nitrogen claims [commercial-tech customers
+        only]; Foxconn NOT on aerospace-defense watchlist; Nitrogen
+        NOT in _roster.yaml [potential /new-actor candidate flag for
+        operator review]; manufacturing-sector / EMS-supply-chain
+        adjacency observation framing; **analyst_review_required:
+        true** per Nitrogen-Foxconn attribution-claim trigger —
+        SAT-ACH on three competing hypotheses [Nitrogen-responsible
+        / brand-only-re-use / hoax-or-data-recycling] plus SAT-KAC
+        on structural-A&D-relevance inference plus Hard Rule 2
+        compliance check on attribution-framing language; red_team_
+        review_required: false [WEP at likely, below very-likely
+        threshold]; librarian handoffs queued for The Register +
+        9to5Mac + Focus Taiwan source-grade-log provisional-B
+        ratifications; actor-profiler handoff queued for Nitrogen
+        /new-actor candidate evaluation).
+
+    Three librarian handoffs queued from morning-20260513-080000:
+      (1) Add `haifei-li-expmon` to source-grades.yaml at provisional
+          A grade (parallels James Forshaw / Tavis Ormandy precedent
+          for named-individual-researcher-with-prior-track-record on
+          Office / Outlook zero-day discoveries; rationale in
+          finding-2026-05-13-0001 source-reliability block).
+      (2) Add `the-register`, `9to5mac`, `focus-taiwan` to source-
+          grades.yaml at provisional B grade (rationale in finding-
+          2026-05-13-0002 source-reliability block). Operator
+          decisions deferred on whether to onboard any as standing
+          sources beyond ad-hoc media-relay coverage.
+      (3) vuln-tracker review notes for CVE-2026-40361 — already in
+          queue from finding-2026-05-12-0003; this finding adds the
+          researcher attribution, BadWinmail historical equivalence,
+          and PoC-only / no-working-exploit / no-ITW status. HIGH-
+          priority public-PoC-publication watch + tracked-actor
+          weaponization watch (2-4 week historical class window
+          per BadWinmail / Outlook NTLM / MonikerLink precedent).
+
+    Analyst handoffs (NOT blocking morning brief):
+      finding-2026-05-13-0002 (Foxconn / Nitrogen) carries
+      analyst_review_required: true — SAT-ACH on Nitrogen-Foxconn
+      attribution + SAT-KAC on structural-A&D-relevance inference
+      + Hard Rule 2 compliance check on attribution-framing.
+      WEP capped at "likely" per single-source veto on editorial-
+      analytical layer; analyst review is structural-assumption +
+      attribution-handling work, not WEP-elevation work. red_team_
+      review_required: false on both findings this run.
+
+    Actor-profiler handoff (NOT blocking morning brief):
+      Nitrogen flagged as potential /new-actor candidate. Per
+      /new-actor workflow, profile creation would warrant 7-day
+      first-pass profile + 14-day threat-box scoring window. Per
+      Hard Rule 5, if scoring proposes HIGH threat level, operator
+      sign-off via /approve-scoring required before commit.
+
+  prior_run_replaced_below: afternoon-20260512-160000
+  prior_run_note: >
     afternoon-20260512-160000 produced 0 rejections and 4 promotions.
     All four content raw-signals from the 15:30 pre-brief sweep
     cleared B2+ inclusion threshold; no items fell below C3 monitoring

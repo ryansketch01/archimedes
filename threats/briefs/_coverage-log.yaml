@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-12T16:00:00-04:00
+last_updated: 2026-05-13T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -5130,7 +5130,7 @@ entries:
       first-corpus-surface treatment this morning).
 
   - id: 2026-05-12-pm-004
-    covered_in: [2026-05-12-afternoon]
+    covered_in: [2026-05-12-afternoon, 2026-05-13-morning]
     headline: "Microsoft May 2026 Patch Tuesday — 137 CVEs (120 Windows + 17 Edge/Chromium), 17+ Critical; headliners CVE-2026-41096 Windows DNS Client RCE and CVE-2026-40364 / 40361 Word preview-pane RCE pair; no zero-days, no in-the-wild exploitation per Microsoft"
     topic_tags: [microsoft, msrc, patch-tuesday, may-2026, windows-dns-client, netlogon, sharepoint, sso-plugin-jira-confluence, dynamics-365, hyper-v, word-preview-pane, m365-copilot, no-zero-days, no-itw, kev-no-entry, single-source-veto]
     related_actors: []
@@ -5150,7 +5150,15 @@ entries:
       - nvd_records_published
       - new_victims_confirmed
     first_covered: 2026-05-12
-    last_covered: 2026-05-12
+    last_covered: 2026-05-13
+    resurface_brief_2026_05_13_morning_basis: |
+      Material editorial-layer update — SecurityWeek 2026-05-13 editorial
+      reframes CVE-2026-40361 from "Word RCE pair partner" to "Outlook
+      zero-click UAF in shared Word/Outlook DLL"; attributes discovery to
+      Haifei Li / Expmon; explicit CVE-2015-6172 (BadWinmail) historical
+      equivalence; PoC-only / no-working-exploit clarification. Carried
+      as UPDATE flag; new finding-2026-05-13-0001 captured as
+      2026-05-13-am-001 entry below.
     retraction: null
     test: false
     notes: |
@@ -5178,6 +5186,190 @@ entries:
       surface), the CVE-2026-40364 / 40361 Word preview-pane pair,
       or CVE-2026-41089 Netlogon (Zerologon-class precedent) are
       highest-PoC-velocity-class candidates per historical precedent.
+
+  - id: 2026-05-13-am-001
+    covered_in: [2026-05-13-morning]
+    headline: "UPDATE CVE-2026-40361 — Outlook zero-click UAF in DLL shared by Word and Outlook; Haifei Li / Expmon attributed as discoverer; explicit CVE-2015-6172 (BadWinmail) historical equivalence; PoC-only, no working exploit, no ITW per Microsoft"
+    topic_tags: [cve, outlook, zero-click, use-after-free, preview-pane, word-outlook-shared-dll, haifei-li, expmon, badwinmail, cve-2015-6172, m365, dib-exchange, weaponization-risk, single-source-veto, securityweek, msrc, editorial-layer-update, parent-finding-2026-05-12-0003]
+    related_actors: []   # APT28 referenced as historical-class weaponizer precedent only (BadWinmail 2016, Outlook NTLM CVE-2023-23397 ~2-week); not current attribution
+    related_vulns: [CVE-2026-40361, CVE-2015-6172, CVE-2023-23397, CVE-2024-21413]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-13-0001]
+    parent_finding: finding-2026-05-12-0003
+    update_of: 2026-05-12-pm-004
+    digraph: B2
+    digraph_layered:
+      cve_existence_facts_via_msrc: A1
+      haifei_li_expmon_discovery_attribution: B2
+      badwinmail_cve_2015_6172_historical_equivalence_assertion: B2
+      poc_only_no_working_exploit_no_itw_status: B2
+      cluster_anchor: B2
+    wep: likely
+    wep_layered:
+      procedural_cve_facts: very_likely   # A1 via MSRC primary
+      editorial_layer_claims: likely      # B2 via SecurityWeek single-source-effective
+      forward_weaponization_2_to_4_weeks_if_tracked_actor_builds_working_exploit: likely
+    resurface_if:
+      - kev_addition_cve_2026_40361
+      - public_poc_publication_expmon_blog_or_conference_or_n_day_research
+      - mandiant_crowdstrike_unit42_mstic_proofpoint_exploitation_publication
+      - first_party_ioc_hit
+      - nvd_cvss_backfill_with_severity_revision
+      - second_independent_ab_grade_source_surfacing_haifei_li_or_badwinmail_framing
+      - cve_2026_40364_parallel_reframing_24_to_48h
+      - escalation_to_exploitation
+      - new_victims_confirmed
+    first_covered: 2026-05-13
+    last_covered: 2026-05-13
+    retraction: null
+    test: false
+    notes: |
+      UPDATE flag carried on the editorial-layer reframing of CVE-2026-
+      40361 from yesterday's "Word RCE pair partner" framing. Parent
+      finding-2026-05-12-0003 covered in 2026-05-12-pm-004 entry. The
+      load-bearing claim additions:
+        (a) Affected component is a DLL shared by Word AND Outlook —
+            yesterday's framing surfaced as Word RCE pair without the
+            Outlook preview-pane attack vector identified.
+        (b) Haifei Li / Expmon attributed as discoverer (first-corpus-
+            surface researcher; provisional A on prior-track-record
+            precedent — James Forshaw / Tavis Ormandy class).
+        (c) Explicit CVE-2015-6172 (BadWinmail) historical equivalence
+            asserted by SecurityWeek's editorial — Li's own 2015
+            disclosure of the same attack vector class.
+        (d) PoC-only / no-working-exploit / no-ITW status clarified —
+            this is what bounds the immediate operational risk to LOW
+            for prompt-patch environments while keeping the forward
+            weaponization risk at "likely" given the BadWinmail /
+            Outlook-NTLM / MonikerLink precedent cycle (2-4 weeks).
+
+      Single-source veto applied — SecurityWeek (Eduard Kovacs editorial)
+      is the single effective origin for the editorial-layer claims;
+      Haifei Li's statement is researcher-relayed-by-SecurityWeek not
+      an independent second source. Procedural CVE facts (exists,
+      Critical, patched, no ITW) are A1 via MSRC primary.
+
+      Hard Rule 2 honored — researcher discovery attribution is NOT
+      actor attribution; no _roster.yaml actor is named in current
+      CVE-2026-40361 reporting. APT28 / APT29 / Proofpoint references
+      in the brief are framed strictly as historical-class precedent
+      (BadWinmail 2016, Outlook NTLM CVE-2023-23397 ~2 weeks,
+      MonikerLink CVE-2024-21413 ~3 weeks), NOT current campaign
+      attribution.
+
+      Hard Rule 6 honored — "enterprise killer" framing for BadWinmail
+      is 2 words and is contextually attributed to historical 2015
+      reporting (not a direct external-source quote in this brief).
+      No other direct quotes.
+
+      Hard Rule 8 first-party Splunk: clean across CVE-2026-40361,
+      Outlook, BadWinmail, Haifei Li, Expmon tokens at -48h. 21st
+      consecutive dormant non-archimedes-internal sweep.
+
+      Tripwires: (1) CISA KEV addition on CVE-2026-40361 → FLASH
+      re-grade trigger; (2) public PoC publication on Expmon blog
+      or conference (Black Hat / DEF CON / OffensiveCon) →
+      tracked-actor weaponization watch elevated; (3) Mandiant /
+      CrowdStrike / Unit 42 / MSTIC / Proofpoint TA-series post-
+      Patch-Tuesday exploitation publication → lifts single-source
+      veto; (4) NVD CVSS v3.1 / v4.0 backfill (typical 24-48h post-
+      Patch-Tuesday) — vuln-tracker action; (5) CVE-2026-40364
+      parallel reframing — watch for SecurityWeek follow-on or
+      independent Outlook-extension framing on the pair partner.
+
+  - id: 2026-05-13-am-002
+    covered_in: [2026-05-13-morning]
+    headline: "Foxconn confirmed cyberattack 2026-05-12 on North American factories; Nitrogen ransomware claimed Foxconn on its leak site 2026-05-11 with 8 TB / 11M files self-claim including Intel/Apple/Google/Dell/Nvidia customer data — no named customer has confirmed data theft (criminal-source self-claim F-grade pending verification)"
+    topic_tags: [foxconn, nitrogen-ransomware, ransomware, hon-hai, ems-supply-chain, mount-pleasant-wisconsin, north-american-factories, double-extortion, conti-2-builder, blackcat-alphv-possible-affiliation, intel, apple, google, dell, nvidia, criminal-source-self-claim, hard-rule-2-load-bearing, legal-policy-f-grade, no-ad-prime-named, structural-relevance-only, new-actor-candidate]
+    related_actors: []   # Nitrogen NOT in _roster.yaml; flagged as /new-actor candidate
+    related_vulns: []    # No CVE in current Nitrogen attack chain reporting
+    related_campaigns: [nitrogen-foxconn-2026-05]
+    finding_ids: [finding-2026-05-13-0002]
+    digraph: B2
+    digraph_layered:
+      foxconn_first_party_cyberattack_confirmation: A1
+      nitrogen_leak_site_actor_self_claim: F
+      nitrogen_claimed_foxconn_procedural_fact_via_multi_b_grade_relay: A1
+      data_volume_8tb_11m_files_self_claim: F
+      customer_data_claim_intel_apple_google_dell_nvidia_self_claim: F
+      nitrogen_conti2_builder_lineage_assertion: B2
+      nitrogen_blackcat_alphv_possible_affiliation: C3
+      foxconn_historical_ransomware_pattern_2020_2024: A2
+      cluster_anchor: B2
+    wep: likely
+    wep_layered:
+      procedural_facts_foxconn_confirmed_attack_and_nitrogen_leak_site_listing: very_likely
+      analytical_layer_lineage_affiliation_pattern: likely
+      criminal_source_self_claims_8tb_11m_intel_apple_google_dell_nvidia: not_assessed_f_grade_pending_verification
+    resurface_if:
+      - sample_data_publication_on_leak_site_naming_ad_prime
+      - foxconn_ir_disclosure_initial_access_vector_or_cve_or_iocs
+      - named_customer_intel_apple_google_dell_nvidia_confirms_data_theft
+      - second_tracked_actor_or_research_firm_ties_nitrogen_to_ad_supply_chain
+      - new_attribution_change_or_revision_to_actor_responsible
+      - escalation_to_more_victims_in_ems_class
+      - first_party_ioc_hit
+      - new_attribution
+    first_covered: 2026-05-13
+    last_covered: 2026-05-13
+    retraction: null
+    test: false
+    notes: |
+      Analyst-recommended supporting/sidebar disposition (Other Signal),
+      not primary. Foxconn is EMS provider, not on aerospace-defense
+      watchlist; named customers in Nitrogen claims are commercial-
+      tech (Intel, Apple, Google, Dell, Nvidia), no A&D prime named;
+      structural manufacturing-sector / EMS-supply-chain adjacency
+      justifies inclusion as monitoring observation.
+
+      Hard Rule 2 load-bearing — Archimedes does not originate the
+      Nitrogen-Foxconn attribution. The finding repeats what Wired +
+      The Record + The Register + 9to5Mac + Focus Taiwan relay
+      (Nitrogen's own leak-site listing). Foxconn first-party
+      confirmed cyberattack (A1) but did NOT confirm Nitrogen
+      identity claim or 8 TB / 11M files / customer-data figures.
+      Per LEGAL-POLICY, criminal-source self-claims are F-grade
+      and do NOT corroborate themselves by appearing on multiple
+      relay outlets. No named customer has confirmed any data
+      theft as of 2026-05-13 brief compose.
+
+      Single-source veto applied on the analytical layer (Nitrogen
+      Conti-2-builder lineage; possible BlackCat/ALPHV affiliation;
+      Foxconn historical ransomware pattern escalation interpretation)
+      — these trace to single-source security-research analyses that
+      the corroborating media outlets relay rather than independently
+      re-analyze. WEP capped at "likely" per veto. The procedural-
+      fact layer (Foxconn confirmed cyberattack; Nitrogen claimed
+      Foxconn on leak site) has multi-outlet first-party + B-grade
+      media corroboration that supports "very likely" for those
+      specific procedural facts.
+
+      Analyst SAT-ACH on the Nitrogen-Foxconn attribution covered
+      five hypotheses: (H1) Nitrogen responsible + claim accurate;
+      (H2) opportunistic false credit; (H3) data-recycling from
+      prior Foxconn breaches; (H4) brand re-use / name collision;
+      (H5) Nitrogen responsible but data-scope claim inflated. H1
+      best-supported by circumstantial evidence (timeline alignment,
+      Foxconn confirmation, Nitrogen 2023-active track record); H2
+      and H3 not formally excluded. SAT-KAC produced caveat on
+      structural-A&D-relevance inference (no A&D prime named).
+
+      Hard Rule 8 first-party Splunk: clean across Foxconn, Nitrogen,
+      Hon Hai, foxsemicon tokens at -48h. 21st consecutive dormant
+      non-archimedes-internal sweep.
+
+      Actor-profiler handoff: Nitrogen flagged as potential /new-
+      actor candidate (active since 2023; Conti-2-builder lineage;
+      double-extortion RaaS; Foxconn-target escalation pattern).
+      Operator decision pending — not yet in _roster.yaml.
+
+      Tripwires: (1) sample-data publication on the leak site naming
+      an A&D prime in procurement scope; (2) Foxconn IR disclosure
+      of initial-access vector / CVE / IOCs; (3) second tracked-
+      actor or research-firm publication tying Nitrogen activity
+      to broader supply-chain targeting with A&D victimology;
+      (4) named-customer confirmation (Intel/Apple/Google/Dell/
+      Nvidia) of data theft → lifts F-grade on data-volume claim.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -21,11 +21,24 @@ Architecture:
   - Reactions on the trigger message track state: 👀 (received) →
     ✅ (success) or ❌ (failure)
 
-Auth model (intentionally narrow for v1):
-  - Only DISCORD_OPERATOR_USER_ID can trigger commands
-  - Only the channel matching DISCORD_CHANNEL_COMMANDS is listened to
+Auth model (channel-scoped — Session 13+):
+  - ANY non-bot user who can post in DISCORD_CHANNEL_COMMANDS can trigger
+    commands. Channel access control is the security boundary; restrict
+    write access to the channel via Discord permissions to keep the auth
+    surface tight.
+  - DISCORD_OPERATOR_USER_ID is still loaded for audit context and for the
+    Hard Rule 5 / actor-review accountability narrative, but is NOT used
+    as an auth gate at the listener level.
   - Bots cannot trigger commands (msg.author.bot guard — prevents echo)
   - Unrecognized commands are silently ignored (no useful error to leak)
+  - Every command logs requesting_user_id + requesting_username to Splunk
+    so any action is attributable post-hoc.
+
+  Operator note: this is a deliberate relaxation from the v1 single-operator
+  gate. /approve-scoring is no longer operator-only at the listener level —
+  any channel poster can issue it. The Hard Rule 5 accountability is now
+  enforced by channel access control plus the Splunk audit trail rather
+  than by user-id equality in this script.
 
 Supported commands (v1):
   - /investigate <target>  — deep dive on actor, domain, hash, campaign, CVE
@@ -48,7 +61,10 @@ Long-running supervision:
 Environment (loaded from <repo>/.env via find_dotenv walk-up):
     DISCORD_BOT_TOKEN              Bot token (from Discord developer portal)
     DISCORD_CHANNEL_COMMANDS       Channel ID to listen on
-    DISCORD_OPERATOR_USER_ID       Operator's Discord user ID (numeric, snowflake)
+    DISCORD_OPERATOR_USER_ID       Operator's Discord user ID (numeric, snowflake).
+                                   Retained for audit context and Hard Rule 5 narrative
+                                   posts, NOT used as a listener auth gate (channel
+                                   access control is the boundary).
     SPLUNK_HEC_*                   For listener telemetry (optional; logging
                                    to Splunk best-effort, not blocking)
 
@@ -392,7 +408,9 @@ HELP_TEXT = (
     "  `/update-tracking [<actor>]` — refresh dossier + re-score (oldest actor if no arg)\n"
     "  `/approve-scoring <actor-id>` — operator confirmation for HIGH-scoring gate (Hard Rule 5)\n\n"
     "**State tracking via reactions:** 👀 received → ✅ success / ❌ failure\n"
-    "**Auth:** only the configured operator user ID, only this channel.\n"
+    "**Auth:** channel-scoped — any non-bot user who can post in this channel "
+    "can issue commands. Every command is logged with requesting user ID + "
+    "username to Splunk for post-hoc attribution.\n"
     "**Long output:** truncated at ~1800 chars; full output in `logs/discord-listener/`."
 )
 
@@ -496,7 +514,8 @@ def build_client(
     @client.event
     async def on_ready() -> None:
         logger.info(
-            "ready as %s (id=%s); listening on channel %s; operator=%s",
+            "ready as %s (id=%s); listening on channel %s; auth=channel-scoped; "
+            "audit-operator=%s",
             client.user, client.user.id if client.user else "?",
             commands_channel_id, operator_id,
         )
@@ -505,7 +524,8 @@ def build_client(
                 "event_type": "discord_listener_started",
                 "bot_user_id": str(client.user.id) if client.user else None,
                 "channel_id": str(commands_channel_id),
-                "operator_id": str(operator_id),
+                "audit_operator_id": str(operator_id),
+                "auth_model": "channel_scoped",
                 "started_at": datetime.now(timezone.utc).isoformat(),
             },
             logger,
@@ -513,13 +533,23 @@ def build_client(
 
     @client.event
     async def on_message(message: discord.Message) -> None:
-        # Filter: only operator, only commands channel, no bot loopback
+        # Filter: commands channel only, no bot loopback.
+        # Auth is channel-scoped — any non-bot user who can post here can
+        # trigger commands. Channel access control (Discord permissions on
+        # commands_channel_id) is the security boundary; every command logs
+        # requesting_user_id + username for post-hoc attribution.
         if message.author.bot:
-            return
-        if message.author.id != operator_id:
             return
         if message.channel.id != commands_channel_id:
             return
+
+        # Capture requester identity for audit (used in log lines + Splunk).
+        requesting_user_id = str(message.author.id)
+        requesting_username = (
+            f"{message.author.name}"
+            if hasattr(message.author, "name") else "unknown"
+        )
+        is_audit_operator = message.author.id == operator_id
 
         cmd, rest = parse_command(message.content)
         if cmd is None:
@@ -527,7 +557,10 @@ def build_client(
 
         # Inline commands — handled in-process, no claude invocation
         if cmd == PING_COMMAND:
-            logger.info("/ping from operator")
+            logger.info(
+                "/ping from user_id=%s name=%s (audit_operator=%s)",
+                requesting_user_id, requesting_username, is_audit_operator,
+            )
             try:
                 await message.add_reaction(REACTION_OK)
                 await message.reply(
@@ -539,7 +572,10 @@ def build_client(
             return
 
         if cmd == HELP_COMMAND:
-            logger.info("/help from operator")
+            logger.info(
+                "/help from user_id=%s name=%s (audit_operator=%s)",
+                requesting_user_id, requesting_username, is_audit_operator,
+            )
             try:
                 await message.add_reaction(REACTION_OK)
                 await message.reply(HELP_TEXT, mention_author=False)
@@ -576,7 +612,10 @@ def build_client(
                 "run_id": run_id,
                 "command": cmd,
                 "args_length": len(rest),
-                "operator_id": str(operator_id),
+                "requesting_user_id": requesting_user_id,
+                "requesting_username": requesting_username,
+                "is_audit_operator": is_audit_operator,
+                "audit_operator_id": str(operator_id),
                 "channel_id": str(commands_channel_id),
                 "received_at": datetime.now(timezone.utc).isoformat(),
             },
@@ -608,6 +647,8 @@ def build_client(
                 "exit_code": rc,
                 "stdout_bytes": len(out),
                 "stderr_bytes": len(err),
+                "requesting_user_id": requesting_user_id,
+                "requesting_username": requesting_username,
                 "completed_at": datetime.now(timezone.utc).isoformat(),
             },
             logger,

@@ -387,6 +387,23 @@ Two unrelated 4.10.1 quirks the subprocess runner has to handle, both surfaced d
 
 Bonus 3rd quirk: `crtsh` from this Windows host returns 0 results for established domains where it should return thousands (microsoft.com, example.com). Other sources (`hackertarget`, `otx`) work fine. theHarvester-side or network-side; not the MCP. Use `hackertarget` as the smoke-test source going forward, not `crtsh`. Discovered Session 13.
 
+### Discord listener auth relaxed to channel-scoped (Session 13+)
+
+`scripts/discord_listener.py` originally gated every command on `message.author.id == DISCORD_OPERATOR_USER_ID` — single-user, hard equality. Operator chose to relax this in Session 13 to give multiple teammates the ability to drive the agent without each one needing a roster entry.
+
+**New auth model:**
+- ANY non-bot user who can post in `DISCORD_CHANNEL_COMMANDS` can trigger any command, including `/approve-scoring`.
+- `DISCORD_OPERATOR_USER_ID` is still loaded — used for audit context (every Splunk event carries both `requesting_user_id` and `audit_operator_id`) and for the Hard Rule 5 narrative posts to `#actor-review`. It is NOT used as an auth gate at the listener level.
+- Channel access control (Discord permissions on the commands channel) is now the security boundary.
+- Every command emits `requesting_user_id` + `requesting_username` to Splunk so any action is attributable post-hoc.
+
+**Doctrine implications worth noting:**
+- Hard Rule 5 ("Human sign-off for HIGH threat levels") is now enforced by channel access + audit trail rather than by user-ID equality. The "human" can be anyone who can post in the channel.
+- `/flash`, `/new-actor`, `/update-tracking` are also now open to channel posters — anyone can trigger a FLASH post or scaffold an actor dossier.
+- If channel access loosens for any reason, the auth surface loosens with it. Tight Discord channel permissions are now load-bearing.
+
+If a future session wants to tighten this back up (e.g., move `/approve-scoring` back to operator-only or introduce a per-command roster), the change point is `scripts/discord_listener.py` `on_message`. Auth is centralized in that one handler. Discovered + applied Session 13.
+
 ### SpiderFoot 4.0.0 API shapes are not what its docs suggest
 
 Three live-discovered quirks during the SpiderFoot MCP's first end-to-end test against a self-hosted `sf.py -l 127.0.0.1:5001`. Each one breaks naive integration; tests written against the docs alone wouldn't have caught them:

@@ -387,6 +387,46 @@ Two unrelated 4.10.1 quirks the subprocess runner has to handle, both surfaced d
 
 Bonus 3rd quirk: `crtsh` from this Windows host returns 0 results for established domains where it should return thousands (microsoft.com, example.com). Other sources (`hackertarget`, `otx`) work fine. theHarvester-side or network-side; not the MCP. Use `hackertarget` as the smoke-test source going forward, not `crtsh`. Discovered Session 13.
 
+### `uv sync --all-packages` removes optional deps (discord.py et al.)
+
+`pyproject.toml` declares `discord.py` under `[project.optional-dependencies] discord` — meaning a plain `uv sync --all-packages` will NOT install it. Same for the `dashboard` extra (flask/markdown) and the `dev` extra (pytest/ruff/mypy). They only land when the sync command includes `--extra <name>` (or `--all-extras`).
+
+This bit the discord listener on 2026-05-13. Sequence:
+
+1. Listener was running stably since 2026-05-09 (`discord.py` was installed at that point).
+2. During the SpiderFoot MCP build I ran `uv sync --all-packages` to bring the new workspace member online. uv saw the workspace declared no `discord` extra in the default sync set and removed `discord.py`.
+3. The running listener process kept working — `discord.py` was still in memory from its 2026-05-09 launch.
+4. Host reboot 2026-05-13 ~10:43 EDT killed the process. Task Scheduler tried to restart it at logon. Listener's `if not discord_available: sys.exit(1)` guard fired immediately. rc=1, no log file (crash was pre-logging-setup).
+5. Slash commands silently stopped working. No alert; the listener doesn't ping anyone on death.
+
+**Fix:** `uv sync --all-packages --extra discord` (or just `--all-extras` if you don't care about pulling dashboard + dev). Then restart the listener.
+
+**Prevention:** If a future session adds new MCPs / runs workspace sync, also re-run with the discord extra. Worth considering moving `discord.py` into the default `dependencies` block — it's been load-bearing since Session 6 and isn't really "optional" anymore.
+
+### `Start-ScheduledTask` needs explicit `-TaskPath '\Archimedes\'`
+
+The Archimedes scheduled tasks live in a `\Archimedes\` folder under Task Scheduler, not at the root. PowerShell's `Start-ScheduledTask -TaskName 'discord-listener'` (no path) fails with `HRESULT 0x80070002` ("The system cannot find the file specified") because it defaults to the root path. Use `-TaskPath '\Archimedes\'` explicitly:
+
+```powershell
+Start-ScheduledTask -TaskName 'discord-listener' -TaskPath '\Archimedes\'
+```
+
+Same applies to `schtasks.exe /Run /TN "Archimedes\discord-listener"`. The path is discoverable via `Get-ScheduledTask -TaskName 'discord-listener' | Format-List TaskPath`.
+
+Misleading error message — "file not found" sounds like a task-action issue (missing script, wrong WorkingDirectory), not a task-locator issue. Eats 5 min of debugging the wrong layer every time. Discovered Session 14.
+
+### Listener crashes pre-logging when deps are missing — no diagnostic trace
+
+`scripts/discord_listener.py` has a top-of-file dependency-check guard that runs BEFORE the logger is set up. If `discord.py` (or any other required module) is missing, the script `sys.exit(1)`s with a one-line stderr message:
+
+```
+ERROR: missing dependency (No module named 'discord'). Run: uv sync --all-packages --extra discord
+```
+
+Task Scheduler captures the exit code (1 = `LastTaskResult: 1`) but the script never opens a log file, so `logs/discord-listener/<date>/` shows no failed-startup trace. Symptom: "slash commands stopped working" + scheduler shows rc=1 + no log entry. Diagnostic move: run the listener command manually (`uv run python scripts/discord_listener.py`) and read stderr.
+
+Possible improvement for a future session: move the dependency check to AFTER the early log-file setup, so a crash leaves a breadcrumb. Trade-off — log file would be opened before we know whether deps are present, harmless if log dir is writable. Discovered Session 14.
+
 ### Discord listener auth relaxed to channel-scoped (Session 13+)
 
 `scripts/discord_listener.py` originally gated every command on `message.author.id == DISCORD_OPERATOR_USER_ID` — single-user, hard equality. Operator chose to relax this in Session 13 to give multiple teammates the ability to drive the agent without each one needing a roster entry.

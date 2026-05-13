@@ -9,7 +9,7 @@
 # resurfaces via higher-grade sources.
 
 version: 1
-last_updated: 2026-05-13  # morning-20260513-080000 added run summary; no new rejection entries
+last_updated: 2026-05-13  # afternoon-20260513-160000 added run summary; no new rejection entries
 
 entries:
   - rejection_id: reject-2026-05-08-0001
@@ -484,9 +484,149 @@ entries:
 # ============================================================================
 _meta:
   total_rejections: 6
-  most_recent_run: morning-20260513-080000
+  most_recent_run: afternoon-20260513-160000
   most_recent_run_rejections: 0
   most_recent_run_note: >
+    afternoon-20260513-160000 produced 0 rejections and 2 promotions.
+    Both productive raw-signals from the 15:30 pre-brief sweep
+    cleared C3+ inclusion threshold (one at B2-action-item, one at
+    monitoring-tier). Sentinel raw-signal (raw-2026-05-13-pm-000)
+    processed as audit-trail-only per design (sentinel_disposition:
+    audit_trail_only_no_promotable_claim) — operational record, not
+    a promotable claim cluster.
+
+    Promotions:
+      finding-2026-05-13-0003 (Windows BitLocker zero-day disclosure
+        with public PoCs and no patch: YellowKey [BitLocker bypass
+        via NTFS-transaction manipulation in WinRE on TPM-only
+        configurations, original-device only] + GreenPlasma [CTFMON
+        arbitrary memory-section creation LPE-to-SYSTEM] released
+        by pseudonymous researcher Chaotic Eclipse / Nightmare-
+        Eclipse on GitHub 2026-05-13; affects Windows 11, Windows
+        Server 2022, Windows Server 2025; Microsoft acknowledged
+        with no timeline commitment; no CVE assigned at disclosure;
+        BleepingComputer frames a BlueHammer / RedSun lineage-class
+        itw-after-public-disclosure pattern; B3 anchored on
+        BleepingComputer pre-assigned B media-relay tier with
+        pseudonymous-researcher F-grade origin underneath; single-
+        source veto applied — BleepingComputer single effective
+        origin relaying the researcher's GitHub publication; WEP
+        ceiling likely; clears C3 monitoring threshold but FALLS
+        BELOW B2 action-item threshold — ships as Vulnerabilities-
+        monitoring item NOT action-item; FLASH-ineligible; structural
+        A&D relevance via universal BitLocker deployment for CMMC
+        Level 2 / NIST 800-171 3.13.16 CUI-at-rest protection but
+        threat-model narrowed to physical-access / supply-chain /
+        evil-maid attack class on original devices, NOT remote-
+        network compromise; analyst_review and red_team_review both
+        false; two librarian handoffs queued — pseudonym
+        chaotic-eclipse-nightmare-eclipse F-grade entry +
+        vuln-tracker dossier creation for YellowKey and GreenPlasma).
+
+      finding-2026-05-13-0004 (KongTuke ModeloRAT campaign documented
+        by Rapid7 IR: Microsoft Teams "fake IT Support" social
+        engineering → ModeloRAT Python-compiled DLL deployment
+        [ssss.dll + com6848.dll] → CVE-2023-36036 cldflt.sys LPE
+        n-day weaponization → PLURIBUS sync-provider registry
+        persistence → WinRM lateral movement → credential dumping
+        → web-service exfiltration; 13 C2 IPs + 2 SHA-256 file
+        hashes + 1 persistence GUID published; 9 MITRE ATT&CK
+        techniques mapped; Rapid7 attributes to KongTuke at
+        moderate-to-high confidence; Octo Tempest / Scattered
+        Spider / UNC3944 tradecraft-similarity referenced but
+        NOT attributed to Scattered Spider [#013]; A3 anchored on
+        Rapid7 A-grade provisional first-party IR telemetry primary;
+        single-source veto applied — Rapid7 single source on
+        attribution layer with KongTuke novel-to-Archimedes-corpus;
+        WEP ceiling likely; clears B2 action-item threshold;
+        FLASH-ineligible per collector Trigger 4 marginal-fail
+        on KongTuke-not-in-roster; April 2026 single intrusion
+        NOT multi-victim; no A&D-prime named as victim per Rapid7
+        but Microsoft Teams + n-day-cldflt + Octo-Tempest-
+        tradecraft surface is universally A&D-structural;
+        **analyst_review_required: true** — SAT-ACH on KongTuke-
+        vs-Scattered-Spider-vs-other hypothesis set + SAT-KAC on
+        "previously documented by multiple vendors" load-bearing
+        assumption + Hard Rule 2 compliance check on attribution-
+        framing language preservation in afternoon brief; red_team_
+        review_required: false [WEP at likely, below very-likely
+        threshold]; **KongTuke flagged as /new-actor candidate**
+        for operator review per .claude/commands/new-actor.md
+        single-A-grade-source-with-substantial-IOC-support
+        criterion; Scattered Spider #013 receives /update-tracking
+        TTP-refresh input material via Rapid7's tradecraft-
+        similarity observation; four librarian handoffs queued —
+        IOC index update with 13 IPs + 2 hashes + 1 GUID, actor-
+        profiler /new-actor handoff for KongTuke, actor-profiler
+        /update-tracking input handoff for Scattered Spider #013,
+        and vuln-tracker consideration for adding CVE-2023-36036
+        to active-n-day-tracking entries in vulnerabilities/
+        _index.yaml).
+
+    Six librarian handoffs queued from afternoon-20260513-160000
+    (consolidated):
+      (1) Add `chaotic-eclipse-nightmare-eclipse` to source-
+          grades.yaml at F grade (pseudonymous-researcher first-
+          corpus-surface per admiralty-grading cheatsheet "unknown
+          researcher / pseudonym = F (Cannot Be Judged)";
+          rationale in finding-2026-05-13-0003 source-reliability
+          block).
+      (2) vuln-tracker dossier creation for YellowKey and
+          GreenPlasma — add both to vulnerabilities/_index.yaml
+          modeled on the ZD-001 / ZD-002 pattern for un-CVE'd
+          disclosures; rationale in finding-2026-05-13-0003
+          vuln_tracker_handoff block.
+      (3) IOC index update — add 13 C2 IPs + 2 SHA-256 file
+          hashes + 1 PLURIBUS persistence GUID to threats/iocs/
+          _master-index.yaml from finding-2026-05-13-0004 IOC
+          set; tag with finding ID + KongTuke + ModeloRAT.
+      (4) actor-profiler /new-actor handoff: KongTuke is a
+          /new-actor candidate per .claude/commands/new-actor.md
+          single-A-grade-source-with-substantial-IOC-support
+          criterion. Operator review recommended for scaffolding
+          decision.
+      (5) actor-profiler /update-tracking input: Scattered Spider
+          #013 receives TTP-refresh input via Rapid7's tradecraft-
+          similarity observation on Microsoft Teams "fake IT
+          Support" social-engineering pattern. Not urgent — fold
+          into next routine /update-tracking cycle.
+      (6) vuln-tracker consideration: CVE-2023-36036 (cldflt.sys
+          KEV-listed Nov 2023) may warrant active-n-day-tracking
+          entry in vulnerabilities/_index.yaml. Class precedent:
+          CVE-2023-23397 (Outlook NTLM 2+ years post-patch
+          weaponization).
+
+    Analyst handoffs (NOT blocking afternoon brief):
+      finding-2026-05-13-0004 (KongTuke ModeloRAT) carries
+      analyst_review_required: true — SAT-ACH on KongTuke
+      attribution hypothesis set [KongTuke as Rapid7 names it
+      vs Octo Tempest / Scattered Spider direct vs different
+      actor reusing tradecraft vs Rapid7's prior-research
+      reference base being low-confidence] + SAT-KAC on
+      "previously documented by multiple vendors" load-bearing
+      assumption [which vendors, what evidence] + Hard Rule 2
+      compliance check on attribution-framing language
+      preservation in afternoon brief. WEP capped at "likely"
+      per single-source veto on attribution layer; analyst review
+      is structural-assumption surfacing + Hard Rule 2 compliance
+      work, not WEP-elevation work. red_team_review_required:
+      false on both findings this run.
+
+    Actor-profiler handoff (NOT blocking afternoon brief):
+      KongTuke flagged as /new-actor candidate per the criteria
+      above. Per /new-actor workflow, profile creation would
+      warrant 7-day first-pass profile + 14-day threat-box
+      scoring window. Per Hard Rule 5, if scoring proposes HIGH
+      threat level, operator sign-off via /approve-scoring
+      required before commit — but operational-notes observation
+      that "threat-box methodology is conservatively bounded;
+      HIGH outcomes are rare" applies; given KongTuke's
+      structural similarities to Scattered Spider (#013, scored
+      MEDIUM), HIGH outcome is not predicted on the basis of
+      this finding alone.
+
+  prior_run_replaced_below: morning-20260513-080000
+  prior_run_note_replaced: >
     morning-20260513-080000 produced 0 rejections and 2 promotions.
     Both productive raw-signals from the 07:30 pre-brief sweep
     cleared B2 inclusion threshold; no items fell below C3 monitoring

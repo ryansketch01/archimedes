@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-13T14:30:00-04:00
+last_updated: 2026-05-13T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -5188,7 +5188,7 @@ entries:
       highest-PoC-velocity-class candidates per historical precedent.
 
   - id: 2026-05-13-am-001
-    covered_in: [2026-05-13-morning]
+    covered_in: [2026-05-13-morning, 2026-05-13-afternoon]
     headline: "UPDATE CVE-2026-40361 — Outlook zero-click UAF in DLL shared by Word and Outlook; Haifei Li / Expmon attributed as discoverer; explicit CVE-2015-6172 (BadWinmail) historical equivalence; PoC-only, no working exploit, no ITW per Microsoft"
     topic_tags: [cve, outlook, zero-click, use-after-free, preview-pane, word-outlook-shared-dll, haifei-li, expmon, badwinmail, cve-2015-6172, m365, dib-exchange, weaponization-risk, single-source-veto, securityweek, msrc, editorial-layer-update, parent-finding-2026-05-12-0003]
     related_actors: []   # APT28 referenced as historical-class weaponizer precedent only (BadWinmail 2016, Outlook NTLM CVE-2023-23397 ~2-week); not current attribution
@@ -5372,7 +5372,7 @@ entries:
       Nvidia) of data theft → lifts F-grade on data-volume claim.
 
   - id: 2026-05-13-flash-1430-001
-    covered_in: [flash-2026-05-13-1430]
+    covered_in: [flash-2026-05-13-1430, 2026-05-13-afternoon]
     brief_file: threats/briefs/2026-05-13-flash-1430-famoussparrow-salt-typhoon-azerbaijan-energy.md
     headline: "Bitdefender attributes multi-wave Exchange intrusion against Azerbaijani oil & gas (Dec 2025 — Feb 2026) to FamousSparrow at moderate-to-high confidence — alias for Salt Typhoon (#010, HIGH, China MSS) per _roster.yaml; n-day ProxyShell + ProxyNotShell initial access; seven new tradecraft observations (Deed RAT 0xFF66ABCD + Deflate, Mofu Loader → TernDoor, LogMeIn Hamachi DLL sideloading with exported-function override, three-wave persistence, TernDoor target-set expansion from South American telecom to South Caucasus energy); two VT-confirmed C2 domains (sentinelonepro[.]com, virusblocker[.]it[.]com); Splunk first-party clean on full IOC set over 30d"
     topic_tags:
@@ -5586,6 +5586,395 @@ entries:
       consistent with SentinelOne / Wiz / Snyk / Sophos / ESET /
       Dragos provisional-then-ratified precedent. Librarian must add
       to source-grades.yaml and source-health.yaml post-publication.
+
+  - id: 2026-05-13-pm-001
+    covered_in: [2026-05-13-afternoon]
+    brief_file: threats/briefs/2026-05-13-afternoon.md
+    headline: "Rapid7 IR: April 2026 enterprise intrusion chains Microsoft Teams fake-IT-Support social-engineering call → ModeloRAT Python-compiled DLL deployment → CVE-2023-36036 cldflt.sys LPE (KEV-listed November 2023) → PLURIBUS sync-provider persistence → WinRM lateral movement → credential dumping → web-service exfiltration; Rapid7 attributes to KongTuke at moderate-to-high confidence; 13 C2 IPs + 2 SHA-256 hashes + 1 persistence GUID + 9 MITRE ATT&CK techniques published; Octo Tempest / Scattered Spider / UNC3944 tradecraft-similarity observation, NOT attribution to Scattered Spider; KongTuke /new-actor candidate, NOT currently in _roster.yaml"
+    topic_tags:
+      - rapid7
+      - rapid7-first-party-ir-telemetry
+      - kongtuke
+      - kongtuke-new-actor-candidate
+      - kongtuke-not-in-roster
+      - kongtuke-discrete-actor-or-tooling-cluster-open-question
+      - modelorat
+      - modelorat-python-compiled-dll
+      - microsoft-teams-external-messaging
+      - teams-fake-it-support-social-engineering
+      - cve-2023-36036
+      - cldflt-sys
+      - kev-listed-november-2023
+      - n-day-weaponization-2-plus-years-post-patch
+      - pluribus-sync-provider-persistence
+      - winrm-lateral-movement
+      - credential-dumping
+      - web-service-exfiltration
+      - octo-tempest-tradecraft-similarity-NOT-attribution
+      - scattered-spider-tradecraft-similarity-NOT-attribution
+      - unc3944-tradecraft-similarity-NOT-attribution
+      - similarity-is-not-attribution-hard-rule-2
+      - single-source-veto-applied
+      - wep-capped-at-likely
+      - new-actor-candidate-operator-review-pending
+      - prior-research-lineage-test-queued-non-blocking
+      - dib-teams-external-messaging-policy-audit
+      - dib-cve-2023-36036-patch-verification-fleetwide
+      - 16-iocs-rapid7-published
+      - splunk-first-party-clean-30d-on-full-ioc-set
+      - rapid7-provisional-a-pending-ratification
+      - hard-rule-2-load-bearing-attribution-language-preserved
+    related_actors:
+      - actor_id: "013"
+        actor_name: Scattered Spider
+        aliases: [UNC3944, Octo Tempest, "0ktapus", Scatter Swine, Muddled Libra, Starfraud]
+        in_roster: true
+        relationship: tradecraft_similarity_observation_by_rapid7_NOT_attribution_of_this_intrusion
+        archimedes_treatment: preserve_similarity_NOT_attribution_distinction_hard_rule_2
+      - actor_name: KongTuke
+        in_roster: false
+        relationship: rapid7_attribution_at_moderate_to_high_confidence
+        new_actor_candidate: true
+        operator_review_required: true
+        candidacy_open_question: "Whether KongTuke is a discrete actor or a tooling / access-broker cluster. Rapid7 references prior documentation by unnamed multiple vendors; lineage test queued non-blocking."
+    related_vulns:
+      - cve: CVE-2023-36036
+        product: "Windows Cloud Files Mini Filter Driver (cldflt.sys)"
+        class: heap_buffer_overflow_lpe
+        cvss_v3: 7.8
+        kev_listed: true
+        kev_date_added: 2023-11
+        role: n_day_weaponized_april_2026_per_rapid7_ir
+    related_campaigns:
+      - kongtuke-modelorat-april-2026
+    finding_ids: [finding-2026-05-13-0004]
+    digraph: A3
+    digraph_layered:
+      rapid7_first_party_ir_telemetry_facts_intrusion_chain: A2
+      rapid7_kongtuke_attribution_moderate_to_high_confidence: A3
+      rapid7_octo_tempest_scattered_spider_tradecraft_similarity_observation: A3
+      rapid7_cve_2023_36036_weaponization_observation: A2
+      cluster_anchor: A3
+    wep: likely
+    wep_layered:
+      april_2026_intrusion_chain_happened_as_rapid7_describes: likely
+      seventeen_iocs_published_are_accurate: likely
+      teams_fake_it_support_is_dib_relevant_initial_access_vector: likely
+      cve_2023_36036_n_day_weaponizable_in_unpatched_environments: likely
+      kongtuke_attribution_moderate_to_high_confidence: possibly
+      octo_tempest_tradecraft_similarity_as_cluster_relationship: possibly
+    single_source_veto_applied: true
+    single_source_veto_rationale: "Rapid7 is the only source covering this April 2026 KongTuke / ModeloRAT intrusion in the collection window. WEP capped at 'likely' per single-source veto regardless of A-grade source reliability. If Unit 42 / Proofpoint / SentinelLabs / Mandiant cross-corroboration surfaces within 7-14d, re-grade may lift credibility to 2 → digraph A2 → WEP ceiling 'very likely' → red-team review trigger."
+    analyst_review_complete: true
+    analyst_handoff_summary: |
+      SAT-ACH on KongTuke-vs-Scattered-Spider-vs-other hypotheses ranks H1 (Rapid7's
+      KongTuke attribution) at zero inconsistencies; SAT-KAC surfaces one non-blocking
+      Test-classification assumption (A1: "previously documented by multiple vendors"
+      prior-research lineage). Brittleness medium; if Rapid7 retracts or is
+      downgraded, ranking shifts to H3 (untracked actor reusing Octo Tempest TTPs),
+      not H2 (Scattered Spider direct).
+    red_team_review_required: false
+    red_team_review_required_basis: "WEP ceiling 'likely' (single-source-veto cap, novel-to-Archimedes-corpus actor). Threshold for mandatory red-team is 'very likely'."
+    hard_rule_2_framings_load_bearing:
+      - "Rapid7 attributes the April 2026 intrusion to KongTuke at moderate-to-high confidence — Archimedes does not collapse to 'Rapid7 confirms' or 'Archimedes assesses'"
+      - "Rapid7 observes Octo Tempest / Scattered Spider / UNC3944 tradecraft similarity — similarity is NOT attribution; do not write 'linked to Scattered Spider' or 'Scattered Spider-adjacent'"
+      - "KongTuke /new-actor candidacy open question: discrete actor vs tooling / access-broker cluster; single-source-with-tentative-prior-lineage framing preserved"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "ModeloRAT / KongTuke / cldflt.sys / PLURIBUS / ssss.dll / com6848.dll filename tokens + 13 published C2 IPs"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    actor_profiler_handoff_queued: true
+    actor_profiler_handoff_reason: "KongTuke /new-actor scaffolding decision pending operator review. Prerequisite: prior-research lineage test (Unit 42 / Proofpoint / SentinelLabs / Mandiant catalog) — analyst-queued, non-blocking for this brief. Also: Rapid7's Octo Tempest tradecraft-similarity observation is fresh TTP-refresh input for /update-tracking on Scattered Spider (#013) at next routine review."
+    vuln_tracker_handoff_queued: true
+    vuln_tracker_handoff_reason: "CVE-2023-36036 (cldflt.sys, KEV-listed November 2023) confirmed n-day weaponized 2+ years post-patch via Rapid7 IR observation in April 2026. Vuln-tracker may consider adding to _index.yaml as active-n-day-tracking entry. Class precedent: CVE-2023-23397 Outlook NTLM weaponized by APT28 2+ years post-patch."
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - attribution_changes
+      - kongtuke_new_actor_scaffolding_decided_via_operator_approval
+      - second_ab_grade_source_corroborates_kongtuke_attribution_lifts_wep_to_very_likely
+      - first_party_ioc_hit
+      - cve_2023_36036_escalation_to_widespread_exploitation
+      - ad_prime_named_as_victim_in_followup_reporting
+      - rapid7_publishes_additional_kongtuke_intrusions_in_followup
+    first_covered: 2026-05-13
+    last_covered: 2026-05-13
+    retraction: null
+    test: false
+    notes: |
+      Hard Rule 2 LOAD-BEARING throughout. The analyst flagged three
+      attribution-language traps that the briefer preserved verbatim:
+      (1) Rapid7 attributes at moderate-to-high confidence — do NOT
+      collapse to "Rapid7 confirms" or "Archimedes assesses"; (2) Octo
+      Tempest tradecraft similarity is NOT attribution — do NOT write
+      "linked to Scattered Spider" or "Scattered Spider-adjacent";
+      (3) KongTuke /new-actor candidacy carries the discrete-actor-
+      vs-tooling-cluster open question — single-source-with-tentative-
+      prior-lineage framing preserved, not amplified to "well-
+      established cluster".
+
+      Hard Rule 6 — no direct quotes in body. Rapid7's attribution
+      language paraphrased throughout. Compliant.
+
+      Hard Rule 8 — Splunk first-party silent over -30d on full IOC
+      set (ModeloRAT / KongTuke / cldflt.sys / PLURIBUS / ssss.dll /
+      com6848.dll + 13 C2 IPs). 21st consecutive dormant non-
+      archimedes-internal sweep. Silence is not disconfirming.
+
+      Pre-flight: 13/13 passed on iteration 3. Iterations 1-2 caught:
+      (a) word count overruns at 936 / 862 → 780 via tightened
+      Active Threats / Vulnerabilities / Watch-ahead bullets;
+      (b) quote discipline — multiple instances of "fake IT Support"
+      and "multiple vendors" in quotation marks (Rapid7 source quoted
+      more than once per source per Hard Rule 6) — remediated to
+      paraphrased prose with zero direct quotes in body; (c) Discord
+      Summary char count overrun at ~2425 / 2029 / 1978 chars →
+      1860 chars via tightened bullets, hyperlinked carryover line,
+      single-emoji greeting.
+
+      KongTuke /new-actor candidate flagged. Actor-profiler handoff
+      queued for operator review. Prerequisite: prior-research lineage
+      test (Unit 42 / Proofpoint / SentinelLabs / Mandiant catalog) —
+      analyst-queued, non-blocking for this brief but precondition
+      for scaffolding decision.
+
+      Scattered Spider (#013) /update-tracking has fresh TTP-refresh
+      input via Rapid7's Octo Tempest tradecraft-similarity observation
+      on the Microsoft Teams fake-IT-Support social-engineering
+      pattern. Not urgent — fold into next routine review.
+
+  - id: 2026-05-13-pm-002
+    covered_in: [2026-05-13-afternoon]
+    brief_file: threats/briefs/2026-05-13-afternoon.md
+    headline: "Pseudonymous researcher Chaotic Eclipse (GitHub: Nightmare-Eclipse) released PoCs for two undisclosed Windows zero-days — YellowKey (BitLocker bypass via NTFS-transaction manipulation in WinRE, TPM-only configurations, original-device only) and GreenPlasma (CTFMON arbitrary memory-section creation LPE, PoC incomplete); no CVE assigned at disclosure, no patch, Microsoft acknowledged with no timeline; BleepingComputer single B-grade media source; BlueHammer (CVE-2026-33825, ZD-001) / RedSun (ZD-002) lineage-class editorial framing, NOT A-grade ITW attestation for YellowKey / GreenPlasma specifically"
+    topic_tags:
+      - bleepingcomputer
+      - bill-toulas
+      - bitlocker-zero-day
+      - yellowkey-bitlocker-bypass
+      - winre-ntfs-transaction-manipulation
+      - efi-partition-write-vector
+      - fstx-files-on-usb
+      - ctrl-during-boot-shell
+      - tpm-only-configuration-affected
+      - tpm-plus-pin-claimed-also-exploitable-no-poc-published
+      - original-device-only-stolen-drives-not-decrypted
+      - greenplasma-ctfmon-lpe
+      - greenplasma-poc-incomplete
+      - chaotic-eclipse-nightmare-eclipse-pseudonym
+      - f-grade-pseudonym-source
+      - no-cve-assigned-at-disclosure
+      - no-patch-available
+      - microsoft-acknowledged-no-timeline
+      - public-poc-github-repo-research-artifact-not-actor-infrastructure
+      - bluehammer-cve-2026-33825-zd-001-lineage-reference
+      - redsun-zd-002-lineage-reference
+      - lineage-class-pattern-b-grade-editorial-framing-not-itw-attestation
+      - physical-access-supply-chain-evil-maid-scif-re-entry-threat-model
+      - not-remote-threat-model
+      - dib-traveler-laptop-program-relevance
+      - dib-scif-re-entry-relevance
+      - dib-supply-chain-pre-load-relevance
+      - cmmc-nist-800-171-fips-cui-at-rest-context
+      - single-source-veto-applied
+      - wep-capped-at-likely
+      - splunk-first-party-clean-24h-on-disclosure-tokens
+      - hard-rule-2-no-actor-attribution-researcher-disclosure-only
+      - hard-rule-3-no-poc-download-no-exploitation
+    related_actors: []
+    related_vulns:
+      - name: YellowKey
+        cve: null
+        class: bitlocker_bypass_via_winre_ntfs_transactions
+        cvss_v3: null
+        patch_status: unpatched
+        platform: "Windows 11, Windows Server 2022, Windows Server 2025"
+        public_poc_url: github.com/Nightmare-Eclipse/YellowKey
+        threat_model: physical_access_supply_chain_evil_maid_scif_re_entry_NOT_remote
+        original_device_only: true
+      - name: GreenPlasma
+        cve: null
+        class: ctfmon_arbitrary_section_creation_lpe
+        cvss_v3: null
+        patch_status: unpatched
+        platform: "Windows 11, Windows Server 2022, Windows Server 2025"
+        public_poc_url: github.com/Nightmare-Eclipse/GreenPlasma
+        poc_status: incomplete_per_researcher
+      - id: ZD-001
+        name: BlueHammer
+        cve: CVE-2026-33825
+        role: editorial_lineage_class_reference_only_NOT_itw_attestation_for_yellowkey_or_greenplasma
+      - id: ZD-002
+        name: RedSun
+        cve: null
+        role: editorial_lineage_class_reference_only_NOT_itw_attestation_for_yellowkey_or_greenplasma
+    related_campaigns: []
+    finding_ids: [finding-2026-05-13-0003]
+    digraph: B3
+    digraph_layered:
+      bleepingcomputer_disclosure_facts_existence_of_pocs: B2
+      poc_publication_on_github_facts: B2
+      no_patch_microsoft_response_facts: B2
+      yellowkey_winre_ntfs_transaction_technique_class: B3
+      greenplasma_ctfmon_lpe_technique_class: B3
+      tpm_only_affected_tpm_pin_caveat: B3
+      bluehammer_redsun_lineage_itw_pattern_assertion: B3
+      no_cve_no_cvss_no_msrc_advisory_at_disclosure: A1
+      cluster_anchor: B3
+    wep: likely
+    wep_layered:
+      pocs_exist_on_github_as_described: likely
+      microsoft_acknowledged_no_timeline: likely
+      no_cve_assigned_at_disclosure_procedural_absence_fact: very_likely
+      specific_technical_mechanisms_yellowkey_greenplasma_plausible_not_independently_verified: possibly
+      tpm_plus_pin_still_exploitable_researcher_claim: possibly
+      bluehammer_redsun_lineage_class_itw_after_disclosure_pattern: possibly
+    single_source_veto_applied: true
+    single_source_veto_rationale: "BleepingComputer is the single effective origin (relaying the pseudonymous researcher's GitHub publication). No second independent A/B-grade source; no MSRC advisory; no CISA KEV; no Tier-1 vendor research. B3 ceiling is already 'likely' pre-veto; veto applies regardless."
+    analyst_review_complete: false
+    analyst_review_required: false
+    analyst_review_required_basis: "WEP ceiling 'likely' below 'very likely' threshold; no actor attribution claim; researcher disclosure only. SAT-ACH / SAT-KAC not triggered at this digraph."
+    red_team_review_required: false
+    red_team_review_required_basis: "WEP ceiling 'likely' (single-source-veto cap + monitoring-tier finding). Threshold for mandatory red-team is 'very likely'."
+    hard_rule_2_framings_load_bearing:
+      - "Researcher discovery attribution by pseudonymous Chaotic Eclipse / Nightmare-Eclipse — NOT actor-attributed exploitation; no tracked _roster.yaml actor named"
+      - "BlueHammer / RedSun lineage-class itw-after-public-disclosure pattern claim is BleepingComputer editorial framing — NOT A-grade ITW attestation for YellowKey / GreenPlasma specifically"
+      - "BleepingComputer single B-grade media source; no MSRC, no CISA KEV, no Tier-1 vendor research — single-source-effective on the cluster"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -24h
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "BitLocker / YellowKey / GreenPlasma / cldflt / WinRE / Nightmare-Eclipse / Chaotic Eclipse tokens"
+      hard_rule_8_framing: silence_is_not_disconfirming
+      note: "YellowKey exploitation artifacts would be host-local (FsTx files in EFI partition, NTFS transaction journal entries, registry changes for boot-time shell) — would not necessarily surface in network-telemetry first-party indexes even if exploitation were occurring; absence on this class is not informative."
+    librarian_handoffs_queued:
+      - action: add_source_provisional
+        source_yaml_id: chaotic-eclipse-nightmare-eclipse-pseudonym
+        proposed_grade: F
+        rationale: "Pseudonymous-researcher first-corpus-surface. Self-described disgruntled-with-Microsoft posture. No prior track record observable. F-grade per admiralty-grading cheatsheet 'unknown researcher / pseudonym = F (Cannot Be Judged)'."
+    vuln_tracker_handoff_queued: true
+    vuln_tracker_handoff_reason: "Two new entries recommended for vulnerabilities/_index.yaml: (1) YellowKey BitLocker bypass; (2) GreenPlasma CTFMON LPE. Forward watch triggers: MSRC advisory + CVE assignment, CISA KEV addition, independent Tier-1 vendor research, public weaponization beyond partial PoCs."
+    resurface_if:
+      - msrc_advisory_published_with_cve_assignment_for_yellowkey_or_greenplasma
+      - cisa_kev_addition_with_known_to_be_exploited_attestation
+      - independent_tier_1_vendor_analysis_published
+      - public_weaponization_full_chain_exploit_beyond_partial_pocs
+      - second_independent_ab_grade_media_source_with_non_relay_content
+      - first_party_ioc_hit
+      - tpm_plus_pin_poc_publication_by_researcher
+      - escalation_to_exploitation
+    first_covered: 2026-05-13
+    last_covered: 2026-05-13
+    retraction: null
+    test: false
+    notes: |
+      B3 cleanly clears C3 monitoring threshold but falls short of B2
+      action-item threshold; ships as Vulnerabilities-monitoring item,
+      NOT FLASH-eligible.
+
+      Hard Rule 2 — researcher disclosure ≠ actor attribution. Hard
+      Rule 3 — Archimedes does NOT download or execute the public
+      PoC artifacts on GitHub. Research repos recorded for vuln-
+      tracker pivot, NOT added to IOC index (would muddy IOC corpus
+      with research repositories).
+
+      Hard Rule 6 — no direct quotes in body. BleepingComputer's
+      lineage-class observation "began to be exploited in the wild
+      shortly after being publicly disclosed" originally direct-
+      quoted in earlier draft; remediated to paraphrased prose
+      during pre-flight iteration 2. Compliant.
+
+      Operator-actionable framing centered on BitLocker hardening
+      posture (TPM-only → TPM+PIN transitions where feasible; BIOS
+      passwords; supply-chain integrity controls on pre-loaded
+      devices) and on the THREAT MODEL bound — physical-access /
+      supply-chain / evil-maid / SCIF re-entry, NOT remote. The
+      original-device requirement narrows the YellowKey surface
+      (stolen drives are not decrypted by this technique).
+
+      A&D structural relevance: BitLocker is the canonical Windows
+      full-disk-encryption implementation satisfying CMMC Level 2
+      (NIST SP 800-171 control 3.13.16), NIST 800-53 SC-28, and
+      FIPS 140-2/3 cryptographic-module requirements. Every prime
+      on aerospace-defense.yaml deploys BitLocker for CUI-at-rest
+      protection on Windows endpoints. The exposed surface is
+      traveler-laptop / SCIF / supply-chain-pre-load programs —
+      not the full deployment surface.
+
+      Forward watch: MSRC advisory + CVE assignment plausibly within
+      7-30 days. CISA KEV catalog re-checked every sweep. Tier-1
+      vendor (Mandiant / CrowdStrike / MSTIC / Sophos X-Ops / ESET /
+      Unit 42 / Rapid7) class analysis typically appears 7-30 days
+      post-disclosure. Public weaponization beyond partial PoCs is
+      a re-grade trigger and potentially FLASH-eligible.
+
+      Librarian handoff: add chaotic-eclipse-nightmare-eclipse-
+      pseudonym to source-grades.yaml at F per admiralty-grading
+      cheatsheet "unknown researcher / pseudonym = F (Cannot Be
+      Judged)". Operator may upgrade if subsequent disclosures by
+      the same pseudonym prove accurate and well-corroborated.
+
+  - id: 2026-05-13-pm-continuing-coverage
+    covered_in: [2026-05-13-afternoon]
+    brief_file: threats/briefs/2026-05-13-afternoon.md
+    headline: "Continuing-coverage anti-noise carry-forward: CVE-2026-40361 Outlook zero-click UAF (covered in 2026-05-13 morning brief — finding-2026-05-13-0001) + Foxconn / Nitrogen ransomware (covered in 2026-05-13 morning — finding-2026-05-13-0002) + FamousSparrow / Salt Typhoon Azerbaijan O&G Exchange intrusion (shipped as 14:30 FLASH — finding-2026-05-13-FLASH-0001) — no new development since prior coverage; FLASH referenced via 🔗 callout in Actor Activity, Outlook + Fortinet pair + ICS batch referenced via Carryover in Vulnerabilities"
+    topic_tags:
+      - continuing-coverage
+      - anti-noise-carry-forward
+      - flash-absorbed-as-callout
+      - morning-brief-items-status-carry
+      - cve-2026-40361-no-new-development
+      - foxconn-nitrogen-no-new-development
+      - famoussparrow-salt-typhoon-no-new-development-since-1430-flash
+      - fortinet-pair-no-new-development
+      - cisa-ics-batch-no-new-development
+    related_actors: ["010"]   # Salt Typhoon FLASH carry
+    related_vulns:
+      - cve: CVE-2026-40361
+      - cve: CVE-2026-26083
+      - cve: CVE-2026-44277
+      - cve: CVE-2025-15467
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-13-0001
+      - finding-2026-05-13-0002
+      - finding-2026-05-13-FLASH-0001
+    resurface_if:
+      - kev_addition_cve_2026_40361
+      - public_poc_publication_expmon_blog_or_conference
+      - mandiant_crowdstrike_unit42_mstic_proofpoint_exploitation_publication_on_cve_2026_40361
+      - foxconn_ir_disclosure_initial_access_vector_or_cve_or_iocs
+      - nitrogen_leak_site_sample_data_naming_ad_prime
+      - second_ir_grade_source_corroborates_famoussparrow_attribution_lifts_wep_to_very_likely
+      - first_party_ioc_hit
+    first_covered: 2026-05-13
+    last_covered: 2026-05-13
+    retraction: null
+    test: false
+    notes: |
+      Anti-noise carry-forward of three prior 2026-05-13 items —
+      morning brief CVE-2026-40361 Outlook zero-click + Foxconn /
+      Nitrogen ransomware, and the 14:30 FLASH FamousSparrow / Salt
+      Typhoon Azerbaijan O&G intrusion. No new development since
+      prior coverage in any of the three. Brief references each via
+      anti-noise patterns:
+        - CVE-2026-40361 → Carryover bullet in Vulnerabilities, link to
+          morning brief
+        - Foxconn / Nitrogen → not surfaced in Layer 1 body (no new
+          development); resurface_if conditions tracked for future
+          briefs
+        - FamousSparrow / Salt Typhoon → 🔗 callout in Actor Activity,
+          link to FLASH brief, cross-corroboration watch open through
+          2026-05-16
+
+      Coverage log entries for the three parent items remain
+      unchanged; this entry exists only to document the anti-noise
+      treatment in the afternoon brief and to update last_covered
+      tracking.
 
 # ============================================================================
 # Valid resurface_if conditions

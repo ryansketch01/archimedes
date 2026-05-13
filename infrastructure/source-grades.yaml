@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-12T06:30:00-04:00
+last_updated: 2026-05-13T14:45:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -270,6 +270,19 @@ vendor_sources:
     active: true
     urls:
       - https://www.aikido.dev/blog
+
+  - id: bitdefender
+    name: "Bitdefender Labs"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-13
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-13-FLASH-0001 (FamousSparrow attribution at moderate-to-high confidence on Azerbaijani oil & gas three-wave Exchange intrusion December 2025 → February 2026; sole primary, The Hacker News + Dark Reading relays). Tier-1 vendor research practice with named-analyst bylines (Victor Vrabie + Martin Zugec), first-party EDR telemetry, IntelliZone intelligence platform with curated IOC distribution, and prior peer-reviewed APT research track record (2023-2024 FamousSparrow → Salt Typhoon attribution work with ESET + Microsoft cross-corroboration). Moderate-to-high confidence attribution language matches the evidentiary standard of Mandiant / CrowdStrike / Unit 42 / MSTIC tier. Provisional A consistent with the precedent applied to SentinelOne (2026-05-08), Wiz Research + Snyk (2026-05-12), Sophos / ESET / Dragos (Session 11 ratifications). Pending human ratification per source-grade-log.md 2026-05-13 entry."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://businessinsights.bitdefender.com/
+      - https://www.bitdefender.com/blog/labs/
 
   - id: safedep
     name: "SafeDep"
@@ -707,10 +720,10 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 60        # +7 wiz-research, snyk, stepsecurity, semgrep, onapsis, aikido-security, safedep (provisional 2026-05-12)
-  active_sources: 51       # +7 above
+  total_sources: 61        # +1 bitdefender (provisional 2026-05-13); +7 wiz-research, snyk, stepsecurity, semgrep, onapsis, aikido-security, safedep (provisional 2026-05-12)
+  active_sources: 52       # +1 bitdefender; +7 above
   by_grade:
-    A: 25       # +2 wiz-research, snyk (provisional 2026-05-12)
+    A: 26       # +1 bitdefender (provisional 2026-05-13); +2 wiz-research, snyk (provisional 2026-05-12)
     B: 20       # +3 stepsecurity, semgrep, onapsis (provisional 2026-05-12)
     C: 9        # +2 aikido-security, safedep (provisional 2026-05-12)
     D: 1
@@ -731,6 +744,7 @@ _meta:
     - onapsis                   # provisional B; first cited 2026-05-12-FLASH-0001
     - aikido-security           # provisional C; first cited 2026-05-12-FLASH-0001
     - safedep                   # provisional C; first cited 2026-05-12-FLASH-0001
+    - bitdefender               # provisional A; first cited 2026-05-13-FLASH-0001
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

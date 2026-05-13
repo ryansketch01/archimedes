@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-13T08:00:00-04:00
+last_updated: 2026-05-13T14:30:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -5370,6 +5370,222 @@ entries:
       to broader supply-chain targeting with A&D victimology;
       (4) named-customer confirmation (Intel/Apple/Google/Dell/
       Nvidia) of data theft → lifts F-grade on data-volume claim.
+
+  - id: 2026-05-13-flash-1430-001
+    covered_in: [flash-2026-05-13-1430]
+    brief_file: threats/briefs/2026-05-13-flash-1430-famoussparrow-salt-typhoon-azerbaijan-energy.md
+    headline: "Bitdefender attributes multi-wave Exchange intrusion against Azerbaijani oil & gas (Dec 2025 — Feb 2026) to FamousSparrow at moderate-to-high confidence — alias for Salt Typhoon (#010, HIGH, China MSS) per _roster.yaml; n-day ProxyShell + ProxyNotShell initial access; seven new tradecraft observations (Deed RAT 0xFF66ABCD + Deflate, Mofu Loader → TernDoor, LogMeIn Hamachi DLL sideloading with exported-function override, three-wave persistence, TernDoor target-set expansion from South American telecom to South Caucasus energy); two VT-confirmed C2 domains (sentinelonepro[.]com, virusblocker[.]it[.]com); Splunk first-party clean on full IOC set over 30d"
+    topic_tags:
+      - flash
+      - flash_quiet_hours_inactive_immediate_post
+      - flash_critical_override_failed_cvss_below_10_no_ad_watchlist_target
+      - salt-typhoon
+      - famoussparrow
+      - earth-estries
+      - ghostemperor
+      - unc2286
+      - uat-9244
+      - china-mss
+      - exchange-on-prem
+      - proxyshell
+      - proxynotshell
+      - n-day-recycling
+      - deed-rat
+      - snappybee
+      - deed-rat-magic-0xff66abcd
+      - deflate-compression-replacing-snappy
+      - terndoor
+      - terndoor-target-set-expansion-south-caucasus-energy
+      - mofu-loader
+      - groundpeony
+      - logmein-hamachi-dll-sideloading
+      - exported-function-override-tradecraft
+      - three-wave-persistence-pattern
+      - victim-hygiene-story
+      - azerbaijani-oil-and-gas
+      - energy-sector-not-ad-watchlist
+      - structural-relevance-to-ad-defenders-via-portable-ttps
+      - sentinelonepro-com-brand-impersonation
+      - virusblocker-it-com
+      - vt-confirmed-malicious-2-of-92
+      - bitdefender-first-corpus-citation-provisional-a
+      - bitdefender-source-grade-ratification-pending
+      - hacker-news-relay-not-independent
+      - dark-reading-relay-not-independent
+      - single-source-veto-applied
+      - wep-capped-at-likely
+      - splunk-first-party-clean-30d-on-full-ioc-set
+      - hard-rule-2-archimedes-does-not-originate-attribution
+      - actor-profiler-handoff-queued-salt-typhoon-first-citation
+      - recalibration-watch-72h-mandiant-crowdstrike-unit42-mstic-eset-talos
+    related_actors:
+      - actor_id: "010"
+        actor_name: Salt Typhoon
+        in_roster: true
+        alias_cited_in_source: FamousSparrow
+        relationship: campaign_attributed_by_bitdefender_at_moderate_to_high_confidence
+        archimedes_treatment: restatement_no_archimedes_origination_hard_rule_2
+        attribution_independence_posture: single_effective_source_bitdefender_relays_fail_independence_test
+        dossier_status: roster_entry_exists_no_dossier_files_on_disk_scaffold_pending
+        threat_level: HIGH
+        nation: CN
+        service: MSS
+        ttp_register_update_queued:
+          - deed_rat_magic_0xff66abcd_and_deflate_compression
+          - mofu_loader_to_terndoor_combination
+          - terndoor_target_set_expansion_south_caucasus_energy
+          - logmein_hamachi_dll_sideloading_exported_function_override
+          - three_wave_persistence_through_one_exchange_entry_point
+    related_vulns:
+      - cve: CVE-2021-34473
+        cvss: 9.8
+        role: proxyshell_initial_access
+        patch_status: patched_2021
+      - cve: CVE-2021-34523
+        cvss: 9.8
+        role: proxyshell_initial_access
+        patch_status: patched_2021
+      - cve: CVE-2021-31207
+        cvss: 7.2
+        role: proxyshell_initial_access
+        patch_status: patched_2021
+      - cve: CVE-2022-41040
+        cvss: 8.8
+        role: proxynotshell_initial_access
+        patch_status: patched_2022
+      - cve: CVE-2022-41082
+        cvss: 8.8
+        role: proxynotshell_initial_access
+        patch_status: patched_2022
+    related_campaigns:
+      - famoussparrow-azerbaijan-oil-gas-2025-12-to-2026-02
+    finding_ids: [finding-2026-05-13-FLASH-0001]
+    digraph: A2
+    digraph_layered:
+      bitdefender_attribution: A2
+      bitdefender_ttp_delta: A2
+      cve_chain_facts: A1
+      c2_domain_vt_facts: B1
+    wep: likely
+    wep_layered:
+      bitdefender_originated_campaign_disclosure: very_likely
+      famoussparrow_attribution: likely
+      ttp_delta_observations: likely
+      c2_domains_malicious_classification: very_likely
+      cve_chain_existence_and_severity: almost_certainly
+      splunk_first_party_clean_on_iocs: very_likely
+    single_source_veto_applied: true
+    single_source_veto_rationale: "Bitdefender originates attribution + TTP-delta. Hacker News and Dark Reading cite Bitdefender as origin and add no independent evidence basis. Per INTEL-GRADING independence test, both relays fail. WEP ceiling capped at 'likely' until a second IR-grade source (Mandiant / CrowdStrike / Unit 42 / MSTIC / ESET / Talos) publishes matching IOCs + cluster cross-walk with own telemetry."
+    analyst_review_complete: false
+    analyst_handoff_queued: true
+    analyst_handoff_reason: "Attribution claim present + tradecraft-evolution claims + target-set-expansion claim. SAT-ACH on attribution recommended once recalibration window closes (2026-05-16 14:30 EDT) or a second IR-grade source publishes."
+    red_team_review_required: false
+    red_team_review_required_basis: "WEP ceiling 'likely' (single-source-veto cap). Threshold for mandatory red-team is 'very likely' per FLASH-POLICY Anti-Noise Rule 3. If recalibration lifts WEP, red-team SHOULD be invoked on the recalibrated finding."
+    critical_override_applied: false
+    critical_override_evaluation:
+      cvss_10_0: false
+      cvss_max_in_chain: 9.8
+      active_exploitation: true
+      tracked_actor_involved: true
+      ad_watchlist_targeted: false
+      conditions_met: 2_of_4
+      result: override_does_not_apply
+    quiet_hours_at_compose: false
+    quiet_hours_window: "09:00-21:00 EDT (inactive at 14:30 EDT compose)"
+    posting_path: immediate_post_quiet_hours_inactive
+    triggers_fired:
+      - trigger_2_tracked_actor_attribution
+      - trigger_4_tracked_actor_ttp_change
+    triggers_failed:
+      - trigger_1_critical_cve_exploited
+      - trigger_3_first_party_ioc_hit
+      - trigger_5_ad_sector_campaign
+      - trigger_6_zero_day_no_patch
+    hard_rule_2_framings_load_bearing:
+      - "Bitdefender attributes the campaign to FamousSparrow at moderate-to-high confidence — Archimedes does not originate"
+      - "FamousSparrow → Salt Typhoon alias link is pre-existing in _roster.yaml line 160, not originated here"
+      - "Hacker News + Dark Reading relay Bitdefender; attribution is single-effective-source"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "actor aliases (Salt Typhoon / FamousSparrow / Earth Estries / GhostEmperor / UNC2286 / UAT-9244) + malware families (Deed RAT / Snappybee / TernDoor / Mofu Loader) + C2 domains (sentinelonepro[.]com, virusblocker[.]it[.]com) + ProxyShell/ProxyNotShell CVE chain"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    provisional_source_grade_block:
+      - source_yaml_id: bitdefender
+        proposed_grade: A
+        rationale: "Tier-1 vendor research (Vrabie + Zugec); first-party EDR telemetry; IntelliZone IOC distribution; prior FamousSparrow attribution track record with ESET + Microsoft. Consistent with SentinelOne / Wiz / Snyk / Sophos / ESET / Dragos provisional-then-ratified precedent. Pending operator ratification."
+    actor_profiler_handoff_queued: true
+    actor_profiler_handoff_reason: "First Archimedes-corpus citation of Salt Typhoon / FamousSparrow / Earth Estries / GhostEmperor / UNC2286 / UAT-9244 activity. Roster entry exists at id 010 (HIGH, China MSS) but no dossier files on disk. This finding is sufficient first-pass content for scaffolding."
+    recalibration_watch:
+      deadline: 2026-05-16T14:30:00-04:00
+      watch_for: "Cross-corroboration by Mandiant / Google Threat Intel / CrowdStrike / MSTIC / Unit 42 / Cisco Talos (UAT-9244 originator) / ESET / Sophos / SentinelLabs. Match on IOCs + cluster cross-walk with own telemetry lifts finding to A1 and WEP to 'very likely' pending red-team review."
+      also_watch_for: "Disconfirmation — any A/B-grade source disputing FamousSparrow attribution or naming a different actor triggers retraction-or-amendment per RETRACTION-POLICY."
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - attribution_changes
+      - actor_ttps_evolve
+      - first_party_ioc_hit
+      - ad_prime_victim_named_in_followup_reporting
+      - second_ir_grade_source_corroborates_lifts_wep_to_very_likely
+    first_covered: 2026-05-13
+    last_covered: 2026-05-13
+    retraction: null
+    test: false
+    notes: |
+      First Archimedes-corpus citation of Salt Typhoon / FamousSparrow
+      activity. Roster entry exists at id 010 (HIGH, China MSS,
+      tracked since 2026-04-07) but no dossier files on disk —
+      actor-profiler handoff queued for dossier scaffolding ahead
+      of next-review-due (2026-07-06).
+
+      Hard Rule 2 load-bearing — Archimedes does NOT originate the
+      campaign attribution. Bitdefender Labs (Vrabie + Zugec, first
+      Archimedes-corpus citation) originates at moderate-to-high
+      confidence. The FamousSparrow → Salt Typhoon alias link is
+      pre-existing in _roster.yaml line 160 (not originated here).
+      Hacker News + Dark Reading are pure relays that fail the
+      independence test — single-source veto applies on the
+      attribution + TTP-delta layer.
+
+      Hard Rule 6 — Bitdefender attribution language preserved as
+      "moderate-to-high confidence"; no direct quotation marks; no
+      quote exceeds 15 words. Compliant.
+
+      Hard Rule 8 — Splunk first-party silent across both indexes
+      over 30d on the full IOC set (actor aliases + malware families
+      + C2 domains + CVE chain). Silence is not disconfirming. 22nd
+      consecutive non-archimedes-internal sweep on this IOC class.
+
+      A&D relevance is STRUCTURAL not direct — Azerbaijani oil and
+      gas is energy sector, not on aerospace-defense.yaml watchlist.
+      The TTP delta (n-day Exchange chain, evolved DLL sideloading,
+      Deed RAT variant, three-wave persistence) is portable to any
+      on-prem Exchange surface, including A&D-prime mail surfaces
+      that still run on-prem Exchange. The three-wave persistence
+      pattern is operationally a victim-hygiene story — same actor
+      returned through the same entry point across two months,
+      consistent with remediation without full eviction.
+
+      Critical override evaluation: CVSS-10 floor FAILS (max 9.8),
+      A&D watchlist NOT hit. 2 of 4 conditions met → override does
+      NOT apply. Quiet hours inactive at compose (14:30 EDT inside
+      09:00-21:00 EDT window) — moot anyway.
+
+      Recalibration watch through 2026-05-16 14:30 EDT (72h from
+      finding creation). If Mandiant / CrowdStrike / Unit 42 / MSTIC
+      / ESET / Talos publishes matching IOCs + cluster cross-walk
+      with own telemetry, finding recalibrates to A1 and WEP lifts
+      to "very likely" pending red-team review. Disconfirmation by
+      any A/B-grade source disputing attribution would trigger
+      retraction-or-amendment per RETRACTION-POLICY.
+
+      Bitdefender source-grade ratification pending — provisional A
+      consistent with SentinelOne / Wiz / Snyk / Sophos / ESET /
+      Dragos provisional-then-ratified precedent. Librarian must add
+      to source-grades.yaml and source-health.yaml post-publication.
 
 # ============================================================================
 # Valid resurface_if conditions

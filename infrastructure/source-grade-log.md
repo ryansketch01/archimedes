@@ -162,6 +162,22 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-13 — Bitdefender Labs — (none) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `bitdefender`
+**Reason:** First Archimedes-corpus citation as the originating source on `finding-2026-05-13-FLASH-0001` (Bitdefender attributes Azerbaijani oil & gas multi-wave Exchange intrusion December 2025 → February 2026 to **FamousSparrow** at moderate-to-high confidence — a listed alias for Salt Typhoon roster id 010 HIGH, China MSS). Sole primary; The Hacker News (Ravie Lakshmanan) and Dark Reading relay and add no independent evidence basis (both cite Bitdefender as origin; single-source veto applies, WEP capped at "likely"). Bitdefender Labs is widely treated as Tier-1 vendor research practice — named-analyst bylines (Victor Vrabie + Martin Zugec on this surface), first-party EDR telemetry, IntelliZone curated IOC distribution platform, peer-reviewed APT research track record including prior 2023-2024 FamousSparrow → Salt Typhoon attribution work with ESET + Microsoft cross-corroboration. Moderate-to-high confidence attribution language matches the evidentiary standard of Mandiant / CrowdStrike / Unit 42 / MSTIC tier. Proposed grade A by the grader on that peer-tier assumption.
+**Supporting findings:** [finding-2026-05-13-FLASH-0001]
+**Posted to:** Discord `#actor-review` is NOT posted for this provisional — pattern is "log here, surface in next ratification sweep with the rest" per the precedent established 2026-05-06 (Rapid7 / SecurityWeek) and 2026-05-08 (SentinelOne / LayerX / ABW / Seqrite Labs). Operator can drive `/approve-source-grade bitdefender A` via the established ratification sweep.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade bitdefender A` (or operator downgrade)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding FLASH-0001 is digraph A2 / WEP "likely" with single-source-veto active (Bitdefender sole effective primary on attribution + TTP-delta; relays fail independence test). Provisional A grading is what holds the A2 digraph — operator downgrade to B would re-grade FLASH-0001 to B2 and the WEP cap would still apply (single-source-veto remains load-bearing on attribution layer). The procedural sub-claims (CVE chain in NVD A1; VT-confirmed C2 domains malicious 2/92 B1) are independent of Bitdefender's grade.
+**Recalibration watch (72h):** A second independent IR-grade source (Mandiant / CrowdStrike / Unit 42 / MSTIC / ESET / Cisco Talos — originator of UAT-9244 cluster designation per Bitdefender citation) publishing matching IOCs + cluster cross-walk with own telemetry before 2026-05-16 14:30 EDT lifts finding FLASH-0001 to A1 / WEP "very likely" pending red-team review and increases the defensibility of ratifying Bitdefender at A. Disconfirmation (any A/B-grade source disputing attribution or naming a different actor for the same campaign) triggers retraction-or-amendment per RETRACTION-POLICY.
+**Methodological positive:** Bitdefender's attribution language ("moderate-to-high confidence, based on combined weight of observed TTPs, malware families, and execution flow") shows appropriate calibration — does not overclaim certainty for a single-vendor disclosure; documents the basis for the confidence level explicitly.
+**Next review:** ratification target 2026-05-20 (7 days; bundled with the open SentinelOne / LayerX / ABW / Seqrite Labs / Trendyol-Albayrak / Rapid7 / SecurityWeek / Wiz / Snyk / StepSecurity / Semgrep / Onapsis / Aikido / SafeDep ratification window)
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

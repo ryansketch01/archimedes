@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-13T18:25:00-04:00
+last_updated: 2026-05-14T08:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -339,6 +339,57 @@ vendor_sources:
     urls:
       - https://www.dragos.com/blog/
 
+  - id: f5
+    name: "F5 (PSIRT / K-articles / NGINX advisories)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0002 as vendor self-disclosure for K000160932 quarterly advisory (50+ CVEs headlined by CVE-2026-42945 'NGINX Rift' — heap overflow in rewrite module, CVSS v4 9.2, pre-auth RCE ASLR-dependent / DoS otherwise; cohort: CVE-2026-41225 iControl REST privesc + CVE-2026-41957 / 34176 / 39459 BIG-IP authenticated-RCE family). Vendor-self-disclosure on own products is procedurally A-grade per same precedent as Palo Alto PSIRT, Cisco PSIRT, Microsoft MSRC, kernel.org netdev. F5 published K-article series with named-product-version patch matrix, named NGINX maintainer credit, explicit no-in-the-wild-exploitation framing, and explicit ASLR-dependency caveat. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://my.f5.com/manage/s/article/K000160932
+      - https://my.f5.com/manage/s/article-search-product
+
+  - id: kernel-org-netdev
+    name: "kernel.org netdev mailing list"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0003 (Fragnesia CVE-2026-46300 XFRM ESP-in-TCP page-cache-corruption kernel patch posted to netdev 2026-05-13; distros rolling). Vendor-self-disclosure on own product is procedurally A-grade per same precedent as F5, Palo Alto PSIRT, Cisco PSIRT, Microsoft MSRC. kernel.org / Linux netdev is the authoritative upstream maintainer publication channel for the Linux kernel — patches are the canonical fact-of-vulnerability source. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://lore.kernel.org/netdev/
+      - https://www.kernel.org/
+
+  - id: sysdig
+    name: "Sysdig Threat Research Team"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0004 (PraisonAI CVE-2026-44338 mass-scanner traffic detected 3h44m post-disclosure; UA `CVE-Detector/1.0`; characterized as 'scanner, not interactive exploitation' — hedge preserved verbatim per Hard Rule 2). Sysdig Threat Research Team has Falco-pedigree (CNCF runtime-security project) and named-analyst-byline cloud-native security research. Conservative provisional B starting grade for unknown-to-corpus vendor research practice per same precedent as SecurityWeek (2026-05-06), LayerX (2026-05-08), Trendyol-Albayrak (2026-05-10). Positive methodological signal on first surface: explicit scanner-vs-exploitation hedge, named UA fingerprint, named patched-version, and explicit `agents.yaml`-as-bounded-impact framing. Operator may upgrade to A on subsequent surfaces showing consistent first-party-telemetry-backed rigor. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://sysdig.com/blog/
+      - https://www.falco.org/blog/
+
+  - id: zellic
+    name: "Zellic (William Bowling)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0003 (Fragnesia CVE-2026-46300 PoC publishing — Zellic / William Bowling working PoC corrupting `/usr/bin/su` page cache to root shell). Zellic is a security-research / audit firm; William Bowling is a named-byline researcher with prior public kernel-LPE / browser-exploit track record (vendor-acknowledged across multiple Pwn2Own + browser-vendor security bulletins). Conservative provisional B starting grade for unknown-to-corpus vendor-research firm per same precedent as SecurityWeek, LayerX, Trendyol-Albayrak, Sysdig. Positive methodological signal on first surface: PoC published with named researcher, vendor-coordinated disclosure timing (post-kernel-patch), explicit primitive description in BleepingComputer relay. Operator may upgrade to A on subsequent surfaces showing consistent first-party-research rigor. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.zellic.io/blog/
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -439,6 +490,29 @@ media_sources:
     active: true
     urls:
       - https://industrialcyber.co/
+
+  - id: thehackernews
+    name: "The Hacker News"
+    category: media
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "Second-cross-corroboration-cycle Archimedes-corpus citation as relay across multiple findings. Today's brief uses The Hacker News as relay on TWO independent items in 2026-05-14 morning brief: finding-2026-05-14-0002 (NGINX Rift, relay of SecurityWeek / F5 K000160932 with editorial '18-year dormancy' framing flagged as non-vendor-attested) + finding-2026-05-14-0003 (Fragnesia, relay of BleepingComputer / Zellic). Prior surfaces: finding-2026-05-13-FLASH-0001 (Bitdefender / FamousSparrow relay), finding-2026-05-13-FLASH-1800-0001 (Symantec / MuddyWater relay). Fast-cycle security media outlet on a par with BleepingComputer / SecurityWeek; conservative provisional B starting grade per same precedent as those peers. Editorial-amplification observed (NGINX Rift '18-year dormancy' framing not vendor-attested, also surfaced from depthfirst researcher commentary) is a flag — operator may downgrade to C if editorial-overreach pattern recurs on subsequent surfaces. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://thehackernews.com/
+
+  - id: depthfirst
+    name: "depthfirst (independent researcher)"
+    category: researcher
+    grade: F
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0002 commentary chain (cited by The Hacker News editorial framing on CVE-2026-42945 NGINX Rift '18-year dormancy' — the dormancy headline is THN + depthfirst editorial, NOT vendor-attested in F5 K000160932 per Hard Rule 2 framing). depthfirst is an independent researcher / commentator with no prior Archimedes-corpus track record and no observed first-party vulnerability research or vendor-acknowledged disclosure history at first surface. Conservative provisional F (unknown / unestablished) starting grade per category baseline for unknown independent voices — does not load-bear on any finding's WEP this run; the NGINX Rift finding's A2 digraph rests on F5 vendor-self-disclosure (provisional A) + SecurityWeek relay. Operator may upgrade if subsequent surfaces show vendor-acknowledged disclosure or peer-reviewed publication. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls: []
 
   - id: github-advisories
     name: "GitHub Security Advisories"
@@ -758,15 +832,15 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 63        # +2 symantec (provisional A 2026-05-13 18:25), industrialcyber-co (provisional B 2026-05-13 18:25); +1 bitdefender (provisional 2026-05-13 14:30); +7 wiz-research, snyk, stepsecurity, semgrep, onapsis, aikido-security, safedep (provisional 2026-05-12)
-  active_sources: 54       # +2 symantec + industrialcyber-co; +1 bitdefender; +7 above
+  total_sources: 69        # +6 f5 (provisional A 2026-05-14), kernel-org-netdev (provisional A 2026-05-14), sysdig (provisional B 2026-05-14), zellic (provisional B 2026-05-14), thehackernews (provisional B 2026-05-14, second-cross-corroboration-cycle), depthfirst (provisional F 2026-05-14)
+  active_sources: 60       # +6 above
   by_grade:
-    A: 27       # +1 symantec (provisional 2026-05-13 18:25); +1 bitdefender (provisional 2026-05-13 14:30); +2 wiz-research, snyk (provisional 2026-05-12)
-    B: 21       # +1 industrialcyber-co (provisional 2026-05-13 18:25); +3 stepsecurity, semgrep, onapsis (provisional 2026-05-12)
-    C: 9        # +2 aikido-security, safedep (provisional 2026-05-12)
+    A: 29       # +2 f5, kernel-org-netdev (provisional 2026-05-14)
+    B: 24       # +3 sysdig, zellic, thehackernews (provisional 2026-05-14)
+    C: 9
     D: 1
     E: 2
-    F: 3
+    F: 4        # +1 depthfirst (provisional 2026-05-14)
   awaiting_ratification:
     - rapid7
     - securityweek
@@ -785,6 +859,12 @@ _meta:
     - bitdefender               # provisional A; first cited 2026-05-13-FLASH-0001
     - symantec                  # provisional A; first cited 2026-05-13-FLASH-1800-0001 (72h ratification clock to 2026-05-16T18:25:00-04:00)
     - industrialcyber-co        # provisional B with relay-layer-conflation-observed-2026-05-13 caveat; first cited 2026-05-13-FLASH-1800-0001
+    - f5                        # provisional A; first cited 2026-05-14-0002 (K000160932 NGINX Rift vendor self-disclosure)
+    - kernel-org-netdev         # provisional A; first cited 2026-05-14-0003 (Fragnesia kernel patch upstream maintainer self-disclosure)
+    - sysdig                    # provisional B; first cited 2026-05-14-0004 (PraisonAI CVE-2026-44338 scanner detection)
+    - zellic                    # provisional B; first cited 2026-05-14-0003 (Fragnesia PoC by William Bowling)
+    - thehackernews             # provisional B; second-cross-corroboration-cycle (multiple prior relay surfaces; first cited as scored entity 2026-05-14)
+    - depthfirst                # provisional F; first cited 2026-05-14-0002 (THN editorial chain on NGINX Rift '18-year dormancy' framing)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

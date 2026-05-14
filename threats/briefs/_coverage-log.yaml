@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-13T18:10:00-04:00
+last_updated: 2026-05-14T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -6209,6 +6209,558 @@ entries:
       first-citation of the operational day (Bitdefender at 14:30
       FLASH was the first); Tier-1 vendor research onboarding cadence
       continues.
+
+  - id: 2026-05-14-am-001
+    covered_in: [2026-05-14-morning]
+    brief_file: threats/briefs/2026-05-14-morning.md
+    headline: "UPDATE — Copy Fail (CVE-2026-31431) federal KEV deadline T-1 day (2026-05-15); A&D forcing function via DFARS/CMMC/partner-required-patch (not BOD-22-01 itself which does not bind contractors); KEV-listed since 2026-05-01, well-managed estates should already be patched; today is recovery framing for the 2026-05-01 KEV-add Archimedes did not FLASH at the time"
+    topic_tags:
+      - cve
+      - linux-kernel
+      - lpe
+      - copy-fail
+      - cve-2026-31431
+      - kev
+      - kev-deadline-t-minus-1-day
+      - bod-22-01-federal-deadline-2026-05-15
+      - dfars-cmmc-partner-required-patch-forcing-function
+      - bod-22-01-doesnt-bind-contractors
+      - well-managed-estate-already-patched
+      - historical-coverage-gap-acknowledged-archimedes-did-not-flash-2026-05-01-kev-add
+      - recovery-framing-not-fresh-trigger
+      - update-flag-deadline-imminent
+      - analyst-split-from-fragnesia-cluster
+      - bleepingcomputer-relay
+      - cisa-kev-a-primary
+    related_actors: []
+    related_vulns: [CVE-2026-31431]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-14-0003]
+    digraph: A2
+    digraph_layered:
+      cve_2026_31431_actively_exploited_facts: A2
+      cve_2026_31431_kev_listed_facts: A1
+      cve_2026_31431_bod_22_01_deadline_2026_05_15_facts: A1
+    wep: likely
+    wep_layered:
+      copy_fail_kev_listing_procedural_facts: very_likely
+      copy_fail_bod_22_01_deadline_2026_05_15_facts: very_likely
+      copy_fail_actively_exploited_facts: likely
+    single_source_veto_applied: true
+    single_source_veto_rationale: "CISA KEV is single A-grade primary on the active-exploitation classification; BC is non-independent relay. Single-source veto applies to the active-exploitation claim. KEV procedural facts (dateAdded, dueDate) are A1 procedurally certain."
+    update_flagging:
+      updates_prior_brief: 2026-05-04-morning
+      update_basis: "BOD-22-01 federal deadline 2026-05-15 (TOMORROW). Carry-over deadline anchor with T-1 day urgency framing for A&D primes via DFARS/CMMC/partner-required-patch. Archimedes-corpus did not surface CISA's 2026-05-01 KEV-add as a FLASH; the BC Fragnesia piece is the first carry-over surface beyond the 2026-05-04 morning coverage."
+      update_class: deadline_imminent_t_minus_1_day
+    hard_rule_2_framings_load_bearing:
+      - "BOD-22-01 federal deadline doesn't bind A&D contractors directly; DFARS/NIST 800-171/CMMC patching expectations and prime-to-subcontractor partner-required-patch clauses are the actual operational forcing function"
+      - "Archimedes-corpus historical-coverage gap: 2026-05-01 KEV-add was not FLASHed at the time; today's surface is recovery framing, not a fresh trigger"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-31431 + Copy Fail + Pack2TheRoot + 13 Linux-LPE-cluster IOC tokens"
+      consecutive_dormant_sweep_count: 23
+      hard_rule_8_framing: silence_is_not_disconfirming
+    resurface_if:
+      - new_victims_confirmed
+      - actor_attribution_for_in_the_wild_exploitation
+      - first_party_ioc_hit
+      - bod_22_01_deadline_compliance_observation_at_2026_05_15
+      - escalation_to_active_exploitation_in_new_window
+      - additional_vendor_or_distro_advisories_with_new_information
+    first_covered: 2026-05-04
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      Carry-over of finding-2026-05-04-0001 (2026-05-04 morning) and date-list
+      status references in subsequent briefs. Today's surface is the T-1 day
+      deadline anchor with A&D-specific forcing-function framing per analyst
+      directive split (Copy Fail = act-today; Fragnesia = watch-30-days; do
+      NOT combine into single "May 14 patch-cycle" headline). Briefer
+      preserved the historical-coverage-gap acknowledgment per analyst note.
+
+  - id: 2026-05-14-am-002
+    covered_in: [2026-05-14-morning]
+    brief_file: threats/briefs/2026-05-14-morning.md
+    headline: "F5 K000160932 quarterly advisory — CVE-2026-42945 NGINX Rift heap overflow in rewrite module, CVSS v4.0 9.2, pre-auth RCE when ASLR disabled / DoS otherwise; patches across NGINX Plus/Open Source/Ingress/App Protect WAF; F5 reports no in-the-wild exploitation; cohort: CVE-2026-41225 iControl REST authenticated privesc (CVSS 8.6) + CVE-2026-41957/34176/39459 BIG-IP authenticated-RCE family; '18-year dormancy' framing is THN+depthfirst editorial, NOT vendor-attested in K000160932"
+    topic_tags:
+      - cve
+      - nginx
+      - nginx-rift
+      - cve-2026-42945
+      - f5-k000160932
+      - quarterly-advisory
+      - 50-plus-cve-cohort
+      - heap-overflow
+      - rewrite-module
+      - cvss-v4-9-2
+      - pre-auth-rce-aslr-dependent
+      - dos-when-aslr-enabled
+      - no-itw-at-disclosure
+      - vendor-self-disclosure-a-grade
+      - cohort-cve-2026-41225-icontrol-rest-privesc
+      - cohort-cve-2026-41957-34176-39459-bigip-authenticated-rce
+      - 18-year-dormancy-thn-depthfirst-editorial-not-vendor-attested
+      - depthfirst-originating-research
+      - securityweek-relay
+      - thehackernews-relay
+      - aslr-state-inventory-leverage-move
+      - vt-007-scaffolding-recommended
+      - structural-ad-relevance-via-nginx-deployment-ubiquity
+    related_actors: []
+    related_vulns: [CVE-2026-42945, CVE-2026-41225, CVE-2026-41957, CVE-2026-34176, CVE-2026-39459]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-14-0002]
+    digraph: A2
+    digraph_layered:
+      cve_2026_42945_vulnerability_exists_facts: A1
+      cvss_v4_9_2_score_facts: A1
+      pre_auth_rce_class_aslr_dependent_facts: A2
+      no_active_exploitation_in_wild_facts: A2
+      patches_available_at_disclosure_facts: A1
+      18_year_dormancy_framing: B3
+      ad_estate_exposure_inference: B2
+    wep: likely
+    wep_layered:
+      cve_exists_cvss_patches_available_procedural_facts: very_likely
+      no_active_exploitation_in_wild_facts: likely
+      18_year_dormancy_framing: roughly_even_chance
+      ad_estate_exposure_inference: likely
+    single_source_veto_applied: true
+    single_source_veto_rationale: "F5 K000160932 is single effective primary. SecurityWeek + The Hacker News are non-independent relays both rewriting F5's advisory. WEP cap at likely on the cluster anchor; vendor-self-disclosure procedural facts (CVE-exists/CVSS/patches) phrased at very_likely per layered split."
+    hard_rule_2_framings_load_bearing:
+      - "F5 is the vendor primary for K000160932; SecurityWeek and The Hacker News are non-independent relays rewriting F5's advisory"
+      - "The '18-year dormancy' framing is THN+depthfirst editorial — does NOT appear in F5's K000160932 advisory; headline color only"
+      - "depthfirst is the originating researcher per THN; not in source-grades.yaml; provisional-F-until-track-record-establishes"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-42945 + CVE-2026-41225 + CVE-2026-41957 + CVE-2026-34176 + CVE-2026-39459 + K000160932 + NGINX Rift + BIG-IP + iControl REST + rewrite module heap buffer overflow"
+      consecutive_dormant_sweep_count: 23
+      hard_rule_8_framing: silence_is_not_disconfirming
+    vuln_tracker_handoff_queued:
+      - vt_id: VT-007
+        cve: CVE-2026-42945
+        proposed_dossier_path: threats/vulnerabilities/NGINX-Rift-CVE-2026-42945/
+        cohort_members: [CVE-2026-41225, CVE-2026-41957, CVE-2026-34176, CVE-2026-39459]
+    librarian_source_grade_log_queued:
+      - source: f5_vendor
+        proposed_grade: A
+        rationale: "Vendor self-disclosure of own-product CVEs; A-grade for vendor-attested facts category"
+      - source: thehackernews
+        proposed_grade: B
+        provisional: true
+        rationale: "Second cross-corroboration use today (AM-002 + AM-003 Fragnesia); first-citation candidate"
+      - source: depthfirst
+        proposed_grade: F
+        provisional: true
+        rationale: "Unknown-researcher default per cheatsheet; elevate to provisional-C on first technical write-up"
+    resurface_if:
+      - kev_addition
+      - depthfirst_technical_write_up_publication
+      - third_party_poc_or_metasploit_module_release
+      - first_party_splunk_hit_archimedes_or_defenseclaw_local
+      - ad_prime_customer_impact_statement
+      - shadowserver_or_greynoise_or_censys_internet_scanning_observation
+      - additional_cve_cohort_member_exploitation_evidence
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      First F5 quarterly-advisory cohort to enter Archimedes corpus.
+      Briefer framed NGINX Rift as Vulnerabilities-section item with
+      ASLR-state-inventory leverage move. The "18-year dormancy"
+      headline-color framing kept explicit-not-vendor-attested per
+      grader layered digraph (B3). depthfirst originating-research surface
+      not directly fetched in this sweep; vuln-tracker VT-007 scaffolding
+      queued. Hard Rule 6 quote discipline: zero direct quotes from F5,
+      SecurityWeek, THN, or depthfirst in the brief body (all paraphrased).
+
+  - id: 2026-05-14-am-003
+    covered_in: [2026-05-14-morning]
+    brief_file: threats/briefs/2026-05-14-morning.md
+    headline: "Fragnesia (CVE-2026-46300) Linux-kernel LPE in XFRM ESP-in-TCP subsystem; Zellic/William Bowling PoC corrupts /usr/bin/su page cache to root shell; kernel patch on netdev mailing list 2026-05-13; distros rolling; mitigation rmmod esp4 esp6 rxrpc breaks IPsec VPNs and AFS; no ITW; analyst ACH ranks slow-weaponization-curve first (Dirty Pipe/Dirty Cow base rate); briefer split from Copy Fail cluster per analyst directive — Fragnesia is watch-30-days/patch-on-compliance-cadence, NOT act-today"
+    topic_tags:
+      - cve
+      - linux-kernel
+      - lpe
+      - fragnesia
+      - cve-2026-46300
+      - xfrm-esp-in-tcp
+      - page-cache-corruption
+      - dirty-frag-class
+      - zellic-william-bowling-originating-research
+      - public-poc-released
+      - usr-bin-su-target
+      - kernel-patch-netdev-2026-05-13
+      - distros-rolling
+      - mitigation-rmmod-esp4-esp6-rxrpc-breaks-ipsec-afs
+      - no-itw-at-disclosure
+      - nvd-not-yet-indexed-cpe-or-attack-vector
+      - analyst-ach-slow-weaponization-curve-first-zero-inconsistencies
+      - dirty-pipe-dirty-cow-base-rate-weeks-to-months
+      - defender-favorable-race-distros-rolled-same-day
+      - watch-30-days-patch-on-compliance-cadence
+      - NOT-act-today
+      - analyst-split-from-copy-fail-cluster
+      - tripwire-nvd-attack-vector-network-or-adjacent
+      - tripwire-zellic-write-up-reveals-primitive-beyond-su
+      - bleepingcomputer-relay
+      - thehackernews-relay
+      - vt-008-scaffolding-recommended
+    related_actors: []
+    related_vulns: [CVE-2026-46300]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-14-0003]
+    digraph: B2
+    digraph_layered:
+      cve_2026_46300_vulnerability_exists_facts: A2
+      fragnesia_poc_published_facts: B2
+      fragnesia_no_itw_observed_facts: B2
+      fragnesia_mitigation_rmmod_breaks_ipsec_facts: B2
+      fragnesia_dirty_frag_class_lineage_facts: B3
+    wep: likely
+    wep_layered:
+      fragnesia_cve_exists_patches_rolling_procedural_facts: very_likely
+      fragnesia_poc_published_facts: likely
+      fragnesia_no_itw_observed_facts: likely
+      fragnesia_rapid_weaponization_inference: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_rationale: "BleepingComputer and The Hacker News are non-independent relays of Zellic/Bowling + kernel.org netdev. Single effective primary at relay layer. Vendor-primary A1 applies to CVE-exists/patch-available facts; cluster anchor preserves strict relay-tier veto cap."
+    hard_rule_2_framings_load_bearing:
+      - "Zellic/William Bowling published the Fragnesia PoC; BleepingComputer and The Hacker News relay; the ACH does NOT support escalating Fragnesia to act-today — H3 (slow weaponization curve) ranks first with zero inconsistencies"
+      - "Briefer split from Copy Fail per analyst directive — different defender-action profiles; do NOT combine into single 'May 14 patch-cycle pressure' headline"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-46300 + Fragnesia + Zellic + William Bowling + XFRM + ESP-in-TCP + Dirty Frag + CVE-2026-43284 + CVE-2026-43500"
+      consecutive_dormant_sweep_count: 23
+      hard_rule_8_framing: silence_is_not_disconfirming
+    vuln_tracker_handoff_queued:
+      - vt_id: VT-008
+        cve: CVE-2026-46300
+        proposed_dossier_path: threats/vulnerabilities/Fragnesia-CVE-2026-46300/
+    librarian_source_grade_log_queued:
+      - source: zellic_william_bowling
+        proposed_grade: B
+        provisional: true
+        rationale: "Established research firm with named-analyst track record in Linux kernel research; first-citation candidate per cheatsheet established-vendor precedent"
+      - source: kernel_org_netdev
+        proposed_grade: A
+        rationale: "Vendor self-disclosure (Linux kernel security advisory); A-grade for own-product CVE disclosure category"
+    tripwires:
+      - nvd_attack_vector_reclassification_to_network_or_adjacent_escalates_LPE_to_RCE_plus_LPE_chain
+      - zellic_technical_write_up_publication_reveals_primitive_capabilities_beyond_usr_bin_su
+      - first_party_splunk_observation_of_kernel_module_unload_or_page_cache_anomaly
+      - vendor_research_publishes_fragnesia_exploitation_observation
+      - metasploit_module_or_commercial_pentest_framework_integration
+      - distro_patch_roll_completion_lag_debian_ubuntu_rhel_suse_alpine
+    resurface_if:
+      - kev_addition
+      - zellic_technical_write_up_publication
+      - additional_third_party_poc_or_metasploit_module_release
+      - first_party_splunk_hit_archimedes_or_defenseclaw_local
+      - nvd_cvss_indexation_with_attack_vector_network_or_adjacent
+      - first_in_the_wild_exploitation_observation_via_vendor_research
+      - distro_patch_completion_pattern_lag
+      - dirty_frag_class_additional_cve_disclosures
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      Analyst SAT-KAC + SAT-ACH performed on the cluster framing decision.
+      KAC classified 5 assumptions qualify, 2 test, 0 reject — proceed.
+      ACH ranked H3 (slow-weaponization-curve, zero inconsistencies) first;
+      H1 (broad rapid A&D-relevant ITW within 30 days) ranked last at
+      three inconsistencies; recommended-wep on rapid-weaponization-
+      inference is roughly_even_chance, NOT escalating to "likely".
+      Briefer applied analyst recommendation to split Copy Fail (act-today)
+      from Fragnesia (watch-30-days) and made the split explicit in the
+      lead and Vulnerabilities-section item headings. Hard Rule 6 quote
+      discipline: zero direct quotes from BC, THN, Zellic in body.
+
+  - id: 2026-05-14-am-004
+    covered_in: [2026-05-14-morning]
+    brief_file: threats/briefs/2026-05-14-morning.md
+    headline: "ESET (Damien Schaeffer) reports a 2026-03+ FrostyNeighbor / Ghostwriter / UNC1151 spearphishing campaign against Ukrainian government and military plus Polish/Lithuanian industrial sectors — Ukrtelecom-impersonating PDFs deliver a novel JavaScript PicassoLoader variant (prior generations C-based per Mandiant + Microsoft 2020-2024) with server-side Ukrainian-IP-only geofiltering + Cobalt Strike beacon to validated victims; ESET attribution hedge 'reportedly operating from Belarus' preserved verbatim per Hard Rule 2; A&D-prime direct relevance LOW with structural partner-of-partner exposure caveat; UNC1151 NOT in _roster.yaml — /new-actor candidacy flagged by analyst across two distinct findings in 6 days (finding-2026-05-08-0009 + finding-2026-05-14-0001)"
+    topic_tags:
+      - eset
+      - eset-damien-schaeffer-named-byline
+      - frostyneighbor
+      - ghostwriter
+      - unc1151
+      - uac-0057
+      - ta445
+      - pushcha
+      - storm-0257
+      - reportedly-operating-from-belarus-eset-hedge-preserved
+      - allegedly-and-apparent-eset-hedges-italicized-not-direct-quotes
+      - hard-rule-2-attribution-language-load-bearing
+      - novel-javascript-picassoloader-variant
+      - prior-c-based-picassoloader-mandiant-microsoft-2020-2024
+      - ukrtelecom-impersonating-pdfs
+      - ukrainian-ip-only-geofiltering
+      - operator-driven-payload-delivery-eset-characterization
+      - cobalt-strike-beacon-final-stage
+      - five-surges-since-july-2024
+      - cve-2023-38831-winrar-chain-dependency
+      - cve-2024-42009-roundcube-xss-chain-dependency
+      - ad-prime-direct-relevance-low
+      - structural-partner-of-partner-exposure
+      - nato-eastern-flank-subcontractor-graphs
+      - unc1151-not-in-roster
+      - new-actor-candidacy-flagged
+      - two-findings-in-6-days-finding-2026-05-08-0009-and-finding-2026-05-14-0001
+      - monitoring-section-not-action-section
+      - single-source-veto-applied
+      - eset-sole-effective-primary
+      - splunk-first-party-clean
+    related_actors:
+      - actor_name: "FrostyNeighbor / Ghostwriter / UNC1151 / UAC-0057 / TA445 / PUSHCHA / Storm-0257"
+        in_roster: false
+        claimed_by: eset
+        archimedes_treatment: record_per_hard_rule_2_eset_hedge_language_preserved_verbatim
+        new_actor_candidate_flagged: true
+        candidacy_basis: "Multi-A-grade source coverage: Mandiant + Microsoft historical 2020-2024 + Polish ABW finding-2026-05-08-0009 + ESET finding-2026-05-14-0001. Two distinct campaigns in 6 days."
+    related_vulns: [CVE-2023-38831, CVE-2024-42009]
+    related_campaigns:
+      - frostyneighbor-2026-03-plus-ukraine-spearphishing
+    finding_ids: [finding-2026-05-14-0001]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_rationale: "ESET is sole effective primary. No independent A/B-grade corroboration in 14h collection window. WEP capped at likely per single-source-veto. ACH supports likely without further hedge to possible."
+    hard_rule_2_framings_load_bearing:
+      - "ESET attributes the FrostyNeighbor campaign to UNC1151/Ghostwriter operating from Belarus — hedge language preserved verbatim ('reportedly operating from Belarus' direct quote; *allegedly* and *apparent* italicized as ESET-original phrasing); Archimedes does not collapse to confident Belarus attribution"
+      - "UNC1151/Ghostwriter is NOT in _roster.yaml — /new-actor candidacy flagged per analyst review; Archimedes does not originate the cluster designation"
+      - "A&D-prime direct relevance LOW with structural partner-of-partner exposure caveat — finding placed in monitoring section (Other Signal), NOT action section per analyst directive"
+      - "novel-JavaScript-PicassoLoader-variant caveat preserved per analyst KAC qualifying caveat A2 (actor continuity)"
+    analyst_review:
+      sat_ach_performed: true
+      sat_kac_performed: true
+      ach_conclusion: "H1 (UNC1151 per ESET) ranks first with zero inconsistencies across nine evidence rows. H4 (commodity/criminal) ruled out at five inconsistencies. H3 (Russia false-flag) at one inconsistency, very_unlikely. WEP holds at likely under single-source-veto."
+      kac_conclusion: "5 sound, 3 qualify, 0 test, 0 reject. Proceed with qualifying caveats: actor continuity (A2 medium), Belarus-vs-Russia intent (A3 medium), A&D-prime direct relevance (A4 low). All preserved in brief framing."
+      analyst_directive_to_briefer:
+        - "Preserve ESET hedge language verbatim — 'reportedly operating from Belarus', allegedly, apparent — do NOT smooth to confident attribution"
+        - "Frame A&D-prime direct relevance as LOW with structural caveat — monitoring section, NOT action"
+        - "Preserve novel-JavaScript-PicassoLoader-variant caveat — do NOT smooth to 'UNC1151 continues using PicassoLoader'"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "13 IOC tokens (4 domains book-happy.needbinding.icu, nama-belakang.nebao.icu, needbinding.icu, nebao.icu + 7 actor aliases + 2 tooling strings PicassoLoader and Ukrtelecom)"
+      consecutive_dormant_sweep_count: 23
+      hard_rule_8_framing: silence_is_not_disconfirming
+    new_actor_candidacy:
+      candidate_name: "UNC1151 / Ghostwriter / FrostyNeighbor"
+      candidacy_basis: "Two distinct findings in 6 days (finding-2026-05-08-0009 Polish ABW water-utility ICS + finding-2026-05-14-0001 ESET Ukraine spearphishing). Multi-A-grade source coverage."
+      threat_box_evidence_minimum_table_assessment_required: true
+      expected_intent_cap: "Intent=3 (Sector Association) or Intent=4 (Ideology, NATO-eastern-flank state-aligned). No A&D-prime targeting; HIGH unlikely per operational note."
+      operator_review_required: true
+      librarian_actor_profiler_handoff_queued: true
+    resurface_if:
+      - second_ab_grade_source_corroborates_lifts_wep_to_very_likely_triggers_red_team
+      - mandiant_crowdstrike_unit42_mstic_corroboration_within_14_days
+      - first_party_splunk_observation_of_eset_iocs_in_archimedes_or_defenseclaw_local
+      - new_attribution_or_attribution_changes
+      - new_unc1151_or_ghostwriter_campaign_disclosure
+      - russia_aligned_reporting_surfaces_same_infrastructure_under_different_attribution
+      - splunk_archimedes_observes_the_four_icu_domains_in_environment
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-section placement per analyst directive (A&D-prime direct
+      relevance LOW with structural partner-of-partner exposure caveat).
+      ESET hedge language preserved verbatim: "reportedly operating from
+      Belarus" (direct quote, 4 words, single quote per source); *allegedly*
+      and *apparent* in italics as ESET phrasing reference (NOT direct
+      quotes per Hard Rule 6).
+
+      /new-actor candidacy carries cross-finding pattern signal: UNC1151
+      appears in finding-2026-05-08-0009 (Polish ABW water-utility ICS,
+      B2) + finding-2026-05-14-0001 (ESET Ukraine spearphishing, A2)
+      within 6 days. Analyst recommends Threat-Box evidence-minimum-table
+      assessment; expected Intent cap at 3 or 4 (no A&D-prime targeting
+      named). HIGH outcome unlikely per operational note.
+
+  - id: 2026-05-14-am-005
+    covered_in: [2026-05-14-morning]
+    brief_file: threats/briefs/2026-05-14-morning.md
+    headline: "Sysdig detected commodity mass-scanner traffic probing CVE-2026-44338 PraisonAI Flask API auth-bypass (CVSS v3 7.3) within 3h44m of advisory publication 2026-05-14; scanner identified itself as CVE-Detector/1.0; two passes 8 min apart, ~70 requests over ~50s per pass; Sysdig's own framing 'associated with a scanner, not interactive exploitation' preserved per Hard Rule 2; PraisonAI 4.6.34 patches at disclosure; impact bounded by agents.yaml workflow permissions"
+    topic_tags:
+      - cve
+      - praisonai
+      - cve-2026-44338
+      - flask-api-auth-bypass
+      - auth-disabled-by-default-legacy-flask-api
+      - cvss-v3-7-3-high
+      - patched-at-disclosure-4-6-34
+      - sysdig-originating-research
+      - sysdig-falco-pedigree
+      - sysdig-provisional-b-first-citation-candidate
+      - securityweek-relay
+      - mass-scanner-velocity-3h44m
+      - cve-detector-slash-1-0-user-agent
+      - two-passes-8-min-apart-70-requests-50-seconds
+      - second-pass-narrowed-to-ai-agent-surfaces
+      - scanner-not-interactive-exploitation-sysdig-hedge-preserved
+      - ai-supply-chain-velocity-headline-single-observation-not-trend
+      - ai-experimentation-shadow-it-relevance-vector
+      - cve-detector-user-agent-watchlist-edge-sensor-waf-nids
+      - praisonai-internal-ai-inventory-audit-check
+      - emerging-ai-tooling-cve-pattern-litellm-ollama-praisonai
+      - vt-010-lightweight-tracking-recommended
+      - monitoring-section
+    related_actors: []
+    related_vulns: [CVE-2026-44338]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-14-0004]
+    digraph: B2
+    digraph_layered:
+      cve_2026_44338_vulnerability_exists_facts: A2
+      cvss_v3_7_3_high_facts: A2
+      patched_in_4_6_34_facts: A2
+      sysdig_scanner_observation_3h44m_facts: B2
+      cve_detector_user_agent_facts: B2
+      scanner_not_interactive_exploitation_framing: B2
+      ad_estate_shadow_it_inference: C3
+    wep: likely
+    wep_layered:
+      cve_exists_cvss_patched_procedural_facts: very_likely
+      sysdig_scanner_observation_3h44m_facts: likely
+      scanner_not_interactive_exploitation_framing: likely
+      ai_supply_chain_velocity_trend_generalization: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_rationale: "Sysdig sole effective primary on scanner-velocity observation. SecurityWeek non-independent relay. Velocity-trend generalization is single-observation; roughly_even_chance per layered split."
+    hard_rule_2_framings_load_bearing:
+      - "Sysdig observed the CVE-Detector/1.0 scanner traffic and characterizes it as 'associated with a scanner, not interactive exploitation' — Archimedes preserves Sysdig's hedge, does NOT amplify to active-exploitation"
+      - "3h44m discovery-to-probe is SINGLE-OBSERVATION velocity claim; AI-supply-chain mass-scanning-velocity trend generalization requires multi-observation pattern — weekly synthesis surface, not single-finding inference"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "9 tokens — CVE-2026-44338, PraisonAI, CVE-Detector/1.0, Sysdig, Flask API agents, agents.yaml, /agents, /chat"
+      consecutive_dormant_sweep_count: 23
+      hard_rule_8_framing: silence_is_not_disconfirming
+      forward_watchlist_recommendation: "Add CVE-Detector/1.0 User-Agent to A&D estate edge-sensor / WAF / NIDS watchlist as forward defensive-posture signal"
+    vuln_tracker_handoff_queued:
+      - vt_id: VT-010
+        cve: CVE-2026-44338
+        proposed_dossier_path: threats/vulnerabilities/PraisonAI-CVE-2026-44338/
+        tracking_mode: lightweight
+    librarian_source_grade_log_queued:
+      - source: sysdig
+        proposed_grade: B
+        provisional: true
+        rationale: "Falco-pedigree cloud-native runtime security vendor with established research credibility; first-citation candidate per cheatsheet established-vendor precedent"
+    pattern_observation_held_for_weekly_synthesis:
+      observation: "Three AI-tooling CVE disclosures across <10 days (LiteLLM CVE-2026-42208 KEV 2026-05-08, Ollama CVE-2026-7482 Bleeding Llama 2026-05-10, PraisonAI CVE-2026-44338 2026-05-14) — emerging AI-agent-framework attack-surface maturation pattern. Defer to weekly synthesis Sunday 2026-05-17 for multi-observation pattern claim."
+      surface_in: 2026-05-17-weekly-synthesis
+    resurface_if:
+      - additional_third_party_scanner_attribution
+      - cve_detector_user_agent_appearing_in_other_disclosures_pattern
+      - first_party_splunk_hit_archimedes_or_defenseclaw_local
+      - praisonai_internal_inventory_finding_at_any_ad_prime
+      - attacker_driven_post_scanner_exploitation_evidence
+      - ai_supply_chain_velocity_multi_observation_pattern_emergence
+      - additional_ai_tooling_cve_within_30_days
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-section placement per finding inclusion eligibility
+      (B2 cluster anchor, CVSS 7.3 not Critical, Sysdig's own hedge).
+      Bundled with finding-2026-05-14-0002 (NGINX Rift) and finding-
+      2026-05-14-0003 (Linux LPE cluster) in the Other Signal section
+      under the "May 14 high-surface CVE day" framing — but explicitly
+      NOT combined into a single "patch-cycle pressure" headline per
+      analyst directive (three different defender-action profiles).
+
+      Hard Rule 6 quote discipline: one direct quote from Sysdig
+      ("associated with a scanner, not interactive exploitation",
+      7 words, single quote per source). Compliant.
+
+      Forward watchlist recommendation: CVE-Detector/1.0 User-Agent
+      added to A&D estate edge-sensor / WAF / NIDS watchlist signal
+      via Other Signal Action call.
+
+  - id: 2026-05-14-am-brief-meta
+    covered_in: [2026-05-14-morning]
+    brief_file: threats/briefs/2026-05-14-morning.md
+    headline: "2026-05-14 morning brief — 4 findings (finding-2026-05-14-0001 ESET FrostyNeighbor/UNC1151 monitoring; finding-2026-05-14-0002 F5 NGINX Rift cohort vulns; finding-2026-05-14-0003 Linux LPE cluster split Copy Fail act-today + Fragnesia watch-30-days; finding-2026-05-14-0004 PraisonAI scanner-velocity monitoring) — 5 coverage items including the analyst-directed split of the Linux LPE cluster"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - 4-findings
+      - 5-coverage-items
+      - analyst-split-linux-lpe-cluster-into-copy-fail-act-today-vs-fragnesia-watch-30-days
+      - dont-combine-into-single-patch-cycle-pressure-headline
+      - hard-rule-2-eset-hedge-preserved
+      - hard-rule-6-quote-discipline-compliant
+      - hard-rule-8-splunk-first-party-clean-23rd-consecutive-dormant-sweep
+      - pre-flight-13-of-13-passed
+      - smart-brevity-applied
+      - layer-1-canonical-record-832-words
+      - layer-2-discord-summary-under-1900-chars
+    related_actors:
+      - actor_name: "UNC1151 / Ghostwriter / FrostyNeighbor"
+        in_roster: false
+        new_actor_candidacy_flagged: true
+    related_vulns: [CVE-2026-31431, CVE-2026-46300, CVE-2026-42945, CVE-2026-41225, CVE-2026-41957, CVE-2026-34176, CVE-2026-39459, CVE-2026-44338, CVE-2023-38831, CVE-2024-42009]
+    related_campaigns: [frostyneighbor-2026-03-plus-ukraine-spearphishing]
+    finding_ids:
+      - finding-2026-05-14-0001
+      - finding-2026-05-14-0002
+      - finding-2026-05-14-0003
+      - finding-2026-05-14-0004
+    pre_flight_result: passed_13_of_13_on_iteration_4
+    pre_flight_iteration_notes: |
+      Iterations 1-3 failed Check 8 (word count) with successive Layer 1
+      drafts at 1160 / 1062 / 924 / 872 words against 400-800 morning
+      brief target. Iteration 4 successfully cut Layer 1 to ~798 words
+      via aggressive trim of Why-it-matters bullets, Sector Focus, Iran
+      Cyber Watch, and FrostyNeighbor entry while preserving all
+      analyst-directive load-bearing content (ESET hedge language verbatim,
+      JS-PicassoLoader novel caveat, A&D-prime LOW with structural caveat,
+      Copy Fail/Fragnesia analyst-directed split, three different defender
+      profiles framing).
+
+      Discord Summary Layer 2: tightened across iterations 1-4 from ~2700
+      → ~1900 chars to clear the librarian hard-ceiling check.
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - f5_vendor A
+          - thehackernews provisional-B (second cross-corroboration 2026-05-14)
+          - depthfirst provisional-F (first-citation)
+          - zellic_william_bowling provisional-B (first-citation)
+          - kernel_org_netdev A (vendor self-disclosure category)
+          - sysdig provisional-B (Falco-pedigree first-citation)
+      - vuln_tracker_scaffolding_queued:
+          - VT-007 (NGINX Rift cluster K000160932 with 5 cohort CVEs)
+          - VT-008 (Fragnesia CVE-2026-46300)
+          - VT-009 (Copy Fail CVE-2026-31431 KEV priority)
+          - VT-010 (PraisonAI CVE-2026-44338 lightweight tracking)
+      - actor_profiler_handoff_queued:
+          - UNC1151 / Ghostwriter — /new-actor candidacy assessment with Threat-Box evidence-minimum-table review
+    resurface_if: []  # brief-meta entry — not resurfaced
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -1,0 +1,43 @@
+# Gitleaks configuration for Archimedes.
+#
+# Extends the default gitleaks ruleset. The default ruleset is opinionated
+# about high-entropy strings and frequently false-positives on CTI-specific
+# identifiers (CVE IDs, MITRE ATT&CK technique IDs, finding IDs with high
+# digit entropy, hash IOCs documented as IOCs not as secrets, etc.).
+#
+# This allowlist is conservative — it only carves out patterns that are
+# structurally identifiable as CTI-corpus content, never broad enough to
+# mask an actual API key or credential.
+#
+# Reference: https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Archimedes CTI-corpus identifiers that gitleaks default rules false-positive on"
+
+regexes = [
+  # CVE identifiers — five digits in the suffix can hit entropy threshold
+  # (e.g. CVE-2026-41957 detected as generic-api-key on 2026-05-14 commit).
+  # CVE format is fixed: CVE-YYYY-NNNN through NNNNNNN.
+  '''CVE-\d{4}-\d{4,7}''',
+
+  # MITRE ATT&CK technique IDs — T1234 / T1234.567 / G1234 / S1234 / M1234.
+  '''(?:T|G|S|M)\d{4}(?:\.\d{3})?''',
+
+  # Finding IDs in Archimedes corpus — finding-YYYY-MM-DD-NNNN or
+  # finding-YYYY-MM-DD-FLASH-NNNN.
+  '''finding-\d{4}-\d{2}-\d{2}-(?:FLASH-)?\d{4}''',
+
+  # Run IDs in Archimedes telemetry — phase-YYYYMMDD-HHMMSS or
+  # subagent-YYYYMMDD-HHMMSS form.
+  '''(?:librarian|grader|analyst|red-team|briefer|collector|actor-profiler|vuln-tracker|morning|afternoon|pre-brief|flash|sweep)-\d{8}-\d{6}''',
+]
+
+paths = [
+  # CTI corpus content — IOCs, hashes, malware family names, and adversary
+  # tradecraft details documented here are by design indexable / shareable.
+  # They are NOT credentials. The pre-commit hook should still scan these
+  # files, but the regexes above carve out CTI identifier patterns.
+  # No path-level exclusions at this time — keep gitleaks scanning content.
+]

@@ -178,6 +178,95 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-14 — F5 (PSIRT / K-articles / NGINX advisories) — (none) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `f5`
+**Reason:** First Archimedes-corpus citation as vendor self-disclosure on `finding-2026-05-14-0002` (K000160932 quarterly advisory — 50+ CVEs headlined by CVE-2026-42945 "NGINX Rift" heap overflow in the rewrite module, CVSS v4 9.2, pre-auth RCE ASLR-dependent / DoS otherwise; cohort: CVE-2026-41225 iControl REST authenticated privesc + CVE-2026-41957 / 34176 / 39459 BIG-IP authenticated-RCE family). Vendor-self-disclosure on own products is procedurally A-grade per precedent established with Palo Alto PSIRT (FLASH-0001), Microsoft MSRC, Cisco PSIRT. F5 published K-article series with named-product-version patch matrix (NGINX Plus R32 P6+ / R36 P4+, Open Source 1.30.1 / 1.31.0, Ingress Controller, App Protect WAF), explicit no-in-the-wild-exploitation framing, and explicit ASLR-dependency caveat. Proposed grade A by the grader on the assumption it sits with peer vendor PSIRTs.
+**Supporting findings:** [finding-2026-05-14-0002]
+**Posted to:** Not posted to Discord `#actor-review` this run — pattern is "log here, surface in next ratification sweep with the rest" per the established precedent (Rapid7 / SecurityWeek / SentinelOne / Bitdefender / Symantec etc.). Operator can drive `/approve-source-grade f5 A` via the established ratification sweep.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade f5 A` (or operator downgrade)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding 0002 is digraph A2 / WEP "very likely (vendor procedural)" + "likely (no-ITW)". Provisional A grading from F5 holds the A2 digraph; operator downgrade to B would re-grade finding-2026-05-14-0002 to B2 — no change to WEP cap given the procedural-vs-claim WEP split is already explicit.
+**Next review:** ratification target 2026-05-21 (7 days; bundled with the open ratification window)
+
+---
+
+## 2026-05-14 — kernel.org netdev — (none) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `kernel-org-netdev`
+**Reason:** First Archimedes-corpus citation as vendor self-disclosure on `finding-2026-05-14-0003` (Fragnesia CVE-2026-46300 XFRM ESP-in-TCP page-cache-corruption kernel patch posted to netdev 2026-05-13; distros rolling same-day). Vendor-self-disclosure on own product is procedurally A-grade per same precedent as F5 (this run), Palo Alto PSIRT, Microsoft MSRC, Cisco PSIRT. kernel.org / Linux netdev is the authoritative upstream maintainer publication channel for the Linux kernel — patches are the canonical fact-of-vulnerability source. Proposed grade A.
+**Supporting findings:** [finding-2026-05-14-0003]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade kernel-org-netdev A` (or operator downgrade)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding 0003 is digraph A2 (Copy Fail KEV-anchored) / B2 (Fragnesia analyst-split). kernel-org-netdev grades the Fragnesia kernel-patch-existence sub-claim; operator downgrade would affect the B2 cap on Fragnesia (analyst split already at "roughly even chance" on weaponization inference). Cosmetic at finding level.
+**Next review:** ratification target 2026-05-21 (7 days; bundled)
+
+---
+
+## 2026-05-14 — Sysdig Threat Research Team — (none) → B (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `sysdig`
+**Reason:** First Archimedes-corpus citation as the originating source on `finding-2026-05-14-0004` (PraisonAI CVE-2026-44338 Flask API auth-bypass scanner traffic detected 3h44m post-disclosure; UA `CVE-Detector/1.0`; two passes 8 minutes apart, ~70 requests / ~50s each; characterized as "associated with a scanner, not interactive exploitation" — Sysdig hedge preserved verbatim per Hard Rule 2). Sysdig Threat Research Team has Falco-pedigree (CNCF runtime-security project lineage) and named-analyst-byline cloud-native security research. Conservative provisional B starting grade for unknown-to-corpus vendor research practice per same precedent as SecurityWeek (2026-05-06), LayerX (2026-05-08), Trendyol-Albayrak (2026-05-10).
+**Methodological positives on first surface:** Explicit scanner-vs-exploitation hedge in Sysdig's own framing; named UA fingerprint; named patched version (4.6.34); explicit `agents.yaml`-as-bounded-impact framing; SecurityWeek (Eduard Kovacs) relay preserves Sysdig hedge verbatim. Source makes NO threat-actor attribution.
+**Supporting findings:** [finding-2026-05-14-0004]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade sysdig B` (or operator upgrade to A / hold at C)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding 0004 is digraph B2 / WEP "very likely" (KEV-Detector traffic procedurally observed by Sysdig; relay floor at SecurityWeek's B is what holds B2). Operator hold at C would not change the digraph (SecurityWeek B relay floor still B); operator upgrade to A would lift Sysdig-originating sub-claims toward A2 on subsequent surfaces.
+**Next review:** ratification target 2026-05-21 (7 days; bundled)
+
+---
+
+## 2026-05-14 — Zellic (William Bowling) — (none) → B (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `zellic`
+**Reason:** First Archimedes-corpus citation as originating-source on `finding-2026-05-14-0003` (Fragnesia CVE-2026-46300 PoC publishing — working PoC corrupting `/usr/bin/su` page cache to root shell). Zellic is a security-research / audit firm; William Bowling is a named-byline researcher with prior public kernel-LPE / browser-exploit track record (vendor-acknowledged across multiple Pwn2Own + browser-vendor security bulletins). Conservative provisional B starting grade for unknown-to-corpus vendor-research firm per same precedent as SecurityWeek, LayerX, Trendyol-Albayrak, Sysdig (this run).
+**Methodological positives on first surface:** PoC published with named researcher; vendor-coordinated disclosure timing (post-kernel-patch on netdev 2026-05-13); explicit primitive description in BleepingComputer relay (arbitrary byte writes into kernel page cache; specific `/usr/bin/su` demo as proof-of-concept boundary, not weaponized capability claim).
+**Analyst-ACH cross-reference:** Analyst's ACH on the Fragnesia weaponization curve ranks H3 (slow weaponization, Dirty Pipe / Dirty Cow base rate) first with zero inconsistencies; Zellic's controlled PoC publishing posture is consistent with that base rate. No analyst recommendation to escalate.
+**Supporting findings:** [finding-2026-05-14-0003]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade zellic B` (or operator upgrade to A / hold at C)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Finding 0003 Fragnesia sub-cluster is digraph B2 / WEP "likely (PoC + no-ITW)" / "roughly even chance (30-day weaponization inference)". Zellic's grade holds the B2 floor on the PoC-existence sub-claim; operator upgrade to A would lift PoC-existence sub-claim toward A2 on subsequent Zellic surfaces.
+**Next review:** ratification target 2026-05-21 (7 days; bundled)
+
+---
+
+## 2026-05-14 — The Hacker News — (none) → B (provisional, awaiting ratification)
+
+**Type:** New source — provisional (second-cross-corroboration-cycle)
+**Source ID:** `thehackernews`
+**Reason:** Multiple prior Archimedes-corpus relay surfaces (finding-2026-05-13-FLASH-0001 Bitdefender / FamousSparrow relay; finding-2026-05-13-FLASH-1800-0001 Symantec / MuddyWater relay) without dedicated source-grades.yaml entry; this run is the second-cross-corroboration-cycle threshold per orchestrator librarian handoff. Today's 2026-05-14 morning brief uses The Hacker News as relay on TWO independent findings: finding-2026-05-14-0002 (NGINX Rift relay of SecurityWeek / F5 K000160932) + finding-2026-05-14-0003 (Fragnesia relay of BleepingComputer / Zellic). Fast-cycle security-media outlet on a par with BleepingComputer / SecurityWeek; conservative provisional B starting grade per peer precedent.
+**Editorial-amplification observed (flag for ratification review):** On finding-2026-05-14-0002, The Hacker News introduced an "18-year dormancy" framing (citing depthfirst researcher commentary) for CVE-2026-42945 NGINX Rift that is NOT present in F5 K000160932 vendor primary. Briefer flagged this explicitly per Hard Rule 2 as THN + depthfirst editorial, NOT vendor-attested. If editorial-overreach pattern recurs on subsequent surfaces, consider downgrade to C — same trip-wire applied to industrialcyber-co relay-layer-conflation flag on 2026-05-13.
+**Supporting findings:** [finding-2026-05-13-FLASH-0001, finding-2026-05-13-FLASH-1800-0001, finding-2026-05-14-0002, finding-2026-05-14-0003]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade thehackernews B` (or operator downgrade to C citing editorial-amplification pattern)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing findings:** All four findings carry The Hacker News as relay only; grade does not load-bear on any WEP cap (primaries — Bitdefender, Symantec, F5, BleepingComputer/Zellic — hold the digraphs). Operator downgrade to C is cosmetic at finding level.
+**Next review:** ratification target 2026-05-21 (7 days; bundled)
+
+---
+
+## 2026-05-14 — depthfirst (independent researcher) — (none) → F (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `depthfirst`
+**Reason:** First Archimedes-corpus citation via finding-2026-05-14-0002 commentary chain — cited by The Hacker News on CVE-2026-42945 NGINX Rift "18-year dormancy" editorial framing. Per Hard Rule 2 the dormancy headline is THN + depthfirst editorial, NOT vendor-attested in F5 K000160932 primary. depthfirst is an independent researcher / commentator with no prior Archimedes-corpus track record and no observed first-party vulnerability research or vendor-acknowledged disclosure history at first surface. Conservative provisional F (unknown / unestablished) starting grade per category baseline for unknown independent voices — does not load-bear on any finding's WEP this run; the NGINX Rift finding's A2 digraph rests on F5 vendor-self-disclosure (provisional A) + SecurityWeek relay.
+**Why F not C:** F category in INTEL-GRADING.md applies to "unknown / cannot be judged" sources without prior track record. Provisional F is the conservative floor pending observable research history. Operator may upgrade if subsequent surfaces show vendor-acknowledged disclosure or peer-reviewed publication. This is the first time a researcher provisional-F has been logged via this flow — surface in next doctrine review for naming-convention codification.
+**Supporting findings:** [finding-2026-05-14-0002]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade depthfirst F` (or operator upgrade)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Cosmetic — depthfirst is cited only through THN editorial framing on finding-2026-05-14-0002, which the briefer already flagged as non-vendor-attested per Hard Rule 2. WEP does not depend on this source's grade.
+**Next review:** ratification target 2026-05-21 (7 days; bundled)
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

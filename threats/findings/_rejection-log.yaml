@@ -9,7 +9,7 @@
 # resurfaces via higher-grade sources.
 
 version: 1
-last_updated: 2026-05-13  # flash-grade-20260513-180500 added 2 collector-side discard entries (Exim CVE-2026-45185 + Dream Market arrest) per FLASH sweep audit-trail discipline + 1 promotion (Symantec MuddyWater ChromElevator)
+last_updated: 2026-05-14  # afternoon-20260514-160000 produced 0 rejections and 5 promotions (PM-001 Cisco SD-WAN CVE-2026-20182 / UAT-8616, PM-002 MSTIC Secret Blizzard / Kazuar, PM-003 Salt Typhoon Azerbaijan + Twill Typhoon cluster, PM-004 OpenAI TanStack confirmation / VT-006, PM-005 node-ipc 3-version backdoor). Audit-trail block updated below; no new rejection entries this run.
 
 entries:
   - rejection_id: reject-2026-05-13-0001
@@ -660,9 +660,317 @@ entries:
 # ============================================================================
 _meta:
   total_rejections: 8
-  most_recent_run: flash-grade-20260513-180500
-  most_recent_run_rejections: 2
+  most_recent_run: afternoon-20260514-160000
+  most_recent_run_rejections: 0
   most_recent_run_note: >
+    afternoon-20260514-160000 produced 0 rejections and 5 promotions.
+    All five substantive raw-signals from the 15:30 pre-brief sweep
+    cleared B2+ inclusion threshold. Sentinel raw-signal (raw-2026-
+    05-14-pm-000) processed as audit-trail-only per design
+    (promotion_disposition: non_promotable_sentinel_tombstone_no_
+    grading_required) — operational sweep summary, not a promotable
+    claim cluster.
+
+    Promotions:
+      finding-2026-05-14-0005 (CISA KEV adds CVE-2026-20182 Cisco
+        Catalyst SD-WAN Controller authentication bypass CVSS 10.0
+        with 3-day federal deadline 2026-05-17 under Emergency
+        Directive 26-03; Cisco PSIRT vendor self-disclosure + Cisco
+        Talos attributes active ITW exploitation to UAT-8616 cluster
+        at high confidence; UAT-8616 2-year track record across
+        CVE-2026-20127 → CVE-2026-20182 with consistent SSH-keys +
+        NETCONF + root post-compromise pattern; FedRAMP-Government
+        deployment tier explicitly listed; ORB-infrastructure overlap
+        observed by Talos as procedural observation NOT nation-state
+        attribution; A2 anchored on multi-A-grade origin chain (CISA
+        KEV + Cisco PSIRT + Talos provisional A first-corpus-citation
+        + Rapid7 provisional A discoverer credit); procedural-facts
+        sub-grade A1 corroboration test PASSES (CISA + Cisco PSIRT +
+        Rapid7 independent on CVE + KEV + ED-26-03 + active-
+        exploitation framing); UAT-8616 attribution layer single-
+        Talos-origin at evaluation time — single-source veto applied
+        on attribution layer; WEP procedural-facts very_likely; WEP
+        UAT-8616 attribution likely; direct A&D / DIB / CMMC / DFARS
+        252.204-7012 relevance via FedRAMP-Government tier;
+        **analyst_review_required: true** — /new-actor candidacy for
+        UAT-8616, attribution corroboration watch 24-72h, ACH on
+        A&D-prime FedRAMP-vs-On-Premises deployment posture, vuln-
+        tracker handoff for VT-007 dossier creation; **red_team_
+        review_required: true** — WEP procedural-facts very_likely +
+        KEV-deadline-3-days + active exploitation + tracked-cluster
+        claim warrants red-team challenge; one librarian handoff
+        queued for cisco-talos provisional A first-citation entry).
+      finding-2026-05-14-0006 (Microsoft MSTIC publishes Kazuar
+        malware deep-dive — Secret Blizzard / Turla / VENOMOUS BEAR
+        / Uroburos / Snake / Blue Python / WRAITH / ATG26 has
+        evolved Kazuar from traditional backdoor into modular P2P-
+        botnet ecosystem; three-module Kernel / Bridge / Worker
+        architecture with leader-election protocol; Pelmeni dropper
+        hostname-bound encrypted payload + .NET-loader delivery
+        chain; EWS/HTTP/WSS triple-channel fallback C2; 150
+        configuration types embedded in samples vs previously file-
+        based; CISA attribution to FSB Center 16 cited verbatim;
+        targeting language verbatim "defense departments and
+        defense-related companies worldwide"; Aqua Blizzard victim
+        overlap in Ukraine; 4 sample SHA256 hashes published
+        [Loader + Kernel/Bridge/Worker modules]; Microsoft Defender
+        detection-family names [Kazuar OA/OB, KazuarModule,
+        KazuarLoader, ShadowLoader, ToxicDust, "Secret Blizzard
+        actor activity"]; A2 anchored on MSTIC A-grade primary;
+        actor-attribution layer multi-source corroborated (MSTIC +
+        CISA prior attribution); architectural-evolution layer
+        single-MSTIC-origin at evaluation time — single-source veto
+        applied on architectural-delta layer; WEP actor-attribution
+        very_likely; WEP architectural-evolution likely; no fresh-
+        incident named in this surface — historical/ongoing-baseline
+        targeting framing; indirect A&D relevance via "defense-
+        related companies worldwide" generic language;
+        **analyst_review_required: true** — /new-actor candidacy
+        STRONG for Secret Blizzard / Turla (long-running, multi-A-
+        grade-source history, CISA attribution, A&D-relevant
+        targeting, immediate operational doctrine value via sample
+        hashes); Aqua Blizzard relationship documentation; ACH on
+        historical-vs-active-campaign reading of targeting language;
+        independent corroboration watch on architectural-evolution
+        layer 24-72h; red_team_review_required: false [WEP
+        architectural-evolution at likely, attribution corpus-
+        corroborated via CISA citation; no operational urgency;
+        not triggered]).
+      finding-2026-05-14-0007 (SecurityWeek aggregates Chinese-APT
+        cluster expansion — Salt Typhoon [Earth Estries / FamousSparrow
+        / GhostEmperor / UNC2286, roster #010] Azerbaijani O&G
+        December 2025 → February 2026 with ProxyNotShell + Deed RAT
+        + TernDoor backdoor [Cisco Talos attribution layer] + DLL
+        sideloading + RDP + Impacket — anti-noise carry-forward from
+        finding-2026-05-13-FLASH-0001 (24h post-FLASH lockout expired
+        today at 14:30 EDT); PLUS Twill Typhoon [Bronze President /
+        Camaro Dragon / Earth Preta / Mustang Panda / TA416, NOT in
+        roster] Asia-Pacific September 2025 → April 2026 with FDMTP
+        modular .NET RAT framework [system fingerprinting + command
+        execution + Windows task manipulation + registry persistence
+        + process management + file/command retrieval] — Darktrace
+        provisional A first-corpus-citation; A2 anchored on Bitdefender
+        + Darktrace + Cisco Talos multi-vendor underlying primaries
+        with SecurityWeek as aggregator-relay; alias-taxonomy layer
+        for both clusters multi-source-corroborated via historical
+        vendor publications (PASSES); both campaign-attribution layers
+        single-vendor-origin — single-source veto applied on both;
+        WEP alias-taxonomy very_likely; WEP both campaign-attribution
+        layers likely; no A&D-prime direct targeting in this surface
+        — energy-critical-infra (AZ O&G) + APAC-financial both sector-
+        watchlist context not A&D-watchlist; **analyst_review_
+        required: true** — /new-actor candidacy for Twill Typhoon /
+        Mustang Panda / TA416 (medium roster-gap significance, low-
+        to-medium A&D evidence strength); anti-noise lockout state
+        on Salt Typhoon part; TernDoor cross-vendor backdoor-family
+        mapping consideration; independent attribution corroboration
+        watch on Twill Typhoon 24-72h; red_team_review_required:
+        false [WEP at likely; no operational urgency; no A&D-
+        watchlist-named-victim; not triggered]; two librarian
+        handoffs — darktrace provisional A first-citation +
+        cisco-talos provisional A second-cross-corroboration-cycle
+        in 8h with finding-2026-05-14-0005).
+      finding-2026-05-14-0008 (OpenAI confirms two employee devices
+        breached in Mini Shai-Hulud / TanStack supply-chain campaign
+        — TeamPCP-attributed worm corpus-anchored via VT-006 / CVE-
+        2026-45321; OpenAI bounded-scope per internal investigation
+        [no customer data / no production / no IP / no deployed
+        software]; multi-platform code-signing-cert rotation [macOS
+        + Windows + iOS + Android]; macOS app version-update deadline
+        2026-06-12 (30-day grace window); MSTIC referenced for related
+        Linux-malware variants secondary attribution; Socket + Aikido
+        as researcher-tracking layer; FIRST NAMED-ENTERPRISE-VICTIM
+        CONFIRMATION in Archimedes corpus on VT-006; A2 anchored on
+        OpenAI self-disclosure as named-victim primary (procedurally
+        A on own breach scope per vendor-self-disclosure precedent)
+        + BleepingComputer relay + MSTIC Linux-variants secondary +
+        VT-006 attribution chain carry-forward; OpenAI-internal-
+        breach-scope layer single-primary-origin (by design — victim's
+        internal investigation is source-of-truth on internal scope);
+        single-source veto on bounded-scope claim; WEP campaign-
+        existence + TeamPCP attribution very_likely (VT-006 corpus-
+        anchored); WEP OpenAI-bounded-scope likely; WEP multi-
+        platform cert-rotation very_likely; A&D / DIB direct: NONE
+        (OpenAI is AI-sector); INDIRECT via @squawk aviation namespace
+        dependency-graph reach unverified to Tier-1 A&D primes;
+        **analyst_review_required: true** — ACH on @squawk-A&D-prime-
+        exposure hypothesis (H1 victims awaiting disclosure / H2
+        dependency-graph doesn't reach / H3 victims not yet disclosed),
+        MSTIC Linux-variants attribution layer development, cert-
+        rotation cadence as industry precedent for A&D-prime
+        benchmarking, vuln-tracker handoff for VT-006 dossier
+        scaffolding; red_team_review_required: false [downstream
+        victim confirmation not fresh-disclosure; attribution corpus-
+        anchored; no Archimedes-originating-attribution risk; not
+        triggered]; one librarian handoff queued for socket provisional
+        B first-citation entry [cross-cited with finding-2026-05-14-
+        0009]).
+      finding-2026-05-14-0009 (Socket + StepSecurity identify three
+        backdoored node-ipc npm versions [9.1.6, 9.2.3, 12.0.1]
+        published by "atiertant" account with no-prior-publish-history;
+        last legitimate publish August 2024; ~90 credential categories
+        exfil scope spanning developer-credential + cloud-secret
+        categories; C2 sh.azurestaticprovider[.]net; dual-channel
+        exfil HTTPS-POST + DNS-TXT-record-encoding; dual-DNS-resolver
+        fallback 1.1.1.1 + 8.8.8.8 evasion pattern; UNATTRIBUTED at
+        disclosure — Socket + StepSecurity explicitly decline TeamPCP
+        / Shai-Hulud / Mini Shai-Hulud lineage claim despite
+        operational adjacency to VT-006; compromise vector undetermined
+        across three hypotheses (credential-takeover, unauthorized
+        maintainer-addition, sock-puppet); B2 anchored on Socket +
+        StepSecurity co-originating-primary research at Tier-2 npm-
+        security-specialist provisional B grade per same precedent
+        as StepSecurity / SafeDep / Aikido / Sysdig / Zellic;
+        independence test PASSES at vendor-research layer (two
+        independent investigations on same event, different
+        methodology) but held at grade 2 conservatively pending
+        independent-vs-joint-publication distinction verification;
+        no single-source veto applied; WEP three-version-published
+        + C2-active + dual-channel-exfil very_likely; WEP ninety-
+        credential-categories + compromise-vector likely; WEP
+        unattributed-status very_likely (negative claim verbatim
+        preservation per Hard Rule 2); indirect A&D / DIB relevance
+        via dependency-graph reach unverified; **analyst_review_
+        required: true** — ACH on cluster-membership question (H1
+        separate cluster per Socket+StepSecurity / H2 TeamPCP family
+        expansion not yet detected / H3 different unattributed actor
+        with overlapping tradecraft), compromise-vector distinguishing
+        across three hypotheses, dependency-graph reach to A&D primes
+        SBOM-scan investigation, VT-006-vs-new-VT-entry decision for
+        vuln-tracker, C2 domain enrichment via VT / Shodan / WHOIS;
+        red_team_review_required: false [WEP at likely; no A&D-prime
+        victim; no CVE; no active exploitation against named victim;
+        attribution explicitly unstated; not triggered]; one librarian
+        handoff queued for socket provisional B first-citation entry
+        [cross-cited with finding-2026-05-14-0008]).
+
+    Sentinel handling:
+      raw-2026-05-14-pm-000 (sentinel tombstone PM sweep summary)
+      processed as audit-trail-only per design (promotion_disposition:
+      non_promotable_sentinel_tombstone_no_grading_required). Operational
+      sweep summary documenting 5 substantive raw-signal items (PM-001
+      through PM-005), 16 anti-noise-lockout discards, 7 source-health
+      state changes, and 4 provisional-source-grade flags. Retained
+      per 90-day raw-signal retention policy for audit-trail
+      completeness.
+
+    Six librarian handoffs queued from afternoon-20260514-160000:
+      (1) Add `cisco-talos` to source-grades.yaml `vendor_sources`
+          at provisional A grade (parallels Mandiant / CrowdStrike
+          / Unit 42 / MSTIC / Sophos / ESET / Dragos / SentinelOne
+          / Wiz / Snyk / Bitdefender / Symantec / F5 / kernel-org-
+          netdev provisional-A precedent series; rationale in
+          finding-2026-05-14-0005 source-reliability block).
+          First-citation surface finding-2026-05-14-0005; second-
+          cross-corroboration-cycle in 8h with finding-2026-05-14-0007
+          (TernDoor attribution layer on Salt Typhoon Azerbaijan).
+      (2) Add `darktrace` to source-grades.yaml `vendor_sources`
+          at provisional A grade (same Tier-1 vendor research
+          precedent; rationale in finding-2026-05-14-0007 source-
+          reliability block). First-citation surface finding-2026-
+          05-14-0007 (Twill Typhoon Asia-Pacific FDMTP RAT primary).
+      (3) Add `socket` to source-grades.yaml `vendor_sources` at
+          provisional B grade (parallels StepSecurity / SafeDep /
+          Aikido / Sysdig / Zellic Tier-2 specialist precedent;
+          rationale in finding-2026-05-14-0008 + finding-2026-05-
+          14-0009 source-reliability blocks). First-citation across
+          TWO findings this brief cycle (researcher-tracking layer
+          on OpenAI TanStack + co-originating primary on node-ipc
+          3-version backdoor).
+      (4) vuln-tracker handoff: add CVE-2026-20182 to
+          vulnerabilities/_index.yaml as new VT entry (KEV-listed,
+          CVSS 10.0, active ITW exploitation, FedRAMP-Government
+          deployment tier, 3-day federal deadline). Recommend full
+          dossier scaffold (profile.md + tracking.yaml).
+      (5) vuln-tracker handoff: scaffold VT-006 dossier (profile.md
+          + tracking.yaml) currently null per _index.yaml note;
+          OpenAI named-enterprise-victim confirmation adds watch-
+          signals layer worth structured tracking.
+      (6) vuln-tracker handoff: consider new VT entry for node-ipc
+          3-version backdoor cluster (operationally adjacent to but
+          DISTINCT from VT-006; no CVE assigned; researcher-coined
+          working name; explicit unattributed status per Socket +
+          StepSecurity).
+
+    Actor-profiler handoffs queued from afternoon-20260514-160000:
+      (1) /new-actor candidacy STRONG: Secret Blizzard / Turla
+          (finding-2026-05-14-0006). Russian FSB Center 16 attribution
+          per CISA-via-MSTIC citation; long-running multi-A-grade
+          source track record; explicit A&D-prime-relevant targeting
+          language; fills structural roster gap (no FSB representation
+          in current roster of 24 actors; GRU + SVR only).
+      (2) /new-actor candidacy MEDIUM: Twill Typhoon / Mustang Panda
+          / TA416 (finding-2026-05-14-0007). Chinese MSS attribution
+          per community-tracked taxonomy; well-tracked elsewhere
+          historically; fills civil-society / Asia-regional targeting
+          niche; medium roster-gap significance.
+      (3) /new-actor candidacy MEDIUM (TENTATIVE): UAT-8616 (finding-
+          2026-05-14-0005). Talos-named cluster with 2-year track
+          record across CVE-2026-20127 → CVE-2026-20182; ORB-
+          infrastructure overlap observed (procedural, NOT
+          attribution); single-vendor designation; Hard Rule 2 binds
+          Archimedes from extrapolating ORB-overlap to nation-state
+          attribution. Operator may consider /new-actor invocation
+          with awareness that scoring methodology will reflect
+          single-vendor attribution layer.
+
+    Three /new-actor candidates surfaced today (combined with finding-
+    2026-05-14-0001 FrostyNeighbor / UNC1151 from morning brief — total
+    four /new-actor candidates in one brief cycle when including
+    UAT-8616). Operator may consider batched /new-actor handling vs
+    sequential per cadence preference.
+
+    Analyst handoffs (NOT blocking afternoon brief — all five findings
+    carry analyst_review_required: true):
+      finding-2026-05-14-0005 (UAT-8616 SD-WAN) — /new-actor candidacy
+        + attribution corroboration watch + A&D FedRAMP-vs-On-Premises
+        ACH + vuln-tracker handoff.
+      finding-2026-05-14-0006 (Secret Blizzard / Kazuar) — /new-actor
+        candidacy STRONG + Aqua Blizzard relationship documentation +
+        historical-vs-active-campaign ACH on targeting language +
+        independent corroboration watch on architectural-evolution.
+      finding-2026-05-14-0007 (Salt Typhoon + Twill Typhoon) —
+        /new-actor candidacy for Twill Typhoon + anti-noise lockout
+        state on Salt Typhoon + TernDoor cross-vendor mapping +
+        attribution corroboration watch.
+      finding-2026-05-14-0008 (OpenAI TanStack) — ACH on @squawk-
+        A&D-prime-exposure hypothesis + MSTIC Linux-variants
+        attribution layer + cert-rotation cadence industry precedent
+        + VT-006 dossier scaffolding handoff.
+      finding-2026-05-14-0009 (node-ipc 3-version backdoor) — ACH on
+        cluster-membership question + compromise-vector distinguishing
+        + dependency-graph reach to A&D primes SBOM-scan +
+        VT-006-vs-new-VT decision + C2 domain enrichment.
+
+    Red-team handoff (NOT blocking afternoon brief):
+      finding-2026-05-14-0005 (UAT-8616 SD-WAN) carries
+      red_team_review_required: true — WEP procedural-facts ceiling
+      very_likely + KEV-deadline-3-days + active exploitation +
+      tracked-cluster claim warrants red-team challenge. Argue
+      against: (1) UAT-8616 attribution stability under independent
+      corroboration absence; (2) FedRAMP-Government-deployment-tier
+      direct-exposure framing for A&D primes; (3) ORB-infrastructure-
+      overlap procedural-observation-vs-attribution-extrapolation
+      boundary discipline; (4) 3-day federal deadline operational
+      urgency for DIB contractors with federal-network interconnects.
+      Other four findings have red_team_review_required: false (WEP
+      at likely; no operational urgency exceeding threshold; no
+      first-time-attribution risk for Archimedes).
+
+  prior_run: morning-20260514-080000
+  prior_run_rejections: 0
+  prior_run_note: >
+    morning-20260514-080000 produced 0 rejections and 4 promotions
+    (finding-2026-05-14-0001 FrostyNeighbor / UNC1151 ESET primary;
+    finding-2026-05-14-0002 NGINX Rift K000160932 / CVE-2026-42945
+    F5 provisional A first-citation; finding-2026-05-14-0003
+    Fragnesia CVE-2026-46300 kernel-org-netdev provisional A + Zellic
+    provisional B; finding-2026-05-14-0004 Sysdig PraisonAI CVE-2026-
+    44338 scanner velocity provisional B). No rejection entries
+    written; audit-trail block not previously updated for this run.
+
+  prior_run_replaced_below: flash-grade-20260513-180500
+  prior_run_replaced_note: >
     flash-grade-20260513-180500 (FLASH fast-path single-item grading) produced
     1 promotion and 2 collector-side discard audit-trail entries (formalized
     by grader per LEGAL-POLICY 1-year retention discipline; collector pre-

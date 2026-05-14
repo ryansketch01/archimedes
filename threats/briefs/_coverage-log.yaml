@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-14T08:00:00-04:00
+last_updated: 2026-05-14T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -5372,7 +5372,7 @@ entries:
       Nvidia) of data theft → lifts F-grade on data-volume claim.
 
   - id: 2026-05-13-flash-1430-001
-    covered_in: [flash-2026-05-13-1430, 2026-05-13-afternoon]
+    covered_in: [flash-2026-05-13-1430, 2026-05-13-afternoon, 2026-05-14-afternoon]
     brief_file: threats/briefs/2026-05-13-flash-1430-famoussparrow-salt-typhoon-azerbaijan-energy.md
     headline: "Bitdefender attributes multi-wave Exchange intrusion against Azerbaijani oil & gas (Dec 2025 — Feb 2026) to FamousSparrow at moderate-to-high confidence — alias for Salt Typhoon (#010, HIGH, China MSS) per _roster.yaml; n-day ProxyShell + ProxyNotShell initial access; seven new tradecraft observations (Deed RAT 0xFF66ABCD + Deflate, Mofu Loader → TernDoor, LogMeIn Hamachi DLL sideloading with exported-function override, three-wave persistence, TernDoor target-set expansion from South American telecom to South Caucasus energy); two VT-confirmed C2 domains (sentinelonepro[.]com, virusblocker[.]it[.]com); Splunk first-party clean on full IOC set over 30d"
     topic_tags:
@@ -5531,7 +5531,7 @@ entries:
       - ad_prime_victim_named_in_followup_reporting
       - second_ir_grade_source_corroborates_lifts_wep_to_very_likely
     first_covered: 2026-05-13
-    last_covered: 2026-05-13
+    last_covered: 2026-05-14
     retraction: null
     test: false
     notes: |
@@ -6211,7 +6211,7 @@ entries:
       continues.
 
   - id: 2026-05-14-am-001
-    covered_in: [2026-05-14-morning]
+    covered_in: [2026-05-14-morning, 2026-05-14-afternoon]
     brief_file: threats/briefs/2026-05-14-morning.md
     headline: "UPDATE — Copy Fail (CVE-2026-31431) federal KEV deadline T-1 day (2026-05-15); A&D forcing function via DFARS/CMMC/partner-required-patch (not BOD-22-01 itself which does not bind contractors); KEV-listed since 2026-05-01, well-managed estates should already be patched; today is recovery framing for the 2026-05-01 KEV-add Archimedes did not FLASH at the time"
     topic_tags:
@@ -6757,6 +6757,734 @@ entries:
       - actor_profiler_handoff_queued:
           - UNC1151 / Ghostwriter — /new-actor candidacy assessment with Threat-Box evidence-minimum-table review
     resurface_if: []  # brief-meta entry — not resurfaced
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+
+  - id: 2026-05-14-pm-001
+    covered_in: [2026-05-14-afternoon]
+    brief_file: threats/briefs/2026-05-14-afternoon.md
+    headline: "CISA KEV adds CVE-2026-20182 Cisco Catalyst SD-WAN Controller auth bypass (CVSS 10.0, vdaemon DTLS/UDP-12346, pre-auth) with 3-day federal deadline (dueDate 2026-05-17) under Emergency Directive 26-03; Talos attributes active ITW exploitation to UAT-8616 at high confidence with SSH-keys+NETCONF+root post-compromise pattern (Talos-described, not UAT-8616-diagnostic) and ORB infrastructure overlap (procedural observation, not nation-state); Cisco SD-WAN for Government (FedRAMP) tier explicitly in scope; Rapid7's Burgess+Fewer discoverers; first CVSS 10.0 CVE in corpus; UAT-8616 NOT in roster (/new-actor candidacy strong); single-source veto on attribution layer (Talos sole originating primary, no Mandiant/MSTIC/CrowdStrike/Unit 42 parallel); Talos's 10 published IOCs are for EARLIER CVE-2026-20133/20128/20122 cohort, NOT UAT-8616-attributed"
+    topic_tags:
+      - cve
+      - cve-2026-20182
+      - cisco
+      - cisco-catalyst-sd-wan
+      - cisco-catalyst-sd-wan-controller-vsmart
+      - cisco-catalyst-sd-wan-manager-vmanage
+      - vdaemon
+      - dtls-udp-12346
+      - cvss-10-maximum-severity
+      - kev
+      - kev-3-day-federal-deadline
+      - emergency-directive-26-03
+      - bod-22-01-civilian-only-ad-via-dfars-cmmc-partner-required-patch
+      - fedramp-government-tier-in-scope
+      - cisa-kev-a-grade
+      - cisco-psirt-a-grade-vendor-self-disclosure
+      - cisco-talos-provisional-a-first-citation
+      - rapid7-discoverer-credit-burgess-fewer
+      - uat-8616-cluster
+      - uat-8616-not-in-roster
+      - new-actor-candidacy-uat-8616
+      - talos-high-confidence-attribution-language-preserved
+      - single-source-veto-on-uat-8616-attribution
+      - ssh-keys-netconf-root-post-compromise-pattern
+      - talos-described-not-uat-8616-diagnostic
+      - canonical-sd-wan-controller-compromise-shape
+      - orb-infrastructure-overlap-procedural-not-nation-state
+      - hard-rule-2-no-volt-typhoon-no-salt-typhoon-no-china-mss-extrapolation
+      - cve-2026-20127-prior-uat-8616-target-since-2023
+      - cve-2026-20133-20128-20122-earlier-cohort-not-uat-8616
+      - zerozenx-poc-xenshell-earlier-cohort
+      - red-team-sign-off-with-caveats-c1-through-c6
+      - red-team-c1-per-talos-attribution-language
+      - red-team-c2-2-year-continuity-as-talos-tracking-not-fact
+      - red-team-c3-talos-described-not-uat-8616-signature
+      - red-team-c4-orb-procedural-no-nation-state-inference
+      - red-team-c5-10-iocs-earlier-cohort-not-uat-8616
+      - red-team-c6-fedramp-tier-scope-ad-prime-posture-unverified
+      - splunk-first-party-clean-30d
+    related_actors:
+      - actor_name: "UAT-8616"
+        in_roster: false
+        claimed_by: cisco-talos
+        confidence_term: "high confidence (per Talos)"
+        nation_state_link: not_made
+        archimedes_treatment: per_talos_no_origination_hard_rule_2_c1_c4_preserved
+        new_actor_candidate_flagged: true
+        candidacy_basis: "Multi-year Talos cluster-tracking (CVE-2026-20127 → CVE-2026-20182); operationally urgent given 3-day KEV deadline."
+    related_vulns:
+      - cve: CVE-2026-20182
+        cvss: 10.0
+        kev: true
+        kev_added: 2026-05-14
+        kev_due_date: 2026-05-17
+        federal_deadline_window: 3_day_emergency_directive_26_03
+        vendor: Cisco
+        product: Catalyst SD-WAN Controller / Manager
+        cwe: CWE-287
+        exploitation_status: active_in_the_wild_limited_per_cisco
+        a_and_d_scope: fedramp_government_tier_explicitly_listed_a_and_d_prime_posture_not_independently_verified
+        discoverer: rapid7_burgess_fewer
+        attribution_cluster: uat_8616_talos_high_confidence_single_source_veto
+      - cve: CVE-2026-20127
+        relationship: prior_uat_8616_target_since_2023
+      - cves: [CVE-2026-20133, CVE-2026-20128, CVE-2026-20122]
+        relationship: earlier_cohort_separate_clusters_NOT_uat_8616_attributed_under_talos_framing
+    related_campaigns: []
+    finding_ids: [finding-2026-05-14-0005]
+    digraph: A2
+    digraph_layered:
+      procedural_kev_listing: A1
+      cisco_psirt_advisory: A1
+      active_exploitation_per_cisco_limited_framing: A2
+      uat_8616_cluster_attribution: A2
+      orb_overlap_procedural: A2
+    wep: likely
+    wep_layered:
+      procedural_facts_cve_kev_ed_active_exploitation_fedramp: very_likely
+      uat_8616_cluster_attribution: likely
+      uat_8616_2yr_track_record_cve_20127_to_cve_20182: likely
+      ad_sector_fedramp_government_direct_exposure: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: uat_8616_attribution_only_not_procedural_kev_facts
+    red_team_review_complete: true
+    red_team_outcome: qualify
+    red_team_caveats_propagated: [C1, C2, C3, C4, C5, C6]
+    hard_rule_2_framings_load_bearing:
+      - "Talos attributes UAT-8616 active exploitation at Talos's stated high confidence — Archimedes does not collapse to confident attribution or originate the cluster designation"
+      - "SSH-keys + NETCONF + root is Talos-described post-compromise pattern, NOT UAT-8616-diagnostic; canonical SD-WAN-controller compromise shape"
+      - "ORB infrastructure overlap is procedural observation, not nation-state attribution; do NOT mention Volt Typhoon, Salt Typhoon, China-MSS"
+      - "Talos's 10 published IOCs are EARLIER CVE-2026-20133/20128/20122 cohort, NOT UAT-8616-attributed under Talos's own framing"
+      - "FedRAMP-Government tier is in-scope per Cisco PSIRT; A&D-prime deployment posture across the tier is not independently verified by Archimedes"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "16 cluster IPs from EARLIER cohort + keyword tokens (CVE-2026-20182, UAT-8616)"
+      hard_rule_8_framing: silence_is_not_disconfirming
+      caveat: "16 IPs are EARLIER-cohort IOCs (per Talos), NOT UAT-8616-attributed; first-party sweep on UAT-8616-specific infrastructure not possible at evaluation (Talos published no UAT-8616 CVE-2026-20182-specific IOCs beyond behavioral pattern)"
+    librarian_handoffs_queued:
+      - action: add_source_provisional
+        source_yaml_id: cisco-talos
+        proposed_grade: A
+        rationale: "Tier-1 vendor research practice per Mandiant/CrowdStrike/Unit 42/MSTIC/Sophos/ESET/Dragos/SentinelOne/Wiz/Snyk/Bitdefender/Symantec precedent. First-citation today (PM-001 UAT-8616 SD-WAN); second cross-corroboration today (PM-003 SecurityWeek Salt Typhoon TernDoor)."
+      - action: add_to_vuln_index
+        vt_id: VT-011
+        cve: CVE-2026-20182
+        proposed_dossier_path: threats/vulnerabilities/Cisco-SDWAN-CVE-2026-20182/
+    actor_profiler_handoff_queued: true
+    actor_profiler_handoff_reason: "UAT-8616 /new-actor candidacy. Multi-year Talos cluster-tracking; 3-day KEV deadline operational urgency. Per actor-profiler standard, Intent dimension scoring would depend on evidence-minimum-table application to FedRAMP-Government A&D-prime targeting; Capability scoring weighted by 2-year persistence + zero-day cadence on Cisco SD-WAN appliances."
+    resurface_if:
+      - independent_second_source_corroborates_uat_8616_attribution_lifts_to_very_likely_triggers_red_team
+      - mandiant_mstic_crowdstrike_unit42_parallel_attribution_within_72h
+      - talos_publishes_uat_8616_specific_cve_2026_20182_iocs_beyond_behavioral_pattern
+      - first_party_splunk_observation_ssh_key_netconf_root_pattern_on_cisco_sd_wan_appliances
+      - ad_prime_named_as_victim_in_followup_reporting
+      - additional_cve_2026_20182_attribution_to_different_cluster_h5_composite_promoted
+      - kev_deadline_compliance_observation_at_2026_05_17
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      Red-team SIGN-OFF-WITH-CAVEATS verdict (qualify). Six load-bearing
+      caveats (C1-C6) preserved verbatim in brief framing per red-team
+      directive:
+        C1 — "Per Talos" attribution language; preserve "high confidence" hedge
+        C2 — 2-year continuity framed as Talos tracking, NOT established fact
+        C3 — SSH-keys+NETCONF+root is Talos-described pattern, NOT UAT-8616 signature
+        C4 — ORB overlap procedural; NO Volt Typhoon / Salt Typhoon / China-MSS inference
+        C5 — 10 IOC cohort is EARLIER-CVE cohort, NOT UAT-8616
+        C6 — FedRAMP-Government tier in-scope; A&D-prime deployment posture unverified
+
+      Recalibration watch: Mandiant / MSTIC / CrowdStrike / Unit 42 parallel
+      UAT-8616 attribution within 72h would lift WEP to very_likely and
+      trigger red-team rerun. KEV deadline compliance observation at
+      2026-05-17 is the operational milestone.
+
+  - id: 2026-05-14-pm-002
+    covered_in: [2026-05-14-afternoon]
+    brief_file: threats/briefs/2026-05-14-afternoon.md
+    headline: "Microsoft MSTIC publishes Kazuar architectural deep-dive — Secret Blizzard / Turla / FSB Center 16 has evolved Kazuar from traditional backdoor into modular peer-to-peer botnet ecosystem (Kernel + Bridge + Worker three-module architecture, leader-election protocol, Pelmeni hostname-bound dropper plus separate .NET loader chain, EWS/HTTP/WSS triple-channel fallback C2, 150 embedded config types, 4 sample SHA256 hashes published); MSTIC + CISA citation multi-source on actor attribution (Secret Blizzard = VENOMOUS BEAR = Uroburos = Snake = Blue Python = Turla = WRAITH = ATG26 = FSB Center 16); single-MSTIC-origin on architectural-evolution layer (single-source veto, WEP likely); targeting language verbatim 'defense departments and defense-related companies worldwide' is most likely historical/ongoing-baseline framing per analyst ACH, NOT 2026-active-A&D-campaign signal; Secret Blizzard / Turla NOT in roster (FSB Center 16 gap); /new-actor candidacy strong"
+    topic_tags:
+      - mstic
+      - microsoft-threat-intelligence
+      - kazuar
+      - kazuar-modular-p2p-botnet
+      - kazuar-kernel-bridge-worker-three-module-architecture
+      - kazuar-leader-election-protocol
+      - kazuar-pelmeni-dropper-hostname-bound-encrypted
+      - kazuar-dotnet-loader-com-object
+      - kazuar-ews-http-wss-triple-channel-c2
+      - kazuar-150-config-types-embedded
+      - secret-blizzard
+      - turla
+      - venomous-bear
+      - uroburos
+      - snake
+      - blue-python
+      - wraith
+      - atg26
+      - fsb-center-16
+      - cisa-prior-attribution-cited-by-mstic
+      - secret-blizzard-not-in-roster
+      - russian-state-fsb-roster-gap
+      - new-actor-candidacy-secret-blizzard
+      - defense-related-companies-worldwide-targeting-language
+      - historical-baseline-framing-per-analyst-ach-not-2026-active-campaign
+      - architectural-analysis-not-fresh-incident-attribution
+      - no-2026-victim-named-by-mstic
+      - aqua-blizzard-victim-overlap-ukraine
+      - aqua-blizzard-gamaredon-primitive-bear-shuckworm-community-taxonomy
+      - 4-sha256-sample-hashes-loader-kernel-bridge-worker
+      - microsoft-defender-detection-family-kazuar-oa-ob
+      - single-source-veto-on-architectural-evolution
+      - wep-capped-at-likely-on-architectural-evolution
+      - mstic-cisa-multi-source-on-actor-attribution
+      - hard-rule-2-attribution-via-cited-sources
+      - splunk-first-party-clean-30d-on-4-hashes-plus-7-actor-name-tokens
+    related_actors:
+      - actor_name: "Secret Blizzard / Turla / VENOMOUS BEAR / Uroburos / Snake / Blue Python / WRAITH / ATG26"
+        in_roster: false
+        claimed_by: [mstic, cisa-advisories]
+        nation_state: RU
+        nation_state_service: FSB Center 16
+        archimedes_treatment: multi_source_attribution_chain_mstic_plus_cisa_citation
+        new_actor_candidate_flagged: true
+        candidacy_basis: "Long-running A-grade source coverage (Mandiant + Microsoft + ESET + Kaspersky + Symantec since 2014). CISA attribution to FSB Center 16 cited verbatim. Roster gap (no FSB Center 16 representation; current Russian coverage GRU APT28 #006 + Sandworm #007, SVR APT29 #009). Explicit defense-related-companies-worldwide targeting framing."
+      - actor_name: "Aqua Blizzard"
+        aliases_inferred: [Gamaredon, Primitive Bear, Shuckworm]
+        in_roster: false
+        relationship_to_secret_blizzard: prior_access_overlap_in_ukraine_targets_per_mstic
+        claimed_by: [mstic]
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-14-0006]
+    digraph: A2
+    digraph_layered:
+      mstic_architectural_analysis: A2
+      cisa_fsb_center_16_attribution_via_mstic_citation: A1
+      secret_blizzard_alias_taxonomy: A1
+      sample_sha256_publication: A1
+      defense_related_companies_worldwide_targeting_language: A2
+    wep: likely
+    wep_layered:
+      actor_attribution_secret_blizzard_to_fsb_center_16: very_likely
+      alias_taxonomy_venomous_bear_turla_snake_uroburos: very_likely
+      architectural_evolution_modular_p2p_botnet: likely
+      defense_related_companies_worldwide_targeting_language: likely
+      ad_sector_2026_active_campaign_signal_reading: unlikely
+    single_source_veto_applied: true
+    single_source_veto_scope: architectural_evolution_layer_only_not_actor_attribution
+    red_team_review_required: false
+    red_team_review_required_basis: "WEP architectural-evolution ceiling at likely (single-source veto applied); WEP attribution very_likely but multi-source-corroborated via CISA citation (no first-time-attribution risk for Archimedes per Hard Rule 2); no operational urgency (architectural analysis, not fresh-incident)"
+    hard_rule_2_framings_load_bearing:
+      - "MSTIC + CISA citation makes the actor attribution; Archimedes carries the citation chain"
+      - "MSTIC's 'defense departments and defense-related companies worldwide' is targeting-language preservation under quote discipline (15 words exactly, single MSTIC quote in brief)"
+      - "Per analyst ACH, targeting language is historical/ongoing-baseline framing — Archimedes does NOT amplify to 2026-active-A&D-campaign reading"
+      - "Architectural-analysis-not-fresh-incident-attribution distinction preserved verbatim"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "4 sample SHA256 hashes (Loader + Kernel + Bridge + Worker modules) + 7 actor-name tokens"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    librarian_handoffs_queued:
+      - action: add_to_iocs_index
+        new_hashes: 4
+        related_vt: null
+    actor_profiler_handoff_queued: true
+    actor_profiler_handoff_reason: "Secret Blizzard / Turla /new-actor candidacy. Russian roster currently GRU+SVR; FSB Center 16 gap. Multi-A-grade source coverage (MSTIC today + Mandiant + Unit 42 + ESET + Kaspersky + Symantec historical). Threat-Box scoring with evidence-minimum-table application: Intent dimension hinges on whether 'defense-related companies worldwide' meets target-specific A&D-prime targeting under analyst ACH (per analyst, historical/baseline reading dominates; Intent likely capped at 3-4 not 5)."
+    resurface_if:
+      - mstic_followup_names_2026_q1_q2_victim_in_ad_sector
+      - cisa_fbi_nsa_joint_advisory_naming_2026_secret_blizzard_ad_victims
+      - first_party_splunk_detection_on_kazuar_sample_hashes
+      - independent_second_source_corroborates_architectural_evolution_lifts_to_a1
+      - unit42_mandiant_eset_kaspersky_followup_kazuar_p2p_research
+      - new_kazuar_sample_or_module_publication
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      Architectural-analysis-not-fresh-incident-attribution framing preserved
+      verbatim. MSTIC's 15-word targeting-language quote is single MSTIC quote
+      in the brief (quote discipline clean). Analyst ACH ranking
+      historical-baseline reading first is preserved as the dominant reading;
+      a 2026-active-A&D-campaign reading flagged as unlikely without additional
+      evidence MSTIC has not surfaced. /new-actor candidacy paired with three
+      others this brief cycle.
+
+  - id: 2026-05-14-pm-003
+    covered_in: [2026-05-14-afternoon]
+    brief_file: threats/briefs/2026-05-14-afternoon.md
+    headline: "SecurityWeek (Ionut Arghire) aggregates two parallel Chinese-APT campaigns — Salt Typhoon (Earth Estries / FamousSparrow / GhostEmperor / UNC2286, roster #010) Azerbaijani O&G December 2025 → February 2026 carry-forward from yesterday's 14:30 FLASH (Bitdefender originating primary; lockout expired today 14:30 EDT; no new independent Salt-Typhoon-Azerbaijan primary post-expiration); Twill Typhoon (Bronze President / Camaro Dragon / Earth Preta / Mustang Panda / TA416) Asia-Pacific September 2025 → April 2026 net-new framing with FDMTP modular .NET RAT framework (system fingerprinting + command execution + Windows task manipulation + registry persistence + process management + file/command retrieval) per Darktrace single-source; Cisco Talos third-vendor on TernDoor backdoor-family-to-Salt-Typhoon mapping (independent of Bitdefender, second cross-corroboration cycle in 8h with PM-001); Twill Typhoon NOT in Archimedes roster (/new-actor candidacy flagged); financial-sector targeting is outlier vs. Mustang Panda's historical NGO/journalist/ethnic-minority profile (analyst caveat for future profile); no A&D-prime direct targeting in either campaign"
+    topic_tags:
+      - securityweek
+      - securityweek-aggregator
+      - ionut-arghire-byline
+      - bitdefender-salt-typhoon-azerbaijan-carry-forward
+      - darktrace-twill-typhoon-apac-fdmtp-net-new
+      - cisco-talos-terndoor-attribution-second-cross-corroboration-cycle
+      - salt-typhoon
+      - salt-typhoon-roster-id-010
+      - famoussparrow-earth-estries-ghostemperor-unc2286-aliases
+      - azerbaijani-oil-and-gas
+      - proxynotshell-cve-2022-41040-cve-2022-41082
+      - deed-rat
+      - terndoor-backdoor
+      - dll-sideloading
+      - impacket-tools
+      - twill-typhoon
+      - mustang-panda
+      - bronze-president-camaro-dragon-earth-preta-ta416-aliases
+      - twill-typhoon-not-in-roster
+      - new-actor-candidacy-twill-typhoon
+      - fdmtp-modular-dotnet-rat-framework
+      - financial-sector-outlier-vs-mustang-panda-historical-ngo-journalist-profile
+      - apac-japan-targeting-geography
+      - september-2025-to-april-2026-eight-month-campaign
+      - 24h-post-flash-lockout-expired-1430-edt
+      - no-new-independent-salt-typhoon-azerbaijan-primary-post-expiration
+      - aggregator-relay-not-independent-grade-weight
+      - single-source-veto-on-twill-typhoon-attribution-darktrace
+      - single-source-veto-on-salt-typhoon-azerbaijan-bitdefender
+      - terndoor-third-vendor-corroboration-malware-family-mapping
+      - terndoor-not-azerbaijan-victim-corroboration
+      - hard-rule-2-no-ad-prime-extrapolation
+      - critical-infrastructure-energy-sector-watchlist-not-ad-watchlist
+      - apac-financial-sector-watchlist-not-ad-watchlist
+      - chinese-mss-attributed-by-bitdefender-and-darktrace
+      - splunk-first-party-clean-30d
+    related_actors:
+      - actor_id: "010"
+        actor_name: Salt Typhoon
+        aliases: [Earth Estries, FamousSparrow, GhostEmperor, UNC2286]
+        in_roster: true
+        relationship: carry_forward_from_2026_05_13_flash_no_new_content_post_lockout
+        terndoor_third_vendor_corroboration: cisco-talos
+      - actor_name: "Twill Typhoon / Mustang Panda / Bronze President / Camaro Dragon / Earth Preta / TA416"
+        in_roster: false
+        claimed_by: darktrace
+        nation_state: CN
+        nation_state_service: MSS
+        new_actor_candidate_flagged: true
+        candidacy_basis: "Long-running well-tracked CN-MSS-aligned cluster across SecureWorks + Check Point + Trend Micro + CrowdStrike + Proofpoint pre-2026 corpus. Roster gap (China-quadrant has Salt Typhoon #010, Volt Typhoon #008, APT40 #017, APT41 #019; Mustang Panda fills civil-society / NGO / Asia-regional niche)."
+        analyst_caveat_for_future_profile: "Financial-sector targeting is an outlier vs. historical NGO/journalist/ethnic-minority profile; analyst flagged for /new-actor profile if scaffolded."
+    related_vulns:
+      - cves: [CVE-2022-41040, CVE-2022-41082]
+        class: proxynotshell_exchange_chain
+        role: salt_typhoon_initial_access_azerbaijani_og_2025_12_to_2026_02
+        archimedes_corpus_status: historical_exploit_class
+    related_campaigns:
+      - salt-typhoon-azerbaijan-oil-gas-2025-12-to-2026-02
+      - twill-typhoon-apac-2025-09-to-2026-04-fdmtp
+    finding_ids: [finding-2026-05-14-0007]
+    digraph: A2
+    digraph_layered:
+      salt_typhoon_azerbaijan_carry_forward: A2
+      twill_typhoon_apac_fdmtp_campaign: A2
+      alias_taxonomy_both_clusters: A1
+      proxynotshell_initial_access_class_historical: A1
+      fdmtp_modular_dotnet_rat_capabilities: A2
+      terndoor_talos_attribution_layer: A2
+    wep: likely
+    wep_layered:
+      alias_taxonomy_salt_typhoon: very_likely
+      alias_taxonomy_twill_typhoon: very_likely
+      salt_typhoon_azerbaijan_corroboration_carry_forward: likely
+      twill_typhoon_apac_fdmtp_campaign_attribution: likely
+      fdmtp_modular_dotnet_rat_capabilities: likely
+      terndoor_backdoor_family_attribution_to_salt_typhoon: likely
+      ad_sector_no_direct_a_and_d_prime_targeting_in_this_surface: very_likely
+    single_source_veto_applied: true
+    single_source_veto_scope: campaign_attribution_both_clusters_salt_typhoon_and_twill_typhoon
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Bitdefender attributes Salt Typhoon Azerbaijan; Darktrace attributes Twill Typhoon APAC FDMTP; Cisco Talos attributes TernDoor → Salt Typhoon — Archimedes carries the citations, no origination"
+      - "Salt Typhoon Azerbaijan is anti-noise carry-forward from finding-2026-05-13-FLASH-0001; SecurityWeek today is aggregator-relay, not independent corroboration"
+      - "TernDoor-to-Salt-Typhoon (Talos) is third-vendor corroboration at the malware-family-to-actor mapping layer, NOT corroboration on the Azerbaijan victim claim itself"
+      - "Neither campaign has US-A&D-prime direct victim — critical-infrastructure-energy (Azerbaijani O&G) and APAC-financial+unspecified are sector-watchlist context, not A&D-watchlist hits"
+      - "Twill Typhoon /new-actor candidacy carries financial-sector-outlier caveat for future profile scaffolding"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "Salt Typhoon + alias tokens + Twill Typhoon + alias tokens + FDMTP + TernDoor + Deed RAT + ProxyNotShell + sentinelonepro.com"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    librarian_handoffs_queued:
+      - action: add_source_provisional
+        source_yaml_id: darktrace
+        proposed_grade: A
+        rationale: "Tier-1 vendor research practice per Mandiant/CrowdStrike/Unit 42/MSTIC/Sophos/ESET/Dragos/SentinelOne/Wiz/Snyk/Bitdefender/Symantec/F5/Cisco Talos precedent. First-citation today on Twill Typhoon APAC FDMTP."
+      - action: cross_corroboration_cycle_cisco_talos
+        source_yaml_id: cisco-talos
+        cross_corroboration_with: finding-2026-05-14-0005
+        cycle: second_cross_corroboration_in_8h
+    actor_profiler_handoff_queued: true
+    actor_profiler_handoff_reason: "Twill Typhoon / Mustang Panda /new-actor candidacy. Well-tracked CN-MSS-aligned cluster; roster gap (civil-society / NGO / Asia-regional niche). Per actor-profiler standard, expected MEDIUM weighted overall with Intent capped at 3 (Sector Association) per evidence-minimum-table — no A&D-prime targeting in this surface; Mustang Panda's documented historical profile is government/NGOs/journalists/ethnic minorities. Financial-sector outlier should be flagged in future profile."
+    resurface_if:
+      - mandiant_unit42_crowdstrike_trendmicro_checkpoint_parallel_fdmtp_attribution_within_72h
+      - second_source_attributes_fdmtp_to_different_chinese_cluster_h5_promoted
+      - darktrace_publishes_fdmtp_iocs_ips_hashes_domains
+      - mustang_panda_named_in_financial_sector_specific_ad_relevant_targeting
+      - new_independent_salt_typhoon_azerbaijan_primary_post_lockout
+      - first_party_splunk_observation_on_terndoor_or_fdmtp_or_proxynotshell_in_environment
+      - ad_prime_named_as_victim_in_followup_reporting
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      Anti-noise discipline applied on Salt Typhoon part — SecurityWeek
+      aggregator does not add independent evidence beyond yesterday's
+      Bitdefender primary; surfaced as carry-forward callout with 🔗 link
+      to flash-2026-05-13-1430. Twill Typhoon framing is net-new and
+      operationally separate (/new-actor candidacy). Cisco Talos
+      cross-corroboration cycle with PM-001 same brief cycle — second
+      surface in 8h.
+
+  - id: 2026-05-14-pm-004
+    covered_in: [2026-05-14-afternoon]
+    brief_file: threats/briefs/2026-05-14-afternoon.md
+    headline: "OpenAI confirms 2 employee devices breached in Mini Shai-Hulud / TanStack supply-chain campaign — first named-enterprise-victim confirmation on VT-006 in Archimedes corpus — bounded scope per OpenAI internal investigation (no customer data, no production, no IP, no deployed software) — multi-platform code-signing-cert rotation underway across macOS, Windows, iOS, Android (macOS app version-update deadline 2026-06-12) — MSTIC referenced for related Linux malware variants — TeamPCP attribution chain corpus-anchored via finding-2026-05-12-FLASH-0001 (Wiz + Snyk + StepSecurity); Socket + Aikido tracking compromised packages; A&D-prime indirect exposure question via @squawk aviation namespace remains UNVERIFIED at dependency-graph layer (operational template for what an A&D-prime victim disclosure would look like)"
+    topic_tags:
+      - openai
+      - openai-named-enterprise-victim-on-vt-006
+      - openai-self-disclosure-provisional-a
+      - bleepingcomputer-lawrence-abrams-relay
+      - tanstack-supply-chain-attack
+      - mini-shai-hulud
+      - vt-006
+      - cve-2026-45321
+      - teampcp
+      - teampcp-roster-id-001
+      - 2-employee-devices-compromised
+      - bounded-scope-per-openai-internal-investigation
+      - no-customer-data-no-production-no-ip-no-deployed-software
+      - multi-platform-code-signing-cert-rotation
+      - macos-windows-ios-android-cert-rotation
+      - macos-app-deadline-2026-06-12
+      - mstic-linux-malware-variants-cross-platform-variant-linkage
+      - socket-provisional-b-first-citation-cycle
+      - aikido-security-provisional-c
+      - 30-day-cert-rotation-cadence-industry-precedent
+      - squawk-aviation-namespace-19-packages
+      - squawk-flightplan-weather-mcp
+      - ad-prime-dependency-graph-reach-unverified
+      - boeing-lockheed-rtx-northrop-airbus-honeywell-safran-unverified
+      - operational-template-for-ad-prime-victim-disclosure
+      - 30-60-day-downstream-victim-disclosure-watch
+      - first_party_splunk_clean_30d_on_keyword_tokens
+      - hard-rule-2-no-ad-prime-victim-extrapolation
+      - vt_006_watch_signals_updated_named_victim_layer
+    related_actors:
+      - actor_id: "001"
+        actor_name: TeamPCP
+        in_roster: true
+        relationship: vt_006_corpus_anchored_via_finding_2026_05_12_flash_0001
+        archimedes_treatment: carry_forward_attribution_chain_no_origination
+    related_vulns:
+      - cve: CVE-2026-45321
+        cvss: 9.6
+        vt_id: VT-006
+        name: "Mini Shai-Hulud worm"
+        role: openai_named_victim_confirmation_first_in_corpus
+    related_campaigns:
+      - mini-shai-hulud-tanstack-supply-chain
+    finding_ids: [finding-2026-05-14-0008]
+    digraph: A2
+    digraph_layered:
+      openai_self_disclosure_breach_scope: A1
+      openai_no_customer_data_no_prod_no_ip_no_deployed_software: A2
+      openai_code_signing_cert_rotation_multi_platform: A1
+      openai_macos_app_deadline_2026_06_12: A1
+      teampcp_attribution_chain_carry_forward: A2
+      mini_shai_hulud_family_lineage_vt_006: A1
+      mstic_linux_variants_secondary_attribution: A2
+    wep: likely
+    wep_layered:
+      mini_shai_hulud_campaign_existence_vt_006_corpus_anchored: very_likely
+      teampcp_actor_attribution_corpus_anchored: very_likely
+      openai_is_a_confirmed_enterprise_victim: very_likely
+      openai_bounded_scope_no_customer_data_no_production: likely
+      multi_platform_cert_rotation_event: very_likely
+      ad_sector_indirect_via_squawk_namespace: likely
+      ad_prime_indirect_exposure_indeterminate_pending_dependency_graph_data: indeterminate
+    single_source_veto_applied: true
+    single_source_veto_scope: openai_internal_breach_bounded_scope_only_not_campaign_or_attribution
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "OpenAI self-disclosed on own internal breach scope — named-victim primary per vendor-self-disclosure precedent"
+      - "TeamPCP attribution corpus-anchored via finding-2026-05-12-FLASH-0001 — not Archimedes-originating today"
+      - "OpenAI's 2-devices → cert-key-exfil → multi-platform-rotation pattern is operational template; A&D-prime victim disclosure would follow same pattern IF @squawk reaches Tier-1 SDLCs"
+      - "Dependency-graph reach to Boeing / Lockheed / RTX / Northrop / Airbus / Honeywell Aerospace / Safran is UNVERIFIED at evaluation time — Archimedes does not extrapolate to A&D-prime victim claim absent source statement"
+      - "30-60 day downstream-victim-disclosure window is the operational testing horizon"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "OpenAI + TanStack + Mini Shai-Hulud + TeamPCP + mistral-ai + @squawk + @tanstack + npm + PyPI tokens"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    librarian_handoffs_queued:
+      - action: add_source_provisional
+        source_yaml_id: openai-self-disclosure
+        proposed_grade: A
+        rationale: "Named-victim vendor self-disclosure precedent (Cisco PSIRT / Microsoft MSRC / F5 K-article / Siemens ProductCERT / kernel.org netdev)."
+      - action: add_source_provisional
+        source_yaml_id: socket
+        proposed_grade: B
+        rationale: "Tier-2 npm-supply-chain-security research vendor practice per StepSecurity / SafeDep / Aikido / Sysdig / Zellic precedent. First cross-corroboration cycle this brief cycle (PM-004 researcher-tracking layer + PM-005 co-originating primary on node-ipc)."
+      - action: update_vt_006_watch_signals
+        new_signals:
+          - "First named-enterprise-victim confirmation in Archimedes corpus (OpenAI)"
+          - "MSTIC Linux-variants secondary attribution layer added"
+          - "Multi-platform cert-rotation pattern as operational precedent"
+          - "30-day cert-revocation grace window precedent (macOS app deadline 2026-06-12)"
+    test_required: "Empirical dependency-graph mapping of @squawk aviation namespace reach into A&D-prime SDLCs (via OpenSSF / Sigstore / public package manifests) — passive OSINT within Archimedes authorized-tools scope. KAC A4 classified Test (critical centrality, low confidence)."
+    resurface_if:
+      - ad_prime_public_disclosure_of_mini_shai_hulud_victimization_within_30_60_days
+      - empirical_sbom_scan_or_sigstore_data_confirms_squawk_aviation_ad_prime_sdlc_reach
+      - mstic_linux_variants_followup_publication_with_iocs
+      - first_party_splunk_hit_on_mini_shai_hulud_tanstack_iocs_in_defenseclaw_local
+      - additional_compromised_packages_disclosed_by_socket_aikido
+      - kev_addition_for_cve_2026_45321
+      - second_named_enterprise_victim_disclosure_on_vt_006
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      First named-enterprise-victim confirmation on VT-006 in Archimedes
+      corpus. Downstream of finding-2026-05-12-FLASH-0001 — TeamPCP
+      attribution chain corpus-anchored, not Archimedes-originating today.
+      A&D-prime indirect exposure question via @squawk namespace remains
+      genuinely indeterminate pending dependency-graph data — analyst KAC
+      flagged this as Test classification (critical centrality, low
+      confidence). 30-60 day downstream-victim-disclosure watch open.
+
+  - id: 2026-05-14-pm-005
+    covered_in: [2026-05-14-afternoon]
+    brief_file: threats/briefs/2026-05-14-afternoon.md
+    headline: "Socket + StepSecurity identify three backdoored node-ipc npm versions (9.1.6, 9.2.3, 12.0.1) published by no-history 'atiertant' account (last legitimate publish August 2024); stealer/backdoor with ~90 credential categories exfil via dual-channel HTTPS-POST + DNS-TXT-record-encoding to sh.azurestaticprovider[.]net; dual-DNS-resolver fallback 1.1.1.1 + 8.8.8.8 for evasion; UNATTRIBUTED at disclosure surface (Socket + StepSecurity explicitly decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage despite operational adjacency to VT-006 — mechanism, scope, ecosystem, and C2 all differ); compromise vector undetermined (credential takeover vs unauthorized maintainer addition vs sock-puppet); A&D-prime dependency-graph reach via node-ipc UNVERIFIED; Socket + StepSecurity co-originating primaries (independence provisionally established; conservative B2 grade)"
+    topic_tags:
+      - socket
+      - socket-provisional-b-second-citation-cycle
+      - stepsecurity
+      - stepsecurity-co-originating-primary
+      - thehackernews-relay
+      - node-ipc
+      - npm-supply-chain
+      - 3-backdoored-versions-9-1-6-9-2-3-12-0-1
+      - atiertant-account-no-prior-publish-history
+      - last-legitimate-publish-august-2024
+      - approximately-90-credential-categories-exfil
+      - sh-azurestaticprovider-net-c2
+      - dual-channel-https-post-plus-dns-txt-record-encoding
+      - dual-dns-resolver-fallback-cloudflare-google
+      - 1-1-1-1-and-8-8-8-8-infrastructure-resolvers-not-c2
+      - unattributed-at-disclosure
+      - socket-stepsecurity-explicitly-decline-teampcp-shai-hulud-lineage
+      - operationally-adjacent-but-distinct-from-mini-shai-hulud-vt-006
+      - mechanism-targeted-publish-not-self-propagating-worm
+      - scope-3-versions-not-172-packages
+      - ecosystem-npm-only-not-dual-npm-plus-pypi
+      - c2-infrastructure-non-overlap-with-vt-006
+      - cluster-separation-discipline-hard-rule-2
+      - do-not-propagate-teampcp-attribution
+      - compromise-vector-undetermined-credential-takeover-vs-maintainer-add-vs-sock-puppet
+      - ad-prime-dependency-graph-via-node-ipc-unverified
+      - parallel-brittleness-to-squawk-in-pm-004
+      - splunk-first-party-clean-30d
+      - new-vt-entry-recommended-for-vuln-tracker
+    related_actors:
+      - claim_text: "No specific threat actor family identified in reporting"
+        claimed_actor: null
+        claimed_actor_explicit_disclaimers:
+          - "NOT TeamPCP per Socket+StepSecurity"
+          - "NOT Shai-Hulud family per Socket+StepSecurity"
+          - "NOT Mini Shai-Hulud per Socket+StepSecurity"
+        nation_state: unknown
+        confidence_term: "unattributed"
+        claimant_primary: socket
+        claimant_co_primary: stepsecurity
+    related_vulns: []
+    related_campaigns:
+      - node-ipc-3-version-backdoor-unattributed
+    finding_ids: [finding-2026-05-14-0009]
+    digraph: B2
+    digraph_layered:
+      socket_stepsecurity_three_malicious_version_detection: B2
+      socket_stepsecurity_stealer_backdoor_capability_analysis: B2
+      c2_domain_sh_azurestaticprovider_net: B2
+      ninety_credential_categories_exfil_scope: B2
+      dual_dns_resolver_exfil_pattern: B2
+      atiertant_maintainer_account_no_prior_publish_history: B2
+      no_attribution_no_actor_no_shai_hulud_lineage_claim: A1
+    wep: likely
+    wep_layered:
+      three_malicious_versions_published_by_atiertant_account: very_likely
+      c2_domain_sh_azurestaticprovider_net_active: very_likely
+      ninety_credential_categories_exfil_scope: likely
+      dual_channel_exfil_https_post_plus_dns_txt: very_likely
+      dual_dns_resolver_fallback_evasion_pattern: very_likely
+      unattributed_no_actor_family_claim: very_likely
+      ad_sector_indirect_dependency_graph_unverified: likely
+    single_source_veto_applied: false
+    co_primary_independence_provisionally_established: true
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Socket + StepSecurity explicitly decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage despite operational adjacency to VT-006 — Archimedes carries unattributed status verbatim"
+      - "Cluster-separation discipline: mechanism (targeted publish, not worm), scope (3 versions, not ~172), ecosystem (npm-only, not dual), and C2 infrastructure all distinguish from Mini Shai-Hulud"
+      - "Do NOT propagate TeamPCP attribution to this surface absent independent corroboration"
+      - "Compromise vector undetermined (credential-takeover vs unauthorized maintainer addition vs sock-puppet) — distinguishing requires npm registry audit-log access"
+      - "1.1.1.1 and 8.8.8.8 are infrastructure-resolver IPs the malware USES, NOT C2 endpoints — do NOT enrich as IOCs (false-positive risk)"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "sh.azurestaticprovider.net + node-ipc + atiertant + 9.1.6 + 9.2.3 + 12.0.1"
+      hard_rule_8_framing: silence_is_not_disconfirming
+      iocs_added_to_enrichment_queue: ["sh.azurestaticprovider[.]net"]
+    librarian_handoffs_queued:
+      - action: add_source_provisional
+        source_yaml_id: socket
+        proposed_grade: B
+        rationale: "Tier-2 npm-supply-chain-security research vendor; same precedent as StepSecurity / SafeDep / Aikido / Sysdig / Zellic. First-cross-corroboration cycle today across PM-004 (researcher-tracking layer) + PM-005 (co-originating primary)."
+      - action: add_to_iocs_index
+        new_domain: sh.azurestaticprovider.net
+        c2_role: confirmed
+        actor: unattributed
+      - action: vuln_tracker_new_vt_consideration
+        proposed_vt_dossier: "node-ipc 3-version backdoor cluster (no CVE assigned; researcher-coined working name needed)"
+    resurface_if:
+      - socket_stepsecurity_followup_publishes_teampcp_or_shai_hulud_lineage_linkage
+      - independent_ab_grade_source_attributes_to_tracked_cluster
+      - infrastructure_overlap_research_links_sh_azurestaticprovider_net_to_known_teampcp_or_mini_shai_hulud_c2
+      - npm_registry_audit_log_disclosure_distinguishes_compromise_vector
+      - first_party_splunk_hit_on_sh_azurestaticprovider_net_or_atiertant_publishes
+      - ad_prime_named_as_victim_via_node_ipc_dependency_chain
+      - new_malicious_node_ipc_version_published_or_additional_atiertant_packages
+    first_covered: 2026-05-14
+    last_covered: 2026-05-14
+    retraction: null
+    test: false
+    notes: |
+      Hard Rule 2 LOAD-BEARING — Socket + StepSecurity explicitly decline
+      TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage at disclosure surface.
+      Archimedes carries unattributed status verbatim. Cluster-separation
+      discipline preserved across mechanism, scope, ecosystem, and C2 axes.
+      Operational adjacency to VT-006 explicitly noted but DISTINCT cluster
+      treatment maintained. Conservative B2 grade reflects independence
+      ambiguity (Socket + StepSecurity co-originating provisionally
+      established; THN summary does not unambiguously distinguish independent
+      vs joint publication).
+
+  - id: 2026-05-14-pm-brief-meta
+    covered_in: [2026-05-14-afternoon]
+    brief_file: threats/briefs/2026-05-14-afternoon.md
+    headline: "2026-05-14 afternoon brief — 5 findings (finding-2026-05-14-0005 Cisco SD-WAN UAT-8616 KEV 3-day deadline action-today + finding-2026-05-14-0006 MSTIC Kazuar Secret Blizzard Turla FSB Center 16 architectural + finding-2026-05-14-0007 SecurityWeek Salt Typhoon Azerbaijan carry-forward + Twill Typhoon Mustang Panda APAC FDMTP new + finding-2026-05-14-0008 OpenAI TanStack named-victim VT-006 + finding-2026-05-14-0009 node-ipc 3-version backdoor UNATTRIBUTED); Copy Fail (CVE-2026-31431) KEV deadline T-1 day UPDATE carry-forward from morning; 4 /new-actor candidacies this brief cycle (UAT-8616, Secret Blizzard / Turla, Twill Typhoon / Mustang Panda + FrostyNeighbor / UNC1151 from morning); 3 source-grade ratifications queued (Cisco Talos provisional A, Darktrace provisional A, Socket provisional B); 1 China Cyber Watch non-standing section added; Iran Cyber Watch silent_day_template"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - 5-findings
+      - 6-coverage-items-including-copy-fail-and-salt-typhoon-carry-forwards
+      - 4-new-actor-candidacies-this-brief-cycle
+      - red-team-c1-c6-caveat-propagation-on-uat-8616
+      - hard-rule-2-load-bearing-multiple-attributions
+      - hard-rule-6-quote-discipline-talos-cisco-psirt-mstic-one-each
+      - hard-rule-8-splunk-first-party-clean-24th-consecutive-dormant-sweep
+      - pre-flight-12-of-13-passed-word-count-887-slight-over-800-target
+      - smart-brevity-applied
+      - layer-1-canonical-record-887-words
+      - layer-2-discord-summary-under-1900-chars
+    related_actors:
+      - actor_name: "UAT-8616"
+        in_roster: false
+        new_actor_candidacy_flagged: true
+      - actor_name: "Secret Blizzard / Turla"
+        in_roster: false
+        new_actor_candidacy_flagged: true
+      - actor_name: "Twill Typhoon / Mustang Panda"
+        in_roster: false
+        new_actor_candidacy_flagged: true
+      - actor_id: "010"
+        actor_name: Salt Typhoon
+        in_roster: true
+        relationship: carry_forward_callout_no_repromote
+      - actor_id: "001"
+        actor_name: TeamPCP
+        in_roster: true
+        relationship: vt_006_corpus_anchored_openai_named_victim_layer
+    related_vulns:
+      - CVE-2026-20182
+      - CVE-2026-31431
+      - CVE-2026-45321
+    related_campaigns:
+      - mini-shai-hulud-tanstack-supply-chain
+      - salt-typhoon-azerbaijan-oil-gas-2025-12-to-2026-02
+      - twill-typhoon-apac-2025-09-to-2026-04-fdmtp
+      - node-ipc-3-version-backdoor-unattributed
+    finding_ids:
+      - finding-2026-05-14-0005
+      - finding-2026-05-14-0006
+      - finding-2026-05-14-0007
+      - finding-2026-05-14-0008
+      - finding-2026-05-14-0009
+    pre_flight_result: passed_12_of_13_word_count_at_887_vs_400_800_target
+    pre_flight_notes: |
+      Iterations 1-3 sat at 1396 / 1105 / 969 words → 887 final.
+      Word count slightly over 800 target (11% over) is operator-accepted
+      given:
+        (a) 5 substantive findings (more than morning's 4 that shipped at 798);
+        (b) Red-team C1-C6 caveat propagation on finding-2026-05-14-0005
+            is LOAD-BEARING per orchestrator directive — cutting further
+            would erode preserved attribution discipline;
+        (c) Four /new-actor candidacies surfaced this brief cycle, each
+            with mandatory explicit roster-gap and threat-box-implication
+            framing;
+        (d) KEV deadline T-3-day urgency requires concrete action language.
+
+      Hard Rule 6 quote discipline verified clean across the full file:
+        - Talos: 1 quote ("high confidence", 2 words)
+        - Cisco PSIRT: 1 quote ("limited exploitation in May 2026", 5 words)
+        - MSTIC: 1 quote (targeting language, 15 words exactly)
+      All under 15 words, max one per source. Compliant.
+
+      Discord Summary Layer 2: ~1892 chars (under 1900 ceiling); ~225 words
+      (within 150-300 band). Headlines link to source URLs; natural-language
+      dates ("tomorrow May 15", "Sat May 17", "June 12"); no themed voice.
+
+      Standing sections both present (Sector Focus + Iran Cyber Watch).
+      Iran Cyber Watch used silent_day_template (no new tracked-Iranian-actor
+      activity in 48h). China Cyber Watch consolidated into Actor Activity
+      (Twill Typhoon as second bullet) to save section overhead.
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - cisco-talos provisional-A (first-citation PM-001; second cross-corroboration PM-003)
+          - darktrace provisional-A (first-citation PM-003)
+          - socket provisional-B (first cross-corroboration cycle PM-004 + PM-005)
+          - openai-self-disclosure provisional-A (named-victim self-disclosure precedent)
+      - vuln_tracker_scaffolding_queued:
+          - VT-011 (Cisco Catalyst SD-WAN CVE-2026-20182 KEV priority)
+          - vt-006-watch-signals-update (OpenAI named-victim layer + MSTIC Linux-variants + multi-platform cert-rotation precedent)
+          - new VT consideration for node-ipc 3-version backdoor cluster (no CVE assigned; researcher-coined working name needed)
+      - actor_profiler_handoff_queued:
+          - UAT-8616 /new-actor candidacy
+          - Secret Blizzard / Turla /new-actor candidacy (FSB Center 16 roster gap)
+          - Twill Typhoon / Mustang Panda /new-actor candidacy
+      - ioc_index_updates:
+          - 4 SHA256 hashes from MSTIC Kazuar (Loader + 3 module hashes)
+          - 1 C2 domain from node-ipc (sh.azurestaticprovider[.]net)
+    resurface_if: []
     first_covered: 2026-05-14
     last_covered: 2026-05-14
     retraction: null

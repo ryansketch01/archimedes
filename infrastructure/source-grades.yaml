@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-14T08:00:00-04:00
+last_updated: 2026-05-14T16:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -389,6 +389,54 @@ vendor_sources:
     active: true
     urls:
       - https://www.zellic.io/blog/
+
+  - id: cisco-talos
+    name: "Cisco Talos"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0005 (CVE-2026-20182 Cisco Catalyst SD-WAN auth bypass, CVSS 10.0, CISA KEV 3-day federal deadline; sole originating primary on UAT-8616 'high confidence' active-exploitation attribution since 2023 against the same product family — prior CVE-2026-20127). Tier-1 vendor research practice — Cisco Talos publishes peer-reviewed APT and malware research with first-party telemetry (ThreatGrid + Umbrella + Cisco Secure Endpoint), named-analyst bylines, and long-running UAT-* / Talos taxonomy primacy. UAT-8616 attribution language ('high confidence') matches the evidentiary standard of Mandiant / CrowdStrike / Unit 42 / MSTIC tier. Provisional A consistent with the precedent applied to SentinelOne (2026-05-08), Wiz Research + Snyk (2026-05-12), Bitdefender + Symantec (2026-05-13), F5 + kernel-org-netdev (2026-05-14 morning). Red-team caveats C1-C6 preserved verbatim on finding 0005: Talos single-originating-primary on attribution (no Mandiant / MSTIC / CrowdStrike / Unit 42 parallel — single-source veto applied at WEP, capped at 'likely'); SSH-keys + NETCONF + root pattern is Talos-described not UAT-8616-diagnostic (canonical SD-WAN-controller compromise shape); 10 published IOCs are for EARLIER CVE-2026-20133/20128/20122 cohort, NOT UAT-8616 indicators. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://blog.talosintelligence.com/
+
+  - id: darktrace
+    name: "Darktrace"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0007 (Twill Typhoon / Mustang Panda / TA416 APAC + Japan financial-and-unspecified-victim campaign Sept 2025 → Apr 2026, new FDMTP modular .NET RAT; sole originating primary in the same SecurityWeek aggregation that carry-forwarded Salt Typhoon Azerbaijan). Tier-1 vendor research practice — Darktrace AI Research Centre publishes peer-reviewed campaign analyses with first-party telemetry from Darktrace Cyber AI platform deployments, named-analyst bylines, and prior East-Asian APT cluster tracking track record. Provisional A consistent with the precedent applied to SentinelOne (2026-05-08), Wiz Research + Snyk (2026-05-12), Bitdefender + Symantec (2026-05-13), Cisco Talos (2026-05-14 afternoon). Red-team caveats preserved on finding 0007: Darktrace single-source on Twill Typhoon attribution (WEP capped at 'likely'); financial targeting is an outlier vs. Mustang Panda's historical NGO / journalist / governmental profile (per Mandiant / ESET / Trend Micro baseline tracking) — the alias-cluster Twill = Mustang Panda is per Darktrace, retain mention of the outlier-targeting deviation as cluster-mapping caveat. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://darktrace.com/blog
+
+  - id: socket
+    name: "Socket"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0009 (node-ipc npm — 3 backdoored versions 9.1.6 / 9.2.3 / 12.0.1 by no-history `atiertant` account; ~90 credential-category stealer exfil via HTTPS-POST + DNS-TXT to sh.azurestaticprovider[.]net; UNATTRIBUTED). Co-originating primary with StepSecurity (provisional B). Socket is an npm-supply-chain-security specialist vendor publishing first-party static-analysis + behavioral-analysis research on malicious package surfacings. Tier-2 npm-security-specialist scope — narrower than Tier-1 vendor research practices (Mandiant / CrowdStrike / Unit 42 / MSTIC tier) but consistent technical rigor and supply-chain-attack visibility no IT-only vendor matches. Provisional B is conservative starting grade per same precedent as StepSecurity (2026-05-12), SafeDep (2026-05-12), Semgrep (2026-05-12), Aikido (2026-05-12), Sysdig (2026-05-14), Zellic (2026-05-14). Strong methodological signal on first surface: Socket + StepSecurity explicitly decline TeamPCP / Shai-Hulud / Mini Shai-Hulud attribution despite operational adjacency — Hard Rule 2 compliance (mechanism, scope, ecosystem, and C2 all differ from Mini Shai-Hulud). Operator may upgrade to A on subsequent surfaces showing consistent rigor across additional npm-supply-chain investigations. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://socket.dev/blog
+
+  - id: openai-self-disclosure
+    name: "OpenAI (self-disclosure / security communications)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-14
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0008 (OpenAI confirms TanStack supply-chain breach affecting 2 employee devices; multi-platform code-signing-cert rotation across macOS / Windows / iOS / Android; macOS app version-update deadline 2026-06-12; bounded scope: no customer data, no production, no IP, no deployed software affected). Named-victim-self-disclosure class — vendor publishing security communications about a breach affecting its own organization. Provisional A is procedurally consistent with the same precedent class as Cisco PSIRT, Microsoft MSRC, F5 K-articles (provisional A 2026-05-14 morning), kernel.org netdev (provisional A 2026-05-14 morning), Palo Alto PSIRT — first-party named-victim disclosure on own incident is procedurally A-grade because the disclosing entity has direct ground-truth visibility into the facts being claimed. OpenAI's TanStack-breach communications include named scope-bounding claims (2 employee devices, no customer / production / IP impact), explicit multi-platform cert-rotation cadence (30-day window), and named deadline (2026-06-12 macOS app). Operational template framing per analyst SAT-ACH on finding 0008: this is the first named-enterprise victim on the Mini Shai-Hulud (VT-006 / CVE-2026-45321 / TeamPCP) campaign; the 2-devices → cert-key-exfil → multi-platform-rotation pattern is the operational template an A&D-prime victim disclosure would follow if @squawk aviation-namespace dependencies reach Tier-1 SDLCs. Archimedes does not extrapolate A&D-prime exposure from this single named-victim disclosure (Hard Rule 2). Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://openai.com/security
 
 # ============================================================================
 # Security Media & Researchers
@@ -832,15 +880,15 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 69        # +6 f5 (provisional A 2026-05-14), kernel-org-netdev (provisional A 2026-05-14), sysdig (provisional B 2026-05-14), zellic (provisional B 2026-05-14), thehackernews (provisional B 2026-05-14, second-cross-corroboration-cycle), depthfirst (provisional F 2026-05-14)
-  active_sources: 60       # +6 above
+  total_sources: 73        # +4 afternoon: cisco-talos (provisional A 2026-05-14), darktrace (provisional A 2026-05-14), socket (provisional B 2026-05-14), openai-self-disclosure (provisional A 2026-05-14)
+  active_sources: 64       # +4 above
   by_grade:
-    A: 29       # +2 f5, kernel-org-netdev (provisional 2026-05-14)
-    B: 24       # +3 sysdig, zellic, thehackernews (provisional 2026-05-14)
+    A: 32       # +3 cisco-talos, darktrace, openai-self-disclosure (provisional 2026-05-14 afternoon)
+    B: 25       # +1 socket (provisional 2026-05-14 afternoon)
     C: 9
     D: 1
     E: 2
-    F: 4        # +1 depthfirst (provisional 2026-05-14)
+    F: 4
   awaiting_ratification:
     - rapid7
     - securityweek
@@ -865,6 +913,10 @@ _meta:
     - zellic                    # provisional B; first cited 2026-05-14-0003 (Fragnesia PoC by William Bowling)
     - thehackernews             # provisional B; second-cross-corroboration-cycle (multiple prior relay surfaces; first cited as scored entity 2026-05-14)
     - depthfirst                # provisional F; first cited 2026-05-14-0002 (THN editorial chain on NGINX Rift '18-year dormancy' framing)
+    - cisco-talos               # provisional A; first cited 2026-05-14-0005 (Cisco Catalyst SD-WAN CVE-2026-20182 UAT-8616 active-exploitation)
+    - darktrace                 # provisional A; first cited 2026-05-14-0007 (Twill Typhoon / Mustang Panda APAC + Japan campaign with FDMTP RAT)
+    - socket                    # provisional B; first cited 2026-05-14-0009 (node-ipc 3 backdoored versions, UNATTRIBUTED — co-primary with StepSecurity)
+    - openai-self-disclosure    # provisional A; first cited 2026-05-14-0008 (OpenAI TanStack breach self-disclosure, first named-enterprise-victim on VT-006)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

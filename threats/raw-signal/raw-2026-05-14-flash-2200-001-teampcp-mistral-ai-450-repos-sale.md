@@ -17,7 +17,10 @@ triage_tags: [non_flash, brief_update_candidate_morning_2026_05_15, teampcp_cont
 iocs_extracted: true
 iocs_count: 0
 text_word_count: 1180
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-05-15-0001
+promoted_at: 2026-05-15T07:55:00-04:00
+promoted_grading_run_id: morning-20260515-080000
 ttl_expires_at: 2026-08-13T00:05:00-04:00
 test: false
 ---

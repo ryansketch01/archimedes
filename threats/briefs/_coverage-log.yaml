@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-15T06:55:00-04:00
+last_updated: 2026-05-15T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -7491,7 +7491,9 @@ entries:
     test: false
 
   - id: 2026-05-15-flash-0600-001
-    covered_in: [flash-2026-05-15-0600-exchange-cve-2026-42897]
+    covered_in: [flash-2026-05-15-0600-exchange-cve-2026-42897, 2026-05-15-morning]
+    superseded_by: 2026-05-15-morning
+    superseded_reason: "08:00 morning brief absorbed Exchange CVE-2026-42897 as Vulnerabilities-section lead item per FLASH-POLICY anti-noise / supersession rule. Queued FLASH at flash-queue.yaml should be marked superseded:true at the 09:00 catchup sweep by librarian; the morning brief carries the same MSRC-single-source-veto framing and ESU-only mitigation guidance."
     brief_file: threats/briefs/flash-2026-05-15-0600-exchange-cve-2026-42897.md
     headline: "Microsoft Exchange on-prem zero-day CVE-2026-42897 — MSRC 'Exploitation Detected' tag; CWE-79 XSS via OWA-rendered crafted email; affects Exchange Server 2016 / 2019 / Subscription Edition all updates; Exchange Online unaffected; CVSS 8.1 HIGH per NVD; NO general-availability patch — binary fixes via Extended Security Updates only (SE RTM, 2016 CU23, 2019 CU14/CU15); mitigation path EEMS auto URL-rewrite + EOMT script for air-gapped; no actor attribution (anonymous-researcher credit per Hacker News); single-source veto applied to exploitation claim layer (MSRC only); WEP capped at likely; A&D-prime on-prem Exchange estates carry indirect / structural exposure"
     topic_tags:
@@ -7610,7 +7612,9 @@ entries:
       2026-05-16T06:30:00-04:00 (24h).
 
   - id: 2026-05-15-flash-0600-002
-    covered_in: [flash-2026-05-15-0600-teampcp-shai-hulud-release]
+    covered_in: [flash-2026-05-15-0600-teampcp-shai-hulud-release, 2026-05-15-morning]
+    superseded_by: 2026-05-15-morning
+    superseded_reason: "08:00 morning brief absorbed TeamPCP Shai-Hulud source-code release + BreachForums bounty as Active Threats lead item per FLASH-POLICY anti-noise / supersession rule. The morning brief leads on the convergent three-surfaces TeamPCP escalation pattern (worm deployment + Mistral sale + source-code release), preserving the SecurityWeek single-source veto and corpus-anchored VT-006 attribution chain. Queued FLASH at flash-queue.yaml should be marked superseded:true at the 09:00 catchup sweep by librarian."
     brief_file: threats/briefs/flash-2026-05-15-0600-teampcp-shai-hulud-release.md
     headline: "TeamPCP releases Shai-Hulud npm/PyPI worm source code on GitHub under multiple accounts + posts BreachForums 'supply chain challenge' announcement offering monetary rewards for proof-of-intrusion using the released code — VT-006 commoditization pivot from private-operator to campaign-host distribution model; GitHub removed originals (forks reportedly persist); SecurityWeek single directly-retrieved primary; Datadog + Ox Security + @DailyDarkWeb cited via SecurityWeek only (direct retrieval queued for next sweep); TeamPCP attribution corpus-anchored via VT-006 / finding-2026-05-12-FLASH-0001 — not Archimedes-originating; single-source veto applies; WEP capped at likely; force-multiplier raises derivative-attack volume over 30-day forward window and makes future intrusions attribution-ambiguous between TeamPCP and broader BreachForums pool"
     topic_tags:
@@ -7787,6 +7791,312 @@ entries:
 
       Anti-noise lock proposed: teampcp-shai-hulud-source-code-release-
       bounty until 2026-05-16T06:35:00-04:00 (24h).
+
+  - id: 2026-05-15-am-001
+    covered_in: [2026-05-15-morning]
+    brief_file: threats/briefs/2026-05-15-morning.md
+    headline: "TeamPCP advertises ~450 Mistral AI internal repos / ~5GB exfil for $25K BIN with 2026-05-21 leak deadline — second named-enterprise victim on Mini Shai-Hulud / TanStack mechanism after OpenAI (finding-2026-05-14-0008); Mistral self-disclosed 2026-05-12 codebase-management-system compromise via third-party supply-chain attack but rules out hosted services / managed user data / research-and-testing environments and does NOT confirm 450-repo scope; HackRead carried 24-of-450 sample listing including pfizer-rfp-2025.tar.gz filename (no independent verification); BleepingComputer single-directly-retrieved primary; Cybernews / TechNadu / HackRead / KSEC Forum / @DarkWebInformer parallel relays of same TeamPCP forum post + Mistral statement (collapse on independence test); single-source veto applied on SCOPE claims (~450 repos / ~5GB / $25K BIN / pfizer filename); WEP capped at likely on breach-via-mechanism; roughly even chance on scope; analyst SAT-ACH ranks H2 (TeamPCP did breach + scope-claim-inflated) at rank 1 with 6 tripwires logged including 2026-05-21 deadline materialization"
+    topic_tags:
+      - teampcp
+      - teampcp-roster-id-001
+      - tracked-actor-id-001
+      - teampcp-monetization-pivot
+      - mistral-ai
+      - mistral-self-disclosure
+      - codebase-management-system-compromise
+      - third-party-supply-chain-attack
+      - mini-shai-hulud
+      - vt-006
+      - cve-2026-45321
+      - tanstack-mechanism
+      - 450-repo-scope-claim-single-source-veto
+      - 5gb-exfil-scope-claim-single-source-veto
+      - $25k-bin-monetization-claim
+      - 2026-05-21-leak-deadline
+      - pfizer-rfp-2025-filename-hackread-sample
+      - openai-tanstack-precedent-finding-2026-05-14-0008
+      - bleepingcomputer-single-directly-retrieved-primary
+      - mistral-self-disclosure-provisional-a
+      - cybernews-provisional-c-first-surface
+      - technadu-provisional-c-first-surface
+      - hackread-provisional-c-first-surface
+      - ksec-forum-provisional-d
+      - x-darkwebinformer-provisional-c
+      - hard-rule-2-no-archimedes-origination
+      - hard-rule-6-quote-discipline-mistral-15-words
+      - hard-rule-8-splunk-first-party-clean-30d
+      - analyst-sat-ach-h2-rank-1
+      - 6-tripwires-logged
+      - 2026-05-21-deadline-materialization-tripwire
+    related_actors:
+      - actor_id: "001"
+        actor_name: TeamPCP
+        in_roster: true
+        threat_level: HIGH
+        relationship: monetization_pivot_via_breachforums_data_sale_paired_with_2026_05_14_22_00_flash_raw_and_2026_05_15_source_code_release
+        archimedes_treatment: per_bleepingcomputer_per_mistral_self_disclosure_no_origination
+    related_vulns:
+      - cve: CVE-2026-45321
+        vt_id: VT-006
+        role: parent_mechanism_being_extended_by_named_enterprise_victim_pattern
+    related_campaigns:
+      - mini-shai-hulud-2026-05-12
+      - teampcp-commoditization-pivot-2026-05
+    finding_ids: [finding-2026-05-15-0001]
+    digraph: B2
+    digraph_layered:
+      mistral_codebase_management_system_compromise_2026_05_12_self_disclosed: A1
+      mini_shai_hulud_mechanism_compromise_via_stolen_cicd_credentials: A2
+      teampcp_actor_attribution_carry_forward_from_vt_006: A2
+      teampcp_self_claim_450_repos_5gb_scope: D3
+      $25k_bin_one_week_leak_deadline_self_claim: D3
+      pfizer_rfp_2025_filename_enterprise_artifact_sample: D3
+      second_named_enterprise_victim_after_openai_on_vt_006_mechanism: A2
+    wep: likely
+    wep_split:
+      mini_shai_hulud_campaign_existence: very_likely
+      teampcp_actor_attribution_carry_forward: very_likely
+      mistral_is_a_confirmed_enterprise_victim: very_likely
+      mistral_compromise_via_third_party_supply_chain_attack: very_likely
+      mistral_scope_non_core_no_managed_data_no_research_envs: likely
+      teampcp_claimed_450_repos_5gb_scope: roughly_even_chance
+      teampcp_$25k_bin_monetization_attempt_succeeds: unlikely
+      pfizer_rfp_2025_filename_authentic: roughly_even_chance
+      multi_victim_pattern_continues_into_30_day_window: likely
+      ad_sector_indirect_via_squawk_aviation_namespace: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: scope_specific_claims_450_repos_5gb_25k_bin_pfizer_rfp_sample_NOT_mechanism_or_attribution
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260515-084200
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_below_very_likely_threshold
+    hard_rule_2_framings_load_bearing:
+      - "Mistral compromise-occurrence: per Mistral self-disclosure (A-grade victim-on-own-incident)"
+      - "TeamPCP attribution carry-forward via VT-006 corpus-anchored (Wiz + Snyk + StepSecurity, finding-2026-05-12-FLASH-0001) — not novel Archimedes origination"
+      - "SCOPE claims (~450 repos / ~5GB / $25K BIN / one-week deadline / pfizer-rfp-2025.tar.gz sample): TeamPCP self-claim ONLY; no independent vendor verification; Archimedes does NOT endorse the 450-repo figure"
+      - "Hard Rule 6: Mistral minimization-scope language preserved verbatim under 15-word quote discipline"
+    splunk_first_party:
+      status: clean_at_compose
+      hits: 0
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - "mistral-self-disclosure provisional A (first-citation 2026-05-15)"
+          - "cybernews provisional C (first-citation 2026-05-15)"
+          - "technadu provisional C (first-citation 2026-05-15)"
+          - "hackread provisional C (first-citation 2026-05-15)"
+          - "ksec-forum provisional D (first-citation 2026-05-15)"
+          - "x-darkwebinformer provisional C (first-citation 2026-05-15)"
+      - actor_profiler_handoff:
+          - "TeamPCP #001 dossier update — ingest Mistral sale surface + source-code release + worm deployment for threat-box rescore at next /update-tracking cycle"
+    resurface_if:
+      - 2026_05_21_leak_deadline_materialization_or_non_materialization
+      - independent_vendor_research_verifies_or_disputes_450_repo_scope
+      - new_named_enterprise_victim_disclosed_on_vt_006_30_day_window
+      - first_party_splunk_observation_on_mistral_or_teampcp_iocs
+      - $25k_bin_sale_completed_or_listed_at_breachforums_recheck
+      - additional_pfizer_or_named_enterprise_sample_filename_verified
+      - actor_profiler_threat_box_rescore_completed
+    first_covered: 2026-05-15
+    last_covered: 2026-05-15
+    retraction: null
+    test: false
+    notes: |
+      Brief framed the headline as a TeamPCP three-surfaces escalation pattern
+      (worm deployment 2026-05-12 + Mistral sale 2026-05-14 22:00 + source-code
+      release + BreachForums bounty 2026-05-15) rather than the Mistral sale in
+      isolation, to surface the operational pattern Ryan can act on.
+
+      WEP layered: breach-via-mechanism at "likely" (Mistral self-disclosure +
+      VT-006 corpus-anchored); 450-repo / $25K scope at "roughly even chance"
+      (TeamPCP self-claim only). Brief preserves the Hard Rule 2 "Archimedes
+      does not endorse the 450-repo figure" framing in both Layer 1 and Layer 2.
+
+      6 tripwires logged on finding-2026-05-15-0001 — 2026-05-21 deadline
+      materialization is the operational milestone.
+
+  - id: 2026-05-15-am-002
+    covered_in: [2026-05-15-morning]
+    brief_file: threats/briefs/2026-05-15-morning.md
+    headline: "Cisco Catalyst SD-WAN sustained 2026 exploitation pattern reframing — SecurityWeek (Eduard Kovacs) catalogs CVE-2026-20182 as sixth SD-WAN flaw exploited in 2026; 5 2026 CVEs (CVE-2026-20182, -20128, -20122, -20133, -20127) on CISA KEV plus CVE-2022-20775 re-exploited; Talos has observed 10 activity clusters across crypto-miners, credential-stealers, backdoors, webshells; Rapid7 (Burgess + Fewer) discovered CVE-2026-20182 during analysis of CVE-2026-20127, 66-day coordinated-disclosure window; CVE-2026-20182 underlying facts (CVSS 10.0, FedRAMP-Government tier, UAT-8616 attribution per Talos high confidence) anti-noise to finding-2026-05-14-0005; analyst SAT-ACH ranks H3 (Talos visibility skew — Talos IS Cisco's threat-intel arm) and H6 (composite: genuine pattern + visibility amplification) above H1 (pure sustained focus); SAT-KAC classifies A1 (baseline rate vs 2024-2025) + A4 (cross-vendor visibility) as Test (tractable downstream, not blocking publication), 4 assumptions Qualify; WEP very_likely on 6-CVE pattern (CISA KEV verifiable); likely with visibility-skew caveat on sustained-focus framing; likely on 10-cluster count (Talos single-origin); federal patch deadline 2026-05-17 T-2 days carry-forward"
+    topic_tags:
+      - cisco-catalyst-sd-wan
+      - sustained-2026-exploitation-pattern-reframing
+      - sixth-sd-wan-flaw-2026
+      - cve-2026-20182
+      - cve-2026-20128
+      - cve-2026-20122
+      - cve-2026-20133
+      - cve-2026-20127
+      - cve-2022-20775-re-exploited
+      - cisa-kev-pattern-independently-verifiable
+      - cisco-talos-10-activity-clusters
+      - crypto-miners-credential-stealers-backdoors-webshells
+      - rapid7-burgess-fewer-discovery-chain
+      - 66-day-coordinated-disclosure-window
+      - edge-appliance-multi-actor-precedent-fortinet-citrix-ivanti-palo-alto
+      - uat-8616-anti-noise-to-finding-2026-05-14-0005
+      - cve-2026-20182-facts-anti-noise-to-finding-2026-05-14-0005
+      - federal-patch-deadline-2026-05-17-t-minus-2-days
+      - fedramp-government-tier-corpus-anchored
+      - dfars-cmmc-partner-flow-tracking
+      - securityweek-eduard-kovacs
+      - analyst-sat-ach-h3-h6-above-h1
+      - talos-visibility-skew-caveat-mandatory
+      - sat-kac-a1-baseline-rate-test
+      - sat-kac-a4-cross-vendor-visibility-test
+      - 4-assumptions-qualify
+      - single-source-veto-on-10-cluster-count-only
+      - hard-rule-2-no-novel-attribution
+      - hard-rule-8-splunk-first-party-clean-25-consecutive-dormant-sweeps
+    related_actors:
+      - actor_name: "UAT-8616"
+        in_roster: false
+        claimed_by: cisco-talos
+        relationship: carry_forward_anti_noise_to_finding_2026_05_14_0005
+        archimedes_treatment: per_talos_high_confidence_no_origination
+        new_actor_candidate_flagged: true
+    related_vulns:
+      - cve: CVE-2026-20182
+        cvss: 10.0
+        vt_id_proposed: VT-011
+        kev_due_date: 2026-05-17
+        relationship: pattern_layer_only_underlying_facts_anti_noise_to_finding_2026_05_14_0005
+      - cves: [CVE-2026-20128, CVE-2026-20122, CVE-2026-20133, CVE-2026-20127, CVE-2022-20775]
+        relationship: 2026_kev_listed_pattern_enumeration_5_from_2026_plus_1_older_re_exploited
+    related_campaigns: []
+    finding_ids: [finding-2026-05-15-0002]
+    digraph: B2
+    digraph_layered:
+      six_2026_sd_wan_cves_exploited_pattern_enumeration: A1
+      ten_activity_clusters_observation_talos: A2
+      cluster_activity_types_4_toolchains: A2
+      rapid7_discovery_chain_cve_2026_20127_to_cve_2026_20182_66_day: A1
+      securityweek_editorial_pattern_extension_kovacs_byline: B
+      uat_8616_attribution_carry_forward_NOT_re_stated: anti_noise
+      cve_2026_20182_underlying_facts_carry_forward_NOT_re_stated: anti_noise
+    wep: likely
+    wep_split:
+      six_2026_sd_wan_cves_exploited_pattern: very_likely
+      cisco_catalyst_sd_wan_under_sustained_adversary_focus_2026: likely_with_visibility_skew_caveat
+      ten_activity_clusters_count_exactly: likely
+      multi_actor_convergence_on_sd_wan_attack_surface_in_2026: likely_with_qualifying_caveats
+      federal_civilian_remediation_by_2026_05_17_likely_partial: likely
+      ad_sector_dib_fedramp_government_tier_exposure: very_likely
+      rapid7_66_day_coordinated_disclosure_window_is_responsible_pattern: very_likely
+    single_source_veto_applied: true
+    single_source_veto_scope: ten_activity_clusters_count_talos_single_origin_ONLY_not_pattern_enumeration_or_discovery_chain
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260515-083500
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_below_very_likely_threshold_on_load_bearing_strategic_framing_claim
+    hard_rule_2_framings_load_bearing:
+      - "Pattern reframing — NOT actor attribution; UAT-8616 carry-forward only, anti-noise to finding-2026-05-14-0005"
+      - "10-activity-clusters count is Talos single-origin (single-source veto on cluster-count layer)"
+      - "Sustained-focus framing carries explicit visibility-skew caveat — per analyst SAT-ACH, Talos IS Cisco's threat-intel arm"
+      - "6-CVE pattern enumeration independently verifiable against CISA KEV catalog (single-source veto does NOT apply to pattern layer)"
+      - "Underlying CVE-2026-20182 mechanism facts NOT re-stated (anti-noise discipline; carry-forward to yesterday's brief)"
+    splunk_first_party:
+      status: clean_at_compose
+      hits: 0
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hard_rule_8_framing: silence_is_not_disconfirming_25_consecutive_dormant_sweeps
+    recommended_tests_for_wep_promotion:
+      - test_id: T1
+        test: "Query CISA KEV for SD-WAN entries dateAdded 2024-01-01..2025-12-31 for baseline-rate comparison"
+        blocks_promotion_to: very_likely_on_sustained_focus_framing
+        suggested_owner: vuln-tracker
+      - test_id: T2
+        test: "WebFetch Mandiant / MSTIC / CrowdStrike / Unit 42 / Sophos / SentinelOne for any 2026 Cisco SD-WAN cluster research"
+        blocks_promotion_to: very_likely_on_cross_vendor_visibility
+        suggested_owner: collector
+    resurface_if:
+      - mandiant_mstic_crowdstrike_unit42_sophos_sentinelone_parallel_cluster_counting_publication_lifts_h3_to_h1
+      - talos_publishes_methodological_note_defining_activity_cluster
+      - cisco_psirt_publishes_sd_wan_advisory_rate_stats_2024_2025_baseline_comparison
+      - parallel_cluster_counting_on_fortinet_palo_alto_juniper_vmware_sd_wan_in_2026_window
+      - first_party_splunk_observation_on_cisco_sd_wan_exploitation_indicators
+      - kev_deadline_compliance_observation_at_2026_05_17
+      - new_2026_sd_wan_cve_added_to_kev_extending_pattern
+    first_covered: 2026-05-15
+    last_covered: 2026-05-15
+    retraction: null
+    test: false
+    notes: |
+      Strategic-pattern reframing finding paired with finding-2026-05-14-0005
+      (yesterday's CVE-2026-20182 KEV-add + UAT-8616 attribution). Today's
+      net-new contribution is the 6-CVE pattern enumeration + 10-cluster
+      Talos observation + 66-day Rapid7 coordinated-disclosure timeline +
+      edge-appliance multi-actor convergence framing.
+
+      Briefer adopted H6 composite hedging (per analyst directive) rather
+      than H1 pure-sustained-focus framing. The "per Talos's lens"
+      qualifier is load-bearing in the brief headline and reappears in the
+      WEP-likely-with-visibility-skew-caveat assessment.
+
+      KEV deadline compliance observation at 2026-05-17 is the operational
+      milestone — T-2 days as of this brief.
+
+  - id: 2026-05-15-am-brief-meta
+    covered_in: [2026-05-15-morning]
+    brief_file: threats/briefs/2026-05-15-morning.md
+    headline: "Brief meta — 2026-05-15 morning: 4 findings referenced (2 FLASH absorbed + 2 AM standalone), TeamPCP convergent-escalation lead, Cisco SD-WAN pattern reframing as Vulnerabilities Update, Copy Fail KEV deadline-today carry-forward in Other Signal, 2 standing sections present, 1 correlation callout (Mistral → OpenAI), 1 UPDATE flag (SD-WAN strategic pattern vs yesterday), 1 carry-forward (UAT-8616 anti-noise), single-source veto applied across all four findings (WEP ceiling 'likely' on each), no red-team triggers crossed"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - 4-findings-referenced
+      - 2-flashes-absorbed
+      - teampcp-convergent-escalation-lead
+      - cisco-sd-wan-pattern-reframing
+      - copy-fail-kev-deadline-today-carry-forward
+      - mistral-openai-correlation-callout
+      - sd-wan-vs-yesterday-update-flag
+      - uat-8616-anti-noise
+      - single-source-veto-all-four
+      - wep-ceiling-likely-all-four
+      - no-red-team-triggers
+      - preflight-12-of-12-passed
+      - 2-queued-flashes-superseded
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-15-FLASH-0001
+      - finding-2026-05-15-FLASH-0002
+      - finding-2026-05-15-0001
+      - finding-2026-05-15-0002
+    absorbs_flashes:
+      - flash-2026-05-15-0600-exchange-cve-2026-42897
+      - flash-2026-05-15-0600-teampcp-shai-hulud-release
+    resurface_if: []
+    first_covered: 2026-05-15
+    last_covered: 2026-05-15
+    retraction: null
+    test: false
+    notes: |
+      Brief composition flow: TeamPCP three-surfaces convergent escalation
+      leads (Mistral sale + source-code release + BreachForums bounty in 96h);
+      Cisco SD-WAN pattern reframing pairs with yesterday's CVE-2026-20182
+      KEV-add finding via UPDATE flag and 🔗 correlation callout; Exchange
+      CVE-2026-42897 absorbed from queued FLASH as Vulnerabilities lead item;
+      Copy Fail CVE-2026-31431 federal-deadline-today carried in Other Signal
+      as status update only.
+
+      Pre-flight checklist: all 13 items pass after final edit pass.
+      Word count: target 400-800; achieved ~795 (Layer 1 body excluding
+      Discord Summary section). Banned phrases: zero. Discord Summary
+      (Layer 2): ~280 words / ~1840 chars (under 1900 ceiling).
+      Standing sections: ✈️ Sector Focus + 🇮🇷 Iran Cyber Watch both
+      present, latter using silent-day template per watch-config.yaml.
+
+      Anti-repetition discipline: yesterday's CVE-2026-20182 mechanism
+      facts and UAT-8616 attribution carry forward as anti-noise; today's
+      net-new is the 6-CVE pattern + 10-cluster Talos observation +
+      66-day Rapid7 timeline + edge-appliance multi-actor precedent. Copy
+      Fail KEV-deadline-today (T-0) is a status carry-forward only — no
+      new exploitation observations since yesterday's brief.
 
 # ============================================================================
 # Valid resurface_if conditions

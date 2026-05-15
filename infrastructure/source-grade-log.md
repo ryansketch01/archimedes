@@ -267,6 +267,38 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-15 — Ox Security — (none) → B (provisional, awaiting ratification + direct retrieval)
+
+**Type:** New source — provisional
+**Source ID:** `ox-security`
+**Reason:** First Archimedes-corpus citation via finding-2026-05-15-0005 (node-ipc compromise four-firm UNATTRIBUTED consensus — Socket + StepSecurity + Ox Security + Upwind all decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage). Cited via BleepingComputer relay; primary not yet directly retrieved by Archimedes collector — provisional grade is from relay-layer citation only, marked for direct-retrieval verification on next collector pass. Ox Security is an application-security / supply-chain-security vendor with named published research on npm and software-supply-chain attacks. Tier-2 supply-chain-security specialist scope — consistent with the provisional-B grade applied to Socket (2026-05-14, also first-cited on the node-ipc cluster) and StepSecurity (2026-05-12). Strong methodological signal on this surface: explicitly declines TeamPCP / Shai-Hulud / Mini Shai-Hulud attribution despite operational adjacency, consistent with the other three firms in the four-firm consensus — Hard Rule 2 compliant.
+**Why B not A:** Tier-2 supply-chain-security specialist scope per same precedent as Socket / StepSecurity peers; first surface in the corpus; relay-only citation pending direct retrieval. Conservative starting grade.
+**Why B not C:** Named-vendor research practice with prior publication history on supply-chain attacks (not unknown / unestablished); UNATTRIBUTED-disposition methodological discipline is a positive signal.
+**Supporting findings:** [finding-2026-05-15-0005]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade ox-security B` (or operator adjustment)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Co-corroborator in the four-firm UNATTRIBUTED consensus; load-bears on WEP **very likely** for the UNATTRIBUTED disposition (four firms, four methodologies). Direct retrieval next collector pass will firm up grade.
+**Next review:** ratification target 2026-05-22 (7 days; bundled)
+
+---
+
+## 2026-05-15 — Upwind — (none) → B (provisional, awaiting ratification + direct retrieval)
+
+**Type:** New source — provisional
+**Source ID:** `upwind`
+**Reason:** First Archimedes-corpus citation via finding-2026-05-15-0005 (node-ipc compromise four-firm UNATTRIBUTED consensus — Socket + StepSecurity + Ox Security + Upwind all decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage). Cited via BleepingComputer relay; primary not yet directly retrieved by Archimedes collector — provisional grade is from relay-layer citation only, marked for direct-retrieval verification on next collector pass. Upwind is a cloud-native / runtime-security vendor with prior corpus-adjacent visibility via Snyk's Mini Shai-Hulud cross-reference (finding-2026-05-12-FLASH-0001 explicitly cited Upwind Security deobfuscation work) — this is the first surface where Upwind appears as a directly-cited source rather than a Snyk-referenced peer. Tier-2 supply-chain / runtime-security specialist scope — consistent with the provisional-B grade applied to Socket / StepSecurity / Ox Security.
+**Why B not A:** Tier-2 supply-chain / runtime-security specialist scope per same precedent as Socket / StepSecurity / Ox Security peers; first directly-cited surface in the corpus; relay-only citation pending direct retrieval.
+**Why B not C:** Prior corpus-adjacent visibility via Snyk cross-reference (finding-2026-05-12-FLASH-0001) shows Snyk-tier vendors treat Upwind's deobfuscation work as peer-citable; UNATTRIBUTED-disposition methodological discipline on this surface is a positive signal.
+**Supporting findings:** [finding-2026-05-15-0005, finding-2026-05-12-FLASH-0001 (peer-referenced, not directly cited)]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade upwind B` (or operator adjustment)
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true` in `infrastructure/source-grades.yaml`
+**Effect on referencing finding:** Co-corroborator in the four-firm UNATTRIBUTED consensus; load-bears on WEP **very likely** for the UNATTRIBUTED disposition. Direct retrieval next collector pass will firm up grade.
+**Next review:** ratification target 2026-05-22 (7 days; bundled)
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

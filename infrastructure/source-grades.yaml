@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-14T16:00:00-04:00
+last_updated: 2026-05-15T16:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -437,6 +437,32 @@ vendor_sources:
     active: true
     urls:
       - https://openai.com/security
+
+  - id: ox-security
+    name: "Ox Security"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-15
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-15-0005 (node-ipc compromise four-firm UNATTRIBUTED consensus — Socket + StepSecurity + Ox Security + Upwind all decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage). Cited via BleepingComputer relay; primary not yet directly retrieved by Archimedes collector — provisional grade is from relay-layer citation only, mark for direct-retrieval verification on next collector pass. Ox Security is an application-security / supply-chain-security vendor with named published research on npm and software-supply-chain attacks. Tier-2 supply-chain-security specialist scope — consistent with the provisional-B grade applied to Socket (2026-05-14, also first-cited on the node-ipc cluster) and StepSecurity (2026-05-12). Strong methodological signal on this surface: explicitly declines TeamPCP / Shai-Hulud / Mini Shai-Hulud attribution despite operational adjacency, consistent with the other three firms in the four-firm consensus — Hard Rule 2 compliant (mechanism, scope, ecosystem, and C2 all differ from Mini Shai-Hulud). Provisional B is conservative starting grade for first surface in the corpus. Operator may upgrade to A on subsequent surfaces showing consistent rigor across additional supply-chain investigations, or hold at B if relay-only citation pattern persists. Pending direct retrieval and human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    active: true
+    urls:
+      - https://www.ox.security/blog/
+
+  - id: upwind
+    name: "Upwind"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-15
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-15-0005 (node-ipc compromise four-firm UNATTRIBUTED consensus — Socket + StepSecurity + Ox Security + Upwind all decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage). Cited via BleepingComputer relay; primary not yet directly retrieved by Archimedes collector — provisional grade is from relay-layer citation only, mark for direct-retrieval verification on next collector pass. Upwind is a cloud-native / runtime-security vendor with prior corpus-adjacent visibility via Snyk's Mini Shai-Hulud cross-reference (finding-2026-05-12-FLASH-0001 explicitly cited Upwind Security deobfuscation work) — this is the first surface where Upwind appears as a directly-cited source rather than a Snyk-referenced peer. Tier-2 supply-chain / runtime-security specialist scope — consistent with the provisional-B grade applied to Socket (2026-05-14), StepSecurity (2026-05-12), and Ox Security (this surface). Strong methodological signal on this surface: explicitly declines TeamPCP / Shai-Hulud / Mini Shai-Hulud attribution despite operational adjacency, consistent with the other three firms — Hard Rule 2 compliant. Provisional B is conservative starting grade for first directly-cited surface in the corpus. Operator may upgrade to A on subsequent surfaces showing consistent rigor across additional supply-chain investigations, or hold at B if relay-only citation pattern persists. Pending direct retrieval and human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    active: true
+    urls:
+      - https://www.upwind.io/feed
 
 # ============================================================================
 # Security Media & Researchers
@@ -880,11 +906,11 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 73        # +4 afternoon: cisco-talos (provisional A 2026-05-14), darktrace (provisional A 2026-05-14), socket (provisional B 2026-05-14), openai-self-disclosure (provisional A 2026-05-14)
-  active_sources: 64       # +4 above
+  total_sources: 75        # +2 afternoon: ox-security (provisional B 2026-05-15), upwind (provisional B 2026-05-15) — both relay-cited via BleepingComputer on node-ipc four-firm consensus
+  active_sources: 66       # +2 above
   by_grade:
-    A: 32       # +3 cisco-talos, darktrace, openai-self-disclosure (provisional 2026-05-14 afternoon)
-    B: 25       # +1 socket (provisional 2026-05-14 afternoon)
+    A: 32
+    B: 27       # +2 ox-security, upwind (provisional 2026-05-15 afternoon)
     C: 9
     D: 1
     E: 2
@@ -917,6 +943,8 @@ _meta:
     - darktrace                 # provisional A; first cited 2026-05-14-0007 (Twill Typhoon / Mustang Panda APAC + Japan campaign with FDMTP RAT)
     - socket                    # provisional B; first cited 2026-05-14-0009 (node-ipc 3 backdoored versions, UNATTRIBUTED — co-primary with StepSecurity)
     - openai-self-disclosure    # provisional A; first cited 2026-05-14-0008 (OpenAI TanStack breach self-disclosure, first named-enterprise-victim on VT-006)
+    - ox-security               # provisional B; first cited 2026-05-15-0005 (node-ipc four-firm UNATTRIBUTED consensus, via BleepingComputer relay — awaiting direct retrieval)
+    - upwind                    # provisional B; first cited 2026-05-15-0005 (node-ipc four-firm UNATTRIBUTED consensus, via BleepingComputer relay — awaiting direct retrieval)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

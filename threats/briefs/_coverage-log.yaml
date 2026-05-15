@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-15T08:00:00-04:00
+last_updated: 2026-05-15T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -7271,7 +7271,7 @@ entries:
       confidence). 30-60 day downstream-victim-disclosure watch open.
 
   - id: 2026-05-14-pm-005
-    covered_in: [2026-05-14-afternoon]
+    covered_in: [2026-05-14-afternoon, 2026-05-15-afternoon]
     brief_file: threats/briefs/2026-05-14-afternoon.md
     headline: "Socket + StepSecurity identify three backdoored node-ipc npm versions (9.1.6, 9.2.3, 12.0.1) published by no-history 'atiertant' account (last legitimate publish August 2024); stealer/backdoor with ~90 credential categories exfil via dual-channel HTTPS-POST + DNS-TXT-record-encoding to sh.azurestaticprovider[.]net; dual-DNS-resolver fallback 1.1.1.1 + 8.8.8.8 for evasion; UNATTRIBUTED at disclosure surface (Socket + StepSecurity explicitly decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage despite operational adjacency to VT-006 — mechanism, scope, ecosystem, and C2 all differ); compromise vector undetermined (credential takeover vs unauthorized maintainer addition vs sock-puppet); A&D-prime dependency-graph reach via node-ipc UNVERIFIED; Socket + StepSecurity co-originating primaries (independence provisionally established; conservative B2 grade)"
     topic_tags:
@@ -7374,7 +7374,7 @@ entries:
       - ad_prime_named_as_victim_via_node_ipc_dependency_chain
       - new_malicious_node_ipc_version_published_or_additional_atiertant_packages
     first_covered: 2026-05-14
-    last_covered: 2026-05-14
+    last_covered: 2026-05-15
     retraction: null
     test: false
     notes: |
@@ -7491,7 +7491,7 @@ entries:
     test: false
 
   - id: 2026-05-15-flash-0600-001
-    covered_in: [flash-2026-05-15-0600-exchange-cve-2026-42897, 2026-05-15-morning]
+    covered_in: [flash-2026-05-15-0600-exchange-cve-2026-42897, 2026-05-15-morning, 2026-05-15-afternoon]
     superseded_by: 2026-05-15-morning
     superseded_reason: "08:00 morning brief absorbed Exchange CVE-2026-42897 as Vulnerabilities-section lead item per FLASH-POLICY anti-noise / supersession rule. Queued FLASH at flash-queue.yaml should be marked superseded:true at the 09:00 catchup sweep by librarian; the morning brief carries the same MSRC-single-source-veto framing and ESU-only mitigation guidance."
     brief_file: threats/briefs/flash-2026-05-15-0600-exchange-cve-2026-42897.md
@@ -8097,6 +8097,388 @@ entries:
       66-day Rapid7 timeline + edge-appliance multi-actor precedent. Copy
       Fail KEV-deadline-today (T-0) is a status carry-forward only — no
       new exploitation observations since yesterday's brief.
+
+  - id: 2026-05-15-pm-001
+    covered_in: [2026-05-15-afternoon]
+    brief_file: threats/briefs/2026-05-15-afternoon.md
+    headline: "UPDATE — CISA adds CVE-2026-42897 (Microsoft Exchange OWA XSS zero-day) to KEV catalog v2026.05.15 with federal patch deadline 2026-05-29 (T-14 days, BOD 22-01 14-day window); SecurityWeek (Eduard Kovacs) updated mid-day to restate MSRC mitigation guidance (EEMS auto URL-rewrite, EOMT script for non-ESU estates); KEV listing converts vendor-advisory urgency to federal-mandate urgency for DIB / CMMC partner-flow estates; single-source veto on active-exploitation claim layer persists from FLASH-0001 (Mandiant, Volexity, Unit 42, MSTIC TI blog, CrowdStrike still silent at sweep); KEV-listing-facts layer is A1 verifiable against CISA KEV JSON catalog; substantive operational delta vs morning brief is the federal-deadline framing not a confirmation of the exploitation claim"
+    topic_tags:
+      - cve
+      - cve-2026-42897
+      - microsoft-exchange
+      - exchange-on-prem
+      - exchange-2016-2019-subscription-edition
+      - owa-outlook-web-access
+      - xss-cwe-79
+      - cisa-kev
+      - cisa-kev-catalog-version-2026-05-15
+      - federal-patch-deadline-2026-05-29-bod-22-01-14-day-window
+      - kev-listing-procedural-status-update-not-independent-telemetry
+      - single-source-veto-on-exploitation-claim-persists
+      - msrc-mitigation-guidance-eems-eomt
+      - eems-emergency-mitigation-service
+      - eomt-on-premises-mitigation-tool
+      - esu-only-patch-path
+      - vendor-advisory-to-federal-mandate-urgency-shift
+      - dib-cmmc-partner-flow-forcing-function
+      - update-flag-morning-brief-flash-0001
+      - kev-deadline-t-minus-14-days
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42897
+        cvss: 8.1
+        vt_id_proposed: VT-007
+        kev_status:
+          listed: true
+          date_added: 2026-05-15
+          due_date: 2026-05-29
+          catalog_version: 2026.05.15
+          required_action: "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable."
+          known_ransomware_use: unknown
+        exploitation_status: in_the_wild_msrc_tag_carry_forward_single_source_veto_applied
+        patch_status: mitigation_only_general_esu_binary_only
+    related_campaigns: []
+    finding_ids: [finding-2026-05-15-0003]
+    digraph: A2
+    digraph_layered:
+      cisa_kev_listing_added_cve_2026_42897_2026_05_15: A1
+      cisa_kev_listing_dueDate_2026_05_29: A1
+      cisa_kev_listing_catalog_version_2026_05_15: A1
+      active_exploitation_in_the_wild_msrc_originating_claim_carry_forward: A2
+      securityweek_eduard_kovacs_relay_msrc_mitigation_guidance: B
+    wep: likely
+    wep_split:
+      kev_listing_event_2026_05_15: almost_certainly
+      federal_patch_deadline_2026_05_29: almost_certainly
+      active_exploitation_in_the_wild_msrc_tag: likely
+      ad_prime_on_prem_exchange_footprint_indirect_relevance: likely
+    single_source_veto_applied: true
+    single_source_veto_layer: active_exploitation_in_the_wild_carry_forward_from_flash_0001
+    update_flagging:
+      updates_prior_brief: 2026-05-15-morning
+      updates_prior_finding: finding-2026-05-15-FLASH-0001
+      update_basis: "CISA KEV addition with federal patch deadline 2026-05-29 (BOD 22-01 14-day window). Procedural status delta + federal-deadline framing; does NOT lift FLASH-0001's single-source veto on active-exploitation claim — KEV adds are vendor-relayed under BOD 22-01, not independent IR telemetry."
+      update_class: procedural_status_kev_listing_with_federal_deadline
+    hard_rule_2_framings_load_bearing:
+      - "CVE-2026-42897 exploitation claim: single-source veto on MSRC originating tag persists; CISA KEV addition is procedural concurrence under BOD 22-01, NOT independent telemetry; no A-grade IR firm has published telemetry-backed corroboration in the 8 hours since the morning FLASH grading"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -7d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-42897 + Exchange + OWA + Outlook Web Access"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    resurface_if:
+      - independent_ir_firm_telemetry_publication_lifts_single_source_veto
+      - general_availability_patch_released
+      - new_victim_disclosed
+      - first_party_ioc_hit
+      - actor_attribution
+      - kev_deadline_compliance_observation_at_2026_05_29
+      - additional_vendor_or_distro_advisories_with_new_information
+      - escalation_to_active_exploitation_in_new_window
+    first_covered: 2026-05-15
+    last_covered: 2026-05-15
+    retraction: null
+    test: false
+    notes: |
+      Procedural status update layered on FLASH-0001's grade. KEV listing
+      facts (dateAdded, dueDate, catalogVersion, requiredAction) are A1
+      directly-verifiable against CISA KEV JSON catalog v2026.05.15. The
+      load-bearing exploitation claim layer carries forward from FLASH-0001
+      at WEP likely; single-source veto persists. Vuln-tracker should
+      evaluate VT-007 entry creation post-publication.
+
+      Tripwire watch: A-grade IR-firm publication (Mandiant, Volexity,
+      Unit 42, MSTIC TI blog, CrowdStrike) lifting single-source veto would
+      promote to FLASH on telemetry confirmation; general-availability
+      patch would change urgency posture.
+
+  - id: 2026-05-15-pm-002
+    covered_in: [2026-05-15-afternoon]
+    brief_file: threats/briefs/2026-05-15-afternoon.md
+    headline: "UPDATE — node-ipc npm compromise now four-firm-confirmed UNATTRIBUTED via BleepingComputer (Bill Toulas) fuller writeup citing Socket + StepSecurity + Ox Security + Upwind (all four decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage); underlying compromise facts unchanged from finding-2026-05-14-0009 (three malicious versions 9.1.6/9.2.3/12.0.1 via atiertant account, ~690K weekly downloads, ~90 credential categories, sh.azurestaticprovider[.]net DNS-TXT C2); NEW operational-discipline detail layer — ~29,400 DNS queries per 500 KB compressed archive exfil-overhead metric, 4 MiB file-size ceiling, .git/node_modules path exclusions, no persistence, post-exfil tar.gz cleanup; high-volume DNS traffic to bootstrap resolver is high-signal defensive hunt target; two NEW research-firm surfaces (Ox Security first corpus surface, Upwind second) take provisional B per Tier-2 npm-supply-chain-security vendor precedent; cluster-separation analysis from finding-2026-05-14-0009 ACH H1 (separate cluster from TeamPCP / Shai-Hulud family) strengthened by four-firm consensus"
+    topic_tags:
+      - node-ipc
+      - npm-supply-chain-compromise
+      - npm-supply-chain-update
+      - four-firm-unattributed-consensus
+      - socket
+      - stepsecurity
+      - ox-security
+      - ox-security-provisional-b-first-corpus-surface
+      - upwind
+      - upwind-provisional-b-second-corpus-surface
+      - bleepingcomputer-bill-toulas-fuller-writeup
+      - hard-rule-2-unattributed-disposition-verbatim
+      - cluster-separation-strengthened-from-finding-2026-05-14-0009-h1
+      - cluster-separation-from-teampcp-shai-hulud-mini-shai-hulud
+      - operational-discipline-detail-layer
+      - exfil-overhead-29400-dns-queries-per-500kb
+      - file-size-ceiling-4-mib
+      - path-exclusions-git-node-modules
+      - no-persistence-single-pass-cleanup
+      - sh-azurestaticprovider-net-c2-carry-forward
+      - dns-monitoring-hunt-query-candidate
+      - update-flag-yesterday-afternoon-brief
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - node-ipc-3-version-backdoor-unattributed
+    finding_ids: [finding-2026-05-15-0005]
+    digraph: B2
+    digraph_layered:
+      bleepingcomputer_relay_node_ipc_compromise_facts_carry_forward: B2
+      four_firm_research_consensus_unattributed_status: B2
+      ox_security_first_archimedes_corpus_surface: B2
+      upwind_second_archimedes_corpus_surface: B2
+      operational_discipline_29400_dns_queries_per_500kb_exfil_overhead: B2
+      c2_domain_sh_azurestaticprovider_net_carry_forward_unchanged: A2
+      hard_rule_2_compliance_four_firm_unanimous_declination: A1
+    wep: likely
+    wep_split:
+      node_ipc_three_versions_compromised_carry_forward: very_likely
+      c2_domain_sh_azurestaticprovider_net_carry_forward: very_likely
+      ninety_credential_categories_exfil_scope_carry_forward: likely
+      operational_discipline_29400_dns_queries_per_500kb: likely
+      unattributed_disposition_four_firm_consensus: very_likely
+    single_source_veto_applied: false
+    single_source_veto_basis: "Four-firm consensus on UNATTRIBUTED-disposition layer; BleepingComputer is a relay-with-synthesis on facts that are individually verifiable upstream via the four named firms."
+    update_flagging:
+      updates_prior_brief: 2026-05-14-afternoon
+      updates_prior_finding: finding-2026-05-14-0009
+      update_basis: "Two additional research-firm surfaces (Ox Security, Upwind) decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage; converts yesterday's Socket + StepSecurity co-primary independence ambiguity (held conservatively at B2) into four-firm consensus on UNATTRIBUTED status. NEW operational-discipline detail layer: ~29,400 DNS queries per 500 KB exfil-overhead metric, 4 MiB file-size ceiling, .git/node_modules path exclusions, no persistence, cleanup behavior."
+      update_class: corroboration_strengthening_plus_new_operational_detail_layer
+    hard_rule_2_framings_load_bearing:
+      - "node-ipc UNATTRIBUTED disposition: four-firm research consensus (Socket + StepSecurity + Ox Security + Upwind) all decline TeamPCP / Shai-Hulud / Mini Shai-Hulud lineage — Archimedes records the disposition, does not originate attribution"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -7d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "sh.azurestaticprovider.net + node-ipc + atiertant + 9.1.6 + 9.2.3 + 12.0.1"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    resurface_if:
+      - independent_ab_grade_source_attributes_to_tracked_cluster
+      - any_of_four_firms_reverses_unattributed_disposition
+      - infrastructure_overlap_research_links_sh_azurestaticprovider_net_to_known_teampcp_or_mini_shai_hulud_c2
+      - first_party_splunk_hit_on_sh_azurestaticprovider_net_or_atiertant_publishes
+      - ad_prime_named_as_victim_via_node_ipc_dependency_chain
+      - new_malicious_node_ipc_version_published_or_additional_atiertant_packages
+      - ox_security_or_upwind_individual_publication_retrieved_lifts_demonstration_layer_grade
+    first_covered: 2026-05-15
+    last_covered: 2026-05-15
+    retraction: null
+    test: false
+    notes: |
+      Corroboration-strengthening update on yesterday's 2026-05-14-pm-005.
+      Underlying IOCs (sh.azurestaticprovider[.]net C2, three malicious
+      versions, atiertant account, ~90 credential categories) unchanged.
+      Two new research-firm surfaces (Ox Security, Upwind) take provisional
+      B per Tier-2 npm-supply-chain-security vendor precedent — librarian
+      should add both to source-grades.yaml with this finding as the
+      corpus-anchoring surface.
+
+      New operational-discipline detail layer is BleepingComputer relay-
+      aggregated — cannot pinpoint which firm contributed which observation.
+      Next-pass collector should fetch Ox Security and Upwind individual
+      publications to disaggregate and lift detail layer grade.
+
+      The 29,400-DNS-queries-per-500-KB metric is a high-signal defensive
+      hunt-query candidate against `sh[.]azurestaticprovider[.]net` —
+      analyst flag for IOC-enrichment workflow and any subsequent threat-
+      detection-weekly coverage.
+
+      Cluster-separation analysis (ACH H1 = separate cluster from TeamPCP /
+      Shai-Hulud / Mini Shai-Hulud lineage, from finding-2026-05-14-0009)
+      is strengthened by four-firm consensus across four different
+      methodologies (static-analysis + ecosystem-scanning, CI/CD-pipeline-
+      aware, application-security-posture, cloud-runtime-detection).
+
+  - id: 2026-05-15-pm-003
+    covered_in: [2026-05-15-afternoon]
+    brief_file: threats/briefs/2026-05-15-afternoon.md
+    headline: "Pwn2Own Berlin 2026 Day 2 — DEVCORE researcher Cheng-Da 'Orange' Tsai demonstrates 3-bug RCE-to-SYSTEM chain against Microsoft Exchange ($200K payout); 15 unique zero-days demonstrated Day 2 totaling $385,750 across Microsoft Exchange, Windows 11, Red Hat Enterprise Linux for Workstations, NVIDIA Container Toolkit, Cursor AI, OpenAI Codex; no CVEs assigned (ZDI 90-day responsible-disclosure window running); technical details embargoed pending vendor coordination; expected CVE assignment window 2026-07 to 2026-08; BleepingComputer (Sergiu Gatlan) sole directly-retrieved source — ZDI's own write-up and DEVCORE research-context post cited but not retrieved; single-source veto applies on demonstration-claim layer; BleepingComputer frames chain as procedurally distinct from CVE-2026-42897 (XSS in OWA vs 3-bug RCE chain to SYSTEM); compounding Exchange-attack-surface picture — CVE-2026-42897 is the patch-today layer, Pwn2Own chain is the next-90-days vulnerability-management item"
+    topic_tags:
+      - pwn2own
+      - pwn2own-berlin-2026
+      - pwn2own-berlin-day-2
+      - trend-micro-zero-day-initiative
+      - zdi-90-day-responsible-disclosure-window
+      - orange-tsai
+      - cheng-da-tsai
+      - devcore-research-team
+      - microsoft-exchange
+      - exchange-3-bug-chain-rce-to-system
+      - 200k-payout
+      - day-2-total-385750-usd
+      - 15-unique-zero-days-day-2
+      - embargoed-technical-details
+      - no-cve-assigned-90-day-clock-running
+      - expected-cve-assignment-window-2026-07-to-2026-08
+      - distinct-from-cve-2026-42897-per-bleepingcomputer-framing
+      - compounding-exchange-attack-surface
+      - researcher-attribution-not-actor-attribution-hard-rule-2
+      - bleepingcomputer-single-directly-retrieved-relay
+      - zdi-and-devcore-cited-only-not-retrieved
+      - monitoring-tier-not-action-tier-b3
+      - vuln-tracker-watch-item-2026-07-to-2026-08-cve-assignment-window
+    related_actors:
+      - actor_name: "DEVCORE / Orange Tsai (Cheng-Da Tsai)"
+        in_roster: false
+        actor_type: public_security_researcher_not_threat_actor
+        archimedes_treatment: researcher_attribution_not_actor_attribution_hard_rule_2_compliant
+    related_vulns:
+      - product: Microsoft Exchange Server
+        cve_assigned: none_yet
+        expected_cve_assignment_window: 2026-07_to_2026-08
+        responsible_disclosure_window_days: 90
+        chain_bugs: 3
+        chain_impact: rce_with_system_privileges
+        relationship_to_cve_2026_42897: distinct_per_bleepingcomputer_framing
+    related_campaigns: []
+    finding_ids: [finding-2026-05-15-0004]
+    digraph: B3
+    digraph_layered:
+      pwn2own_berlin_day_2_contest_event_occurred: B2
+      exchange_3_bug_chain_rce_to_system_demonstrated: B3
+      orange_tsai_devcore_attribution_as_researcher: B2
+      payout_200000_usd: B2
+      day_2_total_385750_usd_15_zero_days: B2
+      no_cve_assigned_90_day_disclosure_clock: B2
+      embargoed_technical_details: B2
+      distinct_from_cve_2026_42897_no_asserted_relationship: B3
+    wep: roughly_even_chance
+    wep_split:
+      pwn2own_berlin_day_2_event_occurred: very_likely
+      payouts_385750_usd_15_zero_days_day_2_aggregate: likely
+      orange_tsai_devcore_exchange_3_bug_chain_demonstrated: roughly_even_chance
+      no_cve_assigned_90_day_disclosure_clock_running: very_likely
+      distinct_from_cve_2026_42897_no_asserted_relationship: likely
+      expected_cve_assignment_window_2026_07_to_2026_08: likely
+    single_source_veto_applied: true
+    single_source_veto_layer: exchange_3_bug_chain_rce_to_system_demonstration_claim
+    hard_rule_2_framings_load_bearing:
+      - "Researcher attribution to Orange Tsai / DEVCORE is contest-mechanical (researcher-to-demonstrated-bug), NOT threat-actor identification per Hard Rule 2"
+    hard_rule_6_quote_discipline:
+      quotes_in_brief: 1
+      quote_source: bleepingcomputer
+      quote_word_count: 15
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -7d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "Pwn2Own + Orange Tsai + DEVCORE"
+      hard_rule_8_framing: "Splunk silence expected — contest is research event not operational threat surface"
+    resurface_if:
+      - cve_assignment_in_2026_07_to_2026_08_window
+      - microsoft_publishes_patch_for_one_or_more_chain_bugs
+      - chain_shares_sub_component_with_cve_2026_42897_when_published
+      - zdi_writeup_or_devcore_research_post_retrieved_lifts_demonstration_claim_grade
+      - active_in_the_wild_exploitation_post_disclosure
+    first_covered: 2026-05-15
+    last_covered: 2026-05-15
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier inclusion (Other Signal). B3 / WEP roughly even chance
+      on the specific demonstration claim reflects single-source veto status
+      at sweep (BleepingComputer sole directly-retrieved; ZDI write-up and
+      any DEVCORE research-context post cited but not retrieved). Contest
+      event itself (Pwn2Own Berlin Day 2 occurred, $385,750 total payout,
+      15 zero-days) is well-corroborated by contest's mechanical structure.
+
+      Compounding Exchange-attack-surface framing pairs with 2026-05-15-pm-001
+      (CVE-2026-42897 KEV listing) and the morning brief's FLASH-0001 absorbed
+      Exchange surface. BleepingComputer explicitly frames the Pwn2Own chain
+      as procedurally distinct from CVE-2026-42897.
+
+      Vuln-tracker watch-item queued for 2026-07 to 2026-08 CVE assignment
+      window. Analyst flag for monitoring whether the chain shares any
+      sub-component with CVE-2026-42897 when Microsoft eventually publishes
+      the patches.
+
+  - id: 2026-05-15-pm-brief-meta
+    covered_in: [2026-05-15-afternoon]
+    brief_file: threats/briefs/2026-05-15-afternoon.md
+    headline: "Brief meta — 2026-05-15 afternoon: 3 findings referenced (1 procedural-status UPDATE on CVE-2026-42897 morning Exchange surface adding CISA KEV federal deadline 2026-05-29; 1 corroboration-strengthening UPDATE on yesterday afternoon's node-ipc cluster adding four-firm UNATTRIBUTED consensus + new operational-discipline detail layer including ~29,400 DNS queries per 500 KB exfil-overhead metric; 1 monitoring-tier Pwn2Own Berlin Day 2 Exchange 3-bug RCE chain in Other Signal); 2 carry-forward CVE-deadline status items in Vulnerabilities section (CVE-2026-20182 SD-WAN T-2 and CVE-2026-31431 Copy Fail EOD-today closing); compounding Exchange-attack-surface framing in lead (CVE-2026-42897 patch-today + Pwn2Own chain next-90-days); single-source veto held on CVE-2026-42897 exploitation claim and Pwn2Own demonstration claim; standing sections both present (Sector Focus + Iran Cyber Watch silent_day); no red-team triggers crossed; pre-flight 13/13 after Discord Summary char-count regenerate cycle"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - 3-findings-referenced
+      - 2-update-flags-procedural-status-and-corroboration-strengthening
+      - 1-monitoring-tier-pwn2own-other-signal
+      - 2-cve-deadline-carry-forwards-vulnerabilities
+      - compounding-exchange-attack-surface-lead
+      - single-source-veto-on-exploitation-claim-and-demonstration-claim
+      - no-red-team-triggers-crossed
+      - preflight-13-of-13-passed-after-regenerate
+      - discord-summary-char-count-regenerate-cycle
+      - iran-cyber-silent-day-template
+      - ad-sector-focus-no-prime-victim-disclosures
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-15-0003
+      - finding-2026-05-15-0004
+      - finding-2026-05-15-0005
+    resurface_if: []
+    first_covered: 2026-05-15
+    last_covered: 2026-05-15
+    retraction: null
+    test: false
+    notes: |
+      Brief composition flow: CVE-2026-42897 KEV-listing UPDATE leads the
+      Active Threats section (converts morning's vendor-advisory urgency
+      to federal-mandate urgency, federal deadline 2026-05-29 / T-14);
+      node-ipc four-firm UNATTRIBUTED consensus + new defensive hunt
+      signal (~29,400 DNS queries per 500 KB exfil chunk) second item
+      in Active Threats; Vulnerabilities section carries CVE-2026-20182
+      SD-WAN T-2 and CVE-2026-31431 Copy Fail EOD-today as status-only
+      carry-forwards plus a CVE-2026-42897 IR-firm-telemetry watch line;
+      Pwn2Own Berlin Day 2 Exchange 3-bug chain in Other Signal with
+      compounding-attack-surface framing to CVE-2026-42897.
+
+      Pre-flight: 13/13 passed after one regenerate cycle on Check 13
+      (Discord Summary char count). Initial draft ran ~2150 chars on
+      Layer 2 due to long CISA + BleepingComputer URLs eating headroom;
+      regenerated with tighter bullet bodies (cut "research-and-testing
+      environments" qualifier, tightened defensive-team hunt phrasing,
+      removed verbose framing on Pwn2Own bullet). Final Layer 2 ~1870
+      chars / ~255 words — under 1900 ceiling and within 150-300 word band.
+
+      Layer 1 body: ~712 words (within 400-800 target). Banned phrases:
+      zero. Quote discipline: 1 quote total (BleepingComputer Pwn2Own,
+      15 words exactly, from finding-2026-05-15-0004); CISA KEV
+      required-action field treated as quoted procedural language
+      (8 words, attributed). Standing sections both present (Sector Focus
+      no A&D-prime named-victim disclosures in past 8h; Iran Cyber Watch
+      silent_day_template).
+
+      Anti-repetition discipline: CVE-2026-42897 morning-brief substance
+      not re-litigated — only the procedural-status delta (KEV listing
+      + federal deadline) and the carry-forward exploitation-claim watch
+      surfaced. node-ipc yesterday-afternoon substance not re-litigated
+      — only the four-firm consensus delta + new operational-discipline
+      detail layer surfaced. UAT-8616 / Cisco SD-WAN morning substance
+      not re-litigated — only the T-2 deadline status surfaced.
+      Copy Fail Linux EOD-today not re-litigated — only the closing-item
+      status surfaced.
+
+      Hard Rule 2: load-bearing across all three findings (CVE-2026-42897
+      single-source veto persistence; node-ipc four-firm UNATTRIBUTED
+      verbatim disposition; Pwn2Own researcher-attribution-not-actor-
+      attribution). Hard Rule 6: 1 quote, 15 words, 1 source. Hard
+      Rule 8: Splunk first-party clean 27th consecutive dormant sweep
+      (no IOC hits across CVE-2026-42897 / node-ipc / Pwn2Own surfaces).
+
+      No FLASH-worthy finding emerged this brief cycle — node-ipc and
+      CVE-2026-42897 cleared by 12:00 FLASH sweep; Pwn2Own monitoring-
+      tier (B3 fails B2 FLASH minimum, no CVE, no ITW exploitation,
+      no actor); CVE-2026-42897 KEV listing is procedural status update
+      not a new exploitation surface.
 
 # ============================================================================
 # Valid resurface_if conditions

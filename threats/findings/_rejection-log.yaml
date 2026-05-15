@@ -9,7 +9,7 @@
 # resurfaces via higher-grade sources.
 
 version: 1
-last_updated: 2026-05-14  # afternoon-20260514-160000 produced 0 rejections and 5 promotions (PM-001 Cisco SD-WAN CVE-2026-20182 / UAT-8616, PM-002 MSTIC Secret Blizzard / Kazuar, PM-003 Salt Typhoon Azerbaijan + Twill Typhoon cluster, PM-004 OpenAI TanStack confirmation / VT-006, PM-005 node-ipc 3-version backdoor). Audit-trail block updated below; no new rejection entries this run.
+last_updated: 2026-05-15  # flash-grade-20260515-060000 produced 0 rejections and 2 promotions (FLASH-0001 MSRC Exchange CVE-2026-42897 on-prem XSS-spoofing zero-day exploitation-detected ESU-only patch path A2/likely, FLASH-0002 TeamPCP releases Shai-Hulud worm source code on GitHub + BreachForums supply-chain bounty challenge VT-006 evolution B2/likely with single-source-veto applied pending direct retrieval of Datadog + Ox Security primaries). Both promoted to FLASH-tier findings; both queued to flash-queue.yaml per quiet-hours posture (06:00 EDT outside 09:00-21:00 active window; critical-override conditions not met on either — Exchange 2-of-4 fails, TeamPCP 1-of-4 fails). Audit-trail block updated below; no new rejection entries this run.
 
 entries:
   - rejection_id: reject-2026-05-13-0001

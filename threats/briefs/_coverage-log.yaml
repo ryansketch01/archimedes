@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-14T16:00:00-04:00
+last_updated: 2026-05-15T06:55:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -7489,6 +7489,304 @@ entries:
     last_covered: 2026-05-14
     retraction: null
     test: false
+
+  - id: 2026-05-15-flash-0600-001
+    covered_in: [flash-2026-05-15-0600-exchange-cve-2026-42897]
+    brief_file: threats/briefs/flash-2026-05-15-0600-exchange-cve-2026-42897.md
+    headline: "Microsoft Exchange on-prem zero-day CVE-2026-42897 — MSRC 'Exploitation Detected' tag; CWE-79 XSS via OWA-rendered crafted email; affects Exchange Server 2016 / 2019 / Subscription Edition all updates; Exchange Online unaffected; CVSS 8.1 HIGH per NVD; NO general-availability patch — binary fixes via Extended Security Updates only (SE RTM, 2016 CU23, 2019 CU14/CU15); mitigation path EEMS auto URL-rewrite + EOMT script for air-gapped; no actor attribution (anonymous-researcher credit per Hacker News); single-source veto applied to exploitation claim layer (MSRC only); WEP capped at likely; A&D-prime on-prem Exchange estates carry indirect / structural exposure"
+    topic_tags:
+      - flash
+      - flash_queued_quiet_hours
+      - flash_critical_override_failed_cvss_8_1_no_tracked_actor_no_ad_watchlist
+      - trigger-6-zero-day-no-patch
+      - trigger-1-critical-cve-exploited
+      - cve
+      - cve-2026-42897
+      - microsoft-exchange
+      - exchange-on-prem
+      - exchange-2016-2019-subscription-edition-all-updates
+      - exchange-online-unaffected
+      - owa-outlook-web-access
+      - xss-cwe-79
+      - cvss-8-1-high
+      - msrc-exploitation-detected-tag
+      - msrc-single-source-veto-on-exploitation-claim
+      - nvd-independent-corroboration-on-procedural-cve-facts-layer
+      - bleepingcomputer-relay
+      - thehackernews-relay
+      - no-general-availability-patch
+      - esu-only-patch-path
+      - eems-emergency-mitigation-service-url-rewrite
+      - eomt-on-premises-mitigation-tool
+      - air-gapped-environment-mitigation-considerations
+      - ad-prime-on-prem-exchange-itar-classified-adjacent
+      - owa-disabled-mission-network-below-exposure-floor
+      - anonymous-researcher-credit-thn
+      - hard-rule-2-no-actor-origination
+      - hard-rule-8-splunk-first-party-clean-30d
+      - vt-007-candidate
+      - kev-listing-pending-sweep-side-check
+      - operational-class-precedent-proxynotshell-cve-2023-21709
+      - first-archimedes-corpus-surface
+      - anti-noise-lock-cve-2026-42897-exchange-zero-day-24h
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42897
+        cvss: 8.1
+        cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+        cwe: CWE-79
+        vt_id_proposed: VT-007
+        kev_status: pending_sweep_side_check
+        librarian_action: add_to_threats_vulnerabilities_index_yaml_post_publication
+    related_campaigns: []
+    finding_ids: [finding-2026-05-15-FLASH-0001]
+    digraph: A2
+    digraph_layered:
+      procedural_cve_facts: A1
+      exchange_xss_owa_primitive_facts: A1
+      active_exploitation_msrc_tag_load_bearing: A2
+      patch_status_esu_only_general_ga_pending: A2
+    wep: likely
+    wep_split:
+      procedural_cve_facts: very_likely
+      exchange_owa_xss_spoofing_primitive_validity: very_likely
+      active_exploitation_in_the_wild_msrc_tag: likely
+      no_general_availability_patch_currently: very_likely
+    single_source_veto_applied: true
+    single_source_veto_layer: active_exploitation_in_the_wild_msrc_tag
+    single_source_veto_rationale: "MSRC 'Exploitation Detected' tag is single-vendor-originating. BleepingComputer and The Hacker News are relays. No independent A-grade IR-firm telemetry-backed corroboration at sweep time (Mandiant, Volexity, Unit 42, MSTIC TI blog, CrowdStrike all silent). NVD provides independent corroboration on the CVE-facts layer only. WEP capped at 'likely' on the exploitation claim."
+    analyst_review_complete: false
+    analyst_review_required: true
+    analyst_review_required_basis: "patch-status complexity (ESU-only path) + A&D-prime on-prem Exchange footprint relevance warrants SAT pass at next morning brief"
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_below_very_likely_threshold_per_flash_anti_noise_rule_3
+    quiet_hours_at_compose: true
+    critical_override_applied: false
+    critical_override_conditions_met: 1_of_4
+    critical_override_conditions_failed:
+      - cvss_10_0_required_actual_8_1
+      - tracked_actor_required_actual_no_actor_attribution
+      - ad_watchlist_entity_named_required_actual_indirect_via_exchange_footprint
+    posting_path: queue_for_catchup
+    expected_post_window: "09:00 EDT catchup sweep — librarian must check for supersession by 08:00 morning brief"
+    splunk_first_party:
+      status: clean_at_compose
+      hits: 0
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hard_rule_8_framing: silence_not_disconfirming_exchange_owa_logs_index_coverage_unknown
+    librarian_handoffs_queued:
+      - vuln_tracker_scaffolding:
+          - "VT-007 (CVE-2026-42897 Exchange on-prem XSS zero-day; re-fetch MSRC update-guide via JS-capable path for KB numbers + patch-version matrix)"
+      - source_grade_log_followups:
+          - "MSRC under mstic yaml entry — vendor PSIRT self-disclosure precedent reaffirmed"
+      - cisa_kev_recheck: "CISA KEV catalog returned 403 to WebFetch this sweep; re-check via JSON feed at next pass"
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - independent_ir_firm_telemetry_corroborates_msrc_tag
+      - patch_released_general_availability
+      - kev_listing_added
+      - escalation_to_widespread_exploitation
+      - first_party_ioc_hit
+      - public_exploit_poc_released
+    first_covered: 2026-05-15
+    last_covered: 2026-05-15
+    retraction: null
+    test: false
+    notes: |
+      First Archimedes-corpus surface of CVE-2026-42897. FLASH composed
+      at 06:50 EDT during quiet hours; queued for 09:00 catchup sweep.
+      Librarian must check for supersession by the 08:00 morning brief
+      before posting from the queue. Single-source veto applied to the
+      exploitation-claim layer (MSRC only); WEP capped at likely. NVD
+      provides independent corroboration on CVE-facts layer only.
+
+      Critical override failed 3-of-4 (CVSS 8.1 < 10.0; no tracked actor;
+      no A&D-watchlist entity named as direct target). Standard quiet-
+      hours queue path applies — no override bypass.
+
+      Anti-noise lock proposed: cve-2026-42897-exchange-zero-day until
+      2026-05-16T06:30:00-04:00 (24h).
+
+  - id: 2026-05-15-flash-0600-002
+    covered_in: [flash-2026-05-15-0600-teampcp-shai-hulud-release]
+    brief_file: threats/briefs/flash-2026-05-15-0600-teampcp-shai-hulud-release.md
+    headline: "TeamPCP releases Shai-Hulud npm/PyPI worm source code on GitHub under multiple accounts + posts BreachForums 'supply chain challenge' announcement offering monetary rewards for proof-of-intrusion using the released code — VT-006 commoditization pivot from private-operator to campaign-host distribution model; GitHub removed originals (forks reportedly persist); SecurityWeek single directly-retrieved primary; Datadog + Ox Security + @DailyDarkWeb cited via SecurityWeek only (direct retrieval queued for next sweep); TeamPCP attribution corpus-anchored via VT-006 / finding-2026-05-12-FLASH-0001 — not Archimedes-originating; single-source veto applies; WEP capped at likely; force-multiplier raises derivative-attack volume over 30-day forward window and makes future intrusions attribution-ambiguous between TeamPCP and broader BreachForums pool"
+    topic_tags:
+      - flash
+      - flash_queued_quiet_hours
+      - flash_critical_override_failed_cvss_n_a_no_active_exploitation_no_ad_watchlist
+      - trigger-4-tracked-actor-ttp-change
+      - trigger-2-new-attribution
+      - teampcp
+      - teampcp-roster-id-001
+      - tracked-actor-id-001
+      - shai-hulud-worm
+      - shai-hulud-source-code-release
+      - shai-hulud-source-code-release-github-multi-account
+      - breachforums-supply-chain-challenge
+      - breachforums-bounty-model
+      - vt-006
+      - cve-2026-45321
+      - vt-006-evolution-ttp-change
+      - vt-006-commoditization-pivot
+      - private-operator-to-campaign-host-distribution-shift
+      - force-multiplier-derivative-attack-volume
+      - attribution-ambiguity-future-intrusions
+      - cybercriminal-pool-derivative-deployments
+      - securityweek-provisional-b-single-directly-retrieved-primary
+      - datadog-cited-not-retrieved-provisional-b-proposed
+      - ox-security-cited-not-retrieved-provisional-c-proposed
+      - x-dailydarkweb-cited-not-retrieved-provisional-c-proposed
+      - black-duck-ronallo-cited-not-retrieved
+      - pathlock-stross-cited-not-retrieved
+      - single-source-veto-applied-full-cluster
+      - hard-rule-2-no-archimedes-origination-restatement
+      - hard-rule-8-splunk-first-party-clean-30d
+      - hard-rule-6-quote-discipline-securityweek-one-quote
+      - openai-tanstack-named-victim-template
+      - ad-prime-indirect-exposure-vt-006-baseline
+      - squawk-aviation-namespace-19-packages
+      - tanstack-ecosystem-tier-1-sdlc-dependency-graphs
+      - mistral-ai-450-repos-sale-coherent-commoditization-pivot
+      - anti-noise-distinction-from-flash-2026-05-12-0600-mini-shai-hulud-worm-deployment
+      - anti-noise-distinction-from-flash-2026-05-14-2200-mistral-ai-repos-sale
+      - anti-noise-lock-teampcp-shai-hulud-source-code-release-bounty-24h
+      - actor-profiler-handoff-teampcp-dossier-update-queued
+      - actor-profiler-threat-box-rescore-candidate
+    related_actors:
+      - actor_id: "001"
+        actor_name: TeamPCP
+        in_roster: true
+        relationship: source_code_release_act_attribution_per_securityweek_corpus_anchored_via_vt_006
+        archimedes_treatment: restatement_no_archimedes_origination_hard_rule_2
+        attribution_independence_posture: single_source_securityweek_directly_retrieved_datadog_ox_security_cited_only
+        ttp_register_update_queued: distribution_model_pivot_private_to_commodity_plus_breachforums_bounty_mechanism_plus_force_multiplier_attribution_complexity
+        threat_box_rescore_candidate: true
+        threat_box_rescore_rationale: "Two FLASH-tier surfaces in 96h (worm deployment + source-code release) + commoditization pivot materially expanding attack-class blast radius. Per Hard Rule 5, HIGH-tier composite scoring requires /approve-scoring sign-off."
+    related_vulns:
+      - cve: CVE-2026-45321
+        cvss: 9.6
+        vt_id: VT-006
+        role: parent_surface_being_evolved_by_source_code_release_act
+        watch_signals_update_queued: true
+        watch_signals_update_payload:
+          - derivative_attacks_expected_true
+          - github_fork_takedown_watch
+          - breachforums_claim_activity_watch
+          - named_enterprise_victim_disclosure_30_day_window
+    related_campaigns:
+      - mini-shai-hulud-2026-05-12
+      - shai-hulud-family-lineage
+      - teampcp-commoditization-pivot-2026-05
+    finding_ids: [finding-2026-05-15-FLASH-0002]
+    digraph: B2
+    digraph_layered:
+      securityweek_relay_primary_facts: B2
+      source_code_released_github_breachforums_act: B2
+      teampcp_attributed_releasing_entity: B2
+      ttp_evolution_from_private_to_commodity_distribution: B2
+    wep: likely
+    wep_split:
+      source_code_released_github_factually_occurred: likely
+      breachforums_bounty_announcement_factually_occurred: likely
+      teampcp_attributed_releasing_entity: likely
+      derivative_attacks_expected_forward_30_days: likely
+      ad_prime_supply_chain_exposure_increase: likely
+    single_source_veto_applied: true
+    single_source_veto_layer: full_cluster_attribution_and_release_act
+    single_source_veto_rationale: "SecurityWeek is the only directly-retrieved primary. Datadog, Ox Security, Black Duck, Pathlock, @DailyDarkWeb cited via SecurityWeek only — none independently retrieved. Per INTEL-GRADING independence test, removing SecurityWeek collapses the cluster. WEP capped at 'likely' until Datadog or Ox Security retrieves at A/B-grade with independent telemetry."
+    analyst_review_complete: false
+    analyst_review_required: true
+    analyst_review_required_basis: "tracked-actor TTP-change (Trigger 4) + 3 attribution claims (SecurityWeek direct + Datadog/Ox Security via citation) require SAT-ACH + SAT-KAC at next morning brief"
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_below_very_likely_threshold_per_flash_anti_noise_rule_3
+    quiet_hours_at_compose: true
+    critical_override_applied: false
+    critical_override_conditions_met: 1_of_4
+    critical_override_conditions_failed:
+      - cvss_10_0_required_actual_no_cve_assigned_to_release_act
+      - active_exploitation_required_actual_release_only_not_in_the_wild_intrusion
+      - ad_watchlist_entity_named_required_actual_indirect_via_squawk_tanstack_baseline
+    posting_path: queue_for_catchup
+    expected_post_window: "09:00 EDT catchup sweep — librarian must check for supersession by 08:00 morning brief"
+    splunk_first_party:
+      status: clean_at_compose
+      hits: 0
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hard_rule_8_framing: silence_not_disconfirming
+    provisional_source_grades_queued:
+      - source_yaml_id: datadog
+        proposed_grade: B
+        rationale: "Vendor research practice; first surface in corpus; conservative provisional B per StepSecurity / Sysdig / Zellic / Socket precedent for first-surface vendor-research firms."
+      - source_yaml_id: ox-security
+        proposed_grade: C
+        rationale: "Application-security vendor research practice; first surface in corpus; provisional C per LayerX / Seqrite / Trendyol-Albayrak / Aikido / SafeDep precedent for first-surface vendor-research firms without prior track record."
+      - source_yaml_id: x-dailydarkweb
+        proposed_grade: C
+        rationale: "X/Twitter dark-web monitoring account; social-tier; provisional C per established x-vxunderground / x-falconfeedsio convention."
+    librarian_handoffs_queued:
+      - vuln_tracker_handoff:
+          - "VT-006 watch_signals extension: derivative_attacks_expected:true; GitHub-fork-takedown watch; BreachForums-claim-activity watch; named-enterprise-victim-disclosure 30-day window"
+      - actor_profiler_handoff:
+          - "TeamPCP #001 dossier update — ingest source-code release surface + 2026-05-14 22:00 Mistral surface + prior VT-006 work; threat-box rescore candidate (HIGH-tier composite requires /approve-scoring per Hard Rule 5)"
+      - source_grade_log_additions:
+          - "datadog provisional B (first-citation 2026-05-15)"
+          - "ox-security provisional C (first-citation 2026-05-15)"
+          - "x-dailydarkweb provisional C (first-citation 2026-05-15)"
+          - "black-duck / pathlock — commentary-tier; defer source-grades.yaml entry until direct retrieval"
+      - collector_followup:
+          - "Direct retrieval of Datadog Security Labs Shai-Hulud framework analysis (priority high — lifts single-source veto if A/B-grade with independent telemetry)"
+          - "Direct retrieval of Ox Security attack-variant observations on Shai-Hulud derivatives"
+    anti_noise_distinction:
+      flash_2026_05_12_0600_mini_shai_hulud_worm_deployment: distinct_topic_ttp_evolution_not_restatement
+      flash_2026_05_14_2200_mistral_ai_450_repos_sale_raw: distinct_topic_parallel_commercialization_channel
+    hard_rule_2_framings_load_bearing:
+      - "TeamPCP attribution for source-code release act: per SecurityWeek; corpus-anchored via VT-006 / finding-2026-05-12-FLASH-0001 (Wiz + StepSecurity + Snyk attribution chain)"
+      - "Datadog + Ox Security analysis cited via SecurityWeek only — not directly retrieved, not independent corroboration this sweep"
+      - "Single-source veto applies full cluster (SecurityWeek single directly-retrieved primary); WEP capped at 'likely'"
+      - "Force-multiplier framing on derivative-attack volume: WEP 'very likely raising' on the directional call; explicitly does NOT extrapolate to A&D-prime named-victim claims"
+    resurface_if:
+      - datadog_or_ox_security_directly_retrieved_with_independent_telemetry_lifts_single_source_veto
+      - new_named_enterprise_victim_disclosed_on_vt_006_derivative_30_day_window
+      - new_attribution_to_teampcp_for_derivative_campaign
+      - github_fork_takedown_activity_observed
+      - breachforums_post_directly_retrieved
+      - first_party_ioc_hit_on_vt_006_ioc_set
+      - actor_profiler_threat_box_rescore_completed
+      - patch_released_for_associated_cve
+      - escalation_to_widespread_derivative_exploitation
+    first_covered: 2026-05-15
+    last_covered: 2026-05-15
+    retraction: null
+    test: false
+    notes: |
+      Second TeamPCP FLASH in 96 hours. Distinct from 2026-05-12 FLASH
+      (worm deployment attribution) and 2026-05-14 22:00 Mistral AI 450
+      repos sale raw surface — TTP-evolution surface, not restatement.
+      Anti-noise distinction documented at finding-2026-05-15-FLASH-0002.
+
+      FLASH composed at 06:55 EDT during quiet hours; queued for 09:00
+      catchup sweep. Librarian must check for supersession by the 08:00
+      morning brief before posting from the queue. Single-source veto
+      applies full-cluster (SecurityWeek only directly-retrieved primary);
+      WEP capped at "likely."
+
+      Critical override failed 3-of-4 (no CVSS assigned to release act;
+      no in-the-wild intrusion — release is not exploitation per Trigger 1
+      framing; no A&D-watchlist entity named). Standard quiet-hours queue
+      path applies.
+
+      Threat-box rescore candidate queued to actor-profiler. HIGH-tier
+      composite scoring requires /approve-scoring sign-off per Hard
+      Rule 5. Two FLASH-tier surfaces in 96h + commoditization pivot
+      materially expanding attack-class blast radius is the empirical
+      basis for the rescore consideration.
+
+      Anti-noise lock proposed: teampcp-shai-hulud-source-code-release-
+      bounty until 2026-05-16T06:35:00-04:00 (24h).
 
 # ============================================================================
 # Valid resurface_if conditions

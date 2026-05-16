@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-15T16:00:00-04:00
+last_updated: 2026-05-16T08:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -464,6 +464,19 @@ vendor_sources:
     urls:
       - https://www.upwind.io/feed
 
+  - id: zdi-blog
+    name: "Zero Day Initiative (Trend Micro) — ZDI blog / Pwn2Own coordination"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-16
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-16-0002 (Pwn2Own Berlin 2026 Day 3 final results and Master of Pwn — 3 successful exploits / $34,500 payouts Day 3 bringing event total to $943,250 across 42 unique zero-days; Day 2 Orange Tsai / DEVCORE Exchange RCE-to-SYSTEM chain remains under standard 90-day vendor-coordinated-disclosure embargo). ZDI / Trend Micro is the canonical Pwn2Own contest coordinator, judge, and exclusive publisher of contest results, payouts, and embargoed-CVE disclosure coordination since 2007. Dustin Childs (Communications Manager, ZDI) is the named byline with multi-decade track record in vendor coordination and Pwn2Own contest reporting. Provisional A is procedurally consistent with the same precedent class as Bitdefender (2026-05-13), Sysdig (2026-05-14), Wiz Research (2026-05-12), Symantec (2026-05-13), Cisco Talos (2026-05-14 afternoon), Darktrace (2026-05-14), OpenAI self-disclosure (2026-05-14) — first-citation vendor-research / vendor-self-disclosure publications at Tier-1 evidentiary standard. ZDI is procedurally A-grade on contest-mechanical facts (exploit count, payouts, vendor coordination, Master of Pwn standings) because ZDI is the authoritative knowledge-holder for its own contest — there is no higher-quality evidence basis for those specific claim types (analogous to F5 vendor self-disclosure of own-product CVEs in finding-2026-05-14-0002, kernel.org netdev on Linux kernel patches in finding-2026-05-14-0003, OpenAI on own incident in finding-2026-05-14-0008). Single-source veto applies on contest-event layer but does NOT cap WEP because ZDI is vendor-authority on own contest. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.thezdi.com/blog
+      - https://www.zerodayinitiative.com/blog
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -580,13 +593,19 @@ media_sources:
   - id: depthfirst
     name: "depthfirst (independent researcher)"
     category: researcher
-    grade: F
+    grade: C
     provisional: true
-    provisional_since: 2026-05-14
-    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-14-0002 commentary chain (cited by The Hacker News editorial framing on CVE-2026-42945 NGINX Rift '18-year dormancy' — the dormancy headline is THN + depthfirst editorial, NOT vendor-attested in F5 K000160932 per Hard Rule 2 framing). depthfirst is an independent researcher / commentator with no prior Archimedes-corpus track record and no observed first-party vulnerability research or vendor-acknowledged disclosure history at first surface. Conservative provisional F (unknown / unestablished) starting grade per category baseline for unknown independent voices — does not load-bear on any finding's WEP this run; the NGINX Rift finding's A2 digraph rests on F5 vendor-self-disclosure (provisional A) + SecurityWeek relay. Operator may upgrade if subsequent surfaces show vendor-acknowledged disclosure or peer-reviewed publication. Pending human ratification."
+    provisional_since: 2026-05-16
+    provisional_history:
+      - grade: F
+        provisional_since: 2026-05-14
+        retired_at: 2026-05-16
+        reason: "First-surface conservative floor pending observable research history. Elevated to C on 2026-05-16 per 'elevate to provisional-C on first technical write-up publication' trigger documented in source-grade-log.md 2026-05-14 entry."
+    provisional_reason: "Elevated F → C on 2026-05-16 per first-technical-write-up-publication trigger from source-grade-log.md 2026-05-14 entry. Surfaced via finding-2026-05-16-0001 (SecurityWeek Ionut Arghire byline reports depthfirst published proof-of-concept exploit code for CVE-2026-42945 NGINX Rift at GitHub repository https://github.com/depthfirstdisclosures/nginx-rift, 36-48h after F5 K000160932 quarterly-advisory disclosure 2026-05-14). The GitHub PoC repository constitutes a technical-output publication; depthfirst is the originating researcher credited on the underlying CVE per F5 vendor self-disclosure chain (carry-forward from finding-2026-05-14-0002). depthfirst transitions from 'cited via THN editorial framing' (F surface) to 'named PoC author with operational artifact at stated URL' (C surface). Hard Rule 3 prevents Archimedes from fetching the PoC repository contents, so direct content-verification did not occur — the elevation rests on the vendor-attested originating-research credit plus the SecurityWeek-attested publication act, not on Archimedes' own verification of the artifact. Conservative C is the precedent grade for first-publication independent-researcher surfaces with vendor-acknowledgement context (LayerX-precedent / Seqrite-precedent / Trendyol-Albayrak-precedent class). NO depthfirst-to-A or -to-B path on this surface — single publication, no peer-review, no vendor-acknowledgement of the PoC code itself (vs. the CVE credit which IS vendor-attested per F5 K000160932). Operator may upgrade to B on subsequent surfaces showing peer-reviewed publication or vendor coordination on a second CVE / technical write-up. Pending human ratification."
     awaiting_ratification: true
     active: true
-    urls: []
+    urls:
+      - https://github.com/depthfirstdisclosures
 
   - id: github-advisories
     name: "GitHub Security Advisories"
@@ -906,15 +925,15 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 75        # +2 afternoon: ox-security (provisional B 2026-05-15), upwind (provisional B 2026-05-15) — both relay-cited via BleepingComputer on node-ipc four-firm consensus
-  active_sources: 66       # +2 above
+  total_sources: 76        # +1 morning 2026-05-16: zdi-blog (provisional A; first corpus citation as Pwn2Own Berlin 2026 Day 3 wrap originating primary per finding-2026-05-16-0002)
+  active_sources: 67       # +1 above
   by_grade:
-    A: 32
-    B: 27       # +2 ox-security, upwind (provisional 2026-05-15 afternoon)
-    C: 9
+    A: 33       # +1 zdi-blog (provisional A 2026-05-16 morning)
+    B: 27
+    C: 10       # +1 depthfirst elevated F→C 2026-05-16 morning per "first technical write-up publication" trigger; finding-2026-05-16-0001
     D: 1
     E: 2
-    F: 4
+    F: 3        # -1 depthfirst (elevated to C 2026-05-16 morning)
   awaiting_ratification:
     - rapid7
     - securityweek
@@ -938,13 +957,14 @@ _meta:
     - sysdig                    # provisional B; first cited 2026-05-14-0004 (PraisonAI CVE-2026-44338 scanner detection)
     - zellic                    # provisional B; first cited 2026-05-14-0003 (Fragnesia PoC by William Bowling)
     - thehackernews             # provisional B; second-cross-corroboration-cycle (multiple prior relay surfaces; first cited as scored entity 2026-05-14)
-    - depthfirst                # provisional F; first cited 2026-05-14-0002 (THN editorial chain on NGINX Rift '18-year dormancy' framing)
+    - depthfirst                # provisional C (elevated F→C 2026-05-16 morning per "first technical write-up publication" trigger); first cited 2026-05-14-0002 (THN editorial chain); re-surfaced as named PoC author 2026-05-16-0001 (SecurityWeek-attested GitHub PoC for CVE-2026-42945)
     - cisco-talos               # provisional A; first cited 2026-05-14-0005 (Cisco Catalyst SD-WAN CVE-2026-20182 UAT-8616 active-exploitation)
     - darktrace                 # provisional A; first cited 2026-05-14-0007 (Twill Typhoon / Mustang Panda APAC + Japan campaign with FDMTP RAT)
     - socket                    # provisional B; first cited 2026-05-14-0009 (node-ipc 3 backdoored versions, UNATTRIBUTED — co-primary with StepSecurity)
     - openai-self-disclosure    # provisional A; first cited 2026-05-14-0008 (OpenAI TanStack breach self-disclosure, first named-enterprise-victim on VT-006)
     - ox-security               # provisional B; first cited 2026-05-15-0005 (node-ipc four-firm UNATTRIBUTED consensus, via BleepingComputer relay — awaiting direct retrieval)
     - upwind                    # provisional B; first cited 2026-05-15-0005 (node-ipc four-firm UNATTRIBUTED consensus, via BleepingComputer relay — awaiting direct retrieval)
+    - zdi-blog                  # provisional A; first cited 2026-05-16-0002 (Pwn2Own Berlin 2026 Day 3 wrap and Master of Pwn — Dustin Childs byline; vendor authority on own contest analogous to F5 vendor self-disclosure precedent)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-15T16:00:00-04:00
+last_updated: 2026-05-16T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -8479,6 +8479,410 @@ entries:
       tier (B3 fails B2 FLASH minimum, no CVE, no ITW exploitation,
       no actor); CVE-2026-42897 KEV listing is procedural status update
       not a new exploitation surface.
+
+  - id: 2026-05-16-am-001
+    covered_in: [2026-05-16-morning]
+    brief_file: threats/briefs/2026-05-16-morning.md
+    headline: "UPDATE — NGINX Rift (CVE-2026-42945) public PoC released on GitHub by depthfirst 36-48h after F5 K000160932 quarterly-advisory disclosure (2026-05-14); SecurityWeek (Ionut Arghire) is single directly-retrieved primary on the PoC-publication event; underlying CVE procedural facts (CVSS v4 9.2, heap overflow in ngx_http_rewrite_module, ASLR-dependency for RCE vs DoS, patches across NGINX Plus/Open Source/Ingress Controller/App Protect WAF) carry-forward from finding-2026-05-14-0002 at A1/A2; no in-the-wild exploitation cited by SecurityWeek; Hard Rule 3 compliance — PoC URL recorded in finding frontmatter ONLY, NOT linked in brief body; VT-007 watch signal 'third_party_poc_or_metasploit_module_release' fired and recorded; forward-assessment 'exploitation risk window increases next 7-14d' phrased as analyst hedge at 'roughly even chance' (canonical post-PoC pattern, not source-attested); single-source veto applies on the new operational-delta layer; cluster anchor WEP capped at 'likely'; defensive posture lift on NGINX patch-status verification urgency across A&D estates"
+    topic_tags:
+      - cve
+      - cve-2026-42945
+      - nginx-rift
+      - vt-007
+      - vt-007-watch-signal-fired-third-party-poc-or-metasploit-module-release
+      - poc-publication-event
+      - depthfirst-named-poc-author
+      - depthfirst-originating-researcher-carry-forward
+      - depthfirst-provisional-f-to-c-elevation-candidate
+      - securityweek-single-directly-retrieved-primary
+      - securityweek-ionut-arghire-byline
+      - heap-overflow-ngx-http-rewrite-module
+      - cvss-v4-9-2-carry-forward
+      - aslr-dependency-rce-vs-dos-carry-forward
+      - patched-at-disclosure-2026-05-14-carry-forward
+      - no-itw-exploitation-cited-by-securityweek
+      - hard-rule-3-compliance-poc-url-not-linked-in-brief-body
+      - hard-rule-3-poc-url-recorded-finding-frontmatter-only
+      - hard-rule-2-depthfirst-researcher-not-threat-actor
+      - hard-rule-6-zero-direct-quotes
+      - hard-rule-8-splunk-first-party-clean-30-consecutive-dormant-sweeps
+      - single-source-veto-on-poc-publication-event-layer-only
+      - wep-very-likely-on-procedural-cve-facts-carry-forward-vendor-self-disclosure
+      - wep-likely-on-poc-publication-event-securityweek-single-primary
+      - wep-roughly-even-chance-on-forward-assessment-exploitation-risk-7-14d
+      - analyst-hedge-canonical-post-poc-pattern-not-source-attested
+      - defensive-posture-lift-nginx-patch-status-verification-urgency
+      - aslr-state-inventory-determines-rce-vs-dos
+      - ad-estate-indirect-via-web-tier-and-ingress-controller-ubiquity
+      - update-flag-on-2026-05-14-morning-brief-finding-2026-05-14-0002
+      - shodan-global-nginx-exposure-53-7m-hosts-saturday-count-contextual-sizing-only
+      - active-threats-section-lead
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42945
+        cvss_v4: 9.2
+        vt_id: VT-007
+        kev_status: not_listed_as_of_sweep
+        exploitation_status: not_observed_at_t_plus_36_48h_per_securityweek
+        patch_status: patched_at_disclosure_2026_05_14
+        public_exploit_available: true
+        public_exploit_publisher: depthfirst
+        public_exploit_url_recorded_finding_frontmatter_only_per_hard_rule_3: true
+        public_exploit_url_linked_in_brief_body: false
+    related_campaigns: []
+    finding_ids: [finding-2026-05-16-0001]
+    digraph: B2
+    digraph_layered:
+      poc_publication_event_occurred_facts: B2
+      cve_2026_42945_underlying_vulnerability_exists_carry_forward: A1
+      cvss_v4_9_2_score_carry_forward: A1
+      heap_overflow_ngx_http_rewrite_module_primitive_carry_forward: A2
+      aslr_dependency_rce_vs_dos_caveat_carry_forward: A2
+      patch_available_at_disclosure_carry_forward: A1
+      no_active_in_the_wild_exploitation_per_carry_forward_securityweek_silent: A2
+      exploitation_risk_window_increasing_post_poc_forward_assessment: roughly_even_chance_editorial_inference_not_source_attested
+    wep: likely
+    wep_split:
+      cve_2026_42945_exists_cvss_patch_status_procedural_facts: very_likely
+      poc_publication_event_occurred_2026_05_15_or_16: likely
+      depthfirst_is_named_poc_author: likely
+      no_active_in_the_wild_exploitation_at_t_plus_36_48h: likely
+      exploitation_risk_window_increases_post_poc_next_7_14d: roughly_even_chance
+      ad_estate_exposure_inference_unchanged: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: poc_publication_event_layer_only_not_underlying_cve_procedural_facts
+    single_source_veto_rationale: "SecurityWeek (Ionut Arghire) is sole directly-retrieved primary on the new operational-delta (PoC publication event 2026-05-15 or 2026-05-16). No second independent A/B-grade source corroborates the event in window. Hard Rule 3 prevents direct verification of the PoC URL contents. Single-source veto applies on the new operational-delta layer; WEP capped at 'likely' on that specific claim. Underlying CVE procedural facts (carry-forward from finding-2026-05-14-0002) retain their established WEP split — 'very likely' on vendor self-disclosure facts."
+    analyst_review_complete: not_required_per_grader_handoff
+    analyst_review_required_basis: "No attribution claim; no novel TTP analysis required at finding-promotion time. Standard post-CVE-disclosure researcher-PoC publication pattern. Briefer composes the defensive-posture-action update — patch-status verification across NGINX estate + ASLR-state inventory urgency increases post-PoC."
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_below_very_likely_threshold_forward_assessment_roughly_even_chance_also_below_threshold
+    hard_rule_2_framings_load_bearing:
+      - "depthfirst is the originating researcher on CVE-2026-42945 per the finding-2026-05-14-0002 chain — NOT a threat actor; researcher attribution only per Hard Rule 2"
+      - "Forward assessment ('exploitation risk window increases next 7-14d') is editorial/analyst inference at 'roughly even chance' — NOT source-attested; phrased as analyst hedge"
+    hard_rule_3_compliance:
+      poc_url_recorded_in_finding_frontmatter_only: true
+      poc_url_in_brief_body: false
+      brief_body_treatment: "PoC publication noted; repository URL NOT linked. Per Hard Rule 3, Archimedes records that a PoC exists but does not link the repository."
+    hard_rule_6_quote_discipline:
+      quotes_in_brief_for_this_item: 0
+      rationale: "Zero direct quotes used on this item. SecurityWeek primary paraphrased; F5 vendor primary carry-forward paraphrased; no exact-wording-load-bearing quote required."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-42945 + NGINX Rift + depthfirst + ngx_http_rewrite_module + github.com/depthfirstdisclosures"
+      consecutive_dormant_sweep_count: 30
+      hard_rule_8_framing: silence_is_not_disconfirming
+    vuln_tracker_handoff_queued:
+      - vt_id: VT-007
+        vt_lineage: NGINX Rift / F5 K000160932 quarterly cohort
+        tracker_action: update_existing_watch_signal_state
+        watch_signal_fired: third_party_poc_or_metasploit_module_release
+        watch_signal_state_pre_update: pending
+        watch_signal_state_post_update: fired_2026_05_16_depthfirst_github_repo_securityweek_attested
+        additional_watch_signals_still_pending:
+          - kev_addition_pending_check_next_collector_sweep
+          - first_party_splunk_hit_archimedes_or_defenseclaw_local
+          - ad_prime_customer_impact_statement
+          - shadowserver_or_greynoise_or_censys_internet_scanning_observation
+          - additional_cve_cohort_member_exploitation_evidence
+        new_watch_signals_to_add_post_poc:
+          - in_the_wild_exploitation_post_poc_typical_7_14d_window
+          - depthfirst_technical_write_up_publication_beyond_poc_code
+          - second_independent_poc_publication_metasploit_module_etc
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - "depthfirst elevation provisional-F → provisional-C per source-grade-log.md 'elevate to provisional-C on first technical write-up publication' trigger — the GitHub PoC repository constitutes a technical-output publication even though Archimedes did not fetch its content per Hard Rule 3"
+    resurface_if:
+      - kev_addition
+      - second_independent_poc_publication_or_metasploit_module_release
+      - first_in_the_wild_exploitation_observation_via_vendor_research_or_telemetry
+      - first_party_splunk_hit_archimedes_or_defenseclaw_local
+      - depthfirst_technical_write_up_publication_beyond_poc_code
+      - ad_prime_customer_impact_statement
+      - shadowserver_greynoise_censys_internet_scanning_observation_for_nginx_rift_signatures
+      - f5_or_distro_advisory_updates_with_new_information
+      - additional_cve_cohort_member_exploitation_evidence
+    first_covered: 2026-05-16
+    last_covered: 2026-05-16
+    retraction: null
+    test: false
+    notes: |
+      Carry-forward extension on finding-2026-05-14-0002 (NGINX Rift /
+      F5 K000160932 quarterly cohort). VT-007 watch signal
+      "third_party_poc_or_metasploit_module_release" fired and recorded.
+      Briefer placed in Active Threats section as the only B2+ new
+      development in the 14h Saturday sweep window. UPDATE flag and
+      🔗 link-back to 2026-05-14 morning brief per anti-repetition
+      doctrine.
+
+      Hard Rule 3 compliance: PoC URL
+      (https://github.com/depthfirstdisclosures/nginx-rift) recorded
+      in finding frontmatter ONLY; brief body notes the existence of
+      the PoC but does NOT link the repository. Per Hard Rule 3,
+      Archimedes does not fetch / mirror / link PoC content.
+
+      Hard Rule 6: zero direct quotes on this item (SecurityWeek
+      paraphrased throughout).
+
+      Forward-assessment phrased as analyst hedge per grader
+      directive: "exploitation risk window increases next 7-14d" is
+      editorial/analyst inference at "roughly even chance" anchored
+      in canonical post-PoC pattern, NOT source-attested. Brief
+      preserves the WEP vocabulary and attribution discipline.
+
+      depthfirst elevation candidate provisional-F → provisional-C
+      queued to librarian per source-grade-log.md "first technical
+      write-up publication" trigger.
+
+  - id: 2026-05-16-am-002
+    covered_in: [2026-05-16-morning]
+    brief_file: threats/briefs/2026-05-16-morning.md
+    headline: "Pwn2Own Berlin 2026 closes on Day 3 — 3 successful exploits / $34,500 in payouts (Summoning Team Red Hat Linux collision $7K, Viettel Cyber Security Windows 11 integer-overflow LPE $7,500, Ikotas Labs OpenAI Codex external-control abuse $20K) bringing event total to $943,250 across 42 unique zero-days per ZDI primary (Dustin Childs byline, first corpus citation provisional A); Day 2 Microsoft Exchange 3-bug RCE-to-SYSTEM chain by Orange Tsai / DEVCORE remains under standard ZDI 90-day vendor-coordinated-disclosure embargo with expected CVE assignment window 2026-07 to 2026-08; OpenAI Codex result is second 2026 corpus surface where OpenAI is a target after TanStack supply-chain breach (finding-2026-05-14-0008) — two data points across two different attack-surface classes is NOT yet a pattern; researcher attribution only per Hard Rule 2 — competitors are NOT threat actors; single-source veto on contest-event layer does NOT cap WEP because ZDI is vendor authority on its own contest (analogous to F5 vendor self-disclosure of own-product CVEs)"
+    topic_tags:
+      - pwn2own
+      - pwn2own-berlin-2026
+      - pwn2own-berlin-2026-day-3-final
+      - pwn2own-berlin-2026-event-closure
+      - event-total-943250-usd
+      - 42-unique-zero-days
+      - day-3-payouts-34500-usd
+      - day-3-3-successful-exploits
+      - summoning-team-sina-kheirkhah-red-hat-linux-collision-7k
+      - viettel-cyber-security-windows-11-integer-overflow-lpe-7500
+      - ikotas-labs-satoki-tsuji-openai-codex-external-control-abuse-20k
+      - day-2-orange-tsai-devcore-exchange-3-bug-chain-embargo-continues
+      - expected-cve-assignment-window-2026-07-to-2026-08
+      - zdi-90-day-vendor-coordinated-disclosure
+      - zdi-blog-first-corpus-citation
+      - zdi-blog-provisional-a-vendor-authority-on-own-contest
+      - dustin-childs-byline
+      - openai-codex-second-2026-openai-surface-after-tanstack-finding-2026-05-14-0008
+      - one-pwn2own-data-point-plus-one-supply-chain-finding-NOT-yet-a-pattern
+      - analyst-directive-do-not-extrapolate-ai-coding-assistant-attack-surface
+      - hard-rule-2-researcher-attribution-not-threat-actor
+      - hard-rule-6-zero-direct-quotes
+      - hard-rule-8-splunk-first-party-clean-30-consecutive-dormant-sweeps
+      - single-source-veto-on-contest-event-layer-does-NOT-cap-wep-vendor-authority
+      - wep-very-likely-on-contest-mechanical-facts-vendor-authority
+      - wep-likely-on-master-of-pwn-final-standings-extracted-byline-only
+      - other-signal-section-monitoring-tier-carry-forward-continuation
+      - carry-forward-continuation-of-finding-2026-05-15-0004
+      - no-flash-trigger-fired-embargoed-contest-bugs-not-zero-day-no-patch
+      - no-cve-yet-embargoed-90-day-clock-running
+    related_actors:
+      - actor_name: "Sina Kheirkhah / Summoning Team"
+        in_roster: false
+        actor_type: public_security_researcher_contest_participant_not_threat_actor
+        archimedes_treatment: researcher_attribution_not_actor_attribution_hard_rule_2_compliant
+      - actor_name: "Le Tran Hai Tung + dungnm + hieuvd / Viettel Cyber Security"
+        in_roster: false
+        actor_type: public_security_researcher_contest_participant_not_threat_actor
+        archimedes_treatment: researcher_attribution_not_actor_attribution_hard_rule_2_compliant
+      - actor_name: "Satoki Tsuji / Ikotas Labs"
+        in_roster: false
+        actor_type: public_security_researcher_contest_participant_not_threat_actor
+        archimedes_treatment: researcher_attribution_not_actor_attribution_hard_rule_2_compliant
+      - actor_name: "Cheng-Da 'Orange' Tsai / DEVCORE"
+        in_roster: false
+        actor_type: public_security_researcher_contest_participant_not_threat_actor
+        archimedes_treatment: researcher_attribution_not_actor_attribution_hard_rule_2_compliant
+        carry_forward_from_finding_2026_05_15_0004: true
+    related_vulns:
+      - product: Microsoft Exchange Server
+        cve_assigned: none_yet_embargoed
+        expected_cve_assignment_window: 2026-07_to_2026-08
+        responsible_disclosure_window_days: 90
+        embargo_expiry_approx: 2026-08-13
+        chain_bugs: 3
+        chain_impact: rce_with_system_privileges
+        carry_forward_from_finding_2026_05_15_0004: true
+    related_campaigns: []
+    finding_ids: [finding-2026-05-16-0002]
+    digraph: A2
+    digraph_layered:
+      pwn2own_berlin_2026_day_3_event_occurred: A2
+      three_successful_day_3_exploits_count: A2
+      red_hat_linux_summoning_team_collision_7k_payout: A2
+      windows_11_viettel_integer_overflow_lpe_7_5k_payout: A2
+      openai_codex_ikotas_labs_external_control_abuse_20k_payout: A2
+      event_total_943250_usd_42_unique_zero_days: A2
+      day_2_orange_tsai_devcore_exchange_chain_embargo_still_active: A2
+      no_sharepoint_esxi_successful_exploits_day_3: A2
+    wep: likely
+    wep_split:
+      contest_event_occurred_3_exploits_payouts_aggregate: very_likely
+      individual_exploit_attribution_to_named_researchers: very_likely
+      day_2_exchange_chain_embargo_still_active_no_lift_signal: very_likely
+      master_of_pwn_final_standings: likely
+      sharepoint_esxi_no_successful_exploits_day_3: likely
+      ad_relevance_structural_via_windows_sharepoint: likely
+      openai_codex_attack_surface_emerging_pattern: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_scope: contest_event_layer_does_NOT_cap_wep_due_to_zdi_vendor_authority_on_own_contest
+    single_source_veto_rationale: "ZDI is single effective primary on Pwn2Own Berlin 2026 Day 3 results at sweep time. By contest design, ZDI IS the coordinator and judge — there is no second independent A/B-grade source that can corroborate contest-mechanical facts in-window. However, the WEP CEILING for vendor-self-disclosure-of-own-contest mechanical facts is 'very likely' because ZDI is the authoritative knowledge-holder for their own contest (analogous to F5 vendor self-disclosure of own-product CVEs in finding-2026-05-14-0002 treatment)."
+    analyst_review_complete: not_required_per_grader_handoff
+    analyst_review_required_basis: "No attribution claim; no novel TTP analysis required at finding-promotion time. Standard Pwn2Own contest carry-forward pattern. Analyst directive: do NOT extrapolate AI / coding-assistant attack-surface implications from OpenAI Codex result + finding-2026-05-14-0008 — two data points across two different attack-surface classes is NOT yet a pattern."
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_cluster_anchor_below_very_likely_threshold_split_table_records_layered_wep_for_briefer_composition
+    hard_rule_2_framings_load_bearing:
+      - "Pwn2Own competitors (Summoning Team, Viettel Cyber Security, Ikotas Labs, DEVCORE) are public security researchers — researcher attribution only, NOT threat-actor identification per Hard Rule 2"
+      - "OpenAI Codex result is the second 2026 corpus surface where OpenAI is a target after TanStack supply-chain breach — two data points across two different attack-surface classes is NOT yet a pattern; analyst should NOT extrapolate"
+    hard_rule_6_quote_discipline:
+      quotes_in_brief_for_this_item: 0
+      rationale: "Zero direct quotes used on this item. ZDI primary paraphrased throughout — preserves quote budget."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "Pwn2Own + Orange Tsai + DEVCORE + Berlin 2026"
+      consecutive_dormant_sweep_count: 30
+      hard_rule_8_framing: "Splunk silence expected — contest is research event not operational threat surface"
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - "zdi-blog provisional A (first corpus citation 2026-05-16; vendor-research / contest-coordination publication per same precedent as Bitdefender / Sysdig / Wiz / Symantec / Cisco Talos / Darktrace / OpenAI-self-disclosure recent first-citations)"
+      - watch_config_consideration_operator_review:
+          - "OpenAI / AI coding-assistant attack surfaces: two data points in two different attack-surface classes within one week (TanStack supply-chain via npm; Codex external-control-abuse via contest demo) is NOT yet a pattern, but a third data point would change that assessment. Operator may want to flag for /update-tracking sweep cycle."
+      - vuln_tracker_handoff:
+          - "Day 2 Exchange 3-bug RCE-to-SYSTEM chain (Orange Tsai / DEVCORE): embargo-expiry watch queue ~2026-08-13; vuln-tracker can pick up specific CVEs as they exit embargo over the next 90 days, on a per-CVE basis as vendor advisories publish"
+    resurface_if:
+      - cve_assignment_in_2026_07_to_2026_08_window
+      - microsoft_publishes_patch_for_one_or_more_chain_bugs
+      - chain_shares_sub_component_with_cve_2026_42897_when_published
+      - zdi_writeup_or_devcore_research_post_retrieved_lifts_demonstration_claim_grade
+      - active_in_the_wild_exploitation_post_disclosure
+      - third_data_point_openai_or_ai_coding_assistant_attack_surface_changes_pattern_assessment
+    first_covered: 2026-05-16
+    last_covered: 2026-05-16
+    retraction: null
+    test: false
+    notes: |
+      Carry-forward continuation of finding-2026-05-15-0004 (Pwn2Own
+      Berlin 2026 Day 2 Exchange chain — Orange Tsai / DEVCORE 3-bug
+      RCE-to-SYSTEM, $200K payout, 90-day embargo). Day 3 wraps the
+      event with final aggregate ($943,250 / 42 zero-days) and adds
+      three successful exploits (Summoning Team Red Hat Linux
+      collision, Viettel Windows 11 LPE, Ikotas Labs OpenAI Codex).
+
+      Briefer placed in Other Signal section as monitoring-tier
+      carry-forward continuation, NOT a new lead-item — the contest
+      storyline has been running across multiple briefs.
+
+      OpenAI Codex result framed with explicit "not yet a pattern"
+      caveat per grader + finding analyst directive — two data
+      points across two different attack-surface classes (TanStack
+      supply-chain via npm; Codex external-control-abuse via contest
+      demo) is NOT yet a pattern. Briefer preserves the framing.
+
+      zdi-blog first corpus citation as provisional A. Librarian
+      handoff queued for source-grades.yaml addition per same
+      precedent as recent vendor-research first-citations.
+
+      Day 2 Exchange embargo expiry ~2026-08-13; vuln-tracker
+      embargo-expiry watch queue queued.
+
+  - id: 2026-05-16-am-brief-meta
+    covered_in: [2026-05-16-morning]
+    brief_file: threats/briefs/2026-05-16-morning.md
+    headline: "Brief meta — 2026-05-16 morning (Saturday weekend cadence): 2 findings referenced (NGINX Rift PoC publication update on VT-007 + Pwn2Own Berlin 2026 closure with Day 2 Exchange chain embargo continuation); Saturday posture framing in lead — 14h window held two update layers and no new initiating events; CVE-2026-42897 T-13 federal KEV deadline + CVE-2026-20182 T-1 federal KEV deadline (Sunday) + CVE-2026-31431 KEV deadline passed Thursday May 15 all carry-forward in Vulnerabilities section as status-only items; TeamPCP (#001 / HIGH) three-convergent-surface pattern carry-forward in Actor Activity (2026-05-21 Mistral leak deadline next tripwire); both standing sections present (Sector Focus + Iran Cyber Watch silent_day_template); single-source veto applied to both findings (NGINX Rift PoC publication layer + Pwn2Own contest-event layer); no red-team triggers crossed; no FLASH triggers fired across 00:00 or 06:00 sweeps; Hard Rule 3 compliance documented (PoC URL recorded in finding frontmatter only, NOT in brief body); pre-flight 13/13 passed on first iteration; 30th consecutive dormant non-self-telemetry Splunk sweep"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - saturday-weekend-cadence
+      - 2-findings-referenced
+      - both-findings-are-update-layers-not-new-initiating-events
+      - saturday-posture-framing-lead
+      - cve-2026-42897-t-13-federal-kev-deadline-carry-forward
+      - cve-2026-20182-t-1-federal-kev-deadline-sunday-carry-forward
+      - cve-2026-31431-kev-deadline-passed-thursday-may-15-recovery-framing
+      - teampcp-three-convergent-surface-pattern-carry-forward
+      - 2026-05-21-mistral-leak-deadline-next-tripwire
+      - standing-sections-both-present
+      - iran-cyber-silent-day-template
+      - ad-sector-focus-no-prime-victim-disclosures
+      - single-source-veto-applied-both-findings
+      - no-red-team-triggers-crossed
+      - no-flash-triggers-fired-00-00-and-06-00-sweeps
+      - hard-rule-2-no-threat-actor-attribution-researcher-only
+      - hard-rule-3-poc-url-not-linked-in-brief-body
+      - hard-rule-6-zero-direct-quotes
+      - hard-rule-8-splunk-first-party-clean-30-consecutive-dormant-sweeps
+      - preflight-13-of-13-passed-iteration-1
+      - layer-2-discord-summary-tightened-2-iterations-to-under-1900-chars
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-16-0001
+      - finding-2026-05-16-0002
+    absorbs_flashes: []
+    resurface_if: []
+    first_covered: 2026-05-16
+    last_covered: 2026-05-16
+    retraction: null
+    test: false
+    notes: |
+      Brief composition flow: Saturday weekend cadence. Lead frames
+      the honest posture — 14h window held two update layers (NGINX
+      Rift PoC + Pwn2Own closure) and no new initiating events.
+      CVE-2026-42897 T-13 + CVE-2026-20182 T-1 KEV calendar dominate
+      the action items. NGINX Rift PoC publication in Active Threats
+      as the only B2+ new development; Pwn2Own closure in Other
+      Signal as monitoring-tier carry-forward continuation.
+
+      Hard Rule 3 compliance: NGINX Rift PoC URL
+      (https://github.com/depthfirstdisclosures/nginx-rift) recorded
+      in finding-2026-05-16-0001 frontmatter ONLY; brief body notes
+      the existence of the PoC but does NOT link the repository.
+
+      Hard Rule 2: no threat-actor attribution this brief. depthfirst
+      (NGINX Rift PoC publisher) is the originating researcher per
+      the F5 K000160932 chain — NOT a threat actor. Pwn2Own
+      competitors (Summoning Team, Viettel Cyber Security, Ikotas
+      Labs, DEVCORE) are public security researchers — researcher
+      attribution only.
+
+      Hard Rule 6: zero direct quotes (SecurityWeek + ZDI both
+      paraphrased — preserves quote budget for items where exact
+      wording is load-bearing).
+
+      Hard Rule 8: 30th consecutive dormant non-self-telemetry
+      Splunk sweep across both findings' IOC token sets. Silence is
+      not disconfirming.
+
+      Pre-flight: 13/13 passed. Layer 1 word count ~781 (within
+      400-800 morning target). Layer 2 Discord Summary tightened
+      across 2 iterations from ~2180 chars (initial NGINX bullet
+      verbose + Cisco / Linux / Exchange bullets verbose + Pwn2Own
+      bullet verbose) to ~1786 chars / ~290 words (under 1900
+      ceiling and within 150-300 word band). Long SecurityWeek + ZDI
+      URLs ate ~280 chars combined — accounted for via aggressive
+      body trim on first two bullets.
+
+      Standing sections both present: Sector Focus (no A&D-prime
+      named-victim disclosures in 14h window; structural exposure
+      framing for NGINX Rift via web-tier/ingress-controller
+      ubiquity and CVE-2026-42897 via on-prem Exchange footprint);
+      Iran Cyber Watch (silent_day_template per watch-config.yaml).
+
+      Anti-repetition discipline: NGINX Rift underlying CVE
+      procedural facts (CVSS, primitive, ASLR-dependency, patch
+      status) NOT re-litigated — only the PoC-publication event
+      delta surfaced as UPDATE. Pwn2Own Day 2 Exchange chain NOT
+      re-litigated — only the event-closure aggregate + Day 3
+      additions + embargo-still-active status surfaced. CVE-2026-
+      42897 / CVE-2026-20182 / CVE-2026-31431 mechanism facts NOT
+      re-litigated — only the T-13 / T-1 / passed deadline status
+      surfaced.
+
+      No FLASH-worthy finding emerged this cycle — NGINX Rift PoC
+      fails Trigger 1 (PoC publication is NOT in-the-wild
+      exploitation per FLASH-POLICY wording) and Trigger 6 (patches
+      shipped 1-2 days BEFORE PoC publication); Pwn2Own monitoring-
+      tier with no CVE (embargoed), no ITW exploitation, no actor
+      attribution. Critical override conditions not met.
 
 # ============================================================================
 # Valid resurface_if conditions

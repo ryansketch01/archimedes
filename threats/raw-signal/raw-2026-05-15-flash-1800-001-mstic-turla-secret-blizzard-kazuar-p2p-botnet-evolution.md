@@ -54,6 +54,9 @@ iocs_extracted: true
 iocs_count: 4
 text_word_count: 850
 promoted: false
+rejected_at: 2026-05-16T08:18:00-04:00
+rejection_id: reject-2026-05-16-0001
+rejection_reason_summary: "Duplicate of finding-2026-05-14-0006 (MSTIC primary already promoted on 2026-05-14 afternoon brief cycle). THN D+1 relay is NOT independent corroboration per INTEL-GRADING doctrine. Anti-noise dedup applies."
 ttl_expires_at: 2026-08-13T18:05:00-04:00
 ---
 

@@ -299,6 +299,38 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-16 — depthfirst (independent researcher) — F (provisional) → C (provisional, awaiting ratification)
+
+**Type:** Upgrade (provisional → provisional, F → C)
+**Source ID:** `depthfirst`
+**Reason:** Elevation triggered per source-grade-log.md 2026-05-14 depthfirst entry's documented criteria: "elevate if subsequent surfaces show vendor-acknowledged disclosure or peer-reviewed publication" / "elevate to provisional-C on first technical write-up publication." Today's `finding-2026-05-16-0001` (NGINX Rift CVE-2026-42945 PoC publication) surfaces depthfirst as the named PoC author at the GitHub repository `https://github.com/depthfirstdisclosures/nginx-rift` per SecurityWeek (Ionut Arghire byline, B provisional) primary 2026-05-16 06:02 EDT. depthfirst is the originating researcher credited on CVE-2026-42945 per the F5 K000160932 chain (carry-forward from finding-2026-05-14-0002 — vendor-attested). The GitHub PoC repository constitutes a technical-output publication; depthfirst transitions from "cited researcher via THN editorial framing" (F surface) to "named PoC author with operational artifact at a stated URL with vendor-attested originating-research credit" (C surface). Hard Rule 3 prevents Archimedes from fetching the PoC repository contents — the elevation rests on the vendor-attested originating-research credit (F5 K000160932) plus the SecurityWeek-attested publication act, not on Archimedes' own verification of the artifact. Conservative C is the precedent grade for first-publication independent-researcher surfaces with vendor-acknowledgement context (LayerX-precedent / Seqrite-precedent / Trendyol-Albayrak-precedent class for unknown / single-surface researchers).
+**Why C not B:** Tier-2 evidence — single publication, no peer-review yet, no vendor-acknowledgement of the PoC code itself (vs. the CVE credit which IS vendor-attested per F5 K000160932). Operator may upgrade to B on subsequent surfaces showing peer-reviewed publication or vendor coordination on a second CVE / technical write-up.
+**Why C not D:** Vendor-attested originating-research credit on CVE-2026-42945 lifts depthfirst above the "unknown / unestablished" floor that justified the prior F surface. F→C is a one-grade elevation per "first technical write-up publication" trigger, NOT a multi-grade jump.
+**Supporting findings:** [finding-2026-05-16-0001]; [finding-2026-05-14-0002 carry-forward context]
+**Posted to:** Not posted to Discord `#actor-review` this run — non-material per Hard Rule 5 (this is an upgrade not a downgrade, and B→D-or-worse downgrade is the only threshold requiring human review per RETRACTION-POLICY adjacent / source-grade-log.md governance). Bundled with the 2026-05-21 ratification window per depthfirst's 2026-05-14 entry next-review date.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade depthfirst C` (or operator adjustment).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`; provisional_history records the F→C transition with retired_at: 2026-05-16.
+**Effect on referencing finding:** `finding-2026-05-16-0001` cluster anchor is B2 with SecurityWeek as B-grade primary on the PoC-publication-event layer; depthfirst is listed as supporting-source carry-forward at the new C grade. WEP cap stays at "likely" on the new operational-delta layer (single-source veto via SecurityWeek single primary; depthfirst grade is not WEP-load-bearing). Operator downgrade to B would not change finding's WEP; upgrade to B in a future cycle would help if combined with an independent second-primary source.
+**Next review:** ratification target 2026-05-21 (7 days; bundled with the 2026-05-14 depthfirst entry).
+
+---
+
+## 2026-05-16 — Zero Day Initiative (zdi-blog) — (none) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `zdi-blog`
+**Reason:** First Archimedes-corpus citation via `finding-2026-05-16-0002` (Pwn2Own Berlin 2026 Day 3 final results and Master of Pwn — 3 successful exploits on Day 3 / $34,500 in payouts / bringing event total to $943,250 across 42 unique zero-days; Day 2 Orange Tsai / DEVCORE Microsoft Exchange RCE-to-SYSTEM chain remains under standard ZDI 90-day vendor-coordinated-disclosure embargo with expected CVE assignment window 2026-07 to 2026-08). ZDI / Trend Micro is the canonical Pwn2Own contest coordinator, judge, and exclusive publisher of contest results, payouts, and embargoed-CVE disclosure coordination since 2007. Dustin Childs (Communications Manager, ZDI) is the named byline with multi-decade track record in vendor coordination and Pwn2Own contest reporting. Proposed grade A by the grader on the vendor-authority-on-own-contest principle (analogous to F5 vendor self-disclosure of own-product CVEs in finding-2026-05-14-0002, kernel.org netdev on Linux kernel patches in finding-2026-05-14-0003, OpenAI on own incident in finding-2026-05-14-0008).
+**Why A not B:** ZDI is procedurally A-grade on contest-mechanical facts (exploit count, payouts, vendor coordination, Master of Pwn standings) because ZDI is the authoritative knowledge-holder for its own contest — there is no higher-quality evidence basis for those specific claim types. Provisional A is consistent with the same precedent class applied to recent first-citation vendor-research / vendor-self-disclosure publications: Bitdefender (2026-05-13), Sysdig (2026-05-14), Wiz Research (2026-05-12), Symantec (2026-05-13), Cisco Talos (2026-05-14 afternoon), Darktrace (2026-05-14), OpenAI self-disclosure (2026-05-14), F5 + kernel-org-netdev (2026-05-14 morning).
+**Caveat on grade scope:** ZDI's A grade applies to contest-mechanical facts and embargo-coordination procedural claims. ZDI's editorial framing on AI / coding-assistant attack-surface implications (e.g., the OpenAI Codex result) is analyst-inference territory and should be cited as analyst-extrapolation in any brief that propagates such framing, NOT as ZDI-attested fact. This is the same scope-discipline that applies to F5 / kernel.org / OpenAI vendor-self-disclosure on own-incident scope (A on procedural facts; not A on speculative inferences beyond the procedural envelope).
+**Supporting findings:** [finding-2026-05-16-0002]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade zdi-blog A` (or operator downgrade to B).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-05-16-0002` cluster anchor is A2 with ZDI as sole originating primary; single-source veto applies on contest-event layer but does NOT cap WEP because ZDI is vendor authority on own contest (per the layered single_source_veto_rationale on the finding). Operator downgrade to B would re-grade to B2 — same finding-level WEP treatment, cosmetic at finding level.
+**Next review:** ratification target 2026-05-23 (7 days).
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

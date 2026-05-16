@@ -24,7 +24,9 @@ flash_trigger_evaluation:
 iocs_extracted: false
 iocs_count: 0
 text_word_count: 280
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-05-16-0001
+promoted_at: 2026-05-16T08:14:00-04:00
 ttl_expires_at: 2026-08-14T06:05:00-04:00
 ---
 

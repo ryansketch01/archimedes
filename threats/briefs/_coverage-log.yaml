@@ -8884,6 +8884,432 @@ entries:
       tier with no CVE (embargoed), no ITW exploitation, no actor
       attribution. Critical override conditions not met.
 
+  - id: 2026-05-16-pm-001
+    covered_in: [2026-05-16-afternoon]
+    brief_file: threats/briefs/2026-05-16-afternoon.md
+    headline: "Symantec Threat Hunter Team + Carbon Black extends SentinelLABS April 2026 originating research on Fast16, a 2005-era pre-Stuxnet simulation-sabotage framework targeting nuclear-weapons-simulation toolchains; Symantec corroborates LS-DYNA as target software, ADDS AUTODYN to target set (novel Symantec contribution; ANSYS hydrocode for hypervelocity / explosive / shock-physics modeling), specifies Intel Fortran compiler as binary constraint; targeting-intent framed verbatim 'All evidence suggests that attackers were specifically targeting simulations of nuclear detonations' (Hard Rule 2 attribution-language-preservation, 13 words within ≤15-word budget); no nation-state, no named threat actor, no MITRE ATT&CK ID, no IOCs, no active exploitation, no modern variant known; independence test against SentinelLABS originating research FAILS (Symantec cites SentinelLABS as foundation, no independent telemetry, no new sample hashes, no new C2); single-source veto applies on framework-discovery and novel-Symantec-additions layers; cluster WEP capped at 'likely'; convergent absence-of-evidence hedges (no attribution / no IOCs / no exploitation / no modern variant known) carry 'very likely' as convergent verbatim from both Symantec and SentinelLABS; A&D-sector-adjacent via structural simulation-supply-chain pathway (LS-DYNA + AUTODYN widely deployed at every US defense prime for blast / impact / weapon-effects modeling); brief explicitly does NOT extrapolate to claim any current A&D prime is exposed (Symantec explicit no modern variant known); structural lesson framed as simulation-toolchain binary-integrity validation in HPC fleet hygiene at 'roughly even chance' analyst inference (not source-attested); Symantec second corpus citation falls T-2h25m from 72h ratification clock end (2026-05-16T18:25:00-04:00 from first citation 2026-05-13-FLASH-1800-0001), librarian handoff queued for operator-pass ratification consideration"
+    topic_tags:
+      - fast16
+      - fast16-framework
+      - pre-stuxnet
+      - 2005-era-provenance
+      - simulation-sabotage
+      - nuclear-weapons-simulation-targeting
+      - ls-dyna
+      - ls-dyna-target-software
+      - autodyn
+      - autodyn-novel-symantec-addition
+      - intel-fortran-compiler-constraint
+      - ansys-hydrocode
+      - livermore-software-technology
+      - symantec-threat-hunter-team
+      - symantec-carbon-block-joint-byline
+      - symantec-second-corpus-citation
+      - symantec-provisional-a-ratification-clock-t-minus-2h25m
+      - sentinellabs-originating-research-april-2026
+      - sentinellabs-cited-not-independent-corroboration
+      - independence-test-failed-vs-sentinellabs
+      - single-source-veto-on-framework-discovery-line
+      - single-source-veto-on-novel-symantec-additions
+      - forensic-archaeology-research
+      - no-actor-attribution
+      - no-iocs-published
+      - no-active-exploitation-claimed
+      - no-modern-variant-known
+      - convergent-absence-of-evidence-hedges-very-likely
+      - hard-rule-2-attribution-hedge-preserved-verbatim
+      - hard-rule-2-no-nation-state-attribution
+      - hard-rule-2-security-boulevard-us-iran-tensions-relay-not-propagated
+      - hard-rule-2-antiy-labs-counter-narrative-not-independent-corroboration
+      - hard-rule-6-one-quote-13-words-symantec-only
+      - hard-rule-8-splunk-first-party-clean-32-consecutive-dormant-sweeps
+      - ad-sector-adjacent-structural-supply-chain
+      - ls-dyna-autodyn-deployed-every-us-defense-prime
+      - lockheed-boeing-northrop-raytheon-bae-mentioned-as-known-licensees
+      - hpc-fleet-hygiene-structural-lesson
+      - simulation-toolchain-binary-integrity-validation
+      - roughly-even-chance-analyst-inference-not-source-attested
+      - sector-focus-ad-section-anchor
+      - sentinellabs-symantec-divergence-on-target-software-set
+      - pkpm-mohid-sentinellabs-only-not-corroborated-by-symantec
+      - autodyn-symantec-only-not-corroborated-by-sentinellabs
+      - lua-vm-tradecraft-predates-flame-by-3-years-sentinellabs-claim
+      - first-operation-of-its-kind-sentinellabs-framing
+      - iran-nuclear-weapons-program-implicit-context-sentinellabs-not-attributed
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-16-0003]
+    digraph: A2
+    digraph_layered:
+      symantec_fast16_framework_corroboration_post_sentinellabs_originating: A2
+      ls_dyna_target_software_named: A1
+      autodyn_target_software_added_by_symantec: A2
+      intel_fortran_compiler_constraint: A2
+      2005_pre_stuxnet_provenance_claim: A2
+      nuclear_weapons_simulation_targeting_intent_hedged: A2
+      no_modern_day_variant_known_per_symantec: A2
+      no_actor_attribution_no_nation_state_claim: A1
+      no_iocs_no_cves_no_active_exploitation: A1
+      ad_simulation_supply_chain_structural_exposure_analyst_inference: roughly_even_chance
+    wep: likely
+    wep_split:
+      framework_existence_and_2005_provenance: likely
+      ls_dyna_targeting: likely
+      autodyn_added_to_target_set: likely
+      intel_fortran_compiler_constraint: likely
+      no_actor_attribution_no_nation_state: very_likely
+      no_modern_day_variant_known: very_likely
+      no_iocs_no_cves_no_active_exploitation: very_likely
+      ad_simulation_supply_chain_structural_exposure_inference: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_scope: framework_discovery_line_and_novel_symantec_additions_autodyn_intel_fortran
+    single_source_veto_rationale: "Independence test failed against SentinelLABS April 2026 originating research — Symantec cites SentinelLABS as foundation and does not publish independent telemetry, sample hashes, or C2 infrastructure. Single effective primary on framework-discovery line remains SentinelLABS. On novel-Symantec-additions layer (AUTODYN, Intel Fortran), Symantec is sole-originating — single-source veto applies there as well. WEP capped at 'likely' on framework-discovery and novel-additions claims. Negative procedural facts (no attribution / no IOCs / no active exploitation / no modern variant known) carry 'very likely' because both Symantec and SentinelLABS verbatim assert these — convergent verbatim hedges from both vendors on what they do NOT know are stronger than convergent assertions of positive claims."
+    analyst_review_complete: not_required_per_grader_handoff
+    analyst_review_required_basis: "No attribution claim by any A/B-grade source; no tracked-actor TTP change; no first-party Splunk hit; Symantec preserved verbatim hedges per Hard Rule 2; no novel attribution origination work required. Analyst CAN OPTIONALLY pick up structural-supply-chain-integrity theme for weekly-synthesis SAT analysis (KAC on 'modern variant could plausibly exist undetected' editorial inference) but NOT required at finding-promotion time."
+    red_team_review_required: false
+    red_team_review_required_basis: cluster_anchor_capped_at_likely_below_very_likely_threshold_and_very_likely_sub_claims_are_negative_absence_statements_not_positive_high_confidence_operational_claims_per_spirit_of_red_team_wep_gate
+    hard_rule_2_framings_load_bearing:
+      - "Symantec and SentinelLABS both explicit on non-attribution — no nation-state, no named threat actor, no MITRE ATT&CK group ID applied; Symantec's 'All evidence suggests' is load-bearing hedge preserved verbatim per Hard Rule 2 attribution-language-preservation discipline"
+      - "Security Boulevard relay-layer 'Linked to US-Iran Cyber Tensions' editorial framing identified by collector and NOT propagated into this finding or brief — relay conjecture beyond SentinelLABS' attribution stance"
+      - "Antiy Labs (Chinese AV) 'Psychological Warfare to Show Off Cyber Capabilities' counter-narrative flagged by collector as Chinese-vendor editorial framing — NOT independent fact-corroboration; NOT propagated"
+      - "A&D simulation-supply-chain structural-exposure framing is analyst inference at 'roughly even chance' — NOT source-attested by Symantec or SentinelLABS; brief does NOT extrapolate to claim any current A&D prime is exposed"
+    hard_rule_3_compliance:
+      poc_code_referenced: false
+      exploit_guidance_in_brief_body: false
+      brief_body_treatment: "Forensic-archaeology research on a 20-year-old framework with no contemporary IOC set, no PoC, no payload. Hard Rule 3 not implicated this brief."
+    hard_rule_6_quote_discipline:
+      quotes_in_brief_for_this_item: 1
+      quote_word_count: 13
+      quote_source: symantec
+      quote_text: "All evidence suggests that attackers were specifically targeting simulations of nuclear detonations"
+      rationale: "Symantec's load-bearing attribution hedge preserved verbatim per Hard Rule 2; 13 words within ≤15-word budget; one quote from Symantec only (under one-per-source ceiling). Layer 2 Discord Summary paraphrases the hedge to avoid double-use of the same Symantec quote across the document."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "fast16 + Fast16 + LS-DYNA + AUTODYN + Intel Fortran + svcmgmt + fast16.sys"
+      consecutive_dormant_sweep_count: 32
+      hard_rule_8_framing: silence_is_not_disconfirming
+    provisional_source_ratification_window_note: "Symantec second corpus citation 2026-05-16 16:00 EDT falls T-2h25m from 72h ratification clock end (2026-05-16T18:25:00-04:00). First citation was finding-2026-05-13-FLASH-1800-0001 MuddyWater / Seedworm Q1 2026 multi-victim. Operator may ratify Symantec at A on next pass; librarian handoff queued."
+    absorbs_flashes: []
+    resurface_if:
+      - new_attribution                              # any A/B-grade source publishes attribution claim on Fast16
+      - new_victims_confirmed                        # any A/B-grade source names a victim or affected facility
+      - actor_ttps_evolve                            # Fast16 modern variant disclosed (Symantec explicit no modern variant known)
+      - first_party_ioc_hit                          # any Archimedes / defenseclaw_local Splunk hit on Fast16 IOC tokens
+      - seven_days_elapsed_and_evolving              # 7+ days from 2026-05-16 with sustained topic momentum across A-grade sources
+    first_covered: 2026-05-16
+    last_covered: 2026-05-16
+    retraction: null
+    test: false
+    notes: |
+      Symantec Fast16 placed in Sector Focus: Aerospace & Defense as
+      the substantive anchor for an otherwise quiet Saturday
+      afternoon. Brief explicitly does NOT lead with the item (per
+      grader guidance — no urgent action, no current exposure
+      claim) but treats it as the substantive sector-section content.
+
+      Structural-supply-chain framing: LS-DYNA + AUTODYN deployed at
+      every US defense prime (Lockheed Martin, Boeing, Northrop
+      Grumman, Raytheon, BAE Systems) for blast-effect modeling,
+      missile structural analysis, weapon-effects assessment,
+      airframe survivability, hypervelocity-impact studies.
+      Universities supplying engineering talent pipeline (Purdue,
+      Georgia Tech, UT Austin, Michigan, Penn State for hypersonics;
+      Cranfield, Imperial, Politecnico di Milano in Europe) also
+      license these tools.
+
+      Analyst inference at 'roughly even chance' that a contemporary
+      variant could exist undetected — explicitly framed as analyst
+      hedge, not source-attested. Symantec is explicit no modern
+      variant is known; brief does NOT extrapolate to claim any
+      current A&D prime is exposed.
+
+      Single-source veto: Symantec independence test against
+      SentinelLABS April 2026 originating research FAILS (Symantec
+      cites SentinelLABS as foundation; no independent telemetry,
+      no new sample hashes, no new C2 infrastructure; Symantec is
+      corroborative-summary at 8-min read length, not independent-
+      deep-dive). Cluster anchor capped at 'likely'. Convergent
+      absence-of-evidence hedges (no attribution / no IOCs / no
+      active exploitation / no modern variant known) carry 'very
+      likely' as convergent verbatim from both vendors.
+
+      Relay-layer secondary commentary NOT propagated (per Hard Rule
+      2): The Hacker News (April 2026 relay), InfoSecurity Magazine,
+      Security Boulevard ('Linked to US-Iran Cyber Tensions' editorial
+      conjecture), Dark Reading, The Register, Antiy Labs (Chinese-AV
+      'Psychological Warfare' counter-narrative). Collector flagged
+      and held; grader confirmed non-propagation; brief did not
+      surface any relay-layer claims.
+
+      SentinelLABS / Symantec divergence on target-software set:
+      SentinelLABS named LS-DYNA 970 + PKPM + MOHID; Symantec names
+      LS-DYNA + AUTODYN. Brief preserved both target-software lists
+      faithfully — LS-DYNA as convergent overlap, AUTODYN as Symantec
+      novel addition under single-source veto; PKPM / MOHID not
+      surfaced in brief body to avoid relay-layer expansion from
+      sources not retrieved this sweep. Analyst may revisit if a
+      third A-grade source publishes.
+
+  - id: 2026-05-16-pm-002-cve-20182-t-1-status
+    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon]
+    brief_file: threats/briefs/2026-05-16-afternoon.md
+    headline: "CVE-2026-20182 (Cisco Catalyst SD-WAN) — KEV deadline 2026-05-17 (T-1, Sunday); final compliance window before deadline lapses for DIB / CMMC partner-flow estates; no new exploitation reporting in 8h afternoon window; Talos visibility-skew caveat persists (Talos is Cisco's threat-intel arm); status-only carry-forward unchanged from morning brief"
+    topic_tags:
+      - cve
+      - cve-2026-20182
+      - cisco-catalyst-sd-wan
+      - kev-listed
+      - kev-deadline-2026-05-17
+      - kev-deadline-t-minus-1-day-sunday
+      - federal-patch-deadline-final-compliance-window
+      - dib-cmmc-partner-flow-estates
+      - talos-visibility-skew-caveat-carry-forward
+      - status-only-carry-forward
+      - no-new-exploitation-reporting-in-window
+      - vulnerabilities-section
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-20182
+        cvss: 10.0
+        vt_id_proposed: VT-011
+        kev_status: listed_dateadded_2026_05_14_duedate_2026_05_17
+        kev_due_date: 2026-05-17
+        exploitation_status: actively_exploited_per_kev_listing_no_a_grade_ir_firm_corroboration_in_afternoon_window
+        patch_status: vendor_patched
+    related_campaigns: []
+    finding_ids: []
+    digraph: A1
+    wep: very_likely
+    wep_split:
+      kev_listing_procedural_fact_carry_forward: very_likely
+      cisco_advisory_carry_forward: very_likely
+      actively_exploited_kev_assertion: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: actively_exploited_claim_layer_only
+    single_source_veto_rationale: "Cisco/Talos is single A-grade primary on the actively-exploited claim; Talos is Cisco's threat-intel arm so visibility-skew caveat applies. No second independent A/B-grade IR-firm corroboration (Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike silent across afternoon window). Single-source veto on exploitation-claim layer; KEV-listing and patch-availability procedural facts carry-forward at A1."
+    analyst_review_complete: not_applicable_status_only_carry_forward
+    red_team_review_required: false
+    red_team_review_required_basis: status_only_carry_forward_no_new_attribution_or_claim_to_red_team
+    hard_rule_2_framings_load_bearing:
+      - "Actively-exploited assertion from CISA KEV catalog has single A-grade primary (Cisco/Talos); brief notes visibility-skew caveat without challenging CISA's listing rationale"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-20182 + Cisco SD-WAN + Catalyst SD-WAN"
+      consecutive_dormant_sweep_count: 32
+      hard_rule_8_framing: silence_is_not_disconfirming
+    absorbs_flashes: []
+    resurface_if:
+      - escalation_to_exploitation                    # second A-grade IR firm publishes exploitation telemetry
+      - new_victims_confirmed                         # named-victim disclosure
+      - new_attribution                               # actor attribution emerges
+      - first_party_ioc_hit                           # Archimedes Splunk hit on related IOCs
+      - kev_deadline_passes_2026_05_17                # T-0 status update Monday morning
+    first_covered: 2026-05-15
+    last_covered: 2026-05-16
+    retraction: null
+    test: false
+    notes: |
+      Status-only carry-forward — KEV deadline tomorrow (Sunday
+      2026-05-17). Monday morning brief will surface T-0 / post-
+      deadline status; CISA may publish Q2 compliance metrics in
+      following weeks. Talos visibility-skew caveat persists across
+      all carry-forwards (Talos is Cisco's threat-intel arm — the
+      vendor-internal entity claiming active exploitation on its own
+      product).
+
+  - id: 2026-05-16-pm-003-cve-42897-t-13-status
+    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon]
+    brief_file: threats/briefs/2026-05-16-afternoon.md
+    headline: "CVE-2026-42897 (Microsoft Exchange OWA XSS) — KEV deadline 2026-05-29 (T-13 days); MSRC mitigation EEMS automatic URL-rewrite or EOMT script unchanged; active-exploitation single-source veto holds — Mandiant, Volexity, Unit 42, MSTIC TI blog, CrowdStrike silent across 8h afternoon window; status-only carry-forward unchanged"
+    topic_tags:
+      - cve
+      - cve-2026-42897
+      - microsoft-exchange-owa-xss
+      - kev-listed
+      - kev-deadline-2026-05-29
+      - kev-deadline-t-minus-13-days
+      - msrc-mitigation-eems-automatic-url-rewrite-or-eomt-script
+      - active-exploitation-single-source-veto-holds
+      - mandiant-volexity-unit42-mstic-crowdstrike-silent
+      - status-only-carry-forward
+      - no-new-exploitation-reporting-in-window
+      - vulnerabilities-section
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42897
+        cvss: 8.1
+        vt_id_proposed: VT-007
+        kev_status: listed_dateadded_2026_05_15_duedate_2026_05_29
+        kev_due_date: 2026-05-29
+        exploitation_status: actively_exploited_per_kev_listing_no_a_grade_ir_firm_corroboration_after_24_plus_hours
+        patch_status: no_general_availability_patch_mitigation_only
+    related_campaigns: []
+    finding_ids: []
+    digraph: A1
+    wep: very_likely
+    wep_split:
+      kev_listing_procedural_fact_carry_forward: very_likely
+      msrc_mitigation_path_eems_eomt_carry_forward: very_likely
+      actively_exploited_kev_assertion_single_source_veto_holds: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: actively_exploited_claim_layer_only
+    single_source_veto_rationale: "CISA KEV is single primary on actively-exploited claim. No A-grade IR firm corroboration after 24+ hours from initial KEV listing 2026-05-15. Single-source veto continues on exploitation-claim layer; KEV-listing and MSRC-mitigation procedural facts carry-forward at A1."
+    analyst_review_complete: not_applicable_status_only_carry_forward
+    red_team_review_required: false
+    red_team_review_required_basis: status_only_carry_forward_no_new_attribution_or_claim_to_red_team
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-42897 + Exchange OWA + Outlook Web Access XSS"
+      consecutive_dormant_sweep_count: 32
+      hard_rule_8_framing: silence_is_not_disconfirming
+    absorbs_flashes: []
+    resurface_if:
+      - escalation_to_exploitation                    # A-grade IR firm publishes exploitation telemetry
+      - new_victims_confirmed                         # named-victim disclosure
+      - new_attribution                               # actor attribution emerges
+      - first_party_ioc_hit                           # Archimedes Splunk hit on related IOCs
+      - patch_released                                # MSRC ships general-availability patch
+    first_covered: 2026-05-15
+    last_covered: 2026-05-16
+    retraction: null
+    test: false
+    notes: |
+      Status-only carry-forward — T-13 days from 2026-05-29 federal
+      deadline. No new exploitation reporting in afternoon window;
+      single-source veto on actively-exploited claim layer holds at
+      24+ hours from initial KEV listing. Monday morning may surface
+      MSRC patch availability or A-grade IR firm follow-on.
+
+  - id: 2026-05-16-pm-brief-meta
+    covered_in: [2026-05-16-afternoon]
+    brief_file: threats/briefs/2026-05-16-afternoon.md
+    headline: "Brief meta — 2026-05-16 afternoon (Saturday weekend cadence): 1 finding referenced (Symantec Fast16 extension of SentinelLABS April 2026 originating research on pre-Stuxnet simulation-sabotage framework targeting LS-DYNA / AUTODYN nuclear-weapons-simulation toolchains); Saturday quiet-day posture framing in lead — 8h afternoon window produced one substantive item, no new active exploitation, no actor attribution, no first-party telemetry; CVE-2026-20182 T-1 KEV deadline (Sunday) + CVE-2026-42897 T-13 KEV deadline (Friday) carry-forwards in Vulnerabilities section as status-only items; NGINX Rift (CVE-2026-42945) carry-forward in Active Threats as status check (no new exploitation signal in window); both standing sections present (Sector Focus + Iran Cyber Watch silent_day_template); Pwn2Own closure carry-forward in Other Signal; single-source veto applied to Fast16 finding on framework-discovery and novel-Symantec-additions layers; no red-team triggers crossed; no FLASH triggers fired across 00:00 / 06:00 / 11:30 / 15:30 pre-brief sweeps; Hard Rule 6 compliance documented (1 quote, 13 words, Symantec only — load-bearing attribution hedge); Hard Rule 2 compliance documented (Security Boulevard 'Linked to US-Iran Cyber Tensions' and Antiy Labs 'Psychological Warfare' relay-layer editorial framings NOT propagated); pre-flight 13/13 passed on first iteration; 32nd consecutive dormant non-self-telemetry Splunk sweep (28th 00:00 / 29th 06:00 / 30th morning brief / 31st 11:30 FLASH / 32nd this afternoon brief)"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - saturday-weekend-cadence
+      - 1-finding-referenced
+      - symantec-fast16-substantive-anchor-sector-focus
+      - saturday-quiet-day-posture-framing-lead
+      - cve-2026-20182-t-1-kev-deadline-sunday-status-only-carry-forward
+      - cve-2026-42897-t-13-kev-deadline-friday-status-only-carry-forward
+      - nginx-rift-cve-2026-42945-status-check-no-new-exploitation-signal-in-window-carry-forward
+      - pwn2own-closure-status-only-carry-forward
+      - standing-sections-both-present
+      - iran-cyber-silent-day-template
+      - ad-sector-focus-symantec-fast16-substantive-anchor
+      - single-source-veto-applied-fast16-framework-discovery-line
+      - single-source-veto-applied-fast16-novel-symantec-additions-autodyn-intel-fortran
+      - no-red-team-triggers-crossed
+      - no-flash-triggers-fired-across-all-saturday-sweeps
+      - hard-rule-2-no-threat-actor-attribution-symantec-sentinellabs-both-explicit
+      - hard-rule-2-security-boulevard-relay-not-propagated
+      - hard-rule-2-antiy-labs-counter-narrative-not-propagated
+      - hard-rule-3-not-implicated-forensic-archaeology-no-poc-no-payload
+      - hard-rule-6-one-quote-13-words-symantec-load-bearing-hedge
+      - hard-rule-8-splunk-first-party-clean-32-consecutive-dormant-sweeps
+      - preflight-13-of-13-passed-iteration-1
+      - layer-2-discord-summary-paraphrases-symantec-hedge-avoid-double-use
+      - symantec-second-corpus-citation-t-minus-2h25m-ratification-clock
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-16-0003
+    absorbs_flashes: []
+    resurface_if: []
+    first_covered: 2026-05-16
+    last_covered: 2026-05-16
+    retraction: null
+    test: false
+    notes: |
+      Brief composition flow: Saturday afternoon weekend cadence,
+      genuinely quiet. Lead frames the honest posture — 8h window
+      produced one substantive item (Symantec Fast16) anchored in
+      Sector Focus, no new active exploitation, no actor attribution,
+      no first-party telemetry. CVE-2026-20182 T-1 Sunday deadline
+      is the most actionable item but is status-only carry-forward
+      (no new substance in window).
+
+      Symantec Fast16 placement: Sector Focus: Aerospace & Defense
+      as substantive anchor (per grader handoff guidance — "place in
+      afternoon brief sector-focus section as a structural-supply-
+      chain awareness note. Do NOT lead the brief with it"). Brief
+      explicitly does NOT extrapolate to claim any current A&D prime
+      is exposed (Symantec explicit no modern variant known).
+
+      Hard Rule 6: one quote, 13 words, Symantec only ("All evidence
+      suggests that attackers were specifically targeting simulations
+      of nuclear detonations"). Load-bearing attribution hedge
+      preserved verbatim per Hard Rule 2 attribution-language-
+      preservation discipline. Layer 2 Discord Summary paraphrases
+      to avoid double-use of the same quote across the document.
+
+      Hard Rule 2: no threat-actor attribution this brief. Both
+      Symantec and SentinelLABS explicit on non-attribution.
+      Security Boulevard's relay-layer "Linked to US-Iran Cyber
+      Tensions" framing identified by collector and NOT propagated.
+      Antiy Labs' Chinese-vendor counter-narrative "Psychological
+      Warfare to Show Off Cyber Capabilities" flagged as third-party
+      editorial commentary, NOT independent fact-corroboration, and
+      NOT propagated.
+
+      Hard Rule 8: 32nd consecutive dormant non-self-telemetry
+      Splunk sweep across the Fast16 IOC token set (fast16, Fast16,
+      LS-DYNA, AUTODYN, Intel Fortran, svcmgmt, fast16.sys) plus
+      the carry-forward CVE token sets. Silence is not disconfirming.
+      Sweep lineage: 28th (00:00 FLASH) / 29th (06:00 FLASH) /
+      30th (morning brief) / 31st (11:30 on-demand FLASH) / 32nd
+      (this afternoon brief).
+
+      Pre-flight: 13/13 passed on first iteration. Layer 1 word
+      count ~700 (within 400-800 afternoon target). Layer 2
+      Discord Summary ~200 words / ~1700 chars (under 1900 ceiling,
+      within 150-300 word band). One iteration of edits applied
+      pre-publication: (a) fixed malformed Symantec URL typo
+      ("threat-instinct-intelligence" → "threat-intelligence");
+      (b) paraphrased Symantec hedge in Layer 2 to avoid
+      double-quote-from-same-source across the document.
+
+      Standing sections both present: Sector Focus (Symantec Fast16
+      substantive anchor + no A&D-prime named-victim disclosures
+      this window + tracked-actor reference list); Iran Cyber Watch
+      (silent_day_template per watch-config.yaml).
+
+      Anti-repetition discipline: NGINX Rift PoC publication NOT
+      re-litigated — only the "no new exploitation signal in window"
+      status update surfaced as Active Threats carry-forward note.
+      Pwn2Own Berlin closure NOT re-litigated — only embargo-status-
+      unchanged + ZDI-index-unchanged surfaced in Other Signal.
+      CVE-2026-20182 / CVE-2026-42897 mechanism facts NOT
+      re-litigated — only T-1 / T-13 status surfaced.
+
+      No FLASH-worthy finding emerged this cycle — Symantec Fast16
+      fails all 6 FLASH triggers (T1 no CVE / no active exploitation;
+      T2 no tracked-actor attribution; T3 no first-party IOC hit;
+      T4 no tracked-actor TTP change; T5 no active A&D campaign;
+      T6 no zero-day no patch — not a vulnerability disclosure).
+      Critical override conditions not applicable (no CVSS 10 + no
+      active exploitation + no tracked actor + no A&D watchlist
+      named-victim hit).
+
+      Symantec provisional-A ratification clock T-2h25m at
+      brief-publication time (clock ends 2026-05-16T18:25:00-04:00
+      from first citation 2026-05-13-FLASH-1800-0001 MuddyWater /
+      Seedworm Q1 2026 multi-victim). Second corpus citation now
+      established via this brief; librarian handoff queued for
+      operator-pass ratification consideration on next pass.
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

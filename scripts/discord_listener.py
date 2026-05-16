@@ -458,6 +458,72 @@ async def invoke_claude(prompt: str, logger: logging.Logger) -> tuple[int, str, 
     return rc, out, err
 
 
+def persist_failure_trace(
+    cmd: str,
+    run_id: str,
+    prompt: str,
+    rc: int,
+    stdout: str,
+    stderr: str,
+    logger: logging.Logger,
+) -> Path | None:
+    """Write the full failure trace (prompt + stdout + stderr) to a file
+    in today's discord-listener daily log directory.
+
+    Returns the file path on success, or None if write failed (logged).
+
+    Purpose: when claude -p exits non-zero, the listener's Discord reply
+    only contains stderr — but useful diagnostic content (AUP refusal
+    URLs, model errors, partial responses) often lands in stdout. This
+    helper preserves both streams to disk so the operator can debug
+    without re-running.
+    """
+    base_dir = Path(
+        os.environ.get(
+            "DISCORD_LISTENER_LOG_DIR",
+            str(REPO_ROOT / "logs" / "discord-listener"),
+        )
+    )
+    today = datetime.now().strftime("%Y-%m-%d")
+    daily = base_dir / today
+    try:
+        daily.mkdir(parents=True, exist_ok=True)
+    except OSError as e:
+        logger.warning("failure-trace dir create failed: %s", e)
+        return None
+
+    path = daily / f"{run_id}.failure.log"
+    try:
+        with path.open("w", encoding="utf-8") as f:
+            f.write(f"# Failure trace — {run_id}\n")
+            f.write(f"timestamp: {datetime.now().isoformat()}\n")
+            f.write(f"command: /{cmd}\n")
+            f.write(f"exit_code: {rc}\n")
+            f.write(f"stdout_bytes: {len(stdout)}\n")
+            f.write(f"stderr_bytes: {len(stderr)}\n")
+            f.write("\n")
+            f.write("=" * 72 + "\n")
+            f.write("PROMPT SENT TO claude -p\n")
+            f.write("=" * 72 + "\n")
+            f.write(prompt + "\n")
+            f.write("\n")
+            f.write("=" * 72 + "\n")
+            f.write("STDOUT\n")
+            f.write("=" * 72 + "\n")
+            f.write(stdout if stdout else "(empty)\n")
+            f.write("\n")
+            f.write("=" * 72 + "\n")
+            f.write("STDERR\n")
+            f.write("=" * 72 + "\n")
+            f.write(stderr if stderr else "(empty)\n")
+    except OSError as e:
+        logger.warning("failure-trace write failed: %s", e)
+        return None
+
+    logger.info("failure trace persisted: %s", path)
+    return path
+
+
 # ---------------------------------------------------------------------------
 # Discord posting helpers
 # ---------------------------------------------------------------------------
@@ -624,16 +690,38 @@ def build_client(
 
         rc, out, err = await invoke_claude(prompt, logger)
 
+        failure_trace_path: Path | None = None
         if rc == 0:
             response = truncate_for_discord(out) if out else "(empty response)"
             await _safe_reply(message, response, logger)
             await _safe_react(message, REACTION_OK, logger)
             event_type = "discord_command_completed"
         else:
+            # Persist the full trace (prompt + stdout + stderr) before
+            # composing the Discord reply — useful diagnostic content
+            # (AUP refusal URLs, model errors, partial responses) often
+            # lands in stdout but the reply only carries stderr.
+            failure_trace_path = persist_failure_trace(
+                cmd=cmd,
+                run_id=run_id,
+                prompt=prompt,
+                rc=rc,
+                stdout=out,
+                stderr=err,
+                logger=logger,
+            )
+
+            # Reply with stderr excerpt + the trace file path so the
+            # operator knows where to find the full output.
             err_excerpt = (err.strip()[:300] if err else "(no stderr)")
+            trace_hint = (
+                f"`{failure_trace_path.relative_to(REPO_ROOT)}`"
+                if failure_trace_path
+                else "`logs/discord-listener/<today>/`"
+            )
             await _safe_reply(
                 message,
-                f"❌ /{cmd} failed (rc={rc})\n\n```{err_excerpt}```\nFull log: `logs/discord-listener/`",
+                f"❌ /{cmd} failed (rc={rc})\n\n```{err_excerpt}```\nFull trace: {trace_hint}",
                 logger,
             )
             await _safe_react(message, REACTION_FAIL, logger)
@@ -649,6 +737,10 @@ def build_client(
                 "stderr_bytes": len(err),
                 "requesting_user_id": requesting_user_id,
                 "requesting_username": requesting_username,
+                "failure_trace_path": (
+                    str(failure_trace_path.relative_to(REPO_ROOT))
+                    if failure_trace_path else None
+                ),
                 "completed_at": datetime.now(timezone.utc).isoformat(),
             },
             logger,

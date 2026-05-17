@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-16T08:00:00-04:00
+last_updated: 2026-05-17T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -9309,6 +9309,656 @@ entries:
       Seedworm Q1 2026 multi-victim). Second corpus citation now
       established via this brief; librarian handoff queued for
       operator-pass ratification consideration on next pass.
+
+  - id: 2026-05-17-am-001-cve-20182-t-0-deadline-day
+    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning]
+    brief_file: threats/briefs/2026-05-17-morning.md
+    headline: "UPDATE — CVE-2026-20182 (Cisco Catalyst SD-WAN auth bypass) federal KEV deadline T-0 today (Sunday 2026-05-17); CVSS 10.0; deadline status transitions T-1 → T-0 and is the operational news; Cisco Talos attributes active exploitation to UAT-8616 cluster (2-year operational track record via related CVE-2026-20127 chain); Rapid7 (Burgess + Fewer) credited as discoverer with 66-day coordinated-disclosure timeline; Cisco PSIRT advisory + vdaemon/DTLS/UDP-12346 primitive carry-forward; Talos visibility-skew caveat persists (Talos is Cisco's threat-intel arm) — single-source veto on exploitation-claim layer; no A-grade IR-firm parallel attribution from Mandiant/Volexity/Unit 42/MSTIC/CrowdStrike across 16h overnight window; 6-CVE 2026 SD-WAN exploitation pattern (covered 2026-05-15 morning) provides strategic-framing context; DIB / CMMC partner-flow estates face same-day ED-26-03 attestation pressure from primes"
+    topic_tags:
+      - cve
+      - cve-2026-20182
+      - cisco-catalyst-sd-wan
+      - kev-listed
+      - kev-deadline-2026-05-17
+      - kev-deadline-t-zero-today-sunday-deadline-day
+      - federal-patch-deadline-lapses-today
+      - ed-26-03-attestation-pressure
+      - dib-cmmc-partner-flow-estates
+      - cvss-10-0
+      - uat-8616-cluster-attribution-per-talos
+      - uat-8616-2-year-operational-track-record-via-cve-2026-20127
+      - rapid7-discoverer-credit-burgess-fewer
+      - 66-day-coordinated-disclosure-timeline
+      - cisco-psirt-advisory
+      - vdaemon-dtls-udp-12346-primitive
+      - talos-visibility-skew-caveat-cisco-internal-arm
+      - single-source-veto-on-exploitation-claim-layer
+      - no-a-grade-ir-firm-parallel-attribution-in-overnight-window
+      - mandiant-volexity-unit42-mstic-crowdstrike-silent-overnight
+      - 6-cve-2026-sd-wan-exploitation-pattern-strategic-framing
+      - update-flag-deadline-status-t-1-to-t-0
+      - active-threats-section-lead
+      - hard-rule-2-uat-8616-reported-not-asserted-per-talos
+    related_actors:
+      - actor_name: "UAT-8616"
+        on_roster: false
+        archimedes_treatment: reported_not_asserted_per_talos_per_hard_rule_2_carry_forward
+    related_vulns:
+      - cve: CVE-2026-20182
+        cvss: 10.0
+        vt_id_proposed: VT-011
+        kev_status: listed_dateadded_2026_05_14_duedate_2026_05_17
+        kev_due_date: 2026-05-17
+        exploitation_status: actively_exploited_per_kev_listing_per_talos_no_a_grade_ir_firm_parallel_attribution_in_overnight_window
+        patch_status: vendor_patched
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-15-0002
+      - finding-2026-05-14-0005
+    digraph: A2
+    digraph_layered:
+      kev_listing_procedural_fact_carry_forward: A1
+      cisco_psirt_advisory_carry_forward: A1
+      cvss_10_0_carry_forward: A1
+      ed_26_03_referenced_carry_forward: A1
+      active_exploitation_per_talos_uat_8616: A2
+      uat_8616_2_year_track_record_via_cve_2026_20127: A2
+      6_cve_2026_sd_wan_pattern_enumeration_carry_forward: A1
+    wep: very_likely
+    wep_split:
+      kev_listing_and_psirt_procedural_facts_carry_forward: very_likely
+      kev_deadline_t_0_today_calendar_event: very_likely
+      active_exploitation_per_talos: likely
+      uat_8616_attribution: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: exploitation_claim_layer_and_uat_8616_attribution_layer_carry_forward
+    single_source_veto_rationale: "Cisco Talos is single A-grade primary on the exploitation-claim and UAT-8616 attribution layers; Talos is Cisco's threat-intel arm so visibility-skew caveat applies. No second independent A/B-grade IR-firm corroboration (Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike silent across overnight window, now >72h from initial KEV listing). Single-source veto on exploitation-claim and attribution layers; KEV-listing and PSIRT procedural facts dual-A-grade origin via CISA + Cisco PSIRT independent."
+    analyst_review_complete: not_applicable_calendar_event_deadline_day_status_update
+    red_team_review_required: false
+    red_team_review_required_basis: calendar_event_status_update_no_new_attribution_or_claim_to_red_team
+    hard_rule_2_framings_load_bearing:
+      - "UAT-8616 attribution reported strictly as 'per Cisco Talos' — Talos visibility-skew caveat preserved (Talos is Cisco's threat-intel arm reporting on its own product); single-source veto applied"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-20182 + Cisco SD-WAN + Catalyst SD-WAN + UAT-8616 + vdaemon"
+      consecutive_dormant_sweep_count: 35
+      hard_rule_8_framing: silence_is_not_disconfirming
+    absorbs_flashes: []
+    resurface_if:
+      - kev_deadline_passes_2026_05_17                # T+1 status update Monday morning brief (deadline lapsed posture)
+      - escalation_to_exploitation                    # second A-grade IR firm publishes exploitation telemetry
+      - new_victims_confirmed                         # named-victim disclosure (DIB / FCEB)
+      - new_attribution                               # additional actor attribution or revision
+      - first_party_ioc_hit                           # Archimedes Splunk hit on related IOCs
+      - cisa_q2_compliance_metrics_publication        # CISA may publish post-deadline FCEB compliance metrics
+    first_covered: 2026-05-15
+    last_covered: 2026-05-17
+    retraction: null
+    test: false
+    notes: |
+      Calendar-event news: the deadline arriving today is the news.
+      Brief placed CVE-2026-20182 as the lead item and Active Threats
+      anchor. UPDATE flag and 🔗 link-back to 2026-05-14 afternoon
+      brief per anti-repetition doctrine — deadline status changes
+      T-1 → T-0.
+
+      Hard Rule 2: UAT-8616 attribution reported strictly as "per
+      Cisco Talos" with Talos visibility-skew caveat preserved.
+      Single-source veto applied on exploitation-claim layer; no
+      Mandiant/Volexity/Unit 42/MSTIC/CrowdStrike parallel attribution
+      in 16h overnight window (>72h from initial KEV listing). CISA
+      KEV-listing and Cisco PSIRT procedural facts dual-A-grade
+      independent corroboration intact.
+
+      Monday morning brief will surface T+1 / post-deadline posture
+      and any CISA Q2 compliance-metrics publication.
+
+  - id: 2026-05-17-am-002-cve-42897-t-12-status
+    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning]
+    brief_file: threats/briefs/2026-05-17-morning.md
+    headline: "CVE-2026-42897 (Microsoft Exchange OWA XSS) — KEV deadline 2026-05-29 (T-12 days, Friday); MSRC mitigation EEMS automatic URL-rewrite or EOMT script unchanged, no general-availability patch; active-exploitation single-source veto still holds at >48h from initial KEV listing — Mandiant, Volexity, Unit 42, MSTIC TI blog, CrowdStrike silent across 16h overnight window; status-only carry-forward"
+    topic_tags:
+      - cve
+      - cve-2026-42897
+      - microsoft-exchange-owa-xss
+      - kev-listed
+      - kev-deadline-2026-05-29
+      - kev-deadline-t-minus-12-days-friday
+      - msrc-mitigation-eems-or-eomt-no-ga-patch
+      - active-exploitation-single-source-veto-holds-48h-plus
+      - mandiant-volexity-unit42-mstic-crowdstrike-silent
+      - status-only-carry-forward
+      - vulnerabilities-section
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42897
+        cvss: 8.1
+        vt_id_proposed: VT-007
+        kev_status: listed_dateadded_2026_05_15_duedate_2026_05_29
+        kev_due_date: 2026-05-29
+        exploitation_status: actively_exploited_per_kev_listing_no_a_grade_ir_firm_corroboration_at_48h_plus
+        patch_status: no_general_availability_patch_mitigation_only
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-15-FLASH-0001
+    digraph: A1
+    wep: very_likely
+    wep_split:
+      kev_listing_procedural_fact_carry_forward: very_likely
+      msrc_mitigation_path_eems_eomt_carry_forward: very_likely
+      actively_exploited_kev_assertion_single_source_veto_holds: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: actively_exploited_claim_layer_only
+    single_source_veto_rationale: "CISA KEV is single primary on actively-exploited claim. No A-grade IR firm corroboration at >48h from initial 2026-05-15 KEV listing. Single-source veto continues on exploitation-claim layer; KEV-listing and MSRC-mitigation procedural facts carry-forward at A1."
+    analyst_review_complete: not_applicable_status_only_carry_forward
+    red_team_review_required: false
+    red_team_review_required_basis: status_only_carry_forward_no_new_attribution_or_claim_to_red_team
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-42897 + Exchange OWA + Outlook Web Access XSS"
+      consecutive_dormant_sweep_count: 35
+      hard_rule_8_framing: silence_is_not_disconfirming
+    absorbs_flashes: []
+    resurface_if:
+      - escalation_to_exploitation                    # A-grade IR firm publishes exploitation telemetry
+      - new_victims_confirmed                         # named-victim disclosure
+      - new_attribution                               # actor attribution emerges
+      - first_party_ioc_hit                           # Archimedes Splunk hit on related IOCs
+      - patch_released                                # MSRC ships general-availability patch
+    first_covered: 2026-05-15
+    last_covered: 2026-05-17
+    retraction: null
+    test: false
+    notes: |
+      Status-only carry-forward — T-12 days from 2026-05-29 federal
+      deadline. Single-source veto on actively-exploited claim layer
+      holds at >48h from initial 2026-05-15 KEV listing.
+
+  - id: 2026-05-17-am-003-cve-42945-nginx-rift-status
+    covered_in: [2026-05-14-morning, 2026-05-14-afternoon, 2026-05-15-morning, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning]
+    brief_file: threats/briefs/2026-05-17-morning.md
+    headline: "CVE-2026-42945 (NGINX Rift / F5 K000160932) — PoC publication carry-forward from 2026-05-16 morning; CVSS v4 9.2; heap overflow in ngx_http_rewrite_module; ASLR-state determines RCE-class vs DoS-class; SecurityWeek + BleepingComputer + ZDI + F5 silent on follow-up in 16h overnight window; no new exploitation signal; forward-assessment 'exploitation risk window 7-14d post-PoC' unchanged at roughly-even-chance analyst hedge; Hard Rule 3 — PoC URL recorded in finding-2026-05-16-0001 frontmatter only, NOT linked in brief body"
+    topic_tags:
+      - cve
+      - cve-2026-42945
+      - nginx-rift
+      - vt-007
+      - poc-publication-carry-forward
+      - depthfirst-named-poc-author-carry-forward
+      - heap-overflow-ngx-http-rewrite-module-carry-forward
+      - cvss-v4-9-2-carry-forward
+      - aslr-dependency-rce-vs-dos-carry-forward
+      - patched-at-disclosure-2026-05-14-carry-forward
+      - no-new-exploitation-signal-in-overnight-window
+      - securityweek-bleepingcomputer-zdi-f5-silent-overnight
+      - hard-rule-3-poc-url-not-linked-in-brief-body
+      - status-check-carry-forward
+      - vulnerabilities-section
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42945
+        cvss_v4: 9.2
+        vt_id: VT-007
+        kev_status: not_listed_as_of_sweep
+        exploitation_status: no_new_signal_in_overnight_window_per_securityweek_bleepingcomputer_zdi_f5_silent
+        patch_status: patched_at_disclosure_2026_05_14
+        public_exploit_available: true
+        public_exploit_publisher: depthfirst
+        public_exploit_url_recorded_finding_frontmatter_only_per_hard_rule_3: true
+        public_exploit_url_linked_in_brief_body: false
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-16-0001
+    digraph: B2
+    wep: likely
+    wep_split:
+      cve_procedural_facts_carry_forward_vendor_self_disclosure: very_likely
+      poc_publication_event_carry_forward: likely
+      no_new_exploitation_signal_in_overnight_window: likely
+      exploitation_risk_window_7_14d_post_poc_forward_assessment: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_scope: poc_publication_event_layer_carry_forward
+    hard_rule_3_compliance:
+      poc_url_in_brief_body: false
+      brief_body_treatment: "PoC publication noted as carry-forward; repository URL NOT linked. Per Hard Rule 3 established discipline from 2026-05-16 morning brief."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-42945 + NGINX Rift + depthfirst + ngx_http_rewrite_module"
+      consecutive_dormant_sweep_count: 35
+      hard_rule_8_framing: silence_is_not_disconfirming
+    absorbs_flashes: []
+    resurface_if:
+      - kev_addition
+      - second_independent_poc_publication_or_metasploit_module_release
+      - first_in_the_wild_exploitation_observation_via_vendor_research_or_telemetry
+      - first_party_splunk_hit_archimedes_or_defenseclaw_local
+      - depthfirst_technical_write_up_publication_beyond_poc_code
+      - ad_prime_customer_impact_statement
+      - shadowserver_greynoise_censys_internet_scanning_observation_for_nginx_rift_signatures
+      - f5_or_distro_advisory_updates_with_new_information
+    first_covered: 2026-05-14
+    last_covered: 2026-05-17
+    retraction: null
+    test: false
+    notes: |
+      Status-check carry-forward — no new exploitation signal in 16h
+      overnight window. SecurityWeek + BleepingComputer + ZDI + F5
+      silent on follow-up. Forward-assessment unchanged at
+      "roughly even chance" for 7-14d post-PoC exploitation-risk
+      window (canonical pattern, analyst inference, not source-attested).
+
+  - id: 2026-05-17-am-004-grafana-coinbasecartel-supply-chain-pattern
+    covered_in: [2026-05-17-morning]
+    brief_file: threats/briefs/2026-05-17-morning.md
+    headline: "Grafana Labs discloses GitHub-token-enabled codebase download from Grafana-owned repository; The Hacker News (single directly-retrieved B-grade primary, 2026-05-17 03:13 EDT byline) attributes activity to CoinbaseCartel — a September-2025-emergence data-extortion group with ~170-victim cross-sector profile (healthcare / technology / transportation / manufacturing / business services) per Hackmanac + Ransomware.live victim-tracking relay (THN-cited, not directly retrieved); Halcyon + Fortinet FortiGuard Labs have framed CoinbaseCartel as ecosystem offshoot of ShinyHunters / Scattered Spider / LAPSUS$ — ECOSYSTEM-LINEAGE FRAMING applied to actor profile NOT direct attribution of Grafana incident to Scattered Spider operators per Hard Rule 2; Grafana refused subsequent extortion attempt per FBI guidance; no customer data and no customer systems affected per Grafana statement (summarized by THN, not directly retrieved); CoinbaseCartel NOT on _roster.yaml; no A&D-prime named as victim; no CVE; no IOCs; no first-party Splunk telemetry match; placed in Other Signal section with H4 pattern-of-incidents lead per analyst ACH ranking — fourth software-vendor supply-chain credential-exposure incident in 30-day window (SailPoint 2026-05-11 + Checkmarx 2026-05-11 + OpenAI/TanStack 2026-05-14 + Grafana 2026-05-17, different actors / different mechanisms / same incident shape); A&D-estate Grafana-deployment-exposure inference phrased as analyst hedge at 'roughly even chance' — NOT source-attested"
+    topic_tags:
+      - grafana-labs
+      - github-token-compromise
+      - codebase-download
+      - extortion-attempt-refused-per-fbi-guidance
+      - no-customer-data-no-customer-systems-affected-per-grafana-statement
+      - coinbasecartel-named-attribution-per-thn
+      - coinbasecartel-not-on-roster
+      - coinbasecartel-september-2025-emergence
+      - coinbasecartel-170-victim-cross-sector-profile
+      - coinbasecartel-victim-profile-healthcare-tech-transport-manufacturing-business-services
+      - hackmanac-ransomware-live-victim-tracking-relay-thn-cited
+      - halcyon-fortinet-fortiguard-cti-vendor-profiling-thn-cited
+      - ecosystem-lineage-framing-shinyhunters-scattered-spider-lapsus
+      - scattered-spider-ecosystem-lineage-framing-NOT-direct-attribution
+      - hard-rule-2-no-attribution-laundering
+      - hard-rule-2-coinbasecartel-reported-not-asserted-per-thn
+      - hard-rule-2-scattered-spider-ecosystem-lineage-framing-only
+      - thehackernews-single-directly-retrieved-primary
+      - thehackernews-provisional-b
+      - grafana-self-disclosure-not-directly-retrieved-collector-follow-up-queued
+      - h4-pattern-of-incidents-ach-ranking-rank-1
+      - 4-software-vendor-supply-chain-credential-exposure-incidents-in-30-days
+      - sailpoint-2026-05-11
+      - checkmarx-jenkins-ast-plugin-2026-05-11
+      - openai-tanstack-2026-05-14-finding-2026-05-14-0008
+      - grafana-2026-05-17
+      - different-actors-different-mechanisms-same-incident-shape
+      - ad-estate-grafana-deployment-exposure-inference-analyst-hedge-roughly-even-chance
+      - okta-2022-circleci-2023-vendor-scope-expansion-precedent-analyst-corpus-reasoning
+      - no-cve-no-iocs-no-named-ad-victim-no-first-party-splunk-match
+      - other-signal-section-monitoring-tier
+      - analyst-kac-ach-complete-2026-05-17-074200
+      - kac-test-classification-a2-repo-contents-weaponizability-tripwire-not-block
+      - ach-h4-rank-1-zero-inconsistencies-monitoring-with-pattern-emphasis
+      - generic-github-token-hygiene-secrets-scanning-repo-access-review-guidance
+    related_actors:
+      - actor_name: "CoinbaseCartel"
+        on_roster: false
+        archimedes_treatment: reported_not_asserted_per_thn_per_hard_rule_2
+        relevance: primary_named_attribution_on_grafana_incident_per_thn
+      - actor_name: "Scattered Spider"
+        on_roster: true
+        roster_id: "013"
+        threat_level: HIGH
+        archimedes_treatment: ECOSYSTEM_LINEAGE_FRAMING_NOT_DIRECT_ATTRIBUTION_per_halcyon_fortinet_via_thn
+        relevance: parent_cluster_heritage_applied_to_coinbasecartel_actor_profile_NOT_grafana_incident_attribution
+      - actor_name: "ShinyHunters"
+        on_roster: false
+        archimedes_treatment: ECOSYSTEM_LINEAGE_FRAMING_per_halcyon_fortinet_via_thn
+        relevance: parent_cluster_heritage_applied_to_coinbasecartel_actor_profile
+      - actor_name: "LAPSUS$"
+        on_roster: false
+        archimedes_treatment: ECOSYSTEM_LINEAGE_FRAMING_per_halcyon_fortinet_via_thn
+        relevance: parent_cluster_heritage_applied_to_coinbasecartel_actor_profile
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-17-0001
+    digraph: B2
+    digraph_layered:
+      grafana_token_compromise_and_codebase_download_event: B2
+      extortion_attempt_refused_per_fbi_guidance: B2
+      no_customer_data_no_customer_systems_affected_per_grafana_statement: B2
+      coinbasecartel_named_as_primary_threat_actor: B2
+      coinbasecartel_emerged_september_2025_170_victim_count: B3
+      coinbasecartel_ecosystem_lineage_to_shinyhunters_scattered_spider_lapsus: C3
+      victim_industry_pattern_healthcare_tech_transport_manufacturing_business_services: B3
+      ad_estate_grafana_deployment_inference_analyst_layer: roughly_even_chance
+      no_ioc_no_cve_no_first_party_telemetry_match: A1
+      cluster_anchor: B2
+    wep: likely
+    wep_split:
+      grafana_token_compromise_and_codebase_download_event_occurred: likely
+      extortion_attempt_refused_per_fbi_guidance: likely
+      no_customer_data_no_customer_systems_affected: likely
+      coinbasecartel_attribution_per_thn_per_unnamed_relay_chain: likely
+      scattered_spider_ecosystem_lineage_framing_applied_to_coinbasecartel: roughly_even_chance
+      ad_estate_grafana_deployment_pattern_exposure_inference: roughly_even_chance
+      h4_pattern_of_incidents_framing_4_in_30_days_cumulative_pattern: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: cluster_anchor_and_coinbasecartel_attribution_layer_and_scattered_spider_ecosystem_lineage_framing_layer
+    single_source_veto_rationale: "The Hacker News is single effective primary on both the incident-facts layer and the CoinbaseCartel attribution layer. No independent A/B-grade source corroborates in window. Single-source veto caps cluster WEP at 'likely'. Both Grafana's own statement (vendor self-disclosure) and the Halcyon / Fortinet FortiGuard profiling work on CoinbaseCartel as an actor would constitute valid independent corroboration if directly retrieved on a follow-up sweep — flagged for collector / analyst follow-up. Scattered Spider ecosystem-lineage framing capped at 'roughly even chance' to enforce Hard Rule 2 separation."
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260517-074200
+    analyst_review_sat_kac_summary: "KAC stress-tested A&D-exposure inference (7 assumptions evaluated: 1 sound / 5 qualify / 1 test classifications; A2 repo-contents-weaponizability is load-bearing test assumption queued as tripwire NOT block; assessment proceeds at monitoring framing with qualifying caveats embedded)"
+    analyst_review_sat_ach_summary: "ACH ranked H4 (pattern-of-incidents framing) rank-1 with zero inconsistencies; H1 (vendor scope-limitation holds) rank-2; H2 (secondary-effect via repo contents) and H3 (resale-handoff risk) held as tripwire-watched residual tail risks; H5 (null framing) rejected because H4 IS supportable; ACH conclusion shapes BRIEF FRAMING not WEP ceiling"
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_below_very_likely_threshold_forward_assessment_roughly_even_chance_also_below_threshold
+    hard_rule_2_framings_load_bearing:
+      - "CoinbaseCartel attribution on Grafana incident reported strictly as 'per The Hacker News' — Archimedes does not originate attribution; CoinbaseCartel is NOT on _roster.yaml"
+      - "Scattered Spider linkage phrased strictly as ECOSYSTEM-LINEAGE FRAMING applied to CoinbaseCartel actor profile per Halcyon + Fortinet via THN — NOT direct attribution of the Grafana incident to Scattered Spider operators; LEGAL-POLICY attribution-laundering prohibition is the binding constraint"
+      - "A&D-estate Grafana-deployment-exposure inference phrased as analyst hedge at 'roughly even chance' — NOT source-attested; THN article names no defense entity as Grafana customer or victim"
+      - "4-software-vendor-supply-chain-incidents-in-30-days pattern is analyst observation across Archimedes corpus — NOT a single-actor campaign claim; actors heterogeneous (CoinbaseCartel + 3 unattributed) and mechanisms differ (token / repo / plugin)"
+    hard_rule_6_quote_discipline:
+      quotes_in_brief_for_this_item: 0
+      rationale: "Zero direct quotes on this item. THN primary paraphrased throughout."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "Grafana + grafana.com + CoinbaseCartel + Coinbase Cartel + GitHub token + grafana-owned"
+      consecutive_dormant_sweep_count: 35
+      hard_rule_8_framing: silence_is_not_disconfirming
+    absorbs_flashes: []
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - "Hackmanac (victim-tracking relay) — provisional C start IF directly retrieved on future sweep (NOT proposed this sweep — Archimedes has not retrieved Hackmanac content)"
+          - "Ransomware.live (victim-tracking relay) — provisional C start IF directly retrieved on future sweep (NOT proposed this sweep)"
+          - "Halcyon (CTI-vendor research) — provisional B start IF directly retrieved on future sweep (NOT proposed this sweep)"
+          - "Fortinet FortiGuard Labs (CTI-vendor research) — provisional B start IF directly retrieved on future sweep (NOT proposed this sweep)"
+    analyst_handoffs_queued:
+      - question: "Scattered Spider dossier hygiene — should the Halcyon + Fortinet ecosystem-lineage framing of CoinbaseCartel surface in Scattered-Spider/ dossier 'known associated clusters' section on next /update-tracking cycle?"
+        analyst_recommendation: defer_with_specific_trigger
+        trigger_for_re_evaluation: "Direct retrieval of EITHER Halcyon's OR Fortinet FortiGuard Labs' underlying CoinbaseCartel-profiling publication"
+        rationale_summary: "Surfacing the framing in dossier based on THN-relayed citation would propagate single-source attribution into dossier-tracked relationship — attribution-laundering pattern Hard Rule 2 and LEGAL-POLICY prohibit. Defer until direct retrieval."
+    collector_tripwires_queued:
+      - "Grafana publishes follow-up statement that expands incident scope (signing keys, additional repos, customer-data impact reclassified) — rerun KAC + ACH; H2 becomes ranking candidate"
+      - "Grafana's own statement directly retrieved on next collector pass — would constitute second corpus citation at procedural-facts layer (analogous to openai-self-disclosure path on finding-2026-05-14-0008)"
+      - "Any A-grade or B-grade source names a specific defense-prime or DoD agency as Grafana customer affected — A&D-exposure inference upgrades from roughly-even-chance to likely; finding becomes daily_brief_action eligible; FLASH evaluation reopens"
+      - "CoinbaseCartel posture shifts — source code released publicly, sold on dark-web markets, or handoff to higher-tier buyer — H3 ranking rises; exposure-scope assessment escalates"
+      - "Halcyon or Fortinet FortiGuard Labs publishes underlying CoinbaseCartel profiling work Archimedes can directly retrieve — source-grades.yaml provisional entries; ecosystem-lineage framing matures from relay-layer to source-attested"
+      - "5th software-vendor supply-chain credential-exposure incident in rolling 30-day window — H4 pattern framing escalates from situational awareness to dedicated analyst write-up; consider /investigate cycle on cumulative pattern"
+    resurface_if:
+      - grafana_publishes_follow_up_scope_expansion_statement
+      - grafana_self_disclosure_directly_retrieved_by_collector
+      - a_grade_or_b_grade_source_names_defense_prime_as_grafana_customer_affected
+      - coinbasecartel_posture_shift_source_code_release_or_handoff_signaling
+      - halcyon_or_fortinet_underlying_coinbasecartel_profiling_directly_retrieved
+      - 5th_software_vendor_supply_chain_credential_exposure_incident_in_30d_window
+      - new_victims_confirmed_grafana_incident_or_coinbasecartel_named_victim_list
+      - first_party_splunk_hit_archimedes_or_defenseclaw_local
+    first_covered: 2026-05-17
+    last_covered: 2026-05-17
+    retraction: null
+    test: false
+    notes: |
+      New monitoring-tier finding from morning sweep. The Hacker News
+      (provisional B per source-grades.yaml) is single directly-
+      retrieved primary; Grafana's own statement summarized by THN
+      but NOT directly retrieved by collector (flagged for follow-up
+      sweep as second corpus citation path analogous to openai-self-
+      disclosure on finding-2026-05-14-0008).
+
+      Brief framing per analyst SAT-ACH ranking H4 (pattern-of-
+      incidents) rank-1 zero-inconsistencies: lead with the cumulative
+      pattern across 4 incidents in 30 days (SailPoint 2026-05-11 +
+      Checkmarx 2026-05-11 + OpenAI/TanStack 2026-05-14 + Grafana
+      2026-05-17 — different actors, different mechanisms, same
+      incident shape), then individual-incident facts with Hard Rule 2
+      strict phrasing on CoinbaseCartel attribution and Scattered
+      Spider ecosystem-lineage framing.
+
+      Hard Rule 2 binding constraints:
+        - CoinbaseCartel attribution reported strictly as "per The
+          Hacker News" — NEVER "CoinbaseCartel hit Grafana"
+        - Scattered Spider linkage phrased strictly as "Halcyon and
+          Fortinet have framed CoinbaseCartel as an ecosystem
+          offshoot of ShinyHunters / Scattered Spider / LAPSUS$" —
+          NEVER "Scattered Spider hit Grafana"
+        - LEGAL-POLICY attribution-laundering prohibition is the
+          binding constraint here
+
+      Placement: Other Signal section (NOT lead) per analyst
+      directive — pattern framing leads within the section but the
+      brief lead is CVE-2026-20182 T-0 KEV deadline (calendar-event
+      news).
+
+      Hard Rule 3 not implicated (no CVE, no PoC, no exploit code).
+      Hard Rule 6: zero direct quotes on this item (THN paraphrased
+      throughout).
+      Hard Rule 8: 35th consecutive dormant non-self-telemetry
+      Splunk sweep across the Grafana / CoinbaseCartel IOC token
+      set (no IOCs published — nothing actionable to query).
+
+      Analyst handoffs queued: Scattered Spider dossier-hygiene
+      question deferred until direct retrieval of Halcyon or Fortinet
+      FortiGuard underlying publications.
+
+      Collector tripwires queued: 6 conditions watched for next
+      sweep. Key tripwires: Grafana self-disclosure direct retrieval
+      (would constitute second corpus citation); any A/B-grade source
+      naming defense-prime as Grafana customer affected (would
+      escalate to daily_brief_action and reopen FLASH evaluation);
+      5th supply-chain incident in 30d window (would escalate
+      pattern from situational awareness to dedicated analyst
+      write-up).
+
+  - id: 2026-05-17-am-005-symantec-fast16-ratification-clock-fired
+    covered_in: [2026-05-16-afternoon, 2026-05-17-morning]
+    brief_file: threats/briefs/2026-05-17-morning.md
+    headline: "Symantec Fast16 carry-forward — Sector Focus structural-posture context only; forensic-archaeology research on 2005-era pre-Stuxnet simulation-sabotage framework targeting LS-DYNA / AUTODYN with Intel Fortran compiler constraint; no modern variant known per Symantec; provisional-A ratification clock fired 2026-05-16T18:25:00-04:00 (T+13h35m at brief publication time); second-corpus citation established via finding-2026-05-16-0003; awaiting operator pass for ratification"
+    topic_tags:
+      - fast16
+      - symantec-fast16-carry-forward
+      - sector-focus-a-and-d-structural-posture-only
+      - forensic-archaeology-no-modern-variant-known
+      - ls-dyna-autodyn-intel-fortran-carry-forward
+      - hard-rule-2-no-attribution-symantec-explicit-carry-forward
+      - symantec-provisional-a-ratification-clock-fired-t-plus-13h-35m
+      - symantec-second-corpus-citation-established
+      - awaiting-operator-pass-ratification
+      - status-only-carry-forward
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-16-0003
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: framework_discovery_line_and_novel_symantec_additions_autodyn_intel_fortran_carry_forward
+    analyst_review_complete: not_applicable_status_only_carry_forward
+    red_team_review_required: false
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "Fast16 + LS-DYNA + AUTODYN + Intel Fortran"
+      consecutive_dormant_sweep_count: 35
+      hard_rule_8_framing: silence_is_not_disconfirming
+    absorbs_flashes: []
+    resurface_if:
+      - symantec_publishes_follow_up_with_modern_variant_or_iocs
+      - second_independent_a_grade_vendor_publishes_independent_fast16_research_outside_sentinellabs_lineage
+      - any_a_or_b_grade_source_names_ad_prime_with_fast16_exposure
+    first_covered: 2026-05-16
+    last_covered: 2026-05-17
+    retraction: null
+    test: false
+    notes: |
+      Brief surface for Symantec Fast16 is Sector Focus structural-
+      posture context only — NOT a lead item, NOT a defensive-action
+      call. Symantec's provisional-A ratification clock fired
+      2026-05-16T18:25:00-04:00 (72h from first citation
+      2026-05-13-FLASH-1800-0001 MuddyWater / Seedworm Q1 2026
+      multi-victim). Second corpus citation established via
+      finding-2026-05-16-0003 (this carry-forward). Awaiting
+      operator pass for ratification — librarian handoff persists.
+
+  - id: 2026-05-17-am-006-pwn2own-berlin-closure-status
+    covered_in: [2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning]
+    brief_file: threats/briefs/2026-05-17-morning.md
+    headline: "Pwn2Own Berlin 2026 closure — embargo status unchanged carry-forward; Day 2 Orange Tsai / DEVCORE Exchange RCE-to-SYSTEM chain remains under standard ZDI 90-day vendor-coordinated-disclosure clock with expected CVE assignment window 2026-07 to 2026-08; no new ZDI signal in 16h overnight window"
+    topic_tags:
+      - pwn2own-berlin-2026-closure
+      - day-2-orange-tsai-devcore-exchange-3-bug-chain-embargo-continues
+      - zdi-90-day-vendor-coordinated-disclosure
+      - expected-cve-assignment-window-2026-07-to-2026-08
+      - status-only-carry-forward
+      - other-signal-section
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-16-0002
+    digraph: A2
+    wep: very_likely
+    single_source_veto_applied: false
+    single_source_veto_scope: zdi_vendor_authority_on_own_contest_no_cap_carry_forward
+    analyst_review_complete: not_applicable_status_only_carry_forward
+    red_team_review_required: false
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "Pwn2Own + Orange Tsai + DEVCORE + Exchange chain"
+      consecutive_dormant_sweep_count: 35
+      hard_rule_8_framing: silence_is_not_disconfirming
+    absorbs_flashes: []
+    resurface_if:
+      - cve_assignment_announced_for_day_2_exchange_chain
+      - embargo_break_or_early_disclosure
+      - microsoft_msrc_advisory_publication_for_exchange_chain
+    first_covered: 2026-05-15
+    last_covered: 2026-05-17
+    retraction: null
+    test: false
+    notes: |
+      Carry-forward status check — Day 2 Exchange chain embargo
+      unchanged. Expected CVE assignment window 2026-07 to 2026-08
+      per ZDI standard 90-day clock.
+
+  - id: 2026-05-17-am-brief-meta
+    covered_in: [2026-05-17-morning]
+    brief_file: threats/briefs/2026-05-17-morning.md
+    headline: "Brief meta — 2026-05-17 morning (Sunday cadence): 7 findings referenced (1 new: finding-2026-05-17-0001 Grafana/CoinbaseCartel analyst-reviewed monitoring-tier; 6 carry-forwards: NGINX Rift PoC + Pwn2Own closure + Symantec Fast16 + CVE-2026-20182 source-of-record + CVE-2026-20182 sustained-pattern + CVE-2026-42897 source-of-record); CVE-2026-20182 federal KEV deadline T-0 today (Sunday) is the lead — calendar-event news; CVE-2026-42897 T-12 Friday + NGINX Rift PoC status check + Symantec Fast16 provisional-A ratification clock fired T+13h35m awaiting operator pass + Grafana/CoinbaseCartel pattern-of-incidents framing in Other Signal (4th software-vendor supply-chain credential-exposure incident in 30 days, analyst H4 ACH rank-1 with zero inconsistencies); both standing sections present (Sector Focus A&D substantive + Iran Cyber Watch silent_day_template); no red-team triggers crossed; no FLASH triggers fired across 00:00 / 06:00 / 07:30 pre-brief sweeps; Hard Rule 2 strict on CoinbaseCartel attribution and Scattered Spider ecosystem-lineage framing; Hard Rule 3 compliance — NGINX Rift PoC URL NOT linked in brief body; Hard Rule 6 — zero direct quotes (full quote budget preserved); pre-flight 13/13 passed on first iteration; 35th consecutive dormant non-self-telemetry Splunk sweep (32nd 2026-05-16 PM brief / 33rd 2026-05-17 00:00 FLASH / 34th 2026-05-17 06:00 FLASH / 35th this morning pre-brief sweep)"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - sunday-cadence
+      - 7-findings-referenced-1-new-6-carry-forward
+      - cve-2026-20182-t-0-kev-deadline-today-sunday-calendar-event-lead
+      - cve-2026-42897-t-12-kev-deadline-friday-status-only-carry-forward
+      - nginx-rift-cve-2026-42945-status-check-no-new-exploitation-signal-carry-forward
+      - symantec-fast16-provisional-a-ratification-clock-fired-t-plus-13h-35m
+      - grafana-coinbasecartel-pattern-of-incidents-h4-other-signal
+      - 4-software-vendor-supply-chain-credential-exposure-incidents-in-30-days
+      - pwn2own-closure-embargo-unchanged-carry-forward
+      - standing-sections-both-present
+      - iran-cyber-silent-day-template
+      - ad-sector-focus-cve-20182-direct-relevance-plus-symantec-fast16-structural-posture
+      - no-red-team-triggers-crossed
+      - no-flash-triggers-fired-across-all-sunday-sweeps
+      - hard-rule-2-strict-coinbasecartel-and-scattered-spider-ecosystem-lineage-framing
+      - hard-rule-2-uat-8616-reported-not-asserted-per-talos
+      - hard-rule-3-nginx-rift-poc-url-not-linked-in-brief-body
+      - hard-rule-6-zero-direct-quotes-full-budget-preserved
+      - hard-rule-8-splunk-first-party-clean-35-consecutive-dormant-sweeps
+      - preflight-13-of-13-passed-iteration-1
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-17-0001
+      - finding-2026-05-16-0001
+      - finding-2026-05-16-0002
+      - finding-2026-05-16-0003
+      - finding-2026-05-15-0002
+      - finding-2026-05-14-0005
+      - finding-2026-05-15-FLASH-0001
+    absorbs_flashes: []
+    resurface_if: []
+    first_covered: 2026-05-17
+    last_covered: 2026-05-17
+    retraction: null
+    test: false
+    notes: |
+      Brief composition flow: Sunday morning cadence. Lead is the
+      calendar-event news — CVE-2026-20182 federal KEV deadline
+      T-0 today (Sunday). 7 findings referenced (1 new monitoring-
+      tier Grafana/CoinbaseCartel + 6 carry-forwards).
+
+      Anti-repetition discipline:
+        - CVE-2026-20182: UPDATE flag with deadline status transition
+          T-1 → T-0 (the news is the deadline arriving); procedural
+          facts (CVSS, PSIRT, UAT-8616 attribution, Rapid7 discoverer
+          credit) carry-forward not re-litigated; 6-CVE 2026 pattern
+          context referenced via link-back to 2026-05-15 morning
+        - CVE-2026-42897: status-only carry-forward (T-12 Friday)
+          — single-source veto on exploitation-claim layer >48h from
+          initial KEV listing
+        - NGINX Rift CVE-2026-42945: status-check carry-forward
+          — no new exploitation signal in 16h overnight window
+        - Symantec Fast16: structural-posture context note in
+          Sector Focus only; not re-litigated; provisional-A
+          ratification clock fired status note added
+        - Pwn2Own closure: embargo-unchanged status check in
+          Other Signal
+
+      New monitoring item: Grafana / CoinbaseCartel via The Hacker
+      News. Placed in Other Signal section with pattern-of-incidents
+      lead per analyst H4 ACH rank-1 ranking. Hard Rule 2 strict
+      on CoinbaseCartel attribution (reported strictly as "per The
+      Hacker News") and Scattered Spider ecosystem-lineage framing
+      (NEVER "Scattered Spider hit Grafana"; framing applied to
+      CoinbaseCartel actor profile only per Halcyon + Fortinet via
+      THN). A&D-estate Grafana-deployment-exposure inference phrased
+      as analyst hedge at "roughly even chance" — NOT source-attested.
+
+      Hard Rule 6: zero direct quotes across the brief. Full quote
+      budget preserved.
+
+      Hard Rule 8: 35th consecutive dormant non-self-telemetry
+      Splunk sweep across the aggregate IOC token set (Grafana +
+      CoinbaseCartel + CVE-2026-20182 + Cisco SD-WAN + CVE-2026-42897
+      + Exchange OWA + CVE-2026-42945 + NGINX Rift + Fast16 +
+      LS-DYNA + AUTODYN). Silence is not disconfirming. Sweep
+      lineage: 32nd (2026-05-16 PM brief) / 33rd (2026-05-17 00:00
+      FLASH) / 34th (2026-05-17 06:00 FLASH) / 35th (this morning
+      pre-brief sweep).
+
+      Pre-flight: 13/13 passed on first iteration. Layer 1 word
+      count ~778 (within 400-800 morning target). Layer 2 Discord
+      Summary ~290 words / ~1800 chars (under 1900 ceiling, within
+      150-300 word band). Zero regenerations required.
+
+      Standing sections both present: Sector Focus (CVE-2026-20182
+      direct A&D relevance via DIB / CMMC partner-flow estates +
+      Symantec Fast16 structural-posture carry-forward + tracked-
+      actor reference list); Iran Cyber Watch (silent_day_template
+      per watch-config.yaml).
+
+      No FLASH-worthy finding emerged this cycle — Grafana /
+      CoinbaseCartel fails all 6 FLASH triggers (T1 no CVE / no
+      active exploitation; T2 CoinbaseCartel not on roster, Scattered
+      Spider framing is ecosystem-lineage not direct attribution;
+      T3 no first-party IOC hit; T4 no tracked-actor TTP change;
+      T5 no A&D-prime named; T6 not a vulnerability disclosure).
+      CVE-2026-20182 T-0 deadline is calendar-event lead but
+      procedurally a status update, not a FLASH trigger.
+
+      Symantec provisional-A ratification clock now expired
+      2026-05-16T18:25:00-04:00 (T+13h35m at brief publication).
+      Second corpus citation established via finding-2026-05-16-0003;
+      librarian handoff persists awaiting operator pass.
 
 # ============================================================================
 # Valid resurface_if conditions

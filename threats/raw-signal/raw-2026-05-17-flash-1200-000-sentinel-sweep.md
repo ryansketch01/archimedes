@@ -22,6 +22,9 @@ iocs_extracted: false
 iocs_count: 0
 text_word_count: 0
 promoted: false
+promoted_note: "Sentinel tombstone — non-promotable per established precedent. Tycoon2FA + THN NGINX framing items referenced in FLASH sweep body were processed by 2026-05-17 16:00 afternoon grader: Tycoon2FA → promoted to finding-2026-05-17-0002 (defensive-TTP-note class); THN NGINX 'exploited in the wild' framing → carry-forward refinement to finding-2026-05-16-0001 (briefer territory; not a separate cluster). This sentinel file is a coverage-decision-deferred tombstone, NOT a rejection-log candidate."
+graded_at: 2026-05-17T16:08:00-04:00
+graded_by_run: afternoon-20260517-160000
 ttl_expires_at: 2026-08-15T12:03:00-04:00
 ---
 

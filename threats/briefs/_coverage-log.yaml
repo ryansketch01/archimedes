@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-17T08:00:00-04:00
+last_updated: 2026-05-17T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -9311,7 +9311,7 @@ entries:
       operator-pass ratification consideration on next pass.
 
   - id: 2026-05-17-am-001-cve-20182-t-0-deadline-day
-    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning]
+    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon]
     brief_file: threats/briefs/2026-05-17-morning.md
     headline: "UPDATE — CVE-2026-20182 (Cisco Catalyst SD-WAN auth bypass) federal KEV deadline T-0 today (Sunday 2026-05-17); CVSS 10.0; deadline status transitions T-1 → T-0 and is the operational news; Cisco Talos attributes active exploitation to UAT-8616 cluster (2-year operational track record via related CVE-2026-20127 chain); Rapid7 (Burgess + Fewer) credited as discoverer with 66-day coordinated-disclosure timeline; Cisco PSIRT advisory + vdaemon/DTLS/UDP-12346 primitive carry-forward; Talos visibility-skew caveat persists (Talos is Cisco's threat-intel arm) — single-source veto on exploitation-claim layer; no A-grade IR-firm parallel attribution from Mandiant/Volexity/Unit 42/MSTIC/CrowdStrike across 16h overnight window; 6-CVE 2026 SD-WAN exploitation pattern (covered 2026-05-15 morning) provides strategic-framing context; DIB / CMMC partner-flow estates face same-day ED-26-03 attestation pressure from primes"
     topic_tags:
@@ -9413,11 +9413,17 @@ entries:
       KEV-listing and Cisco PSIRT procedural facts dual-A-grade
       independent corroboration intact.
 
+      2026-05-17 afternoon resurface: status-check carry-forward in
+      Active Threats — full 24h day passed with no Mandiant/Volexity/
+      Unit 42/MSTIC/CrowdStrike parallel attribution; deadline lapses
+      end-of-day today, no posture shift through afternoon window.
+      Update flag + 🔗 link-back to 2026-05-17 morning brief preserved.
+
       Monday morning brief will surface T+1 / post-deadline posture
       and any CISA Q2 compliance-metrics publication.
 
   - id: 2026-05-17-am-002-cve-42897-t-12-status
-    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning]
+    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon]
     brief_file: threats/briefs/2026-05-17-morning.md
     headline: "CVE-2026-42897 (Microsoft Exchange OWA XSS) — KEV deadline 2026-05-29 (T-12 days, Friday); MSRC mitigation EEMS automatic URL-rewrite or EOMT script unchanged, no general-availability patch; active-exploitation single-source veto still holds at >48h from initial KEV listing — Mandiant, Volexity, Unit 42, MSTIC TI blog, CrowdStrike silent across 16h overnight window; status-only carry-forward"
     topic_tags:
@@ -9480,8 +9486,13 @@ entries:
       deadline. Single-source veto on actively-exploited claim layer
       holds at >48h from initial 2026-05-15 KEV listing.
 
+      2026-05-17 afternoon resurface: status-only carry-forward in
+      Vulnerabilities section; full day passed with no Mandiant/
+      Volexity/Unit 42/MSTIC/CrowdStrike parallel attribution on the
+      exploitation-in-the-wild claim layer. Single-source veto continues.
+
   - id: 2026-05-17-am-003-cve-42945-nginx-rift-status
-    covered_in: [2026-05-14-morning, 2026-05-14-afternoon, 2026-05-15-morning, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning]
+    covered_in: [2026-05-14-morning, 2026-05-14-afternoon, 2026-05-15-morning, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon]
     brief_file: threats/briefs/2026-05-17-morning.md
     headline: "CVE-2026-42945 (NGINX Rift / F5 K000160932) — PoC publication carry-forward from 2026-05-16 morning; CVSS v4 9.2; heap overflow in ngx_http_rewrite_module; ASLR-state determines RCE-class vs DoS-class; SecurityWeek + BleepingComputer + ZDI + F5 silent on follow-up in 16h overnight window; no new exploitation signal; forward-assessment 'exploitation risk window 7-14d post-PoC' unchanged at roughly-even-chance analyst hedge; Hard Rule 3 — PoC URL recorded in finding-2026-05-16-0001 frontmatter only, NOT linked in brief body"
     topic_tags:
@@ -9555,6 +9566,17 @@ entries:
       silent on follow-up. Forward-assessment unchanged at
       "roughly even chance" for 7-14d post-PoC exploitation-risk
       window (canonical pattern, analyst inference, not source-attested).
+
+      2026-05-17 afternoon resurface — MATERIAL UPDATE: The Hacker News
+      relays VulnCheck honeypot telemetry observing scanner-class probes
+      against the heap-overflow primitive in ngx_http_rewrite_module.
+      Defensive-posture signal, NOT A-grade attestation of confirmed
+      production active exploitation; Hard Rule 2 prevents elevating the
+      framing. WEP layer added: "likely on the VulnCheck scanner-class
+      observation"; forward-assessment exploitation-risk-window shifts
+      marginally — VulnCheck signal raises the probability that an
+      A-grade exploitation attestation lands inside the 7-14d post-PoC
+      window. Brief item in Vulnerabilities section.
 
   - id: 2026-05-17-am-004-grafana-coinbasecartel-supply-chain-pattern
     covered_in: [2026-05-17-morning]
@@ -9750,7 +9772,7 @@ entries:
       write-up).
 
   - id: 2026-05-17-am-005-symantec-fast16-ratification-clock-fired
-    covered_in: [2026-05-16-afternoon, 2026-05-17-morning]
+    covered_in: [2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon]
     brief_file: threats/briefs/2026-05-17-morning.md
     headline: "Symantec Fast16 carry-forward — Sector Focus structural-posture context only; forensic-archaeology research on 2005-era pre-Stuxnet simulation-sabotage framework targeting LS-DYNA / AUTODYN with Intel Fortran compiler constraint; no modern variant known per Symantec; provisional-A ratification clock fired 2026-05-16T18:25:00-04:00 (T+13h35m at brief publication time); second-corpus citation established via finding-2026-05-16-0003; awaiting operator pass for ratification"
     topic_tags:
@@ -9802,8 +9824,12 @@ entries:
       finding-2026-05-16-0003 (this carry-forward). Awaiting
       operator pass for ratification — librarian handoff persists.
 
+      2026-05-17 afternoon resurface: same Sector Focus structural-
+      posture carry-forward; ratification clock now T+21h35m past
+      elapsed deadline. Still awaiting operator pass.
+
   - id: 2026-05-17-am-006-pwn2own-berlin-closure-status
-    covered_in: [2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning]
+    covered_in: [2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon]
     brief_file: threats/briefs/2026-05-17-morning.md
     headline: "Pwn2Own Berlin 2026 closure — embargo status unchanged carry-forward; Day 2 Orange Tsai / DEVCORE Exchange RCE-to-SYSTEM chain remains under standard ZDI 90-day vendor-coordinated-disclosure clock with expected CVE assignment window 2026-07 to 2026-08; no new ZDI signal in 16h overnight window"
     topic_tags:
@@ -9845,6 +9871,9 @@ entries:
       Carry-forward status check — Day 2 Exchange chain embargo
       unchanged. Expected CVE assignment window 2026-07 to 2026-08
       per ZDI standard 90-day clock.
+
+      2026-05-17 afternoon resurface: same Other Signal status-check
+      carry-forward; embargo unchanged.
 
   - id: 2026-05-17-am-brief-meta
     covered_in: [2026-05-17-morning]
@@ -9959,6 +9988,265 @@ entries:
       2026-05-16T18:25:00-04:00 (T+13h35m at brief publication).
       Second corpus citation established via finding-2026-05-16-0003;
       librarian handoff persists awaiting operator pass.
+
+  - id: 2026-05-17-pm-001-tycoon2fa-phaas-rebuild-device-code-phishing-m365
+    covered_in: [2026-05-17-afternoon]
+    brief_file: threats/briefs/2026-05-17-afternoon.md
+    headline: "Tycoon2FA PhaaS kit rebuilt post-2026-law-enforcement-disruption and pivoted to OAuth 2.0 device-code phishing against Microsoft 365 per eSentire originating research relayed by BleepingComputer (Bill Toulas byline, 2026-05-17 10:43 EDT, single directly-retrieved B-grade primary); mechanism: lure-chain abuses legitimate Trustifi click-tracking URLs as redirector → fake Microsoft CAPTCHA brokers OAuth device-code consent to attacker-controlled device → attacker captures session token bearing victim M365 entitlements bypassing subsequent MFA; mechanism class independently corroborated A1 via RFC 8628 (IETF OAuth 2.0 device authorization grant) + MITRE ATT&CK T1528 + MSTIC Storm-2372 February 2025 + Volexity Russian SVR 2025 — mechanism layer, NOT actor attribution; Tycoon2FA operators NOT on _roster.yaml; Scattered Spider (#013 HIGH) is OAuth-tradecraft-adjacent at parent-cluster level but NOT attributed by any cited source per Hard Rule 2 + LEGAL-POLICY no-attribution-laundering; eSentire NOT directly retrieved this sweep — single-source veto applied on Tycoon2FA-pivot and eSentire-attribution layers; no A&D-prime named victim; no CVE; no specific IOCs in relay (eSentire reportedly published IOC set, not retrieved); 38th consecutive dormant non-self-telemetry Splunk sweep; defensive-TTP add for A&D M365 estates — analyst forward-inference at likely, NOT source-attested; placed in Active Threats with defensive guidance (M365 conditional-access policy review for device-code grant flows + Entra sign-in log monitoring for unusual device-code consent events)"
+    topic_tags:
+      - tycoon2fa
+      - tycoon2fa-phaas-rebuild-post-2026-law-enforcement-disruption
+      - oauth-2-0-device-code-phishing
+      - rfc-8628-device-authorization-grant-flow
+      - microsoft-365-account-compromise
+      - mitre-attack-t1528-steal-application-access-token
+      - mstic-storm-2372-february-2025-mechanism-corroborative
+      - volexity-russian-svr-2025-mechanism-corroborative
+      - trustifi-click-tracking-url-abuse-legitimate-vendor-surface
+      - fake-microsoft-captcha-consent-broker
+      - session-token-capture-bypasses-subsequent-mfa
+      - bleepingcomputer-bill-toulas-byline
+      - esentire-originating-research-not-directly-retrieved
+      - esentire-provisional-b-source-grades-addition-candidate-deferred-to-librarian
+      - tycoon2fa-operators-not-on-roster
+      - scattered-spider-parent-cluster-adjacency-NOT-direct-attribution
+      - hard-rule-2-no-attribution-laundering
+      - hard-rule-6-zero-direct-quotes-esentire-paraphrased
+      - hard-rule-8-splunk-first-party-clean-38-consecutive-dormant-sweeps
+      - single-source-veto-on-tycoon2fa-pivot-and-esentire-attribution-layers
+      - mechanism-layer-a1-multi-source-corroborated
+      - defensive-ttp-add-for-ad-m365-estate
+      - active-threats-section-lead
+      - new-finding-this-cycle
+    related_actors:
+      - actor_name: "Tycoon2FA operators"
+        on_roster: false
+        archimedes_treatment: reported_not_asserted_per_esentire_per_bleepingcomputer_per_hard_rule_2
+      - actor_name: "Scattered Spider"
+        on_roster: true
+        roster_id: "013"
+        threat_level: HIGH
+        archimedes_treatment: PARENT_CLUSTER_OAUTH_TRADECRAFT_ADJACENT_NOT_ATTRIBUTED_NOT_PROPAGATED_TO_BRIEF
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-17-0002]
+    digraph: B2
+    digraph_layered:
+      tycoon2fa_kit_rebuilt_post_2026_law_enforcement_disruption: B2
+      device_code_phishing_microsoft_365_oauth_abuse: B2
+      trustifi_click_tracking_url_abuse_in_lure_chain: B2
+      fake_microsoft_captcha_consent_brokering_to_attacker_device: B2
+      session_token_capture_bypasses_subsequent_mfa: A2
+      device_code_phishing_oauth_device_authorization_grant_ttp_class: A1
+      defensive_relevance_to_ad_m365_estate_analyst_inference: likely_NOT_source_attested
+    wep: likely
+    wep_split:
+      tycoon2fa_pivot_layer_single_source_veto: likely
+      device_code_phishing_mechanism_class_multi_source_corroborated: very_likely
+      ad_m365_estate_defensive_relevance_analyst_inference: likely
+      37x_year_over_year_surge_statistical_claim_methodology_not_retrievable: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_scope: tycoon2fa_pivot_and_esentire_attribution_layers_only_not_mechanism_layer
+    single_source_veto_rationale: "BleepingComputer is single effective primary on both the Tycoon2FA-pivot layer (kit rebuilt + device-code mechanism adoption) and the eSentire-attribution layer (eSentire is the originating-research vendor). No independent A/B-grade source corroborates the Tycoon2FA-specific pivot in window. Single-source veto caps cluster WEP at 'likely' on those layers. Mechanism class (OAuth 2.0 device authorization grant flow abuse) is independently corroborated A1 via RFC 8628 + MITRE ATT&CK T1528 + MSTIC Storm-2372 + Volexity Russian SVR — mechanism layer split out at 'very likely' but mechanism-layer corroboration does NOT lift the Tycoon2FA-pivot layer ceiling. Direct retrieval of eSentire's underlying publication on a follow-up sweep WOULD constitute valid independent corroboration on the originating-research layer."
+    analyst_review_complete: not_required_per_grader_handoff_no_attribution_claim_no_novel_ttp_analysis_required
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_cluster_anchor_below_very_likely_threshold_mechanism_layer_very_likely_but_multi_source_corroborated_not_a_red_team_trigger
+    hard_rule_2_framings_load_bearing:
+      - "Tycoon2FA pivot reported strictly as 'per eSentire per BleepingComputer' — Archimedes does not originate attribution; Tycoon2FA operators NOT on _roster.yaml"
+      - "Scattered Spider (#013 HIGH) is OAuth-tradecraft-adjacent at parent-cluster level but NOT attributed by any cited source — Hard Rule 2 + LEGAL-POLICY no-attribution-laundering rule binding; Scattered Spider NOT mentioned anywhere in the Tycoon2FA brief framing"
+      - "Mechanism-layer corroboration (MSTIC Storm-2372 + Volexity SVR + ATT&CK T1528 + RFC 8628) is corroboration on the MECHANISM CLASS only, NOT on Tycoon2FA actor-attribution; briefer kept layers separated"
+      - "A&D-M365-estate defensive-relevance phrased as analyst forward-inference at 'likely' — NOT source-attested; eSentire / BleepingComputer name no A&D-prime victim and make no A&D-specific selectivity claim"
+    hard_rule_6_quote_discipline:
+      quotes_in_brief_for_this_item: 0
+      rationale: "Zero direct quotes used on this item. eSentire 'device-code phishing has become highly popular among cybercriminals' framing (12 words; quoted in finding frontmatter) NOT propagated to brief body — preserved as paraphrase to keep quote budget clean across the brief."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "Tycoon2FA + device-code + eSentire + Trustifi"
+      consecutive_dormant_sweep_count: 38
+      hard_rule_8_framing: silence_is_not_disconfirming
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - "eSentire elevation candidate: provisional-B start on first directly-retrieved corpus surface as vendor CTI research relayed by BleepingComputer. Would upgrade to non-provisional B if a future sweep directly retrieves eSentire's underlying publication and the relay pattern holds. Deferred to librarian pickup per category-cheatsheet protocol — do NOT auto-add this sweep."
+    forward_defensive_engineering_note:
+      surface: defenseclaw_local_azure_ad_entra_sign_in_logs_if_ever_ingested
+      detection_signal: device_code_grant_consent_events_high_value_regardless_of_tycoon2fa_specific_attribution
+      sibling_tradecraft_cluster: [storm_2372_mstic_feb_2025, russian_svr_volexity_2025, criminal_phaas_tycoon2fa_2026]
+      flow_targeted: oauth_2_0_device_authorization_grant_rfc_8628
+      defensive_guidance:
+        - m365_conditional_access_policy_review_for_device_code_grant_flows
+        - entra_sign_in_log_monitoring_for_unusual_device_code_consent_events
+        - trustifi_click_tracking_url_whitelist_hygiene_with_legitimate_vendor_caveat
+    absorbs_flashes: []
+    resurface_if:
+      - esentire_underlying_publication_directly_retrieved_in_follow_up_sweep_with_defined_victim_set_or_named_ad_target
+      - second_independent_a_or_b_grade_source_corroborates_tycoon2fa_pivot
+      - tycoon2fa_named_specific_ad_prime_victim_or_dib_target_disclosed
+      - first_party_splunk_hit_on_tycoon2fa_iocs_or_device_code_consent_anomaly
+      - cve_assignment_or_microsoft_advisory_response_to_device_code_phishing_at_protocol_level
+      - additional_phaas_kit_pivots_to_device_code_phishing_forming_an_ecosystem_pattern
+      - law_enforcement_action_against_tycoon2fa_operators_second_round
+    first_covered: 2026-05-17
+    last_covered: 2026-05-17
+    retraction: null
+    test: false
+    notes: |
+      New finding this cycle (finding-2026-05-17-0002). Placed as
+      Active Threats lead item due to defensive-TTP relevance to
+      A&D M365 estates (analyst forward-inference, NOT source-
+      attested). Cluster anchor capped at "likely" by single-source
+      veto on Tycoon2FA-pivot and eSentire-attribution layers;
+      mechanism class split out at "very likely" because device-code
+      phishing via OAuth 2.0 device authorization grant flow is
+      independently corroborated A1 via RFC 8628 + MITRE ATT&CK
+      T1528 + MSTIC Storm-2372 + Volexity Russian SVR.
+
+      Hard Rule 2 strict: Tycoon2FA operators are NOT on roster.
+      Scattered Spider (#013 HIGH) is OAuth-tradecraft-adjacent at
+      parent-cluster level but NOT attributed by any cited source —
+      Scattered Spider deliberately NOT mentioned anywhere in the
+      brief framing per LEGAL-POLICY no-attribution-laundering rule.
+
+      eSentire provisional-B source-grades.yaml addition candidate
+      flagged for librarian pickup if surface recurs in future sweep
+      (per LayerX / Seqrite / Trendyol-Albayrak vendor-CTI-research
+      precedent).
+
+      Hard Rule 6: zero direct quotes on this item; eSentire framing
+      paraphrased.
+
+      Hard Rule 8: 38th consecutive dormant non-self-telemetry Splunk
+      sweep. Forward defensive-engineering note recorded for downstream:
+      if defenseclaw_local ever ingests Azure AD / Entra sign-in logs,
+      device-code-grant consent events are a high-value detection signal
+      regardless of Tycoon2FA-specific attribution (sibling tradecraft
+      cluster — Storm-2372 + Russian SVR + criminal PhaaS — all target
+      the same flow).
+
+  - id: 2026-05-17-pm-brief-meta
+    covered_in: [2026-05-17-afternoon]
+    brief_file: threats/briefs/2026-05-17-afternoon.md
+    headline: "Brief meta — 2026-05-17 afternoon: 6 findings referenced (1 new: finding-2026-05-17-0002 Tycoon2FA PhaaS rebuild + device-code phishing pivot, B2/likely, Active Threats lead, defensive-TTP add for A&D M365; 5 carry-forwards: CVE-2026-20182 SD-WAN T-0 deadline lapses EOD with no posture shift through afternoon + CVE-2026-42945 NGINX Rift refinement VulnCheck honeypot scanner-class probes observed B-grade NOT confirmed production active exploitation + CVE-2026-42897 Exchange OWA XSS T-12 status carry-forward + Symantec Fast16 ratification clock T+21h35m awaiting operator pass + Pwn2Own Berlin Day 2 Exchange chain ZDI embargo unchanged); Layer 1 word count 719 within 400-800 afternoon target; Layer 2 Discord Summary ~254 words within 150-300 band and ~1812 chars under 1900 ceiling; both standing sections present (Sector Focus A&D substantive + Iran Cyber Watch silent_day_template); no red-team triggers crossed (Tycoon2FA cluster capped at likely by single-source veto); no FLASH triggers fired across the 12:00 alert sweep; Hard Rule 2 strict on Tycoon2FA / Scattered Spider non-propagation discipline + UAT-8616 carry-forward + VulnCheck honeypot anti-elevation; Hard Rule 3 — NGINX Rift PoC URL NOT linked; Hard Rule 6 — zero direct quotes; pre-flight 13/13 passed; 38th consecutive dormant non-self-telemetry Splunk sweep"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - sunday-cadence
+      - 6-findings-referenced-1-new-5-carry-forward
+      - new-finding-tycoon2fa-finding-2026-05-17-0002
+      - active-threats-lead-tycoon2fa-device-code-phishing-defensive-ttp
+      - cve-2026-20182-t-0-deadline-lapses-eod-no-posture-shift
+      - cve-2026-42945-nginx-rift-vulncheck-honeypot-refinement-scanner-class-probes-b-grade
+      - cve-2026-42897-status-only-carry-forward
+      - symantec-fast16-ratification-clock-t-plus-21h-35m-awaiting-operator-pass
+      - pwn2own-day-2-exchange-chain-zdi-embargo-unchanged
+      - standing-sections-both-present
+      - iran-cyber-silent-day-template
+      - ad-sector-focus-tycoon2fa-defensive-relevance-plus-cve-20182-direct-plus-fast16-structural
+      - no-red-team-triggers-crossed
+      - no-flash-triggers-fired-12-00-sweep
+      - hard-rule-2-strict-tycoon2fa-scattered-spider-non-propagation
+      - hard-rule-2-uat-8616-carry-forward
+      - hard-rule-2-vulncheck-honeypot-anti-elevation-not-a-grade-active-exploitation
+      - hard-rule-3-nginx-rift-poc-url-not-linked
+      - hard-rule-6-zero-direct-quotes
+      - hard-rule-8-splunk-first-party-clean-38-consecutive-dormant-sweeps
+      - preflight-13-of-13-passed
+      - layer-1-canonical-record-719-words
+      - layer-2-discord-summary-under-1900-chars
+    related_actors:
+      - actor_name: "Tycoon2FA operators"
+        on_roster: false
+      - actor_name: "UAT-8616"
+        on_roster: false
+    related_vulns:
+      - cve: CVE-2026-20182
+      - cve: CVE-2026-42897
+      - cve: CVE-2026-42945
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-17-0002
+      - finding-2026-05-14-0005
+      - finding-2026-05-15-0003
+      - finding-2026-05-16-0001
+      - finding-2026-05-16-0002
+      - finding-2026-05-16-0003
+    absorbs_flashes: []
+    resurface_if: []
+    pre_flight_result: passed_13_of_13_iteration_3_word_count_719_within_400_800
+    pre_flight_notes: |
+      Iteration 1: Layer 1 body ~955 words → over 800 max. Identified
+      Tycoon2FA item as longest (~280 words) and Sector Focus + lead
+      paragraph as carrying redundant detail. Iteration 2: tightened
+      Tycoon2FA item and Sector Focus → ~865 words, still over.
+      Iteration 3: trimmed Why-it-matters, Sector Focus, Tycoon2FA
+      mechanism-class corroboration phrasing, and trailing italic
+      note → 719 words. Within 400-800 afternoon target.
+
+      Layer 2 Discord Summary initial iteration 1 was ~2040 chars
+      (over 1900 ceiling) due to long Tycoon2FA bullet body. Iteration
+      2 tightened Tycoon2FA bullet body → ~1812 chars (under ceiling).
+      Layer 2 word count ~254 (within 150-300 band).
+
+      Hard Rule 6: zero direct quotes; eSentire framing paraphrased
+      throughout (saved quote budget).
+
+      Hard Rule 2: critical compliance — Scattered Spider deliberately
+      NOT mentioned anywhere in Tycoon2FA brief framing despite
+      parent-cluster OAuth-tradecraft adjacency. Per LEGAL-POLICY
+      no-attribution-laundering rule + Hard Rule 2 non-origination,
+      the briefer kept actor-attribution and mechanism-corroboration
+      layers strictly separated.
+
+      Hard Rule 3: NGINX Rift PoC repository URL NOT linked in brief
+      body — established discipline from 2026-05-16 morning brief
+      maintained.
+    first_covered: 2026-05-17
+    last_covered: 2026-05-17
+    retraction: null
+    test: false
+    notes: |
+      Brief composition flow: Sunday afternoon cadence. Lead is the
+      new finding (Tycoon2FA PhaaS rebuild + device-code phishing
+      pivot, defensive-TTP add for A&D M365). Editorial decision —
+      operator suggested three defensible ledes; briefer chose the
+      new-finding lede because it's the only net-new content this
+      cycle and has defensive-TTP merit for A&D M365 estates. SD-WAN
+      T-0 deadline carry-forward is operationally important but was
+      already the morning brief's lead and would have been pure
+      anti-repetition without new posture-shift information.
+
+      Anti-repetition discipline:
+        - CVE-2026-20182: status-check carry-forward as Active Threats
+          item #2 with 🔗 Update flag; full 24h day passed with no
+          Mandiant/Volexity/Unit 42/MSTIC/CrowdStrike parallel
+          attribution; deadline lapses end-of-day today.
+        - CVE-2026-42945: MATERIAL UPDATE — VulnCheck honeypot
+          observation in afternoon window is the news; framed B-grade
+          scanner-class probes NOT A-grade attestation of confirmed
+          production active exploitation per Hard Rule 2; forward
+          exploitation-risk-window assessment shifts marginally.
+        - CVE-2026-42897: status-only carry-forward at T-12 Friday;
+          single-source veto holds.
+        - Symantec Fast16: structural-posture carry-forward in Sector
+          Focus; ratification clock T+21h35m past elapsed deadline.
+        - Pwn2Own Day 2 Exchange chain: status-check carry-forward in
+          Other Signal; embargo unchanged.
+
+      Hard Rule 8: 38th consecutive dormant non-self-telemetry Splunk
+      sweep. Sweep lineage: 35th (2026-05-17 morning) / 36th
+      (2026-05-17 12:00 FLASH) / 37th (2026-05-17 pre-brief 15:30) /
+      38th (this afternoon compose). Silence is not disconfirming.
+
+      Tycoon2FA finding adds a forward defensive-engineering note
+      for downstream: if defenseclaw_local ever ingests Azure AD /
+      Entra sign-in logs, device-code-grant consent events are a
+      high-value detection signal regardless of Tycoon2FA-specific
+      attribution.
+
+      eSentire provisional-B source-grades.yaml addition candidate
+      flagged for librarian pickup if surface recurs.
 
 # ============================================================================
 # Valid resurface_if conditions

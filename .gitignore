@@ -36,6 +36,11 @@ desktop.ini
 .idea/
 .vscode/
 
+# Microsoft Office lock/temp files (created when a doc is open)
+~$*.docx
+~$*.xlsx
+~$*.pptx
+
 # Logs
 logs/
 *.log

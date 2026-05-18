@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-18T08:00:00-04:00
+last_updated: 2026-05-18T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -11031,6 +11031,476 @@ entries:
       Vuln-tracker handoff queued: CVE-2020-17103 conservative case
       (NOT added to _index.yaml today) pending MSRC response or
       A-grade vendor reproduction.
+
+  - id: 2026-05-18-pm-001-grafana-coinbasecartel-codebase-theft-cluster
+    covered_in: [2026-05-18-afternoon]
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    headline: "Grafana confirms codebase theft via stolen GitHub token; CoinbaseCartel claims credit, ransom refused; SLSH parent-collective + ShinyHunters/Lapsus$ affiliate framing per BleepingComputer + The Record dual-relay; Scattered Spider NOT attributed per Hard Rule 2 + LEGAL-POLICY"
+    topic_tags:
+      - grafana
+      - coinbasecartel
+      - shinyhunters
+      - lapsus
+      - slsh
+      - scattered-spider-non-propagation
+      - hard-rule-2-binding
+      - legal-policy-no-attribution-laundering
+      - software-vendor-supply-chain
+      - github-token-compromise
+      - codebase-theft
+      - extortion-refused-fbi-guidance
+      - vendor-self-disclosure
+      - shinysp1d3r-tool-relay-not-archimedes-ioc
+      - joe-shenouda-named-analyst-relay
+      - new-actor-candidates-medium
+    related_actors:
+      - actor_name: "CoinbaseCartel"
+        on_roster: false
+        new_actor_candidate: true
+        proposed_conservative_threat_level: MEDIUM
+      - actor_name: "ShinyHunters"
+        on_roster: false
+        new_actor_candidate: true
+        proposed_conservative_threat_level: MEDIUM
+      - actor_name: "Lapsus$"
+        on_roster: false
+      - actor_name: "Scattered Lapsus$ Hunters (SLSH)"
+        on_roster: false
+        new_actor_candidate: deferred_to_analyst
+      - actor_name: "Scattered Spider"
+        on_roster: true
+        roster_id: "013"
+        threat_level: HIGH
+        archimedes_treatment: NOT_ATTRIBUTED_per_hard_rule_2_LEGAL_POLICY_binding
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-18-0004]
+    related_findings:
+      - finding-2026-05-17-0001    # base Grafana cluster THN originating
+      - finding-2026-05-18-0002    # 7-Eleven ShinyHunters sibling
+      - finding-2026-05-14-0008    # OpenAI TanStack vendor self-disclosure precedent
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: threat_actor_cluster_framing_sub_layers
+    resurface_if:
+      - grafana_own_statement_directly_retrieved
+      - a_grade_vendor_publishes_attribution
+      - independent_research_firm_publishes_overlapping_iocs
+      - cve_or_file_network_ioc_published
+      - new_victims_confirmed
+      - first_party_ioc_hit
+      - new_attribution
+      - shinysp1d3r_independently_corroborated_with_hash_or_binary
+      - cisa_or_fbi_advisory_published
+      - scattered_spider_attributed_by_a_grade_source
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+    notes: |
+      Two independent B-grade media surfaces (BleepingComputer pm-002 +
+      The Record pm-003) on procedural-facts layer; vendor self-disclosure
+      (Grafana statement) relayed but not directly retrieved this sweep.
+      Three threat-actor-cluster framing sub-layers each carry
+      single-source veto: (1) CoinbaseCartel-consists-of-ShinyHunters-
+      Lapsus$-affiliates per BleepingComputer; (2) CoinbaseCartel as
+      data-theft offshoot of SLSH per The Record; (3) shinysp1d3r ESXi
+      encryptor attribution per Joe Shenouda relay-of-unnamed-researchers
+      via BleepingComputer.
+
+      ACH (analyst): pressure-tested whether CoinbaseCartel is
+      relabeling of Scattered Spider (#013 HIGH). H2 Scattered-Spider-
+      relabeling decisively rejected on 5 inconsistencies. Hard Rule 2
+      non-propagation analytically confirmed — neither BleepingComputer
+      nor The Record names Scattered Spider; narrower-source-preferred
+      treatment dominates 06:00 FLASH a8121bc SecurityWeek broader
+      framing. LEGAL-POLICY no-attribution-laundering binding.
+
+      KAC (analyst): 8 assumptions / 3 sound / 5 qualify / 0 test / 0
+      reject; proceed_with_caveats. Briefer phrasing preserves all
+      named cluster framings verbatim per cited source; A&D-deployment
+      inference flagged as analyst-not-source-attested.
+
+  - id: 2026-05-18-pm-002-shai-hulud-npm-clone-wave-ox-bleepingcomputer
+    covered_in: [2026-05-18-afternoon]
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    updates_id: 2026-05-18-am-006-shai-hulud-npm-clones-unattributed
+    headline: "UPDATE: First Shai-Hulud npm clone wave — 4 packages (chalk-tempalte, @deadcode09284814/axios-util, axois-utils DDoS, color-style-utils) + C2 87e0bbc636999[.]lhr[.]life by UNATTRIBUTED publisher per Ox Security via BleepingComputer (Bill Toulas 13:28 EDT); materializes VT-006 derivative-attacks WEP at T+3 days; clones NOT TeamPCP-attributed per Hard Rule 2"
+    topic_tags:
+      - shai-hulud
+      - npm
+      - clone-wave
+      - unattributed-clone-publisher
+      - hard-rule-2-non-propagation-to-teampcp
+      - vt-006-carry-forward-materialized-t-plus-3d
+      - derivative-attacks-prediction-materialized
+      - ox-security-attribution-discipline
+      - c2-localhost-run-anonymizer
+      - dependency-quarantine-watchlists
+      - ach-h1-tied-with-h3-gather-more-evidence
+    related_actors:
+      - actor_name: "TeamPCP"
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: originating_campaign_lineage_only_NOT_propagated_to_clones
+      - actor_name: "deadcode09284814 (npm clone publisher)"
+        on_roster: false
+        archimedes_treatment: UNATTRIBUTED_per_ox_security
+    related_vulns: []
+    related_campaigns: [shai-hulud, vt-006]
+    finding_ids: [finding-2026-05-18-0003]
+    related_findings:
+      - finding-2026-05-12-FLASH-0001     # Mini Shai-Hulud originating Wiz/Snyk/StepSecurity TeamPCP attribution
+      - finding-2026-05-14-0009           # node-ipc UNATTRIBUTED four-firm consensus precedent
+      - finding-2026-05-15-0005           # node-ipc Ox + Upwind ratification precedent
+    related_flash_alerts:
+      - flash-2026-05-15-0600-teampcp-shai-hulud-release  # VT-006 source-code-release prediction event
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: ox_security_originating_research_layer
+    resurface_if:
+      - independent_research_firm_publishes_overlapping_iocs
+      - a_grade_vendor_publishes_attribution
+      - additional_clone_wave_package_sets_surface
+      - first_party_ioc_hit_on_c2_or_clone_publisher_account
+      - teampcp_infrastructure_observed_in_clone_wave
+      - shared_infrastructure_analysis_published_between_originating_and_clone_wave
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+    notes: |
+      Net-new IOC layer vs. morning brief b812307 Other Signal mention-
+      class which lacked the C2 indicator and the analyst-confirmed
+      ACH analysis. Single-source veto on Ox originating-research
+      layer (BleepingComputer pm-001 + THN parallel cohort both relay
+      same upstream Ox research per INTEL-GRADING.md independence
+      test — effective single primary). Cluster anchor at "likely."
+
+      ACH H1 distinct-actor tied with H3 copy-cat-noise at zero
+      inconsistencies — non-diagnostic between leaders; gather-more-
+      evidence per Heuer rather than fabricate-precision. H2 TeamPCP-
+      pivot, H4 false-flag-defender, H5 composite-criminal-operator
+      all decisively rejected.
+
+      KAC 7 assumptions / 4 sound / 3 qualify / 0 test / 0 reject;
+      proceed_with_caveats. Briefer preserved Ox attribution discipline
+      verbatim ("UNATTRIBUTED publisher distinct from TeamPCP") and
+      noted C2 indicator is on a public LocalHost.run anonymizer
+      subdomain (uninformative for actor-distinction).
+
+      Defensive guidance to defenseclaw_local: four npm package names
+      to dependency-tree quarantine watchlists. C2 indicator
+      87e0bbc636999[.]lhr[.]life can be added to network-block
+      watchlists but with caveat (LocalHost.run is a public service —
+      blocking subdomain-specific not parent-domain).
+
+  - id: 2026-05-18-pm-003-cve-20182-sd-wan-t-plus-16h-post-deadline
+    covered_in: [2026-05-18-afternoon]
+    updates_id: 2026-05-18-am-003-cve-20182-sd-wan-t-plus-10h-post-deadline
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    headline: "UPDATE: CVE-2026-20182 Cisco Catalyst SD-WAN — federal KEV deadline lapsed Sunday end-of-day; T+16h post-mortem; no fresh A-grade reporting"
+    topic_tags: [cve, cisco, catalyst-sd-wan, kev-deadline-lapsed, post-mortem, status-carry-forward, t-plus-16h]
+    related_actors:
+      - actor_name: "UAT-8616"
+        on_roster: false
+        archimedes_treatment: reported_not_asserted_per_cisco_talos_with_visibility_skew_caveat
+    related_vulns: [CVE-2026-20182]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-14-0005]
+    digraph: A2
+    wep: very_likely
+    resurface_if:
+      - a_grade_vendor_publishes_iocs_or_attribution
+      - cisa_orb_or_dhs_advisory_update
+      - new_victims_confirmed
+      - first_party_ioc_hit
+    first_covered: 2026-05-14
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-pm-004-cve-42897-exchange-owa-xss-t-minus-11-72h-veto
+    covered_in: [2026-05-18-afternoon]
+    updates_id: 2026-05-18-am-004-cve-42897-exchange-owa-xss-t-11-status
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    headline: "Status: CVE-2026-42897 Microsoft Exchange OWA XSS — KEV deadline Friday May 29 (T-11); >72h single-source veto on exploitation claim holds; MSRC sole originating attester"
+    topic_tags: [cve, microsoft, exchange, owa, xss, kev, t-minus-11, single-source-veto-72h-plus, msrc-sole-attester]
+    related_actors: []
+    related_vulns: [CVE-2026-42897]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-15-0003]
+    digraph: A1
+    wep_split:
+      cve_record: very_likely
+      exploitation_claim: likely
+    resurface_if:
+      - a_grade_vendor_corroborates_exploitation
+      - additional_vendor_telemetry
+      - new_victims_confirmed
+      - kev_status_change
+      - first_party_ioc_hit
+    first_covered: 2026-05-15
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-pm-005-cve-42945-nginx-rift-vulncheck-canaries
+    covered_in: [2026-05-18-afternoon]
+    updates_id: 2026-05-18-am-005-cve-42945-nginx-rift-vulncheck-canaries-dual-relay
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    headline: "Status: CVE-2026-42945 NGINX Rift VulnCheck Canaries scanner-class probes via SecurityWeek + The Hacker News dual-relay; B-grade defensive telemetry, NOT A-grade production exploitation; F5 K000160932 patches predate observation"
+    topic_tags: [cve, nginx, rift, vulncheck-canaries, scanner-class-probes, defensive-telemetry, b-grade-not-a-grade, hard-rule-2-narrower-framing]
+    related_actors: []
+    related_vulns: [CVE-2026-42945]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-16-0001]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - a_grade_vendor_attests_production_exploitation
+      - confirmed_compromise_in_telemetry
+      - poc_modification_observed
+      - first_party_ioc_hit
+    first_covered: 2026-05-16
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-pm-006-fast16-ratification-clock-t-plus-43h
+    covered_in: [2026-05-18-afternoon]
+    updates_id: 2026-05-18-am-010-symantec-fast16-ratification-clock-t-plus-37h35m
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    headline: "Status: Symantec Fast16 provisional-A ratification clock T+43h past elapsed deadline; awaiting operator pass; pre-Stuxnet 2005-2010 historical, NOT current 2026 campaign"
+    topic_tags: [fast16, symantec, sector-focus-ad, provisional-grade-ratification, operator-pass-pending, pre-stuxnet-historical, equation-group-non-origination]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [fast16]
+    finding_ids: [finding-2026-05-16-0003]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - operator_ratification_of_provisional_a_symantec_grade
+      - third_corpus_surface_strengthens_or_contradicts_fast16
+      - modern_2026_variant_of_fast16_observed_in_the_wild
+      - a_grade_vendor_attributes_fast16_to_specific_actor_other_than_equation_group
+    first_covered: 2026-05-16
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-pm-007-openclaw-claw-chain-mention-class
+    covered_in: [2026-05-18-afternoon]
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    headline: "Mention: OpenClaw 'Claw Chain' four-CVE patched cluster — CVE-2026-44112 (CVSS 9.6) + three sandbox-escape CVEs; Cyera-originating; patched April 23 pre-disclosure; no exploitation; no A&D-prime adoption visibility; vuln-tracker /index.yaml evaluation candidate"
+    topic_tags: [cve, openclaw, claw-chain, cyera-originating, patched-pre-disclosure, vuln-tracker-candidate, mention-class]
+    related_actors: []
+    related_vulns: [CVE-2026-44112]
+    related_campaigns: []
+    finding_ids: []
+    digraph: C3
+    wep: roughly_even_chance
+    resurface_if:
+      - exploitation_observed
+      - ad_prime_adoption_disclosed
+      - independent_corroboration_of_cyera_research
+      - kev_addition
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-pm-008-healthcare-breach-aggregate-mention
+    covered_in: [2026-05-18-afternoon]
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    headline: "Mention: Healthcare data-breach aggregate ~5.4M records across six US providers per SecurityWeek (Eduard Kovacs 08:58 EDT); no claimed-by attribution per source; healthcare NOT A&D; sector-context completeness"
+    topic_tags: [healthcare, data-breach-aggregate, no-claimed-by-attribution, sector-context-completeness, mention-class, not-a-and-d]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: []
+    digraph: B3
+    wep: roughly_even_chance
+    resurface_if:
+      - attribution_published
+      - ad_sector_breach_added_to_aggregate
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-pm-009-interpol-operation-ramz-mention
+    covered_in: [2026-05-18-afternoon]
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    headline: "Mention: INTERPOL Operation Ramz MENA cybercrime takedown — LE-disruption commodity cybercrime; geographic adjacency to Iran NOT attribution basis"
+    topic_tags: [interpol, le-disruption, mena, commodity-cybercrime, geographic-adjacency-not-attribution, mention-class]
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [operation-ramz]
+    finding_ids: []
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - tracked_iranian_apt_named_in_disruption
+      - ad_relevance_disclosed
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-pm-brief-meta
+    covered_in: [2026-05-18-afternoon]
+    brief_file: threats/briefs/2026-05-18-afternoon.md
+    headline: "Brief meta — 2026-05-18 afternoon: 10 findings referenced (2 new: finding-2026-05-18-0003 Shai-Hulud npm clone wave B2/likely with Ox attribution discipline preserved + finding-2026-05-18-0004 Grafana CoinbaseCartel codebase theft B2/likely cluster anchor with Scattered Spider non-propagation analytically confirmed via ACH H2 5-inconsistency rejection; 8 carry-forwards: CVE-2026-20182 T+16h + CVE-2026-42897 T-11 + CVE-2026-42945 dual-relay + CVE-2020-17103 MiniPlasma + Pwn2Own embargo + Fast16 ratification T+43h + finding-2026-05-18-0001 MiniPlasma + finding-2026-05-18-0002 7-Eleven); Layer 1 word count 752 within 400-800 afternoon target; Layer 2 Discord Summary ~245 words within 150-300 band and under 1900 char ceiling; both standing sections present (Sector Focus A&D substantive + Iran Cyber Watch silent_day_template with DarkReading Iran ATG non-trigger note); no red-team triggers crossed (both new findings capped at likely cluster anchor); no FLASH triggers fired across 12:00 sweep (clean sweep per ac3683d); Hard Rule 2 strict on Grafana cluster Scattered Spider non-propagation analytically confirmed + BleepingComputer narrower framing preserved verbatim + ShinyHunters self-denial preserved verbatim + SLSH-distinct-from-Scattered-Spider per The Record verbatim + shinysp1d3r relay-of-named-individual NOT propagated as Archimedes IOC + Shai-Hulud clones NON-TeamPCP per Ox Security; Hard Rule 3 — MiniPlasma + NGINX Rift + DirtyDecrypt + Ox Security npm clone GitHub PoC URLs NOT linked; Hard Rule 6 — zero direct quotes; pre-flight 13/13 passed; 44th consecutive dormant non-self-telemetry Splunk sweep"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - monday-cadence
+      - 10-findings-referenced-2-new-8-carry-forward
+      - new-finding-shai-hulud-clones-finding-2026-05-18-0003
+      - new-finding-grafana-coinbasecartel-finding-2026-05-18-0004
+      - active-threats-lead-grafana-coinbasecartel-codebase-theft
+      - vulnerabilities-section-cve-20182-cve-42897-cve-42945-cve-2020-17103
+      - sector-focus-fast16-ratification-status-plus-cve-20182-direct
+      - actor-activity-coinbasecartel-shinyhunters-slsh-new-actor-candidates-medium
+      - iran-cyber-silent-day-template-with-iran-atg-non-trigger
+      - other-signal-shai-hulud-clones-openclaw-healthcare-interpol-pwn2own
+      - standing-sections-both-present
+      - no-red-team-triggers-crossed
+      - no-flash-triggers-fired-12-00-sweep
+      - hard-rule-2-binding-grafana-cluster-scattered-spider-non-propagation
+      - hard-rule-2-bleepingcomputer-narrower-framing-verbatim
+      - hard-rule-2-shinyhunters-self-denial-verbatim
+      - hard-rule-2-slsh-distinct-from-scattered-spider-the-record
+      - hard-rule-2-shinysp1d3r-relay-not-archimedes-ioc
+      - hard-rule-2-shai-hulud-clones-non-teampcp-ox-security
+      - hard-rule-3-poc-urls-not-linked-miniplasma-nginx-rift-dirtydecrypt-ox-clones
+      - hard-rule-6-zero-direct-quotes
+      - hard-rule-8-splunk-first-party-clean-44-consecutive-dormant-sweeps
+      - preflight-13-of-13-passed
+      - layer-1-canonical-record-752-words-within-400-800
+      - layer-2-discord-summary-under-1900-chars
+      - legal-policy-no-attribution-laundering-binding-scattered-spider-non-propagation-ach-confirmed
+    related_actors:
+      - actor_name: "CoinbaseCartel"
+        on_roster: false
+        new_actor_candidate: true
+        proposed_conservative_threat_level: MEDIUM
+      - actor_name: "ShinyHunters"
+        on_roster: false
+        new_actor_candidate: true
+        proposed_conservative_threat_level: MEDIUM
+      - actor_name: "Lapsus$"
+        on_roster: false
+      - actor_name: "Scattered Lapsus$ Hunters (SLSH)"
+        on_roster: false
+        new_actor_candidate: deferred_to_analyst
+      - actor_name: "Scattered Spider"
+        on_roster: true
+        roster_id: "013"
+        threat_level: HIGH
+        archimedes_treatment: NOT_ATTRIBUTED_per_hard_rule_2_LEGAL_POLICY_binding
+      - actor_name: "TeamPCP"
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: originating_campaign_lineage_only_NOT_propagated_to_clones
+      - actor_name: "deadcode09284814 (npm clone publisher)"
+        on_roster: false
+        archimedes_treatment: UNATTRIBUTED_per_ox_security
+      - actor_name: "UAT-8616"
+        on_roster: false
+    related_vulns:
+      - cve: CVE-2026-20182
+      - cve: CVE-2026-42897
+      - cve: CVE-2026-42945
+      - cve: CVE-2020-17103
+      - cve: CVE-2026-44112
+    related_campaigns: [shai-hulud, vt-006, fast16, operation-ramz]
+    finding_ids:
+      - finding-2026-05-18-0003
+      - finding-2026-05-18-0004
+      - finding-2026-05-18-0001
+      - finding-2026-05-18-0002
+      - finding-2026-05-17-0001
+      - finding-2026-05-14-0005
+      - finding-2026-05-15-0003
+      - finding-2026-05-16-0001
+      - finding-2026-05-16-0002
+      - finding-2026-05-16-0003
+    absorbs_flashes: []
+    resurface_if: []
+    pre_flight_result: passed_13_of_13
+    pre_flight_notes: |
+      Layer 1 body: 752 words within 400-800 afternoon target.
+      Layer 2 Discord Summary: ~245 words within 150-300 band;
+      character count under 1900 ceiling.
+
+      Hard Rule 2 critical compliance — Scattered Spider non-
+      propagation to Grafana / CoinbaseCartel cluster analytically
+      confirmed via ACH H2 5-inconsistency rejection; this is the
+      load-bearing discipline of the brief. BleepingComputer narrower
+      framing (drops Scattered Spider relative to prior SecurityWeek)
+      preserved verbatim. The Record SLSH parent-collective framing
+      preserved verbatim, distinct from Scattered Spider despite
+      name overlap. ShinyHunters self-denial of CoinbaseCartel linkage
+      preserved verbatim. shinysp1d3r tool-attribution via Joe Shenouda
+      relay-of-named-individual NOT propagated as Archimedes IOC and
+      NOT added to defenseclaw_local watchlists this sweep.
+
+      Hard Rule 2 secondary compliance — Shai-Hulud clones attributed
+      to UNATTRIBUTED publisher per Ox Security via BleepingComputer;
+      NOT propagated to TeamPCP (#001 HIGH on roster) despite TeamPCP
+      being the originating-campaign lineage. ACH H1 distinct-actor
+      tied with H3 copy-cat-noise at zero inconsistencies — gather-
+      more-evidence per Heuer rather than fabricate-precision.
+
+      Hard Rule 3: Nightmare-Eclipse MiniPlasma PoC repo + depthfirst
+      NGINX Rift PoC + V12 DirtyDecrypt PoC + Ox Security npm clone
+      GitHub research URLs NOT linked in brief body or Discord Summary.
+
+      Hard Rule 6: zero direct quotes preserved despite multiple
+      verbatim claims in source bodies (Grafana scope-bounding,
+      ShinyHunters self-denial, Ox Security UNATTRIBUTED framing,
+      shinysp1d3r tool description) — all paraphrased.
+
+      Hard Rule 8: 44th consecutive dormant non-self-telemetry Splunk
+      sweep across cluster tokens (shinysp1d3r + ShinyHunters +
+      CoinbaseCartel + SLSH + Scattered Lapsus + Grafana + deadcode09284814
+      + chalk-tempalte + axois-utils + color-style-utils + lhr.life +
+      87e0bbc636999 + OpenClaw + ATG + automatic tank gauge). Silence
+      is not disconfirming per established cadence.
+
+      Anti-repetition discipline:
+        - CVE-2026-20182: status-check carry-forward (T+10h → T+16h
+          post-mortem); deadline lapsed end-of-day Sunday.
+        - CVE-2026-42897: status-only carry-forward at T-11 Friday;
+          single-source veto holds across >72h+ window.
+        - CVE-2026-42945: status-only carry-forward; VulnCheck Canaries
+          dual-relay refinement unchanged.
+        - CVE-2020-17103 MiniPlasma: carry-forward from morning with
+          substantive PoC-effectiveness layer at roughly even chance.
+        - Pwn2Own Berlin: status-only carry-forward; ZDI embargo unchanged.
+        - Symantec Fast16: structural-posture carry-forward (T+37h35m
+          → T+43h past elapsed deadline).
+        - finding-2026-05-18-0001 MiniPlasma + finding-2026-05-18-0002
+          7-Eleven: morning findings carry-forward by finding-id
+          reference; no resurface (no material update in <8h window).
+
+      Analyst handoffs queued: CoinbaseCartel + ShinyHunters + SLSH
+      /new-actor evaluations at conservative MEDIUM on next /update-
+      tracking cycle; shared-infrastructure analysis between TeamPCP
+      originating Shai-Hulud and clone wave (KAC A4 untested).
+
+      Vuln-tracker handoffs queued: CVE-2026-44112 OpenClaw Claw Chain
+      /index.yaml evaluation; CVE-2020-17103 MiniPlasma still pending.
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
 
 # ============================================================================
 # Valid resurface_if conditions

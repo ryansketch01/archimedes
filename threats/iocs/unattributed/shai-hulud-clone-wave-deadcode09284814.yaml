@@ -1,0 +1,200 @@
+# threats/iocs/unattributed/shai-hulud-clone-wave-deadcode09284814.yaml
+#
+# Unattributed cluster — first observed weaponization wave of the
+# publicly-leaked Shai-Hulud npm worm framework (TeamPCP-originated
+# September 2025 campaign, source code released 2026-05-15 per
+# flash-2026-05-15-0600-teampcp-shai-hulud-release).
+#
+# Ox Security (relayed via BleepingComputer 2026-05-18 13:28 EDT) names
+# four cloned packages by npm account "deadcode09284814" and explicitly
+# frames the clone-publisher as DIFFERENT from TeamPCP per its
+# attribution discipline. Hard Rule 2 forbids Archimedes from
+# propagating TeamPCP attribution from the originating-campaign-act to
+# the cloning-act.
+#
+# ACH (analyst-20260518-160000): H1 (distinct UNATTRIBUTED actor) tied
+# with H3 (null / copy-cat-noise across multiple unrelated script-
+# kiddies) at zero inconsistencies. H2 (TeamPCP-pivot) decisively
+# rejected on 4 inconsistencies. Cluster anchor B2/likely.
+#
+# Per Heuer non-diagnostic-between-leaders directive, this cluster is
+# filed UNATTRIBUTED — operator may re-evaluate /new-actor scaffolding
+# if additional clone waves accumulate beyond evidence-minimum-table
+# thresholds.
+
+cluster_id: shai-hulud-clone-wave-deadcode09284814
+cluster_name: "Shai-Hulud npm clone wave (UNATTRIBUTED clone publisher, weekend 2026-05-16/17)"
+first_seen: 2026-05-17
+last_updated: 2026-05-18
+admiralty_grade: B2
+tlp: CLEAR
+
+provenance:
+  - source: finding-2026-05-18-0003
+    note: >
+      BleepingComputer (Bill Toulas, 2026-05-18 13:28 EDT) relaying
+      Ox Security research. Ox Security explicitly attributes the
+      clone wave to an actor DIFFERENT from TeamPCP. Single-source
+      veto applies on the Ox-Security-originating-research layer
+      (BleepingComputer relay = effective single primary; The Hacker
+      News parallel surface 06:00 FLASH a8121bc Item #2 cohort fails
+      independence test, same upstream Ox research). WEP cluster
+      anchor capped at "likely."
+
+notes: |
+  Cloned variants of the publicly-leaked Shai-Hulud npm worm framework
+  uploaded to npm registry weekend 2026-05-16/17 by npm account
+  "deadcode09284814". Four malicious packages identified by Ox Security:
+    - chalk-tempalte (typosquat on chalk-template)
+    - @deadcode09284814/axios-util
+    - axois-utils (typosquat on axios-utils; adds DDoS capability
+      beyond Shai-Hulud clone baseline)
+    - color-style-utils
+
+  Tradecraft profile per Ox Security: "an almost exact copy of the
+  leaked source code, with no obfuscation techniques" — script-kiddie-
+  class derivative actor. Materializes the VT-006 carry-forward
+  prediction of derivative attacks within 30 days of source-code
+  release, at T+3 days.
+
+  C2: 87e0bbc636999[.]lhr[.]life — LocalHost.run anonymizer tunneling
+  subdomain pattern. Public anonymizer service is uninformative for
+  actor-distinction signaling per analyst KAC A4.
+
+  Hard Rule 2 binding constraint: clone-publisher npm account
+  "deadcode09284814" is UNATTRIBUTED. Archimedes does NOT propagate
+  TeamPCP attribution. Same restraint pattern as Socket / StepSecurity
+  / Ox / Upwind four-firm UNATTRIBUTED consensus on node-ipc compromise
+  (finding-2026-05-14-0009 + 2026-05-15-0005).
+
+  To migrate this cluster to actor-attributed:
+    - Mandiant / CrowdStrike / Unit 42 / MSTIC publishes corroborating
+      attribution to a roster actor (or names a new actor for
+      /new-actor scaffolding)
+    - First-party Splunk hit on these IOCs ties them to a roster
+      actor's infrastructure or campaign
+    - Second-corpus research firm (Socket, StepSecurity, Wiz, Snyk,
+      Upwind, SafeDep, Aikido, Semgrep) publishes independent telemetry
+      naming the clone-publisher with firmer attribution
+
+  First-party Splunk status at cluster creation (2026-05-18 16:00):
+  44th consecutive dormant non-self-telemetry sweep. Zero external
+  IOC hits on Shai-Hulud clone tokens, zero defenseclaw_local hits
+  on C2 indicator or clone-publisher npm account. Silence is not
+  disconfirming.
+
+ttl:
+  network_infrastructure: 90    # days
+  package_names: 730            # npm registry artifacts moderately durable
+  malware_families: never
+
+indicators:
+  - id: shclone-domain-001
+    type: domain
+    value: 87e0bbc636999.lhr.life
+    defanged_original: "87e0bbc636999[.]lhr[.]life"
+    role: c2
+    description: "C2 infrastructure for cloned Shai-Hulud variants distributed via 4 npm packages. LocalHost.run anonymizer tunneling subdomain pattern (commodity-malware C2 class)."
+    first_seen: 2026-05-17
+    source: finding-2026-05-18-0003
+    source_attribution: ["Ox Security", "BleepingComputer"]
+    actor_distinction_caveat: "Public anonymizer service — uninformative for actor-distinction signaling. Defensive block candidate; not a clean attribution signal."
+
+  - id: shclone-package-001
+    type: filename
+    value: chalk-tempalte
+    role: malicious_npm_package
+    description: "Cloned Shai-Hulud variant; direct copy of leaked source code, no obfuscation. Typosquat on legitimate 'chalk-template' package."
+    ecosystem: npm
+    first_seen: 2026-05-17
+    source: finding-2026-05-18-0003
+    source_attribution: ["Ox Security", "BleepingComputer"]
+
+  - id: shclone-package-002
+    type: filename
+    value: "@deadcode09284814/axios-util"
+    role: malicious_npm_package
+    description: "Cloned Shai-Hulud variant, namespaced under the clone-publisher account."
+    ecosystem: npm
+    first_seen: 2026-05-17
+    source: finding-2026-05-18-0003
+    source_attribution: ["Ox Security", "BleepingComputer"]
+
+  - id: shclone-package-003
+    type: filename
+    value: axois-utils
+    role: malicious_npm_package
+    description: "Cloned Shai-Hulud variant with DDoS capability beyond clone baseline. Typosquat on legitimate 'axios-utils' package."
+    ecosystem: npm
+    capability_notes: "Adds DDoS functionality; consistent with Phantom Bot Golang DDoS class observation in parallel cohort (06:00 FLASH a8121bc Item #2; different package set, same capability class)."
+    first_seen: 2026-05-17
+    source: finding-2026-05-18-0003
+    source_attribution: ["Ox Security", "BleepingComputer"]
+
+  - id: shclone-package-004
+    type: filename
+    value: color-style-utils
+    role: malicious_npm_package
+    description: "Cloned Shai-Hulud variant; direct copy of leaked source code, no obfuscation."
+    ecosystem: npm
+    first_seen: 2026-05-17
+    source: finding-2026-05-18-0003
+    source_attribution: ["Ox Security", "BleepingComputer"]
+
+  - id: shclone-account-001
+    type: detection_pattern
+    value: "npm account: deadcode09284814"
+    role: clone_publisher_account
+    description: "npm registry account that published the four cloned Shai-Hulud variants. Ox Security explicitly frames as DIFFERENT actor from TeamPCP."
+    attribution_discipline: "UNATTRIBUTED per Ox Security via BleepingComputer. Hard Rule 2 preserves restraint."
+    first_seen: 2026-05-17
+    source: finding-2026-05-18-0003
+    source_attribution: ["Ox Security", "BleepingComputer"]
+
+  - id: shclone-malware-001
+    type: malware_family
+    value: Shai-Hulud (cloned variants)
+    role: npm_worm_framework_derivative
+    description: "Direct-copy derivative variants of the TeamPCP-originated Shai-Hulud npm worm framework, weaponized by UNATTRIBUTED clone publisher. Infostealer-class baseline + axois-utils adds DDoS."
+    originating_campaign: "TeamPCP September 2025 Shai-Hulud campaign (VT-006)"
+    originating_campaign_attribution_discipline: "ORIGINATING_CAMPAIGN_LINEAGE_ONLY_NOT_PROPAGATED_TO_CLONE_PUBLISHER per Hard Rule 2"
+    first_seen: 2026-05-17
+    source: finding-2026-05-18-0003
+    source_attribution: ["Ox Security", "BleepingComputer"]
+
+hunt_queries:
+  - id: shclone-hunt-c2-domain
+    platform: splunk
+    title: "Shai-Hulud clone wave C2 domain hunt — LocalHost.run anonymizer"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (dest_host="*87e0bbc636999*" OR domain="*87e0bbc636999*"
+       OR query="*87e0bbc636999*" OR dest_host="*.lhr.life"
+       OR domain="*.lhr.life" OR query="*.lhr.life")
+      | stats count by user, src_ip, dest_host, _time
+      | sort -_time
+    notes: >
+      LocalHost.run (*.lhr.life) is a legitimate developer-tooling
+      anonymizer with broad non-malicious use. Pre-filter the specific
+      subdomain 87e0bbc636999.lhr.life for high-fidelity hits; the
+      wildcard *.lhr.life query is offered as a broader sweep with
+      higher false-positive rate.
+
+  - id: shclone-hunt-npm-packages
+    platform: edr
+    title: "Shai-Hulud clone wave npm package installation hunt"
+    query_type: pseudo_kql
+    query: |
+      DeviceProcessEvents
+      | where (ProcessCommandLine has_any ("chalk-tempalte",
+                                            "@deadcode09284814/axios-util",
+                                            "axois-utils",
+                                            "color-style-utils")
+              and (FileName =~ "npm" or FileName =~ "yarn" or FileName =~ "pnpm" or FileName =~ "node"))
+      | project DeviceId, AccountName, Timestamp, ProcessCommandLine, FolderPath
+    notes: >
+      Defensive priority: add the four package names to dependency-tree
+      quarantine / SCA allowlist denial. Typosquat names will not match
+      legitimate package installs (chalk-template, axios-utils are the
+      legitimate names) so any match is high-fidelity.

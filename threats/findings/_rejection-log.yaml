@@ -784,14 +784,468 @@ entries:
       surfaces with this CVE named, or first-party Splunk hit on
       whatever vendor signature ultimately emerges.
 
+  - rejection_id: reject-2026-05-18-0001
+    rejected_at: 2026-05-18T16:18:00-04:00
+    grading_run_id: afternoon-20260518-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-18-pm-004
+    cluster_topic: "OpenClaw 'Claw Chain' four-CVE cluster (CVE-2026-44112 / 44113 / 44115 / 44118) — sandbox escape + backdoor delivery; Cyera first-corpus-surface; patched April 23 (26d pre-disclosure); no active exploitation; no tracked actor; no A&D-prime victim"
+    rejection_reasons:
+      - patched_before_disclosure_cyera_research_class
+      - no_active_exploitation_claim
+      - no_tracked_actor_in_roster
+      - no_ad_prime_victim_or_sector_alignment
+      - cyera_first_corpus_surface_unrated_in_source_grades_yaml
+      - status_update_candidate_for_vuln_tracker_not_finding_promotion
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        role: directly_retrieved_relay_of_cyera_originating_research
+      - source_yaml_id: cyera
+        grade: PROVISIONAL_GRADE_PENDING_NOT_IN_SOURCE_GRADES_YAML
+        role: originating_research_first_corpus_surface
+    would_be_digraph: B3_to_B2_with_corroboration_pending_but_inclusion_thresholds_fail_independently
+    rejection_detail: >
+      OpenClaw four-CVE cluster fails inclusion thresholds across all
+      four criteria independently:
+
+        (1) Patched before disclosure: All four CVEs (CVE-2026-44112
+            CVSS 9.6 race condition in OpenShell sandbox; CVE-2026-
+            44113 race condition for file read outside mount root;
+            CVE-2026-44115 exec allowlist analysis bug; CVE-2026-
+            44118 MCP loopback flaw) were reported to OpenClaw
+            maintainers on April 22 with patches rolled out next-
+            day April 23 — 26 days before the SecurityWeek 2026-05-
+            18 08:14 EDT disclosure surface. No vendor-coordinated-
+            disclosure embargo overhang; no active mitigation gap.
+
+        (2) No active exploitation claim: SecurityWeek source body
+            uses NEUTRAL framing ("an attacker" / "an adversary")
+            without any vendor / IR / first-party telemetry attestation
+            of in-the-wild exploitation. Cyera's research is
+            theoretical-chain analysis, not telemetry-backed
+            exploitation observation.
+
+        (3) No tracked actor in _roster.yaml: No actor cited in
+            source. Cyera's research is vulnerability-class only,
+            not actor-attributed.
+
+        (4) No A&D-prime victim or sector alignment: OpenClaw AI
+            assistant is a developer-tooling product class; "over
+            60,000 publicly accessible OpenClaw instances" per
+            source is broad-deployment context, NOT A&D-specific.
+            No defense / aerospace / Tier-1 prime adoption pattern
+            cited.
+
+      Cyera is a first-corpus surface in Archimedes — not in
+      source-grades.yaml at time of grading. Per cheatsheet pattern
+      for first-cited vendor research firms (Sysdig / Zellic /
+      depthfirst / V12 security first-surface precedent), Cyera
+      would warrant provisional-grade-pending status. Status-update
+      flagged for librarian: provisional-grade Cyera candidacy on
+      next surface (if first-corpus-surface pattern persists).
+
+      Disposition: NOT promoted to finding. Status-update CANDIDATE
+      for vuln-tracker on next pass — vuln-tracker may evaluate
+      whether CVE-2026-44112 (CVSS 9.6) warrants _index.yaml
+      tracked-vuln addition pending Cyera surface recurrence OR
+      A&D-prime adoption of OpenClaw emerges. Mention-class
+      eligible for sector-completeness in Other Signal section
+      of afternoon brief.
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      Re-evaluate if: (a) A-grade vendor (Mandiant / CrowdStrike /
+      Unit 42 / MSTIC / Volexity) publishes telemetry confirming
+      in-the-wild exploitation of any of the four CVEs; (b) CISA
+      adds any CVE to KEV catalog; (c) Cyera (or independent
+      research firm) publishes telemetry of A&D-prime adoption of
+      OpenClaw with vulnerable version exposure; (d) AI-assistant /
+      MCP-server class becomes formally part of A&D-prime SDLC
+      threat surface per operator update to watchlist.
+
+  - rejection_id: reject-2026-05-18-0002
+    rejected_at: 2026-05-18T16:18:00-04:00
+    grading_run_id: afternoon-20260518-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-18-pm-005
+    cluster_topic: "Aggregate of six US healthcare data breaches added to HHS OCR breach tracker (NYC Health and Hospitals 1.8M + Nacogdoches Memorial 2.5M + Erie Family Health Centers 570K + Florida Physician Specialists 276K + Coastal Carolina Health Care 110K + Western Orthopaedics 110K; ~5.4M aggregate records); explicit no-attribution per source; healthcare sector, NOT A&D"
+    rejection_reasons:
+      - explicit_no_attribution_per_source_verbatim_preserved
+      - sector_misaligned_healthcare_not_ad_prime_watchlist
+      - no_tracked_actor_in_roster_per_source_explicit_disclaimer
+      - mention_class_only_for_sector_context_completeness
+      - aggregate_roundup_not_singular_promotion_candidate
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        role: directly_retrieved_primary_aggregate_roundup
+    would_be_digraph: B3_per_aggregate_roundup_class_but_inclusion_thresholds_fail_independently
+    rejection_detail: >
+      Healthcare breach aggregate fails inclusion thresholds
+      independently:
+
+        (1) Explicit no-attribution per source preserved verbatim
+            (15 words at quote limit): "None of these healthcare
+            data breaches appears to have been claimed by known
+            cybercrime groups." Source itself disclaims any actor
+            framing. Hard Rule 2 prevents Archimedes from
+            originating attribution beyond source content.
+
+        (2) Sector misalignment: Healthcare is NOT on aerospace-
+            defense.yaml watchlist. Six victims (NYC Health and
+            Hospitals, Erie Family Health Centers, Florida Physician
+            Specialists, Coastal Carolina Health Care, Western
+            Orthopaedics, Nacogdoches Memorial Hospital) all
+            healthcare-sector — no A&D-prime, no defense-contractor,
+            no Tier-1/Tier-2 supplier, no ITAR-regulated entity.
+
+        (3) Mention-class only: Aggregate roundup class is
+            sector-context-completeness signal, not a promotion-
+            worthy cluster with actionable defensive-posture
+            implications for an A&D-prime target profile.
+
+      Disposition: NOT promoted to finding. Mention-class eligible
+      for sector-context completeness in Other Signal section of
+      afternoon brief (if briefer chooses to surface). HHS OCR
+      breach tracker reference preserved.
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      Re-evaluate if subsequent reporting attributes one or more
+      of these breaches to a tracked actor on _roster.yaml AND that
+      actor has a documented A&D-adjacent tradecraft pattern. Per
+      Hard Rule 2, Archimedes does not extrapolate from sector-
+      misaligned breaches to A&D-prime threat-model expansion
+      without explicit source-attested attribution to a tracked
+      actor.
+
+  - rejection_id: reject-2026-05-18-0003
+    rejected_at: 2026-05-18T16:18:00-04:00
+    grading_run_id: afternoon-20260518-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-18-pm-006
+    cluster_topic: "INTERPOL Operation Ramz coordinated MENA cybercrime crackdown October 2025 – February 2026; 201 arrests / 382 suspects identified / 3,867 victims / 53 servers seized; 13 MENA countries; Group-IB + Team Cymru intelligence partners; no named tracked APT cluster cited (NOT MuddyWater / APT34 / Charming Kitten / OilRig / Handala / IRGC-CEC / UNC1549); commodity-cybercrime law-enforcement-disruption class"
+    rejection_reasons:
+      - law_enforcement_disruption_commodity_cybercrime_class
+      - no_tracked_actor_in_roster
+      - no_named_apt_or_state_attribution_in_source
+      - no_ad_prime_victim_or_sector_alignment
+      - no_iocs_published_in_source
+      - geographic_adjacency_to_iran_roster_not_basis_for_attribution_propagation_hard_rule_2
+    sources:
+      - source_yaml_id: thehackernews
+        grade: B
+        role: directly_retrieved_primary_le_disruption_summary
+    would_be_digraph: B3_on_procedural_le_facts_layer_but_inclusion_thresholds_fail
+    rejection_detail: >
+      INTERPOL Operation Ramz fails inclusion thresholds across
+      multiple criteria:
+
+        (1) Law-enforcement-disruption commodity-cybercrime class:
+            Operation Ramz targeted phishing / PhaaS / malware
+            distribution / cyber scams / banking fraud / investment
+            scams / compromised servers — the entire commodity-
+            cybercrime ecosystem class. THN attribution discipline
+            is factual on infrastructure seizures and arrests
+            without broader geopolitical attribution; no APT or
+            state-cluster naming.
+
+        (2) No tracked actor: 13 MENA countries' national LE +
+            INTERPOL coordination + Group-IB + Team Cymru intelligence
+            support produced 201 arrests / 382 additional suspects
+            identified / 3,867 victims / 53 servers seized — none
+            of the disrupted operations is named to a tracked actor
+            in _roster.yaml. No MuddyWater (#022) / APT34 (#023) /
+            Charming Kitten (#011) / UNC1549 (#004) / Handala (#014)
+            / OilRig / IRGC-CEC / Cyber Av3ngers / Predatory Sparrow
+            mentioned.
+
+        (3) Geographic adjacency to Iran roster not basis for
+            attribution propagation per Hard Rule 2: MENA geography
+            is adjacent to Iran-attributed tracked-actor cluster on
+            roster, but adjacency is NOT attribution. Archimedes
+            does NOT propagate Iran-roster context to MENA-LE-
+            disruption commodity-cybercrime without explicit source-
+            attested attribution.
+
+        (4) No A&D-prime victim or sector alignment: 3,867 identified
+            victims are MENA-geography commodity-cybercrime victims;
+            no defense / aerospace / Tier-1 prime / ITAR-regulated
+            entity named.
+
+        (5) No IOCs published: Source body publishes no domains, IPs,
+            hashes, malware family names, or CVEs.
+
+      Group-IB + Team Cymru cited as intelligence partners — neither
+      currently in source-grades.yaml. Status-update flagged for
+      librarian: both candidates for provisional-grade addition if
+      they recur as primary citation in future findings (Group-IB
+      with established CTI track record likely provisional-B start;
+      Team Cymru same provisional-B start per peer-CTI-vendor class).
+
+      Disposition: NOT promoted to finding. Mention-class eligible
+      for sector-context completeness in Other Signal section of
+      afternoon brief (if briefer chooses to surface as ecosystem-
+      disruption-signal).
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      Re-evaluate if subsequent reporting names a specific tracked
+      APT or roster actor in the Operation Ramz disrupted operations
+      OR if Group-IB / Team Cymru publish post-operation analyses
+      with technical IOCs of disrupted infrastructure.
+
+  - rejection_id: reject-2026-05-18-0004
+    rejected_at: 2026-05-18T16:18:00-04:00
+    grading_run_id: afternoon-20260518-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-18-pm-007
+    cluster_topic: "DarkReading 'Fuel Tank Breaches Expand Scope of Iran's Cyber Offensive' (Elizabeth Montalbano 2026-05-18 11:41 EDT) — relay of CNN 2026-05-15 originating reporting citing 'sources familiar with the incident' on alleged Iran-attributed exploitation of automatic tank gauge (ATG) systems lacking password protection; technical scope per source: 'changed display readings on tanks but not actual levels of fuel'; multi-step relay-of-unnamed-officials chain; no specific tracked Iranian APT cluster named (NOT MuddyWater / APT34 / Charming Kitten / UNC1549 / Handala / IRGC-CEC / Cyber Av3ngers / Predatory Sparrow); fuel-storage critical infrastructure NOT on A&D-prime watchlist; DarkReading WebFetch 403 third recurrence — reconstruction via WebSearch + CNN/Newsweek/Security-Magazine/MSN cross-relay"
+    rejection_reasons:
+      - multi_step_relay_of_unnamed_officials_chain_legal_policy_no_attribution_laundering_binding
+      - no_specific_tracked_iranian_apt_named_in_source
+      - sector_misaligned_fuel_storage_critical_infrastructure_not_ad_prime_watchlist
+      - source_retrieval_limitation_webfetch_403_reconstruction_via_websearch_only
+      - darkreading_not_yet_in_source_grades_yaml_provisional_grade_pending
+      - hard_rule_2_binding_on_iran_geographic_attribution_not_propagated_to_tracked_apt
+    sources:
+      - source_yaml_id: NOT_IN_SOURCE_GRADES_YAML_PROVISIONAL_GRADE_PENDING_DARKREADING
+        source_name: DarkReading
+        grade: PROVISIONAL_C_PENDING_OPERATOR_RATIFICATION
+        role: third_party_relay_of_cnn_originating_reporting
+      - source_yaml_id: cnn_originating_2026_05_15_NOT_IN_SOURCE_GRADES_YAML
+        grade: PROVISIONAL_B_PENDING_OPERATOR_RATIFICATION
+        role: originating_reporting_2026_05_15_three_days_prior
+      - source_yaml_id: relay_of_unnamed_officials_via_cnn_via_darkreading
+        grade: relay_chain_class_not_independently_gradeable
+        role: underlying_attribution_chain
+    would_be_digraph: C4_to_D5_per_relay_chain_class_inclusion_thresholds_fail_independently
+    rejection_detail: >
+      DarkReading Iran ATG fuel-tank breach surface fails inclusion
+      thresholds across multiple criteria:
+
+        (1) Multi-step relay-of-unnamed-officials chain per Hard
+            Rule 2 + LEGAL-POLICY no-attribution-laundering binding
+            constraint: Attribution chain is DarkReading 2026-05-18
+            relays CNN 2026-05-15 (T+3d prior originating) which
+            cites "sources familiar with the incident" / "officials
+            suspect Iran is responsible" / "private experts and US
+            officials." This is exactly the multi-step relay-of-
+            unnamed-officials chain that LEGAL-POLICY no-attribution-
+            laundering rule prohibits propagating as Archimedes-
+            originated attribution. Verbatim hedging language
+            ("allegedly," "officials suspect," "according to private
+            experts and US officials") preserved per Hard Rule 2.
+
+        (2) No specific tracked Iranian APT named: Source attributes
+            broadly to "Iran" (national/geographic) without naming
+            any specific tracked-actor cluster on _roster.yaml. NOT
+            MuddyWater (#022) / APT34 (#023) / Charming Kitten (#011)
+            / UNC1549 (#004) / Handala Hack (#014) / IRGC-CEC /
+            Cyber Av3ngers / Predatory Sparrow. Iran national-
+            attribution without specific cluster naming is NOT a
+            tracked-actor surface and triggers no actor-roster lift.
+
+        (3) Sector misalignment: Fuel-storage critical infrastructure
+            is NOT on aerospace-defense.yaml watchlist. Critical-
+            infrastructure breadth ≠ A&D-prime specificity. Display-
+            tampering on ATG systems (where actual fuel levels per
+            source were NOT modified — display-only tampering) is
+            not a defensive-posture-action class for an A&D-prime
+            target profile.
+
+        (4) Source retrieval limitation: WebFetch returned 403
+            against darkreading.com URL (third corpus recurrence
+            after 2026-05-17 18:00 FLASH 33d3f9a + 2026-05-18 00:00
+            FLASH 9c61bdb same-class items). Article body reconstructed
+            via WebSearch summary + cross-corroboration with CNN /
+            Newsweek / Security Magazine / MSN relay surfaces. Direct
+            retrieval not achieved. Source-health entry creation
+            flagged for DarkReading WebFetch 403 pattern.
+
+        (5) DarkReading provisional-grade pending: DarkReading not
+            yet in source-grades.yaml. Prior corpus surfaces include
+            2026-05-13 Bitdefender FamousSparrow relay layer +
+            multiple opinion-essay class items 2026-05-17 → 2026-05-
+            18 FLASH sweeps. Status-update flagged for librarian:
+            provisional-C starting grade (security media outlet with
+            recurring 403 against direct retrieval + relay-only
+            access pattern) per LayerX / Seqrite / Trendyol-Albayrak
+            precedent. Operator may upgrade to B if subsequent
+            findings show consistent technical rigor when direct
+            retrieval is achieved.
+
+      Hard Rule 2 + LEGAL-POLICY no-attribution-laundering binding
+      reminder: even if DarkReading's body could be directly
+      retrieved, the underlying attribution chain (DarkReading →
+      CNN → "sources familiar with the incident" → unnamed officials)
+      is exactly the multi-step laundering pattern LEGAL-POLICY
+      prohibits propagating. Archimedes preserves Iran-national-
+      attribution as source-said-verbatim but does NOT propagate
+      to any specific tracked APT cluster absent A-grade vendor
+      attribution naming such cluster.
+
+      Disposition: NOT promoted to finding. Iran-roster-context
+      mention-class eligible for sector-context completeness in
+      Other Signal section of afternoon brief (if briefer chooses
+      to surface as Iran-cyber-offensive-sector-expansion ecosystem
+      signal NOT propagated to specific tracked actor).
+    review_notes: >
+      Retain for 1 year per LEGAL-POLICY data-handling table.
+      Re-evaluate if: (a) A-grade vendor (Mandiant / CrowdStrike /
+      Unit 42 / MSTIC / Volexity / Talos / Bitdefender / ESET /
+      Symantec) publishes specific tracked Iranian APT cluster
+      attribution on the ATG fuel-storage activity with technical
+      IOCs; (b) US gov advisory (CISA / FBI Flash / NSA) attributes
+      the activity to a named cluster; (c) ATG / fuel-storage class
+      is added to A&D-prime watchlist by operator (currently NOT
+      in scope). DarkReading source-health entry creation flagged
+      for librarian — pattern of WebFetch 403 against direct
+      article URLs warrants alt-retrieval path identification
+      (e.g., RSS-only ingestion via fetch_feed which works healthy).
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 8
-  most_recent_run: afternoon-20260514-160000
-  most_recent_run_rejections: 0
+  total_rejections: 12
+  most_recent_run: afternoon-20260518-160000
+  most_recent_run_rejections: 4
   most_recent_run_note: >
+    afternoon-20260518-160000 produced 4 rejections and 2 promotions.
+    Promotions: finding-2026-05-18-0003 Shai-Hulud npm worm clones IOC
+    augmentation (BleepingComputer/Bill Toulas 13:28 EDT relay of Ox
+    Security UNATTRIBUTED clone-publisher research; B2/likely cluster
+    anchor with single-source veto on Ox-Security-originating-research
+    layer; materializes VT-006 carry-forward "derivative-attacks-within-
+    30-days" prediction at T+3d; four packages + C2 indicator +
+    UNATTRIBUTED npm account "deadcode09284814" surfaced; clone-
+    publisher act NOT propagated to TeamPCP per Hard Rule 2; same
+    upstream Ox research as parallel 06:00 FLASH a8121bc Item #2 THN
+    surface — different package set, independence test fails between
+    relays). finding-2026-05-18-0004 Grafana CoinbaseCartel codebase
+    theft cluster (two independent media surfaces — BleepingComputer/
+    Bill Toulas 09:46 EDT NARROWS attribution-cluster framing dropping
+    Scattered Spider + The Record/no-byline 13:50 EDT introduces SLSH
+    parent-collective framing + ransom-refusal procedural; B2/likely
+    cluster anchor with single-source veto on three threat-actor-
+    cluster framing sub-layers; Hard Rule 2 + LEGAL-POLICY no-
+    attribution-laundering binding constraint enforced — Scattered
+    Spider #013 HIGH on roster NOT propagated; ShinyHunters /new-actor
+    candidacy now accumulating across finding-2026-05-18-0002 + this
+    finding-0004; CoinbaseCartel /new-actor candidacy strengthened
+    by two-relay corroboration). Rejections: reject-2026-05-18-0001
+    OpenClaw "Claw Chain" four-CVE Cyera first-surface (patched 26d
+    pre-disclosure, no exploitation, no tracked actor, no A&D —
+    status-update for vuln-tracker on next pass); reject-2026-05-18-
+    0002 US healthcare data breach aggregate (sector-misaligned,
+    explicit no-attribution preserved verbatim, mention-class only);
+    reject-2026-05-18-0003 INTERPOL Operation Ramz MENA LE-disruption
+    (commodity-cybercrime, no tracked APT named, no A&D, geographic
+    adjacency to Iran roster NOT basis for attribution propagation
+    per Hard Rule 2); reject-2026-05-18-0004 DarkReading Iran ATG
+    fuel-tank breaches (multi-step relay-of-unnamed-officials chain
+    LEGAL-POLICY no-attribution-laundering binding, no specific
+    tracked Iranian APT named, fuel-storage critical-infrastructure
+    NOT on A&D watchlist, DarkReading WebFetch 403 third recurrence
+    + provisional-grade-pending status). Splunk first-party sweep at
+    grading time across all net-new IOC tokens ("87e0bbc636999" +
+    "edcf8b03c84634" + "80.200.28.28" + "shinysp1d3r" + "shinyhunters"
+    + "lhr.life" + "deadcode09284814" + "CoinbaseCartel" + "SLSH" +
+    "Scattered Lapsus" + "OpenClaw" + "ATG" + "automatic tank gauge")
+    returned 6 events: 3 archimedes:operation self-telemetry FLASH-
+    sweep clean-sweep events + 3 defenseclaw:json events from
+    2026-04-20 referencing "openclaw" as a filesystem path artifact
+    (DefenseClaw internal skill-scanner workspace; UNRELATED to
+    OpenClaw AI assistant in pm-004 — coincidental string match on
+    DefenseClaw internal module name). Zero external IOC hits on
+    cluster tokens. 44th consecutive dormant non-self-telemetry sweep
+    confirmed at grading time. No first-party precedence invoked.
+    Silence is not disconfirming per established 44-sweep dormancy
+    cadence. Carry-forwards preserved unchanged from morning brief
+    b812307 + 12:00 FLASH ac3683d (CVE-2026-20182 Cisco Catalyst
+    SD-WAN federal KEV deadline LAPSED end-of-day Sunday 2026-05-17
+    now T+19h+ post-elapsed with zero fresh A-grade reporting; CVE-
+    2026-42897 Microsoft Exchange OWA XSS T-11d single-source veto
+    holds; CVE-2026-42945 NGINX Rift PoC VulnCheck Canaries scanner-
+    class probe defensive-telemetry refinement; Symantec/SentinelLABS
+    Fast16 provisional-A ratification clock T+46h+ past elapsed
+    deadline 2026-05-16T18:25 awaiting operator pass; Pwn2Own Berlin
+    2026 final wrap ZDI 90-day embargo through ~2026-08-13; Turla/
+    Kazuar/Secret Blizzard anti-noise lock; Tycoon2FA device-code
+    PhaaS absorbed into finding-2026-05-17-0002; MiniPlasma/CVE-2020-
+    17103 absorbed into finding-2026-05-18-0001; 7-Eleven/ShinyHunters
+    Salesforce absorbed into finding-2026-05-18-0002; Shai-Hulud npm
+    worm clones now promoted to finding-2026-05-18-0003 as VT-006
+    IOC-augmentation refinement). Source-grade observations surfaced
+    for briefer/librarian: (a) Ox Security continues second-day
+    relay-only retrieval pattern (BleepingComputer 13:28 EDT relays
+    Ox Security research; same as 06:00 FLASH a8121bc Item #2 THN
+    05:45 EDT relay) — provisional-B status holds; positive
+    methodological signal (consistent attribution discipline);
+    awaiting direct retrieval for ratification. (b) Cyera first-corpus-
+    surface (pm-004 OpenClaw research) — provisional-grade-pending
+    candidate for source-grades.yaml on next surface recurrence per
+    Sysdig/Zellic/depthfirst/V12-security first-surface precedent.
+    (c) Joe Shenouda (Threat Intelligence Specialist named byline
+    via BleepingComputer pm-002 on shinysp1d3r tool-attribution) —
+    first-cited named individual researcher in corpus this sweep;
+    not a source-grades.yaml addition candidate as individual byline
+    (Trendyol-Albayrak precedent is different — Albayrak is engineer
+    at a named corporate security organization; Shenouda is named
+    individual analyst without affiliated source publication
+    independently retrieved). (d) Halcyon recurs as non-tracked CTI
+    relay surface (now cited in finding-2026-05-17-0001 + finding-
+    2026-05-18-0004) — provisional-B addition candidate on next
+    direct retrieval. (e) Group-IB + Team Cymru first-cited as
+    INTERPOL Operation Ramz intelligence partners (pm-006) —
+    candidates for provisional-grade addition if recur as primary
+    citation in future findings (both established CTI vendors with
+    public track records; provisional-B start per peer class). (f)
+    DarkReading WebFetch 403 third corpus recurrence — source-
+    health entry creation flagged for librarian; pattern warrants
+    alt-retrieval path identification (RSS-only ingestion via
+    fetch_feed works healthy). (g) "Industrial Cyber RSS 403"
+    operational issue this sweep — new observation; not currently
+    in source-grades.yaml as standalone; flagged for source-health
+    entry creation if pattern persists. Hard Rules compliance:
+    Rule 2 verified across 7 distinct relay-frames (Ox Security
+    UNATTRIBUTED clone-publisher non-propagation to TeamPCP;
+    BleepingComputer narrower CoinbaseCartel-consists-of framing
+    preserved with ShinyHunters self-denial; The Record SLSH
+    parent-collective framing distinct from Scattered Spider per
+    name-overlap-not-conflation; Scattered Spider #013 HIGH on
+    roster NOT propagated to Grafana/CoinbaseCartel per narrower-
+    source-preferred treatment; Cyera neutral framing preserved
+    without elevation; SecurityWeek healthcare explicit no-
+    attribution at 15w quote limit; DarkReading multi-step relay-
+    of-unnamed-officials chain Iran-national-attribution NOT
+    propagated to specific tracked APT). Rule 3 verified (no PoC
+    repository URLs reproduced — Nightmare-Eclipse MiniPlasma
+    GitHub from finding-2026-05-18-0001 absorbed carry-forward,
+    depthfirst nginx-rift GitHub from finding-2026-05-16-0001
+    carry-forward, V12 security CVE-2026-31635 GitHub from 06:00
+    FLASH a8121bc Item #5 carry-forward all not linked in body
+    layers). Rule 4 verified (no active scanning, SpiderFoot not
+    invoked, authorized-targets.yaml empty). Rule 6 verified
+    (quote discipline: BleepingComputer "CoinbaseCartel consists
+    of ShinyHunters and Lapsus$ affiliates" 7w; ShinyHunters
+    self-denial "not linked to their group" 5w; The Record
+    "emerged last year as a data theft offshoot of the larger"
+    11w; SecurityWeek healthcare "None of these healthcare data
+    breaches appears to have been claimed by known cybercrime
+    groups" 15w at limit; one quote per source maintained). Rule
+    8 verified (Splunk first-party sweep across 13 IOC tokens
+    24h window returned only self-telemetry events; first-party
+    precedence not invoked; silence is not disconfirming per
+    44-sweep dormancy cadence). LEGAL-POLICY prohibited-query-
+    patterns not triggered. TLP:CLEAR.
+  prior_runs_preserved_in_history: true
+  prior_most_recent_run: afternoon-20260514-160000
+  prior_most_recent_run_rejections: 0
+  prior_most_recent_run_note: >
     afternoon-20260514-160000 produced 0 rejections and 5 promotions.
     All five substantive raw-signals from the 15:30 pre-brief sweep
     cleared B2+ inclusion threshold. Sentinel raw-signal (raw-2026-

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-17T16:00:00-04:00
+last_updated: 2026-05-18T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -10247,6 +10247,790 @@ entries:
 
       eSentire provisional-B source-grades.yaml addition candidate
       flagged for librarian pickup if surface recurs.
+
+  - id: 2026-05-18-am-001-7-eleven-shinyhunters-salesforce-records
+    covered_in: [2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "7-Eleven confirms April 8 intrusion into franchise-application systems via SecurityWeek (Eduard Kovacs, 07:25 EDT); ShinyHunters leak-site listing 2026-04-17 claims >600,000 Salesforce records, ransom 2026-04-21, $250,000 sale offer after refusal; 7-Eleven's Maine state regulator filing scopes narrowly to two residents impacted via franchise applications (Maine PII statute compulsion); SecurityWeek references prior victims Instructure / Vimeo / Wynn Resorts / Vercel / Medtronic as mid-2025 onward Salesforce-customer-targeting campaign; mechanism is phishing + third-party-integration abuse + tenant misconfiguration NOT a Salesforce platform vulnerability; ShinyHunters NOT on _roster.yaml; no A-grade vendor cluster research on ShinyHunters surfaced in corpus; no cited source attributes 7-Eleven directly to Scattered Spider (#013 HIGH); SecurityWeek's companion Grafana article relayed an unnamed-cybersecurity-companies multi-step attribution chain framing 'Coinbase Cartel linked to ShinyHunters, Scattered Spider, and Lapsus$' — Archimedes does NOT propagate that chain to 7-Eleven or Grafana per Hard Rule 2 + LEGAL-POLICY no-attribution-laundering"
+    topic_tags:
+      - 7-eleven-data-breach
+      - shinyhunters-leak-site-self-claim
+      - salesforce-customer-records
+      - 600k-records-actor-self-claim
+      - ransom-demand-2026-04-21
+      - 250k-sale-offer-after-refusal
+      - maine-state-regulator-filing-two-residents
+      - franchise-application-systems
+      - mid-2025-campaign-frame-salesforce-customer-targeting
+      - prior-victims-instructure-vimeo-wynn-resorts-vercel-medtronic
+      - mechanism-phishing-plus-third-party-integration-abuse-plus-tenant-misconfig
+      - not-a-salesforce-platform-flaw
+      - shinyhunters-not-on-roster
+      - shinyhunters-new-actor-candidate-conservative-medium
+      - shinyhunters-analyst-handoff-flagged
+      - no-a-grade-cluster-research-on-shinyhunters
+      - hard-rule-2-no-attribution-laundering-coinbase-cartel-multi-step-chain
+      - legal-policy-no-attribution-laundering-binding
+      - scattered-spider-no-direct-attribution-to-7-eleven
+      - securityweek-single-directly-retrieved-primary
+      - securityweek-provisional-b
+      - eduard-kovacs-byline
+      - ad-relevance-salesforce-crm-far-dfars-mechanism-class-exposure-roughly-even-chance
+      - analyst-ach-commodity-mechanism-class-leading
+      - sibling-cross-reference-to-finding-2026-05-17-0001-grafana
+      - h4-pattern-of-incidents-now-5-software-vendor-supply-chain-30d
+    related_actors:
+      - actor_name: "ShinyHunters"
+        on_roster: false
+        archimedes_treatment: reported_not_asserted_per_securityweek_per_shinyhunters_own_leak_site_self_claim
+        new_actor_candidate: true
+        proposed_conservative_threat_level: MEDIUM
+      - actor_name: "CoinbaseCartel"
+        on_roster: false
+        archimedes_treatment: ECOSYSTEM_LINEAGE_MULTI_STEP_CHAIN_NOT_PROPAGATED_per_hard_rule_2_LEGAL_POLICY_no_attribution_laundering
+      - actor_name: "Scattered Spider"
+        on_roster: true
+        roster_id: "013"
+        threat_level: HIGH
+        archimedes_treatment: NO_ATTRIBUTION_TO_7_ELEVEN_INCIDENT_per_hard_rule_2
+      - actor_name: "Lapsus$"
+        on_roster: false
+        archimedes_treatment: ECOSYSTEM_LINEAGE_FRAMING_NOT_PROPAGATED_per_hard_rule_2
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-18-0002]
+    digraph: B2
+    digraph_layered:
+      seven_eleven_confirms_intrusion_detected_2026_04_08: B2
+      scope_two_maine_residents_via_franchise_applications: B2
+      shinyhunters_leak_site_listing_with_600k_records_claim: B3
+      ransom_2026_04_21_plus_250k_sale_offer: B2
+      shinyhunters_attribution_per_actor_self_claim_and_securityweek: B2
+      mid_2025_campaign_frame: C3
+      mechanism_phishing_plus_third_party_integration_abuse_plus_tenant_misconfig: B2
+      no_a_grade_corroboration: A1
+      no_a_and_d_entity_named: A1
+      no_cve_no_ioc_no_first_party_telemetry_match: A1
+    wep: likely
+    wep_split:
+      procedural_facts_layer: likely
+      shinyhunters_600k_records_scope_claim: likely
+      mid_2025_campaign_frame: likely
+      ad_salesforce_crm_risk_elevated_by_7_eleven_precedent: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_scope: securityweek_single_directly_retrieved_primary_on_incident_facts_and_campaign_frame
+    analyst_review_complete: false
+    analyst_review_required: false
+    analyst_review_not_required_basis: cluster_anchor_capped_at_likely_by_single_source_veto_hard_rule_2_attribution_laundering_compliance_is_operative_discipline_not_confidence_question
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_below_very_likely_threshold
+    hard_rule_2_framings_load_bearing:
+      - "7-Eleven → ShinyHunters strictly per SecurityWeek per ShinyHunters own leak-site self-claim 2026-04-17"
+      - "Coinbase-Cartel multi-step chain ('Coinbase Cartel linked to ShinyHunters / Scattered Spider / Lapsus$' per SecurityWeek's unnamed-cybersecurity-companies relay) NOT propagated to 7-Eleven — LEGAL-POLICY attribution-laundering prohibition is binding"
+      - "Scattered Spider (#013 HIGH) NOT attributed to 7-Eleven by any cited source"
+    splunk_first_party:
+      status: clean_at_compose
+      hits: 0
+      consecutive_dormant_sweep_count: 42
+      framing: silence_is_not_disconfirming
+    librarian_handoffs_queued:
+      - source_grade_log_additions: []
+    analyst_handoffs_queued:
+      - question: "Should ShinyHunters be added to _roster.yaml as a tracked actor at conservative MEDIUM?"
+        analyst_recommendation: evaluate_on_next_update_tracking_cycle
+        rationale_summary: "Multi-year B-grade media presence + documented multi-victim Salesforce-customer-targeting campaign frame + structural A&D relevance via Salesforce CRM in FAR/DFARS workflows justify roster addition. Conservative MEDIUM (not HIGH) absent A-grade vendor research per evidence-minimum-table. Hard Rule 5 considerations apply at scoring."
+    collector_tripwires_queued:
+      - "Direct retrieval of 7-Eleven's full statement (analogous to openai-self-disclosure path) — second corpus citation at procedural-facts layer"
+      - "Any A-grade vendor (Mandiant / CrowdStrike / Unit 42 / MSTIC / Volexity / Talos) publishes ShinyHunters-named cluster research — escalates ShinyHunters roster scoring viability"
+      - "A&D-prime named as Salesforce customer affected — escalates to daily_brief_action; FLASH evaluation reopens"
+      - "ShinyHunters publishes additional victims via leak site — campaign tempo data point"
+      - "Halcyon / Fortinet FortiGuard CoinbaseCartel profiling publication directly retrieved — ecosystem-lineage framing matures from relay-layer to source-attested (cross-reference to finding-2026-05-17-0001)"
+    resurface_if:
+      - 7_eleven_publishes_follow_up_scope_expansion_statement
+      - 7_eleven_self_disclosure_directly_retrieved_by_collector
+      - a_grade_vendor_publishes_shinyhunters_cluster_research
+      - ad_prime_named_as_salesforce_customer_affected
+      - shinyhunters_publishes_additional_victims
+      - first_party_splunk_hit_on_shinyhunters_indicators
+      - 6th_software_vendor_supply_chain_credential_exposure_incident_in_30d_window
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+    notes: |
+      New monitoring-tier finding from Monday morning sweep. SecurityWeek
+      (provisional B per source-grades.yaml) is single directly-retrieved
+      primary on both the incident-facts layer and the campaign-frame
+      layer. 7-Eleven's own statement + Maine state regulator filing are
+      the underlying victim self-disclosure documents, summarized by
+      SecurityWeek but not directly retrieved by Archimedes this sweep.
+
+      Hard Rule 2 + LEGAL-POLICY no-attribution-laundering is the
+      operative discipline at brief composition. SecurityWeek's
+      companion Grafana article relayed a multi-step
+      unnamed-cybersecurity-companies chain framing CoinbaseCartel as
+      linked to ShinyHunters / Scattered Spider / Lapsus$ — Archimedes
+      does NOT propagate that chain to either Grafana (finding-2026-05-17-0001)
+      or 7-Eleven (this finding). The two are sibling surfaces with
+      distinct named primary attributions. Hard Rule 2 binding constraints:
+        - CoinbaseCartel attribution on Grafana strictly per The Hacker News
+        - ShinyHunters attribution on 7-Eleven strictly per SecurityWeek per
+          actor's own leak-site self-claim
+        - Scattered Spider (#013 HIGH) NOT attributed to either incident by
+          any cited source
+
+      Analyst ACH ranked commodity-mechanism-class exposure ahead of
+      7-Eleven-precedent-elevates-A&D-specific-risk hypothesis (5
+      inconsistencies); A&D-Salesforce-CRM risk elevation phrased at
+      "roughly even chance" — not source-attested. ShinyHunters'
+      Salesforce-customer-targeting campaign frame has structural
+      relevance to A&D primes operating Salesforce CRM for sales /
+      FAR / DFARS compliance management, even though no A&D entity is
+      named.
+
+      ShinyHunters /new-actor candidate flagged at conservative MEDIUM
+      (NOT HIGH) per evidence-minimum-table absent A-grade vendor
+      research. Analyst handoff queued, NOT proposed in this brief.
+
+      H4 pattern-of-incidents framing now at 5 software-vendor
+      supply-chain credential-exposure incidents in rolling 30-day
+      window: SailPoint 2026-05-11 + Checkmarx Jenkins AST plugin
+      2026-05-11 + OpenAI/TanStack 2026-05-14 + Grafana 2026-05-17 +
+      7-Eleven 2026-05-18. Different actors, different mechanisms,
+      same incident shape. If a 6th surfaces, escalate from situational
+      awareness to dedicated analyst write-up.
+
+      Hard Rule 8: 42nd consecutive dormant non-self-telemetry Splunk
+      sweep across the 7-Eleven / ShinyHunters / Salesforce token set
+      (no IOCs published — nothing actionable to query). Silence is not
+      disconfirming.
+
+  - id: 2026-05-18-am-002-miniplasma-cve-2020-17103-poc
+    covered_in: [2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "MiniPlasma PoC publication maps to CVE-2020-17103 (Windows Cloud Filter Mini Filter Driver LPE-to-SYSTEM, cldflt.sys); SecurityWeek (Ionut Arghire, 06:38 EDT) is first surface to make the explicit CVE mapping and attribute originating disclosure to Google Project Zero; researcher Chaotic Eclipse / Nightmare Eclipse asserts December 2020 patch was silently rolled back or never fully applied; PoC reportedly works on Windows 11 with May 2026 cumulative security updates applied but does NOT work on Insider Preview Canary builds (implies unreleased upstream fix in development stream); Microsoft MSRC emailed by SecurityWeek with no response; BleepingComputer 2026-05-17 18:30 EDT + The Hacker News 2026-05-18 00:59 EDT are originating and D+1 surfaces, all three trace to same researcher PoC (NOT independent corroboration per INTEL-GRADING independence test); no A-grade vendor in-the-wild exploitation attestation; CVSS 7.0 LPE class; CISA KEV unchanged; Hard Rule 3 — researcher repository URL NOT linked in brief; analyst ACH on Microsoft-patch-behavior hypothesis space non-diagnostic among four substantive hypotheses (H1 never-fully-patched, H2 silent-rollback, H3 researcher-mis-mapping, H5 composite); KAC blocking assumption A1 (PoC works as claimed) Low-confidence + Critical-centrality triggers halt-pending-test; cluster anchor WEP capped at likely on publication + CVE-mapping layer, substantive PoC-effectiveness layer split at roughly_even_chance pending MSRC response or A-grade vendor reproduction"
+    topic_tags:
+      - cve-2020-17103
+      - cve-2020-17103-rediscovery-2026-05-17
+      - miniplasma
+      - windows-cloud-filter-driver-lpe-to-system
+      - cldflt-sys
+      - lpe-class-cvss-7-0
+      - researcher-chaotic-eclipse-nightmare-eclipse
+      - researcher-persona-not-tracked-actor-per-roster-definition
+      - poc-publication-2026-05-17
+      - securityweek-ionut-arghire-byline
+      - securityweek-first-to-make-cve-mapping
+      - google-project-zero-originating-disclosure-historical-fact
+      - microsoft-december-2020-patch-tuesday-historical-record
+      - msrc-emailed-no-response-published
+      - silently-rolled-back-or-never-patched-researcher-hedge-preserved-verbatim
+      - hard-rule-2-no-archimedes-originated-microsoft-patch-behavior-claim
+      - hard-rule-3-poc-repository-url-not-linked
+      - insider-preview-canary-does-not-work-data-point-implies-unreleased-fix
+      - bleepingcomputer-originating-coverage-2026-05-17-18-30-edt
+      - the-hacker-news-d-plus-1-relay-2026-05-18-00-59-edt
+      - three-relay-cluster-not-independent-effective-single-primary
+      - no-a-grade-vendor-in-the-wild-attestation
+      - mandiant-crowdstrike-unit42-mstic-volexity-talos-symantec-all-silent
+      - cisa-kev-unchanged-2026-05-15-verified
+      - bleepingcomputer-spotted-being-exploited-editorial-framing-not-a-grade-vendor-attested
+      - cluster-anchor-poc-publication-plus-cve-mapping-layer-wep-likely
+      - substantive-poc-effectiveness-layer-split-wep-roughly-even-chance
+      - microsoft-patch-behavior-hypothesis-space-ach-non-diagnostic
+      - kac-halt-pending-test-on-poc-works-as-claimed-assumption
+      - analyst-ach-h1-h2-h3-h5-zero-inconsistencies-h4-null-dispreferred
+      - assessment-blocked-pending-test-msrc-response-or-a-grade-vendor-reproduction
+      - tracked-vuln-list-candidate-conservative-case-not-promoted-today
+      - status-update-candidate-for-next-morning-brief-grader-pass
+    related_actors:
+      - actor_name: "Chaotic Eclipse / Nightmare Eclipse"
+        on_roster: false
+        archimedes_treatment: researcher_persona_not_threat_actor_per_roster_definition
+    related_vulns:
+      - cve: CVE-2020-17103
+        cvss: 7.0
+        class: "Windows Cloud Filter driver LPE-to-SYSTEM (cldflt.sys)"
+        kev_listed: false
+        exploitation_confirmed_a_grade: false
+        poc_published: true
+        poc_repo_url_referenced_by_source_archimedes_not_linked_per_hard_rule_3: true
+    related_campaigns: []
+    finding_ids: [finding-2026-05-18-0001]
+    digraph: B2
+    digraph_layered:
+      poc_published_by_chaotic_eclipse_nightmare_eclipse: B2
+      cve_2020_17103_historical_assignment: A1
+      google_project_zero_originating_2020_disclosure: A1
+      cvss_7_0_lpe_class: A1
+      exploit_works_on_windows_11_with_may_2026_security_updates_claim: B2
+      exploit_does_not_work_on_insider_preview_canary_claim: B2
+      patch_silently_rolled_back_or_never_patched_microsoft_behavior_claim: C3
+      no_in_the_wild_exploitation_a_grade_attestation: A1
+      not_on_cisa_kev_catalog: A1
+      cluster_anchor: B2
+    wep: likely
+    wep_split:
+      cluster_anchor_publication_plus_cve_mapping_layer: likely
+      substantive_poc_effectiveness_layer: roughly_even_chance
+      microsoft_patch_behavior_hypothesis_space_h1_h2_h3_h5: roughly_even_chance
+      null_hypothesis_h4_practical_exploitability_overstated: unlikely
+    single_source_veto_applied: true
+    single_source_veto_scope: poc_works_as_claimed_assumption_and_microsoft_patch_behavior_claim
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260518-084200
+    analyst_sats_applied: [sat-ach, sat-kac]
+    assessment_blocked_pending_test: true
+    test_required: "Independent vendor reproduction of the PoC against a clean fully-patched Windows 11 build by Mandiant / CrowdStrike / Unit 42 / MSTIC / Volexity / Talos, OR MSRC confirmation of exploitability"
+    red_team_review_required: false
+    red_team_review_required_basis: wep_likely_below_very_likely_threshold_substantive_layer_at_roughly_even_chance_also_below_threshold
+    hard_rule_2_framings_load_bearing:
+      - "MiniPlasma 'silently rolled back or never patched' Microsoft-patch-behavior claim preserved verbatim as researcher hedge; MSRC unresponsive; Archimedes does NOT collapse to single-interpretation Archimedes-originated claim — ACH non-diagnostic among four substantive hypotheses"
+      - "BleepingComputer 'spotted being exploited' framing on 3-vuln cluster (MiniPlasma + BlueHammer ZD-001 + RedSun ZD-002) is editorial framing NOT A-grade vendor-attested observation per Hard Rule 2 evaluation across three FLASH sweeps (33d3f9a / 9c61bdb / a8121bc)"
+    hard_rule_3_compliance:
+      poc_repository_url_in_brief_body: false
+      brief_body_treatment: "Researcher GitHub PoC repository URL referenced by SecurityWeek source but NOT propagated to brief body or coverage log per Hard Rule 3"
+    splunk_first_party:
+      status: clean_at_compose
+      hits: 0
+      consecutive_dormant_sweep_count: 42
+      framing: silence_is_not_disconfirming
+      tokens_queried: "CVE-2020-17103 + MiniPlasma + cldflt + Chaotic Eclipse + Nightmare Eclipse"
+    librarian_handoffs_queued:
+      - source_grade_log_additions: []
+    vuln_tracker_handoffs_queued:
+      - question: "Should CVE-2020-17103 be added to threats/vulnerabilities/_index.yaml as a tracked vuln?"
+        vuln_tracker_recommendation: conservative_case_defer_until_a_grade_corroboration
+        rationale_summary: "Conservative disposition pending MSRC response or A-grade vendor reproduction. Aggressive case (tracking the rediscovery claim with watch_signals entry) deferred."
+    collector_tripwires_queued:
+      - "Microsoft MSRC publishes statement on the CVE-2020-17103 rediscovery claim (confirming, denying, or assigning fresh CVE) — highest-value single piece of evidence available"
+      - "Mandiant / CrowdStrike / Unit 42 / MSTIC / Volexity / Talos publishes independent reproduction or vendor analysis — hardens E1 evidence and possibly produces fresh diagnostic evidence"
+      - "Researcher Chaotic Eclipse / Nightmare Eclipse publishes technical writeup with code-path detail — may surface diagnostic detail distinguishing H1 vs H2 vs H5"
+      - "CISA KEV adds CVE-2020-17103 — implies federal-level confirmation of exploitability"
+      - "Second-corpus researcher OTHER than Chaotic Eclipse reproduces or extends the claim — resolves corpus-track-record concern, reduces H3 probability"
+      - "Splunk first-party detects MiniPlasma technique signature (cldflt.sys exploitation) against defenseclaw_local — Hard Rule 8 first-party precedence over external claims"
+    resurface_if:
+      - msrc_publishes_statement_on_cve_2020_17103_rediscovery
+      - a_grade_vendor_publishes_independent_reproduction_or_analysis
+      - researcher_publishes_code_path_technical_writeup
+      - cisa_kev_adds_cve_2020_17103
+      - second_corpus_researcher_reproduces_claim
+      - first_party_splunk_hit_on_miniplasma_signature
+      - patch_released_by_microsoft_acknowledging_rediscovery_or_assigning_fresh_cve
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+    notes: |
+      New monitoring-tier finding from Monday morning sweep. SecurityWeek
+      (provisional B) is the first surface to make the explicit
+      CVE-2020-17103 mapping; BleepingComputer (originating, 2026-05-17
+      18:30 EDT) and The Hacker News (D+1, 2026-05-18 00:59 EDT) trace
+      to the same researcher PoC and are NOT independent corroboration
+      per INTEL-GRADING independence test.
+
+      Analyst SAT-ACH on the Microsoft-patch-behavior hypothesis space
+      produced a non-diagnostic matrix among four substantive hypotheses
+      (H1 never-fully-patched, H2 silent-rollback, H3 researcher-mis-
+      mapping, H5 composite — all zero inconsistencies). The null
+      hypothesis (H4) is dispreferred by one inconsistency (E1 working-
+      PoC claim). Per Heuer's framework, the non-diagnostic structure
+      itself is the finding: ACH cannot elevate any of H1/H2/H3/H5 above
+      the others on present evidence. This honors the grader directive
+      to NOT collapse the patch-behavior question into a single
+      hypothesis.
+
+      Analyst SAT-KAC surfaced ten assumptions; A1 (PoC works as claimed
+      against clean fully-patched Windows 11) is Low-confidence +
+      Critical-centrality — the most-dangerous KAC quadrant. The finding's
+      load-bearing operational claim depends on researcher self-assertion
+      relayed through three B-grade media surfaces. Halt-pending-test
+      triggered. A10 (procedural-fact-of-publication) is Sound, so the
+      cluster anchor "likely" on the PoC-publication + CVE-mapping layer
+      is preserved while substantive PoC-effectiveness layer is at
+      "roughly even chance."
+
+      Hard Rule 2 binding constraints:
+        - Microsoft "silently rolled back" claim preserved verbatim as
+          researcher hedge; MSRC unresponsive at T+~36h from BleepingComputer
+          originating coverage; Archimedes does NOT collapse to single-
+          interpretation Archimedes-originated claim
+        - BleepingComputer "spotted being exploited" framing on 3-vuln
+          cluster (MiniPlasma + BlueHammer + RedSun) is editorial framing
+          NOT A-grade vendor-attested observation per Hard Rule 2 evaluation
+          across three FLASH sweeps
+
+      Hard Rule 3: researcher repository URL referenced by SecurityWeek
+      source but NOT propagated to brief body or coverage log.
+
+      Hard Rule 8: 42nd consecutive dormant non-self-telemetry Splunk
+      sweep across CVE-2020-17103 + MiniPlasma + cldflt + researcher-persona
+      tokens. Silence is not disconfirming.
+
+      Tracked-vuln list candidate disposition: conservative (NOT added
+      to _index.yaml today) pending MSRC response or A-grade vendor
+      reproduction. Vuln-tracker subagent should evaluate on next
+      /update-tracking pass.
+
+      Status-update candidate for next morning brief grader pass; rerun
+      ACH + KAC when MSRC response or A-grade vendor reproduction surfaces.
+
+  - id: 2026-05-18-am-003-cve-20182-sd-wan-t-plus-10h-post-deadline
+    covered_in: [2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "CVE-2026-20182 Cisco Catalyst SD-WAN federal KEV deadline lapsed end-of-day Sunday 2026-05-17; T+10h post-mortem at Monday morning brief publication; no fresh A-grade exploitation reporting from Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike across the full post-deadline window; UAT-8616 attribution per Cisco Talos with visibility-skew caveat carries forward; federal-agency-compliance reporting expected via next-day CISA / OMB channels NOT the KEV catalog itself"
+    topic_tags:
+      - cve-2026-20182
+      - cisco-catalyst-sd-wan-auth-bypass
+      - cvss-10-0
+      - kev-federal-deadline-lapsed-end-of-day-sunday-2026-05-17
+      - t-plus-10h-post-mortem
+      - no-fresh-a-grade-exploitation-reporting-mandiant-volexity-unit42-mstic-crowdstrike
+      - uat-8616-per-cisco-talos-visibility-skew-caveat-carry-forward
+      - hard-rule-2-talos-visibility-skew-caveat-preserved
+      - federal-compliance-reporting-likely-via-cisa-omb-not-kev-catalog
+      - single-source-veto-on-exploitation-claim-layer
+      - status-only-carry-forward-with-update-flag
+    related_actors:
+      - actor_name: "UAT-8616"
+        on_roster: false
+        archimedes_treatment: reported_not_asserted_per_cisco_talos_carry_forward
+    related_vulns:
+      - cve: CVE-2026-20182
+        cvss: 10.0
+        kev_due_date: 2026-05-17
+    related_campaigns: []
+    finding_ids: [finding-2026-05-14-0005]
+    digraph: A2
+    wep: likely
+    update_relationship:
+      updates_id: 2026-05-17-pm-001-tycoon2fa-phaas-rebuild-device-code-phishing-m365
+      update_type: deadline_status_transition
+      what_changed: "afternoon brief covered T-0 deadline-day with no exploitation posture shift through afternoon; morning brief covers T+10h post-mortem with no fresh A-grade reporting across the post-deadline window"
+    resurface_if:
+      - second_a_grade_vendor_active_exploitation_confirmation_publishes
+      - first_party_splunk_hit_on_cve_20182_indicators
+      - ad_prime_named_as_uat_8616_victim
+      - cisa_omb_publishes_compliance_attestation_data
+    first_covered: 2026-05-14
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+    notes: |
+      Continued carry-forward from finding-2026-05-14-0005 source-of-record.
+      T+10h post-deadline window covered cleanly with no fresh A-grade
+      reporting from any major IR firm. Talos visibility-skew caveat
+      preserved across multi-day carry chain. Hard Rule 2 single-source
+      veto on exploitation-claim layer continues to hold. Federal-agency
+      compliance attestation data expected via CISA / OMB downstream
+      reporting, not surfaced in KEV catalog itself per established pattern.
+
+  - id: 2026-05-18-am-004-cve-42897-exchange-owa-xss-t-11-status
+    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "CVE-2026-42897 Microsoft Exchange OWA XSS federal KEV deadline 2026-05-29 (T-11 days, Friday); >48h single-source veto on active-exploitation-in-the-wild claim still holds across full multi-day carry-forward; MSRC remains sole originating attester; Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike silent across the full window"
+    topic_tags:
+      - cve-2026-42897
+      - exchange-owa-xss
+      - cvss-8-1
+      - kev-deadline-2026-05-29-t-minus-11-friday
+      - greater-than-48h-single-source-veto-active-exploitation-holds
+      - msrc-sole-originating-attester
+      - mandiant-volexity-unit42-mstic-crowdstrike-silent
+      - status-only-carry-forward
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42897
+        cvss: 8.1
+        kev_due_date: 2026-05-29
+    related_campaigns: []
+    finding_ids: [finding-2026-05-15-0003]
+    digraph: A1
+    wep: likely
+    single_source_veto_applied: true
+    resurface_if:
+      - second_a_grade_vendor_active_exploitation_confirmation
+      - first_party_splunk_hit_on_exchange_owa_xss_indicators
+      - ad_prime_named_as_victim
+      - kev_deadline_approaches_t_minus_5_or_closer
+    first_covered: 2026-05-15
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-am-005-cve-42945-nginx-rift-vulncheck-canaries-dual-relay
+    covered_in: [2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "CVE-2026-42945 NGINX Rift PoC (depthfirst) carry-forward; VulnCheck Canaries scanner-class probes per SecurityWeek + The Hacker News dual-relay; defensive telemetry NOT A-grade attested production exploitation per Hard Rule 2; F5 K000160932 patches predate observation; PoC repository URL NOT linked per Hard Rule 3"
+    topic_tags:
+      - cve-2026-42945
+      - nginx-rift
+      - cvss-v4-9-2
+      - heap-overflow-ngx-http-rewrite-module
+      - poc-publication-depthfirst
+      - vulncheck-canaries-scanner-class-probes
+      - securityweek-plus-the-hacker-news-dual-relay
+      - b-grade-defensive-telemetry-not-a-grade-production-exploitation
+      - hard-rule-2-anti-elevation-vulncheck-honeypot-class
+      - hard-rule-3-poc-repo-url-not-linked
+      - f5-k000160932-patches-predate-observation
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42945
+        cvss_v4: 9.2
+    related_campaigns: []
+    finding_ids: [finding-2026-05-16-0001]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    hard_rule_3_compliance:
+      poc_repository_url_in_brief_body: false
+    resurface_if:
+      - a_grade_vendor_attests_confirmed_production_exploitation
+      - first_party_splunk_hit_on_nginx_rift_indicators
+      - ad_prime_named_as_victim
+      - exploitation_observed_within_14d_post_poc_window
+    first_covered: 2026-05-16
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-am-006-shai-hulud-npm-clones-unattributed
+    covered_in: [2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "Shai-Hulud npm worm clones — 4 packages by UNATTRIBUTED actor per Ox Security (@deadcode09284814/axios-util, axois-utils, chalk-tempalte, color-style-utils); materializes derivative-attacks-30-day WEP from 2026-05-15 TeamPCP source-code release at T+3d; Ox preserved attribution restraint — clones NOT attributed to TeamPCP from clone-publisher act alone; Hard Rule 2 binding"
+    topic_tags:
+      - shai-hulud-npm-worm-clones
+      - 4-cloned-packages-deadcode09284814-axios-util-axois-utils-chalk-tempalte-color-style-utils
+      - ox-security-attribution-restraint
+      - unattributed-actor-not-teampcp
+      - derivative-attacks-30-day-wep-materialized-t-plus-3d
+      - 2026-05-15-teampcp-source-code-release-lineage
+      - hard-rule-2-no-teampcp-cross-attribution-from-clone-publisher-act
+      - dependency-quarantine-watchlist-action
+      - monitoring-tier-c3
+      - other-signal-placement
+    related_actors:
+      - actor_name: "UNATTRIBUTED npm clone publisher"
+        on_roster: false
+        archimedes_treatment: reported_not_asserted_per_ox_security_per_hard_rule_2
+      - actor_name: "TeamPCP"
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: NOT_attributed_to_npm_clone_publication_from_source_code_release_alone_per_hard_rule_2
+    related_vulns: []
+    related_campaigns: [shai-hulud-derivative-attacks-30d-wep-materialization]
+    finding_ids: []
+    digraph: C3
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: ox_security_single_primary_via_status_update_mention_from_06_00_flash_a8121bc
+    resurface_if:
+      - additional_shai_hulud_clones_published_by_same_or_other_actor
+      - a_grade_vendor_attributes_clones_to_teampcp_or_other_tracked_actor
+      - first_party_splunk_hit_on_clone_package_names
+      - dependency_pipeline_compromise_attributed_to_clone_consumption
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+    notes: |
+      Status-update mention from 06:00 FLASH (a8121bc) Item 2 evaluation;
+      NOT promoted to a separate finding this sweep. VT-006 / TeamPCP
+      source-code-release-lineage carry-forward refinement. Ox Security
+      attribution restraint pattern matches the four-firm UNATTRIBUTED
+      consensus on node-ipc compromise (finding-2026-05-14-0009 +
+      finding-2026-05-15-0005). Hard Rule 2 binding: Archimedes does NOT
+      cross-attribute clone-publisher act to TeamPCP.
+
+  - id: 2026-05-18-am-007-cve-31635-dirtydecrypt-linux-rxgk-lpe
+    covered_in: [2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "CVE-2026-31635 DirtyDecrypt Linux kernel rxgk LPE-to-root — V12 Security PoC; patched upstream 2026-04-25; narrow distro footprint (Fedora / Arch / openSUSE Tumbleweed only, NOT RHEL / Debian stable / Ubuntu LTS); CVSS unpublished in source (LPE class typically scores ~7.0-7.8 below FLASH triggers); no A-grade exploitation attestation; tracked-vuln list candidate pending A-grade corroboration"
+    topic_tags:
+      - cve-2026-31635
+      - dirtydecrypt-linux-kernel-rxgk-lpe-to-root
+      - v12-security-poc-research
+      - patched-upstream-2026-04-25
+      - narrow-distro-footprint-fedora-arch-opensuse-tumbleweed-only
+      - not-rhel-debian-ubuntu-lts
+      - cvss-unpublished-lpe-class-typically-7-0-7-8
+      - no-a-grade-exploitation-attestation
+      - tracked-vuln-list-candidate-pending-corroboration
+      - monitoring-tier-c3
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-31635
+        cvss: not_published
+    related_campaigns: []
+    finding_ids: []
+    digraph: C3
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: v12_security_single_primary_via_status_update_mention_from_06_00_flash_a8121bc
+    resurface_if:
+      - a_grade_vendor_attests_production_exploitation_or_publishes_research
+      - cisa_kev_adds_cve_31635
+      - first_party_splunk_hit_on_dirtydecrypt_indicators
+      - exploitation_observed_in_one_of_named_distros_with_a_grade_attestation
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+    notes: |
+      Status-update mention from 06:00 FLASH (a8121bc) Item 5 evaluation;
+      NOT promoted to a separate finding this sweep. V12 Security research
+      anchor; first-surface researcher Will Dormann / Tharros named-analyst
+      byline (potential provisional-grade candidate for source-grades.yaml
+      on next surface). Tracked-vuln candidate disposition: conservative
+      (NOT added to _index.yaml today) pending A-grade corroboration.
+
+  - id: 2026-05-18-am-008-grafana-coinbasecartel-sibling-cross-reference
+    covered_in: [2026-05-17-morning, 2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "Grafana / CoinbaseCartel sibling cross-reference — finding-2026-05-17-0001 stands; SecurityWeek's 7-Eleven companion article relayed the same unnamed-cybersecurity-companies multi-step chain linking Coinbase Cartel to ShinyHunters / Scattered Spider / Lapsus$; Archimedes does NOT collapse 7-Eleven and Grafana into a Coinbase-Cartel cluster per Hard Rule 2 + LEGAL-POLICY no-attribution-laundering; H4 pattern-of-incidents framing now at 5 software-vendor supply-chain credential-exposure incidents in rolling 30-day window (SailPoint + Checkmarx + OpenAI/TanStack + Grafana + 7-Eleven)"
+    topic_tags:
+      - grafana-coinbasecartel-sibling
+      - 7-eleven-shinyhunters-sibling
+      - sibling-not-collapsed-into-coinbasecartel-cluster
+      - hard-rule-2-no-attribution-laundering-multi-step-relay
+      - legal-policy-no-attribution-laundering-binding
+      - h4-pattern-of-incidents-5-in-30d
+      - sailpoint-checkmarx-openai-tanstack-grafana-7-eleven
+      - software-vendor-supply-chain-credential-exposure-pattern
+      - correlation-callout-not-content-resurface
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [software-vendor-supply-chain-credential-exposure-pattern-30d]
+    finding_ids: [finding-2026-05-17-0001]
+    digraph: B2
+    wep: likely
+    correlation_callout: true
+    correlation_callout_target_brief: 2026-05-17-morning
+    correlation_callout_rationale: "Connect 7-Eleven to Grafana as sibling supply-chain-pattern surfaces; explicitly NOT collapsing the two into a single Coinbase-Cartel cluster"
+    resurface_if:
+      - 6th_software_vendor_supply_chain_credential_exposure_incident_in_30d_window
+      - direct_retrieval_of_halcyon_or_fortinet_coinbasecartel_profiling
+      - a_grade_vendor_attributes_coinbasecartel_or_shinyhunters_to_ad_prime
+      - first_party_splunk_hit_on_supply_chain_pattern_indicators
+    first_covered: 2026-05-17
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-am-009-pwn2own-berlin-final-wrap-carry-forward
+    covered_in: [2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "Pwn2Own Berlin 2026 final wrap carry-forward — final totals $1.298M / 47 zero-days / DEVCORE Master of Pwn 50.5 points / $505K rewards; Orange Tsai Exchange RCE-to-SYSTEM chain under standard ZDI 90-day vendor-coordinated-disclosure embargo through ~2026-08-13"
+    topic_tags:
+      - pwn2own-berlin-2026-final-wrap
+      - 1-298-million-rewards
+      - 47-zero-days
+      - devcore-master-of-pwn-50-5-points
+      - orange-tsai-exchange-rce-to-system-chain
+      - zdi-90-day-embargo-through-2026-08-13
+      - status-only-carry-forward
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-16-0002]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - zdi_embargo_expires_2026_08_13_with_cve_assignments
+      - microsoft_msrc_advisory_for_orange_tsai_exchange_chain
+      - active_exploitation_pre_embargo_expiration
+    first_covered: 2026-05-16
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-am-010-symantec-fast16-ratification-clock-t-plus-37h35m
+    covered_in: [2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "Symantec Fast16 carry-forward — Sector Focus structural-posture context only; provisional-A ratification clock fired 2026-05-16T18:25:00-04:00 (T+37h35m at brief publication time); The Hacker News second-corpus surface on nuclear-weapons-simulations sabotage-intent reinforces ratification via Broadcom-owned Symantec + Carbon Black confirmation; Fast16 is pre-Stuxnet 2005-2010 historical activity NOT a current 2026 campaign; Archimedes does NOT originate Equation Group attribution per LEGAL-POLICY"
+    topic_tags:
+      - fast16
+      - symantec-fast16-carry-forward
+      - sector-focus-a-and-d-structural-posture
+      - provisional-a-ratification-clock-t-plus-37h-35m
+      - the-hacker-news-second-corpus-surface
+      - nuclear-weapons-simulations-sabotage-intent
+      - broadcom-symantec-carbon-black-confirmation
+      - pre-stuxnet-2005-2010-historical-not-current
+      - hard-rule-2-no-equation-group-attribution-originated
+      - legal-policy-no-attribution-origination
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-16-0003]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    resurface_if:
+      - operator_ratification_of_provisional_a_symantec_grade
+      - third_corpus_surface_strengthens_or_contradicts_fast16
+      - modern_2026_variant_of_fast16_observed_in_the_wild
+      - a_grade_vendor_attributes_fast16_to_specific_actor_other_than_equation_group
+    first_covered: 2026-05-16
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  - id: 2026-05-18-am-brief-meta
+    covered_in: [2026-05-18-morning]
+    brief_file: threats/briefs/2026-05-18-morning.md
+    headline: "Brief meta — 2026-05-18 morning: 8 findings referenced (2 new: finding-2026-05-18-0001 MiniPlasma CVE-2020-17103 refinement B2/likely with substantive layer split at roughly_even_chance pending MSRC or A-grade reproduction; finding-2026-05-18-0002 7-Eleven ShinyHunters Salesforce-records disclosure B2/likely with Hard Rule 2 + LEGAL-POLICY discipline on Coinbase-Cartel multi-step chain; 6 carry-forwards: CVE-2026-20182 SD-WAN T+10h post-deadline + CVE-2026-42897 Exchange OWA XSS T-11 + CVE-2026-42945 NGINX Rift VulnCheck Canaries dual-relay + Pwn2Own Berlin final wrap + Symantec Fast16 provisional-A ratification clock T+37h35m + Grafana sibling cross-reference); Layer 1 word count 798 within 400-800 morning target; Layer 2 Discord Summary ~252 words within 150-300 band and ~1885 chars under 1900 ceiling; both standing sections present (Sector Focus A&D substantive + Iran Cyber Watch silent_day_template); no red-team triggers crossed (both new findings capped at likely cluster anchor); no FLASH triggers fired across 00:00 + 06:00 sweeps; Hard Rule 2 strict on 7-Eleven/ShinyHunters attribution + Coinbase-Cartel non-propagation + Scattered Spider non-attribution + MiniPlasma patch-behavior verbatim hedge + Shai-Hulud non-TeamPCP + UAT-8616 visibility-skew carry-forward; Hard Rule 3 — MiniPlasma + NGINX Rift PoC URLs NOT linked; Hard Rule 6 — zero direct quotes; pre-flight 13/13 passed; 42nd consecutive dormant non-self-telemetry Splunk sweep"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - monday-cadence
+      - 8-findings-referenced-2-new-6-carry-forward
+      - new-finding-miniplasma-cve-2020-17103-finding-2026-05-18-0001
+      - new-finding-7-eleven-shinyhunters-finding-2026-05-18-0002
+      - active-threats-lead-7-eleven-shinyhunters-salesforce-records
+      - vulnerabilities-section-miniplasma-cve-20182-cve-42897-cve-42945
+      - sector-focus-fast16-ratification-status-plus-cve-20182-direct
+      - actor-activity-shinyhunters-new-actor-candidate-medium
+      - iran-cyber-silent-day-template
+      - other-signal-shai-hulud-clones-dirtydecrypt-grafana-sibling-pwn2own
+      - standing-sections-both-present
+      - no-red-team-triggers-crossed
+      - no-flash-triggers-fired-00-00-and-06-00-sweeps
+      - hard-rule-2-strict-7-eleven-shinyhunters-coinbase-cartel-scattered-spider
+      - hard-rule-2-miniplasma-patch-behavior-verbatim-hedge
+      - hard-rule-2-shai-hulud-non-teampcp
+      - hard-rule-2-uat-8616-visibility-skew-carry-forward
+      - hard-rule-2-equation-group-non-origination-fast16
+      - hard-rule-3-miniplasma-poc-repo-url-not-linked
+      - hard-rule-3-nginx-rift-poc-repo-url-not-linked
+      - hard-rule-6-zero-direct-quotes
+      - hard-rule-8-splunk-first-party-clean-42-consecutive-dormant-sweeps
+      - preflight-13-of-13-passed
+      - layer-1-canonical-record-798-words-within-400-800
+      - layer-2-discord-summary-under-1900-chars
+      - legal-policy-no-attribution-laundering-binding-7-eleven-grafana-non-collapse
+    related_actors:
+      - actor_name: "ShinyHunters"
+        on_roster: false
+        new_actor_candidate: true
+        proposed_conservative_threat_level: MEDIUM
+      - actor_name: "CoinbaseCartel"
+        on_roster: false
+      - actor_name: "Scattered Spider"
+        on_roster: true
+        roster_id: "013"
+        threat_level: HIGH
+      - actor_name: "Chaotic Eclipse / Nightmare Eclipse"
+        on_roster: false
+      - actor_name: "UAT-8616"
+        on_roster: false
+    related_vulns:
+      - cve: CVE-2020-17103
+      - cve: CVE-2026-20182
+      - cve: CVE-2026-42897
+      - cve: CVE-2026-42945
+      - cve: CVE-2026-31635
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-18-0001
+      - finding-2026-05-18-0002
+      - finding-2026-05-17-0001
+      - finding-2026-05-14-0005
+      - finding-2026-05-15-0003
+      - finding-2026-05-16-0001
+      - finding-2026-05-16-0002
+      - finding-2026-05-16-0003
+    absorbs_flashes: []
+    resurface_if: []
+    pre_flight_result: passed_13_of_13_iteration_4_word_count_798_within_400_800
+    pre_flight_notes: |
+      Iteration 1: Layer 1 body ~1370 words → over 800 max. Identified
+      MiniPlasma bullet (~200 words) and Active Threats item (~285 words)
+      as longest. Iteration 2: tightened Sector Focus + Why-it-matters +
+      MiniPlasma analyst-detail → ~1240 words. Still over. Iteration 3:
+      compressed Active Threats body + dropped Tycoon2FA monitoring trailer +
+      shortened Vulnerabilities bullets → ~900 words. Iteration 4:
+      aggressive cuts to Sector Focus + footer + Active Threats + Vuln
+      bullets + Actor Activity ShinyHunters bullet → 798 words. Within
+      400-800 morning target.
+
+      Layer 2 Discord Summary initial iteration 1 was ~2285 chars (well
+      over 1900 ceiling) due to long 7-Eleven bullet body + MiniPlasma URL
+      length. Iterations 2-3 tightened all bullets including 7-Eleven body
+      ("offered data at $250K" instead of "offered the data for $250,000"),
+      MiniPlasma headline shortening, CVE bullet compression → ~1885 chars
+      (under ceiling). Layer 2 word count ~252 (within 150-300 band).
+
+      Hard Rule 6: zero direct quotes preserved throughout despite two
+      new findings carrying material verbatim claims (ShinyHunters
+      leak-site self-claim and researcher Microsoft-patch-behavior hedge);
+      both paraphrased.
+
+      Hard Rule 2: critical compliance — SecurityWeek's companion
+      Grafana article (finding-2026-05-17-0001) relayed an unnamed-
+      cybersecurity-companies multi-step chain linking Coinbase Cartel
+      to ShinyHunters / Scattered Spider / Lapsus$; Archimedes does NOT
+      propagate that chain to 7-Eleven or Grafana. The two are sibling
+      surfaces with distinct named primary attributions. LEGAL-POLICY
+      attribution-laundering prohibition is the binding constraint.
+      Scattered Spider (#013 HIGH) is NOT attributed to 7-Eleven by any
+      cited source — multi-step Coinbase-Cartel relay does not transit
+      Hard Rule 2.
+
+      Hard Rule 3: MiniPlasma researcher GitHub repository URL referenced
+      by SecurityWeek source but NOT propagated to brief body. NGINX
+      Rift depthfirst PoC repository URL NOT linked (established
+      discipline from prior days).
+
+      Hard Rule 8: 42nd consecutive dormant non-self-telemetry Splunk
+      sweep across 7-Eleven + ShinyHunters + Salesforce + Coinbase Cartel
+      + MiniPlasma + CVE-2020-17103 + cldflt + Chaotic Eclipse + Nightmare
+      Eclipse + CVE-2026-20182 + Cisco SD-WAN + CVE-2026-42897 + Exchange
+      OWA + CVE-2026-42945 + NGINX Rift + CVE-2026-31635 + DirtyDecrypt
+      + Shai-Hulud + Fast16 tokens. Silence is not disconfirming.
+    first_covered: 2026-05-18
+    last_covered: 2026-05-18
+    retraction: null
+    test: false
+    notes: |
+      Brief composition flow: Monday morning cadence. Lead is the new
+      7-Eleven / ShinyHunters finding (highest A&D defensive relevance
+      via Salesforce-CRM mechanism class). MiniPlasma is the second-most-
+      important new item but is placed in Vulnerabilities (not Active
+      Threats) because the substantive PoC-effectiveness layer is at
+      "roughly even chance" per KAC halt-pending-test, not a B2-action-
+      threshold finding without MSRC or A-grade vendor reproduction.
+
+      Anti-repetition discipline:
+        - CVE-2026-20182: status-check carry-forward with 🔗 Update flag
+          (T-0 → T+10h post-mortem); deadline lapsed end-of-day Sunday.
+        - CVE-2026-42897: status-only carry-forward at T-11 Friday;
+          single-source veto holds across full multi-day window.
+        - CVE-2026-42945: status-only carry-forward; VulnCheck Canaries
+          dual-relay refinement already captured in afternoon brief, no
+          new defensive-telemetry signal in window.
+        - Pwn2Own Berlin: status-only carry-forward in Other Signal;
+          ZDI embargo unchanged.
+        - Symantec Fast16: structural-posture carry-forward in Sector
+          Focus; ratification clock T+37h35m past elapsed deadline.
+        - Grafana sibling: correlation-callout-not-resurface; 7-Eleven
+          + Grafana are sibling surfaces explicitly NOT collapsed into
+          Coinbase-Cartel cluster per Hard Rule 2.
+
+      Hard Rule 8: 42nd consecutive dormant non-self-telemetry Splunk
+      sweep. Sweep lineage: 39th (2026-05-17 18:00 FLASH 33d3f9a) /
+      40th (2026-05-18 00:00 FLASH 9c61bdb) / 41st (2026-05-18 06:00
+      FLASH a8121bc) / 42nd (this morning compose). Silence is not
+      disconfirming.
+
+      Analyst handoff queued: ShinyHunters /new-actor evaluation at
+      conservative MEDIUM on next /update-tracking cycle.
+
+      Vuln-tracker handoff queued: CVE-2020-17103 conservative case
+      (NOT added to _index.yaml today) pending MSRC response or
+      A-grade vendor reproduction.
 
 # ============================================================================
 # Valid resurface_if conditions

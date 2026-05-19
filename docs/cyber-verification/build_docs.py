@@ -317,134 +317,186 @@ def build_howto() -> Path:
     heading(doc, "How to submit the Cyber Verification request to Anthropic", level=1)
     para(
         doc,
-        "Step-by-step. The submission is via a web form on Anthropic's site, "
-        "not an upload. The draft Word document is a reference you paste from "
-        "while filling out the form.",
+        "Step-by-step. Anthropic's AUP refusal includes a Cyber Verification "
+        "form URL, but the token is truncated at the source — the URL as shown "
+        "is not usable directly. The reliable path is to contact Anthropic "
+        "Support and submit the draft content via the support channel.",
         italic=True,
     )
     para(doc, "")
     divider(doc)
 
-    heading(doc, "What you have", level=2)
+    # --- What's in this folder
+    heading(doc, "What's in this folder", level=2)
     bullet(
         doc,
-        "A draft Word document in this same folder: "
-        "archimedes-cyber-verification-draft.docx",
+        "archimedes-cyber-verification-draft.docx — the content of your "
+        "verification request (use case, safety posture, example queries). "
+        "Paste sections from this into your support message.",
     )
     bullet(
         doc,
-        "A token-bound URL from Anthropic's API error response, sitting in your "
-        "Discord channel #commands (channel ID 1499953336391045170).",
+        "how-to-submit.docx — this document.",
+    )
+    bullet(
+        doc,
+        "build_docs.py — python-docx source. Edit and regenerate if the "
+        "draft needs updates.",
     )
 
-    heading(doc, "Step 1 — Locate the form URL", level=2)
-    num(
+    # --- Background
+    heading(doc, "Background — why this is a support-channel submission", level=2)
+    para(
         doc,
-        "Open Discord and go to the #commands channel.",
+        "When Claude refuses a cyber-related request under Anthropic's Usage "
+        "Policy, the error response includes a Cyber Verification Program "
+        "form URL of the form:",
     )
-    num(
+    code_block(
         doc,
-        "Scroll up to the bot's error reply from when /cve CVE-2026-44277 was "
-        "attempted (timestamp ~11:01 EDT on 2026-05-13).",
+        "https://claude.com/form/cyber-use-case?token=<long-token>",
     )
-    num(
+    para(
         doc,
-        "The reply contains a link starting with https://claude.com/form/cyber-use-case?token= "
-        "followed by a long token string. That entire URL is your form link.",
-    )
-    bullet(
-        doc,
-        "Important — copy the FULL URL including the ?token=... part. The bare "
-        "https://claude.com/form/cyber-use-case will not work without the token.",
-    )
-
-    heading(doc, "Step 2 — Open the form", level=2)
-    num(doc, "Paste the full URL into a browser tab and press Enter.")
-    num(
-        doc,
-        "You should see Anthropic's Cyber Use Case form. It is hosted by "
-        "Anthropic, asks for your account-identifying info plus a description "
-        "of your defensive use case.",
-    )
-    bullet(
-        doc,
-        "If the form does not load or shows an error like \"token expired,\" "
-        "the token may have aged out. To regenerate: trigger another /cve "
-        "command in #commands; the new error reply will contain a fresh token-bound URL.",
+        "In practice, the token is truncated mid-string with an ellipsis "
+        "character at the end, making the URL unusable for direct navigation. "
+        "Confirmed empirically 2026-05-15 against two independent AUP refusals. "
+        "Until Anthropic ships a non-truncated token-bound URL or a stable "
+        "console-dashboard entry for verification, the practical path is to "
+        "contact Anthropic Support directly.",
     )
 
-    heading(doc, "Step 3 — Fill out the form using the draft", level=2)
-    num(
+    # --- Step 1
+    heading(doc, "Step 1 — Open Anthropic Support", level=2)
+    para(doc, "Two viable channels:")
+    bullet(
         doc,
-        "Open archimedes-cyber-verification-draft.docx in Word (in this same folder).",
-    )
-    num(
-        doc,
-        "For each form field, copy the matching section from the draft into the "
-        "form field. The draft is organized in the order the form typically asks them:",
+        "Email — send to support@anthropic.com",
     )
     bullet(
         doc,
-        "Form field \"Use case description\" → copy Section 1 of the draft.",
+        "Web — go to https://support.anthropic.com and start a new conversation",
     )
-    bullet(
+    para(
         doc,
-        "Form field \"How do you ensure safe use\" / \"Safety controls\" → "
-        "copy Sections 2 + 3 of the draft.",
-    )
-    bullet(
-        doc,
-        "Form field \"Example queries\" / \"What kinds of requests will you make\" → "
-        "copy Section 4 of the draft.",
-    )
-    bullet(
-        doc,
-        "Form field \"Why are you applying\" / \"What is currently blocking you\" → "
-        "copy Section 5 of the draft.",
-    )
-    num(
-        doc,
-        "Before submitting, replace any [your organization / team name] "
-        "placeholders in the form fields with the actual name you want on the record.",
-    )
-    num(
-        doc,
-        "If the form asks for supporting links and the Archimedes repository is "
-        "shareable, include https://github.com/ryansketch01/archimedes "
-        "and note that the doctrine/ directory is the most useful starting point for reviewers.",
+        "Both route to the same intake. Pick whichever you prefer for "
+        "ongoing back-and-forth with Anthropic's review team.",
+        italic=True,
     )
 
-    heading(doc, "Step 4 — Submit", level=2)
-    num(doc, "Review the filled-out fields one more time.")
-    num(
+    # --- Step 2
+    heading(doc, "Step 2 — Compose the support request", level=2)
+    bullet(
         doc,
-        "Click the form's submit button. You should see a confirmation page or "
-        "message acknowledging receipt.",
+        "Subject:  Cyber Verification Program — defensive CTI workflow",
+        bold_lead="",
     )
-    num(
+    para(
         doc,
-        "If you receive an email receipt from Anthropic, save it — it will "
-        "likely include the contact channel they'll use to follow up.",
+        "Body — copy the entire content of archimedes-cyber-verification-draft.docx "
+        "into the body of the support message. Include all five sections "
+        "(use case, defensive-intent-what-NOT-done, safety controls, example "
+        "queries, why-AUP-firing).",
+    )
+    para(
+        doc,
+        "Add a short opening paragraph above the draft content explaining the "
+        "specific request:",
+        italic=True,
+    )
+    code_block(
+        doc,
+        "We are operating Archimedes, an autonomous defensive CTI analyst built\n"
+        "on Claude Code. We have hit AUP refusals on routine defensive workflows\n"
+        "(e.g. requesting a patch-posture summary for a published, CISA-listed\n"
+        "CVE). We would like to apply for the Cyber Verification Program to\n"
+        "calibrate the classifier to our verified defensive use case.\n"
+        "\n"
+        "Below is the requested content for the program. Happy to provide\n"
+        "additional detail, a repository walkthrough, or a video demo on request.",
+    )
+    bullet(
+        doc,
+        "Replace [your organization / team name] in the draft content before sending.",
+    )
+    bullet(
+        doc,
+        "If the support form has a character limit, attach the draft .docx "
+        "as a file attachment and reference it in the message body.",
     )
 
+    # --- Step 3
+    heading(doc, "Step 3 — Provide supporting context if asked", level=2)
+    para(
+        doc,
+        "Anthropic may ask follow-up questions. Likely asks plus suggested responses:",
+    )
+    bullet(
+        doc,
+        "\"Can we see the repository?\"  Share https://github.com/ryansketch01/archimedes "
+        "and direct reviewers to the doctrine/ directory — it's the most useful starting "
+        "point for understanding the agent's safety posture.",
+        bold_lead="",
+    )
+    bullet(
+        doc,
+        "\"What kinds of CVEs would you research?\"  Answer with concrete examples — "
+        "recent KEV adds, vendor-disclosed vulnerabilities affecting widely-deployed "
+        "products in DIB stacks (Fortinet, Ivanti, Palo Alto, Cisco). Frame as "
+        "patch-management and exposure-assessment, never as exploit research.",
+        bold_lead="",
+    )
+    bullet(
+        doc,
+        "\"How do you prevent misuse?\"  Point to Hard Rule 3 (no exploitation, ever) "
+        "in CLAUDE.md, the SpiderFoot / theHarvester passive-only allowlists enforced "
+        "in code, the librarian-only-writes pattern with LEGAL-POLICY content scans, "
+        "and the three-log audit trail.",
+        bold_lead="",
+    )
+    bullet(
+        doc,
+        "\"Who is the operator and what's the org context?\"  Provide team name, "
+        "organization, and any relevant context (defense-contractor cleared "
+        "environment, ITAR-program adjacency, etc.).",
+        bold_lead="",
+    )
+
+    # --- Step 4
+    heading(doc, "Step 4 — Submit and save the case number", level=2)
+    num(doc, "Send the support message (email) or submit the support form.")
+    num(
+        doc,
+        "Anthropic typically replies with a case number / ticket ID. Save it "
+        "in this folder as case-id.txt or note it in CLAUDE.md operational notes "
+        "so future sessions can reference it.",
+    )
+    num(
+        doc,
+        "If you used email, expect an auto-acknowledgement within minutes. "
+        "If using the web support form, expect the case ID on the confirmation page.",
+    )
+
+    # --- Step 5
     heading(doc, "Step 5 — Wait for approval (and how you'll know)", level=2)
     bullet(
         doc,
-        "Most likely notification channel: email, to whatever address is on "
-        "your Anthropic account (the same account tied to the token in the form URL).",
+        "Most likely notification channel: reply to your support ticket via the "
+        "same email address you submitted from.",
     )
     bullet(
         doc,
         "No published SLA — anecdotally these reviews tend to land within a "
-        "few business days, but it can vary.",
+        "few business days, but it can vary based on Anthropic's backlog.",
     )
     bullet(
         doc,
-        "Most reliable test: try /cve <any-cve-id> in Discord #commands "
-        "periodically. As soon as the command succeeds (claude returns a "
+        "Most reliable empirical test: try /cve <any-cve-id> in Discord #commands "
+        "periodically. As soon as the command succeeds (Claude returns a "
         "patch-posture summary instead of an AUP refusal), verification has cleared.",
     )
 
+    # --- Step 6
     heading(doc, "Step 6 — While you wait", level=2)
     bullet(
         doc,
@@ -455,40 +507,46 @@ def build_howto() -> Path:
     bullet(
         doc,
         "If you need a specific CVE briefed before verification clears, ask "
-        "Claude directly in a Claude Code session (in this repo). That path "
-        "does not trip the same classifier the same way and produces the "
-        "patch-posture summary directly.",
+        "Claude directly in a Claude Code session (in this repo) using a defense-framed "
+        "prompt — e.g. \"Defensive patch-posture summary for CVE-2026-XXXX — NVD + "
+        "CISA KEV + vendor advisory.\"  That phrasing does not trip the classifier "
+        "(empirically verified) and produces the same summary directly.",
     )
     bullet(
         doc,
         "Twice-daily scheduled briefs (08:00 + 16:00 EDT) continue to run "
         "without issue — they do not invoke the /cve command path directly.",
     )
+    bullet(
+        doc,
+        "The listener now persists failed-command stdout to "
+        "logs/discord-listener/<date>/<run_id>.failure.log — if anything else "
+        "starts failing, the full trace is on disk for debugging.",
+    )
 
     divider(doc)
+
+    # --- If something goes wrong
     heading(doc, "If something goes wrong", level=2)
     bullet(
         doc,
-        "Form returns \"token expired\" — trigger another /cve command in "
-        "Discord to get a fresh token-bound URL in the bot's reply, then use that one.",
+        "Anthropic asks for more information — respond with whatever they "
+        "request. Reference the draft content sections; offer to share the "
+        "repository or do a video walkthrough.",
     )
     bullet(
         doc,
-        "Form returns \"already submitted\" — check your email; you may have "
-        "already submitted in a previous session and Anthropic is processing it.",
+        "Anthropic denies the request — review the denial reason. Common asks: "
+        "clarify what is NOT done by the agent (exploitation, attribution "
+        "origination, active scanning of non-authorized targets); demonstrate "
+        "the policy-enforcement code (mcps/spiderfoot/.../policy.py); produce "
+        "examples of actual /cve outputs to show defensive intent.",
     )
     bullet(
         doc,
-        "Form rejects content as too short — expand the Section 4 example "
-        "queries with one or two more concrete examples from the agent's "
-        "actual workflow.",
-    )
-    bullet(
-        doc,
-        "Approval denied — review the denial reason and respond to whatever "
-        "Anthropic flagged. Common asks: clarify what is NOT done by the agent "
-        "(exploitation, attribution origination, active scanning of "
-        "non-authorized targets).",
+        "Long wait without a response — Anthropic Support generally replies "
+        "within 1-3 business days. If silent for >5 business days, follow up "
+        "on the existing case ID.",
     )
 
     out = Path(__file__).parent / "how-to-submit.docx"

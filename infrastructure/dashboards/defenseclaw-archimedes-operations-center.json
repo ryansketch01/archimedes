@@ -1,0 +1,597 @@
+{
+    "title": "DefenseClaw Operations Center",
+    "description": "Real-time DefenseClaw security monitoring — Pi → Splunk HEC + Archimedes pipeline telemetry",
+    "inputs": {
+        "input_global_trp": {
+            "options": {
+                "defaultValue": "-24h@h,now",
+                "token": "global_time"
+            },
+            "title": "Time Range",
+            "type": "input.timerange"
+        }
+    },
+    "defaults": {
+        "dataSources": {
+            "ds.search": {
+                "options": {
+                    "queryParameters": {
+                        "earliest": "$global_time.earliest$",
+                        "latest": "$global_time.latest$"
+                    }
+                }
+            },
+            "ds.spl2": {
+                "options": {
+                    "queryParameters": {
+                        "earliest": "$global_time.earliest$",
+                        "latest": "$global_time.latest$"
+                    }
+                }
+            }
+        }
+    },
+    "visualizations": {
+        "viz_arc_bg_header": {
+            "options": {
+                "fillColor": "#1E293B",
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_arc_discord_status": {
+            "dataSources": {
+                "primary": "ds_arc_discord_status"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "colorMode": "none",
+                "majorColor": "#E2E8F0",
+                "majorFontSize": 28,
+                "titleColor": "#F1F5F9",
+                "subtitleColor": "#CBD5E1",
+                "unitColor": "#CBD5E1"
+            },
+            "title": "Discord Posts",
+            "type": "splunk.singlevalue"
+        },
+        "viz_arc_flash_24h": {
+            "dataSources": {
+                "primary": "ds_arc_flash_24h"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "colorMode": "none",
+                "majorColor": "#F97316",
+                "majorFontSize": 48,
+                "titleColor": "#F1F5F9",
+                "subtitleColor": "#CBD5E1",
+                "unitColor": "#CBD5E1"
+            },
+            "title": "FLASH Briefs",
+            "type": "splunk.singlevalue"
+        },
+        "viz_arc_health": {
+            "dataSources": {
+                "primary": "ds_arc_health"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "colorMode": "none",
+                "majorColor": "#E2E8F0",
+                "majorFontSize": 32,
+                "titleColor": "#F1F5F9",
+                "subtitleColor": "#CBD5E1",
+                "unitColor": "#CBD5E1"
+            },
+            "title": "Pipeline Health",
+            "type": "splunk.singlevalue"
+        },
+        "viz_arc_last_brief": {
+            "dataSources": {
+                "primary": "ds_arc_last_brief"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "colorMode": "none",
+                "majorColor": "#22D3EE",
+                "majorFontSize": 20,
+                "titleColor": "#F1F5F9",
+                "subtitleColor": "#CBD5E1",
+                "unitColor": "#CBD5E1"
+            },
+            "title": "Last Brief Completed",
+            "type": "splunk.singlevalue"
+        },
+        "viz_arc_phase_breakdown": {
+            "dataSources": {
+                "primary": "ds_arc_phase_breakdown"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "labelDisplay": "valuesAndPercentage",
+                "legendLabelColor": "#E2E8F0",
+                "labelColor": "#E2E8F0",
+                "titleColor": "#F1F5F9",
+                "seriesColors": [
+                    "#22D3EE",
+                    "#FBBF24",
+                    "#22C55E",
+                    "#F97316",
+                    "#A855F7",
+                    "#EC4899",
+                    "#3B82F6",
+                    "#EF4444"
+                ]
+            },
+            "title": "Phase Breakdown",
+            "type": "splunk.pie"
+        },
+        "viz_arc_recent_findings": {
+            "dataSources": {
+                "primary": "ds_arc_recent_findings"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "headerBackgroundColor": "#1E293B",
+                "headerColor": "#F1F5F9",
+                "rowBackgroundColorOdd": "#1E293B",
+                "rowBackgroundColorEven": "#0F172A",
+                "rowColor": "#E2E8F0",
+                "titleColor": "#F1F5F9"
+            },
+            "title": "Recent Findings",
+            "type": "splunk.table"
+        },
+        "viz_arc_recent_runs": {
+            "dataSources": {
+                "primary": "ds_arc_recent_runs"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "headerBackgroundColor": "#1E293B",
+                "headerColor": "#F1F5F9",
+                "rowBackgroundColorOdd": "#1E293B",
+                "rowBackgroundColorEven": "#0F172A",
+                "rowColor": "#E2E8F0",
+                "titleColor": "#F1F5F9"
+            },
+            "title": "Recent Scheduler Runs",
+            "type": "splunk.table"
+        },
+        "viz_arc_run_timeline": {
+            "dataSources": {
+                "primary": "ds_arc_run_timeline"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "legendDisplay": "right",
+                "legendLabelColor": "#E2E8F0",
+                "axisLabelColorX": "#CBD5E1",
+                "axisLabelColorY": "#CBD5E1",
+                "axisTitleColorX": "#E2E8F0",
+                "axisTitleColorY": "#E2E8F0",
+                "titleColor": "#F1F5F9",
+                "seriesColors": [
+                    "#22D3EE",
+                    "#FBBF24",
+                    "#22C55E",
+                    "#F97316",
+                    "#A855F7",
+                    "#EC4899",
+                    "#3B82F6",
+                    "#EF4444"
+                ],
+                "stackMode": "stacked"
+            },
+            "title": "Phase Run Timeline",
+            "type": "splunk.column"
+        },
+        "viz_arc_subtitle": {
+            "options": {
+                "fontColor": "#CBD5E1",
+                "markdown": "Scheduler + librarian telemetry | index: archimedes"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_arc_title": {
+            "options": {
+                "fontColor": "#FBBF24",
+                "markdown": "# 🧠 Archimedes Pipeline"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_bg_header": {
+            "options": {
+                "fillColor": "#1E293B",
+                "strokeColor": "transparent"
+            },
+            "type": "splunk.rectangle"
+        },
+        "viz_event_types": {
+            "dataSources": {
+                "primary": "ds_event_types"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "legendDisplay": "off",
+                "orientation": "horizontal",
+                "axisLabelColorX": "#CBD5E1",
+                "axisLabelColorY": "#CBD5E1",
+                "axisTitleColorX": "#E2E8F0",
+                "axisTitleColorY": "#E2E8F0",
+                "titleColor": "#F1F5F9",
+                "seriesColors": [
+                    "#7C3AED"
+                ]
+            },
+            "title": "Top Event Types",
+            "type": "splunk.bar"
+        },
+        "viz_event_volume": {
+            "dataSources": {
+                "primary": "ds_event_volume"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "legendDisplay": "off",
+                "axisLabelColorX": "#CBD5E1",
+                "axisLabelColorY": "#CBD5E1",
+                "axisTitleColorX": "#E2E8F0",
+                "axisTitleColorY": "#E2E8F0",
+                "titleColor": "#F1F5F9",
+                "seriesColors": [
+                    "#00C7EB"
+                ]
+            },
+            "title": "Event Volume (Hourly)",
+            "type": "splunk.bar"
+        },
+        "viz_last_seen": {
+            "dataSources": {
+                "primary": "ds_last_seen"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "colorMode": "none",
+                "majorColor": "#22C55E",
+                "majorFontSize": 20,
+                "titleColor": "#F1F5F9",
+                "subtitleColor": "#CBD5E1",
+                "unitColor": "#CBD5E1"
+            },
+            "title": "Last Event Received",
+            "type": "splunk.singlevalue"
+        },
+        "viz_recent_events": {
+            "dataSources": {
+                "primary": "ds_recent_events"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "headerBackgroundColor": "#1E293B",
+                "headerColor": "#F1F5F9",
+                "rowBackgroundColorOdd": "#1E293B",
+                "rowBackgroundColorEven": "#0F172A",
+                "rowColor": "#E2E8F0",
+                "titleColor": "#F1F5F9"
+            },
+            "title": "Recent Events",
+            "type": "splunk.table"
+        },
+        "viz_severity": {
+            "dataSources": {
+                "primary": "ds_severity"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "labelDisplay": "valuesAndPercentage",
+                "legendLabelColor": "#E2E8F0",
+                "labelColor": "#E2E8F0",
+                "titleColor": "#F1F5F9",
+                "seriesColors": [
+                    "#EF4444",
+                    "#F97316",
+                    "#EAB308",
+                    "#22C55E",
+                    "#3B82F6"
+                ]
+            },
+            "title": "Severity Breakdown",
+            "type": "splunk.pie"
+        },
+        "viz_subtitle": {
+            "options": {
+                "fontColor": "#CBD5E1",
+                "markdown": "Pi → Splunk HEC | index: defenseclaw_local"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_title": {
+            "options": {
+                "fontColor": "#00C7EB",
+                "markdown": "# 🛡️ DefenseClaw Operations Center"
+            },
+            "type": "splunk.markdown"
+        },
+        "viz_total_events": {
+            "dataSources": {
+                "primary": "ds_total_events"
+            },
+            "options": {
+                "backgroundColor": "#0F172A",
+                "colorMode": "none",
+                "majorColor": "#00C7EB",
+                "majorFontSize": 48,
+                "titleColor": "#F1F5F9",
+                "subtitleColor": "#CBD5E1",
+                "unitColor": "#CBD5E1"
+            },
+            "title": "Total Events",
+            "type": "splunk.singlevalue"
+        }
+    },
+    "dataSources": {
+        "ds_arc_discord_status": {
+            "name": "Archimedes Discord Posts",
+            "options": {
+                "query": "index=archimedes sourcetype=archimedes:operation discord_post_status=* | eval failed=if(discord_post_status!=200, 1, 0) | stats count as posts sum(failed) as failures | eval status=case(posts=0, \"🟡 NO POSTS\", failures>0, \"🔴 \".failures.\" FAIL / \".posts.\" total\", true(), \"🟢 \".posts.\" OK\") | fields status",
+                "refresh": "2m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_arc_flash_24h": {
+            "name": "Archimedes FLASH Briefs",
+            "options": {
+                "query": "index=archimedes sourcetype=archimedes:operation event_type=flash_brief_published | stats count as flashes",
+                "refresh": "5m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_arc_health": {
+            "name": "Archimedes Pipeline Health",
+            "options": {
+                "query": "index=archimedes sourcetype=archimedes:scheduler status=completed | eval failed=if(exit_code!=0, 1, 0) | stats count as runs sum(failed) as failures | eval health=case(failures>0, \"🔴 FAIL (\".failures.\")\", runs=0, \"🟡 NO DATA\", true(), \"🟢 OK (\".runs.\" runs)\") | fields health",
+                "refresh": "2m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_arc_last_brief": {
+            "name": "Archimedes Last Brief",
+            "options": {
+                "query": "index=archimedes sourcetype=archimedes:scheduler status=completed phase IN (\"morning-brief\", \"afternoon-brief\") | stats max(_time) as last_brief | eval last_brief=if(isnull(last_brief), \"none in window\", strftime(last_brief, \"%Y-%m-%d %H:%M:%S\"))",
+                "refresh": "2m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_arc_phase_breakdown": {
+            "name": "Archimedes Phase Breakdown",
+            "options": {
+                "query": "index=archimedes sourcetype=archimedes:scheduler status=completed | stats count by phase | sort -count",
+                "refresh": "5m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_arc_recent_findings": {
+            "name": "Archimedes Recent Findings",
+            "options": {
+                "query": "index=archimedes sourcetype=archimedes:operation event_type=finding_promoted | table _time, finding_id, digraph, wep_ceiling, topic | sort -_time | head 20",
+                "refresh": "5m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_arc_recent_runs": {
+            "name": "Archimedes Recent Runs",
+            "options": {
+                "query": "index=archimedes sourcetype=archimedes:scheduler status=completed | eval result=if(exit_code=0, \"ok\", \"FAIL (\".exit_code.\")\") | table _time, phase, run_id, result, duration_sec | sort -_time | head 20",
+                "refresh": "2m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_arc_run_timeline": {
+            "name": "Archimedes Phase Run Timeline",
+            "options": {
+                "query": "index=archimedes sourcetype=archimedes:scheduler status=completed | timechart span=1h count by phase",
+                "refresh": "5m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_event_types": {
+            "name": "Top Event Types",
+            "options": {
+                "query": "index=defenseclaw_local | stats count by sourcetype | sort -count | head 10",
+                "refresh": "5m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_event_volume": {
+            "name": "Event Volume",
+            "options": {
+                "query": "index=defenseclaw_local | timechart span=1h count as Events",
+                "refresh": "5m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_last_seen": {
+            "name": "Last Event Time",
+            "options": {
+                "query": "index=defenseclaw_local | stats max(_time) as last_event | eval last_event=strftime(last_event, \"%Y-%m-%d %H:%M:%S\")",
+                "refresh": "2m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_recent_events": {
+            "name": "Recent Events",
+            "options": {
+                "query": "index=defenseclaw_local | table _time, sourcetype, event, severity | sort -_time | head 20",
+                "refresh": "2m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_severity": {
+            "name": "Severity Breakdown",
+            "options": {
+                "query": "index=defenseclaw_local | stats count by severity | sort -count",
+                "refresh": "5m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        },
+        "ds_total_events": {
+            "name": "Total Events",
+            "options": {
+                "query": "index=defenseclaw_local | stats count as total_events",
+                "refresh": "2m",
+                "refreshType": "delay"
+            },
+            "type": "ds.search"
+        }
+    },
+    "layout": {
+        "globalInputs": [
+            "input_global_trp"
+        ],
+        "layoutDefinitions": {
+            "layout_1": {
+                "options": {
+                    "backgroundColor": "#080D12",
+                    "display": "auto-scale",
+                    "height": 900,
+                    "width": 1200
+                },
+                "structure": [
+                    {
+                        "item": "viz_bg_header",
+                        "position": {"h": 70, "w": 1200, "x": 0, "y": 0},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_title",
+                        "position": {"h": 50, "w": 700, "x": 16, "y": 8},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_subtitle",
+                        "position": {"h": 20, "w": 500, "x": 16, "y": 46},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_total_events",
+                        "position": {"h": 120, "w": 290, "x": 0, "y": 80},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_last_seen",
+                        "position": {"h": 120, "w": 400, "x": 300, "y": 80},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_event_volume",
+                        "position": {"h": 280, "w": 740, "x": 0, "y": 210},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_severity",
+                        "position": {"h": 410, "w": 440, "x": 750, "y": 80},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_recent_events",
+                        "position": {"h": 380, "w": 740, "x": 0, "y": 500},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_event_types",
+                        "position": {"h": 380, "w": 440, "x": 750, "y": 500},
+                        "type": "block"
+                    }
+                ],
+                "type": "absolute"
+            },
+            "layout_2": {
+                "options": {
+                    "backgroundColor": "#080D12",
+                    "display": "auto-scale",
+                    "height": 900,
+                    "width": 1200
+                },
+                "structure": [
+                    {
+                        "item": "viz_arc_bg_header",
+                        "position": {"h": 70, "w": 1200, "x": 0, "y": 0},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_title",
+                        "position": {"h": 50, "w": 700, "x": 16, "y": 8},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_subtitle",
+                        "position": {"h": 20, "w": 500, "x": 16, "y": 46},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_health",
+                        "position": {"h": 120, "w": 290, "x": 0, "y": 80},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_last_brief",
+                        "position": {"h": 120, "w": 290, "x": 300, "y": 80},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_discord_status",
+                        "position": {"h": 120, "w": 290, "x": 600, "y": 80},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_flash_24h",
+                        "position": {"h": 120, "w": 290, "x": 900, "y": 80},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_run_timeline",
+                        "position": {"h": 280, "w": 740, "x": 0, "y": 210},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_phase_breakdown",
+                        "position": {"h": 280, "w": 440, "x": 750, "y": 210},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_recent_runs",
+                        "position": {"h": 380, "w": 740, "x": 0, "y": 500},
+                        "type": "block"
+                    },
+                    {
+                        "item": "viz_arc_recent_findings",
+                        "position": {"h": 380, "w": 440, "x": 750, "y": 500},
+                        "type": "block"
+                    }
+                ],
+                "type": "absolute"
+            }
+        },
+        "tabs": {
+            "items": [
+                {"label": "DefenseClaw", "layoutId": "layout_1"},
+                {"label": "Archimedes", "layoutId": "layout_2"}
+            ]
+        }
+    }
+}

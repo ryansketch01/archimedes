@@ -387,6 +387,16 @@ Two unrelated 4.10.1 quirks the subprocess runner has to handle, both surfaced d
 
 Bonus 3rd quirk: `crtsh` from this Windows host returns 0 results for established domains where it should return thousands (microsoft.com, example.com). Other sources (`hackertarget`, `otx`) work fine. theHarvester-side or network-side; not the MCP. Use `hackertarget` as the smoke-test source going forward, not `crtsh`. Discovered Session 13.
 
+### Splunk dark-mode theme is per-dashboard JSON, not a server-wide directive
+
+Splunk Dashboard Studio dashboards take a top-level `"theme": "enterprise.dark"` property — that's the canonical way to set dark mode for a specific dashboard. Setting it flips the chrome (panel titles, table cells, pie/legend labels, axis labels) from default light-theme defaults to dark-theme defaults. Verified live on Frank's `defenseclaw-archimedes-operations-center` dashboard 2026-05-19 (commit `1b8f22c`).
+
+**`defaultTheme = dark` in `web.conf [settings]` is NOT a real Splunk 10.2.2 directive.** Earlier session attempt added it on the assumption it was a documented server-wide theme override; Splunk silently ignored it on restart, no error in `splunk restart splunkweb` output, but the change had no effect. The Splunk 10.2.2 schema doesn't include that key. Removed.
+
+**Per-user Splunk Web theme toggle (Account Settings → Theme) may be gated in Splunk Free.** Operator-confirmed missing on Frank's Splunk Free 10.2.2 install. The dashboard JSON `theme` property is the only working theme switch in this stack. For the Splunk home page / app launcher / settings pages on Splunk Free, the practical workaround is a browser extension (Dark Reader works well). Custom CSS via a Splunk app is the heavier "do it natively" path but is fragile across Splunk upgrades — not worth it for a single-user dev install.
+
+Discovered Session 14.
+
 ### `uv sync --all-packages` removes optional deps (discord.py et al.)
 
 `pyproject.toml` declares `discord.py` under `[project.optional-dependencies] discord` — meaning a plain `uv sync --all-packages` will NOT install it. Same for the `dashboard` extra (flask/markdown) and the `dev` extra (pytest/ruff/mypy). They only land when the sync command includes `--extra <name>` (or `--all-extras`).

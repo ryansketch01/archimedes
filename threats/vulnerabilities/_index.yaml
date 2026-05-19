@@ -7,7 +7,7 @@
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
 version: 2
-last_updated: 2026-05-12
+last_updated: 2026-05-19
 
 vulnerabilities:
 
@@ -235,15 +235,62 @@ vulnerabilities:
       breaking, or worm acquiring a third ecosystem); active SLSA-
       attestation-bypass advisory from npm or sigstore.
 
+  - id: VT-007
+    name: "Fortinet FortiAuthenticator improper-access-control unauthenticated RCE"
+    type: "Pre-auth RCE (improper access control via crafted requests; CWE-284 family)"
+    platform: "Fortinet FortiAuthenticator on-prem (MFA appliance: RADIUS / SAML / SCEP / OCSP / certificate authority). Cloud variant NOT affected per BleepingComputer relay."
+    cve: CVE-2026-44277
+    cvss: 9.1                       # Fortinet PSIRT v3 internal; NVD record carries 9.8 — Fortinet PSIRT is canonical per vendor-primary precedence
+    cvss_source_note: "Fortinet PSIRT 9.1 (canonical); some downstream sources cite NVD 9.8."
+    psirt_id: "FG-IR (specific number not exposed in PSIRT index summary at disclosure 2026-05-12)"
+    affected_versions_note: "All pre-patched 6.5 / 6.6 / 8.0 branches; Fortinet did not exhaustively enumerate affected-version range"
+    fixed_versions:
+      - "FortiAuthenticator 6.5.7"
+      - "FortiAuthenticator 6.6.9"
+      - "FortiAuthenticator 8.0.3"
+    patch_status: patches_available_at_disclosure
+    patch_release_date: 2026-05-12
+    kev: false
+    kev_pending: true
+    kev_watch_signal_active: true
+    exploitation_status: not_observed_per_vendor_at_patch_time
+    public_exploit_available: false
+    detection_signatures_published: false
+    digraph: B2
+    wep_ceiling: likely
+    wep_ceiling_basis: "single-source veto — Fortinet PSIRT is the sole effective origin for severity classification + no-exploitation assertion. NVD downstream of PSIRT. BleepingComputer is B-grade relay."
+    related_actors: []              # No actor named in any source — Hard Rule 2 keeps this empty pending A/B-grade attribution
+    related_findings:
+      - finding-2026-05-12-0004
+    related_briefs:
+      - 2026-05-12-afternoon
+    sibling_cves:
+      - CVE-2026-26083              # FortiSandbox missing-authorization GUI access — same Fortinet PSIRT 2026-05-12 batch; tracking-tier candidate for separate entry
+    ad_relevance: high
+    ad_relevance_rationale: |
+      FortiAuthenticator backs identity-infrastructure-layer at A&D primes:
+      VPN MFA, RADIUS, SAML, SCEP/OCSP, CAC/PIV smartcard integration,
+      certificate authority issuance. Unauthenticated network-vector
+      compromise = MFA bypass + impersonation-certificate issuance at the
+      gate to ITAR-regulated R&D, program-data enclaves, government-contract
+      systems. Critical defensive priority for A&D primes deploying on-prem
+      FortiAuthenticator; Cloud variant lower priority for this CVE specifically.
+    tracked_since: 2026-05-12
+    last_reviewed: 2026-05-19
+    next_review_due: 2026-08-19
+    dossier: threats/vulnerabilities/FortiAuthenticator-CVE-2026-44277/profile.md
+    note: "Patched at disclosure. Watch signals: KEV addition; Watchtowr / Horizon3.ai / Assetnote / Rapid7 n-day-research publication; third-party telemetry corroborating OR contradicting the vendor no-ITW assertion. Historical Fortinet unauthenticated-RCE pattern (CVE-2022-40684, CVE-2023-27997) shows rapid post-disclosure KEV listing once exploitation surfaces — track closely."
+
+
 _meta:
-  total_tracked: 6
-  patched: 2                      # ZD-001 BlueHammer; VT-005 OpenC3 COSMOS cluster
+  total_tracked: 7
+  patched: 3                      # ZD-001 BlueHammer; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure)
   unpatched: 2                    # ZD-002 RedSun; ZD-003 UnDefend
   patches_scheduled: 1            # ZD-004 PAN-OS CVE-2026-0300
   rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
   active_exploitation: 2          # ZD-004 PAN-OS CVE-2026-0300 + VT-006 Mini Shai-Hulud worm
   kev_listed: 1                   # ZD-004 PAN-OS CVE-2026-0300
-  kev_pending: 1                  # VT-006 Mini Shai-Hulud (CVE-2026-45321 not yet on CISA KEV as of 2026-05-12 06:00 EDT)
+  kev_pending: 2                  # VT-006 Mini Shai-Hulud (not yet KEV); VT-007 FortiAuthenticator (KEV watch active)
   public_exploit_available: 2     # ZD-004 PAN-OS + VT-006 (worm IS the in-the-wild exploitation)
   vendor_ghsa_poc_only: 1         # VT-005 OpenC3 COSMOS cluster (PoC embedded in vendor advisories only)
-  dossiers_migrated: 2            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster. ZD-001/002/003 still pending C3PO migration; VT-006 Mini Shai-Hulud dossier not yet scaffolded (recommend vuln-tracker next pass).
+  dossiers_migrated: 3            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator. ZD-001/002/003 still pending C3PO migration; VT-006 Mini Shai-Hulud dossier not yet scaffolded (recommend vuln-tracker next pass).

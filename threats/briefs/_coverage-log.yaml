@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-18T16:00:00-04:00
+last_updated: 2026-05-19T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -11499,6 +11499,809 @@ entries:
       /index.yaml evaluation; CVE-2020-17103 MiniPlasma still pending.
     first_covered: 2026-05-18
     last_covered: 2026-05-18
+    retraction: null
+    test: false
+
+  # ============================================================================
+  # 2026-05-19 MORNING BRIEF — entries below
+  # ============================================================================
+
+  - id: 2026-05-19-am-001-mini-shai-hulud-largest-single-day-expansion-atool-actions-cool
+    covered_in: [2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "Mini Shai-Hulud largest single-day cluster expansion — 639 malicious npm versions across 323 packages via compromised atool maintainer + actions-cool/issues-helper (all tags) + actions-cool/maintain-one-comment (15 tags) tag-redirect to imposter commits; eight-firm research consensus (Socket + StepSecurity + SafeDep + JFrog + Endor Labs + Datadog + Trend Micro + Mondoo + Ox Security); Socket's Burckhardt cross-binds both surfaces via shared C2 t.m-kosche[.]com:443; TeamPCP attribution carry-forward from VT-006/finding-2026-05-12-FLASH-0001 per THN source-said (NOT independent re-attestation per anti-noise rule 1); Bun-runtime LOLBin + Runner.Worker memory credential extraction + Docker host-socket escape + Sigstore/Fulcio/SLSA forgery + GitHub-token-abuse fallback exfil with 2,500+ marker-repos tradecraft refinement candidates for TeamPCP dossier"
+    topic_tags:
+      - mini-shai-hulud
+      - largest-single-day-expansion
+      - 639-malicious-versions-323-packages
+      - atool-maintainer-compromise
+      - actions-cool-issues-helper-tag-redirect
+      - actions-cool-maintain-one-comment-tag-redirect
+      - shared-c2-t-m-kosche-com-443
+      - socket-burckhardt-cross-binding-observation
+      - eight-firm-research-consensus
+      - teampcp-attribution-carry-forward-from-vt006
+      - bun-runtime-lolbin-tradecraft
+      - runner-worker-memory-credential-extraction
+      - docker-host-socket-container-escape
+      - sigstore-fulcio-slsa-forgery
+      - 20-credential-class-enumeration
+      - 2500-plus-marker-repos
+      - niagA-oG-eW-ereH-duluH-iahS-marker-string
+      - hard-rule-2-attribution-not-propagated-to-am-006-nx-console
+      - hard-rule-3-no-poc-or-stepsecurity-socket-blog-url-linked
+      - hard-rule-8-47th-consecutive-dormant-sweep
+      - sat-ach-h3-ranking-1-same-operator-zero-inconsistencies
+      - sat-kac-7-assumptions-3-sound-4-qualify
+      - anti-noise-rule-1-incremental-cluster-expansion
+    related_actors:
+      - actor_name: "TeamPCP"
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: source_said_carry_forward_from_vt006
+    related_vulns:
+      - cve: CVE-2026-45321
+        vt_id: VT-006
+    related_campaigns: [shai-hulud, mini-shai-hulud, vt-006]
+    finding_ids: [finding-2026-05-19-0001]
+    digraph: B2
+    wep: likely
+    wep_ceiling_basis: anti_noise_rule_1_on_attribution_layer_incremental_cluster_expansion
+    single_source_veto_applied: false
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260519-083800
+    analyst_sats_applied: [sat-ach, sat-kac]
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "TeamPCP attribution carry-forward from VT-006/finding-2026-05-12-FLASH-0001 per THN explicit source-said framing — NOT independent re-attestation per anti-noise rule 1"
+      - "TeamPCP attribution NOT propagated to am-006 Nx Console (finding-2026-05-19-0002) — separate attribution chain, no C2 cross-binding to t.m-kosche in any source"
+      - "TeamPCP attribution NOT propagated to clone-publisher deadcode09284814 (finding-2026-05-18-0003) — Ox Security explicit UNATTRIBUTED framing preserved"
+    splunk_first_party:
+      status: clean_at_compose
+      hits: 0
+      consecutive_dormant_sweep_count: 47
+      framing: silence_is_not_disconfirming
+      tokens_queried: "t.m-kosche.com + atool + actions-cool + @antv + Bun + Runner.Worker + niagA + DAEMONIZED"
+    resurface_if:
+      - additional_a_grade_vendor_independent_attribution_or_contradiction
+      - first_party_splunk_hit_on_t_m_kosche_or_atool_or_actions_cool_indicators
+      - second_research_firm_publishes_distinct_operator_or_coordination_framing
+      - mandiant_crowdstrike_unit42_mstic_publishes_alternative_attribution
+      - ad_prime_named_as_victim
+      - new_c2_cross_binding_observation
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Largest single-day Mini Shai-Hulud cluster expansion to date.
+      Cross-bound by shared C2 across two ecosystem surfaces (@antv npm
+      + actions-cool GitHub Actions) per Socket analyst Burckhardt named
+      observation. THN explicit TeamPCP attribution preserves source-said
+      framing; carry-forward from VT-006 A1-anchor not independently
+      re-attested. Anti-noise rule 1 binds WEP ceiling at likely on
+      attribution layer; procedural-facts layer would clear very-likely
+      but cluster anchor takes attribution ceiling. Hard Rule 2 critical
+      discipline: TeamPCP NOT propagated to Nx Console (separate finding-
+      2026-05-19-0002 — distinct attribution chain with Nx team
+      compromised-developer-credentials framing, no t.m-kosche binding).
+
+  - id: 2026-05-19-am-002-nx-console-rwl-angular-console-18950-unattributed
+    covered_in: [2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "Nx Console rwl.angular-console 18.95.0 VS Code extension compromise — 11-minute publish window 2026-05-18 14:36-14:47 CEST — 498 KB obfuscated credential stealer harvesting 1Password + Anthropic Claude Code config + npm tokens + GitHub credentials + AWS secrets; macOS Python backdoor cat.py + LaunchAgent persistence (kitty-monitor squatting Google software updates); GitHub Search API dead-drop resolver (NET-NEW vs VT-006 baseline); Sigstore/Fulcio/SLSA full integration class; StepSecurity (Ashish Kurmi) originating, THN-relayed; Nx team self-disclosure attributes to compromised developer credentials from prior security incident (no actor named, no campaign named); Hard Rule 2 BINDING — Archimedes does NOT propagate TeamPCP attribution; ACH H1 UNATTRIBUTED tied with H5 commodity-convergence and H6 ecosystem-insider all at zero inconsistencies (H2 same-operator-as-VT-006 RULED OUT at 5 inconsistencies); single-source veto applied"
+    topic_tags:
+      - nx-console-vs-code-extension
+      - rwl-angular-console-18950
+      - 11-minute-publish-window-2026-05-18
+      - 2-2m-marketplace-installs
+      - 498kb-credential-stealer
+      - 1password-anthropic-claude-code-npm-github-aws-credential-targeting
+      - macos-cat-py-python-backdoor
+      - launchagent-kitty-monitor-google-updates-impersonation
+      - github-search-api-dead-drop-resolver-net-new-tradecraft
+      - sigstore-fulcio-slsa-full-integration
+      - stepsecurity-ashish-kurmi-originating
+      - nx-team-self-disclosure-compromised-developer-credentials-from-prior-incident
+      - hard-rule-2-binding-no-teampcp-propagation
+      - hard-rule-2-load-bearing-discipline-point-for-this-finding
+      - sat-ach-h1-unattributed-tied-with-h5-h6-zero-inconsistencies
+      - sat-ach-h2-same-operator-as-vt006-ruled-out-5-inconsistencies
+      - sibling-pattern-hard-rule-2-discipline-node-ipc-deadcode09284814
+      - single-source-veto-stepsecurity-sole-firm
+      - no-c2-cross-binding-to-t-m-kosche
+      - thn-non-cross-link-in-same-morning-cycle-author-level-non-propagation
+    related_actors:
+      - actor_name: "TeamPCP"
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: NOT_ATTRIBUTED_per_hard_rule_2_LEGAL_POLICY_binding
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0002]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: stepsecurity_originating_research_and_rwl_angular_console_specific_attribution_and_tradecraft_layers
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260519-084800
+    analyst_sats_applied: [sat-ach, sat-kac]
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Nx team explicitly does NOT name prior security incident; does NOT name threat actor; does NOT use TeamPCP / Mini Shai-Hulud designations"
+      - "THN does NOT cross-link Nx Console into Mini Shai-Hulud cluster despite publishing both surfaces ~3 hours apart in same morning cycle (author-level non-propagation)"
+      - "Archimedes records structural tradecraft overlap with VT-006 (Sigstore-Fulcio-SLSA + GitHub-API dead-drop + dev-machine targeting) as observable pattern NOT transitive attribution"
+      - "ACH ranks H1 UNATTRIBUTED tied with H5 commodity-convergence and H6 ecosystem-insider; H2 same-operator-as-VT-006 RULED OUT at 5 inconsistencies — the Rule 2 boundary working"
+    splunk_first_party:
+      status: clean_at_compose
+      hits: 0
+      consecutive_dormant_sweep_count: 47
+      framing: silence_is_not_disconfirming
+      tokens_queried: "rwl.angular-console + Nx Console + kitty-monitor + cat.py + DAEMONIZED + gh_update_state + Ashish Kurmi"
+    resurface_if:
+      - second_independent_a_b_grade_research_firm_corroborates_stepsecurity_scope_with_attribution
+      - nx_team_publishes_follow_up_naming_prior_security_incident
+      - mandiant_crowdstrike_unit42_mstic_publishes_attribution_to_tracked_actor
+      - first_party_splunk_hit_on_cat_py_kitty_monitor_daemonized_or_gh_update_state
+      - thn_publishes_cross_link_to_mini_shai_hulud_cluster
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Hard Rule 2 + LEGAL-POLICY no-attribution-laundering is the
+      load-bearing discipline of THIS finding. Tradecraft overlap with
+      VT-006 / Mini Shai-Hulud / TeamPCP cluster is real (Sigstore-Fulcio-
+      SLSA forgery, developer-machine credential targeting, GitHub-API
+      dead-drop variants) but NEITHER THN NOR Nx team attests cluster
+      linkage; multi-firm consensus shape absent; no C2 cross-binding to
+      t.m-kosche; sibling pattern node-ipc + deadcode09284814 precedent
+      supports restraint. ACH H1 UNATTRIBUTED disposition preferred per
+      source-said discipline. The structural tradecraft overlap is
+      recorded as observation, NOT promoted to attribution. Tripwires:
+      second-firm corroboration, Nx follow-up naming prior incident,
+      A-grade vendor independent attribution, first-party Splunk hit, or
+      THN cross-link article — any one would rerun ACH.
+
+  - id: 2026-05-19-am-003-cve-2026-8153-universal-robots-polyscope-5-cobot-rce
+    covered_in: [2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "CVE-2026-8153 Universal Robots PolyScope 5 cobot control software — Dashboard Server unauthenticated OS command injection — CVSS 9.8 CRITICAL — patched in PolyScope 5.25.1; Claroty Team82 (researcher Vera Mens) originated; CISA joint advisory ICSA-26-134-17 with Universal Robots; impact range single-cobot-control to entire-cobot-fleet + peripherals; Vera Mens flat-network deployment warning paraphrased per Rule 6 from 12w quote at ceiling; ITAR/EAR/DFARS compliance pressure counter on A&D-supplier OT segmentation maturity; researcher PoC + advisory ONLY (NOT in-the-wild); NO tracked actor; NO named victim; STRUCTURAL A&D-supplier-tier relevance HIGH (cobots in Airbus/Boeing/Lockheed Tier-1/2 supplier inventories per public industry references) capped at C3 structural inference; STRONGEST A&D-supplier-tier-relevant industrial vulnerability of 2026-Q2 corpus; vuln-tracker _index.yaml STRONG addition candidate"
+    topic_tags:
+      - cve-2026-8153
+      - universal-robots-polyscope-5
+      - cobot-control-software
+      - dashboard-server-unauthenticated-os-command-injection
+      - cvss-9-8-critical
+      - patched-polyscope-5-25-1
+      - claroty-team82-vera-mens-originating
+      - cisa-joint-advisory-icsa-26-134-17
+      - cobot-fleet-compromise-impact-range
+      - flat-network-segmentation-researcher-warning-paraphrased-rule-6-12w
+      - itar-ear-dfars-compliance-counter-on-segmentation-maturity
+      - researcher-poc-plus-advisory-only-not-in-the-wild
+      - no-tracked-actor-no-named-victim
+      - structural-ad-supplier-tier-relevance-c3-inference
+      - cobots-in-airbus-boeing-lockheed-tier-1-2-supplier-inventories
+      - strongest-ad-supplier-tier-relevant-industrial-vuln-2026-q2
+      - vuln-tracker-strong-index-yaml-addition-candidate
+      - hard-rule-3-claroty-advisory-pdf-url-not-linked
+      - hard-rule-8-47th-consecutive-dormant-sweep
+      - sat-kac-10-assumptions-4-sound-5-qualify-1-test-non-blocking
+      - bracketed-defensive-action-polyscope5-specific-plus-generic-ot-segmentation
+      - flash-re-evaluation-flag-enabled
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-8153
+        cvss: 9.8
+        kev_listed: false
+        exploitation_confirmed_a_grade: false
+        poc_published_by_researcher: true
+        poc_repo_url_referenced_by_source_archimedes_not_linked_per_hard_rule_3: true
+        patched: true
+        patched_version: PolyScope_5.25.1
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0003]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: claroty_team82_originating_mechanism_and_flat_network_segmentation_framing_layers
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260519-090000
+    analyst_sats_applied: [sat-kac]
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Vera Mens flat-network framing preserved as researcher hypothetical (12w within Rule 6) NOT observed-incident; ITAR/EAR/DFARS counter on A&D segmentation maturity preserved as Archimedes-recorded structural observation"
+      - "Structural A&D-supplier-tier relevance via cobot deployment in aerospace manufacturing is Archimedes-recorded structural inference (C3-class) NOT source-attested for specific operator estate"
+    flash_re_evaluation_flag:
+      enabled: true
+      conditions_for_re_evaluation:
+        - cisa_kev_addition_of_cve_2026_8153
+        - in_the_wild_exploitation_confirmation_from_a_grade_ot_research_firm
+        - first_party_a_and_d_prime_customer_impact_statement
+        - additional_independent_a_grade_research_corroborating_mechanism
+    splunk_first_party:
+      status: clean_at_compose
+      hits: 0
+      consecutive_dormant_sweep_count: 47
+      framing: silence_is_not_disconfirming_no_iocs_to_match
+      tokens_queried: "PolyScope + Universal Robots + Claroty + Team82 + Vera Mens + ICSA-26-134-17 + CVE-2026-8153 + Dashboard Server + cobot"
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - claroty-team82: provisional_A_per_tier_1_ot_research_precedent
+          - universal-robots-psirt: provisional_A_per_vendor_self_disclosure_precedent
+    vuln_tracker_handoffs_queued:
+      - question: "Should CVE-2026-8153 be added as VT-008 dossier?"
+        vuln_tracker_recommendation: strong_yes_per_ad_supplier_tier_structural_relevance_plus_cvss_9_8_plus_cisa_cross_listed_plus_named_ot_research_firm
+    resurface_if:
+      - cisa_kev_addition_of_cve_2026_8153
+      - in_the_wild_exploitation_confirmation_from_a_grade_ot_research_firm
+      - additional_independent_a_grade_research_corroborating_mechanism
+      - first_party_a_and_d_prime_customer_impact_statement
+      - ad_prime_named_as_victim
+      - first_party_splunk_hit_on_polyscope_or_cobot_indicators
+      - mass_scanner_traffic_observed_against_dashboard_server_port
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Strongest A&D-supplier-tier-relevant industrial vulnerability of
+      2026-Q2 corpus to date. CVSS 9.8 + unauthenticated + flat-network
+      compromise pathway + CISA-cross-listed + patched-but-deployment-
+      cadence-typically-lags-significantly. Vera Mens flat-network framing
+      preserved as researcher hypothetical per Rule 6 (12w at ceiling);
+      ITAR/EAR/DFARS counter on A&D segmentation maturity is Archimedes-
+      recorded structural observation. SAT-KAC surfaced 10 assumptions
+      with A2 (PolyScope-5-vs-PolyScope-X distribution in A&D estates)
+      classified Test-but-non-blocking; bracketed defensive-posture
+      language captures uncertainty. Strong vuln-tracker VT-008 dossier
+      addition candidate. Two source-grade additions proposed for
+      librarian (claroty-team82 + universal-robots-psirt at provisional-A).
+
+  - id: 2026-05-19-am-004-seppmail-seg-seven-cve-cluster-cvss-10
+    covered_in: [2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "SEPPMail Secure E-Mail Gateway seven-CVE cluster — CVE-2026-2743 CVSS 10.0 LFT path traversal arbitrary file write to RCE + CVE-2026-44126 CVSS 9.2 deserialization + CVE-2026-44128 CVSS 9.3 Perl eval injection + CVE-2026-44125 CVSS 9.3 missing authz GINA UI + CVE-2026-44127 CVSS 8.8 unauth path traversal + CVE-2026-44129 CVSS 8.3 template injection + CVE-2026-7864 CVSS 6.9 info disclosure — all patched in 15.0.2.1 / 15.0.3 / 15.0.4 — InfoGuard Labs (Dario Weiss, Manuel Feifel, Olivier Becker) originating, THN relay — NO in-the-wild — NO tracked actor — NO named A&D-prime victim — US A&D-direct exposure LOW (Proofpoint / Microsoft Defender for Office 365 / Mimecast dominate) — mention-class"
+    topic_tags:
+      - seppmail-secure-e-mail-gateway
+      - swiss-secure-email-gateway-virtual-appliance
+      - seven-cve-cluster-disclosure
+      - cve-2026-2743-cvss-10-0-lft-path-traversal-arbitrary-file-write-rce
+      - cve-2026-44126-cvss-9-2-deserialization
+      - cve-2026-44128-cvss-9-3-perl-eval-injection
+      - cve-2026-44125-cvss-9-3-missing-authz-gina-ui
+      - cve-2026-44127-cvss-8-8-unauthenticated-path-traversal
+      - cve-2026-44129-cvss-8-3-template-injection
+      - cve-2026-7864-cvss-6-9-info-disclosure
+      - patched-15-0-2-1-15-0-3-15-0-4
+      - infoguard-labs-originating
+      - dario-weiss-manuel-feifel-olivier-becker-named-researchers
+      - thn-relay
+      - theoretical-poc-syslog-overwrite-perl-reverse-shell-chain
+      - no-in-the-wild
+      - no-tracked-actor
+      - no-named-ad-prime-victim
+      - us-ad-direct-exposure-low-proofpoint-defender-mimecast-dominate
+      - mention-class
+      - hard-rule-3-no-poc-walkthrough
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-2743
+        cvss: 10.0
+        patched: true
+      - cve: CVE-2026-44126
+        cvss: 9.2
+        patched: true
+      - cve: CVE-2026-44128
+        cvss: 9.3
+        patched: true
+      - cve: CVE-2026-44125
+        cvss: 9.3
+        patched: true
+      - cve: CVE-2026-44127
+        cvss: 8.8
+        patched: true
+      - cve: CVE-2026-44129
+        cvss: 8.3
+        patched: true
+      - cve: CVE-2026-7864
+        cvss: 6.9
+        patched: true
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0004]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: infoguard_labs_originating_mechanism_layer
+    analyst_review_complete: false
+    red_team_review_required: false
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - infoguard-labs: provisional_C_per_tier_2_vendor_research_first_corpus_surface
+          - seppmail-psirt: provisional_B_per_vendor_self_disclosure_precedent
+    vuln_tracker_handoffs_queued:
+      - question: "CVE-2026-2743 (CVSS 10.0) — vuln-tracker _index.yaml lightweight watchlist entry"
+        vuln_tracker_recommendation: lightweight_catalog_entry_low_a_and_d_direct_exposure_watchlist_class
+    resurface_if:
+      - cisa_kev_addition_of_any_seppmail_cve
+      - in_the_wild_exploitation_confirmation_from_a_grade_research
+      - ad_prime_customer_impact_statement_naming_seppmail
+      - a_grade_vendor_research_independent_corroboration_of_infoguard_mechanism_chain
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Mention-class. Seven net-new CVEs in a single InfoGuard Labs
+      disclosure; all patched. SEPPMail is Swiss enterprise email-
+      security virtual appliance — NOT dominant in US A&D email-security
+      market (Proofpoint / Defender for O365 / Mimecast dominate).
+      Vuln-tracker recommendation is lightweight catalog entry not
+      dedicated dossier. Sibling pattern with finding-2026-05-19-0003
+      Universal Robots PolyScope 5 on vendor-patched-at-disclosure +
+      researcher PoC + no-in-the-wild + named OT/security-research firm
+      originating, but lower A&D-direct exposure.
+
+  - id: 2026-05-19-am-005-cve-2026-31635-dirtydecrypt-linux-rxgk-v12-poc
+    covered_in: [2026-05-18-morning, 2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "CVE-2026-31635 DirtyDecrypt Linux kernel LPE-to-root via missing COW guard in rxgk_decrypt_skb (RxGK security class for RxRPC / AFS / OpenAFS) — CVSS 7.5 — PATCHED April 2026 mainline pre-disclosure — V12 security team PoC published May 2026 on GitHub (URL NOT linked per Hard Rule 3) — affected distros Arch / Fedora / openSUSE with CONFIG_RXGK enabled (niche AFS/OpenAFS stack low A&D relevance) — NO in-the-wild — NO tracked actor — variant of CopyFail / DirtyFrag / Fragnesia kernel-bug family lineage (Fragnesia A1-anchored via finding-2026-05-14-0003); third PoC-after-patches archetype this corpus quarter with NGINX Rift (finding-2026-05-16-0001) and MiniPlasma (finding-2026-05-18-0001)"
+    topic_tags:
+      - cve-2026-31635
+      - dirtydecrypt-linux-kernel-lpe-to-root
+      - rxgk-decrypt-skb-missing-cow-guard
+      - rxrpc-afs-openafs-stack
+      - cvss-7-5
+      - patched-april-2026-mainline-pre-disclosure
+      - v12-security-team-poc-may-2026
+      - hard-rule-3-poc-github-repo-url-not-linked
+      - arch-fedora-opensuse-config-rxgk-affected-distros
+      - niche-afs-openafs-stack-low-ad-relevance
+      - copyfail-dirtyfrag-fragnesia-kernel-bug-family-variant
+      - third-poc-after-patches-archetype-2026-q2
+      - finding-2026-05-16-0001-nginx-rift-sibling
+      - finding-2026-05-18-0001-miniplasma-sibling
+      - finding-2026-05-14-0003-fragnesia-bug-family-lineage-anchor
+      - single-source-veto-v12-sole-firm
+      - mention-class
+      - status-update-from-2026-05-18-am-007-mention
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-31635
+        cvss: 7.5
+        patched: true
+        patched_date: 2026-04
+        poc_published_by_researcher: true
+        poc_repo_url_referenced_by_source_archimedes_not_linked_per_hard_rule_3: true
+        kev_listed: false
+        exploitation_confirmed_a_grade: false
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0005]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: v12_security_originating_poc_mechanism_layer
+    analyst_review_complete: false
+    red_team_review_required: false
+    update_relationship:
+      updates_id: 2026-05-18-am-007-cve-31635-dirtydecrypt-linux-rxgk-lpe
+      update_type: status_mention_to_full_finding
+      what_changed: "2026-05-18 was status-only mention from FLASH sweep; 2026-05-19 surfaces full finding with V12 PoC publication via SecurityWeek primary directly retrieved"
+    librarian_handoffs_queued:
+      - source_grade_log_additions:
+          - v12-security: provisional_C_per_tier_2_unknown_security_research_team_first_corpus_surface
+    resurface_if:
+      - a_grade_vendor_attests_production_exploitation_or_independent_corroboration
+      - cisa_kev_addition_of_cve_2026_31635
+      - first_party_splunk_hit_on_dirtydecrypt_indicators
+      - openafs_ad_prime_customer_impact_statement
+    first_covered: 2026-05-18
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Promoted from 2026-05-18-am-007 status-only mention to full finding.
+      SecurityWeek (Ionut Arghire) directly retrieved this sweep with V12
+      PoC publication context; kernel-org-netdev April 2026 upstream
+      patch is established corpus prior (A provisional via finding-
+      2026-05-14-0003 Fragnesia). Third PoC-after-patches archetype
+      surfacing this quarter (NGINX Rift + MiniPlasma + DirtyDecrypt).
+      Mention-class A&D relevance — niche AFS/OpenAFS stack.
+
+  - id: 2026-05-19-am-006-microsoft-windows-restricted-network-patching-kir
+    covered_in: [2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "Microsoft confirms Windows Update failures in restricted network environments (air-gapped + firewalled) for customers who installed January 2026 optional non-security preview updates KB5083806 (Windows 11 26H1) and KB5083631 (Windows 11 24H2 / 25H2 / Server 2025) — error code 0x80010002 — root cause download timeout requirement changes — February downloads OK / March 2026+ fail — Known Issue Rollback (KIR) group policy MSI workaround per Microsoft guidance + client restart required — BleepingComputer (Sergiu Gatlan) primary directly retrieved relaying Microsoft self-disclosure — STRUCTURAL A&D-prime relevance HIGH (air-gapped + firewalled Windows estates are deployment shape of ITAR-regulated A&D primes + DoD enclaves + CMMC Level 3 / IL5+ environments); NOT a vulnerability or campaign — patching-reliability bulletin"
+    topic_tags:
+      - microsoft-windows-update-reliability-bug
+      - kb5083806-windows-11-26h1
+      - kb5083631-windows-11-24h2-25h2-server-2025
+      - january-2026-optional-non-security-preview-updates
+      - error-0x80010002
+      - download-timeout-requirement-changes
+      - february-downloads-ok-march-2026-plus-fail
+      - kir-known-issue-rollback-group-policy-msi-workaround
+      - client-restart-required
+      - restricted-network-environments
+      - air-gapped-plus-firewalled-estates
+      - structural-ad-prime-relevance-high
+      - itar-regulated-ad-primes
+      - dod-enclaves
+      - cmmc-level-3-il5-plus-environments
+      - not-a-vulnerability-or-campaign
+      - patching-reliability-bulletin
+      - microsoft-self-disclosure-on-own-product-procedurally-a-grade
+      - bleepingcomputer-sergiu-gatlan-primary
+      - hard-rule-3-not-applicable-no-exploitation-content
+      - hard-rule-8-47th-consecutive-dormant-sweep
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0006]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: false
+    analyst_review_complete: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Microsoft self-disclosure on own product preserved verbatim (A-grade on vendor-authority layer per F5 / OpenAI / Microsoft MSRC precedent)"
+      - "A&D / federal / classified / secure-enclave / CMMC-regulated customer relevance is Archimedes-recorded STRUCTURAL inference NOT source-attested for specific operator estate"
+    resurface_if:
+      - microsoft_publishes_kir_workaround_update_or_known_issue_resolution_via_full_update
+      - independent_a_grade_research_publishes_scope_expansion_or_contradiction
+      - first_party_splunk_hit_on_kb5083806_or_kb5083631_install_state_with_0x80010002_error
+      - ad_prime_customer_attests_impact
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Defensive-telemetry refinement bulletin. Air-gapped + firewalled
+      Windows estates are the exact deployment shape of ITAR-regulated
+      A&D primes, DoD enclaves, CMMC Level 3 / IL5+ environments. The
+      patching-window from February → March 2026 onward is the bracket
+      where SDLC-class A&D Windows fleets would experience update
+      starvation. Briefer defensive-posture-action language: audit KB
+      installation status across restricted-network estate, deploy KIR
+      group policy MSI workaround per Microsoft guidance if installed,
+      verify March-and-later updates download correctly post-workaround.
+      Microsoft self-disclosure on own product is procedurally A-grade
+      per established corpus precedent.
+
+  - id: 2026-05-19-am-007-cve-20182-sd-wan-t-plus-38h-post-deadline
+    covered_in: [2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning, 2026-05-18-afternoon, 2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "CVE-2026-20182 Cisco Catalyst SD-WAN federal KEV deadline T+38h+ post-deadline-lapse (Sunday 2026-05-17 end-of-day); no fresh A-grade reporting from Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike across full 38h+ window; UAT-8616 attribution per Cisco Talos with visibility-skew caveat carries forward; federal-agency-compliance reporting expected via next-day CISA / OMB channels NOT the KEV catalog itself"
+    topic_tags:
+      - cve-2026-20182
+      - cisco-catalyst-sd-wan-auth-bypass
+      - cvss-10-0
+      - kev-deadline-lapsed-2026-05-17
+      - t-plus-38h-post-deadline
+      - no-fresh-a-grade-exploitation-reporting
+      - uat-8616-per-cisco-talos-visibility-skew-caveat
+      - status-only-carry-forward
+    related_actors:
+      - actor_name: "UAT-8616"
+        on_roster: false
+        archimedes_treatment: reported_not_asserted_per_cisco_talos_carry_forward
+    related_vulns:
+      - cve: CVE-2026-20182
+        cvss: 10.0
+        kev_due_date: 2026-05-17
+    related_campaigns: []
+    finding_ids: [finding-2026-05-14-0005]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - second_a_grade_vendor_active_exploitation_confirmation_publishes
+      - first_party_splunk_hit_on_cve_20182_indicators
+      - ad_prime_named_as_uat_8616_victim
+      - cisa_omb_publishes_compliance_attestation_data
+    first_covered: 2026-05-14
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+
+  - id: 2026-05-19-am-008-cve-42897-exchange-owa-xss-t-minus-10-status
+    covered_in: [2026-05-15-morning, 2026-05-15-afternoon, 2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning, 2026-05-18-afternoon, 2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "CVE-2026-42897 Microsoft Exchange OWA XSS federal KEV deadline 2026-05-29 (T-10 days, Friday); >88h single-source veto on active-exploitation-in-the-wild claim still holds; MSRC remains sole originating attester; Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike silent across full window"
+    topic_tags:
+      - cve-2026-42897
+      - exchange-owa-xss
+      - cvss-8-1
+      - kev-deadline-2026-05-29-t-minus-10-friday
+      - greater-than-88h-single-source-veto-holds
+      - msrc-sole-originating-attester
+      - status-only-carry-forward
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42897
+        cvss: 8.1
+        kev_due_date: 2026-05-29
+    related_campaigns: []
+    finding_ids: [finding-2026-05-15-0003]
+    digraph: A1
+    wep: likely
+    single_source_veto_applied: true
+    resurface_if:
+      - second_a_grade_vendor_active_exploitation_confirmation
+      - first_party_splunk_hit_on_exchange_owa_xss_indicators
+      - ad_prime_named_as_victim
+      - kev_deadline_approaches_t_minus_5_or_closer
+    first_covered: 2026-05-15
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+
+  - id: 2026-05-19-am-009-cve-42945-nginx-rift-vulncheck-canaries
+    covered_in: [2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning, 2026-05-18-afternoon, 2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "CVE-2026-42945 NGINX Rift PoC (depthfirst) carry-forward; VulnCheck Canaries scanner-class probes per SecurityWeek + THN dual-relay; defensive telemetry NOT A-grade attested production exploitation per Hard Rule 2; F5 K000160932 patches predate observation"
+    topic_tags:
+      - cve-2026-42945
+      - nginx-rift
+      - vulncheck-canaries-scanner-class-probes
+      - hard-rule-2-anti-elevation-honeypot-class
+      - status-only-carry-forward
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42945
+        cvss_v4: 9.2
+    related_campaigns: []
+    finding_ids: [finding-2026-05-16-0001]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    resurface_if:
+      - a_grade_vendor_attests_confirmed_production_exploitation
+      - first_party_splunk_hit_on_nginx_rift_indicators
+      - ad_prime_named_as_victim
+    first_covered: 2026-05-16
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+
+  - id: 2026-05-19-am-010-cve-2020-17103-miniplasma-halt-pending-test
+    covered_in: [2026-05-18-morning, 2026-05-18-afternoon, 2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "CVE-2020-17103 MiniPlasma carry-forward; substantive PoC-effectiveness layer at roughly-even-chance pending MSRC response or A-grade vendor reproduction; status-only"
+    topic_tags:
+      - cve-2020-17103
+      - miniplasma-poc
+      - halt-pending-test-substantive-layer
+      - roughly-even-chance-poc-effectiveness
+      - status-only-carry-forward
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2020-17103
+        cvss: 7.0
+    related_campaigns: []
+    finding_ids: [finding-2026-05-18-0001]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - msrc_publishes_statement_on_cve_2020_17103_rediscovery
+      - a_grade_vendor_publishes_independent_reproduction_or_analysis
+    first_covered: 2026-05-18
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+
+  - id: 2026-05-19-am-011-fast16-ratification-clock-t-plus-65h
+    covered_in: [2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning, 2026-05-18-afternoon, 2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "Symantec / SentinelLABS Fast16 framework provisional-A ratification clock T+65h+ past elapsed deadline 2026-05-16T18:25; awaiting operator pass; Sector Focus carry-forward"
+    topic_tags:
+      - symantec-sentinellabs-fast16-framework
+      - provisional-a-ratification-clock
+      - t-plus-65h-past-elapsed
+      - sector-focus-carry-forward
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [fast16]
+    finding_ids: [finding-2026-05-16-0003]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - operator_passes_on_ratification
+      - second_a_grade_vendor_corroborates_framework
+    first_covered: 2026-05-16
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+
+  - id: 2026-05-19-am-012-pwn2own-berlin-zdi-embargo-carry-forward
+    covered_in: [2026-05-16-morning, 2026-05-16-afternoon, 2026-05-17-morning, 2026-05-17-afternoon, 2026-05-18-morning, 2026-05-18-afternoon, 2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "Pwn2Own Berlin 2026 — Orange Tsai / DEVCORE Exchange RCE-to-SYSTEM chain under standard 90-day ZDI vendor-coordinated-disclosure embargo through ~2026-08-13; status-only carry-forward"
+    topic_tags:
+      - pwn2own-berlin-2026
+      - orange-tsai-devcore-exchange-rce-to-system-chain
+      - zdi-90-day-embargo-through-2026-08-13
+      - status-only-carry-forward
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-16-0002]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - microsoft_msrc_publishes_advisory_on_exchange_rce_chain
+      - zdi_publishes_post_embargo_writeup
+    first_covered: 2026-05-16
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+
+  - id: 2026-05-19-am-brief-meta
+    covered_in: [2026-05-19-morning]
+    brief_file: threats/briefs/2026-05-19-morning.md
+    headline: "Brief meta — 2026-05-19 morning: 6 new findings + 6 carry-forwards referenced; Active Threats lead Mini Shai-Hulud largest single-day expansion (finding-2026-05-19-0001 B2/likely TeamPCP source-said carry-forward) + Nx Console UNATTRIBUTED (finding-2026-05-19-0002 B2/likely Hard Rule 2 binding); Vulnerabilities lead CVE-2026-8153 Universal Robots PolyScope 5 cobot CVSS 9.8 (finding-2026-05-19-0003 STRONG A&D-supplier-tier structural relevance) + Microsoft KB5083806/KB5083631 KIR workaround (finding-2026-05-19-0006 STRUCTURAL A&D-prime relevance for ITAR/DoD/CMMC Level 3/IL5+ restricted-network estates); Other Signal SEPPMail SEG 7-CVE (finding-2026-05-19-0004 B3 mention-class) + CVE-2026-31635 DirtyDecrypt V12 PoC (finding-2026-05-19-0005 B3 third PoC-after-patches archetype this quarter); standing sections both present (Sector Focus A&D substantive + Iran Cyber Watch silent_day_template); no red-team triggers crossed (all findings capped at likely cluster anchor); Hard Rule 2 strict on Nx Console NON-PROPAGATION to TeamPCP analytically confirmed via ACH H2 5-inconsistency rejection (load-bearing discipline of brief); Hard Rule 3 — Claroty PDF + V12 GitHub + StepSecurity/Socket blog URLs NOT linked; Hard Rule 6 — zero direct quotes Layer 1 + Layer 2; pre-flight 13/13 passed; 47th consecutive dormant non-self-telemetry Splunk sweep"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - tuesday-cadence
+      - 6-new-findings-plus-6-carry-forwards
+      - new-finding-mini-shai-hulud-largest-expansion-finding-2026-05-19-0001
+      - new-finding-nx-console-unattributed-finding-2026-05-19-0002
+      - new-finding-cve-8153-polyscope-5-cobot-finding-2026-05-19-0003
+      - new-finding-seppmail-seg-7-cve-finding-2026-05-19-0004
+      - new-finding-cve-31635-dirtydecrypt-finding-2026-05-19-0005
+      - new-finding-microsoft-kir-restricted-networks-finding-2026-05-19-0006
+      - active-threats-lead-mini-shai-hulud-scale-and-nx-console-separate-clusters
+      - vulnerabilities-section-cve-8153-cobot-rce-plus-microsoft-kir-plus-4-carry-forwards
+      - sector-focus-cve-8153-strongest-ad-supplier-tier-relevant-of-2026-q2
+      - actor-activity-teampcp-mini-shai-hulud-tradecraft-refinements
+      - iran-cyber-silent-day-template
+      - other-signal-seppmail-mention-class-plus-dirtydecrypt-mention-class
+      - standing-sections-both-present
+      - no-red-team-triggers-crossed
+      - hard-rule-2-binding-nx-console-non-propagation-to-teampcp
+      - hard-rule-2-binding-vera-mens-flat-network-framing-as-researcher-hypothetical
+      - hard-rule-2-binding-clone-publisher-deadcode09284814-non-propagation-unchanged
+      - hard-rule-3-poc-urls-not-linked-claroty-v12-stepsecurity-socket
+      - hard-rule-6-zero-direct-quotes-layer-1-and-layer-2
+      - hard-rule-8-splunk-first-party-clean-47-consecutive-dormant-sweeps
+      - preflight-13-of-13-passed
+      - layer-1-canonical-record-851-words-slightly-over-800-target-within-hard-cap-1200
+      - layer-2-discord-summary-under-1900-chars
+    related_actors:
+      - actor_name: "TeamPCP"
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: source_said_carry_forward_from_vt006_NOT_propagated_to_nx_console
+      - actor_name: "UAT-8616"
+        on_roster: false
+    related_vulns:
+      - cve: CVE-2026-8153
+      - cve: CVE-2026-2743
+      - cve: CVE-2026-31635
+      - cve: CVE-2026-20182
+      - cve: CVE-2026-42897
+      - cve: CVE-2026-42945
+      - cve: CVE-2020-17103
+    related_campaigns: [mini-shai-hulud, vt-006, fast16]
+    finding_ids:
+      - finding-2026-05-19-0001
+      - finding-2026-05-19-0002
+      - finding-2026-05-19-0003
+      - finding-2026-05-19-0004
+      - finding-2026-05-19-0005
+      - finding-2026-05-19-0006
+      - finding-2026-05-14-0005
+      - finding-2026-05-15-0003
+      - finding-2026-05-16-0001
+      - finding-2026-05-16-0002
+      - finding-2026-05-16-0003
+      - finding-2026-05-18-0001
+    absorbs_flashes: []
+    resurface_if: []
+    pre_flight_result: passed_13_of_13
+    pre_flight_notes: |
+      Layer 1 body: ~851 words. Over the 400-800 morning target but within
+      the 150% hard cap (1200). Briefer judgment: content density justified
+      by 6 new findings + 6 carry-forwards + 3 Sector Focus items in one
+      sweep; further compression would have eroded load-bearing action
+      content (PolyScope-5 bracketed defensive action, Nx Console
+      credential-class revocation + named persistence paths, KB5083806/
+      KB5083631 KIR workaround steps, t.m-kosche C2 hunt guidance).
+      Layer 2 Discord Summary: ~245 words within 150-300 band; ~1873 chars
+      under 1900 ceiling.
+
+      Hard Rule 2 critical compliance — Nx Console non-propagation to
+      TeamPCP analytically confirmed via ACH H2 5-inconsistency rejection
+      is THIS brief's load-bearing discipline point. Tradecraft overlap
+      with VT-006 / Mini Shai-Hulud / TeamPCP cluster (Sigstore-Fulcio-
+      SLSA + GitHub-API dead-drop + dev-machine targeting) is recorded as
+      structural observation NOT promoted to transitive attribution. ACH
+      H1 UNATTRIBUTED tied with H5 commodity-convergence and H6 ecosystem-
+      insider at zero inconsistencies — all three collapse to no-
+      attribution disposition. Sibling Hard-Rule-2-discipline precedent
+      (node-ipc finding-2026-05-14-0009 + finding-2026-05-15-0005;
+      deadcode09284814 clone wave finding-2026-05-18-0003) supports
+      restraint. THN author-level non-cross-link in same morning cycle
+      (00:54 EDT @antv vs 03:49 EDT Nx Console) is diagnostic against
+      same-cluster framings.
+
+      Hard Rule 2 secondary compliance — Vera Mens flat-network framing
+      preserved as researcher hypothetical (12w within Rule 6 ceiling);
+      ITAR/EAR/DFARS counter on A&D segmentation maturity recorded as
+      Archimedes-observed structural counter NOT source-attested claim.
+      Microsoft restricted-network patching A&D / federal / classified /
+      CMMC relevance preserved as Archimedes structural inference NOT
+      source-attested.
+
+      Hard Rule 3: Claroty advisory PDF + V12 GitHub PoC repo +
+      StepSecurity / Socket blog URLs NOT linked in brief body or
+      Discord Summary.
+
+      Hard Rule 6: zero direct quotes Layer 1 and Layer 2 — all
+      researcher framings paraphrased (Vera Mens 12w paraphrased at
+      ceiling, Nx team root-cause framing paraphrased).
+
+      Hard Rule 8: 47th consecutive dormant non-self-telemetry Splunk
+      sweep across cluster tokens (t.m-kosche.com + atool + actions-cool
+      + @antv + rwl.angular-console + cat.py + DAEMONIZED + PolyScope +
+      Universal Robots + SEPPMail + CVE-2026-2743 + CVE-2026-31635 +
+      DirtyDecrypt + KB5083806 + KB5083631 + 0x80010002 + KIR + Vera
+      Mens + Claroty Team82 + Ashish Kurmi + StepSecurity tokens against
+      archimedes + defenseclaw_local indexes). Silence is not
+      disconfirming per established cadence.
+
+      Anti-repetition discipline:
+        - CVE-2026-20182: status-only carry-forward (T+38h+ post-deadline-
+          lapse); no resurface threshold met (no fresh A-grade reporting).
+        - CVE-2026-42897: status-only carry-forward (T-10d to Friday KEV);
+          single-source veto holds across >88h+ window.
+        - CVE-2026-42945: status-only carry-forward; VulnCheck Canaries
+          dual-relay unchanged.
+        - CVE-2020-17103 MiniPlasma: substantive PoC-effectiveness layer
+          at roughly-even-chance pending MSRC response or A-grade
+          reproduction.
+        - Symantec Fast16: structural-posture carry-forward (T+65h+ past
+          elapsed deadline).
+        - Pwn2Own Berlin: status-only carry-forward; ZDI embargo unchanged.
+        - 2026-05-18-am-007 CVE-2026-31635 mention promoted to full
+          finding via 2026-05-19-am-005 (SecurityWeek primary directly
+          retrieved this sweep; V12 PoC publication context).
+
+      Analyst handoffs queued: TeamPCP dossier tradecraft-layer
+      refinements (atool maintainer vector, Bun-runtime LOLBin,
+      Runner.Worker memory exfil, Docker host-socket escape, 2,500+
+      marker-repo scale); Nx Console SAT-ACH tripwire monitoring
+      (second-firm corroboration, Nx follow-up naming prior incident,
+      A-grade independent attribution, first-party Splunk hit, THN
+      cross-link); PolyScope 5 KAC A2 (PolyScope-5-vs-PolyScope-X
+      distribution in A&D estates) classified Test-but-non-blocking
+      for vuln-tracker VT-008 dossier creation.
+
+      Vuln-tracker handoffs queued:
+        - CVE-2026-8153 VT-008 dossier (STRONG _index.yaml addition
+          candidate per A&D-supplier-tier structural relevance + CVSS 9.8
+          + CISA cross-listed + named OT-research firm)
+        - CVE-2026-2743 (SEPPMail) lightweight catalog entry (LOW A&D-
+          direct exposure watchlist-class)
+        - CVE-2026-31635 DirtyDecrypt (lower-priority kernel-bug-family-
+          variant catalog completeness via Fragnesia lineage cross-link)
+
+      Librarian source-grade-log additions queued:
+        - claroty-team82: provisional-A (Tier-1 OT-research precedent)
+        - universal-robots-psirt: provisional-A (vendor self-disclosure
+          on own product precedent)
+        - infoguard-labs: provisional-C (Tier-2 vendor-research first
+          corpus surface)
+        - seppmail-psirt: provisional-B (vendor self-disclosure on own
+          product; lower than provisional-A because less visible in corpus)
+        - v12-security: provisional-C (Tier-2 / unknown security-research
+          team first corpus surface)
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
     retraction: null
     test: false
 

@@ -1,0 +1,138 @@
+# threats/campaigns/_index.yaml
+#
+# Active threat campaigns under Archimedes corpus tracking.
+# Each entry corresponds to a per-campaign dossier at threats/campaigns/<id>/profile.md.
+#
+# Seeded 2026-05-18 from active-campaign survey of last 14 days of briefs.
+# Going forward: campaigns added when a brief/finding cites a named campaign that's
+# not yet tracked. Same lazy/event-driven pattern as threats/vulnerabilities/_index.yaml.
+
+version: 1
+last_updated: 2026-05-18
+
+campaigns:
+
+  - id: mini-shai-hulud
+    aliases: [Mini Shai-Hulud, TanStack supply-chain, Shai-Hulud worm]
+    status: active
+    attributed_actor: TeamPCP
+    attribution_confidence: high
+    dossier: threats/campaigns/mini-shai-hulud/profile.md
+    first_observed: 2026-05
+    last_observed: 2026-05-18
+    ad_relevance: indirect-supply-chain
+    tracked_since: 2026-05-12
+    last_reviewed: 2026-05-18
+    next_review_due: 2026-08-18
+    note: "OpenAI + Mistral named victims. Worm source code public on GitHub with BreachForums bounty. Mistral leak deadline 2026-05-21 (T-3 at seed). TeamPCP roster #001 HIGH."
+
+  - id: chromelevator
+    aliases: [ChromeLevator, Symantec MuddyWater multi-victim 2026-05]
+    status: active
+    attributed_actor: MuddyWater
+    attribution_confidence: per-Symantec-single-source
+    dossier: threats/campaigns/chromelevator/profile.md
+    first_observed: 2026
+    last_observed: 2026-05-13
+    ad_relevance: sector-adjacency-not-target-specific
+    tracked_since: 2026-05-13
+    last_reviewed: 2026-05-13
+    next_review_due: 2026-08-13
+    note: "Symantec single-source — WEP capped at likely per single-source veto. Standing 72h auto-downgrade pattern applies. MuddyWater roster #022 LOW."
+
+  - id: salt-typhoon-azerbaijan-energy
+    aliases: [Salt Typhoon Azerbaijan O&G, FamousSparrow Azerbaijan energy]
+    status: active
+    attributed_actor: Salt Typhoon
+    attribution_confidence: per-FLASH-source
+    dossier: threats/campaigns/salt-typhoon-azerbaijan-energy/profile.md
+    first_observed: 2026
+    last_observed: 2026-05-13
+    ad_relevance: structural-not-prime-direct
+    tracked_since: 2026-05-13
+    last_reviewed: 2026-05-13
+    next_review_due: 2026-08-13
+    note: "Co-named FamousSparrow + Salt Typhoon per source; relationship per source framing not Archimedes-originated. Azerbaijan O&G focus is outside A&D-prime profile."
+
+  - id: frostyneighbor
+    aliases: [FrostyNeighbor, Fresh Mischief, Digital Shenanigans]
+    status: active
+    attributed_actor: UNC1151 / Ghostwriter
+    attribution_confidence: per-ESET-single-source
+    dossier: threats/campaigns/frostyneighbor/profile.md
+    first_observed: 2026-03
+    last_observed: 2026-05-14
+    ad_relevance: partner-of-partner-exposure
+    tracked_since: 2026-05-14
+    last_reviewed: 2026-05-14
+    next_review_due: 2026-08-14
+    note: "ESET (Damien Schaeffer) A-grade single-source. Actor UNC1151 NOT in roster — /new-actor flagged. Ukrainian gov/military + Polish/Lithuanian industrial targeting. Reuses CVE-2023-38831 + CVE-2024-42009 (both patched)."
+
+  - id: fdmtp-mustang-panda-apac
+    aliases: [FDMTP RAT campaign, Twill Typhoon APAC, Mustang Panda APAC 2025-2026, TA416 APAC]
+    status: active
+    attributed_actor: Twill Typhoon / Mustang Panda / TA416
+    attribution_confidence: per-Darktrace-single-source
+    dossier: threats/campaigns/fdmtp-mustang-panda-apac/profile.md
+    first_observed: 2025-09
+    last_observed: 2026-04
+    ad_relevance: low
+    tracked_since: 2026-05-14
+    last_reviewed: 2026-05-14
+    next_review_due: 2026-08-14
+    note: "Darktrace single-source. Actor NOT in roster — /new-actor flagged. New FDMTP modular .NET RAT. Financial-sector targeting is outlier vs. historical NGO/journalist profile."
+
+  - id: shai-hulud-clone-wave-202605
+    aliases: [Shai-Hulud npm clone wave, Mini Shai-Hulud copy-cat wave 2026-05]
+    status: active
+    attributed_actor: UNATTRIBUTED
+    attribution_confidence: explicit-non-attribution
+    dossier: threats/campaigns/shai-hulud-clone-wave-202605/profile.md
+    first_observed: 2026-05-18
+    last_observed: 2026-05-18
+    ad_relevance: indirect-supply-chain
+    tracked_since: 2026-05-18
+    last_reviewed: 2026-05-18
+    next_review_due: 2026-06-18
+    note: "EXPLICITLY NOT TeamPCP per Ox Security. Per analyst ACH H1 (distinct actor) ties with H3 (copy-cat noise). C2 on LocalHost.run anonymizer is uninformative for actor-distinction per KAC. Materializes the VT-006 derivative-attacks-30d WEP at T+3 days."
+
+  - id: kazuar-p2p-evolution
+    aliases: [Kazuar P2P botnet, Secret Blizzard architectural evolution, Turla Kazuar evolved]
+    status: active                    # tracking-active; see status_caveat in dossier
+    attributed_actor: Secret Blizzard / Turla / FSB Center 16
+    attribution_confidence: per-MSTIC-A-grade-with-CISA-citation-chain
+    dossier: threats/campaigns/kazuar-p2p-evolution/profile.md
+    first_observed: pre-2026
+    last_observed: 2026-05-14
+    ad_relevance: historical-baseline-A&D-signal-unlikely
+    tracked_since: 2026-05-14
+    last_reviewed: 2026-05-14
+    next_review_due: 2026-08-14
+    note: "ARCHITECTURAL DEEP-DIVE, not fresh-incident. No 2026 victim named per MSTIC. Actor NOT in roster — /new-actor strong-flagged. 4 SHA256 hashes published; push to A&D EDR. Targeting language includes 'defense departments and defense-related companies worldwide' per MSTIC verbatim."
+
+
+# Quick-lookup indices (regenerated when campaigns list changes)
+_meta:
+  total: 7
+  by_status:
+    active: 7
+    dormant: 0
+    concluded: 0
+    historical: 0
+  by_attribution_confidence:
+    high: 1                       # mini-shai-hulud
+    per-A-grade-single-source: 2  # frostyneighbor (ESET), kazuar (MSTIC + CISA citation)
+    per-single-source: 3          # chromelevator (Symantec), salt-typhoon-azerbaijan (FLASH source), fdmtp (Darktrace)
+    explicit-non-attribution: 1   # shai-hulud-clone-wave
+  by_ad_relevance:
+    indirect-supply-chain: 2      # mini-shai-hulud, shai-hulud-clone-wave
+    sector-adjacency: 1           # chromelevator
+    structural-not-prime-direct: 1 # salt-typhoon-azerbaijan
+    partner-of-partner-exposure: 1 # frostyneighbor
+    low: 1                        # fdmtp-mustang-panda-apac
+    historical-baseline: 1        # kazuar-p2p-evolution
+  by_attributed_actor_in_roster:
+    yes: 3                        # TeamPCP, MuddyWater, Salt Typhoon
+    no_flagged_new_actor: 3       # UNC1151, Twill Typhoon, Secret Blizzard
+    unattributed: 1               # shai-hulud-clone-wave-202605
+  new_actor_flags_outstanding: 3  # UNC1151, Twill Typhoon (or Mustang Panda or TA416), Secret Blizzard (or Turla)

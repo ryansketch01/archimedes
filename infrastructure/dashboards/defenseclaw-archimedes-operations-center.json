@@ -1,6 +1,7 @@
 {
     "title": "DefenseClaw Operations Center",
     "description": "Real-time DefenseClaw security monitoring — Pi → Splunk HEC + Archimedes pipeline telemetry",
+    "theme": "enterprise.dark",
     "inputs": {
         "input_global_trp": {
             "options": {
@@ -47,10 +48,7 @@
                 "backgroundColor": "#0F172A",
                 "colorMode": "none",
                 "majorColor": "#E2E8F0",
-                "majorFontSize": 28,
-                "titleColor": "#F1F5F9",
-                "subtitleColor": "#CBD5E1",
-                "unitColor": "#CBD5E1"
+                "majorFontSize": 28
             },
             "title": "Discord Posts",
             "type": "splunk.singlevalue"
@@ -63,10 +61,7 @@
                 "backgroundColor": "#0F172A",
                 "colorMode": "none",
                 "majorColor": "#F97316",
-                "majorFontSize": 48,
-                "titleColor": "#F1F5F9",
-                "subtitleColor": "#CBD5E1",
-                "unitColor": "#CBD5E1"
+                "majorFontSize": 48
             },
             "title": "FLASH Briefs",
             "type": "splunk.singlevalue"
@@ -79,10 +74,7 @@
                 "backgroundColor": "#0F172A",
                 "colorMode": "none",
                 "majorColor": "#E2E8F0",
-                "majorFontSize": 32,
-                "titleColor": "#F1F5F9",
-                "subtitleColor": "#CBD5E1",
-                "unitColor": "#CBD5E1"
+                "majorFontSize": 32
             },
             "title": "Pipeline Health",
             "type": "splunk.singlevalue"
@@ -95,10 +87,7 @@
                 "backgroundColor": "#0F172A",
                 "colorMode": "none",
                 "majorColor": "#22D3EE",
-                "majorFontSize": 20,
-                "titleColor": "#F1F5F9",
-                "subtitleColor": "#CBD5E1",
-                "unitColor": "#CBD5E1"
+                "majorFontSize": 20
             },
             "title": "Last Brief Completed",
             "type": "splunk.singlevalue"
@@ -110,9 +99,6 @@
             "options": {
                 "backgroundColor": "#0F172A",
                 "labelDisplay": "valuesAndPercentage",
-                "legendLabelColor": "#E2E8F0",
-                "labelColor": "#E2E8F0",
-                "titleColor": "#F1F5F9",
                 "seriesColors": [
                     "#22D3EE",
                     "#FBBF24",
@@ -134,11 +120,8 @@
             "options": {
                 "backgroundColor": "#0F172A",
                 "headerBackgroundColor": "#1E293B",
-                "headerColor": "#F1F5F9",
                 "rowBackgroundColorOdd": "#1E293B",
-                "rowBackgroundColorEven": "#0F172A",
-                "rowColor": "#E2E8F0",
-                "titleColor": "#F1F5F9"
+                "rowBackgroundColorEven": "#0F172A"
             },
             "title": "Recent Findings",
             "type": "splunk.table"
@@ -150,11 +133,8 @@
             "options": {
                 "backgroundColor": "#0F172A",
                 "headerBackgroundColor": "#1E293B",
-                "headerColor": "#F1F5F9",
                 "rowBackgroundColorOdd": "#1E293B",
-                "rowBackgroundColorEven": "#0F172A",
-                "rowColor": "#E2E8F0",
-                "titleColor": "#F1F5F9"
+                "rowBackgroundColorEven": "#0F172A"
             },
             "title": "Recent Scheduler Runs",
             "type": "splunk.table"
@@ -166,12 +146,6 @@
             "options": {
                 "backgroundColor": "#0F172A",
                 "legendDisplay": "right",
-                "legendLabelColor": "#E2E8F0",
-                "axisLabelColorX": "#CBD5E1",
-                "axisLabelColorY": "#CBD5E1",
-                "axisTitleColorX": "#E2E8F0",
-                "axisTitleColorY": "#E2E8F0",
-                "titleColor": "#F1F5F9",
                 "seriesColors": [
                     "#22D3EE",
                     "#FBBF24",
@@ -216,11 +190,6 @@
                 "backgroundColor": "#0F172A",
                 "legendDisplay": "off",
                 "orientation": "horizontal",
-                "axisLabelColorX": "#CBD5E1",
-                "axisLabelColorY": "#CBD5E1",
-                "axisTitleColorX": "#E2E8F0",
-                "axisTitleColorY": "#E2E8F0",
-                "titleColor": "#F1F5F9",
                 "seriesColors": [
                     "#7C3AED"
                 ]
@@ -235,11 +204,6 @@
             "options": {
                 "backgroundColor": "#0F172A",
                 "legendDisplay": "off",
-                "axisLabelColorX": "#CBD5E1",
-                "axisLabelColorY": "#CBD5E1",
-                "axisTitleColorX": "#E2E8F0",
-                "axisTitleColorY": "#E2E8F0",
-                "titleColor": "#F1F5F9",
                 "seriesColors": [
                     "#00C7EB"
                 ]
@@ -255,10 +219,7 @@
                 "backgroundColor": "#0F172A",
                 "colorMode": "none",
                 "majorColor": "#22C55E",
-                "majorFontSize": 20,
-                "titleColor": "#F1F5F9",
-                "subtitleColor": "#CBD5E1",
-                "unitColor": "#CBD5E1"
+                "majorFontSize": 20
             },
             "title": "Last Event Received",
             "type": "splunk.singlevalue"
@@ -270,11 +231,8 @@
             "options": {
                 "backgroundColor": "#0F172A",
                 "headerBackgroundColor": "#1E293B",
-                "headerColor": "#F1F5F9",
                 "rowBackgroundColorOdd": "#1E293B",
-                "rowBackgroundColorEven": "#0F172A",
-                "rowColor": "#E2E8F0",
-                "titleColor": "#F1F5F9"
+                "rowBackgroundColorEven": "#0F172A"
             },
             "title": "Recent Events",
             "type": "splunk.table"
@@ -286,9 +244,6 @@
             "options": {
                 "backgroundColor": "#0F172A",
                 "labelDisplay": "valuesAndPercentage",
-                "legendLabelColor": "#E2E8F0",
-                "labelColor": "#E2E8F0",
-                "titleColor": "#F1F5F9",
                 "seriesColors": [
                     "#EF4444",
                     "#F97316",
@@ -322,10 +277,7 @@
                 "backgroundColor": "#0F172A",
                 "colorMode": "none",
                 "majorColor": "#00C7EB",
-                "majorFontSize": 48,
-                "titleColor": "#F1F5F9",
-                "subtitleColor": "#CBD5E1",
-                "unitColor": "#CBD5E1"
+                "majorFontSize": 48
             },
             "title": "Total Events",
             "type": "splunk.singlevalue"

@@ -18,27 +18,64 @@ Versioned reference copies of Splunk Dashboard Studio dashboards. The dashboards
 
 Same process in reverse — copy from Splunk's Source editor, paste into this file, commit.
 
-## Readability palette (applied 2026-05-19)
+## Dark-theme readability — 2026-05-19 fix
 
-Splunk Dashboard Studio's default dark-theme text colors are too dim against `#080D12` / `#0F172A` panel backgrounds. The following overrides are applied across the dashboard:
+The dashboard reads correctly on a dark background because the top-level JSON now declares:
 
-| Use | Color | Notes |
+```json
+"theme": "enterprise.dark"
+```
+
+Splunk Dashboard Studio defaults to `enterprise.light` when no theme is set. A dashboard with dark backgrounds (`#080D12` / `#0F172A` / `#1E293B`) under the light theme produces dark text — the original symptom. Setting `theme: "enterprise.dark"` flips all the chrome (panel titles, table cells, pie/legend labels, axis labels) to light text on dark backgrounds.
+
+### Properties Splunk Dashboard Studio actually controls
+
+Per-viz `options` only affect things rendered INSIDE the visualization:
+
+- `backgroundColor` ✅
+- `majorColor`, `majorFontSize` ✅ (singlevalue)
+- `seriesColors` ✅ (pie / column / bar / line)
+- `headerBackgroundColor`, `rowBackgroundColorOdd`, `rowBackgroundColorEven` ✅ (table)
+- `legendDisplay`, `labelDisplay`, `stackMode`, `orientation` ✅
+- `fillColor`, `strokeColor` ✅ (rectangle)
+- `fontColor` ✅ (markdown only — inline CSS in the rendered HTML)
+
+Properties controlling **panel chrome** (panel titles, axis label text, table cell text, legend label text) are NOT exposed per-viz. They're driven by the dashboard theme. To override them individually, you'd need custom CSS via a Splunk app — out of scope for a single dashboard file.
+
+### Things that were tried but don't actually work (lesson learned 2026-05-19)
+
+A previous version of this file added the following per-viz options to brighten text. **Splunk silently ignores them** — they're not in the Dashboard Studio schema. Removed in this version:
+
+- `titleColor`, `subtitleColor`, `unitColor` on singlevalue
+- `headerColor`, `rowColor` on table
+- `legendLabelColor`, `labelColor` on pie
+- `axisLabelColorX/Y`, `axisTitleColorX/Y`, `legendLabelColor` on column / bar
+
+If those names ever become real Splunk options, they can be re-added — but the `theme` property is the actual lever today.
+
+## Theme value compatibility
+
+- `enterprise.dark` — current Splunk Dashboard Studio (9.x+)
+- `enterprise.light` — default when `theme` is absent
+- If your Splunk parses neither: try the plain values `"dark"` / `"light"` (older builds) or check Splunk's theme dropdown in the UI
+
+## Background palette (unchanged)
+
+| Element | Color | Notes |
 |---|---|---|
-| Panel titles ("Pipeline Health" etc.) | `#F1F5F9` (slate-100) | `titleColor` property |
-| Body text (table rows, pie labels, legend) | `#E2E8F0` (slate-200) | `rowColor`, `legendLabelColor`, `labelColor` |
-| Secondary text (subtitles, axis labels) | `#CBD5E1` (slate-300) | `subtitleColor`, `axisLabelColorX/Y` |
-| Brightest accent (axis titles, table headers) | `#F1F5F9` | `axisTitleColorX/Y`, `headerColor` |
-| Big single-value numbers | varies (existing `majorColor` retained) | Pipeline Health green, FLASH orange, etc. |
+| Layout (outer) | `#080D12` | Near-black |
+| Panel backgrounds | `#0F172A` | Dark slate |
+| Header bands + table-header cells | `#1E293B` | Mid slate |
+| Table row alternating (even) | `#0F172A` | Matches panel |
+| Table row alternating (odd) | `#1E293B` | Matches header band |
 
-Background palette unchanged: `#080D12` (outer), `#0F172A` (panels), `#1E293B` (header bands + table-header backgrounds + odd-row backgrounds), `#0F172A` (even-row backgrounds for alternating contrast).
+## Accent color palette (unchanged)
 
-## Properties that may not render on older Splunk Dashboard Studio versions
-
-If any of these properties show as warnings in the Source editor, comment them out or remove them — they're safe to drop without breaking the dashboard:
-
-- `headerColor`, `rowColor` on tables — verified on Dashboard Studio 9.1+
-- `legendLabelColor`, `labelColor` on pies — verified on Dashboard Studio 9.1+
-- `axisLabelColorX/Y`, `axisTitleColorX/Y`, `legendLabelColor` on columns/bars — verified on Dashboard Studio 9.1+
-- `subtitleColor`, `unitColor` on singlevalue — verified on Dashboard Studio 9.1+
-
-If your Splunk version is older and these don't take, the dashboard will still render — just without the readability fix on those specific elements. Drop the unsupported keys and the rest still works.
+| Use | Color |
+|---|---|
+| Title (Archimedes tab) | `#FBBF24` (gold) |
+| Title (DefenseClaw tab) | `#00C7EB` (cyan) |
+| Subtitle | `#CBD5E1` (slate-300) |
+| Singlevalue major numbers | varies — `#E2E8F0` neutral / `#22D3EE` cyan / `#22C55E` green / `#F97316` orange |
+| Pie / column series | 8-color rotation: cyan / gold / green / orange / purple / pink / blue / red |
+| Severity pie (DefenseClaw) | red / orange / yellow / green / blue (P1→info) |

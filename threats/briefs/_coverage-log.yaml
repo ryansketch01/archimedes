@@ -12305,6 +12305,425 @@ entries:
     retraction: null
     test: false
 
+  # ============================================================================
+  # 2026-05-19 AFTERNOON BRIEF — entries below
+  # ============================================================================
+
+  - id: 2026-05-19-pm-001-microsoft-mstic-dcu-fox-tempest-msaas-disruption
+    covered_in: [2026-05-19-afternoon]
+    brief_file: threats/briefs/2026-05-19-afternoon.md
+    headline: "Microsoft MSTIC + DCU disrupt Fox Tempest Malware-Signing-as-a-Service — 1,000+ Artifact Signing certificates revoked, U.S. District Court case unsealed"
+    topic_tags:
+      - fox-tempest
+      - vanilla-tempest
+      - storm-0501-2561-0249-in-development
+      - microsoft-mstic-originating-research
+      - microsoft-dcu-legal-disruption
+      - us-district-court-case-unsealed
+      - microsoft-artifact-signing-abuse
+      - azure-trusted-signing-formerly
+      - malware-signing-as-a-service-msaas
+      - signspace-cloud-defunct
+      - 72-hour-short-life-certificates
+      - 1000-plus-certificates-revoked
+      - hundreds-of-azure-tenants-disrupted
+      - cloudzy-industry-partner
+      - operational-not-structural-disruption
+      - trust-chain-leverage-persists
+      - rhysida-qilin-akira-inc-blackbyte-ransomware-families
+      - oyster-broomstick-lumma-vidar-malware-families
+      - anydesk-teams-putty-webex-impersonation
+      - new-actor-candidates-flagged
+      - hard-rule-2-no-propagation-to-storm-2949
+      - single-source-veto-mstic-relay-chain
+    related_actors:
+      - actor_name: "Fox Tempest"
+        on_roster: false
+        new_actor_candidate: true
+      - actor_name: "Vanilla Tempest"
+        on_roster: false
+        new_actor_candidate: true
+      - actor_name: "Storm-0501"
+        on_roster: false
+        microsoft_in_development: true
+      - actor_name: "Storm-2561"
+        on_roster: false
+        microsoft_in_development: true
+      - actor_name: "Storm-0249"
+        on_roster: false
+        microsoft_in_development: true
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0007]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Fox Tempest, Vanilla Tempest, Storm-0501/2561/0249 are Microsoft taxonomy designations NOT on Archimedes _roster.yaml — /new-actor candidates flagged, attribution NOT propagated"
+      - "Storm-* prefix explicitly Microsoft-in-development per MSTIC's own convention — analyst recommends deferring scaffolding pending second-vendor corroboration"
+      - "Storm-2949 (morning carry-forward) UNRELATED to Fox Tempest — separate cluster (identity-driven M365/Azure pivot vs MSaaS infrastructure); NO propagation in either direction"
+      - "MSTIC hedged language preserved verbatim: 'financially motivated,' 'very likely used stolen identities'"
+      - "Disruption framed as operational NOT structural — Artifact Signing trust-chain leverage point persists; class-of-attack durability is open question"
+    resurface_if:
+      - second_vendor_corroboration_or_contradiction
+      - storm_actor_promotion_to_tempest_class
+      - second_msaas_operation_surfaces_post_disruption
+      - microsoft_publishes_architectural_fix
+      - ad_dib_or_aerospace_prime_named_as_downstream_victim
+      - first_party_splunk_hit_on_artifact_signing_iocs
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Microsoft DCU MSaaS disruption is operationally significant (1,000+
+      certs revoked, signspace[.]cloud defunct) but structurally limited
+      — Artifact Signing trust-chain leverage persists post-disruption.
+      Briefer preserves analyst guidance to NOT frame as Microsoft
+      solving the signing-abuse class. Fox Tempest + Vanilla Tempest +
+      Storm-0501/2561/0249 are /new-actor candidates pending analyst
+      scaffolding workflow and Hard Rule 5 sign-off if HIGH.
+
+  - id: 2026-05-19-pm-002-cve-2026-45829-chromadb-pre-auth-rce-huggingface-trust-chain
+    covered_in: [2026-05-19-afternoon]
+    brief_file: threats/briefs/2026-05-19-afternoon.md
+    headline: "CVE-2026-45829 ChromaDB pre-auth RCE via HuggingFace model trust-chain abuse — unpatched as of 1.5.8"
+    topic_tags:
+      - cve-2026-45829
+      - chromadb-vector-database
+      - pre-auth-rce
+      - huggingface-model-trust-chain
+      - llm-rag-pipeline-supply-chain
+      - affects-all-versions-since-1-0-0
+      - unpatched-as-of-1-5-8
+      - hiddenlayer-first-corpus-citation-provisional-b
+      - azraelxuemo-independent-researcher-november-2025-co-disclosure
+      - 73-percent-internet-accessible-methodology-opaque
+      - shadow-it-developer-instance-audit-not-enterprise-prod
+      - intra-vpn-enterprise-deployments-likely-insulated
+      - ai-ml-supply-chain-class-ollama-llama-pytorch-pickle
+      - kwargs-config-bypass-remediation
+      - single-source-veto-hiddenlayer-originating
+    related_actors: []
+    related_vulns:
+      - cve_id: CVE-2026-45829
+        product: ChromaDB
+        affected: "all versions since 1.0.0 through 1.5.8"
+        patched_version: unpatched
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0008]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "73% internet-accessibility figure is HiddenLayer-attributed via SecurityWeek; methodology not retrievable from relay layer — treat as order-of-magnitude not precision figure"
+      - "A&D framing narrowed per analyst guidance to shadow-IT / developer-instance audit; production enterprise deployments are structurally insulated by intra-VPN posture — NOT 73% across A&D estates"
+      - "Sibling pattern-class to Ollama RCE / llama.cpp deserialization / PyTorch pickle deserialization recorded as observation NOT class-attribution"
+    resurface_if:
+      - patch_released_for_chromadb
+      - second_research_firm_corroborates_or_contradicts_hiddenlayer
+      - in_the_wild_exploitation_confirmed
+      - cisa_kev_addition
+      - first_party_splunk_hit_on_chromadb_indicators
+      - ad_prime_named_as_victim
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Pre-auth RCE class severity is real but A&D-prime direct exposure
+      is structurally bounded by intra-VPN deployment posture. The 73%
+      headline is a poor proxy for prime-tier exposure; shadow-IT / dev
+      instances are the likelier exposure path. HiddenLayer is first
+      corpus citation at provisional-B (Sysdig/Zellic precedent); grade
+      subject to librarian ratification. Vuln-tracker _index.yaml
+      addition candidate.
+
+  - id: 2026-05-19-pm-003-drupal-psa-highly-critical-pre-disclosure
+    covered_in: [2026-05-19-afternoon]
+    brief_file: threats/briefs/2026-05-19-afternoon.md
+    headline: "Drupal pre-disclosure PSA — 'highly critical' vulnerability, patches 2026-05-20 17:00–21:00 UTC across 11.3.x / 11.2.x / 10.6.x / 10.5.x"
+    topic_tags:
+      - drupal-pre-security-advisory-psa
+      - highly-critical-vendor-self-classification
+      - cve-embargoed-pre-disclosure
+      - patch-window-2026-05-20-17-00-to-21-00-utc
+      - affected-branches-11-3-x-11-2-x-10-6-x-10-5-x
+      - first-highly-critical-drupal-in-years-per-source
+      - no-known-in-the-wild-exploitation-since-2019-per-source
+      - vendor-warns-exploit-within-hours-or-days
+      - drupalgeddon-cve-2018-7600-precedent-pattern-class
+      - dib-tier-supplier-marketing-cms-narrow-framing
+      - tier-1-primes-rarely-run-drupal-directly
+      - single-source-veto-weaponization-anticipation-layer
+    related_actors: []
+    related_vulns:
+      - cve_id: embargoed-until-2026-05-20
+        product: "Drupal core (11.3.x, 11.2.x, 10.6.x, 10.5.x)"
+        affected: "branches above pending release"
+        patched_version: "pending release window 2026-05-20 17:00-21:00 UTC"
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0009]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "'Highly critical' severity is Drupal vendor self-classification — NOT Archimedes-originated CVSS scoring"
+      - "Vendor expectation 'exploit within hours or days' is Drupal-attributed forward-looking framing; single-source veto applies"
+      - "A&D framing narrowed per analyst guidance to DIB-tier supplier-marketing-CMS operators only — Tier-1 primes rarely run Drupal directly"
+      - "Drupalgeddon (CVE-2018-7600) precedent pattern-match is Archimedes-recorded structural inference NOT source-attested"
+    resurface_if:
+      - cve_released_2026_05_20_release_window
+      - exploit_observed_post_release
+      - second_vendor_corroboration
+      - first_party_splunk_hit_on_drupal_indicators_post_release
+      - ad_or_supplier_named_as_victim
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Pre-disclosure PSA — CVE + CVSS + mechanism all embargoed pending
+      release window 2026-05-20 17:00-21:00 UTC. Brief stages triage
+      capacity for the 4-hour window. Drupalgeddon precedent informs
+      "exploit within hours-to-days" expectation. Resurface on the
+      Wednesday release with CVE-bound finding.
+
+  - id: 2026-05-19-pm-004-eviltokens-phaas-oauth-device-code-m365
+    covered_in: [2026-05-19-afternoon]
+    brief_file: threats/briefs/2026-05-19-afternoon.md
+    headline: "EvilTokens PhaaS — 340+ M365 organizations compromised within five weeks of February 2026 launch per CSA Research Note"
+    topic_tags:
+      - eviltokens-phaas-platform
+      - launched-february-2026
+      - 340-plus-m365-organizations-compromised
+      - five-weeks-five-countries-unspecified
+      - oauth-2-0-device-code-phishing-mechanism
+      - rfc-8628-device-authorization-grant-flow
+      - refresh-tokens-survive-password-resets
+      - tokens-valid-weeks-to-months
+      - closure-requires-explicit-token-revocation
+      - password-rotation-does-not-close-session
+      - tradecraft-class-overlap-tycoon2fa
+      - tradecraft-class-overlap-storm-2949
+      - hard-rule-2-no-operator-attribution-propagation-across-phaas
+      - csa-cloud-security-alliance-first-corpus-citation
+      - thn-relay-of-csa-research-note-2026-03-25
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [eviltokens-phaas-cluster]
+    finding_ids: [finding-2026-05-19-0010]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "OAuth device-code phishing is a TRADECRAFT CLASS not a single-operator attribution — EvilTokens + Tycoon2FA (finding-2026-05-17-0002) + Storm-2949 (morning carry-forward) are sibling instances; NO propagation across the three"
+      - "340-org / 5-country scale figures are CSA-attributed via THN relay; methodology not retrievable from THN"
+      - "CSA Cloud Security Alliance is first corpus citation as a research source — provisional-B candidate per multi-stakeholder cloud-security trade body class"
+    resurface_if:
+      - second_research_firm_corroborates_eviltokens_specific_platform
+      - eviltokens_specific_iocs_published
+      - first_party_splunk_hit_on_device_code_phish_indicators
+      - ad_or_dib_named_as_compromised_m365_org
+      - cisa_or_mstic_published_eviltokens_analysis
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Third OAuth-device-code PhaaS surface this quarter alongside
+      Tycoon2FA and Storm-2949. Tradecraft-class observation, NOT
+      single-operator attribution. The closure-requires-token-revocation
+      action point is the operational delta for A&D M365 estates —
+      pure password rotation does not close the operator session.
+
+  - id: 2026-05-19-pm-005-huawei-vrp-zero-day-luxembourg-post-causation-the-record
+    covered_in: [2026-05-19-afternoon]
+    brief_file: threats/briefs/2026-05-19-afternoon.md
+    headline: "The Record attributes 2025-07-23 Luxembourg POST telecom outage to a Huawei VRP zero-day — vendor silent, no CVE, 10 months post-incident"
+    topic_tags:
+      - huawei-vrp-versatile-routing-platform-zero-day
+      - 2025-07-23-luxembourg-post-network-wide-outage
+      - the-record-investigative-primary-single-source
+      - huawei-vendor-silent-no-cve-no-public-advisory
+      - 10-month-post-incident-disclosure-cadence
+      - continuous-restart-loops-specially-crafted-traffic
+      - dos-class-not-rce-or-exfil
+      - no-targeted-attack-framing-preserved-verbatim
+      - no-state-actor-attribution-per-source
+      - salt-typhoon-class-distinction-no-propagation
+      - foreign-vendor-equipment-critical-infrastructure
+      - high-brittleness-analyst-flag-single-investigative-primary
+      - hard-rule-2-causation-attribution-to-the-record-not-fact
+      - european-ad-prime-adjacency-speculative
+    related_actors: []
+    related_vulns:
+      - cve_id: not_assigned
+        product: "Huawei enterprise routers running VRP"
+        affected: "unspecified; vulnerability remains unexplained and unpatched in any public capacity per The Record"
+        patched_version: unknown
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0011]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    analyst_brittleness_flag: high
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Causation chain (Huawei VRP zero-day → Luxembourg POST outage) attributed verbatim to The Record as single investigative primary — NOT presented as established fact"
+      - "The Record's 'no evidence ... specifically directed' framing preserved verbatim — Archimedes does NOT originate state-actor attribution"
+      - "Salt Typhoon (#010) is surveillance-class telecom actor; Luxembourg incident's no-targeted-attack + DoS-not-exfil framing positions OUTSIDE that class — NO propagation"
+      - "European A&D-prime adjacency (BAE, Thales, Safran) is Archimedes-recorded structural inference NOT source-attested"
+      - "Huawei vendor silence + no-CVE + 10-month-post-incident pattern is procedurally observable but does NOT constitute corroboration of The Record's causation framing"
+    resurface_if:
+      - luxembourg_post_publishes_direct_confirmation
+      - huawei_publishes_cve_or_advisory
+      - second_european_telecom_outage_with_same_vrp_signature
+      - second_news_organization_independent_corroboration
+      - cisa_or_enisa_or_ncsc_picks_up_the_story
+      - any_a_grade_source_attributes_to_state_actor
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      HIGH brittleness — causation rests on The Record as sole
+      investigative primary. No Luxembourg POST direct confirmation;
+      no Huawei advisory; no CVE. The Record is BEYOND-relay on this
+      story (originating investigative work) but Archimedes preserves
+      source-grades.yaml-canonical B grade pending source-grade-log
+      review for investigative-primary-on-Tier-2-news tier elevation.
+      Brittleness flag means: if Luxembourg POST or Huawei contradicts
+      the causation framing, the finding gets retraction-policy
+      handling per RETRACTION-POLICY.md. Anti-noise rule binds against
+      Salt Typhoon propagation.
+
+  - id: 2026-05-19-pm-006-mshta-legacy-lolbin-2026-trend-bitdefender
+    covered_in: [2026-05-19-afternoon]
+    brief_file: threats/briefs/2026-05-19-afternoon.md
+    headline: "MSHTA legacy LOLBIN trending in 2026 per Bitdefender Labs — defensive trend, no actor attribution"
+    topic_tags:
+      - mshta-exe-legacy-windows-html-applications-binary
+      - 1999-introduction-windows-98-se-ie-5-0
+      - living-off-the-land-binary-lolbin
+      - dramatic-rise-2026-bitdefender-trend-statistic
+      - lumma-amatera-clipbanker-purplefox-malware-families
+      - emmenhtal-loader-hta-countloader
+      - phishing-fake-software-downloads-clipboard-hijacking-delivery
+      - mitre-attack-t1218-005-system-binary-proxy-execution
+      - cmmc-nist-800-171-cis-controls-hardening-target
+      - wdac-applocker-mshta-blocking-established-control
+      - no-actor-attribution
+      - no-volume-metrics-disclosed-in-source
+      - single-source-veto-bitdefender-trend-statistic
+      - reinforces-existing-control-not-new-recommendation
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0012]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    analyst_review_complete: true
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Bitdefender does NOT name a tracked actor — Archimedes does NOT propagate or originate actor attribution"
+      - "Malware families (Lumma, Amatera, ClipBanker, PurpleFox, Emmenhtal, HTA CountLoader) are family-level NOT actor-level attribution"
+      - "'Dramatic rise' framing is Bitdefender-attributed without quantitative grounding — single-source veto applies on the trend-statistic layer"
+    resurface_if:
+      - second_research_firm_publishes_2026_mshta_volume_metrics
+      - tracked_actor_attribution_to_mshta_lolbin_chain
+      - ad_or_dib_named_as_victim_of_mshta_chain
+      - first_party_splunk_hit_on_mshta_indicators
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Defensive trend signal reinforces existing CMMC / NIST 800-171 /
+      CIS Controls hardening posture. WDAC / AppLocker policy blocking
+      mshta.exe is the established control. No new recommendation;
+      signal serves as situational-awareness justification for
+      maintaining the existing posture. Bitdefender Labs at provisional-A
+      per source-grades.yaml 2026-05-13 first-citation precedent.
+
+  - id: 2026-05-19-pm-007-cisa-ics-day-139-batch-ruggedcom-ape1808-cvss-10
+    covered_in: [2026-05-19-afternoon]
+    brief_file: threats/briefs/2026-05-19-afternoon.md
+    headline: "CISA Day-139 batch — ICSA-26-139-02 Siemens RUGGEDCOM APE1808 at CVSS 10.0 amplifies CVE-2026-0300 (PAN-OS Captive Portal) to OT/ICS appliance class"
+    topic_tags:
+      - cisa-ics-day-139-batch-2026-05-19
+      - icsa-26-139-02-siemens-ruggedcom-ape1808
+      - cvss-10-0-maximum-severity
+      - cve-2026-0300-pan-os-captive-portal-oob-write
+      - cve-2026-0300-amplification-from-it-firewall-to-ot-ics
+      - federal-kev-deadline-lapsed-2026-05-09-now-t-plus-10
+      - bod-22-01-federal-compliance
+      - siemens-psirt-preparing-fix-versions
+      - critical-manufacturing-sector-categorization
+      - icsa-26-139-01-abb-coresense-hm-m10-cve-2025-3465
+      - icsa-26-139-03-scadabr-four-cve-cluster-unauth-rce
+      - icsa-26-139-04-zkteco-cctv-cve-2026-8598-undocumented-config-port
+      - icsa-26-139-05-kieback-peter-ddc-cve-2026-4293-xss
+      - narrow-ad-framing-ape1808-operators-only-per-analyst-guidance
+      - no-broad-dib-inference-without-deployment-confirmation
+      - update-flag-on-cve-2026-0300-carry-forward-chain
+    related_actors: []
+    related_vulns:
+      - cve_id: CVE-2026-0300
+        product: "PAN-OS Captive Portal embedded in Siemens RUGGEDCOM APE1808"
+        affected: "RUGGEDCOM APE1808 product line"
+        patched_version: "Siemens PSIRT preparing fix; mitigations recommended"
+      - cve_id: CVE-2025-3465
+        product: "ABB CoreSense HM/M10"
+      - cve_id: CVE-2026-8598
+        product: "ZKTeco CCTV"
+      - cve_id: CVE-2026-4293
+        product: "Kieback & Peter DDC building controllers"
+    related_campaigns: []
+    finding_ids: [finding-2026-05-19-0013]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: ot_amplification_to_siemens_ruggedcom_ape1808_layer
+    analyst_review_complete: true
+    red_team_review_required: false
+    update_flag_on_prior_brief_item: 2026-05-14-am-001-cve-2026-20182-and-cve-2026-0300-carry-forward-chain
+    hard_rule_2_framings_load_bearing:
+      - "Underlying CVE-2026-0300 federal-KEV-lapsed posture is A1 carry-forward from finding-2026-05-14-0005; OT-amplification layer is single-source via CISA + Siemens joint advisory ICSA-26-139-02"
+      - "A&D framing narrowed per analyst guidance to 'operators of Siemens RUGGEDCOM APE1808' — NOT broader DIB-tier facility OT estate without deployment confirmation"
+      - "No tracked-actor attribution in any of the five Day-139 advisories — verifiable absence"
+      - "Independent OT-research firm corroboration (Mandiant, Volexity, Unit 42, MSTIC, CrowdStrike, Talos, Symantec, Dragos, Claroty, Nozomi) NOT present at grading time"
+    resurface_if:
+      - siemens_publishes_fix_version_availability
+      - independent_ot_research_firm_corroborates_amplification
+      - in_the_wild_exploitation_of_cve_2026_0300_via_ruggedcom_observed
+      - ad_or_dib_facility_named_as_ape1808_operator_or_victim
+      - cisa_publishes_emergency_directive_on_ot_amplification
+      - first_party_splunk_hit_on_ruggedcom_ape1808_indicators
+    first_covered: 2026-05-19
+    last_covered: 2026-05-19
+    retraction: null
+    test: false
+    notes: |
+      Lead item of afternoon brief. CVE-2026-0300 amplification from
+      PAN-OS firewall class to OT/ICS rugged appliance class is the
+      load-bearing operational delta — same CVE, broader exposure
+      surface, federal KEV deadline already lapsed on the underlying
+      flaw (T+10 days). Analyst guidance honored: narrow framing to
+      APE1808 operators only; no broad-DIB inference. UPDATE flag on
+      finding-2026-05-14-0005 carry-forward chain. Five-advisory batch
+      otherwise unremarkable beyond the RUGGEDCOM CVSS-10 item.
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

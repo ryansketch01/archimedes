@@ -331,6 +331,61 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-20 — Cisco PSIRT (Product Security Incident Response Team) — (none) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `cisco-psirt`
+**Reason:** First Archimedes-corpus citation of Cisco PSIRT as a *dedicated* source-grades.yaml id via `finding-2026-05-20-0006` (CVE-2026-20223 Cisco Secure Workload pre-auth REST API authentication bypass, CVSS 10.0, cross-tenant scope-CHANGED; advisory cisco-sa-csw-pnbsa-g8WEnuy). Cisco PSIRT is the canonical vendor authority on Cisco-product CVE disclosure — advisory text, CWE classification, affected/fixed version matrices, SaaS-mitigation status, workarounds, and explicit no-public-exploitation attestations are all first-party vendor-on-own-product authoritative claims. Proposed grade A by the grader on the vendor-self-disclosure precedent already applied to F5 PSIRT (2026-05-14-0002 — K000160932 NGINX Rift), kernel.org netdev maintainer disclosure (2026-05-14-0003 — Fragnesia), OpenAI self-disclosure (2026-05-14-0008 — TanStack breach), and GitHub self-disclosure (2026-05-20-FLASH-0001). This is the **third vendor PSIRT precedent surface** (F5 + Cisco Talos already provisional A; Cisco PSIRT distinct from Cisco Talos — PSIRT publishes advisories on Cisco-product CVEs; Talos publishes threat research on external actors / campaigns / non-Cisco-product CVEs).
+**Why A not B:** Cisco PSIRT is procedurally A-grade on Cisco-product CVE-disclosure facts (CVE existence, CVSS scoring, CWE mapping, affected/fixed versions, SaaS mitigation status, workaround availability, no-ITW attestations) because Cisco is the authoritative knowledge-holder for its own product security state — there is no higher-quality evidence basis for those specific claim types. The "third Cisco-product authentication-bypass CVE of 2026" corpus observation is Archimedes-corpus-internal pattern matching, NOT a Cisco PSIRT attribution claim — Hard Rule 2 preserved on finding 0006.
+**Caveat on grade scope:** Cisco PSIRT's A grade applies to Cisco-product CVE-disclosure facts and own-product remediation guidance. Cisco PSIRT does NOT publish attribution claims (those go via Cisco Talos with a separate analyst byline and methodology), so no attribution-confidence layer applies. Cross-tenant impact assessment is procedural-CVSS-vector territory (S:C — scope CHANGED), within the A-grade envelope.
+**Supporting findings:** [finding-2026-05-20-0006]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade cisco-psirt A` (or operator downgrade to B).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-05-20-0006` cluster anchor is A2 with Cisco PSIRT as sole originating primary; single-source veto applies on mechanism-detail + no-ITW-attestation layers (capping WEP at "likely" on those layers). Operator downgrade to B would re-grade to B2 — same finding-level WEP treatment, cosmetic at finding level.
+**Next review:** ratification target 2026-05-27 (7 days).
+
+---
+
+## 2026-05-20 — Aonan Guan (independent security researcher) — (none) → C (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `aonan-guan`
+**Reason:** First Archimedes-corpus citation via `finding-2026-05-20-0007` (Anthropic Claude Code sandbox bypass — SOCKS5 hostname null-byte mechanism class; patched in Claude Code 2.1.88 on 2026-03-31; no CVE assigned to the second bypass; first bypass got CVE-2025-66479 separately). Aonan Guan is an independent security researcher who disclosed the second-bypass mechanism to Anthropic via HackerOne (vendor marked as duplicate of first-bypass report). Cited via SecurityWeek (Eduard Kovacs byline) which is the sole directly-retrieved primary; Guan's own write-up referenced but not directly retrieved this sweep. Proposed grade C by the grader on the independent-researcher precedent applied to LayerX (2026-05-08), Berk Albayrak (Trendyol Group, 2026-05-10), Seqrite Labs analyst byline (2026-05-08), and depthfirst initial F→C elevation (2026-05-16). Independent researchers without prior corpus track record start at C with upgrade path on subsequent corroborated findings.
+**Why C not B:** Conservative starting grade for an unknown independent researcher with no prior Archimedes-corpus track record. Upgrade to B (or higher) requires either: (a) direct retrieval of Guan's own write-up confirming technical rigor; (b) second-source corroboration of the SOCKS5 null-byte mechanism by an independent security-research practice; or (c) accumulation of multiple subsequent findings demonstrating consistent technical accuracy.
+**Caveat on grade scope:** Provisional C applies to Aonan Guan as a researcher-source category — distinct from `securityweek` (relay channel) and from `anthropic` (the vendor on whose product the bypass exists; Anthropic's HackerOne dispositioning is itself vendor-self-disclosure-adjacent but Anthropic does NOT have its own source-grades.yaml entry yet — see follow-on flag below).
+**Supporting findings:** [finding-2026-05-20-0007]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade aonan-guan C` (or operator downgrade to F if researcher rigor turns out inconsistent on retrieval).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-05-20-0007` cluster anchor is B3 with SecurityWeek as sole directly-retrieved primary; single-source veto applies on the SOCKS5 mechanism layer (Aonan Guan's direct write-up not retrieved). Provisional C on Guan does NOT load-bear on the finding's B3 cluster anchor (SecurityWeek B-provisional is the cluster anchor).
+**Follow-on flag:** `anthropic` is not yet a source-grades.yaml id. The 2026-05-20 afternoon sweep is the second corpus surface of Anthropic as vendor-self-disclosure-adjacent (first surface was 2026-05-08 KAC A1 Test in finding-2026-05-20-0001 morning carry-forward context, where Anthropic disabled the actor account). Recommend bundling Anthropic-as-vendor-self-disclosure into next quarterly review.
+**Next review:** ratification target 2026-05-27 (7 days; bundled with cisco-psirt).
+
+---
+
+## 2026-05-20 — ESET / WeLiveSecurity — A (ratified) — additional supporting citation noted
+
+**Type:** Citation note (no grade change)
+**Source ID:** `eset`
+**Reason:** `finding-2026-05-20-0004` (Webworm deploys EchoCreep + GraphWorm backdoors against IT services + aerospace + electric power across 9 countries) cites ESET via The Hacker News relay (Eric Howard byline noted in THN coverage). Direct retrieval of welivesecurity.com primary URL not completed this sweep — finding-0004 single-source veto applied on Webworm-specific claims at the THN-relay layer. ESET grade A (ratified 2026-05-07 per `finding-2026-05-07-0004` APT37 Birdcall Android research) remains unchanged. This entry is logged for traceability of additional supporting citation, NOT as a grade revision proposal.
+**Supporting findings:** [finding-2026-05-20-0004]
+**Action this run:** No change to `source-grades.yaml`. ESET grade A (ratified) holds.
+**Follow-on flag:** Direct welivesecurity.com retrieval pending — collector to attempt on next sweep targeting the Webworm / EchoCreep / GraphWorm research URL. Once retrieved, single-source veto on finding-0004 mechanism layer may relax (still subject to second-vendor corroboration from Mandiant / CrowdStrike / Unit 42 / MSTIC / Symantec / Cisco Talos).
+
+---
+
+## 2026-05-20 — Symantec (Threat Hunter Team / Carbon Black) — A (provisional, awaiting ratification) — additional supporting citation noted
+
+**Type:** Citation note (no grade change)
+**Source ID:** `symantec`
+**Reason:** `finding-2026-05-20-0004` (Webworm) references Symantec's prior baseline tracking of Webworm as "active since at least 2022" per ESET-via-THN citation. Symantec's own attribution work is not the originating primary for the 2026-05-20 EchoCreep + GraphWorm finding (ESET is) — the Symantec citation is historical-baseline context. Symantec provisional A (since 2026-05-13 first surface on MuddyWater / Seedworm research; 72h ratification clock expired 2026-05-16T18:25:00-04:00) remains in `awaiting_ratification: true` state. This entry is logged for traceability of the cross-cited historical-baseline citation, NOT as a grade revision proposal.
+**Supporting findings:** [finding-2026-05-20-0004] (citation only; not originating primary)
+**Action this run:** No change to `source-grades.yaml`. Symantec provisional A (awaiting ratification) holds.
+**Follow-on flag:** Symantec 72h ratification clock expired 2026-05-16; entry remains `awaiting_ratification: true` past clock. Per source-grade-log.md template and INTEL-GRADING.md doctrine, expired ratification clocks do NOT auto-ratify nor auto-revert — operator decision still pending. Recommend bundling Symantec ratification with cisco-psirt + aonan-guan in the 2026-05-27 ratification window.
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

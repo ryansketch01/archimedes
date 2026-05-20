@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-20T06:08:00-04:00
+last_updated: 2026-05-20T16:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -402,6 +402,19 @@ vendor_sources:
     urls:
       - https://blog.talosintelligence.com/
 
+  - id: cisco-psirt
+    name: "Cisco PSIRT (Product Security Incident Response Team)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-20
+    provisional_reason: "First Archimedes-corpus citation of Cisco PSIRT as a *dedicated* source-grades.yaml id via finding-2026-05-20-0006 (CVE-2026-20223 Cisco Secure Workload pre-auth REST API authentication bypass, CVSS 10.0, CWE-306 missing authentication, cross-tenant scope-CHANGED, fixed in on-prem 3.10.8.3 + 4.0.3.17, SaaS already mitigated, no workarounds; advisory cisco-sa-csw-pnbsa-g8WEnuy). Cisco PSIRT is the canonical vendor authority on Cisco-product CVE disclosure — advisory text, CWE classification, affected/fixed version matrices, SaaS mitigation status, workaround availability, and explicit no-public-exploitation attestations are all first-party vendor-on-own-product authoritative claims. Vendor-self-disclosure on own products is procedurally A-grade per the precedent already established for F5 PSIRT (2026-05-14-0002 K000160932 NGINX Rift), kernel.org netdev maintainer disclosure (2026-05-14-0003 Fragnesia), OpenAI self-disclosure (2026-05-14-0008 TanStack), GitHub self-disclosure (2026-05-20-FLASH-0001). Cisco PSIRT is distinct from Cisco Talos (cisco-talos id provisional A since 2026-05-14): PSIRT publishes advisories on Cisco-product CVEs (vendor-on-own-product authority); Talos publishes threat research on external actors / campaigns / non-Cisco-product CVEs (vendor research-arm authority). Scope of A grade: Cisco-product CVE-disclosure procedural facts (CVE existence, CVSS scoring, CWE mapping, affected/fixed versions, SaaS mitigation, workaround availability, no-ITW attestations). Cisco PSIRT does NOT publish attribution claims — Hard Rule 2 preserved on finding 0006 ('not aware of any public announcements or malicious use' is procedural, not attributive). Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://sec.cloudapps.cisco.com/security/center/publicationListing.x
+      - https://tools.cisco.com/security/center/publicationListing.x
+
   - id: darktrace
     name: "Darktrace"
     category: vendor
@@ -620,6 +633,18 @@ media_sources:
     active: true
     urls:
       - https://github.com/depthfirstdisclosures
+
+  - id: aonan-guan
+    name: "Aonan Guan (independent security researcher)"
+    category: researcher
+    grade: C
+    provisional: true
+    provisional_since: 2026-05-20
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-20-0007 (Anthropic Claude Code sandbox bypass — SOCKS5 hostname null-byte mechanism class; patched in Claude Code 2.1.88 on 2026-03-31; no CVE assigned to the second bypass; first bypass got CVE-2025-66479 separately on the sandbox-runtime library). Aonan Guan is an independent security researcher who disclosed the second-bypass mechanism to Anthropic via HackerOne; vendor marked the report as duplicate of the first-bypass report. Cited via SecurityWeek (Eduard Kovacs byline) which is the sole directly-retrieved primary this sweep; Guan's own write-up referenced but not directly retrieved. Provisional C is the conservative starting grade for an unknown independent researcher with no prior Archimedes-corpus track record, per the precedent applied to LayerX (2026-05-08), Berk Albayrak / Trendyol Group (2026-05-10), Seqrite Labs analyst byline (2026-05-08), and depthfirst initial F→C elevation (2026-05-16). Upgrade path: (a) direct retrieval of Guan's own write-up confirming technical rigor; (b) second-source corroboration of the SOCKS5 null-byte mechanism by an independent security-research practice; or (c) accumulation of multiple subsequent findings demonstrating consistent technical accuracy. Methodological positive on first surface: researcher chained the bypass with a prompt-injection vector for proof-of-impact (research-scenario name researcher-coined, NOT attributed campaign) and pursued vendor-coordinated disclosure via HackerOne (responsible-disclosure positive). Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://hackerone.com/
 
   - id: github-advisories
     name: "GitHub Security Advisories"
@@ -980,6 +1005,8 @@ _meta:
     - upwind                    # provisional B; first cited 2026-05-15-0005 (node-ipc four-firm UNATTRIBUTED consensus, via BleepingComputer relay — awaiting direct retrieval)
     - zdi-blog                  # provisional A; first cited 2026-05-16-0002 (Pwn2Own Berlin 2026 Day 3 wrap and Master of Pwn — Dustin Childs byline; vendor authority on own contest analogous to F5 vendor self-disclosure precedent)
     - github-blog-self-disclosure  # provisional A; first cited 2026-05-20-FLASH-0001 (GitHub self-disclosure of ~3,800-repo breach via poisoned VS Code marketplace extension; 72h ratification clock to 2026-05-23T06:08:00-04:00; awaiting direct-retrieval of github.blog primary URL)
+    - cisco-psirt               # provisional A; first cited 2026-05-20-0006 (Cisco Secure Workload CVE-2026-20223 CVSS 10.0 pre-auth REST API auth bypass; cisco-sa-csw-pnbsa-g8WEnuy advisory; distinct from cisco-talos — PSIRT publishes Cisco-product CVE advisories, Talos publishes external threat research; 72h ratification clock to 2026-05-23T16:00:00-04:00)
+    - aonan-guan                # provisional C; first cited 2026-05-20-0007 (Anthropic Claude Code SOCKS5 hostname null-byte sandbox bypass; independent researcher disclosure via HackerOne; cited via SecurityWeek; LayerX / Albayrak / Seqrite precedent — conservative C starting grade pending direct write-up retrieval + second-source corroboration)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

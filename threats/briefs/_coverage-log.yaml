@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-20T06:08:00-04:00
+last_updated: 2026-05-20T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -12937,6 +12937,362 @@ entries:
       weighted-overall lands HIGH. Vuln-tracker handoff: VT-006 watch_signals
       extension with this surface + tracked-IOC table update for both C2
       domains.
+
+  - id: 2026-05-20-pm-001
+    covered_in: [2026-05-20-afternoon]
+    brief_file: threats/briefs/2026-05-20-afternoon.md
+    headline: "Cisco Secure Workload (formerly Tetration) pre-auth REST API authentication bypass CVE-2026-20223 CVSS 10.0 — CWE-306 unauthenticated remote attacker obtains Site Admin with cross-tenant configuration-modification + sensitive-data-read impact; fixed in on-prem 3.10.8.3 + 4.0.3.17, SaaS already mitigated, no workarounds; Cisco PSIRT explicit denial of public exploitation at disclosure; not on CISA KEV at compose; third Cisco-product authentication-bypass CVE of 2026 corpus cadence after CVE-2026-20182 SD-WAN + CVE-2026-20093 IMC; 0 of 6 FLASH triggers fired despite CVSS 10.0 (FLASH-anti-noise calibration confirmed working); strong daily-brief-action; A&D structural-via-deployment as microsegmentation control plane in Tier-1 data centers running ITAR / CMMC L2-L3 enclaves"
+    topic_tags:
+      - cisco-secure-workload-cve-2026-20223
+      - cisco-secure-workload-formerly-tetration
+      - cvss-10-0-pre-auth-rest-api-auth-bypass
+      - cwe-306-missing-authentication-critical-function
+      - cross-tenant-scope-changed-impact
+      - site-admin-privileges-via-unauthenticated-rest-api
+      - patches-3-10-8-3-and-4-0-3-17
+      - saas-already-mitigated-no-action-required
+      - no-workarounds-available
+      - cisco-psirt-no-public-exploitation-at-disclosure
+      - cisco-product-authentication-bypass-cluster-2026-third-entry
+      - microsegmentation-control-plane-a-d-tier-1-deployment
+      - itar-cmmc-l2-l3-enclave-deployment-shape
+      - flash-anti-noise-calibration-0-of-6-triggers-despite-cvss-10-0
+      - daily-brief-action-class
+      - vuln-tracker-strong-addition-candidate
+      - hard-rule-2-no-actor-attribution-no-campaign-pattern-attribution
+      - cisco-psirt-provisional-a-first-corpus-citation
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-20223
+        cvss: 10.0
+        cwe: CWE-306
+        role: primary
+        product: Cisco Secure Workload (formerly Tetration)
+      - cve: CVE-2026-20182
+        role: cisco_product_auth_bypass_cluster_2026_sibling
+        product: Cisco Catalyst SD-WAN
+      - cve: CVE-2026-20093
+        role: cisco_product_auth_bypass_cluster_2026_sibling
+        product: Cisco IMC
+    related_campaigns: []
+    finding_ids: [finding-2026-05-20-0006]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      procedural_facts: A1
+      mechanism_detail: A2
+      no_itw_attestation: A2
+      cisco_product_auth_bypass_cluster_observation: A1
+    wep: very_likely
+    wep_split:
+      cve_exists_and_record: very_likely
+      cvss_10_0_severity: very_likely
+      cwe_306_classification: very_likely
+      patches_available_and_versions: very_likely
+      saas_already_mitigated: very_likely
+      no_workarounds: very_likely
+      no_in_the_wild_at_disclosure: likely
+      third_party_poc_timeline_7_to_30_days: likely
+      cisa_kev_addition_in_coming_sweeps: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: mechanism_detail_layer_and_no_itw_attestation_layer
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "No actor named by Cisco PSIRT; no campaign attributed"
+      - "Cisco-product authentication-bypass pattern across 2026 is descriptive of vendor-product CVE flow, NOT attribution to a coordinated campaign"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 49
+      framing: silence_not_disconfirming_not_confirming
+    triggers_fired: []
+    triggers_failed:
+      - trigger_1_critical_cve_exploited_fails_no_active_exploitation
+      - trigger_2_new_attribution_for_tracked_actor_fails_no_actor
+      - trigger_3_first_party_ioc_hit_fails_dormant_sweep
+      - trigger_4_tracked_actor_ttp_change_fails_no_actor
+      - trigger_5_ad_sector_campaign_fails_no_named_victim
+      - trigger_6_zero_day_no_patch_fails_patches_available
+    critical_override_applied: false
+    critical_override_conditions_met: 1_of_4
+    iocs_surfaced: []
+    resurface_if:
+      - cisa_kev_addition_for_cve_2026_20223
+      - third_party_security_research_publication_praetorian_bishop_fox_tenable_rapid7_qualys_talos
+      - in_the_wild_exploitation_emergence
+      - a_d_prime_named_as_victim_or_affected_customer
+      - vuln_tracker_dossier_scaffolded
+      - cisco_product_authentication_bypass_cluster_2026_fourth_entry_disclosed
+      - first_party_splunk_hit_on_cisco_secure_workload_rest_api_anomaly
+    first_covered: 2026-05-20
+    last_covered: 2026-05-20
+    retraction: null
+    test: false
+
+  - id: 2026-05-20-pm-002
+    covered_in: [2026-05-20-afternoon]
+    brief_file: threats/briefs/2026-05-20-afternoon.md
+    headline: "CISA KEV +7 batch 2026-05-20 (federal dueDate 2026-06-03): 2 fresh Microsoft Defender CVEs (CVE-2026-41091 CWE-59 link-following local privilege escalation + CVE-2026-45498 denial of service) hit universal A&D-prime EDR fleet, plus 5 historical CVEs resurfaced (CVE-2008-4250 MS08-067 Conficker original vector, CVE-2009-1537 DirectX quartz.dll, CVE-2009-3459 Adobe Acrobat, CVE-2010-0249 + CVE-2010-0806 IE use-after-free Aurora-lineage pair); CISA framing 'based on evidence of active exploitation' is single-source attestation on Defender pair pending Mandiant / CrowdStrike / Unit 42 / MSTIC corroboration; CISA does not name an exploiting actor on any of the 7 entries; Archimedes does NOT extrapolate historical Aurora or Conficker attribution to current 2026 ITW; CVSS not yet surfaced for Defender pair (NVD Awaiting Analysis)"
+    topic_tags:
+      - cisa-kev-plus-seven-batch-2026-05-20
+      - federal-due-date-2026-06-03-bod-22-01-14-day-window
+      - cve-2026-41091-microsoft-defender-link-following-eop-cwe-59
+      - cve-2026-45498-microsoft-defender-denial-of-service
+      - microsoft-defender-universal-a-d-edr-deployment-context
+      - mitre-t1562-001-disable-tools-class-defender-dos
+      - cve-2008-4250-ms08-067-conficker-original-vector-historical-resurfaced
+      - cve-2009-1537-directx-quartz-dll-historical-resurfaced
+      - cve-2009-3459-adobe-acrobat-historical-resurfaced
+      - cve-2010-0249-cve-2010-0806-ie-uaf-aurora-lineage-pair-historical-resurfaced
+      - a-d-ot-segments-lab-dev-environments-cmmc-enclaves-legacy-windows-historical-cohort
+      - no-threat-actor-attribution-per-cisa-kev-records
+      - no-a-d-prime-named
+      - msrc-blog-feed-xml-parse-failure-carry-forward-constrains-direct-retrieval
+      - daily-brief-action-class
+      - vuln-tracker-defender-pair-strong-addition-candidate
+      - hard-rule-2-no-aurora-or-conficker-historical-attribution-extrapolation
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-41091
+        cwe: CWE-59
+        role: primary_fresh_2026_microsoft_defender_eop
+        cvss: not_yet_surfaced
+      - cve: CVE-2026-45498
+        role: primary_fresh_2026_microsoft_defender_dos
+        cvss: not_yet_surfaced
+      - cve: CVE-2008-4250
+        role: historical_resurfaced_ms08_067_conficker_original_vector
+      - cve: CVE-2009-1537
+        role: historical_resurfaced_directx_quartz_dll
+      - cve: CVE-2009-3459
+        role: historical_resurfaced_adobe_acrobat
+      - cve: CVE-2010-0249
+        role: historical_resurfaced_ie_uaf_aurora_lineage
+      - cve: CVE-2010-0806
+        role: historical_resurfaced_ie_uaf_aurora_lineage
+    related_campaigns: []
+    finding_ids: [finding-2026-05-20-0005]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      kev_batch_procedural_facts: A1
+      active_exploitation_attestation_defender_pair: A2
+      historical_cve_re_addition_pattern: A2
+      no_threat_actor_attribution_per_cisa_kev: A1
+    wep: very_likely
+    wep_split:
+      kev_batch_published_seven_entries: very_likely
+      federal_due_date_2026_06_03: very_likely
+      defender_pair_active_exploitation: likely
+      historical_cve_current_itw_against_eol_unmanaged_fleets: likely
+      no_actor_attribution: very_likely
+    single_source_veto_applied: true
+    single_source_veto_scope: active_exploitation_attestation_layer_for_2026_defender_pair_cisa_only_originating
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "CISA KEV does not name an exploiting actor on any of the 7 entries"
+      - "Historical Aurora-attribution lineage on IE pair is well-documented OSINT but Archimedes does not extrapolate to current 2026 KEV exploitation which CISA does not attribute"
+      - "Conficker historical worm origin is not propagated to 2026 ITW"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 49
+      framing: silence_not_disconfirming_not_confirming
+    triggers_fired: []
+    triggers_failed:
+      - trigger_1_critical_cve_exploited_eval_pending_cvss_surfacing_for_defender_pair
+    critical_override_applied: false
+    iocs_surfaced: []
+    resurface_if:
+      - msrc_publishes_cvss_for_defender_pair_within_flash_sweep_window
+      - mandiant_crowdstrike_unit42_mstic_independent_attribution_or_attestation_on_defender_pair
+      - storm_2949_to_cve_2026_45498_defender_dos_linkage_via_a_grade_source
+      - first_party_splunk_hit_on_defender_pair_or_historical_cohort
+      - federal_kev_deadline_2026_06_03_lapse
+      - a_d_prime_named_as_victim
+    first_covered: 2026-05-20
+    last_covered: 2026-05-20
+    retraction: null
+    test: false
+
+  - id: 2026-05-20-pm-003
+    covered_in: [2026-05-20-afternoon]
+    brief_file: threats/briefs/2026-05-20-afternoon.md
+    headline: "Webworm (China-aligned, NOT on Archimedes roster) deploys EchoCreep (Discord C2; cmd.exe + file upload/download) + GraphWorm (Microsoft Graph API C2 with OneDrive file transfer venue) against IT services, AEROSPACE, and electric power across 9 countries (Russia, Georgia, Mongolia, Belgium, Italy, Serbia, Poland, Spain, South Africa) — per ESET (Eric Howard byline) relayed via The Hacker News 2026-05-20; ESET originating welivesecurity.com NOT directly retrieved this sweep, flagged for next-pass; Symantec September 2022 baseline cited but not directly retrieved; aerospace sector named but no A&D-prime victim attestation, U.S. NOT on victim-country list; concurrent Discord + Graph API C2 pairing by same actor against same victim set is noteworthy detection-engineering paired-signature for Defender for Cloud Apps + Microsoft Graph Activity log analytics; alias cluster (FishMonger, Aquatic Panda, SixLittleMonkeys, Space Pirates, APT17 in 9002-RAT context) ALL NOT on roster, Archimedes does NOT cross-walk to tracked actors per Hard Rule 2 (explicitly does NOT propagate Aquatic Panda to Volt Typhoon nor APT17 to Salt Typhoon / FamousSparrow / Earth Estries); single-source veto applies on every Webworm-specific claim"
+    topic_tags:
+      - webworm-china-aligned-not-on-roster
+      - echocreep-discord-c2-backdoor
+      - graphworm-microsoft-graph-api-onedrive-c2-backdoor
+      - concurrent-discord-plus-graph-api-paired-signature-detection-engineering
+      - aerospace-sector-named-no-a-d-prime-victim-attestation
+      - victim-countries-9-russia-georgia-mongolia-belgium-italy-serbia-poland-spain-south-africa
+      - us-not-on-victim-country-list
+      - eset-originating-eric-howard-byline-via-thn-relay
+      - symantec-september-2022-baseline-cited-not-directly-retrieved
+      - alias-cluster-fishmonger-aquatic-panda-sixlittlemonkeys-space-pirates-apt17
+      - hard-rule-2-no-cross-walk-aquatic-panda-to-volt-typhoon
+      - hard-rule-2-no-cross-walk-apt17-to-salt-typhoon-famoussparrow-earth-estries
+      - new-actor-candidate-pending-corroboration
+      - softether-vpn-wormfrp-chainworm-smuxproxy-wormsocket-auxiliary-infrastructure
+      - github-repo-impersonating-wordpress-fork-cited
+      - daily-brief-monitoring-class
+      - thn-provisional-b-relay-of-eset-originating
+      - single-source-veto-applied-every-webworm-specific-claim
+    related_actors:
+      - actor_name: "Webworm"
+        on_roster: false
+        archimedes_treatment: china_aligned_designation_preserved_verbatim_per_eset_via_thn_no_cross_walk_originated
+      - actor_name: "FishMonger"
+        on_roster: false
+        archimedes_treatment: alias_cited_per_eset_via_thn_not_propagated
+      - actor_name: "Aquatic Panda"
+        on_roster: false
+        archimedes_treatment: alias_cited_explicitly_NOT_cross_walked_to_volt_typhoon
+      - actor_name: "SixLittleMonkeys"
+        on_roster: false
+        archimedes_treatment: alias_cited_per_eset_via_thn_not_propagated
+      - actor_name: "Space Pirates"
+        on_roster: false
+        archimedes_treatment: alias_cited_per_eset_via_thn_not_propagated
+      - actor_name: "APT17"
+        on_roster: false
+        archimedes_treatment: alias_cited_in_9002_rat_context_explicitly_NOT_cross_walked_to_salt_typhoon_famoussparrow_earth_estries
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-20-0004]
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      webworm_china_aligned_attribution: B3
+      echocreep_discord_c2_ttp: B3
+      graphworm_msgraph_api_onedrive_c2_ttp: B3
+      aerospace_sector_named: B3
+      nine_countries_geographic_spread: B3
+      active_since_2022_symantec_baseline: A2
+      novel_ttp_pair_discord_plus_msgraph_concurrent: B3
+    wep: roughly_even_chance
+    wep_split:
+      webworm_designation: roughly_even_chance
+      echocreep_graphworm_backdoor_pair_existence: roughly_even_chance
+      discord_c2_msgraph_c2_concurrent_signature: roughly_even_chance
+      aerospace_named_as_target_sector: roughly_even_chance
+      no_a_d_prime_victim_attestation: very_likely
+      us_not_on_victim_country_list: very_likely
+      active_since_2022_per_symantec: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: every_webworm_specific_claim_thn_relays_eset_one_effective_source
+    analyst_review_required: true
+    analyst_review_pending_skills: [sat_ach_alias_cluster_to_roster_cross_walk_if_corroboration_emerges]
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Webworm and full alias cluster NOT in _roster.yaml; Archimedes does NOT originate cross-walk to tracked actors"
+      - "Explicitly NOT cross-walked: Aquatic Panda to Volt Typhoon; APT17 to Salt Typhoon / FamousSparrow / Earth Estries"
+      - "China-aligned attribution preserved verbatim per ESET-via-THN; not propagated to specific MSS / PLA bureau"
+      - "Aerospace named as target sector but no A&D-prime victim attestation; sector-shape framing not upgraded to entity-specific"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 49
+      framing: silence_not_disconfirming_not_confirming
+    triggers_fired: []
+    triggers_failed:
+      - all_six_flash_triggers_fail_below_b2_minimum_and_no_a_d_prime_victim
+    critical_override_applied: false
+    iocs_surfaced: []
+    resurface_if:
+      - direct_eset_welivesecurity_retrieval_with_iocs
+      - mandiant_crowdstrike_unit42_recorded_future_mstic_independent_corroboration_within_72_to_168h
+      - a_d_prime_victim_attestation_by_any_a_or_b_grade_source
+      - first_party_splunk_hit_on_webworm_or_echocreep_or_graphworm_or_auxiliary_infrastructure
+      - vendor_attested_cross_walk_to_tracked_roster_actor
+      - new_actor_scaffold_threshold_met_via_subsequent_corroboration
+    first_covered: 2026-05-20
+    last_covered: 2026-05-20
+    retraction: null
+    test: false
+
+  - id: 2026-05-20-pm-004
+    covered_in: [2026-05-20-afternoon]
+    brief_file: threats/briefs/2026-05-20-afternoon.md
+    headline: "Anthropic silently patched a second Claude Code sandbox bypass (SOCKS5 hostname null-byte injection against network allowlist) in Claude Code 2.1.88 on 2026-03-31 — without CVE assignment, release-note mention, or public acknowledgement; researcher Aonan Guan (first Archimedes-corpus citation, independent) disclosed pattern via SecurityWeek (Eduard Kovacs) 2026-05-20; vendor marked second-bypass HackerOne report as duplicate; researcher framed an exploitation chain combining prompt-injection vector with the SOCKS5 bypass for exfiltration of environment variables, credentials, tokens, and infrastructure data from Claude Code execution context; first bypass on 'sandbox-runtime' library received CVE-2025-66479 (separate, configuration-related); no in-the-wild exploitation observed; patched 50+ days before disclosure; CROSS-REFERENCED to morning's finding-2026-05-20-0001 SAT-KAC A1 Test classification tripwire as a DIFFERENT Claude Code attack surface (this finding = outbound exfiltration from execution context; KAC A1 = inbound backdoor-drop venue per Mini Shai-Hulud claim); the 72h corroboration tripwire on KAC A1 (Wiz/Snyk/Socket/StepSecurity/Endor/Datadog cadence by 2026-05-23 07:30 EDT) is NOT resolved by this finding and remains OPEN"
+    topic_tags:
+      - anthropic-silent-patch-claude-code-sandbox-bypass-second
+      - socks5-hostname-null-byte-injection-network-allowlist-bypass
+      - claude-code-2-1-88-fix-2026-03-31
+      - no-cve-assigned-to-second-bypass-no-release-note-mention
+      - cve-2025-66479-first-bypass-sandbox-runtime-library-separate
+      - aonan-guan-researcher-first-corpus-citation-provisional-c
+      - prompt-injection-vector-research-scenario-not-attributed-campaign
+      - exfiltration-environment-variables-credentials-tokens-infrastructure-data
+      - claude-code-as-exploitation-target-outbound-exfil-surface-b
+      - cross-reference-to-finding-2026-05-20-0001-kac-a1-test-tripwire-but-different-surface
+      - kac-a1-tripwire-open-until-2026-05-23-07-30-edt
+      - kac-a6-claude-code-as-meaningful-attack-surface-strengthening-candidate
+      - patched-50-plus-days-before-disclosure
+      - no-in-the-wild-exploitation
+      - vendor-silent-patch-pattern-methodological-signal
+      - daily-brief-monitoring-class
+      - a-d-relevance-structural-indirect-no-prime-named
+      - claude-code-enterprise-sdlc-adoption-context
+      - hard-rule-3-no-poc-reproduction-no-socks5-null-byte-construction-syntax
+      - threat-detection-weekly-candidate-2026-05-27
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2025-66479
+        role: first_bypass_separate_sandbox_runtime_library_configuration_related
+        product: Anthropic Claude Code sandbox-runtime
+    related_campaigns: []
+    finding_ids: [finding-2026-05-20-0007]
+    cross_reference_findings:
+      - finding-id: finding-2026-05-20-0001
+        relationship: different_claude_code_attack_surface_naming_coincidence_only_NOT_resolution_of_kac_a1_tripwire
+        kac_a1_tripwire_status: open_until_2026_05_23_07_30_edt
+        kac_a6_strengthening_candidate: yes
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      socks5_hostname_null_byte_mechanism: B3
+      silent_patch_disposition: B3
+      exploitation_chain_framing: B3
+      no_in_the_wild_observed: A2
+      patched_before_disclosure_pattern: A2
+      cve_2025_66479_first_bypass_existence: B2
+    wep: roughly_even_chance
+    wep_split:
+      socks5_null_byte_mechanism_class: roughly_even_chance
+      anthropic_silent_patch_disposition: roughly_even_chance
+      researcher_exploitation_chain_framing: roughly_even_chance
+      no_in_the_wild_observed: likely
+      patched_2026_03_31_in_2_1_88: likely
+      no_threat_actor_attribution: very_likely
+      no_a_d_prime_victim: very_likely
+    single_source_veto_applied: true
+    single_source_veto_scope: every_load_bearing_claim_securityweek_relays_researcher_aonan_guan_one_effective_source
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "No threat actor named; no campaign attributed"
+      - "Prompt-injection chain name is researcher-coined research-scenario framing, NOT an attributed campaign"
+      - "This finding does NOT resolve finding-2026-05-20-0001 SAT-KAC A1 Test tripwire — two DIFFERENT Claude Code attack surfaces with no technical overlap"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 49
+      framing: silence_not_disconfirming_not_confirming
+    triggers_fired: []
+    triggers_failed:
+      - all_six_flash_triggers_fail_b3_below_b2_minimum_and_no_active_exploitation_and_patched_50_plus_days_ago
+    critical_override_applied: false
+    iocs_surfaced: []
+    resurface_if:
+      - direct_hackerone_thread_retrieval_of_aonan_guan_disclosure
+      - independent_a_or_b_grade_vendor_research_corroboration_wiz_snyk_socket_stepsecurity_endor_trend_micro
+      - in_the_wild_exploitation_emergence_against_claude_code_2_1_88_or_earlier
+      - finding_2026_05_20_0001_kac_a1_tripwire_resolution_via_different_signal
+      - anthropic_publishes_retroactive_advisory_or_release_note_on_second_bypass
+      - threat_detection_weekly_2026_05_27_cadence_pickup_on_ai_coding_agent_sandbox_bypass_detection
+    first_covered: 2026-05-20
+    last_covered: 2026-05-20
+    retraction: null
+    test: false
 
 # ============================================================================
 # Valid resurface_if conditions

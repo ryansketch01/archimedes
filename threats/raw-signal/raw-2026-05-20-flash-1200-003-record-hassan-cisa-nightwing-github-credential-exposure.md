@@ -41,6 +41,8 @@ iocs_extracted: false
 iocs_count: 0
 text_word_count: 280
 promoted: false
+rejected_at: 2026-05-20T16:22:00-04:00
+rejection_id: reject-2026-05-20-0002
 ttl_expires_at: 2026-08-18T12:12:00-04:00
 ---
 

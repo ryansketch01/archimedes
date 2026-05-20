@@ -120,18 +120,18 @@ Good afternoon. Here's your 1600 brief — 2026-05-20.
 
 🚨 **Active Threats**
 
-• **[Cisco Secure Workload CVE-2026-20223 — pre-auth REST API auth bypass, CVSS 10.0, cross-tenant scope](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-csw-pnbsa-g8WEnuy)** — Unauthenticated remote attacker obtains Site Admin and modifies configs across tenants. Cisco PSIRT: no public exploitation at disclosure. **On-prem 3.10.x: deploy 3.10.8.3 *now*. On-prem 4.0.x: deploy 4.0.3.17 *now*. On-prem 3.9.x or earlier: migrate. SaaS already mitigated.** No workarounds. Third Cisco auth-bypass CVE of 2026 — *not originated as campaign attribution.*
+• **[Cisco Secure Workload CVE-2026-20223 — pre-auth REST API auth bypass, CVSS 10.0, cross-tenant scope](https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-csw-pnbsa-g8WEnuy)** — Unauth attacker takes Site Admin, rewrites configs cross-tenant. No public exploitation per PSIRT. **Patch on-prem 3.10.x → 3.10.8.3 and 4.0.x → 4.0.3.17 *now*; 3.9.x migrate; SaaS already mitigated.**
 
 🔓 **Vulnerabilities**
 
-• **[CISA KEV +7 — two fresh Microsoft Defender CVEs hit federal deadline June 3](https://www.cisa.gov/news-events/alerts/2026/05/20/cisa-adds-seven-known-exploited-vulnerabilities-catalog)** — CVE-2026-41091 (Defender link-following EoP) and CVE-2026-45498 (Defender DoS) are universal A&D EDR exposure. Five historical CVEs resurfaced (Conficker MS08-067, DirectX, Adobe, IE Aurora pair) — audit OT / lab / dev legacy Windows. **Patch Defender pair by June 3.**
+• **[CISA KEV +7 — two fresh Microsoft Defender CVEs hit federal deadline June 3](https://www.cisa.gov/news-events/alerts/2026/05/20/cisa-adds-seven-known-exploited-vulnerabilities-catalog)** — CVE-2026-41091 (link-following EoP) + CVE-2026-45498 (DoS) — universal A&D EDR exposure. Five historical CVEs also resurfaced — audit OT / lab / dev legacy Windows. **Patch Defender pair by June 3.**
 
 🕵️ **Actor Activity**
 
-• **[Webworm (China-aligned, untracked) deploys EchoCreep + GraphWorm against aerospace, IT services, electric power across 9 countries](https://thehackernews.com/2026/05/webworm-deploys-echocreep-and-graphworm.html)** — ESET via THN: paired Discord C2 + MS Graph API / OneDrive C2 backdoors. "Aerospace" named as target sector; no A&D prime named, U.S. not on victim-country list. Webworm and all aliases (FishMonger, Aquatic Panda, APT17 et al.) NOT on roster — *Archimedes does NOT cross-walk to tracked actors.* Single-source pending Mandiant / Unit 42 corroboration.
+• **[Webworm (China-aligned, untracked) deploys EchoCreep + GraphWorm against aerospace, IT services, electric power across 9 countries](https://thehackernews.com/2026/05/webworm-deploys-echocreep-and-graphworm.html)** — ESET reports paired Discord C2 + MS Graph API / OneDrive C2 backdoors. No A&D prime named; U.S. not on victim list. Webworm and aliases NOT on roster — *Archimedes does NOT cross-walk to tracked actors.* Single-source.
 
 📰 **Other Signal**
 
-• **[Anthropic silently patched a Claude Code sandbox bypass in 2.1.88 on March 31](https://www.securityweek.com/anthropic-silently-patches-claude-code-sandbox-bypass/)** — Researcher Aonan Guan disclosed a SOCKS5 hostname null-byte bypass of the network allowlist; no CVE on the second bypass, no release-note mention. First bypass got CVE-2025-66479 separately. No ITW; patched 50+ days ago. **DIFFERENT Claude Code attack surface from the morning's Mini Shai-Hulud KAC tripwire** (that one — backdoor-drop venue — stays OPEN until Saturday May 23, 0730 EDT).
+• **[Anthropic silently patched a Claude Code sandbox bypass in 2.1.88 on March 31](https://www.securityweek.com/anthropic-silently-patches-claude-code-sandbox-bypass/)** — SOCKS5 hostname null-byte bypass of the network allowlist; no CVE on the second bypass; no ITW. **DIFFERENT Claude Code attack surface from morning's Mini Shai-Hulud KAC tripwire** (backdoor-drop venue) — tripwire OPEN until Saturday May 23, 0730 EDT.
 
-0 of 6 FLASH triggers fired across all four afternoon findings.
+0 of 6 FLASH triggers fired across afternoon findings.

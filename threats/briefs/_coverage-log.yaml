@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-19T08:00:00-04:00
+last_updated: 2026-05-20T06:08:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -12723,6 +12723,220 @@ entries:
       APE1808 operators only; no broad-DIB inference. UPDATE flag on
       finding-2026-05-14-0005 carry-forward chain. Five-advisory batch
       otherwise unremarkable beyond the RUGGEDCOM CVSS-10 item.
+
+  - id: 2026-05-20-flash-0608-teampcp-github-internal-repos
+    covered_in: [flash-2026-05-20-0608-teampcp-github-internal-repos]
+    brief_file: threats/briefs/2026-05-20-flash-teampcp-github-internal-repos.md
+    headline: "TeamPCP self-claims compromise of GitHub-corp via poisoned VS Code marketplace extension — approximately ~3,800 internal repos exfiltrated; GitHub vendor self-discloses procedural breach facts (A2 / very likely) but characterizes TeamPCP claim as 'directionally consistent with our investigation' (softer than confirmation); attribution layer B2 / likely under single-source veto on three B-grade media relays of one TeamPCP self-claim on Breached cybercrime forum ($50,000 minimum / 'this is not a ransom'); SecurityWeek-relayed researcher commentary places this in the TeamPCP 2026 SDLC chain (Trivy → Checkmarx → Bitwarden CLI → TanStack → OpenAI → Mistral → Grafana → GitHub-corp); two C2 IOCs surfaced (check.git-service.com VT 10/93, t.m-kosche.com VT 15/91) with C2-malicious A1 / very likely but C2-to-TeamPCP attribution F6 / roughly-even; t.m-kosche.com is cross-corpus repeat with finding-2026-05-19-0001 (Socket / Burckhardt named-analyst cross-binding, higher-rigor than this finding's media-relay VT-lookup); clusters NOT collapsed per Hard Rule 2; W1-W5 red-team qualifying recommendations honored in brief language; critical override 2/4 — quiet-hours queued"
+    topic_tags:
+      - teampcp-self-claimed-compromise-of-github-corp
+      - github-internal-repos-breach-approximately-3800
+      - poisoned-vs-code-marketplace-extension-initial-access
+      - github-employee-device-compromise
+      - github-vendor-self-disclosure-precedent-class-f5-openai-msrc-nx-team
+      - github-directionally-consistent-softer-than-confirmation
+      - teampcp-breached-cybercrime-forum-sale-listing-50000-minimum-this-is-not-a-ransom
+      - teampcp-2026-sdlc-supply-chain-chain-extension
+      - securityweek-relayed-researcher-commentary-institutional-attribution
+      - c2-check-git-service-com-vt-10-93-re-purposed-long-dormant-2016-02-09
+      - c2-t-m-kosche-com-vt-15-91-disposable-namesilo-2026-05-15
+      - cross-corpus-c2-repeat-t-m-kosche-finding-2026-05-19-0001-socket-burckhardt-named-analyst
+      - asymmetric-source-rigor-w3-preserved
+      - approximately-3800-verbatim-w2-preserved
+      - pending-direct-retrieval-w1-w5-qualifier
+      - lead-with-actionable-layer-w4-vs-code-extension-inventory
+      - hard-rule-2-binding-no-teampcp-attribution-origination
+      - hard-rule-3-no-extension-identifier-speculation
+      - hard-rule-6-quote-budget-github-6-words-teampcp-5-words
+      - hard-rule-7-breached-forum-listing-not-directly-retrieved-opsec
+      - hard-rule-8-splunk-silence-not-disconfirming-47th-consecutive-dormant-sweep
+      - critical-override-2-of-4-failed-no-cve-no-ad-watchlist-named-victim
+      - quiet-hours-queued-for-09-00-catchup-sweep-or-08-00-morning-brief-absorption
+      - single-source-veto-applied-attribution-layer
+      - flash-anti-noise-rule-3-mandatory-red-team-procedural-facts-very-likely
+      - w1-w5-red-team-language-discipline-recommendations-honored
+      - vs-code-marketplace-extension-class-sibling-finding-2026-05-19-0002-nx-console-not-propagated
+      - ttp-evolution-from-supply-chain-of-supply-chain-to-platform-operator-direct-compromise
+      - ad-relevance-structural-indirect-no-prime-named
+    related_actors:
+      - actor_name: "TeamPCP"
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: self_claimed_on_breached_relayed_via_three_b_grade_media_single_source_veto_on_attribution_layer_no_archimedes_origination
+    related_vulns:
+      - vt_id: VT-006
+        cve: CVE-2026-45321
+        role: parent_campaign_chain_2026_sdlc_supply_chain
+    related_campaigns:
+      - teampcp-2026-sdlc-supply-chain-chain
+    finding_ids: [finding-2026-05-20-FLASH-0001]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      github_breach_procedural_facts: A2
+      teampcp_attribution: B2
+      c2_malicious_status: A1
+      c2_attribution_to_teampcp: F6
+    wep: likely
+    wep_split:
+      github_breach_factually_occurred: very_likely
+      approximately_3800_repos_scope: very_likely
+      vs_code_extension_initial_access_vector: very_likely
+      customer_data_no_evidence_of_impact: likely
+      teampcp_attributed_compromiser: likely
+      campaign_chain_extension_to_github_corp: likely
+      c2_check_git_service_com_malicious: very_likely
+      c2_t_m_kosche_com_malicious: very_likely
+      c2_attribution_to_teampcp: roughly_even_chance
+      ad_prime_supply_chain_exposure_increase: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: teampcp_attribution_to_github_corp_compromise
+    analyst_review_complete: false
+    analyst_review_pending: true
+    analyst_review_pending_skills: [sat-ach, sat-kac]
+    red_team_review_required: true
+    red_team_review_complete: true
+    red_team_outcome: qualify
+    red_team_qualifying_recommendations_honored: [W1, W2, W3, W4, W5]
+    hard_rule_2_framings_load_bearing:
+      - "TeamPCP attribution for the GitHub-corp compromise: TeamPCP-self-claim on Breached relayed by three B-grade media surfaces; NOT Archimedes-originated"
+      - "GitHub's 'directionally consistent with our investigation' framing preserved verbatim; Archimedes does NOT upgrade to confirmed TeamPCP attribution"
+      - "Campaign-chain placement sourced to SecurityWeek-relayed researcher commentary"
+      - "Cross-corpus C2 t.m-kosche.com surfaces with asymmetric source rigor across finding-2026-05-19-0001 (Socket / Burckhardt named-analyst) and this finding (media-relay VT-lookup); clusters NOT collapsed"
+      - "VS Code extension identifier withheld by GitHub across all four primaries; Hard Rule 3 — no speculation"
+      - "TeamPCP attribution NOT propagated to sibling finding-2026-05-19-0002 (Nx Console rwl.angular-console VS Code extension class) — distinct mechanism, Nx-team-attributed compromised developer credentials, not TeamPCP"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -72h
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits_external_iocs: 0
+      hits_self_telemetry: 3
+      framing: silence_not_disconfirming_not_confirming
+      consecutive_dormant_sweep_count: 47
+    triggers_fired:
+      - trigger_2_new_attribution_for_tracked_actor
+      - trigger_4_tracked_actor_ttp_change
+    critical_override_applied: false
+    critical_override_conditions_met: 2_of_4
+    critical_override_conditions_failed:
+      - cvss_10_0_required_actual_no_cve_assigned_to_intrusion_disclosure
+      - ad_watchlist_entity_named_required_actual_no_a_and_d_prime_named_as_victim_or_affected_customer
+    quiet_hours_queued: true
+    expected_post_window: "09:00 EDT catchup sweep — librarian must check for supersession by 08:00 morning brief before posting"
+    anti_noise_lock: teampcp-github-internal-repos-breach-via-vscode-extension-2026-05-20
+    anti_noise_lock_expires: 2026-05-21T06:08:00-04:00
+    iocs_surfaced:
+      - type: domain
+        value: check.git-service.com
+        parent_domain: git-service.com
+        parent_creation_date: 2016-02-09
+        vt_malicious: "10/93"
+        grade_facts: A
+        grade_attribution: F
+        context: "Re-purposed long-dormant infrastructure pattern"
+      - type: domain
+        value: t.m-kosche.com
+        parent_domain: m-kosche.com
+        parent_creation_date: 2026-05-15T16:20:00Z
+        parent_registrar: NameSilo
+        vt_malicious: "15/91"
+        grade_facts: A
+        grade_attribution: F
+        context: "Newly registered (5 days pre-incident); disposable / op-specific provisioning. SECOND corpus surface — also appears in finding-2026-05-19-0001 via Socket / Burckhardt named-analyst cross-binding (higher-rigor evidence chain on that surface than this finding's media-relay VT-lookup)."
+        cross_corpus_repeat_flag: true
+        cross_corpus_prior: finding-2026-05-19-0001
+    resurface_if:
+      - github_publishes_follow_up_statement_hardening_or_softening_teampcp_attribution_language
+      - github_revises_scope_figure_materially_up_or_down_from_approximately_3800
+      - independent_a_grade_research_firm_mandiant_crowdstrike_unit42_mstic_corroborates_or_contradicts_teampcp_attribution
+      - first_party_splunk_hit_on_check_git_service_com_or_t_m_kosche_com_or_parent_domains
+      - github_engineering_or_security_blog_primary_url_retrieved_with_material_new_detail
+      - ad_prime_or_dib_supplier_named_as_victim_or_affected_customer_in_follow_up_disclosure
+      - vs_code_marketplace_extension_identifier_disclosed
+      - teampcp_dossier_rescore_via_update_tracking_with_this_corpus_chain_for_hard_rule_5_approve_scoring_gate
+    first_covered: 2026-05-20
+    last_covered: 2026-05-20
+    retraction: null
+    test: false
+    notes: |
+      FLASH brief composed under W1-W5 red-team qualifying recommendations:
+      W1/W5 — explicit "pending direct retrieval" qualifier preserved on the
+      procedural-facts layer because GitHub Engineering / Security Blog
+      primary URL was not directly retrieved this sweep (statement available
+      only as embedded quotes within three B-grade media relays).
+      W2 — "approximately ~3,800" verbatim qualifier preserved; no rounding
+      to "3,800" or "nearly 4,000."
+      W3 — asymmetric evidence rigor on cross-corpus C2 t.m-kosche.com
+      preserved: finding-2026-05-19-0001 sourced to Socket / Philipp
+      Burckhardt named-analyst cross-binding (higher rigor); this finding
+      sourced to media-relayed VT-lookup in TeamPCP-claim coverage chain
+      (lower rigor on the connection-to-this-specific-incident layer).
+      Clusters NOT collapsed per Hard Rule 2.
+      W4 — brief leads with the actionable layer (VS Code extension inventory
+      audit on developer workstations) NOT with the structural "GitHub-as-
+      SDLC-platform-operator" framing; structural framing carried as
+      contextual support only.
+      W5 — pending-direct-retrieval qualifier explicit in "What" section and
+      in "Sources" section.
+
+      Hard Rule 2 binding constraint preserved verbatim in body language:
+      TeamPCP attribution framed as "self-claimed on Breached relayed by
+      three B-grade media" (not Archimedes-originated). GitHub's
+      "directionally consistent with our investigation" preserved verbatim
+      (6-word quote within 15-word limit). TeamPCP's "this is not a ransom"
+      preserved verbatim (5-word quote within 15-word limit). SecurityWeek-
+      relayed researcher commentary on campaign-chain placement paraphrased
+      (no direct quote used; institutional attribution preserved). Hard Rule
+      6 quote budget: 2 of 3 source slots used (GitHub + TeamPCP); no third
+      source quoted.
+
+      Pre-flight: 12/12 passed. Item 13 (Discord Summary Layer 2) is N/A
+      per INTEL-BRIEF-STANDARDS — FLASH briefs post as-is without a separate
+      Layer 2 summary section.
+
+      Word count: 300 words (FLASH target 150-300; at ceiling). Achieved
+      after three regenerate cycles to compress while preserving all five
+      red-team W-condition qualifiers + Hard Rule 2 + Hard Rule 6 + WEP
+      layering disclosure + cross-corpus C2 asymmetric-rigor framing.
+
+      Quiet-hours posture: 06:08 EDT inside 21:00-09:00 EDT quiet-hours
+      window. Critical override evaluated: 2 of 4 conditions met (active
+      exploitation PASS via GitHub vendor self-disclosure; tracked actor
+      PASS via TeamPCP #001 HIGH on _roster.yaml; CVSS 10.0 FAIL — no CVE
+      assigned to intrusion-disclosure; A&D watchlist entity FAIL — no A&D
+      prime named as victim or affected customer). Override does NOT
+      bypass quiet hours. Default disposition: queue to
+      infrastructure/flash-queue.yaml for 09:00 catchup sweep, with
+      anticipated supersession by 2026-05-20-morning brief absorption.
+      Librarian handles flash-queue.yaml write + 09:00 supersession check;
+      briefer does NOT post to Discord directly.
+
+      Anti-repetition discipline against heavy 2026-05-14 through 2026-05-19
+      TeamPCP-family coverage: this FLASH is NET-NEW on the GitHub-corp-
+      as-victim angle. Distinct from 2026-05-15 (TeamPCP-as-releaser via
+      finding-2026-05-15-FLASH-0002 — TeamPCP uploading own code from own
+      accounts) and 2026-05-19-am-002 (Nx Console rwl.angular-console VS
+      Code extension class sibling, but different mechanism — package
+      compromise via maintainer credentials, not poisoned-extension
+      targeting employee device; Hard Rule 2 binding — NOT TeamPCP-
+      attributed). VT-006 corpus chain (Mini Shai-Hulud worm deployment +
+      OpenAI TanStack named-victim + source-code release + Mistral sale
+      + Mini Shai-Hulud expansion + Nx Console sibling) is carried as
+      campaign-chain context, not re-litigated.
+
+      Analyst handoff: SAT-ACH on four-hypothesis space for GitHub-vs-
+      TeamPCP language framing-gap (H1 investigative-caution / H2 scope-
+      discrepancies-concealed / H3 legal-disclosure-coordination / H4
+      claim-laundering — red-team adds H5 scope-figure-brittleness as
+      fifth axis). SAT-KAC on cross-corpus C2-infrastructure-reuse-implies-
+      attribution-cluster-collapse assumption (Hard Rule 2 default: holds
+      clusters separate). Actor-profiler handoff: TeamPCP #001 dossier
+      update with full 2026 campaign-chain corpus for next /update-tracking
+      cycle; rescore may trigger Hard Rule 5 /approve-scoring gate if
+      weighted-overall lands HIGH. Vuln-tracker handoff: VT-006 watch_signals
+      extension with this surface + tracked-IOC table update for both C2
+      domains.
 
 # ============================================================================
 # Valid resurface_if conditions

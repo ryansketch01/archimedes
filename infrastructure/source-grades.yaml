@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-16T08:00:00-04:00
+last_updated: 2026-05-20T06:08:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -463,6 +463,20 @@ vendor_sources:
     active: true
     urls:
       - https://www.upwind.io/feed
+
+  - id: github-blog-self-disclosure
+    name: "GitHub (self-disclosure / security communications via github.blog)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-20
+    provisional_reason: "First Archimedes-corpus citation of GitHub self-disclosure on its own incident — same vendor-authority-on-own-incident class as f5 / openai-self-disclosure / kernel-org-netdev / nx-team-nrwl precedent. First cited via finding-2026-05-20-FLASH-0001 (GitHub confirms breach of approximately 3,800 internal repositories via employee device compromise from a poisoned VS Code marketplace extension; customer data assessed as no evidence of impact). GitHub blog primary URL not directly retrieved this sweep — finding sources the disclosure via three independent B-grade media relays (BleepingComputer Sergiu Gatlan, The Hacker News, SecurityWeek Ionut Arghire). Provisional A is procedurally consistent with the same precedent class as Cisco PSIRT, Microsoft MSRC, F5 K-articles, kernel.org netdev, OpenAI security communications, Nx Team Nrwl — first-party named-victim disclosure on own incident is procedurally A-grade because the disclosing entity has direct ground-truth visibility into the facts being claimed. GitHub's 2026-05-20 communications include named scope-bounding claims (~3,800 internal repositories, no evidence of customer-data impact), explicit incident-confirmation language ('detected and contained a compromise'), and notably softer-than-confirmation framing on the actor-attribution layer ('directionally consistent with our investigation' on the TeamPCP self-claim) that the grader preserved verbatim per Hard Rule 2. The softer-language framing is itself a quality signal — GitHub is exercising standard incident-response disclosure discipline (vendor-confirms-procedural-facts; declines to upgrade self-attribution beyond what their own investigation has independently established). Pending direct-retrieval verification of github.blog primary URL on next collector pass. Ratification clock: 72h from commit (2026-05-23T06:08:00-04:00). Pending human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    active: true
+    urls:
+      - https://github.blog/category/security/
+      - https://github.blog/
 
   - id: zdi-blog
     name: "Zero Day Initiative (Trend Micro) — ZDI blog / Pwn2Own coordination"
@@ -925,10 +939,10 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 76        # +1 morning 2026-05-16: zdi-blog (provisional A; first corpus citation as Pwn2Own Berlin 2026 Day 3 wrap originating primary per finding-2026-05-16-0002)
-  active_sources: 67       # +1 above
+  total_sources: 77        # +1 FLASH 2026-05-20: github-blog-self-disclosure (provisional A; first corpus citation as GitHub vendor self-disclosure on own breach per finding-2026-05-20-FLASH-0001)
+  active_sources: 68       # +1 above
   by_grade:
-    A: 33       # +1 zdi-blog (provisional A 2026-05-16 morning)
+    A: 34       # +1 github-blog-self-disclosure (provisional A 2026-05-20 FLASH)
     B: 27
     C: 10       # +1 depthfirst elevated F→C 2026-05-16 morning per "first technical write-up publication" trigger; finding-2026-05-16-0001
     D: 1
@@ -965,6 +979,7 @@ _meta:
     - ox-security               # provisional B; first cited 2026-05-15-0005 (node-ipc four-firm UNATTRIBUTED consensus, via BleepingComputer relay — awaiting direct retrieval)
     - upwind                    # provisional B; first cited 2026-05-15-0005 (node-ipc four-firm UNATTRIBUTED consensus, via BleepingComputer relay — awaiting direct retrieval)
     - zdi-blog                  # provisional A; first cited 2026-05-16-0002 (Pwn2Own Berlin 2026 Day 3 wrap and Master of Pwn — Dustin Childs byline; vendor authority on own contest analogous to F5 vendor self-disclosure precedent)
+    - github-blog-self-disclosure  # provisional A; first cited 2026-05-20-FLASH-0001 (GitHub self-disclosure of ~3,800-repo breach via poisoned VS Code marketplace extension; 72h ratification clock to 2026-05-23T06:08:00-04:00; awaiting direct-retrieval of github.blog primary URL)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

@@ -1,0 +1,247 @@
+# threats/iocs/unattributed/teampcp-github-corp-breach-claim-c2-2026-05-20.yaml
+#
+# Unattributed cluster — two C2 domains surfaced via media-relay
+# TeamPCP-claim coverage of the 2026-05-20 GitHub-corp breach
+# disclosure (finding-2026-05-20-FLASH-0001). Per Hard Rule 2 these
+# IOCs are filed UNATTRIBUTED rather than under TeamPCP because:
+#
+#   (1) The finding's grader-assigned attribution layer is F6 — VT
+#       dual-grade per technical-source rule, "no direct vendor
+#       research attributes either IOC to TeamPCP specifically; the
+#       TeamPCP-claim framing in the media surfaces is the only
+#       linkage."
+#   (2) The TeamPCP-attribution layer for the GitHub-corp compromise
+#       claim is itself B2/likely (single-source veto, three media
+#       relays of one cybercriminal self-claim).
+#   (3) Cross-corpus C2 reuse is operationally diagnostic but is NOT
+#       an attribution upgrade — Archimedes does not propagate
+#       TeamPCP attribution to either C2 domain via the cross-corpus
+#       reuse observation (analyst SAT-ACH H2 / piggyback class
+#       remains non-falsified pending A-grade telemetry).
+#
+# Cross-corpus C2-reuse observation: `t.m-kosche.com` ALSO surfaces in
+# finding-2026-05-19-0001 (Mini Shai-Hulud expansion cluster — Socket
+# / Philipp Burckhardt named-analyst cross-binding observation between
+# actions-cool/issues-helper and @antv surfaces). The two surfaces
+# have ASYMMETRIC evidentiary rigor on the same C2 indicator:
+#   - finding-2026-05-19-0001: Socket named analyst direct research,
+#     higher rigor
+#   - finding-2026-05-20-FLASH-0001: media-relay + VT lookup, lower
+#     rigor
+# Per analyst SAT-KAC landmine A4 ("collapse asymmetric evidentiary
+# rigor into one source-cluster") and Hard Rule 2, the two surfaces
+# are NOT collapsed; this cluster records the IOC observation from
+# the 2026-05-20 finding and cross-references the 2026-05-19 finding
+# rather than merging the two evidentiary chains.
+#
+# Migration to actor-attributed iocs.yaml (TeamPCP/001) requires:
+#   - A-grade independent vendor research (Mandiant / CrowdStrike /
+#     Unit 42 / MSTIC / Socket / StepSecurity / Wiz / Snyk / Upwind)
+#     directly attributing either domain to TeamPCP infrastructure
+#   - First-party Splunk hit on either IOC tying it to a TeamPCP
+#     campaign artifact (current state: 47th consecutive dormant
+#     non-self-telemetry sweep; silence is not disconfirming per
+#     Hard Rule 8)
+#   - Operator decision after /update-tracking review on the
+#     cross-corpus C2-reuse pattern
+
+cluster_id: teampcp-github-corp-breach-claim-c2-2026-05-20
+cluster_name: "GitHub-corp breach (TeamPCP self-claim) C2 infrastructure — VT-confirmed malicious, attribution-layer F6"
+first_seen: 2026-05-20
+last_updated: 2026-05-20
+admiralty_grade: A2                    # facts-of-malicious-classification A (VT-confirmed); cluster-anchor A2 because the procedural-facts layer is vendor-multi-engine direct technical observation
+admiralty_grade_layered:
+  c2_check_git_service_com_vt_malicious: A1
+  c2_t_m_kosche_com_vt_malicious: A1
+  c2_attribution_to_teampcp: F6        # per finding's digraph_layered
+  cluster_anchor: A2
+tlp: CLEAR
+
+provenance:
+  - source: finding-2026-05-20-FLASH-0001
+    note: >
+      GitHub-corp breach FLASH finding with TeamPCP-self-claim
+      attribution layer. The two C2 domains were surfaced via
+      BleepingComputer (Sergiu Gatlan) coverage of the TeamPCP
+      Breached sale listing. VirusTotal A-grade on facts-of-malicious-
+      classification (10/93 and 15/91 engines respectively). No
+      direct vendor research in any of the four primaries
+      (BleepingComputer, BleepingComputer follow-up, The Hacker News,
+      SecurityWeek) attributes either IOC to TeamPCP specifically —
+      attribution layer F6, IOCs filed UNATTRIBUTED.
+  - source: finding-2026-05-19-0001
+    note: >
+      Cross-corpus reuse observation: `t.m-kosche.com` first surfaced
+      in this finding via Socket analyst Philipp Burckhardt's
+      cross-binding research between actions-cool/issues-helper
+      and @antv ecosystem surfaces. Higher source-rigor than the
+      2026-05-20 finding's media-relay VT-lookup. Cluster anchor in
+      finding-2026-05-19-0001 is B2 with attribution layer at
+      Mini-Shai-Hulud-lineage / TeamPCP carry-forward — the same C2
+      indicator appearing under two distinct sources with different
+      attribution chains is the diagnostic observation that warrants
+      cross-corpus tracking but NOT cluster collapse.
+
+notes: |
+  Operationally diagnostic observation: the C2 indicator
+  `t.m-kosche.com` (parent m-kosche.com) appears in TWO Archimedes-
+  corpus findings in 48 hours:
+
+    - finding-2026-05-19-0001 (2026-05-19 morning) — Socket / Philipp
+      Burckhardt named-analyst research; bound to Mini Shai-Hulud
+      expansion via actions-cool/issues-helper + @antv surfaces;
+      attribution chain inherits TeamPCP via VT-006 / Wiz + Snyk +
+      StepSecurity (carry-forward A1 attribution chain)
+    - finding-2026-05-20-FLASH-0001 (2026-05-20 06:00 FLASH sweep) —
+      media-relay VT-lookup; bound to TeamPCP self-claim of GitHub-
+      corp compromise; attribution layer F6 — no direct vendor
+      research attributes the IOC to TeamPCP
+
+  Two non-collapsible readings of the cross-corpus observation:
+
+    (a) Same actor (most likely TeamPCP given finding-2026-05-19-0001's
+        higher-rigor attribution chain) operates an infrastructure
+        pool that is being progressively surfaced through different
+        media + research channels. The C2 reuse is real and is a
+        confirming signal for TeamPCP infrastructure clustering.
+    (b) Piggyback-class brand-laundering enabled by the 2026-05-12
+        TeamPCP source-code release on BreachForums (finding-
+        2026-05-15-FLASH-0002): an unrelated actor (or actors)
+        re-uses the t.m-kosche.com C2 because the leaked Shai-Hulud
+        worm source code references the domain — i.e., the C2
+        appears in multiple Archimedes findings because multiple
+        actors are now downstream of the same leaked codebase, not
+        because the same actor ran both intrusions.
+
+  Both readings preserve Hard Rule 2 (no Archimedes-originated
+  attribution). Reading (a) is more parsimonious; reading (b) is
+  enabled by the corpus prior (finding-2026-05-15-FLASH-0002). The
+  finding's analyst SAT-ACH leaves the H1-vs-H5 (TeamPCP-real vs
+  brand-piggyback) question non-falsified pending A-grade
+  independent telemetry.
+
+  First-party Splunk status at cluster creation (2026-05-20 06:08):
+  47th consecutive dormant non-self-telemetry sweep across
+  archimedes + defenseclaw_local indexes (-72h window). Zero hits
+  on either C2 indicator, on m-kosche.com parent, on
+  check.git-service.com, or on the implicit-host PCP-shell-pattern
+  variations. Hard Rule 8: silence is not disconfirming, not
+  confirming.
+
+  To migrate this cluster to actor-attributed:
+    - A-grade vendor research (Mandiant / CrowdStrike / Unit 42 /
+      MSTIC / Socket / StepSecurity / Wiz / Snyk / Upwind) directly
+      attributes either domain to TeamPCP infrastructure
+    - First-party Splunk hit on either IOC ties it to a TeamPCP
+      campaign artifact
+    - Operator decision after /update-tracking review on the
+      cross-corpus C2-reuse pattern
+
+ttl:
+  network_infrastructure: 90    # days
+
+indicators:
+  - id: ghcc-c2-check-git-service-com
+    type: domain
+    value: check.git-service.com
+    parent_domain: git-service.com
+    parent_creation_date: 2016-02-09
+    role: c2
+    description: >
+      C2 subdomain surfaced via TeamPCP-claim coverage chain for the
+      2026-05-20 GitHub-corp breach disclosure. Parent domain
+      git-service.com has VT-malicious 10/93 engines (BitDefender /
+      ESET / Forcepoint / Fortinet / G-Data / Sophos /
+      alphaMountain.ai et al.) with creation date 2016-02-09 —
+      long-dormant infrastructure re-purposed pattern.
+    first_seen: 2026-05-20
+    source: finding-2026-05-20-FLASH-0001
+    source_attribution: ["BleepingComputer (Sergiu Gatlan)", "The Hacker News", "SecurityWeek (Ionut Arghire)"]
+    grade_facts: A
+    grade_attribution: F
+    vt_engines: "10/93"
+    parent_domain_age_pattern: long_dormant_repurposed
+    attribution_discipline: >
+      UNATTRIBUTED per Hard Rule 2 + technical-source dual-grade rule.
+      Attribution to TeamPCP is media-relay self-claim only; no direct
+      vendor research attributes the C2 to TeamPCP specifically.
+
+  - id: ghcc-c2-t-m-kosche-com
+    type: domain
+    value: t.m-kosche.com
+    parent_domain: m-kosche.com
+    parent_creation_date: 2026-05-15T16:20:00Z
+    parent_registrar: NameSilo
+    role: c2
+    description: >
+      C2 subdomain surfaced via TeamPCP-claim coverage chain for the
+      2026-05-20 GitHub-corp breach disclosure. Parent domain
+      m-kosche.com has VT-malicious 15/91 engines including
+      Kaspersky / Sophos / ArcSight / Fortinet / SOCRadar /
+      alphaMountain.ai 'newly registered'. Parent created 2026-05-15
+      16:20 UTC with NameSilo registrar — 5 days pre-incident,
+      consistent with disposable / op-specific provisioning pattern.
+    first_seen: 2026-05-20
+    source: finding-2026-05-20-FLASH-0001
+    source_attribution: ["BleepingComputer (Sergiu Gatlan)", "The Hacker News", "SecurityWeek (Ionut Arghire)"]
+    grade_facts: A
+    grade_attribution: F
+    vt_engines: "15/91"
+    parent_domain_age_pattern: pre_incident_disposable_provisioning
+    cross_corpus_repeat: true
+    cross_corpus_repeat_finding: finding-2026-05-19-0001
+    cross_corpus_repeat_source_rigor_delta: >
+      finding-2026-05-19-0001 surfaces this same indicator via Socket
+      named-analyst Philipp Burckhardt cross-binding research
+      (HIGHER source rigor); finding-2026-05-20-FLASH-0001 surfaces it
+      via media-relay VT-lookup (LOWER source rigor). The two surfaces
+      are NOT collapsed per Hard Rule 2 + analyst SAT-KAC landmine A4.
+      The cross-corpus observation is operationally diagnostic at the
+      C2-infrastructure-reuse level but is NOT an attribution upgrade.
+    attribution_discipline: >
+      UNATTRIBUTED per Hard Rule 2 + technical-source dual-grade rule.
+      Attribution to TeamPCP via 2026-05-20 finding is media-relay
+      self-claim only. Attribution via finding-2026-05-19-0001 is
+      Mini-Shai-Hulud carry-forward (Socket analyst chain) — but
+      THAT finding's IOC handling also preserves the C2-to-TeamPCP
+      layer as inherited rather than directly-attributed. Operator
+      review at /update-tracking cycle to decide on cross-corpus
+      C2-reuse attribution upgrade.
+
+hunt_queries:
+  - id: ghcc-hunt-c2-domains
+    platform: splunk
+    title: "GitHub-corp breach C2 hunt — check.git-service.com + t.m-kosche.com"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (dest_host="*check.git-service.com" OR domain="*check.git-service.com"
+       OR query="*check.git-service.com" OR dest_host="*git-service.com"
+       OR domain="*git-service.com" OR query="*git-service.com"
+       OR dest_host="*t.m-kosche.com" OR domain="*t.m-kosche.com"
+       OR query="*t.m-kosche.com" OR dest_host="*m-kosche.com"
+       OR domain="*m-kosche.com" OR query="*m-kosche.com")
+      | stats count by user, src_ip, dest_host, _time
+      | sort -_time
+    notes: >
+      Both C2 domains VT-confirmed malicious. check.git-service.com
+      parent is long-dormant re-purposed; m-kosche.com parent is 5-day
+      pre-incident NameSilo registration. Any hit on either parent or
+      subdomain is high-fidelity malicious infrastructure contact.
+
+  - id: ghcc-hunt-vscode-extension-inventory
+    platform: edr
+    title: "VS Code marketplace extension inventory hunt — A&D defender posture-baseline"
+    query_type: pseudo_kql
+    query: |
+      DeviceFileEvents
+      | where FolderPath has_any (".vscode/extensions", ".vscode-insiders/extensions",
+                                   ".vscode-server/extensions", "%APPDATA%\\Code\\User\\extensions")
+      | summarize installs=dcount(FileName), first_seen=min(Timestamp), last_seen=max(Timestamp) by DeviceId, FolderPath
+      | sort by last_seen desc
+    notes: >
+      GitHub withheld the poisoned extension identifier; posture is
+      inventory-and-baseline, NOT chase-a-named-extension (Hard Rule 3).
+      Defender workflow: build known-good baseline of VS Code extensions
+      across developer workstations, flag unfamiliar publishers, recent
+      installs, elevated-permission extensions for analyst review.

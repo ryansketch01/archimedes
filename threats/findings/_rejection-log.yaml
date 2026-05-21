@@ -298,6 +298,202 @@ entries:
       18:00 EDT FLASH sweep — that will be a NEW raw-signal item
       (Drupal disclosure post-embargo) NOT a re-grade of this relay.
 
+  - rejection_id: reject-2026-05-21-0001
+    rejected_at: 2026-05-21T08:40:00-04:00
+    grading_run_id: morning-20260521-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-21-am-005     # The Record (Recorded Future News) 2026-05-20 23:00 UTC — Xi-Putin Beijing joint statement
+    cluster_topic: "Xi-Putin Beijing 2026-05-20 joint statement on intensified cooperation across satellite internet, GLONASS+BeiDou interoperability, cyber-threat response coordination, AI governance global organization, technology-sovereignty / Western-decoupling framing — strategic geopolitical context with no specific actor / CVE / IOC / campaign / operational mechanism"
+    rejection_reasons:
+      - no_specific_actor_attribution_no_roster_actor_named
+      - no_specific_cve_no_specific_vulnerability_no_specific_ioc
+      - no_specific_campaign_named_no_operational_mechanism_announced
+      - no_a_and_d_prime_named_as_party_or_target
+      - no_timeline_for_operational_coordination_beyond_joint_statement_signing
+      - strategic_policy_context_not_actionable_threat_intelligence_at_finding_tier
+      - briefer_sector_focus_geopolitical_context_inclusion_judgment_handoff_only
+      - all_six_flash_triggers_evaluated_fail_per_collector
+    sources:
+      - source_yaml_id: the-record
+        grade: B
+        role: "primary — The Record (Recorded Future News) coverage of Xi-Putin Beijing joint statement; no named byline; relays statement language but does not name actors / CVEs / IOCs / specific operational coordination mechanism"
+    would_be_digraph: B2_procedural_facts_on_state_to_state_statement_existence_but_below_inclusion_threshold_for_finding_tier_due_to_absence_of_operational_substance
+    rejection_detail: >
+      The Record covers Xi Jinping + Vladimir Putin's 2026-05-20
+      Beijing joint statement announcing intensified Russia-China
+      cooperation across several technology domains:
+        - Satellite internet technologies + GLONASS+BeiDou
+          interoperability + radio frequencies / satellite orbits /
+          IoT coordination
+        - "High-level coordination on information security and cyber
+          threat response" (per The Record paraphrase)
+        - "Global organization dedicated to AI cooperation" pledge
+        - Technology-sovereignty framing — reduce reliance on Western
+          technology, build "more independent technological ecosystem"
+        - Named tools/platforms: GLONASS (RU PNT), BeiDou (CN PNT),
+          Russia's "Max" messaging app, China's referenced sovereign
+          cyber-training platform capability
+
+      The statement-existence procedural fact is B2 (B-grade source
+      on a state-to-state cooperation announcement; consistent with
+      Recorded Future / The Record's established geopolitics
+      reporting track record; no contradicting source).
+
+      Rejection rationale at finding-tier:
+        - NO specific cyber threat actor named (no APT28 / Sandworm /
+          Volt Typhoon / Salt Typhoon / APT41 / roster actor
+          reference)
+        - NO specific operational mechanism announced beyond the
+          "strengthen and expand" verbal framing
+        - NO specific CVE / IOC / technical disclosure
+        - NO specific A&D-prime company named as party, partner, or
+          target
+        - NO timeline for operational coordination beyond the
+          joint-statement signing
+
+      The cluster's primary claim ("Russia and China pledged
+      cooperation") is procedurally true but operationally inert at
+      the finding-tier. The Archimedes finding-tier inclusion
+      threshold is intelligence-USEFUL signal with actor / CVE /
+      IOC / campaign / operational mechanism hooks. Strategic
+      geopolitical context belongs in the briefer's Sector Focus /
+      Geopolitical Context standing-section judgment — not the
+      grader-promoted finding pipeline.
+
+      Per FLASH-POLICY anti-noise framing, all six FLASH triggers
+      evaluated FAIL per collector evaluation:
+        T1: no CVE
+        T2: no roster actor
+        T3: no first-party IOC hit
+        T4: no roster actor TTP change
+        T5: no A&D-sector campaign with multi-victim / A&D-prime-
+            named operational substance
+        T6: no zero-day
+
+      Strategic-context handoff to briefer for Sector Focus /
+      Geopolitical Context inclusion judgment. If a follow-on
+      statement or implementing announcement from either state
+      names a specific operational coordination mechanism / actor
+      / campaign / CVE, regrade at that future surface.
+
+      Indirect A&D-prime sector-relevance dimensions exist but
+      are sector-shape framing only (GLONASS+BeiDou interoperability
+      relevant to PNT warfare context; satellite internet cooperation
+      relevant to LEO constellation competition; AI-governance
+      proposal relevant to AI export-control posture). The briefer
+      may judge inclusion in Geopolitical Context standing section;
+      the grader does not promote at finding-tier.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+      Regrade if a follow-on Russia-China operational announcement
+      surfaces with specific actor / CVE / IOC / campaign / operational
+      mechanism substance.
+
+  - rejection_id: reject-2026-05-21-0002
+    rejected_at: 2026-05-21T16:38:00-04:00
+    grading_run_id: afternoon-20260521-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-21-pm-004    # Unit 42 npm Threat Landscape update May 21 — Cortex XDR managed-threat-hunting XQL query + Koi Agentic Endpoint Security integration
+    cluster_topic: "Unit 42 npm Threat Landscape live-document update May 21 cycle 3 — adds Cortex XDR managed-threat-hunting XQL query (tracks Bun-JavaScript + gh-auth-token credential access for Mini Shai-Hulud detection) + Koi Agentic Endpoint Security defensive-tool integration (delays automatic package updates); NO new IOCs / NO new CVEs / NO new actor attribution; procedural-facts upgrade to morning finding-2026-05-21-0007 (MSTIC + Unit 42 same-day co-publication)"
+    rejection_reasons:
+      - procedural_facts_upgrade_to_existing_finding_not_standalone_warrant
+      - no_new_iocs_no_new_cves_no_new_actor_attribution_per_collector_assessment
+      - detection_engineering_layer_only_no_attribution_layer_change
+      - same_topic_as_existing_finding_2026_05_21_0007_briefer_anti_repetition_scope
+    sources:
+      - source_yaml_id: unit42
+        grade: A
+        role: "primary — Unit 42 npm Threat Landscape live-document third 24h update cycle on 2026-05-21 08:45 PT (11:45 EDT); same vendor, same live document, same campaign coverage as morning finding-2026-05-21-0007's Unit 42 co-publication"
+    would_be_digraph: A2_on_procedural_facts_upgrade_to_existing_finding_but_not_standalone_finding_warrant
+    rejection_detail: >
+      Unit 42's May 21 update to "The npm Threat Landscape: Attack
+      Surface and Mitigations" live document is the THIRD 24h update
+      cycle on this document — cycle 1 was the 2026-05-19 initial
+      coverage; cycle 2 was the 2026-05-20 12:30 PT (15:30 EDT) update
+      adding the May 2026 campaign waves + "Mini Shai-Hulud Continues"
+      section (covered in this morning's brief as finding-2026-05-21-
+      0007 — MSTIC + Unit 42 same-day co-publication); cycle 3 is
+      this 2026-05-21 08:45 PT (11:45 EDT) update adding:
+
+        1. Cortex XDR managed-threat-hunting XQL query designed to
+           identify Mini Shai-Hulud installation activity at various
+           stages, tracking JavaScript execution through Bun runtime
+           in combination with credential access commands like
+           `gh auth token`. This operationalizes the post-compromise
+           TTP chain documented in morning finding-0007's MSTIC
+           technical analysis into a deployable detection.
+        2. Koi Agentic Endpoint Security defensive-tool integration
+           allowing customers to delay automatic package updates,
+           creating time for the npm registry to detect and remove
+           compromised packages before they propagate into developer
+           machines and CI/CD runners.
+
+      Per collector's WebFetch verification:
+        - NO new IOCs (domains / IPs / hashes / package names)
+        - NO new CVEs (CVE-2026-45321 / GHSA-g7cv-rxg3-hmpx remains
+          canonical reference)
+        - NO new actor attribution — TeamPCP attribution layer
+          unchanged (still tracks the prior Wiz / StepSecurity-
+          originating high-confidence assessment); Unit 42 continues
+          unattributed-actor framing on the @antv coverage
+        - NO new TTPs beyond the Bun + /proc PID scanning +
+          Runner.Worker memory scraping + 1Password CLI 2FA bypass +
+          K8s SA tokens + AWS Secrets Manager + HashiCorp Vault +
+          npm OIDC + SLSA forgery + PBKDF2 obfuscation set already
+          documented in the 2026-05-20 update cycle 2 layer
+
+      Rejection rationale at finding-tier:
+        - Same vendor, same live document, same campaign as morning
+          finding-2026-05-21-0007. Detection-engineering
+          operationalization layer addition, NOT attribution-layer
+          change or new-mechanism-disclosure
+        - Per grader doctrine: "If a new raw-signal from today
+          relates to a finding already graded today, the briefer
+          handles via anti-repetition / procedural-facts update
+          surface, not the grader via re-promotion"
+        - The substantive new content (XQL query + Koi integration)
+          is detection-engineering blue-team operational tooling —
+          appropriate for briefer to surface as a one-liner
+          procedural-facts update in the afternoon brief's Mini
+          Shai-Hulud finding-0007 follow-up section if the
+          briefer judges it useful for prime IR teams on Cortex
+          XDR stacks
+
+      Briefer handoff context (not a finding promotion):
+        - Cortex XDR managed-threat-hunting XQL query is available
+          to Palo Alto-equipped IR teams for immediate deployment;
+          teams on other EDR stacks (Defender, CrowdStrike,
+          SentinelOne) should request equivalent queries from
+          their vendor
+        - Koi Agentic Endpoint Security is npm-ecosystem-specific
+          control gating automatic package update auto-apply behind
+          policy delay window
+
+      Update cycle pattern itself is consequential metadata: a
+      same-vendor live document updating 3 times in 48h is worth
+      grader-side awareness — Unit 42 is treating Mini Shai-Hulud
+      as a multi-cycle ongoing-campaign monitoring exercise, not a
+      one-shot disclosure. Pattern observation; not a finding
+      promotion warrant.
+
+      Hard Rule 2 binding constraint preserved:
+        - This update does NOT change the TeamPCP attribution layer
+          posture established in morning finding-0007's ACH H3/H4
+          analysis (MSTIC + Unit 42 unattributed-actor framing per
+          editorial scope choice / genuine attribution uncertainty
+          remain the rank-1 / rank-2 hypotheses; H2 telemetry-
+          disagreement remains the principal sensitivity)
+        - Red-team review block on actor-profiler TeamPCP TTP-class
+          expansion remains in force per finding-0007
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention. Regrade if a future Unit 42 update cycle surfaces
+      new IOCs / new CVEs / new actor attribution / new TTPs —
+      that would warrant a fresh finding rather than continued
+      rejection-log update.
+
   - rejection_id: reject-2026-05-19-0001
     rejected_at: 2026-05-19T08:38:00-04:00
     grading_run_id: morning-20260519-080000
@@ -1650,9 +1846,21 @@ entries:
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 12
-  most_recent_run: afternoon-20260518-160000
-  most_recent_run_rejections: 4
+  total_rejections: 22
+  most_recent_run: afternoon-20260521-160000
+  most_recent_run_rejections: 1
+  most_recent_run_promotions: 6
+  most_recent_run_promotion_ids:
+    - finding-2026-05-21-0008    # CISA KEV double-add Langflow + Trend Micro Apex One
+    - finding-2026-05-21-0009    # BleepingComputer Chromium Service Worker RCE accidental exposure (B3 single-source veto, monitoring tier)
+    - finding-2026-05-21-0010    # NASA F´ CVE-2026-41144 spacecraft flight software RCE
+    - finding-2026-05-21-0011    # ISC BIND 9 CVE-2026-3593 DoH heap UAF
+    - finding-2026-05-21-0012    # CISA ICS batch 5 advisories (ABB B&R + Hitachi Energy)
+    - finding-2026-05-21-0013    # Rapid7 Q1 2026 threat landscape (sector-strategic context, A3 single-source veto)
+  most_recent_run_rejection_ids:
+    - reject-2026-05-21-0002    # Unit 42 npm landscape update May 21 (procedural-facts upgrade to existing finding-0007, not standalone)
+  prior_most_recent_run_legacy: afternoon-20260518-160000
+  prior_most_recent_run_rejections: 4
   most_recent_run_note: >
     afternoon-20260518-160000 produced 4 rejections and 2 promotions.
     Promotions: finding-2026-05-18-0003 Shai-Hulud npm worm clones IOC

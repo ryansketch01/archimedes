@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-20T16:00:00-04:00
+last_updated: 2026-05-21T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -12725,7 +12725,7 @@ entries:
       otherwise unremarkable beyond the RUGGEDCOM CVSS-10 item.
 
   - id: 2026-05-20-flash-0608-teampcp-github-internal-repos
-    covered_in: [flash-2026-05-20-0608-teampcp-github-internal-repos]
+    covered_in: [flash-2026-05-20-0608-teampcp-github-internal-repos, 2026-05-21-morning]
     brief_file: threats/briefs/2026-05-20-flash-teampcp-github-internal-repos.md
     headline: "TeamPCP self-claims compromise of GitHub-corp via poisoned VS Code marketplace extension — approximately ~3,800 internal repos exfiltrated; GitHub vendor self-discloses procedural breach facts (A2 / very likely) but characterizes TeamPCP claim as 'directionally consistent with our investigation' (softer than confirmation); attribution layer B2 / likely under single-source veto on three B-grade media relays of one TeamPCP self-claim on Breached cybercrime forum ($50,000 minimum / 'this is not a ransom'); SecurityWeek-relayed researcher commentary places this in the TeamPCP 2026 SDLC chain (Trivy → Checkmarx → Bitwarden CLI → TanStack → OpenAI → Mistral → Grafana → GitHub-corp); two C2 IOCs surfaced (check.git-service.com VT 10/93, t.m-kosche.com VT 15/91) with C2-malicious A1 / very likely but C2-to-TeamPCP attribution F6 / roughly-even; t.m-kosche.com is cross-corpus repeat with finding-2026-05-19-0001 (Socket / Burckhardt named-analyst cross-binding, higher-rigor than this finding's media-relay VT-lookup); clusters NOT collapsed per Hard Rule 2; W1-W5 red-team qualifying recommendations honored in brief language; critical override 2/4 — quiet-hours queued"
     topic_tags:
@@ -12856,7 +12856,7 @@ entries:
       - vs_code_marketplace_extension_identifier_disclosed
       - teampcp_dossier_rescore_via_update_tracking_with_this_corpus_chain_for_hard_rule_5_approve_scoring_gate
     first_covered: 2026-05-20
-    last_covered: 2026-05-20
+    last_covered: 2026-05-21
     retraction: null
     test: false
     notes: |
@@ -13030,7 +13030,7 @@ entries:
     test: false
 
   - id: 2026-05-20-pm-002
-    covered_in: [2026-05-20-afternoon]
+    covered_in: [2026-05-20-afternoon, 2026-05-21-morning]
     brief_file: threats/briefs/2026-05-20-afternoon.md
     headline: "CISA KEV +7 batch 2026-05-20 (federal dueDate 2026-06-03): 2 fresh Microsoft Defender CVEs (CVE-2026-41091 CWE-59 link-following local privilege escalation + CVE-2026-45498 denial of service) hit universal A&D-prime EDR fleet, plus 5 historical CVEs resurfaced (CVE-2008-4250 MS08-067 Conficker original vector, CVE-2009-1537 DirectX quartz.dll, CVE-2009-3459 Adobe Acrobat, CVE-2010-0249 + CVE-2010-0806 IE use-after-free Aurora-lineage pair); CISA framing 'based on evidence of active exploitation' is single-source attestation on Defender pair pending Mandiant / CrowdStrike / Unit 42 / MSTIC corroboration; CISA does not name an exploiting actor on any of the 7 entries; Archimedes does NOT extrapolate historical Aurora or Conficker attribution to current 2026 ITW; CVSS not yet surfaced for Defender pair (NVD Awaiting Analysis)"
     topic_tags:
@@ -13111,7 +13111,7 @@ entries:
       - federal_kev_deadline_2026_06_03_lapse
       - a_d_prime_named_as_victim
     first_covered: 2026-05-20
-    last_covered: 2026-05-20
+    last_covered: 2026-05-21
     retraction: null
     test: false
 
@@ -13293,6 +13293,1023 @@ entries:
     last_covered: 2026-05-20
     retraction: null
     test: false
+
+  - id: 2026-05-21-am-001
+    covered_in: [2026-05-21-morning]
+    brief_file: threats/briefs/2026-05-21-morning.md
+    headline: "UPDATE on 2026-05-20-pm-002: Defender zero-day pair gains codenames per SecurityWeek sourcing MSRC — CVE-2026-41091 = UnDefend (LPE, CWE-59 link-following, CVSS 7.8) + CVE-2026-45498 = RedSun (DoS, CVSS 4.0); SecurityWeek's codename↔type pairing INVERTS the Archimedes _index.yaml ZD-002/ZD-003 type assignments tracked since 2026-03 — vuln-tracker reconciliation flagged; procedural-facts layer A1 (MSRC + CISA KEV multi-source A-grade), codename-binding layer B2 single-source SecurityWeek pending second independent A/B-grade source; BleepingComputer corroborates patch versions (Engine 1.1.26040.8 + Antimalware Platform 4.18.26040.7) but does NOT name codenames; no actor attribution per MSRC/CISA/SecurityWeek/BleepingComputer; federal-civilian deadline 2026-06-03"
+    topic_tags:
+      - cve-2026-41091-undefend-lpe-cwe-59-link-following-cvss-7-8
+      - cve-2026-45498-redsun-dos-cvss-4-0
+      - microsoft-defender-zero-day-pair-codename-binding
+      - securityweek-sourcing-msrc-codename-layer-single-source
+      - msrc-cisa-kev-procedural-facts-multi-source-a-grade
+      - zd-002-redsun-zd-003-undefend-index-yaml-type-inversion
+      - vuln-tracker-reconciliation-required
+      - federal-deadline-2026-06-03
+      - no-actor-attribution-verifiable-absence
+      - hard-rule-2-no-attribution-origination
+      - update-on-finding-2026-05-20-0005
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-41091
+        codename_per_securityweek: UnDefend
+        cvss: 7.8
+        cwe: CWE-59
+        type: LPE
+      - cve: CVE-2026-45498
+        codename_per_securityweek: RedSun
+        cvss: 4.0
+        type: DoS
+    related_zero_days:
+      - id: ZD-002
+        codename: RedSun
+        index_yaml_type: LPE
+        securityweek_type: DoS
+        reconciliation_required: true
+      - id: ZD-003
+        codename: UnDefend
+        index_yaml_type: "DoS / Defender Update Block"
+        securityweek_type: "LPE (CWE-59 link-following)"
+        reconciliation_required: true
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0001]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      procedural_facts: A1
+      codename_binding: B2
+      zd_index_resolution: B3
+    wep: very_likely
+    wep_split:
+      procedural_facts: very_likely
+      active_exploitation: very_likely
+      codename_to_cve_binding: likely
+      zd_002_zd_003_index_yaml_resolution: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_scope: codename_binding_layer_securityweek_sole_originating
+    analyst_review_required: true
+    analyst_review_complete: true
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Codename provenance per SecurityWeek sourcing MSRC, NOT per MSRC directly (codename layer is researcher-relay)"
+      - "No actor attribution from MSRC, CISA, SecurityWeek, or BleepingComputer; knownRansomwareCampaignUse Unknown"
+      - "Fabian Bader (MSRC MVP) named as exploit-variant social-media context per BleepingComputer relay; researcher commentary not attribution"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 52
+    update_flag_on_prior_brief_item: 2026-05-20-pm-002
+    resurface_if:
+      - second_independent_ab_grade_source_on_codename_binding_within_7_days
+      - msrc_publishes_codename_acknowledgement_directly
+      - mandiant_crowdstrike_unit42_mstic_attribution_or_actor_naming
+      - first_party_splunk_hit_on_cve_2026_41091_or_cve_2026_45498
+      - federal_kev_deadline_2026_06_03_lapse
+      - a_d_prime_named_as_victim
+      - vuln_tracker_reconciliation_completes
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      UPDATE on 2026-05-20-pm-002 (KEV +7 batch). New procedural facts:
+      CVSS scores now surfaced (NVD enrichment still pending; MSRC-sourced
+      via SecurityWeek); codenames bound; ZD-002/ZD-003 _index.yaml entries
+      flagged for reconciliation. Single-source veto applied on codename
+      binding layer per KAC A1/A3 critical-centrality assumptions; brief
+      language uses "per SecurityWeek sourcing MSRC" not "per MSRC."
+      Vuln-tracker handoff: preserve BOTH records (original 2026-03 type
+      and SecurityWeek-attested type) with reconciliation_note field
+      pending second A/B-grade source on the binding within 7 days.
+
+  - id: 2026-05-21-am-002
+    covered_in: [2026-05-21-morning]
+    brief_file: threats/briefs/2026-05-21-morning.md
+    headline: "UPDATE on 2026-05-20-flash-0608: GitHub formally confirms the nrwl.angular-console VS Code extension as the initial-access vector for the 3,800-internal-repo breach; THN + BleepingComputer independently relay GitHub's statement; THN sourcing Nx Team specifies 18-minute publish-and-withdraw window 2026-05-18 12:30–12:48 UTC and names OpenAI, Mistral AI, Grafana Labs as secondary victims in the same TanStack supply-chain chain; procedural-facts layer A2 (GitHub vendor-authority + two B-grade media relays); TeamPCP attribution layer UNCHANGED at B2/likely under single-source veto from parent FLASH; vendor framing moves from 'directionally consistent' (FLASH-era) to direct causal statement on the extension vector"
+    topic_tags:
+      - github-formal-confirmation-nrwl-angular-console-vs-code-extension
+      - initial-access-vector-poisoned-extension-employee-device
+      - 18-minute-publish-window-2026-05-18-12-30-to-12-48-utc
+      - openai-mistral-grafana-secondary-victims
+      - tanstack-supply-chain-chain
+      - teampcp-attribution-unchanged-single-source-from-parent-flash
+      - vendor-framing-directionally-consistent-to-direct-causal
+      - vt-006-mini-shai-hulud-family-lineage-extension
+      - hard-rule-2-no-teampcp-origination
+      - update-on-finding-2026-05-20-FLASH-0001
+    related_actors:
+      - actor_name: TeamPCP
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: single_source_veto_persists_attribution_unchanged_from_parent_flash_no_origination
+    related_vulns:
+      - vt_id: VT-006
+        cve: CVE-2026-45321
+        role: parent_campaign_chain_2026_sdlc_supply_chain
+    related_campaigns:
+      - mini-shai-hulud-family-lineage
+      - vt-006
+      - teampcp-2026-sdlc-supply-chain-chain
+    finding_ids: [finding-2026-05-21-0002]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      procedural_facts: A2
+      18_minute_window_detail: B2
+      teampcp_attribution: B2
+    wep: very_likely
+    wep_split:
+      github_formal_confirmation_extension_vector: very_likely
+      18_minute_publish_window: likely
+      secondary_victims_openai_mistral_grafana: very_likely
+      teampcp_attribution_carry_forward: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: teampcp_attribution_layer_unchanged_from_parent_flash
+    analyst_review_required: false
+    red_team_review_required: true
+    red_team_review_complete: true
+    red_team_outcome: qualify
+    red_team_qualifying_recommendations_honored:
+      - vt_006_anchor_framing_wiz_plus_stepsecurity_independent_snyk_relays_stepsecurity_not_independent_third
+    hard_rule_2_framings_load_bearing:
+      - "TeamPCP attribution is restated per Wiz + StepSecurity per prior reporting (Snyk relays StepSecurity, not independent)"
+      - "GitHub does NOT name TeamPCP; Archimedes does NOT originate or upgrade"
+      - "The Hacker News 'cybercriminal group...large-scale software supply chain attacks' is relay of prior FLASH framing, not new attribution"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 52
+    update_flag_on_prior_brief_item: 2026-05-20-flash-0608-teampcp-github-internal-repos
+    resurface_if:
+      - mandiant_crowdstrike_unit42_mstic_independent_teampcp_attribution_or_disconfirmation
+      - vs_code_marketplace_extension_publisher_namespace_takedown_or_post_mortem
+      - ad_prime_or_dib_supplier_named_as_secondary_victim
+      - first_party_splunk_hit_on_nrwl_angular_console_or_vs_code_marketplace_extension_class
+      - teampcp_dossier_rescore_threshold_met
+      - vt_006_dossier_scaffolded
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      UPDATE on 2026-05-20-flash-0608. Procedural-facts upgrade from
+      "directionally consistent with our investigation" (FLASH-era softer
+      framing) to direct causal statement on the nrwl.angular-console
+      VS Code extension as the initial-access vector. TeamPCP attribution
+      layer is UNCHANGED — still single-source via Breached self-claim +
+      B-grade media relays; GitHub does not name TeamPCP. Red-team
+      QUALIFY honored: VT-006 anchor framing language tightened to
+      "Wiz + StepSecurity independent; Snyk is StepSecurity relay"
+      (not Wiz + Snyk + StepSecurity + Socket consensus — overcounts
+      effective independent sources from 4 to 2).
+
+  - id: 2026-05-21-am-003
+    covered_in: [2026-05-21-morning]
+    brief_file: threats/briefs/2026-05-21-morning.md
+    headline: "NVIDIA TensorRT-LLM dual deserialization criticals — CVE-2025-33255 (MPI server) + CVE-2026-24142 (unsafe serialized handle); CVSS disagreement NIST 9.8 vs NVIDIA-CNA 6.3; patched in TRT-LLM 1.2; no active exploitation or KEV; structural-indirect A&D relevance via ML platform stacks; deployment prevalence in corpus untested; held at MONITORING tier per analyst"
+    topic_tags:
+      - cve-2025-33255-nvidia-tensorrt-llm-mpi-server-deserialization
+      - cve-2026-24142-nvidia-tensorrt-llm-unsafe-serialized-handle
+      - cvss-disagreement-nist-9-8-vs-nvidia-cna-6-3
+      - patched-trt-llm-1-2
+      - no-active-exploitation-no-kev
+      - structural-indirect-ad-relevance-ml-platform-stack
+      - monitoring-tier
+      - deployment-prevalence-untested
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2025-33255
+        product: NVIDIA TensorRT-LLM MPI server
+        cvss_nist: 9.8
+        cvss_nvidia_cna: 6.3
+      - cve: CVE-2026-24142
+        product: NVIDIA TensorRT-LLM unsafe serialized handle
+        cvss_nist: 9.8
+        cvss_nvidia_cna: 6.3
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0003]
+    digraph: A2
+    wep: very_likely
+    wep_split:
+      procedural_facts: very_likely
+      cvss_disagreement_factually_real: very_likely
+      no_active_exploitation: likely
+    analyst_review_required: false
+    red_team_review_required: false
+    resurface_if:
+      - cvss_dispute_resolution_or_nvd_canonical_score_settles
+      - active_exploitation_emergence
+      - cisa_kev_addition
+      - ad_prime_or_dib_supplier_named_as_victim
+      - first_party_splunk_hit_on_trt_llm_deployment
+      - public_poc_or_exploitation_chain_published
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier per analyst. Held in Other Signal of morning brief.
+      No A&D-prime named; no KEV; no ITW. Analyst declined to lead with
+      this given untested deployment prevalence in current corpus.
+
+  - id: 2026-05-21-am-004
+    covered_in: [2026-05-21-morning]
+    brief_file: threats/briefs/2026-05-21-morning.md
+    headline: "Drupal SA-CORE-2026-004 / CVE-2026-9082 — PostgreSQL-specific anonymous-attacker SQLi; CVSS 6.5; Drupal Highly Critical 20/25; patches available; daily-brief-action class"
+    topic_tags:
+      - cve-2026-9082-drupal-postgresql-anonymous-sqli
+      - sa-core-2026-004
+      - cvss-6-5-drupal-highly-critical-20-of-25
+      - postgresql-backend-only
+      - patches-available
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-9082
+        cvss: 6.5
+        drupal_score: "20/25 Highly Critical"
+        backend: PostgreSQL
+        patches_available: true
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0004]
+    digraph: A2
+    wep: very_likely
+    analyst_review_required: false
+    red_team_review_required: false
+    resurface_if:
+      - active_exploitation_emergence
+      - cisa_kev_addition
+      - ad_prime_or_dib_supplier_named_as_victim
+      - first_party_splunk_hit_on_drupal_pg_anomaly
+      - public_poc_release
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+
+  - id: 2026-05-21-am-005
+    covered_in: [2026-05-21-morning]
+    brief_file: threats/briefs/2026-05-21-morning.md
+    headline: "NLnet Labs Unbound dual criticals — CVE-2026-42960 (CVSS 10.0 DNS cache poisoning) + CVE-2026-33278 (CVSS 9.8 DNSSEC validator pointer-overwrite, vendor 'potential RCE' language); both patched in Unbound 1.25.1; structural-network-infrastructure-layer A&D-prime relevance; chain framed as 'plausible multi-hop precursor' not direct compromise; operationally-most-likely impact is DoS"
+    topic_tags:
+      - cve-2026-42960-unbound-dns-cache-poisoning-cvss-10-0
+      - cve-2026-33278-unbound-dnssec-validator-pointer-overwrite-cvss-9-8
+      - vendor-potential-rce-language-preserved-operational-impact-likely-dos
+      - patched-unbound-1-25-1
+      - structural-network-infrastructure-layer-ad-relevance
+      - plausible-multi-hop-precursor-not-direct-compromise
+      - candidate-vt-index-entry
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42960
+        product: NLnet Labs Unbound
+        cvss: 10.0
+        class: DNS cache poisoning
+        patched_in: Unbound 1.25.1
+      - cve: CVE-2026-33278
+        product: NLnet Labs Unbound (DNSSEC validator)
+        cvss: 9.8
+        class: pointer-overwrite (vendor "potential RCE"; operationally-likely DoS)
+        patched_in: Unbound 1.25.1
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0005]
+    digraph: A2
+    wep: very_likely
+    wep_split:
+      procedural_facts: very_likely
+      operationally_most_likely_impact_dos: likely
+      potential_rce_vendor_language: roughly_even_chance
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "RCE framing preserves vendor language; operationally-most-likely impact is DoS"
+      - "Chain framed as plausible multi-hop precursor, not direct compromise"
+    resurface_if:
+      - public_exploit_chain_published_lifting_potential_rce_to_demonstrated
+      - active_exploitation_emergence
+      - cisa_kev_addition
+      - ad_prime_or_dib_supplier_named_as_victim
+      - first_party_splunk_hit_on_unbound_resolver_anomaly
+      - vt_index_dossier_scaffolded
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Vuln-tracker candidate VT-index entry. Two CVEs cluster same vendor
+      same fix release. Brief language preserves vendor "potential RCE"
+      framing on CVE-2026-33278 while flagging "operationally-most-likely
+      impact is DoS" absent a public exploit chain.
+
+  - id: 2026-05-21-am-006
+    covered_in: [2026-05-21-morning]
+    brief_file: threats/briefs/2026-05-21-morning.md
+    headline: "SonicWall SSL-VPN MFA bypass CVE-2024-12802 — ReliaQuest reports 'medium confidence' first ITW Feb–Mar 2026 plus incomplete-patching mitigation gap (Gen6 requires LDAP reconfig); single-source pending independent A-grade corroboration; Cybersecurity Dive secondarily names Akira ransomware on prior SonicWall-Akira pattern but ReliaQuest does NOT directly name Akira and Archimedes does NOT originate Akira attribution per Hard Rule 2; A&D-prime relevance via DIB Tier-2/3 SSL-VPN deployments"
+    topic_tags:
+      - cve-2024-12802-sonicwall-ssl-vpn-mfa-bypass-upn-sam-format-separation
+      - reliaquest-medium-confidence-first-itw-feb-mar-2026
+      - incomplete-patching-gen6-ldap-reconfig-required
+      - cvss-9-1-nist-via-cisa-adp-vs-6-5-sonicwall-self-score
+      - akira-ransomware-cybersecurity-dive-secondary-relay-not-originated
+      - hard-rule-2-no-akira-attribution-origination
+      - dib-tier-2-3-ssl-vpn-deployment-context
+      - single-source-veto-applied-itw-and-estate-portion
+    related_actors:
+      - actor_name: Akira
+        on_roster: false
+        archimedes_treatment: cybersecurity_dive_secondary_relay_no_origination_hard_rule_2
+    related_vulns:
+      - cve: CVE-2024-12802
+        product: SonicWall SSL-VPN
+        cvss_nist_via_cisa_adp: 9.1
+        cvss_sonicwall_self: 6.5
+        mechanism: UPN_SAM_format_separation_mfa_bypass
+        incomplete_patching_gen6_ldap_reconfig_required: true
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0006]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      cve_record_procedural_facts: A1
+      mechanism_vendor_self_disclosure: A2
+      reliaquest_itw_claim_layer: B3
+      akira_attribution_secondary_relay: F6
+    wep: likely
+    wep_split:
+      cve_exists_and_record: very_likely
+      mechanism_correct: very_likely
+      first_itw_feb_mar_2026: likely
+      incomplete_patching_gen6_gap: very_likely
+      meaningful_estate_portion_affected: likely
+      akira_operator: roughly_even_chance_per_secondary_relay_not_archimedes_attributed
+    single_source_veto_applied: true
+    single_source_veto_scope: reliaquest_itw_claim_and_estate_portion_layer
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "ReliaQuest reports medium confidence; single-source pending independent A-grade corroboration"
+      - "Estate-wide exposure hedged as meaningful portion per IR evidence; generalization unattested"
+      - "Cybersecurity Dive secondarily names Akira; Archimedes does NOT originate Akira attribution per doctrine"
+      - "ReliaQuest does not directly name Akira"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 52
+    resurface_if:
+      - independent_a_grade_research_firm_mandiant_crowdstrike_unit42_mstic_corroborates_or_disconfirms_reliaquest_itw
+      - akira_attribution_corroborated_by_a_grade_source_independent_of_cybersecurity_dive
+      - cisa_kev_addition_for_cve_2024_12802
+      - ad_prime_or_dib_supplier_named_as_victim
+      - first_party_splunk_hit_on_sonicwall_ssl_vpn_upn_sam_anomaly_or_event_id_238_or_1080
+      - sonicwall_publishes_updated_advisory_or_kbarticle
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Sector Focus A&D item. Hard Rule 2 binding constraint preserved:
+      ReliaQuest does NOT directly name Akira; Cybersecurity Dive's
+      Akira framing is secondary-relay based on prior SonicWall-Akira
+      pattern (Darktrace 2025 / Bitsight 2025). Akira NOT in _roster.yaml;
+      Archimedes does not originate Akira attribution and does not
+      propagate Cybersecurity Dive's secondary framing. Brief language
+      explicitly carries the not-originated qualifier.
+
+  - id: 2026-05-21-am-007
+    covered_in: [2026-05-21-morning]
+    brief_file: threats/briefs/2026-05-21-morning.md
+    headline: "MSTIC + Unit 42 same-day co-publication on Mini Shai-Hulud @antv documents novel post-compromise TTP layers — Bun runtime, /proc PID scanning, Runner.Worker memory scraping, 1Password CLI 2FA bypass, K8s service-account tokens, AWS Secrets Manager + HashiCorp Vault paths, npm OIDC abuse, SLSA forgery, PBKDF2 obfuscation; BOTH A-grade vendors use unattributed-actor framing — per Archimedes ACH most likely editorial scope but genuine attribution uncertainty and telemetry disagreement cannot be ruled out and run close to even"
+    topic_tags:
+      - mini-shai-hulud-antv-npm-packages-ci-cd-credential-theft
+      - mstic-unit42-same-day-co-publication
+      - bun-runtime-novel-ttp
+      - proc-pid-scanning-novel-ttp
+      - runner-worker-memory-scraping-novel-ttp
+      - 1password-cli-2fa-bypass-novel-ttp
+      - k8s-service-account-tokens
+      - aws-secrets-manager-hashicorp-vault-paths
+      - npm-oidc-abuse
+      - slsa-forgery
+      - pbkdf2-obfuscation
+      - mstic-unit42-unattributed-actor-framing
+      - ach-most-likely-editorial-scope-telemetry-disagreement-runs-close-to-even
+      - teampcp-attribution-carry-forward-not-originated
+      - vt-006-mini-shai-hulud-family-lineage
+    related_actors:
+      - actor_name: TeamPCP
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: carry_forward_per_prior_reporting_no_origination_mstic_unit42_unattributed_framing_preserved
+    related_vulns:
+      - vt_id: VT-006
+        cve: CVE-2026-45321
+        role: parent_campaign_chain
+    related_campaigns:
+      - mini-shai-hulud-family-lineage
+      - vt-006
+    finding_ids: [finding-2026-05-21-0007]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      procedural_facts_novel_ttp_layers: A2
+      mstic_unit42_unattributed_framing: A1
+      teampcp_attribution_carry_forward: B2
+    wep: very_likely
+    wep_split:
+      novel_ttp_layers_documented: very_likely
+      both_vendors_unattributed_framing: very_likely
+      teampcp_attribution_carry_forward: likely
+      ach_editorial_scope_explanation: likely
+      ach_telemetry_disagreement_explanation: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_scope: teampcp_attribution_carry_forward_layer
+    analyst_review_required: true
+    analyst_review_complete: true
+    analyst_review_sat_invoked: [sat_ach]
+    red_team_review_required: true
+    red_team_review_complete: true
+    red_team_qualifying_recommendations_honored:
+      - vt_006_anchor_framing_wiz_plus_stepsecurity_independent_snyk_relays_stepsecurity_not_independent_third
+      - teampcp_attribution_carry_forward_ach_most_likely_editorial_scope_telemetry_disagreement_close_to_even
+    hard_rule_2_framings_load_bearing:
+      - "MSTIC + Unit 42 use unattributed-actor framing"
+      - "Per Archimedes ACH analysis, most likely explanation is editorial scope"
+      - "Genuine attribution uncertainty and telemetry disagreement cannot be ruled out and run close to even"
+      - "TeamPCP attribution carry-forward only; not Archimedes-originated"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 52
+    resurface_if:
+      - mstic_or_unit42_publishes_follow_up_naming_actor_or_explicitly_reaffirming_unattributed_posture
+      - mandiant_crowdstrike_recorded_future_attribution_or_disconfirmation
+      - novel_ttp_layer_promoted_to_detection_weekly_2026_05_27
+      - ad_prime_or_dib_supplier_named_as_victim_in_antv_class_chain
+      - first_party_splunk_hit_on_bun_runtime_runner_worker_memory_scrape_1password_cli_or_npm_oidc_anomaly
+      - vt_006_dossier_scaffolded_with_full_ttp_table
+      - teampcp_dossier_rescore_threshold_met_via_update_tracking
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    cross_finding_observation: |
+      MSTIC + Unit 42 unattributed-actor framing is the day's most
+      consequential analytic question — touches findings 0002 (GitHub
+      formal confirmation, also no actor named by GitHub), 0006
+      (SonicWall ReliaQuest medium-confidence ITW, Cybersecurity Dive
+      secondarily names Akira but ReliaQuest does not), and 0007 (this
+      finding, MSTIC + Unit 42 explicit unattributed framing). Two
+      A-grade vendors declining to name an actor on a TeamPCP-claimed
+      campaign is itself a signal. Per ACH: most likely explanation is
+      editorial scope; telemetry-disagreement reading runs close to
+      even and is not ruled out.
+    notes: |
+      Brief leads Actor Activity with this item. Cross-finding observation
+      preserved as 🔗 callout in brief body. Both red-team qualifying
+      recommendations honored verbatim in brief language.
+
+  - id: 2026-05-21-pm-001
+    covered_in: [2026-05-21-afternoon]
+    brief_file: threats/briefs/2026-05-21-afternoon.md
+    headline: "CISA KEV double-add 2026-05-21 — CVE-2025-34291 (Langflow CORS+SameSite refresh-token RCE; patched v1.9.3) + CVE-2026-34926 (Trend Micro Apex One on-premise pre-auth-local directory traversal to agent malware deployment); federal-civilian deadline 2026-06-04; procedural-facts layer A1 (CISA-KEV + vendor advisories); active-exploitation implication 'likely' per KEV criterion (no operational specifics); cross-vendor EDR-control-plane pattern observation (n=2 with yesterday's Defender pair) framed as OBSERVATION not pattern per KAC A4 — predictive-pattern WEP reduced to 'roughly even chance'; no actor attribution"
+    topic_tags:
+      - cve-2025-34291-langflow-cors-samesite-refresh-token-rce-cwe-346
+      - cve-2026-34926-trend-micro-apex-one-pre-auth-local-directory-traversal-cwe-23
+      - cisa-kev-double-add-2026-05-21
+      - federal-deadline-2026-06-04
+      - edr-control-plane-cross-vendor-observation-n-2-not-pattern
+      - apex-one-dib-tier-2-3-supplier-deployment
+      - langflow-ai-orchestration-platform-tier-2-relevance
+      - no-actor-attribution-no-kev-named-ransomware-campaign
+      - hard-rule-2-no-attribution-origination
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2025-34291
+        product: Langflow
+        cwe: CWE-346
+        patched_version: 1.9.3
+        kev_date_added: 2026-05-21
+        kev_due_date: 2026-06-04
+      - cve: CVE-2026-34926
+        product: Trend Micro Apex One (on-premise)
+        cwe: CWE-23
+        kev_date_added: 2026-05-21
+        kev_due_date: 2026-06-04
+        vendor_advisory: Trend Micro KA-0023430
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0008]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      kev_addition_procedural_facts: A1
+      mechanism_layers_vendor_advisory: A2
+      active_exploitation_implication: A2
+      cross_vendor_pattern_observation: B3
+    wep: very_likely
+    wep_split:
+      cisa_kev_double_add_procedural_fact: very_likely
+      mechanism_layers_per_cve: very_likely
+      active_exploitation_observed_by_cisa: likely
+      cross_vendor_edr_control_plane_pattern: roughly_even_chance
+      operationally_meaningful_exploitation_scale: roughly_even_chance
+      federal_deadline_2026_06_04_compliance: very_likely
+    single_source_veto_applied: false
+    analyst_review_required: true
+    analyst_review_complete: true
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "No actor named on either CVE by CISA or vendors"
+      - "Cross-vendor EDR-control-plane targeting framed as OBSERVATION (n=2, no actor, no campaign signal) — NOT pattern"
+      - "KEV-implied exploitation characterized as 'CISA-observed' not 'widespread' — KEV criterion does not specify scale"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 54
+    resurface_if:
+      - mandiant_crowdstrike_unit42_mstic_attribution_or_actor_naming_on_either_cve
+      - third_kev_listed_edr_control_plane_abuse_within_14d_promoting_pattern_observation_toward_assessment
+      - active_exploitation_with_operational_specifics_iocs_or_named_victim_disclosed
+      - federal_kev_deadline_2026_06_04_lapse
+      - ad_prime_or_dib_tier_2_3_supplier_named_as_victim
+      - first_party_splunk_hit_on_langflow_or_apex_one_or_cve_2025_34291_or_cve_2026_34926
+      - apex_one_vuln_tracker_dossier_scaffolded
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Brief leads Active Threats. KAC qualifying caveats applied:
+      cross-vendor EDR-control-plane targeting framed as observation
+      (n=2), not predictive pattern. Federal deadline noted as
+      informational for A&D primes (independent patching cadence under
+      DFARS/CMMC). Vuln-tracker handoff: Apex One = dossier-tier
+      candidate; Langflow = tracking-tier.
+
+  - id: 2026-05-21-pm-002
+    covered_in: [2026-05-21-afternoon]
+    brief_file: threats/briefs/2026-05-21-afternoon.md
+    headline: "NASA F´ (F Prime) spacecraft flight software CVE-2026-41144 — FileUplink integer overflow at Svc/FileUplink/FileUplink.cpp:135 chains with path-traversal absence to arbitrary file write; vendor characterizes chain as RCE on embedded targets (vendor upper-bound — chain-completion-to-RCE WEP reduced to 'roughly even chance' post-KAC); NVD 9.8 CRITICAL vs vendor 0.0 Low CVSS divergence (9.8-point spread); patched v4.2 commit bb585fe; no active exploitation in 5-week post-patch window; no KEV; spacecraft / CubeSat / planetary-probe direct A&D relevance with pre-launch dev/test environments as NVD-relevant exploit surface and on-orbit hardware as vendor-0.0-relevant"
+    topic_tags:
+      - cve-2026-41144-nasa-fprime-fileuplink-integer-overflow-cwe-190
+      - cwe-787-out-of-bounds-write-cwe-22-path-traversal-chain
+      - nvd-9-8-critical-vs-nasa-fprime-vendor-0-0-low-cvss-divergence
+      - patched-v4-2-commit-bb585fe
+      - chain-completion-to-rce-on-embedded-targets-vendor-upper-bound-kac-qualified
+      - spacecraft-cubesat-planetary-probe-a-and-d-relevance
+      - pre-launch-dev-test-integration-lab-nvd-relevant-exploit-surface
+      - on-orbit-hardware-vendor-0-0-relevant
+      - 5-week-post-patch-window-no-escalation
+      - no-active-exploitation-no-kev-no-poc
+      - bitwarrior-discoverer-credit-not-attribution
+      - no-actor-attribution-verifiable-absence
+      - hard-rule-2-no-attribution-origination
+      - cna-vendor-vs-nist-cvss-divergence-pattern-second-instance-of-three-this-week
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-41144
+        product: "NASA F´ (F Prime) flight software framework"
+        cwe: [CWE-190, CWE-787, CWE-22]
+        nvd_cvss: 9.8
+        vendor_cvss: 0.0
+        affected_version: v4.1.1
+        fixed_version: v4.2
+        fixed_commit: bb585fe35a728bb69c157c6689f3b7a9f8a4f546
+        discoverer: bitWarrior
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0010]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      procedural_facts_nvd_plus_vendor_advisory: A1
+      chain_completion_to_rce_vendor_upper_bound: A2
+      a_and_d_sector_relevance: B3
+      cna_vs_nist_pattern_observation: A2
+    wep: very_likely
+    wep_split:
+      cve_record_and_patches_facts: very_likely
+      nvd_cvss_9_8_score_as_recorded: very_likely
+      vendor_cvss_0_0_score_as_recorded: very_likely
+      cna_vendor_vs_nist_pattern_third_instance_this_week: likely
+      chain_completion_to_rce_on_embedded_targets: roughly_even_chance
+      active_exploitation_in_next_72h: very_unlikely
+      a_and_d_prime_deployment_prevalence: likely
+    single_source_veto_applied: false
+    analyst_review_required: true
+    analyst_review_complete: true
+    analyst_review_sat_invoked: [sat_ach, sat_kac]
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Chain-completion-to-RCE on embedded targets is vendor upper-bound; reliable file-write-to-RCE typically requires additional exploit development"
+      - "NVD 9.8 is operationally relevant for pre-launch dev/test/integration-lab environments; vendor 0.0 reflects on-orbit posture"
+      - "F Prime A&D-prime deployment prevalence is sector-shape framing; no prime named as F Prime user"
+      - "5-week post-patch silence indicates patch-now-not-emergency tier; aerospace flight-software intrusion activity is underreported in public record"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 54
+    resurface_if:
+      - public_poc_publication_for_cve_2026_41144
+      - cisa_kev_addition_for_cve_2026_41144
+      - a_and_d_prime_named_as_f_prime_customer_or_victim
+      - follow_on_f_prime_cve_in_same_component_family
+      - vendor_revises_cvss_upward_or_nvd_revises_downward
+      - first_party_splunk_hit_on_fprime_product_or_fileuplink_component
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Brief leads Vulnerabilities section. KAC qualifying caveat on
+      chain-completion-to-RCE (vendor upper-bound; exploit-dev required).
+      ACH ranked H1 (systemic methodology divergence) + H5 (different
+      threat-model framings) tied at top for the CNA-vs-NIST CVSS-
+      divergence pattern; vendor-marketing-downplay (H2) ranked last.
+      Vuln-tracker handoff: tracking-tier candidate with watch-signals
+      on (a) PoC, (b) KEV addition, (c) prime customer impact statement,
+      (d) follow-on F Prime CVE in same component family.
+
+  - id: 2026-05-21-pm-003
+    covered_in: [2026-05-21-afternoon]
+    brief_file: threats/briefs/2026-05-21-afternoon.md
+    headline: "ISC BIND 9 CVE-2026-3593 — DNS-over-HTTPS heap use-after-free triggered by crafted HTTP/2 traffic to DoH endpoint; NVD 9.8 vs ISC vendor 7.4 CVSS divergence (third such instance this week, lesser magnitude); ISC explicit attestations: 'memory corruption' bug does NOT result in RCE and no active exploits observed; patched BIND 9.20.23 / 9.21.22; workaround disable DoH; DNS-resolver-class adjacency to morning finding-0005 NLnet Unbound dual criticals — overlapping defender action at inventory step, divergent at config-confirm step"
+    topic_tags:
+      - cve-2026-3593-isc-bind-9-doh-heap-uaf-cwe-416
+      - nvd-9-8-vs-isc-vendor-7-4-cvss-divergence-2-4-point-spread
+      - isc-explicit-memory-corruption-does-not-result-in-rce
+      - isc-explicit-no-active-exploits-observed
+      - patched-bind-9-20-23-and-9-21-22-and-preview-9-20-23-s1
+      - workaround-disable-doh
+      - doh-opt-in-narrows-real-world-exploitable-surface
+      - dns-resolver-class-adjacency-to-finding-0005-unbound-dual-criticals
+      - cna-vendor-vs-nist-cvss-divergence-pattern-third-instance-this-week-smallest-magnitude
+      - no-actor-attribution-no-kev
+      - hard-rule-2-no-attribution-origination
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-3593
+        product: ISC BIND 9
+        cwe: CWE-416
+        nvd_cvss: 9.8
+        vendor_cvss: 7.4
+        affected_versions: "9.20.0-9.20.22; 9.21.0-9.21.21; 9.20.9-S1 through 9.20.22-S1 Preview"
+        fixed_versions: "9.20.23; 9.21.22; 9.20.23-S1 Preview"
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0011]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      procedural_facts_nvd_plus_isc_advisory: A1
+      vendor_no_rce_attestation: A1
+      vendor_no_active_exploits_attestation: A1
+      cna_vs_nist_pattern_observation_third_instance: A2
+      dns_resolver_class_adjacency_observation: A2
+    wep: very_likely
+    wep_split:
+      cve_record_and_patches_facts: very_likely
+      nvd_cvss_9_8_and_isc_cvss_7_4_as_recorded: very_likely
+      vendor_no_rce_attestation_as_recorded: very_likely
+      vendor_no_rce_attestation_holds_against_future_exploit_research: likely
+      active_exploitation_in_next_72h: unlikely
+      doh_opt_in_narrows_real_world_exploitable_surface: very_likely
+      dns_resolver_class_co_bracketing_with_finding_0005_recommendation: likely
+    single_source_veto_applied: false
+    analyst_review_required: true
+    analyst_review_complete: true
+    analyst_review_sat_invoked: [sat_kac]
+    analyst_review_sat_ach_cross_reference: finding-2026-05-21-0010
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "ISC explicit vendor attestation preserved: memory-corruption does NOT result in RCE; no active exploits observed"
+      - "Caveat: exploit-development against UAF in network-protocol handlers has historically yielded RCE in some cases despite initial vendor framing — treat as patch-now-not-emergency but watch for vendor revision"
+      - "DoH is opt-in; real-world exploitable surface narrower than 9.8 implies"
+      - "DNS-resolver-class co-bracketing with finding-0005 (Unbound) recommended for vuln-tracker; per-CVE specifics preserved in brief"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 54
+    resurface_if:
+      - any_isc_revision_of_no_rce_attestation
+      - public_poc_publication_for_cve_2026_3593
+      - cisa_kev_addition_for_cve_2026_3593
+      - active_exploitation_emergence_against_doh_endpoint
+      - linux_distro_patch_propagation_milestone
+      - ad_prime_or_dib_supplier_named_as_doh_enabled_bind_user_or_victim
+      - first_party_splunk_hit_on_bind_9_doh_endpoint_anomaly
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Vulnerabilities section. ACH on cross-cutting CVSS-divergence
+      pattern ran in finding-0010 with this finding's CVE-2026-3593 as
+      evidence row E3; ISC's explicit no-RCE language is diagnostic
+      evidence distinguishing H1/H5 (systemic methodology divergence /
+      different framings) from H2 (vendor downplay). Brief co-tracks
+      with morning finding-0005 (Unbound 1.25.1) as "DNS resolver
+      patch cycle May 2026" — overlap at inventory, divergence at
+      config-confirm step.
+
+  - id: 2026-05-21-pm-004
+    covered_in: [2026-05-21-afternoon]
+    brief_file: threats/briefs/2026-05-21-afternoon.md
+    headline: "Cross-cutting analyst observation: three CVSS-divergence instances in one week — NVIDIA TRT-LLM (morning finding-0003, NIST 9.8 vs NVIDIA 6.3), NASA F Prime (afternoon finding-0010, NIST 9.8 vs vendor 0.0), ISC BIND 9 (afternoon finding-0011, NIST 9.8 vs ISC 7.4); ACH ranks H1 systemic methodology divergence (NIST scores code-properties; CNA vendors score deployment-posture + field-attested mechanism limits) and H5 different-threat-model-framings tied at top; H2 vendor-marketing-downplay ranked last (ISC explicit no-RCE language is exactly what a downplaying vendor would avoid); WEP likely on the pattern (n=3, medium brittleness); practical guidance: NVD for sweep triage, vendor advisory before scoping"
+    topic_tags:
+      - cna-vendor-vs-nist-cvss-divergence-pattern-three-instances-this-week
+      - ach-h1-systemic-methodology-divergence-tied-rank-1
+      - ach-h5-different-threat-model-framings-tied-rank-1
+      - ach-h2-vendor-marketing-downplay-ranked-last
+      - isc-explicit-no-rce-language-diagnostic-evidence
+      - nvd-for-sweep-triage-vendor-advisory-for-scoping
+      - per-cve-substantive-divergence-not-uniform-n-point-pattern
+      - methodology-defender-takeaway
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2025-33255
+        product: NVIDIA TensorRT-LLM MPI server
+        nvd_cvss: 9.8
+        vendor_cvss: 6.3
+        finding_source: finding-2026-05-21-0003
+      - cve: CVE-2026-24142
+        product: NVIDIA TensorRT-LLM unsafe serialized handle
+        nvd_cvss: 9.8
+        vendor_cvss: 6.3
+        finding_source: finding-2026-05-21-0003
+      - cve: CVE-2026-41144
+        product: NASA F Prime FileUplink
+        nvd_cvss: 9.8
+        vendor_cvss: 0.0
+        finding_source: finding-2026-05-21-0010
+      - cve: CVE-2026-3593
+        product: ISC BIND 9 DoH
+        nvd_cvss: 9.8
+        vendor_cvss: 7.4
+        finding_source: finding-2026-05-21-0011
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-21-0010
+      - finding-2026-05-21-0011
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      per_cve_cvss_facts: A1
+      pattern_observation_archimedes_side: A2
+    wep: likely
+    wep_split:
+      pattern_exists_three_instances_this_week: very_likely
+      h1_systemic_methodology_divergence_explanation: likely
+      h5_different_threat_model_framings_explanation: likely
+      h2_vendor_marketing_downplay_explanation: very_unlikely
+      h4_coincidence_cluster_noise_explanation: very_unlikely
+    single_source_veto_applied: false
+    analyst_review_required: true
+    analyst_review_complete: true
+    analyst_review_sat_invoked: [sat_ach]
+    analyst_review_sat_ach_anchor_finding: finding-2026-05-21-0010
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Pattern observation, not actor attribution"
+      - "WEP capped at 'likely' by n=3 sample size and medium brittleness to single-CVE re-reading"
+      - "H1 and H5 functionally indistinguishable with current evidence base; both predict same pattern"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 54
+    resurface_if:
+      - fourth_cna_vendor_vs_nist_divergence_instance_in_next_7d_same_direction
+      - cve_in_next_14d_lands_kev_listed_with_vendor_cna_cvss_below_4
+      - nist_publishes_methodology_guidance_acknowledging_deployment_posture_vs_code_properties_split
+      - any_of_three_in_scope_cves_has_cvss_revised_by_nvd_or_cna_in_next_30d
+      - vuln_tracker_promotes_methodology_split_to_sector_pattern_tracking
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Cross-cutting callout in Vulnerabilities section of brief.
+      Resurfaces morning finding-0003 (NVIDIA TRT-LLM) via authorized
+      🔗 cross-finding correlation. Practical guidance line in brief:
+      "NVD for sweep triage; vendor advisory before scoping." ACH
+      tripwires include n=4 instance, KEV+low-vendor-CVSS combo, NIST
+      methodology guidance publication, any CVSS revision on the three
+      CVEs in scope.
+
+  - id: 2026-05-21-pm-005
+    covered_in: [2026-05-21-afternoon]
+    brief_file: threats/briefs/2026-05-21-afternoon.md
+    headline: "CISA ICS 5-advisory batch 2026-05-21 12:00 UTC — ABB B&R Automation Studio CVSS 9.8 lead with 24+ CVE 2015-2024 deep-dependency batch; ABB B&R PCs (9-CVE SinoCMS 2023 lineage); Automation Runtime (CVSS 6.1 XSS + CSV formula injection + predictable IDs); Terra AC Wallbox EV charger (CVSS 6.1 buffer overflow chain); Hitachi Energy GMS600 (CVSS 5.9 OpenSSL Bleichenbacher timing oracle); Critical Manufacturing + Energy sector deployment; no active exploitation on any advisory; no KEV; ABB statement: no successful exploitation observed during testing; defense supply chain ICS-layer adjacency for DIB Tier-2/3 contract manufacturers"
+    topic_tags:
+      - cisa-ics-5-advisory-batch-2026-05-21
+      - icsa-26-141-03-abb-br-automation-studio-cvss-9-8-24-cve-2015-2024-deep-dependency
+      - icsa-26-141-02-abb-br-pcs-9-cve-sinocms-2023-lineage
+      - icsa-26-141-04-abb-br-automation-runtime-cvss-6-1-xss-csv-formula-injection
+      - icsa-26-141-05-abb-terra-ac-wallbox-ev-charger-buffer-overflow-chain
+      - icsa-26-141-01-hitachi-energy-gms600-openssl-cve-2022-4304-bleichenbacher-timing-oracle
+      - critical-manufacturing-energy-sector
+      - dib-tier-2-3-contract-manufacturer-defense-supply-chain-adjacency
+      - no-active-exploitation-no-kev-on-any-advisory
+      - vendor-no-successful-exploitation-observed-during-testing
+      - no-actor-attribution
+      - hard-rule-2-no-attribution-origination
+    related_actors: []
+    related_vulns:
+      - id: ICSA-26-141-03
+        product: ABB B&R Automation Studio
+        sector: Energy
+        cvss: 9.8
+        cve_count: "24+ (2015-2024 lineage)"
+      - id: ICSA-26-141-02
+        product: ABB B&R PCs (APC4100 / APC910 / C80 / MPC3100)
+        cve_batch: "CVE-2023-45229 through CVE-2023-45237 (SinoCMS 2023 lineage)"
+      - id: ICSA-26-141-04
+        product: ABB B&R Automation Runtime
+        cvss: 6.1
+        cves: [CVE-2025-3449, CVE-2025-3448, CVE-2025-11498]
+      - id: ICSA-26-141-05
+        product: ABB Terra AC Wallbox (EV charger)
+        cvss: 6.1
+        cves: [CVE-2025-10504, CVE-2025-12142, CVE-2025-12143]
+      - id: ICSA-26-141-01
+        product: Hitachi Energy GMS600
+        sector: Critical Manufacturing
+        cvss: 5.9
+        cves: [CVE-2022-4304]
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0012]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      five_advisory_procedural_facts: A1
+      vendor_potential_attack_vectors_upper_bound: A2
+      defense_supply_chain_ics_adjacency: B3
+    wep: very_likely
+    wep_split:
+      cisa_5_advisory_batch_procedural_facts: very_likely
+      icsa_26_141_03_abb_br_automation_studio_cvss_9_8_24_cve_lineage: very_likely
+      active_exploitation_in_next_72h: very_unlikely
+      vendor_acknowledgment_potential_attack_vectors_upper_bound: likely
+      defense_supply_chain_ics_adjacency_holds_for_dib_tier_2_3: likely
+    single_source_veto_applied: false
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "No source attributes any of the 5 advisories to a threat actor"
+      - "Rapid7 Q1 2026 thematic 'industrial systems' Iranian-targeting overlap is sector-strategic context only, NOT roster-actor attribution to these specific advisories"
+      - "Defense supply chain ICS adjacency is Archimedes-side sector-shape framing; no A&D-prime named as customer or victim"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 54
+    resurface_if:
+      - any_of_24_lineage_cves_in_icsa_26_141_03_added_to_kev
+      - ad_prime_or_dib_supplier_disclosure_of_abb_br_automation_studio_deployment_or_victim
+      - iran_russia_china_state_aligned_campaign_disclosure_naming_abb_br_or_hitachi_gms600_as_target
+      - first_party_splunk_hit_on_abb_br_or_hitachi_gms600_product_reference
+      - vuln_tracker_promotes_icsa_26_141_03_to_dossier_tier
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Sector Focus A&D item. Brief frames as defense supply chain
+      ICS-layer adjacency (DIB Tier-2/3 contract manufacturers running
+      ABB B&R control systems for precision machining + small-batch
+      assembly serving primes). Engineering-workstation defenders
+      triage 36+ CVEs from one vendor batch this cycle. Vuln-tracker
+      handoff: ICSA-26-141-03 tracking-tier candidate.
+
+  - id: 2026-05-21-pm-006
+    covered_in: [2026-05-21-afternoon]
+    brief_file: threats/briefs/2026-05-21-afternoon.md
+    headline: "Rapid7 Labs Q1 2026 Threat Landscape Report — vulnerability exploitation displaces social engineering as #1 IAV at 38% of observed initial access; over 50% of exploited vulnerabilities used as IAVs are zero-click network-facing; ransomware tactic shift toward 'pure extortion' (rapid exfil over encryption); Iran/Russia/China thematic targeting categories named without specific roster actors; RAMP + LeakBase marketplace seizure as Q1 2026 LE action; sector-strategic monitoring tier; directional claims 'very likely' (broader CTI corpus consistency); quantitative attestations capped at 'likely' by single-source veto"
+    topic_tags:
+      - rapid7-q1-2026-threat-landscape-report
+      - vuln-exploitation-38-percent-iav-top-share-displaces-social-engineering
+      - 50-percent-plus-exploited-vulns-zero-click-network-facing
+      - pure-extortion-ransomware-tactic-shift
+      - iran-russia-china-thematic-targeting-no-roster-actors
+      - ramp-leakbase-marketplace-seizure-q1-2026-le-action
+      - single-source-veto-on-quantitative-claims
+      - directional-claims-broader-cti-corpus-consistency
+      - sector-strategic-context-monitoring-tier
+      - hard-rule-2-no-thematic-to-roster-actor-attribution-inference
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0013]
+    digraph: A3
+    digraph_layered:
+      cluster_anchor: A3
+      directional_claims_broader_corpus_consistency: A2
+      quantitative_claims_38_percent_50_percent: A3
+      thematic_actor_targeting_categories: A3
+    wep: very_likely
+    wep_split:
+      rapid7_published_q1_2026_report_2026_05_21: very_likely
+      vulnerability_exploitation_rising_as_iav_share_directional: very_likely
+      pure_extortion_ransomware_tactic_shift_directional: very_likely
+      38_percent_iav_share_quantitative: likely
+      over_50_percent_zero_click_network_facing_quantitative: likely
+      iran_state_aligned_industrial_targeting_thematic: likely
+      iran_attribution_to_specific_roster_actor: do_not_predict
+      ramp_leakbase_marketplace_seizure_le_action: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: rapid7_quantitative_claims_38_percent_iav_share_and_50_percent_zero_click
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Iran/Russia/China named at thematic category level only — Archimedes does NOT infer specific UNC1549 / Charming Kitten / MuddyWater / APT34 / Handala Hack roster-actor attribution"
+      - "Quantitative attestations (38% / >50%) are single-source A-grade pending cross-vendor corroboration"
+      - "Directional claims have broader CTI corpus consistency (Mandiant M-Trends / CrowdStrike GTR / MSDDR)"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 54
+    resurface_if:
+      - mandiant_m_trends_2026_corroborates_or_contradicts_38_percent_iav_share
+      - crowdstrike_gtr_2026_corroborates_or_contradicts_zero_click_network_facing_share
+      - rapid7_full_pdf_retrieval_surfaces_specific_actor_or_cve_or_a_and_d_named_content
+      - second_a_grade_aggregate_in_next_90d_confirms_or_disconfirms_pure_extortion_shift
+      - rapid7_ratification_clock_resolves_provisional_a_grade
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Other Signal section. Brief preserves Rapid7's thematic framing
+      verbatim under Hard Rule 2. Iran Cyber Watch section explicitly
+      disambiguates: Rapid7 "Iranian state-aligned" thematic mention
+      is sector-strategic context, NOT roster-actor attribution to any
+      tracked Iran actor. Defensive posture takeaway in brief: prime
+      IR teams re-weight perimeter / zero-click-network-facing patch
+      cadence vs social-engineering controls.
+
+  - id: 2026-05-21-pm-007
+    covered_in: [2026-05-21-afternoon]
+    brief_file: threats/briefs/2026-05-21-afternoon.md
+    headline: "BleepingComputer (Bill Toulas) reports Google accidentally re-exposed unfixed Chromium Service Worker persistence-RCE issue-tracker entry for ~24h on 2026-05-20; researcher Lyra Rebane confirmed exploit still functional on Chrome Dev 150 + Edge 148 via 2026-05-20 reproduction; originally reported December 2022; Google marked 'Fixed' 2026-02-12 without patch shipping; no CVE assigned; no active in-the-wild exploitation reported; affects Chromium-derived browser lineage (Chrome, Edge, Brave, Opera, Vivaldi, Arc per article extension); single-source B3 — single-source veto applies on operational layers; monitoring tier pending Google Project Zero / Chromium security team / tier-1 security-media independent attestation"
+    topic_tags:
+      - chromium-service-worker-persistence-rce-no-cve-assigned
+      - bleepingcomputer-bill-toulas-single-source-b3
+      - google-accidentally-re-exposed-issue-tracker-entry-2026-05-20-24h-window
+      - lyra-rebane-researcher-2026-05-20-reproduction
+      - original-report-2022-12-fixed-marker-2026-02-12-without-patch-shipping
+      - chrome-dev-150-edge-148-confirmed-vulnerable
+      - chromium-lineage-extension-claim-brave-opera-vivaldi-arc
+      - vendor-disclosure-accident-pattern-second-this-week
+      - no-active-in-the-wild-exploitation
+      - no-actor-attribution
+      - hard-rule-2-no-attribution-origination
+      - single-source-veto-applied-operational-layers
+      - monitoring-tier-pending-corroboration
+    related_actors: []
+    related_vulns:
+      - id: unassigned_chromium_service_worker_persistence_rce
+        affected_products: "Chrome Dev 150 + Edge 148 confirmed; Brave/Opera/Vivaldi/Arc per article extension"
+        cve: not_assigned
+        mechanism_class: Service Worker persistence (background JS after browser close)
+        active_exploitation: not_reported
+        vendor_response: "Google re-restricted tracker entry; no patch shipped"
+    related_campaigns: []
+    finding_ids: [finding-2026-05-21-0009]
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      article_publication_procedural_fact: A1
+      disclosure_incident_24h_window: B3
+      functional_exploit_attestation_chrome_dev_150_edge_148: B3
+      chromium_lineage_extension_claim: B3
+      mechanism_class_service_worker_persistence: B3
+    wep: likely
+    wep_split:
+      bleepingcomputer_article_published_2026_05_21: very_likely
+      google_accidentally_re_exposed_tracker_entry_2026_05_20: likely
+      exploit_still_functional_chrome_dev_150_edge_148: roughly_even_chance
+      universal_chromium_exposure_extension: roughly_even_chance
+      no_active_in_the_wild_exploitation_in_72h_window: likely
+      google_will_ship_chromium_patch_within_30d: likely
+      cve_assignment_within_14d: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: all_operational_layers_disclosure_incident_functional_exploit_chromium_lineage_extension
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "BleepingComputer is the only published source on the disclosure incident in window; no actor attribution"
+      - "Researcher's 'well-resourced adversaries had a head start' framing is hypothetical adversarial-modeling, not attribution"
+      - "Vendor (Google / Project Zero / Chromium security team) has not commented publicly via own channel per article"
+    splunk_first_party:
+      status: clean_at_compose
+      consecutive_dormant_sweep_count: 54
+    resurface_if:
+      - google_project_zero_or_chromium_security_team_publishes_corroborating_or_contradicting_analysis_within_72h
+      - tier_1_security_media_krebs_wired_ars_the_record_publishes_corroborating_analysis_within_72h
+      - mitre_nvd_cve_assignment_within_14d
+      - google_ships_chromium_patch
+      - vendor_disclosure_accident_pattern_third_incident_within_14d
+      - first_party_splunk_hit_on_browser_side_service_worker_anomaly
+    first_covered: 2026-05-21
+    last_covered: 2026-05-21
+    retraction: null
+    test: false
+    notes: |
+      Other Signal section (monitoring tier). Brief preserves single-
+      source B3 framing and operational-layer single-source veto cap.
+      Vendor-disclosure-accident-pattern observation noted (second this
+      week alongside SecurityWeek/MSRC codename-binding inversion from
+      morning finding-0001) — sector-pattern framing, not load-bearing
+      on operational priority. Tripwires: 72h independent corroboration
+      window; 14d CVE assignment window.
 
 # ============================================================================
 # Valid resurface_if conditions

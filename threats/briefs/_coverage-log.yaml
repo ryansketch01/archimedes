@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-22T08:00:00-04:00
+last_updated: 2026-05-22T18:55:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -13513,7 +13513,9 @@ entries:
       this given untested deployment prevalence in current corpus.
 
   - id: 2026-05-21-am-004
-    covered_in: [2026-05-21-morning]
+    covered_in:
+      - 2026-05-21-morning
+      - flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change   # status-change UPDATE: theoretical → confirmed ITW + KEV listing
     brief_file: threats/briefs/2026-05-21-morning.md
     headline: "Drupal SA-CORE-2026-004 / CVE-2026-9082 — PostgreSQL-specific anonymous-attacker SQLi; CVSS 6.5; Drupal Highly Critical 20/25; patches available; daily-brief-action class"
     topic_tags:
@@ -13542,9 +13544,16 @@ entries:
       - first_party_splunk_hit_on_drupal_pg_anomaly
       - public_poc_release
     first_covered: 2026-05-21
-    last_covered: 2026-05-21
+    last_covered: 2026-05-22   # FLASH status-change update fired 2026-05-22 18:55 EDT
     retraction: null
     test: false
+    resurface_history:
+      - resurfaced_in: flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change
+        resurfaced_at: 2026-05-22T18:55:00-04:00
+        resurface_basis:
+          - active_exploitation_emergence       # CISA KEV + Drupal vendor + Imperva via SecurityWeek confirm exploitation attempts at scale
+          - cisa_kev_addition                   # CISA KEV v2026.05.22 added CVE-2026-9082 with 5-day due date 2026-05-27
+        successor_entry_id: 2026-05-22-flash-1800-001
 
   - id: 2026-05-21-am-005
     covered_in: [2026-05-21-morning]
@@ -14848,6 +14857,201 @@ entries:
       in Other Signal as Volexity-relay third-party attribution layer;
       /new-actor decision deferred pending Volexity source-grade
       evaluation as discrete librarian work.
+
+      Pre-flight: 13/13 passed.
+
+  - id: 2026-05-22-flash-1800-001
+    covered_in: [flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change]
+    brief_file: threats/briefs/flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change.md
+    headline: "UPDATE on 2026-05-21-am-004 (CVE-2026-9082 Drupal Core PostgreSQL SQLi): status change from patch-available/no-known-exploitation to confirmed exploitation attempts at scale; CISA KEV v2026.05.22 addition with aggressive 5-day due date (2026-05-27); Drupal Security Team revised SA-CORE-2026-004 with vendor self-acknowledgment 'exploit attempts are now being detected in the wild' and raised internal risk score 20/25 → 23/25 Highly Critical (top tier); Imperva telemetry via SecurityWeek reports 15,000+ attempts on ~6,000 sites across 65 countries (gaming + financial services ~50%, reconnaissance/mass-scanning phase per Imperva); red-team confirm-with-caveats applied — three mandatory caveats carried in brief: (1) attempts-not-compromise distinction (successful compromise at scale NOT attested in window), (2) Imperva single-vendor on magnitude (CISA KEV + Drupal corroborate only fact-of-attempts), (3) Imperva sector mix does NOT support A&D-prime targeting (A&D relevance flows from KEV → FCEB → DIB-supplier cascade + PostgreSQL enterprise-bias subset); no actor attribution from any in-window source; no A&D-prime victim named; FLASH trigger 1 fired (critical CVE + active exploitation + A-grade source); critical override fails (CVSS 6.5 NVD, no tracked actor, no A&D watchlist); standard active-window posting (18:55 EDT within 09:00-21:00)"
+    topic_tags:
+      - cve-2026-9082-drupal-core-postgresql-sqli-status-change-itw-confirmed
+      - sa-core-2026-004-vendor-revision-exploit-attempts-in-the-wild
+      - cisa-kev-addition-2026-05-22-5-day-due-date-2026-05-27
+      - drupal-internal-risk-score-raised-20-25-to-23-25-highly-critical
+      - imperva-15k-attempts-6k-sites-65-countries-single-vendor-on-magnitude
+      - imperva-gaming-financial-services-50-percent-sector-mix
+      - reconnaissance-mass-scanning-phase-pre-targeted-rce-per-imperva
+      - red-team-confirm-with-caveats-three-mandatory-caveats-applied
+      - attempts-not-compromise-distinction-load-bearing
+      - imperva-single-vendor-on-scale-layered-veto
+      - sector-mix-does-not-imply-a-and-d-targeting
+      - a-and-d-relevance-via-kev-cascade-plus-postgresql-enterprise-bias-not-observed-victims
+      - no-actor-attribution-verifiable-absence
+      - no-a-and-d-prime-victim-named
+      - hard-rule-2-no-attribution-origination
+      - hard-rule-6-one-quote-eleven-words-drupal-vendor
+      - rapid-weaponization-2-day-window-patch-to-itw-confirmed
+      - flash-trigger-1-critical-cve-exploited
+      - critical-override-fails-cvss-6-5-no-tracked-actor-no-ad-watchlist
+      - within-active-window-live-post
+      - update-on-finding-2026-05-21-0004
+      - update-on-2026-05-21-am-004-coverage-log-entry
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-9082
+        advisory_id: SA-CORE-2026-004
+        cvss: 6.5
+        drupal_severity_at_disclosure: "20/25 Highly Critical"
+        drupal_severity_at_itw_confirmation: "23/25 Highly Critical"
+        backend: PostgreSQL
+        kev_added: 2026-05-22
+        kev_catalog_version: 2026.05.22
+        kev_due_date: 2026-05-27
+        kev_due_date_days_from_addition: 5
+        active_exploitation_status: confirmed_attempts_in_the_wild_compromise_not_yet_attested
+        vuln_tracker_status: dossier_tier_promotion_proposed
+    related_campaigns: []
+    finding_ids: [finding-2026-05-22-0004]
+    digraph: A1
+    digraph_layered:
+      cisa_kev_addition_with_5_day_due_date: A1
+      drupal_vendor_itw_self_acknowledgment_advisory_revision: A1
+      drupal_risk_score_raised_20_25_to_23_25: A1
+      exploitation_attempts_at_scale_fact_of: A1
+      imperva_15k_attempts_6k_sites_65_countries_magnitude: B2
+      imperva_gaming_finserv_sector_mix: B2
+      reconnaissance_mass_scanning_phase_characterization: B2
+      successful_compromise_at_scale_not_attested_in_window: A1
+    wep: very_likely
+    wep_split:
+      exploitation_attempts_at_scale_confirmed_itw: very_likely
+      cisa_kev_addition: very_likely
+      drupal_vendor_itw_self_acknowledgment: very_likely
+      successful_compromise_at_scale_confirmed_itw: not_supported_in_window
+      imperva_only_magnitude_layer: likely
+      imperva_only_sector_mix_layer: likely
+      a_and_d_prime_relevance_modest_to_meaningful_upward_revision: likely
+    wep_ceiling_attempts_at_scale: very_likely
+    wep_ceiling_at_scale_magnitude_imperva_only: likely
+    wep_ceiling_a_and_d_relevance_upward_revision: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: imperva_only_magnitude_layer_and_sector_mix_layer_and_phase_characterization_capped_at_likely_cluster_anchor_on_fact_of_attempts_not_subject_to_veto
+    analyst_review_required: true
+    analyst_review_complete: false
+    analyst_review_deferred_to_post_flash_brief: true
+    red_team_review_required: true
+    red_team_review_required_basis: flash_policy_anti_noise_rule_3_wep_very_likely_mandatory_review
+    red_team_review_complete: true
+    red_team_outcome: confirm_with_caveats
+    red_team_caveat_obligations:
+      - caveat_1_attempts_not_compromise_distinction_applied
+      - caveat_2_imperva_single_vendor_on_scale_layered_veto_applied
+      - caveat_3_sector_mix_does_not_imply_a_and_d_targeting_applied
+    red_team_avoidances_respected:
+      - avoidance_1_no_bare_confirmed_exploitation_at_scale_phrasing
+      - avoidance_2_imperva_sector_mix_not_used_as_a_and_d_evidence
+      - avoidance_3_no_72h_pivot_to_rce_timeline_asserted
+    hard_rule_2_framings_load_bearing:
+      - "No actor attributed by any in-window source (CISA KEV, Drupal Security Team, Imperva, SecurityWeek all name no actor)"
+      - "Imperva is the single load-bearing source on at-scale magnitude; CISA KEV and Drupal corroborate only the fact of attempts"
+      - "Imperva sector mix (gaming + finserv ~50%) does NOT support A&D-prime targeting; A&D relevance flows from KEV → FCEB → DIB-supplier patching cascade and PostgreSQL-backed Drupal enterprise-bias subset, NOT from observed A&D victims"
+    hard_rule_6_quote_budget:
+      drupal_advisory: "exploit attempts are now being detected in the wild"   # 11 words
+      total_quotes_in_brief: 1
+    splunk_first_party:
+      applied: false
+      reason: "FLASH Mode 2 narrow sweep; no first-party query run this phase. archimedes + defenseclaw_local indexes dormant on 55-sweep sentinel sequence. Silence is not disconfirming."
+      hard_rule_8_framing: silence_not_disconfirming
+    quiet_hours_at_compose: false
+    quiet_hours_queued: false
+    critical_override_applied: false
+    critical_override_evaluation:
+      cvss_10_0: false
+      cvss_value: 6.5
+      drupal_internal_score: "23/25 Highly Critical (top tier; not CVSS)"
+      active_exploitation: true
+      tracked_actor_involved: false
+      ad_watchlist_targeted: false
+      conditions_met: 1_of_4
+      result: override_does_not_apply
+    triggers_fired:
+      - trigger_1_critical_cve_exploited
+    absorbs_flash: null
+    anti_noise_lock: "cve-2026-9082-drupal-itw-status-change until 2026-05-23T18:55:00-04:00"
+    update_flag_on_prior_brief_item: 2026-05-21-am-004
+    update_flag_lineage_back_to: finding-2026-05-21-0004
+    resurface_if:
+      - cross_vendor_scale_corroboration_cloudflare_akamai_cloudbric_f5_sucuri_publishes_telemetry_lifts_imperva_only_magnitude_layer_from_likely_to_very_likely
+      - first_named_compromised_victim_publication_resolves_attempts_vs_compromise_question
+      - first_post_compromise_telemetry_publication_drupal_vendor_ir_disclosure_mandiant_unit42_sentinellabs_case_study_fceb_cdm_disclosure
+      - a_and_d_prime_or_dib_supplier_named_as_victim_resolves_a_and_d_relevance_layer_from_likely_to_very_likely
+      - first_party_splunk_hit_on_drupal_product_strings_or_cve_2026_9082_payload_or_postgresql_error_signatures
+      - new_actor_attribution_from_a_or_b_grade_source_lifts_hard_rule_2_constraint
+      - cisa_kev_evidence_basis_disclosure_if_published_resolves_kev_independence_question
+      - pivot_from_reconnaissance_to_targeted_rce_observed_by_a_or_b_grade_source_resolves_phase_boundary
+      - vuln_tracker_dossier_tier_promotion_scaffolded_for_cve_2026_9082
+    first_covered: 2026-05-22
+    last_covered: 2026-05-22
+    retraction: null
+    test: false
+    notes: |
+      FLASH status-change UPDATE on finding-2026-05-21-0004 (covered in
+      2026-05-21 morning brief as 2026-05-21-am-004). Anti-repetition
+      basis: material status change (theoretical → confirmed ITW + KEV
+      listing + named-vendor scale telemetry) is the dispositive
+      admissibility test under FLASH-POLICY Anti-Noise Rule 1,
+      independent of clock-expiry. Prior 24h lock from 0004 expired
+      2026-05-22T08:00 EDT (10 hours before this FLASH sweep).
+
+      Red-team confirm_with_caveats honored. Three MUST-APPEAR caveats
+      applied verbatim in body of FLASH brief: (1) attempts-vs-compromise
+      distinction (cluster anchor framed as "exploitation attempts at
+      scale" not "exploitation at scale"; successful compromise at scale
+      explicitly labeled as not_supported_in_window in wep_split);
+      (2) Imperva-single-vendor-on-magnitude layered veto (15K / 6K /
+      65-country figure explicitly framed as "Imperva-attested scanner
+      telemetry, not independently verified scale"); (3) sector-mix-
+      does-not-imply-A&D-targeting (A&D relevance routed through KEV →
+      FCEB → DIB-supplier cascade + PostgreSQL enterprise-bias subset,
+      NOT through Imperva sector data). Three MUST-NOT-APPEAR avoidances
+      respected: no bare "confirmed exploitation at scale" phrasing; no
+      Imperva sector mix used as A&D evidence; no 72h-pivot-to-RCE
+      timeline asserted (red-team blocked; grader had recorded as
+      roughly_even_chance, not a claim).
+
+      Hard Rule 2 strict: no actor attribution from any in-window source.
+      Drupal vendor, CISA KEV, Imperva, SecurityWeek all name no actor.
+      Current activity profile (mass scanning + 65-country geography +
+      gaming + finserv ~50% mix) is consistent with opportunistic /
+      automated exploitation, not actor-clustered targeting. Archimedes
+      does NOT originate attribution. Vuln-tracker should track the
+      no-actor posture; an actor attribution from any A/B-grade source
+      in next 24-72h would lift Hard Rule 2 binding and warrant brief
+      follow-up.
+
+      Hard Rule 6: one direct quote (11 words) from Drupal Security
+      Team advisory revision. Drupal's "exploit attempts are now being
+      detected in the wild" preserved verbatim per vendor self-
+      acknowledgment force-multiplier. CISA KEV facts and Imperva
+      telemetry paraphrased. Quote budget: 1 / 1.
+
+      Hard Rule 8: no first-party Splunk query run this sweep (FLASH
+      Mode 2 narrow scope). archimedes + defenseclaw_local indexes
+      dormant on the 55-sweep sentinel sequence. Silence is not
+      disconfirming. Vuln-tracker on next scheduled phase should run
+      Drupal product strings + CVE-2026-9082 payload patterns +
+      PostgreSQL error signatures over -7d as routine follow-up.
+
+      Critical-override evaluation: 1 of 4 conditions met (active
+      exploitation only). CVSS 10.0 prong fails (NVD CVSS 6.5; Drupal's
+      23/25 internal score is top-tier but not CVSS). Tracked-actor
+      prong fails (no actor named). A&D-watchlist prong fails (no A&D
+      prime named as victim). Standard active-window FLASH path applies.
+      18:55 EDT is within the 09:00-21:00 active window; live post to
+      Discord #flash-alerts, not queued.
+
+      Vuln-tracker handoff: CVE-2026-9082 was tracking-tier per 0004's
+      open questions. The ITW + KEV + named-vendor-telemetry status
+      change argues for promotion to full dossier-tier per standard
+      vuln-tracker scoping criteria. Proposed in brief Related field.
+      Vuln-tracker on next scheduled phase should reconsider the
+      tracking-tier-only disposition.
+
+      Word count: 296 (FLASH target 150-300; passed under ceiling
+      after multiple compression iterations preserving all three
+      mandatory caveats verbatim — initial draft at ~460 words
+      regenerated to ~360, then to ~317, then to 296 final).
 
       Pre-flight: 13/13 passed.
 

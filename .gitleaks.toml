@@ -32,6 +32,11 @@ regexes = [
   # Run IDs in Archimedes telemetry — phase-YYYYMMDD-HHMMSS or
   # subagent-YYYYMMDD-HHMMSS form.
   '''(?:librarian|grader|analyst|red-team|briefer|collector|actor-profiler|vuln-tracker|morning|afternoon|pre-brief|flash|sweep)-\d{8}-\d{6}''',
+
+  # Market-segment descriptor in CTI prose ("consumer/SMB WordPress, no A&D
+  # relevance") — the slash-joined token hit the generic-api-key entropy
+  # threshold on the 2026-05-21 sentinel sweep. Benign English, not a credential.
+  '''consumer/SMB''',
 ]
 
 paths = [

@@ -468,6 +468,28 @@ Bonus 4th: `sfp_crt` (cert transparency) iterates every CT entry for the target 
 
 Discovered + fixed Session 13 during the SpiderFoot MCP's first live validation (commit `26f87f7` shipped with mock-only assumptions that didn't match real SF 4.0.0; live-fix follow-up corrects the client + tests against real-world payloads).
 
+### A brief phase that dies before the librarian leaves an UNTRACKED corpus the catchup push can't recover
+
+On 2026-05-21 the 08:00 morning pipeline ran collector → grader → analyst → briefer (7 findings + a 768-word brief written to disk, frontmatter optimistically stamped `status: published`) and then hit the org **monthly usage limit** before the librarian phase. The librarian never ran, so nothing was `git add`ed, committed, or posted to Discord. The brief, findings, and AM raw-signal sat **untracked** in the working tree.
+
+The failure was **silent and unrecoverable by the existing plumbing**, for two compounding reasons:
+
+1. **`run_phase.ps1`'s catchup step only does `git push`, never `git add` + commit.** It was built (Session 11) to recover *held commits* from the non-deterministic librarian push, not *uncommitted work*. `git push` on untracked files is a no-op, so the corpus stranded. The afternoon librarian (16:00, after the limit cleared) actually *noticed* the orphaned AM corpus and wrote it into its run summary — but that summary went nowhere actionable. Operator discovered the gap by eyeballing a missing commit the next morning.
+
+2. **A failed phase logs `status: failed` to Splunk but paged no one.** No Discord alert on failure; the gap was invisible until a human looked.
+
+**Fix (Session 15, this file's commit):** `run_phase.ps1` now, for the two brief phases (`morning-brief` / `afternoon-brief`), uses an **output-based** success criterion instead of exit code alone — success = "the expected `threats/briefs/$DateStr-<type>.md` exists AND is committed clean." If the brief is uncommitted (untracked OR modified):
+
+- It auto-commits the day's corpus (brief + `finding-$DateStr-*.md` + `raw-$DateStr-*.md` + the two `_*-log.yaml` index files if dirty) with a **`[DEGRADED-RECOVERY]`** subject marker. The existing catchup push then lands it on `origin/main`. **Never posted to Discord** — a human reviews before any ship (the `status: published` frontmatter is the briefer's optimism, not proof of delivery).
+- It posts a failure alert to the **`commands`** Discord channel (`scripts/discord_post.py --channel commands`) naming the phase, exit code, recovery outcome, run id, and log path.
+- New telemetry on the `completed` event: `recovery_commit_exit`, `alert_sent`, `alert_reason`.
+
+This also catches the librarian-held-without-committing case (exit 0 but brief uncommitted), not just usage-limit deaths.
+
+**The recovery commit is NOT bypassed past gitleaks** (no `--no-verify`). If a pre-commit hook blocks it, the corpus stays orphaned but the Discord alert still fires with "recovery FAILED" — the alert is the backstop. (Manual recovery of the 2026-05-21 corpus hit exactly this: the prose token `consumer/SMB` in a sentinel sweep tripped the `generic-api-key` entropy rule; carved out in `.gitleaks.toml` rather than bypassed.)
+
+**PS 5.1 string-literal gotcha hit while writing this fix:** an em-dash (`—`, UTF-8 `E2 80 94`) inside a **double-quoted string literal** breaks parsing, because PS 5.1 reads this no-BOM `.ps1` as Windows-1252 and byte `0x94` is the "right double quotation mark" — it silently *closes the string*, and the next word becomes an unexpected token. Em-dashes in `#` comments are harmless (never tokenized as code), which is why the rest of the file's em-dashes never bit. **Keep string literals in `.ps1` files ASCII-only** (use `-`, not `—`). Validate any wrapper edit with `[System.Management.Automation.Language.Parser]::ParseFile(...)` before relying on it. Discovered Session 15.
+
 ---
 
-*Last updated: Session 13 (theHarvester MCP live-validated against 4.10.1; SpiderFoot MCP live-validated against 4.0.0 — three API-shape fixes applied; PYTHONHOME scrub; crtsh from this host is unreliable; sfp_crt is slow on busy domains)*
+*Last updated: Session 15 (run_phase.ps1 brief-phase degraded-recovery + Discord failure alert after the 2026-05-21 usage-limit orphaned-corpus incident; PS 5.1 em-dash-in-string-literal parse gotcha; .gitleaks.toml `consumer/SMB` false-positive carve-out)*

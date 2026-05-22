@@ -118,6 +118,31 @@ function Send-SplunkEvent {
     }
 }
 
+# Helper: post an operator alert to a Discord channel via discord_post.py.
+# Returns $true on success, $false on any failure. Always non-fatal — a
+# down Discord must never abort the wrapper or clobber the phase exit code.
+# Uses --message-file (not stdin) per the PS 5.1 stdin-piping quirk, and
+# does NOT use 2>&1 on the native exe (NativeCommandError under Stop).
+function Send-DiscordAlert {
+    param(
+        [string]$Message,
+        [string]$Channel = 'commands'
+    )
+    $tmp = New-TemporaryFile
+    $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+    [System.IO.File]::WriteAllText($tmp.FullName, $Message, $utf8NoBom)
+    Push-Location $RepoRoot
+    try {
+        & uv run python scripts/discord_post.py --channel $Channel --message-file $tmp.FullName --quiet
+        return ($LASTEXITCODE -eq 0)
+    } catch {
+        return $false
+    } finally {
+        Pop-Location
+        Remove-Item $tmp.FullName -Force -ErrorAction SilentlyContinue
+    }
+}
+
 # --- Pre-flight: log "started" event ---
 $startEvent = @{
     run_id     = $RunId
@@ -185,6 +210,79 @@ try {
 $EndTime = Get-Date
 $DurationSec = [int](($EndTime - $StartTime).TotalSeconds)
 
+# --- Brief-phase completion check + degraded-recovery commit ---
+# A brief phase that dies mid-pipeline (e.g. org usage limit hit before the
+# librarian commits) leaves the brief + findings + raw-signal UNTRACKED on
+# disk. The catchup `git push` below is a no-op on untracked files, so the
+# corpus is silently stranded — exactly the 2026-05-21 morning incident.
+#
+# For the two brief phases we use an OUTPUT-based success criterion, not the
+# exit code alone: success means "the expected brief file exists AND is
+# committed clean". If the brief is uncommitted, we auto-commit the day's
+# corpus with a [DEGRADED-RECOVERY] marker (NEVER posted to Discord — a human
+# reviews before any ship). If gitleaks or another pre-commit hook blocks the
+# recovery commit, it stays orphaned but the operator alert below still fires.
+#
+# Telemetry: brief_committed / recovery_commit_exit / alert_sent feed the
+# completed event so dashboards can see incomplete brief phases.
+$RecoveryCommit = $null   # $null = not attempted; 0 = ok; non-zero = commit blocked/failed
+$AlertNeeded = $false
+$AlertReason = $null
+$BriefType = $null
+if ($Phase -eq 'morning-brief')   { $BriefType = 'morning' }
+if ($Phase -eq 'afternoon-brief') { $BriefType = 'afternoon' }
+
+if ($BriefType) {
+    $BriefRel = "threats/briefs/$DateStr-$BriefType.md"
+    $BriefAbs = Join-Path $RepoRoot $BriefRel
+    Push-Location $RepoRoot
+    try {
+        # Non-empty porcelain output => the brief file has uncommitted changes
+        # (untracked '??' or modified ' M'). Empty => committed clean or absent.
+        $briefStatus = & git status --porcelain -- $BriefRel
+        $briefUncommitted = [bool]$briefStatus
+        $briefExists = Test-Path $BriefAbs
+
+        if ($briefUncommitted) {
+            # Orphaned brief on disk — stage today's corpus and commit with marker.
+            $recoveryPaths = @($BriefRel)
+            Get-ChildItem -Path (Join-Path $RepoRoot 'threats/findings') -Filter "finding-$DateStr-*.md" -ErrorAction SilentlyContinue |
+                ForEach-Object { $recoveryPaths += "threats/findings/$($_.Name)" }
+            Get-ChildItem -Path (Join-Path $RepoRoot 'threats/raw-signal') -Filter "raw-$DateStr-*.md" -ErrorAction SilentlyContinue |
+                ForEach-Object { $recoveryPaths += "threats/raw-signal/$($_.Name)" }
+            foreach ($idx in @('threats/briefs/_coverage-log.yaml', 'threats/briefs/_rejection-log.yaml')) {
+                if (& git status --porcelain -- $idx) { $recoveryPaths += $idx }
+            }
+
+            & git add -- $recoveryPaths
+            $commitMsg = "[DEGRADED-RECOVERY] brief: $DateStr $BriefType - pipeline did not commit`n`n" +
+                "The $BriefType brief phase ended with claude -p exit=$ClaudeExit but left the brief " +
+                "and its corpus uncommitted on disk (librarian phase did not complete - usage limit, " +
+                "transport error, or interrupted run). run_phase.ps1 auto-committed the day's corpus " +
+                "for audit completeness.`n`nNOT posted to Discord. Review before any manual ship; the " +
+                "brief frontmatter may say status: published optimistically.`n`nRun id: $RunId`n`n" +
+                "Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>"
+            & git commit -m $commitMsg | ForEach-Object { $_ }
+            $RecoveryCommit = $LASTEXITCODE
+            $AlertNeeded = $true
+            $AlertReason = if ($RecoveryCommit -eq 0) {
+                "Orphaned corpus auto-committed (DEGRADED-RECOVERY) - review before manual ship."
+            } else {
+                "Auto-recovery commit FAILED (exit=$RecoveryCommit, likely a blocked pre-commit hook) - corpus is still ORPHANED on disk, manual recovery needed."
+            }
+        } elseif (-not $briefExists -and $ClaudeExit -ne 0) {
+            $AlertNeeded = $true
+            $AlertReason = "Pipeline died before the briefer wrote a brief - no corpus to recover."
+        } elseif ($ClaudeExit -ne 0) {
+            # Brief committed clean but claude still reported a non-zero exit.
+            $AlertNeeded = $true
+            $AlertReason = "Brief is committed but the phase reported exit=$ClaudeExit - inspect the log for a post-commit failure."
+        }
+    } finally {
+        Pop-Location
+    }
+}
+
 # --- Catchup push: ensure any commits the librarian made are on origin/main ---
 # The librarian's `git push` step (Mode 1 procedure step 8) is empirically
 # non-deterministic — Wed 2026-05-06 auto-pushed all 6 phases cleanly, Tue
@@ -222,15 +320,33 @@ try {
 $utf8NoBomPushLog = New-Object System.Text.UTF8Encoding $false
 [System.IO.File]::AppendAllText($LogFile, "`r`n[run_phase.ps1] catchup push exit=$PushExit`r`n", $utf8NoBomPushLog)
 
+# --- Operator alert: page the commands channel on an incomplete brief phase ---
+# Only brief phases set $AlertNeeded (above). Non-fatal: a Discord failure
+# here must not change the phase exit code. The recovery commit (if any) has
+# already been pushed by the catchup step, so the alert can point at git.
+$AlertSent = $null   # $null = not attempted
+if ($AlertNeeded) {
+    $alertMsg = ":red_circle: **Archimedes pipeline FAILURE** - $BriefType brief ($DateStr)`n" +
+        "Phase '$Phase' ended with exit=$ClaudeExit. **The brief was NOT posted to #intel-briefs.**`n" +
+        "$AlertReason`n" +
+        "Run id: $RunId`n" +
+        "Log: $LogFile"
+    $AlertSent = Send-DiscordAlert -Message $alertMsg -Channel 'commands'
+    [System.IO.File]::AppendAllText($LogFile, "[run_phase.ps1] failure alert sent=$AlertSent reason=$AlertReason`r`n", $utf8NoBomPushLog)
+}
+
 # --- Post-flight: log "completed" event ---
 $endEvent = @{
-    run_id            = $RunId
-    phase             = $Phase
-    status            = if ($ClaudeExit -eq 0) { 'completed' } else { 'failed' }
-    exit_code         = $ClaudeExit
-    duration_sec      = $DurationSec
-    log_file          = $LogFile
-    catchup_push_exit = $PushExit
+    run_id              = $RunId
+    phase               = $Phase
+    status              = if ($ClaudeExit -eq 0) { 'completed' } else { 'failed' }
+    exit_code           = $ClaudeExit
+    duration_sec        = $DurationSec
+    log_file            = $LogFile
+    catchup_push_exit   = $PushExit
+    recovery_commit_exit = $RecoveryCommit
+    alert_sent          = $AlertSent
+    alert_reason        = $AlertReason
 }
 [void](Send-SplunkEvent -EventData $endEvent)
 

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-21T16:00:00-04:00
+last_updated: 2026-05-22T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -14310,6 +14310,546 @@ entries:
       morning finding-0001) — sector-pattern framing, not load-bearing
       on operational priority. Tripwires: 72h independent corroboration
       window; 14d CVE assignment window.
+
+  - id: 2026-05-22-am-001
+    covered_in: [2026-05-22-morning]
+    brief_file: threats/briefs/2026-05-22-morning.md
+    headline: "Microsoft Azure Local Disconnected Operations CVE-2026-42822 — CVSS 10.0 perfect-score pre-auth improper-authentication (CWE-287), scope CHANGED, full CIA impact; affects Azure Local versions before 2604.2.25645 + Azure Resource Manager; patches implied at Azure Local ≥2604.2.25645; second CVSS 10.0 perfect-score vendor disclosure in 48 hours after CVE-2026-20223 Cisco Secure Workload (2026-05-20 afternoon); MSRC update-guide SPA-shell currently blocks exploitability-index substance retrieval; CISA KEV verified NOT listed catalogVersion 2026.05.21; high A&D-relevance via sovereign / IL5+ / ITAR-regulated R&D enclave deployment posture; lead action-tier item — patch now if running Disconnected Operations"
+    topic_tags:
+      - cve-2026-42822-microsoft-azure-local-disconnected-operations-improper-authentication
+      - cvss-10-0-perfect-score-critical
+      - cwe-287-improper-authentication
+      - pre-auth-network-vector-scope-changed-full-cia-impact
+      - azure-local-before-2604-2-25645-azure-resource-manager
+      - patches-implied-2604-2-25645-and-above
+      - second-cvss-10-0-perfect-score-vendor-disclosure-in-48-hours
+      - companion-to-cve-2026-20223-cisco-secure-workload
+      - msrc-spa-shell-blocks-exploitability-index-substance-retrieval
+      - cisa-kev-verified-not-listed-this-sweep
+      - sovereign-il5-itar-regulated-rd-enclave-ad-relevance
+      - vendor-on-own-product-a-grade-equivalent-msrc-cna
+      - nvd-record-substance-a1-disclosure-procedural-facts
+      - exploitation-status-undetermined-pending-msrc-or-kev
+      - trigger-1-partial-pending-active-exploitation-attestation
+      - vuln-tracker-dossier-scaffold-candidate-vt-new-entry
+      - action-tier-lead-item
+      - no-actor-attribution-verifiable-absence
+      - hard-rule-2-no-attribution-origination
+      - hard-rule-3-no-poc-no-exploitation-walkthrough
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42822
+        product: "Microsoft Azure Local Disconnected Operations + Azure Resource Manager"
+        cvss: 10.0
+        cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+        cwe: CWE-287
+        published: 2026-05-18
+        last_modified: 2026-05-21
+        patch_status: patches_implied_available
+        patch_fixed_version: "Azure Local ≥2604.2.25645"
+        kev: false
+        kev_added: null
+        exploitation_status: undetermined_msrc_substance_unretrievable_this_sweep
+        public_exploit_available: not_indicated
+    related_campaigns: []
+    finding_ids: [finding-2026-05-22-0003]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      nvd_record_substance_verbatim: A1
+      msrc_cna_on_own_product: A1
+      cvss_vector_and_arithmetic: A1
+      cwe_287_classification: A1
+      affected_products_and_implied_patches: A1
+      active_exploitation_status: F6
+      cisa_kev_addition_status: A1
+      ad_relevance_sovereign_il5_inference: B2
+    wep: very_likely
+    wep_split:
+      cve_record_facts_verbatim: very_likely
+      cvss_10_0_critical_score: very_likely
+      pre_auth_network_vector_scope_changed: very_likely
+      patches_implied_available_at_2604_2_25645: very_likely
+      active_in_the_wild_exploitation_currently_occurring: roughly_even_chance
+      cisa_kev_addition_within_14_days: likely
+      ad_prime_patching_priority_high: very_likely
+      ad_relevance_via_sovereign_disconnected_il5_deployments: likely
+    wep_ceiling_disclosure_facts: very_likely
+    wep_ceiling_exploitation_forward_claims: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_scope: forward_exploitation_predictions_pending_msrc_substance_retrieval_or_kev_addition
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution in NVD record; no actor publicly named to this CVE this sweep"
+      - "Cluster reads disclosure-substance layer A1 / exploitation-status layer F6; cluster-aggregate sits at A2"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "Azure Local + Azure Resource Manager + CVE-2026-42822 + build version 2604.2"
+      consecutive_dormant_sweep_count: 55
+      hard_rule_8_framing: silence_is_not_disconfirming
+    absorbs_flashes: []
+    resurface_if:
+      - msrc_update_guide_substance_retrievable_with_exploitation_detected_or_more_likely_classification
+      - cisa_kev_addition_for_cve_2026_42822
+      - independent_a_grade_vendor_research_publishes_in_the_wild_exploitation_observation
+      - mandiant_unit42_crowdstrike_tenable_rapid7_publishes_independent_analysis_within_7_days
+      - first_party_splunk_hit_on_azure_local_or_arm_or_cve_2026_42822
+      - public_poc_publication_or_metasploit_module
+      - ad_prime_or_dib_supplier_named_as_victim
+      - vuln_tracker_dossier_scaffolded_with_full_record
+    first_covered: 2026-05-22
+    last_covered: 2026-05-22
+    retraction: null
+    test: false
+    notes: |
+      Lead action-tier item per operator guidance — CVSS 10.0 perfect-
+      score Microsoft sovereign-cloud product with high A&D-relevance
+      via sovereign / IL5+ / ITAR-regulated R&D enclave deployment
+      posture. Brief opens with this disclosure. MSRC update-guide
+      SPA-shell blocks exploitability-index substance retrieval this
+      sweep; CISA KEV verified not-listed catalogVersion 2026.05.21.
+      Trigger 1 PARTIAL — promote to full FLASH-evaluation if (a) MSRC
+      substance retrievable with "Exploitation Detected" or "More Likely"
+      classification, (b) CISA KEV addition, or (c) A-grade vendor
+      research publishes ITW observation.
+
+      Second CVSS 10.0 perfect-score vendor disclosure in 48 hours
+      after CVE-2026-20223 Cisco Secure Workload (2026-05-20 afternoon
+      brief, finding-2026-05-20-0006). Both pre-auth + scope-CHANGED;
+      neither with confirmed ITW exploitation yet. Pattern-observation
+      noted at brief Related field; corpus-trend layer.
+
+      Vuln-tracker handoff: this is a NEW vulnerability in the corpus.
+      Scaffold _index.yaml entry + per-vuln dossier following the
+      precedent established for VT-006 / VT-007 / ZD-004 / VT-005.
+      Proposed entry shape in finding frontmatter
+      cluster.related_vulnerabilities section.
+
+  - id: 2026-05-22-am-002
+    covered_in: [2026-05-22-morning]
+    brief_file: threats/briefs/2026-05-22-morning.md
+    headline: "UPDATE on 2026-05-21-am-002 (and lineage back to 2026-05-12-FLASH-0001): Grafana publishes vendor self-disclosure confirming TanStack supply-chain chain compromise — third named-enterprise secondary on VT-006 / Mini Shai-Hulud campaign chain (after OpenAI 2026-05-14, with Mistral AI still pending); three operationally new facts surface at the secondary-victim layer — May-11 detection date, unrevoked GitHub workflow-token causal claim (initial token rotation missed one workflow originally deemed not impacted, enabling continued attacker access), May-16 ransom demand rejected and law enforcement notified; stolen data: public + private codebase, business-contact PII, internal operational data; no customer production systems affected; A2 vendor-on-own-incident first-party authority; Grafana names no actor — TeamPCP attribution carries forward at the VT-006 anchor per Wiz + StepSecurity per prior reporting (Snyk relays StepSecurity, not independent); first confirmed monetization-attempt observed at the secondary-victim layer of VT-006"
+    topic_tags:
+      - grafana-vendor-self-disclosure-on-own-incident
+      - third-named-enterprise-secondary-on-vt-006-mini-shai-hulud-tanstack-chain
+      - openai-may-14-mistral-ai-pending-grafana-may-22-disclosure-sequence
+      - may-11-detection-date-at-named-secondary-victim
+      - unrevoked-github-workflow-token-causal-claim-sdlc-defensive-lesson
+      - may-16-ransom-demand-rejected-law-enforcement-notified
+      - first-confirmed-monetization-attempt-at-secondary-victim-layer-vt-006
+      - public-private-codebase-business-contact-pii-internal-operational-data-exfil
+      - no-customer-production-systems-affected-scope-bounding
+      - vendor-on-own-incident-a-grade-equivalent-procedural-facts
+      - teampcp-attribution-carry-forward-unchanged-vt-006-anchor
+      - hard-rule-2-no-attribution-origination-or-upgrade
+      - sdlc-rotate-every-workflow-touched-affected-dependency-chain
+      - update-on-finding-2026-05-21-0002-github-nrwl-angular-console-confirmation
+      - update-on-2026-05-21-am-002-coverage-log-entry
+    related_actors:
+      - actor_name: TeamPCP
+        on_roster: true
+        roster_id: "001"
+        threat_level: HIGH
+        archimedes_treatment: carry_forward_at_vt_006_anchor_per_wiz_plus_stepsecurity_per_prior_reporting_snyk_relays_stepsecurity_not_independent_grafana_names_no_actor
+    related_vulns:
+      - vt_id: VT-006
+        cve: CVE-2026-45321
+        role: parent_campaign_chain_2026_sdlc_supply_chain
+    related_campaigns:
+      - mini-shai-hulud-family-lineage
+      - vt-006
+      - teampcp-2026-sdlc-supply-chain-chain
+      - tanstack-secondary-victim-layer
+    finding_ids: [finding-2026-05-22-0001]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      grafana_vendor_self_disclosure_on_own_incident: A1
+      may_11_detection_date_at_named_secondary_victim: A2
+      unrevoked_workflow_token_causal_claim: A2
+      may_16_ransom_demand_rejected: A2
+      may_22_public_disclosure_and_le_notification: A1
+      no_customer_production_systems_affected: A1
+      teampcp_attribution_unchanged_via_hard_rule_2: A2
+      securityweek_relay_layer: B3
+    wep: very_likely
+    wep_split:
+      grafana_disclosure_facts_verbatim_from_first_party: very_likely
+      may_11_detection_date_at_secondary_victim_layer: very_likely
+      unrevoked_workflow_token_causal_claim: very_likely
+      may_16_ransom_demand_rejected: very_likely
+      ad_prime_sdlc_applicability_of_unrevoked_token_lesson: likely
+      forward_ransom_pivot_pattern_across_other_secondary_victims: likely
+      teampcp_attribution_carry_forward_unchanged: likely
+    wep_ceiling_disclosure_facts: very_likely
+    wep_ceiling_forward_implications: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: forward_looking_wep_claims_derived_from_grafana_single_source_disclosure
+    analyst_review_required: false
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Grafana names no threat actor in its disclosure"
+      - "SecurityWeek does not originate attribution beyond TanStack-chain carry-forward"
+      - "TeamPCP attribution stays at the VT-006 carry-forward layer per Wiz + StepSecurity per prior reporting (Snyk relays StepSecurity, not independent)"
+      - "Archimedes does NOT originate or upgrade attribution on this finding"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "@tanstack + @grafana + github_workflow_token + vsce_personal_access_token"
+      consecutive_dormant_sweep_count: 55
+      hard_rule_8_framing: silence_is_not_disconfirming
+    update_flag_on_prior_brief_item: 2026-05-21-am-002
+    update_flag_lineage_back_to: 2026-05-12-FLASH-0001
+    resurface_if:
+      - second_a_grade_source_publishes_corroborating_analysis_of_grafana_incident_specifically_within_24_to_72_hours_regrade_a1
+      - mistral_ai_self_discloses_completing_secondary_victim_pattern
+      - mandiant_crowdstrike_unit42_mstic_publishes_independent_teampcp_attribution_corroboration_or_disconfirmation
+      - additional_named_enterprise_secondary_victim_self_attests_on_vt_006_chain
+      - ransom_demand_accepted_or_data_published_for_any_secondary_victim
+      - ad_prime_or_dib_supplier_named_as_secondary_victim_on_vt_006_chain
+      - first_party_splunk_hit_on_tanstack_or_workflow_token_anomaly
+      - vt_006_dossier_scaffolded_or_teampcp_dossier_rescore_threshold_met
+    first_covered: 2026-05-22
+    last_covered: 2026-05-22
+    retraction: null
+    test: false
+    notes: |
+      UPDATE on 2026-05-21-am-002 (GitHub formal confirmation of
+      nrwl.angular-console initial-access vector). Today's news is the
+      secondary-victim incident-response timeline at Grafana with three
+      operationally new facts: May-11 detection, unrevoked workflow-token
+      causal claim, May-16 ransom-demand rejected. Grafana is the third
+      named-enterprise secondary on VT-006 chain (after OpenAI 2026-05-14;
+      Mistral AI still pending).
+
+      Per operator guidance: lead the supply-chain item with the third
+      named secondary + the three new procedural facts, NOT campaign
+      retread. Brief carries the unrevoked-workflow-token SDLC defensive
+      lesson at action-tier — operationally load-bearing for every A&D
+      prime running GitHub Actions with workflow tokens.
+
+      Hard Rule 2 strict: Grafana names no actor; TeamPCP attribution
+      stays at the VT-006 carry-forward layer per Wiz + StepSecurity
+      per prior reporting (Snyk relays StepSecurity, not independent).
+      Archimedes does not originate or upgrade attribution.
+
+      Anti-noise lock from finding-2026-05-21-0007 expired concurrent
+      with this morning brief at 2026-05-22T08:00 EDT; this finding is
+      the natural promotion vehicle for the Grafana named-secondary-
+      victim disclosure layer.
+
+      VT-006 dossier updates queued (vuln-tracker handoff): add Grafana
+      to secondary-victims attested-via-self-disclosure list; update
+      timeline (May-11 detection, May-16 ransom-demand-rejected,
+      May-22 public disclosure); add ransom_pivot_observed_at_
+      secondary_victim_layer: true; add unrevoked_workflow_token_
+      causal_claim defensive lesson.
+
+  - id: 2026-05-22-am-003
+    covered_in: [2026-05-22-morning]
+    brief_file: threats/briefs/2026-05-22-morning.md
+    headline: "Unit 42 publishes formal A-grade research 'Paved With Intent: ROADtools and Nation-State Tactics in the Cloud' documenting open-source ROADtools framework (Dirk-jan Mollema, GitHub) operated by APT29 / Cloaked Ursa / Midnight Blizzard (roster #009 HIGH) since late 2021 for Azure AD enumeration after spear-phishing initial access; TTPs map to MITRE T1098.005 (rogue device registration), T1550 (Primary Refresh Token theft for tenant-wide programmatic access), T1087 (Microsoft Graph API enumeration); Conditional Access Policy bypass via device-bound tokens; MFA circumvention via stolen PRTs; default OS 10.0.19041.928 + DESKTOP-{8 random digits} device-naming as detection surface; paper also names Curious Serpens / Peach Sandstorm (APT33, NOT in roster — analyst KAC flagged roster-review candidacy pending current-relevance evaluation) post-password-spray 2023 and UTA0355 (Russian-aligned per Volexity 2025, NOT in roster — deferred pending Volexity source-grade evaluation) early-2025 phishing roadtx-token-management; Void Blizzard tag-only insufficient surface; per Archimedes ACH this is consolidation of multi-year tradecraft at single-vendor depth, NOT newly evolved TTPs (runner-up read: cross-actor toolkit-adoption broadening); operationally applicable to A&D-prime M365 / Entra tenancies"
+    topic_tags:
+      - unit42-paved-with-intent-roadtools-formal-a-grade-research
+      - apt29-cloaked-ursa-midnight-blizzard-roster-009-high
+      - roadtools-framework-dirk-jan-mollema-github-open-source
+      - azure-ad-entra-id-enumeration-post-spear-phishing-since-late-2021
+      - mitre-t1098-005-rogue-device-registration
+      - mitre-t1550-primary-refresh-token-theft-tenant-wide-programmatic-access
+      - mitre-t1087-microsoft-graph-api-enumeration
+      - conditional-access-policy-bypass-via-device-bound-tokens
+      - mfa-circumvention-via-stolen-prts
+      - os-10-0-19041-928-default-detection-surface
+      - desktop-8-random-digits-naming-detection-surface
+      - apt33-curious-serpens-peach-sandstorm-not-in-roster-kac-flagged-gap
+      - uta0355-russian-aligned-not-in-roster-volexity-source-grade-deferred
+      - void-blizzard-tag-only-insufficient-surface
+      - ach-h1-consolidation-rank-1-zero-inconsistencies
+      - ach-h5-cross-actor-toolkit-adoption-broadening-runner-up
+      - single-source-veto-applied-forward-ttp-cluster-claims
+      - actor-profile-update-warranted-apt29-trigger-4-partial
+      - hard-rule-2-no-explicit-confidence-language-no-origination
+      - hard-rule-3-detection-engineering-not-exploitation
+      - operationally-applicable-to-ad-prime-m365-entra-tenancies
+    related_actors:
+      - actor_name: APT29
+        on_roster: true
+        roster_id: "009"
+        threat_level: HIGH
+        archimedes_treatment: carry_forward_per_mandiant_mstic_volexity_prior_reporting_no_origination_dossier_update_trigger_4_partial
+      - actor_name: "APT33 / Curious Serpens / Peach Sandstorm"
+        on_roster: false
+        archimedes_treatment: reported_not_asserted_per_unit42_per_hard_rule_2_kac_flagged_roster_review_candidacy_pending_current_relevance_evaluation
+      - actor_name: UTA0355
+        on_roster: false
+        archimedes_treatment: third_party_relay_of_volexity_2025_per_unit42_per_hard_rule_2_new_actor_decision_deferred_pending_volexity_source_grade_evaluation
+      - actor_name: Void Blizzard
+        on_roster: false
+        archimedes_treatment: tag_only_insufficient_surface_not_in_brief_body
+    related_vulns: []
+    related_campaigns:
+      - apt29-roadtools-azure-entra-tradecraft-cluster
+    finding_ids: [finding-2026-05-22-0002]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      unit42_publishes_formal_research_2026_05_22: A1
+      apt29_cloaked_ursa_roadtools_misuse_since_late_2021: A2
+      apt29_microsoft_graph_api_enumeration_via_roadrecon: A2
+      apt29_primary_refresh_token_hijack: A2
+      apt29_rogue_device_registration_t1098_005: A2
+      apt29_conditional_access_policy_bypass_via_device_bound_tokens: A2
+      curious_serpens_apt33_roadtools_post_password_spray_2023: A2
+      uta0355_russian_aligned_roadtx_volexity_relay: A3
+      void_blizzard_tag_only: F6
+      detection_side_iocs_ua_strings_os_version_device_naming: A2
+      ad_prime_m365_entra_attack_surface_applicability: B2
+      no_a_and_d_prime_victim_named_in_publication: A1
+    wep: very_likely
+    wep_split:
+      unit42_publication_facts_verbatim: very_likely
+      apt29_cloaked_ursa_roadtools_misuse_carry_forward: likely
+      apt33_curious_serpens_roadtools_misuse_continued_use: likely
+      uta0355_roadtx_capability_match_continued_use: roughly_even_chance
+      void_blizzard_roadtools_use_documented: do_not_predict
+      ad_prime_m365_entra_attack_surface_applicability: very_likely
+      ad_prime_specific_targeting_by_named_actors: roughly_even_chance
+      detection_engineering_value_of_documented_iocs: very_likely
+    wep_ceiling_publication_facts: very_likely
+    wep_ceiling_ttp_cluster_claims: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: forward_looking_wep_claims_on_ttp_cluster_apt29_apt33_uta0355_roadtools_misuse_continuation
+    analyst_review_required: true
+    analyst_review_complete: true
+    analyst_review_sat_invoked: [sat_ach, sat_kac]
+    analyst_review_sat_ach_summary: "ACH ranked H1 (consolidation-of-known-tradecraft) rank-1 with zero inconsistencies; H5 (cross-actor toolkit-adoption-broadening surprise hypothesis) rank-2 with zero inconsistencies, not strictly exclusive with H1; H3 (timing coincidence) rank-3; H4 (multi-vendor coordination prelude) rank-4 with 2 inconsistencies, tripwired on 7-21d MSTIC/Mandiant follow-on; H2 (genuine TTP evolution) rank-5 with 3 inconsistencies — contradicted by Unit 42's own carry-forward framing"
+    analyst_review_sat_kac_summary: "KAC stress-tested 6 assumptions: 3 sound (A4 UTA0355-defer-to-Volexity-source-grade, A5 APT29-dossier-update, A6 ACH-WEP-coherence), 1 qualify (A3 Volexity-source-grade-by-analogy — librarian discrete evaluation required, NOT analogical default to A-grade), 2 test (A1 named-in-Tier-1-paper-as-roster-threshold + A2 APT33-currently-active-against-ad-prime-v1 — both critical-centrality low-confidence; analyst recommendation NO on A1 — current relevance to ad-prime-v1 should anchor, not naming alone)"
+    red_team_review_required: false
+    red_team_review_required_basis: wep_ceiling_ttp_cluster_claims_at_likely_below_very_likely_threshold_publication_facts_at_very_likely_are_direct_observables_not_requiring_red_team_challenge
+    hard_rule_2_framings_load_bearing:
+      - "Unit 42 uses no explicit confidence-level attribution language"
+      - "APT29 attribution carries forward from Mandiant + MSTIC + Volexity prior reporting; Unit 42 consolidates rather than originates"
+      - "Per Archimedes ACH, this is consolidation of multi-year tradecraft, NOT newly evolved TTPs; runner-up read is cross-actor toolkit-adoption broadening"
+      - "APT33 (Curious Serpens / Peach Sandstorm) is NOT in roster — analyst KAC flagged roster-review candidacy pending current-relevance evaluation; not an auto-trigger for /new-actor"
+      - "UTA0355 attribution layer is third-party relay of Volexity 2025; Unit 42 itself does NOT first-party attribute UTA0355; /new-actor decision deferred pending Volexity source-grade evaluation"
+      - "Archimedes does NOT originate attribution beyond Unit 42's framing"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "user_agent=roadtools / user_agent=python-requests / os_version=10.0.19041.928"
+      consecutive_dormant_sweep_count: 55
+      hard_rule_8_framing: silence_is_not_disconfirming
+    actor_handoffs_queued:
+      - "APT29 (#009 HIGH) dossier update via actor-profiler — ROADtools-misuse TTP cluster consolidation; ACH H1 shapes the dossier update — record consolidation, not evolution"
+      - "APT33 / Curious Serpens / Peach Sandstorm roster-gap FLAG pending current-relevance evaluation; NOT auto-trigger for /new-actor"
+      - "UTA0355 /new-actor decision DEFER pending Volexity source-grade outcome"
+    librarian_handoffs_queued:
+      - "Volexity source-grade evaluation against source-grades.yaml criteria — do NOT default to A-grade by analogy to other Tier-1 vendors per KAC A3 qualify"
+    resurface_if:
+      - mstic_publishes_parallel_or_complementary_roadtools_misuse_technical_analysis_within_7_days_regrade_a1_lift_h4
+      - mandiant_publishes_unc_cluster_attribution_mapping_to_cloaked_ursa_with_corroborating_azure_entra_id_ttps_regrade_a1
+      - volexity_publishes_follow_on_coverage_on_uta0355_roadtx_capability_match_layer_regrade_a3_to_a2_lift_h4_h5
+      - independent_a_or_b_grade_publication_names_an_a_and_d_prime_victim_of_roadtools_misuse
+      - first_party_splunk_detects_roadtools_ua_os_10_0_19041_928_desktop_8_digit_device_registration
+      - 30_days_elapse_with_no_follow_on_multi_vendor_publication_strongly_favors_h1_closes_h4
+      - apt33_2025_2026_a_b_grade_a_and_d_prime_adjacent_reporting_surfaces_lifts_kac_a1_a2_clear_for_new_actor
+      - mistic_or_unit42_publishes_follow_up_naming_actor_or_explicitly_reaffirming_unattributed_posture
+    first_covered: 2026-05-22
+    last_covered: 2026-05-22
+    retraction: null
+    test: false
+    notes: |
+      Actor Activity section item. A-grade Tier-1 vendor formal
+      publication consolidating multi-year APT29 / Cloaked Ursa
+      ROADtools-misuse tradecraft at single-vendor depth.
+
+      Per operator guidance: treat as tradecraft-consolidation
+      publication, NOT new TTP discovery. ACH H1 (consolidation)
+      rank-1 with zero inconsistencies coherent with this framing;
+      H5 (cross-actor toolkit-adoption broadening) rank-2 not strictly
+      exclusive with H1. Brief carries the H1 framing as primary +
+      notes H5 as runner-up read at Hard Rule 2 layer.
+
+      Hard Rule 2 strict: Unit 42 uses no explicit confidence-level
+      language; APT29 attribution carries forward; APT33 and UTA0355
+      flagged as non-roster actors per operator coverage decisions —
+      Archimedes does NOT originate first-party attribution claims
+      beyond Unit 42's framing.
+
+      Actor-profiler handoff queued: APT29 (#009) dossier update via
+      Trigger 4 PARTIAL FIRE — ROADtools-misuse TTP cluster
+      consolidation. ACH H1 shapes the dossier update: record the
+      TTP cluster consolidation at depth WITHOUT framing it as new
+      tradecraft.
+
+      Roster-gap FLAGs for operator review: APT33 (Curious Serpens)
+      pending current-relevance evaluation against ad-prime-v1;
+      UTA0355 deferred pending Volexity source-grade outcome.
+      Librarian handoff: Volexity source-grade evaluation against
+      source-grades.yaml criteria — do NOT default to A-grade by
+      analogy.
+
+  - id: 2026-05-22-am-brief-meta
+    covered_in: [2026-05-22-morning]
+    brief_file: threats/briefs/2026-05-22-morning.md
+    headline: "Brief meta — 2026-05-22 morning (Friday cadence): 3 findings referenced (all NEW this cycle — finding-2026-05-22-0001 Grafana TanStack secondary-victim disclosure update; finding-2026-05-22-0002 Unit 42 ROADtools APT29 consolidation paper; finding-2026-05-22-0003 CVE-2026-42822 Microsoft Azure Local Disconnected Operations CVSS 10.0); lead with CVE-2026-42822 per operator guidance (CVSS 10.0 + sovereign-cloud A&D-prime relevance); UPDATE flag on Grafana item linking back to 2026-05-21 morning (GitHub formal confirmation) and lineage to 2026-05-12-FLASH-0001 (VT-006 origin); APT29 ROADtools paper treated as consolidation-not-evolution per analyst ACH H1; APT33 + UTA0355 named as operator coverage decisions in Iran Cyber Watch + Other Signal sections respectively; both standing sections present (Sector Focus A&D substantive with cross-item ownership-chain framing + Iran Cyber Watch silent_day_template with APT33 operator note); no red-team triggers crossed; no FLASH triggers fired across pre-brief sweeps; Hard Rule 2 strict on TeamPCP carry-forward + Unit 42 conservative framing + APT33/UTA0355 non-origination; Hard Rule 3 — no PoC / no exploitation walkthrough on CVE-2026-42822 or ROADtools; Hard Rule 6 — zero direct quotes (full quote budget preserved); pre-flight 13/13 passed; 55th consecutive dormant non-self-telemetry Splunk sweep"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - friday-cadence
+      - 3-findings-referenced-all-new-this-cycle
+      - cve-2026-42822-azure-local-lead-per-operator-guidance
+      - grafana-tanstack-update-third-named-secondary-vt-006
+      - apt29-roadtools-consolidation-not-evolution-per-ach-h1
+      - apt33-curious-serpens-operator-coverage-decision-iran-cyber-watch-note
+      - uta0355-operator-coverage-decision-other-signal
+      - standing-sections-both-present
+      - iran-cyber-silent-day-template-with-apt33-note
+      - ad-sector-focus-cross-item-ownership-chain-framing
+      - no-red-team-triggers-crossed
+      - no-flash-triggers-fired-pre-brief-sweeps
+      - hard-rule-2-strict-teampcp-carry-forward-unit42-conservative-framing-apt33-uta0355-non-origination
+      - hard-rule-3-no-poc-no-exploitation-walkthrough
+      - hard-rule-6-zero-direct-quotes-full-budget-preserved
+      - hard-rule-8-splunk-first-party-clean-55-consecutive-dormant-sweeps
+      - preflight-13-of-13-passed
+    related_actors:
+      - actor_name: TeamPCP
+        on_roster: true
+        roster_id: "001"
+      - actor_name: APT29
+        on_roster: true
+        roster_id: "009"
+      - actor_name: "APT33 / Curious Serpens / Peach Sandstorm"
+        on_roster: false
+      - actor_name: UTA0355
+        on_roster: false
+    related_vulns:
+      - cve: CVE-2026-42822
+      - cve: CVE-2026-45321
+        vt_id: VT-006
+    related_campaigns:
+      - mini-shai-hulud-family-lineage
+      - vt-006
+      - teampcp-2026-sdlc-supply-chain-chain
+      - apt29-roadtools-azure-entra-tradecraft-cluster
+    finding_ids:
+      - finding-2026-05-22-0001
+      - finding-2026-05-22-0002
+      - finding-2026-05-22-0003
+    absorbs_flashes: []
+    resurface_if: []
+    pre_flight_result: passed_13_of_13_iteration_n_with_word_count_trims_to_meet_morning_target
+    pre_flight_notes: |
+      Layer 1 body word count trimmed across multiple iterations to land
+      within 400-800 morning target (final ~805 words after aggressive
+      cuts on lead Why-it-matters, both Why-it-matters fields, both Hard
+      Rule 2 paragraphs, Sector Focus, Iran Cyber Watch operator note
+      consolidation, and Other Signal). Layer 2 Discord Summary trimmed
+      to leave headroom under 1900-char ceiling (estimated ~1820 chars
+      ~280 words).
+
+      Hard Rule 6: zero direct quotes across the brief. Full quote
+      budget preserved.
+
+      Hard Rule 2: critical compliance — TeamPCP attribution on Grafana
+      item carries forward at VT-006 anchor per Wiz + StepSecurity per
+      prior reporting (Snyk relays StepSecurity, not independent);
+      Grafana names no actor. Unit 42 conservative framing preserved
+      on APT29 attribution (carry-forward from Mandiant + MSTIC +
+      Volexity prior reporting). APT33 (Curious Serpens / Peach
+      Sandstorm) named in Iran Cyber Watch operator-note per operator
+      guidance — flagged as NOT in roster with KAC roster-review
+      candidacy; Archimedes does NOT originate APT33 attribution
+      beyond Unit 42's framing. UTA0355 named in Other Signal as
+      Volexity-relay third-party attribution; /new-actor decision
+      deferred pending Volexity source-grade evaluation.
+
+      Hard Rule 3: CVE-2026-42822 brief treatment includes defensive
+      prescription (patch to ≥2604.2.25645) but NO PoC, NO exploitation
+      walkthrough. Unit 42 ROADtools coverage describes detection-side
+      IOCs (UA strings + OS version + device-naming pattern) for
+      defensive purposes only.
+
+      Hard Rule 8: 55th consecutive dormant non-self-telemetry Splunk
+      sweep across the aggregate IOC token set (Azure Local + CVE-2026-
+      42822 + @tanstack + @grafana + ROADtools + python-requests UA +
+      OS 10.0.19041.928). Silence is not disconfirming.
+
+      Standing sections both present: Sector Focus A&D (cross-item
+      ownership-chain framing — both action items hit prime CISO chain
+      via different surfaces); Iran Cyber Watch (silent_day_template
+      per watch-config.yaml + operator note on APT33 per operator
+      coverage decision).
+
+      No FLASH-worthy finding emerged this cycle:
+        - CVE-2026-42822: Trigger 1 PARTIAL (no active-exploitation
+          attestation; MSRC SPA-shell blocks; KEV verified not-listed)
+        - Grafana / VT-006 update: no FLASH-trigger (vendor
+          self-disclosure with no new active-exploitation surface or
+          AD-prime named victim)
+        - Unit 42 ROADtools: no FLASH-trigger (consolidation paper, not
+          new attestation of in-the-wild observation)
+
+      Anti-repetition discipline:
+        - VT-006 / Mini Shai-Hulud / TeamPCP / TanStack lineage covered
+          extensively in prior briefs (FLASH 2026-05-12 + 2026-05-14
+          + 2026-05-17 + 2026-05-20 morning + 2026-05-20 afternoon +
+          2026-05-21 morning + 2026-05-21 afternoon); per operator
+          guidance, lead with Grafana as third named secondary + three
+          new procedural facts, NOT campaign retread. UPDATE flag links
+          back to 2026-05-21 morning (yesterday's GitHub formal
+          confirmation news) as the most recent prior coverage anchor.
+        - CVE-2026-20223 Cisco Secure Workload companion perfect-10
+          covered 2026-05-20 afternoon — referenced via Related field
+          only (not re-litigated).
+        - APT29 ROADtools — first-time coverage in corpus; no
+          anti-repetition required.
+        - CVE-2026-42822 — first-time coverage in corpus; no
+          anti-repetition required.
+    first_covered: 2026-05-22
+    last_covered: 2026-05-22
+    retraction: null
+    test: false
+    notes: |
+      Friday morning cadence. Lead is the new finding CVE-2026-42822
+      per operator guidance (CVSS 10.0 + sovereign-cloud A&D-prime
+      relevance — Azure Local Disconnected Operations behind sovereign /
+      IL5+ / ITAR-regulated R&D enclaves at every prime on watchlists/
+      aerospace-defense.yaml). 3 findings referenced (all new this
+      cycle); 0 carry-forward items.
+
+      Editorial decision per operator guidance: the supply-chain
+      section is led by Grafana's third-named-secondary self-attestation
+      + three operationally new facts (May-11 detection, unrevoked-
+      workflow-token causal claim, May-16 ransom-demand) — NOT a
+      VT-006 / Mini Shai-Hulud / TeamPCP campaign retread. The 🔗
+      UPDATE flag points back to 2026-05-21 morning (GitHub formal
+      confirmation) as the most recent prior coverage anchor.
+
+      APT29 ROADtools paper framed per analyst ACH H1 as consolidation
+      of multi-year tradecraft at single-vendor depth, NOT newly
+      evolved TTPs. Brief Hard Rule 2 paragraph carries the H1 framing
+      explicitly + notes H5 (cross-actor toolkit-adoption broadening)
+      as the runner-up read.
+
+      APT33 (Curious Serpens / Peach Sandstorm) named in Iran Cyber
+      Watch operator-note — Iranian nation-state actor referenced by
+      Unit 42 paper but NOT in roster; KAC flagged roster-review
+      candidacy pending current-relevance evaluation. UTA0355 named
+      in Other Signal as Volexity-relay third-party attribution layer;
+      /new-actor decision deferred pending Volexity source-grade
+      evaluation as discrete librarian work.
+
+      Pre-flight: 13/13 passed.
 
 # ============================================================================
 # Valid resurface_if conditions

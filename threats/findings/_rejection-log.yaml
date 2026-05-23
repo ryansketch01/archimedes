@@ -1842,15 +1842,185 @@ entries:
       article URLs warrants alt-retrieval path identification
       (e.g., RSS-only ingestion via fetch_feed which works healthy).
 
+  - rejection_id: reject-2026-05-23-0001
+    rejected_at: 2026-05-23T08:30:00-04:00
+    grading_run_id: morning-20260523-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-23-am-005-thn-litespeed-cve-2026-48172-nvd-cvss-v4-10-confirmation-anti-noise-carry-forward
+    cluster_topic: >
+      THN 2026-05-23 + NVD direct-retrieval confirmation of LiteSpeed
+      CVE-2026-48172 (CVSS v4 = 10.0, CWE-266 Incorrect Privilege
+      Assignment, actively exploited in May 2026) — anti-noise
+      carry-forward of FLASH-0600-002 (raw-2026-05-23-flash-0600-002,
+      promoted to finding-2026-05-23-FLASH-0002 at 06:35 EDT). NO new
+      operational fact independent of the FLASH-0002 cluster; the
+      NVD record adds A-grade corroboration on the CVSS-10.0 layer
+      and surfaces an operationally-useful detection grep signature
+      (`grep -rE "cpanel_jsonapi_func=redisAble" /var/cpanel/logs
+      /usr/local/cpanel/logs/`) published verbatim in the NVD
+      description.
+    rejection_reasons:
+      - anti_noise_carry_forward_to_existing_finding_2026_05_23_flash_0002
+      - corroboration_update_belongs_in_finding_update_block_not_new_finding_promotion
+      - no_new_actor_no_new_victim_no_new_ioc_no_new_campaign_window
+      - relay_layer_two_thn_relays_nvd_relays_litespeed_vendor_self_disclosure
+    sources:
+      - source_yaml_id: nvd
+        grade: A
+        role: NVD direct-retrieval of CVE-2026-48172 record — confirms CVSS v4 = 10.0; closes the FLASH-0600-002 pending NVD-confirmation flag; adds CWE-266 classification + grep detection signature in description
+      - source_yaml_id: thehackernews
+        grade: B
+        role: THN relay coverage 2026-05-23 brought the LiteSpeed advisory into pre-brief window; THN previously originated the CVSS-10.0 framing now NVD-confirmed
+      - source_yaml_id: litespeed-blog-self-disclosure
+        grade: A
+        provisional: true
+        role: vendor self-disclosure on own product (already captured in FLASH-0600-002 / finding-2026-05-23-FLASH-0002 as the originating-research primary)
+    would_be_digraph: A2_if_first_surface_but_anti_noise_absorbs_into_existing_flash_finding
+    rejection_detail: >
+      This cluster is an anti-noise carry-forward of the LiteSpeed
+      CVE-2026-48172 FLASH item already promoted to
+      finding-2026-05-23-FLASH-0002 at 06:35 EDT. The new
+      operational fact is NVD direct-retrieval confirming the
+      CVSS v4 = 10.0 score — this closes the FLASH-0600-002
+      pending-confirmation flag and hardens the CVSS-10.0 claim
+      from B2 (THN-originated framing) to A2 (NVD-authoritative).
+
+      The proper handling is briefer/librarian UPDATE BLOCK on
+      finding-2026-05-23-FLASH-0002 documenting:
+        - NVD CVSS v4 = 10.0 CONFIRMED (closes prior pending flag)
+        - CWE-266 (Incorrect Privilege Assignment) classification
+        - Detection grep signature published in NVD description:
+          `grep -rE "cpanel_jsonapi_func=redisAble" /var/cpanel/logs
+          /usr/local/cpanel/logs/` — operationally-useful artifact
+        - NVD record status: Awaiting Analysis (standard post-
+          publication state)
+        - Patch versions confirmed: 2.4.5 (standalone) + 2.4.7
+          (bundled in WHM plugin v5.3.1.0)
+
+      NOT a new finding because:
+        - Same vulnerability (CVE-2026-48172)
+        - Same vendor (LiteSpeed)
+        - Same exploitation status (actively exploited in May 2026
+          per LiteSpeed self-disclosure already in FLASH-0002)
+        - Same patch boundary (already in FLASH-0002)
+        - Same scope (LiteSpeed User-End cPanel Plugin; WHM
+          unaffected)
+        - No new actor named (still no actor attribution per
+          either source — Hard Rule 2 preserved)
+        - No new victim named (still no A&D-prime victim)
+        - No new IOC beyond the detection grep already implied by
+          the vendor's published mechanism
+
+      Briefer action: fold the NVD confirmation + grep signature
+      into the FLASH-0002 update-block as a procedural-facts
+      upgrade. Vuln-tracker action: scaffold VT-009 dossier on
+      next pass given CVE-2026-48172 is the third CVSS-10.0 active-
+      exploitation CVE in the 60h corpus window (CVE-2026-20223
+      Cisco Secure Workload + CVE-2026-42822 Azure Local +
+      CVE-2026-48172 LiteSpeed cPanel) and warrants dossier-tier
+      tracking per VT-006 / VT-007 / VT-008 precedent.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention. Regrade only if a NEW operational fact surfaces
+      that isn't already captured in finding-2026-05-23-FLASH-0002.
+
+  - rejection_id: reject-2026-05-23-0002
+    rejected_at: 2026-05-23T08:33:00-04:00
+    grading_run_id: morning-20260523-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-23-am-006-thn-drupal-cve-2026-9082-kev-addition-anti-noise-carry-forward
+    cluster_topic: >
+      THN 2026-05-23 relay of CVE-2026-9082 Drupal Core SQL injection
+      KEV addition — anti-noise carry-forward of FLASH-1800-001
+      (raw-2026-05-22-flash-1800-001 promoted to finding-2026-05-22-
+      0004-cisa-kev-drupal-cve-2026-9082-itw-confirmed at the 18:00
+      FLASH cycle the prior day). NO new operational fact; THN is
+      the third relay layer in the chain (CISA KEV + Drupal vendor +
+      SecurityWeek + Imperva already captured in the original FLASH).
+    rejection_reasons:
+      - anti_noise_carry_forward_to_existing_finding_2026_05_22_0004
+      - flash_policy_one_per_trigger_topic_per_24h_anti_noise_lock_active
+      - no_new_operational_facts_per_collector_evaluation
+      - relay_layer_three_thn_relays_securityweek_relays_drupal_advisory_and_cisa_kev
+    sources:
+      - source_yaml_id: thehackernews
+        grade: B
+        role: THN relay coverage 2026-05-23 — third relay layer in the chain
+      - source_yaml_id: cisa-kev
+        grade: A
+        role: originating KEV catalog addition 2026-05-22 (already in FLASH-1800-001 cluster)
+      - source_yaml_id: drupal-sa
+        grade: A
+        role: Drupal vendor self-disclosure on own product (already in FLASH-1800-001 cluster)
+      - source_yaml_id: securityweek
+        grade: B
+        role: SecurityWeek relay (already in FLASH-1800-001 cluster)
+    would_be_digraph: B2_if_first_surface_but_anti_noise_absorbs_into_existing_finding
+    rejection_detail: >
+      This cluster is an explicit anti-noise carry-forward of
+      finding-2026-05-22-0004 (CVE-2026-9082 Drupal Core SQL
+      injection, CISA KEV-added 2026-05-22, due 2026-05-27,
+      vendor-confirmed ITW + Imperva 15K attempts / 6K sites / 65
+      countries telemetry).
+
+      Per FLASH-POLICY anti-noise rule 1 (one FLASH per trigger
+      topic per 24h window), the Drupal-KEV story does NOT
+      requalify for FLASH or new-finding promotion this morning.
+      The 18:00 FLASH the prior day already covered:
+        - KEV catalog v2026.05.22 entry with CVE-2026-9082,
+          dateAdded 2026-05-22, dueDate 2026-05-27
+        - Drupal SA-CORE-2026-004 risk score raised from 20/25
+          to 23/25 (Highly Critical)
+        - Imperva telemetry: 15,000+ attempts / ~6,000 sites /
+          65 countries
+        - Gaming + financial services dominate target distribution
+          (~50% combined)
+        - Reconnaissance-and-probing phase pre-targeted-RCE
+        - PostgreSQL-backed Drupal subset affected
+
+      THN coverage adds:
+        - Vendor self-acknowledgment relay quote ("Drupal Core
+          'is vulnerable to SQL injection'") — already in
+          finding-2026-05-22-0004 source set via Drupal advisory
+        - NO new IPs / domains / payloads / hashes
+        - NO new victim
+        - NO new actor
+        - NO new scope expansion
+
+      Briefer action: continuation context for finding-2026-05-22-
+      0004. The KEV due-date is 2026-05-27 (T-4 days from this
+      morning brief); the briefer may surface it in the action-
+      items / vuln-tracker section as a deadline-approaching
+      reminder per coverage-log anti-repetition rules.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention. Regrade only if a NEW operational fact surfaces
+      (e.g., named actor attribution, A&D-prime victim, new
+      payload class, scope expansion beyond PostgreSQL-backed
+      subset).
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 22
-  most_recent_run: afternoon-20260521-160000
-  most_recent_run_rejections: 1
-  most_recent_run_promotions: 6
+  total_rejections: 24
+  most_recent_run: morning-20260523-080000
+  most_recent_run_rejections: 2
+  most_recent_run_promotions: 4
   most_recent_run_promotion_ids:
+    - finding-2026-05-23-0001    # Laravel-Lang PHP / Composer supply-chain compromise (B2; cross-ecosystem pattern; Splunk first-party check executed)
+    - finding-2026-05-23-0002    # Underminr CDN-tenant-routing-bypass class-of-attack disclosure (C3 monitoring; ADAMnetworks first-surface provisional C)
+    - finding-2026-05-23-0003    # Russian Kosmos 2610-2613 orbital-shadowing of ICEYE-X36 Ukraine-tasked SAR (B3 kinetic space-domain ISR; A&D-sector-adjacent; Integrity ISR first-surface provisional C)
+    - finding-2026-05-23-0004    # CISA KEV public nomination form policy change + blanket 3-day deadline under discussion (B2 procedural/policy; structural relevance to vuln-tracker workflow)
+  most_recent_run_rejection_ids:
+    - reject-2026-05-23-0001    # LiteSpeed CVE-2026-48172 NVD confirmation anti-noise carry-forward to finding-2026-05-23-FLASH-0002
+    - reject-2026-05-23-0002    # THN Drupal CVE-2026-9082 KEV addition anti-noise carry-forward to finding-2026-05-22-0004
+  prior_most_recent_run_legacy: afternoon-20260521-160000
+  prior_most_recent_run_rejections: 1
+  prior_most_recent_run_promotions: 6
+  prior_most_recent_run_promotion_ids:
     - finding-2026-05-21-0008    # CISA KEV double-add Langflow + Trend Micro Apex One
     - finding-2026-05-21-0009    # BleepingComputer Chromium Service Worker RCE accidental exposure (B3 single-source veto, monitoring tier)
     - finding-2026-05-21-0010    # NASA F´ CVE-2026-41144 spacecraft flight software RCE

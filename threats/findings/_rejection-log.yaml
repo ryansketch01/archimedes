@@ -2001,20 +2001,283 @@ entries:
       payload class, scope expansion beyond PostgreSQL-backed
       subset).
 
+  - rejection_id: reject-2026-05-23-0003
+    rejected_at: 2026-05-23T16:20:00-04:00
+    grading_run_id: afternoon-20260523-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-23-pm-001-thn-github-npm-staged-publishing-2fa-allow-flags-supply-chain-controls
+    cluster_topic: >
+      THN 2026-05-23 relays GitHub Changelog announcement of npm
+      staged-publishing GA (2FA-gated human-maintainer approval
+      via `npm stage publish` command, requires npm CLI 11.15.0+)
+      and three new install-time control flags (`--allow-file`,
+      `--allow-remote`, `--allow-directory` complementing existing
+      `--allow-git`). This is a DEFENDER CONTROL ROLLOUT — not an
+      attack disclosure, not a vulnerability, not a campaign, not
+      an IOC, not a tracked actor activity. The TeamPCP reference
+      in the article is contextual (motivating cause for the
+      controls) — restatement of existing-tracked-actor cluster,
+      NOT new attribution.
+    rejection_reasons:
+      - not_a_finding_eligible_event_class_defender_capability_rollout
+      - no_attack_no_victim_no_ioc_no_cve_no_new_actor_no_new_ttp
+      - teampcp_reference_is_restatement_of_existing_tracked_actor_not_new_attribution
+      - relay_layer_two_thn_relays_github_changelog_self_disclosure
+      - primary_github_blog_changelog_not_directly_retrieved_this_sweep
+      - briefer_narrative_input_only_not_a_finding
+    sources:
+      - source_yaml_id: thehackernews
+        grade: B
+        role: THN relay coverage 2026-05-23 — directly retrieved this sweep; Ravie Lakshmanan byline
+      - source_yaml_id: github-blog-self-disclosure
+        grade: A
+        provisional: true
+        role: GitHub Changelog originating announcement; github.blog primary URL NOT directly retrieved this sweep — flagged for collector next-pass direct retrieval
+    would_be_digraph: not_applicable_event_class_does_not_promote
+    rejection_detail: >
+      This is an ecosystem-defender control rollout, not a threat
+      event. The article describes npm's general availability of
+      staged-publishing (mandates human maintainer 2FA challenge
+      to approve packages pre-public-release; prebuilt tarballs
+      upload to a staging queue requiring explicit maintainer
+      approval; applies to CI/CD workflows and OIDC trusted
+      publishing) and three new install-time allow-flags that
+      enable an explicit-allowlist approach to every non-registry
+      install source.
+
+      No promotion-eligible event class:
+        - No attack disclosed
+        - No victim named
+        - No CVE assigned (control rollout, not vulnerability)
+        - No IOC surfaced
+        - No threat-actor activity described (TeamPCP cited as
+          motivating-cause context only — restatement of the
+          existing-roster #001 actor cluster, NOT new attribution
+          or new TTP)
+        - No campaign window
+        - No first-party telemetry implication
+
+      The TeamPCP reference in the THN article is operationally
+      identical to how the Wiz + Snyk + StepSecurity attribution
+      chain on Mini Shai-Hulud (finding-2026-05-12-FLASH-0001)
+      and the GitHub-blog self-disclosure on the ~3,800 internal
+      repository compromise (finding-2026-05-20-FLASH-0001)
+      already established TeamPCP attribution. GitHub naming
+      TeamPCP in the changelog is RESTATEMENT, not new attribution.
+      Per FLASH-POLICY anti-noise rule on
+      `attribution_is_new_not_restatement`, this fails as a
+      promotion candidate.
+
+      Briefer action: useful as Supply Chain Watch narrative input
+      against the Laravel-Lang (finding-2026-05-23-0001) +
+      Packagist 8-pkg (finding-2026-05-23-0005) supply-chain
+      finding pair this week. The temporal proximity of npm
+      announcing defender controls (2026-05-22) while two
+      mechanically-distinct PHP/Composer supply-chain campaigns
+      surface (2026-05-22 and 2026-05-23) supports a "defenders
+      responding to ecosystem pressure" narrative thread without
+      requiring a discrete finding. Treat as contextual / brief-
+      composition input.
+
+      Collector next-pass: attempt direct retrieval of
+      github.blog primary URL for the changelog entry (npm staged
+      publishing GA announcement). Confirms the github-blog-self-
+      disclosure source-grades.yaml provisional A on its own
+      product announcements (74h ratification clock already
+      tracked per source-grade-log.md 2026-05-23T06:08:00-04:00
+      expiry).
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention. Regrade only if the announcement is later
+      paired with an attack disclosure that directly exploits
+      a gap in the new controls (i.e., a campaign actively
+      bypassing staged-publishing or the allow-flags) — which
+      would constitute a new finding class.
+
+  - rejection_id: reject-2026-05-23-0004
+    rejected_at: 2026-05-23T16:22:00-04:00
+    grading_run_id: afternoon-20260523-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-23-pm-003-snyk-laravel-lang-supply-chain-advisory-primary-vt-detection-escalation
+    cluster_topic: >
+      Snyk first-party advisory on Laravel-Lang PHP/Composer
+      supply-chain compromise (2026-05-23T16:00:00Z) +
+      VirusTotal detection escalation observable on
+      flipboxstudio[.]info (3 malicious engines AM sweep →
+      10 malicious engines PM sweep, 3.3x in ~4 hours).
+      This is CORROBORATION UPLIFT to finding-2026-05-23-0001
+      (Laravel-Lang PHP/Composer supply-chain compromise,
+      already promoted at morning grading run with B2 digraph
+      + multi-actor convergence H2 leading per analyst sat-ach).
+      Snyk advisory ADDS new operational substance (four SNYK-PHP-*
+      advisory IDs, exact GitHub-to-Packagist tag-resolution
+      mechanism, DebugChromium.exe Windows artifact, /var/run/
+      secrets/ + /proc/[pid]/environ runtime patterns) — but the
+      proper handling is a finding UPDATE BLOCK on the existing
+      finding, not a new finding promotion.
+    rejection_reasons:
+      - anti_noise_carry_forward_to_existing_finding_2026_05_23_0001
+      - corroboration_uplift_belongs_in_finding_update_block_not_new_finding_promotion
+      - same_campaign_same_packages_same_c2_same_unattributed_posture
+      - snyk_primary_closes_am_001_flag_on_socket_aikido_primary_not_directly_retrieved
+      - vt_detection_escalation_3_to_10_is_enrichment_class_signal_not_new_event
+    sources:
+      - source_yaml_id: snyk
+        grade: A
+        provisional: true
+        role: Snyk first-party originating advisory on Laravel-Lang supply-chain compromise; provisional A per source-grades.yaml (first cited 2026-05-12; awaiting ratification); directly retrieved this sweep — CLOSES the am-001 flag on Snyk-layer primary not directly retrieved
+      - source_yaml_id: thehackernews
+        grade: B
+        role: THN relay coverage already in finding-2026-05-23-0001 cluster (am-001); THIS pm-003 is the Snyk-direct primary corroboration on the same campaign
+      - source_yaml_id: virustotal
+        grade: B
+        role: Independent enrichment-class corroboration on flipboxstudio[.]info reputation; detection escalation 3→10 malicious engines in ~4 hours is real-time vendor-consensus signal
+    would_be_digraph: A2_if_first_surface_but_anti_noise_absorbs_into_existing_finding
+    rejection_detail: >
+      This cluster is a corroboration uplift to finding-2026-05-23-
+      0001 (Laravel-Lang PHP/Composer supply-chain compromise),
+      not a new finding. The Snyk advisory is the originating-
+      research first-party primary on the same campaign that the
+      morning grader already promoted via the THN/Socket/Aikido
+      relay chain captured in raw-2026-05-23-am-001. Same campaign,
+      same four packages (laravel-lang/lang, /http-statuses,
+      /attributes, /actions), same ~700 historical-version
+      republication scope, same C2 (flipboxstudio[.]info), same
+      autoload.files+helpers.php execute-on-every-PHP-request
+      mechanism, same UNATTRIBUTED posture (Snyk preserves the
+      non-attribution consistent with the four-firm Snyk + Socket
+      + Aikido + THN-relay UNATTRIBUTED consensus).
+
+      The Snyk advisory ADDS new operational substance the morning
+      finding does not yet incorporate:
+        - Four named SNYK-PHP-* advisory IDs
+          (SNYK-PHP-LARAVELLANGLANG-16801059,
+           SNYK-PHP-LARAVELLANGHTTPSTATUSES-16801060,
+           SNYK-PHP-LARAVELLANGATTRIBUTES-16801061,
+           SNYK-PHP-LARAVELLANGACTIONS-16801062)
+        - Exact attack mechanism named: GitHub-to-Packagist tag-
+          resolution abuse via attacker-controlled fork (THN was
+          less specific on this layer)
+        - DebugChromium.exe Windows artifact filename — concrete
+          IOC the briefer can call out and the analyst can hunt
+        - Unix-like infection marker pattern
+          (`<tmp>/.laravel_locale/<md5_hash>`)
+        - Runtime detection signals: background PHP processes
+          reading `/var/run/secrets/` and `/proc/[pid]/environ`;
+          background CScript processes (Windows)
+        - VirusTotal detection escalation observable on
+          flipboxstudio[.]info: 3 malicious + 1 suspicious engines
+          AM sweep (Kaspersky, Forcepoint ThreatSeeker, ADMINUSLabs)
+          → 10 malicious + 1 suspicious engines PM sweep
+          (Kaspersky, Sophos, Fortinet, ADMINUSLabs, Forcepoint
+          ThreatSeeker, CRDF, Certego, Lionic, SOCRadar, VIPRE).
+          3.3x detection ramp in ~4 hours — real-time vendor-
+          consensus signal that the campaign is being adopted
+          across vendor blocklists post-Snyk-publication.
+
+      Proper handling: briefer / librarian UPDATE BLOCK on
+      finding-2026-05-23-0001 documenting:
+        - Snyk primary directly retrieved 2026-05-23T16:00:00Z;
+          CLOSES the am-001 flag on Snyk-layer "primary not
+          directly retrieved this sweep"
+        - Source-grade uplift effect: cluster anchor digraph
+          remains B2 (THN relay basis unchanged), but the
+          Snyk-first-party-now-retrieved layer is provisional A2
+          on Snyk-anchored facts (mechanism, advisory IDs,
+          Windows artifact, runtime patterns)
+        - Add four SNYK-PHP-* advisory IDs to finding's
+          source-identifier set (vuln-tracker may consider
+          referencing these for VT-007 / VT-008 / VT-009 lineage
+          or scaffolding a new VT entry if Laravel-Lang reaches
+          dossier-tier tracking criteria)
+        - Add DebugChromium.exe + `<tmp>/.laravel_locale/<md5_hash>`
+          + `/var/run/secrets/` + `/proc/[pid]/environ` +
+          background CScript-process IOCs to finding's IOC set
+        - Add VT detection escalation 3→10 in ~4h as enrichment
+          observation on flipboxstudio[.]info reputation layer
+        - Mechanism layer is now A2 on Snyk-anchored facts (GitHub-
+          to-Packagist tag-resolution abuse via attacker-controlled
+          fork; Composer autoload.files + helpers.php execute-on-
+          every-PHP-request); the prior THN-only B2 framing on
+          mechanism was less specific
+
+      NOT a new finding because:
+        - Same campaign (Laravel-Lang four-package compromise)
+        - Same four packages (laravel-lang/lang, /http-statuses,
+          /attributes, /actions)
+        - Same C2 (flipboxstudio[.]info)
+        - Same mechanism class (Composer autoload.files +
+          helpers.php execute-on-every-PHP-request; Snyk just
+          names the upstream tag-resolution-abuse more precisely)
+        - Same UNATTRIBUTED posture (Snyk preserves the four-firm
+          consensus; Hard Rule 2 preserved)
+        - Same campaign window (~2026-05-22 to 2026-05-23 mass
+          tag-publication burst)
+        - No new actor named
+        - No new victim named (still no A&D-prime victim)
+
+      Analyst implication: finding-2026-05-23-0001's sat-ach
+      already established multi-actor convergence (H2) as the
+      leading hypothesis with five inconsistencies disfavoring
+      single-cluster (H1). The Snyk primary corroboration does
+      not materially shift the ACH posture — Snyk also declines
+      attribution, consistent with the four-firm consensus.
+      Sensitivity analysis tripwire on "direct retrieval of
+      Socket and Aikido primary blogs reveals an attribution
+      claim or cluster-naming that THN omitted" remains active
+      (Snyk closes the Snyk-layer flag but Socket and Aikido
+      primary blogs are still not directly retrieved).
+
+      Source-grade observation: Snyk provisional-A directly-
+      retrieved-on-second-cited-campaign (first Mini Shai-Hulud
+      via finding-2026-05-12-FLASH-0001 co-primary with Stephen
+      Thoemmes byline; now Laravel-Lang first-party primary on
+      finding-2026-05-23-0001) is a positive methodological
+      signal toward ratification — librarian may consider
+      forwarding for human-ratification pass per source-grade-
+      log.md 2026-05-12 entry. Ratification status remains
+      provisional A awaiting ratification.
+
+      Source-grade observation: VirusTotal detection escalation
+      3→10 in ~4h is concrete enrichment-class signal (vendor-
+      consensus on flipboxstudio[.]info reputation). VT remains
+      pre-graded B for facts per source-grades.yaml; no grade
+      revision warranted.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention. Regrade only if a NEW operational fact surfaces
+      that isn't already captured in finding-2026-05-23-0001
+      after the planned UPDATE BLOCK (e.g., named actor
+      attribution from a future vendor, A&D-prime victim,
+      novel-mechanism extension beyond the Composer
+      autoload.files + helpers.php pattern, or first-party
+      Splunk hit on flipboxstudio[.]info or DebugChromium.exe).
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 24
-  most_recent_run: morning-20260523-080000
+  total_rejections: 26
+  most_recent_run: afternoon-20260523-160000
   most_recent_run_rejections: 2
-  most_recent_run_promotions: 4
+  most_recent_run_promotions: 1
   most_recent_run_promotion_ids:
+    - finding-2026-05-23-0005    # Packagist 8-package supply-chain attack (B2; cross-ecosystem package.json postinstall injection; GitHub-hosted Linux payload gvfsd-network; UNATTRIBUTED per Socket; Splunk first-party check executed — zero genuine hits)
+  most_recent_run_rejection_ids:
+    - reject-2026-05-23-0003    # THN npm staged-publishing 2FA-gated controls rollout — defender capability rollout, not finding-eligible event class
+    - reject-2026-05-23-0004    # Snyk Laravel-Lang first-party advisory + VT detection escalation 3→10 — corroboration uplift to finding-2026-05-23-0001, briefer update block
+
+  prior_most_recent_run_legacy: morning-20260523-080000
+  prior_most_recent_run_rejections: 2
+  prior_most_recent_run_promotions: 4
+  prior_most_recent_run_promotion_ids:
     - finding-2026-05-23-0001    # Laravel-Lang PHP / Composer supply-chain compromise (B2; cross-ecosystem pattern; Splunk first-party check executed)
     - finding-2026-05-23-0002    # Underminr CDN-tenant-routing-bypass class-of-attack disclosure (C3 monitoring; ADAMnetworks first-surface provisional C)
     - finding-2026-05-23-0003    # Russian Kosmos 2610-2613 orbital-shadowing of ICEYE-X36 Ukraine-tasked SAR (B3 kinetic space-domain ISR; A&D-sector-adjacent; Integrity ISR first-surface provisional C)
     - finding-2026-05-23-0004    # CISA KEV public nomination form policy change + blanket 3-day deadline under discussion (B2 procedural/policy; structural relevance to vuln-tracker workflow)
-  most_recent_run_rejection_ids:
+  prior_most_recent_run_rejection_ids:
     - reject-2026-05-23-0001    # LiteSpeed CVE-2026-48172 NVD confirmation anti-noise carry-forward to finding-2026-05-23-FLASH-0002
     - reject-2026-05-23-0002    # THN Drupal CVE-2026-9082 KEV addition anti-noise carry-forward to finding-2026-05-22-0004
   prior_most_recent_run_legacy: afternoon-20260521-160000

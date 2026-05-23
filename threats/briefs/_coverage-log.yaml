@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-23T08:00:00-04:00
+last_updated: 2026-05-23T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -15465,8 +15465,17 @@ entries:
   # ==========================================================================
 
   - id: 2026-05-23-am-001
-    covered_in: [2026-05-23-morning]
+    covered_in: [2026-05-23-morning, 2026-05-23-afternoon]
     brief_file: threats/briefs/2026-05-23-morning.md
+    resurfaced_in:
+      - brief_id: 2026-05-23-afternoon
+        flag: UPDATE
+        triggers_met:
+          - direct_retrieval_socket_or_aikido_primary  # Snyk primary advisory layer published (four SNYK-PHP-* IDs)
+          - actor_ttps_evolve                          # new artifacts: DebugChromium.exe, .laravel_locale/<md5_hash>, /var/run/secrets/, /proc/[pid]/environ probes, CScript pattern
+          - shared_infrastructure_disclosure            # n/a — no shared infra disclosed, but mechanism confirmation closes morning's caveat
+          - escalation_to_exploitation                  # VT detection escalation 3 → 10 malicious engines on flipboxstudio[.]info in ~4h (3.3x)
+        material_change_summary: "Snyk first-party advisory layer hardens cluster anchor (B2 → B1 candidate next sweep); mechanism confirmed as GitHub-to-Packagist tag-resolution abuse via attacker-controlled fork; new Windows + Linux artifact set published; VT detection escalation 3 → 10 engines."
     headline: "Laravel-Lang PHP / Composer supply-chain compromise — 4 packages (laravel-lang/lang, /http-statuses, /attributes, /actions), 700+ malicious tag versions published 2026-05-22 to 2026-05-23, modified src/helpers.php delivers cross-platform credential-stealer framework (cloud-metadata harvesting AWS/GCP/Azure/Kubernetes/DigitalOcean + wallets + password managers + dev creds + VPN configs), AES-256 exfil to flipboxstudio[.]info (VirusTotal 3 malicious engines: Kaspersky / Forcepoint ThreatSeeker / ADMINUSLabs); Socket + Aikido joint research relayed by THN; both originating firms decline actor attribution; Archimedes ACH ranks multi-actor convergence on supply-chain TTP class as leading hypothesis (H2) with single-cluster branching (H1) at five inconsistencies — brief framed as defender-posture observation across TTP class NOT fifth-campaign-wave; KAC six qualified assumptions including A&D sub-tier Laravel exposure (A7 unmeasured); lead-with-defender-action per analyst flag (hunt 4 packages + C2 in sub-tier dependency trees)"
     topic_tags:
       - laravel-lang-composer-php-supply-chain-compromise
@@ -15932,6 +15941,309 @@ entries:
       cross-referenced; 0 carry-forward items.
 
       Pre-flight: 13/13 passed.
+
+  - id: 2026-05-23-pm-001
+    covered_in: [2026-05-23-afternoon]
+    brief_file: threats/briefs/2026-05-23-afternoon.md
+    headline: "Packagist 8-package supply-chain attack — cross-ecosystem package.json postinstall injection inside Composer packages; GitHub-hosted Linux payload gvfsd-network; UNATTRIBUTED"
+    topic_tags:
+      - packagist-composer-php-supply-chain-attack
+      - 8-packages-heterogeneous-niche-specialty
+      - cross-ecosystem-package-json-postinstall-injection-inside-composer-package
+      - scanner-coverage-gap-php-scanners-only-read-composer-json
+      - github-hosted-linux-payload-gvfsd-network-mimics-gnome-vfs-daemon
+      - parikhpreyash4-github-account-disabled
+      - tmp-dotssh-dotfile-dropper-path
+      - 777-github-files-socket-reported-references-not-campaign-scope
+      - socket-originating-research-relayed-by-thn-socket-primary-blog-rss-404-persistent
+      - no-actor-attribution-hard-rule-2-binding
+      - second-php-composer-distinct-campaign-in-7-days
+      - sixth-supply-chain-campaign-in-12-days
+      - ach-reweight-h2-multi-actor-convergence-rank-1-h_new-php-composer-affinity-rank-2-h1-strongly-disfavored-cumulative-10-inconsistencies
+      - h_new-cannot-be-promoted-until-researcher-attention-effect-resolved
+      - a-d-sub-tier-exposure-weaker-than-laravel-lang-heterogeneous-niche-specialty-packages
+      - sat-ach-reweight-applied-2026-05-23-pm-analyst-review-complete
+      - sat-kac-applied-2026-05-23-pm-analyst-review-complete
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-23-0005]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      eight_packages_named: B2
+      cross_ecosystem_injection_mechanism: B2
+      gvfsd_network_payload: B2
+      777_files_pattern_propagation: B2
+      no_actor_attribution: A1
+    wep: likely
+    wep_split:
+      eight_composer_packages_compromised_named_list: likely
+      cross_ecosystem_package_json_postinstall_injection_mechanism: likely
+      github_hosted_linux_payload_gvfsd_network: likely
+      777_files_broader_pattern_propagation: likely
+      campaign_continuity_or_resurfacing_post_takedown: likely
+      ad_prime_supply_chain_exposure_via_php_composer_sub_tier: likely
+      actor_attribution: do_not_predict
+      link_to_laravel_lang_or_other_2026_supply_chain_waves: do_not_predict
+    single_source_veto_applied: true
+    single_source_veto_scope: campaign_continuity_pattern_scope_and_actor_identity_layers_socket_via_thn_one_evidence_basis_socket_primary_blog_not_directly_retrieved
+    analyst_review_required: true
+    analyst_review_complete: true
+    analyst_review_sat_invoked: [sat_kac, sat_ach_reweight]
+    red_team_review_required: false
+    hard_rule_2_framings_load_bearing:
+      - "Socket declines actor attribution; Archimedes does not originate"
+      - "Multi-actor convergence (H2) retains rank-1 from morning ACH; PHP/Composer-specific affinity (H_new) is rank-2 plausible refinement of H2 but cannot be promoted until researcher-attention-effect question resolves"
+      - "Frame the PHP/Composer concentration as consistent with multi-actor convergence at ecosystem scope — NOT PHP-specific actor escalation (H1 single-cluster reading ACH does not support) and NOT definitively PHP-specific attacker affinity (H_new currently insufficient)"
+      - "A&D sub-tier exposure for Packagist 8-pkg is materially weaker than Laravel-Lang — heterogeneous niche-specialty packages, not widely-deployed core libraries; defender framing 'hunt the IOCs in your dependency tree' rather than 'expect direct exposure'"
+      - "777-files figure stated as Socket-reported references, NOT campaign scope (GitHub code search counts forks, comments, doc references); gvfsd-network hedged as hunt-candidate IOC, not confirmed novel implant (no VT hash this sweep — account disabled before sampling)"
+    splunk_first_party:
+      status: clean_at_compose
+      query: "search (index=archimedes OR index=defenseclaw_local) earliest=-30d@d (\"parikhpreyash4\" OR \"gvfsd-network\" OR \"systemd-network-helper-aa5c751f\" OR dest_domain=\"github.com\" url=\"*parikhpreyash4*\")"
+      hits_external_iocs: 0
+      framing: silence_not_disconfirming_not_confirming_dormant_pattern_60_plus_sweeps
+    iocs_surfaced:
+      - type: github_account
+        value: parikhpreyash4
+        status: disabled
+      - type: url
+        value: "github[.]com/parikhpreyash4/systemd-network-helper-aa5c751f"
+        role: github_releases_payload_hosting
+      - type: filename
+        value: gvfsd-network
+        role: linux_payload_binary_legitimate_process_name_confusion_gnome_vfs_daemon
+      - type: file_path
+        value: /tmp/.sshd
+        role: dropper_target_path_dotfile
+      - type: package_name
+        value: moritz-sauer-13/silverstripe-cms-theme
+        ecosystem: composer
+        affected_versions: ["dev-master"]
+      - type: package_name
+        value: crosiersource/crosierlib-base
+        ecosystem: composer
+        affected_versions: ["dev-master"]
+      - type: package_name
+        value: devdojo/wave
+        ecosystem: composer
+        affected_versions: ["dev-main"]
+      - type: package_name
+        value: devdojo/genesis
+        ecosystem: composer
+        affected_versions: ["dev-main"]
+      - type: package_name
+        value: katanaui/katana
+        ecosystem: composer
+        affected_versions: ["dev-main"]
+      - type: package_name
+        value: elitedevsquad/sidecar-laravel
+        ecosystem: composer
+        affected_versions: ["3.x-dev"]
+      - type: package_name
+        value: r2luna/brain
+        ecosystem: composer
+        affected_versions: ["dev-main"]
+      - type: package_name
+        value: baskarcm/tzi-chat-ui
+        ecosystem: composer
+        affected_versions: ["dev-main"]
+    resurface_if:
+      - new_victims_confirmed                                      # any A&D-direct or DIB sub-tier named as victim
+      - new_attribution                                             # any A/B-grade vendor attributes the campaign
+      - escalation_to_exploitation                                  # cross-vendor scale corroboration or in-the-wild impact disclosure
+      - first_party_ioc_hit                                         # any Splunk hit on parikhpreyash4 / gvfsd-network / systemd-network-helper-aa5c751f / /tmp/.sshd
+      - actor_ttps_evolve                                           # additional Composer/PHP campaign with shared TTP class or shared IOCs
+      - shared_infrastructure_disclosure                            # vendor research surfacing shared IOCs with Laravel-Lang or other 2026 supply-chain campaigns lifts H1 single-cluster hypothesis at PHP-scope
+      - direct_retrieval_socket_primary                             # cluster anchor uplift on Socket-anchored facts; resolves KAC A1 relay-drift question
+      - third_php_composer_distinct_campaign_in_window              # tripwire: extends H_new (PHP/Composer affinity) toward leading hypothesis
+      - independent_vendor_php_composer_entry                       # tripwire: resolves A9 researcher-attention-effect test
+      - cybercriminal_forum_self_claim                              # tripwire: forum self-claim either TeamPCP-confirming or new-actor-naming
+      - virustotal_hash_corroboration_gvfsd_network                 # tripwire: independent sample analysis lifts payload-novelty caveat (A2)
+    first_covered: 2026-05-23
+    last_covered: 2026-05-23
+    retraction: null
+    test: false
+    notes: |
+      Second item in afternoon brief Active Threats section. Defender-
+      takeaway lead per analyst flag: cross-ecosystem injection TTP
+      (package.json postinstall in a Composer package) is the durable
+      defender takeaway independent of attribution; lead with the TTP,
+      not the package list. Hard Rule 2 binding preserved: Socket
+      declines attribution; Archimedes does not originate.
+
+      ACH-reweight against morning's matrix retains H2 (multi-actor
+      convergence) at rank-1 with cumulative 10 inconsistencies
+      weighted ~24 against H1 (single-cluster). H_new (PHP/Composer-
+      specific affinity) introduced at rank-2 as plausible refinement
+      of H2 — explicitly NOT promoted in brief language; framed as
+      "consistent with multi-actor convergence at ecosystem scope,
+      NOT PHP-specific actor escalation." H4 (copycat) at rank-3 as
+      close cousin of H2/H_new.
+
+      KAC A9 (researcher-attention-effect vs. actor-side PHP/Composer
+      concentration) flagged as standing librarian / collector
+      tripwire — not blocking the afternoon brief. Sunday weekly
+      synthesis is the natural surface to revisit. KAC A7 (A&D sub-
+      tier exposure) hedged in brief: eight heterogeneous niche-
+      specialty packages, not widely-deployed core libraries; sub-
+      tier direct exposure plausibly small, dependency-tree IOC hunt
+      is the operational frame.
+
+      777-files figure stated as "Socket-reported references" with
+      explicit GitHub code-search caveat (counts forks, comments,
+      doc references) per KAC A3. gvfsd-network hedged as hunt-
+      candidate IOC, not confirmed-novel-implant per KAC A2 — no
+      VirusTotal hash corroboration this sweep (account disabled
+      before sampling).
+
+  - id: 2026-05-23-pm-brief-meta
+    covered_in: [2026-05-23-afternoon]
+    brief_file: threats/briefs/2026-05-23-afternoon.md
+    headline: "Afternoon brief meta — Laravel-Lang UPDATE (Snyk primary + mechanism + VT escalation) + Packagist 8-pkg new finding; sixth-supply-chain-campaign-in-12-days SECOND-PHP/Composer-in-7-days defender-posture observation; standing sections silent except references to morning's items; FLASH content not re-litigated"
+    topic_tags:
+      - afternoon-brief-meta
+      - laravel-lang-update-snyk-primary-mechanism-confirmed-vt-escalation
+      - packagist-8-package-supply-chain-attack-new-finding
+      - hard-rule-2-load-bearing-multi-actor-convergence-no-php-specific-actor-escalation-framing
+      - cross-ecosystem-injection-ttp-defender-takeaway-package-json-postinstall-in-composer-package
+      - anti-repetition-morning-items-stand-without-development-flash-not-re-litigated
+      - standing-sections-silent-day-except-cross-references
+      - sunday-supply-chain-watch-synthesis-defender-controls-question
+      - pre-flight-13-of-13-passed
+      - word-count-767-in-target-range
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-23-0001
+      - finding-2026-05-23-0005
+    cross_referenced_finding_ids:
+      - finding-2026-05-23-FLASH-0001
+      - finding-2026-05-23-FLASH-0002
+    absorbs_flashes: []
+    flash_disposition_note: |
+      Two 06:00 FLASH findings (UNC1549 Unit 42 TTP evolution + LiteSpeed
+      cPanel CVE-2026-48172) already shipped this morning via the FLASH
+      path and were cross-referenced in the morning brief. Afternoon
+      brief references them only as "stands" / "carries forward" in
+      standing-section silent-day text — does NOT re-litigate.
+    digraphs_in_brief:
+      - finding_id: finding-2026-05-23-0001
+        finding_digraph: B2_b1_candidate_next_sweep
+        item_in_brief: laravel_lang_update_active_threats
+      - finding_id: finding-2026-05-23-0005
+        finding_digraph: B2
+        item_in_brief: packagist_8_package_active_threats
+    wep_in_brief:
+      - claim: laravel_lang_mechanism_confirmed_artifacts_vt_escalation
+        wep: very_likely
+        wep_split_caveats: campaign_scope_and_continuity_capped_at_likely_single_source_veto_persists_pending_second_a_b_grade_vendor
+      - claim: packagist_8_package_supply_chain_attack
+        wep: likely
+        wep_split_caveats: socket_relayed_via_thn_one_evidence_basis_socket_primary_blog_not_directly_retrieved_no_second_a_b_grade_vendor
+      - claim: actor_attribution_either_campaign
+        wep: do_not_predict
+        wep_split_caveats: socket_aikido_snyk_all_decline_attribution_hard_rule_2_binding
+      - claim: cross_ecosystem_injection_ttp_as_durable_defender_takeaway
+        wep: very_likely
+        wep_split_caveats: package_json_postinstall_in_composer_package_is_mechanically_verifiable_attribution_independent
+      - claim: php_composer_specific_attacker_affinity_h_new
+        wep: roughly_even_chance
+        wep_split_caveats: operationally_indistinguishable_from_h2_at_current_evidence_level_cannot_be_promoted_until_researcher_attention_effect_resolves
+    single_source_veto_respected_brief_wide: true
+    hard_rule_2_brief_wide_compliance: |
+      - Laravel-Lang UPDATE: Socket + Aikido + Snyk all decline attribution; Archimedes does not originate. ACH H2 (multi-actor convergence) framing from morning preserved.
+      - Packagist 8-pkg: Socket declines attribution; Archimedes does not originate. parikhpreyash4 GitHub account disabled but no party named.
+      - Cross-corpus pattern observation (sixth-in-12-days + second-PHP/Composer-in-7-days) framed as "consistent with multi-actor convergence at ecosystem scope" — explicitly NOT PHP-specific actor escalation (H1 single-cluster reading ACH does not support).
+    quote_discipline_brief_wide:
+      max_words_per_quote: 7   # "Snyk primary not directly retrieved" — 5 words; "consistent with multi-actor convergence at ecosystem scope" — 7 words; both are Archimedes self-reference / framing, not external-source quotes
+      quotes_per_external_source: 0  # no external direct quotes in body; all external content paraphrased
+      violations: []
+    correlation_callouts:
+      - between: [finding-2026-05-23-0005, finding-2026-05-23-0001]
+        connection: "same-week PHP/Composer ecosystem, mechanically distinct (autoload-files + helpers.php vs. package.json postinstall), no shared C2 / hashes / TLS certs / GitHub accounts; ACH-reweight retains H2 multi-actor convergence rank-1"
+        callout_emoji: 🔗
+      - between: [finding-2026-05-23-0001 (UPDATE), 2026-05-23-morning brief]
+        connection: "primary-vendor advisory layer hardened; mechanism confirmed; in-environment hunt artifacts available"
+        callout_emoji: 🔗
+    standing_sections_present:
+      - vulnerabilities: silent_day_references_morning_kev_form
+      - sector_focus_ad: silent_day_references_morning_kosmos
+      - actor_activity: silent_day_references_morning_flash
+      - iran_cyber_watch: silent_day_references_morning_flash_attribution_layer
+      - other_signal: defender_controls_context_github_npm_staged_publishing_2fa_allow_flags_narrative_input_for_sunday_synthesis
+    anti_repetition_discipline:
+      morning_brief_items_stand_without_development:
+        - cisa_kev_public_nomination_form: referenced_in_vulnerabilities_silent_day_no_re_litigation
+        - russian_kosmos_2610_2613_orbital_proximity: referenced_in_sector_focus_silent_day_no_re_litigation
+        - underminr_class_of_attack: not_referenced_no_new_development_no_re_litigation
+      flash_findings_not_re_litigated:
+        - unc1549_unit_42_ttp_evolution_06_00_flash: referenced_in_actor_activity_and_iran_silent_day_no_re_litigation
+        - cve_2026_48172_litespeed_cpanel_06_00_flash: not_referenced_in_afternoon_brief_no_new_development
+    splunk_first_party_brief_wide:
+      laravel_lang_flipboxstudio_info: clean_silence_morning_query_carries_forward_no_new_pm_query_run
+      packagist_8_package_iocs: clean_silence_grader_pm_query_2026_05_23_16_10_edt_zero_genuine_hits_one_incidental_audit_log_metadata_noise_discarded
+      framing: indexes_remain_dormant_pattern_60_plus_consecutive_sweeps_absence_neither_confirming_nor_disconfirming
+    pre_flight_checklist:
+      checks_passed: 13
+      checks_failed: 0
+      regenerations_required: 0
+      result: passed_first_iteration
+    first_covered: 2026-05-23
+    last_covered: 2026-05-23
+    retraction: null
+    test: false
+    notes: |
+      Saturday 2026-05-23 afternoon brief. Lead: sixth-distinct-supply-
+      chain-campaign-in-12-days framing leading into the SECOND PHP/
+      Composer-ecosystem distinct campaign in 7 days. UPDATE on morning's
+      Laravel-Lang Active Threat (Snyk primary + mechanism confirmation
+      + VT detection escalation 3 → 10 engines in ~4 hours). New finding:
+      Packagist 8-package supply-chain attack with cross-ecosystem
+      package.json postinstall injection inside Composer packages.
+
+      Hard Rule 2 binding preserved brief-wide. ACH-reweight from
+      finding-2026-05-23-0005 inherits multi-actor convergence (H2)
+      from morning ACH; H_new (PHP/Composer-specific affinity)
+      introduced at rank-2 but NOT promoted in brief language.
+      Briefer framed PHP/Composer concentration as "consistent with
+      multi-actor convergence at ecosystem scope" — explicitly NOT
+      PHP-specific actor escalation per analyst flag.
+
+      2 findings referenced (Laravel-Lang UPDATE + Packagist 8-pkg
+      new); 2 FLASH findings cross-referenced via silent-day section
+      text only (NOT re-litigated). Anti-repetition discipline:
+        - Morning items (CISA KEV form, Kosmos, Underminr) referenced
+          only in silent-day section text or not at all; no re-
+          litigation.
+        - Both 06:00 FLASH findings (UNC1549, LiteSpeed) referenced
+          only as "stands" / "carries forward" in standing-section
+          text.
+        - Cross-corpus pattern (sixth-in-12-days, second-PHP/Composer-
+          in-7-days) framed as defender-posture observation per ACH
+          H2 leading; NOT single-cluster escalation framing.
+
+      Standing sections all present (Vulnerabilities, Sector Focus
+      A&D, Actor Activity, Iran Cyber Watch, Other Signal). All
+      use silent-day template referencing morning items by name
+      without re-litigating content. Other Signal carries narrative
+      input for Sunday's Supply Chain Watch synthesis question
+      (defender-controls context: GitHub/npm staged-publishing +
+      2FA allow-flags rollout).
+
+      Pre-flight: 13/13 passed on first iteration. Word count 767
+      in 400-800 target range. Discord summary 221 words, ~1740
+      chars (under 1900 ceiling).
+
+      Splunk first-party check on Packagist 8-pkg IOC set (PM-sweep
+      grader query 2026-05-23 16:10 EDT): zero genuine hits on
+      parikhpreyash4 / gvfsd-network / systemd-network-helper-
+      aa5c751f over -30d. One incidental audit-log metadata hit
+      discarded. Laravel-Lang query (flipboxstudio[.]info) from
+      AM-sweep carries forward — no new PM query run, silence
+      stands. Indexes remain dormant pattern across 60+ consecutive
+      sweeps.
 
 # ============================================================================
 # Valid resurface_if conditions

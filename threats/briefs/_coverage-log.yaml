@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-22T18:55:00-04:00
+last_updated: 2026-05-23T06:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -15052,6 +15052,411 @@ entries:
       after multiple compression iterations preserving all three
       mandatory caveats verbatim — initial draft at ~460 words
       regenerated to ~360, then to ~317, then to 296 final).
+
+      Pre-flight: 13/13 passed.
+
+  - id: 2026-05-23-flash-0600-001
+    covered_in: [flash-2026-05-23-0600-001-unc1549-screening-serpens-tradecraft-evolution]
+    brief_file: threats/briefs/2026-05-23-flash-0600-001-unc1549-screening-serpens-tradecraft-evolution.md
+    headline: "UNC1549 / Screening Serpens (roster #004) 2026 tradecraft evolution per Unit 42 2026-05-22 — six new RAT variants including MiniUpdate and MiniJunk V2; AppDomainManager hijacking via legitimate .NET configuration files (portable post-access TTP, NOT UNC1549-distinctive signature per red-team); six azurewebsites.net staging subdomains + two .com lookalike pretexts (PremierHealthAdvisory[.]com, Ramiltonsfinance[.]com); Feb-Apr 2026 campaign window; victims named US/Israel/UAE/two Middle East tech-professional entities, NO A&D-prime named as 2026 victim; A&D relevance is structural-indirect via tradecraft portability + actor lineage; cross-corpus prior finding-2026-05-05-0001 Mandiant 2026-05-04 UNC1549 recruiter-lure to A&D primes; attribution-layer veto-lift PARTIAL per red-team — WEP stays at likely not very_likely; finding-2026-05-05-0001 NOT lifted to very_likely; MiniUpdate/MiniJunk V2 naming overlap with Mandiant MINIBIKE/MINIBUS family flagged unresolved; FLASH trigger 4 fired (tracked-actor TTP change + A-grade source); critical override fails 2/4 (no CVE; no A&D watchlist); quiet hours active 06:00 EDT — QUEUED to flash-queue.yaml for 09:00 catchup sweep"
+    topic_tags:
+      - unc1549-screening-serpens-smoke-sandstorm-iranian-dream-job-tortoiseshell-imperial-kitten-crimson-sandstorm-roster-004
+      - unit42-2026-05-22-vendor-ir-research-direct-retrieval
+      - mandiant-2026-05-04-cross-corpus-attribution-prior-finding-2026-05-05-0001
+      - feb-apr-2026-campaign-window-espionage
+      - miniupdate-minijunk-v2-six-new-rat-variants
+      - miniupdate-minijunk-v2-naming-overlap-with-minibike-minibus-flagged-unresolved
+      - appdomainmanager-hijacking-portable-post-access-ttp-not-unc1549-distinctive-signature
+      - six-azurewebsites-net-staging-subdomains
+      - two-com-lookalike-pretext-domains-premierhealthadvisory-ramiltonsfinance
+      - pretext-architecture-diversification-from-defense-recruiting-to-health-finance
+      - victims-named-us-israel-uae-two-middle-east-tech-professional
+      - no-a-and-d-prime-named-as-2026-victim
+      - a-and-d-relevance-structural-indirect-via-tradecraft-portability-plus-actor-lineage
+      - attribution-veto-lift-partial-per-red-team
+      - finding-2026-05-05-0001-stays-at-likely-not-lifted-to-very-likely
+      - cross-corpus-independence-test-passes-at-2026-publication-layer-fails-at-baseline-cluster-identity-layer
+      - seven-years-vendor-community-convergence-on-cluster-identity
+      - hard-rule-2-no-attribution-origination-attribution-per-unit42-and-mandiant-per-prior-reporting
+      - hard-rule-6-zero-quotes-paraphrase-throughout
+      - hard-rule-8-first-party-splunk-zero-hits-silence-not-disconfirming
+      - flash-trigger-4-tracked-actor-ttp-change
+      - critical-override-fails-2-of-4-no-cve-no-a-and-d-watchlist
+      - quiet-hours-queued-09-00-catchup-sweep
+    related_actors: ["004"]
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-05-23-FLASH-0001]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      unit42_2026_campaign_observation: A2
+      unc1549_irgc_attribution_layer: A2
+      miniupdate_minijunk_v2_rat_naming: A2
+      appdomainmanager_hijacking_portable_ttp: A2
+      staging_infrastructure_azurewebsites_six_subdomains: A2
+      lookalike_pretext_domains: A2
+      ad_prime_2026_campaign_victim_named: F6
+    wep: likely
+    wep_split:
+      unc1549_irgc_alignment_attribution: likely        # red-team downgrade from very_likely; partial veto-lift only
+      unc1549_conducted_2026_feb_apr_campaign: likely
+      miniupdate_minijunk_v2_appdomainmanager_ttp: likely
+      staging_infrastructure_iocs_published: likely
+      ad_prime_2026_direct_targeting: remote
+      ttp_portability_to_ad_environments: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: tradecraft_evolution_layer_unit42_sole_source_appdomainmanager_minirats_staging_infrastructure
+    analyst_review_required: true
+    analyst_review_complete: false
+    analyst_review_deferred_to_post_flash_brief: true
+    red_team_review_required: true
+    red_team_review_required_basis: wep_ceiling_very_likely_at_grade_time_on_attribution_layer_via_proposed_veto_lift
+    red_team_review_complete: true
+    red_team_outcome: qualify
+    red_team_caveat_obligations:
+      - attribution_layer_wep_downgraded_very_likely_to_likely_partial_veto_lift
+      - finding_2026_05_05_0001_kept_at_likely_not_lifted
+      - appdomainmanager_framed_as_portable_post_access_ttp_not_unc1549_signature
+      - miniupdate_minijunk_v2_naming_overlap_with_minibike_minibus_flagged_unresolved
+    hard_rule_2_framings_load_bearing:
+      - "UNC1549-to-IRGC attribution is per Unit 42 (2026-05-22) and Mandiant (2026-05-04) per prior reporting; Archimedes does not originate"
+      - "AppDomainManager hijacking is a portable post-access TTP UNC1549 has now adopted — NOT a UNC1549-distinctive signature"
+      - "MiniUpdate / MiniJunk V2 may be rebrandings of Mandiant's MINIBIKE/MINIBUS family under Unit 42 taxonomy; unresolved at compose"
+      - "Veto-lift on finding-2026-05-05-0001 is PARTIAL; that finding's WEP stays at likely, not very_likely"
+    hard_rule_6_quote_budget:
+      total_quotes_in_brief: 0
+    splunk_first_party:
+      applied: true
+      query_window: -7d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits_external_iocs: 0
+      hard_rule_8_framing: silence_not_disconfirming_not_confirming
+    quiet_hours_at_compose: true
+    quiet_hours_queued: true
+    critical_override_applied: false
+    critical_override_evaluation:
+      cvss_10_0: false
+      cvss_value: null
+      active_exploitation: true
+      tracked_actor_involved: true
+      ad_watchlist_targeted: false
+      conditions_met: 2_of_4
+      result: override_does_not_apply
+    triggers_fired:
+      - trigger_4_tracked_actor_ttp_change
+    absorbs_flash: null
+    anti_noise_lock: "unc1549-screening-serpens-tradecraft-evolution-2026 until 2026-05-24T06:00:00-04:00"
+    resurface_if:
+      - new_attribution                             # third independent A-grade source (MSTIC, CrowdStrike) without Mandiant/Unit 42 lineage publishes corroborating UNC1549 attribution → full veto-lift to very_likely
+      - actor_ttps_evolve                            # additional UNC1549 tooling / infrastructure / targeting beyond MiniUpdate / MiniJunk V2 / AppDomainManager / eight Unit 42 IOCs
+      - first_party_ioc_hit                          # any Splunk hit on the eight Unit 42 IOCs or both RAT family names or AppDomainManager keyword in archimedes / defenseclaw_local
+      - miniupdate_naming_overlap_resolved           # Unit 42 publishes technical comparison against Mandiant MINIBIKE/MINIBUS OR independent code-similarity analysis resolves new-family vs lineage-variant question
+      - a_and_d_prime_named_as_victim                # any in-window source names an A&D-prime entity per watchlists/aerospace-defense.yaml as 2026-campaign-victim → lifts A&D-relevance from structural-indirect to direct
+    first_covered: 2026-05-23
+    last_covered: 2026-05-23
+    retraction: null
+    test: false
+    notes: |
+      First Archimedes-corpus FLASH on UNC1549 2026 tradecraft
+      evolution. Unit 42 direct-retrieval, vendor IR-research A-grade.
+      Cluster anchor A2; WEP "likely" per red-team downgrade from
+      grader's proposed "very_likely" on attribution layer.
+
+      Red-team qualify outcome applied verbatim. Four caveat
+      obligations honored: (1) attribution-layer WEP downgraded
+      very_likely → likely (partial veto-lift only); (2) finding-
+      2026-05-05-0001's WEP kept at likely, NOT lifted to very_likely
+      on Unit 42's strength alone (full lift reserved for third
+      independent A-grade source without Mandiant/Unit 42 lineage);
+      (3) AppDomainManager hijacking framed as "portable post-access
+      TTP UNC1549 has now adopted" — NOT "UNC1549's new signature
+      TTP"; (4) MiniUpdate / MiniJunk V2 naming-overlap with
+      Mandiant's MINIBIKE/MINIBUS family flagged as unresolved
+      alternative read.
+
+      Tripwire #2 in finding-2026-05-05-0001's sat_ach has FIRED IN
+      FORM but is PARTIAL IN SUBSTANCE — Unit 42 IS a second A-grade
+      corroboration on the 2026-publication layer, but the baseline
+      cluster identity (UNC1549 / Tortoiseshell / Imperial Kitten /
+      Smoke Sandstorm) rests on ~7 years of vendor-community
+      convergence rather than fully-independent re-derivation.
+      Actor-profiler on next /update-tracking cycle should note the
+      partial corroboration in the UNC1549 dossier without elevating
+      the dossier-level WEP framing.
+
+      Critical override 2/4 — fails on CVSS prong (no CVE in
+      publication) and A&D-watchlist prong (no A&D-prime named as
+      2026-campaign victim; 2026 victim set is US/Israel/UAE/two
+      Middle East tech-professional entities). Quiet hours active
+      at compose (06:00 EDT within 21:00-09:00 window). QUEUED to
+      infrastructure/flash-queue.yaml for 09:00 EDT catchup sweep.
+
+      Hard Rule 2 strict: attribution to IR/IRGC propagated per
+      Unit 42 + Mandiant per prior reporting; Archimedes does not
+      originate. Hard Rule 6: zero direct quotes; paraphrase
+      throughout. Hard Rule 8: first-party Splunk zero hits on all
+      eight Unit 42 IOCs + both RAT family names + AppDomainManager
+      keyword across archimedes + defenseclaw_local indexes (-7d
+      window). Silence is not disconfirming, not confirming.
+
+      Disposition prediction: 08:00 morning brief 2026-05-23 may
+      absorb this content as an actor-activity action item (UNC1549
+      dossier update + new RAT inventory + new staging IOCs).
+      Predict 09:00 catchup sweep marks superseded:true,
+      superseded_by: 2026-05-23-morning, archive disposition
+      superseded_by_morning_brief. If morning brief omits, catchup
+      posts with "QUEUED FROM OVERNIGHT" prefix to #flash-alerts.
+
+      IOC handoff to actor-profiler: full hash set, full domain set,
+      and any additional IPv4 indicators ingested via ioc-extraction
+      skill into UNC1549 dossier IOC sidecar on next /update-tracking
+      cycle. Hunt window extension to -90d recommended.
+
+      Pre-flight: 13/13 passed.
+
+  - id: 2026-05-23-flash-0600-002
+    covered_in: [flash-2026-05-23-0600-002-litespeed-cpanel-cve-2026-48172]
+    brief_file: threats/briefs/2026-05-23-flash-0600-002-litespeed-cpanel-cve-2026-48172.md
+    headline: "LiteSpeed Technologies vendor self-disclosure 2026-05-21 on own product (LiteSpeed User-End cPanel Plugin) — CVE-2026-48172 Incorrect Privilege Assignment (CWE-269) in lsws.redisAble function permitting any cPanel user root code execution; affected v2.3-v2.4.4, patches v2.4.5 standalone and v2.4.7 within WHM plugin v5.3.1.0; WHM plugin (administrative-side counterpart) NOT affected; vendor-asserted active exploitation uncorroborated by third-party telemetry at compose; The Hacker News frames CVSS as 10.0 with NVD confirmation pending; vendor's own 'any cPanel user' language suggests authenticated-attacker vector closer to 9.x; per red-team CVSS 10.0 WEP downgraded likely → roughly_even_chance pending NVD; sub-tier supplier A&D supply-chain exposure WEP downgraded likely → roughly_even_chance (structurally plausible, empirically unmeasured); A&D-prime direct exposure remote (cPanel not standard prime infrastructure); detection grep pattern cpanel_jsonapi_func=redisAble published; NO attacker IPs/domains/hashes published; CISA KEV not listing as of 2026-05-22; NVD direct-retrieval and KEV resurface check scheduled 12:00 EDT sweep; provisional A grade for litespeed-blog-self-disclosure with 72h ratification clock to 2026-05-26 06:35 EDT; FLASH trigger 1 fired (critical CVE + vendor-asserted active exploitation + A-grade vendor self-disclosure on own product); critical override fails 2/4 (no tracked actor; no A&D watchlist); quiet hours active 06:00 EDT — QUEUED to flash-queue.yaml for 09:00 catchup sweep"
+    topic_tags:
+      - cve-2026-48172-litespeed-cpanel-plugin-lsws-redisAble-root-rce
+      - litespeed-technologies-vendor-self-disclosure-on-own-product
+      - vendor-self-disclosure-on-own-product-class-precedent-f5-openai-kernel-org-netdev-github-cisco-psirt
+      - litespeed-blog-self-disclosure-provisional-a-grade-72h-ratification-clock-2026-05-26
+      - cwe-269-incorrect-privilege-assignment
+      - any-cpanel-user-to-root-privilege-bypass
+      - affected-v2-3-through-v2-4-4
+      - fixed-v2-4-5-standalone-v2-4-7-within-whm-plugin-v5-3-1-0
+      - whm-plugin-administrative-side-counterpart-not-affected
+      - cvss-10-0-thn-framed-nvd-confirmation-pending
+      - cvss-10-0-score-wep-downgraded-likely-to-roughly-even-chance-per-red-team-pr-l-9-9
+      - active-exploitation-vendor-asserted-uncorroborated
+      - active-exploitation-single-source-veto-applied-mandiant-volexity-unit42-greynoise-mstic-silent
+      - cisa-kev-not-listed-as-of-2026-05-22-resurface-check-pending-12-00-edt-sweep
+      - nvd-direct-retrieval-pending-12-00-edt-sweep
+      - detection-grep-pattern-cpanel-jsonapi-func-redisAble-published
+      - no-attacker-iocs-published-detection-pattern-only
+      - researcher-credit-david-strydom-independent
+      - no-actor-attribution-verifiable-absence
+      - no-a-and-d-prime-named-as-victim-verifiable-absence
+      - a-and-d-prime-direct-exposure-remote-cpanel-not-standard-prime-infrastructure
+      - sub-tier-supplier-supply-chain-exposure-roughly-even-chance-structurally-plausible-unmeasured
+      - red-team-four-must-not-appear-phrases-enforced
+      - must-not-appear-perfect-score-cvss-10-0-omitted
+      - must-not-appear-vendor-confirmed-active-exploitation-replaced-vendor-asserted-uncorroborated
+      - must-not-appear-third-perfect-score-in-60h-cluster-omitted
+      - must-not-appear-supply-chain-exposure-to-a-and-d-primes-without-qualifier
+      - flash-trigger-1-critical-cve-exploited
+      - critical-override-fails-2-of-4-no-tracked-actor-no-a-and-d-watchlist
+      - quiet-hours-queued-09-00-catchup-sweep
+      - hard-rule-2-no-attribution-no-actor-named-by-any-source
+      - hard-rule-6-one-quote-thirteen-words-litespeed-vendor
+      - hard-rule-8-first-party-splunk-zero-hits-silence-not-disconfirming
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-48172
+        product: "LiteSpeed User-End cPanel Plugin"
+        cvss_claimed: 10.0
+        cvss_source: thehackernews_relay_b_grade
+        cvss_nvd_confirmed: pending_direct_retrieval
+        cwe: CWE-269
+        vulnerable_function: lsws.redisAble
+        affected_versions: ["v2.3", "v2.4.0", "v2.4.1", "v2.4.2", "v2.4.3", "v2.4.4"]
+        fixed_versions: ["v2.4.5", "v2.4.7 (within WHM plugin v5.3.1.0)"]
+        active_exploitation_status: vendor_asserted_uncorroborated_single_source_veto
+        cisa_kev_listed: false_as_of_2026_05_22
+        cisa_kev_resurface_check: 2026-05-23T12:00:00-04:00
+        nvd_resurface_check: 2026-05-23T12:00:00-04:00
+        vuln_tracker_status: new_to_corpus_first_cpanel_ecosystem_cve
+    related_campaigns: []
+    finding_ids: [finding-2026-05-23-FLASH-0002]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      cve_2026_48172_exists_in_litespeed_cpanel_plugin: A2
+      cvss_10_0_score_claim: B2
+      affected_versions_v2_3_through_v2_4_4: A2
+      fixed_versions_v2_4_5_v2_4_7: A2
+      lsws_redisAble_function_privilege_assignment_root_rce: A2
+      active_exploitation_in_the_wild: A2
+      no_actor_attribution: A1
+      no_ad_prime_named_as_victim: A1
+      cisa_kev_not_listed_as_of_20260522: A1
+    wep: likely
+    wep_split:
+      cve_2026_48172_exists_in_litespeed_cpanel_plugin: very_likely
+      cvss_10_0_score_claim: roughly_even_chance     # red-team downgrade from likely; PR:L → 9.9, NVD pending
+      affected_versions_v2_3_through_v2_4_4: very_likely
+      patch_available_v2_4_5_v2_4_7: very_likely
+      lsws_redisAble_root_rce_from_any_cpanel_user: very_likely
+      active_exploitation_in_the_wild: likely         # vendor-asserted, uncorroborated; single-source veto
+      ad_prime_direct_exposure: remote
+      sub_tier_supplier_supply_chain_exposure: roughly_even_chance   # red-team downgrade from likely
+    single_source_veto_applied: true
+    single_source_veto_scope: active_exploitation_in_the_wild_layer_litespeed_sole_source_no_third_party_telemetry_at_compose
+    analyst_review_required: false
+    red_team_review_required: true
+    red_team_review_required_basis: wep_ceiling_very_likely_at_vulnerability_exists_layer
+    red_team_review_complete: true
+    red_team_outcome: qualify
+    red_team_caveat_obligations:
+      - cvss_10_0_score_wep_downgraded_likely_to_roughly_even_chance_pending_nvd
+      - sub_tier_supplier_supply_chain_exposure_downgraded_likely_to_roughly_even_chance_structurally_plausible_unmeasured
+      - active_exploitation_framed_as_vendor_asserted_uncorroborated_not_vendor_confirmed
+      - perfect_score_cvss_10_0_framing_omitted
+      - third_perfect_score_in_60h_cluster_framing_omitted
+      - supply_chain_exposure_to_a_and_d_primes_phrasing_avoided_replaced_with_plausible_but_unmeasured
+      - cvss_lede_avoids_specific_number_critical_severity_thn_framed_nvd_pending
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution from any source — vendor advisory and THN relay both silent on attribution"
+      - "Active exploitation is vendor-asserted, uncorroborated by Mandiant / Volexity / Unit 42 / GreyNoise / MSTIC at compose"
+      - "CVSS 10.0 framing originates with The Hacker News (B-grade), not with NVD or LiteSpeed itself"
+      - "Sub-tier supplier supply-chain exposure is plausible but unmeasured; not hardened to 'present'"
+    hard_rule_6_quote_budget:
+      litespeed_advisory: "Any cPanel user may exploit lsws.redisAble function to execute arbitrary scripts as root."   # 13 words
+      total_quotes_in_brief: 1
+    splunk_first_party:
+      applied: true
+      query_window: -7d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits_external_iocs: 0
+      hard_rule_8_framing: silence_not_disconfirming_not_confirming
+    quiet_hours_at_compose: true
+    quiet_hours_queued: true
+    critical_override_applied: false
+    critical_override_evaluation:
+      cvss_10_0: true                            # PASS per THN framing; NVD direct-retrieval pending
+      cvss_value: 10.0
+      active_exploitation: true                  # PASS — vendor-on-own-product attestation
+      tracked_actor_involved: false              # FAIL — no actor
+      ad_watchlist_targeted: false               # FAIL — no A&D-prime named; A&D relevance is structural-indirect only
+      conditions_met: 2_of_4
+      result: override_does_not_apply
+    triggers_fired:
+      - trigger_1_critical_cve_exploited
+    absorbs_flash: null
+    anti_noise_lock: "litespeed-cpanel-plugin-cve-2026-48172 until 2026-05-24T06:00:00-04:00"
+    provisional_source_addition:
+      source_id: litespeed-blog-self-disclosure
+      grade: A
+      provisional: true
+      ratification_clock: 2026-05-26T06:35:00-04:00
+      precedent_class: vendor_self_disclosure_on_own_product_per_f5_openai_kernel_org_netdev_github_cisco_psirt
+    nvd_resurface_check_pending: 2026-05-23T12:00:00-04:00
+    cisa_kev_resurface_check_pending: 2026-05-23T12:00:00-04:00
+    resurface_if:
+      - escalation_to_exploitation                    # any A/B-grade source publishes independent telemetry corroborating active exploitation (IR-firm victim disclosure, GreyNoise scanner IP enumeration, Mandiant / Volexity / Unit 42 / MSTIC pickup); lifts single-source veto, ITW WEP very_likely
+      - new_victims_confirmed                          # any victim publicly named — particularly an A&D-prime or DIB sub-tier supplier — lifts A&D-relevance from structural-indirect to direct
+      - cisa_kev_addition                              # CISA KEV catalog adds CVE-2026-48172 in 12:00 EDT sweep or later; brings independent USG telemetry corroboration and federal-deadline framing
+      - nvd_publishes_cvss_score                       # NVD direct-retrieval resolves CVSS score and vector; if NVD publishes 10.0 with PR:N (cPanel commodity-obtainable), CVSS framing relaxes; if NVD publishes 9.9 or 9.1, brief framing remains accurate
+      - first_party_splunk_hit                         # any Splunk hit on litespeed / cpanel / CVE-2026-48172 / lsws.redisAble / cpanel_jsonapi_func=redisAble in archimedes / defenseclaw_local
+      - new_attribution                                # any A/B-grade source attributes exploitation to a named actor or campaign (currently no attribution from any source)
+      - patch_adoption_telemetry_published             # any source publishes patch-adoption rates for v2.4.5 / v2.4.7 against the cPanel/LiteSpeed deployment base
+    first_covered: 2026-05-23
+    last_covered: 2026-05-23
+    retraction: null
+    test: false
+    notes: |
+      First Archimedes-corpus surface of CVE-2026-48172 and first
+      cPanel/LiteSpeed-ecosystem CVE Archimedes tracks. LiteSpeed
+      Technologies vendor self-disclosure on own product (2026-05-21
+      advisory). The Hacker News relay coverage (2026-05-23,
+      Lakshmanan byline) sources the CVSS 10.0 framing — NOT
+      LiteSpeed and NOT NVD.
+
+      Source-class precedent: vendor-self-disclosure-on-own-product
+      class, established across f5 (K000160932 NGINX Rift),
+      openai-self-disclosure (TanStack breach), kernel-org-netdev
+      (Fragnesia kernel patch), github-blog-self-disclosure (3,800
+      repo breach), cisco-psirt (CVE-2026-20223 CVSS 10.0).
+      Provisional A grade for litespeed-blog-self-disclosure;
+      72-hour ratification clock to 2026-05-26 06:35 EDT. Librarian
+      to add source to source-grades.yaml + source-grade-log.md
+      with provisional A pending ratification.
+
+      Red-team qualify outcome applied verbatim. Four MUST-NOT-APPEAR
+      phrases enforced in brief body:
+        (1) "perfect-score CVSS 10.0" — OMITTED. Brief uses
+            "critical-severity (THN-framed CVSS 10.0; NVD confirmation
+            pending)." Vendor's own "any cPanel user" language
+            requires PR:L in CVSS vector → 9.9 (not 10.0); NVD will
+            likely correct.
+        (2) "vendor-confirmed active exploitation" — REPLACED with
+            "vendor-asserted, uncorroborated." Vendor advisory bare
+            on telemetry — no victim count, no IR-firm citation, no
+            scanner IPs. Mandiant / Volexity / Unit 42 / GreyNoise /
+            MSTIC silent at compose. CISA KEV not listing as of
+            2026-05-22 catalog. Single-source veto applied on ITW
+            layer; WEP capped at likely.
+        (3) "third perfect-score CVSS 10.0 in 60h cluster" — OMITTED
+            from brief body. Pattern is coincident, not campaign-
+            class; one of three is CVSS-pressure-tested below 10.0.
+            Not load-bearing on FLASH grade; not used in prose.
+        (4) "supply-chain exposure to A&D primes" without qualifier
+            — QUALIFIED. Brief uses "plausible but unmeasured."
+            Archimedes has no coverage data establishing cPanel
+            prevalence in A&D sub-tier ecosystem. Briefer prose does
+            NOT harden "plausible" into "present."
+
+      CVSS lede framing: brief avoids putting a specific CVSS number
+      in the lede. "Critical-severity (THN-framed CVSS 10.0; NVD
+      confirmation pending)" remains accurate whether NVD publishes
+      10.0, 9.9, or 9.1 at the 12:00 EDT sweep.
+
+      Critical override 2/4 — passes on CVSS 10.0 prong (per THN
+      framing at face value for override evaluation; NVD confirmation
+      pending) and active-exploitation prong (vendor-on-own-product
+      attestation). Fails on tracked-actor prong (no actor attribution
+      from any source) and A&D-watchlist prong (no A&D-prime named as
+      victim; A&D relevance is structural-indirect via sub-tier
+      supplier ecosystem only). Override fails by hard requirement of
+      all-four conditions simultaneously.
+
+      Quiet hours active at compose (06:00 EDT within 21:00-09:00
+      window). QUEUED to infrastructure/flash-queue.yaml for 09:00
+      EDT catchup sweep.
+
+      12:00 EDT NVD sweep resurface checks scheduled:
+        - NVD CVE-2026-48172 record direct-retrieval pending. If NVD
+          publishes 10.0 with PR:N, CVSS framing relaxes and the
+          perfect-score narrative re-engages. If NVD publishes 9.9
+          or 9.1, brief framing remains accurate ("critical-
+          severity").
+        - CISA KEV catalog v2026.05.23 12:00 EDT pull pending. If
+          KEV listing materializes, single-source veto on ITW layer
+          LIFTS (CISA KEV is A-grade + USG telemetry corroboration);
+          ITW WEP rises from likely to very_likely. If KEV remains
+          silent through next 72h, amplifies "vendor-urgency-framing"
+          counter-hypothesis.
+
+      Hard Rule 2 strict: no actor attribution from any in-window
+      source. LiteSpeed advisory, THN coverage both silent on
+      attribution. Archimedes does NOT originate. Hard Rule 6:
+      one direct quote (13 words) from LiteSpeed advisory verbatim
+      mechanism statement. Quote budget: 1 / 1. Hard Rule 8:
+      first-party Splunk zero hits on vendor name, product name,
+      CVE identifier, function name, detection grep pattern in
+      archimedes + defenseclaw_local indexes (-7d window). Silence
+      is not disconfirming. cPanel is not standard prime
+      infrastructure; exposure is via the supplier ecosystem, not
+      first-party-exploitable directly.
+
+      Disposition prediction: 08:00 morning brief 2026-05-23 is
+      likely to absorb this content as a priority CVE action item.
+      Given quiet hours and the red-team qualified posture,
+      morning-brief absorption may be cleaner than a queued-FLASH
+      posting at 09:00 arriving minutes after the morning brief.
+      Predict 09:00 catchup sweep marks superseded:true,
+      superseded_by: 2026-05-23-morning, archive disposition
+      superseded_by_morning_brief. If morning brief omits, catchup
+      posts with "QUEUED FROM OVERNIGHT" prefix to #flash-alerts.
+
+      Vuln-tracker handoff: CVE-2026-48172 new to corpus; first
+      cPanel-ecosystem CVE Archimedes tracks. Vuln-tracker on next
+      scheduled phase should scaffold tracking-tier entry; if
+      escalation conditions fire (KEV listing, IR-firm
+      corroboration, named victim), promote to dossier-tier.
 
       Pre-flight: 13/13 passed.
 

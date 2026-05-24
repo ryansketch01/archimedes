@@ -2255,17 +2255,251 @@ entries:
       autoload.files + helpers.php pattern, or first-party
       Splunk hit on flipboxstudio[.]info or DebugChromium.exe).
 
+  - rejection_id: reject-2026-05-24-0001
+    rejected_at: 2026-05-24T08:05:00-04:00
+    grading_run_id: morning-20260524-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-24-am-000-sentinel-pre-brief-sweep
+    cluster_topic: >
+      Canonical Sunday-morning clean-sweep disposition for the 08:00
+      EDT 2026-05-24 morning brief grading pass. Pre-brief collector
+      sentinel reports ZERO net-new graded-finding-eligible items in
+      the 14h window 2026-05-23T17:30 → 2026-05-24T07:30 EDT (spanning
+      18:00 / 00:00 / 06:00 FLASH clean sentinels — commits c9bad57,
+      7d291b6, ae4d3de — all reconciled). All eight pre-existing
+      anti-noise locks from the 2026-05-23 corpus (UNC1549 Screening
+      Serpens, LiteSpeed CVE-2026-48172, Laravel-Lang flipboxstudio,
+      Packagist 8-pkg, npm 2FA staged-publishing, CVE-2026-9082
+      Drupal, Russian Kosmos 2610-2613 ICEYE, CISA KEV nomination
+      form) reached nominal expiry at 06:00 window-start — moot, no
+      fresh in-window content surfaced to re-evaluate any expired
+      lock. Two in-window items beyond corpus-covered or anti-noise-
+      locked content were collector-filtered (Industrial Cyber
+      2026-05-24 Zero-Trust OT Framework piece by Anna Ribeiro =
+      framework/guidance, no threat-actor / no CVE / no A&D-named-
+      victim; BleepingComputer 2026-05-23 10:23 EDT Italy CINEMAGOAL
+      piracy-marketplace-disruption piece = pre-window AND not
+      A&D/threat-intel). NVD CRITICAL-window query returned zero
+      entries; HIGH-window returned 13 results but vulnerabilities
+      array empty on primary probe; narrow-page sample
+      (CVE-2026-42009 gnutls DTLS DoS CVSS 7.5) is below 8.0
+      threshold AND DoS-class AND not A&D-relevant AND not actively
+      exploited — pattern consistent with NIST background metadata
+      reprocessing not net-new disclosures. Five carry-forwards are
+      pre-window / anti-noise-locked / Hard-Rule-2-bound and are
+      brief-composition material for the briefer, NOT graded findings
+      this run.
+    rejection_reasons:
+      - zero_in_window_graded_finding_eligible_items_clean_sweep_disposition
+      - all_in_window_items_anti_noise_locked_or_corpus_covered_or_collector_filtered
+      - hard_rule_2_no_origination_unc1151_ababil_aptiran_cyberaveng3rs_not_in_roster
+      - kev_deadline_awareness_carry_forwards_belong_in_brief_not_new_finding
+      - nvd_high_window_metadata_reprocessing_not_net_new_disclosure
+      - sentinel_artifact_not_finding_eligible_event_class
+    sources:
+      - source_yaml_id: archimedes-internal
+        grade: A
+        role: Internal Archimedes collector sentinel record (run_id pre-brief-20260524-073000); 14h sweep window reconciled with three overnight FLASH sentinels; documents disposition only, no external source claim being graded
+      - source_yaml_id: cisa-kev
+        grade: A
+        role: KEV catalog version 2026.05.22 UNCHANGED across the 14h window (~37h since CVE-2026-9082 Drupal added 2026-05-22 18:00 EDT); zero new KEV entries this sweep
+      - source_yaml_id: cisa-advisories
+        grade: A
+        role: all.xml 200 OK, 30 items in feed, 0 in 14h since-filter window — Sunday-overnight quiet confirmed
+      - source_yaml_id: nvd
+        grade: A
+        role: CRITICAL-window totalResults=0; HIGH-window 13 results but vulnerabilities array empty on primary probe, sample CVE-2026-42009 gnutls DTLS DoS CVSS 7.5 sub-threshold + not A&D-relevant + not actively exploited (metadata-reprocessing pattern)
+      - source_yaml_id: industrialcyber-co
+        grade: B
+        role: 2026-05-24 Zero-Trust OT Framework piece (Anna Ribeiro byline; Forrester/PwC/INL CIE/IEC 62443/NIST/NERC CIP citations); no threat-actor named, no CVE, no A&D-named-victim — Mode-1 framework/guidance discard
+      - source_yaml_id: bleepingcomputer
+        grade: A
+        role: 2026-05-23 10:23 EDT Italy CINEMAGOAL piracy-marketplace-disruption piece — pre-window AND not A&D / not threat-intel — discarded
+      - source_yaml_id: thehackernews
+        grade: B
+        role: UNC1151 / Ghostwriter OYSTERFRESH Prometheus CERT-UA coverage 2026-05-22 (pre-window); Anthropic Project Glasswing / Claude Mythos coverage 2026-05-23 (pre-window) — both flagged as brief carry-forwards, neither finding-eligible this run
+      - source_yaml_id: splunk-archimedes
+        grade: A
+        role: tstats query returned 28 archimedes-index events (operation=11 + scheduler=17 self-telemetry only); zero defenseclaw_local events in -24h = 52nd consecutive dormant non-self sweep; Hard Rule 8 framing — silence is not disconfirming
+    would_be_digraph: N/A_no_external_claim_being_graded_clean_sweep_disposition_record
+    rejection_detail: >
+      This rejection entry is the canonical Sunday-morning clean-
+      sweep disposition record for the 08:00 EDT 2026-05-24 morning
+      brief grading pass. The pre-brief collector sentinel
+      (raw-2026-05-24-am-000-sentinel-pre-brief-sweep) is itself the
+      only 2026-05-24 raw-signal artifact in the grading window
+      beyond the three overnight FLASH sentinels (raw-2026-05-23-
+      flash-1800-000, raw-2026-05-24-flash-0000-000, raw-2026-05-24-
+      flash-0600-000 — all sentinel: true, flash_candidate: false,
+      clean sweeps). The grader's disposition: no promotions are
+      warranted, the collector's clean-sweep finding is correct.
+
+      Verification of collector disposition (Mode 1 procedure step 2):
+
+      (1) In-window items total ~10 across all surveyed sources.
+
+      (2) Eight in-window items are corpus-covered via prior briefs
+          and anti-noise locked (Drupal CVE-2026-9082; LiteSpeed
+          CVE-2026-48172; Laravel-Lang flipboxstudio[.]info;
+          Packagist 8-pkg parikhpreyash4; npm 2FA staged-publishing;
+          Claude Mythos / Glasswing AI research; UNC1151 Ghostwriter
+          OYSTERFRESH Prometheus CERT-UA; Underminr CDN bypass) —
+          no re-promotion warranted per anti-noise discipline.
+
+      (3) Two in-window items are collector-filtered:
+            - Industrial Cyber 2026-05-24 Zero-Trust OT Framework
+              (Anna Ribeiro; Forrester / PwC / INL CIE / IEC 62443 /
+              NIST / NERC CIP / NIS2 citations) — framework /
+              guidance content with no threat-actor named, no CVE,
+              no A&D-named-victim, no in-environment hunt artifacts;
+              correct Mode-1 discard.
+            - BleepingComputer 2026-05-23 10:23 EDT Italy CINEMAGOAL
+              piracy-marketplace-disruption — pre-window AND not
+              A&D / not threat-intel; correct discard.
+
+      (4) NVD HIGH-window 13 results returned with vulnerabilities
+          array empty on primary probe; narrow-page sample
+          CVE-2026-42009 gnutls DTLS DoS CVSS 7.5 is sub-threshold
+          (below 8.0), DoS-class (not RCE/LPE), not A&D-relevant,
+          not actively exploited; pattern consistent with NIST
+          background metadata reprocessing on prior-disclosure CVEs
+          rather than net-new disclosures. Correct discard.
+
+      (5) Five carry-forwards are pre-window / anti-noise-locked /
+          Hard-Rule-2-bound and are brief-composition material for
+          the briefer, NOT graded findings this run:
+            (a) Ghostwriter / UNC1151 OYSTERFRESH Prometheus CERT-UA
+                (THN 2026-05-22 pre-window) — UNC1151 NOT in
+                _roster.yaml (Belarus-aligned per CERT-UA + Mandiant
+                historical attribution); Hard Rule 2 prevents
+                origination cross-walk to any tracked actor in
+                roster; framing preserved as CERT-UA-source-said;
+                third multi-A-grade UNC1151 surface in 14 days
+                reinforces /new-actor candidacy at operator's
+                discretion (this is a /new-actor scaffold question,
+                not a graded-finding question).
+            (b) Anthropic Project Glasswing / Claude Mythos AI vuln-
+                discovery research (THN 2026-05-23 pre-window) —
+                research / methodology content, not actor-attributed,
+                not actively-exploited zero-day, not A&D-specific;
+                10,000+ findings claim and CVE-2026-5194 wolfSSL
+                already-patched-via-program disclosure are brief
+                AI-vuln-discovery-block material alongside Rapid7 Q1
+                and GreyNoise 119k IPs analysis (each pre-window).
+            (c) CVE-2026-9082 Drupal KEV deadline T-3 (2026-05-27) —
+                topic anti-noise locked; KEV-deadline action-item
+                review material for DIB / CMMC partner-flow estates
+                inheriting FCEB compliance timelines; not a new
+                event class.
+            (d) VT-008 Exchange CVE-2026-42897 KEV deadline T-5
+                (2026-05-29) — no MSRC GA patch this window (MSRC
+                blog surface continues template-only / 403 rendering
+                pattern); ESU-only patch path + EEMS/EOMT mitigation
+                continues; KEV-deadline action-item block material;
+                not a new event class.
+            (e) Iran Cyber Watch standing-section context from two
+                Industrial Cyber 2026-05-22 retrospective pieces
+                (pre-window):
+                  - FDD policy brief naming Ababil-of-Minab /
+                    APTIRAN gas-station-tank-gauge access, FBI
+                    Director personal-email targeting, LA Metro
+                    Transit partial-access, Stryker medical mention
+                    — actors NOT in _roster.yaml; Hard Rule 2
+                    prevents origination cross-walk to any tracked
+                    actor; no specific A&D-prime named.
+                  - CRS R46974 Congressional Research Service
+                    2012-2025 retrospective names "defense
+                    contractors" as one of Iranian-targeted sectors
+                    alongside water / wastewater / telecom /
+                    healthcare / energy; references Microsoft
+                    Exchange + Fortinet exploitation and the
+                    CyberAveng3rs IRGC-affiliated group — NOT in
+                    _roster.yaml; no specific CVE numbered; no
+                    specific A&D-prime named.
+                Both pieces are awareness-only context for the Iran
+                Cyber Watch standing section, NOT graded findings
+                (pre-window timing AND retrospective-survey framing
+                AND no tracked-actor attribution AND no in-
+                environment hunt artifacts).
+
+      Hard Rules compliance verified:
+        - Rule 2 (no origination): UNC1151 / Ababil-of-Minab /
+          APTIRAN / CyberAveng3rs all preserved as source-said with
+          no propagation to any tracked actor; Talos BadIIS MaaS
+          Chinese-speaking actor research preserved as Talos-said
+          with no cross-walk to any tracked PRC actor in roster
+          (Volt Typhoon / Salt Typhoon / APT40 / APT41).
+        - Rule 3 (no exploitation content): no PoC code, no payloads,
+          no exploit guides referenced; all CVE references descriptive.
+        - Rule 4 (passive only): no active scans this sweep.
+        - Rule 6 (15-word quote limit): one quote in collector
+          sentinel within limit (12 words, Industrial Cyber Iranian-
+          intrusion piece — pre-window context only, not propagated
+          into any graded finding).
+        - Rule 7 (credentials radioactive): no credential exposure
+          surfaced.
+        - Rule 8 (Splunk first-party priority): defenseclaw_local 0
+          events in -24h = 52nd consecutive dormant non-self sweep;
+          targeted IOC keyword sweep across 11 high-priority tokens
+          (CVE-2026-9082, CVE-2026-48172, CVE-2026-42897,
+          flipboxstudio, parikhpreyash4, UNC1549, UNC1151,
+          MuddyWater, Charming Kitten, Salt Typhoon, Screening
+          Serpens) returned 6 hits — ALL Archimedes pipeline
+          self-references (flash_sweep + brief_published +
+          git_committed events from overnight sentinels and 2026-05-23
+          morning + afternoon briefs); no external IOC observations
+          available structurally; silence is not disconfirming per
+          established cadence.
+
+      Source-health observations (collector-applied, runtime-only):
+        - mandiant feedburner 22nd consecutive 404; failure_count
+          20→21; status held healthy per long-standing operator
+          policy; cloud.google.com/blog/topics/threat-intelligence
+          remains productive index endpoint; operator-set notes
+          preserved verbatim.
+        - cisco-talos blog.talosintelligence.com/feeds/posts/default
+          3rd consecutive Atom-feed 404; failure_count 2→3 past
+          threshold; status held healthy per existing operator policy
+          pending alt-endpoint decision; Talos front-page WebFetch
+          on blog.talosintelligence.com landing surface remains
+          productive fallback; operator alt-endpoint decision
+          pending; operator-set notes preserved verbatim.
+
+      Briefer disposition: the 08:00 Sunday morning brief composes
+      against the standing sections (A&D Sector Focus; Iran Cyber
+      Watch) using the five carry-forwards consolidated above plus
+      anti-noise discipline per coverage-log to avoid re-litigating
+      the 2026-05-23 morning / afternoon supply-chain coverage. The
+      Weekly Synthesis (Sunday 10:00 EDT) inherits the supply-chain
+      ecosystem-controls vs. campaign-rate question flagged in the
+      2026-05-23 afternoon brief as a Synthesis question.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention. Regrade only if a fresh in-window item surfaces
+      retroactively (e.g., late-publishing Sunday A-grade vendor
+      research, MSRC Exchange CVE-2026-42897 GA-patch publication,
+      CISA KEV new addition, or first-party Splunk hit on any
+      tracked IOC) before the 16:00 afternoon brief grading pass.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 26
-  most_recent_run: afternoon-20260523-160000
-  most_recent_run_rejections: 2
-  most_recent_run_promotions: 1
-  most_recent_run_promotion_ids:
-    - finding-2026-05-23-0005    # Packagist 8-package supply-chain attack (B2; cross-ecosystem package.json postinstall injection; GitHub-hosted Linux payload gvfsd-network; UNATTRIBUTED per Socket; Splunk first-party check executed — zero genuine hits)
+  total_rejections: 27
+  most_recent_run: morning-20260524-080000
+  most_recent_run_rejections: 1
+  most_recent_run_promotions: 0
+  most_recent_run_promotion_ids: []
   most_recent_run_rejection_ids:
+    - reject-2026-05-24-0001    # Canonical Sunday-morning clean-sweep disposition record (zero in-window items; 5 carry-forwards are brief-composition material; Hard Rule 2 on UNC1151/Ababil/APTIRAN/CyberAveng3rs preserved; collector disposition verified correct)
+
+  prior_most_recent_run_legacy: afternoon-20260523-160000
+  prior_most_recent_run_rejections: 2
+  prior_most_recent_run_promotions: 1
+  prior_most_recent_run_promotion_ids:
+    - finding-2026-05-23-0005    # Packagist 8-package supply-chain attack (B2; cross-ecosystem package.json postinstall injection; GitHub-hosted Linux payload gvfsd-network; UNATTRIBUTED per Socket; Splunk first-party check executed — zero genuine hits)
+  prior_most_recent_run_rejection_ids:
     - reject-2026-05-23-0003    # THN npm staged-publishing 2FA-gated controls rollout — defender capability rollout, not finding-eligible event class
     - reject-2026-05-23-0004    # Snyk Laravel-Lang first-party advisory + VT detection escalation 3→10 — corroboration uplift to finding-2026-05-23-0001, briefer update block
 

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-23T16:00:00-04:00
+last_updated: 2026-05-24T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -16244,6 +16244,324 @@ entries:
       AM-sweep carries forward — no new PM query run, silence
       stands. Indexes remain dormant pattern across 60+ consecutive
       sweeps.
+
+  - id: 2026-05-24-am-001
+    covered_in: [2026-05-24-morning]
+    headline: "KEV deadline calendar — CVE-2026-9082 Drupal Core SQLi (due 2026-05-27, T-3) + CVE-2026-42897 Exchange OWA XSS (due 2026-05-29, T-5); DIB/CMMC partner-flow action-item"
+    topic_tags:
+      - kev-deadline-calendar
+      - cve-2026-9082-drupal-core-sqli-postgresql-anonymous-attacker-path
+      - cve-2026-42897-exchange-owa-xss-esu-only-mitigation-path
+      - dib-cmmc-partner-flow-inherits-fceb-compliance-timeline
+      - drupal-prime-direct-exposure-low-sub-tier-contractor-portal-focus
+      - exchange-no-msrc-ga-patch-msrc-blog-403-pattern-continues
+      - exchange-active-exploitation-single-source-veto-on-msrc-holds-mandiant-volexity-unit42-mstic-crowdstrike-silent
+    related_actors: []
+    related_vulns: [CVE-2026-9082, CVE-2026-42897]
+    related_campaigns: []
+    finding_ids: []
+    carry_forward_ids:
+      - cve-2026-9082-drupal-kev-due-date-t-3
+      - cve-2026-42897-exchange-kev-due-date-t-5
+    digraph: A1
+    wep: very_likely
+    wep_split:
+      kev_deadlines_as_stated: very_likely
+      exchange_active_exploitation_corroboration: do_not_predict
+    single_source_veto_applied: true
+    single_source_veto_scope: exchange_active_exploitation_corroboration_msrc_originating_tag_only
+    resurface_if:
+      - escalation_to_exploitation
+      - new_victims_confirmed
+      - msrc_ga_patch_released_for_cve_2026_42897
+      - first_party_ioc_hit
+      - deadline_passes_unpatched_in_fceb_or_dib_partner_flow
+      - independent_ir_firm_telemetry_corroborates_exchange_exploitation
+    first_covered: 2026-05-24
+    last_covered: 2026-05-24
+    retraction: null
+    test: false
+    notes: |
+      Status/deadline awareness item on the morning brief. Anchors the
+      week's KEV calendar at the top of Vulnerabilities for DIB/CMMC
+      partner-flow estates inheriting FCEB compliance through Tier-1/2
+      contract flow-downs. CVE-2026-9082 substance NOT re-litigated
+      (mechanism, CVSS, patch availability all stated as concise
+      reminders, not new analysis). CVE-2026-42897 substance NOT
+      re-litigated (VT-008 profile carries the full mechanism and
+      mitigation guidance). Hard Rule 2 on Exchange active-
+      exploitation single-source veto preserved: MSRC originating
+      tag only; Mandiant, Volexity, Unit 42, MSTIC TI blog, and
+      CrowdStrike continue silent on corroborating telemetry through
+      this sweep.
+
+  - id: 2026-05-24-am-002
+    covered_in: [2026-05-24-morning]
+    headline: "UPDATE: UNC1151 / Ghostwriter — third multi-A-grade surface in 14 days; CERT-UA OYSTERFRESH Prometheus coverage (relayed by The Hacker News 2026-05-22, pre-window); /new-actor candidacy reinforced; NOT in _roster.yaml"
+    topic_tags:
+      - unc1151-ghostwriter-frostyneighbor-cluster
+      - cert-ua-oysterfresh-prometheus-campaign
+      - third-multi-a-grade-surface-in-14-days
+      - new-actor-candidacy-reinforced
+      - belarus-aligned-per-cert-ua-and-mandiant-historical-attribution
+      - hard-rule-2-binding-no-archimedes-originated-cluster-designation
+      - pre-window-2026-05-22-thn-relay
+      - monitoring-only-no-a-and-d-prime-direct-exposure
+    related_actors:
+      - actor_id: null
+        actor_name: "UNC1151 / Ghostwriter / FrostyNeighbor"
+        archimedes_treatment: monitoring_only_not_in_roster_yaml_new_actor_candidacy_reinforced_at_operator_discretion
+    related_vulns: []
+    related_campaigns: [cert-ua-oysterfresh-prometheus-2026]
+    finding_ids: []
+    carry_forward_ids:
+      - ghostwriter-unc1151-oysterfresh-prometheus-cert-ua
+    digraph: B2
+    wep: likely
+    wep_split:
+      cert_ua_attribution_layer: likely
+      cluster_identity_collapse_to_belarus_confident_attribution: do_not_predict
+    single_source_veto_applied: true
+    single_source_veto_scope: cluster_identity_collapse_thn_relay_one_evidence_basis_cert_ua_primary_not_directly_retrieved
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - first_party_ioc_hit
+      - independent_corroboration
+      - operator_invokes_new_actor_for_unc1151
+      - a_and_d_prime_named_as_victim
+    first_covered: 2026-05-14
+    last_covered: 2026-05-24
+    retraction: null
+    test: false
+    notes: |
+      Resurface basis met: third multi-A-grade surface in 14 days for
+      UNC1151 / Ghostwriter / FrostyNeighbor cluster (first surface
+      2026-05-14 morning via ESET FrostyNeighbor finding; intervening
+      sentinels carry forward); >7 days elapsed AND pattern still
+      evolving. UPDATE flag applied in Actor Activity section.
+      Monitoring-only treatment — no graded finding generated this
+      sweep (THN coverage pre-window; CERT-UA primary not directly
+      retrieved). Hard Rule 2 binding preserved: CERT-UA and Mandiant
+      historical reporting attribute Belarus-aligned; Archimedes
+      does not originate cluster designation, does not collapse to
+      confident Belarus attribution, does not propagate UNC1151 to
+      any tracked actor in _roster.yaml. /new-actor candidacy
+      reinforced at operator discretion; not auto-promoted.
+
+  - id: 2026-05-24-am-003
+    covered_in: [2026-05-24-morning]
+    headline: "Anthropic Project Glasswing / Claude Mythos — AI-assisted vulnerability discovery research; 10,000+ findings, 1,094 high/critical, CVE-2026-5194 wolfSSL already-patched-via-program; monitoring (pre-window)"
+    topic_tags:
+      - ai-vulnerability-discovery-methodology
+      - anthropic-project-glasswing-claude-mythos
+      - 10000-plus-findings-1094-high-critical
+      - cve-2026-5194-wolfssl-already-patched-via-program-not-zero-day
+      - research-methodology-disclosure-not-actor-attributed
+      - not-actively-exploited-not-a-and-d-specific
+      - weekly-synthesis-consolidation-with-rapid7-q1-and-greynoise-119k-ips
+      - pre-window-2026-05-23-thn-relay
+    related_actors: []
+    related_vulns: [CVE-2026-5194]
+    related_campaigns: []
+    finding_ids: []
+    carry_forward_ids:
+      - anthropic-project-glasswing-claude-mythos-ai
+    digraph: C3
+    wep: roughly_even_chance
+    wep_split:
+      program_disclosed_counts: roughly_even_chance
+      ai_vuln_discovery_class_durability_signal: do_not_predict
+    single_source_veto_applied: true
+    single_source_veto_scope: thn_relay_of_anthropic_self_disclosure_one_evidence_basis_no_independent_a_b_grade_vendor_corroboration
+    resurface_if:
+      - independent_vendor_replicates_methodology
+      - additional_high_critical_cves_disclosed_via_program
+      - active_exploitation_emerges_for_program_disclosed_cve
+      - a_and_d_specific_finding_disclosed_via_program
+    first_covered: 2026-05-24
+    last_covered: 2026-05-24
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-only in Other Signal. Slots into running
+      AI-vulnerability-discovery thread alongside Rapid7 Q1
+      vulnerability-vs-social-engineering finding (2026-05-21
+      morning) and GreyNoise 119k IPs blocklist coverage analysis
+      (2026-05-22 morning). Weekly Synthesis (Sunday 10:00 EDT,
+      T+2h from this brief) is the natural surface to consolidate
+      the three-item thread into a research-methodology block.
+      Direct quote used (13 words, single source, within 15-word
+      limit and one-quote-per-source rule): "already identified
+      and patched through the Glasswing program, not as a zero-day."
+
+  - id: 2026-05-24-am-brief-meta
+    covered_in: [2026-05-24-morning]
+    brief_file: threats/briefs/2026-05-24-morning.md
+    headline: "2026-05-24 Sunday morning brief meta — quiet-window posture (0 net-new graded findings) + 2 KEV deadline action items (CVE-2026-9082 T-3, CVE-2026-42897 T-5) + UNC1151 monitoring UPDATE + Glasswing AI-vuln-discovery monitoring + Iran Cyber Watch awareness-only retrospective context; standing sections both present; pre-flight 13/13 passed; word count 612 in 400-800 target"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - sunday-quiet-window-posture
+      - zero-net-new-graded-findings
+      - two-kev-deadline-action-items-cve-2026-9082-t-3-cve-2026-42897-t-5
+      - unc1151-monitoring-update-third-multi-a-grade-surface-in-14-days
+      - glasswing-claude-mythos-ai-vuln-discovery-monitoring
+      - iran-cyber-watch-awareness-only-fdd-crs-retrospective-context
+      - hard-rule-2-load-bearing-unc1151-no-cluster-collapse-no-belarus-confident-attribution
+      - hard-rule-2-load-bearing-iran-ababil-aptiran-cyberavengers-not-in-roster-no-cross-walk
+      - standing-sections-both-present-with-silent-day-plus-awareness-context
+      - lead-with-kev-deadline-calendar-not-quiet-posture-padding
+      - pre-flight-13-of-13-passed-first-iteration
+      - word-count-612-in-target-range
+      - sunday-weekly-synthesis-publishes-t-plus-2h-10-00-edt
+    related_actors:
+      - actor_name: "UNC1151 / Ghostwriter / FrostyNeighbor"
+        archimedes_treatment: monitoring_update_actor_activity_section_not_in_roster_yaml
+    related_vulns:
+      - cve: CVE-2026-9082
+        role: kev_deadline_action_item_t_minus_3
+      - cve: CVE-2026-42897
+        role: kev_deadline_action_item_t_minus_5
+      - cve: CVE-2026-5194
+        role: glasswing_program_disclosed_already_patched_other_signal_monitoring
+    related_campaigns: [cert-ua-oysterfresh-prometheus-2026]
+    finding_ids: []
+    cross_referenced_finding_ids: []
+    carry_forward_ids:
+      - ghostwriter-unc1151-oysterfresh-prometheus-cert-ua
+      - anthropic-project-glasswing-claude-mythos-ai
+      - cve-2026-9082-drupal-kev-due-date-t-3
+      - cve-2026-42897-exchange-kev-due-date-t-5
+      - iran-cyber-watch-standing-section-fdd-crs-retrospective-context
+    absorbs_flashes: []
+    flash_disposition_note: |
+      Three overnight FLASH sentinels (18:00 commit c9bad57, 00:00
+      commit 7d291b6, 06:00 commit ae4d3de) all clean — no FLASH
+      findings to absorb or cross-reference. Morning brief documents
+      the quiet sweep honestly (per 2026-05-03 / 2026-05-04 quiet-
+      window-posture precedent) rather than padding or skipping the
+      cadence.
+    pre_flight_result: passed_13_of_13
+    pre_flight_notes: |
+      Layer 1 body word count: 612 (target 400-800; well-centered).
+      Layer 2 Discord Summary: ~227 words, estimated ~1680 chars
+      (under 1900 ceiling).
+
+      Hard Rule 6 (quote discipline): one direct quote across the
+      brief (Glasswing item, 13 words, single source via THN relay
+      of Anthropic). Within both 15-word and one-per-source limits.
+
+      Hard Rule 2 (no attribution origination): three load-bearing
+      framings preserved:
+      (1) UNC1151 / Ghostwriter: CERT-UA and Mandiant historical
+          reporting attribute Belarus-aligned; Archimedes does not
+          originate cluster designation, does not collapse to
+          confident Belarus attribution, does not propagate UNC1151
+          to any tracked actor in _roster.yaml.
+      (2) Iran Cyber Watch awareness context: Ababil-of-Minab,
+          APTIRAN, CyberAveng3rs are NOT in _roster.yaml; Archimedes
+          does not originate any cross-walk to tracked Iranian actors
+          (UNC1549, Charming Kitten, Handala Hack, MuddyWater).
+          Retrospective survey context only — no in-environment hunt
+          artifacts, no graded finding.
+      (3) Glasswing: research/methodology disclosure not propagated
+          to any actor; Anthropic self-disclosure framing preserved
+          as program-disclosed not-zero-day; THN-relay single-source
+          veto applied.
+
+      Hard Rule 8 (Splunk first-party priority): 52nd consecutive
+      dormant non-self-telemetry sweep documented in Other Signal.
+      Targeted IOC keyword sweep across 11 high-priority tokens
+      returned six hits — all Archimedes pipeline self-references.
+      Silence is not disconfirming framing preserved.
+
+      Standing sections both present:
+      - Sector Focus A&D: silent-day text + references to yesterday's
+        Kosmos 2610-2613 orbital-proximity event (without re-
+        litigation).
+      - Iran Cyber Watch: silent-day text on tracked actors +
+        awareness-only retrospective context from two Industrial
+        Cyber 2026-05-22 pieces (FDD + CRS R46974) with explicit
+        Hard Rule 2 binding language.
+
+      Anti-repetition discipline:
+      - Yesterday's two PHP/Composer items (Laravel-Lang UPDATE +
+        Packagist 8-pkg) referenced in Active Threats as "stand
+        without development; hunt guidance unchanged" — not re-
+        litigated.
+      - 2026-05-23 morning Russian Kosmos orbital-proximity event
+        referenced in Sector Focus A&D silent-day text — not
+        re-litigated.
+      - UNC1151 / Ghostwriter resurface basis met (>7 days since
+        last mention 2026-05-14; third multi-A-grade surface in
+        14 days; pattern still evolving). UPDATE flag applied.
+      - CVE-2026-9082 substance NOT re-litigated; deadline-status
+        awareness only.
+      - CVE-2026-42897 substance NOT re-litigated; deadline-status
+        awareness + MSRC GA-patch and IR-firm corroboration silence
+        observation only.
+
+      No FLASH-worthy finding emerged from this morning's collection
+      window:
+        - UNC1151 / Ghostwriter: pre-window AND Trigger 2 fails on
+          tracked-actor-attribution AND Hard Rule 2 prevents novel
+          attribution origination.
+        - Glasswing: C3 below B2 FLASH threshold AND research/
+          methodology class AND not actively-exploited.
+        - KEV-deadline awareness: status-tracking class, not FLASH
+          trigger.
+        - Iran Cyber Watch retrospective context: pre-window AND
+          retrospective survey AND no tracked-actor-attribution AND
+          no in-environment hunt artifacts.
+
+      Discord Summary Layer 2:
+      - Greeting line anchors time + date.
+      - Skips empty standing sections (Active Threats stand-without-
+        development line, Sector Focus A&D silent-day text, Iran
+        Cyber Watch silent-day text + awareness context — none of
+        the Layer 1 silent-day sections promoted to Layer 2 per
+        spec).
+      - Four bullets total: two KEV deadlines under Vulnerabilities,
+        one UNC1151 UPDATE under Actor Activity, one Glasswing under
+        Other Signal.
+      - All four headlines source-linked. Natural-language dates
+        throughout ("Wednesday May 27," "Friday May 29," "May 22").
+      - Hard Rule 2 framings preserved on UNC1151 ("CERT-UA and
+        Mandiant historical reporting attribute Belarus-aligned;
+        Archimedes does not originate") and on Glasswing single-
+        source framing.
+      - No themed-character voice. No digraph/WEP/finding-id
+        citations in Layer 2.
+    first_covered: 2026-05-24
+    last_covered: 2026-05-24
+    retraction: null
+    test: false
+    notes: |
+      Sunday morning brief. Lead is the two KEV deadlines closing
+      this week (CVE-2026-9082 Drupal T-3 Wednesday, CVE-2026-42897
+      Exchange T-5 Friday) — the durable defender takeaway from a
+      quiet news window. Quiet-window posture acknowledged in lead
+      but not the lead (precedent: 2026-05-03 / 2026-05-04 led with
+      the posture itself; this brief leads with what's actionable
+      THIS WEEK and contextualizes the quiet posture in the body).
+
+      Zero net-new findings; five carry-forwards consumed (UNC1151
+      monitoring UPDATE, Glasswing Other Signal, two KEV deadlines
+      consolidated into one action-item block, Iran Cyber Watch
+      retrospective context as standing-section awareness).
+
+      Weekly Synthesis publishes Sunday 10:00 EDT (T+2h). AI-
+      vulnerability-discovery thread (Glasswing + Rapid7 Q1 +
+      GreyNoise 119k IPs) flagged in Other Signal as Synthesis
+      consolidation candidate. PHP/Composer supply-chain ecosystem-
+      controls-vs-campaign-rate question (flagged in 2026-05-23
+      afternoon brief) also carries forward as a Synthesis question.
+
+      Pre-flight: 13/13 passed on first iteration. Word count 612
+      in 400-800 target range. Discord summary ~227 words,
+      ~1680 chars (under 1900 ceiling).
 
 # ============================================================================
 # Valid resurface_if conditions

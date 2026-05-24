@@ -2482,16 +2482,260 @@ entries:
       CISA KEV new addition, or first-party Splunk hit on any
       tracked IOC) before the 16:00 afternoon brief grading pass.
 
+  - rejection_id: reject-2026-05-24-0002
+    rejected_at: 2026-05-24T16:18:00-04:00
+    grading_run_id: afternoon-20260524-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-24-pm-000-sentinel-pre-brief-sweep
+    cluster_topic: >
+      Canonical Sunday-afternoon PM-sentinel disposition record for the
+      16:00 EDT 2026-05-24 afternoon brief grading pass. Pre-brief
+      collector sentinel (raw-2026-05-24-pm-000-sentinel-pre-brief-sweep)
+      is an internal collection-summary artifact documenting the 8h
+      window 2026-05-24T07:30 → 2026-05-24T15:30 EDT (spanning the
+      12:00 EDT canonical scheduled FLASH clean sentinel — commit
+      d00ba58 — reconciled). One substantive net-new graded-finding-
+      eligible item surfaced in window — Socket's TrapDoor crypto-stealer
+      multi-ecosystem supply-chain campaign disclosure (raw-2026-05-24-
+      pm-001, promoted this run as finding-2026-05-24-0001). The PM
+      sentinel itself contains no external claim being graded — it
+      is the collector's own collection-summary record. Three other
+      in-window items were collector-dispositioned: Ghost CMS
+      CVE-2026-26980 ClickFix campaign (already evaluated by 12:00
+      FLASH sentinel — fails all 6 FLASH triggers — PM brief horizon-
+      scanning carry-forward at most; not raw-signaled separately);
+      Wireshark 4.6.6 release (ISC SANS Didier Stevens 2026-05-24T16:38Z
+      — patches 1 vulnerability and 11 bugs but diary does NOT
+      identify CVE / CVSS / ITW — DISCARDED per Mode 1);
+      BleepingComputer AdGuard ad-blocker deal (2026-05-24T12:09Z —
+      promotional/commerce — DISCARDED). Five non-FLASH carry-forwards
+      for PM brief composition (TrapDoor Supply Chain Watch candidate;
+      Ghost CMS CVE-2026-26980 horizon-scanning; CVE-2026-9082 Drupal
+      KEV deadline T-3 Wednesday; VT-008 Exchange CVE-2026-42897 KEV
+      deadline T-5 Friday; Glasswing AI 2026-05-22 update — Weekly
+      Synthesis already shipped 10:00 EDT). Two source-health
+      observations from collector (mandiant feedburner 23rd consecutive
+      404 cumulative failure_count 21→22; cisco-talos RSS endpoint
+      RECOVERED at blog.talosintelligence.com/rss/ — different path
+      from previously-failing /feeds/posts/default Atom endpoint —
+      failure_count reset 3→0, last_successful_fetch updated, last_error
+      cleared). 53rd consecutive dormant non-self Splunk first-party
+      sweep.
+    rejection_reasons:
+      - sentinel_artifact_not_finding_eligible_event_class
+      - one_substantive_in_window_item_promoted_separately_finding_2026_05_24_0001
+      - in_window_collector_dispositioned_items_already_handled_or_carry_forward_only
+      - kev_deadline_awareness_carry_forwards_belong_in_brief_not_new_finding
+      - source_health_observations_runtime_fields_only_no_finding_event_class
+    sources:
+      - source_yaml_id: archimedes-internal
+        grade: A
+        role: Internal Archimedes collector sentinel record (run_id pre-brief-20260524-153000); 8h sweep window reconciled with the 12:00 EDT canonical scheduled FLASH clean sentinel (commit d00ba58); documents collector disposition only, no external source claim being graded
+      - source_yaml_id: cisa-kev
+        grade: A
+        role: KEV catalog version 2026.05.22 UNCHANGED across the 8h window (45h+ since CVE-2026-9082 Drupal added 2026-05-22 18:00 EDT); zero new KEV entries this sweep
+      - source_yaml_id: cisa-advisories
+        grade: A
+        role: all.xml 200 OK, 30 items in feed, 0 in 8h since-filter window — Sunday-afternoon quiet confirmed
+      - source_yaml_id: nvd
+        grade: A
+        role: CRITICAL-window totalResults=0; HIGH-window totalResults=1 with vulnerabilities array empty on probe; pattern consistent with NIST background metadata-refresh on prior-disclosure CVEs
+      - source_yaml_id: bleepingcomputer
+        grade: A
+        role: One in-window item — Ghost CMS CVE-2026-26980 ClickFix campaign (Bill Toulas 2026-05-24T14:12:32Z) — already evaluated by 12:00 FLASH sentinel, fails all 6 triggers; AdGuard ad-blocker deal item (12:09Z) discarded as promotional/commerce
+      - source_yaml_id: isc-sans
+        grade: B
+        role: One in-window item — Wireshark 4.6.6 release (Didier Stevens 2026-05-24T16:38:21Z) — patches 1 vulnerability and 11 bugs but no CVE / CVSS / ITW disclosed in diary entry; Mode-1 patch-availability-without-severity discard
+      - source_yaml_id: socket
+        grade: B
+        role: One in-window net-new graded-finding-eligible item — TrapDoor multi-ecosystem supply-chain campaign disclosure (Socket Research Team byline 2026-05-24T13:32:20Z) — raw-signaled as raw-2026-05-24-pm-001 and PROMOTED this run as finding-2026-05-24-0001 (NOT rejected — separate disposition)
+      - source_yaml_id: x-vxunderground
+        grade: C
+        role: One in-window tweet (2026-05-24T15:45:13Z) relaying Socket TrapDoor disclosure — pure relay, no independent telemetry; recorded in finding-2026-05-24-0001 enrichment block as non-independent
+      - source_yaml_id: socket-twitter
+        grade: B
+        role: Two posts — in-window announcement (2026-05-24T19:05:53Z = 15:05 EDT) and post-window follow-up (2026-05-24T21:29 UTC = 17:29 EDT) with additional GitHub-activity findings on modelcontextprotocol / gemini-cli attempted-injection; vendor-own-channel extension of Socket blog primary, not independent
+      - source_yaml_id: cisco-talos
+        grade: A
+        role: blog.talosintelligence.com/rss/ returned 200 OK this sweep — RSS endpoint RECOVERY at a different path from the previously-failing /feeds/posts/default Atom endpoint; 15 items in feed; top-5 dated 2026-05-21 / 05-19 / 05-19 / 05-14 / 05-14 (all pre-window); collector applied failure_count reset 3→0 and cleared last_error
+      - source_yaml_id: splunk-archimedes
+        grade: A
+        role: tstats query returned 27 archimedes-index events (operation=10 + scheduler=17 self-telemetry only); zero defenseclaw_local events in -24h = 53rd consecutive dormant non-self sweep; targeted IOC keyword sweep across 15 high-priority tokens returned 5 hits — all Archimedes pipeline self-references; Hard Rule 8 framing — silence is not disconfirming
+    would_be_digraph: N/A_no_external_claim_being_graded_sentinel_artifact_disposition_record
+    rejection_detail: >
+      This rejection entry is the canonical Sunday-afternoon PM-sentinel
+      disposition record for the 16:00 EDT 2026-05-24 afternoon brief
+      grading pass. The pre-brief collector sentinel
+      (raw-2026-05-24-pm-000-sentinel-pre-brief-sweep) is an internal
+      collection-summary artifact — sentinel: true with no external
+      source claim being graded — documenting the 8h window
+      2026-05-24T07:30 → 2026-05-24T15:30 EDT (spanning the 12:00 EDT
+      canonical scheduled FLASH clean sentinel — commit d00ba58 —
+      reconciled). The grader's disposition: the substantive raw-signal
+      this sweep cycle is raw-2026-05-24-pm-001 (TrapDoor multi-
+      ecosystem supply-chain campaign), graded and PROMOTED separately
+      as finding-2026-05-24-0001; the PM sentinel itself is rejected
+      as a sentinel-class artifact (not a finding-eligible event class).
+
+      Verification of collector disposition (Mode 1 procedure step 2):
+
+      (1) In-window items total 4 across all surveyed sources.
+
+      (2) One in-window item is the substantive net-new graded-finding-
+          eligible candidate: Socket TrapDoor multi-ecosystem supply-
+          chain campaign disclosure (Socket Research Team byline
+          2026-05-24T13:32:20Z = 09:32 EDT IN WINDOW; published to
+          socket.dev/blog as `trapdoor-crypto-stealer-npm-pypi-crates`).
+          Raw-signaled as raw-2026-05-24-pm-001 and PROMOTED this run
+          as finding-2026-05-24-0001 (B2 digraph, single-source veto
+          applied, WEP ceiling at "likely", analyst_review_required
+          true, red_team_review_required false). Separate disposition
+          from this rejection entry.
+
+      (3) One in-window item is corpus-covered via the 12:00 EDT
+          canonical scheduled FLASH sentinel (commit d00ba58):
+          Ghost CMS CVE-2026-26980 ClickFix campaign (BleepingComputer
+          Bill Toulas 2026-05-24T14:12:32Z; source-chain XLab/Qianxin
+          + SentinelOne). 700+ domains compromised across universities
+          (Harvard / Oxford / Auburn) / DuckDuckGo / AI-SaaS / media /
+          fintech / blogs. Patched 2026-02-19 in Ghost 6.19.1. NO
+          A&D-named victim; NO tracked-actor named (XLab + SentinelOne
+          stop at "two distinct activity clusters"). Already evaluated
+          by 12:00 FLASH sentinel — fails all 6 triggers (T1: CVE
+          patched 3 months ago in 6.19.1, not fresh; T2: no tracked
+          actor named, vendor reporting stops at "two distinct activity
+          clusters"; T3: defenseclaw_local dormant; T4: no tracked
+          actor; T5: 700+ victim domains across non-A&D sectors; T6:
+          patched). Carry-forward to PM brief horizon-scanning block
+          at most — NOT raw-signaled separately this sweep (carry-
+          forward via 12:00 FLASH sentinel record). Correct collector
+          disposition.
+
+      (4) Two in-window items are collector-filtered:
+            - Wireshark 4.6.6 release (ISC SANS Didier Stevens
+              2026-05-24T16:38:21Z): patches 1 vulnerability and 11
+              bugs and updates Npcap to 1.88, but the diary entry
+              does NOT identify CVE number, CVSS severity, or
+              in-the-wild exploitation. Patch-availability disclosure
+              without severity / actor / exploitation does not meet
+              graded-finding-eligibility threshold. DISCARDED per
+              Mode 1 procedure. Correct collector disposition.
+            - BleepingComputer AdGuard ad-blocker deal (2026-05-24T
+              12:09 UTC): promotional/commerce, not threat-intel.
+              DISCARDED. Correct collector disposition.
+
+      (5) Five carry-forwards consolidated by collector for PM brief
+          composition (briefer-handoff material, NOT graded findings):
+            (a) TrapDoor multi-ecosystem supply-chain campaign —
+                Supply Chain Watch standing-section candidate; graded
+                and promoted separately as finding-2026-05-24-0001.
+            (b) Ghost CMS CVE-2026-26980 ClickFix campaign —
+                horizon-scanning carry-forward (per (3) above).
+            (c) CVE-2026-9082 Drupal KEV deadline T-3 (Wednesday
+                2026-05-27) — topic anti-noise locked; KEV-deadline
+                action-item reinforcement material for PM brief; not
+                a new event class.
+            (d) VT-008 Exchange CVE-2026-42897 KEV deadline T-5
+                (Friday 2026-05-29) — no MSRC GA patch this window
+                (MSRC blog surface continues template-only / 403
+                rendering pattern); ESU-only patch path + EEMS/EOMT
+                mitigation continues; KEV-deadline action-item block
+                material; not a new event class.
+            (e) Glasswing AI / Anthropic 2026-05-22 update — Weekly
+                Synthesis (Sunday 10:00 EDT, T-3.5h pre-PM-sweep)
+                was the canonical consolidation surface today; PM
+                brief reference at most.
+
+      Hard Rules compliance verified (per collector sentinel record
+      and grader independent check):
+        - Rule 2 (no origination): TrapDoor preserved UNATTRIBUTED
+          per Socket explicit decline (specifically NOT TeamPCP /
+          Shai-Hulud / Mini Shai-Hulud despite ecosystem-supply-
+          chain operational adjacency). The "Universal AI Agent
+          Extraction Framework" self-description preserved verbatim
+          as attacker-own framing embedded in trap-core.js payload;
+          NOT propagated as a Socket attribution and NOT cross-walked
+          to any tracked actor in _roster.yaml. Ghost CMS CVE-2026-
+          26980 preserved as XLab + SentinelOne "two distinct activity
+          clusters" with NO tracked-actor cross-walk.
+        - Rule 3 (no exploitation content): no PoC code, no payloads,
+          no exploit guides referenced; TrapDoor trap-core.js
+          filename + byte size + XOR key disclosed as published-
+          Socket-IOCs only; all CVE references descriptive.
+        - Rule 4 (passive only): no active scans, SpiderFoot not
+          invoked, authorized-targets.yaml empty.
+        - Rule 6 (15-word quote limit): only verbatim phrase
+          preserved is the attacker-self-described 6-word "Universal
+          AI Agent Extraction Framework" embedded in TrapDoor payload
+          (Socket-reported attacker-own framing, used once).
+        - Rule 7 (credentials radioactive): no credential exposure
+          surfaced; TrapDoor disclosure scope-describes credential
+          targeting without naming any victim credentials.
+        - Rule 8 (Splunk first-party priority): defenseclaw_local 0
+          events in -24h = 53rd consecutive dormant non-self sweep;
+          targeted IOC keyword sweep across 15 high-priority tokens
+          returned 5 hits — all Archimedes pipeline self-references;
+          grader-executed full TrapDoor IOC set query over -30d also
+          returned 0 events; silence is not disconfirming per
+          established cadence.
+
+      Source-health observations (collector-applied, runtime-only):
+        - mandiant feedburner 23rd consecutive 404; failure_count
+          cumulative 21→22; status held healthy per long-standing
+          operator policy; cloud.google.com/blog/topics/threat-
+          intelligence remains productive index endpoint; operator-
+          set notes preserved verbatim.
+        - cisco-talos RECOVERY: blog.talosintelligence.com/rss/
+          returned 200 OK this sweep (15 items in feed; top-5 dated
+          2026-05-21 / 05-19 / 05-19 / 05-14 / 05-14 — all pre-window).
+          This is a DIFFERENT endpoint path from the previously-
+          failing /feeds/posts/default Atom endpoint. failure_count
+          RESET 3→0; status remains healthy; last_error CLEARED;
+          last_successful_fetch UPDATED to 2026-05-24T15:30:00-04:00;
+          operator-set notes preserved verbatim. Operator action:
+          consider updating source-health notes to formally document
+          /rss/ as the working endpoint and /feeds/posts/default
+          Atom endpoint as deprecated.
+        - Additional observations from collector (sub-threshold for
+          source-health entry creation but flagged): F5 my.f5.com/
+          manage/s/article-search-product 404 (fourth sweep
+          observation — flagging for first-entry consideration on
+          next pre-brief); ReliaQuest blog persistent loading-
+          placeholder DOM pattern continues; SonicWall PSIRT portal
+          returned navigation-template-only DOM without advisory data
+          (CVE-2024-12802 status check deferred).
+
+      Briefer disposition: the 16:00 PM brief composes against the
+      standing sections (A&D Sector Focus; Iran Cyber Watch; Supply
+      Chain Watch — candidate-active given TrapDoor + Packagist
+      8-pkg + Laravel-Lang accumulation across 14 days) using the
+      one promoted finding this run (finding-2026-05-24-0001
+      TrapDoor) plus the carry-forwards consolidated above. Anti-
+      noise discipline per coverage-log applies to KEV-deadline
+      reinforcement (already covered in 08:00 morning brief; PM
+      reinforces without re-litigation).
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 27
-  most_recent_run: morning-20260524-080000
+  total_rejections: 28
+  most_recent_run: afternoon-20260524-160000
   most_recent_run_rejections: 1
-  most_recent_run_promotions: 0
-  most_recent_run_promotion_ids: []
+  most_recent_run_promotions: 1
+  most_recent_run_promotion_ids:
+    - finding-2026-05-24-0001    # TrapDoor multi-ecosystem (npm + PyPI + Crates.io) crypto-stealer supply-chain campaign — Socket originating research B2 single-source veto applied; WEP ceiling "likely"; UNATTRIBUTED per Socket explicit decline (specifically NOT TeamPCP / Shai-Hulud / Mini Shai-Hulud); 34 packages / 384 versions / first Crates.io surface in corpus; novel .cursorrules + CLAUDE.md AI-agent-config persistence vector; crypto-developer-narrow target with no A&D-direct victim; analyst_review_required true; red_team_review_required false; Splunk first-party check executed (0 hits on full IOC set over -30d)
   most_recent_run_rejection_ids:
+    - reject-2026-05-24-0002    # PM-sentinel canonical disposition record (one substantive in-window item promoted separately as finding-2026-05-24-0001; three other in-window items collector-dispositioned: Ghost CMS CVE-2026-26980 ClickFix already evaluated by 12:00 FLASH sentinel fails all 6 triggers carry-forward only; Wireshark 4.6.6 patch-availability without CVE/severity/ITW discarded; BleepingComputer AdGuard ad-blocker deal promotional/commerce discarded; collector disposition verified correct)
+
+  prior_most_recent_run_legacy: morning-20260524-080000
+  prior_most_recent_run_rejections: 1
+  prior_most_recent_run_promotions: 0
+  prior_most_recent_run_promotion_ids: []
+  prior_most_recent_run_rejection_ids:
     - reject-2026-05-24-0001    # Canonical Sunday-morning clean-sweep disposition record (zero in-window items; 5 carry-forwards are brief-composition material; Hard Rule 2 on UNC1151/Ababil/APTIRAN/CyberAveng3rs preserved; collector disposition verified correct)
 
   prior_most_recent_run_legacy: afternoon-20260523-160000

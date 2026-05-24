@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-24T08:00:00-04:00
+last_updated: 2026-05-24T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -16562,6 +16562,357 @@ entries:
       Pre-flight: 13/13 passed on first iteration. Word count 612
       in 400-800 target range. Discord summary ~227 words,
       ~1680 chars (under 1900 ceiling).
+
+  - id: 2026-05-24-pm-001
+    covered_in: [2026-05-24-afternoon]
+    headline: "TrapDoor multi-ecosystem supply-chain campaign (npm + PyPI + Crates.io, 34 packages / 384 versions, novel `.cursorrules` + `CLAUDE.md` AI-agent-config persistence vector, crypto/DeFi/AI/security-developer targeting, UNATTRIBUTED per Socket explicit decline including specifically NOT TeamPCP / Shai-Hulud / Mini Shai-Hulud)"
+    topic_tags:
+      - supply-chain
+      - trapdoor
+      - multi-ecosystem-npm-pypi-crates-io
+      - first-crates-io-surface-in-corpus-this-year
+      - cursorrules-claude-md-ai-agent-config-persistence-novel-vector-in-corpus
+      - crypto-defi-solana-sui-aptos-move-language-ai-security-developer-targeting
+      - unattributed-per-socket-explicit-decline
+      - specifically-not-teampcp-shai-hulud-mini-shai-hulud
+      - hard-rule-2-binding-no-cross-walk-to-tracked-roster-actors
+      - hard-rule-2-attacker-self-described-universal-ai-agent-extraction-framework-preserved-verbatim
+      - socket-sole-originating-research-single-source-veto-on-forward-claims
+      - github-pages-dead-drop-ddjidd564-github-io
+      - trap-core-js-xor-obfuscated-cargo-build-helper-2026-p-2024-001
+      - structural-indirect-a-and-d-exposure-only-no-prime-named-as-victim
+      - fifth-supply-chain-campaign-in-14-days-third-socket-anchored-in-8-days
+      - researcher-attention-effect-caveat-inherited-from-2026-05-23-pm-ach
+      - post-window-modelcontextprotocol-gemini-cli-attempted-injection-claim-deferred-next-sweep-verification
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - trapdoor-multi-ecosystem-supply-chain-2026
+    finding_ids:
+      - finding-2026-05-24-0001
+    digraph: B2
+    wep: likely
+    wep_split:
+      thirty_four_packages_three_ecosystem_named_list: likely
+      384_versions_artifacts_scope_count: likely
+      multi_ecosystem_simultaneous_publication_mechanic: likely
+      github_pages_dead_drop_infrastructure: likely
+      trap_core_js_xor_obfuscated_payload: likely
+      cursorrules_claude_md_ai_agent_config_persistence: likely
+      credential_exfil_scope: likely
+      crypto_defi_solana_sui_aptos_developer_targeting: likely
+      first_three_ecosystem_simultaneous_publication_corpus_novelty: roughly_even_chance
+      actor_attribution: do_not_predict
+      campaign_continuity_or_actor_pivot: likely
+      ad_prime_supply_chain_exposure: roughly_even_chance
+      modelcontextprotocol_gemini_cli_attempted_injection: do_not_predict
+    single_source_veto_applied: true
+    single_source_veto_scope: |
+      Socket is sole originating-research source; vx-underground is pure relay;
+      @SocketSecurity X account is vendor-own-channel extension. WEP ceiling caps
+      at "likely" on novelty / scope / continuity / attribution / post-window
+      attempted-injection claim layers.
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - patch_released_for_associated_cve
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - additional_compromised_packages_disclosed
+      - new_iocs_published
+      - independent_corroboration            # Snyk, Wiz, Aikido, StepSecurity, SafeDep, Ox Security, Upwind, Checkmarx, Unit 42 publishing independent analysis on the 34-package three-ecosystem cluster
+      - registry_side_official_statement     # npm / PyPI / Crates.io / GitHub on ddjidd564 account-disable status
+      - post_window_attempted_injection_claim_substantiated  # next-sweep verification of modelcontextprotocol / gemini-cli upstream attempted-injection claim
+      - a_and_d_prime_named_as_victim
+    first_covered: 2026-05-24
+    last_covered: 2026-05-24
+    retraction: null
+    test: false
+    notes: |
+      Afternoon graded finding. Lead-with-defender-takeaway per analyst
+      brief-framing recommendation: `.cursorrules` + `CLAUDE.md`
+      persistence vector is actionable for any Cursor / Claude Code user
+      regardless of attribution. Socket's UNATTRIBUTED-and-specifically-
+      NOT-TeamPCP/Shai-Hulud/Mini-Shai-Hulud framing preserved verbatim
+      per Hard Rule 2. Novelty framings hedged as corpus-bounded
+      (first-in-Archimedes-corpus-this-year, NOT first-in-the-wild).
+      A&D exposure framed as structural-indirect only (no A&D prime
+      named as victim; sub-tier pathway runs through agentic-IDE-using
+      developers).
+
+      Post-window Socket-own X follow-up (17:29 EDT) referencing
+      attempted-injection of `.cursorrules` / `CLAUDE.md` into
+      `modelcontextprotocol` and `gemini-cli` upstream repos NOT
+      included in this brief per analyst flag. Deferred to 2026-05-25
+      morning collection for substantiation via commit URLs, PR/issue
+      links, or upstream-repo-side disclosure.
+
+      Researcher-attention-effect caveat inherited from
+      2026-05-23-pm-002 (Packagist 8-pkg) ACH and surfaced in Other
+      Signal: TrapDoor is the third Socket-anchored supply-chain
+      campaign within 8 days (Laravel-Lang Socket+Aikido 2026-05-22-23;
+      Packagist 8-pkg Socket 2026-05-23; TrapDoor Socket 2026-05-24).
+      Independent A/B-grade vendor entry on TrapDoor within 48h is the
+      natural test of whether the density reflects underlying threat-
+      landscape tempo or Socket's analytic concentration.
+
+      Hard Rule 8 first-party Splunk priority: grader query across
+      both indexes over -30d for the full 9-IOC TrapDoor set returned
+      zero genuine hits. Both indexes remain in dormant non-self
+      sweep posture (53rd consecutive dormant sweep per PM sentinel
+      raw-2026-05-24-pm-000). Silence is not disconfirming framing
+      preserved in Other Signal.
+
+  - id: 2026-05-24-pm-002
+    covered_in: [2026-05-24-afternoon]
+    headline: "KEV deadline countdown reinforcement — CVE-2026-9082 Drupal T-3 (~63h to Wednesday May 27); CVE-2026-42897 Exchange OWA XSS T-5 (~111h to Friday May 29); substance NOT re-litigated"
+    topic_tags:
+      - kev-deadline-countdown-reinforcement
+      - cve-2026-9082-drupal-t-3-status-tick
+      - cve-2026-42897-exchange-t-5-status-tick
+      - msrc-ga-patch-still-not-released-msrc-blog-403-template-pattern-continues
+      - active-exploitation-single-source-veto-on-msrc-continues-mandiant-volexity-unit42-mstic-crowdstrike-silent
+      - substance-not-re-litigated-status-reinforcement-only
+    related_actors: []
+    related_vulns: [CVE-2026-9082, CVE-2026-42897]
+    related_campaigns: []
+    finding_ids: []
+    carry_forward_ids:
+      - cve-2026-9082-drupal-kev-due-date-t-3
+      - cve-2026-42897-exchange-kev-due-date-t-5
+    digraph: A1
+    wep: very_likely
+    wep_split:
+      kev_deadlines_as_stated: very_likely
+      exchange_active_exploitation_corroboration: do_not_predict
+    single_source_veto_applied: true
+    single_source_veto_scope: exchange_active_exploitation_corroboration_msrc_originating_tag_only
+    resurface_if:
+      - escalation_to_exploitation
+      - new_victims_confirmed
+      - msrc_ga_patch_released_for_cve_2026_42897
+      - first_party_ioc_hit
+      - deadline_passes_unpatched_in_fceb_or_dib_partner_flow
+      - independent_ir_firm_telemetry_corroborates_exchange_exploitation
+    first_covered: 2026-05-24
+    last_covered: 2026-05-24
+    retraction: null
+    test: false
+    notes: |
+      Status-tick reinforcement on this morning's KEV calendar item
+      (2026-05-24-am-001). Substance NOT re-litigated; mechanism, CVSS,
+      and mitigation guidance unchanged from morning brief and the
+      Exchange VT-008 profile. Time-to-deadline tick: CVE-2026-9082
+      ~63h, CVE-2026-42897 ~111h. Hard Rule 2 on Exchange active-
+      exploitation single-source veto preserved: MSRC originating tag
+      only; Mandiant, Volexity, Unit 42, MSTIC TI blog, CrowdStrike
+      continue silent on corroborating telemetry through this sweep.
+
+  - id: 2026-05-24-pm-brief-meta
+    covered_in: [2026-05-24-afternoon]
+    brief_file: threats/briefs/2026-05-24-afternoon.md
+    headline: "2026-05-24 afternoon brief meta — TrapDoor multi-ecosystem supply-chain finding (lead with defender takeaway: `.cursorrules`/`CLAUDE.md` persistence vector) + KEV deadline status ticks (T-3 Drupal, T-5 Exchange) + standing sections silent except cross-references; 1 graded finding, 2 carry-forward items; pre-flight 13/13 passed (Discord summary regenerated once for char-ceiling compliance); word count 728 in target range"
+    topic_tags:
+      - afternoon-brief-meta
+      - trapdoor-multi-ecosystem-supply-chain-graded-finding
+      - lead-with-defender-takeaway-cursorrules-claude-md-persistence-vector
+      - hard-rule-2-load-bearing-socket-explicit-decline-not-teampcp-not-shai-hulud-not-mini-shai-hulud
+      - corpus-bounded-novelty-framing-first-in-archimedes-corpus-this-year-not-first-in-the-wild
+      - structural-indirect-a-and-d-exposure-only-no-prime-named-as-victim
+      - post-window-modelcontextprotocol-gemini-cli-attempted-injection-deferred-next-sweep
+      - researcher-attention-effect-caveat-third-socket-anchored-in-8-days
+      - kev-deadline-status-tick-substance-not-re-litigated
+      - standing-sections-all-present-silent-day-with-cross-references
+      - anti-repetition-morning-items-not-re-litigated
+      - pre-flight-13-of-13-passed-discord-summary-regenerated-for-char-ceiling
+      - word-count-728-in-400-800-target-range
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-9082
+        role: kev_deadline_status_tick_t_minus_3
+      - cve: CVE-2026-42897
+        role: kev_deadline_status_tick_t_minus_5
+    related_campaigns:
+      - trapdoor-multi-ecosystem-supply-chain-2026
+    finding_ids:
+      - finding-2026-05-24-0001
+    cross_referenced_finding_ids: []
+    absorbs_flashes: []
+    flash_disposition_note: |
+      12:00 sentinel sweep (commit d00ba58) clean — no FLASH findings
+      to absorb or cross-reference this cycle. 18:00 sentinel sweep
+      not yet evaluated at brief composition time (T+2h from this
+      brief).
+    digraphs_in_brief:
+      - finding_id: finding-2026-05-24-0001
+        finding_digraph: B2
+        item_in_brief: trapdoor_active_threats
+    wep_in_brief:
+      - claim: trapdoor_thirty_four_packages_three_ecosystem_with_one_attacker_identity
+        wep: likely
+        wep_split_caveats: single_source_veto_applies_no_second_a_b_grade_vendor_independently_analyzed_cluster
+      - claim: cursorrules_claude_md_ai_agent_config_persistence_actionable_defender_takeaway
+        wep: very_likely
+        wep_split_caveats: mechanism_socket_reported_actionable_regardless_of_attribution_novelty_framing_corpus_bounded
+      - claim: actor_attribution
+        wep: do_not_predict
+        wep_split_caveats: socket_explicit_decline_specifically_not_teampcp_not_shai_hulud_not_mini_shai_hulud_hard_rule_2_binding
+      - claim: kev_deadlines_as_stated
+        wep: very_likely
+        wep_split_caveats: deadline_status_facts_no_change_from_morning
+      - claim: exchange_active_exploitation_corroboration
+        wep: do_not_predict
+        wep_split_caveats: msrc_originating_tag_only_single_source_veto_continues
+    single_source_veto_respected_brief_wide: true
+    hard_rule_2_brief_wide_compliance: |
+      - TrapDoor: Socket explicitly declines attribution and specifically rules out TeamPCP / Shai-Hulud / Mini Shai-Hulud. Archimedes does not originate cross-walk to any tracked roster actor. Attacker-self-described "Universal AI Agent Extraction Framework" preserved verbatim as payload-embedded text per Hard Rule 2 — not a Socket attribution and not an Archimedes attribution.
+      - Novelty framings (`.cursorrules` + `CLAUDE.md` AI-agent-config persistence; first Crates.io ecosystem-tier surface) hedged as first-in-Archimedes-corpus-this-year, NOT first-in-the-wild. Socket has not framed either as wild-novel.
+      - Post-window Socket-own X follow-up (modelcontextprotocol / gemini-cli attempted-injection) explicitly deferred to next-sweep verification per analyst flag. NOT included in this brief.
+      - Exchange CVE-2026-42897 active-exploitation single-source veto on MSRC originating tag preserved verbatim across brief.
+    quote_discipline_brief_wide:
+      max_words_per_quote: 5   # "Universal AI Agent Extraction Framework" — 5 words (attacker-self-described, embedded in payload); preserved as text-as-fact per Hard Rule 2
+      quotes_per_external_source: 1  # one direct quote across the brief, sourced as attacker-payload-embedded text (Socket-relayed verbatim)
+      violations: []
+    correlation_callouts:
+      - between: [finding-2026-05-24-0001, finding-2026-05-23-0005]
+        connection: "TrapDoor and Packagist 8-pkg are mechanically distinct (TrapDoor: npm + PyPI + Crates.io with XOR-obfuscated JS stealer + .cursorrules/CLAUDE.md persistence; Packagist: PHP/Composer with package.json postinstall + GitHub-hosted Linux binary) — both UNATTRIBUTED per Socket; both contribute to multi-actor-convergence H2 framing from morning ACH chain"
+      - between: [finding-2026-05-24-0001, finding-2026-05-23-0001]
+        connection: "TrapDoor and Laravel-Lang share Socket-as-anchoring-vendor and UNATTRIBUTED status; mechanically distinct (TrapDoor crypto-developer-narrow vs. Laravel-Lang PHP-developer-broad); third Socket-anchored campaign in 8 days warrants researcher-attention-effect monitoring per inherited A9"
+    standing_sections_present:
+      - vulnerabilities: kev_deadline_status_tick_substance_not_re_litigated
+      - sector_focus_ad: silent_day_references_yesterday_kosmos_no_re_litigation
+      - actor_activity: silent_day_trapdoor_unattributed_references_morning_unc1151_update_no_re_litigation
+      - iran_cyber_watch: silent_day_no_tracked_actor_activity
+      - other_signal: supply_chain_density_observation_plus_post_window_claim_deferral_plus_first_party_splunk_hard_rule_8
+    anti_repetition_discipline:
+      morning_brief_items_stand_without_development:
+        - cve_2026_9082_drupal_kev_substance: referenced_only_as_status_tick_substance_not_re_litigated
+        - cve_2026_42897_exchange_kev_substance: referenced_only_as_status_tick_substance_not_re_litigated
+        - unc1151_ghostwriter_update: referenced_in_actor_activity_silent_day_stands_without_development_no_re_litigation
+        - glasswing_claude_mythos: not_referenced_no_new_development_no_re_litigation
+        - iran_cyber_watch_retrospective_context: not_referenced_no_new_development_silent_day_only
+        - russian_kosmos_orbital_proximity: referenced_in_sector_focus_silent_day_no_re_litigation
+      flash_findings_not_re_litigated:
+        - sunday_12_00_sentinel_clean_sweep: no_findings_to_re_litigate
+    splunk_first_party_brief_wide:
+      trapdoor_ioc_set: clean_silence_grader_pm_query_2026_05_24_16_10_edt_zero_genuine_hits_full_9_ioc_set_over_30d
+      framing: indexes_remain_dormant_pattern_53_consecutive_sweeps_absence_neither_confirming_nor_disconfirming
+    pre_flight_checklist:
+      checks_passed: 13
+      checks_failed: 0
+      regenerations_required: 1
+      regeneration_details: |
+        First draft Discord Summary estimated at ~2300 chars due to long
+        TrapDoor bullet body plus two CVE-deadline bullets carrying full
+        CISA KEV URLs. Tightened TrapDoor headline, condensed body,
+        and dropped CISA URLs from KEV bullets (carry-forward items —
+        deadline status was the load-bearing content, source linkage
+        carried by morning brief). Recount: ~1740 chars, ~270 words.
+        Within 1900 char ceiling and 150-300 word band. All 13 checks
+        pass on second iteration.
+      result: passed_second_iteration
+    first_covered: 2026-05-24
+    last_covered: 2026-05-24
+    retraction: null
+    test: false
+    notes: |
+      Sunday afternoon brief. Lead: defender takeaway from TrapDoor
+      finding (`.cursorrules` + `CLAUDE.md` persistence vector
+      actionable for any Cursor / Claude Code user, attribution-
+      independent) per analyst brief-framing recommendation.
+
+      1 graded finding (finding-2026-05-24-0001 TrapDoor), 2 carry-
+      forward status ticks (KEV deadlines), no FLASH absorptions.
+      Standing sections all present (Vulnerabilities anchored on KEV
+      ticks; Sector Focus A&D silent-day; Actor Activity silent-day
+      with UNATTRIBUTED note on TrapDoor and morning UNC1151 reference;
+      Iran Cyber Watch silent-day; Other Signal carries supply-chain
+      density observation + post-window claim deferral + first-party
+      Splunk Hard Rule 8 framing).
+
+      Anti-repetition discipline: morning brief items stand without
+      development (KEV substance not re-litigated; UNC1151 not re-
+      litigated; Glasswing not re-litigated; Iran retrospective context
+      not re-litigated; Kosmos not re-litigated). Yesterday's PHP/
+      Composer supply-chain items (Laravel-Lang UPDATE + Packagist
+      8-pkg) referenced only via TrapDoor cross-corpus pattern in
+      Other Signal — NOT re-litigated.
+
+      Pre-flight: 13/13 passed on second iteration. First iteration
+      failed Layer 2 char ceiling check (~2300 chars; ceiling 1900).
+      Regenerated Discord Summary with tightened TrapDoor headline,
+      compressed body, and dropped CISA KEV URLs from KEV bullets
+      (carry-forward items — KEV deadline status was the load-bearing
+      content; source linkage carried by morning brief). Layer 2
+      recount: ~1740 chars, ~270 words.
+
+      Word count 728 in 400-800 target range. Layer 2 ~270 words in
+      150-300 target range and ~1740 chars under 1900 ceiling.
+
+      Hard Rule 2 binding preserved brief-wide:
+      (1) Socket explicitly declines attribution and specifically rules
+          out TeamPCP / Shai-Hulud / Mini Shai-Hulud — preserved verbatim.
+          Archimedes does not originate cross-walk to any tracked roster
+          actor.
+      (2) Attacker-self-described "Universal AI Agent Extraction Framework"
+          preserved verbatim as payload-embedded text per Hard Rule 2 —
+          not a Socket attribution and not an Archimedes attribution.
+      (3) Novelty framings hedged as first-in-Archimedes-corpus-this-year,
+          NOT first-in-the-wild.
+      (4) Post-window Socket-own X follow-up (modelcontextprotocol /
+          gemini-cli attempted-injection) deferred to next-sweep
+          verification — NOT in this brief.
+      (5) Exchange CVE-2026-42897 active-exploitation single-source veto
+          on MSRC originating tag preserved.
+
+      Hard Rule 8 first-party Splunk priority: grader-executed query
+      across both indexes over -30d for the full 9-IOC TrapDoor set
+      returned zero genuine hits. Both indexes remain in dormant
+      non-self sweep posture (53rd consecutive dormant sweep per PM
+      sentinel raw-2026-05-24-pm-000). Silence is not disconfirming
+      framing preserved in Other Signal — reference in passing per
+      operator instruction (not lead).
+
+      No FLASH-worthy finding emerged from this afternoon's collection
+      window:
+        - TrapDoor: B2 cluster anchor; meets B2 minimum for FLASH but
+          fails additional FLASH triggers per raw-signal frontmatter
+          and finding inclusion (no CVE, no tracked-actor attribution,
+          no first-party hit, no A&D-direct victim, no zero-day-no-
+          patch, not a tracked-actor-TTP-change). Per FLASH-POLICY:
+          eligible to FLASH only on critical_override (CVSS 10 +
+          active exploitation + tracked actor + A&D watchlist hit) —
+          all four absent. Scheduled-brief inclusion is the correct
+          surface.
+        - KEV deadline status ticks: status-tracking class, not FLASH
+          trigger.
+
+      Discord Summary Layer 2:
+      - Greeting line anchors time + date.
+      - Three section headers populated (Active Threats, Vulnerabilities,
+        Other Signal). Sector Focus A&D, Actor Activity, Iran Cyber
+        Watch skipped per Layer 2 spec (Layer 1 carries silent-day
+        text).
+      - One bullet under Active Threats (TrapDoor), two under
+        Vulnerabilities (KEV ticks), one under Other Signal (density
+        observation).
+      - TrapDoor headline source-linked to Socket blog primary. KEV
+        bullets dropped CISA URL on regeneration to meet char ceiling
+        (carry-forward items; morning brief carries the link).
+      - Hard Rule 2 framings preserved on TrapDoor ("Socket explicitly
+        declines attribution and rules out TeamPCP / Shai-Hulud / Mini
+        Shai-Hulud; Archimedes does not originate") and on Exchange
+        ("Mandiant, Volexity, Unit 42, MSTIC, CrowdStrike all silent
+        on active-exploitation corroboration — single-source veto on
+        MSRC continues").
+      - Italic emphasis on urgent action call: *Cursor and Claude
+        Code users: audit `.cursorrules` and `CLAUDE.md` for
+        instructions you didn't write, right now.*
+      - Natural-language dates throughout ("today," "May 22,"
+        "Wednesday May 27," "Friday May 29").
+      - No themed-character voice. No digraph/WEP/finding-id citations
+        in Layer 2.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -17306,6 +17306,384 @@ entries:
       in-place during composition for char-ceiling compliance
       (~270 words, ~1820 chars).
 
+  - id: 2026-05-25-pm-001
+    covered_in: [2026-05-25-afternoon]
+    headline: "Netherlands FIOD raids and arrests 2 operators (Nesterenko + Zinad) of Stark Industries Solutions successor stack (MIRhosting + WorkTitans BV); 800+ servers seized across four Dutch sites on 2026-05-18; charges violating EU sanctions law by aiding Stark + PQHosting; generic 'Russia-backed hacking groups' attribution preserved per Hard Rule 2; first corpus citation of ecosystem"
+    topic_tags:
+      - law-enforcement-takedown
+      - russia-aligned-hosting-ecosystem
+      - stark-industries-solutions-successor-stack
+      - mirhosting-worktitans-bv
+      - netherlands-fiod-raid-2026-05-18
+      - eu-sanctions-enforcement
+      - krebs-multi-year-investigation-chain-culmination
+      - generic-russia-backed-hacking-groups-attribution-preserved-no-roster-actor-named
+      - apt28-sandworm-apt29-ecosystem-context-only-not-attribution
+      - first-corpus-citation
+      - infrastructure-disruption-not-direct-a-and-d-impact
+      - danish-elections-attack-windows-2025-11-13-to-2025-11-19-de-volkskrant-relay
+      - mirhosting-post-raid-attestation-challenge
+      - successor-entity-emergence-watch
+    related_actors: []
+    related_actor_context_only:
+      - "006"   # APT28 — Russia-state operator in attribution space, NOT named by Krebs
+      - "007"   # Sandworm — Russia-state operator in attribution space, NOT named by Krebs
+      - "009"   # APT29 — Russia-state operator in attribution space, NOT named by Krebs
+    related_vulns: []
+    related_campaigns:
+      - stark-mirhosting-worktitans-russia-aligned-hosting-ecosystem
+    finding_ids:
+      - finding-2026-05-25-0003-netherlands-fiod-mirhosting-worktitans-seizure-russia-aligned-hosting-takedown
+    digraph: B2
+    wep: very_likely
+    wep_split:
+      fiod_raid_arrests_seizure_procedural_facts: very_likely
+      stark_pqhosting_eu_sanctions_history: very_likely
+      the_hosting_worktitans_mirhosting_stark_successor_ecosystem_attribution: likely
+      danish_elections_attack_attribution: likely
+      generic_russia_backed_hacking_groups_attribution_no_roster_actor: not_claimed
+    resurface_if:
+      - dutch_prosecutors_disclose_fiod_evidentiary_basis
+      - successor_entity_identified_in_another_jurisdiction
+      - specific_roster_actor_attribution_published_by_a_grade_source
+      - mirhosting_post_raid_statement_revised_or_contested
+      - eu_sanctions_enforcement_against_new_hosting_provider
+      - new_pro_russian_attack_window_attributed_to_remaining_infrastructure_layers
+      - first_party_ioc_hit
+    first_covered: 2026-05-25
+    last_covered: 2026-05-25
+    retraction: null
+    test: false
+    notes: |
+      First corpus citation of Stark / PQHosting / the.hosting /
+      WorkTitans / MIRhosting / Nesterenko / Zinad / FIOD ecosystem.
+      Action-tier B2 finding; brief lead item over KEV-watch despite
+      KEV deadlines being tighter on calendar — operator-relevance
+      ranking is "EU member-state arrests on Russia-aligned hosting
+      infrastructure" > "T-2 patch deadline status tick" because
+      KEV substance was already led in morning brief and this is the
+      first corpus appearance of the FIOD enforcement signal.
+
+      Hard Rule 2 binding: Krebs uses generic "Russia-backed hacking
+      groups" framing. Archimedes preserves verbatim. APT28 (#006),
+      Sandworm (#007), APT29 (#009) cited as ECOSYSTEM CONTEXT only
+      (the operators that historically use proxy / DDoS-staging
+      infrastructure from this hosting stack) — NOT promoted to
+      attribution claims for this finding. Repo dossier links in
+      Layer 1 preserve operator-navigation utility without
+      attribution promotion.
+
+      Single-source veto: Krebs's multi-year investigation chain
+      (2024 Stark → 2025-05 PQHosting → 2025-09 MIRhosting-as-Stark-
+      successor → 2026-05-25 FIOD culmination) is effectively a
+      single-investigator narrative on the ecosystem-attribution
+      sub-layer. WEP ceiling capped at "likely" on ecosystem-
+      attribution despite B-grade source reliability. The
+      procedural-facts sub-layer benefits from three independent
+      procedural attestations (de Volkskrant + FIOD + MIRhosting
+      self-statement) and ascends to "very likely" / B1 Confirmed
+      at the sub-layer level.
+
+      Successor-entity emergence watch: defender posture should
+      anticipate a new Russia-aligned hosting provider materializing
+      in another EU-adjacent jurisdiction following this enforcement
+      action. Worth a savedsearch / monitoring entry against any
+      rapid network-asset transfer patterns observed via BGP /
+      WHOIS / RIPE registry over the next 4-8 weeks.
+
+      MIRhosting attestation challenge: post-raid statement asserts
+      no DDoS-consistent activity in their network during the
+      Danish-elections window cited by de Volkskrant. Procedural-
+      facts layer unaffected; attack-activity-attribution layer
+      carries the attestation tension. Flag for follow-on coverage
+      if Dutch prosecutors publish FIOD evidentiary basis for the
+      Danish-elections allegation.
+
+  - id: 2026-05-25-pm-002
+    covered_in: [2026-05-25-afternoon]
+    headline: "TeamPCP (#001) one-week consolidation through 2026-05-24 (Hartman/SANS ISC); three net-new capability layers identified — framework source-code public drop to GitHub 2026-05-22 with 'Love - TeamPCP' + 'Change keys and C2 as needed' READMEs and three+ forks within hours including FreeBSD variant (vendor primary unnamed by Hartman, retrieval pending); durabletask Linux disk-wiper capability (SafeDep first-observation language pending); CVE-2026-45321 Mini Shai-Hulud verified NOT on KEV as of catalog 2026.05.22 (14-day delay, atypical for CVSS-9.6 scope, independently verified this sweep)"
+    topic_tags:
+      - actor-activity-monitoring
+      - teampcp-001-one-week-consolidation
+      - hartman-sans-isc-secondary-synthesis
+      - framework-source-code-public-drop-novel-for-teampcp-in-corpus
+      - love-teampcp-change-keys-c2-readme-strings
+      - three-plus-forks-within-hours-including-freebsd-variant
+      - vendor-primary-retrieval-pending
+      - durabletask-linux-disk-wiper-capability-pending-grader-verification
+      - destructive-category-addition-trigger-condition-for-threat-box-rescore
+      - cve-2026-45321-not-on-kev-verified-catalog-version-2026-05-22
+      - 14-day-delay-atypical-for-cvss-9-6-scope
+      - mini-shai-hulud-kev-absence-defender-context-watch-only
+      - campaign-source-code-commoditization-signal
+      - secondary-synthesis-no-new-first-observation-attribution
+      - single-source-veto-on-framework-leak-layer
+    related_actors:
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_finding: corpus-anchored-through-cite-via-hartman-secondary-synthesis
+    related_vulns:
+      - cve: CVE-2026-45321
+        role: defender-context-watch-kev-absence
+    related_campaigns:
+      - teampcp-mini-shai-hulud-2026
+    finding_ids:
+      - finding-2026-05-25-0002-teampcp-supply-chain-activity-through-2026-05-24-consolidation
+    digraph: B3
+    wep: likely
+    wep_split:
+      framework_leak_claim_vendor_primary_pending: likely
+      durabletask_linux_disk_wiper_safedep_first_obs_pending: likely
+      cisa_not_on_kev_as_of_2026_05_22: very_likely
+      corpus_anchored_carry_forward_layers: very_likely
+    resurface_if:
+      - vendor_primary_named_for_framework_leak_with_reproducible_github_repo_id
+      - safedep_first_observation_language_on_durabletask_disk_wiper_confirmed
+      - cve_2026_45321_added_to_kev_catalog
+      - new_a_grade_vendor_attestation_on_teampcp_framework_leak
+      - teampcp_threat_box_recalibration_executed
+      - first_party_ioc_hit_on_teampcp_framework_leak_artifacts
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-25
+    last_covered: 2026-05-25
+    retraction: null
+    test: false
+    notes: |
+      B3 cluster anchor places this in Actor Activity monitoring
+      tier — below B2 action threshold but worth a section slot for
+      three net-new capability layers and the independently verified
+      KEV-absence sub-layer (A1 sub-layer; carries forward as
+      defender-context watch alongside this week's KEV deadlines).
+
+      Hard Rule 2 binding: Hartman piece is SECONDARY SYNTHESIS /
+      TIMELINE CONSOLIDATION — cites originating vendors (Microsoft,
+      SafeDep, GitHub CISO Alexis Wales, unnamed vendor primaries
+      on framework-leak) for primary observations but does NOT
+      originate any primary first-observation. TeamPCP attribution
+      chain preserved through-cite to corpus-anchored primaries
+      (finding-2026-05-12-FLASH-0001 originating Mini Shai-Hulud
+      attribution; finding-2026-05-20-FLASH-0001 TeamPCP self-claim
+      on GitHub-corp internal repos). Archimedes does NOT promote
+      Hartman to new first-observation attribution.
+
+      Single-source veto: Step 5 applies on the framework-leak
+      claim (sole-source Hartman citing unnamed vendor primary).
+      WEP ceiling capped at "likely" regardless of source-letter-
+      grade B and corpus-anchored carry-forward A2 sub-layers.
+      Vendor-primary retrieval is the open grader/actor-profiler
+      action — if a named A-grade vendor primary (SafeDep, Socket,
+      Wiz, Snyk, Aikido, StepSecurity, MSTIC, Mandiant, Unit 42)
+      substantiates the README claim with reproducible GitHub repo
+      identifier, regrade and consider FLASH Trigger 4 re-evaluation.
+
+      Durabletask Linux disk-wiper: SafeDep first-observation
+      language pending grader verification. If confirmed, this is
+      a substantive destructive-category addition to TeamPCP's
+      predominantly credential-theft tradecraft with threat-box
+      recalibration implications for actor #001.
+
+      Campaign-source-code commoditization signal: if framework-leak
+      holds, this is first corpus instance of TeamPCP campaign-
+      source-code public drop with explicit framework attribution
+      and fork-customize invitation. Defender prioritization
+      implication: TeamPCP TTPs may proliferate to non-TeamPCP
+      operators via the fork ecosystem, expanding the attack
+      surface beyond the originating actor.
+
+      Anti-repetition with morning brief: Megalodon explicitly NOT
+      clustered with TeamPCP per finding-2026-05-25-0001 grader
+      note (SafeDep declined attribution on Megalodon; Hartman does
+      not claim Megalodon = TeamPCP). Author-identity spoofing
+      pattern (build-bot / auto-ci / ci-bot / pipeline-bot in
+      Megalodon; claude@users.noreply.github.com in Mini Shai-Hulud
+      / TeamPCP) framed as portable technique-class, not actor-
+      collapse signal. Hard Rule 2 brief-wide compliance.
+
+  - id: 2026-05-25-pm-003
+    covered_in: [2026-05-25-afternoon]
+    headline: "KEV deadline calendar status tick — T-2 Drupal CVE-2026-9082 (Wed May 27, ~36h), T-4 Exchange CVE-2026-42897 (Fri May 29); + independently verified CVE-2026-45321 Mini Shai-Hulud NOT on KEV catalog 2026.05.22 (14-day delay, atypical for CVSS-9.6 scope); substance NOT re-litigated"
+    topic_tags:
+      - kev-deadline-calendar-status-tick
+      - cve-2026-9082-drupal-core-sqli-postgresql-path-t-minus-2
+      - cve-2026-42897-exchange-owa-xss-t-minus-4
+      - cve-2026-45321-mini-shai-hulud-not-on-kev-defender-context-watch
+      - msrc-single-source-veto-on-cve-2026-42897-active-exploitation-tag-persists
+      - 14-day-kev-delay-mini-shai-hulud-atypical-for-cvss-9-6-scope
+      - status-tick-not-re-litigation
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-9082
+        role: kev_deadline_status_tick_t_minus_2
+      - cve: CVE-2026-42897
+        role: kev_deadline_status_tick_t_minus_4
+      - cve: CVE-2026-45321
+        role: kev_absence_defender_context_watch
+    related_campaigns: []
+    finding_ids: []
+    cross_referenced_finding_ids:
+      - finding-2026-05-25-0002-teampcp-supply-chain-activity-through-2026-05-24-consolidation
+    digraph: A1
+    wep: very_likely
+    wep_split:
+      kev_deadline_dates_as_stated: very_likely
+      cve_2026_45321_not_on_kev_independently_verified: very_likely
+      msrc_active_exploitation_tag_corroboration: do_not_predict
+    resurface_if:
+      - cve_added_to_kev_catalog
+      - kev_deadline_passes_without_patch_confirmation_in_estate
+      - msrc_ga_patch_published_for_cve_2026_42897
+      - a_grade_ir_firm_publishes_telemetry_backed_corroboration_of_cve_2026_42897_exploitation
+      - cve_2026_45321_finally_added_to_kev
+    first_covered: 2026-05-25
+    last_covered: 2026-05-25
+    retraction: null
+    test: false
+    notes: |
+      Carries forward from morning brief — substance NOT re-litigated
+      per anti-repetition discipline. T-2/T-4 status tick only;
+      action window narrowing on Drupal. Mini Shai-Hulud KEV-absence
+      is the NEW load-bearing element in this PM brief — independently
+      verified against catalog version 2026.05.22 (dateReleased
+      2026-05-22T18:00:11.5035Z). 14-day delay materially atypical
+      for CVSS-9.6 + GitHub-internal-compromise + Microsoft-SDK-
+      trojanization scope. Defender-context watch only — no federal
+      compliance gate to enforce against a non-KEV-listed CVE.
+      Cross-referenced finding-2026-05-25-0002 carries the KEV-
+      absence claim independently verified.
+
+  - id: 2026-05-25-pm-brief-meta
+    covered_in: [2026-05-25-afternoon]
+    brief_file: threats/briefs/2026-05-25-afternoon.md
+    headline: "Afternoon brief 2026-05-25 — FIOD takedown lead (B2 action; first corpus citation); KEV calendar status tick + Mini Shai-Hulud KEV-absence verified; TeamPCP one-week consolidation monitoring (B3); Megalodon anti-repetition (no material updates); standing sections silent-day; Splunk 56th consecutive dormant non-self sweep"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - lead-with-fiod-takedown-action-tier-over-kev-status-tick
+      - kev-substance-not-re-litigated-tick-only
+      - mini-shai-hulud-kev-absence-new-load-bearing-defender-context
+      - teampcp-monitoring-tier-b3-three-net-new-capability-layers
+      - megalodon-no-material-updates-anti-repetition-applied
+      - hard-rule-2-brief-wide-russia-backed-hacking-groups-generic-attribution-preserved
+      - hard-rule-2-brief-wide-teampcp-corpus-anchored-not-novel-origination
+      - splunk-first-party-56th-consecutive-dormant-non-self-sweep-hard-rule-8
+      - successor-entity-emergence-watch-forward-assessment
+    related_actors:
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: corpus-anchored-through-cite-via-hartman-secondary-synthesis
+    related_vulns:
+      - cve: CVE-2026-9082
+        role: kev_deadline_status_tick_t_minus_2
+      - cve: CVE-2026-42897
+        role: kev_deadline_status_tick_t_minus_4
+      - cve: CVE-2026-45321
+        role: kev_absence_defender_context_watch
+    related_campaigns:
+      - stark-mirhosting-worktitans-russia-aligned-hosting-ecosystem
+      - teampcp-mini-shai-hulud-2026
+    finding_ids:
+      - finding-2026-05-25-0003-netherlands-fiod-mirhosting-worktitans-seizure-russia-aligned-hosting-takedown
+      - finding-2026-05-25-0002-teampcp-supply-chain-activity-through-2026-05-24-consolidation
+    cross_referenced_finding_ids:
+      - finding-2026-05-25-0001-megalodon-github-workflow-dispatch-mass-backdoor
+    absorbs_flashes: []
+    notes: |
+      FIOD takedown leads over KEV status tick because the KEV
+      substance was already led in morning brief and the FIOD
+      enforcement signal is first corpus citation of an EU
+      member-state arresting operators on Russia-aligned hosting
+      sanctions-evasion grounds. Action-tier B2 first-party-of-its-
+      class > T-2 deadline status tick.
+
+      Anti-repetition discipline:
+      (1) KEV substance NOT re-litigated — T-2/T-4 status tick only
+          with action-window narrowing reminder on Drupal. CVE-2026-
+          45321 KEV-absence is the NEW load-bearing element this PM
+          (independently verified against catalog 2026.05.22).
+      (2) Megalodon NOT re-led despite the 5,561-repo headline — no
+          material updates since morning, no second A/B-grade vendor
+          corroboration in this window. Anti-repetition reference
+          only ("no material updates since morning; defender action
+          carries forward").
+      (3) TeamPCP surfaced under Actor Activity at monitoring tier
+          (B3) — three net-new layers worth a section slot despite
+          below-B2-action-tier grade; framework-leak claim single-
+          source veto applies; durabletask disk-wiper first-
+          observation pending grader verification.
+      (4) Standing sections all present (Sector Focus A&D silent;
+          Actor Activity carries TeamPCP B3 monitoring; Iran Cyber
+          Watch silent; Other Signal carries Megalodon anti-
+          repetition + first-party Splunk Hard Rule 8 framing).
+
+      Pre-flight: 13/13 passed after one in-place Discord Summary
+      trim cycle (initial draft ~2050 chars, trimmed to ~1850 chars
+      by compressing FIOD bullet, removing redundant prose in
+      TeamPCP bullet, and tightening lead). Word count 712 in
+      400-800 target. Discord Summary ~280 words, ~1850 chars,
+      under 1900-char ceiling.
+
+      Hard Rule 2 brief-wide compliance:
+      - FIOD takedown: Krebs's generic "Russia-backed hacking
+        groups" attribution preserved verbatim. APT28 / Sandworm /
+        APT29 referenced as ECOSYSTEM CONTEXT only (the operators
+        that historically use proxy / DDoS-staging from this
+        hosting stack). Repo dossier links preserve navigation
+        utility without attribution promotion.
+      - TeamPCP consolidation: Hartman is SECONDARY SYNTHESIS not
+        new first-observation. Attribution chain preserved through-
+        cite to corpus-anchored primaries (Wiz + StepSecurity +
+        Snyk on Mini Shai-Hulud; TeamPCP self-claim on Breached
+        for GitHub-corp internal repos). Archimedes does not
+        promote Hartman to new attribution.
+      - Megalodon anti-repetition: SafeDep UNATTRIBUTED disposition
+        preserved from morning brief; not re-litigated.
+
+      Single-source veto respected brief-wide:
+      - Krebs ecosystem-attribution capped at "likely"
+      - Hartman framework-leak capped at "likely"
+      - MSRC active-exploitation tag on CVE-2026-42897 continues
+        do-not-predict
+      - Procedural-facts on FIOD raid ascends to "very likely" /
+        B1 sub-layer (three independent procedural attestations:
+        de Volkskrant + FIOD + MIRhosting self-statement)
+      - Independently verified KEV-absence on CVE-2026-45321
+        ascends to "very likely" (Archimedes direct catalog probe
+        against catalogVersion 2026.05.22)
+
+      Splunk first-party: 56th consecutive dormant non-self sweep
+      on `defenseclaw_local` (afternoon 17-IOC sentinel covering
+      TeamPCP framework-leak strings, MIRhosting / WorkTitans
+      organizational identifiers, FIOD-named persons, carry-
+      forward Megalodon and tracked-actor tokens). Hard Rule 8
+      framing: silence is neither confirming nor disconfirming;
+      `defenseclaw_local` structurally bounded by narrow ingest
+      scope.
+
+      Forward assessments:
+      - Successor-entity emergence in another EU-adjacent
+        jurisdiction over coming weeks (very likely on the class
+        pattern; specific entity identity not predictable)
+      - TeamPCP framework-leak vendor-primary retrieval may occur
+        in next 24-72h sweep window (likely)
+      - SafeDep first-observation language on durabletask Linux
+        disk-wiper resolvable on direct SafeDep blog re-fetch
+        (likely resolvable in next pre-brief)
+      - CVE-2026-45321 addition to KEV catalog: do-not-predict
+        (14-day delay already atypical; addition timing depends
+        on CISA prioritization process not directly observable)
+
+      Correlation callouts:
+      - FIOD takedown → APT28 (#006) / Sandworm (#007) / APT29
+        (#009): ecosystem-context only, NOT actor attribution
+        for this finding
+      - TeamPCP consolidation → TeamPCP (#001): corpus-anchored
+        through-cite, NOT new first-observation
+      - CVE-2026-45321 KEV-absence: cross-section reference
+        between Vulnerabilities (KEV deadline calendar) and
+        Actor Activity (TeamPCP three net-new layers) — single
+        independently verified A1 sub-layer surfaces in both
+        sections without re-litigation
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

@@ -2941,23 +2941,88 @@ entries:
       OR if the 1,000-project list becomes public and includes
       A&D-relevant mission-system SDK dependencies.
 
+  - rejection_id: reject-2026-05-25-0004
+    rejected_at: 2026-05-25T16:00:00-04:00
+    grading_run_id: afternoon-20260525-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-25-pm-000-sentinel-pre-brief-sweep
+    cluster_topic: >
+      Canonical Monday-afternoon pre-brief sentinel disposition record
+      for the 16:00 EDT 2026-05-25 afternoon brief grading pass. The
+      pre-brief collector sentinel (raw-2026-05-25-pm-000-sentinel-pre-
+      brief-sweep) is an internal collection-summary artifact documenting
+      the 8h window 2026-05-25T07:30 -> 15:30 EDT (overlapping the 12:00
+      EDT FLASH clean sentinel commit d647c85). The sentinel itself
+      contains no external claim being graded; it is the collector's
+      own collection-summary record cataloguing two net-new in-window
+      companion raw-signals (pm-001 SANS ISC Hartman TeamPCP
+      consolidation; pm-002 Krebs Netherlands FIOD MIRhosting/WorkTitans
+      seizure). Both companions promoted this run: pm-001 as
+      finding-2026-05-25-0002 at B3 monitoring-tier (TeamPCP TTP-Map-
+      Update with three net-new capability layers — framework leak
+      vendor-primary-pending; durabletask Linux disk-wiper SafeDep-
+      first-observation-pending; CISA-NOT-on-KEV independently verified);
+      pm-002 as finding-2026-05-25-0003 at B2 monitoring/action-tier
+      (Netherlands FIOD raid + 800-server seizure + 2 arrests on
+      Russia-aligned hosting ecosystem; generic "Russia-backed hacking
+      groups" attribution preserved verbatim per Hard Rule 2; no
+      specific roster actor named; first corpus citation of Stark/
+      MIRhosting/WorkTitans/PQHosting infrastructure ecosystem). KEV
+      catalog version 2026.05.22 unchanged across the 8h window
+      (~69h since last add CVE-2026-9082 Drupal); T-2 Drupal CVE-2026-
+      9082 (Wed end-of-business) and T-4 Exchange CVE-2026-42897
+      deadlines carry forward at peak/elevated urgency for the
+      afternoon brief KEV-deadline action-item block.
+    rejection_reasons:
+      - sentinel_artifact_not_finding_eligible_event_class
+      - companions_dispositioned_separately_via_grading_run_decisions_both_promoted
+      - kev_deadline_awareness_carry_forwards_belong_in_brief_not_new_finding
+      - source_health_changes_belong_in_source_health_yaml_not_finding
+    sources:
+      - source_yaml_id: archimedes-internal
+        grade: A
+        role: Internal Archimedes collector sentinel record (run_id pre-brief-20260525-153000); 8h sweep window reconciled with the 12:00 EDT FLASH clean sentinel (commit d647c85); documents collection-summary and runtime-state changes only, no external source claim being graded.
+      - source_yaml_id: cisa-kev
+        grade: A
+        role: KEV catalog version 2026.05.22 UNCHANGED across the 8h window (~69h since CVE-2026-9082 Drupal added 2026-05-22); zero new KEV entries this sweep; T-2 Drupal and T-4 Exchange deadlines carry forward at elevated urgency. CISA explicitly NOT having added CVE-2026-45321 Mini Shai-Hulud as of 2026-05-22 catalog release independently verified — Hartman observation factually correct per Archimedes independent KEV catalog probe (now 14-day delay post-Nx-Console-publish 2026-05-18).
+      - source_yaml_id: sans-isc
+        grade: B
+        role: Two in-window diary entries 19 seconds apart (33016 + 33014 identical title; canonical link 33016); raw-signaled as pm-001 and promoted to finding-2026-05-25-0002.
+      - source_yaml_id: krebs
+        grade: B
+        role: One in-window investigative-journalism piece (2026-05-25 13:21 UTC); raw-signaled as pm-002 and promoted to finding-2026-05-25-0003.
+    rejection_detail: >
+      The sentinel is an internal pipeline artifact documenting
+      collection state, not an external source claim. Per the
+      established pattern for sentinel files (reject-2026-05-20 through
+      reject-2026-05-25-0001 all follow this same disposition for
+      their respective AM/PM/FLASH sentinels), the sentinel is
+      recorded in the rejection log as a disposition entry rather
+      than promoted to a finding. The two companion raw-signals
+      (pm-001 and pm-002) are dispositioned by their own grading-run
+      decisions this run (both promoted; net-new B3 + B2 monitoring/
+      action-tier findings). KEV-deadline awareness and source-
+      health runtime stability are brief-composition / vuln-tracker /
+      source-health-yaml material rather than finding-eligible event
+      class. Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 31
-  most_recent_run: morning-20260525-080000
-  most_recent_run_rejections: 3
-  most_recent_run_promotions: 1
-  most_recent_run_absorptions: 1
+  total_rejections: 32
+  most_recent_run: afternoon-20260525-160000
+  most_recent_run_rejections: 1
+  most_recent_run_promotions: 2
+  most_recent_run_absorptions: 0
   most_recent_run_promotion_ids:
-    - finding-2026-05-25-0001-megalodon-github-workflow-dispatch-mass-backdoor    # Megalodon mass GitHub-repo backdooring campaign — SafeDep (C-provisional) originating research with SecurityWeek (B-provisional) pure-relay; cluster digraph C2 with single-source veto applied; WEP ceiling "likely"; monitoring-tier inclusion only (below B2 action-item threshold); UNATTRIBUTED per SafeDep explicit decline; 5,561 repos backdoored 2026-05-18 via GitHub Actions workflow_dispatch anti-recursion bypass; downstream @tiledesk/tiledesk-server 2.18.6-2.18.12 npm poisoning by legitimate maintainer eljohnny; C2 216.126.225.129:8443; throwaway-account + author-identity-spoofing IOC patterns; analyst_review_required true; red_team_review_required false; Splunk first-party check executed (0 hits on 17-IOC consolidated sweep in -24h@h, 56th consecutive dormant non-self sweep)
-  most_recent_run_absorption_ids:
-    - update-2026-05-25-001    # raw-2026-05-25-am-003 THN TrapDoor UPDATE absorbed into finding-2026-05-24-0001 via in-place update_log entry per active anti-noise lock trapdoor-multi-ecosystem-supply-chain-socket (expires 2026-05-25 16:00 EDT); net-new content delta = .cursorrules + CLAUDE.md AI-agent-config-file framing escalation from implicit to explicit + named GitHub-PR targets (browser-use/browser-use, langchain-ai/langchain, langflow-ai/langflow) + exfil endpoint ddjidd564.github.io confirmation + Android-TrapDoor disambiguation flag; THN as relay-not-corroboration does NOT change cluster B2 grade; single-source veto continues
+    - finding-2026-05-25-0002-teampcp-supply-chain-activity-through-2026-05-24-consolidation    # Hartman/SANS ISC TeamPCP one-week consolidation through 2026-05-24 — three net-new capability layers identified (framework source-code GitHub drop 2026-05-22 vendor-primary-pending; durabletask Linux disk-wiper SafeDep-first-observation-pending; CISA-NOT-on-KEV independently verified against catalogVersion 2026.05.22); cluster digraph B3 with single-source veto on framework-leak layer; WEP ceiling "likely" on net-new layers, "very likely" on CISA-NOT-on-KEV sub-layer and corpus-anchored carry-forward layers; monitoring-tier inclusion (below B2 action-item threshold); TeamPCP attribution preserved through-cite to corpus-anchored primaries per Hard Rule 2 (Hartman is secondary synthesis not originating observation); analyst/actor-profiler #001 hook for next /update-tracking with destructive-category recalibration trigger if disk-wiper confirms; no A&D-prime named; Splunk first-party 0 hits on 17-IOC consolidated sweep (56th consecutive dormant non-self sweep)
+    - finding-2026-05-25-0003-netherlands-fiod-mirhosting-worktitans-seizure-russia-aligned-hosting-takedown    # Krebs Netherlands FIOD 2026-05-18 raid + 2 arrests (Nesterenko 39 MIRhosting founder + Zinad 57 WorkTitans co-controller) + 800-server seizure across Enschede/Almere/Dronten/Schiphol-Rijk; charges violating sanctions law (economic resources to EU-sanctioned entities Stark Industries Solutions + PQHosting + Neculiti brothers); culminates Krebs 2024-2026 investigation chain on Stark→PQHosting→the.hosting→WorkTitans/MIRhosting Russia-aligned hosting ecosystem; cluster digraph B2 with single-source veto on ecosystem-attribution layer; WEP "very likely" on procedural facts (3-source attestation Krebs+de Volkskrant+FIOD), "likely" on ecosystem-attribution (single-investigator chain) and Danish-elections-attack-windows (relayed de Volkskrant data review); GENERIC "Russia-backed hacking groups" + "Russia's intelligence agencies" attribution preserved verbatim per Hard Rule 2 — NO roster actor (APT28 #006 / Sandworm #007 / APT29 #009) named; first corpus citation of the Stark/MIRhosting/WorkTitans/PQHosting ecosystem; no A&D-prime named; Splunk first-party not-applicable (no IOCs in Krebs piece); INFRASTRUCTURE-CLUSTER tracking-entry scaffold decision pending operator input
+  most_recent_run_absorption_ids: []
   most_recent_run_rejection_ids:
-    - reject-2026-05-25-0001    # Monday-morning pre-brief sentinel canonical disposition record (4 companion raw-signals dispositioned separately; sentinel itself is internal collection-summary artifact not finding-eligible)
-    - reject-2026-05-25-0002    # THN Lazarus RemotePE restatement of September 2025 prior Fox-IT/NCC Group reporting — Hard Rule 2 + FLASH-POLICY Trigger 2 explicit block on attribution_is_new_not_restatement; observation period mid-2023 to mid-2024 not active-campaign; financial/crypto/DeFi sectors not A&D operationally aligned; tracking-awareness for brief monitoring-section AND actor-profiler #003 hook for next /update-tracking
-    - reject-2026-05-25-0003    # SW Anthropic Mythos 23K UPDATE from 10K baseline — research/methodology surface not actor-attributable not actively-exploited not A&D-specific; absorbs to briefer AI-vulnerability-discovery methodology block alongside Rapid7 Q1 + GreyNoise 119k IPs
+    - reject-2026-05-25-0004    # Monday-afternoon pre-brief sentinel canonical disposition record (2 companion raw-signals dispositioned separately, both promoted; sentinel itself is internal collection-summary artifact not finding-eligible)
 
   prior_most_recent_run_legacy: afternoon-20260524-160000
   prior_most_recent_run_rejections: 1

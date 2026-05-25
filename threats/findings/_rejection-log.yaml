@@ -2718,17 +2718,253 @@ entries:
 
       Keep this rejection entry for 1 year per LEGAL-POLICY retention.
 
+  - rejection_id: reject-2026-05-25-0001
+    rejected_at: 2026-05-25T08:00:00-04:00
+    grading_run_id: morning-20260525-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-25-am-000-sentinel-pre-brief-sweep
+    cluster_topic: >
+      Canonical Monday-morning pre-brief sentinel disposition record for
+      the 08:00 EDT 2026-05-25 morning brief grading pass. The pre-brief
+      collector sentinel (raw-2026-05-25-am-000-sentinel-pre-brief-sweep)
+      is an internal collection-summary artifact documenting the 14h
+      window 2026-05-24T17:30 -> 2026-05-25T07:30 EDT (spanning the
+      18:00 FLASH, 00:00 FLASH, and 06:00 FLASH clean sentinels —
+      commits d7e0da7, 2742c67, badd4c8 — all reconciled). The
+      sentinel itself contains no external claim being graded; it is
+      the collector's own collection-summary record cataloguing seven
+      in-window items, of which four were raw-signaled as companions
+      (am-001 through am-004) and three were collector-filtered (SW
+      Laravel-Lang pure relay, SW DocketWise legal sector, SW Radiology
+      healthcare). One companion (am-001 Megalodon) promoted this run
+      as finding-2026-05-25-0001 at C2 monitoring-tier; one (am-003
+      TrapDoor THN UPDATE) absorbed into finding-2026-05-24-0001 via
+      in-place update_log entry per active anti-noise lock; two
+      (am-002 Lazarus restatement, am-004 Anthropic Mythos research
+      methodology) rejected separately as reject-2026-05-25-0002 and
+      reject-2026-05-25-0003. Two source-health stale flips applied
+      this sweep on third-strike pattern (aikido ECONNREFUSED;
+      volexity malformed XML); mandiant feedburner 23rd consecutive
+      404 (held healthy). Splunk first-party hand-built 17-IOC
+      targeted sweep on defenseclaw_local returned ZERO hits in
+      -24h@h (56th consecutive dormant non-self sweep). KEV catalog
+      version 2026.05.22 unchanged 60h+; deadlines T-2 Drupal
+      CVE-2026-9082 (Wed end-of-business) and T-4 Exchange
+      CVE-2026-42897 carry forward at peak/elevated urgency for the
+      morning brief KEV-deadline action-item block.
+    rejection_reasons:
+      - sentinel_artifact_not_finding_eligible_event_class
+      - companions_dispositioned_separately_via_grading_run_decisions
+      - kev_deadline_awareness_carry_forwards_belong_in_brief_not_new_finding
+      - source_health_changes_belong_in_source_health_yaml_not_finding
+    sources:
+      - source_yaml_id: archimedes-internal
+        grade: A
+        role: Internal Archimedes collector sentinel record (run_id pre-brief-20260525-073000); 14h sweep window reconciled with three overnight FLASH sentinels; documents collection-summary and runtime-state changes only, no external source claim being graded.
+      - source_yaml_id: cisa-kev
+        grade: A
+        role: KEV catalog version 2026.05.22 UNCHANGED across the 14h window (~60h since CVE-2026-9082 Drupal added 2026-05-22); zero new KEV entries this sweep; T-2 Drupal and T-4 Exchange deadlines carry forward at elevated urgency.
+      - source_yaml_id: nvd
+        grade: A
+        role: API result-pagination quirk persists across three probes (totalResults=5-10 but empty vulnerabilities[] array); cannot trigger-evaluate without ID-level resolution; vuln-tracker carry-forward.
+      - source_yaml_id: thehackernews
+        grade: B
+        role: Two in-window items both raw-signaled (Lazarus RemotePE = am-002 restatement; TrapDoor = am-003 anti-noise-locked UPDATE absorption); dispositioned separately.
+      - source_yaml_id: securityweek
+        grade: B
+        role: Five in-window items; three raw-signaled (Megalodon am-001 promoted, Anthropic Mythos am-004 rejected separately, DocketWise filtered legal-sector); Laravel-Lang pure-relay filtered; Radiology Associates filtered healthcare-sector.
+    rejection_detail: >
+      The sentinel is an internal pipeline artifact documenting
+      collection state, not an external source claim. Per the
+      established pattern for sentinel files (reject-2026-05-20 through
+      reject-2026-05-24 all follow this same disposition for their
+      respective AM/PM/FLASH sentinels), the sentinel is recorded in
+      the rejection log as a disposition entry rather than promoted
+      to a finding. The four companion raw-signals (am-001 through
+      am-004) are dispositioned by their own grading-run decisions
+      this run (one promoted, one absorbed, two rejected separately).
+      KEV-deadline awareness, NVD API quirk, and source-health
+      runtime changes are brief-composition / vuln-tracker / source-
+      health-yaml material rather than finding-eligible event class.
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-05-25-0002
+    rejected_at: 2026-05-25T08:00:00-04:00
+    grading_run_id: morning-20260525-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-25-am-002-thn-lazarus-remotepe-restatement-not-new-attribution-fox-it-ncc-group
+    cluster_topic: >
+      The Hacker News (Ravie Lakshmanan byline, 2026-05-25 05:32 EDT
+      in-window) relays NCC Group / Fox-IT (named researchers Yun Zheng
+      Hu + Mick Koomen) expanded technical analysis of RemotePE
+      memory-only RAT toolset (DPAPILoader + RemotePELoader + RemotePE
+      with Hell's Gate direct syscall + ETW patching evasion) attributed
+      to North Korea-linked Lazarus Group (tracked actor #003 per
+      _roster.yaml; aliases Hidden Cobra, Zinc, Diamond Sleet,
+      Labyrinth Chollima, Guardians of Peace). Victim sectors:
+      financial, cryptocurrency, DeFi (one unnamed DeFi organization
+      named). Earliest DPAPILoader artifact November 2023; earliest
+      RemotePE timestamp July 4, 2023; observation period mid-2023
+      to mid-2024. Initial-access vector: Telegram impersonation +
+      fake Calendly/Picktime domains. IOCs: C2 domain aes-secure[.]net;
+      DPAPILoader filename Iassvc.dll. NO hashes, IPs, URLs, or
+      registry keys in THN body.
+    rejection_reasons:
+      - restatement_not_new_attribution_hard_rule_2_block
+      - flash_policy_trigger_2_explicit_block_attribution_is_new_not_restatement_fails
+      - observation_period_two_years_pre_window_not_active_campaign_disclosure
+      - financial_crypto_defi_sectors_not_a_d_operationally_aligned
+      - no_a_d_named_victim
+      - no_cve_cited
+      - tracking_awareness_belongs_in_brief_monitoring_section_or_actor_profiler_hook_not_new_finding
+    sources:
+      - source_yaml_id: thehackernews
+        grade: B
+        role: B-provisional relay of NCC Group / Fox-IT primary research; explicitly states "first highlighted in September 2025" — restatement not new attribution.
+      - source_yaml_id: fox-it-ncc-group
+        grade: provisional_A_pending_source_grade_log_entry
+        role: Tier-1 vendor research class (Fox-IT historical APT track record via NCC Group ownership); not yet in source-grades.yaml; first-citation candidate per Bitdefender/Symantec/Cisco-Talos/Darktrace/ZDI precedent. The September 2025 Fox-IT primary publication is the originating research; THN is a May 2026 follow-up relay. Operator action: consider source-grade-log entry for NCC Group / Fox-IT as A-grade provisional first-citation pending ratification.
+    rejection_detail: >
+      The THN article explicitly states the RemotePE malware family
+      was "first highlighted in September 2025" and the observation
+      period is mid-2023 to mid-2024 — this is a 2+ year retrospective
+      technical analysis surface, NOT a new-attribution surface. Per
+      FLASH-POLICY Trigger 2, attribution to a tracked actor must be
+      `attribution_is_new_not_restatement`; this condition fails.
+      Per Hard Rule 2, Archimedes does not originate attribution and
+      preserves Fox-IT's attribution language verbatim ("North Korea-
+      linked Lazarus Group" with no confidence qualifier in body
+      text; "purpose-built for long-term observation campaigns" and
+      "may be reserved for high-value targets" hedged framing
+      preserved). Victim sectors (financial / crypto / DeFi) are not
+      A&D operationally aligned — consistent with the historical
+      DPRK financial-operations pattern (Stardust Chollima / BlueNoroff
+      / APT38 tradecraft per _roster.yaml entry #002 lineage).
+      Splunk first-party hand-built sweep on aes-secure[.]net +
+      Iassvc.dll + DPAPILoader + RemotePE + RemotePELoader + Lazarus
+      keywords returned ZERO hits in -24h@h (component of consolidated
+      17-IOC sweep documented in raw-2026-05-25-am-000 sentinel).
+      Disposition: the content is captured for tracking-awareness
+      morning-brief monitoring-section context AND for actor-profiler
+      #003 hook on next /update-tracking cycle (next-due 2026-06-30
+      per _roster.yaml). Operational asks for actor-profiler on that
+      review: determine whether RemotePE / DPAPILoader / RemotePELoader
+      / Hell's Gate / ETW patching mechanisms warrant entry into the
+      Lazarus dossier TTP catalog (these are not all currently
+      captured per cursory review); verify the September 2025 Fox-IT
+      primary publication is in the dossier reference list; add the
+      Telegram-impersonation + fake-Calendly/Picktime initial-access
+      vector to the actor-profiler TTP catalog if not present; catalog
+      the seven-passes-of-constant-bytes file-overwriting behavior
+      (RemotePE / POOLRAT / SIMPLESEA shared signature) as a
+      detection-engineering signature class; catalog the memory-only
+      RAT execution class + Hell's Gate direct-syscall + ETW patching
+      as the anti-EDR-instrumentation toolkit layer for defensive
+      prioritization against Lazarus targets. Keep this rejection
+      entry for 1 year per LEGAL-POLICY retention. Regrade if a fresh
+      surface appears in window with attribution_is_new_not_restatement
+      satisfied (e.g., new Fox-IT or MSTIC or CrowdStrike or Mandiant
+      RemotePE primary research with active-campaign-2026 disclosure
+      and A&D-named victim).
+
+  - rejection_id: reject-2026-05-25-0003
+    rejected_at: 2026-05-25T08:00:00-04:00
+    grading_run_id: morning-20260525-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-25-am-004-securityweek-anthropic-mythos-23000-osss-update-from-10k-baseline
+    cluster_topic: >
+      SecurityWeek (Eduard Kovacs byline, 2026-05-25 06:58 EDT
+      in-window) updates the corpus-tracked Project Glasswing /
+      Claude Mythos AI vulnerability discovery research from prior
+      10,000-findings baseline (carry-forward across raw-2026-05-23
+      and raw-2026-05-24 sentinel-streams per THN 2026-05-23 coverage)
+      to new 23,000 potential vulnerabilities across 1,000 OSS projects
+      scanned. Confirmed-vs-reviewed breakdown: 1,726 confirmed (of
+      1,900 reviewed); 1,000+ rated high/critical; projection 3,900
+      critical/high when all current findings complete; 1,100+
+      unverified findings reported to vendors; 65 security advisories
+      published; 75 critical/high issues patched to date; 90-day
+      disclosure window per Anthropic's Coordinated Vulnerability
+      Disclosure policy. Named projects-of-interest from prior coverage
+      (Firefox 271 vulns; Curl 1 low-sev; Palo Alto + Google testing
+      participation) carry through; SW does NOT identify the specific
+      1,000 projects scanned. No A&D / spacecraft / satellite software
+      named in project scope. No specific CVE cited in this SW piece
+      (CVE-2026-5194 wolfSSL from prior corpus coverage remains a
+      named-example reference).
+    rejection_reasons:
+      - research_methodology_surface_not_actor_attributable
+      - no_actively_exploited_zero_day_no_cve_in_window
+      - no_a_d_specific_named_project_exposure
+      - update_to_existing_carry_forward_not_new_finding
+      - briefer_update_block_belongs_in_ai_vulnerability_discovery_methodology_section_not_graded_finding
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        role: B-provisional relay of Anthropic vendor disclosure; numeric update to corpus-tracked methodology research baseline.
+      - source_yaml_id: anthropic-vendor-disclosure
+        grade: provisional_B_research_methodology_layer
+        role: Vendor self-disclosure of own research-tool output volumes; methodology details intentionally minimal in vendor communications; 90-day disclosure window consistent with Project Zero / industry-standard responsible-disclosure norms.
+    rejection_detail: >
+      This is a research/methodology UPDATE on a corpus-tracked
+      vendor research program, not a finding-eligible event class.
+      Per the prior pattern for the Project Glasswing / Claude Mythos
+      coverage (raw-2026-05-23 + raw-2026-05-24 carry-forwards
+      handled as briefer-section UPDATE absorption rather than
+      graded findings), this 10K -> 23K baseline UPDATE absorbs into
+      the morning brief's AI-vulnerability-discovery methodology
+      block alongside Rapid7 Q1 2026 finding (vulnerability
+      exploitation overtaking social engineering as IAV; carry-
+      forward from raw-2026-05-21-pm-005) and GreyNoise Coverage Gap
+      119k IPs blocklist analysis (carry-forward from raw-2026-05-22
+      sweep coverage). The 10K -> 23K delta over a ~2 day reporting
+      interval reflects continued scanning + finding-volume growth,
+      not necessarily a delta in confirmed-vulnerability count (the
+      1,094 -> 1,726 confirmed-vs-reviewed comparison is more
+      meaningful for defensive prioritization). No actor attribution,
+      no actively-exploited zero-day, no A&D-specific named project
+      exposure. Splunk first-party check not applicable (no IOCs).
+      Operator longer-term policy hook: if Anthropic publishes the
+      specific 1,000-project list with future updates, collector
+      should cross-check against any A&D-prime open-source dependency
+      list (especially mission-system SDK dependencies like wolfSSL,
+      OpenSSL, libssl, libcurl, libxml2, zlib, etc.). The wolfSSL
+      example from prior coverage IS A&D-relevant (broadly deployed
+      in embedded / aerospace / defense systems for FIPS-validated
+      cryptography). Keep this rejection entry for 1 year per
+      LEGAL-POLICY retention. Regrade if a future Mythos disclosure
+      identifies a specific CVE that lands on KEV, OR if a specific
+      A&D-relevant project is named with actively-exploited findings,
+      OR if the 1,000-project list becomes public and includes
+      A&D-relevant mission-system SDK dependencies.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 28
-  most_recent_run: afternoon-20260524-160000
-  most_recent_run_rejections: 1
+  total_rejections: 31
+  most_recent_run: morning-20260525-080000
+  most_recent_run_rejections: 3
   most_recent_run_promotions: 1
+  most_recent_run_absorptions: 1
   most_recent_run_promotion_ids:
-    - finding-2026-05-24-0001    # TrapDoor multi-ecosystem (npm + PyPI + Crates.io) crypto-stealer supply-chain campaign — Socket originating research B2 single-source veto applied; WEP ceiling "likely"; UNATTRIBUTED per Socket explicit decline (specifically NOT TeamPCP / Shai-Hulud / Mini Shai-Hulud); 34 packages / 384 versions / first Crates.io surface in corpus; novel .cursorrules + CLAUDE.md AI-agent-config persistence vector; crypto-developer-narrow target with no A&D-direct victim; analyst_review_required true; red_team_review_required false; Splunk first-party check executed (0 hits on full IOC set over -30d)
+    - finding-2026-05-25-0001-megalodon-github-workflow-dispatch-mass-backdoor    # Megalodon mass GitHub-repo backdooring campaign — SafeDep (C-provisional) originating research with SecurityWeek (B-provisional) pure-relay; cluster digraph C2 with single-source veto applied; WEP ceiling "likely"; monitoring-tier inclusion only (below B2 action-item threshold); UNATTRIBUTED per SafeDep explicit decline; 5,561 repos backdoored 2026-05-18 via GitHub Actions workflow_dispatch anti-recursion bypass; downstream @tiledesk/tiledesk-server 2.18.6-2.18.12 npm poisoning by legitimate maintainer eljohnny; C2 216.126.225.129:8443; throwaway-account + author-identity-spoofing IOC patterns; analyst_review_required true; red_team_review_required false; Splunk first-party check executed (0 hits on 17-IOC consolidated sweep in -24h@h, 56th consecutive dormant non-self sweep)
+  most_recent_run_absorption_ids:
+    - update-2026-05-25-001    # raw-2026-05-25-am-003 THN TrapDoor UPDATE absorbed into finding-2026-05-24-0001 via in-place update_log entry per active anti-noise lock trapdoor-multi-ecosystem-supply-chain-socket (expires 2026-05-25 16:00 EDT); net-new content delta = .cursorrules + CLAUDE.md AI-agent-config-file framing escalation from implicit to explicit + named GitHub-PR targets (browser-use/browser-use, langchain-ai/langchain, langflow-ai/langflow) + exfil endpoint ddjidd564.github.io confirmation + Android-TrapDoor disambiguation flag; THN as relay-not-corroboration does NOT change cluster B2 grade; single-source veto continues
   most_recent_run_rejection_ids:
+    - reject-2026-05-25-0001    # Monday-morning pre-brief sentinel canonical disposition record (4 companion raw-signals dispositioned separately; sentinel itself is internal collection-summary artifact not finding-eligible)
+    - reject-2026-05-25-0002    # THN Lazarus RemotePE restatement of September 2025 prior Fox-IT/NCC Group reporting — Hard Rule 2 + FLASH-POLICY Trigger 2 explicit block on attribution_is_new_not_restatement; observation period mid-2023 to mid-2024 not active-campaign; financial/crypto/DeFi sectors not A&D operationally aligned; tracking-awareness for brief monitoring-section AND actor-profiler #003 hook for next /update-tracking
+    - reject-2026-05-25-0003    # SW Anthropic Mythos 23K UPDATE from 10K baseline — research/methodology surface not actor-attributable not actively-exploited not A&D-specific; absorbs to briefer AI-vulnerability-discovery methodology block alongside Rapid7 Q1 + GreyNoise 119k IPs
+
+  prior_most_recent_run_legacy: afternoon-20260524-160000
+  prior_most_recent_run_rejections: 1
+  prior_most_recent_run_promotions: 1
+  prior_most_recent_run_promotion_ids:
+    - finding-2026-05-24-0001    # TrapDoor multi-ecosystem (npm + PyPI + Crates.io) crypto-stealer supply-chain campaign — Socket originating research B2 single-source veto applied; WEP ceiling "likely"; UNATTRIBUTED per Socket explicit decline (specifically NOT TeamPCP / Shai-Hulud / Mini Shai-Hulud); 34 packages / 384 versions / first Crates.io surface in corpus; novel .cursorrules + CLAUDE.md AI-agent-config persistence vector; crypto-developer-narrow target with no A&D-direct victim; analyst_review_required true; red_team_review_required false; Splunk first-party check executed (0 hits on full IOC set over -30d)
+  prior_most_recent_run_rejection_ids:
     - reject-2026-05-24-0002    # PM-sentinel canonical disposition record (one substantive in-window item promoted separately as finding-2026-05-24-0001; three other in-window items collector-dispositioned: Ghost CMS CVE-2026-26980 ClickFix already evaluated by 12:00 FLASH sentinel fails all 6 triggers carry-forward only; Wireshark 4.6.6 patch-availability without CVE/severity/ITW discarded; BleepingComputer AdGuard ad-blocker deal promotional/commerce discarded; collector disposition verified correct)
 
   prior_most_recent_run_legacy: morning-20260524-080000

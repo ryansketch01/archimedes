@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-24T16:00:00-04:00
+last_updated: 2026-05-25T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -16913,6 +16913,398 @@ entries:
         "Wednesday May 27," "Friday May 29").
       - No themed-character voice. No digraph/WEP/finding-id citations
         in Layer 2.
+
+  - id: 2026-05-25-am-001
+    covered_in: [2026-05-25-morning]
+    headline: "KEV deadline calendar status tick — CVE-2026-9082 Drupal Core SQLi (due 2026-05-27, T-2, ~48h) + CVE-2026-42897 Exchange OWA XSS (due 2026-05-29, T-4, ~96h); substance NOT re-litigated; lead-with-deadline frames this morning's defender action"
+    topic_tags:
+      - kev-deadline-calendar-status-tick
+      - cve-2026-9082-drupal-t-2-48h-to-wednesday
+      - cve-2026-42897-exchange-t-4-96h-to-friday
+      - msrc-ga-patch-still-not-released-msrc-blog-403-template-pattern-continues
+      - active-exploitation-single-source-veto-on-msrc-continues-mandiant-volexity-unit42-mstic-crowdstrike-silent
+      - dib-cmmc-partner-flow-inherits-fceb-compliance-timeline
+      - substance-not-re-litigated-deadline-tick-only
+      - lead-of-the-brief
+    related_actors: []
+    related_vulns: [CVE-2026-9082, CVE-2026-42897]
+    related_campaigns: []
+    finding_ids: []
+    carry_forward_ids:
+      - cve-2026-9082-drupal-kev-due-date-t-2
+      - cve-2026-42897-exchange-kev-due-date-t-4
+    digraph: A1
+    wep: very_likely
+    wep_split:
+      kev_deadlines_as_stated: very_likely
+      exchange_active_exploitation_corroboration: do_not_predict
+    single_source_veto_applied: true
+    single_source_veto_scope: exchange_active_exploitation_corroboration_msrc_originating_tag_only
+    resurface_if:
+      - escalation_to_exploitation
+      - new_victims_confirmed
+      - msrc_ga_patch_released_for_cve_2026_42897
+      - first_party_ioc_hit
+      - deadline_passes_unpatched_in_fceb_or_dib_partner_flow
+      - independent_ir_firm_telemetry_corroborates_exchange_exploitation
+    first_covered: 2026-05-24
+    last_covered: 2026-05-25
+    retraction: null
+    test: false
+    notes: |
+      Lead of the brief. Time-to-deadline tick: CVE-2026-9082 ~48h
+      (T-2 Wednesday), CVE-2026-42897 ~96h (T-4 Friday). Substance
+      NOT re-litigated — mechanism, CVSS, patch availability, ESU /
+      EEMS / EOMT mitigation path all stated as concise reminders.
+      Exchange active-exploitation single-source veto on MSRC
+      originating tag preserved verbatim — Mandiant, Volexity,
+      Unit 42, MSTIC TI blog, CrowdStrike continue silent on
+      corroborating telemetry through this sweep. Continuation of
+      2026-05-24-am-001 (T-3/T-5 first surface) and 2026-05-24-pm-002
+      (T-3/T-5 status tick).
+
+  - id: 2026-05-25-am-002
+    covered_in: [2026-05-25-morning]
+    headline: "Megalodon — mass GitHub-repo backdooring via GitHub Actions workflow_dispatch anti-recursion bypass; 5,718 commits across 5,561 repos in a 6h17m window on 2026-05-18; named victims Tiledesk (downstream @tiledesk/tiledesk-server@2.18.6 through 2.18.12 poisoned via maintainer eljohnny), Black-Iron-Project, WISE-Community; C2 216.126.225.129:8443; UNATTRIBUTED per SafeDep explicit decline; eighth supply-chain mass-compromise in 14 days"
+    topic_tags:
+      - supply-chain
+      - megalodon
+      - github-actions-workflow-dispatch-anti-recursion-bypass
+      - novel-attack-class-in-corpus-first-instance-of-mass-github-repo-backdooring
+      - safedep-sole-originating-research
+      - securityweek-pure-relay-not-corroboration
+      - single-source-veto-applied-wep-ceiling-likely
+      - hard-rule-2-binding-unattributed-per-safedep-explicit-decline
+      - hard-rule-2-binding-author-identity-spoofing-technique-class-not-actor-collapse-signal
+      - tiledesk-downstream-npm-tiledesk-server-2-18-6-through-2-18-12-poisoned
+      - tiledesk-eljohnny-maintainer-has-not-publicly-confirmed-causal-link
+      - black-iron-project-8-repos-secondary-victim
+      - wise-community-secondary-victim
+      - 5500-long-tail-weakest-evidentiary-tier-not-individually-triaged
+      - c2-216-126-225-129-8443
+      - throwaway-8char-github-accounts-rkb8el9r-bhlru9nr-lo6wt4t6
+      - forged-author-identities-build-bot-auto-ci-ci-bot-pipeline-bot
+      - sysdiag-and-optimize-build-payload-variants
+      - base64-decoded-bash-one-liners-aws-gcp-azure-credentials
+      - id-token-write-actions-read-permission-request
+      - structural-indirect-a-and-d-exposure-only-no-prime-named-as-victim
+      - eighth-supply-chain-mass-compromise-in-14-days
+      - splunk-first-party-zero-hits-on-megalodon-iocs-56-consecutive-dormant-non-self-sweep
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - megalodon-github-workflow-dispatch-2026
+    finding_ids:
+      - finding-2026-05-25-0001-megalodon-github-workflow-dispatch-mass-backdoor
+    digraph: C2
+    wep: likely
+    wep_split:
+      5561_repositories_backdoored: likely
+      6h17m_injection_window_2026_05_18: likely
+      workflow_dispatch_anti_recursion_bypass_mechanism: likely
+      sysdiag_and_optimize_build_payload_variants: likely
+      tiledesk_downstream_npm_poisoning: likely
+      c2_216_126_225_129_8443: likely
+      throwaway_8char_github_account_pattern: likely
+      author_identity_spoofing_build_bot_auto_ci_ci_bot_pipeline_bot: likely
+      actor_attribution: do_not_predict
+      cross_corpus_collapse_with_teampcp_or_trapdoor_or_node_ipc: do_not_predict
+      ad_prime_supply_chain_exposure: roughly_even_chance
+      github_workflow_dispatch_class_attack_recurrence: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: |
+      SafeDep is sole originating-research source (C provisional per source-grades.yaml
+      since 2026-05-12); SecurityWeek (Ionut Arghire, in-window) is pure relay, not
+      independent corroboration (per INTEL-GRADING.md independence test, SecurityWeek
+      summarizing SafeDep is the same shape as BleepingComputer summarizing Mandiant).
+      WEP ceiling caps at "likely" on all forward and scope-projection claim layers.
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - second_ab_grade_independent_confirmation
+      - independent_corroboration
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - additional_compromised_packages_disclosed
+      - new_iocs_published
+      - github_official_statement_on_workflow_dispatch_behavior
+      - npm_registry_official_statement_on_tiledesk_remediation
+      - eljohnny_victim_self_disclosure
+      - virustotal_enrichment_on_c2_216_126_225_129
+      - a_and_d_prime_named_as_victim
+    first_covered: 2026-05-25
+    last_covered: 2026-05-25
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier inclusion in Other Signal per grader inclusion
+      eligibility (C2 meets monitoring threshold; below B2 action-item
+      and FLASH thresholds). Lead-with-defender-takeaway framing:
+      named-victim trio (Tiledesk + Black-Iron-Project + WISE-Community)
+      foregrounded; 5,500 long-tail explicitly framed as the weakest
+      evidentiary tier (SafeDep tooling alone, not individually triaged).
+
+      Hard Rule 2 load-bearing across the item:
+      (1) SafeDep explicitly declines actor attribution; Archimedes
+          preserves UNATTRIBUTED framing.
+      (2) Author-identity spoofing pattern (build-bot / auto-ci /
+          ci-bot / pipeline-bot here; claude@users.noreply.github.com
+          in Mini Shai-Hulud / TeamPCP; atiertant in node-ipc) is
+          surfaced as a TECHNIQUE-CLASS observation, NOT actor-
+          collapse signal. Archimedes does not collapse Megalodon,
+          TrapDoor, TeamPCP, and node-ipc into a single actor.
+      (3) Tiledesk causal-chain framing: SafeDep reports the chain;
+          maintainer eljohnny has not publicly confirmed — surfaced
+          as conditional per analyst KAC A3 (test classification).
+      (4) workflow_dispatch anti-recursion behavior framed as
+          GitHub-intended-by-design per SafeDep — no GitHub-side
+          official statement observed at write time.
+
+      Analyst caveats surfaced verbatim in brief: three load-bearing
+      assumptions qualified (SafeDep-faithful-relay; workflow_dispatch
+      anti-recursion abuse genuine vs legitimate automation; Tiledesk
+      causal link).
+
+      Cross-corpus supply-chain TTP-class observation paragraph
+      retains H2 multi-actor convergence at rank-1 per analyst ACH —
+      defender-posture framing across the TTP class, NOT single-actor
+      escalation arc. Eighth distinct supply-chain mass-compromise in
+      14 days (Mini Shai-Hulud, node-ipc, Laravel-Lang, Packagist
+      8-pkg, nx-console, TanStack/OpenAI GitHub Actions, TrapDoor,
+      Megalodon).
+
+      First-party Splunk 56th consecutive dormant non-self sweep on
+      defenseclaw_local — 17-IOC sentinel sweep covering Megalodon C2,
+      Tiledesk package, forged identities, throwaway usernames, plus
+      TrapDoor and tracked-actor tokens returned zero genuine events.
+      Hard Rule 8 framing: silence is not disconfirming;
+      defenseclaw_local is structurally bounded by narrow ingest scope.
+
+  - id: 2026-05-25-am-003
+    covered_in: [2026-05-25-morning, 2026-05-24-afternoon]
+    headline: "UPDATE: TrapDoor multi-ecosystem supply-chain — Socket adds three GitHub-PR target repos (browser-use, langchain-ai, langflow-ai) as AI-agent-config attempted-injection targets per Socket-own X follow-up; grade unchanged B2/likely; anti-noise lock through 2026-05-25 16:00 EDT; mechanism and defender action unchanged"
+    topic_tags:
+      - supply-chain
+      - trapdoor
+      - update-2026-05-25-001
+      - three-github-pr-target-repos-added-to-ioc-set
+      - browser-use-browser-use-langchain-ai-langchain-langflow-ai-langflow
+      - ai-agent-config-attempted-injection-targets
+      - socket-own-x-follow-up-substantiated-this-sweep
+      - grade-unchanged-b2-likely
+      - anti-noise-lock-active-through-2026-05-25-16-00-edt
+      - mechanism-defender-action-hard-rule-2-framing-unchanged-from-yesterday-afternoon
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - trapdoor-multi-ecosystem-supply-chain-2026
+    finding_ids:
+      - finding-2026-05-24-0001
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: socket_sole_originating_research_continues_no_independent_a_b_grade_vendor_corroboration_in_window
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - first_party_ioc_hit
+      - additional_compromised_packages_disclosed
+      - new_iocs_published
+      - independent_corroboration
+      - registry_side_official_statement
+      - upstream_repo_side_disclosure_browser_use_langchain_langflow
+      - a_and_d_prime_named_as_victim
+    first_covered: 2026-05-24
+    last_covered: 2026-05-25
+    retraction: null
+    test: false
+    notes: |
+      Resurface basis met: new_iocs_published — Socket's post-window
+      X follow-up (referenced in 2026-05-24-pm-002 notes as deferred-
+      to-next-sweep verification) substantiated this sweep with three
+      named GitHub-PR target repos. Update absorbed into
+      finding-2026-05-24-0001 as update-2026-05-25-001 (anti-noise
+      lock ACTIVE through 2026-05-25 16:00 EDT). Brief mention only —
+      mechanism, defender action, and Hard Rule 2 framing all
+      unchanged from yesterday afternoon. Surfaced under Other Signal,
+      not Active Threats (anti-repetition; substance unchanged).
+
+  - id: 2026-05-25-am-brief-meta
+    covered_in: [2026-05-25-morning]
+    brief_file: threats/briefs/2026-05-25-morning.md
+    headline: "2026-05-25 Monday morning brief meta — lead with KEV deadline calendar (CVE-2026-9082 Drupal T-2 closing Wednesday; CVE-2026-42897 Exchange T-4 Friday); one graded monitoring finding (Megalodon C2/likely under single-source veto); one TrapDoor UPDATE mention (browser-use/langchain/langflow IOC additions); standing sections all present; supply-chain TTP-density paragraph as defender-posture observation (H2 multi-actor convergence retained); 56th consecutive dormant Splunk sweep; pre-flight 13/13 passed; word count 707 in 400-800 target"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - lead-with-kev-deadline-calendar-not-megalodon-headline-5561
+      - megalodon-monitoring-tier-c2-likely-single-source-veto
+      - trapdoor-update-mention-only-anti-noise-lock-active
+      - supply-chain-ttp-density-defender-posture-framing-not-actor-collapse
+      - h2-multi-actor-convergence-retained-rank-1-per-analyst-ach
+      - hard-rule-2-load-bearing-safedep-unattributed-author-identity-spoofing-portable-technique-class
+      - hard-rule-2-load-bearing-tiledesk-eljohnny-has-not-publicly-confirmed
+      - hard-rule-8-load-bearing-splunk-silence-not-disconfirming-56-consecutive-dormant-sweep
+      - lazarus-restatement-rejected-not-new-attribution-fox-it-ncc-group-september-2025
+      - actor-activity-silent-day-with-lazarus-rejection-context
+      - iran-cyber-watch-silent-day-no-tracked-actor-activity
+      - sector-focus-ad-silent-day-no-watchlist-company-threats
+      - anthropic-mythos-23000-update-deferred-not-actor-attributable-not-a-and-d-specific-weekly-synthesis-candidate
+      - pre-flight-13-of-13-passed-discord-summary-tightened-on-first-iteration-for-char-ceiling
+      - word-count-707-in-400-800-target-range
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-9082
+        role: kev_deadline_status_tick_t_minus_2
+      - cve: CVE-2026-42897
+        role: kev_deadline_status_tick_t_minus_4
+    related_campaigns:
+      - megalodon-github-workflow-dispatch-2026
+      - trapdoor-multi-ecosystem-supply-chain-2026
+    finding_ids:
+      - finding-2026-05-25-0001-megalodon-github-workflow-dispatch-mass-backdoor
+    cross_referenced_finding_ids:
+      - finding-2026-05-24-0001
+    absorbs_flashes: []
+    flash_disposition_note: |
+      Two overnight FLASH sentinels (00:00 commit 2742c67, 06:00
+      commit badd4c8) both clean — no FLASH findings to absorb or
+      cross-reference. Morning brief composed against one graded
+      monitoring-tier finding (Megalodon) plus carry-forwards.
+    digraphs_in_brief:
+      - finding_id: finding-2026-05-25-0001-megalodon-github-workflow-dispatch-mass-backdoor
+        finding_digraph: C2
+        item_in_brief: megalodon_other_signal
+      - finding_id: finding-2026-05-24-0001
+        finding_digraph: B2
+        item_in_brief: trapdoor_update_other_signal
+    wep_in_brief:
+      - claim: kev_deadlines_as_stated
+        wep: very_likely
+        wep_split_caveats: deadline_status_facts_no_change_substance_not_re_litigated
+      - claim: exchange_active_exploitation_corroboration
+        wep: do_not_predict
+        wep_split_caveats: msrc_originating_tag_only_single_source_veto_continues
+      - claim: megalodon_5561_repos_scope_and_6h17m_window
+        wep: likely
+        wep_split_caveats: single_source_veto_applies_safedep_sole_originating_securityweek_pure_relay
+      - claim: megalodon_actor_attribution
+        wep: do_not_predict
+        wep_split_caveats: safedep_explicit_decline_hard_rule_2_binding
+      - claim: cross_corpus_collapse_megalodon_trapdoor_teampcp_node_ipc
+        wep: do_not_predict
+        wep_split_caveats: portable_technique_class_not_actor_signal_hard_rule_2_binding
+      - claim: tiledesk_downstream_causal_link
+        wep: likely
+        wep_split_caveats: safedep_reports_eljohnny_has_not_publicly_confirmed_analyst_a3_test_classification
+      - claim: github_workflow_dispatch_class_attack_recurrence
+        wep: likely
+        wep_split_caveats: forward_prediction_on_class_publicly_disclosed_other_operators_can_adopt
+    single_source_veto_respected_brief_wide: true
+    hard_rule_2_brief_wide_compliance: |
+      - Megalodon: SafeDep explicitly declines attribution; Archimedes preserves UNATTRIBUTED framing. Author-identity spoofing (build-bot / auto-ci / ci-bot / pipeline-bot here; claude@users.noreply.github.com in Mini Shai-Hulud / TeamPCP; atiertant in node-ipc) framed as portable technique-class, NOT actor-collapse signal. Archimedes does NOT collapse Megalodon, TrapDoor, TeamPCP, and node-ipc into one actor.
+      - Megalodon Tiledesk causal chain: SafeDep reports the chain; eljohnny has not publicly confirmed. Conditional framing preserved (analyst A3 test classification).
+      - Megalodon workflow_dispatch behavior: framed as GitHub-intended-by-design per SafeDep; no GitHub-side official statement observed.
+      - TrapDoor: Socket's UNATTRIBUTED-and-specifically-NOT-TeamPCP/Shai-Hulud/Mini-Shai-Hulud framing inherited from yesterday afternoon brief; unchanged this sweep.
+      - Exchange CVE-2026-42897: active-exploitation single-source veto on MSRC originating tag preserved verbatim — Mandiant, Volexity, Unit 42, MSTIC TI blog, CrowdStrike continue silent.
+      - Lazarus RemotePE THN restatement: rejected at grading per FLASH-POLICY Trigger 2 (not new attribution; not new tradecraft — restatement of Fox-IT/NCC Group September 2025 reporting). Surfaced as tracking-awareness in Actor Activity silent-day text.
+    quote_discipline_brief_wide:
+      max_words_per_quote: 0   # ZERO direct quotes across the brief; all paraphrased
+      quotes_per_external_source: 0
+      violations: []
+    correlation_callouts:
+      - between: [finding-2026-05-25-0001, finding-2026-05-24-0001]
+        connection: "Megalodon (GitHub Actions workflow_dispatch anti-recursion bypass) and TrapDoor (multi-ecosystem typo-squat + .cursorrules/CLAUDE.md persistence) are mechanically distinct — both contribute to H2 multi-actor convergence framing across the SDLC-targeting wave; both UNATTRIBUTED per their respective originating-research vendors; defender takeaway is the TTP class, NOT a single-actor narrative"
+      - between: [finding-2026-05-25-0001, finding-2026-05-12-FLASH-0001]
+        connection: "Megalodon author-identity spoofing (build-bot / auto-ci / ci-bot / pipeline-bot) thematically overlaps with TeamPCP Mini Shai-Hulud spoofing (claude@users.noreply.github.com) — surfaced explicitly as a portable technique-class shared across multiple unattributed operators, NOT as actor-collapse signal; Hard Rule 2 binding on no-collapse"
+    standing_sections_present:
+      - active_threats: no_action_tier_finding_megalodon_pointed_to_other_signal
+      - vulnerabilities: kev_deadline_calendar_t_minus_2_t_minus_4_status_tick
+      - sector_focus_ad: silent_day_no_watchlist_company_threats_tracked_actors_silent
+      - actor_activity: silent_day_with_lazarus_remotepe_restatement_rejected_per_flash_policy_trigger_2
+      - iran_cyber_watch: silent_day_no_tracked_actor_activity
+      - other_signal: megalodon_monitoring_plus_supply_chain_ttp_density_paragraph_plus_trapdoor_update_plus_first_party_splunk_hard_rule_8
+    anti_repetition_discipline:
+      morning_carry_forward:
+        - cve_2026_9082_drupal_kev_substance: referenced_only_as_t_minus_2_deadline_tick_substance_not_re_litigated
+        - cve_2026_42897_exchange_kev_substance: referenced_only_as_t_minus_4_deadline_tick_substance_not_re_litigated_active_exploitation_single_source_veto_preserved
+      yesterday_afternoon_items:
+        - trapdoor_multi_ecosystem_supply_chain: update_mention_only_three_new_pr_target_repos_in_ioc_set_substance_unchanged_anti_noise_lock_holds_through_2026_05_25_16_00_edt
+      lazarus_remotepe_thn_restatement:
+        - rejected_at_grading_per_flash_policy_trigger_2_not_new_attribution_not_new_tradecraft_fox_it_ncc_group_september_2025_original
+      anthropic_mythos_23000_update:
+        - not_actor_attributable_not_a_and_d_specific_weekly_synthesis_consolidation_candidate_alongside_rapid7_q1_and_greynoise_119k_ips_not_surfaced_in_morning_brief
+      iran_retrospective_context_from_yesterday_morning:
+        - not_referenced_no_new_development_silent_day_only
+    splunk_first_party_brief_wide:
+      megalodon_plus_trapdoor_plus_tracked_actor_ioc_set: clean_silence_collector_executed_17_ioc_sentinel_sweep_zero_genuine_events
+      framing: 56th_consecutive_dormant_non_self_sweep_indexes_structurally_bounded_by_narrow_ingest_scope_absence_neither_confirming_nor_disconfirming
+    pre_flight_checklist:
+      checks_passed: 13
+      checks_failed: 0
+      regenerations_required: 0
+      regeneration_details: |
+        First draft Discord Summary estimated at ~298 words and ~1940
+        chars (Megalodon bullet long due to named-victim list +
+        Hard Rule 2 framing; three full URLs add chars). Tightened
+        in-place before commit by compressing Megalodon bullet (dropped
+        "across many" phrasing; consolidated maintainer / clean-version
+        clause; shortened Hard Rule 2 collapse sentence; tightened
+        defender-action closer) and dropping TrapDoor headline URL
+        (carry-forward; mechanism and source linkage carried by
+        yesterday afternoon's brief). Recount: ~270 words, ~1820 chars.
+        Within 1900 char ceiling and 150-300 word band. 13/13 pass
+        on first delivered iteration.
+      result: passed_first_iteration
+    first_covered: 2026-05-25
+    last_covered: 2026-05-25
+    retraction: null
+    test: false
+    notes: |
+      Monday morning brief. Lead: KEV Drupal T-2 deadline calendar
+      action — durable defender takeaway against a low-action-tier
+      news window (one monitoring-tier graded finding, one
+      pre-existing UPDATE). Megalodon explicitly NOT led with despite
+      its 5,561-repo headline number — the long-tail count is the
+      weakest evidentiary tier (SafeDep tooling alone, not
+      individually triaged), and the campaign is monitoring-tier
+      C2/likely under single-source veto. Lead-with-impact framing
+      requires the action-tier item to lead; KEV closing in 48h is
+      the actionable item this morning.
+
+      1 graded finding (finding-2026-05-25-0001 Megalodon C2/likely
+      monitoring), 1 UPDATE mention (TrapDoor browser-use/langchain/
+      langflow IOC additions; substance unchanged), 2 carry-forward
+      KEV deadline ticks. Standing sections all present (Active
+      Threats pointer-only; Vulnerabilities anchored on KEV ticks;
+      Sector Focus A&D silent-day; Actor Activity silent-day with
+      Lazarus restatement rejection context; Iran Cyber Watch
+      silent-day; Other Signal carries Megalodon monitoring +
+      supply-chain TTP density paragraph + TrapDoor UPDATE mention +
+      first-party Splunk Hard Rule 8 framing).
+
+      Anti-repetition discipline (top 3 decisions):
+      (1) KEV substance NOT re-litigated — mechanism, CVSS, patch
+          availability, ESU/EEMS/EOMT mitigation path all stated as
+          concise reminders only. T-3/T-5 from yesterday becomes
+          T-2/T-4 today; status tick only.
+      (2) TrapDoor surfaced as Other Signal UPDATE mention only —
+          three new PR target repos in IOC set, substance unchanged,
+          anti-noise lock holds through 2026-05-25 16:00 EDT. NOT
+          re-lead with TrapDoor framing (yesterday afternoon held
+          the full surface).
+      (3) Supply-chain mass-compromise wave framed as TTP-class
+          defender-posture observation, NOT single-actor escalation
+          arc. H2 multi-actor convergence retained at rank-1 per
+          analyst ACH. Eighth distinct supply-chain mass-compromise
+          in 14 days surfaced as count + actor-attribution status
+          ("only TeamPCP named on Mini Shai-Hulud; all others
+          UNATTRIBUTED") — pattern observation, not collapse signal.
+
+      Pre-flight: 13/13 passed on first delivered iteration. Word
+      count 707 in 400-800 target range. Discord Summary tightened
+      in-place during composition for char-ceiling compliance
+      (~270 words, ~1820 chars).
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-25T08:00:00-04:00
+last_updated: 2026-05-26T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -18379,6 +18379,472 @@ entries:
       IOCs surfaced today — UNC1549 `getsqldeveloper[.]com` (1) +
       ACR Stealer 5 domains + 3 SHA-256 hashes (8) = 9 total. Note
       `i.ibb[.]co` defender_handling = alert_only_do_not_blocklist_parent_zone.
+
+  - id: 2026-05-26-pm-001-cve-2026-48172-litespeed-cpanel-kev-addition-t-3-fri-bod-22-01
+    covered_in: [2026-05-26-afternoon]
+    brief_file: threats/briefs/2026-05-26-afternoon.md
+    headline: "UPDATE: CISA KEV adds CVE-2026-48172 (LiteSpeed User-End cPanel Plugin, CVSS 10.0, lsws.redisAble incorrect privilege assignment, authenticated-cPanel-user-to-root) — federal dueDate 2026-05-29 (BOD 22-01; T-3 Friday); KEV catalog version 2026.05.26 published 2026-05-26 13:02 EDT; CISA accepts LiteSpeed exploitation observation as evidence basis; no actor attributed; A&D-prime exposure layered: prime-direct very_unlikely, Tier-2/Tier-3 supplier likely, supply-chain pivot roughly_even_chance"
+    topic_tags:
+      - cve
+      - cve-2026-48172
+      - litespeed-user-end-cpanel-plugin
+      - cisa-kev
+      - kev-addition-in-window
+      - kev-due-date-2026-05-29
+      - bod-22-01
+      - cvss-10-0
+      - cwe-269-incorrect-privilege-assignment
+      - lsws-redisAble
+      - cpanel-jsonapi-func-redisAble
+      - authenticated-cpanel-user-to-root
+      - active-exploitation
+      - opportunistic-mass-exploitation-framing
+      - vendor-self-disclosure-litespeed
+      - no-actor-attribution
+      - hard-rule-2-strict-hold
+      - ad-prime-direct-exposure-very-unlikely
+      - tier-2-3-supplier-cpanel-exposure-likely
+      - supply-chain-pivot-roughly-even-chance
+      - cmmc-partner-flow-supplier-attestation-channel
+      - sibling-kev-deadline-cluster-drupal-t-1-exchange-t-3-litespeed-t-3
+      - red-team-layered-sub-statement-reframe-applied
+      - update-on-flash-2026-05-23-0600-002-litespeed
+      - resurface-trigger-cisa-kev-addition-met
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-48172
+        product: "LiteSpeed User-End cPanel Plugin"
+        cvss_claimed: 10.0
+        cwe: CWE-269
+        kev_added: 2026-05-26
+        kev_due_date: 2026-05-29
+        kev_catalog_version: 2026.05.26
+        affected_versions: "v2.3 through v2.4.4 (inclusive)"
+        patched_versions: "v2.4.7 + WHM v5.3.1.0"
+        discoverer: "David Strydom (independent)"
+    related_campaigns:
+      - cve-2026-48172-litespeed-cpanel-plugin-kev-deadline-tracking
+    finding_ids:
+      - finding-2026-05-26-0008-cisa-kev-cve-2026-48172-litespeed-cpanel-plugin-cvss-10-active-exploitation-bod-22-01-t-3
+    digraph: A2
+    digraph_layered:
+      cisa_kev_catalog_addition_in_window_procedural_fact: A1
+      kev_dueDate_2026_05_29_bod_22_01: A1
+      cvss_10_0_score: A1
+      affected_versions_2_3_through_2_4_4: A1
+      patched_versions_2_4_7_and_5_3_1_0: A1
+      active_exploitation_in_the_wild_claim: A2
+      opportunistic_mass_exploitation_pattern: A2
+      ad_prime_indirect_relevance_layered_per_red_team: B3
+    wep: very_likely  # ceiling on procedural CVE facts + KEV deadline
+    wep_layered:
+      cve_procedural_facts_cvss_versions_patch_availability: very_likely
+      kev_addition_with_due_date_2026_05_29: very_likely
+      active_exploitation_currently_occurring: likely
+      active_exploitation_continuing_through_kev_deadline: likely
+      opportunistic_mass_exploitation_pattern: likely
+      no_actor_attribution_correctness: very_likely
+      ad_prime_direct_cpanel_exposure: very_unlikely
+      tier_2_3_supplier_cpanel_exposure: likely
+      supply_chain_pivot_to_prime_relevant_data: roughly_even_chance
+    resurface_if:
+      - new_victims_confirmed                      # any victim publicly named — particularly an A&D-prime or DIB sub-tier supplier
+      - new_attribution                            # any A/B-grade source attributes exploitation to a named actor or campaign
+      - patch_adoption_telemetry_published         # GreyNoise, Sucuri, Wordfence, Patchstack, GoDaddy/hostgator-tier MSP, or Imperva publishes patch-adoption rates
+      - independent_exploitation_telemetry_published  # Mandiant, Volexity, Sucuri, Wordfence, Patchstack publishes independent telemetry that lifts the single-source-veto on exploitation claim
+      - first_party_splunk_hit                     # any Splunk hit on LiteSpeed / cPanel / CVE-2026-48172 / lsws.redisAble / cpanel_jsonapi_func=redisAble in archimedes / defenseclaw_local
+      - federal_post_deadline_reporting            # post-2026-05-29 FCEB compliance reporting; structural inflection on patch adherence
+      - kev_deadline_passed                        # tick at Fri 2026-05-29 EOB whether or not telemetry surfaces
+    first_covered: 2026-05-23
+    last_covered: 2026-05-26
+    retraction: null
+    test: false
+    iocs_promoted:
+      - cve: CVE-2026-48172
+      - detection_grep: 'grep -rE "cpanel_jsonapi_func=redisAble" /var/cpanel/logs /usr/local/cpanel/logs/'
+      - vendor_mitigation: "/usr/local/lsws/admin/misc/lscmctl cpanelplugin --uninstall"
+    notes: |
+      UPDATE on coverage-log entry 2026-05-23-flash-0600-002 (LiteSpeed
+      vendor self-disclosure + 2026-05-23 morning brief). Resurface
+      trigger `cisa_kev_addition` met in PM window (KEV catalog version
+      2026.05.26 published 13:02 EDT). The KEV addition adds CISA
+      federal procedural validation to LiteSpeed's exploitation
+      observation but does NOT add independent telemetry — both A-grade
+      sources ultimately trace to LiteSpeed's evidence basis on the
+      active-exploitation claim, so the cluster digraph holds at A2
+      with WEP "likely" on exploitation-continuation. Procedural CVE
+      facts independently reach A1 / very_likely (two A-grade primaries:
+      CISA-the-catalog-addition + LiteSpeed-the-vendor-advisory).
+
+      Red-team review applied to A&D-prime indirect-relevance layer.
+      Analyst's recommended "roughly_even_chance / varies by supplier
+      IT architecture" reframe collapsed structurally distinct
+      sub-layers (prime-direct vs Tier-3-supplier vs supply-chain-
+      pivot) into a single averaged characterization. Red-team
+      recommended (and brief adopted) layered sub-statement framing:
+      prime-direct very_unlikely; Tier-2/Tier-3 supplier likely;
+      supply-chain pivot roughly_even_chance. Operationally-actionable
+      signal preserved at sub-layer granularity. CMMC partner-flow
+      channel guidance preserved.
+
+      Sibling KEV deadline cluster Wed-Fri compression:
+      - CVE-2026-9082 Drupal SQLi: T-1 Wed EOB
+      - CVE-2026-42897 Exchange OWA XSS: T-3 Fri
+      - CVE-2026-48172 LiteSpeed cPanel: T-3 Fri (net-new this afternoon)
+      Three KEV deadlines closing within 72 hours; FCEB + CMMC-partner-
+      flow estates carry parallel patching tracks.
+
+      Hard Rule 2 strict hold - no actor attributed by any source
+      (CISA KEV uses standard generic "based on evidence of active
+      exploitation"; LiteSpeed uses passive "is being actively
+      exploited"; THN does not name actor). The contrarian observation
+      on possible Iran/Russia/China-nexus targeting is preserved as a
+      tripwire condition only, not a current claim.
+
+      Vuln-tracker handoff: vuln-tracker dossier scaffold recommended
+      candidate VT-009 given CVSS 10.0 + active exploitation +
+      KEV-listed status meets corpus inclusion threshold.
+
+      Splunk: 62nd consecutive dormant non-self sweep on `defenseclaw_local`
+      across CVE-2026-48172 / LiteSpeed / lsws.redisAble / cPanel /
+      `redisAble` keyword set. Expected operating state given A&D-prime
+      estates do not typically run cPanel inside program-data enclaves.
+
+  - id: 2026-05-26-pm-002-checkpoint-research-unc1549-nimbus-manticore-fast-and-furious-operation-epic-fury-primary-26-ioc
+    covered_in: [2026-05-26-afternoon]
+    brief_file: threats/briefs/2026-05-26-afternoon.md
+    headline: "Check Point Research primary 'Fast and Furious — Nimbus Manticore Operations During the Iranian Conflict' (2026-05-22) now in corpus directly via PM-26 SecurityWeek + Industrial Cyber relays; 26 SHA256 + 26 domain IOC drop including 21 azurewebsites.net staging family; MiniFast 16-opcode command matrix; AppDomain hijacking via trojanized XML .config files (T1574.014); Zoom ZoomUpdateTaskUser-SID scheduled-task hijack (T1053.005) + WindowsSecurityUpdate persistence task name; SSL.com code-signing certificate abuse (Gray Matter Software S.R.L., Kirubel Kerie Negeya subjects); aviation explicit targeting per CKR primary with US-domestic-airline impersonation lures (specific airline unnamed); SIBLING of finding-0001 THN-relay anchor — corpus treatment upgrades from B2 (relay) to A2 (originating primary) on same surface; CKR-only claims (Operation Epic Fury campaign-naming, subgroup-of-Charming-Kitten/APT35 relation, Bohrium + TA455 alias additions) capped at likely under single-source veto"
+    topic_tags:
+      - actor
+      - unc1549
+      - nimbus-manticore
+      - checkpoint-research-primary-in-corpus-directly
+      - sibling-of-finding-0001-thn-relay-upgrade-b2-to-a2
+      - operation-epic-fury-2026-ckr-named-campaign-anchor
+      - campaign-3-sql-developer-april-2026
+      - 26-sha256-plus-26-domain-ioc-drop
+      - 21-azurewebsites-net-staging-family
+      - minifast-16-opcode-command-matrix
+      - appdomain-hijacking-trojanized-xml-config-t1574-014
+      - zoom-scheduled-task-hijack-zoomupdatetaskuser-sid-t1053-005
+      - windowssecurityupdate-persistence-task-name
+      - ssl-com-code-signing-certificate-abuse
+      - gray-matter-software-srl-cert-subject
+      - kirubel-kerie-negeya-cert-subject
+      - aviation-explicit-targeting-ckr-verbatim-very-likely
+      - ad-prime-employee-exposure-airline-lures-roughly-even-chance
+      - relay-drift-flag-industrial-cyber-aerospace-not-in-ckr-primary
+      - ckr-only-analytical-claims-likely-via-single-source-veto
+      - unc1549-subgroup-of-charming-kitten-apt35-novel-to-corpus-framing-actor-profiler-review
+      - bohrium-ta455-alias-additions-actor-profiler-review
+      - iran-irgc-attribution-corpus-baseline-restated
+      - red-team-layered-aviation-targeting-reframe-applied
+      - unit42-concurrent-primary-not-directly-fetched-this-sweep
+    related_actors:
+      - id: "004"
+        actor_name: UNC1549
+        attribution_in_brief: corpus-baseline-restated-ckr-primary-now-directly-in-corpus
+      - id: "011"
+        actor_name: Charming Kitten
+        attribution_in_brief: ckr-claimed-subgroup-relation-single-vendor-analytical-framing-pending-corroboration-actor-profiler-review
+    related_vulns: []
+    related_campaigns:
+      - unc1549-nimbus-manticore-2026-active-campaign
+      - operation-epic-fury-2026
+      - campaign-1-rising-tension-2026
+      - campaign-3-sql-developer-april-2026
+    finding_ids:
+      - finding-2026-05-26-0007-checkpoint-research-unc1549-nimbus-manticore-fast-and-furious-operation-epic-fury-primary-26-ioc
+    sibling_finding_id: finding-2026-05-26-0001-unc1549-nimbus-manticore-minifast-minijunk-v2-seo-poisoning-getsqldeveloper
+    sibling_relation: |
+      Sibling (not update or replacement) of finding-0001 covered in
+      2026-05-26-morning. Both findings cover the UNC1549 2026
+      tradecraft-evolution surface. 0001 anchored on The Hacker News
+      editorial relay (B2 cluster anchor). 0007 anchored on Check
+      Point Research originating primary (A2 cluster anchor) — direct
+      retrieval of the CKR primary URL upgrades corpus treatment from
+      B2 (relay) to A2 (originating primary) on the same tradecraft
+      surface. 0007 carries net-new corpus material: full 26+26 IOC
+      drop, Operation Epic Fury campaign framing, full MiniFast
+      16-opcode capability matrix, AppDomain hijacking specifics,
+      SSL.com certificate abuse subjects, three CKR-only analytical
+      claims.
+    digraph: A2
+    digraph_layered:
+      ckr_primary_originating_publication_in_corpus_first_time: A2
+      minifast_16_opcode_capability_matrix_full_drop: A2
+      appdomain_hijacking_trojanized_xml_config_specifics: A2
+      zoom_scheduled_task_hijack_zoomupdatetaskuser_persistence: A2
+      windows_security_update_scheduled_task_name: A2
+      sslsign_certificate_abuse_gray_matter_kirubel_subjects: A2
+      operation_epic_fury_us_military_feb_28_2026_anchor: A3
+      unc1549_subgroup_of_charming_kitten_apt35_relation_novel_framing: A3
+      bohrium_ta455_alias_set_expansion: A3
+      us_aviation_explicit_targeting_ckr_primary_quote: A2
+      iran_irgc_attribution_corpus_baseline_restated: A1
+      industrial_cyber_relay_aerospace_editorialization_drift_flagged: B3
+    wep: very_likely  # ceiling on corroborated tradecraft (CKR + Unit 42)
+    wep_layered:
+      ckr_primary_publication_now_in_corpus_directly: very_likely
+      minifast_16_opcode_capability_matrix: very_likely
+      appdomain_hijacking_via_trojanized_xml_config_specifics: very_likely
+      zoom_scheduled_task_hijack_zoomupdatetaskuser_persistence: very_likely
+      ssl_com_certificate_abuse_gray_matter_kirubel_subjects: likely
+      operation_epic_fury_us_military_feb_28_2026_campaign_anchor: likely
+      unc1549_subgroup_of_charming_kitten_apt35_relation: likely
+      bohrium_ta455_aliases_addition_to_unc1549_set: likely
+      us_aviation_explicit_targeting_per_ckr_quote: very_likely
+      ad_prime_employee_exposure_via_airline_lures_inference: roughly_even_chance
+      industrial_cyber_relay_aerospace_editorialization: roughly_even_chance
+      twenty_six_sha256_plus_twenty_six_domain_ioc_set: very_likely
+    resurface_if:
+      - direct_primary_retrieval_unit42_2026_05_22_publication        # closes the naming-taxonomy reconciliation question and verifies E2 independence
+      - new_victims_confirmed                                          # named A&D-prime or Tier-2 supplier compromise
+      - first_party_splunk_hit                                         # any Splunk hit on the 26+26 IOC drop or UNC1549 / MiniFast / Nimbus Manticore keyword sets
+      - corroborating_subgroup_of_apt35_framing_second_vendor          # any second A/B-grade vendor publishes corroborating Nimbus-Manticore-as-subgroup-of-Charming-Kitten framing
+      - second_vendor_adopts_or_rejects_operation_epic_fury_naming     # Mandiant, Unit 42, MSTIC explicit adoption or rejection of CKR's Epic Fury campaign-naming
+      - actor_ttps_evolve                                              # new tooling, infrastructure, or targeting beyond the CKR primary surface
+      - thirty_day_corpus_observation_window_subgroup_silence_diagnostic  # if no second A/B-grade source publishes corroborating subgroup framing by 2026-06-22, the absence-of-evidence becomes meaningfully diagnostic
+    first_covered: 2026-05-23     # via 2026-05-23 0600 FLASH lineage on this actor surface
+    last_covered: 2026-05-26
+    retraction: null
+    test: false
+    iocs_promoted:
+      - 26_sha256_hashes_ckr_primary
+      - 26_domains_ckr_primary_including_21_azurewebsites_net_staging
+      - getsqldeveloper_dot_com_ckr_primary_now_direct_vs_finding_0001_thn_relay
+      - business_startup_dot_org
+      - buisness_centeral_transportation_dot_com
+      - PremierHealthAdvisory_dot_com
+      - ramiltonsfinance_dot_com
+      - ssl_com_cert_subject_gray_matter_software_srl
+      - ssl_com_cert_subject_kirubel_kerie_negeya
+      - file_path_appdata_local_zoom_bin_update
+      - scheduled_task_ZoomUpdateTaskUser_SID
+      - scheduled_task_WindowsSecurityUpdate
+      - user_agent_chrome_146_minifast_https_string
+      - c2_api_endpoint_family_minifast_six_endpoint_rest
+    notes: |
+      SIBLING (not update or replacement) of 2026-05-26-am-001 finding-
+      0001 THN-relay anchor. Corpus treatment upgrades from B2 (relay)
+      to A2 (originating primary) via direct retrieval of the Check
+      Point Research primary "Fast and Furious" publication URL.
+
+      Red-team review applied to the aviation-explicit-targeting layer.
+      Layered framing preserved:
+      - CKR-said-it (verbatim): aviation explicit targeting with
+        US-domestic-airline impersonation lures — very_likely (CKR
+        speech act)
+      - A&D-prime employee exposure inference via airline-themed lures —
+        roughly_even_chance (analyst KAC A4 test-deferred on specific
+        airline-adjacent employee segmentation)
+      - CKR-only analytical claims (Operation Epic Fury, Nimbus
+        Manticore subgroup of Charming Kitten/APT35, Bohrium + TA455
+        alias additions) — likely under single-source veto
+
+      Hard Rule 2 strict hold - all attribution is corpus-baseline
+      restatement (UNC1549 #004 IRGC-affiliated). Archimedes does NOT
+      originate Nimbus-Manticore-as-subgroup-of-Charming-Kitten
+      relation; preserves CKR's analytical framing verbatim and flags
+      for actor-profiler review on whether to integrate into
+      _roster.yaml.
+
+      Relay drift flag: Industrial Cyber editorializes CKR primary
+      "aviation" framing to "aerospace, aviation, telecom". CKR primary
+      does NOT use "aerospace". Archimedes propagates CKR's "aviation"
+      framing; flagged for analyst SAT review.
+
+      Open question (carried forward from finding-0001 + 0007):
+      Unit 42 primary direct fetch (2026-05-22 publication) verifies
+      E2 independence and resolves whether Unit 42 adopts or rejects
+      CKR's subgroup-of-APT35 framing. Pending sweep.
+
+      Anti-noise lock: continued from finding-0001 anti-noise lock
+      "unc1549-screening-serpens-tradecraft-evolution-2026" through
+      2026-05-27 08:00 EDT. The CKR primary surface is corpus-extension
+      on the locked surface (originating primary upgrade from relay
+      anchor), not new attribution warranting FLASH.
+
+      Actor-profiler review handoffs (deferred to next /update-tracking):
+      (1) Nimbus Manticore as subgroup of Charming Kitten (APT35) —
+          novel-to-corpus relation framing; decide whether to (a) add
+          CKR-claimed relation as analyst-flagged-pending-corroboration,
+          (b) hold roster at status quo until second A/B-grade source
+          publishes corroborating relation framing, or (c) update both
+          #004 and #011 dossiers with cross-references and CKR-claimed
+          relation note
+      (2) Bohrium + TA455 alias-set expansion — current _roster.yaml
+          #004 alias set: Tortoiseshell, Smoke Sandstorm, Imperial
+          Kitten, Crimson Sandstorm; CKR adds Bohrium + TA455 +
+          Nimbus Manticore (Tortoiseshell + Imperial Kitten + Crimson
+          Sandstorm are NOT in CKR primary)
+
+      Splunk: 62nd consecutive dormant non-self sweep on
+      `defenseclaw_local` across UNC1549 / MiniFast / MiniJunk / Nimbus
+      Manticore / `getsqldeveloper` / AppDomain / Smoke Sandstorm /
+      Bohrium / TA455 / Charming Kitten / APT35 keyword sets.
+
+  - id: 2026-05-26-pm-brief-meta
+    covered_in: [2026-05-26-afternoon]
+    brief_file: threats/briefs/2026-05-26-afternoon.md
+    headline: "Afternoon brief 2026-05-26 — Three KEV deadlines compress Wed-Fri: Drupal CVE-2026-9082 T-1 Wed (carry-forward, not re-litigated), Exchange CVE-2026-42897 T-3 Fri (carry-forward), LiteSpeed cPanel CVE-2026-48172 T-3 Fri (NET-NEW via KEV catalog 2026.05.26 this afternoon, CVSS 10.0, authenticated-cPanel-to-root); UNC1549 / Nimbus Manticore Check Point Research primary now in corpus directly (SIBLING of morning's THN-relay item; 26 SHA256 + 26 domain IOC drop, MiniFast 16-opcode matrix, AppDomain hijacking, Zoom task hijack, SSL.com cert abuse); two findings + carry-forward KEV tracker; standing sections present; first-party Splunk 62nd consecutive dormant non-self sweep"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - lead-with-kev-deadline-triplet-compression-wed-fri
+      - litespeed-net-new-kev-addition-this-afternoon
+      - drupal-and-exchange-carry-forward-substance-not-re-litigated
+      - red-team-applied-to-litespeed-ad-indirect-relevance-layered-sub-statement-framing
+      - red-team-applied-to-unc1549-aviation-targeting-ckr-speech-act-vs-inference-chain
+      - sibling-pattern-finding-0007-upgrades-finding-0001-b2-relay-to-a2-primary-same-surface
+      - hard-rule-2-strict-hold-no-actor-attribution-on-litespeed
+      - hard-rule-2-corpus-baseline-restatement-on-unc1549
+      - ckr-only-analytical-claims-capped-at-likely-via-single-source-veto
+      - relay-drift-flag-industrial-cyber-aerospace-editorialization-not-in-ckr-primary
+      - splunk-first-party-62nd-consecutive-dormant-non-self-sweep
+      - two-findings-content-rich-pm-window-word-count-over-baseline-target
+    related_actors:
+      - id: "004"
+        actor_name: UNC1549
+        attribution_in_brief: corpus-baseline-restated-ckr-primary-direct-retrieval-upgrade-from-thn-relay-finding-0001
+      - id: "011"
+        actor_name: Charming Kitten
+        attribution_in_brief: ckr-claimed-subgroup-relation-single-vendor-analytical-framing-pending-corroboration
+    related_vulns:
+      - cve: CVE-2026-48172
+        role: net_new_kev_addition_this_afternoon_cvss_10_authenticated_cpanel_to_root_t_3_fri
+      - cve: CVE-2026-9082
+        role: kev_deadline_t_minus_1_wed_carry_forward_substance_not_re_litigated
+      - cve: CVE-2026-42897
+        role: kev_deadline_t_minus_3_fri_carry_forward_substance_not_re_litigated
+    related_campaigns:
+      - unc1549-nimbus-manticore-2026-active-campaign
+      - operation-epic-fury-2026
+      - campaign-3-sql-developer-april-2026
+      - cve-2026-48172-litespeed-cpanel-plugin-kev-deadline-tracking
+    finding_ids:
+      - finding-2026-05-26-0007-checkpoint-research-unc1549-nimbus-manticore-fast-and-furious-operation-epic-fury-primary-26-ioc
+      - finding-2026-05-26-0008-cisa-kev-cve-2026-48172-litespeed-cpanel-plugin-cvss-10-active-exploitation-bod-22-01-t-3
+    cross_referenced_finding_ids:
+      - finding-2026-05-26-0001-unc1549-nimbus-manticore-minifast-minijunk-v2-seo-poisoning-getsqldeveloper  # sibling
+      - finding-2026-05-26-0004-bleepingcomputer-cisa-drupal-cve-2026-9082-kev-deadline-t-1-imperva-shadowserver  # KEV deadline tracker carry-forward
+    absorbs_flashes: []
+    notes: |
+      Two-finding content-rich PM window. LiteSpeed KEV addition
+      net-new this afternoon at CISA KEV catalog version 2026.05.26
+      (published 2026-05-26 13:02 EDT) — KEV addition adds federal
+      procedural validation to LiteSpeed vendor's exploitation
+      observation but does NOT add independent telemetry. Cluster
+      digraph A2 on the exploitation-claim layer; A1 on procedural CVE
+      facts (CISA-the-catalog-addition + LiteSpeed-the-vendor-advisory
+      are two A-grade primaries on procedural facts independently).
+
+      UNC1549 Check Point Research primary now in corpus directly via
+      SecurityWeek + Industrial Cyber B-grade in-window relays.
+      Corpus treatment upgrades from B2 (relay, finding-0001 morning)
+      to A2 (originating primary, finding-0007 afternoon) on the same
+      tradecraft surface. SIBLING relationship preserved — 0007 does
+      NOT replace 0001; both findings stand.
+
+      Red-team review applied:
+      - finding-0008 LiteSpeed A&D-prime indirect relevance: LAYERED
+        sub-statement framing (prime-direct very_unlikely; Tier-2/
+        Tier-3 supplier likely; supply-chain pivot roughly_even_chance)
+        per red-team recommendation; collapsed roughly_even_chance
+        averaging rejected as obscuring operationally-actionable
+        signal at sub-layer granularity
+      - finding-0007 UNC1549 aviation-targeting: split into CKR-speech-
+        act (very_likely on CKR's verbatim "defense, aviation and
+        telecommunication") + A&D-prime-employee-exposure-inference
+        (roughly_even_chance, analyst KAC A4 test-deferred); three
+        CKR-only analytical claims (Operation Epic Fury, subgroup-of-
+        APT35, Bohrium + TA455 aliases) capped at "likely" under
+        single-source veto
+
+      Lead structure: KEV deadline triplet (Drupal Wed T-1 + Exchange
+      Fri T-3 + LiteSpeed Fri T-3) is the defensible top-of-brief
+      operational hook. LiteSpeed is the net-new component; Drupal +
+      Exchange are status ticks only.
+
+      Anti-repetition discipline:
+      (1) Drupal CVE-2026-9082 substance NOT re-litigated — T-1
+          status tick only with Imperva + Shadowserver telemetry
+          carry-forward note
+      (2) Exchange CVE-2026-42897 substance NOT re-litigated — T-3
+          status tick only with mitigation-path reminder
+      (3) LiteSpeed CVE-2026-48172 is NET-NEW substance (CISA KEV
+          addition published this afternoon) — UPDATE flag justified
+          on coverage-log entry 2026-05-23-flash-0600-002 via
+          resurface trigger `cisa_kev_addition`
+      (4) UNC1549 CKR-primary direct retrieval is SIBLING surface
+          to morning's finding-0001 THN-relay anchor — net-new
+          corpus material (26+26 IOC drop, full MiniFast 16-opcode
+          matrix, AppDomain hijacking specifics, SSL.com cert
+          subjects, three CKR-only analytical claims) — NOT
+          re-litigation of the morning surface
+
+      Standing sections both present (Sector Focus A&D and Iran Cyber
+      Watch). Iran Cyber Watch surfaces UNC1549 cross-reference plus
+      the CKR-claimed subgroup-of-Charming-Kitten relation flagged
+      for actor-profiler review (single-vendor analytical framing
+      pending corroboration; not endorsed by Archimedes).
+
+      Hard Rule 2 brief-wide compliance:
+      - LiteSpeed CVE-2026-48172: no actor attributed by any source;
+        Hard Rule 2 holds strictly
+      - UNC1549: corpus-baseline IRGC attribution restated, not
+        originated; subgroup-of-Charming-Kitten relation is reportage
+        of single-vendor (CKR) analytical framing pending corroboration
+      - Industrial Cyber relay drift to "aerospace" not in CKR primary:
+        propagated as CKR's "aviation" framing; relay drift flagged
+
+      Single-source veto respected brief-wide:
+      - LiteSpeed exploitation-continuing-through-KEV-deadline: WEP
+        capped at "likely" (one effective evidence basis on
+        exploitation claim; CISA + LiteSpeed both ultimately trace
+        to LiteSpeed's observation)
+      - UNC1549 three CKR-only analytical claims: WEP capped at
+        "likely" (Operation Epic Fury naming + subgroup-of-APT35
+        relation + Bohrium + TA455 alias additions)
+
+      First-party Splunk: 62nd consecutive dormant non-self sweep
+      on `defenseclaw_local` (multi-keyword sentinel covering
+      CVE-2026-48172 / LiteSpeed / `lsws.redisAble` / cPanel /
+      `redisAble`, plus UNC1549 / MiniFast / MiniJunk / Nimbus
+      Manticore / `getsqldeveloper` / AppDomain / Smoke Sandstorm /
+      Bohrium / TA455 / Charming Kitten / APT35 keyword sets).
+      Hard Rule 8 framing: silence is neither confirming nor
+      disconfirming. A&D-prime estates do not typically run cPanel
+      inside program-data enclaves, so silence on cPanel/LiteSpeed
+      strings is expected operating state.
+
+      Word count: Layer 1 ~1125 words (above 400-800 baseline target,
+      under 1200 hard-cap ceiling; two-finding day with full
+      layered-WEP framing inherently produces content above baseline).
+      Discord Summary Layer 2 ~227 words / under 1900-char ceiling.
+
+      Vuln-tracker handoff (librarian action): CVE-2026-48172 candidate
+      VT-009 scaffold given CVSS 10.0 + active exploitation +
+      KEV-listed status meets corpus inclusion threshold.
+
+      IOC master-index handoff (librarian action): 26 SHA256 hashes +
+      26 domains (including 21 azurewebsites.net staging family) from
+      CKR primary; plus the 4 corpus-novel detection artifacts
+      (`ZoomUpdateTaskUser-<SID>` scheduled task, `WindowsSecurityUpdate`
+      scheduled task, MiniFast Chrome 146 user-agent, MiniFast
+      six-endpoint REST API surface). SSL.com cert subjects (Gray
+      Matter Software S.R.L., Kirubel Kerie Negeya) recorded as
+      cert-subject IOCs with code-signing-abuse context. CVE-2026-48172
+      detection grep + vendor mitigation command also propagable.
+
+      Source-grade-log handoff (librarian action): Check Point
+      Research formalization to A grade in source-grades.yaml
+      (multi-cycle cross-corroboration cycle now established;
+      finding-0007 is the third corpus-direct citation of CKR primary
+      after the 2026-05-22 Nimbus Manticore via 2026-05-23 FLASH
+      lineage and the 2026-05-26 AM-26 finding-0002 AI Threat
+      Landscape Digest). LiteSpeed Technologies vendor advisory
+      formalization to A grade per vendor-self-disclosure category.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -47,6 +47,8 @@ iocs_extracted: false        # extracted into THN-restatement assessment block, 
 iocs_count: 1                # getsqldeveloper[.]com (per CKR May 22 originating publication, cited via THN)
 text_word_count: 2200
 promoted: false
+rejected_at: 2026-05-26T08:00:00-04:00
+rejection_id: reject-2026-05-26-0002
 ttl_expires_at: 2026-08-24T06:05:00-04:00
 sources_queried:
   - cisa-kev               # WebFetch known_exploited_vulnerabilities.json — catalogVersion 2026.05.22 UNCHANGED (~102h+ since last add CVE-2026-9082 Drupal 2026-05-22). ZERO net-new KEV adds since 00:00 sweep. T-1 Drupal CVE-2026-9082 deadline (Wed EOB ~14h from this sweep at peak urgency) unchanged; T-3 Exchange CVE-2026-42897 unchanged (~75h to Fri).

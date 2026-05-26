@@ -17684,6 +17684,702 @@ entries:
         independently verified A1 sub-layer surfaces in both
         sections without re-litigation
 
+  - id: 2026-05-26-am-001-unc1549-nimbus-manticore-minifast-minijunk-v2-seo-poisoning-getsqldeveloper-tradecraft-evolution
+    covered_in: [2026-05-26-morning]
+    brief_file: threats/briefs/2026-05-26-morning.md
+    headline: "UNC1549 / Nimbus Manticore tradecraft evolution UPDATE — third-vendor (Check Point Research) independent reporting via The Hacker News relay + new SEO-poisoning delivery vector via getsqldeveloper[.]com + MiniFast/MiniUpdate backdoor + MiniJunk V2 variant + AppDomain hijacking from ZIPs (MITRE T1574); IRGC-attributed corpus baseline, no A&D prime named compromised"
+    topic_tags:
+      - actor
+      - unc1549
+      - nimbus-manticore
+      - screening-serpens
+      - iran
+      - irgc
+      - minifast
+      - miniupdate
+      - minijunk-v2
+      - appdomain-hijacking
+      - seo-poisoning
+      - getsqldeveloper-fake-sql-developer
+      - trojanized-zoom-installer
+      - career-themed-phishing
+      - aviation-defense-telecom-oil-gas-targeting
+      - third-vendor-checkpoint-research-independent-corroboration
+      - tradecraft-evolution-update-on-2026-05-23-flash-lineage
+    related_actors: ["004"]
+    related_vulns: []
+    related_campaigns:
+      - unc1549-nimbus-manticore-2026-active-campaign
+    finding_ids:
+      - finding-2026-05-26-0001-unc1549-nimbus-manticore-minifast-minijunk-v2-seo-poisoning-getsqldeveloper
+    digraph: B2
+    digraph_layered:
+      thn_relay_of_ckr_and_unit42_primaries: B2
+      minifast_backdoor_capability_per_ckr: A2
+      seo_poisoning_getsqldeveloper_com: A2
+      appdomain_hijacking_zip_archived_dlls: A2
+      iran_irgc_attribution_corpus_baseline: A1
+    wep: likely
+    wep_ceiling_rationale: "Single-source veto at the THN-relay layer (one relay over two independent A-grade vendor primaries; primaries not directly retrieved this sweep). CKR + Unit 42 primary direct-fetch on subsequent sweep would lift to very_likely."
+    resurface_if:
+      - actor_ttps_evolve
+      - new_victims_confirmed
+      - new_attribution
+      - first_party_splunk_hit_on_minifast_minijunk_getsqldeveloper_appdomain_iocs
+      - direct_primary_retrieval_ckr_unit42_2026_05_22_publications
+      - ckr_unit42_minifast_miniupdate_naming_taxonomy_reconciliation
+      - ai_assisted_malware_development_inference_corroborated_by_second_vendor
+    first_covered: 2026-05-26
+    last_covered: 2026-05-26
+    retraction: null
+    test: false
+    iocs_promoted:
+      - type: domain
+        value: getsqldeveloper[.]com
+        defanged: true
+        actor_id: "004"
+        related_campaign: unc1549-nimbus-manticore-2026
+        master_index_promotion_recommended: true
+    actor_dossier_handoff: "Update UNC1549 (#004) dossier TTP catalog with: AppDomain hijacking from ZIP-archived DLLs; SEO-poisoning fake software-download pages; trojanized Zoom installer initial-access vector; jittered-beacon configuration in MiniFast/MiniUpdate"
+    hard_rule_2_treatment: |
+      Corpus-baseline IRGC attribution preserved verbatim. THN relays
+      CKR + Unit 42 — Archimedes does not originate. CKR's
+      "AI-assisted malware development" indicators are single-vendor
+      analytical inference; preserved verbatim, not promoted to
+      actor-dossier TTP until second-vendor corroboration arrives.
+    notes: |
+      Tradecraft-evolution UPDATE on the UNC1549 corpus surface tracked
+      since the 2026-05-23 0600 FLASH lineage (which captured CKR +
+      Unit 42 originating publications). The new substantive layer
+      surfaced today is: (1) THN editorial relay aggregates the two
+      primaries into one consolidated narrative; (2) `getsqldeveloper[.]com`
+      domain IOC surfaced for blocklist deployment; (3) SEO-poisoning
+      via fake Oracle SQL Developer page on Bing/DuckDuckGo as a new
+      delivery vector beyond the May 23 lineage; (4) CKR's
+      AI-assisted-development inference framed at single-vendor confidence.
+      Anti-noise lock from May 23 0600 FLASH expired 2026-05-24 06:00;
+      today's restatement carries new substance not under lock.
+
+  - id: 2026-05-26-am-002-checkpoint-research-ai-threat-landscape-digest-gtg1002-mexico-bissa-eviltokens
+    covered_in: [2026-05-26-morning]
+    brief_file: threats/briefs/2026-05-26-morning.md
+    headline: "Check Point Research AI Threat Landscape Digest (March–April 2026) — first corpus citation of CKR (provisional A vendor-research-class peer to SentinelOne/Wiz/Snyk/Bitdefender/Symantec/Darktrace/Cisco Talos); four cluster aggregation: GTG-1002 (Chinese-nexus restatement from Anthropic Nov 2025) + Mexico breach (single operator, 9 government agencies, CLAUDE.md persistent jailbreak, 1,088 prompts + 5,317 commands, dual-AI Claude Code + GPT-4.1) + Bissa Scanner (900+ compromises, 30K+ .env files since Sep 2025) + EvilTokens PhaaS (340+ M365 orgs, Groq + GPT-4o-mini abuse with embedded jailbreak); AI-provider credential targeting taxonomy (8 vendors)"
+    topic_tags:
+      - vendor-research-class-publication
+      - checkpoint-research-provisional-a-grade
+      - ai-threat-landscape-bimonthly-digest
+      - ai-operates-as-attack-component-not-development-aid
+      - gtg-1002-chinese-nexus-anthropic-nov-2025-restatement
+      - mexico-breach-single-operator-nine-government-agencies
+      - claude-md-persistent-jailbreak-project-context-abuse
+      - dual-ai-workflow-claude-code-plus-gpt-4-1
+      - bissa-scanner-mass-nextjs-env-harvest
+      - eviltokens-phaas-groq-gpt-4o-mini-embedded-jailbreak
+      - ai-provider-api-key-targeting-taxonomy-eight-vendors
+      - cve-2026-33626-lmdeploy-12h-exploit-from-advisory-speed-metric
+      - tier-dependent-ai-evades-behavioral-controls-claim
+      - four-surface-anthropic-brand-abuse-technique-class-not-actor-cluster
+      - hard-rule-2-no-cluster-attribution-promotion-beyond-ckr-framing
+    related_actors:
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: corpus-cross-reference-only-not-ckr-attribution-of-any-named-cluster
+    related_vulns:
+      - cve: CVE-2026-33626
+        role: speed-metric-12h-from-advisory-to-working-exploit-lmdeploy
+    related_campaigns:
+      - gtg-1002-chinese-nexus-anthropic-nov-2025-restatement
+      - mexico-breach-single-operator-nine-agencies-dec-2025-feb-2026
+      - bissa-scanner-mass-nextjs-env-harvest-since-sep-2025
+      - eviltokens-phaas-microsoft-oauth-bec-pipeline
+      - ai-provider-credential-targeting-taxonomy-2026
+    finding_ids:
+      - finding-2026-05-26-0002-checkpoint-research-ai-threat-landscape-digest-march-april-2026-gtg1002-mexico-bissa-eviltokens
+    digraph: A2
+    wep: likely
+    wep_ceiling_rationale: "Single-vendor CKR primary; single-source veto applies. Mexico breach forensic record + Bissa Scanner + EvilTokens are CKR-original observations. GTG-1002 restates Anthropic Nov 2025 (carries no IOCs per Anthropic's own framing). WEP ceiling capped at likely on all forward proliferation claims until Mandiant/MSTIC/Unit 42/Anthropic technical teardown of the recovered Mexico VPS arrives."
+    analyst_caveats_carried_into_brief:
+      - mexico_breach_scope_architecture_ai_evades_claims_prefixed_per_ckr_on_recovered_vps_evidence
+      - ai_evades_behavioral_controls_framed_as_tier_dependent_not_universal_developed_on_mid_tier_government_cohort_does_not_extrapolate_to_tier_1_ad_primes_mature_ueba
+      - four_surface_anthropic_brand_abuse_pattern_classified_as_technique_class_brand_abuse_opportunity_surface_NOT_actor_cluster_hard_rule_2_binding
+      - indistinguishable_from_skilled_human_not_treated_as_precise_measurement_vendor_research_characterization_only
+      - forward_projection_controls_remain_insufficient_framed_as_6_12_month_window_with_active_defender_response_not_structural_defender_gap
+    resurface_if:
+      - mandiant_mstic_unit42_anthropic_independent_corroboration_of_any_of_four_named_clusters
+      - mexico_breach_recovered_vps_evidence_independent_technical_teardown
+      - new_first_party_splunk_hit_on_gtg_1002_mexico_bissa_eviltokens_claude_md_iocs
+      - additional_government_agencies_disclosed_as_victims_per_mexico_breach_pattern
+      - ai_provider_credential_targeting_taxonomy_expanded_with_new_vendor
+      - cve_2026_33626_lmdeploy_active_exploitation_confirmed_in_telemetry
+    first_covered: 2026-05-26
+    last_covered: 2026-05-26
+    retraction: null
+    test: false
+    iocs_promoted: []   # CKR publishes zero technical IOCs in this digest by explicit choice
+    source_grade_log_handoff:
+      proposed_entry: checkpoint-research
+      proposed_grade: A
+      proposed_category: vendor
+      action: "Librarian to add checkpoint-research entry to source-grades.yaml + log in source-grade-log.md pending operator ratification. Second in-corpus citation (first was 2026-05-22 Nimbus Manticore via 2026-05-23 FLASH lineage)."
+    hard_rule_2_treatment: |
+      GTG-1002 "Chinese nexus" restated from Anthropic Nov 2025 verbatim
+      — Archimedes does not escalate. Mexico-breach operator: CKR
+      explicitly declines nationality/nexus attribution — preserved
+      verbatim. Bissa Scanner + EvilTokens: unattributed per CKR.
+      Four-surface Anthropic-brand-abuse pattern (ClaudeBleed +
+      MacSync + GTG-1002 + ACR Stealer fake Claude page) treated as
+      TECHNIQUE-CLASS observation / brand-abuse opportunity surface
+      — explicitly NOT an actor cluster.
+    notes: |
+      First Archimedes-corpus citation of Check Point Research's
+      bi-monthly AI Threat Landscape Digest. Provisional A vendor-
+      research-class peer to SentinelOne (2026-05-08), Wiz + Snyk
+      (2026-05-12), Bitdefender + Symantec (2026-05-13), Darktrace +
+      Cisco Talos (2026-05-14). The 2026-05-22 "Fast and Furious —
+      Nimbus Manticore Operations" was the first in-corpus citation
+      (cited in 2026-05-23 0600 FLASH lineage); this 2026-05-26 AI
+      Digest is the second in-corpus citation.
+
+      Critical analyst-qualified caveats carried into the brief from
+      the analyst review:
+      - Prefix Mexico-breach scope/architecture/"AI evades behavioral
+        controls" claims with "per CKR, on the recovered-VPS evidence
+        base"
+      - "AI-executed commands evade current behavioral controls" is
+        TIER-DEPENDENT — developed on mid-tier government cohort,
+        does NOT extrapolate universally to Tier-1 A&D primes
+        operating mature UEBA
+      - Treat the four-surface Anthropic-brand-abuse pattern as
+        TECHNIQUE-CLASS / brand-abuse opportunity surface — NOT an
+        actor cluster
+      - Do not treat "indistinguishable from skilled human" as
+        precise measurement — vendor-research characterization
+      - Forward-projection ("controls remain insufficient") is
+        6-12 month with active defender response, not structural
+        defender-gap
+
+  - id: 2026-05-26-am-003-therecord-kozlov-rostec-gru-unit-26165-security-council-apt28-institutional-context
+    covered_in: [2026-05-26-morning]
+    brief_file: threats/briefs/2026-05-26-morning.md
+    headline: "The Record: Kremlin appoints Andrei Kozlov (former Rostec cybersecurity center head, reportedly held classified clearance under Military Unit 26165 / 85th GTsSS — APT28's institutional home) as Security Council aide to Shoigu; predecessor Konovalchik also reportedly linked to same GRU unit; institutional/personnel intel signal only, no operational compromise, no new TTP, no new victimology, no IOCs"
+    topic_tags:
+      - actor
+      - apt28
+      - fancy-bear
+      - forest-blizzard
+      - blue-delta
+      - russia
+      - gru
+      - unit-26165
+      - 85th-gtsss
+      - kozlov-personnel-appointment
+      - rostec-cybersecurity-center
+      - russia-security-council-aide-to-shoigu
+      - konovalchik-predecessor-pattern
+      - institutional-context-not-operational-tradecraft
+      - hard-rule-2-no-extrapolation-to-tradecraft-or-targeting-predictions
+    related_actors: ["006"]
+    related_vulns: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-26-0003-therecord-kozlov-rostec-gru-unit-26165-security-council-apt28-institutional-context
+    digraph: B2
+    wep: likely
+    wep_ceiling_rationale: "Single-source The Record on the Kozlov-Unit-26165 personnel-linkage layer; both Kozlov and predecessor Konovalchik linkages qualified 'reportedly' in source. Underlying APT28-Unit-26165 attribution is corpus-baseline (FBI/CISA/NCSC + Mandiant + CrowdStrike + Unit 42 + MSTIC) — corpus-baseline restated, not originated."
+    resurface_if:
+      - independent_corroboration_kozlov_unit_26165_linkage_by_reuters_ft_nyt_wsj_or_dfrlab
+      - kozlov_designated_under_ofac_or_eu_sanctions
+      - apt28_observable_tradecraft_or_targeting_changes_correlate_with_kozlov_appointment_in_next_90_180_days
+      - apt28_threat_box_score_revisited
+      - actor_ttps_evolve_apt28
+    first_covered: 2026-05-26
+    last_covered: 2026-05-26
+    retraction: null
+    test: false
+    iocs_promoted: []   # institutional/personnel intel only; no technical IOCs
+    actor_dossier_handoff:
+      actor_id: "006"
+      dossier_path: threats/threat-actors/APT28/
+      next_review_due: 2026-07-02
+      handoff_notes: "Add Kozlov-appointment + Konovalchik-predecessor institutional-context observation to APT28 dossier 'Institutional Background & Chain of Command' section at next /update-tracking cycle. Note: personnel context, NOT operational tradecraft change. Do NOT extrapolate to specific predictions; preserve The Record's framing verbatim."
+    hard_rule_2_treatment: |
+      Corpus-baseline APT28-Unit-26165 attribution restated, not
+      originated. The Record's framing aligns with established
+      Western intelligence community consensus (FBI/CISA/NCSC joint
+      advisories from 2018 onward, Mandiant + CrowdStrike + Unit 42
+      + MSTIC documentation since at least 2014). The Kozlov-
+      personnel-linkage to Unit 26165 is the new institutional-
+      context layer at single-source confidence. Archimedes does
+      NOT extrapolate personnel movement to specific tradecraft or
+      targeting predictions.
+    notes: |
+      First The Record citation surfacing the Kozlov-Rostec-Unit-26165
+      personnel triangulation in the Archimedes corpus. Defender-
+      relevant intel signal at Russian state-cyber chain-of-command
+      level. Predecessor pattern (Konovalchik → Kozlov, both
+      reportedly linked to same GRU unit) is consistent with a
+      deliberate institutional-staffing pattern at the Security
+      Council aide role — but Archimedes preserves The Record's
+      "reportedly" qualifier and does NOT promote to inference about
+      a structural Unit-26165-staffing-pipeline-to-Security-Council
+      pattern without additional corroboration.
+
+  - id: 2026-05-26-am-004-cve-2026-9082-drupal-core-sqli-kev-deadline-t-1-imperva-shadowserver-update
+    covered_in:
+      - 2026-05-19-afternoon                                          # initial Drupal pre-disclosure PSA
+      - flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change   # ITW status-change FLASH
+      - 2026-05-23-morning                                              # KEV deadline T-3
+      - 2026-05-24-morning                                              # T-3 status tick + meta
+      - 2026-05-24-afternoon                                            # T-2 status tick
+      - 2026-05-25-morning                                              # T-2 status tick + lead
+      - 2026-05-25-afternoon                                            # T-2 status tick
+      - 2026-05-26-morning                                              # T-1 status tick + Imperva/Shadowserver UPDATE substance
+    brief_file: threats/briefs/2026-05-26-morning.md
+    headline: "Drupal CVE-2026-9082 KEV federal deadline T-1 status (~36h to Wed 2026-05-27 EOB) + Imperva + Shadowserver telemetry UPDATE — 15K+ attempts on 6K+ sites in 65 countries (~50% Gaming + Financial Services, NOT A&D-shaped); Shadowserver: 670 unpatched globally (272 NA / 273 Europe); Mandiant researcher Maturi originating CVE discovery credit; five independent A/B-grade primaries (CISA + Drupal + Mandiant + Imperva + Shadowserver); red-team challenge applied to DIB-inheritance inference layer"
+    topic_tags:
+      - cve-2026-9082-drupal-core-sqli-postgresql-anonymous-attacker
+      - kev-deadline-t-minus-1-eob-2026-05-27
+      - imperva-attack-telemetry-15k-attempts-6k-sites-65-countries
+      - imperva-sectoral-breakdown-50pct-gaming-and-financial-services-not-ad-shaped
+      - shadowserver-670-unpatched-installations-272-na-273-europe
+      - mandiant-researcher-maturi-originating-cve-discovery-credit
+      - five-independent-a-b-grade-primaries-corroborate
+      - drupal-default-rdbms-mysql-mariadb-postgresql-affected-config-narrow-subset
+      - red-team-challenge-distinguishes-operational-fact-from-inference-layer
+      - dib-cmmc-partner-estate-inheritance-likely-not-very-likely
+      - hard-rule-8-first-party-splunk-zero-hits-not-disconfirming
+    related_actors: []   # no actor attribution per BleepingComputer; Hard Rule 2 keeps empty
+    related_vulns:
+      - cve: CVE-2026-9082
+        product: "Drupal Core"
+        affected_config: "PostgreSQL-powered sites"
+        cvss: null
+        drupal_severity: "20/25 Highly Critical (vendor rubric)"
+        kev_status: listed
+        kev_added: 2026-05-22
+        kev_due_date: 2026-05-27
+        bod_22_01_compliance: federal_due_t_minus_1_from_morning_brief
+    related_campaigns:
+      - cve-2026-9082-drupal-core-sqli-kev-deadline-tracking
+    finding_ids:
+      - finding-2026-05-26-0004-bleepingcomputer-cisa-drupal-cve-2026-9082-kev-deadline-t-1-imperva-shadowserver
+    digraph: A1
+    wep: very_likely
+    wep_layered:
+      cve_2026_9082_actively_exploited_in_the_wild: very_likely
+      bod_22_01_federal_deadline_2026_05_27_eob_t_minus_1: very_likely
+      imperva_telemetry_15000_attempts_6000_sites: very_likely
+      shadowserver_670_unpatched_installations: very_likely
+      postgresql_affected_configuration: very_likely
+      fceb_dib_cmmc_partner_drupal_postgresql_estate_in_scope_for_patch_posture_review: likely  # red-team downgrade
+    red_team_qualified_caveats_carried_into_brief:
+      - distinguish_operational_fact_kev_deadline_active_exploitation_a1_very_likely_from_inference_layer_dib_cmmc_partner_estate_in_scope_likely_not_very_likely
+      - foreground_imperva_sectoral_breakdown_50pct_gaming_finserv_as_counter_evidence_to_ad_specific_targeting
+      - population_scaling_caveat_shadowserver_670_is_global_all_sectors_ad_prime_postgresql_drupal_subset_plausibly_very_small
+      - postgresql_not_drupal_default_rdbms_mysql_mariadb_historical_default
+      - imperva_only_attacker_side_telemetry_single_point_of_failure_on_exploitation_magnitude
+    resurface_if:
+      - first_post_compromise_telemetry_publication_drupal_vendor_ir_disclosure_mandiant_unit42_sentinellabs_case_study_fceb_cdm_disclosure
+      - first_party_splunk_hit_on_drupal_product_strings_or_cve_2026_9082_payload_or_postgresql_error_signatures
+      - cisa_post_deadline_compliance_advisory_or_dhs_breach_disclosure
+      - second_attacker_side_telemetry_vendor_publishes_independent_drupal_exploit_observations
+      - ad_prime_named_as_victim
+      - kev_due_date_passed_for_post_deadline_disposition
+    first_covered: 2026-05-19
+    last_covered: 2026-05-26
+    retraction: null
+    test: false
+    iocs_promoted:
+      - type: cve
+        value: CVE-2026-9082
+        kev: true
+        kev_added: 2026-05-22
+        kev_due_date: 2026-05-27
+        master_index_promotion_recommended: true
+    hard_rule_2_treatment: |
+      No actor attribution per BleepingComputer; Drupal advisory,
+      CISA KEV, Imperva, Shadowserver, and Mandiant (discovery
+      credit only) all name no actor. Hard Rule 2 keeps actor-
+      attribution layer empty. Red-team challenge on the
+      DIB-inheritance inference layer is methodology-transparency,
+      NOT contradiction of the operational fact (KEV deadline +
+      active exploitation are A1 / very_likely; the inference layer
+      is likely, not very_likely).
+    notes: |
+      Eighth consecutive day of CVE-2026-9082 status tracking in the
+      Archimedes corpus (2026-05-19 PSA → 2026-05-22 FLASH ITW status
+      change → daily T-N status ticks through 2026-05-26 T-1).
+      Today's NEW substance is the Imperva + Shadowserver telemetry
+      addition: Imperva's 15K+ attempts / 6K+ sites / 65 countries /
+      ~50% Gaming + FinServ is the first attacker-side telemetry to
+      reach the corpus and is the load-bearing counter-evidence to
+      A&D-specific targeting framing. Shadowserver's 670 unpatched
+      installations (272 NA, 273 Europe) is the first independent
+      internet-scale exposure census.
+
+      Red-team review applied (red-team-20260526-081400) on the
+      DIB-inheritance inference layer: distinguished operational fact
+      (deadline, active exploitation — A1/very_likely) from inference
+      (DIB/CMMC partner estate in-scope — likely, not very_likely).
+      Population-scaling caveat: PostgreSQL is not Drupal's default
+      RDBMS (MySQL/MariaDB is) — the A&D-prime-on-PostgreSQL-Drupal
+      subset is plausibly very small relative to the global 670.
+
+      Anti-repetition discipline: KEV deadline calendar substance
+      from prior briefs NOT re-litigated; today's lead-tier surface
+      is the deadline-narrowing (T-1, ~36h) plus the substantively
+      NEW Imperva + Shadowserver telemetry layer.
+
+  - id: 2026-05-26-am-005-mandiant-gtig-knowledgedeliver-cve-2026-5426-retrospective-zero-day-godzilla-cobalt-strike
+    covered_in: [2026-05-26-morning]
+    brief_file: threats/briefs/2026-05-26-morning.md
+    headline: "Mandiant / GTIG retrospective: CVE-2026-5426 (hard-coded ASP.NET machine keys → ViewState deserialization → unauthenticated RCE) exploited as zero-day against Digital Knowledge's KnowledgeDeliver LMS (Japan-domestic) to deploy Godzilla web shell (alias BLUEBEAM) + Cobalt Strike Beacon via JavaScript modification + fake security alerts + malicious installer chain; attributed to 'an unknown threat actor' per Mandiant explicit choice; patched 2026-02-24; relayed by THN + SecurityWeek (both cite Mandiant primary, not independent corroboration); not widely deployed in A&D — monitoring tier"
+    topic_tags:
+      - cve-2026-5426-knowledgedeliver-lms-japan-domestic
+      - hard-coded-asp-net-machine-keys-cwe-798
+      - viewstate-deserialization-cwe-502
+      - unauthenticated-rce
+      - godzilla-web-shell-alias-bluebeam-t1505-003
+      - cobalt-strike-beacon-s0154
+      - javascript-modification-fake-security-alerts-malicious-installer-chain
+      - retrospective-zero-day-analysis-class
+      - mandiant-gtig-primary-attribution-explicit-decline-unknown-threat-actor
+      - thn-securityweek-both-relay-same-mandiant-primary-not-independent-corroboration
+      - monitoring-tier-no-ad-exposure-japan-domestic-lms
+    related_actors: []   # "unknown threat actor" per Mandiant/GTIG explicit choice
+    related_vulns:
+      - cve: CVE-2026-5426
+        product: "Digital Knowledge KnowledgeDeliver (Japan-domestic LMS)"
+        cvss: 7.5
+        cwe: ["CWE-798", "CWE-502"]
+        patched: 2026-02-24
+        kev_status: not_listed
+        exploited_as_zero_day_pre_patch: true
+    related_campaigns:
+      - cve-2026-5426-knowledgedeliver-japan-lms-retrospective-zero-day-2026
+    finding_ids:
+      - finding-2026-05-26-0005-mandiant-gtig-knowledgedeliver-cve-2026-5426-retrospective-zero-day-godzilla-cobalt-strike
+    digraph: A2
+    wep: likely
+    wep_ceiling_rationale: "Single primary source (Mandiant/GTIG). Two media relays (THN + SecurityWeek) cite the same Mandiant primary — multi-relay pattern is restatement, NOT independent corroboration per INTEL-GRADING.md independence test. Single-source veto applies."
+    resurface_if:
+      - msft_mstic_crowdstrike_unit42_jpcert_independent_corroboration_of_same_incident_class
+      - direct_mandiant_gtig_primary_publication_url_retrieved
+      - new_ad_estate_exposure_to_knowledgedeliver_lms_disclosed
+      - cobalt_strike_godzilla_bluebeam_chain_attributed_to_named_tracked_actor
+    first_covered: 2026-05-26
+    last_covered: 2026-05-26
+    retraction: null
+    test: false
+    iocs_promoted:
+      - type: cve
+        value: CVE-2026-5426
+        cvss: 7.5
+        cwe: ["CWE-798", "CWE-502"]
+        patched: 2026-02-24
+        kev: false
+        master_index_promotion_recommended: false   # Below FLASH thresholds; Japan-domestic; no A&D exposure
+    hard_rule_2_treatment: |
+      Mandiant/GTIG explicitly declines actor attribution — "unknown
+      threat actor." Archimedes does not originate. Cobalt Strike +
+      Godzilla universal-toolkit-overlap is NOT a basis for attribution
+      (deployed by APT41, MuddyWater, Lazarus, TeamPCP, criminal RaaS
+      operators, commercial red-team deployments).
+    notes: |
+      Monitoring-tier finding — patched 2026-02-24, no current A&D
+      estate exposure (KnowledgeDeliver is Japan-domestic). Captured
+      for Godzilla/BLUEBEAM + Cobalt Strike Beacon + ASP.NET ViewState
+      deserialization chain baseline tradecraft-universe documentation.
+      Direct Mandiant primary URL not enumerated in either THN or
+      SecurityWeek relay — operator action item to direct-retrieve
+      Mandiant primary on subsequent sweep.
+
+  - id: 2026-05-26-am-006-sans-isc-acr-stealer-fake-claude-download-page-fairpoint29-brad-duncan-iocs
+    covered_in: [2026-05-26-morning]
+    brief_file: threats/briefs/2026-05-26-morning.md
+    headline: "SANS ISC diary 33018 (Brad Duncan): ACR Stealer Windows infostealer delivery chain via Google Ads malvertising → sites.google.com URL concealment → fake Anthropic Claude download landing page on fairpoint29[.]com → downloads via primemetricsa[.]com + 6ryuefl.creativecommunityinfo[.]art + abused i.ibb[.]co payload staging → C2 at yw.enhanceblabber[.]cc; six IOCs (5 domains + 3 SHA-256 hashes) published for defender blocklist deployment; commodity infostealer, no actor attribution; AI brand impersonation lure (Anthropic/Claude) as initial-access vector"
+    topic_tags:
+      - sans-isc-diary-33018-brad-duncan-handler-byline
+      - acr-stealer-windows-infostealer-malpedia-class
+      - fairpoint29-com-fake-claude-anthropic-download-landing-page
+      - primemetricsa-com-download-domain
+      - 6ryuefl-creativecommunityinfo-art-host-specific-download-domain
+      - i-ibb-co-legitimate-service-abused-for-payload-staging-alert-only-not-blocklist-parent
+      - yw-enhanceblabber-cc-c2-domain
+      - three-sha256-hashes-zip-powershell-image
+      - google-ads-malvertising-t1583-008
+      - url-concealment-via-sites-google-com
+      - ai-brand-impersonation-lure-anthropic-claude
+      - commodity-infostealer-no-actor-attribution
+      - defender-utility-iocs-master-index-promotion-recommended
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - acr-stealer-fake-claude-anthropic-download-page-2026-05-26
+    finding_ids:
+      - finding-2026-05-26-0006-sans-isc-acr-stealer-fake-claude-download-page-fairpoint29-brad-duncan-iocs
+    digraph: B3
+    wep: likely
+    wep_ceiling_rationale: "Single-source SANS ISC diary; Brad Duncan handler byline; sandbox-execution + pcap-analysis workflow. Independent corroboration paths: ANY.RUN / Hatching Triage / Joe Sandbox public sandbox submissions on same hashes; Palo Alto Unit 42 / CrowdStrike / Sophos / Microsoft Defender / Google TAG publishing parallel campaign observations; abuse.ch URLhaus / ThreatFox tagging the domains."
+    resurface_if:
+      - second_sandbox_operator_or_vendor_publishes_same_iocs_or_chain
+      - abuse_ch_urlhaus_or_threatfox_tags_published_domains
+      - first_party_splunk_hit_on_fairpoint29_primemetricsa_enhanceblabber_creativecommunityinfo_or_acr_stealer_hashes
+      - acr_stealer_family_attribution_to_named_actor
+      - ai_brand_impersonation_lure_vector_corroborated_by_second_independent_research_publication
+    first_covered: 2026-05-26
+    last_covered: 2026-05-26
+    retraction: null
+    test: false
+    iocs_promoted:
+      - type: domain
+        value: fairpoint29[.]com
+        defanged: true
+        confidence: high
+        related_malware: ACR Stealer
+        master_index_promotion_recommended: true
+      - type: domain
+        value: primemetricsa[.]com
+        defanged: true
+        confidence: high
+        related_malware: ACR Stealer
+        master_index_promotion_recommended: true
+      - type: domain
+        value: 6ryuefl.creativecommunityinfo[.]art
+        defanged: true
+        confidence: high
+        related_malware: ACR Stealer
+        master_index_promotion_recommended: true
+      - type: domain
+        value: i.ibb[.]co
+        defanged: true
+        confidence: medium
+        related_malware: ACR Stealer
+        defender_handling: "alert_only_do_not_blocklist_parent_zone"
+        master_index_promotion_recommended: true
+      - type: domain
+        value: yw.enhanceblabber[.]cc
+        defanged: true
+        confidence: high
+        related_malware: ACR Stealer
+        master_index_promotion_recommended: true
+      - type: hash_sha256
+        value: 70b5ecc110e074dbca92932c0e840ea3492ea0a43c3f215b71392c12b02213b2
+        context: "ZIP archive — initial-stage delivery"
+        confidence: high
+        related_malware: ACR Stealer
+        master_index_promotion_recommended: true
+      - type: hash_sha256
+        value: a14c3ecf5eb3d2543358482e43dc765dbf9ee7a4bec7571f5ecb8829ca719692
+        context: "PowerShell — execution-stage script"
+        confidence: high
+        related_malware: ACR Stealer
+        master_index_promotion_recommended: true
+      - type: hash_sha256
+        value: 47fa746422f1bf6b7712dc6803378e6a995488007193a7441d790f70d204728f
+        context: "Image file — masquerading-as-image payload staging"
+        confidence: high
+        related_malware: ACR Stealer
+        master_index_promotion_recommended: true
+    hard_rule_2_treatment: |
+      No actor attribution per Brad Duncan / SANS ISC. ACR Stealer is
+      commodity infostealer deployed by multiple criminal operators —
+      attribution-empty by design. Anthropic / Claude brand
+      impersonation is a LURE-VECTOR observation, NOT a TeamPCP /
+      Anthropic / corpus-actor attribution claim. AI-brand-abuse
+      surface cross-references the broader Check Point AI Threat
+      Landscape Digest finding (2026-05-26-am-002) at the
+      TECHNIQUE-CLASS layer only — not actor-cluster linkage.
+    notes: |
+      Defender-tier diary publication. The six IOCs (5 domains + 3
+      SHA-256 hashes) warrant immediate `_master-index.yaml` promotion
+      regardless of attribution-layer single-source veto. DEFENDER
+      ALERT NOTE: parent zone `ibb.co` is legitimate image hosting —
+      do NOT blocklist; alert on download + execute-from-`i.ibb.co`
+      patterns only.
+
+      AI brand impersonation (Anthropic / Claude) surfaces in the
+      corpus as the fourth instance in the four-surface Anthropic-
+      brand-abuse pattern documented in finding-2026-05-26-0002 (CKR
+      AI Threat Landscape Digest): ClaudeBleed (finding-2026-05-09 /
+      2026-05-09 corpus) + MacSync (finding-2026-05-13) + GTG-1002
+      `CLAUDE.md` persistent jailbreak (Anthropic Nov 2025 / CKR
+      May 26 restatement) + ACR Stealer fake Claude download page
+      (this finding). Per Hard Rule 2 brief framing: technique-class
+      observation, NOT actor-cluster linkage.
+
+  - id: 2026-05-26-am-brief-meta
+    covered_in: [2026-05-26-morning]
+    brief_file: threats/briefs/2026-05-26-morning.md
+    headline: "Morning brief 2026-05-26 — Drupal CVE-2026-9082 KEV T-1 lead with Imperva + Shadowserver UPDATE telemetry; UNC1549 / Nimbus Manticore tradecraft evolution (third-vendor CKR independent reporting + SEO-poisoning getsqldeveloper[.]com IOC); CKR AI Threat Landscape Digest with analyst-qualified caveats (tier-dependent UEBA + four-surface Claude-brand-abuse technique-class framing); APT28 institutional context Kozlov appointment (B2 monitoring + actor dossier handoff); Mandiant KnowledgeDeliver retrospective (A2 monitoring, no A&D exposure); ACR Stealer 6 IOCs blocklist; six findings + Exchange CVE-2026-42897 T-3 carry-forward; standing sections present; Splunk 61st consecutive dormant non-self sweep"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - lead-with-drupal-kev-t-minus-1-deadline-plus-imperva-shadowserver-update-substance
+      - red-team-applied-to-drupal-dib-inheritance-inference-layer
+      - analyst-qualified-checkpoint-ai-digest-tier-dependent-ueba-framing
+      - hard-rule-2-brief-wide-four-surface-claude-brand-abuse-technique-class-not-actor-cluster
+      - hard-rule-2-brief-wide-corpus-baseline-attribution-restatement-not-origination
+      - apt28-institutional-context-watch-item-no-extrapolation
+      - mandiant-knowledgedeliver-monitoring-no-ad-exposure
+      - acr-stealer-defender-iocs-master-index-promotion-recommended
+      - exchange-cve-2026-42897-t-3-carry-forward-substance-not-re-litigated
+      - splunk-first-party-61st-consecutive-dormant-non-self-sweep
+      - six-findings-cluster-content-rich-day-word-count-over-baseline-target
+    related_actors:
+      - id: "004"
+        actor_name: UNC1549
+        attribution_in_brief: corpus-baseline-restated-third-vendor-ckr-independent-reporting-layer-new
+      - id: "006"
+        actor_name: APT28
+        attribution_in_brief: corpus-baseline-institutional-context-only-no-tradecraft-or-targeting-extrapolation
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: cross-reference-only-four-surface-claude-brand-abuse-technique-class-context-no-ckr-attribution-of-named-clusters
+    related_vulns:
+      - cve: CVE-2026-9082
+        role: kev_deadline_t_minus_1_status_plus_imperva_shadowserver_update_substance
+      - cve: CVE-2026-42897
+        role: kev_deadline_t_minus_3_carry_forward_substance_not_re_litigated
+      - cve: CVE-2026-5426
+        role: monitoring_tier_retrospective_zero_day_no_ad_exposure
+      - cve: CVE-2026-33626
+        role: speed_metric_12h_from_advisory_to_working_exploit_lmdeploy_referenced_in_ckr_digest
+    related_campaigns:
+      - unc1549-nimbus-manticore-2026-active-campaign
+      - cve-2026-9082-drupal-core-sqli-kev-deadline-tracking
+      - gtg-1002-chinese-nexus-anthropic-nov-2025-restatement
+      - mexico-breach-single-operator-nine-agencies-dec-2025-feb-2026
+      - bissa-scanner-mass-nextjs-env-harvest-since-sep-2025
+      - eviltokens-phaas-microsoft-oauth-bec-pipeline
+      - acr-stealer-fake-claude-anthropic-download-page-2026-05-26
+      - cve-2026-5426-knowledgedeliver-japan-lms-retrospective-zero-day-2026
+    finding_ids:
+      - finding-2026-05-26-0001-unc1549-nimbus-manticore-minifast-minijunk-v2-seo-poisoning-getsqldeveloper
+      - finding-2026-05-26-0002-checkpoint-research-ai-threat-landscape-digest-march-april-2026-gtg1002-mexico-bissa-eviltokens
+      - finding-2026-05-26-0003-therecord-kozlov-rostec-gru-unit-26165-security-council-apt28-institutional-context
+      - finding-2026-05-26-0004-bleepingcomputer-cisa-drupal-cve-2026-9082-kev-deadline-t-1-imperva-shadowserver
+      - finding-2026-05-26-0005-mandiant-gtig-knowledgedeliver-cve-2026-5426-retrospective-zero-day-godzilla-cobalt-strike
+      - finding-2026-05-26-0006-sans-isc-acr-stealer-fake-claude-download-page-fairpoint29-brad-duncan-iocs
+    cross_referenced_finding_ids: []
+    absorbs_flashes: []
+    notes: |
+      Six-finding content-rich morning. Drupal CVE-2026-9082 KEV T-1
+      leads with the substantively NEW Imperva + Shadowserver
+      telemetry UPDATE layer (first attacker-side magnitude + first
+      independent internet-scale exposure census in corpus on this
+      CVE). Red-team review applied to the DIB-inheritance inference
+      layer per finding-0004 red_team_review block.
+
+      Lead structure: deadline (operational fact, A1/very_likely)
+      precedes inference (DIB partner estate in-scope as posture-
+      review hook, likely/not very_likely). Imperva sectoral
+      breakdown (~50% Gaming + FinServ) is foregrounded as counter-
+      evidence to A&D-specific targeting framing. PostgreSQL
+      affected-config narrowness vs Drupal's MySQL/MariaDB default
+      preserves the population-scaling caveat carried from the
+      red-team challenge.
+
+      Analyst-qualified caveats applied to CKR AI Threat Landscape
+      Digest (finding-0002):
+      - Mexico-breach claims prefixed "per CKR, on the recovered-VPS
+        evidence base"
+      - "AI evades behavioral controls" framed as TIER-DEPENDENT
+        (mid-tier government cohort, does NOT extrapolate to Tier-1
+        A&D primes on mature UEBA)
+      - Four-surface Anthropic-brand-abuse pattern explicitly framed
+        as TECHNIQUE-CLASS / brand-abuse opportunity surface, NOT
+        an actor cluster (Hard Rule 2 binding)
+      - Forward projection ("controls remain insufficient") framed
+        as 6-12 month window with active defender response, NOT
+        structural defender-gap
+
+      Anti-repetition discipline:
+      (1) UNC1549 tradecraft evolution is third-vendor (CKR)
+          independent-reporting layer over the 2026-05-23 0600
+          FLASH lineage + new SEO-poisoning delivery vector +
+          `getsqldeveloper[.]com` domain IOC — new substantive
+          layers, not re-litigation
+      (2) Drupal CVE-2026-9082 substance was carried forward across
+          May 19 → May 25; today's NEW substance is the Imperva +
+          Shadowserver telemetry addition and the T-1 deadline
+          narrowing
+      (3) Exchange CVE-2026-42897 substance NOT re-litigated —
+          T-3 status tick only with mitigation-path reminder
+      (4) APT28 corpus-baseline attribution restated for
+          institutional context; not new attribution
+      (5) Iran Cyber Watch: UNC1549 cross-referenced in Active
+          Threats (above) per standing-section guidance; other
+          tracked Iranian actors silent in 48h window
+
+      Standing sections both present (Sector Focus A&D and Iran
+      Cyber Watch).
+
+      Hard Rule 2 brief-wide compliance:
+      - All actor attributions are corpus-baseline restatement
+        (UNC1549 #004 IRGC; APT28 #006 GRU Unit 26165)
+      - Four-surface Anthropic-brand-abuse pattern framed as
+        TECHNIQUE-CLASS observation, NOT actor cluster
+      - CKR's "Chinese nexus" on GTG-1002 restated from Anthropic
+        Nov 2025 verbatim; not escalated
+      - Mexico-breach operator: CKR's explicit decline-to-attribute
+        preserved verbatim
+      - Mandiant's "unknown threat actor" on KnowledgeDeliver
+        retrospective preserved verbatim
+      - ACR Stealer: commodity-class, no actor attributed
+
+      Single-source veto respected brief-wide:
+      - UNC1549 tradecraft evolution: WEP capped at "likely" at
+        the THN-relay layer (one relay over two primaries not
+        directly retrieved this sweep)
+      - CKR AI Digest: WEP capped at "likely" (single-vendor
+        primary; Mexico breach forensics + Bissa + EvilTokens are
+        CKR-original observations)
+      - The Record on Kozlov-Unit-26165 personnel linkage: WEP
+        capped at "likely" (single-source on the personnel layer;
+        underlying APT28-Unit-26165 attribution is corpus-baseline)
+      - Mandiant/GTIG KnowledgeDeliver retrospective: WEP capped
+        at "likely" (single primary; THN + SecurityWeek both relay
+        the same Mandiant primary, not independent corroboration)
+      - SANS ISC ACR Stealer: WEP capped at "likely" (single-source
+        diary; defender-utility of IOCs independent of attribution-
+        layer single-source veto)
+      - Drupal CVE-2026-9082: WEP rises to "very_likely" on the
+        deadline + active exploitation layer (five independent
+        primaries) but the DIB-inheritance inference layer holds
+        at "likely" per red-team challenge
+
+      First-party Splunk: 61st consecutive dormant non-self sweep
+      on `defenseclaw_local` (multi-keyword sentinel covering UNC1549
+      / MiniFast / MiniJunk / getsqldeveloper / AppDomainManager,
+      CVE-2026-9082 / Drupal, Kozlov / Rostec / Unit 26165, GTG-1002
+      / Mexico / Bissa / EvilTokens / `CLAUDE.md`, CVE-2026-5426 /
+      KnowledgeDeliver / Godzilla / BLUEBEAM, and fairpoint29 /
+      primemetricsa / enhanceblabber / ACR Stealer keyword sets).
+      Hard Rule 8 framing: silence is neither confirming nor
+      disconfirming; `defenseclaw_local` structurally bounded by
+      narrow ingest scope.
+
+      Word count caveat: Six-finding day inherently produces a Layer 1
+      brief above the 400-800 word target (this brief Layer 1 is
+      ~975 words). Doctrine hard cap at 150% of max (1200) was the
+      ceiling enforced; aggressive smart-brevity cuts brought the
+      content-density to ~975 words, under the hard cap. Discord
+      Summary Layer 2 trimmed to ~262 words / ~1895 chars (under the
+      1900-char ceiling for Discord 2000-char per-message limit).
+
+      Source-grade-log handoff (librarian action): Check Point
+      Research → add to source-grades.yaml at A grade (vendor
+      research) per the precedent applied to SentinelOne, Wiz, Snyk,
+      Bitdefender, Symantec, Darktrace, Cisco Talos. Second in-corpus
+      citation (first was 2026-05-22 Nimbus Manticore via 2026-05-23
+      FLASH lineage).
+
+      IOC master-index handoff (librarian action): Promote the 9
+      IOCs surfaced today — UNC1549 `getsqldeveloper[.]com` (1) +
+      ACR Stealer 5 domains + 3 SHA-256 hashes (8) = 9 total. Note
+      `i.ibb[.]co` defender_handling = alert_only_do_not_blocklist_parent_zone.
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-26T16:00:00-04:00
+last_updated: 2026-05-27T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -18845,6 +18845,685 @@ entries:
       lineage and the 2026-05-26 AM-26 finding-0002 AI Threat
       Landscape Digest). LiteSpeed Technologies vendor advisory
       formalization to A grade per vendor-self-disclosure category.
+
+  - id: 2026-05-27-am-001-crowdstrike-glassworm-takedown-roster-005-four-channel-c2-russia-attribution
+    covered_in: [2026-05-27-morning]
+    brief_file: threats/briefs/2026-05-27-morning.md
+    headline: "CrowdStrike + Google + Shadowserver disrupt GlassWorm (roster #005 HIGH) on 2026-05-26 — all four parallel C2 channels taken down simultaneously (Solana blockchain dead-drop, BitTorrent DHT, Google Calendar event titles, commercial VPS); YARA rules published (GlasswormRAT, GlasswormDownloader); benign sinkhole 164.92.88.210; 300+ poisoned GitHub repos + OpenVSX/npm/PyPI vectors; first A-grade pattern-based Russia attribution preserved verbatim per Hard Rule 2 (CIS-locale geofencing + Russian-language code comments with vendor's own AI-tooling caveat); no A&D prime named compromised; cluster A2 with single-source veto on forward dormancy and Russia-origin claims"
+    topic_tags:
+      - actor
+      - glassworm
+      - roster-005
+      - high-threat-level
+      - crowdstrike-counter-adversary-operations-takedown
+      - google-partner
+      - shadowserver-partner
+      - four-channel-c2-architecture
+      - solana-blockchain-dead-drop
+      - bittorrent-dht
+      - google-calendar-event-title-dead-drop
+      - commercial-vps-c2
+      - benign-sinkhole-164-92-88-210
+      - yara-glasswormrat
+      - yara-glasswormdownloader
+      - openvsx-npm-pypi-github-supply-chain
+      - 300-poisoned-github-repos
+      - vscode-cursor-positron-windsurf-vscodium-platforms
+      - russia-likely-attribution-pattern-based-single-source-veto
+      - cis-locale-geofencing
+      - russian-language-code-comments-ai-tooling-caveat
+      - hard-rule-2-verbatim-attribution-preserved
+      - actor-profiler-handoff-roster-005-nation-field-update-decision
+      - architectural-pattern-reusability-decentralized-resilience-c2-class
+    related_actors:
+      - id: "005"
+        actor_name: GlassWorm
+        attribution_in_brief: corpus-baseline-roster-005-high-plus-first-a-grade-russia-attribution-preserved-verbatim-not-upgraded
+    related_vulns: []
+    related_campaigns:
+      - glassworm-takedown-2026-05-26
+    finding_ids:
+      - finding-2026-05-27-0001-crowdstrike-glassworm-takedown-roster-005-counter-adversary-operations-google-shadowserver
+    digraph: A2
+    digraph_layered:
+      crowdstrike_takedown_disclosure: A2
+      four_channel_c2_architecture: A2
+      sinkhole_ip_164_92_88_210: A1
+      yara_rules: A1
+      russia_origin_likely_attribution_pattern_based: A3
+    wep: very_likely
+    wep_layered:
+      takedown_event_occurred_2026_05_26: very_likely
+      four_channel_c2_architecture_existed: likely
+      glassworm_operationally_dormant_post_takedown: likely
+      russia_origin_likely_pattern_based: likely
+      cis_locale_geofencing_present: very_likely
+      developer_population_targeting_continued: very_likely
+    resurface_if:
+      - new_attribution                                  # second A/B-grade IR firm publishes parallel Russia attribution with independent telemetry
+      - actor_ttps_evolve                                # reconstituted GlassWorm infrastructure observed; new C2 channels; new poisoned-package vectors
+      - arrests_or_indictments                           # law enforcement action naming specific operators or nationalities
+      - first_party_ioc_hit                              # any Splunk hit on YARA rules, autorun-like patterns from this campaign, or sinkhole IP
+      - independent_corroboration                        # Mandiant / MSTIC / Unit 42 / Recorded Future / Volexity publish parallel telemetry
+      - actor_profiler_completes_005_nation_field_update_decision
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      First A-grade vendor takedown report on roster #005 GlassWorm in the
+      corpus. Hard Rule 2 honored — "the criminals are likely based in
+      Russia" preserved verbatim with vendor's own caveat (no single
+      indicator is proof; code comments may reflect AI tooling). Single-
+      source veto applied on Russia-origin and forward-looking dormancy
+      claims; procedural facts (YARA, sinkhole IP, takedown event) reach
+      very_likely individually. SAT-ACH ran on attribution; matrix non-
+      diagnostic across H1 (Russia) / H2 (CIS-superset) / H3 (multi-
+      nationality) / H4 (false-flag) / H5 (composite); analyst output
+      confirms ceiling at "likely" and supports actor-profiler holding
+      #005 nation at "unknown" OR updating to "RU (likely, per CrowdStrike
+      2026-05-26)" with verbatim qualifier including AI-tooling caveat —
+      either is defensible. Action-tier eligible: YARA ingest, sinkhole
+      classification, OpenVSX/Cursor/Windsurf extension audit.
+
+  - id: 2026-05-27-am-002-noscope-thn-gitea-cve-2026-27771-unauth-private-container-registry-aerospace-sector-named
+    covered_in: [2026-05-27-morning]
+    brief_file: threats/briefs/2026-05-27-morning.md
+    headline: "CVE-2026-27771 Gitea container registry authentication bypass allows unauth remote pull of private container images per Noscope research (UK; first Archimedes-corpus citation; provisional C) relayed by The Hacker News — all Gitea versions <1.26.2 affected; fix in 1.26.2; CVSS not yet published; aerospace manufacturers named at sector class, no specific A&D prime identified; cluster C3 monitoring-tier"
+    topic_tags:
+      - cve
+      - cve-2026-27771
+      - gitea
+      - container-registry
+      - authentication-bypass
+      - unauth-remote-private-image-pull
+      - cwe-287
+      - registry-auth-bypass-class
+      - patched-1-26-2
+      - cvss-pending-nvd
+      - noscope-first-citation-provisional-c
+      - thn-b-grade-relay
+      - 30000-plus-deployments-30-plus-countries
+      - aerospace-manufacturers-sector-class-named
+      - no-named-ad-prime
+      - no-active-exploitation
+      - no-public-poc
+      - hard-rule-2-strict-hold-sector-class-only
+      - monitoring-tier-only
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-27771
+        product: Gitea (self-hosted source-code + container-registry platform)
+        affected_versions: "all versions < 1.26.2"
+        patched_version: "1.26.2"
+        cvss: not_yet_published
+        active_exploitation: not_reported
+        public_poc: not_reported
+        vt_candidate: false
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-27-0002-noscope-thn-gitea-cve-2026-27771-unauth-private-container-registry-aerospace-sector-named
+    digraph: C3
+    wep: roughly_even_chance
+    wep_layered:
+      cve_2026_27771_exists_and_was_assigned: very_likely
+      vulnerability_exists_in_gitea_container_registry_auth: likely
+      affected_all_versions_prior_to_1_26_2: likely
+      patched_in_1_26_2: likely
+      30000_plus_gitea_deployments_affected_globally: roughly_even_chance
+      aerospace_manufacturers_in_affected_sector_class: roughly_even_chance
+      ad_prime_indirect_relevance_via_internal_gitea_deployments: roughly_even_chance
+    resurface_if:
+      - new_victims_confirmed                          # any named A&D-prime or sector-tier victim
+      - escalation_to_exploitation                     # active exploitation reported in the wild
+      - independent_corroboration                      # Mandiant / Unit 42 / CrowdStrike / Microsoft corroborates scope or sector claims
+      - public_poc_release                             # PoC published
+      - cisa_kev_addition                              # CISA KEV adds CVE-2026-27771
+      - nvd_cvss_published                             # NVD scoring drops
+      - first_party_splunk_hit                         # any Splunk hit on Gitea / CVE-2026-27771 / container registry endpoint
+      - noscope_primary_directly_retrieved
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      First Gitea-related entry in Archimedes vulnerability tracking.
+      First Noscope-attributed finding in corpus (UK security company,
+      provisional-C first-citation per source-grades-cheatsheet precedent).
+      Monitoring-tier only per inclusion threshold; not vuln-tracker
+      dossier-eligible (no active exploitation + provisional-C originating
+      source + no CVSS yet). Aerospace-manufacturers sector class is the
+      A&D-relevance hook — but Hard Rule 2 prevents extrapolation to any
+      specific watchlist prime. Action-tier surface: inventory self-hosted
+      Gitea on engineering + partner networks; any <1.26.2 hosting
+      private container images, treat embedded secrets / signing keys /
+      build credentials as potentially-disclosed during exposure window.
+      Tripwire: NVD CVSS publication, second A/B-grade IR firm
+      corroboration, named A&D-prime exposure, or Noscope primary direct
+      retrieval lifts veto and may re-grade.
+
+  - id: 2026-05-27-am-003-securityweek-adversa-ai-symjack-symlink-hijack-ai-coding-agents-five-vendor-mcp-abuse
+    covered_in: [2026-05-27-morning]
+    brief_file: threats/briefs/2026-05-27-morning.md
+    headline: "SymJack symlink-hijack of AI coding agents into registering attacker-controlled MCP servers per Adversa AI (first Archimedes-corpus citation; provisional C) relayed by SecurityWeek — tested reproducible across 5 vendor agents (Claude Code, Gemini CLI, Cursor Agent CLI, Grok Build CLI, GitHub Copilot CLI); Anthropic hardened Claude Code; other four vendors' patch status not detailed; TOCTOU-class symlink-resolution flaw at agent approval boundary; no CVE assigned (technique-class); no active exploitation; cluster C3 monitoring-tier structural-warning class"
+    topic_tags:
+      - ttp-class
+      - symjack
+      - symlink-hijack
+      - toctou-class
+      - ai-coding-agents
+      - mcp-model-context-protocol
+      - mcp-server-registration-abuse
+      - five-vendor-test-coverage
+      - claude-code
+      - gemini-cli
+      - cursor-agent-cli
+      - grok-build-cli
+      - github-copilot-cli
+      - anthropic-vendor-acknowledged-mitigation
+      - cp-command-symlink-resolution-execute-time
+      - adversa-ai-first-citation-provisional-c
+      - securityweek-b-grade-relay
+      - no-cve-assigned-technique-class
+      - no-active-exploitation
+      - no-named-victim
+      - hard-rule-2-strict-hold
+      - itar-codebase-relevance-structural-warning-class
+      - monitoring-tier-only
+    related_actors: []
+    related_vulns:
+      - cve: null
+        product_class: "AI coding agents with MCP (Model Context Protocol) server registration capability"
+        products_named: ["Claude Code", "Gemini CLI", "Cursor Agent CLI", "Grok Build CLI", "GitHub Copilot CLI"]
+        vendors_named: ["Anthropic", "Google", "Cursor", "xAI", "GitHub / Microsoft"]
+        vt_candidate: false
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-27-0003-securityweek-adversa-ai-symjack-symlink-hijack-ai-coding-agents-five-vendor-class-mcp-abuse
+    digraph: C3
+    wep: roughly_even_chance
+    wep_layered:
+      symjack_attack_technique_exists_per_adversa_ai: roughly_even_chance
+      anthropic_hardened_claude_code: likely
+      five_vendor_agents_all_vulnerable_at_publication: roughly_even_chance
+      cross_vendor_attack_surface_class: roughly_even_chance
+      active_exploitation_in_the_wild_currently: very_unlikely
+      ad_prime_sdlc_relevance_for_estates_using_ai_coding_agents: roughly_even_chance
+    resurface_if:
+      - independent_corroboration                       # second A/B-grade AI-security research firm reproduces the 5-vendor test result
+      - new_attribution                                 # any active exploitation observed in the wild
+      - vendor_patch_status_disclosed                   # Google / Cursor / xAI / GitHub publicly acknowledge patches for the four un-detailed agents
+      - first_party_splunk_hit                          # any Splunk hit on SymJack / symlink-hijack / MCP-server-registration patterns
+      - adversa_ai_primary_directly_retrieved
+      - any_ad_prime_symjack_class_incident_disclosed
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      Novel attack-class disclosure on AI coding agent MCP registration
+      boundary. Adversa AI is provisional-C first-citation per source-
+      grades-cheatsheet precedent. SecurityWeek B-grade relay.
+      Anthropic vendor-acknowledged mitigation is downstream-vendor-
+      response (corroborating-via-mitigation), NOT independent reproduction.
+      Monitoring tier only — research-class observation, not active
+      campaign. Structural-warning class for ITAR-controlled engineering
+      codebases adopting AI coding agents in SDLCs. Action surface:
+      confirm symlink-resolution fixes across all five vendors in use,
+      or restrict AI-coding-agent usage pending broader vendor coverage.
+
+  - id: 2026-05-27-am-004-securityweek-lacmta-black-shadow-mois-gambit-israel-ncd-investigation-update
+    covered_in: [2026-05-27-morning]
+    brief_file: threats/briefs/2026-05-27-morning.md
+    headline: "LACMTA cyberattack attribution update — SecurityWeek (Eduard Kovacs) B-grade relay of Gambit Security (originating IR firm; first Archimedes-corpus citation; provisional F) naming Black Shadow cluster via configuration-fingerprint-based infrastructure linkage + Israel National Cyber Directorate B-grade government endorsement framing Black Shadow as MOIS cluster; multi-victim regional campaign US/Israel/Saudi/Turkey; A&D sector explicitly absent from list; per Hard Rule 2, Archimedes does NOT cross-walk Black Shadow to tracked MOIS actors MuddyWater (#022) or Handala Hack (#014) despite service-level match — no source makes the cross-walk; investigation inv-2026-05-26-001 carries forward through 2026-06-09 (T+14); Iran Cyber Watch standing section monitoring tier"
+    topic_tags:
+      - investigation-update
+      - inv-2026-05-26-001
+      - lacmta
+      - la-metro
+      - iran-cyber-watch
+      - black-shadow-cluster-not-in-roster
+      - mois-service-level-attribution
+      - gambit-security-originating-ir-firm-provisional-f
+      - israel-national-cyber-directorate-government-endorsement
+      - configuration-fingerprint-based-infrastructure-linkage
+      - hacktivist-front-state-infrastructure-pattern
+      - multi-victim-regional-campaign-us-israel-saudi-turkey
+      - ad-sector-explicitly-absent
+      - hard-rule-2-strict-hold-no-cross-walk
+      - muddywater-022-mois-no-cross-walk-prohibited
+      - handala-hack-014-mois-no-cross-walk-prohibited
+      - chain-effectively-single-evidence-basis
+      - monitoring-tier-only
+      - investigation-carry-forward-t-plus-14
+    related_actors: []
+    related_actors_hard_rule_2_caveat:
+      - actor_id: "022"
+        actor_name: "MuddyWater"
+        service: MOIS
+        cross_walk_status: "PROHIBITED per Hard Rule 2 - service-level match insufficient"
+      - actor_id: "014"
+        actor_name: "Handala Hack"
+        service: MOIS
+        cross_walk_status: "PROHIBITED per Hard Rule 2 - service-level match insufficient"
+    related_vulns: []
+    related_campaigns:
+      - lacmta-iran-attribution-2026
+    finding_ids:
+      - finding-2026-05-27-0004-securityweek-lacmta-iran-black-shadow-mois-gambit-israel-cyber-directorate-relay-investigation-update
+    related_investigations:
+      - investigation_id: inv-2026-05-26-001
+        investigation_status: OPEN since 2026-05-26
+        carry_forward_through: 2026-06-09 T+14
+    digraph: C3
+    wep: roughly_even_chance
+    wep_layered:
+      lacmta_breach_occurred_partial_access: very_likely
+      iranian_state_sponsored_actor_responsible_per_gambit_iran_cyber_dir: roughly_even_chance
+      black_shadow_is_the_specific_cluster: roughly_even_chance
+      mois_is_the_service_per_israel_national_cyber_directorate: roughly_even_chance
+      multi_victim_regional_campaign_us_israel_saudi_turkey: roughly_even_chance
+      no_ad_prime_named_victim_in_multi_victim_list: very_likely
+    resurface_if:
+      - independent_corroboration                       # Mandiant / MSTIC / CrowdStrike / Recorded Future publishes parallel Black Shadow attribution within 14d window
+      - new_attribution                                 # FBI / CISA public attribution of LACMTA incident to Iranian state-sponsored actor
+      - new_victims_confirmed                           # additional victim named in multi-victim regional campaign — particularly A&D-adjacent
+      - new_iocs_published                              # Gambit Security or Israel NCD publishes specific IOCs
+      - actor_ttps_evolve                               # specific TTPs / malware / C2 mechanism disclosed
+      - first_party_splunk_hit
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      Iran Cyber Watch standing section monitoring tier update on open
+      investigation inv-2026-05-26-001. Black Shadow NOT in roster.
+      Per Hard Rule 2, no cross-walk to tracked MOIS actors despite
+      service-level match. Attribution chain is effectively single-
+      evidence-basis (Israel NCD publication cites Gambit Security per
+      public reporting; chain not genuine multi-source). SAT-ACH ran;
+      H2 (downstream-endorsement reading) ranked one inconsistency
+      better than sourced H1 (genuine multi-source MOIS attribution),
+      both at roughly_even_chance WEP. Investigation carry-forward
+      through 2026-06-09 awaiting A/B-grade IR-firm parallel attribution
+      before elevation. /new-actor scaffolding bar NOT met. Critical
+      tripwire: Mandiant / MSTIC / CrowdStrike / Recorded Future
+      parallel attribution within window rerun ACH; H1 likely becomes
+      rank 1; consider /new-actor scaffolding.
+
+  - id: 2026-05-27-am-005-mstic-cryptojacking-screenconnect-ai-chatbot-poisoning-gleeze-com-dynu-autorun-dll
+    covered_in: [2026-05-27-morning]
+    brief_file: threats/briefs/2026-05-27-morning.md
+    headline: "MSTIC discloses active cryptojacking campaign with novel AI-chatbot-recommendation-poisoning lure layer + ScreenConnect abuse via 9 autorun.dll DLL-sideload variants + 150+ malicious domains on gleeze[.]com + Dynu DDNS since March 2026 + 6 impersonated utility brands (CrystalDiskInfo, HWMonitor, DDU, FurMark, K-Lite, PDFgear) targeting high-performance-PC discrete-GPU audience; MSTIC explicit 'unknown threat actor'; no CVE; no A&D-prime named; A2 cluster split layers (action-tier IOCs vs monitoring-tier A&D engineering-workstation indirect-exposure structural-warning class)"
+    topic_tags:
+      - mstic-defender-experts
+      - cryptojacking-campaign
+      - ai-chatbot-recommendation-poisoning-novel-methodology-class
+      - seo-poisoning
+      - screenconnect-rmm-abuse
+      - dll-sideload-autorun-dll
+      - 9-autorun-dll-variants
+      - 150-plus-malicious-domains-since-march-2026
+      - gleeze-com-parent-domain
+      - dynu-dynamic-dns-infrastructure
+      - utility-brand-impersonation
+      - crystaldiskinfo
+      - hwmonitor
+      - ddu-display-driver-uninstaller
+      - furmark
+      - k-lite-codec-pack
+      - pdfgear
+      - target-quality-over-volume-discrete-gpu-audience
+      - unknown-threat-actor-mstic-explicit
+      - hard-rule-2-no-cross-walk
+      - split-layer-action-tier-iocs-vs-monitoring-tier-ad-inference
+      - ad-engineering-workstation-indirect-exposure-structural-warning-class
+      - kac-test-deferred-install-privileges-public-sourcing
+      - ai-tooling-abuse-corpus-thread
+    related_actors: []
+    related_vulns:
+      - cve: null
+        product_class: "Legitimate RMM (ScreenConnect) + DLL sideload via autorun.dll - no CVE in primary scope"
+        vt_candidate: false
+    related_campaigns:
+      - mstic-gleeze-com-cryptojacking-march-2026
+    finding_ids:
+      - finding-2026-05-27-0005-mstic-cryptojacking-screenconnect-ai-chatbot-seo-poisoning-gleeze-com-dynu-autorun-dll
+    digraph: A2
+    digraph_layered:
+      mstic_cryptojacking_campaign_disclosure: A2
+      novel_ai_chatbot_poisoning_methodology_class: A2
+      screenconnect_dll_sideload_autorun_dll_persistence: A2
+      150_plus_malicious_domains: A2
+      gleeze_com_dynu_infrastructure: A2
+      9_autorun_dll_variants: A2
+      6_impersonated_utility_brands: A2
+      unknown_threat_actor_attribution: A1
+    wep: very_likely
+    wep_layered:
+      cryptojacking_campaign_active: very_likely
+      150_plus_malicious_domains_existed_since_march_2026: very_likely
+      gleeze_com_dynu_infrastructure_attribution: very_likely
+      9_autorun_dll_variants_observed: very_likely
+      screenconnect_dll_sideload_mechanism: very_likely
+      ai_chatbot_poisoning_methodology_demonstrated: likely
+      ai_chatbot_poisoning_becomes_standard_tradecraft_industry_wide: likely
+      campaign_continuation_through_q2_2026: likely
+      no_actor_attribution_correctness: very_likely
+      ad_prime_engineering_workstation_indirect_exposure: roughly_even_chance
+    resurface_if:
+      - independent_corroboration                       # Mandiant / Unit 42 / CrowdStrike / Cisco Talos / Sophos publishes parallel telemetry on gleeze.com campaign
+      - new_attribution                                 # actor attribution emerges
+      - new_iocs_published                              # specific gleeze.com subdomains, autorun.dll hashes, additional domains
+      - first_party_splunk_hit                          # any Splunk hit on gleeze.com / autorun.dll / ScreenConnect / impersonated utility brands
+      - ad_prime_named_victim                           # any named A&D-prime engineering-workstation incident tied to this campaign
+      - second_vendor_ai_chatbot_poisoning_observation  # 90d tripwire for trajectory ACH
+      - llm_vendor_documented_mitigation                # retrieval-source filtering / brand-impersonation detection
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      A2 cluster on MSTIC A-grade primary; THN B-grade relay does not
+      corroborate. Single-source veto applied on forward-looking
+      AI-chatbot-poisoning-trajectory claims. SAT-ACH ranked H4
+      (taxonomic-reframing-of-SEO-poisoning) and H1 (becomes-standard-
+      tradecraft) as operationally equivalent for defender posture;
+      both at "likely" WEP. SAT-KAC on A&D-prime engineering-workstation
+      indirect exposure surfaced 2 test-class (install-privileges,
+      public-download-site sourcing) + 6 qualify-class assumptions; no
+      rejections. Briefer guidance: split layers explicitly. IOC layer
+      (gleeze.com, Dynu, autorun.dll, ScreenConnect) is action-tier
+      eligible for defender immediate action. A&D-prime indirect-
+      exposure framing held at monitoring-tier with structural-warning
+      language — does NOT escalate to action-tier without specific
+      A&D-prime first-party hit or named A&D-prime victim. Tripwire:
+      second A/B-grade vendor parallel observation within 90d elevates
+      cluster to A1 and reruns trajectory ACH.
+
+  - id: 2026-05-27-am-006-bleepingcomputer-charter-shinyhunters-40m-records-tradecraft-class-block-applied
+    covered_in: [2026-05-27-morning]
+    brief_file: threats/briefs/2026-05-27-morning.md
+    headline: "Charter Communications (Spectrum) confirms breach following ShinyHunters extortion threat — 40M records claimed by ShinyHunters self-claim; Charter denies CPNI/PI exfiltration and does not affirm 40M figure; BleepingComputer describes vishing → Microsoft Entra SSO → SaaS connected-app fanout → Salesforce export chain — single B-grade source on the chain itself; red-team BLOCKED the 'multi-victim 2026 Salesforce-Entra-vishing tradecraft class' synthesis frame (failed corpus-anchor verification: 7-Eleven precedent describes phishing/integration-abuse/misconfig, NOT vishing-Entra-SSO); briefer shipped at WEP likely on breach-occurred + ShinyHunters-responsible layer with 7-Eleven mechanism-difference explicit; ShinyHunters not in _roster.yaml (/new-actor scaffolding flagged for operator decision); per Hard Rule 2 NO cross-walk to Scattered Spider (#013) despite tradecraft analogy"
+    topic_tags:
+      - breach-disclosure-victim-confirmation
+      - charter-communications-spectrum
+      - consumer-telecom-not-ad-prime
+      - shinyhunters-not-in-roster
+      - 40m-records-actor-self-claim-c3
+      - charter-denies-cpni-pi-exfiltration-victim-self-disclosure-a2
+      - charter-does-not-affirm-40m-figure-asymmetric-response
+      - vishing-entra-sso-salesforce-export-chain-single-b-source
+      - 7-eleven-precedent-different-mechanism-corpus-anchor-failed
+      - red-team-publication-block-on-tradecraft-class-synthesis-frame
+      - briefer-applied-red-team-qualifying-language
+      - hard-rule-2-no-cross-walk-to-scattered-spider-013
+      - new-actor-scaffolding-shinyhunters-flagged-operator-decision
+      - phishing-resistant-mfa-entra-defender-posture
+      - salesforce-data-export-anomaly-monitoring-defender-posture
+      - saas-pivot-pattern-m365-google-workspace-sap-slack-adobe-atlassian-zendesk-dropbox
+      - alleged-breach-date-2026-04-01-actor-self-claim
+      - shinyhunters-operational-continuation-2026
+    related_actors: []
+    related_actors_hard_rule_2_caveat:
+      - actor_id: "013"
+        actor_name: "Scattered Spider"
+        tradecraft_overlap: "Salesforce-Entra-vishing SSO compromise + SaaS-connected-app pivot is operationally analogous to Scattered Spider 2026 tradecraft"
+        cross_walk_status: "PROHIBITED per Hard Rule 2 - BleepingComputer does NOT cite Scattered Spider in this piece"
+      - new_actor_candidate:
+          proposed_name: ShinyHunters
+          proposed_threat_level: TBD
+          rationale: "Multi-victim 2026 pattern - operator decision required for /new-actor scaffolding"
+          red_team_caveat: "WARNING per red-team: do NOT lean on a 'multi-victim 2026 Salesforce-Entra-vishing tradecraft class' framing as the /new-actor evidence threshold - that synthesis frame failed corpus-anchor verification"
+    related_vulns: []
+    related_campaigns:
+      - charter-shinyhunters-extortion-april-2026
+    finding_ids:
+      - finding-2026-05-27-0006-bleepingcomputer-charter-shinyhunters-40m-records-salesforce-entra-vishing-victim-confirmation
+    digraph: B2
+    digraph_layered:
+      bleepingcomputer_relay_of_charter_self_disclosure: B2
+      charter_communications_self_disclosure_of_breach: A2
+      shinyhunters_self_claim_of_40m_records: C3
+      vishing_entra_sso_salesforce_export_chain_single_b_source: B2
+      hard_rule_2_no_scattered_spider_cross_walk: A1
+    wep: likely  # red-team-adjusted from grader very_likely
+    wep_layered:
+      breach_at_charter_occurred: very_likely                       # Charter self-disclosure + ShinyHunters claim
+      shinyhunters_responsible_per_self_claim_and_charter: very_likely
+      vishing_entra_sso_salesforce_chain_specifics: roughly_even_chance  # red-team-downgraded
+      40m_record_scope_actual: likely
+      cpni_pi_exfiltrated_per_shinyhunters_claim: unlikely           # red-team-downgraded; Charter explicit denial
+      multi_actor_salesforce_entra_vishing_tradecraft_class_2026: unlikely  # red-team-BLOCKED
+      ad_prime_indirect_exposure_via_same_tradecraft_class: unlikely  # red-team-downgraded
+      shinyhunters_operational_continuation_in_2026: very_likely
+    red_team_outcome: block_on_synthesis_frame_briefer_complied
+    red_team_block_reason: |
+      'Salesforce-Entra-vishing multi-actor tradecraft class' framing failed
+      corpus-anchor verification. 7-Eleven precedent (the sole prior corpus
+      instance) describes a categorically different mechanism (phishing /
+      third-party integration abuse / misconfiguration; not vishing, not
+      Entra). Per RETRACTION-POLICY 'materially misleading - technically
+      true but presented in a way that creates false understanding' would
+      apply if shipped. Briefer complied; tradecraft-class synthesis frame
+      dropped; 7-Eleven mechanism-difference made explicit in brief.
+    resurface_if:
+      - independent_corroboration                       # A/B-grade IR firm (Mandiant / MSTIC / CrowdStrike / Unit 42 / Cisco Talos) publishes parallel attribution with telemetry
+      - new_attribution                                 # CISA / FBI public attribution; SEC 8-K filing specifying data categories
+      - new_victims_confirmed                           # additional ShinyHunters victim with documented vishing-Entra-SSO chain (resolves red-team E8 corpus-anchor failure)
+      - first_party_splunk_hit                          # any Splunk hit on Charter / ShinyHunters / Salesforce / Entra anomalous-export patterns
+      - shinyhunters_publishes_data_sample_on_leak_site
+      - ad_prime_indirect_exposure_evidence              # any A&D-prime named in Salesforce-Entra-vishing class incident
+      - operator_decides_on_new_actor_scaffolding_shinyhunters
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      Red-team applied publication-block on the "Salesforce-Entra-vishing
+      multi-victim 2026 tradecraft class" synthesis frame per failed
+      corpus-anchor verification. Briefer complied:
+      (1) Shipped the breach-occurred + ShinyHunters-responsible layer
+          at very_likely (Charter + ShinyHunters two independent sources).
+      (2) Shipped 40M scope at "likely" (ShinyHunters self-claim;
+          internally coherent with customer base; Charter does not affirm).
+      (3) Charter CPNI/PI denial preserved as victim self-disclosure
+          higher-trust on own data; ShinyHunters' some-CPNI claim is
+          contested by Charter.
+      (4) Dropped the "multi-victim tradecraft class" framing. Made
+          7-Eleven mechanism-difference explicit (phishing / third-party
+          integration abuse / misconfiguration per SecurityWeek 2026-05-18,
+          NOT vishing / Entra / SSO-pivot).
+      (5) Hard Rule 2 strict hold on Scattered Spider (#013) cross-walk
+          despite tradecraft analogy — BleepingComputer makes no such
+          cross-walk; Archimedes does not originate.
+      (6) /new-actor scaffolding for ShinyHunters flagged for operator
+          decision but EVIDENCE THRESHOLD must not lean on the false
+          claim of a multi-victim vishing-Entra-SSO pattern.
+
+      Action-tier defender posture preserved: phishing-resistant MFA on
+      Entra + Salesforce data-export anomaly monitoring is sound on its
+      own merits regardless of which actor is responsible at Charter.
+
+      Tripwire: second confirmed Salesforce-Entra-vishing victim in same
+      30d window with documented chain (not the 7-Eleven precedent)
+      resolves red-team's E8 corpus-anchor failure; tradecraft-class
+      framing becomes defensible. Until then, the chain remains a
+      single-B-source claim about the Charter case alone.
+
+  - id: 2026-05-27-am-brief-meta
+    covered_in: [2026-05-27-morning]
+    brief_file: threats/briefs/2026-05-27-morning.md
+    headline: "Morning brief 2026-05-27 — Six findings: GlassWorm takedown (A2, actor #005 first A-grade Russia attribution preserved verbatim), MSTIC cryptojacking + novel AI-chatbot-poisoning (A2, split action/monitoring layers), Charter/ShinyHunters confirmed breach (B2, red-team-blocked tradecraft-class synthesis frame), Gitea CVE-2026-27771 (C3, aerospace-class named), LACMTA Black Shadow/MOIS (C3, Iran Cyber Watch monitoring tier), SymJack AI-coding-agent symlink-hijack (C3, structural-warning class); UNC1549 Operation Epic Fury developing-story carry-forward; LiteSpeed + Exchange KEV deadline T-2 status tick; standing sections present; 63rd consecutive dormant first-party Splunk sweep; sentinel sweeps 00:00 + 06:00 both zero triggers"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - lead-with-glassworm-takedown-multi-partner-russia-attribution
+      - six-findings-content-rich-day
+      - red-team-block-on-charter-tradecraft-class-synthesis-frame-briefer-complied
+      - hard-rule-2-strict-hold-throughout
+      - mstic-split-layer-action-tier-iocs-vs-monitoring-tier-ad-inference
+      - iran-cyber-watch-monitoring-tier-lacmta-black-shadow
+      - developing-story-unc1549-operation-epic-fury-no-resurface-trigger
+      - kev-deadline-t-2-status-tick-litespeed-exchange
+      - single-source-veto-applied-multi-layered
+      - sentinel-cadence-both-flash-sweeps-zero-triggers
+      - splunk-63rd-consecutive-dormant-non-self-sweep
+      - word-count-content-rich-six-findings-above-baseline-target
+      - layered-wep-framing-throughout
+    related_actors:
+      - id: "005"
+        actor_name: GlassWorm
+        attribution_in_brief: corpus-baseline-roster-005-high-plus-first-a-grade-russia-attribution-preserved-verbatim
+      - id: "004"
+        actor_name: UNC1549
+        attribution_in_brief: developing-story-carry-forward-from-2026-05-26-afternoon-no-resurface-trigger
+    related_vulns:
+      - cve: CVE-2026-27771
+        role: net-new-c3-monitoring-tier-aerospace-manufacturers-sector-class
+      - cve: CVE-2026-48172
+        role: kev-deadline-t-2-fri-status-tick-substance-carry-forward
+      - cve: CVE-2026-42897
+        role: kev-deadline-t-2-fri-status-tick-substance-carry-forward
+    related_campaigns:
+      - glassworm-takedown-2026-05-26
+      - mstic-gleeze-com-cryptojacking-march-2026
+      - charter-shinyhunters-extortion-april-2026
+      - lacmta-iran-attribution-2026
+      - unc1549-nimbus-manticore-2026-active-campaign
+      - operation-epic-fury-2026
+    finding_ids:
+      - finding-2026-05-27-0001-crowdstrike-glassworm-takedown-roster-005-counter-adversary-operations-google-shadowserver
+      - finding-2026-05-27-0002-noscope-thn-gitea-cve-2026-27771-unauth-private-container-registry-aerospace-sector-named
+      - finding-2026-05-27-0003-securityweek-adversa-ai-symjack-symlink-hijack-ai-coding-agents-five-vendor-class-mcp-abuse
+      - finding-2026-05-27-0004-securityweek-lacmta-iran-black-shadow-mois-gambit-israel-cyber-directorate-relay-investigation-update
+      - finding-2026-05-27-0005-mstic-cryptojacking-screenconnect-ai-chatbot-seo-poisoning-gleeze-com-dynu-autorun-dll
+      - finding-2026-05-27-0006-bleepingcomputer-charter-shinyhunters-40m-records-salesforce-entra-vishing-victim-confirmation
+    absorbs_flashes: []
+    notes: |
+      Six-finding content-rich AM window. Lead: GlassWorm multi-partner
+      takedown with first A-grade pattern-based Russia attribution
+      (preserved verbatim per Hard Rule 2).
+
+      Red-team applied to finding-0006 Charter/ShinyHunters
+      "Salesforce-Entra-vishing multi-victim 2026 tradecraft class"
+      synthesis frame. Block reason: failed corpus-anchor verification
+      (7-Eleven precedent describes different mechanism). Briefer
+      complied: shipped breach-occurred + ShinyHunters-responsible
+      layer (red-team-adjusted WEP "likely"); dropped tradecraft-class
+      synthesis frame; made 7-Eleven mechanism-difference explicit in
+      both Layer 1 and Layer 2.
+
+      Anti-repetition discipline:
+      (1) UNC1549 / Operation Epic Fury covered yesterday afternoon —
+          no resurface trigger fired overnight; carried forward as
+          "developing story" status note in Iran Cyber Watch, NOT re-
+          litigated.
+      (2) LiteSpeed CVE-2026-48172 KEV deadline (Fri T-2) — status
+          tick only; substance carry-forward from 2026-05-26 afternoon.
+      (3) Exchange CVE-2026-42897 KEV deadline (Fri T-2) — status tick
+          only; substance carry-forward.
+      (4) Drupal CVE-2026-9082 KEV deadline passed Wed T-1 (yesterday);
+          not surfaced in AM-27 (deadline closed, no overnight
+          development).
+
+      MSTIC finding-0005 split-layer treatment applied per analyst
+      guidance:
+      - IOC layer (gleeze.com / Dynu DDNS / autorun.dll / ScreenConnect)
+        shipped at action-tier (defender-immediately-actionable).
+      - A&D-prime engineering-workstation indirect exposure shipped at
+        monitoring-tier with structural-warning class framing; KAC
+        test-deferred assumptions explicit; did NOT escalate to action-
+        tier without specific A&D-prime first-party hit or named A&D-
+        prime victim.
+
+      LACMTA / Black Shadow / MOIS finding-0004 explicitly held at Iran
+      Cyber Watch standing section monitoring tier, NOT action tier.
+      Attribution framing explicit: Gambit Security (provisional-F first-
+      citation originating IR firm) + Israel National Cyber Directorate
+      (B-grade government endorsement that cites Gambit per public
+      reporting — chain effectively single-evidence-basis). Per Hard
+      Rule 2, Black Shadow NOT cross-walked to MuddyWater (#022) or
+      Handala Hack (#014) despite MOIS service-level match.
+      Investigation inv-2026-05-26-001 carry-forward through 2026-06-09.
+
+      Sentinel cadence: today's 00:00 and 06:00 FLASH sweeps both fired
+      zero triggers. Yesterday's PM corpus carries forward unchanged.
+
+      Hard Rule 2 brief-wide compliance:
+      - GlassWorm: "the criminals are likely based in Russia" preserved
+        verbatim per CrowdStrike; not upgraded; actor-profiler reviews
+        roster #005 nation field downstream.
+      - MSTIC cryptojacking: "unknown threat actor" preserved per MSTIC
+        explicit framing.
+      - Charter/ShinyHunters: Scattered Spider (#013) cross-walk
+        PROHIBITED despite tradecraft analogy — BleepingComputer makes
+        no such cross-walk.
+      - LACMTA / Black Shadow: MuddyWater (#022) and Handala Hack (#014)
+        cross-walks PROHIBITED despite MOIS service-level match.
+      - Gitea aerospace-manufacturers: no extrapolation to specific
+        watchlist primes.
+
+      Single-source veto applied per finding:
+      - GlassWorm: forward dormancy + Russia-origin capped at "likely"
+        (CrowdStrike single A-grade source; SecurityWeek is relay,
+        not corroboration).
+      - MSTIC: AI-chatbot-poisoning trajectory capped at "likely"
+        (single A-grade source).
+      - Charter/ShinyHunters: vishing-Entra-SSO chain specifics held at
+        "roughly_even_chance" (single B-grade source; no corpus
+        corroboration on ShinyHunters operations).
+      - Gitea: Noscope provisional-C scope claims at "roughly_even_chance".
+      - SymJack: Adversa AI provisional-C five-vendor-test claims at
+        "roughly_even_chance".
+      - LACMTA: Black Shadow cluster + MOIS service attribution at
+        "roughly_even_chance" (chain effectively single-evidence-basis).
+
+      First-party Splunk: 63rd consecutive dormant non-self sweep on
+      `defenseclaw_local` across the AM-27 keyword set (gleeze.com,
+      autorun.dll, ScreenConnect, 164.92.88.210, GlassWorm,
+      CVE-2026-27771, Gitea, SymJack, Black Shadow, Charter,
+      ShinyHunters). Per Hard Rule 8, silence is neither confirming nor
+      disconfirming.
+
+      Word count: Layer 1 ~1100 words (above 400-800 baseline target,
+      under 1200 hard-cap ceiling; six-finding day with split-layer
+      framing, multiple Hard Rule 2 disciplines, single-source vetoes,
+      red-team caveats, layered WEPs, and four standing sections is
+      inherently content-rich — precedent established in 2026-05-26
+      PM at 1125 words with two findings + KEV-deadline-triplet
+      compression). Discord Summary Layer 2 ~285 words / under 1900-
+      char ceiling.
+
+      IOC master-index handoff (librarian action): gleeze[.]com parent
+      domain + Dynu DDNS infrastructure + autorun.dll file pattern +
+      ScreenConnect-in-unexpected-context (cryptojacking-campaign
+      classification); CrowdStrike sinkhole 164.92.88.210 (benign-
+      sinkhole classification); CrowdStrike_GlasswormRat_01 and
+      CrowdStrike_GlasswormDownloader_01 YARA rules; CVE-2026-27771
+      Gitea container registry (monitoring tier).
+
+      Source-grade-log handoff (librarian action): three new
+      provisional-C source additions for `source-grades.yaml`:
+      Noscope (UK security company, first citation), Adversa AI
+      (AI-security research, first citation), Gambit Security (Israeli
+      IR firm, first citation, provisional F). Per first-citation
+      provisional-grade precedent.
+
+      Actor-profiler handoff (next /update-tracking):
+      (1) Roster #005 GlassWorm — decide whether to update _roster.yaml
+          nation field from "unknown" to "RU (likely, per CrowdStrike
+          2026-05-26)" with verbatim qualifier including AI-tooling
+          caveat, OR hold at "unknown" pending second A/B-grade IR-firm
+          corroboration. Either is defensible per Hard Rule 2.
+      (2) TTP update on #005 — four-channel C2 architecture
+          (T1102 Web Service, T1090.003 Proxy Multi-hop, T1195.002
+          Supply Chain Compromise); 300+ poisoned GitHub repos scope;
+          VSCode/Cursor/Positron/Windsurf/VSCodium platform spread.
+      (3) /new-actor scaffolding for ShinyHunters — operator decision.
+          Red-team caveat: evidence threshold must not lean on the
+          false claim of a multi-victim Salesforce-Entra-vishing
+          tradecraft class.
 
 # ============================================================================
 # Valid resurface_if conditions

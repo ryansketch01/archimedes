@@ -107,6 +107,67 @@ corroboration:
     Foundation and Google were operational partners in the takedown,
     not independent research sources publishing parallel telemetry.
     Cluster has ONE effective source for the takedown disclosure.
+  pm_27_corroboration_field_amendment:
+    amended_at: 2026-05-27T16:25:00-04:00
+    amended_by: grader
+    amended_in_run: afternoon-20260527-160000
+    triggering_raw_signal: raw-2026-05-27-pm-005
+    triggering_rejection_id: reject-2026-05-27-0003
+    amendment_type: attribution_enrichment_within_existing_finding
+    additional_relay_layers_now_on_file:
+      - bleepingcomputer (Ilascu 2026-05-27 09:28 EDT)        # also relay of CrowdStrike primary; not independent
+      - thehackernews (2026-05-27 11:48 EDT)                  # also relay of CrowdStrike primary; not independent
+      - the-register (2026-05-27 13:56 EDT)                   # fourth relay; PM-005 triggering surface; not independent
+    independence_test_amended_status: >
+      Four media relays now on file (SW + BC + THN + Register) all
+      derived from the same CrowdStrike Counter Adversary Operations
+      primary. Independence test STILL FAILS — four relays of the same
+      primary do NOT constitute independent corroboration per INTEL-
+      GRADING.md. Cluster anchor remains A2 with single-source veto on
+      forward-looking WEP claims. Hultquist GTIG named-byline social-
+      media confirmation is operational-partnership confirmation, not
+      parallel-telemetry research evidence basis.
+    new_indicators_surfaced_via_register_relay:
+      - indicator: "CIS-locale termination check"
+        description: "Malware terminates execution on Commonwealth of Independent States systems (RU, BY, KZ, etc.). Well-documented Russian-cybercrime operational artifact (Conti, TrickBot, IcedID, Babuk, Sandworm-toolkit precedent)."
+        confidence: A (vendor-research-attested via CrowdStrike per The Register relay)
+        novel_to_corpus_surface_for_glassworm: true
+        attribution_strengthening_layer: "Russian-origin attribution prong"
+      - indicator: "Russian-language code comments in malware source"
+        description: "Higher-confidence Russian-language operational artifact than CIS-skip logic (CIS-skip is widely emulated by non-Russian actors)."
+        confidence: A
+        novel_to_corpus_surface_for_glassworm: true
+        crowdstrike_own_caveat_preserved: "Code comments may reflect AI-tooling output rather than human authorship; no single indicator is proof on its own"
+      - indicator: "John Hultquist (Google Threat Intelligence Group chief analyst) confirms GTIG role via social media"
+        description: "First byline-credit surface for GTIG partnership in this event. Operational confirmation of partnership, NOT independent parallel-telemetry research evidence."
+        confidence: A
+      - indicator: "300+ GitHub repositories confirmed compromised"
+        description: "CrowdStrike takedown-surface count. Distinct from prior Koi 400+ figure (Oct 2025 discovery). The Register relay does not disambiguate — may be subset (300 actively poisoned via takedown evidence; 400 historically touched) or separate tracking."
+        confidence: A
+        novelty: "specific victim count from CrowdStrike takedown surface vs prior Koi 400+ historical reach figure"
+      - indicator: "GlasswormRAT (Node.js remote access tool) named"
+        description: "Tool-attribution detail matching CrowdStrike YARA rule CrowdStrike_GlasswormRat_01 published with this finding's IOC set."
+        confidence: A
+      - indicator: "Koi (October 2025 originating discovery) named as endpoint-security shop"
+        description: "Source-grades.yaml first-citation candidate flagged for librarian. Provisional F per cheatsheet for unknown research vendor with no prior corpus citation. Hold at F pending Koi-independent-research surface that is not derived from CrowdStrike chain."
+        confidence: A
+    mini_shai_hulud_parallel_editorial_mention_disposition: >
+      The Register editorial framing notes "another self-replicating
+      worm, Mini Shai-Hulud, rips through open source code" in parallel
+      to GlassWorm. This is EDITORIAL FRAMING by The Register, NOT a
+      Gambit / Mandiant / CrowdStrike attribution claim. Per Hard Rule
+      2, NO cross-walk from GlassWorm (#005) to TeamPCP / Mini Shai-
+      Hulud (VT-006) despite the parallel-mention framing. The two
+      cluster surfaces remain distinct corpus-tracked threads.
+    glassworm_005_roster_attribution_operator_decision_flagged: >
+      Operator decision flagged for /update-tracking workflow:
+      GlassWorm (#005) roster attribution field update from
+      `nation: unknown / service: null` to `nation: RU (likely, per
+      CrowdStrike 2026-05-26 Counter Adversary Operations)` with
+      CrowdStrike's own caveat preserved verbatim per Hard Rule 2.
+      This is NOT a collector-side or grader-side action — flow through
+      formal /update-tracking workflow or human ratification per
+      CLAUDE.md Rule 5 + Hard Rule 2.
 
 first_party_precedence:
   applied: false
@@ -393,7 +454,7 @@ wep_ceiling_adjustment_reason: >
 
 # Lifecycle
 tlp: CLEAR
-published_in_briefs: [2026-05-27-morning]
+published_in_briefs: [2026-05-27-morning, 2026-05-27-afternoon]
 retracted: false
 retraction_brief_id: null
 ---

@@ -106,6 +106,60 @@ corroboration:
     the chain effectively single-evidence-basis. SecurityWeek is a relay
     of both - not independent corroboration. Cluster has ONE effective
     evidence basis on the Black Shadow / MOIS / LACMTA attribution.
+  pm_27_corroboration_field_amendment:
+    amended_at: 2026-05-27T16:22:00-04:00
+    amended_by: grader
+    amended_in_run: afternoon-20260527-160000
+    triggering_raw_signal: raw-2026-05-27-pm-003
+    triggering_rejection_id: reject-2026-05-27-0002
+    amendment_type: second_relay_layer_enrichment_within_existing_finding_and_investigation
+    additional_relay_layer_now_on_file:
+      - the-record (Suzanne Smalley 2026-05-27 09:20 EDT)     # second media relay of Gambit Security primary; not independent
+    independence_test_amended_status: >
+      Two media relays now on file (SW Kovacs + The Record Smalley)
+      both derived from the same Gambit Security primary research.
+      Independence test STILL FAILS — two relays of the same primary
+      do NOT constitute independent corroboration per INTEL-GRADING.md.
+      Cluster anchor remains C3 with single-source veto on attribution
+      layer. WEP ceiling unchanged at "roughly_even_chance" for
+      attribution-validity claims.
+    new_information_surfaced_via_the_record_relay:
+      - new_alias: "Ababil of Minab"
+        description: "Smalley's primary-cited front-group label. Different naming than SecurityWeek/Kovacs AM-27 'Black Shadow' for what appears to be the same Gambit-Security-assigned MOIS-front cluster. Two-name surface may be (a) naming-overlap by the two relay layers, OR (b) two distinct Gambit-Security-assigned labels for the same cluster. Direct retrieval of the Gambit Security primary report would resolve which is canonical. Both aliases preserved as alternative naming pending primary retrieval; tracked in investigation inv-2026-05-26-001."
+        confidence: B (relay-attested; primary direct-retrieval pending)
+      - additional_regional_victims:
+          - "Israeli media organization (unnamed)"
+          - "Israeli university (unnamed)"
+          - "Turkish insurance brokerage (unnamed)"
+          - "Saudi Arabia organizations (unnamed)"
+          - "Several additional websites across restaurant, culture, digital services, and news sectors"
+        description: "Expands multi-victim regional campaign scope already documented at finding promotion time. NO A&D-prime named in additional victim list. Pattern-consistent with Iran Cyber Watch standing observation. ad_relevance disposition UNCHANGED."
+        confidence: B
+      - handala_stryker_tangential_reference:
+          handala_actor_id: "014"
+          stryker_attack: "March 2026 attack on medical device maker Stryker"
+          disposition: "TANGENTIAL roster mention — Handala referenced as separate MOIS-front example, NOT an attribution to the LACMTA case itself. Per Hard Rule 2 NO cross-walk from LACMTA Ababil-of-Minab/Black Shadow to Handala despite shared MOIS service designation."
+        confidence: A on tangential-reference-classification
+      - editorial_framing_ai_democratization_concern:
+          source: The Record (Smalley) editorial layer, NOT a Gambit-Security primary claim
+          disposition: "Preserved as relay-layer context only; not attribution-layer fact; not corroboration-eligible."
+    investigation_inv_2026_05_26_001_status_unchanged: >
+      Investigation lock active through 2026-06-09 T+14 unchanged.
+      Investigation file `threats/investigations/2026-05-26-lacmta-
+      iran-attribution.md` should be updated to track both aliases
+      (Black Shadow + Ababil of Minab) as alternative naming for the
+      same MOIS-front-cluster pending Gambit Security primary direct
+      retrieval AND second-A/B-grade-IR-firm-independent corroboration.
+      Hard Rule 2 NO cross-walk to MuddyWater (#022) or Handala Hack
+      (#014) preserved.
+    librarian_handoff_recommended:
+      - Direct retrieval of Gambit Security primary report URL (not
+        surfaced in either The Record or SecurityWeek relay text);
+        clarifies canonical alias naming + provides direct-attestation
+        evidence basis vs current two-relay-layer-only state.
+      - Provisional source-grades.yaml entry for `gambit-security`
+        (F-grade per cheatsheet for unknown research vendor with no
+        prior corpus citation); awaiting human ratification.
 
 first_party_precedence:
   applied: false
@@ -386,7 +440,7 @@ wep_ceiling_adjustment_reason: >
 
 # Lifecycle
 tlp: CLEAR
-published_in_briefs: [2026-05-27-morning]
+published_in_briefs: [2026-05-27-morning, 2026-05-27-afternoon]
 retracted: false
 retraction_brief_id: null
 ---

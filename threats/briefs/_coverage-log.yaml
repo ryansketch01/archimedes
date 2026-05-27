@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-27T08:00:00-04:00
+last_updated: 2026-05-27T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -18847,9 +18847,24 @@ entries:
       formalization to A grade per vendor-self-disclosure category.
 
   - id: 2026-05-27-am-001-crowdstrike-glassworm-takedown-roster-005-four-channel-c2-russia-attribution
-    covered_in: [2026-05-27-morning]
+    covered_in: [2026-05-27-morning, 2026-05-27-afternoon]
     brief_file: threats/briefs/2026-05-27-morning.md
-    headline: "CrowdStrike + Google + Shadowserver disrupt GlassWorm (roster #005 HIGH) on 2026-05-26 — all four parallel C2 channels taken down simultaneously (Solana blockchain dead-drop, BitTorrent DHT, Google Calendar event titles, commercial VPS); YARA rules published (GlasswormRAT, GlasswormDownloader); benign sinkhole 164.92.88.210; 300+ poisoned GitHub repos + OpenVSX/npm/PyPI vectors; first A-grade pattern-based Russia attribution preserved verbatim per Hard Rule 2 (CIS-locale geofencing + Russian-language code comments with vendor's own AI-tooling caveat); no A&D prime named compromised; cluster A2 with single-source veto on forward dormancy and Russia-origin claims"
+    pm_update_brief_file: threats/briefs/2026-05-27-afternoon.md
+    pm_update_note: |
+      PM-27 enrichment via The Register (Iain Thomson 2026-05-27 13:56 EDT):
+      4th media relay of CrowdStrike primary on file (SW + BC + THN + Register).
+      New A-attested indicators: CIS-locale termination check + Russian-language
+      code comments throughout source. Hultquist (GTIG chief analyst) confirmed
+      GTIG's takedown role via social media — first byline-credit surface.
+      Independence test STILL FAILS — four relays of one A-grade primary are
+      not corroboration. Cluster anchor remains A2 with single-source veto on
+      Russia-origin and forward dormancy. Roster #005 nation field stays
+      "unknown" pending second A/B-grade IR-firm parallel telemetry. Hard
+      Rule 2 verbatim preservation maintained. Editorial mention of Mini
+      Shai-Hulud in Register prose is NOT a cross-walk; no GlassWorm → TeamPCP
+      linkage created. Last_covered bumped from 2026-05-27 to 2026-05-27 (same
+      day PM update).
+    headline: "CrowdStrike + Google + Shadowserver disrupt GlassWorm (roster #005 HIGH) on 2026-05-26 — all four parallel C2 channels taken down simultaneously (Solana blockchain dead-drop, BitTorrent DHT, Google Calendar event titles, commercial VPS); YARA rules published (GlasswormRAT, GlasswormDownloader); benign sinkhole 164.92.88.210; 300+ poisoned GitHub repos + OpenVSX/npm/PyPI vectors; first A-grade pattern-based Russia attribution preserved verbatim per Hard Rule 2 (CIS-locale geofencing + Russian-language code comments with vendor's own AI-tooling caveat); no A&D prime named compromised; cluster A2 with single-source veto on forward dormancy and Russia-origin claims [PM-27 UPDATE: 4th relay via The Register; Hultquist GTIG byline; CIS-locale + Russian-lang comments now A-attested via CrowdStrike; veto holds; roster #005 nation: unknown maintained]"
     topic_tags:
       - actor
       - glassworm
@@ -19073,9 +19088,26 @@ entries:
       or restrict AI-coding-agent usage pending broader vendor coverage.
 
   - id: 2026-05-27-am-004-securityweek-lacmta-black-shadow-mois-gambit-israel-ncd-investigation-update
-    covered_in: [2026-05-27-morning]
+    covered_in: [2026-05-27-morning, 2026-05-27-afternoon]
     brief_file: threats/briefs/2026-05-27-morning.md
-    headline: "LACMTA cyberattack attribution update — SecurityWeek (Eduard Kovacs) B-grade relay of Gambit Security (originating IR firm; first Archimedes-corpus citation; provisional F) naming Black Shadow cluster via configuration-fingerprint-based infrastructure linkage + Israel National Cyber Directorate B-grade government endorsement framing Black Shadow as MOIS cluster; multi-victim regional campaign US/Israel/Saudi/Turkey; A&D sector explicitly absent from list; per Hard Rule 2, Archimedes does NOT cross-walk Black Shadow to tracked MOIS actors MuddyWater (#022) or Handala Hack (#014) despite service-level match — no source makes the cross-walk; investigation inv-2026-05-26-001 carries forward through 2026-06-09 (T+14); Iran Cyber Watch standing section monitoring tier"
+    pm_update_brief_file: threats/briefs/2026-05-27-afternoon.md
+    pm_update_note: |
+      PM-27 enrichment via The Record (Suzanne Smalley 2026-05-27 09:20 EDT):
+      2nd media relay of Gambit Security primary on file (SW Kovacs + The
+      Record Smalley). New surface from Smalley layer: second alias "Ababil
+      of Minab" (different naming from AM SecurityWeek's "Black Shadow" for
+      what appears to be the same Gambit-Security-assigned MOIS-front cluster
+      — primary direct retrieval needed to resolve canonical naming).
+      Additional regional victims now named: Israeli media organization,
+      Israeli university, Turkish insurance brokerage, additional Saudi
+      sectors. NO A&D prime named in expanded victim list. Smalley editorial
+      mentions Handala Hack (#014) and Stryker as a separate MOIS-front
+      example — TANGENTIAL only; per Hard Rule 2, NO cross-walk from LACMTA
+      Ababil-of-Minab/Black Shadow to Handala despite shared MOIS service
+      designation. Two relays of one Gambit primary still fail independence
+      test. Investigation inv-2026-05-26-001 lock unchanged; carries forward
+      through 2026-06-09 (T+13). WEP unchanged.
+    headline: "LACMTA cyberattack attribution update — SecurityWeek (Eduard Kovacs) B-grade relay of Gambit Security (originating IR firm; first Archimedes-corpus citation; provisional F) naming Black Shadow cluster via configuration-fingerprint-based infrastructure linkage + Israel National Cyber Directorate B-grade government endorsement framing Black Shadow as MOIS cluster; multi-victim regional campaign US/Israel/Saudi/Turkey; A&D sector explicitly absent from list; per Hard Rule 2, Archimedes does NOT cross-walk Black Shadow to tracked MOIS actors MuddyWater (#022) or Handala Hack (#014) despite service-level match — no source makes the cross-walk; investigation inv-2026-05-26-001 carries forward through 2026-06-09 (T+14); Iran Cyber Watch standing section monitoring tier [PM-27 UPDATE: 2nd relay via The Record/Smalley; new alias 'Ababil of Minab'; expanded Israel/Saudi/Turkey victims, A&D still absent; tangential Handala/Stryker mention preserved, NO cross-walk; independence test still fails; investigation lock unchanged]"
     topic_tags:
       - investigation-update
       - inv-2026-05-26-001
@@ -19124,6 +19156,7 @@ entries:
       mois_is_the_service_per_israel_national_cyber_directorate: roughly_even_chance
       multi_victim_regional_campaign_us_israel_saudi_turkey: roughly_even_chance
       no_ad_prime_named_victim_in_multi_victim_list: very_likely
+      ababil_of_minab_second_alias_for_same_cluster_per_pm_update: roughly_even_chance
     resurface_if:
       - independent_corroboration                       # Mandiant / MSTIC / CrowdStrike / Recorded Future publishes parallel Black Shadow attribution within 14d window
       - new_attribution                                 # FBI / CISA public attribution of LACMTA incident to Iranian state-sponsored actor
@@ -19131,6 +19164,7 @@ entries:
       - new_iocs_published                              # Gambit Security or Israel NCD publishes specific IOCs
       - actor_ttps_evolve                               # specific TTPs / malware / C2 mechanism disclosed
       - first_party_splunk_hit
+      - gambit_security_primary_directly_retrieved      # resolves Black Shadow vs Ababil-of-Minab canonical naming
     first_covered: 2026-05-27
     last_covered: 2026-05-27
     retraction: null
@@ -19524,6 +19558,502 @@ entries:
           Red-team caveat: evidence threshold must not lean on the
           false claim of a multi-victim Salesforce-Entra-vishing
           tradecraft class.
+
+  - id: 2026-05-27-pm-001-cisa-kev-three-add-cve-2026-45321-tanstack-cve-2026-48027-nx-console-cve-2026-8398-daemon-tools-lite
+    covered_in: [2026-05-27-afternoon]
+    brief_file: threats/briefs/2026-05-27-afternoon.md
+    headline: "CISA KEV catalog v2026.05.27 adds three CVEs at 12:00 UTC — CVE-2026-45321 TanStack (VT-006 Mini Shai-Hulud KEV-pending watch signal FIRED; due 2026-06-10 T+14) + CVE-2026-48027 Nx Console (corpus finding-2026-05-20-FLASH-0001 KEV-listed; due 2026-06-10 T+14; VT-010 candidate) + CVE-2026-8398 Daemon Tools Lite (NOT corpus-tracked consumer software; due 2026-05-30 T+3 accelerated); BOD 22-01 federal remediation deadlines create hard line for DIB / CMMC partner-flow estates inheriting FCEB compliance; TeamPCP corpus attribution layer carry-forward per Hard Rule 2 (CISA KEV procedurally does not publish actor attribution); cluster A1 / almost_certainly procedural"
+    topic_tags:
+      - cisa-kev-addition
+      - cisa-kev-catalog-v-2026-05-27
+      - kev-three-add-2026-05-27
+      - cve-2026-45321-tanstack
+      - cve-2026-48027-nx-console
+      - cve-2026-8398-daemon-tools-lite
+      - vt-006-mini-shai-hulud-kev-pending-fired
+      - vt-010-candidate-cve-2026-48027-nx-console
+      - daemon-tools-lite-not-corpus-tracked-consumer-software
+      - bod-22-01-federal-remediation-deadline
+      - dueDate-2026-06-10-t-plus-14-tanstack-nx
+      - dueDate-2026-05-30-t-plus-3-accelerated-daemon-tools
+      - dib-cmmc-partner-flow-fceb-compliance-inheritance
+      - teampcp-corpus-attribution-carry-forward
+      - hard-rule-2-cisa-kev-procedurally-no-actor-attribution
+      - vt-006-state-transition-kev-pending-to-kev-added
+      - finding-2026-05-20-flash-0001-nx-console-corpus-anchor
+      - procedural-cataloging-state-change
+      - federal-deadline-urgency-layer-change
+    related_actors:
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: corpus-baseline-attribution-carry-forward-cisa-does-not-name-teampcp-per-hard-rule-2
+    related_vulns:
+      - cve: CVE-2026-45321
+        vt_id: VT-006
+        product: TanStack
+        state_change: "kev_pending: true → kev: true, kev_added: 2026-05-27, kev_due_date: 2026-06-10"
+        cvss: corpus-known-9.6
+        active_exploitation: cisa-attested-via-kev-addition
+      - cve: CVE-2026-48027
+        vt_id: "VT-010 (candidate)"
+        product: "Nx Console (VS Code marketplace extension)"
+        state_change: "finding-only-tracked → KEV-listed; vuln-tracker-tier scaffolding warranted"
+        cvss: not_publicly_published_yet
+        active_exploitation: cisa-attested-via-kev-addition
+      - cve: CVE-2026-8398
+        vt_id: not_corpus_tracked
+        product: "Daemon Tools Lite (ISO/CD/DVD virtualization utility)"
+        state_change: "not corpus-tracked; CISA KEV addition documented for completeness only"
+        cvss: not_publicly_published_yet
+        active_exploitation: cisa-attested-via-kev-addition
+    related_campaigns:
+      - cisa-kev-three-add-2026-05-27
+    finding_ids:
+      - finding-2026-05-27-0007-cisa-kev-three-add-cve-2026-45321-tanstack-mini-shai-hulud-cve-2026-48027-nx-console-cve-2026-8398-daemon-tools
+    digraph: A1
+    digraph_layered:
+      cisa_kev_catalog_addition_procedural_fact: A1
+      cve_2026_45321_kev_listing_today_with_due_date: A1
+      cve_2026_48027_kev_listing_today_with_due_date: A1
+      cve_2026_8398_kev_listing_today_with_due_date: A1
+      vt_006_corpus_state_change_kev_pending_to_kev_added: A1
+      teampcp_corpus_attribution_carry_forward_layer: A1
+    wep: almost_certainly
+    wep_layered:
+      cve_2026_45321_kev_listing_today_with_due_date_2026_06_10: almost_certainly
+      cve_2026_48027_kev_listing_today_with_due_date_2026_06_10: almost_certainly
+      cve_2026_8398_kev_listing_today_with_due_date_2026_05_30: almost_certainly
+      active_exploitation_per_kev_implication_for_two_corpus_tracked_cves: very_likely
+      fceb_compliance_pressure_via_bod_22_01_dueDate: almost_certainly
+      dib_cmmc_partner_flow_estate_inheriting_fceb_compliance_pressure: very_likely
+    resurface_if:
+      - kev_deadline_t_minus_status_tick                # T-1, T-2 status ticks toward 2026-06-10 / 2026-05-30
+      - patch_status_change_for_any_of_three_cves
+      - new_victims_confirmed                           # any named A&D-prime victim on TanStack or Nx Console
+      - first_party_splunk_hit
+      - vt_010_scaffolded_by_vuln_tracker
+      - second_a_b_grade_vendor_publishes_parallel_active_exploitation_telemetry
+      - cisa_kev_amends_or_removes_any_of_three_entries
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      A1 cluster on CISA-authoritative KEV catalog state change. Lead-eligible
+      for PM-27 brief. Two of three CVEs trigger corpus state transitions:
+      VT-006 _index.yaml flip (kev_pending → kev) + VT-010 scaffolding candidate
+      for CVE-2026-48027 Nx Console (vuln-tracker handoff). Third CVE
+      (CVE-2026-8398 Daemon Tools Lite) is consumer-software out-of-scope.
+      Accelerated T+3 dueDate on Daemon Tools Lite signals heightened CISA
+      operational concern but no corpus surface to elaborate.
+
+      Hard Rule 2 compliance: CISA KEV procedurally does not publish actor
+      attribution; TeamPCP attribution preserved from prior corpus chain
+      (Wiz + StepSecurity + Snyk on VT-006 + GitHub CISO + Wiz on
+      CVE-2026-48027). No novel attribution created at KEV addition layer.
+
+      DIB / CMMC partner-flow estates inheriting FCEB compliance carry
+      the same June 10 / May 30 calendar. A&D-prime engineering SDLCs
+      touching TanStack or Nx Console ecosystem inherit contractual
+      remediation pressure even though CISA KEV directly binds only
+      FCEB agencies under BOD 22-01.
+
+      VT-006 ad_relevance medium via @squawk aviation-data namespace
+      (19 packages including @squawk/flightplan + @squawk/weather +
+      @squawk/mcp). A&D-prime dependency-graph reach into Boeing /
+      Airbus / Honeywell Aerospace / Safran SDLC remained unverified at
+      finding-2026-05-12-FLASH-0001 creation and remains unverified at
+      KEV listing. CVE-2026-48027 Nx Console at 2.2M installs spans
+      most modern JS/TS SDLCs; A&D-prime exposure plausible but
+      unverified — no named-victim disclosure beyond GitHub + OpenAI +
+      Grafana.
+
+      Vuln-tracker handoff: (1) Update VT-006 _index.yaml entry per
+      KEV state transition. (2) Scaffold VT-010 (or next VT-* slot) for
+      CVE-2026-48027 Nx Console mirroring VT-006 pattern. Slot
+      assignment coordinated with VT-011 candidate for CVE-2026-44632
+      Yamcs (PM-27 finding-0009) — vuln-tracker arbitrates ordering.
+
+  - id: 2026-05-27-pm-002-github-advisory-yamcs-cve-2026-44632-server-side-code-injection-rce-spacecraft-mission-control-ad-direct
+    covered_in: [2026-05-27-afternoon]
+    brief_file: threats/briefs/2026-05-27-afternoon.md
+    headline: "Yamcs project maintainers self-disclosed via GitHub Security Advisory (GHSA-524g-x36v-9wm6) today — CVE-2026-44632 server-side code injection (RCE) in `org.yamcs:yamcs-core` open-source spacecraft and satellite mission control software via Janino Expression Engine in algorithm execution factory; CVSS v3 9.1 Critical; post-authenticated + high-privilege (SystemPrivilege.ChangeMissionDatabase required); patched in Yamcs 5.12.7; NO in-the-wild exploitation reported per vendor at disclosure; PoC IS in GHSA advisory body (NOT copied per Hard Rule 3); parallel to corpus VT-005 OpenC3 COSMOS A&D-spacecraft-C2 class; direct A&D-target-profile fit per CLAUDE.md spacecraft-mission-control vector; cluster A2; Sector Focus A&D bullet (second consecutive brief with A&D-direct CVE focus after AM-27 Gitea CVE-2026-27771)"
+    topic_tags:
+      - cve
+      - cve-2026-44632
+      - yamcs
+      - org-yamcs-yamcs-core
+      - spacecraft-mission-control
+      - satellite-mission-control
+      - ad-direct
+      - server-side-code-injection
+      - janino-expression-engine
+      - algorithm-execution-factory
+      - cvss-v3-9-1-critical
+      - post-authenticated
+      - high-privilege-systemprivilege-changemissiondatabase
+      - patched-5-12-7
+      - no-itw-at-disclosure
+      - ghsa-524g-x36v-9wm6
+      - vendor-self-disclosure-class
+      - vt-005-openc3-cosmos-precedent
+      - sector-focus-ad-bullet
+      - second-consecutive-brief-ad-direct-cve-focus
+      - vuln-tracker-scaffolding-candidate-vt-star
+      - hard-rule-3-no-poc-copied
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-44632
+        vt_id: "VT-* (TBD by vuln-tracker; candidate VT-011 after CVE-2026-48027 VT-010 if vuln-tracker takes both)"
+        product: "Yamcs (`org.yamcs:yamcs-core`)"
+        ghsa_id: GHSA-524g-x36v-9wm6
+        cvss: 9.1
+        cvss_version: v3
+        affected_versions: "all pre-5.12.7"
+        patched_version: "5.12.7"
+        active_exploitation: not_reported_per_vendor_at_disclosure
+        public_poc: ghsa_advisory_poc_only
+        ad_relevance: high_structural_spacecraft_mission_control
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-27-0009-github-advisory-yamcs-cve-2026-44632-server-side-code-injection-rce-spacecraft-mission-control-ad-direct
+    digraph: A2
+    digraph_layered:
+      github_advisory_database_cve_record_procedural_publication: A1
+      yamcs_maintainer_self_disclosure_on_own_product: A2
+      cvss_v3_9_1_critical_post_auth_high_priv: A2
+      patched_in_5_12_7_at_disclosure: A1
+      no_in_the_wild_exploitation_reported_at_disclosure: A2
+      ad_relevance_high_spacecraft_mission_control_software: A1
+    wep: likely
+    wep_layered:
+      cve_2026_44632_assigned_to_yamcs_org_yamcs_yamcs_core: very_likely
+      cvss_v3_9_1_critical_post_auth_high_priv: very_likely
+      patched_in_5_12_7: very_likely
+      no_in_the_wild_exploitation_at_disclosure: likely
+      ad_prime_exposure_to_yamcs_unverified: roughly_even_chance
+      exploit_release_in_short_term: roughly_even_chance
+      kev_listing_in_near_term: roughly_even_chance
+    resurface_if:
+      - independent_corroboration                       # second A/B-grade vendor (Mandiant / Unit 42 / CrowdStrike / SentinelLabs / Praetorian / Bishop Fox) publishes parallel technical analysis
+      - escalation_to_exploitation                      # any active exploitation observed in the wild (telemetry-attested)
+      - cisa_kev_addition                               # CISA KEV listing
+      - public_poc_release_beyond_advisory_body         # PoC outside GHSA body (e.g., metasploit module, github gist with weaponized chain)
+      - new_victims_confirmed                           # any named space-mission-operator victim disclosure
+      - ad_prime_named_customer_disclosure              # any A&D-prime named-customer disclosure on Yamcs deployment posture
+      - first_party_splunk_hit
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      A2 cluster on Yamcs project vendor-self-disclosure of critical
+      post-auth + high-privilege RCE in open-source spacecraft mission
+      control software. Direct A&D-target-profile fit per CLAUDE.md
+      (aerospace / spacecraft / sensitive R&D). Sector Focus A&D bullet
+      for PM-27 brief — second consecutive brief with A&D-direct CVE
+      class material (AM-27 finding-0002 Gitea CVE-2026-27771 was prior).
+
+      Single-source veto applied: vendor-self-disclosure + GHSA + NVD
+      operationally one source on technical-analysis layer; Mandiant /
+      Unit 42 / CrowdStrike / SentinelLabs / Praetorian / Bishop Fox
+      all silent on Yamcs CVE-2026-44632 as of this sweep. Forward-
+      looking WEP claims cap at "likely" per veto.
+
+      Post-auth + high-priv (SystemPrivilege.ChangeMissionDatabase)
+      narrows immediate exposure boundary on paper — but mission-DB
+      edit privileges are typically broadly delegated in real
+      spacecraft-operations environments (telemetry engineer, software
+      engineer, mission planning lead). Practical exposure exceeds
+      what the CVSS vector suggests. Insider-threat and compromised-
+      operator-credential paths remain valid. Cross-mission lateral
+      movement post-MDB-RCE is catastrophic-impact (mission database
+      controls telemetry parsing, command authorization, algorithm
+      execution chains).
+
+      Parallel to corpus VT-005 OpenC3 COSMOS five-CVE cluster from
+      2026-04-20 (NASA + BAE Systems user base attested at that
+      surface; brief-covered 2026-05-09). Same vulnerability class
+      (open-source spacecraft C2 software + critical RCE + post-
+      disclosure-patched) and should be tracked at the same tier.
+
+      Vuln-tracker handoff: Scaffold VT-* dossier for CVE-2026-44632.
+      Slot assignment coordinated with VT-010 candidate for
+      CVE-2026-48027 Nx Console (PM-27 finding-0007 KEV three-add).
+      Vuln-tracker arbitrates ordering — likely VT-010 = Nx Console
+      (KEV-listed today, federal deadline-urgency), VT-011 = Yamcs
+      (vendor-self-disclosure class, no ITW).
+
+      Hard Rule 3 compliance: GHSA advisory body contains a PoC
+      (PATCH request with injected Java payload). NOT copied to
+      finding or brief. Reference advisory URL only.
+
+  - id: 2026-05-27-pm-003-ox-security-thn-mouse5212-super-formatter-npm-claude-ai-user-data-credential-stealer-unattributed
+    covered_in: [2026-05-27-afternoon]
+    brief_file: threats/briefs/2026-05-27-afternoon.md
+    headline: "OX Security via THN — malicious npm `mouse5212-super-formatter` (676 downloads at disclosure; attacker GitHub account `unplowed3584` created 2026-05-26, now suspended) triggers credential-stealer in npm postinstall stage and recursively uploads files from Anthropic Claude AI's `/mnt/user-data` directory to attacker-controlled GitHub account via API; dual-mode auth (victim env token OR hardcoded fallback) ensures exfil even without pre-existing creds; OPSEC failure (hardcoded private token leaked in malware); OX Security EXPLICITLY declines attribution to TeamPCP / Shai-Hulud / Mini Shai-Hulud / GlassWorm / Megalodon lineage despite shared GitHub-token-exfil tradecraft (researcher-coined working name 'Malware-Slop'); broader lower-bar-entrants trend per researchers; 5th-in-class for AI-developer-tooling-supply-chain-pressure thematic arc since 2026-05-12; cluster B3 monitoring-tier thematic-cumulative"
+    topic_tags:
+      - supply-chain
+      - npm
+      - malicious-npm-package
+      - mouse5212-super-formatter
+      - postinstall-credential-stealer
+      - github-api-exfil
+      - github-account-unplowed3584-suspended
+      - claude-ai-mnt-user-data-targeting
+      - anthropic-claude-ai
+      - dual-mode-auth-env-token-or-hardcoded-fallback
+      - opsec-failure-hardcoded-private-token-leaked
+      - lower-tier-operator-skill-vs-teampcp-tradecraft
+      - ox-security-primary-research
+      - ox-security-provisional-b-awaiting-direct-retrieval-flag-still-set
+      - thn-b-grade-relay-of-ox-security-primary
+      - malware-slop-researcher-working-name
+      - unattributed-ox-explicit-decline
+      - hard-rule-2-no-cross-walk-on-technical-primitive-adjacency
+      - ai-developer-tooling-supply-chain-pressure-arc-5th-in-class
+      - monitoring-tier-only
+      - thematic-cumulative-treatment
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - ai-developer-tooling-supply-chain-pressure-arc
+      - malware-slop-campaign-working-name
+    finding_ids:
+      - finding-2026-05-27-0008-ox-security-thn-mouse5212-super-formatter-npm-claude-ai-user-data-credential-stealer-unattributed
+    digraph: B3
+    digraph_layered:
+      thn_relay_layer_disclosure: B3
+      ox_security_originating_research_attestation: B3
+      malicious_npm_package_existence_factual: B2
+      github_account_unplowed3584_attacker_controlled: B2
+      postinstall_credential_stealer_mechanism_description: B2
+      claude_ai_user_data_directory_targeting_mnt_user_data: B3
+      no_attribution_to_tracked_actor_explicit_decline: A1
+      ad_relevance_low_indirect: A1
+    wep: likely
+    wep_layered:
+      malicious_npm_package_mouse5212_super_formatter_existed: likely
+      github_account_unplowed3584_attacker_controlled: likely
+      postinstall_credential_stealer_payload_architecture: likely
+      claude_ai_mnt_user_data_targeting: roughly_even_chance
+      hardcoded_github_token_opsec_failure: likely
+      campaign_expansion_beyond_single_package: roughly_even_chance
+      thematic_continuation_of_ai_developer_tooling_supply_chain_pressure: likely
+    resurface_if:
+      - new_victims_confirmed                           # any named victim of mouse5212-super-formatter campaign
+      - new_attribution                                 # OX Security or any A/B-grade vendor identifies attacker
+      - second_a_b_grade_vendor_publishes_parallel_analysis
+      - additional_malicious_packages_in_same_campaign_cluster
+      - first_party_splunk_hit                          # any Splunk hit on mouse5212 / unplowed3584 / /mnt/user-data / Malware-Slop
+      - ox_security_primary_directly_retrieved          # clears awaiting_direct_retrieval flag
+      - ai_developer_tooling_supply_chain_arc_6th_in_class_event
+      - ad_prime_named_victim_in_ai_developer_tooling_arc
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      B3 cluster on B-grade THN relay of B-provisional OX Security primary.
+      OX Security awaiting_direct_retrieval flag has been set since 2026-05-15
+      first citation and was NOT cleared this sweep — this is the second
+      corpus surface (Megalodon finding-2026-05-26 was the first; this
+      mouse5212 surface is the second) where OX Security primary research
+      is relayed without direct corpus retrieval. Operator decision pending:
+      either clear the flag via direct WebFetch of ox.security/blog/ on next
+      scheduled cycle, OR downgrade ox-security provisional grade from B to C
+      if direct-retrieval gap persists past 2026-06-01.
+
+      Hard Rule 2 compliance: OX Security EXPLICITLY declines attribution to
+      TeamPCP / Shai-Hulud / Mini Shai-Hulud / GlassWorm / Megalodon lineage
+      despite shared GitHub-token-exfil-via-postinstall primitive. Archimedes
+      preserves the explicit decline verbatim per relay; NO cross-walk on
+      technical-primitive adjacency alone. The OPSEC failure (hardcoded
+      private token leaked in own malware) is corpus-novel-pattern signaling
+      lower-tier operator skill — distinct from TeamPCP-tier tradecraft
+      (GitHub-author-spoofing, C2 PBKDF2-salt, locale-check) where the
+      tradecraft is well-instrumented.
+
+      Thematic-cumulative treatment in PM-27 Other Signal section: 5th-in-class
+      for AI-developer-tooling-ecosystem-supply-chain-pressure arc since
+      2026-05-12 alongside Mini Shai-Hulud (TanStack @squawk) + Nx Console
+      (Claude Code config exfil) + OpenAI TanStack breach + SymJack (Claude
+      Code symlink hijack) + MSTIC AI-chatbot-SEO-cryptojack. Cumulative
+      pattern: "AI-developer-tooling-ecosystem is under sustained supply-chain
+      pressure" — increasingly relevant for any A&D-prime program using
+      Claude Code or Anthropic API directly within ITAR-regulated SDLC
+      boundaries.
+
+      A&D relevance LOW-INDIRECT: Anthropic Claude AI is the target
+      application, not A&D-prime SDLC software per se. Structural-supply-
+      chain-warning class for A&D-developer-population indirect exposure;
+      not promoted to action-tier without specific A&D-prime first-party
+      hit or named A&D-prime victim in the AI-developer-tooling arc.
+
+      Single-source veto applied: forward-looking WEP claims capped at
+      "roughly_even_chance"; backward-looking factual claims at "likely".
+      No analyst SAT-ACH / SAT-KAC at current cluster confidence; explicit
+      attribution decline means no attribution-validity question to evaluate.
+
+      Hard Rule 7 compliance: researchers reported "leaked GitHub private
+      token" surfaced in malware. Token value NOT recorded per Hard Rule 7.
+      Only existence-of-token-leak documented.
+
+  - id: 2026-05-27-pm-brief-meta
+    covered_in: [2026-05-27-afternoon]
+    brief_file: threats/briefs/2026-05-27-afternoon.md
+    headline: "Afternoon brief 2026-05-27 — Three PM findings (CISA KEV three-add lead at A1 / almost_certainly with VT-006 state change + VT-010 candidate; Yamcs CVE-2026-44632 spacecraft mission-control RCE A2 A&D-direct; mouse5212-super-formatter npm Claude AI exfil B3 monitoring-tier 5th-in-class for AI-dev-tooling arc); two AM findings PM-enriched (GlassWorm 4th Register relay + Hultquist GTIG + CIS-locale/Russian-lang A-attested but veto holds; LACMTA second alias Ababil of Minab via The Record + expanded Israel/Saudi/Turkey victims with A&D still absent + tangential Handala mention no cross-walk); LiteSpeed + Exchange KEV deadline T-1 status tick; standing sections present; 67th consecutive dormant first-party Splunk sweep; sentinel sweeps 00:00 + 06:00 + 12:00 all zero triggers"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - lead-with-cisa-kev-three-add-procedural-a1-almost-certainly
+      - three-pm-findings-plus-two-am-enrichments
+      - vt-006-kev-pending-fired-corpus-state-change
+      - vt-010-candidate-scaffolding-nx-console
+      - second-consecutive-brief-ad-direct-cve-focus
+      - yamcs-vt-star-spacecraft-mission-control-rce
+      - ai-developer-tooling-supply-chain-arc-5th-in-class
+      - glassworm-pm-enrichment-russian-attribution-veto-holds
+      - lacmta-pm-enrichment-ababil-of-minab-second-alias-veto-holds
+      - hard-rule-2-strict-hold-throughout
+      - hard-rule-3-no-poc-copied-yamcs
+      - hard-rule-7-token-value-not-recorded-mouse5212
+      - single-source-veto-applied-multi-layered
+      - kev-deadline-t-1-status-tick-litespeed-exchange
+      - sentinel-cadence-all-three-flash-sweeps-zero-triggers
+      - splunk-67th-consecutive-dormant-non-self-sweep
+      - word-count-763-within-target-band-400-800
+      - layered-wep-framing-throughout
+      - discord-summary-layer-2-under-1900-char-ceiling
+    related_actors:
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: corpus-baseline-attribution-carry-forward-cisa-does-not-name-teampcp-per-hard-rule-2
+      - id: "005"
+        actor_name: GlassWorm
+        attribution_in_brief: pm-enrichment-fourth-relay-veto-holds-roster-005-nation-unknown-preserved
+    related_vulns:
+      - cve: CVE-2026-45321
+        role: pm-lead-cisa-kev-added-today-vt-006-state-change-due-2026-06-10
+      - cve: CVE-2026-48027
+        role: pm-lead-cisa-kev-added-today-vt-010-candidate-due-2026-06-10
+      - cve: CVE-2026-8398
+        role: pm-lead-cisa-kev-added-today-not-corpus-tracked-due-2026-05-30-t-plus-3-accelerated
+      - cve: CVE-2026-44632
+        role: pm-net-new-yamcs-vendor-self-disclosure-a2-ad-direct-sector-focus
+      - cve: CVE-2026-48172
+        role: kev-deadline-t-1-fri-status-tick-substance-carry-forward
+      - cve: CVE-2026-42897
+        role: kev-deadline-t-1-fri-status-tick-substance-carry-forward
+    related_campaigns:
+      - cisa-kev-three-add-2026-05-27
+      - glassworm-takedown-2026-05-26
+      - lacmta-iran-attribution-investigation-inv-2026-05-26-001
+      - ai-developer-tooling-supply-chain-pressure-arc
+      - malware-slop-campaign-working-name
+    finding_ids:
+      - finding-2026-05-27-0007-cisa-kev-three-add-cve-2026-45321-tanstack-mini-shai-hulud-cve-2026-48027-nx-console-cve-2026-8398-daemon-tools
+      - finding-2026-05-27-0009-github-advisory-yamcs-cve-2026-44632-server-side-code-injection-rce-spacecraft-mission-control-ad-direct
+      - finding-2026-05-27-0008-ox-security-thn-mouse5212-super-formatter-npm-claude-ai-user-data-credential-stealer-unattributed
+      - finding-2026-05-27-0001-crowdstrike-glassworm-takedown-roster-005-counter-adversary-operations-google-shadowserver  # PM enrichment layer only
+      - finding-2026-05-27-0004-securityweek-lacmta-iran-black-shadow-mois-gambit-israel-cyber-directorate-relay-investigation-update  # PM enrichment layer only
+    absorbs_flashes: []
+    first_covered: 2026-05-27
+    last_covered: 2026-05-27
+    retraction: null
+    test: false
+    notes: |
+      Three PM net-new findings + two AM PM-enrichments. Lead: CISA KEV
+      three-add at A1 / almost_certainly procedural — corpus-strong
+      anchoring via VT-006 (Mini Shai-Hulud KEV-pending watch signal
+      FIRED today) and finding-2026-05-20-FLASH-0001 (Nx Console KEV-
+      listed today; VT-010 scaffolding candidate). Federal deadlines
+      June 10 (TanStack + Nx) and May 30 (Daemon Tools accelerated)
+      create DIB/CMMC partner-flow inheritance pressure.
+
+      Anti-repetition discipline:
+      (1) GlassWorm: PM-enriched with UPDATE flag per The Register 4th
+          relay + Hultquist GTIG byline + CIS-locale/Russian-lang
+          A-attested via CrowdStrike. Substance update, no disposition
+          change — veto holds, roster #005 nation: unknown preserved.
+      (2) LACMTA: PM-enriched with UPDATE flag per The Record/Smalley
+          2nd relay + new alias "Ababil of Minab" + expanded Israel/
+          Saudi/Turkey victims (A&D still absent). Substance update, no
+          disposition change — independence test still fails, investigation
+          lock unchanged through 2026-06-09.
+      (3) AM-27 brief substantive coverage of GlassWorm core takedown,
+          Gitea CVE-2026-27771, SymJack, Charter ShinyHunters, MSTIC
+          cryptojacking NOT re-told in PM. Gitea referenced as carry-
+          forward in Sector Focus only.
+      (4) LiteSpeed CVE-2026-48172 + Exchange CVE-2026-42897 KEV deadline
+          T-1 (Fri 2026-05-29) — status tick only; substance carry-forward.
+
+      Hard Rule 2 brief-wide compliance:
+      - CISA KEV: CISA procedurally does not publish actor attribution;
+        TeamPCP corpus chain preserved.
+      - Yamcs: No attribution; researcher-disclosure / vendor-coordinated
+        patch class.
+      - mouse5212: OX Security explicit attribution decline preserved;
+        NO cross-walk to TeamPCP / Shai-Hulud / GlassWorm / Megalodon
+        despite tradecraft adjacency.
+      - GlassWorm UPDATE: "the criminals are likely based in Russia"
+        preserved verbatim; not upgraded; AM disposition unchanged.
+      - LACMTA UPDATE: NO cross-walk to MuddyWater (#022) or Handala
+        Hack (#014) despite Handala/Stryker tangential mention by
+        Smalley.
+
+      Single-source veto applied:
+      - Yamcs CVE-2026-44632 forward-looking claims capped at "likely"
+        (vendor-self-disclosure + GHSA + NVD operationally one source on
+        technical-analysis layer; second A/B-grade vendor silent).
+      - GlassWorm Russia-origin held at "likely" (4 relays of 1 A-primary
+        ≠ corroboration).
+      - LACMTA attribution at "roughly_even_chance" (2 relays of 1 Gambit
+        primary ≠ corroboration).
+      - mouse5212 forward-looking at "roughly_even_chance" (single OX
+        Security via THN relay; awaiting_direct_retrieval flag still set).
+
+      First-party Splunk: 67th consecutive dormant non-self sweep on
+      `defenseclaw_local` across the PM-27 keyword set (CVE-2026-45321,
+      CVE-2026-48027, CVE-2026-8398, TanStack, Nx Console, Daemon Tools
+      Lite, Yamcs, Janino, mouse5212-super-formatter, unplowed3584,
+      /mnt/user-data, Ababil of Minab). Per Hard Rule 8, silence is
+      neither confirming nor disconfirming. Yamcs deployment posture at
+      A&D-prime smallsat / mission-operator scope is bounded by
+      defenseclaw_local visibility — silence does not confirm absence.
+
+      Sentinel cadence: today's 00:00 + 06:00 + 12:00 FLASH sweeps all
+      fired zero triggers. AM-27 corpus carries forward; PM-27 enrichments
+      noted above.
+
+      Word count: Layer 1 763 words (within 400-800 baseline target).
+      Discord Summary Layer 2 ~1875 chars / under 1900-char ceiling.
+
+      Vuln-tracker handoff (librarian action):
+      (1) VT-006 _index.yaml state update commit (kev_pending → kev,
+          kev_added: 2026-05-27, kev_due_date: 2026-06-10).
+      (2) Scaffold VT-010 (or next available slot) for CVE-2026-48027
+          Nx Console mirroring VT-006 pattern.
+      (3) Scaffold VT-011 (or next available slot) for CVE-2026-44632
+          Yamcs mirroring VT-005 OpenC3 COSMOS pattern. Slot ordering
+          arbitrated by vuln-tracker.
+
+      IOC master-index handoff (librarian action): three new CVE
+      identifiers (CVE-2026-45321 + CVE-2026-48027 + CVE-2026-8398
+      KEV-state-change propagation, no new IOC values) + GHSA-524g-
+      x36v-9wm6 + Janino Expression Engine mechanism keyword + npm
+      package mouse5212-super-formatter + GitHub account
+      github.com/unplowed3584 + working name "Malware-Slop" + target
+      directory path /mnt/user-data.
+
+      Source-grade-log handoff (librarian action): OX Security
+      awaiting_direct_retrieval flag has been set since 2026-05-15
+      first citation; second corpus surface (Megalodon finding-2026-05-26
+      first; mouse5212 PM-27 second) where OX primary is relayed without
+      direct retrieval. Recommend operator decision: clear flag via
+      direct WebFetch of ox.security/blog/ on next cycle, OR downgrade
+      ox-security provisional grade from B to C if direct-retrieval
+      gap persists past 2026-06-01.
 
 # ============================================================================
 # Valid resurface_if conditions

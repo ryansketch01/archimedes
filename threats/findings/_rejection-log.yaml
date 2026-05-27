@@ -3008,20 +3008,653 @@ entries:
       class. Keep this rejection entry for 1 year per LEGAL-POLICY
       retention.
 
+  - rejection_id: reject-2026-05-26-0001
+    rejected_at: 2026-05-26T08:00:00-04:00
+    grading_run_id: morning-20260526-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-26-flash-0000-000-sentinel-clean-sweep
+    cluster_topic: >
+      Tuesday-midnight FLASH sentinel canonical clean-sweep disposition
+      record for 2026-05-26 00:00 EDT. The sentinel documents a clean
+      6h FLASH window (2026-05-25T18:00 -> 2026-05-26T00:00 EDT) with
+      0 of 6 triggers fired. Sentinel committed as 9125941 in the
+      canonical scheduled clean-sweep series.
+    rejection_reasons:
+      - sentinel_artifact_not_finding_eligible_event_class
+      - flash_zero_triggers_clean_sweep_no_grading_decision_required
+    sources:
+      - source_yaml_id: archimedes-internal
+        grade: A
+        role: Internal Archimedes FLASH sentinel record; 0 triggers fired across the 6h FLASH window.
+    rejection_detail: >
+      The sentinel is an internal pipeline artifact documenting a
+      clean FLASH window. Per established pattern (every prior clean
+      FLASH sweep across 2026-05-20 through 2026-05-25), the sentinel
+      is recorded in the rejection log as a disposition entry rather
+      than promoted to a finding. Keep this rejection entry for 1
+      year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-05-26-0002
+    rejected_at: 2026-05-26T08:00:00-04:00
+    grading_run_id: morning-20260526-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-26-flash-0600-000-sentinel-clean-sweep
+    cluster_topic: >
+      Tuesday-morning FLASH sentinel canonical clean-sweep disposition
+      record for 2026-05-26 06:00 EDT. The sentinel documents a clean
+      6h FLASH window (2026-05-26T00:00 -> 06:00 EDT) with 0 of 6
+      triggers fired. Sentinel committed as b82dd83 in the canonical
+      scheduled clean-sweep series.
+    rejection_reasons:
+      - sentinel_artifact_not_finding_eligible_event_class
+      - flash_zero_triggers_clean_sweep_no_grading_decision_required
+    sources:
+      - source_yaml_id: archimedes-internal
+        grade: A
+        role: Internal Archimedes FLASH sentinel record; 0 triggers fired across the 6h FLASH window. Fourth consecutive overnight clean sweep (1800/0000/0600 + AM pre-brief recovery).
+    rejection_detail: >
+      The sentinel is an internal pipeline artifact documenting a
+      clean FLASH window. Per established pattern, the sentinel is
+      recorded in the rejection log as a disposition entry rather
+      than promoted to a finding. Keep this rejection entry for 1
+      year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-05-26-0003
+    rejected_at: 2026-05-26T08:00:00-04:00
+    grading_run_id: morning-20260526-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-26-am-000-sentinel-pre-brief-sweep
+    cluster_topic: >
+      Canonical Tuesday-morning pre-brief sentinel disposition record
+      for the 08:00 EDT 2026-05-26 morning brief grading pass. The
+      pre-brief collector sentinel (raw-2026-05-26-am-000-sentinel-pre-
+      brief-sweep) is an internal collection-summary artifact
+      documenting the 14h window 2026-05-25T17:30 -> 2026-05-26T07:30
+      EDT (spanning the 18:00 FLASH, 00:00 FLASH, and 06:00 FLASH
+      clean sentinels — commits 657eda0, 9125941, b82dd83 — all
+      reconciled). The sentinel itself contains no external claim
+      being graded; it is the collector's own collection-summary
+      record cataloguing 19 in-window items, of which 7 were raw-
+      signaled as companions (am-001 through am-007) and 12 were
+      collector-filtered (3 promotional, 1 regulatory news, 2 no-
+      actor/no-A&D, 1 defensive tooling, 1 anti-noise-locked, 1
+      duplicate-topic). Six companions promoted this run: am-001 as
+      finding-2026-05-26-0001 (UNC1549/MiniFast B2); am-002 as
+      finding-2026-05-26-0002 (CKR AI Threat Landscape Digest A2
+      provisional); am-003 as finding-2026-05-26-0003 (Kremlin/Kozlov
+      APT28 institutional context B2); am-004 as finding-2026-05-26-
+      0004 (Drupal CVE-2026-9082 KEV T-1 A1); am-005 as
+      finding-2026-05-26-0005 (KnowledgeDeliver CVE-2026-5426
+      retrospective zero-day A2); am-006 as finding-2026-05-26-0006
+      (SANS ISC ACR Stealer + fake Claude page IOCs B3). One
+      companion (am-007 Lithuania National Register breach) rejected
+      separately as reject-2026-05-26-0004. Mandiant feed health
+      RECOVERY CONFIRMED across three consecutive sweeps (00:00 +
+      06:00 + 07:30); failure_count reset 19 -> 0. Volexity feed
+      FOURTH consecutive XML parse error past stale threshold;
+      operator decision pending. Splunk first-party 38-IOC sweep on
+      -14h@h pre-brief window returned ZERO events (61st consecutive
+      dormant non-self sweep on defenseclaw_local). KEV catalog
+      version 2026.05.22 unchanged ~108h+ since last add CVE-2026-
+      9082 Drupal; T-1 Drupal (Wed EOB ~36h from brief) and T-3
+      Exchange CVE-2026-42897 deadlines carry forward.
+    rejection_reasons:
+      - sentinel_artifact_not_finding_eligible_event_class
+      - companions_dispositioned_separately_via_grading_run_decisions
+      - source_health_runtime_changes_belong_in_source_health_yaml_not_finding
+      - kev_deadline_awareness_carry_forwards_belong_in_brief_not_new_finding
+    sources:
+      - source_yaml_id: archimedes-internal
+        grade: A
+        role: Internal Archimedes collector sentinel record (run_id pre-brief-20260526-073000); 14h sweep window reconciled with three overnight FLASH sentinels; documents collection-summary and runtime-state changes only, no external source claim being graded.
+      - source_yaml_id: cisa-kev
+        grade: A
+        role: KEV catalog version 2026.05.22 UNCHANGED across the 14h window (~108h since CVE-2026-9082 Drupal added 2026-05-22; longest catalog-quiescence stretch in current corpus tracking window); zero new KEV entries this sweep; T-1 Drupal and T-3 Exchange deadlines carry forward at peak urgency for the morning brief action-item block.
+      - source_yaml_id: mandiant
+        grade: A
+        role: Feed health recovery confirmed across 3 consecutive sweeps (00:00 + 06:00 + 07:30 EDT); feedburner endpoint returns 200 OK with 20 items; 0 in-window items; failure_count reset 19 -> 0 per operator-set runtime policy.
+    rejection_detail: >
+      The sentinel is an internal pipeline artifact documenting
+      collection state, not an external source claim. Per the
+      established pattern for sentinel files (reject-2026-05-20
+      through reject-2026-05-25-0004 all follow this same disposition
+      for their respective AM/PM/FLASH sentinels), the sentinel is
+      recorded in the rejection log as a disposition entry rather
+      than promoted to a finding. The seven companion raw-signals
+      (am-001 through am-007) are dispositioned by their own grading-
+      run decisions this run (six promoted, one rejected separately).
+      KEV-deadline awareness, source-health recovery (mandiant), and
+      source-health stale-threshold (volexity) are brief-composition
+      / source-health-yaml material rather than finding-eligible
+      event class. Keep this rejection entry for 1 year per LEGAL-
+      POLICY retention.
+
+  - rejection_id: reject-2026-05-26-0004
+    rejected_at: 2026-05-26T08:00:00-04:00
+    grading_run_id: morning-20260526-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-26-am-007-securityweek-lithuania-national-register-data-leak-600k-foreign-involvement-suspected-russian-hybrid-war
+    cluster_topic: >
+      SecurityWeek (Associated Press wire relay, 2026-05-26 06:26 EDT
+      in-window) reports Lithuanian authorities are on high alert
+      after a 600,000+ entry data leak from national data registers
+      (primarily real estate and legal entities registers) accessed
+      via "stolen login credentials of authorized institutions."
+      Attribution language: Lithuanian authorities state "a foreign
+      country is suspected of involvement" but "did not specify which
+      nation." Opposition politician Laurynas Kasčiūnas alleged on
+      social media that the breach "is suspected to be a Russian
+      intelligence operation" but "offered no evidence." Article
+      framing positions Lithuania within "Russia's hybrid war against
+      Europe." NO named threat actor. NO IOCs. NO CVE. NO A&D-prime
+      named.
+    rejection_reasons:
+      - no_named_threat_actor_per_lithuanian_authorities
+      - opposition_politician_social_media_allegation_explicitly_no_evidence
+      - hard_rule_2_no_novel_attribution_origination
+      - no_iocs_no_cve_no_technical_detail
+      - no_ad_prime_named_or_targeted
+      - geographic_context_only_marginal_intel_signal
+      - russia_hybrid_war_framing_risks_attribution_leakage_if_promoted
+      - brief_monitoring_section_can_reference_without_finding_promotion
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        role: B-grade media relay of Associated Press wire story; no novel investigative content beyond the Lithuanian authorities' own statement framing.
+      - source_yaml_id: associated-press
+        grade: provisional_B_wire_service
+        role: Originating wire story; quotes Lithuanian authorities and the opposition-politician social-media allegation; explicitly preserves the "no evidence" qualifier on the Russian-intelligence-operation allegation.
+      - source_yaml_id: lithuanian-authorities
+        grade: provisional_B_government_attestation
+        role: Government-attested breach disclosure ("foreign country is suspected of involvement" with explicit declination to specify nation); no specific attribution; no technical detail; no IOCs. Specific Lithuanian agency not enumerated in the AP/SW relay.
+    rejection_detail: >
+      Marginal raw-signal. The breach disclosure itself is government-
+      attested and credible at the procedural-fact layer (600K-entry
+      leak from national registers via stolen institutional
+      credentials). But the cluster lacks: (a) named threat actor;
+      (b) IOCs; (c) CVE; (d) named A&D-prime victim; (e) any
+      operational tradecraft detail. Promoting this to a finding
+      would risk Hard Rule 2 attribution leakage — the "Russia's
+      hybrid war against Europe" framing is geographic-context
+      packaging by the AP/SW relay, NOT a specific attribution
+      claim by Lithuanian authorities. The opposition politician's
+      "no evidence" Russian-intelligence-operation allegation
+      explicitly fails the attribution-quality threshold per
+      LEGAL-POLICY ("Attribution claims must cite at least one
+      A-grade or B-grade source making the attribution explicitly"
+      — a social-media post from an opposition politician with
+      "no evidence" qualifier is NOT a qualifying source). FLASH
+      evaluation: 0 of 6 triggers fire. Disposition: the briefer
+      MAY reference this as a NATO-member-state breach geographic-
+      context note in the brief monitoring section paired with the
+      Russia-aligned-hosting-ecosystem corpus surface (finding-2026-
+      05-25-0003 MIRhosting/WorkTitans; anti-noise lock active
+      through 2026-05-26 16:00 EDT), but the briefer should NOT
+      promote the "Russian hybrid war" framing as a specific
+      attribution. Splunk first-party not applicable (no IOCs).
+      Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention. Regrade if a fresh in-window surface appears with:
+      (a) Lithuanian authorities formally naming a specific nation;
+      (b) A/B-grade vendor research (Mandiant / CrowdStrike / Unit
+      42 / MSTIC / Recorded Future / ESET) attributing the breach
+      to a named tracked actor; (c) IOCs published from the
+      forensic investigation; (d) A&D-prime victim named.
+
+  - rejection_id: reject-2026-05-27-0001
+    rejected_at: 2026-05-27T08:12:00-04:00
+    grading_run_id: morning-20260527-080000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-27-am-002-securityweek-darkreading-megalodon-github-supply-chain-attack-5561-repos-six-hours-safedep-ox-security-unattributed
+    cluster_topic: >
+      SecurityWeek (Ionut Arghire 2026-05-25 03:40 EDT pre-window) +
+      Dark Reading (Rob Wright 2026-05-26 15:47 EDT in-window) two-
+      relay surface of SafeDep (provisional C originating research) +
+      Ox Security (provisional B; awaiting_direct_retrieval flag still
+      set) on the Megalodon GitHub supply-chain campaign - 5,561
+      distinct repositories backdoored via 5,718 malicious commits in
+      a 6h window 2026-05-18 11:36-17:48 UTC - dual payload class:
+      (1) new workflow_dispatch injection class for dormant-backdoor
+      class, (2) existing workflow replacement with workflow_dispatch
+      anti-recursion-bypass class - credential-theft scope (CI env
+      vars + AWS/GCP/Azure + SSH + Docker/K8s + GitHub/GitLab tokens)
+      - Tiledesk named follow-on victim via compromised eljohnny npm
+      account 2026-05-19 through 2026-05-21 - UNATTRIBUTED per SafeDep
+      explicit decline; Ox Security peer-mention of Mini Shai-Hulud
+      as lineage reference only - no A&D-prime named.
+    rejection_reasons:
+      - duplicate_topic_anti_noise_rule_1_saturated_same_event_as_finding_2026_05_25_0001
+      - megalodon_github_workflow_dispatch_cluster_promoted_2026_05_25_morning_brief
+      - same_5561_repos_same_5718_commits_same_eljohnny_tiledesk_same_one_day_window
+      - dark_reading_2026_05_26_in_window_addition_does_not_add_independent_research_layer_beyond_safedep_ox_security_already_corpus_tracked_via_finding_2026_05_25_0001
+      - hard_rule_2_unattributed_per_safedep_explicit_decline_already_preserved_in_finding_2026_05_25_0001
+      - mini_shai_hulud_teampcp_lineage_peer_mention_already_documented_as_lineage_reference_not_attribution_in_finding_2026_05_25_0001
+      - no_net_new_a_and_d_prime_named
+      - no_new_actor_attribution_no_new_ioc_layer_no_new_ttp_layer
+      - all_six_flash_triggers_fail_by_inspection
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        role: SecurityWeek (Ionut Arghire 2026-05-25 03:40 EDT) - pre-AM-27-window relay of SafeDep + Ox Security primaries; already corpus-tracked at finding-2026-05-25-0001 grading
+      - source_yaml_id: dark-reading
+        grade: B
+        role: Dark Reading (Rob Wright 2026-05-26 15:47 EDT) - in-window relay; same event, second-relay; not independent corroboration per INTEL-GRADING.md
+      - source_yaml_id: safedep
+        grade: C
+        role: Originating research uncoverer of the May 18 commit campaign; already corpus-anchored via finding-2026-05-25-0001
+      - source_yaml_id: ox-security
+        grade: B
+        role: Secondary analysis layer with Mini Shai-Hulud peer-mention lineage reference; awaiting_direct_retrieval flag still set; already corpus-anchored via finding-2026-05-25-0001
+    would_be_digraph: C2_if_first_surface_but_anti_noise_saturated_same_event
+    rejection_detail: >
+      This cluster is the SAME EVENT as finding-2026-05-25-0001
+      Megalodon GitHub workflow_dispatch mass backdoor promoted in the
+      2026-05-25 morning grading run. Dark Reading (Rob Wright)
+      yesterday-PM relay surfaces the same SafeDep + Ox Security
+      primary research, the same 5,561-repo / 5,718-commit / 6h-2026-
+      05-18-window scope, the same eljohnny npm account + Tiledesk
+      follow-on victim disclosure, the same UNATTRIBUTED per SafeDep
+      explicit decline, and the same Mini Shai-Hulud peer-mention
+      lineage-reference-not-attribution framing. Per INTEL-GRADING.md
+      independence test: a second media relay of the same primary
+      research is NOT independent corroboration. The Dark Reading
+      relay adds no net-new research layer beyond what SafeDep and
+      Ox Security published originally and what BleepingComputer /
+      SecurityWeek already relayed at finding-2026-05-25-0001
+      promotion time. No A&D-prime victim is named in either the BC
+      / SW / DR relay layer or the SafeDep / Ox Security primaries.
+      No active exploitation in the wild beyond the original 2026-05-
+      18 commit campaign. All six FLASH triggers fail by inspection.
+      The Ox Security awaiting_direct_retrieval flag in source-grades
+      yaml remains set - this rejection does NOT clear it because the
+      Dark Reading relay does not constitute direct retrieval of the
+      ox.security/blog/megalodon-cicd-malware-github/ primary blog.
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+      Regrade if: (a) a B-or-better IR firm publishes independent
+      attribution to a named threat actor, (b) an A-grade vendor (e.g.
+      Mandiant, Microsoft MSTIC, CrowdStrike, Unit 42) publishes
+      parallel telemetry with new IOCs or new TTP detail, (c) a
+      named A&D-prime victim discloses Megalodon involvement, (d) a
+      second wave of Megalodon-class commits is observed.
+
+  - rejection_id: reject-2026-05-27-0002
+    rejected_at: 2026-05-27T16:22:00-04:00
+    grading_run_id: afternoon-20260527-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-27-pm-003-the-record-gambit-security-lacmta-iran-ababil-of-minab-mois-attribution-additional-victims-handala-stryker-reference
+    cluster_topic: >
+      The Record (Suzanne Smalley 2026-05-27 09:20 EDT in-window) second
+      independent B-grade relay of Gambit Security primary on LACMTA
+      Iran attribution. Surfaces NEW alias "Ababil of Minab" (vs
+      SecurityWeek/Kovacs AM-27 "Black Shadow" naming) + additional
+      regional victims (Israeli media organization unnamed + Israeli
+      university unnamed + Turkish insurance brokerage unnamed + Saudi
+      Arabia organizations unnamed + restaurant/culture/digital-services
+      /news sector "several additional websites") + Handala Hack (#014
+      MOIS) tangential reference noting Handala "claimed responsibility
+      for March 2026 attack on medical device maker Stryker." Same
+      Gambit Security originating research as AM-27 finding-2026-05-27-
+      0004; cross-walk to MOIS/Handala/MuddyWater explicitly preserved
+      as Hard Rule 2 NO cross-walk.
+    rejection_reasons:
+      - anti_noise_rule_1_24h_window_saturated_same_investigation_inv_2026_05_26_001_carry_forward
+      - same_originating_primary_gambit_security_as_finding_2026_05_27_0004
+      - the_record_is_second_relay_layer_of_same_gambit_security_primary_per_intel_grading_independence_test_not_independent_corroboration
+      - investigation_lock_inv_2026_05_26_001_active_through_2026_06_09_t_14_covers_this_surface_as_absorption_eligible
+      - new_alias_ababil_of_minab_is_investigation_enrichment_not_new_finding_event
+      - handala_stryker_reference_is_tangential_mois_other_actor_context_not_lacmta_attribution_per_hard_rule_2
+      - all_six_flash_triggers_fail_per_collector_evaluation
+      - corroboration_uplift_target_finding_2026_05_27_0004_corroboration_field_update_via_briefer_update_block_or_grader_corroboration_field_amendment
+    sources:
+      - source_yaml_id: the-record
+        grade: B
+        role: directly-retrieved primary (Suzanne Smalley 2026-05-27 09:20 EDT) — second media relay of Gambit Security primary research
+      - source_yaml_id: gambit-security
+        grade: F (provisional, first-citation; held at F pending corpus track record)
+        role: originating IR firm; same source as AM-27 finding-2026-05-27-0004 via SecurityWeek relay
+    would_be_digraph: C3_if_first_surface_but_anti_noise_absorbed_under_investigation_lock
+    rejection_detail: >
+      This cluster is a second media-relay-layer surface on the same
+      Gambit Security primary research that anchors finding-2026-05-27-
+      0004 (LACMTA Iran investigation update; AM-27 morning brief
+      promotion). The Record (Suzanne Smalley) and SecurityWeek (Eduard
+      Kovacs) are two B-grade media relays of the same Gambit Security
+      primary — per INTEL-GRADING.md independence test, two relays of
+      the same primary do NOT constitute independent corroboration of
+      that primary. The cluster has ONE effective evidence basis on the
+      Black Shadow / Ababil of Minab / MOIS / LACMTA attribution layer.
+
+      However, the new information surfaced by The Record relay IS
+      analytically valuable and should be incorporated into the
+      finding-2026-05-27-0004 corroboration field and the active
+      investigation file `threats/investigations/2026-05-26-lacmta-iran-
+      attribution.md`:
+
+      1. Alias "Ababil of Minab" — different naming than SecurityWeek's
+         "Black Shadow" for what appears to be the same Gambit-Security-
+         assigned MOIS-front cluster. The two-name surface (Black Shadow
+         + Ababil of Minab) may be (a) naming-overlap by the two relay
+         layers, OR (b) two distinct Gambit-Security-assigned labels for
+         the same MOIS-front-cluster. Direct retrieval of the Gambit
+         Security primary report would resolve which is canonical. Both
+         aliases preserved as alternative naming pending primary
+         retrieval.
+
+      2. Additional regional victims (Israeli media, Israeli university,
+         Turkish insurance brokerage, Saudi Arabia organizations) —
+         expands the multi-victim campaign scope already documented in
+         finding-2026-05-27-0004 but adds no A&D-prime named victim.
+         Pattern-consistent with Iran Cyber Watch standing observation;
+         no scope change to ad_relevance disposition.
+
+      3. Handala Hack (#014 MOIS) tangential reference noting Handala
+         claimed responsibility for March 2026 Stryker attack — this is
+         a TANGENTIAL roster mention (Handala referenced as separate
+         MOIS-front example) NOT an attribution to the LACMTA case
+         itself. Hard Rule 2 preserved: NO cross-walk from LACMTA
+         Ababil-of-Minab/Black Shadow to Handala despite shared MOIS
+         service designation.
+
+      4. Editorial framing on AI democratization of destructive
+         cyberattack capabilities — The Record's relay-layer commentary,
+         not a Gambit-Security primary claim. Not corroboration-eligible.
+
+      Briefer should treat this as Iran Cyber Watch standing section
+      update bullet under finding-2026-05-27-0004 carry-forward, NOT a
+      separate finding. Grader corroboration-field amendment on
+      finding-2026-05-27-0004 will document the second-relay-layer
+      addition (the corroboration test does NOT pass to grade 2 because
+      the two relays are both of the same Gambit Security primary).
+
+      All six FLASH triggers fail per collector evaluation:
+        T1: no CVE
+        T2: Ababil of Minab / Black Shadow NOT in _roster.yaml (FAIL)
+        T3: Splunk -9h@h zero hits on tracked-IOC superset including
+            LACMTA / Ababil / Black Shadow / Minab / Gambit / MOIS
+        T4: no tradecraft pivot (hacktivist-front + state-infrastructure
+            pattern is corpus-baseline Iranian operational template)
+        T5: no A&D-prime named in additional victim list
+        T6: no zero-day
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+      Regrade if: (a) a second A/B-grade IR firm independently publishes
+      Black Shadow / Ababil of Minab attribution (Mandiant / Microsoft
+      MSTIC / CrowdStrike / Recorded Future / Volexity / Unit 42 / Cisco
+      Talos), (b) FBI / CISA / DHS public attribution of LACMTA
+      specifically to Iranian state-sponsored actor, (c) Gambit Security
+      primary directly retrieved and reveals additional attribution
+      content not surfaced in either relay, (d) A&D-prime named in
+      future victim disclosures.
+
+  - rejection_id: reject-2026-05-27-0003
+    rejected_at: 2026-05-27T16:25:00-04:00
+    grading_run_id: afternoon-20260527-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-27-pm-005-the-register-glassworm-takedown-russian-attribution-cis-locale-russian-comments-300-github-repos
+    cluster_topic: >
+      The Register (no byline-credited in extracted content, 2026-05-27
+      13:56 EDT in-window) fourth media-relay-layer on the CrowdStrike +
+      Google + Shadowserver GlassWorm botnet takedown. Surfaces NEW
+      Russian-pattern attribution operational details beyond AM-27
+      finding-2026-05-27-0001 surface: (1) John Hultquist named as
+      Google Threat Intelligence Group chief analyst confirming GTIG
+      role via social media; (2) CIS-locale termination check
+      ("malware terminates on Commonwealth of Independent States
+      systems"); (3) Russian-language code comments observation; (4)
+      300+ GitHub repositories confirmed compromised; (5) GlasswormRAT
+      (Node.js RAT) named; (6) Koi (Oct 2025 originating discovery)
+      named as endpoint-security shop; (7) Mini Shai-Hulud parallel
+      editorial mention (Hard Rule 2 NO cross-walk preserved). Same
+      CrowdStrike Counter Adversary Operations primary as AM-27
+      finding-2026-05-27-0001.
+    rejection_reasons:
+      - anti_noise_rule_1_24h_window_saturated_same_event_as_finding_2026_05_27_0001
+      - the_register_is_fourth_relay_layer_after_securityweek_bc_thn_of_same_crowdstrike_primary_per_intel_grading_independence_test_not_independent_corroboration
+      - am_27_finding_0001_anti_noise_lock_active_through_2026_05_28_08_00_edt_covers_this_surface_as_absorption_eligible
+      - new_indicators_cis_locale_russian_comments_hultquist_gtig_glasswormrat_node_js_300_github_repos_are_attribution_enrichment_layer_for_existing_finding_not_new_finding_event
+      - hard_rule_2_no_cross_walk_to_teampcp_mini_shai_hulud_despite_mini_shai_hulud_register_editorial_parallel_mention_preserved
+      - corroboration_uplift_target_finding_2026_05_27_0001_corroboration_field_update_via_grader_corroboration_field_amendment
+      - all_six_flash_triggers_fail_per_collector_evaluation
+      - operator_decision_glassworm_005_roster_nation_field_update_unknown_to_ru_likely_flagged_for_update_tracking_workflow_not_collector_or_grader_action
+    sources:
+      - source_yaml_id: the-register
+        grade: B
+        role: directly-retrieved primary (no byline-credited 2026-05-27 13:56 EDT) — fourth media relay of CrowdStrike Counter Adversary Operations primary research after SecurityWeek/Arghire + BleepingComputer/Ilascu + THN earlier relays
+      - source_yaml_id: crowdstrike
+        grade: A
+        role: originating Counter Adversary Operations primary; same source as AM-27 finding-2026-05-27-0001 via SecurityWeek relay
+      - source_yaml_id: gtig-hultquist
+        grade: A
+        role: Google Threat Intelligence Group via Hultquist named social media confirmation of GTIG role in takedown — first byline-credit surface but does NOT constitute independent research evidence basis (operational confirmation of partnership rather than parallel telemetry)
+      - source_yaml_id: koi
+        grade: F (provisional, first-citation; held at F pending corpus track record)
+        role: October 2025 originating-discovery endpoint-security shop named in The Register relay; not directly retrieved this sweep; source-grades.yaml first-citation candidate flagged for librarian
+    would_be_digraph: B2_relay_layer_if_first_surface_but_anti_noise_absorbed_under_am_27_lock
+    rejection_detail: >
+      This cluster is a fourth media-relay-layer surface on the same
+      CrowdStrike Counter Adversary Operations primary research that
+      anchors finding-2026-05-27-0001 (GlassWorm takedown; AM-27
+      morning brief promotion). The Register joins SecurityWeek
+      (Arghire 06:10 EDT) + BleepingComputer (Ilascu 09:28 EDT) + THN
+      (11:48 EDT) as the fourth English-language relay of the same
+      CrowdStrike primary. Per INTEL-GRADING.md independence test, four
+      relays of the same primary do NOT constitute independent
+      corroboration of that primary. The cluster has ONE effective
+      evidence basis on the GlassWorm takedown disclosure layer.
+
+      However, the new information surfaced by The Register relay IS
+      analytically valuable as attribution-enrichment for finding-2026-
+      05-27-0001 and should be incorporated into that finding's
+      corroboration field and possibly the GlassWorm (#005) actor-
+      profile dossier via /update-tracking workflow:
+
+      1. CIS-locale termination check — well-documented Russian-
+         operational-indicator class (Conti / TrickBot / IcedID / Babuk
+         / Sandworm-toolkit precedent CIS-skip logic). NEW indicator for
+         GlassWorm corpus surface; strengthens (but does not confirm)
+         the Russian-origin attribution prong.
+
+      2. Russian-language code comments — higher-confidence Russian-
+         language operational artifact than CIS-skip logic (which is
+         widely emulated). NEW indicator for GlassWorm corpus surface.
+         CrowdStrike's own caveat from finding-2026-05-27-0001 (code
+         comments may reflect AI tooling output rather than human
+         authorship) preserved per Hard Rule 2.
+
+      3. John Hultquist (GTIG chief analyst) named as confirming
+         Google's role in takedown via social media — first byline-
+         credit surface for the GTIG partnership in this event. Quote
+         under 15-word Hard Rule 6 ceiling.
+
+      4. 300+ GitHub repositories confirmed compromised — specific
+         victim count. AM-27 finding-2026-05-27-0001 captured "400+ code
+         repos" from prior Koi reporting (Oct 2025); the 300+ figure
+         appears to be CrowdStrike's takedown-surface count, distinct
+         from Koi's earlier 400+. The Register relay does not
+         disambiguate. Both figures recorded as alternative count
+         estimates in the corroboration field amendment.
+
+      5. GlasswormRAT (Node.js remote access tool) named — tool-
+         attribution detail not in AM-27 finding-0001 surface. Matches
+         the CrowdStrike YARA rule CrowdStrike_GlasswormRat_01
+         published with finding-0001.
+
+      6. Koi (Oct 2025 originating discovery) named — endpoint-security
+         shop credit. Koi NOT in source-grades.yaml; provisional F
+         first-citation candidate per cheatsheet for unknown research
+         vendor. Flagged for librarian source-grade-log expansion if
+         future GlassWorm-related surfaces cite Koi as primary research.
+
+      7. Mini Shai-Hulud parallel editorial mention — The Register
+         editorial framing notes "another self-replicating worm, Mini
+         Shai-Hulud, rips through open source code" in parallel to
+         GlassWorm. This is editorial framing, NOT a Gambit/Mandiant/
+         CrowdStrike attribution. Per Hard Rule 2, NO cross-walk from
+         GlassWorm (#005) to TeamPCP / Mini Shai-Hulud (VT-006) despite
+         the parallel-mention framing. The two cluster surfaces remain
+         distinct corpus-tracked threads.
+
+      Operator decision flagged for /update-tracking workflow: GlassWorm
+      (#005) roster attribution field update from `nation: unknown /
+      service: null` to `nation: RU (likely, per CrowdStrike 2026-05-26)
+      / service: null`. This is NOT a collector-side or grader-side
+      action — Hard Rule 2 requires the qualifier preserved verbatim and
+      attribution-field roster changes flow through formal /update-
+      tracking workflow or human ratification per CLAUDE.md.
+
+      All six FLASH triggers fail per collector evaluation:
+        T1: no CVE
+        T2: Russian-attribution enrichment for tracked actor #005 — but
+            underlying attribution was already established at AM-27;
+            this is enrichment-of-existing-attribution not new-actor-
+            name-surfacing per FLASH-POLICY new-not-restatement test
+            (FAIL)
+        T3: Splunk -9h@h zero hits on GlassWorm + 164.92.88.210
+            sinkhole + tracked-IOC set
+        T4: tradecraft enrichment but not novel pivot
+        T5: no A&D-prime named
+        T6: no zero-day
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+      Regrade if: (a) a second A/B-grade IR firm (Mandiant / MSTIC /
+      Unit 42 / Recorded Future / Volexity / Cisco Talos / SentinelLabs
+      / Bishop Fox / Praetorian) independently publishes parallel
+      GlassWorm telemetry with original IOCs not derived from CrowdStrike,
+      (b) GlassWorm operators reconstitute infrastructure within 30d
+      window (SAT-ACH H1 from finding-2026-05-27-0001 ACH analysis), (c)
+      A&D-prime named-victim disclosure on GlassWorm exposure, (d) Koi
+      publishes new GlassWorm research independent of CrowdStrike chain.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 32
-  most_recent_run: afternoon-20260525-160000
-  most_recent_run_rejections: 1
-  most_recent_run_promotions: 2
-  most_recent_run_absorptions: 0
+  total_rejections: 39
+  most_recent_run: afternoon-20260527-160000
+  most_recent_run_rejections: 2
+  most_recent_run_promotions: 3
+  most_recent_run_absorptions: 2     # PM-003 absorbed under finding-2026-05-27-0004; PM-005 absorbed under finding-2026-05-27-0001
   most_recent_run_promotion_ids:
-    - finding-2026-05-25-0002-teampcp-supply-chain-activity-through-2026-05-24-consolidation    # Hartman/SANS ISC TeamPCP one-week consolidation through 2026-05-24 — three net-new capability layers identified (framework source-code GitHub drop 2026-05-22 vendor-primary-pending; durabletask Linux disk-wiper SafeDep-first-observation-pending; CISA-NOT-on-KEV independently verified against catalogVersion 2026.05.22); cluster digraph B3 with single-source veto on framework-leak layer; WEP ceiling "likely" on net-new layers, "very likely" on CISA-NOT-on-KEV sub-layer and corpus-anchored carry-forward layers; monitoring-tier inclusion (below B2 action-item threshold); TeamPCP attribution preserved through-cite to corpus-anchored primaries per Hard Rule 2 (Hartman is secondary synthesis not originating observation); analyst/actor-profiler #001 hook for next /update-tracking with destructive-category recalibration trigger if disk-wiper confirms; no A&D-prime named; Splunk first-party 0 hits on 17-IOC consolidated sweep (56th consecutive dormant non-self sweep)
-    - finding-2026-05-25-0003-netherlands-fiod-mirhosting-worktitans-seizure-russia-aligned-hosting-takedown    # Krebs Netherlands FIOD 2026-05-18 raid + 2 arrests (Nesterenko 39 MIRhosting founder + Zinad 57 WorkTitans co-controller) + 800-server seizure across Enschede/Almere/Dronten/Schiphol-Rijk; charges violating sanctions law (economic resources to EU-sanctioned entities Stark Industries Solutions + PQHosting + Neculiti brothers); culminates Krebs 2024-2026 investigation chain on Stark→PQHosting→the.hosting→WorkTitans/MIRhosting Russia-aligned hosting ecosystem; cluster digraph B2 with single-source veto on ecosystem-attribution layer; WEP "very likely" on procedural facts (3-source attestation Krebs+de Volkskrant+FIOD), "likely" on ecosystem-attribution (single-investigator chain) and Danish-elections-attack-windows (relayed de Volkskrant data review); GENERIC "Russia-backed hacking groups" + "Russia's intelligence agencies" attribution preserved verbatim per Hard Rule 2 — NO roster actor (APT28 #006 / Sandworm #007 / APT29 #009) named; first corpus citation of the Stark/MIRhosting/WorkTitans/PQHosting ecosystem; no A&D-prime named; Splunk first-party not-applicable (no IOCs in Krebs piece); INFRASTRUCTURE-CLUSTER tracking-entry scaffold decision pending operator input
+    - finding-2026-05-27-0007-cisa-kev-three-add-cve-2026-45321-tanstack-mini-shai-hulud-cve-2026-48027-nx-console-cve-2026-8398-daemon-tools    # CISA KEV catalog version 2026.05.27 (2026-05-27 12:00 UTC) three CVE additions: (1) CVE-2026-45321 TanStack "Unspecified Vulnerability" (corpus VT-006 Mini Shai-Hulud KEV-pending watch signal FIRED, dueDate 2026-06-10 T+14); (2) CVE-2026-48027 Nx Console "Embedded Malicious Code Vulnerability" (corpus finding-2026-05-20-FLASH-0001 KEV-listed, dueDate 2026-06-10 T+14, vuln-tracker VT-010 candidate scaffolding); (3) CVE-2026-8398 Daemon Tools Lite "Embedded Malicious Code Vulnerability" (NOT corpus-tracked consumer software, dueDate 2026-05-30 T+3 accelerated). Cluster digraph A1 (CISA-authoritative procedural cataloging + dual-endpoint verification via JSON catalog + RSS alert; underlying mechanism corroboration chains already A1-anchored in prior findings via independent vendor research). WEP ceiling almost_certainly on procedural facts. BOD 22-01 federal deadlines create hard line for DIB/CMMC partner-flow estates inheriting FCEB compliance. analyst_review_required false (procedural-cataloging state change); red_team_review_required false; vuln-tracker handoff: VT-006 state transition (kev_pending → kev_added) + VT-010 scaffolding for CVE-2026-48027. No A&D-prime named victim emerged at KEV addition. Splunk 0 hits.
+    - finding-2026-05-27-0008-ox-security-thn-mouse5212-super-formatter-npm-claude-ai-user-data-credential-stealer-unattributed    # OX Security (Moshe Siman Tov Bustan + Nir Zadok) via The Hacker News relay 2026-05-27 11:44 EDT on malicious npm package `mouse5212-super-formatter` (676 downloads at disclosure; attacker GitHub account github.com/unplowed3584 created 2026-05-26, suspended at disclosure). Triggers npm postinstall credential-stealer with dual-mode GitHub authentication (victim env token OR hardcoded fallback token) recursively exfiltrating files from Anthropic Claude AI's /mnt/user-data directory. Researcher-coined working name "Malware-Slop". OX Security EXPLICITLY declines attribution to TeamPCP/Shai-Hulud/Mini Shai-Hulud/GlassWorm/Megalodon lineage despite shared GitHub-token-exfil postinstall tradecraft (hardcoded token + leaked private token = lower-tier operator skill differentiator). Cluster digraph B3 (B-grade THN relay of B-provisional OX Security primary; awaiting_direct_retrieval flag still set). WEP ceiling likely (backward-looking factual); roughly_even_chance (forward-looking). Fifth-in-class for AI-developer-tooling-ecosystem-supply-chain-pressure thematic arc since 2026-05-12. Monitoring-tier inclusion only (below B2 action-item threshold). Hard Rule 2: NO cross-walk to tracked roster despite tradecraft adjacency. analyst_review_required false; red_team_review_required false. Librarian handoff: ox-security direct-retrieval verification pending since 2026-05-15 — flagged for operator decision (clear flag via direct WebFetch on next cycle OR downgrade to C if persists past 2026-06-01). Splunk 0 hits.
+    - finding-2026-05-27-0009-github-advisory-yamcs-cve-2026-44632-server-side-code-injection-rce-spacecraft-mission-control-ad-direct    # GitHub Security Advisory Database GHSA-524g-x36v-9wm6 publication today 2026-05-27 (in-window per advisory-database sort:published-desc query). CVE-2026-44632 server-side code injection (RCE) in Yamcs (`org.yamcs:yamcs-core`) open-source mission control system for spacecraft and satellites. Exploitable via Janino Expression Engine in algorithm execution factory; CVSS v3 9.1 Critical; post-authenticated + high-privilege (`SystemPrivilege.ChangeMissionDatabase` required); patched in Yamcs 5.12.7; NO in-the-wild exploitation reported per vendor at disclosure (coordinated-disclosure class). Cluster digraph A2 (vendor-self-disclosure A class via GHSA reference + NVD procedural anchor; single-source-veto on novelty/impact layer; no second A/B-grade vendor analysis published yet — Mandiant/Unit 42/CrowdStrike/SentinelLabs/Praetorian/Bishop Fox all silent). WEP ceiling likely. Direct A&D-target-profile fit per CLAUDE.md spacecraft-mission-control vector. Parallel to corpus VT-005 OpenC3 COSMOS class. Sector Focus: A&D bullet for PM-27 brief (second consecutive brief with A&D-direct CVE focus after AM-27 finding-2026-05-27-0002 Gitea CVE-2026-27771 aerospace-manufacturers-named). Vuln-tracker handoff: scaffold VT-* dossier (slot arbitrated with VT-010 candidate for CVE-2026-48027). No actor attribution (researcher-disclosure/vendor-coordinated patch class). analyst_review_required false; red_team_review_required false. Hard Rule 3: PoC IS in GHSA advisory body but explicitly NOT copied. Splunk 0 hits.
+  most_recent_run_absorption_ids:
+    - reject-2026-05-27-0002    # PM-003 The Record (Smalley) second-relay-layer of Gambit Security primary on LACMTA Iran attribution — absorbed under finding-2026-05-27-0004 + investigation inv-2026-05-26-001 carry-forward; new "Ababil of Minab" alias + additional regional victims + Handala/Stryker tangential reference are investigation enrichment, NOT a new finding; corroboration-field amendment on finding-0004 documents the second-relay-layer (independence test FAILS — two relays of same Gambit primary)
+    - reject-2026-05-27-0003    # PM-005 The Register fourth-relay-layer of CrowdStrike Counter Adversary Operations primary on GlassWorm takedown — absorbed under finding-2026-05-27-0001; new CIS-locale + Russian-language code comments + Hultquist GTIG byline + 300+ GitHub repos + GlasswormRAT Node.js + Koi attribution-enrichment indicators are corroboration-field amendment material for finding-0001, NOT a new finding; Hard Rule 2 preserves Mini Shai-Hulud parallel mention as editorial framing (no cross-walk); GlassWorm #005 roster attribution field update (unknown → RU likely) flagged for operator /update-tracking workflow decision
+  most_recent_run_rejection_ids:
+    - reject-2026-05-27-0002    # see absorption_ids
+    - reject-2026-05-27-0003    # see absorption_ids
+  most_recent_run_note: >
+    afternoon-20260527-160000 grading processed 5 net-new PM-27 raw-
+    signal items (PM-001 through PM-005; PM-000 is pre-brief sentinel
+    summary, not finding-eligible). 3 of 5 PM items promoted (PM-001
+    KEV three-add → finding-0007 A1; PM-002 mouse5212 npm → finding-
+    0008 B3 monitoring-tier; PM-004 Yamcs CVE-2026-44632 → finding-
+    0009 A2 A&D-direct). 2 of 5 PM items rejected as absorption under
+    existing morning findings (PM-003 LACMTA Iran second-relay-layer →
+    absorbs into finding-2026-05-27-0004 + investigation lock; PM-005
+    Register GlassWorm fourth-relay-layer → absorbs into finding-2026-
+    05-27-0001 with attribution-enrichment indicators). All AM-27 raw-
+    signal items verified already-promoted at morning grading run
+    (am-001 → finding-0001, am-002 → reject-2026-05-27-0001 Megalodon
+    anti-noise, am-003 → finding-0002, am-004 → finding-0003, am-005 →
+    finding-0004, am-006 → finding-0005, am-007 → finding-0006; no
+    orphaned AM raw-signal items). All 3 promotions cleared Splunk
+    first-party check (zero events on aggregate 42-IOC sweep over
+    -9h@h; 67th consecutive dormant non-self sweep on defenseclaw_local
+    per pre-brief sentinel raw-2026-05-27-pm-000). NO findings carry
+    analyst SAT review flags this run (procedural KEV state change has
+    no SAT question; mouse5212 single-source has no attribution to
+    analyze; Yamcs researcher-disclosure has no attribution to
+    analyze). NO findings carry red-team review flags this run (WEP
+    ceilings: finding-0007 almost_certainly on procedural facts but
+    procedural facts not red-team-eligible; finding-0008 likely
+    backward-looking; finding-0009 likely with single-source veto).
+    Vuln-tracker handoff: VT-006 state transition (kev_pending →
+    kev_added) + VT-010 candidate scaffolding for CVE-2026-48027 Nx
+    Console + VT-* candidate scaffolding for CVE-2026-44632 Yamcs
+    (slot ordering arbitrated by vuln-tracker). Librarian handoff:
+    ox-security direct-retrieval verification still pending since
+    2026-05-15 (now 12 days; operator decision flagged); Koi
+    provisional-F first-citation candidate from PM-005 absorption;
+    finding-2026-05-27-0001 corroboration-field amendment for
+    CrowdStrike attribution-enrichment indicators; finding-2026-05-27-
+    0004 corroboration-field amendment for second-relay-layer +
+    Ababil of Minab alias. Operator decision flagged: GlassWorm (#005)
+    roster `nation: unknown / service: null` → `nation: RU (likely,
+    per CrowdStrike 2026-05-26 Counter Adversary Operations)` via
+    /update-tracking workflow.
+
+  # Prior run preserved below
+  legacy_morning_20260527_080000:
+    most_recent_run: morning-20260527-080000
+    most_recent_run_rejections: 1
+    most_recent_run_promotions: 6
+    most_recent_run_absorptions: 0
+  most_recent_run_promotion_ids:
+    - finding-2026-05-27-0001-crowdstrike-glassworm-takedown-roster-005-counter-adversary-operations-google-shadowserver    # CrowdStrike Counter Adversary Operations primary 2026-05-26 14:00 UTC + SecurityWeek (Ionut Arghire 2026-05-27 06:10 EDT relay) on multi-partner takedown (CrowdStrike + Google + Shadowserver) of tracked actor #005 GlassWorm (HIGH) - four-channel C2 architecture (Solana blockchain dead-drop + BitTorrent DHT + Google Calendar event-title Base64 + commercial VPS) simultaneously disrupted - sinkhole 164.92.88.210 - 300+ poisoned GitHub repos - YARA rules CrowdStrike_GlasswormRat_01 + CrowdStrike_GlasswormDownloader_01 published - Russia-origin pattern-based attribution per CrowdStrike with own caveat preserved per Hard Rule 2 - cluster digraph A2 with single-source veto (SW is pure relay of CS; not independent); WEP ceiling "likely"; first A-grade vendor takedown report on #005 in corpus; first A-grade attribution candidate toward RU origin for #005 (currently nation: unknown); analyst_review_required true (roster #005 attribution change proposal + TTP update on four-channel C2 architecture + SAT-ACH candidate on post-takedown disposition); red_team_review_required false; actor-profiler handoff for #005 dossier update; no A&D-prime named; Splunk first-party 0 hits
+    - finding-2026-05-27-0002-noscope-thn-gitea-cve-2026-27771-unauth-private-container-registry-aerospace-sector-named    # THN (Ravie Lakshmanan 2026-05-27 06:06 EDT) relay of Noscope (NEW provisional C first-citation, UK-based security company) on CVE-2026-27771 Gitea container registry authentication bypass - all versions <1.26.2 affected - patched 1.26.2 - CVSS not yet published per NVD - aerospace manufacturers sector class explicitly named alongside healthcare/retail/ISP - NO specific A&D watchlist prime named at company level - 30,000+ Gitea deployments across 30+ countries per Noscope - no active exploitation in the wild - cluster digraph C3 (provisional-C originating source + single-source via B-grade relay + Noscope primary not directly retrieved); WEP ceiling roughly_even_chance; monitoring-tier inclusion only (below action-item B2 threshold); analyst_review_required false (below threshold); red_team_review_required false; source-grade-log expansion candidate noscope provisional-C; vuln-tracker DECLINE (no active exploitation + provisional-C + C3 cluster does not meet VT scaffolding threshold); no A&D-prime named; Splunk first-party 0 hits
+    - finding-2026-05-27-0003-securityweek-adversa-ai-symjack-symlink-hijack-ai-coding-agents-five-vendor-class-mcp-abuse    # SecurityWeek (Kevin Townsend 2026-05-27 06:15 EDT) relay of Adversa AI (NEW provisional C first-citation, AI-security research firm) on SymJack novel attack technique - symlink hijack abusing AI coding agents into registering attacker-controlled MCP (Model Context Protocol) servers - tested against 5 vendor agents Claude Code/Gemini CLI/Cursor Agent CLI/Grok Build CLI/GitHub Copilot CLI and reproduced in all 5 - cp command on symlinked path triggers automatic insertion of attacker payload into agent configuration registering malicious MCP server as trusted backend - structural primitive symlinks-resolved-at-execute-time vs approve-time bypasses user-visible approval - Anthropic vendor-hardened Claude Code to "resolve symlinks before it asks for approval" (B2 procedural fact) - other 4 vendors patch status not detailed - no CVE assigned (technique-class disclosure across multiple vendor products) - no active exploitation in the wild - cluster digraph C3 (provisional-C originating source + single-source via B-grade relay + Adversa AI primary not directly retrieved); WEP ceiling roughly_even_chance; monitoring-tier inclusion only; analyst_review_required false; red_team_review_required false; source-grade-log expansion candidate adversa-ai provisional-C; vuln-tracker DECLINE (no CVE + no active exploitation + provisional-C + C3 cluster); no A&D-prime named; Splunk first-party 0 hits; novel-to-corpus TTP class - filesystem-side-effect-based AI agent configuration tampering with cross-vendor reach
+    - finding-2026-05-27-0004-securityweek-lacmta-iran-black-shadow-mois-gambit-israel-cyber-directorate-relay-investigation-update    # SecurityWeek (Eduard Kovacs 2026-05-27 05:33 EDT) B-grade relay of open investigation inv-2026-05-26-001 (LACMTA Iran attribution) - update layer: Gambit Security (originating IR firm; first Archimedes-corpus citation; provisional F per cheatsheet for unknown research vendor with no prior corpus citation) names "Black Shadow" cluster via configuration-fingerprint-based infrastructure linkage; Israel National Cyber Directorate frames Black Shadow as MOIS (Iran Ministry of Intelligence and Security) cluster - multi-victim regional campaign US/Israel/Saudi/Turkey across media/education/insurance/restaurant/culture/digital-services/news sectors - A&D sector EXPLICITLY ABSENT from victim list - Black Shadow NOT in _roster.yaml - per Hard Rule 2 NO cross-walk to tracked Iranian actors UNC1549/Charming Kitten/Handala Hack/MuddyWater/APT34 despite MOIS service-level match with MuddyWater (#022) and Handala Hack (#014) - cluster digraph C3 single-source-veto (Gambit Security provisional-F first-citation; no second A/B-grade IR firm corroboration); WEP ceiling roughly_even_chance; Iran Cyber Watch standing section update tier - NOT closing investigation - carry-forward through 2026-06-09 T+14; analyst_review_required true (investigation carry-forward decision + /new-actor Black Shadow scaffolding bar + SAT-ACH on attribution chain); red_team_review_required false; no A&D-prime named; Splunk first-party 0 hits
+    - finding-2026-05-27-0005-mstic-cryptojacking-screenconnect-ai-chatbot-seo-poisoning-gleeze-com-dynu-autorun-dll    # MSTIC primary (Microsoft Defender Experts + Microsoft Defender Security Research Team 2026-05-26 17:35 EDT yesterday in-window) on active cryptojacking campaign combining traditional SEO poisoning with NOVEL AI-chatbot-recommendation-poisoning methodology layer - 150+ malicious domains identified since March 2026 on parent gleeze.com via Dynu dynamic DNS - 9 distinct autorun.dll DLL-sideload variants - 6 impersonated utility brands CrystalDiskInfo/HWMonitor/Display Driver Uninstaller/FurMark/K-Lite Codec Pack/PDFgear targeting high-performance PC enthusiasts with discrete GPUs viable for crypto mining - attack chain: poisoned search or chatbot result → attacker lookalike site → ZIP with legitimate utility + malicious autorun.dll → DLL sideload → silent ScreenConnect install → GPU mining payload via ScreenConnect persistent access → potential follow-on data theft/lateral movement/ransomware - MSTIC explicit UNKNOWN THREAT ACTOR attribution preserved per Hard Rule 2 - no CVE in scope - no A&D-prime named - cluster digraph A2 with single-source veto (THN is pure relay of MSTIC; not independent); WEP ceiling likely on forward-projection claims, very_likely on procedural defender-actionable facts; analyst_review_required true (AI-chatbot-poisoning trajectory SAT-ACH candidate + A&D-prime engineering workstation indirect-exposure SAT-ACH/SAT-KAC + cross-corroboration watch); red_team_review_required false; weekly-synthesis pattern surfacing recommended on AI-tooling-abuse corpus thread; Splunk first-party 0 hits
+    - finding-2026-05-27-0006-bleepingcomputer-charter-shinyhunters-40m-records-salesforce-entra-vishing-victim-confirmation    # BleepingComputer (Lawrence Abrams 2026-05-26 15:46 EDT yesterday in-window) report on Charter Communications (Spectrum) self-disclosure of breach following ShinyHunters extortion threat - claimed scope 40M records - claimed data categories names/emails/addresses/phones/phone-type/plan-info/some-CPNI/support-tickets - Charter explicitly DISPUTES CPNI/PI exfiltration - alleged breach date 2026-04-01 per ShinyHunters - Salesforce-Entra-vishing tradecraft pattern: vishing → Microsoft Entra SSO compromise → SaaS connected-app fanout (Salesforce/M365/Google Workspace/SAP/Slack/Adobe/Atlassian/Zendesk/Dropbox) → Salesforce data export via compromised SSO - ShinyHunters NOT in _roster.yaml - tradecraft operationally analogous to Scattered Spider (#013) but BC does NOT cite Scattered Spider and per Hard Rule 2 Archimedes does NOT cross-walk - cluster digraph B2 (BC B-grade + Charter A-grade vendor self-disclosure independently corroborate breach-occurred + ShinyHunters-responsible layer; 40M scope C3 actor self-claim; CPNI claim disputed); WEP ceiling very_likely on breach-occurred + responsibility, likely on 40M scope, roughly_even_chance on CPNI/PI specifics; analyst_review_required true (/new-actor ShinyHunters scaffolding candidacy + Hard Rule 2 tradecraft-class framing for brief + SAT-ACH scope-claim dispute); red_team_review_required true (WEP very_likely on breach-occurred + Salesforce-Entra-vishing multi-actor tradecraft class); no A&D-prime named (consumer/business telecom); Splunk first-party 0 hits
   most_recent_run_absorption_ids: []
   most_recent_run_rejection_ids:
+    - reject-2026-05-27-0001    # SecurityWeek (Ionut Arghire 2026-05-25 pre-window) + Dark Reading (Rob Wright 2026-05-26 15:47 EDT in-window) two-relay surface of SafeDep + Ox Security Megalodon GitHub workflow_dispatch supply-chain campaign - SAME EVENT as finding-2026-05-25-0001 promoted 2026-05-25 morning brief - anti-noise rule 1 saturated; Dark Reading in-window addition adds no net-new research layer; relay-of-already-corpus-tracked event per INTEL-GRADING.md independence test
+  most_recent_run_note: >
+    morning-20260527-080000 grading processed 7 net-new AM-27 raw-signal
+    items + verified PM-26 raw-signal items already promoted at PM-26
+    afternoon grading run (pm-001 → finding-2026-05-26-0007; pm-002 →
+    finding-2026-05-26-0008). 6 of 7 AM items promoted; 1 rejected as
+    duplicate of finding-2026-05-25-0001 Megalodon (anti-noise rule 1
+    saturated). All 6 promotions cleared Splunk first-party check (zero
+    events on aggregate IOC sweep). Three findings carry analyst review
+    flags (finding-0001 roster #005 attribution change + four-channel
+    C2 TTP update + SAT-ACH on post-takedown disposition; finding-0004
+    investigation carry-forward + /new-actor Black Shadow bar + SAT-ACH
+    on attribution chain; finding-0005 AI-chatbot-poisoning trajectory
+    SAT-ACH + A&D-engineering-workstation exposure assessment; finding-
+    0006 /new-actor ShinyHunters scaffolding + tradecraft-class framing
+    + SAT-ACH on scope-claim dispute). One finding carries red-team
+    review flag (finding-0006 WEP very_likely on breach-occurred +
+    Salesforce-Entra-vishing multi-actor tradecraft class). Two NEW
+    provisional-C source candidates flagged to librarian (noscope,
+    adversa-ai). One source-grade-revision proposal preserved (Gambit
+    Security provisional-F first-citation; held at F pending corpus
+    track record).
+
+  prior_most_recent_run_legacy: morning-20260526-080000
+  prior_most_recent_run_rejections: 4
+  prior_most_recent_run_promotions: 6
+  most_recent_run_absorptions: 0
+  most_recent_run_promotion_ids:
+    - finding-2026-05-26-0001-unc1549-nimbus-manticore-minifast-minijunk-v2-seo-poisoning-getsqldeveloper    # THN B-grade relay of CKR + Unit 42 concurrent 2026-05-22 originating primaries on UNC1549/Nimbus Manticore/Screening Serpens 2026 active campaign; new TTP elements MiniFast/MiniUpdate backdoor + MiniJunk V2 + AppDomain hijacking from ZIP-archived DLLs + SEO poisoning via getsqldeveloper[.]com + trojanized Zoom installer career-themed lures; aviation/software/defense/telecom/oil&gas sectoral targeting across US/EU/ME/Saudi/Australia/Israel/UAE; cluster digraph B2 with single-source veto at THN-relay layer (primaries not directly retrieved this sweep); WEP ceiling "likely"; Iran/IRGC attribution corpus-baseline restated per Hard Rule 2 (#004); analyst_review_required false (corpus-baseline restatement); red_team_review_required false; tradecraft-evolution UPDATE on continuous corpus surface since 2026-05-23 0600 FLASH lineage; no A&D-prime named; Splunk first-party 0 hits on 38-IOC sweep
+    - finding-2026-05-26-0002-checkpoint-research-ai-threat-landscape-digest-march-april-2026-gtg1002-mexico-bissa-eviltokens    # CKR (provisional A pending source-grade-log ratification) bi-monthly AI Threat Landscape Digest March-April 2026 publication aggregating four named campaign clusters: GTG-1002 (Chinese nexus restated from Anthropic Nov 2025), Mexico breach (single operator, 9 government agencies, CLAUDE.md persistent jailbreak with pen-test cheatsheet loaded as project context, 1,088 prompts + 5,317 commands + 34 sessions metrics from recovered VPS, dual AI workflow Claude Code + GPT-4.1), Bissa Scanner (900+ compromises across millions of scanned Next.js endpoints, 30,000+ .env files harvested), EvilTokens PhaaS (Groq Llama 3.1-8b + 3.3-70b abuse, GPT-4o-mini translation, embedded two-stage jailbreak shipped as product feature); AI provider credential targeting taxonomy across 8 vendors (Anthropic/OpenAI/Groq/Mistral/OpenRouter/HuggingFace/Replicate/DeepSeek); speed compression 12h-exploit-from-advisory cited via CVE-2026-33626 LMDeploy; cluster digraph A2 with single-source veto (single-vendor digest); WEP ceiling "likely"; CKR preserves attribution-language hygiene (GTG-1002 "Chinese nexus" not escalated, Mexico breach "single operator" nationality declined, Bissa+EvilTokens unattributed); analyst_review_required true (SAT-ACH on Mexico-breach single-operator hypothesis competing frames + SAT-KAC on "AI-executed commands resemble skilled human activity" assumption + meta-cluster question on 4-surface Anthropic-product-abuse pattern); red_team_review_required false; cross-references finding-2026-05-07-0006 + finding-2026-05-10-0001 + finding-2026-05-12-FLASH-0001 + finding-2026-05-08-0004 corpus surfaces; no A&D-named; Splunk 0 hits; source-grade-log entry for checkpoint-research RECOMMENDED to librarian
+    - finding-2026-05-26-0003-therecord-kozlov-rostec-gru-unit-26165-security-council-apt28-institutional-context    # The Record (Daryna Antoniuk byline, 2026-05-25 19:00 EDT in-window) reports Kremlin appointment of Andrei Kozlov (former Rostec cybersecurity center head reportedly held classified clearance under Military Unit 26165 / 85th GTsSS — institutional home of APT28 / Fancy Bear / Forest Blizzard / BlueDelta) as aide to Security Council Secretary Sergei Shoigu; predecessor Pavel Konovalchik also reportedly linked to same GRU unit; cluster digraph B2 with single-source veto on Kozlov-personnel-linkage layer; WEP ceiling "likely" on personnel-linkage signal; underlying Unit 26165 / APT28 institutional attribution is corpus-baseline (Western intelligence community consensus) restated not originated; institutional context only — no new operational compromise, no new TTP, no new victimology, no IOCs; defender-relevant intel signal at Russian state-cyber chain-of-command level; analyst_review_required false (corpus-baseline restatement); red_team_review_required false; actor-profiler handoff for APT28 #006 dossier institutional-context note at next /update-tracking cycle (next-review due 2026-07-02); no A&D-prime named; Splunk 0 hits
+    - finding-2026-05-26-0004-bleepingcomputer-cisa-drupal-cve-2026-9082-kev-deadline-t-1-imperva-shadowserver    # BC (Sergiu Gatlan, 2026-05-26 04:46 EDT in-window) consolidated relay of FIVE independent primaries on Drupal CVE-2026-9082 KEV-deadline carry-forward: (1) CISA KEV add 2026-05-22 + BOD 22-01 federal due 2026-05-27 EOB (T-1 ~36h from brief); (2) Drupal SA-CORE-2026-004 advisory; (3) Google Mandiant researcher Michael Maturi originating discovery credit; (4) Imperva telemetry 15,000+ attack attempts across 6,000+ sites in 65 countries as of 2026-05-21 with ~50% Gaming/Financial Services sectoral breakdown; (5) Shadowserver census 670 unpatched installations exposed (272 NA, 273 EU) as of 2026-05-25; cluster digraph A1 (multi-source independent corroboration on cluster anchor); WEP ceiling "very_likely" on multiple sub-layers; no specific threat actor attribution per BC (Hard Rule 2); analyst_review_required false; red_team_review_required TRUE (WEP "very_likely" triggers red-team review per CLAUDE.md); vuln-tracker handoff for VT-NNN assignment for CVE-2026-9082 (raw-signal incorrectly tagged VT-005 which is actually OpenC3 COSMOS); FCEB-inheriting DIB/CMMC partner-flow estate Drupal/PostgreSQL patch-posture review framing; no A&D-prime named; Splunk 0 hits
+    - finding-2026-05-26-0005-mandiant-gtig-knowledgedeliver-cve-2026-5426-retrospective-zero-day-godzilla-cobalt-strike    # Mandiant/GTIG retrospective zero-day analysis on CVE-2026-5426 (hard-coded ASP.NET machine keys → ViewState deserialization → unauth RCE, CWE-798+CWE-502) in Digital Knowledge KnowledgeDeliver Japan-domestic LMS exploited pre-2026-02-24 to deploy Godzilla web shell (alias BLUEBEAM) and Cobalt Strike Beacon via JavaScript modification + fake security alerts + malicious installer chain; relayed by THN (Ravie Lakshmanan 01:19 EDT) + SecurityWeek (Ionut Arghire 07:14 EDT) — both cite same Mandiant/GTIG primary so multi-relay pattern is restatement NOT independent corroboration per INTEL-GRADING.md; cluster digraph A2 with single-source veto (one effective primary source); WEP ceiling "likely"; Mandiant/GTIG explicit decline-to-attribute ("an unknown threat actor") per Hard Rule 2; CVSS 7.5 below FLASH 9.0 floor; patched 2026-02-24 (not active zero-day at disclosure); Japan-domestic LMS not widely deployed in A&D; below all 6 FLASH triggers; analyst_review_required false; red_team_review_required false; captured for tradecraft-universe documentation (Godzilla/BLUEBEAM + CS Beacon + ASP.NET ViewState deserialization chain baseline); vuln-tracker may decline VT-NNN given Japan-domestic scope; operator action item to direct-retrieve Mandiant/GTIG primary URL not enumerated in either relay; no A&D-prime named; Splunk 0 hits
+    - finding-2026-05-26-0006-sans-isc-acr-stealer-fake-claude-download-page-fairpoint29-brad-duncan-iocs    # SANS ISC diary 33018 (Brad Duncan named handler, 2026-05-26 00:02 EDT in-window) defender-tier IOC publication on ACR Stealer Windows infostealer delivered via fake Claude (Anthropic) download landing page on fairpoint29[.]com with Google Ads malvertising + sites.google.com URL concealment + OS-aware lure mechanism; cluster digraph B3 with single-source veto on campaign-narrative layer; WEP ceiling "likely"; six IOCs published (5 domains incl. legitimate-service-abuse alert on i.ibb.co + 3 SHA-256 hashes — ZIP/PowerShell/image-file stages); no actor attribution per Brad Duncan (commodity infostealer); fourth corpus surface of Anthropic-product/Claude-brand abuse pattern (ClaudeBleed Chrome ext finding-2026-05-08-0004 + MacSync claude.ai/share finding-2026-05-10-0001 + GTG-1002 Claude Code CLAUDE.md jailbreak finding-2026-05-26-0002 + this); meta-cluster candidate surfaced as analyst question; analyst_review_required false; red_team_review_required false; librarian handoff for _master-index.yaml regeneration with special-handling note on i.ibb.co (alert-only, do NOT blocklist parent zone); no A&D-prime named; Splunk 0 hits
+  most_recent_run_absorption_ids: []
+  most_recent_run_rejection_ids:
+    - reject-2026-05-26-0001    # 2026-05-26 00:00 EDT FLASH sentinel canonical clean-sweep disposition record (commit 9125941)
+    - reject-2026-05-26-0002    # 2026-05-26 06:00 EDT FLASH sentinel canonical clean-sweep disposition record (commit b82dd83); 4th consecutive overnight clean sweep
+    - reject-2026-05-26-0003    # 2026-05-26 AM pre-brief sentinel canonical disposition record (7 companion raw-signals dispositioned separately, 6 promoted, 1 rejected as reject-2026-05-26-0004; sentinel itself is internal collection-summary artifact); mandiant feed RECOVERY CONFIRMED across 3 consecutive sweeps; volexity 4th consecutive XML parse error past stale threshold; KEV catalog ~108h+ quiescence
+    - reject-2026-05-26-0004    # SecurityWeek (AP wire relay) Lithuania National Register 600K-entry data leak with "foreign country is suspected" + opposition-politician-social-media "no evidence" Russian-intelligence-operation allegation; no named threat actor, no IOCs, no CVE, no A&D-prime; Hard Rule 2 + LEGAL-POLICY attribution-quality threshold prevents promotion; briefer MAY reference in monitoring section as NATO-member-state breach geographic-context note paired with MIRhosting/WorkTitans surface (finding-2026-05-25-0003 anti-noise lock active through 2026-05-26 16:00 EDT)
+
+  prior_most_recent_run_legacy: afternoon-20260525-160000
+  prior_most_recent_run_rejections: 1
+  prior_most_recent_run_promotions: 2
+  prior_most_recent_run_promotion_ids:
+    - finding-2026-05-25-0002-teampcp-supply-chain-activity-through-2026-05-24-consolidation    # Hartman/SANS ISC TeamPCP one-week consolidation through 2026-05-24 — three net-new capability layers identified (framework source-code GitHub drop 2026-05-22 vendor-primary-pending; durabletask Linux disk-wiper SafeDep-first-observation-pending; CISA-NOT-on-KEV independently verified against catalogVersion 2026.05.22); cluster digraph B3 with single-source veto on framework-leak layer; WEP ceiling "likely" on net-new layers, "very likely" on CISA-NOT-on-KEV sub-layer and corpus-anchored carry-forward layers; monitoring-tier inclusion (below B2 action-item threshold); TeamPCP attribution preserved through-cite to corpus-anchored primaries per Hard Rule 2 (Hartman is secondary synthesis not originating observation); analyst/actor-profiler #001 hook for next /update-tracking with destructive-category recalibration trigger if disk-wiper confirms; no A&D-prime named; Splunk first-party 0 hits on 17-IOC consolidated sweep (56th consecutive dormant non-self sweep)
+    - finding-2026-05-25-0003-netherlands-fiod-mirhosting-worktitans-seizure-russia-aligned-hosting-takedown    # Krebs Netherlands FIOD 2026-05-18 raid + 2 arrests (Nesterenko 39 MIRhosting founder + Zinad 57 WorkTitans co-controller) + 800-server seizure across Enschede/Almere/Dronten/Schiphol-Rijk; charges violating sanctions law (economic resources to EU-sanctioned entities Stark Industries Solutions + PQHosting + Neculiti brothers); culminates Krebs 2024-2026 investigation chain on Stark→PQHosting→the.hosting→WorkTitans/MIRhosting Russia-aligned hosting ecosystem; cluster digraph B2 with single-source veto on ecosystem-attribution layer; WEP "very likely" on procedural facts (3-source attestation Krebs+de Volkskrant+FIOD), "likely" on ecosystem-attribution (single-investigator chain) and Danish-elections-attack-windows (relayed de Volkskrant data review); GENERIC "Russia-backed hacking groups" + "Russia's intelligence agencies" attribution preserved verbatim per Hard Rule 2 — NO roster actor (APT28 #006 / Sandworm #007 / APT29 #009) named; first corpus citation of the Stark/MIRhosting/WorkTitans/PQHosting ecosystem; no A&D-prime named; Splunk first-party not-applicable (no IOCs in Krebs piece); INFRASTRUCTURE-CLUSTER tracking-entry scaffold decision pending operator input
+  prior_most_recent_run_absorption_ids: []
+  prior_most_recent_run_rejection_ids:
     - reject-2026-05-25-0004    # Monday-afternoon pre-brief sentinel canonical disposition record (2 companion raw-signals dispositioned separately, both promoted; sentinel itself is internal collection-summary artifact not finding-eligible)
 
   prior_most_recent_run_legacy: afternoon-20260524-160000

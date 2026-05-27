@@ -7,7 +7,7 @@
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
 version: 2
-last_updated: 2026-05-19
+last_updated: 2026-05-27
 
 vulnerabilities:
 
@@ -146,6 +146,7 @@ vulnerabilities:
     cve: CVE-2026-45321
     cvss: 9.6
     ghsa: GHSA-g7cv-rxg3-hmpx
+    cisa_kev_short_description: "TanStack Form contains a vulnerability that allows for the compromise of legitimate software packages within the npm and PyPI ecosystems."
     affected_packages_partial:
       - "@tanstack (42 packages / 84 versions)"
       - "@uipath (multiple packages)"
@@ -159,11 +160,12 @@ vulnerabilities:
     compromised_count: "~172 packages (figure carries Snyk + Wiz scan-cadence dependence)"
     patch_status: rolling_unpublishes_and_revocations
     patch_release_date: 2026-05-11
-    kev: false
-    kev_added: null
-    kev_due_date: null
-    kev_pending: true             # Anticipated KEV addition; CISA has not added as of 2026-05-12 06:00 EDT
-    exploitation_status: in_the_wild_self_propagating_worm
+    kev: true                     # CISA KEV addition confirmed 2026-05-27 (catalog version 2026.05.27)
+    kev_added: 2026-05-27
+    kev_due_date: 2026-06-10      # BOD 22-01 14-day federal remediation
+    kev_catalog_version: 2026.05.27
+    kev_required_action: "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable."
+    exploitation_status: in_the_wild_self_propagating_worm_kev_listed
     public_exploit_available: in_the_wild_worm_code_itself
     detection_signatures_published: true
     digraph: A2
@@ -181,11 +183,14 @@ vulnerabilities:
     related_findings:
       - finding-2026-05-12-FLASH-0001
       - finding-2026-05-04-0003   # PyTorch Lightning ShaiWorm — Shai-Hulud family lineage predecessor
+      - finding-2026-05-27-0007   # CISA KEV three-add catalog version 2026.05.27 — VT-006 state transition to KEV-listed
     related_briefs:
       - flash-2026-05-12-0600
+      - 2026-05-27-afternoon      # KEV-listing state-change brief
     related_raw_signals:
       - raw-2026-05-12-flash-0600-001-teampcp-mini-shai-hulud-npm-pypi-worm
       - raw-2026-05-11-flash-0600-001   # Checkmarx Jenkins AST plugin (same actor, distinct topic 24h prior)
+      - raw-2026-05-27-pm-001-cisa-kev-three-adds-cve-2026-45321-tanstack-mini-shai-hulud-cve-2026-48027-nx-console-cve-2026-8398-daemon-tools
     ad_relevance: medium_indirect_via_squawk_aviation_ecosystem
     ad_relevance_rationale: >
       @squawk namespace contains 19 aviation data packages (per Snyk byline
@@ -211,12 +216,14 @@ vulnerabilities:
     dossier: null                 # Not yet scaffolded; recommend vuln-tracker create on next pass
     tracking: null                # Not yet scaffolded
     tracked_since: 2026-05-12
-    last_reviewed: 2026-05-12
-    next_review_due: 2026-05-19
+    last_reviewed: 2026-05-27
+    next_review_due: 2026-06-10        # Aligned to KEV federal deadline
     note: >
       Second active-exploitation CVE in the Archimedes corpus (after PAN-OS
-      CVE-2026-0300). KEV-pending (CISA has not yet added; collector should
-      monitor /known-exploited-vulnerabilities.json on next sweep). Worm
+      CVE-2026-0300). KEV-listed 2026-05-27 in CISA catalog version
+      2026.05.27 with 2026-06-10 federal remediation deadline (BOD 22-01).
+      State transition from kev_pending applied in afternoon brief cycle
+      2026-05-27 per finding-2026-05-27-0007. Worm
       itself IS the in-the-wild exploitation — no separate PoC distribution
       path. CVE coordination via Snyk; GHSA published by Snyk Security
       team. Three potentially-cross-cited TeamPCP campaigns within 8 days:
@@ -281,16 +288,209 @@ vulnerabilities:
     dossier: threats/vulnerabilities/FortiAuthenticator-CVE-2026-44277/profile.md
     note: "Patched at disclosure. Watch signals: KEV addition; Watchtowr / Horizon3.ai / Assetnote / Rapid7 n-day-research publication; third-party telemetry corroborating OR contradicting the vendor no-ITW assertion. Historical Fortinet unauthenticated-RCE pattern (CVE-2022-40684, CVE-2023-27997) shows rapid post-disclosure KEV listing once exploitation surfaces — track closely."
 
+  - id: VT-008
+    name: "Microsoft Exchange Server on-prem OWA XSS spoofing zero-day"
+    type: "Cross-site scripting / XSS-driven spoofing via crafted email rendered in OWA browser session (CWE-79)"
+    platform: "Microsoft Exchange Server on-prem (Outlook Web Access component); Exchange Online NOT affected"
+    cve: CVE-2026-42897
+    cvss: 8.1
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:N"
+    cwe: CWE-79
+    affected_versions:
+      - "Exchange Server 2016 (all update levels)"
+      - "Exchange Server 2019 (all update levels)"
+      - "Exchange Server Subscription Edition (all update levels)"
+    not_affected: "Exchange Online"
+    patch_status: no_ga_patch_esu_only_mitigation_path_for_non_esu_estates
+    esu_binary_patches: ["SE RTM", "2016 CU23", "2019 CU14", "2019 CU15"]
+    mitigation: "EEMS auto URL-rewrite (recommended); EOMT manual script for air-gapped"
+    kev: true
+    kev_added: 2026-05-15
+    kev_due_date: 2026-05-29
+    kev_catalog_version: 2026.05.15
+    kev_required_action: "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable."
+    known_ransomware_campaign_use: unknown
+    exploitation_status: in_the_wild_per_msrc_exploitation_detected_tag_single_source
+    public_exploit_available: false
+    detection_signatures_published: vendor_eems_url_rewrite_rule_only
+    digraph: A2
+    wep_split:
+      procedural_cve_facts: very_likely
+      active_exploitation_in_the_wild_msrc_tag: likely
+      no_general_availability_patch_currently: very_likely
+    single_source_veto_applied: true
+    single_source_veto_layer: active_exploitation_in_the_wild
+    related_actors: []                  # Hard Rule 2: no actor named by MSRC / CISA / BleepingComputer / THN / SecurityWeek
+    related_findings:
+      - finding-2026-05-15-FLASH-0001
+      - finding-2026-05-15-0003
+    related_briefs:
+      - flash-2026-05-15-0600-exchange-cve-2026-42897
+      - 2026-05-15-morning
+      - 2026-05-15-afternoon
+      - 2026-05-16-morning
+      - 2026-05-17-afternoon
+    ad_relevance: high
+    ad_relevance_rationale: >
+      On-prem Exchange retains material footprint across the ITAR-regulated
+      defense industrial base — classified-network and air-gapped enclaves
+      cannot consume Exchange Online by design; DFARS / NIST 800-171 / CMMC
+      partner-flow estates often retain on-prem mail tenancy. The ESU-only
+      patch path adds defender-side latency vs. cloud-tenanted estates;
+      EEMS / EOMT runs as Exchange-administrative change-control action.
+      BOD 22-01 binding federal deadline (2026-05-29) creates hard line
+      for DIB / CMMC partner-flow estates inheriting FCEB compliance.
+      Mission-network estates with OWA disabled (MAPI-only Outlook desktop)
+      carry materially reduced exposure.
+    dossier: threats/vulnerabilities/Exchange-CVE-2026-42897/profile.md
+    tracking: threats/vulnerabilities/Exchange-CVE-2026-42897/tracking.yaml
+    tracked_since: 2026-05-15
+    last_reviewed: 2026-05-22
+    next_review_due: 2026-05-29        # Aligned to KEV federal deadline
+    note: >
+      Originally flagged as VT-007 candidate at FLASH-0001 grading
+      (finding-2026-05-15-FLASH-0001); VT-007 slot subsequently used for
+      FortiAuthenticator CVE-2026-44277 (disclosed 2026-05-12 / surfaced
+      in same week). Dossier scaffolded retroactively as VT-008 on 2026-05-22
+      via on-demand defensive patch-posture query, T-7 from KEV federal
+      deadline. Single-source veto on the active-exploitation claim carries
+      forward across 5 published briefs + 5-day quiet carry-forward; no
+      independent A-grade IR-firm telemetry has surfaced. Veto lifts if
+      any of Mandiant / Volexity / Unit 42 / MSTIC TI blog / CrowdStrike /
+      ESET / Sophos / Bitdefender publishes telemetry-backed corroboration.
+      Microsoft general-availability patch release remains the operational
+      transition point for non-ESU estates.
+
+  - id: VT-009
+    name: "Nx Console (Nx monorepo build tooling) — supply-chain maintainer-compromise pathway (CVE-2026-48027)"
+    type: "Developer-tooling supply-chain compromise pathway (maintainer-account compromise → IDE extension → monorepo build environments)"
+    platform: "Nx Console IDE extension (JetBrains + VS Code) used in Nx monorepo Node/TypeScript build environments"
+    cve: CVE-2026-48027
+    cvss: null                    # CVSS not surfaced in catalog summary at finding-creation time; vendor advisory referenced via finding-2026-05-27-0007
+    patch_status: vendor_advisory_referenced_via_finding_2026_05_27_0007
+    kev: true
+    kev_added: 2026-05-27
+    kev_due_date: 2026-06-10
+    kev_catalog_version: 2026.05.27
+    kev_required_action: "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable."
+    exploitation_status: in_the_wild_per_cisa_kev_listing
+    public_exploit_available: unknown_at_kev_addition
+    detection_signatures_published: unknown_at_kev_addition
+    digraph: A1
+    wep_split:
+      procedural_kev_facts: very_likely
+    related_actors: []            # No actor named in CISA KEV procedural cataloging; corpus-tracked supply-chain pathway, not actor-attributed
+    related_findings:
+      - finding-2026-05-20-FLASH-0001    # Prior corpus surface documenting Nx Console as KEV-listed precedent
+      - finding-2026-05-27-0007          # CISA KEV three-add procedural confirmation
+    related_briefs:
+      - 2026-05-20-afternoon
+      - 2026-05-27-afternoon
+    ad_relevance: medium_indirect
+    ad_relevance_rationale: >
+      Developer-tooling supply-chain pathway. Nx Console is used in Nx
+      monorepo Node/TypeScript build environments; maintainer-account
+      compromise via Nx Console is the linking primitive across the
+      reported 3,800-repo GitHub breach with OpenAI/Grafana cited as
+      downstream secondary victims (per finding-2026-05-20-FLASH-0001
+      lineage). A&D-prime exposure is indirect — varies by whether
+      individual prime SDLC pipelines pull Nx Console-touched packages.
+      Linking primitive to VT-006 (Mini Shai-Hulud TanStack
+      credential-theft pathway) means defenders tracking VT-006 should
+      also track VT-009.
+    dossier: null                 # Not scaffolded; recommend vuln-tracker create on next pass
+    tracking: null
+    tracked_since: 2026-05-27
+    last_reviewed: 2026-05-27
+    next_review_due: 2026-06-10   # Aligned to KEV federal deadline
+    note: >
+      KEV-listed at corpus-promotion. Codifies the previously-documented
+      Nx Console supply-chain surface (finding-2026-05-20-FLASH-0001)
+      as a formally-tracked vuln dossier following CISA's catalog
+      version 2026.05.27 addition. Slot VT-009 assigned (next-available
+      after VT-008 Exchange). Watch signals: vendor patch confirmation
+      and version range; second A/B-grade vendor IR analysis on the
+      specific compromise mechanism; A&D-prime customer impact
+      statement; expansion of the documented downstream-victim list
+      beyond OpenAI/Grafana.
+
+  - id: VT-010
+    name: "Yamcs spacecraft mission control software server-side code injection (CVE-2026-44632)"
+    type: "Server-side code injection via Janino Expression Engine in algorithm execution factory (post-auth, high-priv required)"
+    platform: "Yamcs open-source spacecraft mission control software (used by space mission operators for telemetry / telecommand / mission database management)"
+    cve: CVE-2026-44632
+    cvss: 9.1
+    cvss_vector_note: "Post-authentication, high-privilege required — defender mitigation lever: restrict SystemPrivilege.ChangeMissionDatabase to operational-need-only accounts"
+    ghsa: GHSA-524g-x36v-9wm6
+    affected_versions_note: "Pre-5.12.7 — exact lower-bound version range per GHSA advisory"
+    fixed_versions:
+      - "Yamcs 5.12.7"
+    patch_status: patched_at_disclosure
+    patch_release_date: 2026-05-27
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    exploitation_status: not_observed_at_disclosure
+    public_exploit_available: vendor_ghsa_advisory_body_only    # PoC in advisory body — NOT copied to dossier per Hard Rule 3
+    detection_signatures_published: false
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_layer: forward_looking_no_itw_and_patch_coverage
+    related_actors: []            # Researcher-disclosure / vendor-coordinated patch class; no actor named
+    related_findings:
+      - finding-2026-05-27-0009
+    related_briefs:
+      - 2026-05-27-afternoon
+    sibling_corpus_precedent: VT-005    # OpenC3 COSMOS five-CVE cluster — same open-source-spacecraft-mission-control-RCE class
+    ad_relevance: high
+    ad_relevance_rationale: >
+      Spacecraft mission control software with direct space / defense
+      vertical relevance. Yamcs is used by space mission operators for
+      telemetry, telecommand, and mission database management — maps
+      directly to the A&D-target profile from CLAUDE.md including
+      spacecraft / satellite / launch-vehicle program estates. Corpus
+      precedent: VT-005 OpenC3 COSMOS five-CVE cluster (2026-04-20) is
+      the same open-source-spacecraft-C2-software-RCE class at
+      procedurally similar grading. Defender priority for any A&D
+      estate running Yamcs in mission operations or in test/integration
+      facilities feeding into mission operations.
+    dossier: null                 # Not scaffolded; recommend vuln-tracker create on next pass
+    tracking: null
+    tracked_since: 2026-05-27
+    last_reviewed: 2026-05-27
+    next_review_due: 2026-06-03   # Standard 7-day post-disclosure cadence for fresh A&D-direct CVEs
+    note: >
+      Vendor-coordinated disclosure with patch (5.12.7) at GHSA
+      publication. No in-the-wild exploitation observed at disclosure
+      per vendor-attested negative. PoC included in GHSA advisory body
+      is NOT copied here per Hard Rule 3 (defensive tracking only;
+      mechanism class noted, attack-step detail intentionally excluded).
+      Watch signals: KEV catalog listing; second A/B-grade vendor IR
+      analysis (Mandiant / Unit 42 / CrowdStrike / SentinelLabs /
+      Praetorian / Bishop Fox); public deployment statement from a
+      space-mission operator naming Yamcs in mission operations or
+      test estates; any in-the-wild exploitation observation.
+
+  # Notes on KEV-add finding-2026-05-27-0007 third CVE:
+  # CVE-2026-8398 (Daemon Tools Lite) was the third KEV addition in
+  # catalog version 2026.05.27 but is NOT tracked as a vuln dossier —
+  # rationale: consumer optical-media virtualization tool, no A&D-sector
+  # deployment pathway. Catalogued in finding-2026-05-27-0007 for
+  # KEV-addition completeness only.
+
 
 _meta:
-  total_tracked: 7
-  patched: 3                      # ZD-001 BlueHammer; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure)
+  total_tracked: 10
+  patched: 4                      # ZD-001 BlueHammer; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure)
   unpatched: 2                    # ZD-002 RedSun; ZD-003 UnDefend
   patches_scheduled: 1            # ZD-004 PAN-OS CVE-2026-0300
   rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
-  active_exploitation: 2          # ZD-004 PAN-OS CVE-2026-0300 + VT-006 Mini Shai-Hulud worm
-  kev_listed: 1                   # ZD-004 PAN-OS CVE-2026-0300
-  kev_pending: 2                  # VT-006 Mini Shai-Hulud (not yet KEV); VT-007 FortiAuthenticator (KEV watch active)
+  no_ga_patch_esu_or_mitigation_only: 1   # VT-008 Exchange CVE-2026-42897 (ESU binary patches available; non-ESU estates on EEMS / EOMT mitigation path)
+  vendor_advisory_referenced_only: 1      # VT-009 Nx Console (vendor advisory referenced via finding-2026-05-27-0007; full patch posture pending dossier scaffold)
+  active_exploitation: 4          # ZD-004 PAN-OS CVE-2026-0300 + VT-006 Mini Shai-Hulud worm + VT-008 Exchange CVE-2026-42897 + VT-009 Nx Console (KEV-listed 2026-05-27)
+  kev_listed: 4                   # ZD-004 PAN-OS (dueDate 2026-05-27 — past) + VT-006 Mini Shai-Hulud (dueDate 2026-06-10) + VT-008 Exchange (dueDate 2026-05-29) + VT-009 Nx Console (dueDate 2026-06-10)
+  kev_pending: 1                  # VT-007 FortiAuthenticator (KEV watch active)
   public_exploit_available: 2     # ZD-004 PAN-OS + VT-006 (worm IS the in-the-wild exploitation)
-  vendor_ghsa_poc_only: 1         # VT-005 OpenC3 COSMOS cluster (PoC embedded in vendor advisories only)
-  dossiers_migrated: 3            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator. ZD-001/002/003 still pending C3PO migration; VT-006 Mini Shai-Hulud dossier not yet scaffolded (recommend vuln-tracker next pass).
+  vendor_ghsa_poc_only: 2         # VT-005 OpenC3 COSMOS cluster + VT-010 Yamcs (PoC embedded in vendor advisories only)
+  dossiers_migrated: 4            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator; VT-008 Exchange CVE-2026-42897 (scaffolded 2026-05-22). ZD-001/002/003 still pending C3PO migration; VT-006 Mini Shai-Hulud + VT-009 Nx Console + VT-010 Yamcs dossiers not yet scaffolded (recommend vuln-tracker next pass).

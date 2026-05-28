@@ -3536,10 +3536,78 @@ entries:
 # ============================================================================
 _meta:
   total_rejections: 39
-  most_recent_run: afternoon-20260527-160000
-  most_recent_run_rejections: 2
-  most_recent_run_promotions: 3
-  most_recent_run_absorptions: 2     # PM-003 absorbed under finding-2026-05-27-0004; PM-005 absorbed under finding-2026-05-27-0001
+  most_recent_run: morning-20260528-080000
+  most_recent_run_rejections: 0
+  most_recent_run_promotions: 4
+  most_recent_run_absorptions: 0
+  most_recent_run_promotion_ids:
+    - finding-2026-05-28-0001-bleepingcomputer-carnival-cruise-shinyhunters-6m-records-confirmation-mariner-society-holland-america    # BleepingComputer (Sergiu Gatlan 2026-05-28 06:49 EDT in-window) relay of Carnival Corporation customer-notification filing confirming 5,995,277-customer breach following ShinyHunters April 2026 extortion claim - Holland America Line subsidiary / Mariner Society loyalty program - social-engineering-of-employee initial-access vector - 8-day dwell window 2026-04-14 initial → 2026-04-22 exfil-confirmed - data categories names/DOBs/emails/genders/locations/loyalty - explicitly NO payment card/SSN/passport - ShinyHunters self-claim 8.7M+ records (31% above Carnival confirmed figure, corpus-consistent inflation pattern) - Carnival did NOT publicly confirm ShinyHunters attribution per Hard Rule 2 - BC editorial Salesforce-Aura/Salesloft-Drift framing NOT victim-attested - corpus parallel to finding-2026-05-27-0006 Charter 40M same actor cluster - Bling Libra = ShinyHunters Unit 42 alias formalization via finding-2026-05-28-0003 this cycle - cluster digraph B2 (BC B-grade relay + Carnival A-grade vendor self-disclosure on breach-occurred layer + ShinyHunters C-grade self-claim); WEP ceiling very_likely on breach-occurred + scope + vector + timeline + data categories; likely on ShinyHunters attribution; roughly_even_chance on Salesforce editorial framing; analyst_review_required true (/new-actor scaffolding decision carry-forward + Hard Rule 2 attribution framing + SAT-ACH on scope dispute); red_team_review_required false (red-team challenges from finding-2026-05-27-0006 apply in principle, analyst-side SAT-ACH topics pre-load the questions); no A&D-prime named; Splunk 0 hits.
+    - finding-2026-05-28-0002-unit42-2026-world-cup-attack-surface-handala-cyberav3ngers-razing-ursa-noname057-iran-irgc-mois-fronts    # Palo Alto Unit 42 (Justin Moore 2026-05-28 06:00 EDT in-window) forward-looking 2026 FIFA World Cup attack-surface threat assessment - names roster #014 Handala Hack with NEW alias cluster Banished Kitten + Cobalt Mystique alongside known Storm-0842 + Void Manticore (MOIS-front + wiper attacks + government-official targeting per Unit 42) - names roster #007 Sandworm with NEW Razing Ursa alias (Palo Alto "Ursa" canonical naming; 2018 Pyeongchang Olympic Destroyer precedent cited) - names roster #013 Scattered Spider with Muddled Libra alias (ALPHV/BlackCat operator characterization for hospitality-sector ransomware) - names non-roster CyberAv3ngers with alias cluster Shahid Kaveh Group + Bauxite + Hydro Kitten + Storm-0784 + UNC5691 as IRGC Cyber-Electronic Command OT-targeting arm with CISA AA26-097A active-Iranian-affiliated-campaign attribution against Rockwell+Allen-Bradley PLCs in US critical infrastructure (water/wastewater/power/airport/emergency-services named victim sectors) - non-roster NoName057(16) + Fiddling Scorpius lower-priority candidates - Iran-nexus disruptive ops "highly likely" + financially motivated cybercrime "highest-volume highest-likelihood" per Hard Rule 2 preservation - NO A&D / aerospace / defense / government contractor sector named - cluster digraph A2 (Unit 42 A-grade primary; single-source-veto on forward-looking World Cup threat-assessment layer; CyberAv3ngers PLC-targeting layer cleared via Unit 42 + CISA AA26-097A independent corroboration); WEP ceiling likely on forward-looking assessment; very_likely on CyberAv3ngers/CISA PLC-targeting attribution + Unit-42-canonical alias mappings; analyst_review_required true (/new-actor CyberAv3ngers HIGH-priority + actor-profiler #014 Banished-Kitten+Cobalt-Mystique alias updates + #007 Razing-Ursa alias update + SAT-ACH on forward-looking confidence framing + SAT-KAC on A&D-prime OT segmentation assumption); red_team_review_required false (single-source-veto on dominant claim layer; A1-corroborated layer is corpus-baseline restatement not novel synthesis); Iran Cyber Watch standing section relevance high; Splunk 0 hits.
+    - finding-2026-05-28-0003-unit42-out-of-the-crypt-extortion-economy-tgr-cri-1135-teampcp-bling-libra-hazy-scorpius-cl-cri-1116-blackfile-redact    # Palo Alto Unit 42 (Matt Brady + Justin Moore co-byline 2026-05-27 18:00 EDT in-window per AM-28 14h sweep; carry-forward from 00:00 FLASH sentinel absorption flag) cyber-extortion-economy trend analysis - formal Palo Alto alias mappings codified in corpus for FIRST TIME: TGR-CRI-1135 = roster #001 TeamPCP (supply-chain specialty 20+ attacks/500+ software; Vect RaaS + LAPSUS$ EaaS partnerships; open-source Shai-Hulud release 2026-05-13 TTP-democratization milestone), Bling Libra = ShinyHunters (SaaS-focused vishing + phishing+MFA-intercept + device-registration persistence + Tox-ID reuse + Tor leak site; distancing from Scattered LAPSUS$ Hunters per Telegram 2026-05-11), Hazy Scorpius = roster #018 Cl0p (Oracle EBS exploitation TTP) - non-roster CL-CRI-1116 BlackFile → Redact rebrand May 2026 with SWATTING-double-extortion novel criminal-violence-by-proxy TTP - Scattered LAPSUS$ Hunters cluster includes roster #013 Scattered Spider operationally - frontier-AI 3-5 month weaponization projection + Mythos (Anthropic) 23k-vulns-1k-OSS-projects + SymJack AI-agent-supply-chain pattern + ATHR AI-vishing platform - 39-seconds initial-access-to-exfil (Wendi Whitmore CSIO) + 25-minutes AI-assisted scenario - extortion-economy structural shift 90%+ encryption 2021-24 → 78% 2025 + pure data-exfil 2% 2020 → 15% 2025 + extortion-only 49% H1 2025 → 65% H2 2025 - NO A&D / aerospace / defense in named-targeted-sector list - cluster digraph A2 (Unit 42 A-grade single primary; A1 corpus cross-corroboration on TGR-CRI-1135=TeamPCP via VT-006 lineage Wiz+Snyk+MSTIC+Checkmarx+CISA-KEV; corpus-internal Carnival+Charter named-victim corroboration on Bling Libra operational pattern; A1 corpus cross-corroboration on SymJack via finding-2026-05-27-0003 Adversa AI); WEP ceiling very_likely on TGR-CRI-1135=TeamPCP + Bling Libra=ShinyHunters + Hazy Scorpius=CLOP alias mappings + Bling Libra 2026 operational pattern; likely on broad trend layers + 3-5 month frontier-AI projection + Oracle EBS specific TTP + CL-CRI-1116 SWATTING + statistical figures; analyst_review_required true (actor-profiler #001/#018/#013 dossier updates + vuln-tracker VT-006 incorporation + multiple /new-actor scaffolding decisions + SAT-ACH on 3-5 month projection + SAT-KAC on A&D-prime regulatory-leverage assumption); red_team_review_required true (very_likely WEP on novel alias-mapping synthesis driving downstream actor-profiler workflows; corpus cross-corroboration assumption requires red-team challenge); Splunk 0 hits.
+    - finding-2026-05-28-0004-nvd-critical-cve-batch-samba-cve-2026-4408-xorg-cve-2026-34000-34002-redhat-quay-cve-2026-32590    # NIST NVD lastModStartDate-window 2026-05-27T21:30 EDT → 2026-05-28T07:30 EDT critical/high CVE batch - 3 CVSS-CRITICAL (Samba CVE-2026-4408 CVSS 9.0 OS-command-injection in samba-dcerpcd via check-password-script %u substitution non-standard-config DIB-relevant Linux file-server/AD-bridge-DC; X.Org CVE-2026-34000 CVSS 9.1 NIST / 6.1 Red Hat CNA disagreement on XKB-geometry CheckSetGeom/XkbAddGeomKeyAlias OOB-read CWE-125 RHEL 6/7/8/9/10; X.Org CVE-2026-34002 CVSS 9.1 XKB-modifier-map OOB-read sibling cluster) + 1 in-window CVSS-HIGH grouped (Red Hat Quay CVE-2026-32590 CVSS 8.8 NIST / 7.1 Red Hat CNA disagreement on container-image-layer-upload deserialization-to-RCE CWE-502 Quay 3.0.0+ + Mirror Registry for Red Hat OpenShift air-gapped variant for classified-network DoD contractor estates) - NO active exploitation referenced in any record - NO actor attribution on any CVE - NO KEV listing at sweep time (CISA KEV catalog version 2026.05.27 confirmed unchanged by 06:00 FLASH sentinel) - Red Hat is CNA for all four (NVD+RHSA single-source-chain on per-CVE record layer triggers single-source-veto) - CVSS disagreement preservation per Hard Rule 2 - cluster digraph A2 (NVD A-grade reference primary + Red Hat A-grade vendor self-disclosure on own products; single-source-veto on per-CVE record layer because Red Hat is CNA + NVD propagates Red Hat submission; no independent second-vendor analysis at sweep time); WEP ceiling very_likely on procedural CVE-record facts + CVSS scoring + CWE classification + vendor advisory references + no-ITW + no-actor-attribution; almost_certainly on no-KEV-at-sweep-time; likely on A&D-relevance structural inferences; analyst_review_required false (procedural vendor-coordinated-disclosure class with no SAT-ACH/SAT-KAC topic); red_team_review_required false (very_likely WEP but on procedural facts not red-team-eligible synthesis); vuln-tracker handoff Samba MEDIUM standalone-candidate + Quay MEDIUM cross-link to VT-006/VT-009 supply-chain pattern + X.Org cluster DECLINE standalone; Splunk 0 hits.
+  most_recent_run_absorption_ids: []
+  most_recent_run_rejection_ids: []
+  most_recent_run_note: >
+    morning-20260528-080000 grading processed 4 net-new AM-28 raw-
+    signal items (AM-001 Carnival ShinyHunters; AM-002 Unit 42 World
+    Cup; AM-003 Unit 42 Out of the Crypt; AM-004 NVD critical CVE
+    batch). All 4 promoted as standalone findings (finding-2026-05-28-
+    0001 through 0004). 0 rejections this run. PM-27 leftover raw-
+    signal verified already-rejected at PM-27 grading run (pm-003
+    LACMTA Iran second-relay-layer → reject-2026-05-27-0002 absorbed
+    under finding-2026-05-27-0004; pm-005 Register GlassWorm fourth-
+    relay-layer → reject-2026-05-27-0003 absorbed under finding-2026-
+    05-27-0001). Sentinel FLASH sweeps (2026-05-27-flash-1800, 2026-
+    05-28-flash-0000, 2026-05-28-flash-0600) and AM-28 pre-brief
+    sentinel (raw-2026-05-28-am-000) reference-only per doctrine — not
+    finding-eligible. All 4 promotions cleared Splunk first-party
+    check (zero IOC events on aggregate sweep covering Carnival /
+    ShinyHunters / Holland America / Mariner Society / Salesforce /
+    Handala / CyberAv3ngers / Banished Kitten / Razing Ursa /
+    Allen-Bradley / Rockwell / FIFA / World Cup / TeamPCP / Shai-
+    Hulud / Bling Libra / Hazy Scorpius / CLOP / BlackFile / Redact
+    / Vect / LAPSUS$ / Mythos / SymJack / ATHR / Samba / X.Org / XKB
+    / Red Hat Quay / Mirror Registry / RHEL — 68th consecutive
+    dormant non-self sweep on defenseclaw_local). THREE findings
+    carry analyst review flags (finding-0001 /new-actor ShinyHunters
+    carry-forward + SAT-ACH on scope dispute + Hard Rule 2 framing;
+    finding-0002 /new-actor CyberAv3ngers HIGH-priority + actor-
+    profiler #014/#007 alias updates + SAT-ACH on forward-looking
+    confidence + SAT-KAC on A&D-prime OT segmentation; finding-0003
+    actor-profiler #001/#018/#013 dossier updates + vuln-tracker
+    VT-006 incorporation + multiple /new-actor scaffolding decisions
+    + SAT-ACH on 3-5 month frontier-AI projection + SAT-KAC on A&D-
+    prime regulatory-leverage assumption). ONE finding carries red-
+    team review flag (finding-0003 WEP very_likely on novel cluster-
+    mapping synthesis driving downstream actor-profiler workflows;
+    corpus VT-006 cross-corroboration assumption requires red-team
+    challenge). Vuln-tracker handoff: VT-006 dossier incorporation of
+    TGR-CRI-1135=TeamPCP Unit 42 formalization + Samba CVE-2026-4408
+    MEDIUM standalone-candidate + Red Hat Quay CVE-2026-32590 MEDIUM
+    cross-link to VT-006/VT-009 supply-chain pattern + X.Org cluster
+    DECLINE standalone. Actor-profiler handoff: roster #001 TeamPCP
+    (TGR-CRI-1135 alias + Vect+LAPSUS$ partnerships + open-source
+    Shai-Hulud 2026-05-13 milestone) + roster #018 Cl0p (Hazy
+    Scorpius alias + Oracle EBS TTP) + roster #014 Handala Hack
+    (Banished Kitten + Cobalt Mystique aliases) + roster #007
+    Sandworm (Razing Ursa alias) + roster #013 Scattered Spider
+    (Bling Libra distancing-from-Scattered-LAPSUS$-Hunters cluster-
+    dynamics signal). Librarian handoff: no source-grade revisions
+    proposed this run; no new provisional-source first-citations this
+    run; PM-27 pending items still active (ox-security direct-
+    retrieval verification carry-forward day 13; Koi provisional-F
+    first-citation carry-forward from PM-27 absorption; finding-2026-
+    05-27-0001 corroboration-field amendment for CrowdStrike
+    attribution-enrichment; finding-2026-05-27-0004 corroboration-
+    field amendment for second-relay-layer + Ababil of Minab alias;
+    GlassWorm #005 roster nation-field operator-decision flagged).
+
+  # Prior run preserved below
+  legacy_afternoon_20260527_160000:
+    most_recent_run: afternoon-20260527-160000
+    most_recent_run_rejections: 2
+    most_recent_run_promotions: 3
+    most_recent_run_absorptions: 2     # PM-003 absorbed under finding-2026-05-27-0004; PM-005 absorbed under finding-2026-05-27-0001
   most_recent_run_promotion_ids:
     - finding-2026-05-27-0007-cisa-kev-three-add-cve-2026-45321-tanstack-mini-shai-hulud-cve-2026-48027-nx-console-cve-2026-8398-daemon-tools    # CISA KEV catalog version 2026.05.27 (2026-05-27 12:00 UTC) three CVE additions: (1) CVE-2026-45321 TanStack "Unspecified Vulnerability" (corpus VT-006 Mini Shai-Hulud KEV-pending watch signal FIRED, dueDate 2026-06-10 T+14); (2) CVE-2026-48027 Nx Console "Embedded Malicious Code Vulnerability" (corpus finding-2026-05-20-FLASH-0001 KEV-listed, dueDate 2026-06-10 T+14, vuln-tracker VT-010 candidate scaffolding); (3) CVE-2026-8398 Daemon Tools Lite "Embedded Malicious Code Vulnerability" (NOT corpus-tracked consumer software, dueDate 2026-05-30 T+3 accelerated). Cluster digraph A1 (CISA-authoritative procedural cataloging + dual-endpoint verification via JSON catalog + RSS alert; underlying mechanism corroboration chains already A1-anchored in prior findings via independent vendor research). WEP ceiling almost_certainly on procedural facts. BOD 22-01 federal deadlines create hard line for DIB/CMMC partner-flow estates inheriting FCEB compliance. analyst_review_required false (procedural-cataloging state change); red_team_review_required false; vuln-tracker handoff: VT-006 state transition (kev_pending → kev_added) + VT-010 scaffolding for CVE-2026-48027. No A&D-prime named victim emerged at KEV addition. Splunk 0 hits.
     - finding-2026-05-27-0008-ox-security-thn-mouse5212-super-formatter-npm-claude-ai-user-data-credential-stealer-unattributed    # OX Security (Moshe Siman Tov Bustan + Nir Zadok) via The Hacker News relay 2026-05-27 11:44 EDT on malicious npm package `mouse5212-super-formatter` (676 downloads at disclosure; attacker GitHub account github.com/unplowed3584 created 2026-05-26, suspended at disclosure). Triggers npm postinstall credential-stealer with dual-mode GitHub authentication (victim env token OR hardcoded fallback token) recursively exfiltrating files from Anthropic Claude AI's /mnt/user-data directory. Researcher-coined working name "Malware-Slop". OX Security EXPLICITLY declines attribution to TeamPCP/Shai-Hulud/Mini Shai-Hulud/GlassWorm/Megalodon lineage despite shared GitHub-token-exfil postinstall tradecraft (hardcoded token + leaked private token = lower-tier operator skill differentiator). Cluster digraph B3 (B-grade THN relay of B-provisional OX Security primary; awaiting_direct_retrieval flag still set). WEP ceiling likely (backward-looking factual); roughly_even_chance (forward-looking). Fifth-in-class for AI-developer-tooling-ecosystem-supply-chain-pressure thematic arc since 2026-05-12. Monitoring-tier inclusion only (below B2 action-item threshold). Hard Rule 2: NO cross-walk to tracked roster despite tradecraft adjacency. analyst_review_required false; red_team_review_required false. Librarian handoff: ox-security direct-retrieval verification pending since 2026-05-15 — flagged for operator decision (clear flag via direct WebFetch on next cycle OR downgrade to C if persists past 2026-06-01). Splunk 0 hits.

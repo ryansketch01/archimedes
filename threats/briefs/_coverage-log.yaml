@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-27T16:00:00-04:00
+last_updated: 2026-05-28T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -20054,6 +20054,461 @@ entries:
       direct WebFetch of ox.security/blog/ on next cycle, OR downgrade
       ox-security provisional grade from B to C if direct-retrieval
       gap persists past 2026-06-01.
+
+  - id: 2026-05-28-am-001-carnival-cruise-shinyhunters-6m-records-confirmation-mariner-society-holland-america
+    covered_in: [2026-05-28-morning]
+    brief_file: threats/briefs/2026-05-28-morning.md
+    headline: "Carnival Corporation confirms breach of 5,995,277 customers (Holland America / Mariner Society); ShinyHunters self-claim of 8.7M sits ~31% above the victim figure; B2 / likely on actor attribution layer; second named-victim datapoint in two days inside the ShinyHunters 2026 SaaS-extortion pattern (Charter 5/27, Carnival 5/28)"
+    topic_tags:
+      - data-breach
+      - shinyhunters-self-claim
+      - carnival-corporation-self-disclosure
+      - saas-extortion-pattern-2026
+      - social-engineering-employee-help-desk-vector
+      - victim-named-datapoint
+      - hard-rule-2-attribution-as-actor-self-claim-only
+      - bc-editorial-salesforce-framing-not-victim-attested
+      - corpus-parallel-charter-2026-05-27
+      - bling-libra-operational-pattern-corroboration
+    related_actors:
+      - id: bling-libra
+        actor_name: ShinyHunters / Bling Libra
+        attribution_in_brief: actor-self-claim-only-carnival-did-not-publicly-confirm-attribution
+    related_vulns: []
+    related_campaigns:
+      - shinyhunters-2026-saas-extortion-pattern
+    finding_ids:
+      - finding-2026-05-28-0001-bleepingcomputer-carnival-cruise-shinyhunters-6m-records-confirmation-mariner-society-holland-america
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - new_victims_confirmed
+      - attribution_changes
+      - first_party_ioc_hit
+      - arrests_or_indictments
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      Three separable evidence layers (per analyst + red-team
+      qualification):
+      (a) Scope: very_likely on Carnival's 5,995,277 figure (victim
+          self-disclosure A2 on own data)
+      (b) Procedural: very_likely "ShinyHunters claimed responsibility"
+          but actor-self-claim only — actual authorship layer is likely
+          (single-source, not victim-attested)
+      (c) BleepingComputer Salesforce-customer-targeting editorial
+          framing is BC editorial, NOT Carnival-attested — preserved
+          verbatim per Hard Rule 2.
+      Carnival explicitly excluded payment cards, SSNs, passports from
+      exposed-data categories. Initial access 2026-04-14, theft
+      2026-04-22, employee social-engineering vector.
+
+  - id: 2026-05-28-am-002-unit42-out-of-the-crypt-extortion-economy-three-cluster-framework-teampcp-bling-libra-hazy-scorpius
+    covered_in: [2026-05-28-morning]
+    brief_file: threats/briefs/2026-05-28-morning.md
+    headline: "Unit 42 *Out of the Crypt* maps three cyber-extortion clusters Unit 42 documents in this publication: TGR-CRI-1135 = TeamPCP (corpus-anchored via Wiz + StepSecurity), Bling Libra = ShinyHunters (single-A-source equivalence; operational pattern corpus-corroborated by Carnival + Charter), Hazy Scorpius = CL0P (Unit 42 single-A-source); A2 / very_likely on framework; AI-weaponization 3-5 month projection + sub-minute speed cases are Unit-42 projection-class, NOT corpus-confirmed timelines; framing is IT-estate, NOT ITAR-controlled"
+    topic_tags:
+      - extortion-economy-framework
+      - unit42-cluster-taxonomy-tgr-cri-1135-bling-libra-hazy-scorpius
+      - teampcp-corpus-anchor-via-wiz-stepsecurity
+      - bling-libra-shinyhunters-equivalence-single-a-source
+      - hazy-scorpius-clop-single-a-source
+      - bling-libra-distancing-from-scattered-lapsus-hunters-telegram-2026-05-11
+      - clop-oracle-ebs-exploitation-tradecraft-dib-erp-direct
+      - teampcp-supply-chain-engineering-sdlc-cuts
+      - frontier-ai-weaponization-projection-class
+      - it-estate-vs-itar-enclave-distinction
+      - sec-gdpr-framing-does-not-map-dcsa-dfars-itar-ofac
+      - no-ad-prime-in-targeted-sector-list-could-reflect-palo-alto-customer-base-bias
+      - hard-rule-2-attribution-language-preserved-verbatim
+    related_actors:
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: corpus-anchored-via-wiz-stepsecurity-mstic-two-effective-independent-attributions
+      - id: bling-libra
+        actor_name: ShinyHunters / Bling Libra
+        attribution_in_brief: single-a-source-equivalence-unit42-canonical-naming-operational-pattern-corpus-corroborated-via-carnival-charter
+      - id: hazy-scorpius
+        actor_name: CL0P / Hazy Scorpius
+        attribution_in_brief: unit42-single-a-source-canonical-naming
+      - id: "013"
+        actor_name: Scattered Spider / Muddled Libra
+        attribution_in_brief: bling-libra-distancing-signal-via-telegram-2026-05-11-per-unit42
+    related_vulns: []
+    related_campaigns:
+      - unit42-cyber-extortion-economy-2026-05-27
+      - shinyhunters-2026-saas-extortion-pattern
+      - teampcp-supply-chain-2026
+    finding_ids:
+      - finding-2026-05-28-0003-unit42-out-of-the-crypt-extortion-economy-tgr-cri-1135-teampcp-bling-libra-hazy-scorpius-cl-cri-1116-blackfile-redact
+    digraph: A2
+    wep: very_likely
+    resurface_if:
+      - new_attribution
+      - attribution_changes
+      - actor_ttps_evolve
+      - new_victims_confirmed
+      - arrests_or_indictments
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      Red-team qualifications applied (W1 + W3 minimum; W4 partial via
+      "AI-weaponization is projection-class IT-estate" framing):
+      - "Five independent A-grade sources corroborate TGR-CRI-1135 =
+        TeamPCP" → "corpus-anchored via Wiz + StepSecurity (two
+        effective independent attributions)"
+      - "Bling Libra = ShinyHunters corpus-corroborated by Carnival +
+        Charter" → "Unit 42's Palo Alto cluster ID for ShinyHunters
+        (single-A-source equivalence); underlying ShinyHunters
+        operational pattern corpus-corroborated by Carnival + Charter
+        under the ShinyHunters label"
+      - Hazy Scorpius = CL0P qualified with Unit 42 single-A-source
+        marker
+      - 3-5 month + 25-min + 39-sec figures qualified as projection-
+        class, not corpus-confirmed timelines; IT-estate vs ITAR
+        distinction preserved
+      - "Three dominant clusters" → "Unit 42 documents three clusters
+        in this publication"
+      - SEC + GDPR framing does NOT map cleanly to DCSA / DFARS
+        252.204-7012 / ITAR / OFAC noted in body
+      Cross-corroborations: VT-006 Mini Shai-Hulud (Wiz + StepSecurity
+      + MSTIC); SymJack (finding-2026-05-27-0003 Adversa AI); Carnival
+      named-victim corroboration via finding-2026-05-28-0001; Charter
+      via finding-2026-05-27-0006.
+
+  - id: 2026-05-28-am-003-unit42-2026-fifa-world-cup-attack-surface-handala-cyberav3ngers-razing-ursa-noname057
+    covered_in: [2026-05-28-morning]
+    brief_file: threats/briefs/2026-05-28-morning.md
+    headline: "Unit 42 forward-projects Iran-nexus disruptive ops around the 2026 FIFA World Cup (single-A-source projection; likely WEP ceiling per single-source veto). CISA AA26-097A corroborates the active CyberAv3ngers / IRGC Cyber-Electronic Command Rockwell + Allen-Bradley PLC campaign (A1 corpus-baseline). World Cup scope per Unit 42: sporting / municipal / hospitality — A&D NOT named in Unit 42's targeted-sector list. Three Unit-42-canonical aliases entered the corpus: Banished Kitten + Cobalt Mystique = Handala (#014); Razing Ursa = Sandworm (#007)."
+    topic_tags:
+      - iran-irgc-mois-2026-world-cup-attack-surface
+      - cyberavengers-irgc-cyber-electronic-command-rockwell-allen-bradley-plc-campaign
+      - cisa-aa26-097a-corroboration-a1
+      - unit42-canonical-alias-cluster-expansion
+      - banished-kitten-cobalt-mystique-handala-hack-actor-014
+      - razing-ursa-sandworm-actor-007
+      - cyberavengers-aliases-shahid-kaveh-bauxite-hydro-kitten-storm-0784-unc5691
+      - scattered-spider-muddled-libra-roster-013-existing-alias
+      - forward-looking-single-source-veto-likely-ceiling
+      - hard-rule-2-unit42-confidence-language-preserved-highly-likely
+      - ad-not-named-in-unit42-target-scope-do-not-extrapolate-event-window-to-baseline
+      - dib-action-rockwell-allen-bradley-plc-internet-exposure-segmentation-audit
+      - 2018-pyeongchang-olympic-destroyer-sandworm-historical-precedent
+      - january-2024-texas-water-tank-russian-attribution-corpus-baseline
+      - noname057-3700-nato-pattern-ddos-figure
+      - fiddling-scorpius-play-french-rugby-sport-targeting-precedent
+    related_actors:
+      - id: "007"
+        actor_name: Sandworm / Razing Ursa
+        attribution_in_brief: unit42-canonical-alias-razing-ursa-novel-to-corpus
+      - id: "013"
+        actor_name: Scattered Spider / Muddled Libra
+        attribution_in_brief: existing-roster-alias-already-tracked
+      - id: "014"
+        actor_name: Handala Hack / Banished Kitten / Cobalt Mystique
+        attribution_in_brief: unit42-canonical-aliases-novel-to-corpus
+      - id: "022"
+        actor_name: MuddyWater
+        attribution_in_brief: standing-iran-cyber-watch-mention
+      - id: cyberavengers
+        actor_name: CyberAv3ngers / IRGC Cyber-Electronic Command
+        attribution_in_brief: cisa-aa26-097a-attested-a1-corpus-baseline-plus-unit42-aliases
+    related_vulns: []
+    related_campaigns:
+      - iran-irgc-mois-2026-world-cup-attack-surface
+      - cyberavengers-rockwell-allen-bradley-plc-active-campaign-cisa-aa26-097a
+    finding_ids:
+      - finding-2026-05-28-0002-unit42-2026-world-cup-attack-surface-handala-cyberav3ngers-razing-ursa-noname057-iran-irgc-mois-fronts
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - new_attribution
+      - new_victims_confirmed
+      - geopolitical_escalation
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - actor_ttps_evolve
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      Required qualifications applied (per analyst + red-team):
+      (1) CISA-attested CyberAv3ngers PLC campaign = very_likely (A1
+          corpus-baseline corroborated)
+      (2) Unit 42 IRGC Cyber-Electronic Command service-tier
+          specificity = likely (single-source A)
+      (3) Forward-looking World Cup threat projection = likely
+          (single-source veto on forward layer)
+      Defender carry-forward framed as VERIFICATION action ("audit
+      Rockwell + Allen-Bradley PLC internet exposure and segmentation
+      across DIB manufacturing OT") NOT an insulation assertion. Unit
+      42's World Cup scope (sporting / municipal / hospitality) does
+      NOT name A&D — A&D relevance is via TTP / vendor portability +
+      historical-precedent reasoning. Did NOT extrapolate event-window
+      tempo to baseline Iranian cyber tempo.
+
+      Roster cross-reference handoff to actor-profiler (librarian):
+      add Banished Kitten + Cobalt Mystique aliases to Handala (#014);
+      add Razing Ursa alias to Sandworm (#007). CyberAv3ngers aliases
+      (Shahid Kaveh, Bauxite, Hydro Kitten, Storm-0784, UNC5691) noted
+      for separate roster entry if/when CyberAv3ngers gets a profile.
+
+  - id: 2026-05-28-am-004-nvd-critical-cve-batch-samba-cve-2026-4408-xorg-cve-2026-34000-34002-redhat-quay-cve-2026-32590
+    covered_in: [2026-05-28-morning]
+    brief_file: threats/briefs/2026-05-28-morning.md
+    headline: "NVD critical CVE batch overnight: Samba CVE-2026-4408 (CVSS 9.0; DIB file-server / domain-controller relevance), X.Org CVE-2026-34000 (NIST 9.1 / Red Hat CNA 6.1 — disagreement preserved per Hard Rule 2: network-vector vs local-attacker), X.Org CVE-2026-34002 (CVSS 9.1; same product family), Red Hat Quay CVE-2026-32590 (NIST 8.8 / Red Hat CNA 7.1; container-registry / OpenShift DevOps relevance). A2 / very_likely on procedural CVE-record facts; no active exploitation; no KEV listing at sweep time. NVD + Red Hat NOT independent (Red Hat is the CNA); single-source-veto on each record."
+    topic_tags:
+      - nvd-critical-cve-batch
+      - samba-cve-2026-4408-cvss-9-0
+      - xorg-cve-2026-34000-nist-9-1-rh-6-1-disagreement
+      - xorg-cve-2026-34002-cvss-9-1
+      - redhat-quay-cve-2026-32590-nist-8-8-rh-7-1-disagreement
+      - hard-rule-2-cvss-disagreement-preserved-both-scores
+      - red-hat-cna-not-independent-of-nvd-single-source-veto-per-record
+      - no-active-exploitation-no-kev-at-sweep-time
+      - dib-file-server-domain-controller-samba-footprint
+      - rhel-engineering-workstation-xorg-footprint
+      - openshift-dib-devops-quay-registry-footprint
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-4408
+        role: samba-cvss-9-0-no-itw-no-kev
+      - cve: CVE-2026-34000
+        role: xorg-cvss-disagreement-nist-9-1-rh-6-1-no-itw-no-kev
+      - cve: CVE-2026-34002
+        role: xorg-cvss-9-1-no-itw-no-kev
+      - cve: CVE-2026-32590
+        role: redhat-quay-cvss-disagreement-nist-8-8-rh-7-1-no-itw-no-kev
+    related_campaigns:
+      - nvd-critical-cve-batch-2026-05-28
+    finding_ids:
+      - finding-2026-05-28-0004-nvd-critical-cve-batch-samba-cve-2026-4408-xorg-cve-2026-34000-34002-redhat-quay-cve-2026-32590
+    digraph: A2
+    wep: very_likely
+    resurface_if:
+      - patch_released
+      - escalation_to_exploitation
+      - kev_addition
+      - first_party_ioc_hit
+      - cvss_revision
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      Procedural CVE-record facts only (existence, CVSS scoring, CWE
+      classification, vendor advisory references). NVD + Red Hat are
+      NOT fully independent (Red Hat is the CNA submitting the CVE
+      records to NVD); single-source-veto applies on per-CVE record
+      layer. CVSS disagreement on CVE-2026-34000 (NIST 9.1 vs Red Hat
+      CNA 6.1) reflects network-vector vs local-attacker attack-model
+      — Hard Rule 2 preserves both. Same pattern for CVE-2026-32590
+      (NIST 8.8 vs Red Hat CNA 7.1 — no-AC + no-UI vs AC:H + UI:R).
+      No active exploitation referenced in any record; no KEV listing
+      at sweep time (catalog version 2026.05.27 confirmed). Negative
+      claims subject to future revision if exploitation surfaces.
+
+  - id: 2026-05-28-am-005-kev-deadline-calendar-cve-2026-48172-litespeed-cve-2026-42897-exchange-owa-t-1-status-tick
+    covered_in: [2026-05-26-afternoon, 2026-05-27-morning, 2026-05-27-afternoon, 2026-05-28-morning]
+    brief_file: threats/briefs/2026-05-28-morning.md
+    headline: "KEV deadline calendar — T-1 (Friday 2026-05-29) status tick: CVE-2026-48172 LiteSpeed cPanel plugin (CVSS 10, active exploitation) + CVE-2026-42897 Microsoft Exchange OWA XSS; DIB and CMMC partner-flow estates should be at remediation completion *today*; substance NOT re-litigated"
+    topic_tags:
+      - kev-deadline-status-tick-t-minus-1-eob-2026-05-29
+      - cve-2026-48172-litespeed-cpanel-plugin-cvss-10-active-exploitation
+      - cve-2026-42897-microsoft-exchange-owa-xss
+      - dib-cmmc-partner-flow-inherited-federal-deadline-pressure
+      - substance-carry-forward-from-prior-coverage-no-re-litigation
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-48172
+        role: kev-deadline-t-1-fri-status-tick-substance-carry-forward
+      - cve: CVE-2026-42897
+        role: kev-deadline-t-1-fri-status-tick-substance-carry-forward
+    related_campaigns: []
+    finding_ids: []  # status tick only; original findings carried in prior briefs
+    digraph: A1
+    wep: very_likely
+    resurface_if:
+      - kev_deadline_passes
+      - patch_released
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+    first_covered: 2026-05-26
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      Status tick only — substance carry-forward from prior coverage
+      (CVE-2026-48172 first covered 2026-05-26-pm; CVE-2026-42897
+      first covered 2026-05-22-am). Federal deadline T-1 frame applied
+      per established cadence: T-N status tick continues daily through
+      deadline closure (Friday 2026-05-29). No re-litigation of
+      substance.
+
+  - id: 2026-05-28-am-brief-meta
+    covered_in: [2026-05-28-morning]
+    brief_file: threats/briefs/2026-05-28-morning.md
+    headline: "Morning brief 2026-05-28 — Carnival ShinyHunters 6M confirmation lead (B2 / likely-actor-layer; second named-victim datapoint in two days inside ShinyHunters 2026 SaaS-extortion pattern); paired with Unit 42 Out-of-the-Crypt three-cluster framework (A2 / very_likely with red-team-required corpus-anchor qualifications applied); NVD critical CVE batch (Samba + X.Org x2 + Quay; A2; CVSS disagreement preserved per Hard Rule 2); KEV T-1 deadline status tick (LiteSpeed + Exchange OWA, both due Fri); Unit 42 alias-cluster expansion (Banished Kitten + Cobalt Mystique for Handala #014; Razing Ursa for Sandworm #007); Iran Cyber Watch with CyberAv3ngers / IRGC Cyber-Electronic Command Rockwell + Allen-Bradley PLC campaign verification action; standing sections silent-day for Sector Focus A&D (no A&D-prime named in any finding); two sentinel sweeps (00:00 + 06:00) zero-trigger; word count 800 within target band 400-800; Discord Summary Layer 2 within 1900-char ceiling"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - lead-carnival-shinyhunters-6m-named-victim-second-in-two-days
+      - paired-unit42-out-of-the-crypt-extortion-economy-three-cluster-framework
+      - red-team-required-qualifications-applied-w1-w3-minimum-w4-partial
+      - nvd-critical-cve-batch-overnight-three-critical-one-high
+      - hard-rule-2-cvss-disagreement-preserved-both-scores-network-vs-local
+      - kev-deadline-t-1-status-tick-litespeed-exchange
+      - unit42-canonical-alias-cluster-expansion-handala-sandworm
+      - iran-cyber-watch-cyberavengers-rockwell-plc-verification-action-not-insulation
+      - sector-focus-ad-silent-day-no-ad-prime-victim-in-any-finding
+      - hard-rule-2-strict-hold-throughout-attribution-language-preserved-verbatim
+      - sentinel-cadence-am-28-00-06-zero-triggers
+      - word-count-800-within-target-band
+      - discord-summary-layer-2-within-1900-char-ceiling
+    related_actors:
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: corpus-anchored-via-wiz-stepsecurity-two-effective-independent-attributions
+      - id: "007"
+        actor_name: Sandworm
+        attribution_in_brief: razing-ursa-alias-novel-to-corpus-actor-activity-section
+      - id: "013"
+        actor_name: Scattered Spider / Muddled Libra
+        attribution_in_brief: vishing-pattern-corpus-baseline
+      - id: "014"
+        actor_name: Handala Hack
+        attribution_in_brief: banished-kitten-cobalt-mystique-aliases-novel-to-corpus
+      - id: "022"
+        actor_name: MuddyWater
+        attribution_in_brief: standing-iran-cyber-watch-section-mention
+      - id: bling-libra
+        actor_name: ShinyHunters / Bling Libra
+        attribution_in_brief: actor-self-claim-only-corpus-corroborated-operational-pattern
+      - id: hazy-scorpius
+        actor_name: CL0P / Hazy Scorpius
+        attribution_in_brief: unit42-single-a-source-canonical-naming
+      - id: cyberavengers
+        actor_name: CyberAv3ngers / IRGC Cyber-Electronic Command
+        attribution_in_brief: cisa-aa26-097a-attested-a1-corpus-baseline
+    related_vulns:
+      - cve: CVE-2026-4408
+        role: nvd-batch-samba-cvss-9-0
+      - cve: CVE-2026-34000
+        role: nvd-batch-xorg-cvss-disagreement
+      - cve: CVE-2026-34002
+        role: nvd-batch-xorg-cvss-9-1
+      - cve: CVE-2026-32590
+        role: nvd-batch-redhat-quay-cvss-disagreement
+      - cve: CVE-2026-48172
+        role: kev-deadline-t-1-status-tick
+      - cve: CVE-2026-42897
+        role: kev-deadline-t-1-status-tick
+    related_campaigns:
+      - shinyhunters-2026-saas-extortion-pattern
+      - unit42-cyber-extortion-economy-2026-05-27
+      - iran-irgc-mois-2026-world-cup-attack-surface
+      - nvd-critical-cve-batch-2026-05-28
+      - cyberavengers-rockwell-allen-bradley-plc-active-campaign-cisa-aa26-097a
+    finding_ids:
+      - finding-2026-05-28-0001-bleepingcomputer-carnival-cruise-shinyhunters-6m-records-confirmation-mariner-society-holland-america
+      - finding-2026-05-28-0002-unit42-2026-world-cup-attack-surface-handala-cyberav3ngers-razing-ursa-noname057-iran-irgc-mois-fronts
+      - finding-2026-05-28-0003-unit42-out-of-the-crypt-extortion-economy-tgr-cri-1135-teampcp-bling-libra-hazy-scorpius-cl-cri-1116-blackfile-redact
+      - finding-2026-05-28-0004-nvd-critical-cve-batch-samba-cve-2026-4408-xorg-cve-2026-34000-34002-redhat-quay-cve-2026-32590
+    absorbs_flashes: []
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      Four AM-28 net-new findings composed. Brief composition pairing:
+      Carnival (finding-0001) + Unit 42 Out-of-the-Crypt (finding-0003)
+      under Active Threats since Carnival is the named-victim
+      corroboration datapoint for Unit 42's Bling Libra cluster mapping
+      framework; NVD batch (finding-0004) under Vulnerabilities;
+      Unit 42 World Cup (finding-0002) under Iran Cyber Watch standing
+      section with required qualifications applied (defender carry-
+      forward framed as verification action, not insulation; A&D not
+      named in Unit 42 target scope; do not extrapolate event-window
+      tempo to baseline).
+
+      Red-team qualifications applied per pipeline input:
+      (1) Carnival (finding-0001): three separable layers preserved
+          (scope very_likely, procedural very_likely actor-claim,
+          BC editorial framing flagged as not Carnival-attested).
+      (2) Unit 42 Out of the Crypt (finding-0003): W1 + W3 minimum
+          applied — TGR-CRI-1135 corpus-anchored via Wiz + StepSecurity
+          (two effective independent attributions); Bling Libra =
+          single-A-source equivalence with operational pattern
+          corpus-corroborated by Carnival + Charter; Hazy Scorpius =
+          CL0P qualified with Unit 42 single-A-source marker; 3-5
+          month + sub-minute speed cases qualified as projection-class
+          IT-estate, not corpus-confirmed timelines, not ITAR enclaves;
+          SEC + GDPR framing flagged as not mapping to DCSA / DFARS /
+          ITAR / OFAC.
+      (3) Unit 42 World Cup (finding-0002): defender carry-forward
+          framed as verification action ("audit Rockwell + Allen-
+          Bradley PLC internet exposure and segmentation across DIB
+          manufacturing OT") NOT an insulation assertion. Unit 42's
+          targeted scope (sporting / municipal / hospitality) NOT
+          extrapolated to A&D; event-window tempo NOT extrapolated to
+          baseline.
+      (4) NVD batch (finding-0004): CVSS disagreement preserved per
+          Hard Rule 2 (both NIST and Red Hat CNA scores cited verbatim
+          on CVE-2026-34000 and CVE-2026-32590).
+
+      Standing sections: Sector Focus A&D silent-day (no A&D-prime
+      named victim in any finding today). Iran Cyber Watch active
+      with CyberAv3ngers PLC campaign coverage.
+
+      Sentinel cadence: AM-28 00:00 + 06:00 sweeps both zero-trigger.
+      PM-27 18:00 sweep also zero-trigger (carry-forward note in
+      Other Signal).
+
+      Word count: Layer 1 800 words (at target band ceiling 400-800).
+      Discord Summary Layer 2 ~1882 chars within 1900-char ceiling
+      (libraries final char-recheck before posting).
+
+      Hard Rule 2 brief-wide compliance:
+      - Carnival: ShinyHunters attribution preserved as actor-self-
+        claim only; BC Salesforce framing as BC editorial.
+      - Unit 42 Out of the Crypt: all attribution + confidence
+        language preserved verbatim including Bling Libra distancing-
+        from-Scattered-LAPSUS$-Hunters Telegram source.
+      - Unit 42 World Cup: "highly likely" preserved verbatim for
+        Iran-nexus disruptive ops forward projection; CyberAv3ngers
+        aliases per Unit 42 cited verbatim.
+      - NVD batch: vendor-coordinated-disclosure class, no
+        attribution; CVSS disagreement preserved.
+
+      Single-source-veto applied:
+      - Unit 42 Out of the Crypt overall framework: corpus cross-
+        corroboration via VT-006 (TeamPCP) + finding-2026-05-28-0001
+        (Carnival named-victim) + finding-2026-05-27-0006 (Charter
+        named-victim) + finding-2026-05-27-0003 (SymJack) lifts
+        specific sub-layers to A1; framework overall at A2 / very_likely.
+      - Unit 42 World Cup forward projection: WEP ceiling "likely"
+        (single-A-source projection layer).
+      - NVD batch: NVD + Red Hat NOT independent (Red Hat is the
+        CNA); single-source-veto on per-CVE record layer.
+
+      First-party Splunk: 68th consecutive dormant non-self sweep on
+      `defenseclaw_local` across the AM-28 keyword set (Carnival,
+      Mariner Society, Holland America, Princess, ShinyHunters,
+      Bling Libra, TeamPCP, TGR-CRI-1135, CL0P, Hazy Scorpius,
+      Samba CVE-2026-4408, X.Org CVE-2026-34000, CVE-2026-34002,
+      Quay CVE-2026-32590, CyberAv3ngers, Rockwell + Allen-Bradley
+      PLC). Per Hard Rule 8, silence is neither confirming nor
+      disconfirming.
+
+      Roster cross-reference handoff to actor-profiler (librarian):
+      add Banished Kitten + Cobalt Mystique aliases to Handala (#014);
+      add Razing Ursa alias to Sandworm (#007).
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -3531,16 +3531,249 @@ entries:
       A&D-prime named-victim disclosure on GlassWorm exposure, (d) Koi
       publishes new GlassWorm research independent of CrowdStrike chain.
 
+  - rejection_id: reject-2026-05-28-0001
+    rejected_at: 2026-05-28T12:45:00-04:00
+    grading_run_id: flash-grade-20260528-120000
+    grading_mode: flash_fast_path
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-28-flash-1200-003-thn-msrc-pushback-chaotic-eclipse-windows-defender-bitlocker-zero-days-uncoordinated-disclosure
+    cluster_topic: >
+      The Hacker News relay of "Microsoft Slams Public Zero-Day Disclosures
+      Amid GitHub Researcher Account Removal" — Microsoft (MSRC) pushback
+      on Chaotic Eclipse / Nightmare-Eclipse uncoordinated disclosure of
+      six Windows zero-days (3x Defender — BlueHammer CVE-2026-33825,
+      RedSun CVE-2026-41091, UnDefend CVE-2026-45498 — all claimed "active
+      in the wild" by disclosing party; 1x BitLocker YellowKey
+      CVE-2026-45585; 2x unassigned CVE pending — GreenPlasma BitLocker +
+      MiniPlasma Windows SYSTEM escalation); GitHub removed researcher
+      account; GitLab blocked followup account hosting exploit code;
+      Microsoft contests the disclosure process but does NOT confirm or
+      deny in-wild exploitation. Sixth surface in the Archimedes corpus on
+      the same Chaotic Eclipse disclosure cluster.
+    rejection_reasons:
+      - anti_noise_rule_1_24h_window_continuation_of_extensively_covered_topic_cluster
+      - chaotic_eclipse_disclosure_cluster_already_promoted_4x_in_prior_16_days
+      - single_source_veto_on_active_in_the_wild_exploitation_claim
+      - hard_rule_8_microsoft_authoritative_silence_on_exploitation_status_overrides_disclosing_party_self_attestation
+      - hard_rule_2_promoting_active_in_the_wild_at_face_value_would_be_archimedes_originated_escalation
+      - net_new_microsoft_pushback_angle_falls_below_flash_b2_threshold_as_single_source_thn_relay
+      - all_six_flash_triggers_fail_or_are_undermined_by_corpus_priors
+      - cve_2026_33825_bluehammer_already_patched_per_index_yaml_zd_001
+      - cve_2026_45585_yellowkey_mitigation_published_per_finding_2026_05_20_0003
+      - cve_2026_41091_redsun_and_cve_2026_45498_undefend_already_patched_and_kev_listed_per_finding_2026_05_21_0001
+    sources:
+      - source_yaml_id: thehackernews
+        grade: B
+        provisional: true
+        role: "directly-retrieved primary in this sweep window; relays disclosing-party self-attestation + Microsoft MSRC public statement; single-source on net-new pushback narrative"
+      - source_yaml_id: mstic
+        grade: A
+        role: "MSRC public statement relayed via THN; Microsoft is A-grade vendor-authority on own product; explicitly does NOT confirm or deny in-wild exploitation"
+      - source_yaml_id: chaotic-eclipse-nightmare-eclipse-pseudonym
+        grade: F
+        role: "disclosing party; pseudonymous researcher with no track record in source-grades.yaml; F-grade per cheatsheet for unknown-researcher-pseudonym category; self-described disgruntled-with-MSFT posture per finding-2026-05-13-0003 prior corpus characterization"
+    would_be_digraph: B3_best_case_on_net_new_microsoft_pushback_angle_with_single_source_thn_relay_no_independent_corroboration_of_the_pushback_narrative
+    would_be_digraph_on_itw_exploitation_layer: B4_disclosing_party_self_attestation_motive_to_inflate_microsoft_authoritative_absence_of_confirmation
+    rejection_detail: >
+      This cluster is the SIXTH surface in the Archimedes corpus on the
+      same Chaotic Eclipse / Nightmare-Eclipse Windows zero-day disclosure
+      cluster, and the third surface within the last 16 days. Prior
+      corpus coverage:
+
+        - finding-2026-05-13-0003 (B3): originating Chaotic Eclipse
+          YellowKey + GreenPlasma PoC publication on GitHub; single-source
+          veto applied; capped at "likely"; B3 below FLASH B2 threshold;
+          promoted to monitoring class only.
+        - finding-2026-05-18-0001 (B2): MiniPlasma CVE-2020-17103 mapping
+          via SecurityWeek; B2 cluster anchor; Hard Rule 3 binding on
+          GitHub repo URL preservation.
+        - finding-2026-05-20-0003 (B2): YellowKey CVE-2026-45585 MSRC
+          mitigation publication; B2 cluster anchor; vendor self-disclosure
+          on own product; MSRC explicitly does NOT confirm in-wild
+          exploitation (cites "potential attacks" not "active attacks");
+          mitigation guidance 4-step procedure.
+        - finding-2026-05-21-0001 (A2): RedSun CVE-2026-41091 + UnDefend
+          CVE-2026-45498 PATCHED and KEV-LISTED with federal-civilian
+          patch deadline 2026-06-03; single-source veto on the codename-
+          binding layer but cluster-anchor A2 holds via MSRC + CISA KEV
+          independent A-grade corroboration on the procedural-facts and
+          active-exploitation-attestation layer.
+        - _index.yaml ZD-001 BlueHammer CVE-2026-33825: already PATCHED.
+
+      The current cluster (12:00 FLASH 003) carries:
+        (a) Microsoft public-pushback statement on uncoordinated disclosure
+            — net-new narrative angle, single-source THN relay of MSRC
+            communication, no independent A/B corroboration of the
+            pushback narrative beyond the MSRC statement itself.
+        (b) Platform actions (GitHub removed account; GitLab blocked
+            followup) — single-source THN; procedural fact but
+            operationally low-signal for A&D defenders.
+        (c) Restatement of the Chaotic Eclipse 6-vuln cluster with
+            "active in the wild" attribution on 3 Defender CVEs — SINGLE
+            SOURCE: the disclosing party (Chaotic Eclipse / Nightmare-
+            Eclipse, F-grade pseudonymous researcher with motive to
+            inflate severity claims). Microsoft (A-grade authoritative
+            source for confirming exploitation of its own products) has
+            NOT corroborated. THN relays the claim without independent
+            verification.
+
+      ANTI-NOISE RULE 1 (one FLASH per trigger topic per 24h): the
+      Chaotic Eclipse disclosure cluster has been continuously covered
+      across multiple finding promotions over 16 days. The 12:00 FLASH
+      sweep continuation is not "one FLASH per topic per 24h" in the
+      strict sense (no Chaotic Eclipse FLASH in the last 24h) but it IS
+      a continuation of an EXTENSIVELY COVERED topic where the net-new
+      operational signal is minimal. Per FLASH-POLICY anti-noise rule
+      doctrine the spirit of the rule applies: incremental updates to
+      a long-running covered cluster belong in scheduled-brief UPDATE
+      blocks, not standalone FLASH promotions.
+
+      HARD RULE 8 (first-party precedence): Microsoft is the A-grade
+      authoritative source on confirming exploitation of its own
+      products. Microsoft has explicitly NOT confirmed in-wild
+      exploitation of the three Defender CVEs claimed "active in the
+      wild" by the disclosing party. Per Hard Rule 8 doctrine extension
+      — when the authoritative vendor-on-own-product is silent on an
+      exploitation claim originated by a disclosing party with motive
+      to inflate, the silent authoritative source overrides the
+      single-source self-attestation. The "active in the wild" claim
+      cannot carry above credibility 4 (Doubtful) without independent
+      A/B-grade vendor IR observation, and cannot exceed WEP "possibly."
+
+      HARD RULE 2 (no originated attribution / framing escalation):
+      promoting the "active in the wild" claim at face value would
+      effectively launder Chaotic Eclipse's self-attestation into an
+      Archimedes-corpus-attested operational claim. This is exactly
+      the kind of framing escalation Hard Rule 2 doctrine prohibits.
+      The disclosing party's claim is preserved in raw-signal but
+      does NOT graduate to finding-class attestation absent
+      independent corroboration.
+
+      TRIGGER 6 EVALUATION FAILS or is undermined for the net-new
+      pushback narrative:
+        T1 (critical CVE + active exploitation + A-grade): CVE-2026-33825
+            BlueHammer already patched; CVE-2026-41091 RedSun and
+            CVE-2026-45498 UnDefend already patched and KEV-listed
+            (finding-2026-05-21-0001 anchor); CVE-2026-45585 YellowKey
+            mitigation already published (finding-2026-05-20-0003
+            anchor); GreenPlasma + MiniPlasma unassigned. The "active
+            in the wild" claim layer fails A-grade attestation (single-
+            source disclosing party).
+        T2 (new tracked-actor attribution): NO new actor attribution;
+            no tracked actor named.
+        T3 (first-party IOC hit): Splunk -30d query on Chaotic Eclipse
+            / Nightmare-Eclipse / BlueHammer / RedSun / UnDefend
+            returned 0 hits.
+        T4 (tracked-actor TTP change): N/A — no tracked actor.
+        T5 (active nation-state campaign vs A&D sector): N/A — no
+            nation-state attribution; no A&D-prime named as victim.
+        T6 (zero-day no-patch): GreenPlasma + MiniPlasma + the
+            implicit BlueHammer/RedSun/UnDefend "rolled back / never
+            patched" claim from disclosing party — but the
+            authoritative MSRC + CISA KEV + Microsoft Defender Engine
+            version evidence chain established in finding-2026-05-20-0003
+            and finding-2026-05-21-0001 contradicts the rolled-back
+            framing on the named CVEs.
+
+      DEFENSIBLE DISPOSITION (per the raw-signal frontmatter
+      collector recommendation): raw-signal for record but NOT promoted
+      to FLASH. The Microsoft pushback statement + GitHub/GitLab
+      account actions belong in the next scheduled-brief Industry-
+      News-Class UPDATE block on the Chaotic Eclipse disclosure cluster
+      lineage, NOT as a standalone FLASH promotion. The briefer can
+      reference this rejection entry to justify the inclusion shape.
+
+      Regrade if: (a) an independent A/B-grade vendor IR firm
+      (Mandiant, MSTIC explicit confirmation, Unit 42, CrowdStrike,
+      Sophos X-Ops, ESET, SentinelLabs, Volexity, Cisco Talos,
+      Recorded Future) confirms in-wild exploitation of any of the
+      six Chaotic Eclipse-disclosed CVEs with independent telemetry
+      not derived from the disclosing party, (b) Microsoft MSRC
+      explicitly confirms or denies in-wild exploitation of any of
+      the six in a subsequent advisory, (c) a CISA KEV addition is
+      made for any of the three unassigned-CVE elements
+      (GreenPlasma, MiniPlasma — note MiniPlasma was already mapped
+      to CVE-2020-17103 in finding-2026-05-18-0001), (d) the
+      disclosing party releases material new technical detail that
+      independently verifies via reproduction by a tier-1 vendor IR
+      firm.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 39
-  most_recent_run: morning-20260528-080000
-  most_recent_run_rejections: 0
-  most_recent_run_promotions: 4
+  total_rejections: 40
+  most_recent_run: flash-grade-20260528-120000
+  most_recent_run_rejections: 1
+  most_recent_run_promotions: 2
   most_recent_run_absorptions: 0
   most_recent_run_promotion_ids:
+    - finding-2026-05-28-FLASH-1200-0001-securityweek-forticlient-ems-cve-2026-35616-fresh-exploitation-arctic-wolf      # FLASH 1200 sweep 12:00 EDT - SecurityWeek (B provisional) + The Hacker News (B provisional) relay of Arctic Wolf (NEW SOURCE - provisional B, vendor-IR-research category, 72h ratification clock to 2026-05-31T12:35:00-04:00) observation of fresh post-April-patch exploitation of CVE-2026-35616 FortiClient EMS CVSS 9.1 pre-auth API access bypass; patched in 7.4.7 early April 2026; EKZ Infostealer payload (a.k.a. FortiEndpoint_Patch.exe) distributed via management-pipeline weaponization to push malicious PowerShell to managed endpoints; exfil IP 83.138.53.110 (Splunk -30d 0 hits); NO actor attribution; NO A&D-prime named; SecurityWeek + THN BOTH relay Arctic Wolf as single primary origin = independence test FAILS on exploitation-observation layer = effective single-source. Cluster digraph B2 (cluster anchor on B-grade-relays-of-provisional-B-vendor-IR; credibility 2 Probably True via internally-coherent vendor-IR observation + verifiable CVE in NVD + corpus-consistent post-patch fresh-exploitation pattern + no contradicting A/B source); single-source veto APPLIES on exploitation-observation layer, WEP capped at "likely"; very_likely on CVE-record-and-patch-availability layer (A1 procedural fact, multi-source); Trigger 1 marginally met (A-grade-source spec borderline against B-tier vendor IR firm). critical_override_eval: FAILS (CVSS 9.1 < 10.0; no tracked-actor attribution; no A&D-watchlist entity named). analyst_review_required true (SAT-KAC on Arctic Wolf customer-base representativeness assumption + EKZ family naming novelty); red_team_review_required false (WEP "likely" on anchor, below very_likely threshold); vuln-tracker handoff MEDIUM-priority dossier scaffolding for CVE-2026-35616; librarian handoffs add arctic-wolf to source-grades.yaml + source-grade-log.md.
+    - finding-2026-05-28-FLASH-1200-0002-bleepingcomputer-gogs-zero-day-rce-rapid7-jonah-burges-no-patch      # FLASH 1200 sweep 12:00 EDT - BleepingComputer (B) relay of Rapid7 (A provisional) Jonah Burges primary disclosure of Gogs self-hosted Git zero-day argument-injection RCE in pull-request rebase handling; 2026-03-17 vendor report → 2026-03-28 vendor ack → 2026-05-28 public disclosure (60+ days vendor silence); NO CVE assigned at sweep time (collector watch-config addition for CVE-assignment monitoring); NO patch available; affected versions 0.14.2 and 0.15.0+dev; effective pre-auth on default open-registration deployments (Gogs ships with open-registration enabled by default); Shadowserver 2,400+ Internet-exposed instances + Shodan 1,000+ Gogs-fingerprint IPs (independent corroboration on install-base exposure layer); geographic skew Asia and Europe primary; NO confirmed in-wild exploitation of this specific zero-day at sweep time (historical CVE-2025-8110 prior Gogs exploitation cited as HISTORICAL context only, NOT current-flaw attribution); NO actor attribution; NO A&D-prime named. Cluster digraph A2 (Rapid7 A-grade originating-research vendor disclosure single-primary; BleepingComputer faithful B-grade relay NOT independent corroboration on vulnerability-existence layer; credibility 2 Probably True via internally-coherent mechanism class + documented argument-injection vulnerability class precedent CVE-2017-1000117 + CVE-2022-24765 + Gogs prior CVE-2025-8110 + verifiable affected-version specification + industry-standard 60-day vendor-silence disclosure timeline + no contradicting A/B source); install-base-exposure layer carries independent corroboration via Shadowserver + Shodan (A1 on existence-of-exposure dimension); single-source veto APPLIES on imminent-exploitation forward-projection layer, WEP capped at "likely"; very_likely on no-patch-no-CVE procedural facts + install-base exposure. Trigger 6 marginal-fit (Rapid7 A-grade does not directly attest exploitation imminence; "imminent" reading is orchestrator inference from public-disclosure event + 60+ days vendor silence + effective-pre-auth attack surface + 2,400+ install base + historical CVE-2025-8110 exploitation pattern). critical_override_eval: FAILS (no CVSS 10.0 since none assigned; no confirmed current exploitation; no actor attribution; no A&D-watchlist entity named). analyst_review_required true (SAT-KAC on A&D-inheritance assumption + Gogs DIB-deployment-prevalence + imminent-exploitation forward-projection); red_team_review_required false (WEP "likely" on anchor); vuln-tracker handoff MEDIUM-priority dossier scaffolding pending CVE assignment + monitor for upstream Gogs patch commit + CVE assignment; librarian handoff Rapid7 primary URL direct-retrieval followup next-pass + collector watch-config addition gogs-argument-injection-2026-05-28 keyword set.
+  most_recent_run_absorption_ids: []
+  most_recent_run_rejection_ids:
+    - reject-2026-05-28-0001    # raw-2026-05-28-flash-1200-003 - The Hacker News relay of Microsoft pushback on Chaotic Eclipse / Nightmare-Eclipse uncoordinated disclosure of six Windows zero-days (3x Defender BlueHammer/RedSun/UnDefend claimed "active in the wild"; 1x BitLocker YellowKey; 2x unassigned GreenPlasma + MiniPlasma); SIXTH SURFACE in Archimedes corpus on same disclosure cluster - prior coverage finding-2026-05-13-0003 + finding-2026-05-18-0001 + finding-2026-05-20-0003 + finding-2026-05-21-0001 + _index.yaml ZD-001 BlueHammer already patched; anti-noise rule 1 continuation of extensively-covered topic; single-source veto on "active in the wild" claim layer (disclosing party with motive to inflate; Microsoft authoritative-on-own-product explicitly NOT confirming); Hard Rule 8 first-party silence overrides single-source self-attestation; Hard Rule 2 promoting would launder F-grade pseudonym self-attestation into Archimedes-corpus-attested operational claim; net-new Microsoft pushback narrative angle falls below FLASH B2 threshold as single-source THN B-grade relay with no independent A/B corroboration; all six FLASH triggers fail or are undermined by corpus priors (T1/T2/T3/T4/T5/T6); would-be-digraph B3 best case on net-new pushback angle / B4 on ITW exploitation layer; defensible disposition per raw-signal frontmatter collector recommendation: raw-signal for record but NOT promoted to FLASH; belongs in next scheduled-brief Industry-News-Class UPDATE block on Chaotic Eclipse disclosure cluster lineage. Regrade triggers: independent A/B-grade vendor IR firm with non-derived telemetry, Microsoft MSRC explicit confirmation/denial, CISA KEV addition for unassigned-CVE elements, or material new technical detail with tier-1 vendor reproduction.
+  most_recent_run_note: >
+    flash-grade-20260528-120000 (12:00 EDT FLASH sweep) processed 3
+    net-new FLASH-candidate raw-signal items from the 12:00 collector
+    sweep (flash-1200-001 SecurityWeek FortiClient EMS CVE-2026-35616
+    fresh exploitation; flash-1200-002 BleepingComputer Gogs zero-day
+    RCE; flash-1200-003 THN Microsoft pushback on Chaotic Eclipse
+    Windows zero-days). 2 promoted to standalone FLASH findings
+    (finding-2026-05-28-FLASH-1200-0001 + finding-2026-05-28-FLASH-
+    1200-0002), 1 rejected (reject-2026-05-28-0001 — anti-noise
+    saturation on extensively-covered Chaotic Eclipse disclosure
+    cluster + Hard Rule 8 first-party precedence on Microsoft silence
+    + Hard Rule 2 prevention of single-source self-attestation
+    laundering + below FLASH B2 threshold on net-new pushback narrative
+    layer). 0 absorptions. Splunk first-party check on aggregate
+    sweep (83.138.53.110 + FortiClient + EKZ + FortiEndpoint_Patch +
+    gogs + Rapid7 + BlueHammer + RedSun + UnDefend + Chaotic Eclipse +
+    Nightmare Eclipse) returned 0 hits at -30d on defenseclaw_local +
+    archimedes — 68th consecutive dormant non-self sweep continues.
+    NEW SOURCE first-citation: arctic-wolf provisional B (vendor-IR-
+    research category; 72h ratification clock to 2026-05-31T12:35:00-
+    04:00; librarian handoff to add to source-grades.yaml + post
+    source-grade-log.md entry). Both promoted findings carry
+    analyst_review_required true (SAT-KAC topics on each — FortiClient
+    customer-base representativeness + EKZ naming novelty + Gogs DIB-
+    deployment-prevalence + imminent-exploitation forward-projection).
+    Neither promotion carries red_team_review_required (both WEP
+    ceilings cap at "likely" on cluster anchor per single-source-veto;
+    FLASH-POLICY anti-noise rule 3 requires red-team review only at
+    "very likely" or higher). Neither critical_override qualifies
+    (CVSS thresholds + tracked-actor attribution + A&D-watchlist-
+    named-victim prongs all fail). FortiClient EMS finding net-new for
+    corpus; Gogs finding net-new for corpus. Both topics distinct from
+    2026-05-28-morning brief coverage (Carnival/World Cup/Out of the
+    Crypt/NVD critical batch). Briefer-ready for stand-alone FLASH
+    promotion or paired two-item FLASH cluster on 12:00 sweep cycle.
+    Vuln-tracker handoffs: MEDIUM-priority dossier scaffolding for
+    CVE-2026-35616 (FortiClient EMS) + MEDIUM-priority for Gogs
+    argument-injection RCE pending CVE assignment; collector watch-
+    config addition for Gogs CVE-assignment monitoring + Rapid7 primary
+    URL direct-retrieval followup.
+
+  # Prior run preserved below
+  legacy_morning_20260528_080000:
+    most_recent_run: morning-20260528-080000
+    most_recent_run_rejections: 0
+    most_recent_run_promotions: 4
+    most_recent_run_absorptions: 0
+    most_recent_run_promotion_ids:
+      - finding-2026-05-28-0001-bleepingcomputer-carnival-cruise-shinyhunters-6m-records-confirmation-mariner-society-holland-america-DEMOTED-TO-LEGACY-PRESERVATION
+      - finding-2026-05-28-0002-unit42-2026-world-cup-attack-surface-handala-cyberav3ngers-razing-ursa-noname057-iran-irgc-mois-fronts-DEMOTED-TO-LEGACY-PRESERVATION
+      - finding-2026-05-28-0003-unit42-out-of-the-crypt-extortion-economy-tgr-cri-1135-teampcp-bling-libra-hazy-scorpius-cl-cri-1116-blackfile-redact-DEMOTED-TO-LEGACY-PRESERVATION
+      - finding-2026-05-28-0004-nvd-critical-cve-batch-samba-cve-2026-4408-xorg-cve-2026-34000-34002-redhat-quay-cve-2026-32590-DEMOTED-TO-LEGACY-PRESERVATION
+    most_recent_run_absorption_ids: []
+    most_recent_run_rejection_ids: []
+    legacy_note: "Per-run metadata preserved for run-trail continuity. Full per-finding context for the morning run is preserved via the four finding files themselves + the 2026-05-28-morning brief frontmatter + git commit 43e5b7c."
+
+  # Legacy block preserved below — original morning promotion entries verbatim follow this _meta block only for compatibility with downstream tooling that may still parse the original keys; primary state is the current FLASH run above
+  legacy_morning_20260528_080000_verbatim_promotion_ids:
     - finding-2026-05-28-0001-bleepingcomputer-carnival-cruise-shinyhunters-6m-records-confirmation-mariner-society-holland-america    # BleepingComputer (Sergiu Gatlan 2026-05-28 06:49 EDT in-window) relay of Carnival Corporation customer-notification filing confirming 5,995,277-customer breach following ShinyHunters April 2026 extortion claim - Holland America Line subsidiary / Mariner Society loyalty program - social-engineering-of-employee initial-access vector - 8-day dwell window 2026-04-14 initial → 2026-04-22 exfil-confirmed - data categories names/DOBs/emails/genders/locations/loyalty - explicitly NO payment card/SSN/passport - ShinyHunters self-claim 8.7M+ records (31% above Carnival confirmed figure, corpus-consistent inflation pattern) - Carnival did NOT publicly confirm ShinyHunters attribution per Hard Rule 2 - BC editorial Salesforce-Aura/Salesloft-Drift framing NOT victim-attested - corpus parallel to finding-2026-05-27-0006 Charter 40M same actor cluster - Bling Libra = ShinyHunters Unit 42 alias formalization via finding-2026-05-28-0003 this cycle - cluster digraph B2 (BC B-grade relay + Carnival A-grade vendor self-disclosure on breach-occurred layer + ShinyHunters C-grade self-claim); WEP ceiling very_likely on breach-occurred + scope + vector + timeline + data categories; likely on ShinyHunters attribution; roughly_even_chance on Salesforce editorial framing; analyst_review_required true (/new-actor scaffolding decision carry-forward + Hard Rule 2 attribution framing + SAT-ACH on scope dispute); red_team_review_required false (red-team challenges from finding-2026-05-27-0006 apply in principle, analyst-side SAT-ACH topics pre-load the questions); no A&D-prime named; Splunk 0 hits.
     - finding-2026-05-28-0002-unit42-2026-world-cup-attack-surface-handala-cyberav3ngers-razing-ursa-noname057-iran-irgc-mois-fronts    # Palo Alto Unit 42 (Justin Moore 2026-05-28 06:00 EDT in-window) forward-looking 2026 FIFA World Cup attack-surface threat assessment - names roster #014 Handala Hack with NEW alias cluster Banished Kitten + Cobalt Mystique alongside known Storm-0842 + Void Manticore (MOIS-front + wiper attacks + government-official targeting per Unit 42) - names roster #007 Sandworm with NEW Razing Ursa alias (Palo Alto "Ursa" canonical naming; 2018 Pyeongchang Olympic Destroyer precedent cited) - names roster #013 Scattered Spider with Muddled Libra alias (ALPHV/BlackCat operator characterization for hospitality-sector ransomware) - names non-roster CyberAv3ngers with alias cluster Shahid Kaveh Group + Bauxite + Hydro Kitten + Storm-0784 + UNC5691 as IRGC Cyber-Electronic Command OT-targeting arm with CISA AA26-097A active-Iranian-affiliated-campaign attribution against Rockwell+Allen-Bradley PLCs in US critical infrastructure (water/wastewater/power/airport/emergency-services named victim sectors) - non-roster NoName057(16) + Fiddling Scorpius lower-priority candidates - Iran-nexus disruptive ops "highly likely" + financially motivated cybercrime "highest-volume highest-likelihood" per Hard Rule 2 preservation - NO A&D / aerospace / defense / government contractor sector named - cluster digraph A2 (Unit 42 A-grade primary; single-source-veto on forward-looking World Cup threat-assessment layer; CyberAv3ngers PLC-targeting layer cleared via Unit 42 + CISA AA26-097A independent corroboration); WEP ceiling likely on forward-looking assessment; very_likely on CyberAv3ngers/CISA PLC-targeting attribution + Unit-42-canonical alias mappings; analyst_review_required true (/new-actor CyberAv3ngers HIGH-priority + actor-profiler #014 Banished-Kitten+Cobalt-Mystique alias updates + #007 Razing-Ursa alias update + SAT-ACH on forward-looking confidence framing + SAT-KAC on A&D-prime OT segmentation assumption); red_team_review_required false (single-source-veto on dominant claim layer; A1-corroborated layer is corpus-baseline restatement not novel synthesis); Iran Cyber Watch standing section relevance high; Splunk 0 hits.
     - finding-2026-05-28-0003-unit42-out-of-the-crypt-extortion-economy-tgr-cri-1135-teampcp-bling-libra-hazy-scorpius-cl-cri-1116-blackfile-redact    # Palo Alto Unit 42 (Matt Brady + Justin Moore co-byline 2026-05-27 18:00 EDT in-window per AM-28 14h sweep; carry-forward from 00:00 FLASH sentinel absorption flag) cyber-extortion-economy trend analysis - formal Palo Alto alias mappings codified in corpus for FIRST TIME: TGR-CRI-1135 = roster #001 TeamPCP (supply-chain specialty 20+ attacks/500+ software; Vect RaaS + LAPSUS$ EaaS partnerships; open-source Shai-Hulud release 2026-05-13 TTP-democratization milestone), Bling Libra = ShinyHunters (SaaS-focused vishing + phishing+MFA-intercept + device-registration persistence + Tox-ID reuse + Tor leak site; distancing from Scattered LAPSUS$ Hunters per Telegram 2026-05-11), Hazy Scorpius = roster #018 Cl0p (Oracle EBS exploitation TTP) - non-roster CL-CRI-1116 BlackFile → Redact rebrand May 2026 with SWATTING-double-extortion novel criminal-violence-by-proxy TTP - Scattered LAPSUS$ Hunters cluster includes roster #013 Scattered Spider operationally - frontier-AI 3-5 month weaponization projection + Mythos (Anthropic) 23k-vulns-1k-OSS-projects + SymJack AI-agent-supply-chain pattern + ATHR AI-vishing platform - 39-seconds initial-access-to-exfil (Wendi Whitmore CSIO) + 25-minutes AI-assisted scenario - extortion-economy structural shift 90%+ encryption 2021-24 → 78% 2025 + pure data-exfil 2% 2020 → 15% 2025 + extortion-only 49% H1 2025 → 65% H2 2025 - NO A&D / aerospace / defense in named-targeted-sector list - cluster digraph A2 (Unit 42 A-grade single primary; A1 corpus cross-corroboration on TGR-CRI-1135=TeamPCP via VT-006 lineage Wiz+Snyk+MSTIC+Checkmarx+CISA-KEV; corpus-internal Carnival+Charter named-victim corroboration on Bling Libra operational pattern; A1 corpus cross-corroboration on SymJack via finding-2026-05-27-0003 Adversa AI); WEP ceiling very_likely on TGR-CRI-1135=TeamPCP + Bling Libra=ShinyHunters + Hazy Scorpius=CLOP alias mappings + Bling Libra 2026 operational pattern; likely on broad trend layers + 3-5 month frontier-AI projection + Oracle EBS specific TTP + CL-CRI-1116 SWATTING + statistical figures; analyst_review_required true (actor-profiler #001/#018/#013 dossier updates + vuln-tracker VT-006 incorporation + multiple /new-actor scaffolding decisions + SAT-ACH on 3-5 month projection + SAT-KAC on A&D-prime regulatory-leverage assumption); red_team_review_required true (very_likely WEP on novel alias-mapping synthesis driving downstream actor-profiler workflows; corpus cross-corroboration assumption requires red-team challenge); Splunk 0 hits.

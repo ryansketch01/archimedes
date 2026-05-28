@@ -386,6 +386,23 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-28 — Arctic Wolf (Labs / IR research) — (none) → B (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `arctic-wolf`
+**Reason:** First Archimedes-corpus citation as the originating source on `finding-2026-05-28-FLASH-1200-0001` (CVE-2026-35616 FortiClient Endpoint Management Server fresh post-patch exploitation observed May 2026 — pre-auth API access bypass to privilege escalation, CVSS 9.1, Fortinet patched in 7.4.7 early April 2026; attackers weaponize EMS management pipeline to push malicious PowerShell to managed endpoints; payload `FortiEndpoint_Patch.exe` named EKZ Infostealer by Arctic Wolf; exfil to 83.138.53.110). Sole originating vendor — SecurityWeek and The Hacker News both relay Arctic Wolf with no independent observations (single-source veto applied on exploitation-observation layer; WEP capped at "likely" on that layer pending independent telemetry from Mandiant / CrowdStrike / Unit 42 / MSTIC / Microsoft Defender / Fortinet PSIRT / any non-Arctic-Wolf vendor naming the IOC pair). Arctic Wolf is a Tier-2 vendor IR / security operations firm with named-research-team output and an established managed-detection-and-response practice. Proposed grade B by the grader as the conservative starting grade per the vendor-IR-research-firm category precedent (peer class: StepSecurity B 2026-05-12, Socket B 2026-05-14, Sysdig B 2026-05-14, Zellic B 2026-05-14, Ox Security B 2026-05-15, Upwind B 2026-05-15). Operator may upgrade to A on subsequent surfaces showing consistent technical rigor across additional vendor-IR investigations — particularly if Arctic Wolf telemetry coordinates with Tier-1 vendor research (Mandiant / CrowdStrike / Unit 42 / MSTIC) on shared campaigns — or hold at B if context-thin commercial-research profile is observed across more findings.
+**Methodological positive on first surface:** Source makes NO threat-actor / nation-state attribution on the FortiClient EMS campaign; SecurityWeek and The Hacker News relays both preserve this attribution-absence verbatim. Hard Rule 2 compliance.
+**Trigger-1 fit caveat (carry-forward from finding / brief):** Arctic Wolf's provisional B (not A) creates a procedural marginal fit against FLASH Trigger 1's "A-grade source attesting active exploitation" spec. Disposition is defensible because the substantive threshold — critical CVE plus active exploitation observed by a credible vendor IR firm — is met; the procedural source-grade letter is a half-step below A. Operator may consider re-baselining Trigger 1 wording in a future FLASH-POLICY review if B-grade vendor-IR firms (Arctic Wolf, ReliaQuest, Huntress, Expel) become routine FLASH first-surfaces.
+**Supporting findings:** [finding-2026-05-28-FLASH-1200-0001]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification per established precedent (provisional B is not a downgrade requiring human review per Hard Rule 5 / RETRACTION-POLICY adjacent governance).
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade arctic-wolf B` (or operator upgrade to A / hold at C).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-05-28-FLASH-1200-0001` cluster anchor is B2 / WEP "likely" with single-source-veto active on the exploitation-observation layer; CVE record + April patch availability sit at A1 procedural fact (independent of Arctic Wolf grade). Operator upgrade of Arctic Wolf to A would re-grade the exploitation-observation layer to A2 on subsequent surfaces but would NOT lift single-source-veto on this finding (the veto rests on Arctic Wolf being the sole originating vendor regardless of grade — independence requires a second vendor's primary observation).
+**72h ratification clock:** 2026-05-31T12:35:00-04:00 (72h from FLASH composition). Per established vendor-IR-research-firm precedent class.
+**Next review:** ratification target 2026-06-04 (7 days; bundled with the open cisco-psirt / aonan-guan / Symantec / Bitdefender / litespeed / github-blog ratification window).
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

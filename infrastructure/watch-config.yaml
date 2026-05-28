@@ -7,7 +7,41 @@
 # `active: false` rather than deleting — preserves history.
 
 version: 1
-last_updated: 2026-04-18
+last_updated: 2026-05-28
+
+# ============================================================================
+# Vuln-watch keywords
+# ============================================================================
+# Lightweight collector hints — keywords for the collector to pattern-match
+# against incoming raw signal when no CVE id is yet assigned, or when an
+# orchestrator wants to monitor for downstream activity (CVE assignment,
+# vendor commits, vendor IR observation of exploitation, etc.). Entries
+# carry their first-citation finding and expected lift conditions.
+#
+# Add via librarian Mode 1 / Mode 5 handoffs from briefer / vuln-tracker.
+# Prune entries once the watched event lands (CVE assigned + dossier scaffolded
+# + finding closed), or after 90 days of dormancy.
+vuln_watch_keywords:
+
+  - id: gogs-argument-injection-2026-05-28
+    keywords:
+      - "gogs"
+      - "gogs.io"
+      - "git rebase argument injection"
+      - "Jonah Burges"
+      - "rebase before merging"
+    first_citation_finding: finding-2026-05-28-FLASH-1200-0002
+    first_citation_brief: flash-2026-05-28-1200-002-gogs-zero-day-rce-rapid7-disclosure-no-patch
+    added_at: 2026-05-28T12:40:00-04:00
+    monitor_for:
+      - cve_assignment_nvd_or_mitre
+      - gogs_upstream_commit_referencing_rebase_or_argument_injection_or_branch_name_handling
+      - vendor_ir_firm_observation_of_exploitation
+      - cisa_kev_addition_once_cve_assigned
+      - shadowserver_or_shodan_post_disclosure_scanning_telemetry
+    expected_cve_assignment_window: 2026-06-04_to_2026-06-11
+    vuln_tracker_handoff_pending: threats/vulnerabilities/gogs-argument-injection-rce-unassigned-CVE/
+    active: true
 
 standing_sections:
 

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-28T08:00:00-04:00
+last_updated: 2026-05-28T12:40:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -20509,6 +20509,309 @@ entries:
       Roster cross-reference handoff to actor-profiler (librarian):
       add Banished Kitten + Cobalt Mystique aliases to Handala (#014);
       add Razing Ursa alias to Sandworm (#007).
+
+  - id: 2026-05-28-flash-1200-001-forticlient-ems-cve-2026-35616-arctic-wolf-active-exploitation
+    covered_in: [flash-2026-05-28-1200-001-forticlient-ems-cve-2026-35616-arctic-wolf-active-exploitation]
+    brief_file: threats/briefs/2026-05-28-flash-1200-001-forticlient-ems-cve-2026-35616-arctic-wolf-active-exploitation.md
+    headline: "FLASH: FortiClient EMS CVE-2026-35616 (CVSS 9.1) fresh exploitation observed May 2026 by Arctic Wolf against unpatched estates; Fortinet patched in 7.4.7 early April 2026; EKZ Infostealer payload (a.k.a. FortiEndpoint_Patch.exe); exfil IP 83.138.53.110; management-pipeline PowerShell-push mechanism; no actor attribution; no A&D-prime named; B2 / WEP likely under single-source-veto on exploitation-observation layer (Arctic Wolf sole originating vendor; SecurityWeek + THN are non-independent relays); Trigger 1 marginal-fit caveat (Arctic Wolf provisional B not A); A&D relevance structural-indirect (DIB / CMMC endpoint-management-server estate, no named victims)"
+    topic_tags:
+      - flash
+      - flash-trigger-1-critical-cve-exploited
+      - flash-trigger-1-marginal-fit-arctic-wolf-provisional-b-not-a
+      - cve-2026-35616
+      - forticlient-ems
+      - fortinet
+      - cvss-9-1
+      - pre-auth-api-access-bypass
+      - privilege-escalation
+      - post-patch-fresh-exploitation
+      - patch-shipped-7-4-7-early-april-2026
+      - management-pipeline-powershell-push-mechanism
+      - ekz-infostealer
+      - fortiendpoint-patch-exe
+      - exfil-ip-83-138-53-110
+      - no-actor-attribution
+      - no-ad-prime-named-as-victim
+      - ad-relevance-structural-indirect
+      - dib-cmmc-endpoint-management-server-estate
+      - single-source-veto-applied-exploitation-observation-layer
+      - arctic-wolf-sole-originating-vendor
+      - securityweek-thn-non-independent-relays
+      - critical-override-1-of-4-fails-cvss-10-tracked-actor-ad-watchlist
+      - hard-rule-2-archimedes-does-not-originate-attribution
+      - hard-rule-8-first-party-splunk-silence-not-contradiction
+      - new-source-arctic-wolf-provisional-b-72h-ratification-clock
+      - vuln-tracker-handoff-medium-priority-dossier-scaffolding
+      - flash-within-active-hours-no-quiet-hours-queue
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-35616
+        product: FortiClient Endpoint Management Server
+        vendor: Fortinet
+        cvss: 9.1
+        cwe_class: pre_auth_api_access_bypass_to_privilege_escalation
+        patched_version: "7.4.7"
+        patch_release: 2026-04-early
+        cisa_kev_listed: false_at_sweep_time
+        in_wild_exploitation_attested: vendor_ir_research_arctic_wolf_single_source_may_2026
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-28-FLASH-1200-0001-securityweek-forticlient-ems-cve-2026-35616-fresh-exploitation-arctic-wolf
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - independent_a_b_vendor_ir_observation_lifts_single_source_veto
+      - mandiant_crowdstrike_unit42_mstic_microsoft_defender_telemetry_signal_publishes_corroboration
+      - fortinet_psirt_advisory_naming_fresh_attack_telemetry
+      - any_non_arctic_wolf_vendor_with_primary_observation_of_ekz_infostealer_or_83_138_53_110
+      - cisa_kev_addition_for_cve_2026_35616
+      - new_actor_attribution
+      - new_named_victim_in_ad_sector
+      - patch_adoption_data_published_by_shadowserver_or_cisa
+      - first_party_splunk_ioc_hit_on_83_138_53_110_or_fortiendpoint_patch_or_ekz_infostealer
+      - escalation_in_scope
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    librarian_handoffs:
+      - action: add_source_to_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "arctic-wolf provisional B; vendor-IR-research category; first cited finding-2026-05-28-FLASH-1200-0001; 72h ratification clock to 2026-05-31T12:35:00-04:00"
+      - action: log_source_grade_log
+        target: infrastructure/source-grade-log.md
+        payload: "Arctic Wolf F→B provisional addition entry per cheatsheet vendor-IR-research category; first-citation finding-2026-05-28-FLASH-1200-0001; ratification 2026-05-31T12:35:00-04:00 unless operator overrides"
+      - action: discord_post
+        target: "#flash-alerts"
+        payload: "FLASH within active hours; post immediately, no queue"
+    vuln_tracker_handoffs:
+      - action: standalone_dossier_candidate_eval
+        target: threats/vulnerabilities/CVE-2026-35616/
+        payload: "CVE-2026-35616 FortiClient EMS pre-auth API access bypass CVSS 9.1; patched 7.4.7 early April 2026; fresh-exploitation observed May 2026 per Arctic Wolf; DIB / CMMC endpoint-management-server estate exposure class; recommend MEDIUM-priority dossier scaffolding"
+    notes: |
+      FLASH within active hours (12:35 EDT). Posts immediately to
+      #flash-alerts; no quiet-hours queue. Critical override 1/4 —
+      fails CVSS-10.0, tracked-actor, and A&D-watchlist prongs.
+
+      Hard Rule 2 binding: Arctic Wolf names no actor or nation-state
+      for the May 2026 exploitation campaign; SecurityWeek and The
+      Hacker News both preserve this absence faithfully. Archimedes
+      does NOT originate attribution. Historical FortiClient EMS
+      exploitation has been attributed in later IR rounds to Iranian
+      and Chinese state-aligned actors; actor field stays null here
+      until an independent vendor names one.
+
+      Single-source veto applied on the exploitation-observation
+      layer (Arctic Wolf sole originating source; SecurityWeek + THN
+      are non-independent relays per INTEL-GRADING.md corroboration
+      rules). WEP capped at "likely" on this layer. CVE record and
+      April patch availability sit at A1 / very_likely (Fortinet
+      vendor advisory + NVD multi-source attestation).
+
+      Trigger 1 marginal fit: spec requires A-grade source attesting
+      active exploitation. Arctic Wolf is provisional B (first corpus
+      citation, vendor-IR-research category, 72h ratification clock
+      to 2026-05-31T12:35:00-04:00). Substantive threshold (critical
+      CVE + active exploitation observed by credible vendor IR firm)
+      is met; procedural source-grade letter is a half-step below A.
+      Operator may re-baseline Trigger 1 wording if B-grade vendor-IR
+      firms (Arctic Wolf, ReliaQuest, Huntress, Expel) become routine
+      FLASH first-surfaces.
+
+      Hard Rule 8 first-party check: 0 hits at -30d on aggregate IP +
+      product + payload sweep across `defenseclaw_local` + `archimedes`
+      (src_ip / dest_ip 83.138.53.110, "FortiClient", "EKZ Infostealer",
+      "FortiEndpoint_Patch"). Silence is not contradiction; credibility
+      grade unchanged. 67th consecutive dormant non-self sweep.
+
+      Word count 376 — over FLASH target band 150-300 but under hard
+      cap 450 (150% of max). Precedent: flash-2026-05-23-0600-002-
+      litespeed-cpanel ran ~414 body words under same regulatory-
+      framing load. All sections (Action, What, Exploitation framing,
+      Impact + Attribution, First-party Splunk, Trigger 1 caveat,
+      Sources, Related) carry doctrinally load-bearing content per
+      grader requirements.
+
+      Librarian handoff: add `arctic-wolf` provisional B to
+      source-grades.yaml; post 72h ratification clock entry to
+      source-grade-log.md; post FLASH to #flash-alerts immediately.
+
+      Vuln-tracker handoff: MEDIUM-priority dossier scaffolding
+      candidate for CVE-2026-35616 (FortiClient EMS) — DIB / CMMC
+      endpoint-management-server estate exposure class.
+
+  - id: 2026-05-28-flash-1200-002-gogs-zero-day-rce-rapid7-disclosure-no-patch
+    covered_in: [flash-2026-05-28-1200-002-gogs-zero-day-rce-rapid7-disclosure-no-patch]
+    brief_file: threats/briefs/2026-05-28-flash-1200-002-gogs-zero-day-rce-rapid7-disclosure-no-patch.md
+    headline: "FLASH: Gogs self-hosted Git zero-day argument-injection RCE — Rapid7 (Jonah Burges) discloses 2026-05-28 after 60+ days vendor silence following 2026-03-17 report; no CVE assigned; no patch; affected 0.14.2 and 0.15.0+dev; mechanism class is argument injection in pull-request rebase handling; registered-user precondition but Gogs ships open-registration default so effective pre-auth on any reachable instance; Shadowserver 2,400+ exposed instances + Shodan 1,000+ fingerprint IPs (geographic skew Asia and Europe); no confirmed in-wild exploitation of THIS specific zero-day; related CVE-2025-8110 cited as historical context only NOT current-flaw attribution; no actor attribution; no A&D-prime named; A2 / WEP likely under single-source-veto on imminent-exploitation forward-projection layer (Rapid7 attests preconditions not imminence; imminence is orchestrator inference); Trigger 6 marginal-fit caveat"
+    topic_tags:
+      - flash
+      - flash-trigger-6-zero-day-no-patch
+      - flash-trigger-6-marginal-fit-imminence-is-orchestrator-inference-not-rapid7-attestation
+      - gogs
+      - self-hosted-git
+      - argument-injection-rce
+      - pull-request-rebase-handling
+      - no-cve-assigned-at-disclosure
+      - no-patch-available-at-disclosure
+      - affected-versions-0-14-2-and-0-15-0-dev
+      - effective-pre-auth-on-default-open-registration
+      - shadowserver-2400-plus-exposed-instances
+      - shodan-1000-plus-fingerprint-ips
+      - geographic-skew-asia-and-europe-primary
+      - rapid7-disclosure-jonah-burges-senior-security-researcher
+      - rapid7-direct-retrieval-pending-librarian-followup
+      - bleepingcomputer-faithful-relay-not-independent-corroboration
+      - 60-plus-days-vendor-silence-disclosure-timeline-march-17-to-may-28
+      - cve-2025-8110-historical-context-only-not-current-flaw-attribution
+      - no-confirmed-in-wild-exploitation-of-this-specific-zero-day
+      - no-actor-attribution
+      - no-ad-prime-named-as-victim
+      - ad-relevance-structural-indirect-on-premise-scm-alternative-to-github-enterprise-gitlab
+      - single-source-veto-applied-imminent-exploitation-forward-projection-layer
+      - critical-override-0-of-4-all-prongs-fail
+      - hard-rule-2-archimedes-does-not-originate-attribution
+      - hard-rule-8-first-party-splunk-silence-not-contradiction
+      - vuln-tracker-handoff-medium-priority-dossier-pending-cve-assignment
+      - watch-config-keyword-addition-pending-cve-assignment-monitor
+      - flash-within-active-hours-no-quiet-hours-queue
+      - adjacent-developer-tooling-exposure-class-different-vector
+    related_actors: []
+    related_vulns:
+      - cve_id: not_yet_assigned
+        product: "Gogs (self-hosted Git)"
+        vendor: "Gogs (open source maintainers)"
+        cvss: not_yet_assigned
+        cwe_class: argument_injection_in_pull_request_rebase_handling
+        affected_versions: ["0.14.2", "0.15.0+dev"]
+        patched_version: none_at_disclosure
+        patch_available: false
+        cisa_kev_listed: false_at_sweep_time
+        install_base_exposure_shadowserver: 2400_plus_internet_exposed
+        install_base_exposure_shodan: 1000_plus_fingerprint_ips
+        install_base_geographic_skew: asia_and_europe_primary
+        related_historical_cve_exploited: CVE-2025-8110
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-28-FLASH-1200-0002-bleepingcomputer-gogs-zero-day-rce-rapid7-jonah-burges-no-patch
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - cve_assigned_to_this_argument_injection_flaw
+      - gogs_upstream_publishes_patch_commit_referencing_rebase_or_argument_injection_or_branch_name_handling
+      - cisa_kev_addition_for_cve_once_assigned
+      - independent_vendor_ir_or_threat_intel_firm_observes_exploitation_of_this_specific_flaw
+      - shodan_or_shadowserver_telemetry_confirms_widespread_post_disclosure_scanning_of_internet_exposed_gogs_instances
+      - first_party_splunk_hit_on_gogs_product_or_rapid7_disclosure_keywords
+      - new_actor_attribution
+      - new_named_victim
+      - escalation_in_scope
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    librarian_handoffs:
+      - action: collector_watch_config_addition
+        target: infrastructure/watch-config.yaml
+        payload: "Add `gogs-argument-injection-2026-05-28` to vuln-watch keywords; monitor for CVE assignment, Gogs upstream commit referencing rebase / argument-injection / branch-name handling, any vendor IR firm observation of exploitation"
+      - action: direct_retrieval_followup
+        target: rapid7_primary_disclosure_blog_url
+        payload: "Directly retrieve the Rapid7 primary disclosure blog post in next collection cycle to confirm BleepingComputer relay faithfulness on mechanism summary and disclosure timeline; this sweep evidence basis was BleepingComputer-relay only"
+      - action: discord_post
+        target: "#flash-alerts"
+        payload: "FLASH within active hours; post immediately, no queue"
+    vuln_tracker_handoffs:
+      - action: standalone_dossier_candidate_eval
+        target: threats/vulnerabilities/gogs-argument-injection-rce-unassigned-CVE/
+        payload: "Gogs argument-injection RCE; no CVE assigned at sweep time; no patch; affected versions 0.14.2 and 0.15.0+dev; effective pre-auth on default open-registration config; 2,400+ exposed instances per Shadowserver; mechanism class is git-rebase argument injection; Rapid7 Jonah Burges disclosure 2026-05-28 after 60+ days vendor silence following 2026-03-17 report; recommend MEDIUM-priority dossier scaffolding pending CVE assignment + patch publication; vuln-tracker monitors CVE assignment + Gogs upstream commit"
+      - action: monitor_for_cve_assignment
+        target: NVD_MITRE_cve_feed
+        payload: "Gogs argument-injection RCE awaiting CVE assignment as of 2026-05-28 12:40 EDT; expected within 7-14 days based on historical NVD assignment cadence for vendor-coordinated-late disclosures"
+    notes: |
+      FLASH within active hours (12:40 EDT). Posts immediately to
+      #flash-alerts; no quiet-hours queue. Critical override 0/4 —
+      ALL prongs fail (no CVSS, no current exploitation, no actor,
+      no A&D-watchlist entity).
+
+      Hard Rule 2 binding: no actor or nation-state attributed to
+      either the current flaw OR to the historical CVE-2025-8110
+      exploitation per Rapid7 / BleepingComputer. Archimedes does
+      NOT originate attribution. BleepingComputer cites
+      CVE-2025-8110 as historical context only — explicitly NOT
+      claimed as the current flaw.
+
+      Single-source veto applied on the imminent-exploitation
+      forward-projection layer: Rapid7 attests no confirmed in-wild
+      exploitation of THIS specific zero-day; the "imminent
+      exploitation" framing is Archimedes-side orchestrator
+      inference from (a) public disclosure event raises exploitation
+      risk against unpatched instances; (b) 60+ days vendor silence;
+      (c) effective pre-auth attack surface on default config;
+      (d) 2,400+ install base; (e) corpus-historical pattern of
+      related Gogs CVE-2025-8110 exploitation. WEP capped at
+      "likely" on this layer; lift conditions documented.
+
+      Trigger 6 marginal fit: spec requires "exploitation confirmed
+      or imminent per A-grade source." Rapid7 (A provisional) does
+      NOT directly attest imminence — that is orchestrator inference
+      from preconditions. Trigger fires on the totality. Operator
+      may re-tune Trigger 6 wording in a future policy review to
+      clarify whether "imminent per A-grade source" requires
+      (i) explicit A-grade attestation of imminence, or (ii) A-grade
+      attestation of preconditions with orchestrator inference.
+
+      Vulnerability disclosure layer (A2 cluster anchor):
+      BleepingComputer is a faithful rewrite/aggregation of the
+      Rapid7 primary disclosure — per INTEL-GRADING.md: "One is a
+      rewrite/aggregation of the other ... is NOT corroboration."
+      Independent attestation exists on the install-base exposure
+      layer (Shadowserver + Shodan are separate scanning operations
+      with separate methodology; A1 on existence-of-exposure
+      dimension) and on the CVE-2025-8110 historical exploitation
+      layer (NVD + BleepingComputer historical-relay).
+
+      Hard Rule 8 first-party check: 0 hits at -30d on Gogs product
+      + Rapid7 researcher sweep across `defenseclaw_local` +
+      `archimedes`. Silence is not contradiction; credibility grade
+      unchanged. 67th consecutive dormant non-self sweep.
+
+      A&D relevance is structural-indirect: self-hosted SCM is
+      competitive with GitHub Enterprise / GitLab Self-Managed /
+      Bitbucket Data Center / Forgejo / Gitea in DIB / ITAR / CMMC
+      engineering-team settings, but Gogs install-base geographic
+      skew (Asia and Europe primary) suggests the typical
+      deployment may not be US-DIB. No A&D-prime, sector, or
+      geography named. A&D-inheritance argument is structural
+      not telemetry-attested.
+
+      Word count 387 — over FLASH target band 150-300 but under hard
+      cap 450 (150% of max). Precedent: flash-2026-05-23-0600-002-
+      litespeed-cpanel ran ~414 body words under same regulatory-
+      framing load. The "no patch, but here's what you can do"
+      action-set (inventory, disable open registration, network
+      restriction, monitor upstream) requires multiple concrete
+      steps that don't compress further.
+
+      Librarian handoff: add `gogs-argument-injection-2026-05-28` to
+      collector watch-config keywords; queue Rapid7 primary
+      disclosure URL direct-retrieval for next collection cycle.
+      Post FLASH to #flash-alerts immediately.
+
+      Vuln-tracker handoff: MEDIUM-priority dossier scaffolding
+      candidate for Gogs argument-injection RCE pending CVE
+      assignment; vuln-tracker monitors CVE assignment (expected
+      within 7-14 days of public disclosure per historical NVD
+      assignment cadence for vendor-coordinated-late disclosures)
+      and Gogs upstream commit.
+
+      Adjacent class for context only (not resurface basis):
+      finding-2026-05-12-FLASH-0001 (Checkmarx Jenkins AST plugin
+      / npm supply-chain) and finding-2026-05-20-FLASH-0001
+      (GitHub corp internal repos via VS Code marketplace
+      extension) — different vectors but same developer-tooling
+      exposure umbrella in the SDLC.
 
 # ============================================================================
 # Valid resurface_if conditions

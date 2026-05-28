@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-20T16:00:00-04:00
+last_updated: 2026-05-28T12:35:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -517,6 +517,19 @@ vendor_sources:
     urls:
       - https://www.thezdi.com/blog
       - https://www.zerodayinitiative.com/blog
+
+  - id: arctic-wolf
+    name: "Arctic Wolf (Labs / IR research)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-28
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-28-FLASH-1200-0001 (CVE-2026-35616 FortiClient EMS fresh post-patch exploitation observation, May 2026; pre-auth API access bypass to privilege escalation, CVSS 9.1; management-pipeline PowerShell-push mechanism dropping EKZ Infostealer / FortiEndpoint_Patch.exe with exfil to 83.138.53.110; sole originating vendor — SecurityWeek and The Hacker News both relay Arctic Wolf with no independent observations). Arctic Wolf is a Tier-2 vendor IR / security operations firm with named-research-team output and an established managed-detection-and-response practice. Provisional B is the conservative starting grade per the vendor-IR-research-firm category precedent (peer class: StepSecurity B, Socket B, Sysdig B, Zellic B, Ox Security B, Upwind B). Methodological positives on first surface: Arctic Wolf names no actor or nation-state on the campaign (Hard Rule 2 compliant); SecurityWeek and THN both preserve this absence verbatim. Operator may upgrade to A on subsequent surfaces showing consistent technical rigor across additional vendor-IR investigations, particularly if Arctic Wolf telemetry coordinates with Tier-1 vendor research (Mandiant / CrowdStrike / Unit 42 / MSTIC) on shared campaigns; hold at B if context-thin commercial-research profile is observed across more findings. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://arcticwolf.com/resources/blog/
+      - https://arcticwolf.com/resources/
 
 # ============================================================================
 # Security Media & Researchers

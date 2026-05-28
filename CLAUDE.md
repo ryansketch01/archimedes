@@ -480,7 +480,7 @@ The failure was **silent and unrecoverable by the existing plumbing**, for two c
 
 **Fix (Session 15, this file's commit):** `run_phase.ps1` now, for the two brief phases (`morning-brief` / `afternoon-brief`), uses an **output-based** success criterion instead of exit code alone — success = "the expected `threats/briefs/$DateStr-<type>.md` exists AND is committed clean." If the brief is uncommitted (untracked OR modified):
 
-- It auto-commits the day's corpus (brief + `finding-$DateStr-*.md` + `raw-$DateStr-*.md` + the two `_*-log.yaml` index files if dirty) with a **`[DEGRADED-RECOVERY]`** subject marker. The existing catchup push then lands it on `origin/main`. **Never posted to Discord** — a human reviews before any ship (the `status: published` frontmatter is the briefer's optimism, not proof of delivery).
+- It auto-commits the day's corpus (brief + `finding-$DateStr-*.md` + `raw-$DateStr-*.md` + the two `_*-log.yaml` index files if dirty) with a **`[DEGRADED-RECOVERY]`** subject marker. The existing catchup push then lands it on `origin/main`. *(Session 15 deliberately did NOT post these to Discord, requiring human review. **Session 16 superseded that** — recovered briefs are now auto-delivered to Discord by the delivery catch-up; see the Session 16 note below.)*
 - It posts a failure alert to the **`commands`** Discord channel (`scripts/discord_post.py --channel commands`) naming the phase, exit code, recovery outcome, run id, and log path.
 - New telemetry on the `completed` event: `recovery_commit_exit`, `alert_sent`, `alert_reason`.
 
@@ -490,6 +490,26 @@ This also catches the librarian-held-without-committing case (exit 0 but brief u
 
 **PS 5.1 string-literal gotcha hit while writing this fix:** an em-dash (`—`, UTF-8 `E2 80 94`) inside a **double-quoted string literal** breaks parsing, because PS 5.1 reads this no-BOM `.ps1` as Windows-1252 and byte `0x94` is the "right double quotation mark" — it silently *closes the string*, and the next word becomes an unexpected token. Em-dashes in `#` comments are harmless (never tokenized as code), which is why the rest of the file's em-dashes never bit. **Keep string literals in `.ps1` files ASCII-only** (use `-`, not `—`). Validate any wrapper edit with `[System.Management.Automation.Language.Parser]::ParseFile(...)` before relying on it. Discovered Session 15.
 
+### Delivery catch-up: recovered briefs auto-deliver to Discord (zero model tokens)
+
+The Session 15 degraded-recovery committed orphaned briefs but stopped short of posting them — so a usage-limit morning still meant the operator saw nothing in `#intel-briefs`. On 2026-05-26 and 2026-05-27 the 08:00 morning brief hit the org usage limit **two days running** (the recovery fired correctly both days — commits `9734e02`, `791b8da` — but delivery was still manual). Cap was raised $20→$50 in response.
+
+**Root cause is capacity, not code:** the 08:00 morning brief is the single heaviest phase (full pipeline, many subagent calls in one `claude -p`). As the billing month nears its ceiling, the biggest job is the first to be refused — which is why **morning fails but the lighter afternoon brief and flash sweeps still go through**, and why the limit "clears by afternoon."
+
+**Key insight that drives the fix:** the usage limit only blocks `claude -p` (model calls). **Posting to Discord + a git commit are deterministic and cost ZERO model tokens.** The brief is already fully written and graded on disk; only *delivery* failed. So delivery can run even while the limit is still active.
+
+**Fix (Session 16):** `scripts/deliver_catchup.py` + a `run_phase.ps1` hook (`Invoke-DeliveryCatchup`) that runs at the **end of every phase**, after the recovery commit and before the catchup push:
+
+- **Detection (no double-posting):** a brief needs delivery iff (a) its frontmatter has no `discord_delivery` marker AND (b) its **introducing commit** (`git log --diff-filter=A`) subject starts with `[DEGRADED-RECOVERY]`. A normally-delivered brief is first-added by a librarian `Publish ...` commit, so it is skipped. The on-disk `discord_delivery` marker is authoritative for re-post prevention even if the marker commit later fails.
+- **Layer 2 only, chunked:** it extracts the same `## 📣 Discord Summary` section the librarian posts (heading → EOF) and **chunks it under the 2000-char Discord cap**. Recovered briefs skip the librarian's manual trim step, so Layer 2 routinely exceeds 2000 (05-27 was 3685 chars → 3 parts). Reuses `scripts/discord_post.py`'s tested POST code.
+- **TLP gate preserved:** only `CLEAR` / `GREEN` auto-deliver; `AMBER` / `RED` are skipped for human handling (mirrors the librarian).
+- **Marker + commit:** on success it writes a `discord_delivery:` block (channel, message_ids, parts, delivered_at, `late: true`, `via: deliver_catchup`) into the brief frontmatter and commits it. Not bypassed past gitleaks.
+- **Alert softened:** when the catch-up ships the failed phase's brief, the `#commands` failure alert now says "auto-delivered late" instead of "NOT posted." New `completed`-event telemetry: `catchup_delivered_count`, `catchup_error_count`, `current_brief_delivered`.
+
+Net effect: a usage-limit morning now self-heals — the brief lands in `#intel-briefs` the same run (~08:45), with a one-line "Delivered late by catch-up — content unchanged" prefix. First live run delivered the orphaned 05-26 (2 parts) and 05-27 (3 parts) mornings. Because delivery is deterministic and idempotent, it also retries on the next phase if Discord was transiently down.
+
+**Subtlety to remember:** the briefer's `status: published` frontmatter is set optimistically and is NOT proof of delivery — the authoritative "this reached Discord" signal is the `discord_delivery` marker (catch-up) or a librarian `Publish ...` commit (normal path). Discovered + built Session 16.
+
 ---
 
-*Last updated: Session 15 (run_phase.ps1 brief-phase degraded-recovery + Discord failure alert after the 2026-05-21 usage-limit orphaned-corpus incident; PS 5.1 em-dash-in-string-literal parse gotcha; .gitleaks.toml `consumer/SMB` false-positive carve-out)*
+*Last updated: Session 16 (delivery catch-up — `deliver_catchup.py` + `run_phase.ps1` hook auto-delivers `[DEGRADED-RECOVERY]` briefs to #intel-briefs with zero model tokens, after the 05-26/05-27 back-to-back usage-limit morning misfires; Layer 2 chunking under the 2000-char cap; `discord_delivery` frontmatter marker for idempotency)*

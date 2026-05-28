@@ -143,6 +143,38 @@ function Send-DiscordAlert {
     }
 }
 
+# Helper: run the deterministic delivery catch-up (scripts/deliver_catchup.py).
+# Delivers any brief that was committed via [DEGRADED-RECOVERY] but never posted
+# to Discord (the usage-limit case). Costs ZERO model tokens, so it works even
+# while the limit is still blocking claude -p. Returns a hashtable with the
+# parsed delivered/error lists so the caller can soften the failure alert.
+# Runs on every phase: a clean phase finds nothing (introducing commit is a
+# normal "Publish ..." not DEGRADED-RECOVERY) and no-ops. Non-fatal; never
+# uses 2>&1 on the native exe (NativeCommandError under Stop).
+function Invoke-DeliveryCatchup {
+    param([string]$RunIdArg)
+    $result = @{ delivered_count = 0; error_count = 0; delivered_ids = @(); raw = '' }
+    Push-Location $RepoRoot
+    try {
+        $out = & uv run python scripts/deliver_catchup.py --run-id $RunIdArg
+        $jsonLine = $out | Where-Object { $_ -match '^\s*\{' } | Select-Object -Last 1
+        if ($jsonLine) {
+            $result.raw = $jsonLine
+            try {
+                $parsed = $jsonLine | ConvertFrom-Json
+                $result.delivered_count = @($parsed.delivered).Count
+                $result.error_count = @($parsed.errors).Count
+                $result.delivered_ids = @($parsed.delivered | ForEach-Object { $_.brief_id })
+            } catch { }
+        }
+    } catch {
+        # PS-level exception (uv not found, etc.) — non-fatal.
+    } finally {
+        Pop-Location
+    }
+    return $result
+}
+
 # --- Pre-flight: log "started" event ---
 $startEvent = @{
     run_id     = $RunId
@@ -283,6 +315,25 @@ if ($BriefType) {
     }
 }
 
+# --- Delivery catch-up: ship any recovered-but-unposted brief to Discord ---
+# Deterministic (zero model tokens), so it works even while the usage limit
+# is still blocking claude -p. Runs on EVERY phase; a clean phase no-ops.
+# Placed BEFORE the catchup push so the delivery marker commits get pushed too.
+# This is what closes the loop on the usage-limit incident: the [DEGRADED-
+# RECOVERY] commit above lands the brief in git; this posts its Layer 2 to
+# #intel-briefs the same run.
+$DeliveryResult = Invoke-DeliveryCatchup -RunIdArg $RunId
+$utf8NoBomDelivLog = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::AppendAllText($LogFile, "[run_phase.ps1] delivery catchup: delivered=$($DeliveryResult.delivered_count) errors=$($DeliveryResult.error_count) ids=$($DeliveryResult.delivered_ids -join ',')`r`n", $utf8NoBomDelivLog)
+
+# Did THIS phase's brief get delivered by the catch-up just now? Used to soften
+# the failure alert below from "NOT posted" to "auto-delivered late".
+$CurrentBriefDelivered = $false
+if ($BriefType) {
+    $thisBriefId = "$DateStr-$BriefType"
+    if ($DeliveryResult.delivered_ids -contains $thisBriefId) { $CurrentBriefDelivered = $true }
+}
+
 # --- Catchup push: ensure any commits the librarian made are on origin/main ---
 # The librarian's `git push` step (Mode 1 procedure step 8) is empirically
 # non-deterministic — Wed 2026-05-06 auto-pushed all 6 phases cleanly, Tue
@@ -326,13 +377,20 @@ $utf8NoBomPushLog = New-Object System.Text.UTF8Encoding $false
 # already been pushed by the catchup step, so the alert can point at git.
 $AlertSent = $null   # $null = not attempted
 if ($AlertNeeded) {
+    # If the catch-up already shipped this brief's Layer 2, the alert is an FYI,
+    # not a fire drill — say so. Otherwise keep the strong "NOT posted" warning.
+    if ($CurrentBriefDelivered) {
+        $deliveryLine = "**Layer 2 was auto-delivered late to #intel-briefs** by the delivery catch-up (corpus committed via DEGRADED-RECOVERY). Review the recovery commit; no manual post needed."
+    } else {
+        $deliveryLine = "**The brief was NOT posted to #intel-briefs.**"
+    }
     $alertMsg = ":red_circle: **Archimedes pipeline FAILURE** - $BriefType brief ($DateStr)`n" +
-        "Phase '$Phase' ended with exit=$ClaudeExit. **The brief was NOT posted to #intel-briefs.**`n" +
+        "Phase '$Phase' ended with exit=$ClaudeExit. $deliveryLine`n" +
         "$AlertReason`n" +
         "Run id: $RunId`n" +
         "Log: $LogFile"
     $AlertSent = Send-DiscordAlert -Message $alertMsg -Channel 'commands'
-    [System.IO.File]::AppendAllText($LogFile, "[run_phase.ps1] failure alert sent=$AlertSent reason=$AlertReason`r`n", $utf8NoBomPushLog)
+    [System.IO.File]::AppendAllText($LogFile, "[run_phase.ps1] failure alert sent=$AlertSent current_brief_delivered=$CurrentBriefDelivered reason=$AlertReason`r`n", $utf8NoBomPushLog)
 }
 
 # --- Post-flight: log "completed" event ---
@@ -347,6 +405,9 @@ $endEvent = @{
     recovery_commit_exit = $RecoveryCommit
     alert_sent          = $AlertSent
     alert_reason        = $AlertReason
+    catchup_delivered_count = $DeliveryResult.delivered_count
+    catchup_error_count = $DeliveryResult.error_count
+    current_brief_delivered = $CurrentBriefDelivered
 }
 [void](Send-SplunkEvent -EventData $endEvent)
 

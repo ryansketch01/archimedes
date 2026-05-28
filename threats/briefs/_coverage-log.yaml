@@ -20813,6 +20813,912 @@ entries:
       extension) — different vectors but same developer-tooling
       exposure umbrella in the SDLC.
 
+  - id: 2026-05-28-pm-001-centcom-commercial-location-data-adversary-threat-reports-wyden
+    covered_in: [2026-05-28-afternoon]
+    brief_file: threats/briefs/2026-05-28-afternoon.md
+    headline: "PM lead — CENTCOM publicly acknowledges 'multiple threat reports concerning adversary exploitation of commercial location data' against US personnel in theater; Senator Wyden released the underlying reports; WIRED parallel investigation with two German news outlets maps 11 US military / intel sites in Germany via billions of broker coordinates. First named-DoD acknowledgment in 2026 corpus that commercial app-data supply chain is being weaponized against deployed personnel. Threat categories named in framing: missile / drone / IED targeting plus counterintelligence. CENTCOM does NOT attribute (Hard Rule 2 — 'adversary' verbatim). B1; factual threat-surface layer very_likely; active-kinetic-weaponization implication rides at likely (single-effective-witness on operational claim per red-team)."
+    topic_tags:
+      - centcom-public-acknowledgment-adversary-commercial-location-data-threat-reports
+      - wyden-policy-release-context-preserved
+      - wired-germany-investigation-billions-of-broker-coordinates-11-sites
+      - dib-workforce-mobile-device-personal-app-opsec-failure-mode
+      - dcsa-dfars-252-204-7012-cmmc-workforce-policy-implication
+      - data-broker-regulation-legislative-track-anticipated
+      - hard-rule-2-centcom-adversary-verbatim-no-state-attribution-originated
+      - factual-layer-very-likely-operational-weaponization-implication-likely-split
+      - red-team-qualify-disposition-not-blocking
+      - sat-ach-h5-unresolved-adversary-rank-1-iran-russia-prc-candidates-not-sourced
+      - sat-kac-eight-assumptions-five-qualify-three-sound
+      - single-effective-witness-on-operational-kinetic-targeting-claim
+    related_actors: []   # no sourced attribution; H1 IRGC/MOIS, H3 Iran-aligned militias, H2 Russia/PRC are unsourced candidates only
+    related_vulns: []
+    related_campaigns:
+      - centcom-commercial-location-data-adversary-threat-reports-2026-05-28
+    finding_ids:
+      - finding-2026-05-28-0005-wired-reuters-pentagon-centcom-commercial-location-data-troops-targeted-adversaries-wyden
+    digraph: B1
+    wep: very_likely  # factual layer; operational-weaponization implication caveat applied
+    resurface_if:
+      - new_attribution                 # CENTCOM / DIA / NSA / NCSC names adversary class
+      - pentagon_ig_or_dod_releases_threat_report_with_operational_specifics
+      - wired_long_form_names_data_broker
+      - new_named_victim_or_dib_prime_workforce_disclosure
+      - wyden_introduces_data_broker_legislation
+      - dcsa_dfars_cmmc_guidance_update_referencing_workforce_mobile_device_personal_app_class
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      PM-28 lead. Red-team disposition: qualify, not blocking. Briefer
+      enforced the split per red-team direction — factual threat-surface
+      layer (CENTCOM publicly acknowledged + WIRED documented broker
+      capability) rides at very_likely; active-kinetic-weaponization
+      implication rides at likely. Single-effective-witness on the
+      operational kinetic-targeting claim (CENTCOM AOR 'in theater'
+      framing is unverified outside the classified threat reports;
+      WIRED documents broker CAPABILITY against Germany / EUCOM AOR,
+      not CENTCOM-AOR in-theater operational use).
+
+      Hard Rule 2 binding: CENTCOM said "adversary" generically; no
+      novel attribution originated. ACH rank-1 hypothesis is H5
+      (unresolved adversary identity) — not because there is no
+      threat (E1+E2 confirm threat-report plurality and explicit
+      kinetic categories), but because no sourced evidence
+      discriminates between IRGC/MOIS (CENTCOM-AOR baseline),
+      Iran-aligned militias, Russia, PRC, or concurrent multi-class
+      exploitation. Candidate hypotheses surfaced for completeness
+      only, tagged 'not sourced.'
+
+      Wyden policy-release context preserved per analyst KAC A7 +
+      red-team flag — Wyden has been the data-broker-regulation
+      legislative champion since 2018 Mobilewalla / Babel Street
+      disclosures + 2024 IRS-Venntel scandal. Briefer did NOT
+      down-weight CENTCOM's acknowledgment on Wyden-context basis
+      (CENTCOM on-record speech carries institutional reputational
+      cost) but preserved the structural context.
+
+      DIB workforce A&D-relevance is the actionable layer regardless
+      of the operational-weaponization brittleness. Mitigation lives
+      in device policy + personal-app control, not mobile EDR threat-
+      hunting. Surfaced to DCSA / DFARS 252.204-7012 / CMMC
+      counterparts as standing-implication signal.
+
+      Standing carry-forward to AM-29 + weekly synthesis. Tripwires:
+      Pentagon IG or DoD public release of underlying threat report
+      with operational specifics; A-grade follow-on from DIA / NSA /
+      NCSC corroborating broker-data-to-kinetic-targeting in CENTCOM
+      AOR; WIRED long-form retrieval naming broker.
+
+  - id: 2026-05-28-pm-002-cisa-federal-escalation-nx-console-megalodon-supply-chain-formal-prioritization
+    covered_in: [2026-05-20-FLASH-0001-tea-mpcp-nx-console, 2026-05-25-afternoon, 2026-05-26-pm-other-signal, 2026-05-27-pm-cisa-kev-three-add, 2026-05-28-afternoon]
+    brief_file: threats/briefs/2026-05-28-afternoon.md
+    headline: "UPDATE — CISA 2026-05-28 alert formally prioritizes federal-agency response to Nx Console + GitHub repository compromise (corpus-anchored to TeamPCP per FLASH-0001) and Megalodon supply-chain campaign (corpus-anchored finding-2026-05-25-0001). Alert names malicious Nx Console 18.95.0 distributed via VS Code automatic update mechanism. CVE-2026-48027 + CVE-2026-45321 federal KEV dueDates 2026-06-10 (13 days). Federal-escalation factual layer A1 / very_likely; DIB-prime remediation forecast + DCSA/DFARS/CMMC guidance integration ride at likely (forward-projection split per red-team)."
+    topic_tags:
+      - cisa-federal-escalation-formal-prioritization-already-corpus-tracked-sdlc-threat-surface
+      - nx-console-18-95-0-vs-code-auto-update-silent-distribution-channel
+      - cve-2026-48027-nx-console-kev-due-2026-06-10
+      - cve-2026-45321-tanstack-mini-shai-hulud-kev-due-2026-06-10
+      - dcsa-dfars-252-204-7012-cmmc-vector-class-integration-forecast
+      - federal-deadline-density-litespeed-exchange-tomorrow-plus-nx-console-tanstack-jun-10
+      - hard-rule-2-cisa-no-attribution-teampcp-corpus-side-only
+      - factual-federal-escalation-layer-very-likely-forward-projection-layer-likely-split
+      - red-team-qualify-disposition-not-blocking
+      - corpus-anchor-finding-2026-05-20-flash-0001-nx-console
+      - corpus-anchor-finding-2026-05-25-0001-megalodon-tiledesk
+      - corpus-anchor-finding-2026-05-27-0007-cisa-kev-three-add
+      - splunk-hunt-nx-console-18-95-0-defenseclaw-local-recommended
+      - update-block-not-fresh-disclosure-anti-repetition-applied
+      - federal-escalation-pattern-recurring-signal-class-standing-dynamic
+    related_actors:
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: corpus-side-attribution-on-nx-console-side-cisa-does-not-attribute-by-actor
+    related_vulns:
+      - cve: CVE-2026-48027
+        role: nx-console-kev-due-2026-06-10
+      - cve: CVE-2026-45321
+        role: tanstack-mini-shai-hulud-kev-due-2026-06-10
+    related_campaigns:
+      - cisa-federal-escalation-nx-console-megalodon-2026-05-28
+      - teampcp-supply-chain-2026-04-05-vt-006-vt-009-lineage
+      - megalodon-github-workflow-dispatch-2026
+    finding_ids:
+      - finding-2026-05-28-0007-cisa-alert-supply-chain-compromises-nx-console-github-megalodon-federal-escalation
+    digraph: A1
+    wep: very_likely  # factual federal-escalation layer; forward-projection layer qualified
+    resurface_if:
+      - kev_deadline_passes                                    # 2026-06-10
+      - dcsa_dfars_cmmc_guidance_update_referencing_nx_console_or_megalodon_vector_class
+      - first_party_splunk_hit_on_nx_console_18_95_0
+      - federal_agency_kev_deadline_compliance_signal_observed
+      - new_victims_confirmed
+      - new_attribution
+      - escalation_in_scope
+    first_covered: 2026-05-20
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      UPDATE block, not fresh disclosure. Briefer enforced anti-
+      repetition per red-team direction: federal-escalation factual
+      layer (CISA published alert; RSS lede carries the prioritization
+      claim) rides at very_likely; DIB-prime remediation forecast +
+      DCSA/DFARS/CMMC guidance integration ride at likely (forward-
+      projection layer is structurally weaker — DCSA/DFARS guidance
+      typically lags CISA alerts by months not days; DFARS 252.204-
+      7012 contractual cascade is not 1:1 with BOD-22-01 federal
+      obligation).
+
+      Hard Rule 2 preserved: CISA does not attribute by actor in alert
+      text. TeamPCP attribution on Nx Console side is corpus-side from
+      finding-2026-05-20-FLASH-0001 (TeamPCP self-claim + GitHub
+      procedural confirmation), not propagated as CISA-attested.
+
+      Full CISA alert body NOT retrieved due to cisa.gov/news-events
+      WAF pattern (standing observation); metadata + lede via
+      all.xml RSS feed. Red-team flagged this as structural risk —
+      if full alert body contains attribution language not in
+      retrievable lede, Hard Rule 2 discipline would shift.
+
+      Standing carry-forward across PM-28 → AM-29 → weekly synthesis
+      to 2026-06-10 KEV deadline. Pairs with LiteSpeed CVE-2026-48172
+      + Exchange OWA CVE-2026-42897 KEV deadlines tomorrow (2026-05-29)
+      for federal-deadline-density signal. Splunk hunt for Nx Console
+      18.95.0 in defenseclaw_local recommended regardless of brief
+      inclusion (red-team standing recommendation).
+
+      Federal-escalation pattern noted as standing dynamic. CENTCOM
+      Wyden-track + CISA Nx Console alert are both 2026-05-28
+      government-policy-cascade signals on threat surfaces already
+      corpus-tracked. Briefer surfaced this as a recurring signal
+      class — the value-add is regulatory trajectory weight, not new
+      evidence.
+
+  - id: 2026-05-28-pm-003-cisa-ics-batch-10-advisories-macgregor-vdr-xcharge-c6-ev-pusr-schneider-kmw-abb-fourth-frontier
+    covered_in: [2026-05-28-afternoon]
+    brief_file: threats/briefs/2026-05-28-afternoon.md
+    headline: "CISA ICS advisory batch 2026-05-28 08:00 EDT — 9 ICS + 1 medical-device advisories. Highest A&D adjacency: ICSA-26-148-01 MacGregor VDR G4e (Danelec, CVSS 8.3, multi-CVE default-credentials cluster led by CVE-2026-42941; pre-patch < V5.250; DoD MSC sealift adjacency) + ICSA-26-148-08 XCharge C6 EV Charging Controller (US-HQ, CVSS 9.8, CVE-2026-9037 firmware integrity check failure; federal-fleet EV electrification mandate posture). Medium: PUSR USR-W610 (China-HQ, hardcoded admin creds), Schneider EcoStruxure Machine Expert HVAC (cleartext storage; Modicon programming software), KMW CCTV (Romania, unverified password change; government facilities sector named). A2 / very_likely on procedural disclosure facts; no active exploitation; no tracked-actor attribution."
+    topic_tags:
+      - cisa-ics-advisory-batch-routine-vendor-coordinated-disclosure
+      - icsa-26-148-01-macgregor-vdr-g4e-danelec-cvss-8-3-transportation-maritime
+      - icsa-26-148-08-xcharge-c6-ev-charging-controller-cvss-9-8-transportation-systems
+      - icsa-26-148-02-pusr-usr-w610-china-hq-cvss-9-8-critical-manufacturing
+      - icsa-26-148-07-schneider-ecostruxure-machine-expert-hvac
+      - icsa-26-148-06-kmw-cctv-romania-government-facilities-named
+      - icsa-26-148-03-04-05-abb-busch-welcome-cp-plus-nvr-lower-priority
+      - icsma-26-148-01-fourth-frontier-medical-wearable-ble-auth
+      - dod-msc-strategic-sealift-mandatory-imo-vdr-adjacency
+      - federal-fleet-ev-electrification-mandate-xcharge-c6-firmware-integrity-bypass
+      - dib-shop-floor-pusr-rs232-485-bridging-china-hq-vendor
+      - schneider-modicon-m171-m172-programming-software-dib-prime-mfg-footprint
+      - cve-2026-42941-macgregor-default-credentials
+      - cve-2026-9037-xcharge-c6-firmware-integrity-stack-overflow-insecure-default
+      - cve-2026-7786-pusr-hardcoded-admin-credentials
+      - cve-2026-5386-kmw-unverified-password-change
+      - cve-2026-5768-fourth-frontier-ble-missing-auth
+      - vuln-tracker-pivot-pending-macgregor-xcharge-vt-scaffolds
+      - splunk-hunt-candidate-product-deployment-macgregor-xcharge-pusr-schneider
+      - no-tracked-actor-attribution-no-active-exploitation
+      - vulnerability-density-paired-with-am-28-finding-0004-nvd-batch
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2026-42941
+        role: macgregor-vdr-default-credentials
+      - cve: CVE-2026-9037
+        role: xcharge-c6-firmware-integrity-check-failure
+      - cve: CVE-2026-7786
+        role: pusr-usr-w610-hardcoded-admin-credentials
+      - cve: CVE-2026-5386
+        role: kmw-cctv-unverified-password-change
+      - cve: CVE-2026-5768
+        role: fourth-frontier-ble-missing-authentication
+    related_campaigns:
+      - cisa-ics-batch-2026-05-28
+    finding_ids:
+      - finding-2026-05-28-0011-cisa-ics-batch-10-advisories-macgregor-vdr-xcharge-c6-ev-schneider-abb-pusr-medical
+    digraph: A2
+    wep: very_likely
+    resurface_if:
+      - escalation_to_exploitation
+      - kev_addition
+      - first_party_ioc_hit
+      - patch_released
+      - vt_tracker_dossier_scaffold_completed
+      - new_named_victim_in_ad_sector
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      Routine CISA ICS batch — vendor-coordinated disclosures with
+      vendor-confirmed patch / mitigation status. No tracked-actor
+      attribution; procedural disclosures.
+
+      Hard Rule 2 vacuous (no attribution to preserve or originate).
+      Single-source-veto NOT applied — vuln advisories on procedural
+      facts are not WEP-claims subject to veto (CVE existence, CVSS
+      scoring, version-fix-matrices are pre-publication-verified by
+      CISA).
+
+      Vuln-tracker pivot recommendation: MacGregor VDR + XCharge C6
+      (highest A&D adjacency) warrant VT-* dossier scaffolds at
+      minimum. Operator-level visibility call on DoD MSC supplier-
+      chain VDR exposure (chartered sealift). Federal-fleet EV
+      charging posture surfacing on XCharge C6 firmware-integrity
+      bypass.
+
+      Vulnerability-density signal — pairs with AM-28 finding-0004
+      (NVD critical CVE batch: Samba CVE-2026-4408, X.Org CVE-2026-
+      34000/34002, Red Hat Quay CVE-2026-32590). Combined with
+      LiteSpeed CVE-2026-48172 + Exchange OWA CVE-2026-42897 KEV
+      deadlines tomorrow and Nx Console / TanStack KEV deadlines
+      2026-06-10, the federal-compliance-deadline density across
+      PM-28 → AM-29 → PM-29 brief windows is high.
+
+      Splunk hunt candidate — affected-product deployment query
+      against defenseclaw_local for MacGregor / XCharge / PUSR /
+      Schneider EcoStruxure footprint at next sweep.
+
+  - id: 2026-05-28-pm-004-mstic-storm-2697-the-gentlemen-raas-go-encryptor-breachforums-affiliate
+    covered_in: [2026-05-28-afternoon]
+    brief_file: threats/briefs/2026-05-28-afternoon.md
+    headline: "MSTIC introduces Storm-2697 / 'The Gentlemen' RaaS — Go encryptor (Curve25519 ECDH + XChaCha20 + Garble obfuscation), 21-vector lateral movement (PsExec / WMIC / WMI / WinRM / scheduled tasks / services), dual persistence, Defender disable + shadow copy removal + 60+ process termination. Storm-2697 pivoted from closed operations to RaaS Sep 2025; recently struck BreachForums affiliate-recruitment partnership. Named sectors: transportation (DIB tier-2/3 logistics adjacency structural), education, healthcare, financial. Three SHA-256 hashes published. A2 / WEP capped at 'likely' by single-source veto (MSTIC sole Tier-1 vendor on Storm-2697 designation this sweep)."
+    topic_tags:
+      - mstic-canonical-storm-2697-actor-designation-new-to-corpus
+      - the-gentlemen-raas-go-encryptor-curve25519-xchacha20-garble-obfuscation
+      - 21-vector-self-propagating-lateral-movement
+      - breachforums-affiliate-recruitment-partnership-cybercrime-forum-funnel
+      - storm-2697-transportation-education-healthcare-financial-target-sectors
+      - transportation-sector-dib-tier-2-3-logistics-adjacency-structural-inference-not-validated-cascade
+      - sha256-22b38d-encryptor-078163-psexec-fe1033-wallpaper
+      - defender-signature-ransom-win64-gentlemen
+      - new-actor-corpus-introduction-scaffold-decision-pending
+      - hard-rule-2-mstic-canonical-storm-numbering-no-state-attribution-originated
+      - single-source-veto-applied-wep-capped-at-likely-pending-second-tier-1-vendor-corroboration-14d
+      - sat-kac-eight-assumptions-a5-test-classification-dib-logistics-cascade-structural-flag
+      - splunk-hunt-three-sha256-hashes-defenseclaw-local-recommended-build-specific-low-base-rate
+      - same-affiliate-funnel-pattern-as-teampcp-corpus-tracked-roster-001
+    related_actors:
+      - id: storm-2697
+        actor_name: Storm-2697 / The Gentlemen (MSTIC-canonical)
+        attribution_in_brief: mstic-originating-designation-new-to-corpus
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: corpus-tracked-affiliate-funnel-pattern-adjacency-distinct-actor
+    related_vulns: []
+    related_campaigns:
+      - storm-2697-the-gentlemen-raas-breachforums-affiliate-recruitment
+    finding_ids:
+      - finding-2026-05-28-0006-mstic-the-gentlemen-ransomware-storm-2697-go-encryptor-raas-breachforums-transportation
+    digraph: A2
+    wep: likely  # single-source veto applied; MSTIC sole Tier-1 vendor this sweep
+    resurface_if:
+      - second_tier_1_vendor_corroborates_storm_2697_within_14d  # lifts to A1 candidate
+      - new_named_victim_in_ad_sector
+      - new_named_dib_logistics_victim
+      - first_party_splunk_hit_on_three_sha256_hashes
+      - escalation_to_exploitation
+      - mstic_publishes_followup_on_storm_2697_activity_scope_expansion
+      - cisa_kev_addition_or_advisory
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    librarian_handoffs:
+      - action: new_actor_scaffold_evaluation
+        target: threats/threat-actors/Storm-2697/
+        payload: "MSTIC-canonical Storm-2697 / The Gentlemen RaaS — financially motivated, Go encryptor + 21-vector lateral movement + BreachForums affiliate-recruitment partnership. Sectors: transportation / education / healthcare / financial. New-to-corpus actor introduction; actor-profiler /new-actor scaffold decision pending operator approval."
+    notes: |
+      MSTIC-canonical Storm-2697 introduction. Hard Rule 2 vacuous —
+      MSTIC is canonical originator on Storm-* numbering taxonomy.
+      Financial motivation, no state-attribution claimed.
+
+      Single-source veto applied: WEP capped at "likely" pending
+      second Tier-1 vendor publication (Mandiant / CrowdStrike /
+      Unit 42 / Sophos / ESET / Bitdefender). Lift to A1 candidate
+      if second vendor corroborates within 14 days.
+
+      Transportation-sector → DIB-logistics-cascade inference is the
+      Test-classified assumption (A5, low-confidence, critical-
+      centrality). Brief explicitly framed cascade as structural
+      inference, NOT validated. MSTIC "transportation" category may
+      include civilian / urban-transit operators distinct from
+      DIB-logistics-flow operators (A4 medium-confidence).
+
+      Three published SHA-256 hashes are likely build-specific
+      (A6 low-confidence, peripheral) — Splunk hunt productive but
+      low base-rate expectation. Hashes:
+        - 22b38dad7da097ea03aa28d0614164cd25fafeb1383dbc15047e34c8050f6f67 (encryptor)
+        - 078163d5c16f64caa5a14784323fd51451b8c831c73396b967b4e35e6879937b (PsExec)
+        - fe1033335a045c696c900d435119d210361966e2fb5cd1ba3382608cfa2c8e68 (wallpaper BMP)
+      Defender signature: Ransom:Win64/Gentlemen.
+
+      Same affiliate-funnel-via-cybercrime-forum pattern as corpus-
+      tracked TeamPCP roster #001 (HIGH) — adjacency, NOT roster
+      expansion. Distinct actor.
+
+      New-actor scaffold decision: librarian flag to actor-profiler.
+      Storm-2697 candidate for /new-actor scaffold pending operator
+      approval.
+
+  - id: 2026-05-28-pm-005-fbi-group-ib-ghost-stadium-chinese-speaking-criminal-2026-fifa-world-cup-fraud-cluster
+    covered_in: [2026-05-28-afternoon]
+    brief_file: threats/briefs/2026-05-28-afternoon.md
+    headline: "FBI PSA260527 + Group-IB attribute a Chinese-speaking criminal group named 'Ghost Stadium' to ~4,300 fraudulent 2026 FIFA World Cup domains registered since August 2025 — ~300 active, ~3,800 dormant / pre-positioned. Categories: premium-ticket fraud ($60 vs thousands), employment fraud, data harvesting. Distribution: Facebook ads / Google Search / Telegram / WhatsApp. Geographic spread: UK / Portugal / Spain / Algeria / US / Canada / Mexico / Brazil / Germany / Australia (Bitdefender). Attribution linguistic-evidence-only (Layui 2.7.6m + Chinese comments) — NOT China-state. A2 / WEP dropped very_likely → likely by red team (FBI / Group-IB independence unverified; H1 / H3' diagnostic gap narrower than original ACH coded)."
+    topic_tags:
+      - fbi-psa260527-ic3-consumer-fraud-alert
+      - group-ib-originating-research-ghost-stadium-attribution
+      - chinese-speaking-criminal-financial-fraud-cluster-linguistic-evidence-only
+      - hard-rule-2-not-china-state-not-mss-mps-no-upgrade-attribution
+      - 4300-domains-300-active-3800-dormant-pre-positioned-since-august-2025
+      - premium-ticket-fraud-60-vs-thousands-monetization
+      - employment-fraud-jobs-fifa-hiring-pattern
+      - data-harvesting-names-addresses-banking-pii
+      - facebook-ads-google-search-telegram-whatsapp-distribution-channels
+      - phishing-kit-layui-2-7-6m-chinese-ui-library-chinese-source-code-comments-attribution-evidence
+      - account-lockout-tradecraft-post-credential-capture-password-reset
+      - bitdefender-10-country-geographic-spread-mentioned-not-detailed-this-sweep
+      - 2026-fifa-world-cup-attack-surface-criminal-layer-three-layer-concurrence-am-28-iran-cyber-watch-pairing
+      - distinct-cluster-from-am-28-finding-0002-unit42-iran-irgc-mois-fronts-different-actor-class-different-motivation
+      - red-team-wep-drop-very-likely-to-likely-applied-fbi-group-ib-independence-unverified-h3-prime-bulk-pii-state-collection-variant-narrow-leader
+      - sat-ach-h1-sourced-rank-1-zero-inconsistencies-narrow-leader-not-strong-leader
+      - sat-kac-eight-assumptions-five-qualify-fbi-group-ib-independence-load-bearing
+      - group-ib-first-corpus-citation-librarian-source-grade-log-addition-provisional-b
+      - splunk-hunt-three-exemplar-domains-four-tld-rotation-patterns-defenseclaw-local-dib-employee-spillover
+      - world-cup-attack-surface-standing-theme-through-july-19-2026
+    related_actors:
+      - id: ghost-stadium
+        actor_name: Ghost Stadium (Group-IB-coined)
+        attribution_in_brief: group-ib-linguistic-evidence-only-chinese-speaking-criminal-NOT-china-state-NOT-mss-mps
+    related_vulns: []
+    related_campaigns:
+      - ghost-stadium-2026-fifa-world-cup-fraud-cluster
+      - iran-irgc-mois-2026-world-cup-attack-surface  # corpus-adjacent, distinct cluster
+    finding_ids:
+      - finding-2026-05-28-0008-fbi-group-ib-ghost-stadium-chinese-criminal-2026-fifa-world-cup-4300-domains
+    digraph: A2
+    wep: likely  # red team dropped very_likely → likely
+    resurface_if:
+      - new_named_victim
+      - second_tier_1_vendor_corroborates_group_ib_attribution_or_diverges  # CrowdStrike / Mandiant / Unit 42 / Bitdefender follow-up
+      - first_party_splunk_hit_on_three_exemplar_domains_or_four_tld_rotation_patterns
+      - new_attribution                                                       # state-tasking evidence emerges
+      - mss_mps_attributed_infrastructure_overlap_documented
+      - dormant_pool_activation_pattern_observed_event_stage
+      - escalation_in_scope
+      - group_ib_blog_full_text_retrieved_with_additional_attribution_language
+      - fbi_psa260527_primary_text_retrieved_confirming_or_denying_group_ib_substrate
+      - world_cup_event_window_active_june_11_to_july_19_2026
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    librarian_handoffs:
+      - action: add_source_to_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "group-ib provisional B; vendor-research-tier-1-tier-2 category; first cited finding-2026-05-28-0008; Singapore-based research firm with prior peer-reviewed APT research track record"
+      - action: log_source_grade_log
+        target: infrastructure/source-grade-log.md
+        payload: "Group-IB F→B provisional addition entry per first-citation precedent class; first-citation finding-2026-05-28-0008"
+    notes: |
+      Hard Rule 2 binding: Group-IB attribution is "Chinese-speaking
+      fraudsters" — linguistic-evidence-only (Layui 2.7.6m Chinese
+      open-source UI library + Chinese-language source-code comments
+      embedded throughout). NOT China-state, NOT MSS / MPS-attributed.
+      Briefer did NOT upgrade to state attribution per analyst + red-
+      team direction. Specifically avoided the "ruled out: China-
+      state" framing the original ACH's narrow-H3 reading would
+      otherwise support.
+
+      Red-team disposition: WEP dropped very_likely → likely by red
+      team. Two compounding structural risks: (1) FBI / Group-IB
+      operational independence (KAC A1) unverified this sweep — FBI
+      PSA may draw on Group-IB submission to IC3 as substrate
+      (analyst's own drop-one-step trigger not previously acted on);
+      (2) contrarian-recoded ACH against bulk-PII state-collection
+      variant (H3') collapses H1/H3' diagnostic gap from 4 to ~1
+      inconsistencies — narrow-leader profile rather than strong-
+      leader. Briefer enforced narrow-leader framing.
+
+      World Cup attack-surface — three concurrent threat layers now
+      corpus-tracked: (1) Iran IRGC/MOIS ideological / disruptive
+      (Unit 42, AM-28 finding-0002); (2) Chinese-speaking criminal
+      financial fraud (this finding, PM-28); (3) Russia GRU
+      CyberArmyOfRussia-Reborn carry-forward (corpus-historical,
+      Sandworm-adjacent). Distinct clusters NOT merged — different
+      actor class, different motivation, different victim profile.
+      Same attack surface concurrently through July 19, 2026.
+
+      Group-IB first Archimedes-corpus citation. Librarian flag for
+      source-grades.yaml + source-grade-log.md addition at provisional
+      B per first-citation precedent class (SentinelOne / Wiz /
+      Bitdefender / Symantec / Darktrace precedent).
+
+      DIB-employee spillover hunt — three exemplar domains
+      (fiffa[.]com / jobs-fifa[.]com / fifa-hiring[.]com) + four TLD
+      rotation patterns (.org / .xyz / .live / .sale) are candidates
+      for defenseclaw_local hunt. Hunt resolution if DIB-employee
+      click-through observed: lifts H3' (bulk-PII state collection
+      variant) structural weight, weakens E8 consumer-fan victim
+      profile diagnostic.
+
+  - id: 2026-05-28-pm-006-gchq-keast-butler-russia-daily-hybrid-attacks-uk-seabed-cyberspace
+    covered_in: [2026-05-28-afternoon]
+    brief_file: threats/briefs/2026-05-28-afternoon.md
+    headline: "GCHQ Director Anne Keast-Butler 2026-05-28 official briefing — Russia conducting daily hybrid attacks on UK 'from seabed to cyberspace'; target categories named: critical infrastructure / democratic processes / supply chains / public trust / corporate networks / subsea cables / energy pipelines. Specific operations: Russian submarine activity near critical seabed infrastructure; 'amateur saboteurs and spies remotely operated by the Kremlin' (verbatim). No specific GRU / SVR / FSB unit named (Hard Rule 2 — state-level 'Kremlin' only); no UK A&D prime (BAE / Rolls Royce / Babcock / QinetiQ) named. Subsea cable + energy pipeline targeting is Sandworm-canonical (roster #007) — corpus-side structural adjacency only. B2 / WEP capped at 'likely' by single-source veto (The Record sole relay this sweep)."
+    topic_tags:
+      - gchq-director-anne-keast-butler-official-briefing-state-level-russia-attribution
+      - russia-daily-hybrid-attacks-uk-seabed-to-cyberspace-framing
+      - target-categories-critical-infrastructure-democratic-processes-supply-chains-public-trust-corporate-networks-subsea-cables-energy-pipelines
+      - russian-submarine-operations-near-critical-seabed-infrastructure
+      - amateur-saboteurs-and-spies-remotely-operated-by-kremlin-verbatim
+      - hard-rule-2-state-level-kremlin-only-no-gru-svr-fsb-unit-named-no-uk-ad-prime-named
+      - subsea-cable-energy-pipeline-sandworm-canonical-roster-007-corpus-side-structural-adjacency-only
+      - uk-ad-primes-bae-rolls-royce-babcock-qinetiq-implicit-corporate-supply-chain-scope
+      - dod-uk-shared-intelligence-stratcom-links-transatlantic-ad-comms-subsea-cables-structural-relevance
+      - single-source-veto-applied-the-record-sole-relay-wep-capped-likely
+      - second-uk-outlet-bbc-ft-reuters-sky-corroboration-tripwire-7d
+      - sat-ach-h3-sourced-state-level-rank-1-zero-inconsistencies-h1-h2-corpus-side-structural-adjacency-not-elevated
+      - sat-kac-eight-assumptions-five-qualify-three-sound
+      - russia-adversary-pattern-thread-pairs-with-pm-006-withsecure-greyvibe-two-operational-tiers
+    related_actors:
+      - id: "006"
+        actor_name: APT28
+        attribution_in_brief: corpus-side-structural-adjacency-roster-russia-attributed-GRU-26165-not-keast-butler-attested
+      - id: "007"
+        actor_name: Sandworm
+        attribution_in_brief: corpus-side-structural-adjacency-subsea-cable-energy-pipeline-canonical-pattern-not-keast-butler-attested
+      - id: "009"
+        actor_name: APT29
+        attribution_in_brief: corpus-side-structural-adjacency-roster-russia-attributed-SVR-not-keast-butler-attested
+    related_vulns: []
+    related_campaigns:
+      - gchq-keast-butler-uk-russia-daily-hybrid-attacks
+    finding_ids:
+      - finding-2026-05-28-0009-the-record-gchq-keast-butler-russia-daily-hybrid-uk-seabed-to-cyberspace-subsea-cables
+    digraph: B2
+    wep: likely  # capped by single-source veto
+    resurface_if:
+      - second_uk_outlet_corroborates_within_7d  # BBC / FT / Reuters / Sky — lifts to very_likely
+      - keast_butler_or_gchq_follow_on_names_specific_gru_svr_fsb_units  # inverts ACH
+      - uk_a_d_prime_corporate_disclosure_within_14d_that_links_operationally
+      - independent_ncsc_fcdo_statement_attributing_specific_operations
+      - new_attribution
+      - escalation_in_scope
+      - geopolitical_escalation
+      - new_named_victim
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      Hard Rule 2 binding: Keast-Butler frames at state-level "Kremlin"
+      only — no GRU / SVR / FSB unit, no UK A&D prime named. Briefer
+      did NOT upgrade to unit-level (GRU 26165 APT28 / GRU 74455
+      Sandworm / SVR APT29) or to specific UK A&D prime targeting.
+      Subsea cable + energy pipeline targeting IS the Sandworm-
+      canonical pattern (roster #007) but Keast-Butler did NOT make
+      that link — briefer surfaced as corpus-side structural-
+      adjacency only, tagged not-sourced.
+
+      Single-source veto applied: WEP capped at "likely". The Record
+      is sole relay this sweep; underlying speaker Anne Keast-Butler
+      is A-grade-equivalent on her own agency's threat assessments
+      but single-relay caveat holds. Tripwire: second UK outlet
+      (BBC / FT / Reuters / Sky) within 7 days lifts to very_likely
+      on H3 sourced state-level framing (does NOT lift H1 / H2 to
+      sourced).
+
+      Russia-adversary pattern thread — pairs with PM-006 (GreyVibe /
+      WithSecure) for single-sweep coverage of Russia activity across
+      two operational tiers: state-level diplomatic-policy briefing
+      (this finding) + tracked-operator-level vendor analysis (PM-006).
+      Briefer surfaced the pattern as standing dynamic.
+
+      UK A&D relevance is structural: UK subsea cables carry trans-
+      atlantic A&D communications including DoD-UK shared intelligence
+      and STRATCOM links. BAE Systems / Rolls Royce / Babcock /
+      QinetiQ / Leonardo UK sit inside the corporate / supply-chain
+      target categories Keast-Butler named, but not explicitly named
+      by Keast-Butler.
+
+      Operator may corroborate via BBC / FT / Reuters / Sky to lift
+      single-source veto. Track UK prime corporate disclosures over
+      next 14 days for prime-named UK A&D incident that would link
+      operationally.
+
+  - id: 2026-05-28-pm-007-withsecure-greyvibe-russia-nexus-ukraine-ai-augmented-phantomrelay-legionrelay-fallspy
+    covered_in: [2026-05-28-afternoon]
+    brief_file: threats/briefs/2026-05-28-afternoon.md
+    headline: "WithSecure introduces GreyVibe — Russia-nexus operator (Moscow time zone) targeting Ukrainian military / government / civilian / business since August 2025 with PhantomRelay + LegionRelay + Fallspy malware families. Headline framing: extensive AI-tool use (ChatGPT + Google Gemini + Ideogram). WithSecure explicitly hedges actor-type: 'less certainty about whether GreyVibe is cybercriminal, nation-state — or a mix of the two' (verbatim). ISO builder potentially linked to TrickBot ecosystem ('potentially linked' hedge preserved). Initial access: spear-phishing → Google Drive / 4sync ZIP/RAR; fake adult-club websites ('PrincessClub'); fake female personas Telegram / dating sites. No A&D-direct relevance; AI-augmented-operator template is the watch item. B3 / WEP roughly_even_chance (single-source veto applied)."
+    topic_tags:
+      - withsecure-originating-research-greyvibe-actor-introduction-new-to-corpus
+      - russia-nexus-moscow-time-zone-operational-scheduling-attribution-evidence
+      - ukrainian-military-government-civilian-business-targeting-since-august-2025
+      - phantomrelay-legionrelay-fallspy-three-malware-families
+      - extensive-ai-tool-use-chatgpt-google-gemini-ideogram-tradecraft
+      - withsecure-triple-hedge-cybercriminal-nation-state-or-mix-verbatim-preserved
+      - hard-rule-2-russia-nexus-not-gru-fsb-svr-unit-attributed-triple-hedge-actor-type-preserved
+      - iso-builder-potentially-linked-trickbot-ecosystem-hedge-preserved
+      - princessclub-fake-adult-club-website-campaign
+      - fake-female-personas-telegram-dating-sites-social-engineering
+      - spear-phishing-google-drive-4sync-zip-rar-delivery
+      - ai-augmented-operator-template-corpus-watch-item-emerging
+      - russia-adversary-pattern-thread-pairs-with-pm-005-gchq-keast-butler-two-operational-tiers
+      - single-source-veto-applied-securityweek-sole-relay-of-single-withsecure-originating-research-wep-capped-roughly-even-chance
+      - sat-ach-h1-h2-h3-tied-sourced-by-triple-hedge-h4-false-flag-ruled-out-h5-multi-subgroup-unsourced
+      - sat-kac-eight-assumptions-seven-qualify-a1-moscow-tz-spoofable-a2-triple-hedge-genuine-vs-liability
+      - withsecure-first-corpus-citation-librarian-source-grade-log-addition-provisional-b
+      - daily-brief-monitoring-eligible-not-flash-not-daily-brief-action-tier
+    related_actors:
+      - id: greyvibe
+        actor_name: GreyVibe (WithSecure-coined)
+        attribution_in_brief: withsecure-russia-nexus-only-actor-type-triple-hedged-cybercriminal-nation-state-or-mix
+    related_vulns: []
+    related_campaigns:
+      - greyvibe-russia-nexus-ukraine-ai-augmented-tradecraft
+    finding_ids:
+      - finding-2026-05-28-0010-securityweek-withsecure-greyvibe-russia-nexus-ai-augmented-ukraine-targeting-phantomrelay-legionrelay-fallspy
+    digraph: B3
+    wep: roughly_even_chance
+    resurface_if:
+      - second_tier_1_vendor_publishes_with_attribution_within_14d  # Mandiant / CrowdStrike / Unit 42 / MSTIC / ESET / Bitdefender — may lift to grade 2
+      - withsecure_blog_iocs_overlap_tracked_russia_actor_infrastructure  # lifts H2 toward sourced
+      - greyvibe_pivot_to_nato_ad_targeting                              # E8 contradicted; A&D-relevance lifts
+      - public_attribution_of_phantomrelay_legionrelay_fallspy_by_second_vendor
+      - new_attribution
+      - new_named_victim
+      - escalation_in_scope
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    librarian_handoffs:
+      - action: add_source_to_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "withsecure provisional B; vendor-research-tier-1-tier-2 category; first cited finding-2026-05-28-0010; Finnish cybersecurity vendor (formerly F-Secure Business until 2022 split) with prior peer-reviewed APT research track record"
+      - action: log_source_grade_log
+        target: infrastructure/source-grade-log.md
+        payload: "WithSecure F→B provisional addition entry per first-citation precedent class; first-citation finding-2026-05-28-0010"
+    notes: |
+      Hard Rule 2 binding: WithSecure's triple-hedge preserved verbatim
+      ("cybercriminal, nation-state — or a mix of the two" — 14 words).
+      Russia-nexus attribution at operator-location level only (Moscow
+      time zone) — NOT GRU / FSB / SVR unit. Briefer did NOT upgrade
+      attribution or resolve the actor-type ambiguity beyond what
+      WithSecure said.
+
+      Single-source veto applied: WEP capped at "roughly even chance"
+      (grade 3 / Possibly True). SecurityWeek is single relay of
+      single WithSecure originating research — one effective source.
+      Tripwire: second Tier-1 vendor (Mandiant / CrowdStrike / Unit 42
+      / MSTIC / ESET / Bitdefender) within 14 days lifts to grade 2.
+
+      Inclusion eligibility: daily-brief-monitoring + weekly-synthesis
+      only. Falls BELOW FLASH / daily-brief-action threshold per
+      INTEL-GRADING.md inclusion table (B3 / WEP roughly_even_chance).
+      Briefer surfaced in PM-28 Other Signal as monitoring-tier
+      addition under Russia-adversary pattern thread (pairs with
+      PM-005 GCHQ Keast-Butler).
+
+      AI-augmented-operator template emerging in corpus — pairs with
+      AM-28 finding-0002 (Unit 42 World Cup AI-tool-use angle on Iran
+      IRGC/MOIS fronts) and corpus-historical finding-2026-05-10-0001
+      (MacSync claude.ai/share URL abuse pattern). Template now corpus-
+      tracked across multiple Russia-nexus and Iran-nexus operators
+      concurrently using commercial LLMs / image-gen for lure /
+      translation / iteration tradecraft. KAC A5 medium-confidence —
+      commodity-LLM-adoption-by-everyone alternative reading not
+      ruled out; comparator-base-rate check needs more corpus data.
+
+      WithSecure first Archimedes-corpus citation. Librarian flag for
+      source-grades.yaml + source-grade-log.md addition at provisional
+      B per first-citation precedent class.
+
+      Ukraine-targeting → NATO-A&D tradecraft transfer risk — recurring
+      concern (KAC A6 low-confidence, peripheral). No corpus-confirmed
+      pivot yet for GreyVibe; flagged for monitoring.
+
+      WithSecure primary blog NOT retrieved this sweep — likely
+      contains IP / domain / hash payload not in SecurityWeek summary.
+      Operator or next sweep may pivot to WithSecure primary URL.
+
+  - id: 2026-05-28-pm-brief-meta
+    covered_in: [2026-05-28-afternoon]
+    brief_file: threats/briefs/2026-05-28-afternoon.md
+    headline: "Afternoon brief 2026-05-28 — CENTCOM commercial-location-data lead (B1; factual layer very_likely + operational-weaponization implication likely split per red team) + CISA federal-escalation UPDATE on Nx Console + Megalodon (A1 factual layer / likely forward-projection split per red team); KEV deadline calendar T-1 (LiteSpeed + Exchange OWA Fri 5/29) + T-13 (Nx Console + TanStack Mini Shai-Hulud 6/10); CISA ICS batch (10 advisories — MacGregor VDR + XCharge C6 highest A&D adjacency); MSTIC Storm-2697 / The Gentlemen RaaS new-to-corpus actor introduction (A2 / likely single-source veto); GCHQ Keast-Butler Russia state-level briefing (B2 / likely single-source veto); FBI + Group-IB Ghost Stadium Chinese-speaking criminal World Cup fraud cluster (A2 / likely red-team WEP drop; linguistic-evidence-only attribution NOT upgraded); WithSecure GreyVibe Russia-nexus AI-augmented Ukraine-targeting monitoring-tier finding (B3 / roughly_even_chance; triple-hedge preserved). Three new-to-corpus actors (Storm-2697, Ghost Stadium, GreyVibe) — librarian /new-actor scaffold + source-grade-log additions pending. World Cup attack surface now corpus-tracked as three-layer concurrent threat surface (Iran ideological + Chinese-speaking criminal + Russia GRU carry-forward). Federal-escalation pattern (CENTCOM Wyden + CISA Nx Console alert) flagged as recurring signal class / standing dynamic. Standing sections: A&D silent-day (no A&D-prime named victim); Iran Cyber Watch silent-with-context (carries AM-28 World Cup Iran layer + redirects to PM Other Signal criminal layer)."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - lead-centcom-commercial-location-data-adversary-threat-reports
+      - paired-update-cisa-federal-escalation-nx-console-megalodon-anti-repetition-applied
+      - red-team-qualify-disposition-three-findings-split-framings-enforced
+      - kev-deadline-calendar-t-1-litespeed-exchange-fri-plus-t-13-nx-console-tanstack-jun-10
+      - cisa-ics-batch-10-advisories-macgregor-vdr-xcharge-c6-highest-ad-adjacency
+      - mstic-storm-2697-the-gentlemen-raas-new-actor-introduction
+      - gchq-keast-butler-russia-state-level-briefing-single-source-veto
+      - fbi-group-ib-ghost-stadium-chinese-speaking-criminal-world-cup-fraud-linguistic-evidence-only
+      - withsecure-greyvibe-russia-nexus-ai-augmented-ukraine-monitoring-tier-triple-hedge-preserved
+      - three-new-to-corpus-actors-storm-2697-ghost-stadium-greyvibe-librarian-handoffs-pending
+      - world-cup-attack-surface-three-layer-concurrent-threat-iran-ideological-chinese-speaking-criminal-russia-gru-carry-forward
+      - federal-escalation-pattern-centcom-wyden-cisa-nx-console-recurring-signal-class-standing-dynamic
+      - russia-adversary-pattern-thread-gchq-state-level-plus-withsecure-greyvibe-operator-level-two-tiers
+      - sector-focus-ad-silent-day-no-ad-prime-named-victim
+      - iran-cyber-watch-silent-with-context-redirect-to-other-signal-criminal-layer
+      - hard-rule-2-strict-hold-throughout-five-verbatim-quotes-under-15-words-one-per-source
+      - hard-rule-6-quote-discipline-centcom-mstic-keast-butler-group-ib-withsecure-all-compliant
+      - noon-flash-sweep-fired-two-forticlient-ems-and-gogs-zero-day-both-shipped
+      - word-count-758-within-target-band-400-800
+    related_actors:
+      - id: "001"
+        actor_name: TeamPCP
+        attribution_in_brief: corpus-side-attribution-on-nx-console-side-cisa-does-not-attribute
+      - id: "006"
+        actor_name: APT28
+        attribution_in_brief: corpus-side-structural-adjacency-gchq-roster-russia-attributed
+      - id: "007"
+        actor_name: Sandworm
+        attribution_in_brief: corpus-side-structural-adjacency-subsea-cable-energy-pipeline-canonical-pattern-not-keast-butler-attested
+      - id: "009"
+        actor_name: APT29
+        attribution_in_brief: corpus-side-structural-adjacency-gchq-roster-russia-attributed
+      - id: "014"
+        actor_name: Handala Hack
+        attribution_in_brief: iran-cyber-watch-context-redirect-am-28-world-cup-iran-layer
+      - id: "022"
+        actor_name: MuddyWater
+        attribution_in_brief: standing-iran-cyber-watch-section-mention
+      - id: cyberavengers
+        actor_name: CyberAv3ngers / IRGC Cyber-Electronic Command
+        attribution_in_brief: iran-cyber-watch-context-redirect-am-28-cisa-aa26-097a
+      - id: storm-2697
+        actor_name: Storm-2697 / The Gentlemen
+        attribution_in_brief: mstic-canonical-new-to-corpus-actor-introduction
+      - id: ghost-stadium
+        actor_name: Ghost Stadium (Group-IB-coined)
+        attribution_in_brief: group-ib-linguistic-evidence-only-chinese-speaking-criminal
+      - id: greyvibe
+        actor_name: GreyVibe (WithSecure-coined)
+        attribution_in_brief: withsecure-russia-nexus-only-triple-hedge-actor-type
+    related_vulns:
+      - cve: CVE-2026-48027
+        role: nx-console-kev-due-2026-06-10
+      - cve: CVE-2026-45321
+        role: tanstack-mini-shai-hulud-kev-due-2026-06-10
+      - cve: CVE-2026-42941
+        role: macgregor-vdr-default-credentials
+      - cve: CVE-2026-9037
+        role: xcharge-c6-firmware-integrity-check-failure
+      - cve: CVE-2026-7786
+        role: pusr-usr-w610-hardcoded-admin-credentials
+      - cve: CVE-2026-5386
+        role: kmw-cctv-unverified-password-change
+      - cve: CVE-2026-48172
+        role: kev-deadline-t-1-status-tick
+      - cve: CVE-2026-42897
+        role: kev-deadline-t-1-status-tick
+    related_campaigns:
+      - centcom-commercial-location-data-adversary-threat-reports-2026-05-28
+      - cisa-federal-escalation-nx-console-megalodon-2026-05-28
+      - storm-2697-the-gentlemen-raas-breachforums-affiliate-recruitment
+      - ghost-stadium-2026-fifa-world-cup-fraud-cluster
+      - gchq-keast-butler-uk-russia-daily-hybrid-attacks
+      - greyvibe-russia-nexus-ukraine-ai-augmented-tradecraft
+      - cisa-ics-batch-2026-05-28
+    finding_ids:
+      - finding-2026-05-28-0005-wired-reuters-pentagon-centcom-commercial-location-data-troops-targeted-adversaries-wyden
+      - finding-2026-05-28-0006-mstic-the-gentlemen-ransomware-storm-2697-go-encryptor-raas-breachforums-transportation
+      - finding-2026-05-28-0007-cisa-alert-supply-chain-compromises-nx-console-github-megalodon-federal-escalation
+      - finding-2026-05-28-0008-fbi-group-ib-ghost-stadium-chinese-criminal-2026-fifa-world-cup-4300-domains
+      - finding-2026-05-28-0009-the-record-gchq-keast-butler-russia-daily-hybrid-uk-seabed-to-cyberspace-subsea-cables
+      - finding-2026-05-28-0010-securityweek-withsecure-greyvibe-russia-nexus-ai-augmented-ukraine-targeting-phantomrelay-legionrelay-fallspy
+      - finding-2026-05-28-0011-cisa-ics-batch-10-advisories-macgregor-vdr-xcharge-c6-ev-schneider-abb-pusr-medical
+    absorbs_flashes: []
+    first_covered: 2026-05-28
+    last_covered: 2026-05-28
+    retraction: null
+    test: false
+    notes: |
+      Seven PM-28 net-new findings composed. Brief composition:
+      - Active Threats: CENTCOM commercial-location-data (lead, B1
+        with factual/operational split) + CISA federal-escalation
+        UPDATE on Nx Console + Megalodon (anti-repetition applied —
+        UPDATE flag + 🔗 callout to AM-28 lineage).
+      - Vulnerabilities: KEV deadline calendar (T-1 LiteSpeed +
+        Exchange OWA Fri 5/29; T-13 Nx Console + TanStack 6/10) +
+        CISA ICS batch (MacGregor VDR + XCharge C6 highest A&D
+        adjacency).
+      - Actor Activity: MSTIC Storm-2697 / The Gentlemen RaaS (new
+        to corpus, A2 / likely single-source veto) + GCHQ Keast-
+        Butler Russia state-level briefing (B2 / likely single-
+        source veto).
+      - Iran Cyber Watch: silent-with-context variant — no new
+        tracked Iranian actor activity this sweep; redirects to
+        Other Signal criminal layer (Ghost Stadium) on World Cup
+        attack surface; AM-28 Iran layer carried by reference.
+      - Other Signal: World Cup criminal layer (FBI + Group-IB
+        Ghost Stadium, three-layer concurrent threat surface
+        framing) + WithSecure GreyVibe Russia-nexus AI-augmented
+        (monitoring tier B3) + Federal-escalation pattern as
+        standing dynamic + Noon FLASH sweep recap (FortiClient
+        EMS + Gogs zero-day both shipped).
+
+      Red-team qualifications applied per pipeline input:
+      (1) CENTCOM (finding-0005): factual threat-surface layer
+          rides at very_likely; operational-weaponization
+          implication rides at likely with single-effective-witness
+          caveat preserved; Wyden policy-release context preserved.
+          Hard Rule 2 — CENTCOM "adversary" verbatim preserved; no
+          state attribution originated.
+      (2) CISA Nx Console federal-escalation (finding-0007):
+          factual federal-escalation layer rides at very_likely;
+          DIB-prime remediation forecast + DCSA/DFARS/CMMC
+          guidance integration ride at likely; brief narrative
+          enforced the split rather than fusing.
+      (3) FBI / Group-IB Ghost Stadium (finding-0008): WEP dropped
+          very_likely → likely by red team (FBI / Group-IB
+          independence unverified; H1 / H3' diagnostic gap
+          narrower). Hard Rule 2 — "Chinese-speaking" linguistic-
+          evidence-only attribution preserved verbatim; NOT
+          upgraded to China-state; AVOID "ruled out: China-state"
+          framing.
+      (4) GCHQ Keast-Butler (finding-0009): Hard Rule 2 — state-
+          level "Kremlin" preserved; no GRU/SVR/FSB unit
+          originated; Sandworm-canonical subsea/energy pattern as
+          corpus-side adjacency only, tagged not-sourced.
+      (5) WithSecure GreyVibe (finding-0010): Hard Rule 2 —
+          WithSecure triple-hedge preserved verbatim
+          ("cybercriminal, nation-state — or a mix of the two");
+          actor-type ambiguity not resolved by briefer.
+      (6) MSTIC Storm-2697 (finding-0006): single-source veto
+          applied per grader/analyst (no red-team required at
+          WEP "likely" ceiling); transportation-DIB-logistics
+          cascade explicitly framed as structural inference, not
+          validated.
+      (7) CISA ICS batch (finding-0011): procedural disclosures;
+          no red-team required (no WEP claim subject to challenge);
+          A2 / very_likely on procedural facts.
+
+      Anti-repetition / coverage-log discipline applied:
+      - CISA federal-escalation Nx Console / Megalodon: UPDATE
+        block, not fresh disclosure. 🔗 Update on: 2026-05-20
+        FLASH (Nx Console / TeamPCP) and 2026-05-25 (Megalodon /
+        Tiledesk). Federal-prioritization signal is the NEW
+        content; underlying technical picture was already corpus-
+        tracked.
+      - World Cup theme: AM-28 finding-0002 (Unit 42 / Iran
+        ideological layer) covered in morning brief. PM-28
+        finding-0008 (FBI / Group-IB / Chinese-speaking criminal
+        layer) is a DISTINCT cluster — different actor class,
+        different motivation, different victim profile. Briefer
+        surfaced as "three-layer concurrent threat surface"
+        framing, NOT as new World Cup story; 🔗 Update on flag
+        applied to AM-28 morning brief Iran Cyber Watch.
+      - KEV deadline calendar: T-1 status tick for LiteSpeed +
+        Exchange OWA (Fri 5/29) + T-13 carry-forward for Nx
+        Console + TanStack Mini Shai-Hulud (Jun 10). Substance
+        carry-forward; not re-litigated.
+
+      Cross-cluster threads surfaced:
+      - World Cup three-layer concurrent surface: Iran IRGC/MOIS
+        ideological (AM-28) + Chinese-speaking criminal (PM-28) +
+        Russia GRU CyberArmyOfRussia-Reborn carry-forward (corpus-
+        historical). Standing theme through July 19, 2026.
+      - Russia adversary pattern thread: GCHQ Keast-Butler state-
+        level diplomatic-policy briefing (PM-005) + WithSecure
+        GreyVibe operator-level vendor analysis (PM-006) in same
+        sweep. Two operational tiers.
+      - Federal-escalation pattern: CENTCOM Wyden-track (PM-001) +
+        CISA Nx Console alert (PM-002) both 2026-05-28 government-
+        policy-cascade signals on threat surfaces already corpus-
+        tracked. Recurring signal class; surfaced as standing
+        dynamic.
+
+      Three new-to-corpus actor introductions in single sweep:
+      - Storm-2697 / The Gentlemen (MSTIC-canonical) — actor-
+        profiler /new-actor scaffold decision pending operator.
+      - Ghost Stadium (Group-IB-coined) — Chinese-speaking criminal
+        cluster; new-actor scaffold candidate.
+      - GreyVibe (WithSecure-coined) — Russia-nexus operator;
+        actor-type triple-hedged; new-actor scaffold candidate.
+
+      Three source-grade-log additions pending (librarian handoffs):
+      - Group-IB at provisional B (first corpus citation per FBI /
+        Group-IB Ghost Stadium attribution).
+      - WithSecure at provisional B (first corpus citation per
+        WithSecure GreyVibe research).
+      - Arctic Wolf at provisional B (first corpus citation per
+        noon FLASH FortiClient EMS exploitation observation; 72h
+        ratification clock already running per FLASH coverage
+        entry).
+
+      Standing sections:
+      - Sector Focus A&D: silent-day variant (no A&D-prime named
+        victim in any PM-28 finding; A&D relevance via workforce-
+        vector adjacency / SDLC + DFARS contractual cascade /
+        DoD-MSC supplier chain / federal-fleet posture).
+      - Iran Cyber Watch: silent-with-context variant — no new
+        tracked Iranian actor activity in PM-28 sweep; section
+        carries AM-28 World Cup Iran layer by reference and
+        redirects to PM Other Signal criminal layer.
+
+      Sentinel cadence: PM-28 noon FLASH sweep fired two
+      (FortiClient EMS CVE-2026-35616 + Gogs zero-day RCE); both
+      shipped same-cycle. PM 18:00 sweep pending.
+
+      Word count: Layer 1 ~758 words (within target band 400-800).
+      Layer 2 Discord Summary: ~2150 chars after first-pass
+      authoring — exceeds 1900-char hard ceiling due to 7 finding
+      bullets + heavy URL footprint. Librarian to chunk into 2
+      messages per Discord 2000-char-per-message limit;
+      acceptable per user direction ("under 2000-char target with
+      chunking expected if over"). Briefer authored Layer 2 as
+      tight as possible while preserving all load-bearing Hard
+      Rule 2 framings and verbatim quotes.
+
+      Hard Rule 2 brief-wide compliance:
+      - CENTCOM: "adversary" verbatim preserved; no state
+        attribution originated.
+      - CISA Nx Console: no actor attribution (TeamPCP is corpus-
+        side from FLASH-0001).
+      - MSTIC Storm-2697: financial-motivated framing preserved;
+        no state attribution.
+      - FBI / Group-IB Ghost Stadium: "Chinese-speaking" linguistic
+        evidence preserved verbatim; NOT upgraded to China-state;
+        avoided "ruled out: China-state" framing.
+      - GCHQ Keast-Butler: state-level "Kremlin" preserved; no
+        GRU/SVR/FSB unit named; Sandworm-canonical adjacency
+        flagged corpus-side only.
+      - WithSecure GreyVibe: Russia-nexus + triple-hedge actor-
+        type ("cybercriminal, nation-state — or a mix of the two")
+        preserved verbatim.
+      - CISA ICS batch: vendor-coordinated-disclosure; no
+        attribution.
+
+      Hard Rule 6 quote discipline verified:
+      - CENTCOM: "multiple threat reports concerning adversary
+        exploitation of commercial location data" (8 words).
+      - MSTIC: "may lead to increased activity" (6 words).
+      - Keast-Butler: "amateur saboteurs and spies remotely
+        operated by the Kremlin" (9 words).
+      - Group-IB: actor name in single quotes + "Chinese-speaking"
+        framing (≤15 words).
+      - WithSecure: "less certainty about whether GreyVibe is
+        cybercriminal, nation-state — or a mix of the two"
+        (14 words).
+      All under 15 words; one quote per source.
+
+      Single-source-veto applied:
+      - MSTIC Storm-2697: single Tier-1 vendor; WEP capped at
+        "likely" pending second vendor corroboration within 14d.
+      - GCHQ Keast-Butler: single relay (The Record); WEP capped
+        at "likely" pending second UK outlet within 7d.
+      - WithSecure GreyVibe: single relay of single originating
+        research; WEP capped at "roughly even chance" pending
+        second Tier-1 vendor within 14d.
+      - FBI / Group-IB Ghost Stadium: partial-independence; red
+        team dropped WEP very_likely → likely on independence
+        risk + ACH narrow-leader profile.
+
+      First-party Splunk hunt recommendations carried:
+      - Nx Console 18.95.0 (red-team standing) against
+        defenseclaw_local.
+      - Storm-2697 three SHA-256 hashes against defenseclaw_local
+        (build-specific; low base-rate expectation).
+      - Ghost Stadium three exemplar domains + four TLD rotation
+        patterns against defenseclaw_local for DIB-employee
+        click-through.
+      - MacGregor VDR / XCharge C6 / PUSR / Schneider EcoStruxure
+        product deployment hunt at next sweep.
+
+      Roster cross-reference handoffs to actor-profiler (librarian):
+      - Storm-2697: /new-actor scaffold decision pending operator.
+      - Ghost Stadium: /new-actor scaffold decision pending
+        operator.
+      - GreyVibe: /new-actor scaffold decision pending operator.
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

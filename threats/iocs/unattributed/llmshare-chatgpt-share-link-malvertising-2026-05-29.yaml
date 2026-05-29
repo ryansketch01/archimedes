@@ -1,0 +1,186 @@
+# threats/iocs/unattributed/llmshare-chatgpt-share-link-malvertising-2026-05-29.yaml
+#
+# Unattributed cluster — IOCs published by Push Security (via BleepingComputer,
+# 2026-05-29) covering the "LLMShare" malvertising campaign abusing
+# chatgpt.com/s/ shared-link URLs to display fake OpenAI outage pages and
+# deliver malware disguised as ChatGPT desktop-app downloads. Push Security
+# does NOT attribute to any tracked actor; "LLMShare" is a researcher-coined
+# campaign name (per Hard Rule 2, no actor attribution originated).
+#
+# This cluster covers the LLMShare arm ONLY. The paired ChatGPhish disclosure
+# (Permiso Security via The Hacker News, same day) describes a renderer-trust
+# vulnerability class with no IOCs — not represented in this file.
+
+cluster_id: llmshare-chatgpt-share-link-malvertising-2026-05-29
+cluster_name: "LLMShare — chatgpt.com/s/ malvertising campaign (fake OpenAI outage page → fake ChatGPT desktop-app malware)"
+first_seen: 2026-05-29
+last_updated: 2026-05-29
+admiralty_grade: B2
+tlp: CLEAR
+
+provenance:
+  - source: finding-2026-05-29-0005-bleepingcomputer-thn-push-security-permiso-llmshare-malvertising-chatgphish-renderer-trust-paired-chatgpt-platform-abuse-research-class
+    note: >
+      Push Security (vendor-research firm, first Archimedes-corpus citation —
+      provisional B per grader) via BleepingComputer (Bill Toulas, 2026-05-29)
+      details the LLMShare campaign abusing chatgpt.com/s/ shared-link URLs.
+      Push Security explicitly notes: payload behaviour analysed via
+      VirusTotal — "unclear what payloads are ultimately deployed" (7-word
+      quote preserved per Hard Rule 6). Sole primary research source on
+      LLMShare arm; single-source veto applied at finding level; WEP capped
+      at likely. No actor attribution — campaign name researcher-coined.
+
+notes: |
+  Distribution chain (per Push Security via BleepingComputer):
+    1. Victims arrive via Google ads for "ChatGPT desktop app" search terms.
+    2. Ad redirects to a chatgpt.com/s/<id> shared-link URL on the LEGITIMATE
+       chatgpt.com domain (OpenAI's own share-link feature — chatgpt.com/s/
+       is NOT itself an IOC; it is a legitimate-abused surface).
+    3. The shared-link content renders a fake OpenAI outage page with a
+       "download the desktop app" call-to-action.
+    4. CTA links to openew[.]app — the malicious distribution site (NOT
+       OpenAI infrastructure; researcher-coined dropper domain).
+    5. openew[.]app serves OS-targeted droppers:
+       - macOS sample: sha256 7e5b708f6659b1fad3aae7b589a706434fbf21708aeec5af5910189b96e25fef
+       - Windows sample: sha256 641526a22667a527290aac8c2c0358265d85c83318a7caca7cff28cecc2dbc16
+         (Windows sample exhibits VM detection behavior — anti-analysis)
+    6. Final payload: unclear per Push Security ("unclear what payloads are
+       ultimately deployed").
+
+  CRITICAL NON-IOC NOTE (per operator handoff and grader frontmatter):
+    chatgpt.com/s/ is the LEGITIMATE OpenAI share-link surface. It is a
+    legitimate-abused surface MARKER for this campaign, NOT a blockable IOC.
+    Treat as a context indicator in DPI/proxy review only; do NOT propagate
+    chatgpt.com/s/ into block/sinkhole lists — would generate massive false
+    positives across legitimate ChatGPT usage at A&D primes.
+
+  A&D-adjacency (inferential, NOT source-stated):
+    - Push Security does NOT name DIB / aerospace / defense victims.
+    - Targeting profile is broad-consumer (Google ads for ChatGPT desktop
+      app); A&D employees who self-provision AI tooling (shadow IT) are
+      collaterally exposed via the same ad surface.
+    - Endpoint compromise on developer / engineer workstations is high-
+      leverage at A&D primes (source repos, CI/CD credentials, signing keys).
+    - SaaS-identity-aware lure surface (M365 OAuth tradecraft adjacent
+      class). Recorded as monitoring tier, not active threat.
+
+  Paired ChatGPhish disclosure (Permiso Security via The Hacker News, same
+  day, 14-minute time separation): renderer-trust vulnerability class —
+  ChatGPT response renderer trusts Markdown links and images from
+  summarized third-party pages, enabling auto-image-fetch (leaks user IP /
+  User-Agent / Referer), clickable malicious links, and fake system-style
+  alerts in the trusted interface. NO IOCs published by Permiso (it is a
+  vulnerability-class disclosure, not a campaign report). Per-arm
+  single-source veto applies; not represented in this cluster.
+
+  Splunk first-party status at finding creation (2026-05-29):
+    Dormant on the LLMShare IOC set (openew[.]app + 2 SHA-256 hashes)
+    across archimedes and defenseclaw_local. Hard Rule 8 — silence is
+    NOT disconfirming.
+
+  Standing-section watch trigger:
+    With finding-2026-05-10-0001 (claude.ai/share / MacSync), this is the
+    THIRD LLM-platform-abuse surface in 19 days. An "AI Platform Security"
+    standing section is a brief-shaper candidate if a fourth surface lands
+    within 14 days (by 2026-06-12). Surface to briefer for evaluation.
+
+  Excluded from this cluster (per operator/grader handoff):
+    - chatgpt.com/s/ — legitimate-abused surface marker. Never block.
+      Recorded in notes only for analyst context.
+    - Google ads / Google ad redirector domains — ephemeral redirect
+      infrastructure; not durable IOCs. Filed as TTP context only.
+
+  To migrate this cluster to actor-attributed:
+    - Mandiant / CrowdStrike / Unit 42 / MSTIC / SentinelOne publishes
+      corroborating analysis with attribution to a roster actor.
+    - First-party Splunk hit on openew[.]app or either sample hash ties
+      to a roster actor's infrastructure.
+    - Second A/B-grade vendor research independently corroborates the
+      campaign with firmer attribution.
+
+ttl:
+  network_infrastructure: 90    # days; dropper domain may be sinkholed/rotated
+  file_artifacts: 730           # sample hashes durable for retro-hunting
+  malware_families: never
+
+indicators:
+  - id: llmshare-domain-001
+    type: domain
+    value: openew.app
+    defanged_original: "openew[.]app"
+    role: malware_distribution_site
+    description: "Fake ChatGPT desktop-app download portal — final hop in the chatgpt.com/s/ → fake-outage-page → openew[.]app malvertising chain. Serves OS-targeted droppers (macOS + Windows samples). NOT OpenAI infrastructure."
+    first_seen: 2026-05-29
+    last_seen: 2026-05-29
+    source: finding-2026-05-29-0005
+    source_attribution: ["Push Security", "BleepingComputer"]
+
+  - id: llmshare-sha256-macos-001
+    type: sha256
+    value: 7e5b708f6659b1fad3aae7b589a706434fbf21708aeec5af5910189b96e25fef
+    role: dropper_sample
+    description: "macOS dropper sample masquerading as ChatGPT desktop-app installer. Served from openew[.]app per Push Security via VirusTotal analysis."
+    platform: macOS
+    first_seen: 2026-05-29
+    last_seen: 2026-05-29
+    source: finding-2026-05-29-0005
+    source_attribution: ["Push Security via VirusTotal", "BleepingComputer"]
+
+  - id: llmshare-sha256-windows-001
+    type: sha256
+    value: 641526a22667a527290aac8c2c0358265d85c83318a7caca7cff28cecc2dbc16
+    role: dropper_sample
+    description: "Windows dropper sample masquerading as ChatGPT desktop-app installer. Served from openew[.]app per Push Security via VirusTotal. Exhibits VM-detection behavior (anti-analysis); detonation may differ between sandbox and bare-metal."
+    platform: Windows
+    detection_caveat: "VM-aware — sandbox analysis may produce a benign trace; correlate with the openew[.]app distribution path and the fake-outage-page lure."
+    first_seen: 2026-05-29
+    last_seen: 2026-05-29
+    source: finding-2026-05-29-0005
+    source_attribution: ["Push Security via VirusTotal", "BleepingComputer"]
+
+hunt_queries:
+  - id: llmshare-hunt-distribution-domain
+    platform: splunk
+    title: "LLMShare distribution domain — openew[.]app hunt"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (dest_host="*openew.app" OR domain="*openew.app"
+        OR query="*openew.app" OR url="*openew.app*")
+      | stats count by user, src_ip, dest_host, _time
+      | sort -_time
+    notes: >
+      openew[.]app is purpose-built malware distribution; ANY hit from a
+      US defense contractor environment warrants immediate investigation.
+
+  - id: llmshare-hunt-sample-hashes
+    platform: edr
+    title: "LLMShare dropper samples — sha256 hunt (macOS + Windows)"
+    query_type: pseudo_kql
+    query: |
+      DeviceFileEvents
+      | where SHA256 in (
+          "7e5b708f6659b1fad3aae7b589a706434fbf21708aeec5af5910189b96e25fef",
+          "641526a22667a527290aac8c2c0358265d85c83318a7caca7cff28cecc2dbc16"
+        )
+      | project DeviceId, AccountName, Timestamp, FileName, FolderPath, SHA256
+    notes: >
+      Retro-hunt across endpoint telemetry for either sample hash.
+      VM-aware on the Windows sample — bare-metal detection signal
+      may differ from sandbox.
+
+  - id: llmshare-hunt-chatgpt-share-link-redirector-context
+    platform: splunk
+    title: "LLMShare lure context — chatgpt.com/s/ → openew[.]app redirector pattern"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (referer="*chatgpt.com/s/*" AND (dest_host="*openew.app" OR url="*openew.app*"))
+      | stats count by user, src_ip, referer, dest_host, _time
+      | sort -_time
+    notes: >
+      CONTEXTUAL detection ONLY. chatgpt.com/s/ is the LEGITIMATE OpenAI
+      share-link surface — never block. This query surfaces the specific
+      malicious redirector pattern (chatgpt.com/s/ → openew[.]app) without
+      false-positiving on legitimate ChatGPT share-link usage. Treat hits
+      as high-fidelity indicators of the LLMShare lure chain.

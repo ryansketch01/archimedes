@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-29T08:00:00-04:00
+last_updated: 2026-05-29T16:32:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -22240,6 +22240,578 @@ entries:
       Oracle CPU public-PoC watch window 2026-05-31 → 2026-06-11
       — orchestrator should schedule daily PoC-surface sweeps
       against the nine Oracle CVEs through that window.
+
+  - id: 2026-05-29-pm-001-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition
+    covered_in: [2026-05-29-afternoon]
+    brief_file: threats/briefs/2026-05-29-afternoon.md
+    headline: "STATE TRANSITION — CVE-2026-0257 PAN-OS GlobalProtect authentication bypass confirmed exploited in the wild; three independent A-grade primaries converge (Rapid7 ETR + CISA KEV add + Palo Alto PSIRT vendor self-attestation); CISA 3-day federal compliance due 2026-06-01 Monday (CISA standard treatment for vendor-acknowledged ITW per Ivanti EPMM + Cisco SD-WAN precedent, NOT exceptional critical-elevation signal per red-team layer 4); volume framings differ across sources and explicitly not collapsed (Rapid7 'across numerous customers' MDR-scoped vs Palo Alto 'limited exploit attempts' vendor-on-own-product); no Tier-1 IR firm corroboration in window (Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike silent); no lateral movement observed per Rapid7 scoped to MDR customer base 12-day window NOT generalized DIB-wide reassurance; three-condition exploitability prerequisite (auth-override enabled + CAS disabled + reused override-cookie cert) narrows exposed population but deployment-maturity skew is NOT source-established (Tier-2/SMB/legacy directional skew STRIPPED per analyst KAC-2 K2A1/K2A2); Archimedes framing high-priority audit + apply workaround immediately, NOT headline-critical (Rapid7 'treat as critical' preserved verbatim but not adopted as brief framing); NEW vuln-tracker scaffold candidate distinct from ZD-004 / CVE-2026-0300"
+    topic_tags:
+      - state-transition
+      - pan-os
+      - globalprotect
+      - cve-2026-0257
+      - cve-disclosure-to-itw-state-transition
+      - rapid7-etr-first-party-mdr-telemetry
+      - cisa-kev-add
+      - cisa-kev-3-day-federal-due-2026-06-01-monday
+      - 3-day-deadline-cisa-standard-treatment-per-ivanti-epmm-cisco-sd-wan-precedent
+      - 3-day-deadline-NOT-exceptional-critical-elevation-signal-per-red-team-layer-4
+      - palo-alto-psirt-first-citation-provisional-a
+      - palo-alto-psirt-vendor-self-attestation
+      - three-condition-exploitability-prerequisite
+      - auth-override-enabled
+      - cas-disabled-on-prem-default
+      - override-cookie-cert-reuse
+      - volume-framing-differ-do-not-collapse-rapid7-numerous-vs-pan-limited
+      - no-tier-1-ir-firm-corroboration-mandiant-volexity-unit42-mstic-crowdstrike-silent
+      - no-lateral-movement-scoped-mdr-12-day-window-not-dib-wide-reassurance
+      - tier-2-smb-legacy-skew-STRIPPED-per-analyst-kac-2
+      - hard-rule-2-no-actor-attribution
+      - hard-rule-3-no-poc-no-exploit-walkthrough
+      - hard-rule-6-quote-discipline-rapid7-and-psirt-one-each-under-8-words
+      - hard-rule-8-splunk-silent-30d-not-disconfirming
+      - workaround-disable-auth-override-or-dedicated-cert
+      - patches-rolled-up-12-1-7-11-2-12-11-1-15-10-2-18-h6
+      - rapid7-treat-as-critical-preserved-verbatim-not-adopted-as-brief-framing
+      - archimedes-framing-high-priority-audit-not-headline-critical
+      - vuln-tracker-scaffold-candidate-new-distinct-from-zd-004
+      - ad-dib-globalprotect-edge-vpn-structural-relevance
+      - rapid7-second-corpus-surface-in-24h-after-gogs-zero-day
+      - red-team-qualify-not-block
+      - red-team-wep-three-layer-down-adjustment-volume-3day-critical-priority
+    related_actors: []
+    related_vulns:
+      - CVE-2026-0257
+    related_zero_days: []
+    related_campaigns:
+      - cve-2026-0257-pan-os-globalprotect-itw-state-transition-2026-05-29
+    finding_ids: [finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due]
+    digraph: A2
+    digraph_layered:
+      cve_2026_0257_exists_palo_alto_psirt_advisory: A1
+      cisa_kev_add_3day_due_2026_06_01: A1
+      rapid7_mdr_observed_exploitation: A2
+      palo_alto_psirt_limited_exploit_attempts: A2
+      three_condition_exploitability_prerequisite: A1
+      no_lateral_movement_per_rapid7_mdr_scope: A2
+      cluster_anchor: A2
+    wep: very_likely
+    wep_layered:
+      cve_2026_0257_being_actively_exploited_at_some_volume_post_2026_05_17: very_likely
+      rapid7_mdr_volume_across_numerous_customers_accurate: roughly_even_chance   # red-team DOWN from likely
+      3day_federal_kev_compliance_signals_critical_assessment_beyond_cvss: roughly_even_chance   # red-team DOWN from very_likely (CISA standard treatment for ITW per Ivanti EPMM + Cisco SD-WAN)
+      ad_dib_pan_os_globalprotect_estate_priority: likely   # red-team DOWN from very_likely (high-priority audit, not headline-critical)
+      tier_1_ir_firm_corroboration_within_30_days: roughly_even_chance
+      a_d_prime_victim_disclosure_within_30_days: roughly_even_chance
+    single_source_veto_applied: false
+    single_source_veto_resolution_note: "Three A-grade primaries with passing independence on procedural layer; veto does not trigger. Headline procedural state-transition very_likely on multi-source convergence. Volume / 3-day-KEV-interpretation / critical-priority sub-claims DOWN-adjusted by red-team per qualifying_language_suggested briefer guidance."
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260529-161800
+    red_team_review_required: true
+    red_team_review_required_basis: "WEP very_likely on 'CVE-2026-0257 being actively exploited in the wild at some volume post-2026-05-17'; four layers flagged by grader for red-team challenge (independence test on exploitation-observation layer; volume framing; treat-as-critical-despite-cvss-medium; 3-day KEV due date interpretation)."
+    red_team_review_complete: true
+    red_team_review_run_id: red-team-20260529-163200
+    red_team_sign_off: qualify_not_block
+    red_team_wep_adjustment_applied: true
+    red_team_wep_adjustment_layers:
+      - layer: rapid7_mdr_volume_across_numerous_customers
+        from: likely
+        to: roughly_even_chance
+      - layer: 3day_federal_kev_compliance_signals_critical_assessment_beyond_cvss
+        from: very_likely
+        to: roughly_even_chance
+      - layer: ad_dib_pan_os_globalprotect_estate_priority
+        from: very_likely
+        to: likely
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-0257 + GlobalProtect + PAN-OS + 104.207.144.154 + 146.19.216.119 + 146.19.216.120 + 146.19.216.125 + DESKTOP-GP01 + GP-CLIENT + Vultr + Dromatics Systems"
+      hard_rule_8_framing: silence_is_not_disconfirming
+      sweep_streak: 48th_consecutive_dormant
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution either source (Rapid7 / CISA KEV / Palo Alto PSIRT all publish unattributed); no Tier-1 IR firm corroboration with attribution at sweep time; attribution void preserved"
+      - "Volume framings differ across sources and explicitly not collapsed (Rapid7 multi-customer MDR-scoped vs Palo Alto limited-attempts vendor-on-own-product)"
+      - "No-lateral-movement finding scoped to Rapid7's MDR customer base 12-day window, NOT generalized DIB-wide defender reassurance"
+      - "Tier-2/SMB/legacy directional skew STRIPPED per analyst KAC-2 (K2A1/K2A2 critical-centrality + low-confidence)"
+      - "Rapid7 'treat as critical' preserved verbatim but NOT adopted as Archimedes brief framing; high-priority audit, not headline-critical"
+      - "3-day federal KEV deadline framed as CISA standard treatment for vendor-acknowledged ITW (Ivanti EPMM + Cisco SD-WAN precedent) NOT exceptional critical-elevation signal beyond CVSS"
+    librarian_handoffs_queued:
+      - action: source_grades_provisional_addition
+        source_yaml_id: palo-alto-psirt
+        proposed_grade: A
+        provisional: true
+        first_citation_finding: finding-2026-05-29-0004
+      - action: source_grade_log_entry
+        source: palo-alto-psirt
+        provisional_workflow: actor_review_ratification
+      - action: vuln_tracker_handoff
+        target: "NEW dossier scaffold candidate: threats/vulnerabilities/PAN-OS-CVE-2026-0257/ — distinct mechanism (cookie signature absence) and product surface (GlobalProtect, not User-ID portal) from already-tracked ZD-004 / CVE-2026-0300; metadata structure matching ZD-004 with kev=yes, kev_due_date=2026-06-01, exploitation_status=active, patches_available=true (2026-05-13), workaround=disable-auth-override-or-dedicated-cert, three-condition-exploitability-prerequisite documented"
+      - action: ioc_index_update
+        ioc_set: "104.207.144.154 + 146.19.216.119 + 146.19.216.120 + 146.19.216.125 + DESKTOP-GP01 + GP-CLIENT + aa:bb:cc:dd:ee:ff + Vultr + Dromatics Systems (9 IOCs total)"
+        provenance: rapid7_etr_blog_2026_05_29
+    resurface_if:
+      - tier_1_ir_firm_corroboration_mandiant_volexity_unit42_mstic_crowdstrike_telemetry_attestation
+      - named_a_and_d_prime_victim_disclosure
+      - palo_alto_psirt_quantified_update_on_limited_exploit_attempts
+      - rapid7_publishes_followup_with_attribution_or_lateral_movement_observation
+      - additional_ir_firm_corroborates_or_contradicts_volume_framing
+      - first_party_ioc_hit_on_full_set
+      - patch_adoption_data_published
+      - cisa_kev_due_date_compliance_data_published_post_2026_06_01
+    first_covered: 2026-05-29
+    last_covered: 2026-05-29
+    retraction: null
+    test: false
+    notes: |
+      Multi-source state-transition cluster on PAN-OS GlobalProtect
+      CVE-2026-0257. Three independent A-grade primaries (Rapid7 ETR
+      MDR + CISA KEV catalog + Palo Alto Networks PSIRT advisory)
+      converged in a 3-hour window 2026-05-29.
+
+      Red-team qualified (not blocked) three downstream WEP layers
+      DOWN per the qualifying_language_suggested + briefer_guidance
+      blocks in red_team_review:
+
+      (1) Volume framing — Rapid7's "across numerous customers"
+          DOWN from likely to roughly_even_chance because Palo Alto
+          PSIRT's "limited exploit attempts" is the more conservative
+          vendor-on-own-product ground-truth candidate and no Tier-1
+          IR firm corroborated in window. Brief led with SIDE-BY-SIDE
+          attribution, NOT with Rapid7's volume framing as headline.
+
+      (2) 3-day federal KEV due date interpretation — DOWN from
+          very_likely to roughly_even_chance on "diagnostic CISA
+          critical-assessment signal beyond CVSS numeric." Archimedes
+          corpus pattern shows 3-day is CISA's STANDARD treatment for
+          vendor-acknowledged ITW adds (Ivanti EPMM CVE-2026-6973
+          3-day 2026-05-07; Cisco SD-WAN CVE-2026-20182 3-day
+          2026-05-14). Brief framed 2026-06-01 Monday as the
+          procedural federal anchor, NOT as critical-elevation signal.
+
+      (3) DIB critical-priority framing — DOWN from very_likely to
+          likely. Brief framing: "high-priority audit + apply
+          workaround immediately" NOT "treat as critical patch-
+          yesterday." Rapid7's "treat as critical" preserved verbatim
+          per Hard Rule 2 (one quote per source, under 15 words —
+          actually paraphrased in Layer 1 final to free the Rapid7
+          quote slot for the "no indication of successful lateral
+          movement" attestation per analyst KAC-1 carry-forward).
+
+      Analyst KAC carry-throughs honored verbatim:
+
+      (KAC-1) Rapid7's "no successful lateral movement observed" is
+              scoped to Rapid7's MDR-visible customer base over the
+              2026-05-17 → 2026-05-29 window. Brief did NOT
+              generalize into DIB-wide reassurance. Three concurrent
+              interpretive hypotheses (fast remediation /
+              VPN-session-as-terminal-objective / early-stage) carried
+              as concurrent.
+
+      (KAC-2) Tier-2/SMB/legacy directional skew STRIPPED. K2A1 and
+              K2A2 critical-centrality + low-confidence with no
+              in-window test — analyst recommended strip + neutral
+              "all operators should audit regardless of tier"
+              framing. Brief carries the neutral framing.
+
+      Hard Rule 6 quote discipline (brief-wide):
+        - Rapid7: "no indication of successful lateral movement"
+          (6 words). One quote.
+        - Palo Alto PSIRT: "limited exploit attempts on unpatched
+          PAN-OS devices" (7 words). One quote.
+        - Push Security (Other Signal): "unclear what payloads are
+          ultimately deployed" (7 words). One quote.
+
+      Hard Rule 8 first-party precedence:
+        - Splunk targeted -30d query across both defenseclaw_local
+          and archimedes returned 0 hits on the full IOC + product
+          keyword set (48th consecutive dormant non-self-telemetry
+          sweep). Silence is non-contradictory; no bump or downgrade
+          to cluster anchor.
+
+      Two librarian source-grade handoffs:
+        - Palo Alto Networks PSIRT — provisional A first citation
+          (vendor-self-disclosure on own products is procedurally
+          A-grade per Cisco PSIRT / F5 PSIRT / kernel.org netdev /
+          OpenAI / GitHub / LiteSpeed precedent).
+        - Rapid7 second corpus surface in 24h after Gogs zero-day
+          FLASH-1200-28 (Jonah Burgess byline yesterday; Rapid7 MDR
+          institutional byline today) — strengthens case for Rapid7
+          ratification at full A in next source-grade-log review.
+
+      Vuln-tracker handoff: NEW dossier scaffold for
+      threats/vulnerabilities/PAN-OS-CVE-2026-0257/. Distinct from
+      already-tracked ZD-004 / CVE-2026-0300 (different mechanism,
+      different product surface). Three-day federal KEV due date
+      2026-06-01 (Monday) is the regulatory anchor.
+
+      Forward watch window: Tier-1 IR-firm corroboration with
+      attribution within 30 days = roughly_even_chance per
+      pattern-based predictive WEP; named A&D-prime victim
+      disclosure within 30 days = roughly_even_chance.
+
+  - id: 2026-05-29-pm-002-bleepingcomputer-thn-push-security-permiso-llmshare-malvertising-chatgphish-renderer-trust-paired-chatgpt-platform-abuse-research-class
+    covered_in: [2026-05-29-afternoon]
+    brief_file: threats/briefs/2026-05-29-afternoon.md
+    headline: "MONITORING TIER — paired ChatGPT platform-abuse research surfaced 2026-05-29 PM within 14-minute window via independent vendor-research firms with B-grade media-tier relays: Push Security LLMShare malvertising campaign (chatgpt.com/s/ shared-link feature abused for fake OpenAI outage page; Google ads → fake ChatGPT desktop app malware; macOS + Windows samples; Windows exhibits VM-detection; IOCs: openew[.]app + 2 SHA-256) via BleepingComputer + Permiso Security ChatGPhish vulnerability class (ChatGPT response renderer trusts third-party Markdown links and images from summarized pages; auto-image-fetch leaks user IP/UA/Referer; clickable malicious links; fake system-style alerts) via The Hacker News; cluster anchor B3; per-arm single-source veto applies (Push single-primary on LLMShare; Permiso single-primary on ChatGPhish; cross-vendor pattern is NOT individual-claim corroboration since they cover distinct mechanism classes); no actor attribution either disclosure preserved per Hard Rule 2; both names researcher-coined working designations; A&D-prime relevance indirect via employee ChatGPT use; with prior claude.ai/share MacSync (finding-2026-05-10-0001) this is third LLM-platform-abuse surface in 19 days approaching standing-section-addition heuristic boundary — AI Platform Security section becomes a candidate if fourth comparable surface lands in next 14 days"
+    topic_tags:
+      - monitoring-tier
+      - daily-brief-monitoring
+      - weekly-synthesis-eligible
+      - ai-platform-abuse
+      - llm-platform-abuse-pattern
+      - chatgpt-platform-abuse-paired-disclosures
+      - push-security-first-citation-provisional-b
+      - permiso-security-first-citation-provisional-b
+      - llmshare-malvertising-campaign-push-security-coined
+      - chatgphish-vulnerability-class-permiso-coined
+      - researcher-coined-working-names-not-attributed-campaigns
+      - chatgpt-share-link-feature-abuse-fake-outage-page
+      - google-ads-initial-access-fake-chatgpt-desktop-app
+      - macos-and-windows-samples-windows-vm-detection
+      - chatgpt-response-renderer-markdown-trust
+      - prompt-injection-via-summarized-web-page-markdown
+      - auto-image-fetch-leaks-user-ip-user-agent-referer
+      - fake-system-style-alerts-inside-trusted-ai-interface
+      - per-arm-single-source-veto-applied-both-arms
+      - cross-vendor-pattern-not-individual-claim-corroboration
+      - no-actor-attribution-either-disclosure
+      - no-roster-actor-attribution
+      - no-a-and-d-prime-named-target-either-disclosure
+      - no-tracked-cve-either-disclosure
+      - hard-rule-2-strict-hold
+      - hard-rule-6-push-security-7-word-quote
+      - hard-rule-8-splunk-dormant-non-self-telemetry
+      - paired-timing-14-minute-window-probably-coincidence
+      - third-llm-platform-abuse-surface-in-19-days
+      - standing-section-addition-heuristic-boundary-approaching
+      - ai-platform-security-standing-section-candidate-if-fourth-lands-in-14-days
+      - llmshare-iocs-openew-app-domain-and-two-sha256-hashes
+      - chatgphish-no-iocs-vulnerability-class-disclosure
+      - bleepingcomputer-relay-of-push-security
+      - thehackernews-relay-of-permiso-security
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - llmshare-chatgpt-share-link-malvertising-2026-05-29
+      - chatgphish-renderer-trust-vulnerability-disclosure-2026-05-29
+    finding_ids: [finding-2026-05-29-0005-bleepingcomputer-thn-push-security-permiso-llmshare-malvertising-chatgphish-renderer-trust-paired-chatgpt-platform-abuse-research-class]
+    digraph: B3
+    digraph_layered:
+      push_security_published_llmshare_research_with_iocs: A1
+      permiso_security_published_chatgphish_research: A1
+      llmshare_campaign_actively_distributing_malware: B3
+      chatgphish_vulnerability_class_exists: B3
+      llmshare_iocs_openew_app_and_two_sha256: B2
+      paired_timing_14_minute_window_probably_coincidence: B3
+      cluster_anchor: B3
+    wep: likely
+    wep_layered:
+      push_security_published_llmshare_research_on_2026_05_29: very_likely
+      permiso_security_published_chatgphish_via_thn_on_2026_05_29: very_likely
+      llmshare_campaign_actively_distributing_malware_at_some_volume: likely
+      chatgphish_vulnerability_class_exists_in_chatgpt_renderer: likely
+      openai_will_address_chatgphish_within_30_days: roughly_even_chance
+      google_will_address_malicious_ads_buyer_within_30_days: roughly_even_chance
+      third_independent_vendor_research_firm_surface_within_14_days: roughly_even_chance
+      a_d_prime_employee_exposure_via_corporate_chatgpt_use_within_30_days: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layer: per_arm_llmshare_push_security_only_and_chatgphish_permiso_only
+    analyst_review_required: false
+    analyst_review_required_reason: "WEP ceiling capped at 'likely' per per-arm single-source veto; standard SAT topics not load-bearing; optional SAT-KAC on cross-cluster AI-platform-abuse pattern-of-interest signal flagged but not invoked."
+    red_team_review_required: false
+    red_team_review_required_basis: "WEP ceiling 'likely' below 'very likely' red-team threshold per doctrine."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: not_executed
+      hard_rule_8_framing: pm_001_pan_os_sweep_exhausted_targeted_30d_ioc_budget_pm_003_collector_reasoning_commodity_malvertising_no_roster_no_a_and_d_fingerprint_splunk_index_dormant_for_non_archimedes_internal_events_48_consecutive_sweeps
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution either disclosure (Push Security publishes LLMShare unattributed; Permiso publishes ChatGPhish unattributed; both media-tier relays preserve unattributed framing)"
+      - "LLMShare and ChatGPhish are explicit researcher-coined working names, NOT attributed campaigns"
+      - "Per-arm single-source veto applies; neither vendor independently corroborates the other on any individual claim because they cover distinct mechanism classes"
+    librarian_handoffs_queued:
+      - action: source_grades_provisional_addition
+        source_yaml_id: push-security
+        proposed_grade: B
+        provisional: true
+        first_citation_finding: finding-2026-05-29-0005
+      - action: source_grades_provisional_addition
+        source_yaml_id: permiso-security
+        proposed_grade: B
+        provisional: true
+        first_citation_finding: finding-2026-05-29-0005
+      - action: source_grade_log_entries
+        sources: [push-security, permiso-security]
+        provisional_workflow: actor_review_ratification
+      - action: ioc_index_update
+        ioc_set: "openew[.]app + 7e5b708f6659b1fad3aae7b589a706434fbf21708aeec5af5910189b96e25fef (macOS sha256) + 641526a22667a527290aac8c2c0358265d85c83318a7caca7cff28cecc2dbc16 (Windows sha256)"
+        provenance: push_security_llmshare_research_2026_05_29_via_bleepingcomputer
+      - action: collector_next_pass_handoff
+        target: "Direct-retrieve Permiso primary write-up URL on ChatGPhish (not captured in THN coverage)"
+      - action: standing_section_heuristic_watch
+        target: "AI Platform Security standing-section addition candidate — three-in-19-days approaching boundary; flag if fourth comparable LLM-platform-abuse surface lands within 14 days (deadline 2026-06-12)"
+    resurface_if:
+      - second_independent_vendor_research_firm_corroborates_either_arm
+      - openai_publishes_coordinated_disclosure_response_on_chatgphish
+      - google_publishes_on_malicious_google_ads_buyer_for_llmshare
+      - mandiant_volexity_unit42_mstic_crowdstrike_telemetry_on_either_surface
+      - cve_assignment_for_chatgphish
+      - first_party_ioc_hit_on_openew_app_or_either_sha256
+      - third_or_fourth_comparable_llm_platform_abuse_surface_within_14_days
+      - permiso_primary_write_up_directly_retrieved_with_additional_detail
+    first_covered: 2026-05-29
+    last_covered: 2026-05-29
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier cluster on paired ChatGPT platform-abuse research
+      class surfacings. B3 cluster anchor — meets C3 minimum for daily-
+      brief monitoring and weekly synthesis, but does NOT meet B2
+      brief-action or FLASH threshold per per-arm single-source veto.
+
+      Brief surfaced as monitoring item under Other Signal — short
+      treatment per grader monitoring-tier discipline. No
+      over-amplification; no actor attribution either arm.
+
+      Per-arm single-source veto rationale:
+        - LLMShare arm: Push Security single-primary; BleepingComputer
+          is faithful relay citing Push Security as origin = effective
+          single source per "neither cites the other as primary" test.
+        - ChatGPhish arm: Permiso Security single-primary; THN is
+          faithful relay citing Permiso as origin = effective single
+          source per same test.
+        - Push Security and Permiso are independent of each other but
+          cover DIFFERENT mechanism classes (share-link malvertising
+          vs renderer-trust prompt-injection). They do NOT
+          individually corroborate any single claim. The "two paired
+          vendor-research surfacings within 14 minutes" is a cluster-
+          context pattern, NOT independent corroboration.
+
+      Standing-section heuristic at boundary:
+        - Today: Push LLMShare + Permiso ChatGPhish (two surfaces)
+        - 2026-05-10: claude.ai/share MacSync (finding-2026-05-10-0001)
+        - Total: three-in-19-days approaching standing-section
+          addition heuristic boundary
+        - Trigger condition: fourth comparable LLM-platform-abuse
+          surface within 14 days (deadline 2026-06-12) elevates
+          "AI Platform Security" to standing-section candidate per
+          existing precedent class (ad-sector, iran-cyber)
+
+      Two librarian source-grade handoffs (Push Security + Permiso
+      Security) at provisional B per peer class precedent
+      (StepSecurity 2026-05-12, Socket 2026-05-14, Sysdig 2026-05-14,
+      Zellic 2026-05-14, Aikido 2026-05-12, Ox Security 2026-05-15,
+      Upwind 2026-05-15, Arctic Wolf 2026-05-28).
+
+      Collector handoff: direct-retrieve Permiso primary write-up URL
+      on ChatGPhish on next pass (not captured in THN summary;
+      coordinated-disclosure timeline + OpenAI response detail not
+      reported by THN).
+
+      Hard Rule 6 quote discipline: Push Security verbatim "unclear
+      what payloads are ultimately deployed" (7 words). One quote,
+      one source. No Permiso direct quote in brief (Permiso primary
+      not directly retrieved; brief paraphrases THN summary).
+
+  - id: 2026-05-29-pm-brief-meta
+    covered_in: [2026-05-29-afternoon]
+    brief_file: threats/briefs/2026-05-29-afternoon.md
+    headline: "Afternoon brief 2026-05-29 — STATE TRANSITION lead on CVE-2026-0257 PAN-OS GlobalProtect authentication bypass (A2 cluster anchor; three independent A-grade primaries Rapid7 + CISA KEV + Palo Alto PSIRT; CISA 3-day federal due 2026-06-01 Monday; volume framings explicitly not collapsed Rapid7 multi-customer vs PAN limited-attempts; no Tier-1 IR firm corroboration in window; no-lateral-movement scoped to Rapid7 MDR 12-day window NOT DIB-wide reassurance; three-condition exploitability prerequisite; Tier-2/SMB/legacy skew STRIPPED per analyst KAC-2; 3-day CISA standard treatment per Ivanti EPMM + Cisco SD-WAN precedent NOT exceptional critical signal per red-team layer 4; Archimedes framing high-priority audit + apply workaround immediately NOT headline-critical; Rapid7 'treat as critical' preserved verbatim per Hard Rule 2 but not adopted as brief framing; red-team three-layer WEP DOWN adjustments applied verbatim) + Monitoring under Other Signal on paired ChatGPT platform-abuse research surfacings within 14-minute window (B3 cluster anchor; per-arm single-source veto on each arm; Push Security LLMShare via BleepingComputer + Permiso Security ChatGPhish via The Hacker News; no actor attribution either; researcher-coined working names; third LLM-platform-abuse surface in 19 days approaching standing-section heuristic boundary). Carry-forwards under Vulnerabilities for Oracle CPU May 2026 + Chaotic Eclipse Windows zero-days (both pointer-only with link to morning brief; substance not re-litigated). Standing sections: Sector Focus A&D structural-only (no DIB-prime named victim); Iran Cyber Watch silent-day boilerplate."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - lead-cve-2026-0257-pan-os-globalprotect-auth-bypass-state-transition
+      - paired-monitoring-chatgpt-platform-abuse-research-class
+      - rapid7-ETR-mdr-plus-cisa-kev-plus-palo-alto-psirt-three-A-grade-primary-convergence
+      - cisa-kev-3-day-federal-due-2026-06-01-monday-CISA-standard-treatment-for-itw-not-exceptional-elevation
+      - volume-framings-side-by-side-rapid7-vs-pan-not-collapsed
+      - no-lateral-movement-mdr-scoped-not-dib-wide-reassurance
+      - three-condition-exploitability-prerequisite
+      - tier-2-smb-legacy-skew-STRIPPED-per-analyst-kac-2
+      - rapid7-treat-as-critical-preserved-verbatim-not-adopted
+      - archimedes-framing-high-priority-audit-not-headline-critical
+      - red-team-qualify-not-block-three-layer-wep-down-adjustments-applied
+      - push-security-permiso-security-paired-research-monitoring-tier
+      - third-llm-platform-abuse-surface-in-19-days-standing-section-heuristic-boundary
+      - oracle-cpu-may-2026-carry-forward-pointer-only
+      - chaotic-eclipse-carry-forward-pointer-only-no-new-ir-firm-corroboration
+      - sector-focus-ad-structural-only-no-prime-named-victim
+      - iran-cyber-watch-silent-day
+      - hard-rule-2-strict-hold-throughout
+      - hard-rule-6-three-quotes-rapid7-psirt-push-security-each-under-8-words
+      - hard-rule-8-splunk-silent-pan-os-30d-and-dormant-non-self-telemetry-chatgpt
+    related_actors: []
+    related_vulns:
+      - CVE-2026-0257
+    related_zero_days: []
+    related_campaigns:
+      - cve-2026-0257-pan-os-globalprotect-itw-state-transition-2026-05-29
+      - llmshare-chatgpt-share-link-malvertising-2026-05-29
+      - chatgphish-renderer-trust-vulnerability-disclosure-2026-05-29
+    finding_ids:
+      - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due
+      - finding-2026-05-29-0005-bleepingcomputer-thn-push-security-permiso-llmshare-malvertising-chatgphish-renderer-trust-paired-chatgpt-platform-abuse-research-class
+    absorbs_flashes: []
+    word_count_target_range: [400, 800]
+    pre_flight_regen_count: 2
+    pre_flight_regen_reasons:
+      - "Quote discipline (Hard Rule 6): initial draft included three Rapid7 quotes and two Palo Alto PSIRT quotes; paraphrased down to one quote per source per brief"
+      - "Layer 1 word count compression — initial draft ~940 words, compressed twice to ~810 to land near 800 target"
+    hard_rule_2_brief_wide_compliance:
+      - "PAN-OS CVE-2026-0257: no actor attribution; Rapid7 + CISA KEV + Palo Alto PSIRT all publish unattributed; attribution void preserved"
+      - "ChatGPT cluster: no actor attribution; LLMShare and ChatGPhish researcher-coined working names"
+      - "Volume framings explicitly NOT collapsed (Rapid7 multi-customer vs PAN limited-attempts) per analyst KAC-1 + red-team layer-2"
+      - "Tier-2/SMB/legacy directional skew STRIPPED per analyst KAC-2 K2A1/K2A2 (critical-centrality + low-confidence, no in-window test)"
+      - "Rapid7 'treat as critical' preserved verbatim per Hard Rule 2 (paraphrased reference in Layer 1 to free quote slot; original Rapid7 quote slot used for 'no indication of successful lateral movement')"
+    hard_rule_6_quote_discipline_brief_wide:
+      - "Rapid7: 'no indication of successful lateral movement' (6 words)"
+      - "Palo Alto PSIRT: 'limited exploit attempts on unpatched PAN-OS devices' (7 words)"
+      - "Push Security: 'unclear what payloads are ultimately deployed' (7 words)"
+      - "No other direct quotes in brief body or Discord Summary"
+    splunk_first_party_brief_wide:
+      hits: 0
+      indexes_queried: [archimedes, defenseclaw_local]
+      query_windows: [-30d]
+      sweep_streak: 48th_consecutive_dormant_for_non_archimedes_internal_events
+    standing_sections_present:
+      sector_focus_ad: structural_only_no_dib_prime_named_victim
+      iran_cyber_watch: silent_day_template_per_watch_config
+    suppressed_items:
+      - id: megalodon-npm-supply-chain
+        reason: covered_2026-05-28-afternoon-no-material-update-this-window
+      - id: 176-npm-package-cluster
+        reason: enrichment_to_existing_vt-006_vt-009_no_new_finding_required
+      - id: vscode-remote-ssh-rce-chakraborty
+        reason: no_cve_assigned_watch_list_candidate_only_not_brief_material
+    discord_summary_layer_2:
+      word_count_estimate: 290
+      char_count_estimate: 1875
+      char_count_target: under_1900
+      compliant: true
+      bullets: 4
+      headlines_hyperlinked: true
+      natural_language_dates: true
+      themed_character_voice: false
+      digraph_or_finding_id_omitted: true
+      standing_section_boilerplate_omitted: true
+    librarian_handoffs_summary:
+      - palo_alto_psirt_provisional_a_addition_to_source_grades_yaml
+      - push_security_provisional_b_addition_to_source_grades_yaml
+      - permiso_security_provisional_b_addition_to_source_grades_yaml
+      - source_grade_log_entries_for_all_three_with_actor_review_flag
+      - vuln_tracker_handoff_new_pan_os_cve_2026_0257_dossier_scaffold
+      - ioc_index_update_pan_os_9_iocs_plus_llmshare_3_iocs
+      - collector_next_pass_permiso_primary_writeup_url_direct_retrieve
+      - standing_section_heuristic_watch_ai_platform_security_fourth_surface_deadline_2026_06_12
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-29
+    last_covered: 2026-05-29
+    retraction: null
+    test: false
+    notes: |
+      Two PM-29 net-new findings composed. Brief composition:
+
+      - Lead + Why it matters: CVE-2026-0257 STATE TRANSITION
+        headline + volume-framings-differ disclaimer + DIB
+        operational-reference framing for 2026-06-01 Monday.
+
+      - Active Threats: single STATE TRANSITION item on CVE-2026-0257
+        carrying all six red-team + analyst calibration instructions
+        verbatim: (1) procedural state-transition very_likely on
+        three-source convergence; (2) volume framings SIDE-BY-SIDE
+        with explicit source attribution NOT collapsed; (3) 3-day
+        KEV CISA-standard treatment per Ivanti EPMM + Cisco SD-WAN
+        precedent NOT exceptional critical signal; (4) high-priority
+        audit + apply workaround immediately NOT headline-critical;
+        (5) Rapid7 "treat as critical" preserved verbatim NOT adopted
+        as brief framing; (6) no-lateral-movement scoped to Rapid7
+        MDR 12-day window NOT DIB-wide reassurance.
+
+      - Vulnerabilities: TWO carry-forwards pointer-only — Oracle CPU
+        May 2026 (linked to morning brief; no ITW or KEV at T+1
+        unchanged) + Chaotic Eclipse Windows zero-days (BlueHammer
+        patched ZD-001 / RedSun ZD-002 unpatched / UnDefend ZD-003
+        unpatched; MSRC-reported ITW per morning brief; no new IR-
+        firm corroboration this afternoon window).
+
+      - Sector Focus A&D: structural-only variant — no DIB-prime
+        named victim; CVE-2026-0257 carries structural DIB
+        relevance via PAN-OS GlobalProtect's dominant edge-VPN
+        footprint; three-condition prerequisite narrows exposed
+        population but deployment-maturity skew NOT source-
+        established; all-operators-audit framing per analyst KAC-2.
+
+      - Iran Cyber Watch: silent-day per watch-config.yaml
+        silent_day_template — no new tracked Iranian actor activity
+        in last 48h (UNC1549 #004, Charming Kitten #011, Handala
+        Hack #014, MuddyWater #022 all silent).
+
+      - Other Signal: paired ChatGPT platform-abuse research
+        monitoring-tier item with short treatment per grader
+        monitoring-tier discipline. No actor attribution either
+        arm; researcher-coined working names preserved; per-arm
+        single-source veto explicitly noted; A&D-prime relevance
+        flagged indirect via employee ChatGPT use. Standing-section-
+        addition heuristic at boundary (three LLM-platform-abuse
+        surfaces in 19 days); "AI Platform Security" section becomes
+        a candidate if fourth lands within 14 days (deadline
+        2026-06-12).
+
+      Pre-flight regen iterations: 2.
+        - Regen 1 (quote discipline): initial draft included three
+          Rapid7 quotes + two Palo Alto PSIRT quotes. Hard Rule 6
+          violation. Paraphrased down to one quote per source per
+          brief (Rapid7 "no indication of successful lateral
+          movement" + Palo Alto PSIRT "limited exploit attempts on
+          unpatched PAN-OS devices" + Push Security "unclear what
+          payloads are ultimately deployed"). Layer 2 PSIRT quote
+          paraphrased to avoid double-quoting; Layer 2 Rapid7
+          attribution paraphrased.
+        - Regen 2 (word count + Layer 2 char count): Layer 1
+          initial ~940 words compressed to ~810 across all sections
+          (lead tightened, Active Threats action bullet compressed,
+          Other Signal monitoring block compressed, Vulnerabilities
+          carry-forwards reduced to pointer-only with morning brief
+          link, Sector Focus tightened). Layer 2 Discord summary
+          tightened on PAN-OS bullet to keep char count under 1900
+          ceiling.
+
+      Anti-repetition / coverage-log discipline applied:
+        - Oracle CPU + Chaotic Eclipse: carry-forward pointer-only
+          to morning brief; no substance restatement (anti-noise).
+        - Megalodon npm supply chain (grader carry-forward
+          candidate from rejected PM-002): SUPPRESSED per "if
+          coverage log already carried these in prior briefs,
+          suppress entirely rather than repeat" — Megalodon
+          covered 2026-05-28 PM (federal-escalation UPDATE);
+          no material update this window.
+        - 176-npm-package cluster (grader carry-forward
+          candidate): SUPPRESSED — enrichment carry-forward to
+          existing VT-006 / VT-009 dossiers, not new finding;
+          vuln-tracker handoff handles cross-reference.
+        - VS Code Remote-SSH RCE (Chakraborty disclosure, no
+          CVE assigned): SUPPRESSED — no CVE assignment yet,
+          watch-list candidate only, not brief material.
+
+      Two librarian handoffs across both PM-29 findings (mirrors
+      pattern from PM-28 with three actor-class additions):
+        - Palo Alto PSIRT provisional A first citation (PAN-OS
+          finding).
+        - Push Security + Permiso Security provisional B first
+          citations (ChatGPT cluster).
+        - Three source-grade-log entries with #actor-review
+          ratification flag.
+        - NEW vuln-tracker scaffold for PAN-OS-CVE-2026-0257
+          (distinct from ZD-004 / CVE-2026-0300).
+        - IOC index updates (9 PAN-OS IOCs + 3 LLMShare IOCs).
+        - Collector next-pass: direct-retrieve Permiso primary
+          ChatGPhish URL.
+        - Standing-section heuristic watch: AI Platform Security
+          section addition candidate (fourth-surface deadline
+          2026-06-12).
 
 # ============================================================================
 # Valid resurface_if conditions

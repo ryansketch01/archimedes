@@ -403,6 +403,66 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-05-29 — Palo Alto Networks PSIRT — (none / deferred-since-2026-05-06) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional (resolves 2026-05-06 deferred-id log entry)
+**Source ID:** `palo-alto-psirt`
+**Reason:** First Archimedes-corpus citation as a *dedicated* source-grades.yaml id via `finding-2026-05-29-0004` (CVE-2026-0257 PAN-OS GlobalProtect authentication bypass; CVSS v4 7.8; three-condition coexistence prerequisite — auth-override enabled + Cloud Authentication Service disabled + override-cookie certificate reused; advisory at security.paloaltonetworks.com/CVE-2026-0257; vendor self-attests "limited exploit attempts on unpatched PAN-OS devices without mitigations applied" verbatim under Hard Rule 6 quote discipline as one of three independent A-grade primaries converging on the state-transition state today alongside Rapid7 MDR ETR and CISA KEV add). Palo Alto PSIRT is the canonical vendor authority on PAN-OS-product CVE disclosure — advisory text, CVSS scoring, affected/fixed version matrices (12.1.7 / 11.2.12 / 11.1.15 / 10.2.18-h6 branch rollup), three-condition exploitability prerequisite enumeration, workaround availability (disable auth-override OR dedicated override-cookie certificate), and ITW attestations are all first-party vendor-on-own-product authoritative claims. Vendor-self-disclosure on own products is procedurally A-grade per the precedent already established for Cisco PSIRT (2026-05-20-0006), F5 PSIRT (2026-05-14-0002 K000160932 NGINX Rift), kernel.org netdev maintainer disclosure (2026-05-14-0003 Fragnesia), OpenAI self-disclosure (2026-05-14-0008 TanStack), GitHub self-disclosure (2026-05-20-FLASH-0001), and LiteSpeed self-disclosure (2026-05-23-FLASH-0002). Palo Alto PSIRT is DISTINCT from Palo Alto Unit 42 (already graded A): PSIRT publishes advisories on PAN-OS / Cortex / Prisma product CVEs (vendor-on-own-product authority); Unit 42 publishes threat research on external actors / campaigns / non-Palo-Alto-product CVEs (vendor research-arm authority). This entry **resolves** the 2026-05-06 source-grade-log "recommendation pending review (no grade change applied this run)" entry, which deferred dedicated-id creation pending operator decision; finding 0004 forces the issue with PSIRT as a direct co-primary.
+**Methodological positives on first surface:**
+- Vendor self-attestation hedged conservatively ("limited exploit attempts" — 8-word verbatim quote preserved under Hard Rule 6) and explicitly NOT collapsed with Rapid7's stronger "across numerous customers" framing per grader cluster discipline.
+- No actor attribution originated — Palo Alto PSIRT does not name a roster actor; Hard Rule 2 compliance preserved verbatim by the finding's cluster anchor.
+- Procedural enumeration (CVSS, affected versions, fixed versions, configuration prerequisites, workaround availability) is verbatim per advisory; all classified A1 in the digraph-layered breakdown.
+**Supporting findings:** [finding-2026-05-29-0004]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification per established vendor-PSIRT precedent (provisional A is not a downgrade requiring human review per Hard Rule 5; bundles with cisco-psirt / aonan-guan / Symantec / Bitdefender / litespeed / github-blog ratification window).
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade palo-alto-psirt A` (or operator downgrade).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-05-29-0004` cluster anchor is A2 / WEP very_likely on the procedural state-transition layer (CVE-2026-0257 being actively exploited at some volume post-2026-05-17). PSIRT carries A1 procedural facts (advisory existence, CVSS, affected/fixed versions, workarounds) and A2 on the vendor self-attestation layer ("limited exploit attempts" on unpatched devices). Operator downgrade to B would re-grade the procedural-fact layers but the cluster anchor would still hold at A2 on Rapid7 + CISA KEV co-corroboration. Single-source veto NOT applied — three A-grade primaries converge with independence on the procedural layer.
+**72h ratification clock:** 2026-06-01T16:00:00-04:00 (72h from afternoon brief composition). Per established vendor-PSIRT precedent class.
+**Next review:** ratification target 2026-06-05 (7 days; bundled with the open cisco-psirt / aonan-guan / Symantec / Bitdefender / litespeed / github-blog / arctic-wolf ratification window).
+
+---
+
+## 2026-05-29 — Push Security — (none) → B (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `push-security`
+**Reason:** First Archimedes-corpus citation as the originating research vendor on `finding-2026-05-29-0005` (LLMShare malvertising campaign — chatgpt.com/s/ shared-link URL abuse → fake OpenAI outage page → openew[.]app fake ChatGPT desktop-app downloads with macOS + Windows samples and VirusTotal-corroborated SHA-256 hashes; co-primary with Permiso Security on the paired ChatGPT platform-abuse research class though no IOCs overlap between the two arms — LLMShare is the only arm with published IOCs). Cited via BleepingComputer (Bill Toulas, 2026-05-29) as the originating research vendor; primary research surface is pushsecurity.com/blog with named-engineer bylines. Push Security is a SaaS-identity / browser-security specialist vendor — narrower Tier-2 scope than Tier-1 vendor research practices (Mandiant / CrowdStrike / Unit 42 / MSTIC) but consistent technical rigor on SaaS-platform-abuse research with VirusTotal-corroborated sample analysis. Proposed grade B by the grader as the conservative starting grade per the vendor-research-firm category precedent (peer class: StepSecurity B 2026-05-12, Socket B 2026-05-14, Sysdig B 2026-05-14, Zellic B 2026-05-14, Ox Security B 2026-05-15, Upwind B 2026-05-15, Arctic Wolf B 2026-05-28). Operator may upgrade to A on subsequent surfaces showing consistent rigor across additional SaaS-identity / browser-security investigations, or hold at B if context-thin commercial-research profile emerges across more findings.
+**Methodological positives on first surface:**
+- Hedged payload identification ("unclear what payloads are ultimately deployed" — 7-word verbatim quote preserved under Hard Rule 6).
+- No actor attribution originated — campaign name "LLMShare" is researcher-coined per Push Security; Hard Rule 2 compliance preserved verbatim by BleepingComputer relay.
+- Operationally responsible non-IOC discipline: chatgpt.com/s/ surfaces as a legitimate-abused-surface marker, NOT propagated as a blockable IOC (would FP across legitimate ChatGPT usage at A&D primes).
+- VirusTotal-corroborated sample analysis (two SHA-256 hashes published with platform + behavioral context).
+**Supporting findings:** [finding-2026-05-29-0005]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification per established vendor-research-firm precedent (provisional B is not a downgrade requiring human review per Hard Rule 5).
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade push-security B` (or operator upgrade to A / hold at C).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-05-29-0005` LLMShare arm sits at B2 / WEP likely with single-source veto active on the LLMShare campaign layer (Push Security sole primary; BleepingComputer relay). Provisional B grading holds the B2 digraph on that arm. Operator upgrade to A would re-grade to A2 on subsequent surfaces but would NOT lift single-source veto on this finding (independence requires a second vendor's primary observation of LLMShare).
+**Direct-retrieval flag:** Primary pushsecurity.com/blog URL not retrieved this sweep; finding relies on BleepingComputer relay. Collector to attempt direct retrieval on next sweep targeting the LLMShare research URL.
+**72h ratification clock:** 2026-06-01T16:00:00-04:00 (72h from afternoon brief composition). Per established vendor-research-firm precedent class.
+**Next review:** ratification target 2026-06-05 (7 days; bundled with the open ratification window).
+
+---
+
+## 2026-05-29 — Permiso Security — (none) → B (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `permiso-security`
+**Reason:** First Archimedes-corpus citation as the originating research vendor on `finding-2026-05-29-0005` (ChatGPhish vulnerability class — ChatGPT response renderer trusts Markdown links and images from summarized third-party pages, enabling auto-image-fetch IP / User-Agent / Referer leakage, clickable malicious links, and fake system-style alerts in the trusted ChatGPT interface; co-primary with Push Security on the paired ChatGPT platform-abuse research class though no IOCs overlap between the two arms — Permiso's disclosure is a vulnerability-class report with no published IOCs). Cited via The Hacker News (Ravie Lakshmanan, 2026-05-29) as the originating research vendor; primary research surface is permiso.io with named-research-team output. Permiso Security is a cloud-identity / cloud-detection specialist vendor — narrower Tier-2 scope than Tier-1 vendor research practices (Mandiant / CrowdStrike / Unit 42 / MSTIC) but consistent technical rigor on identity / SaaS / LLM-platform abuse research. Proposed grade B by the grader as the conservative starting grade per the vendor-research-firm category precedent (peer class: StepSecurity B 2026-05-12, Socket B 2026-05-14, Sysdig B 2026-05-14, Zellic B 2026-05-14, Ox Security B 2026-05-15, Upwind B 2026-05-15, Arctic Wolf B 2026-05-28, Push Security B 2026-05-29). Operator may upgrade to A on subsequent surfaces showing consistent rigor across additional cloud-identity / LLM-platform investigations, or hold at B if context-thin commercial-research profile emerges across more findings.
+**Methodological positives on first surface:**
+- No actor attribution originated — "ChatGPhish" is a researcher-coined vulnerability-class name, NOT an attribution; Hard Rule 2 compliance preserved verbatim by THN relay.
+- Trust-boundary vulnerability-class framing is methodologically clean: Permiso describes the renderer behavior precisely without overstating mechanism portability to other LLM surfaces.
+- Operationally responsible: vulnerability-class disclosure with no IOCs to leak; OpenAI hardening status surfaced in the same coverage.
+**Supporting findings:** [finding-2026-05-29-0005]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification per established vendor-research-firm precedent (provisional B is not a downgrade requiring human review per Hard Rule 5).
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade permiso-security B` (or operator upgrade to A / hold at C).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-05-29-0005` ChatGPhish arm sits at B2 / WEP likely with single-source veto active on the ChatGPhish vulnerability-class layer (Permiso sole primary; The Hacker News relay). Provisional B grading holds the B2 digraph on that arm. Operator upgrade to A would re-grade to A2 on subsequent surfaces but would NOT lift single-source veto on this finding (independence requires a second vendor's primary corroboration of the ChatGPhish renderer-trust mechanism).
+**Direct-retrieval flag:** Primary permiso.io URL not retrieved this sweep; finding relies on The Hacker News relay. Collector to attempt direct retrieval on next sweep targeting the ChatGPhish research URL.
+**72h ratification clock:** 2026-06-01T16:00:00-04:00 (72h from afternoon brief composition). Per established vendor-research-firm precedent class.
+**Next review:** ratification target 2026-06-05 (7 days; bundled with the open ratification window).
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

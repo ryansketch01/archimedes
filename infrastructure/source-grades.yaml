@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-29T08:30:00-04:00
+last_updated: 2026-05-29T16:32:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -530,6 +530,47 @@ vendor_sources:
     urls:
       - https://arcticwolf.com/resources/blog/
       - https://arcticwolf.com/resources/
+
+  - id: palo-alto-psirt
+    name: "Palo Alto Networks PSIRT (Product Security Incident Response Team)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-05-29
+    provisional_reason: "First Archimedes-corpus citation as a *dedicated* source-grades.yaml id via finding-2026-05-29-0004 (CVE-2026-0257 PAN-OS GlobalProtect authentication bypass; CVSS v4 7.8; three-condition coexistence prerequisite — auth-override enabled + Cloud Authentication Service disabled + override-cookie certificate reused; advisory at security.paloaltonetworks.com/CVE-2026-0257; vendor self-attests 'limited exploit attempts on unpatched PAN-OS devices without mitigations applied' verbatim under Hard Rule 6 quote discipline). Palo Alto PSIRT is the canonical vendor authority on PAN-OS-product CVE disclosure — advisory text, CVSS scoring, affected/fixed version matrices (12.1.7 / 11.2.12 / 11.1.15 / 10.2.18-h6 branch rollup), three-condition exploitability prerequisite enumeration, workaround availability (disable auth-override OR dedicated override-cookie certificate), and ITW attestations are all first-party vendor-on-own-product authoritative claims. Vendor-self-disclosure on own products is procedurally A-grade per the precedent already established for Cisco PSIRT (2026-05-20-0006), F5 PSIRT (2026-05-14-0002 K000160932 NGINX Rift), kernel.org netdev maintainer disclosure (2026-05-14-0003 Fragnesia), OpenAI self-disclosure (2026-05-14-0008 TanStack), GitHub self-disclosure (2026-05-20-FLASH-0001), and LiteSpeed self-disclosure (2026-05-23-FLASH-0002). Palo Alto PSIRT is DISTINCT from Palo Alto Unit 42 (already graded A): PSIRT publishes advisories on PAN-OS / Cortex / Prisma product CVEs (vendor-on-own-product authority); Unit 42 publishes threat research on external actors / campaigns / non-Palo-Alto-product CVEs (vendor research-arm authority). The 2026-05-06 source-grade-log entry deferred this dedicated id; finding 0004 forces the issue with PSIRT as a direct co-primary alongside Rapid7 and CISA KEV. Scope of A grade: PAN-OS-product CVE-disclosure procedural facts (CVE existence, CVSS scoring, affected/fixed versions, exploitability prerequisites, workaround availability, vendor ITW attestations). Palo Alto PSIRT does NOT originate actor attribution on this finding — Hard Rule 2 preserved. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://security.paloaltonetworks.com/
+      - https://security.paloaltonetworks.com/CVE-2026-0257
+
+  - id: push-security
+    name: "Push Security"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-29
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-29-0005 (LLMShare malvertising campaign; chatgpt.com/s/ shared-link URL abuse → fake OpenAI outage page → openew[.]app fake ChatGPT desktop-app downloads with macOS + Windows samples and VirusTotal-corroborated SHA-256 hashes; co-primary with Permiso Security on the paired ChatGPhish disclosure though no IOCs overlap between the two arms). Cited via BleepingComputer (Bill Toulas) as the originating research vendor; primary research surface is pushsecurity.com/blog with named-engineer bylines. Push Security is a SaaS-identity / browser-security specialist vendor — narrower Tier-2 scope than Tier-1 vendor research practices (Mandiant / CrowdStrike / Unit 42 / MSTIC) but consistent technical rigor on SaaS-platform-abuse research with VirusTotal-corroborated sample analysis. Provisional B is the conservative starting grade per the vendor-research-firm category precedent (peer class: StepSecurity B, Socket B, Sysdig B, Zellic B, Ox Security B, Upwind B, Arctic Wolf B). Methodological positives on first surface: Push Security names no actor and explicitly hedges payload identification ('unclear what payloads are ultimately deployed' — 7-word verbatim quote preserved under Hard Rule 6), Hard Rule 2 compliance preserved verbatim by BleepingComputer relay. Operator may upgrade to A on subsequent surfaces showing consistent rigor across additional SaaS-identity / browser-security investigations; hold at B if context-thin commercial-research profile emerges across more findings. Pending human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    active: true
+    urls:
+      - https://pushsecurity.com/blog
+      - https://pushsecurity.com/research
+
+  - id: permiso-security
+    name: "Permiso Security"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-29
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-29-0005 (ChatGPhish vulnerability class — ChatGPT response renderer trusts Markdown links and images from summarized third-party pages, enabling auto-image-fetch IP / User-Agent / Referer leakage, clickable malicious links, and fake system-style alerts in the trusted ChatGPT interface; co-primary with Push Security on the paired LLMShare disclosure though no IOCs overlap between the two arms — Permiso's disclosure is a vulnerability-class report with no published IOCs). Cited via The Hacker News (Ravie Lakshmanan) as the originating research vendor; primary research surface is permiso.io with named-research-team output. Permiso Security is a cloud-identity / cloud-detection specialist vendor — narrower Tier-2 scope than Tier-1 vendor research practices (Mandiant / CrowdStrike / Unit 42 / MSTIC) but consistent technical rigor on identity / SaaS / LLM-platform abuse research. Provisional B is the conservative starting grade per the vendor-research-firm category precedent (peer class: StepSecurity B, Socket B, Sysdig B, Zellic B, Ox Security B, Upwind B, Arctic Wolf B, Push Security B). Methodological positives on first surface: Permiso names no actor (ChatGPhish is a researcher-coined vulnerability-class name, not an attribution), Hard Rule 2 compliance preserved verbatim by THN relay. Operator may upgrade to A on subsequent surfaces showing consistent rigor across additional cloud-identity / LLM-platform investigations; hold at B if context-thin commercial-research profile emerges across more findings. Pending human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    active: true
+    urls:
+      - https://permiso.io/blog
+      - https://permiso.io/research
 
 # ============================================================================
 # Security Media & Researchers
@@ -1061,6 +1102,9 @@ _meta:
     - litespeed-blog-self-disclosure  # provisional A; first cited 2026-05-23-FLASH-0002 (LiteSpeed User-End cPanel Plugin CVE-2026-48172 vendor self-disclosure with vendor-confirmed active exploitation; lsws.redisAble root RCE from any cPanel user; v2.4.5/v2.4.7 patches shipped; 72h ratification clock to 2026-05-26T06:35:00-04:00)
     - securityaffairs           # provisional B; first cited 2026-05-29-0002 (Chaotic Eclipse state-transition MSRC relay paired with The Register; resolved PM-28 single-source veto on the ITW exploitation claim per AM-29 grader supersession)
     - theregister               # provisional B; first cited 2026-05-29-0002 (Chaotic Eclipse state-transition MSRC relay paired with Security Affairs; contributed Childs/Moussouris industry commentary under Hard Rule 6 quote discipline)
+    - palo-alto-psirt           # provisional A; first cited 2026-05-29-0004 (CVE-2026-0257 PAN-OS GlobalProtect auth bypass — vendor self-attestation on own product co-primary with Rapid7 + CISA KEV; resolves 2026-05-06 deferred-id source-grade-log entry; precedent class: Cisco PSIRT, F5 PSIRT, kernel.org netdev, OpenAI/GitHub/LiteSpeed self-disclosure; 72h ratification clock to 2026-06-01T16:00:00-04:00)
+    - push-security             # provisional B; first cited 2026-05-29-0005 (LLMShare malvertising campaign on chatgpt.com/s/ shared-link URL abuse; co-primary with Permiso Security on paired ChatGPT platform-abuse research class; cited via BleepingComputer; awaiting direct-retrieval of pushsecurity.com/blog primary; peer class: StepSecurity, Socket, Sysdig, Zellic, Ox Security, Upwind, Arctic Wolf; 72h ratification clock to 2026-06-01T16:00:00-04:00)
+    - permiso-security          # provisional B; first cited 2026-05-29-0005 (ChatGPhish vulnerability class — ChatGPT renderer trusts Markdown from summarized pages; co-primary with Push Security on paired ChatGPT platform-abuse research class; cited via The Hacker News; awaiting direct-retrieval of permiso.io primary; peer class: StepSecurity, Socket, Sysdig, Zellic, Ox Security, Upwind, Arctic Wolf, Push Security; 72h ratification clock to 2026-06-01T16:00:00-04:00)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

@@ -3701,61 +3701,266 @@ entries:
 
       Keep this rejection entry for 1 year per LEGAL-POLICY retention.
 
+  - rejection_id: reject-2026-05-29-0001
+    rejected_at: 2026-05-29T16:14:00-04:00
+    grading_run_id: afternoon-20260529-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-29-pm-002-securityweek-in-other-news-roundup-trump-mobile-russia-apt-treasury-vscode-176npm-fifa-megalodon-enrichment
+    cluster_topic: >
+      SecurityWeek "In Other News" weekly roundup (Eduard Kovacs et al)
+      published 2026-05-29T16:20:49 UTC covering 14 discrete items: Trump
+      Mobile data breach (consumer telecom); Russian state-sponsored APT
+      US Treasury email access FOIA-release on 2019-2020 SolarWinds-linked
+      historical campaign; VS Code Remote-SSH RCE researcher disclosure
+      by Suman Kumar Chakraborty (no CVE / no ITW); UK Visa Portal AWS S3
+      100k-document PII exposure (private vendor, secured); LinkedIn
+      phishing via Adobe Target (commodity phishing); Ghost Stadium FIFA
+      World Cup 4,300 fraudulent domains by Chinese-speaking group (PM-28
+      anti-noise carry-forward); Veeam Backup & Replication two
+      high-severity vendor patches (no ITW); Notepad++ v8.9.6.1 three
+      patches (no ITW); Roundcube v1.6.16 + v1.7.1 eight flaws including
+      unauth SQL injection (no ITW); CISA supply-chain KEV three-additions
+      (Daemon Tools + TanStack + Nx Console — PM-27 absorption carry-forward);
+      Megalodon attackers / Nx Console "5,500+ GitHub repositories"
+      unattributed enrichment to PM-28-004 Megalodon baseline (3,800-repo
+      figure previously); 176 malicious npm packages with version 99.99.99
+      pattern + postinstall credential-stealing (UNATTRIBUTED operational
+      cluster-expansion signal adjacent to VT-006 Mini Shai-Hulud and
+      VT-009 Nx Console but not Shai-Hulud / Mini Shai-Hulud / TeamPCP
+      attributed); Maxwell Schultz Columbus OH insider-threat 24-month
+      sentence (completed legal proceeding); California AG sues 23andMe
+      (Chrome Holding Co.) civil litigation on 2023 breach.
+    rejection_reasons:
+      - structural_context_summary_format_no_brief_action_candidate_clears_b2_threshold
+      - 11_of_14_items_anti_noise_carry_forward_or_not_threat_intel_class_or_already_absorbed
+      - russia_apt_treasury_historical_2019_solarwinds_anti_noise_to_apt29_baseline_no_new_attribution
+      - ghost_stadium_pm28_005_finding_2026_05_28_FLASH_1800_0001_anti_noise_lock_active_within_24h_window
+      - kev_three_additions_pm_27_absorption_already_finding_2026_05_27_0007_anti_noise
+      - megalodon_5500_repo_figure_unattributed_in_securityweek_secondary_relay_of_relay_framing_not_corroborated
+      - 176_packages_unattributed_per_securityweek_hard_rule_2_prevents_shai_hulud_lineage_extension_without_a_b_grade_source
+      - vendor_patch_layer_veeam_notepad_roundcube_no_itw_no_specific_cve_detail_in_roundup_format_below_action_threshold
+      - vs_code_remote_ssh_rce_researcher_disclosure_no_cve_no_itw_coordinated_disclosure_class_vuln_tracker_monitoring_candidate_below_action_threshold
+      - civil_litigation_23andme_and_completed_criminal_case_schultz_not_threat_intel_cadence
+      - consumer_telecom_breach_trump_mobile_not_a_and_d_not_roster_not_tracked_vuln
+      - hard_rule_2_no_actor_attribution_upgrade_on_either_russia_apt_treasury_or_176_npm_packages_or_megalodon_5500_repo_figure
+      - bounded_restatement_class_belongs_in_briefer_update_block_anti_noise_treatment_not_standalone_finding
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        provisional: true
+        role: "primary roundup-format relay; B provisional per source-grades.yaml since 2026-05-06; secondary-relay-of-relay framing on most items; no IOCs in-piece per roundup format"
+      - source_yaml_id: underlying_primaries_per_item_not_directly_retrieved_in_window
+        grade: varies
+        role: "each item has its own underlying primary which would require direct retrieval to grade individually if any item is promoted to finding; deferred per anti-noise + below-threshold disposition"
+    would_be_digraph: B3_on_aggregate_roundup_cluster_anchor_with_single_source_veto_on_each_item_layer
+    would_be_digraph_on_176_npm_packages_layer: B4_unattributed_via_secondary_relay_below_anti_noise_threshold_without_primary_source_retrieval
+    rejection_detail: >
+      SecurityWeek "In Other News" roundup format produces structural-
+      context summaries of 14 discrete items, most of which fall into
+      one of three buckets: (a) already-absorbed-in-prior-windows
+      anti-noise carry-forward (Ghost Stadium PM-28-005 finding-2026-05-
+      28-FLASH-1800-0001 lock active within 24h; CISA KEV three-additions
+      PM-27 absorption finding-2026-05-27-0007; Megalodon / Nx Console
+      PM-28-004 absorption baseline); (b) not-threat-intel-class items
+      (Trump Mobile consumer-telecom breach, UK Visa Portal PII exposure
+      on private vendor, LinkedIn commodity phishing, civil litigation
+      against 23andMe, Maxwell Schultz completed insider-threat criminal
+      case); (c) vendor-patch-layer items with no ITW and no specific
+      CVE detail in roundup format (Veeam two high-severity patches,
+      Notepad++ v8.9.6.1 three patches, Roundcube v1.6.16/1.7.1 eight
+      flaws including unauth SQL injection).
+
+      The Russian state-sponsored APT Treasury email access item is a
+      2026 FOIA-release on the 2019-2020 SolarWinds-linked historical
+      campaign — APT29-cluster public-attribution baseline; not new
+      attribution and not a fresh state transition. Anti-noise to
+      existing APT29 dossier; no actor-tracking action required.
+
+      The VS Code Remote-SSH RCE researcher disclosure (Suman Kumar
+      Chakraborty) is coordinated-disclosure class with no CVE
+      assignment and no ITW exploitation language per SecurityWeek
+      summary. Vuln-tracker monitoring-only candidate; would convert
+      to active tracking if CVE assigned + ITW signal surfaces. Below
+      B2 action-item threshold at sweep time.
+
+      Two items are noteworthy as cluster-context signals but do NOT
+      individually warrant standalone promotion:
+
+        - The Megalodon "5,500+ GitHub repositories infected per
+          separate reporting" framing extends the operational scope
+          beyond the previously-published 3,800-internal-repo figure
+          (finding-2026-05-20-FLASH-0001 baseline). SecurityWeek
+          attributes the 5,500+ number to "separate reporting" without
+          naming the underlying primary — secondary-relay-of-relay
+          framing. Hard Rule 2 prevents treating the 5,500-repo figure
+          as corroborated for the Megalodon campaign specifically
+          without identifying the underlying primary. Briefer may
+          carry as bounded restatement in update block on existing
+          Megalodon coverage if elected.
+
+        - The 176 malicious npm packages with version 99.99.99
+          pattern + postinstall credential-stealing for CI/CD secrets
+          / env vars / tokens is an operational cluster-expansion
+          signal adjacent to but NOT attributed to the active VT-006
+          (Mini Shai-Hulud / CVE-2026-45321 / TeamPCP) and VT-009
+          (Nx Console / CVE-2026-48027) clusters. SecurityWeek does
+          NOT attribute these 176 packages to TeamPCP / Shai-Hulud /
+          Mini Shai-Hulud / any roster actor. The "version 99.99.99"
+          pattern is a distinct tradecraft signature (semver-string
+          abuse to force resolution priority) that is NOT documented
+          in the Wiz / Snyk / StepSecurity Mini Shai-Hulud research
+          and NOT documented in the GitHub Nx Console self-
+          disclosure. This is probably a separate campaign with
+          overlapping victim sector (npm/CI/CD ecosystem) but
+          different mechanism and possibly different actor. Hard
+          Rule 2 prevents propagating a Shai-Hulud-lineage framing
+          onto the 176-package campaign without an A/B-grade source
+          making that attribution. Vuln-tracker should consider
+          whether VT-006 / VT-009 dossier expansion to include a
+          "176-package version-99.99.99 adjacent unattributed wave"
+          subsection is warranted given the operational pattern;
+          NOT a fresh standalone tracking candidate without primary-
+          source identification.
+
+      The cluster as a whole is structural-context: the briefer may
+      surface 1-3 of the items as bounded restatement in update blocks
+      on existing clusters (Megalodon enrichment carry-forward; 176-
+      npm-package cluster-adjacency for vuln-tracker awareness; VS Code
+      Remote-SSH RCE as research-class watch-list) but the cluster does
+      NOT warrant a standalone finding-class promotion.
+
+      Per INTEL-GRADING.md inclusion thresholds: B3 on a roundup-format
+      cluster with effective single-source-veto on each item meets C3
+      monitoring inclusion but does NOT meet B2 daily-brief-action
+      threshold. Disposition is roundup-format-monitoring belongs in
+      briefer's update blocks, not standalone finding.
+
+      Regrade if: (a) the underlying primary on the 176-npm-package
+      campaign is identified and graded A/B with explicit attribution
+      to a roster actor or TeamPCP / Shai-Hulud / Mini Shai-Hulud
+      lineage; (b) the underlying primary on the Megalodon 5,500-repo
+      figure is identified and the figure is corroborated by a second
+      A/B-grade source independent of the SecurityWeek piece; (c)
+      Suman Kumar Chakraborty's VS Code Remote-SSH RCE receives a CVE
+      assignment + ITW exploitation signal; (d) any of the vendor-
+      patch-layer items (Veeam / Notepad++ / Roundcube) receives a
+      CISA KEV addition or A/B-grade IR-firm ITW observation.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 40
-  most_recent_run: flash-grade-20260528-120000
+  total_rejections: 41
+  most_recent_run: afternoon-20260529-160000
   most_recent_run_rejections: 1
   most_recent_run_promotions: 2
   most_recent_run_absorptions: 0
   most_recent_run_promotion_ids:
-    - finding-2026-05-28-FLASH-1200-0001-securityweek-forticlient-ems-cve-2026-35616-fresh-exploitation-arctic-wolf      # FLASH 1200 sweep 12:00 EDT - SecurityWeek (B provisional) + The Hacker News (B provisional) relay of Arctic Wolf (NEW SOURCE - provisional B, vendor-IR-research category, 72h ratification clock to 2026-05-31T12:35:00-04:00) observation of fresh post-April-patch exploitation of CVE-2026-35616 FortiClient EMS CVSS 9.1 pre-auth API access bypass; patched in 7.4.7 early April 2026; EKZ Infostealer payload (a.k.a. FortiEndpoint_Patch.exe) distributed via management-pipeline weaponization to push malicious PowerShell to managed endpoints; exfil IP 83.138.53.110 (Splunk -30d 0 hits); NO actor attribution; NO A&D-prime named; SecurityWeek + THN BOTH relay Arctic Wolf as single primary origin = independence test FAILS on exploitation-observation layer = effective single-source. Cluster digraph B2 (cluster anchor on B-grade-relays-of-provisional-B-vendor-IR; credibility 2 Probably True via internally-coherent vendor-IR observation + verifiable CVE in NVD + corpus-consistent post-patch fresh-exploitation pattern + no contradicting A/B source); single-source veto APPLIES on exploitation-observation layer, WEP capped at "likely"; very_likely on CVE-record-and-patch-availability layer (A1 procedural fact, multi-source); Trigger 1 marginally met (A-grade-source spec borderline against B-tier vendor IR firm). critical_override_eval: FAILS (CVSS 9.1 < 10.0; no tracked-actor attribution; no A&D-watchlist entity named). analyst_review_required true (SAT-KAC on Arctic Wolf customer-base representativeness assumption + EKZ family naming novelty); red_team_review_required false (WEP "likely" on anchor, below very_likely threshold); vuln-tracker handoff MEDIUM-priority dossier scaffolding for CVE-2026-35616; librarian handoffs add arctic-wolf to source-grades.yaml + source-grade-log.md.
-    - finding-2026-05-28-FLASH-1200-0002-bleepingcomputer-gogs-zero-day-rce-rapid7-jonah-burges-no-patch      # FLASH 1200 sweep 12:00 EDT - BleepingComputer (B) relay of Rapid7 (A provisional) Jonah Burges primary disclosure of Gogs self-hosted Git zero-day argument-injection RCE in pull-request rebase handling; 2026-03-17 vendor report → 2026-03-28 vendor ack → 2026-05-28 public disclosure (60+ days vendor silence); NO CVE assigned at sweep time (collector watch-config addition for CVE-assignment monitoring); NO patch available; affected versions 0.14.2 and 0.15.0+dev; effective pre-auth on default open-registration deployments (Gogs ships with open-registration enabled by default); Shadowserver 2,400+ Internet-exposed instances + Shodan 1,000+ Gogs-fingerprint IPs (independent corroboration on install-base exposure layer); geographic skew Asia and Europe primary; NO confirmed in-wild exploitation of this specific zero-day at sweep time (historical CVE-2025-8110 prior Gogs exploitation cited as HISTORICAL context only, NOT current-flaw attribution); NO actor attribution; NO A&D-prime named. Cluster digraph A2 (Rapid7 A-grade originating-research vendor disclosure single-primary; BleepingComputer faithful B-grade relay NOT independent corroboration on vulnerability-existence layer; credibility 2 Probably True via internally-coherent mechanism class + documented argument-injection vulnerability class precedent CVE-2017-1000117 + CVE-2022-24765 + Gogs prior CVE-2025-8110 + verifiable affected-version specification + industry-standard 60-day vendor-silence disclosure timeline + no contradicting A/B source); install-base-exposure layer carries independent corroboration via Shadowserver + Shodan (A1 on existence-of-exposure dimension); single-source veto APPLIES on imminent-exploitation forward-projection layer, WEP capped at "likely"; very_likely on no-patch-no-CVE procedural facts + install-base exposure. Trigger 6 marginal-fit (Rapid7 A-grade does not directly attest exploitation imminence; "imminent" reading is orchestrator inference from public-disclosure event + 60+ days vendor silence + effective-pre-auth attack surface + 2,400+ install base + historical CVE-2025-8110 exploitation pattern). critical_override_eval: FAILS (no CVSS 10.0 since none assigned; no confirmed current exploitation; no actor attribution; no A&D-watchlist entity named). analyst_review_required true (SAT-KAC on A&D-inheritance assumption + Gogs DIB-deployment-prevalence + imminent-exploitation forward-projection); red_team_review_required false (WEP "likely" on anchor); vuln-tracker handoff MEDIUM-priority dossier scaffolding pending CVE assignment + monitor for upstream Gogs patch commit + CVE assignment; librarian handoff Rapid7 primary URL direct-retrieval followup next-pass + collector watch-config addition gogs-argument-injection-2026-05-28 keyword set.
+    - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due      # Afternoon brief 16:00 EDT - Rapid7 (A provisional) + CISA KEV (A) + Palo Alto Networks PSIRT (NEW first-citation provisional A vendor-on-own-product) three independent A-grade primaries converge in 3-hour window on CVE-2026-0257 PAN-OS GlobalProtect authentication bypass; Rapid7 MDR first-party observed exploitation "across numerous customers" since 2026-05-17 with "no indication of successful lateral movement" and IOC publication (4 IPv4 + 2 machine names + 1 spoofed placeholder MAC + 2 commodity hosting providers); CISA KEV catalog republished 2026-05-29 with aggressive 3-day federal compliance due date 2026-06-01 (Monday); Palo Alto PSIRT vendor first-person attestation "limited exploit attempts on unpatched PAN-OS devices without mitigations applied"; vendor-assigned CVSS v4 7.8 medium but Rapid7 explicitly recommends "treat as critical"; state transition on previously known-but-procedurally-quiet CVE (advisory existed since 2026-05-13 T+16 days); three-condition exploitability prerequisite (auth-override enabled + CAS disabled + reused override-cookie cert) is non-default = exposed population narrower than full PAN-OS deployed base; NO actor attribution; NO named A&D-prime victim; structural DIB relevance HIGH (PAN-OS GlobalProtect dominant enterprise SSL VPN edge appliance) but exposed population skews tier-2 subsupplier legacy / migration-in-progress / SMB-lower-maturity deployments; Splunk -30d 0 hits across full IOC set on both indices (48th consecutive dormant non-self sweep). Cluster digraph A2 (three independent A-grade primaries on procedural layer; A2 cluster anchor takes conservative grade reflecting somewhat softer independence on exact volume/scope of exploitation claim — CISA KEV may have incorporated Rapid7 telemetry; Palo Alto "limited exploit attempts" hedge does not fully corroborate Rapid7 "across numerous customers" stronger framing); credibility 2 Probably True; single-source veto does NOT apply on cluster anchor (multi-source); WEP ceiling very_likely on procedural ITW state transition + critical-priority patch posture; likely on Rapid7 single-IR-firm volume claim + no-lateral-movement interpretive layer + structural-DIB-exposure framing; roughly_even_chance on Tier-1 IR-firm attribution corroboration within 30 days. Trigger 1 (FLASH) marginal-fail on CVSS-floor (7.8 < 9.0); Trigger evaluation in PM-000 sentinel 0/6 fire (no FLASH override). Eligible for daily_brief_action + weekly_synthesis + vuln_tracker_handoff (CVE-2026-0257 NEW dossier scaffold; NOT in _index.yaml; distinct from ZD-004 CVE-2026-0300). analyst_review_required true (SAT-KAC on Rapid7 no-lateral-movement interpretive ambiguity + three-condition prereq DIB exposed-population shape); red_team_review_required true (WEP very_likely on ITW state transition warrants challenge per doctrine threshold; four specific layers flagged). Librarian handoffs: add palo-alto-psirt to source-grades.yaml at provisional A with full proposal block (precedent: cisco-psirt + f5-psirt + kernel-org-netdev + openai-self-disclosure + github-self-disclosure + litespeed-self-disclosure); post source-grade-log.md entry; flag for #actor-review human ratification per provisional-A workflow. Rapid7 second-24h-surface after Gogs (Jonah Burgess byline yesterday; MDR institutional byline today) strengthens case for full-A ratification at next review cycle.
+    - finding-2026-05-29-0005-bleepingcomputer-thn-push-security-permiso-llmshare-malvertising-chatgphish-renderer-trust-paired-chatgpt-platform-abuse-research-class      # Afternoon brief 16:00 EDT - BleepingComputer (B) relay of Push Security (NEW first-citation provisional B) LLMShare malvertising campaign + The Hacker News (B provisional) relay of Permiso Security (NEW first-citation provisional B; Andi Ahmeti byline) ChatGPhish renderer-trust vulnerability — paired ChatGPT platform-abuse research surfacings within 14-minute window (BC 18:21:36 UTC; THN 18:07:12 UTC) on two DISTINCT mechanism classes. LLMShare: ChatGPT shared-link feature (chatgpt.com/s/) abused to display fake OpenAI outage notice on legitimate chatgpt.com domain → redirect via initial Google ads access to malware disguised as ChatGPT desktop app (macOS + Windows samples; Windows exhibits VM-detection); 3 IOCs published (openew[.]app domain + 2 SHA-256 hashes verified via VirusTotal). ChatGPhish: ChatGPT response renderer implicitly trusts Markdown links and images from summarized third-party web pages, enabling prompt-injection-and-phishing via attacker-controlled summarized pages; auto-image-fetch exposes user IP/UA/Referer; clickable malicious Markdown rendered live; potential for fake system-style security alerts in trusted AI interface; vulnerability-class disclosure with NO CVE assigned + NO OpenAI response timeline detail in THN summary; researcher-coined working name. NEITHER vendor attributes; BOTH media-tier relays preserve unattributed framing per Hard Rule 2; LLMShare and ChatGPhish are explicit researcher-coined working names per Hard Rule 2 framing. NO A&D-prime named target either side. NO tracked CVE either side. Cluster digraph B3 (paired media-tier B-grade relays of provisional-B vendor-research first-citations; each arm single-source per independence-test fail — BC cites Push Security as origin, THN cites Permiso as origin; per-arm single-source veto applies; Push Security and Permiso are independent of each other but cover DIFFERENT mechanism classes so do NOT corroborate either's individual claim; two-paired-surfacings is cluster-context pattern not independent corroboration); credibility 3 Possibly True per arm; single-source veto applies per-arm; WEP ceiling capped at "likely" on each arm's individual claim layer; very_likely on procedural disclosure-existence; roughly_even_chance on third-comparable-LLM-platform-abuse-surface-within-14-days standing-section addition heuristic. Eligible for daily_brief_monitoring + weekly_synthesis ONLY; ineligible for flash + daily_brief_action + actor_profile_update + vuln_tracker_handoff (no CVE, commodity-research class). analyst_review_required false (research-class disclosure on two distinct vulnerability/abuse classes; standard SAT topics not load-bearing; optional SAT-KAC on cross-cluster AI-platform-abuse pattern-of-interest + A&D-prime employee exposure framing); red_team_review_required false (WEP caps at likely per per-arm single-source veto). Librarian handoffs: add push-security AND permiso-security to source-grades.yaml at provisional B with full proposal blocks (peer class: StepSecurity / Socket / Sysdig / Zellic / Aikido / Ox / Upwind / Arctic Wolf); post source-grade-log.md entries; flag both for #actor-review ratification per provisional-B workflow. Collector handoff: direct-retrieve Permiso primary write-up URL on ChatGPhish next pass (not captured in THN coverage). Briefer-orchestrator handoff: standing-section addition heuristic at three-in-19-days boundary (two surfaces today + finding-2026-05-10-0001 claude.ai/share/ MacSync); if third comparable LLM-platform-abuse surface lands in next 14 days, propose watch-config.yaml "AI Platform Security" standing section per ad-sector + iran-cyber precedent.
   most_recent_run_absorption_ids: []
   most_recent_run_rejection_ids:
-    - reject-2026-05-28-0001    # raw-2026-05-28-flash-1200-003 - The Hacker News relay of Microsoft pushback on Chaotic Eclipse / Nightmare-Eclipse uncoordinated disclosure of six Windows zero-days (3x Defender BlueHammer/RedSun/UnDefend claimed "active in the wild"; 1x BitLocker YellowKey; 2x unassigned GreenPlasma + MiniPlasma); SIXTH SURFACE in Archimedes corpus on same disclosure cluster - prior coverage finding-2026-05-13-0003 + finding-2026-05-18-0001 + finding-2026-05-20-0003 + finding-2026-05-21-0001 + _index.yaml ZD-001 BlueHammer already patched; anti-noise rule 1 continuation of extensively-covered topic; single-source veto on "active in the wild" claim layer (disclosing party with motive to inflate; Microsoft authoritative-on-own-product explicitly NOT confirming); Hard Rule 8 first-party silence overrides single-source self-attestation; Hard Rule 2 promoting would launder F-grade pseudonym self-attestation into Archimedes-corpus-attested operational claim; net-new Microsoft pushback narrative angle falls below FLASH B2 threshold as single-source THN B-grade relay with no independent A/B corroboration; all six FLASH triggers fail or are undermined by corpus priors (T1/T2/T3/T4/T5/T6); would-be-digraph B3 best case on net-new pushback angle / B4 on ITW exploitation layer; defensible disposition per raw-signal frontmatter collector recommendation: raw-signal for record but NOT promoted to FLASH; belongs in next scheduled-brief Industry-News-Class UPDATE block on Chaotic Eclipse disclosure cluster lineage. Regrade triggers: independent A/B-grade vendor IR firm with non-derived telemetry, Microsoft MSRC explicit confirmation/denial, CISA KEV addition for unassigned-CVE elements, or material new technical detail with tier-1 vendor reproduction.
+    - reject-2026-05-29-0001    # raw-2026-05-29-pm-002 - SecurityWeek "In Other News" weekly roundup covering 14 discrete items. 11-of-14 items anti-noise carry-forward (Ghost Stadium PM-28-005 24h lock; KEV three-additions PM-27 absorption; Megalodon/Nx PM-28-004 baseline) OR not-threat-intel-class (Trump Mobile consumer telecom breach; UK Visa Portal PII exposure private vendor; LinkedIn commodity phishing; 23andMe civil litigation; Maxwell Schultz completed insider-threat criminal case) OR vendor-patch-layer with no ITW (Veeam two patches; Notepad++ v8.9.6.1; Roundcube v1.6.16/1.7.1 unauth SQL injection). Two cluster-context signals (Megalodon 5,500-repo unattributed enrichment via secondary-relay-of-relay framing — Hard Rule 2 prevents corroboration without primary; 176 malicious npm packages version 99.99.99 pattern with postinstall CI/CD credential-stealing UNATTRIBUTED per SecurityWeek — Hard Rule 2 prevents Shai-Hulud / Mini Shai-Hulud / TeamPCP lineage extension without A/B-grade source; distinct tradecraft signature not documented in Wiz/Snyk/StepSecurity or GitHub Nx self-disclosure = probably separate campaign with overlapping victim sector). Russian APT Treasury 2019 SolarWinds FOIA-release is APT29-cluster historical baseline anti-noise to existing dossier. VS Code Remote-SSH RCE (Suman Kumar Chakraborty) coordinated-disclosure with no CVE and no ITW = vuln-tracker monitoring-only candidate below B2 threshold. Cluster as whole = structural-context summary belongs in briefer's update blocks (Megalodon enrichment bounded restatement; 176-npm-package cluster-adjacency vuln-tracker awareness; VS Code Remote-SSH watch-list) NOT standalone finding promotion. Would-be-digraph B3 aggregate cluster anchor with single-source-veto per item / B4 on 176-npm layer via secondary-relay-of-relay unattributed framing. Regrade triggers: (a) underlying 176-npm-package primary identified with A/B-grade attribution to roster/TeamPCP/Shai-Hulud lineage; (b) underlying Megalodon 5,500-repo primary identified with second A/B-grade corroboration; (c) Chakraborty VS Code Remote-SSH RCE receives CVE + ITW; (d) Veeam / Notepad++ / Roundcube receives CISA KEV or A/B IR-firm ITW observation.
   most_recent_run_note: >
-    flash-grade-20260528-120000 (12:00 EDT FLASH sweep) processed 3
-    net-new FLASH-candidate raw-signal items from the 12:00 collector
-    sweep (flash-1200-001 SecurityWeek FortiClient EMS CVE-2026-35616
-    fresh exploitation; flash-1200-002 BleepingComputer Gogs zero-day
-    RCE; flash-1200-003 THN Microsoft pushback on Chaotic Eclipse
-    Windows zero-days). 2 promoted to standalone FLASH findings
-    (finding-2026-05-28-FLASH-1200-0001 + finding-2026-05-28-FLASH-
-    1200-0002), 1 rejected (reject-2026-05-28-0001 — anti-noise
-    saturation on extensively-covered Chaotic Eclipse disclosure
-    cluster + Hard Rule 8 first-party precedence on Microsoft silence
-    + Hard Rule 2 prevention of single-source self-attestation
-    laundering + below FLASH B2 threshold on net-new pushback narrative
-    layer). 0 absorptions. Splunk first-party check on aggregate
-    sweep (83.138.53.110 + FortiClient + EKZ + FortiEndpoint_Patch +
-    gogs + Rapid7 + BlueHammer + RedSun + UnDefend + Chaotic Eclipse +
-    Nightmare Eclipse) returned 0 hits at -30d on defenseclaw_local +
-    archimedes — 68th consecutive dormant non-self sweep continues.
-    NEW SOURCE first-citation: arctic-wolf provisional B (vendor-IR-
-    research category; 72h ratification clock to 2026-05-31T12:35:00-
-    04:00; librarian handoff to add to source-grades.yaml + post
-    source-grade-log.md entry). Both promoted findings carry
-    analyst_review_required true (SAT-KAC topics on each — FortiClient
-    customer-base representativeness + EKZ naming novelty + Gogs DIB-
-    deployment-prevalence + imminent-exploitation forward-projection).
-    Neither promotion carries red_team_review_required (both WEP
-    ceilings cap at "likely" on cluster anchor per single-source-veto;
-    FLASH-POLICY anti-noise rule 3 requires red-team review only at
-    "very likely" or higher). Neither critical_override qualifies
-    (CVSS thresholds + tracked-actor attribution + A&D-watchlist-
-    named-victim prongs all fail). FortiClient EMS finding net-new for
-    corpus; Gogs finding net-new for corpus. Both topics distinct from
-    2026-05-28-morning brief coverage (Carnival/World Cup/Out of the
-    Crypt/NVD critical batch). Briefer-ready for stand-alone FLASH
-    promotion or paired two-item FLASH cluster on 12:00 sweep cycle.
-    Vuln-tracker handoffs: MEDIUM-priority dossier scaffolding for
-    CVE-2026-35616 (FortiClient EMS) + MEDIUM-priority for Gogs
-    argument-injection RCE pending CVE assignment; collector watch-
-    config addition for Gogs CVE-assignment monitoring + Rapid7 primary
-    URL direct-retrieval followup.
+    afternoon-20260529-160000 grading processed 3 net-new PM-29 raw-
+    signal items from the 15:30 pre-brief collection sweep (pm-001
+    Rapid7 + CISA KEV + Palo Alto PSIRT CVE-2026-0257 PAN-OS GlobalProtect
+    auth-bypass ITW state-transition; pm-002 SecurityWeek "In Other
+    News" weekly roundup 14-discrete-item structural-context summary;
+    pm-003 BleepingComputer + THN paired ChatGPT platform-abuse research
+    cluster — Push Security LLMShare malvertising + Permiso Security
+    ChatGPhish renderer-trust). PM-000 sentinel pre-brief sweep summary
+    not finding-eligible per doctrine. 2 of 3 PM items promoted (PM-001
+    → finding-2026-05-29-0004 A2 three-A-grade-primary convergence on
+    PAN-OS CVE-2026-0257; PM-003 → finding-2026-05-29-0005 B3
+    monitoring-class paired research-pattern with two NEW provisional-B
+    source first-citations). 1 of 3 PM items rejected (PM-002 →
+    reject-2026-05-29-0001 SecurityWeek roundup structural-context with
+    11-of-14 items anti-noise / not-threat-intel / vendor-patch-no-ITW;
+    2 cluster-context signals — Megalodon 5,500-repo unattributed
+    enrichment + 176-npm-packages version-99.99.99 unattributed
+    operational-cluster-adjacency to VT-006/VT-009 — preserved for
+    briefer's update blocks but do NOT warrant standalone finding;
+    below B2 action-item threshold with single-source-veto-per-item
+    pattern). 0 absorptions. All AM-29 raw-signal items verified
+    already-promoted at morning grading run (am-001 → finding-0001
+    MSTIC vpmdhaj; am-002 → finding-0002 Chaotic Eclipse state-
+    transition Security Affairs+The Register; am-003 → finding-0003
+    Oracle CPU May 2026 NVD critical batch). Splunk first-party check
+    on PAN-OS aggregate (CVE-2026-0257 + 4 IPv4 + 2 machine names + 2
+    hosting providers + GlobalProtect / PAN-OS keywords) returned 0
+    hits at -30d on defenseclaw_local + archimedes — 48th consecutive
+    dormant non-self-telemetry sweep on the PM-29 instance.
+
+    THREE NEW SOURCE first-citations flagged for librarian handoff:
+      - palo-alto-psirt at provisional A (vendor-self-disclosure on
+        own product, finding-0004 cluster primary; precedent: Cisco
+        PSIRT + F5 PSIRT + kernel.org netdev + OpenAI + GitHub +
+        LiteSpeed)
+      - push-security at provisional B (vendor-research first-citation,
+        finding-0005 LLMShare arm; precedent: StepSecurity / Socket /
+        Sysdig / Zellic / Aikido / Ox / Upwind / Arctic Wolf)
+      - permiso-security at provisional B (vendor-research first-
+        citation, finding-0005 ChatGPhish arm; same peer class)
+
+    finding-0004 (PAN-OS CVE-2026-0257) carries analyst_review_required
+    true (SAT-KAC on Rapid7 no-lateral-movement interpretive ambiguity
+    + three-condition prereq DIB exposed-population shape) AND
+    red_team_review_required true (WEP very_likely on ITW state-
+    transition warrants challenge per doctrine threshold; four specific
+    layers flagged for red-team challenge in finding frontmatter).
+    finding-0005 (ChatGPT platform-abuse paired research) carries
+    neither analyst nor red-team review flags (WEP capped at likely
+    per per-arm single-source veto; research-class disclosure with no
+    actor / no A&D / no tracked CVE; optional SAT-KAC on cross-cluster
+    AI-platform-abuse pattern-of-interest for analyst if elected).
+    Neither finding-0004 nor finding-0005 met FLASH inclusion threshold
+    at PM-29 sweep (finding-0004 marginal-fail Trigger 1 on CVSS v4
+    7.8 < 9.0 floor; PM-000 sentinel evaluated 0/6 triggers fire);
+    finding-0004 carries daily_brief_action eligibility + vuln_tracker_
+    handoff (CVE-2026-0257 NEW dossier scaffold candidate; NOT in
+    _index.yaml; distinct mechanism and product surface from ZD-004
+    CVE-2026-0300); finding-0005 carries daily_brief_monitoring +
+    weekly_synthesis only.
+
+    Vuln-tracker handoffs: HIGH-priority CVE-2026-0257 NEW dossier
+    scaffold (PAN-OS GlobalProtect auth bypass; CISA KEV-listed with
+    3-day federal due 2026-06-01 = Monday; vendor-assigned CVSS v4 7.8
+    medium but Rapid7 explicit "treat as critical"; Rapid7 9 IOCs).
+    No vuln-tracker handoff from finding-0005 (no CVE either arm).
+
+    Briefer-orchestrator handoffs:
+      - Standing-section addition heuristic at three-in-19-days
+        boundary for AI Platform Security (finding-0005 + prior
+        finding-2026-05-10-0001 claude.ai/share/ MacSync). If third
+        comparable LLM-platform-abuse surface lands in next 14 days,
+        propose watch-config.yaml standing "AI Platform Security"
+        section per ad-sector + iran-cyber precedent.
+      - 2026-06-01 (Monday) KEV federal-civilian compliance deadline
+        for CVE-2026-0257 — operational calendar anchor for any
+        DIB / FCEB Oracle PAN-OS estate operator briefer may surface.
+      - SecurityWeek roundup PM-29 rejected cluster context signals
+        (Megalodon 5,500-repo enrichment + 176-npm-packages cluster-
+        adjacency + VS Code Remote-SSH RCE Chakraborty watch-list)
+        eligible for briefer's update-block carry-forward if elected.
+      - finding-0004 red_team_review_required handoff → red-team-
+        analyst phase next in canonical pipeline.
+
+    Collector handoffs:
+      - Direct-retrieve Permiso primary write-up URL on ChatGPhish
+        next pass (not captured in THN coverage); resolves OpenAI
+        response detail + coordinated-disclosure timeline.
+      - Standing 18:00 FLASH sentinel will inherit Volexity feed
+        parse failure cluster (fourth consecutive at PM-29 sweep
+        time); fifth at 18:00 = formal stale flip recommended.
+
+    NO findings carry test: true flag; pre-flight enforcement
+    confirmed all PM-29 raw-signal items and findings have
+    test: false in frontmatter.
 
   # Prior run preserved below
   legacy_morning_20260528_080000:

@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-28T12:35:00-04:00
+last_updated: 2026-05-29T08:30:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -632,6 +632,30 @@ media_sources:
     urls:
       - https://industrialcyber.co/
 
+  - id: securityaffairs
+    name: "Security Affairs (Pierluigi Paganini)"
+    category: media
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-29
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-29-0002 as one of two independent in-window trade-press relays of MSRC's Chaotic Eclipse state-transition statement (BlueHammer / RedSun / UnDefend now under active ITW exploitation). Long-running independent security-news outlet with named-analyst byline (Pierluigi Paganini); category is Security Media & Independent Researchers per source-grade cheatsheet. Conservative provisional B starting grade for the media-relay tier per same precedent as SecurityWeek (2026-05-06), Industrial Cyber (2026-05-13), and The Hacker News (2026-05-14). Pending human ratification. Surface context: relay-only on a contested CVD dispute where MSRC is both the load-bearing primary AND a counterparty; Archimedes preserved the meta-statement vs underlying-fact WEP layering rather than asserting the underlying ITW fact as corroborated."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://securityaffairs.com/
+
+  - id: theregister
+    name: "The Register (security desk)"
+    category: media
+    grade: B
+    provisional: true
+    provisional_since: 2026-05-29
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-05-29-0002 as the second independent in-window trade-press relay of MSRC's Chaotic Eclipse state-transition statement, paired with Security Affairs to resolve the prior single-source veto from PM-28 FLASH-12 rejection (reject-2026-05-28-0001). UK-based long-running security-and-tech outlet with named-analyst bylines and editorial track record on Microsoft vulnerability coverage. Category is Security Media & Independent Researchers per source-grade cheatsheet. Conservative provisional B starting grade per same precedent as SecurityWeek / Industrial Cyber / The Hacker News / Security Affairs. Pending human ratification. Surface context: contributed direct-quote industry commentary (Dustin Childs / ZDI, Katie Moussouris / Luta Security) used in Other Signal section under Hard Rule 6 quote discipline (<15 words, one quote per source)."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.theregister.com/security/
+
   - id: thehackernews
     name: "The Hacker News"
     category: media
@@ -991,11 +1015,11 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 78        # +1 FLASH 2026-05-23: litespeed-blog-self-disclosure (provisional A; first corpus citation as LiteSpeed vendor self-disclosure on own product CVE-2026-48172 per finding-2026-05-23-FLASH-0002)
-  active_sources: 69       # +1 above
+  total_sources: 80        # +2 AM 2026-05-29: securityaffairs + theregister (provisional B; first corpus citation as paired independent trade-press relays of MSRC Chaotic Eclipse state-transition per finding-2026-05-29-0002 — resolved PM-28 single-source veto)
+  active_sources: 71       # +2 above
   by_grade:
     A: 35       # +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
-    B: 27
+    B: 29       # +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
     C: 10       # +1 depthfirst elevated F→C 2026-05-16 morning per "first technical write-up publication" trigger; finding-2026-05-16-0001
     D: 1
     E: 2
@@ -1035,6 +1059,8 @@ _meta:
     - cisco-psirt               # provisional A; first cited 2026-05-20-0006 (Cisco Secure Workload CVE-2026-20223 CVSS 10.0 pre-auth REST API auth bypass; cisco-sa-csw-pnbsa-g8WEnuy advisory; distinct from cisco-talos — PSIRT publishes Cisco-product CVE advisories, Talos publishes external threat research; 72h ratification clock to 2026-05-23T16:00:00-04:00)
     - aonan-guan                # provisional C; first cited 2026-05-20-0007 (Anthropic Claude Code SOCKS5 hostname null-byte sandbox bypass; independent researcher disclosure via HackerOne; cited via SecurityWeek; LayerX / Albayrak / Seqrite precedent — conservative C starting grade pending direct write-up retrieval + second-source corroboration)
     - litespeed-blog-self-disclosure  # provisional A; first cited 2026-05-23-FLASH-0002 (LiteSpeed User-End cPanel Plugin CVE-2026-48172 vendor self-disclosure with vendor-confirmed active exploitation; lsws.redisAble root RCE from any cPanel user; v2.4.5/v2.4.7 patches shipped; 72h ratification clock to 2026-05-26T06:35:00-04:00)
+    - securityaffairs           # provisional B; first cited 2026-05-29-0002 (Chaotic Eclipse state-transition MSRC relay paired with The Register; resolved PM-28 single-source veto on the ITW exploitation claim per AM-29 grader supersession)
+    - theregister               # provisional B; first cited 2026-05-29-0002 (Chaotic Eclipse state-transition MSRC relay paired with Security Affairs; contributed Childs/Moussouris industry commentary under Hard Rule 6 quote discipline)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

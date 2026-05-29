@@ -41,7 +41,9 @@ triage_tags:
 iocs_extracted: false
 iocs_count: 0
 text_word_count: 480
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-05-21-0007
+promoted_at: 2026-05-21T08:35:00-04:00
 ttl_expires_at: 2026-08-18T18:13:00-04:00
 ---
 

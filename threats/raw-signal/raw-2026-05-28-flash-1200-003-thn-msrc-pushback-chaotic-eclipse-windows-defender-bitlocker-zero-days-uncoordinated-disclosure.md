@@ -30,10 +30,25 @@ triage_tags:
 iocs_extracted: true
 iocs_count: 6
 text_word_count: 400
-promoted: false
-rejected_at: 2026-05-28T12:45:00-04:00
-rejection_id: reject-2026-05-28-0001
-rejection_run_id: flash-grade-20260528-120000
+promoted: true
+promoted_to_finding: finding-2026-05-29-0002-security-affairs-the-register-chaotic-eclipse-state-transition-bluehammer-redsun-undefend-itw-confirmed-yellowkey-scaffold-candidate
+promoted_at: 2026-05-29T08:14:00-04:00
+promoted_run_id: morning-20260529-080000
+promotion_class: rejection_superseded_by_independent_corroboration
+promotion_note: >
+  Originally rejected at FLASH-12 PM-28 (reject-2026-05-28-0001) due
+  to single-source THN-relay status on the ITW exploitation claim.
+  AM-29 brings two independent B-grade in-window relays (Security
+  Affairs + The Register) of the MSRC primary, resolving the
+  single-source veto. Per grader procedure, this raw signal is now
+  merged into the AM-29 cluster (finding-2026-05-29-0002) as the
+  PM-28 anchor of the MSRC primary state-transition narrative.
+  The original rejection record (reject-2026-05-28-0001) stays
+  intact in _rejection-log.yaml; the finding cross-references the
+  supersession.
+rejected_at_original: 2026-05-28T12:45:00-04:00
+rejection_id_original: reject-2026-05-28-0001
+rejection_run_id_original: flash-grade-20260528-120000
 rejection_summary: "Sixth surface in Archimedes corpus on the same Chaotic Eclipse Windows zero-day disclosure cluster (prior coverage finding-2026-05-13-0003 + finding-2026-05-18-0001 + finding-2026-05-20-0003 + finding-2026-05-21-0001 + _index.yaml ZD-001 BlueHammer already patched). Anti-noise rule 1 continuation; single-source veto on ITW exploitation claim (disclosing party with motive to inflate; Microsoft authoritative silence); Hard Rule 8 + Hard Rule 2 binding; net-new Microsoft pushback narrative falls below FLASH B2 threshold as single-source THN B-grade relay with no independent A/B corroboration. Belongs in scheduled-brief Industry-News UPDATE block on the Chaotic Eclipse disclosure lineage, NOT standalone FLASH promotion."
 ttl_expires_at: 2026-08-26T12:20:00-04:00
 flash_trigger_evaluation:

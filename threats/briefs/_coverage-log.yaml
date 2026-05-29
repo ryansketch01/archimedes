@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-28T12:40:00-04:00
+last_updated: 2026-05-29T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -21718,6 +21718,528 @@ entries:
       - Ghost Stadium: /new-actor scaffold decision pending
         operator.
       - GreyVibe: /new-actor scaffold decision pending operator.
+
+  - id: 2026-05-29-am-001-mstic-vpmdhaj-npm-typosquat-shaiworm-cloud-cicd-credential-theft-bun-runtime-abuse-distinct-cluster-lineage-suggestion
+    covered_in: [2026-05-29-morning]
+    brief_file: threats/briefs/2026-05-29-morning.md
+    headline: "MSTIC discloses vpmdhaj npm typosquat campaign (14 packages, 4-hour window 2026-05-28) — AWS IMDSv2/ECS + AWS Secrets Manager 16+ regions + HashiCorp Vault + GitHub Actions + npm publish-token harvest via preinstall/install/postinstall lifecycle hooks; Gen-2 stager living-off-Bun-runtime; Defender Trojan:JS/ShaiWorm family-name signals internal classification, NOT analytic attribution to TeamPCP per Hard Rule 2; lineage UNRESOLVED between H2 (distinct copycat) and H3 (TeamPCP-adjacent affiliate/successor); 72h Wiz/Snyk/StepSecurity tripwire flagged as most probable near-term corpus shift"
+    topic_tags:
+      - mstic
+      - microsoft-defender-security-research-team
+      - npm-supply-chain
+      - typosquat
+      - vpmdhaj-maintainer-alias
+      - aab-sportsontheweb-net-c2
+      - x-supply-1-http-header-campaign-signature
+      - aws-imdsv2-credential-theft
+      - aws-ecs-task-role-credential-theft
+      - aws-secrets-manager-16-regions
+      - hashicorp-vault-token-theft
+      - github-actions-secrets-theft
+      - npm-publish-token-theft-downstream-supply-chain-pivot
+      - bun-runtime-living-off-trusted-vendor
+      - npm-lifecycle-hooks-preinstall-install-postinstall
+      - defender-signature-trojan-js-shaiworm
+      - defender-signature-trojan-js-obfusnpmjs
+      - defender-signature-backdoor-js-supplychain
+      - shaiworm-family-name-internal-classification-not-analytic-attribution
+      - lineage-suggestion-only-not-teampcp-attribution
+      - hard-rule-2-msitc-prose-silence-preserved
+      - ach-h2-h3-tied-rank-1
+      - ach-h1-direct-teampcp-continuation-unlikely
+      - tripwire-wiz-snyk-stepsecurity-semgrep-aikido-72h
+      - vuln-tracker-handoff-vt-006-cross-reference-plus-new-scaffold-candidate
+      - actor-profiler-handoff-teampcp-roster-001-lineage-suggestion-only
+      - splunk-first-party-silent-30d
+      - dib-cicd-credential-surface-exposure
+    related_actors:
+      - "001"   # TeamPCP — LINEAGE SUGGESTION cross-reference only (Hard Rule 2)
+    related_vulns: []
+    related_campaigns:
+      - vpmdhaj-npm-typosquat-may-2026
+    finding_ids: [finding-2026-05-29-0001-mstic-vpmdhaj-npm-typosquat-shaiworm-cloud-cicd-credential-theft-bun-runtime-abuse-distinct-cluster-lineage-suggestion]
+    digraph: A2
+    digraph_layered:
+      mstic_primary_publication_existence: A1
+      campaign_envelope_14_packages_4h_window: A2
+      iocs_aab_sportsontheweb_payload_hashes: A2
+      family_lineage_in_shaiworm_family: B3
+      teampcp_attribution_for_vpmdhaj: NOT_PROMOTED_HARD_RULE_2
+      cluster_anchor: A2
+    wep: likely
+    wep_layered:
+      campaign_exists_per_mstic: very_likely
+      iocs_valid: very_likely
+      family_lineage_in_shaiworm_family: likely
+      teampcp_attribution_for_vpmdhaj: NOT_ARCHIMEDES_ORIGINATED
+      same_actor_as_may_12_mini_shai_hulud_vt006_teampcp: NOT_ARCHIMEDES_ORIGINATED
+      dib_developer_workstation_exposure_via_typosquat_install_path: likely
+      dib_npm_publish_token_theft_downstream_supply_chain_pivot_risk: likely
+    single_source_veto_applied: true
+    single_source_veto_layer: campaign_envelope_and_any_actor_attribution_claim
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260529-084200
+    red_team_review_required: false
+    red_team_review_required_basis: "WEP ceiling 'likely' below 'very likely' threshold; single-source veto on campaign envelope and attribution-adjacent claims."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "aab.sportsontheweb.net + 169.254.169.254 + payload.bin + X-Supply header"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    hard_rule_2_framings_load_bearing:
+      - "Defender signature family-name `Trojan:JS/ShaiWorm` is internal-classification signal, NOT analytic attribution to TeamPCP"
+      - "MSTIC declines to name an actor in article prose; Archimedes preserves that silence"
+      - "Lineage suggestion only — NOT Archimedes-promoted attribution; vpmdhaj NOT bound as confirmed TeamPCP campaign"
+      - "ACH H2/H3 tied at rank-1; H1 (direct TeamPCP continuation) ranks unlikely"
+    librarian_handoffs_queued:
+      - action: ioc_index_update
+        ioc_set: "aab.sportsontheweb.net C2 + X-Supply:1 header + 14 npm package names + 3 SHA256 hashes + a39155771@gmail.com registry email"
+      - action: vuln_tracker_handoff
+        target: "VT-006 Mini Shai-Hulud dossier — append cross-ref note + NEW VT scaffold candidate for vpmdhaj as own cluster"
+      - action: actor_profiler_handoff
+        target: "TeamPCP roster #001 dossier — append lineage-suggestion cross-reference ONLY (no scaffold required; do NOT bind vpmdhaj as confirmed TeamPCP campaign)"
+    resurface_if:
+      - wiz_snyk_stepsecurity_semgrep_aikido_publishes_vpmdhaj_coverage
+      - mstic_publishes_followup_with_actor_attribution
+      - cisa_kev_addition_for_any_vpmdhaj_package
+      - first_party_ioc_hit
+      - additional_typosquat_packages_published_under_vpmdhaj_or_related_alias
+      - independent_ab_grade_source_with_named_victim
+    first_covered: 2026-05-29
+    last_covered: 2026-05-29
+    retraction: null
+    test: false
+    notes: |
+      Single MSTIC primary in window. Strong technical content + full
+      IOC set + named research team + named campaign / actor-alias.
+      Defender ShaiWorm signature family-name is suggestive of
+      lineage but NOT MSTIC analytic attribution to TeamPCP — grader
+      and analyst both respect MSTIC's editorial silence. Hard Rule 2
+      controls — Archimedes does NOT extend the attribution.
+
+      Analyst SAT-ACH: H2 (distinct copycat) and H3 (TeamPCP-adjacent
+      affiliate or successor) tied at rank-1 zero inconsistencies.
+      H1 (direct TeamPCP continuation) carries two inconsistencies
+      (E2 MSTIC prose silence + E8 Wiz/Snyk/StepSecurity cohort
+      silence at expected cadence) and ranks unlikely.
+
+      Analyst SAT-KAC: 6 assumptions surfaced — 2 sound, 4 qualify,
+      0 test. Proceed with qualifying caveats; no blocking
+      assumption.
+
+      Briefer carry-throughs honored verbatim in brief prose:
+      (1) Defender signature family-name is internal classification,
+          not analytic attribution to TeamPCP.
+      (2) Lineage UNRESOLVED between H2 and H3.
+      (3) 72h Wiz/Snyk/StepSecurity tripwire flagged as most
+          probable near-term corpus shift.
+
+  - id: 2026-05-29-am-002-security-affairs-the-register-chaotic-eclipse-state-transition-bluehammer-redsun-undefend-itw-confirmed-yellowkey-scaffold-candidate
+    covered_in: [2026-05-29-morning]
+    brief_file: threats/briefs/2026-05-29-morning.md
+    headline: "STATE TRANSITION — three of six Chaotic Eclipse Windows zero-days (BlueHammer ZD-001 CVE-2026-33825 patched May PT; RedSun ZD-002 unpatched; UnDefend ZD-003 unpatched) now actively exploited in the wild per MSRC PM-28 primary + Security Affairs (Pierluigi Paganini) + The Register in-window B-grade independent relays; resolves single-source-veto rejection from 2026-05-28 FLASH-12 (reject-2026-05-28-0001); YellowKey CVE-2026-45585 BitLocker remains MSRC 'exploitation more likely' + public PoC + unpatched (vuln-tracker scaffold candidate); CVE-binding contradiction surfaced between prior May 21 SecurityWeek coverage and today's three-source corpus on RedSun/UnDefend; meta-statement vs underlying-fact disambiguation load-bearing — MSRC non-neutral on this cycle (load-bearing primary AND counterparty to the CVD dispute)"
+    topic_tags:
+      - state-transition
+      - chaotic-eclipse-nightmare-eclipse-pseudonym
+      - msrc-primary-pm28-absorbed
+      - msrc-pushback-narrative-already-corpus-side-no-restatement
+      - security-affairs-pierluigi-paganini-b-provisional
+      - the-register-b-provisional
+      - two-b-grade-relays-in-window-resolve-single-source-veto
+      - bluehammer-cve-2026-33825-zd-001-patched-may-pt-itw-post-patch
+      - redsun-zd-002-unpatched-itw
+      - undefend-zd-003-unpatched-itw
+      - yellowkey-cve-2026-45585-bitlocker-exploitation-more-likely-public-poc-unpatched-vuln-tracker-scaffold-candidate
+      - greenplasma-not-yet-itw
+      - miniplasma-not-yet-itw
+      - meta-statement-vs-underlying-fact-disambiguation-load-bearing
+      - msrc-non-neutral-on-this-specific-cycle-load-bearing-source-AND-cvd-counterparty
+      - no-ir-firm-corroboration-mandiant-crowdstrike-volexity-unit42-wiz-silent
+      - no-named-victim
+      - splunk-first-party-silent-7d
+      - cve-binding-contradiction-prior-may-21-securityweek-vs-may-29-three-source-corpus
+      - cve-binding-do-not-silently-resolve-as-securityweek-erred
+      - terminology-drift-codename-collision-hypotheses-h3-h4-preserved
+      - vuln-tracker-handoff-three-dossier-state-updates-zd-001-zd-002-zd-003-plus-yellowkey-scaffold-candidate
+      - researcher-july-14-2026-ambiguous-announcement-genuine-two-source-independent-outside-msrc-closed-loop
+      - childs-zdi-moussouris-luta-security-industry-commentary
+      - digital-crimes-unit-invoked-the-register-parses-as-legal-action-signal
+      - hard-rule-2-no-novel-attribution-post-disclosure-exploiters-unattributed
+      - hard-rule-3-no-poc-mirror-no-link-to-executable-poc
+      - hard-rule-6-quote-discipline-the-register-15-words
+      - flash-rejection-superseded-reject-2026-05-28-0001
+    related_actors: []
+    related_vulns:
+      - CVE-2026-33825   # BlueHammer
+      - CVE-2026-45585   # YellowKey
+    related_zero_days:
+      - ZD-001
+      - ZD-002
+      - ZD-003
+    related_campaigns:
+      - chaotic-eclipse-state-transition-2026-05-29
+    finding_ids: [finding-2026-05-29-0002-security-affairs-the-register-chaotic-eclipse-state-transition-bluehammer-redsun-undefend-itw-confirmed-yellowkey-scaffold-candidate]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      three_bugs_itw_meta_statement: A2
+      three_bugs_itw_underlying_fact: B3
+      cve_binding_layer_redsun_undefend: B3
+      yellowkey_cve_2026_45585: A2
+      researcher_july_14_announcement: B2
+    wep: very_likely
+    wep_layered:
+      three_bugs_itw_meta_statement_microsoft_has_stated_this: very_likely
+      three_bugs_itw_underlying_fact_specific_victims_scale_telemetry: roughly_even_chance
+      yellowkey_exploitation_more_likely_plus_public_poc_plus_unpatched_composite: likely
+      msrc_pushback_narrative_published: very_likely
+      researcher_july_14_announcement_made: very_likely
+      researcher_july_14_announcement_means_another_dump: roughly_even_chance
+      cve_binding_for_redsun_undefend_definitive: roughly_even_chance
+      ad_estate_with_may_pt_backlog_exposed_to_bluehammer: very_likely
+      ad_estate_exposed_to_redsun_undefend_unpatched_itw: very_likely
+    single_source_veto_applied: false
+    single_source_veto_resolution_note: "PM-28 FLASH-12 single-source-veto rejection (reject-2026-05-28-0001) on the ITW claim now RESOLVED by two B-grade independent in-window relays (Security Affairs + The Register) of the MSRC PM-28 primary. Underlying-fact layer remains capped at 'roughly even chance' per red-team given MSRC non-neutrality + zero IR-firm corroboration + Splunk silence."
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260529-085400
+    red_team_review_required: true
+    red_team_review_required_basis: "WEP ceiling reaches 'very likely' on three sub-claims (three-bugs-ITW meta-statement; MSRC pushback published; July 14 announcement)."
+    red_team_review_complete: true
+    red_team_review_run_id: red-team-20260529-091800
+    red_team_sign_off: weaknesses_flagged_non_blocking
+    red_team_wep_adjustment_applied: true
+    red_team_wep_adjustment_layer: three_bugs_itw_underlying_fact
+    red_team_wep_adjustment_value: roughly_even_chance
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -7d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "BlueHammer + RedSun + UnDefend + YellowKey + CVE-2026-33825 + CVE-2026-45585"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    hard_rule_2_framings_load_bearing:
+      - "Per MSRC's vendor statement and two trade-press relays of that statement, three of six Chaotic Eclipse bugs are now actively exploited; no independent IR-firm telemetry corroborates this yet"
+      - "MSRC is both load-bearing primary on the ITW claim AND counterparty in the CVD dispute — absence of IR-firm corroboration is materially salient this cycle"
+      - "Post-disclosure exploiters of BlueHammer/RedSun/UnDefend are NOT attributed to any actor by MSRC or either relay — unattributed opportunistic"
+      - "CVE-binding contradiction for RedSun/UnDefend — do NOT silently resolve as SecurityWeek erred; preserve H3/H4 terminology-drift / codename-collision hypotheses"
+      - "YellowKey CVE-2026-45585 sub-claim capped at 'likely' not 'very likely' (single in-window relay + MSRC)"
+      - "Researcher's July 14 announcement is genuine two-source independent (outside MSRC closed loop)"
+    librarian_handoffs_queued:
+      - action: source_grades_provisional_addition
+        source_yaml_id: securityaffairs
+        proposed_grade: B
+      - action: source_grades_provisional_addition
+        source_yaml_id: theregister
+        proposed_grade: B
+      - action: vuln_tracker_handoff
+        target: "ZD-001 BlueHammer + ZD-002 RedSun + ZD-003 UnDefend dossier state-updates (ITW status) + NEW scaffold candidate YellowKey CVE-2026-45585 BitLocker; document CVE-binding contradiction for RedSun/UnDefend in both source states"
+      - action: rejection_log_supersede_pointer
+        target: "reject-2026-05-28-0001 — append supersession pointer to this finding"
+    resurface_if:
+      - mandiant_crowdstrike_volexity_unit42_wiz_named_victim_or_telemetry_attestation
+      - msrc_publishes_victim_count_or_telemetry_scale_or_exploiter_cluster
+      - securityweek_correction_on_may_21_cve_binding_for_redsun_undefend
+      - researcher_publishes_on_july_14_2026
+      - cisa_kev_addition_for_bluehammer_redsun_undefend_or_yellowkey
+      - patch_released_for_redsun_undefend_or_yellowkey
+      - greenplasma_or_miniplasma_itw_state_change
+      - cross_citation_observation_securityaffairs_cites_theregister_or_vice_versa_weakens_relay_independence
+      - first_party_ioc_hit
+    first_covered: 2026-05-29
+    last_covered: 2026-05-29
+    retraction: null
+    test: false
+    notes: |
+      Cluster supersedes yesterday's PM-28 FLASH-12 single-source-veto
+      rejection (reject-2026-05-28-0001) — the "if it resurfaces via
+      A/B-grade source, regrade" instruction was correctly followed.
+      Two B-grade independent in-window relays (Security Affairs +
+      The Register) clear the veto on the cluster-anchor state-
+      transition envelope.
+
+      Red-team adjusted underlying-fact WEP DOWN from analyst's
+      "likely" to "roughly even chance" — rationale: load-bearing
+      source (MSRC) is non-neutral on the load-bearing claim in
+      this specific reporting cycle; zero IR-firm corroboration;
+      Splunk silent; pattern-completion from "post-PoC opportunistic
+      exploitation is a known pattern" is a prior, not an
+      observation.
+
+      Briefer carry-throughs honored verbatim in brief prose:
+      (1) Meta-statement vs underlying-fact disambiguation as
+          leading clause — not buried footnote.
+      (2) MSRC non-neutrality on this specific cycle explicitly
+          noted (load-bearing primary AND counterparty).
+      (3) H3/H4 CVE-binding framing preserved — "do NOT silently
+          resolve as SecurityWeek erred."
+      (4) YellowKey CVE-2026-45585 capped at "likely" not
+          "very likely" per analyst KAC A7 + red-team concur.
+      (5) Researcher's July 14, 2026 announcement reported as
+          genuine two-source independent (outside MSRC closed loop).
+
+      CVE-binding contradiction with prior corpus (finding-2026-
+      05-21-0001 SecurityWeek codename-binding) caps the binding
+      layer at B3 pending vuln-tracker reconciliation. Cluster
+      anchor at A2 unchanged.
+
+  - id: 2026-05-29-am-003-oracle-cpu-may-2026-nvd-critical-batch-rest-data-services-cve-2026-46840-cvss-10-payments-46817-database-net-service-46833-no-itw
+    covered_in: [2026-05-29-morning]
+    brief_file: threats/briefs/2026-05-29-morning.md
+    headline: "Oracle Critical Patch Update May 2026 (2026-05-28) — nine Oracle-CNA critical CVEs ingested by NVD overnight; highest is CVE-2026-46840 Oracle REST Data Services CVSS 10.0 scope-changing pre-auth full RCE (rarest CVSS profile); CVE-2026-46817 Oracle EBS Payments 9.8 pre-auth full takeover (EBS 12.2.3-12.2.15) directly DIB-financial-system-relevant; CVE-2026-46833 Oracle Database Net Service 9.0 pre-auth network DIB data-tier relevant; three REST Data Services criticals in one CPU (10.0/9.9/9.9) suggest structural vulnerability class (grader hypothesis); no ITW, no CISA KEV at T+1, no public PoC observed in window; three vuln-tracker scaffold candidates flagged; public-PoC watch window 2026-05-31 to 2026-06-11"
+    topic_tags:
+      - oracle-cpu-may-2026
+      - nvd-critical-batch
+      - oracle-cna-source-chain
+      - single-source-veto-applied
+      - cve-2026-46840-oracle-rest-data-services-cvss-10-scope-change-pre-auth-rce
+      - cve-2026-46817-oracle-ebs-payments-cvss-9-8-pre-auth-full-takeover-12-2-3-to-12-2-15
+      - cve-2026-46833-oracle-database-net-service-cvss-9-0-pre-auth-network
+      - cve-2026-46775-oracle-rest-data-services-cvss-9-9-low-priv-scope-change
+      - cve-2026-46839-oracle-rest-data-services-cvss-9-9
+      - cve-2026-46822-oracle-iassets-cvss-9-9
+      - cve-2026-46824-oracle-universal-work-queue-cvss-9-9
+      - cve-2026-34311-oracle-hospitality-opera-5-cvss-9-8
+      - cve-2026-46819-oracle-internet-procurement-connector-cvss-9-1
+      - three-rest-data-services-criticals-structural-vulnerability-class-grader-hypothesis-not-vendor-stated
+      - dib-erp-financial-estate-exposure
+      - dib-data-tier-estate-exposure
+      - dib-rest-data-services-where-deployed-patch-yesterday
+      - poc-watch-window-2026-05-31-to-2026-06-11
+      - cisa-kev-not-added-at-t-plus-1-normal-lag
+      - oracle-advisory-url-403-waf-bot-block-collection-mechanism-issue
+      - vuln-tracker-handoff-three-scaffold-candidates
+    related_actors: []
+    related_vulns:
+      - CVE-2026-46840
+      - CVE-2026-46775
+      - CVE-2026-46839
+      - CVE-2026-46822
+      - CVE-2026-46824
+      - CVE-2026-46817
+      - CVE-2026-34311
+      - CVE-2026-46819
+      - CVE-2026-46833
+    related_campaigns:
+      - oracle-cpu-may-2026
+    finding_ids: [finding-2026-05-29-0003-oracle-cpu-may-2026-nvd-critical-batch-rest-data-services-cve-2026-46840-cvss-10-payments-46817-database-net-service-46833-no-itw]
+    digraph: A2
+    digraph_layered:
+      nvd_cve_record_existence_nine_oracle_cpu_critical_entries: A1
+      cve_2026_46840_cvss_10_0_oracle_rest_data_services: A2
+      cve_2026_46817_oracle_ebs_payments_cvss_9_8: A2
+      cve_2026_46833_oracle_database_net_service_cvss_9_0: A2
+      no_itw_exploitation_referenced: A2
+      no_cisa_kev_addition_t_plus_1: A2
+      three_rest_data_services_criticals_structural_class_signal: B3
+      cluster_anchor: A2
+    wep: likely
+    wep_layered:
+      cve_2026_46840_exists_and_is_cvss_10_0: very_likely
+      cve_2026_46817_exists_and_is_cvss_9_8_pre_auth: very_likely
+      cve_2026_46833_exists_and_is_cvss_9_0: very_likely
+      no_active_exploitation_at_t_plus_1_day: likely
+      no_public_poc_in_window: likely
+      three_rest_data_services_criticals_signal_structural_class: roughly_even_chance
+      poc_release_within_3_to_14_day_window: likely
+      cisa_kev_addition_within_30_days: roughly_even_chance
+      itw_observation_within_30_days: roughly_even_chance
+      ad_dib_ebs_payments_estate_exposed: likely
+      ad_dib_database_estate_exposed: likely
+      ad_dib_rest_data_services_estate_exposed_where_deployed: likely
+    single_source_veto_applied: true
+    single_source_veto_layer: per_cve_record_chain_oracle_cna_to_nvd
+    analyst_review_required: false
+    red_team_review_required: false
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -7d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-46840 + CVE-2026-46817 + CVE-2026-46833 + oracle + REST Data Services"
+      hard_rule_8_framing: silence_is_not_disconfirming
+    librarian_handoffs_queued:
+      - action: vuln_tracker_handoff
+        target: "THREE scaffold candidates: (1) Oracle-REST-Data-Services-CVE-2026-46840/profile.md; (2) Oracle-EBS-Payments-CVE-2026-46817/profile.md; (3) Oracle-Database-Net-Service-CVE-2026-46833/profile.md. Remaining six Oracle CPU CVEs are watch-list candidates pending ITW or PoC."
+      - action: source_health_note
+        target: "Oracle advisory URL (oracle.com/security-alerts/cpumay2026.html) returns 403 to programmatic fetch — WAF/bot-block pattern; future amplification should use WebFetch with browser-class UA. Not a source-grade issue; a collection-mechanism issue."
+    resurface_if:
+      - public_poc_release_for_any_of_nine_cves
+      - cisa_kev_addition_for_any_oracle_cpu_entry
+      - mandiant_crowdstrike_volexity_unit42_rapid7_itw_observation
+      - oracle_csirt_statement_on_observed_exploitation
+      - first_party_ioc_hit
+      - additional_oracle_cpu_critical_entries_assigned_post_t_plus_1
+    first_covered: 2026-05-29
+    last_covered: 2026-05-29
+    retraction: null
+    test: false
+    notes: |
+      Vendor coordinated-disclosure class. Single source chain
+      (Oracle CNA → NVD) — single-source veto applied; WEP ceiling
+      capped at "likely" on operational claims.
+
+      CVE-2026-46840's CVSS 10.0 profile is the rarest score in the
+      CVSS v3 scoring system — vector AV:N/AC:L/PR:N/UI:N/S:C/C:H/
+      I:H/A:H = scope-change-from-trust-zone-A-to-trust-zone-B with
+      full CIA = High. Pre-auth full takeover of an enterprise
+      BaaS / DBaaS layer = tier-1 "patch yesterday" priority where
+      Oracle REST Data Services is deployed.
+
+      Cluster-pattern hypothesis (B3): three REST Data Services
+      criticals (10.0 / 9.9 / 9.9) in one CPU suggest a structural
+      vulnerability class (auth bypass / IDOR / injection chain)
+      rather than three independent bugs. Grader-side
+      interpretation, not vendor-stated. Vuln-tracker decision on
+      whether to scaffold the three together vs individually
+      depends on this — optional SAT-KAC if vuln-tracker wants
+      confidence.
+
+      Standing pattern observation: Oracle CPU + NVD ingest follows
+      a recurring quarterly pattern (Jan / Apr / Jul / Oct). Same
+      CNA-to-NVD source-chain pattern as Red Hat batch in finding-
+      2026-05-28-0004 yesterday. Single-source veto applies
+      consistently to CNA-to-NVD chains.
+
+      Briefer carry-throughs:
+      (1) PoC release within 3-14 days flagged as watch window
+          (2026-05-31 → 2026-06-11).
+      (2) CISA KEV addition within 30 days = roughly even chance
+          (typical Oracle CPU lag is weeks-to-months).
+      (3) ITW observation within 30 days = roughly even chance
+          (high-CVSS pre-auth tends to attract exploit research).
+
+  - id: 2026-05-29-am-brief-meta
+    covered_in: [2026-05-29-morning]
+    brief_file: threats/briefs/2026-05-29-morning.md
+    headline: "Morning brief 2026-05-29 — Chaotic Eclipse state transition (UPDATE; A2 cluster anchor; meta-statement very_likely / underlying-fact roughly_even_chance per red-team adjustment; MSRC non-neutrality explicitly noted; CVE-binding contradiction H3/H4 preserved; YellowKey capped at likely) + vpmdhaj npm typosquat (A2; lineage UNRESOLVED H2/H3 per ACH; Defender ShaiWorm family-name = internal classification NOT TeamPCP attribution per Hard Rule 2; 72h Wiz/Snyk/StepSecurity tripwire flagged) + Oracle CPU May 2026 (A2; nine criticals incl CVSS 10.0 RCE in REST Data Services; no ITW at T+1; three vuln-tracker scaffold candidates; PoC watch window). Sector Focus A&D structural-only (no prime named); Iran Cyber Watch silent-day. Six standing analyst/red-team carry-throughs honored verbatim. Word count over 800 target (935) — mandatory carry-throughs from analyst + red-team carry-loaded brief past target; under 1200 hard cap."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - lead-chaotic-eclipse-state-transition-update
+      - paired-vpmdhaj-mstic-npm-typosquat
+      - oracle-cpu-may-2026-vulnerabilities-section
+      - meta-statement-vs-underlying-fact-disambiguation-load-bearing
+      - msrc-non-neutrality-explicitly-noted
+      - cve-binding-contradiction-h3-h4-preserved
+      - yellowkey-capped-at-likely-per-analyst-kac
+      - lineage-unresolved-h2-h3-per-ach-vpmdhaj
+      - shaiworm-family-name-internal-classification-not-teampcp-attribution
+      - 72h-wiz-snyk-stepsecurity-tripwire-flagged
+      - oracle-cpu-three-rds-criticals-structural-class-grader-hypothesis
+      - three-vuln-tracker-scaffold-candidates-oracle
+      - poc-watch-window-2026-05-31-to-2026-06-11
+      - sector-focus-ad-structural-only-no-prime-named
+      - iran-cyber-watch-silent-day
+      - hard-rule-2-strict-hold-throughout
+      - hard-rule-6-quote-discipline-the-register-15-words
+      - word-count-935-over-800-target-under-1200-hard-cap
+      - analyst-and-red-team-carry-throughs-honored-verbatim
+    related_actors:
+      - "001"   # TeamPCP — lineage SUGGESTION cross-reference only (vpmdhaj)
+    related_vulns:
+      - CVE-2026-33825
+      - CVE-2026-45585
+      - CVE-2026-46840
+      - CVE-2026-46817
+      - CVE-2026-46833
+    related_zero_days:
+      - ZD-001
+      - ZD-002
+      - ZD-003
+    related_campaigns:
+      - vpmdhaj-npm-typosquat-may-2026
+      - chaotic-eclipse-state-transition-2026-05-29
+      - oracle-cpu-may-2026
+    finding_ids:
+      - finding-2026-05-29-0001-mstic-vpmdhaj-npm-typosquat-shaiworm-cloud-cicd-credential-theft-bun-runtime-abuse-distinct-cluster-lineage-suggestion
+      - finding-2026-05-29-0002-security-affairs-the-register-chaotic-eclipse-state-transition-bluehammer-redsun-undefend-itw-confirmed-yellowkey-scaffold-candidate
+      - finding-2026-05-29-0003-oracle-cpu-may-2026-nvd-critical-batch-rest-data-services-cve-2026-46840-cvss-10-payments-46817-database-net-service-46833-no-itw
+    word_count: 935
+    word_count_target_range: [400, 800]
+    word_count_target_breach_rationale: |
+      Brief at 935 words — over the 800 max but well under the 1200
+      hard cap (150% of max). The Chaotic Eclipse Active Threats
+      item carries six mandatory carry-throughs from the analyst
+      and red-team reviews:
+
+        (1) Meta-statement vs underlying-fact disambiguation as
+            leading clause.
+        (2) MSRC non-neutrality on this specific cycle (load-
+            bearing primary AND counterparty).
+        (3) WEP layering: underlying-fact = roughly even chance,
+            meta-statement = very likely.
+        (4) CVE-binding contradiction with H3/H4 preserved (do
+            NOT silently resolve as SecurityWeek erred).
+        (5) YellowKey CVE-2026-45585 capped at "likely" per
+            analyst KAC A7 + red-team concur.
+        (6) Researcher's July 14 announcement as genuine two-
+            source independent (outside MSRC closed loop).
+
+      The vpmdhaj npm item carries three mandatory carry-throughs:
+
+        (1) Defender ShaiWorm family-name = internal classification
+            signal, NOT analytic attribution to TeamPCP.
+        (2) Lineage UNRESOLVED between H2 and H3 (analyst ACH ties
+            at rank-1).
+        (3) 72h Wiz/Snyk/StepSecurity tripwire flagged as most
+            probable near-term corpus shift.
+
+      Three pre-flight regen iterations completed; the brief
+      cannot be compressed further without losing load-bearing
+      fidelity to analyst + red-team direction. Ship at 935 with
+      the unresolved tension surfaced to operator: analyst /
+      red-team-mandated carry-throughs vs 800-word strict target
+      is a recurring structural conflict for high-density single-
+      finding state-transition items (this is a class signal, not
+      a one-off).
+    discord_summary_word_count: 280
+    discord_summary_char_count: 1900
+    discord_summary_char_count_target: under_1900
+    discord_summary_compliant: true
+    hard_rule_2_brief_wide_compliance:
+      - "Chaotic Eclipse: 'per MSRC's vendor statement and two trade-press relays of that statement'; meta-statement vs underlying-fact disambiguation as leading clause"
+      - "vpmdhaj: 'Defender family-name is internal classification signal, not attribution to TeamPCP per prior reporting'; Archimedes does not extend lineage"
+      - "Oracle CPU: vendor coordinated-disclosure; no actor attribution"
+    hard_rule_6_quote_discipline_brief_wide:
+      - "The Register: 'Attackers began hammering three of the six soon after Nightmare published working PoC code.' (15 words)"
+      - "No other direct quotes in brief body"
+    splunk_first_party_brief_wide:
+      hits: 0
+      indexes_queried: [archimedes, defenseclaw_local]
+      query_windows: [-7d, -30d]
+    pre_flight_regen_count: 3
+    pre_flight_regen_reasons:
+      - "Word count over 800 max — compressed twice; remaining over-cap is mandatory-carry-through-driven"
+      - "Discord Summary Layer 2 char count over 1900 — compressed twice; landed at ~1900"
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-29
+    last_covered: 2026-05-29
+    retraction: null
+    test: false
+    notes: |
+      Brief composed by briefer subagent per orchestrator handoff.
+      All three findings ship with analyst review complete;
+      finding-0002 also ships with red-team review complete
+      (weaknesses_flagged_non_blocking sign-off, underlying-fact
+      WEP downgraded to roughly_even_chance).
+
+      Three FLASH-12 / sweep cadences have now touched the Chaotic
+      Eclipse story over the past 17 days: original disclosure
+      (2026-05-13 afternoon), state transition rejected at PM-28
+      FLASH-12 (reject-2026-05-28-0001), state transition promoted
+      at AM-29 (this brief). Continuing watch window through
+      July 14, 2026 (researcher announcement deadline).
+
+      vpmdhaj 72h Wiz/Snyk/StepSecurity tripwire fires
+      2026-05-30 / 2026-05-31 / 2026-06-01 — orchestrator should
+      schedule explicit pattern-match sentinels on those dates.
+
+      Oracle CPU public-PoC watch window 2026-05-31 → 2026-06-11
+      — orchestrator should schedule daily PoC-surface sweeps
+      against the nine Oracle CVEs through that window.
 
 # ============================================================================
 # Valid resurface_if conditions

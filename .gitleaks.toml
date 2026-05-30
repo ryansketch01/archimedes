@@ -37,6 +37,14 @@ regexes = [
   # relevance") — the slash-joined token hit the generic-api-key entropy
   # threshold on the 2026-05-21 sentinel sweep. Benign English, not a credential.
   '''consumer/SMB''',
+
+  # MSTIC-published X-Secret IOC from 2026-05-29 npm dependency-confusion
+  # campaign blog post (33 malicious npm packages, oob.moika.tech C2). The
+  # X-Secret header value is a documented IOC the adversary uses to gate
+  # their C2 endpoint — Microsoft published it for defender detection. Not
+  # an Archimedes credential. Tripped generic-api-key entropy 4.5 on the
+  # 2026-05-30 0000 FLASH sweep raw-signal commit.
+  '''l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1''',
 ]
 
 paths = [

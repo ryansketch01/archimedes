@@ -1,0 +1,215 @@
+FLASH sweep diff-summary
+========================
+Run: flash-sweep-20260530-180000-operator-evening
+Sweep window: 2026-05-30 16:00 → 18:05 EDT (~2h effective; gap between
+              afternoon brief publish and next 00:00 scheduled FLASH)
+Mode: flash_sweep (Mode 2) — operator-triggered ad-hoc
+Quiet hours: INACTIVE (18:05 EDT inside 09:00-21:00 active window)
+
+Per Mode 2 procedure + field-ownership rule (CLAUDE.md "source-health.yaml
+field ownership: runtime vs operator-set"), this diff records sweep outcomes
+without rewriting the multi-paragraph operator notes that compound across
+sweeps. Operator may roll these observations into the in-file `notes:`
+fields on the next consolidation pass; until then this companion file is
+the durable record.
+
+Sources queried this sweep (active, healthy unless noted):
+
+  Tier-1 vendor research
+  ----------------------
+  mandiant              — alt endpoint mandiant.com/resources/blog/rss.xml
+                          REACHABLE (status 200, 20 items in feed). 0
+                          in-window items. Feedburner path 404
+                          (28th consecutive — held healthy pending
+                          operator alt-endpoint ratification per AM-30
+                          pre-brief note). HEALTHY.
+  crowdstrike           — RSS REACHABLE (status 200, last_modified
+                          2026-05-30T05:24:16 GMT pre-window). 10 items
+                          returned, all published:null (15th consecutive
+                          dateless-RSS sweep). Top-of-list "Disrupting
+                          Glassworm" WebFetch-verified to 2026-05-26
+                          (pre-window, 4 days old). HEALTHY (no change
+                          to entrenched dateless-RSS pattern).
+  mstic                 — RSS REACHABLE (status 200, last_modified
+                          2026-05-30T00:15:01 GMT pre-window). 0
+                          in-window items. AM-30 33-package npm cluster
+                          remains most-recent. HEALTHY.
+  unit42                — feedburner REACHABLE (status 200, last_modified
+                          2026-05-29T21:16:24 GMT pre-window). 0
+                          in-window items. HEALTHY.
+  cisco-talos           — RSS REACHABLE (status 200, 15 items in feed).
+                          0 in-window items. HEALTHY.
+  sentinelone           — RSS REACHABLE (status 200, last_modified
+                          2026-05-29T22:03:17 GMT pre-window). 0
+                          in-window items. HEALTHY.
+  welivesecurity        — RSS REACHABLE (200, 100 items in feed). 0
+                          in-window items. HEALTHY.
+  rapid7                — RSS REACHABLE (status 200, last_modified
+                          2026-05-30T21:49:21 GMT in-window from
+                          feed-server activity). 0 in-window items
+                          after since-filter — no follow-on PAN-OS
+                          post since 2026-05-29 etr-blog primary.
+                          HEALTHY.
+  volexity              — RSS parse error (XML malformed, recurring
+                          pattern flagged in source-health). WebFetch
+                          fallback on volexity.com/blog: most recent
+                          post 2025-12-04 (quiet cadence confirmed).
+                          Held healthy (single failure does not flip
+                          stale; recurring parse pattern not new). No
+                          status change.
+  checkpoint-research   — RSS REACHABLE (status 200, last_modified
+                          2026-05-26T12:13:08 GMT pre-window). 0
+                          in-window items. HEALTHY.
+  securelist            — RSS REACHABLE (status 200, last_modified
+                          2026-05-29T07:00:51 GMT pre-window). 0
+                          in-window items. HEALTHY.
+  greynoise             — RSS REACHABLE (status 200, last_modified
+                          2026-05-26T22:37:09 GMT pre-window). 0
+                          in-window items. HEALTHY.
+  citizen-lab           — RSS REACHABLE (status 200, last_modified
+                          2026-05-29T15:20:32 GMT pre-window). 0
+                          in-window items. HEALTHY.
+  proofpoint            — corporate-news RSS REACHABLE (status 200,
+                          last_modified 2026-05-30T21:35:33 GMT in-window
+                          from feed-server activity). 0 in-window items
+                          after since-filter. Threat-intel-specific
+                          endpoint still 404 per source-health.
+                          HEALTHY (no change).
+
+  Government / authoritative
+  --------------------------
+  cisa-kev              — JSON catalog REACHABLE via WebFetch. Most-recent
+                          3 KEV adds: CVE-2026-0257 (PAN-OS, 2026-05-29 —
+                          already in afternoon-30 brief, Anti-Noise
+                          covers); CVE-2026-48027 (Nx Console, 2026-05-27,
+                          ransomware-known, pre-window); CVE-2026-45321
+                          (TanStack, 2026-05-27, ransomware-known,
+                          pre-window). Zero KEV adds dated 2026-05-30.
+                          HEALTHY.
+  cisa-advisories       — all.xml RSS REACHABLE (status 200, 30 items in
+                          feed). 0 in-window items. HEALTHY.
+  nvd                   — REST API REACHABLE. lastModStartDate window
+                          query 2026-05-30T20:00 → 22:30 UTC:
+                          cvssV3Severity=CRITICAL → 0 results;
+                          cvssV3Severity=HIGH → 0 results. NVD genuinely
+                          quiet across evening-30 slice. HEALTHY.
+  msrc                  — RSS feed parse error (5th consecutive failure
+                          across 2026-05-29 18:00 + 2026-05-30
+                          0000/0600/0730 + this 18:05 sweep). Already
+                          flipped to STALE at AM-30 pre-brief
+                          (stale_since: 2026-05-30); no further runtime
+                          change this sweep. Operator-side alt-path
+                          remains pending.
+
+  Vendor PSIRTs spot-checked
+  --------------------------
+  palo-alto-psirt       — WebFetch on security.paloaltonetworks.com.
+                          Top-3 most-recent: CVE-2026-0300 (User-ID Auth
+                          Portal buffer overflow, CVSS 9.3, updated
+                          2026-05-28); CVE-2026-0265 (CAS, 7.2, updated
+                          2026-05-28); CVE-2026-0264 (DNS Proxy/Server
+                          heap overflow, 7.2, updated 2026-05-28). All
+                          pre-window. CVE-2026-0257 advisory live but
+                          not re-modified today. HEALTHY (no in-corpus
+                          source-health entry; ad-hoc PSIRT check).
+  fortinet-psirt        — WebFetch on fortiguard.com/psirt. Top-3
+                          most-recent dated 2026-05-12 (FG-IR-26-131 /
+                          FG-IR-26-137 / FG-IR-26-136). All pre-window.
+                          HEALTHY (no in-corpus source-health entry;
+                          ad-hoc PSIRT check).
+  ivanti-psirt          — 301 redirect to hub.ivanti.com; multi-page
+                          nav prevented WebFetch listing. Spot-check
+                          inconclusive but no in-window relay surfaced
+                          via media. No status change.
+
+  Security media (B-grade)
+  ------------------------
+  bleepingcomputer      — RSS REACHABLE (status 200, last_modified
+                          2026-05-30T22:00:58 GMT in-window from
+                          feed-server activity). 0 in-window items
+                          after since-filter. Afternoon-30 PAN-OS
+                          Lawrence Abrams primary remains most-recent.
+                          HEALTHY.
+  thehackernews         — RSS REACHABLE (status 200, last_modified
+                          2026-05-30T21:19:27 GMT in-window from
+                          feed-server activity). 0 in-window items
+                          after since-filter. Afternoon-30 Lakshmanan
+                          PAN-OS relay remains most-recent. HEALTHY.
+  securityweek          — RSS REACHABLE (status 200, last_modified
+                          2026-05-30T16:01:49 GMT — right at window
+                          start). 0 in-window items after since-filter.
+                          HEALTHY.
+  security-affairs      — RSS REACHABLE (status 200, last_modified
+                          2026-05-30T18:25:59 GMT in-window from
+                          feed-server activity). 0 in-window items
+                          after since-filter. HEALTHY.
+  the-record            — RSS REACHABLE (status 200, 5 items in feed).
+                          0 in-window items. HEALTHY.
+  krebs                 — RSS REACHABLE (status 200, last_modified
+                          2026-05-30T21:52:03 GMT in-window from
+                          feed-server activity). 0 in-window items
+                          after since-filter. HEALTHY.
+  dark-reading          — RSS REACHABLE (status 200, 50 items in feed).
+                          2 in-window items via `updated` field — both
+                          future-dated event-listing rotations (Name
+                          That Toon Contest, Infosecurity Europe). Not
+                          content. DISCARDED. HEALTHY.
+
+  First-party Splunk
+  ------------------
+  splunk (defenseclaw_local + archimedes indexes)
+                        — REACHABLE via mcp__splunk-query__search.
+                          Sweep A: APT28 spray IPs (70.34.253.247 /
+                          91.149.253.118 / 212.127.78.170) + APT28
+                          lure-doc SHA-256s + APT28 cloud-C2 domains
+                          (filen.io / koofr.net / icedrive.net /
+                          wellnesscaremed.com / wellnessmedcare.org /
+                          freefoodaid.com / longsauce.com) over -24h →
+                          0 hits.
+                          Sweep B: MuddyWater C2/staging IPs
+                          (179.43.177.220 / 178.128.233.36 /
+                          77.110.107.235 / 93.123.39.127 /
+                          172.86.126.208 / 116.203.208.186) +
+                          MuddyWater C2 domains (timetrakr.cloud /
+                          sendit.sh / moonzonet.com / uploadfiler.com /
+                          adm-pulse.com) + Charming Kitten
+                          OAuth-phishing domains
+                          (login-microsoft365-secure.com /
+                          m365-policy-review.org /
+                          hyperscrape-update.net) + 194.87.44.99
+                          over -24h → 0 hits.
+                          Total Splunk first-party hits in -24h: 0.
+                          Trigger 3 NO FIRE.
+
+Per-trigger verdict
+-------------------
+  Trigger 1 (critical-cve-exploited)     — NO FIRE
+  Trigger 2 (tracked-actor-attribution)  — NO FIRE
+  Trigger 3 (first-party-ioc-hit)        — NO FIRE
+  Trigger 4 (tracked-actor-ttp-change)   — NO FIRE
+  Trigger 5 (ad-sector-campaign)         — NO FIRE
+  Trigger 6 (zero-day-no-patch)          — NO FIRE
+  Total: 0 of 6 triggers fired.
+
+Outcome
+-------
+Clean sweep. Raw-signal sentinel written:
+  threats/raw-signal/raw-2026-05-30-flash-evening-cleansweep.md
+
+No new stale flips. No new failure-count increments for healthy
+sources. MSRC remains stale (flipped at AM-30 pre-brief). Volexity
+parse error this sweep is a recurring intermittent pattern, NOT a
+regression; held healthy.
+
+Carry-forward anti-noise reconciliation:
+  - PAN-OS CVE-2026-0257: covered by Anti-Noise Rule 1 through
+    ~16:00 EDT tomorrow (2026-05-31). Would re-FLASH only on
+    genuinely new escalation (named A&D victim, named actor
+    attribution from A-grade, in-the-wild RCE chain).
+  - AM-30 MSTIC 33-package npm cluster: covered by Anti-Noise
+    Rule 1. Would re-FLASH only on tracked-actor attribution.
+  - CrowdStrike Glassworm takedown (roster #005): pre-window
+    (2026-05-26). Flagged for AM-31 pre-brief re-evaluation if
+    operator wants surfaced before natural aging.
+
+End.

@@ -19,7 +19,9 @@ candidate_triggers: []
 iocs_extracted: true
 iocs_count: 23
 text_word_count: 1180
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-05-30-0001-mstic-33-malicious-npm-dependency-confusion-recon-only-mode-oob-moika-tech-c2-three-aliases-no-roster-attribution-no-ad-nexus
+promoted_at: 2026-05-30T08:05:00-04:00
 ttl_expires_at: 2026-08-28T00:20:00-04:00
 test: false
 flash_sweep_disposition: |

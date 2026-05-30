@@ -1,0 +1,477 @@
+# threats/iocs/unattributed/mstic-33-package-npm-dependency-confusion-oob-moika-tech-may-2026.yaml
+#
+# Unattributed cluster — IOCs published by Microsoft MSTIC (Microsoft Defender
+# Security Research Team blog, 2026-05-29 20:06 EDT) covering the 33-malicious-
+# npm-package dependency-confusion campaign with `oob.moika.tech` C2 gated by a
+# hardcoded `X-Secret` HTTP header. MSTIC assesses operator-level attribution
+# only ("three accounts operated by the same individual" with high confidence
+# on forensic npm registry metadata) and explicitly declines APT / nation-state
+# attribution. Per Hard Rule 2, Archimedes does NOT extend the attribution —
+# the three maintainer aliases (`mr.4nd3r50n`, `ce-rwb`, `t-in-one`) are NOT
+# in the Archimedes roster.
+#
+# Cluster captures the campaign envelope: 23 indicators across the C2 host,
+# payload-delivery URLs, three maintainer email aliases, three npm publisher
+# accounts, the X-Secret header gate value, nine spoofed npm scopes, three
+# spoofed-enterprise-metadata hostnames, the behavior signature, and the
+# postinstall stager filename. Sample SHA-256 hashes are NOT enumerated by
+# MSTIC in the public blog post (packages removed pre-publication); none in
+# this cluster.
+
+cluster_id: mstic-33-package-npm-dependency-confusion-oob-moika-tech-may-2026
+cluster_name: "MSTIC — 33 malicious npm packages, dependency confusion, oob.moika.tech C2 (X-Secret gated)"
+first_seen: 2026-05-28
+last_updated: 2026-05-30
+admiralty_grade: A2
+tlp: CLEAR
+
+provenance:
+  - source: finding-2026-05-30-0001-mstic-33-malicious-npm-dependency-confusion-recon-only-mode-oob-moika-tech-c2-three-aliases-no-roster-attribution-no-ad-nexus
+    note: >
+      Microsoft MSTIC / Microsoft Defender Security Research Team primary
+      blog publication 2026-05-29 20:06 EDT — vendor-authority disclosure
+      on own-product detection telemetry plus coordinated npm registry
+      takedown. 33 packages under nine spoofed organizational scopes,
+      three new maintainer aliases (`mr.4nd3r50n`, `ce-rwb`, `t-in-one`)
+      all yandex.ru, single C2 endpoint with X-Secret-gated payload
+      delivery, recon-only payload mode with server-side toggle for
+      follow-on exploit. Cluster digraph A2 (single-source veto at the
+      envelope level pending independent corroboration); individual
+      procedural facts at A1. Operator-level attribution only.
+
+notes: |
+  Mechanism (per MSTIC):
+    1. Three new maintainer accounts publish 33 npm packages under nine
+       spoofed organizational scopes (impersonating Sberbank SberPay,
+       Wildberries-shaped e-commerce, `@capibar.chat`, generic dev infra
+       — Russian-speaking fintech / e-commerce target set; NO A&D / DIB /
+       ITAR / aerospace targeting).
+    2. Inflated version numbers (`100.100.100`, `99.5.7`, `99.5.8`) win
+       the dependency-confusion race against private-registry packages.
+    3. `scripts/postinstall.js` ships ~7KB Obfuscator.io-style stager.
+    4. Stager posts to `oob.moika.tech/payload/{win,mac,linux}` with
+       hardcoded `X-Secret: l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1`.
+    5. C2 returns platform-specific payload only when X-Secret matches.
+    6. Payload runs in RECONNAISSANCE-ONLY mode currently — environment
+       fingerprinting plus credential reconnaissance via process
+       environment. Server-side toggle exists for follow-on exploit
+       (observed state, NOT a claim about operator intent).
+
+  CRITICAL DEFENSIVE NOTE — `X-Secret` value is a unique strong signal:
+    The X-Secret header value `l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1` is a
+    hardcoded shared secret published verbatim by MSTIC for defender
+    detection. ANY outbound HTTP request from any environment carrying
+    that header value, to ANY destination, is high-confidence malicious
+    regardless of where the request is going. This is detection-grade
+    across the full IOC set.
+
+  A&D-nexus assessment:
+    - MSTIC's stated target scope is Russian-language fintech /
+      e-commerce. NO DIB / aerospace / defense primes named.
+    - Mechanism is universal to any npm-based developer environment;
+      detections apply to A&D CI/CD and developer-laptop EDR regardless
+      of the campaign's named target set.
+    - Four detection levers transferable to A&D primes today:
+        * DNS / proxy block on `oob.moika.tech` and
+          `*.cloudplatform-single-spa.io`.
+        * HTTP-header alert on the X-Secret value (any destination).
+        * Scope / maintainer allowlisting on internal npm registries;
+          alert on any public package version numerically higher than
+          a private-registry package.
+        * `npm install --ignore-scripts` at org-policy level blocks the
+          stager outright.
+
+  Methodologically distinct from MSTIC's 2026-05-28 `vpmdhaj` 14-package
+  typosquat cluster on MSTIC's own reported evidence:
+    - C2 architecture differs: X-Secret-gated single-stage (this cluster)
+      vs. two-generation Bun-runtime (vpmdhaj).
+    - Payload posture differs: recon-only with server-side toggle (this
+      cluster) vs. active full credential stealer (vpmdhaj).
+    - Defender family signature differs: no `Trojan:JS/ShaiWorm` family
+      tag on this cluster.
+    - Primitive differs: dependency confusion (this cluster) vs.
+      typosquat (vpmdhaj).
+    - Maintainer profile differs: yandex.ru / Russian-speaking (this
+      cluster) vs. gmail / DevOps-config (vpmdhaj).
+    MSTIC published the two findings 22h apart and did NOT link them.
+    Archimedes does NOT originate a lineage claim (Hard Rule 2).
+
+  Splunk first-party status at finding creation (2026-05-30):
+    Dormant on the 11-token IOC set (oob.moika.tech + 3 payload URLs +
+    X-Secret value + 3 maintainer emails + 3 spoofed enterprise hostnames)
+    across `defenseclaw_local` (60-day index dormancy) and `archimedes`.
+    Hard Rule 8 — silence is NOT disconfirming, just absent.
+
+  Account-lifecycle observation (analyst ACH framing — likely):
+    `mr.4nd3r50n`'s npm history shows v0.0.0 "Bugbounty"-tagged packages
+    published April 2024, ~2-year dormancy, then 2026-05-28 malicious
+    bursts. Analyst ACH ranks deliberate account-aging-as-cover as most
+    parsimonious; a genuine bug-bounty pivot cannot be ruled out.
+    Defensible observation, NOT predictive of attribution.
+
+  Takedown status:
+    MSTIC + npm team coordinated removal of ALL 33 malicious packages
+    BEFORE the blog publication 2026-05-29 20:06 EDT. C2 host
+    `oob.moika.tech` is likely still alive. Detection patterns remain
+    valid for retro-hunting and any future operator re-attempt.
+
+  To migrate this cluster to actor-attributed:
+    - Mandiant / CrowdStrike / Unit 42 / SentinelOne / Bitdefender /
+      Sophos / ESET publishes corroborating analysis with attribution
+      to a roster actor.
+    - First-party Splunk hit on the X-Secret value, `oob.moika.tech`,
+      `*.cloudplatform-single-spa.io`, or one of the three yandex.ru
+      maintainer emails ties to a roster actor's infrastructure.
+    - Second A/B-grade vendor research independently corroborates the
+      campaign with firmer attribution above operator-level.
+    - npm forensic registry metadata is later released / leaked /
+      cross-referenced against a doxxed operator identity.
+
+ttl:
+  network_infrastructure: 90    # C2 host and spoofed-enterprise hostnames may be sinkholed / rotated
+  shared_secrets: 365           # X-Secret value is hardcoded; durable for retro-hunting
+  account_aliases: 730          # maintainer aliases and emails durable for attribution work
+  npm_scopes: 365               # spoofed-scope names durable detection signal on internal registries
+  malware_families: never
+
+indicators:
+  - id: mstic-npm-c2-domain-001
+    type: domain
+    value: oob.moika.tech
+    defanged_original: "oob.moika[.]tech"
+    role: c2
+    confidence: high
+    description: "Single C2 host serving /payload/win, /payload/mac, /payload/linux gated by the X-Secret header. Likely still alive post-takedown."
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-c2-url-001
+    type: url
+    value: https://oob.moika.tech/payload/win
+    role: c2_payload_delivery
+    confidence: high
+    description: "Windows-platform payload delivery endpoint. Returns malicious payload only when X-Secret header matches."
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-c2-url-002
+    type: url
+    value: https://oob.moika.tech/payload/mac
+    role: c2_payload_delivery
+    confidence: high
+    description: "macOS-platform payload delivery endpoint. Returns malicious payload only when X-Secret header matches."
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-c2-url-003
+    type: url
+    value: https://oob.moika.tech/payload/linux
+    role: c2_payload_delivery
+    confidence: high
+    description: "Linux-platform payload delivery endpoint. Returns malicious payload only when X-Secret header matches."
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-shared-secret-001
+    type: shared_secret
+    value: l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1
+    role: x_secret_header_gate_on_c2_request
+    confidence: high
+    description: "Hardcoded X-Secret HTTP header value required to gate payload delivery from oob.moika.tech. ANY outbound request from any environment carrying this header value to ANY destination is high-confidence malicious."
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-maintainer-email-001
+    type: email
+    value: mr.4nd3r50n@yandex.ru
+    role: npm_maintainer_alias
+    confidence: high
+    description: "Email registered to npm account 'mr.4nd3r50n'. First npm activity April 2024 (v0.0.0 'Bugbounty'-tagged), ~2-year dormancy, then 2026-05-28 malicious bursts."
+    first_seen: 2024-04
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-maintainer-email-002
+    type: email
+    value: ogvanta@yandex.ru
+    role: npm_maintainer_alias
+    confidence: high
+    description: "Email registered to npm account 'ce-rwb'. Account name / email mismatch likely deliberate operator OPSEC."
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-maintainer-email-003
+    type: email
+    value: t-in-one@yandex.ru
+    role: npm_maintainer_alias
+    confidence: high
+    description: "Email registered to npm account 't-in-one'. Pre-staged packages May 4 2026 (@capibar.chat/ui-kit 99.0.7, @sber-ecom-core/sberpay-widget 99.0.7); active malicious publishing May 29 2026."
+    first_seen: 2026-05-04
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-account-001
+    type: npm_account
+    value: mr.4nd3r50n
+    role: malicious_publisher
+    confidence: high
+    description: "npm publisher account. 26 packages tied to this account. Account-lifecycle observation: v0.0.0 'Bugbounty'-tagged packages April 2024, ~2-year dormancy, then 2026-05-28 malicious bursts. MSTIC assesses one-of-three accounts operated by same individual (high confidence, forensic npm registry metadata)."
+    activity_window: "2024-04 (Bugbounty v0.0.0 staging) + 2026-05-28 (active malware publishing)"
+    package_count: 26
+    first_seen: 2024-04
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-account-002
+    type: npm_account
+    value: ce-rwb
+    role: malicious_publisher
+    confidence: high
+    description: "npm publisher account. 7 packages tied to this account. MSTIC assesses one-of-three accounts operated by same individual."
+    activity_window: "2026-05-28 (active malware publishing)"
+    package_count: 7
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-account-003
+    type: npm_account
+    value: t-in-one
+    role: malicious_publisher
+    confidence: high
+    description: "npm publisher account. 12 packages tied to this account; pre-staged @capibar.chat/ui-kit and @sber-ecom-core/sberpay-widget 99.0.7 on 2026-05-04, then active malicious publishing on 2026-05-29. MSTIC assesses one-of-three accounts operated by same individual."
+    activity_window: "2026-05-04 (pre-staged) + 2026-05-29 (active malware publishing)"
+    package_count: 12
+    first_seen: 2026-05-04
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-scope-001
+    type: npm_scope
+    value: "@cloudplatform-single-spa"
+    role: dependency_confusion_target
+    description: "Spoofed organizational scope. Cluster-anchor spoofed scope — also referenced in fake repository metadata hostnames (github.cloudplatform-single-spa.io etc.)."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-scope-002
+    type: npm_scope
+    value: "@wb-track"
+    role: dependency_confusion_target
+    description: "Spoofed organizational scope. Likely Wildberries-shaped e-commerce impersonation."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-scope-003
+    type: npm_scope
+    value: "@data-science"
+    role: dependency_confusion_target
+    description: "Spoofed organizational scope — generic data-science / ML pipeline shape."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-scope-004
+    type: npm_scope
+    value: "@ce-rwb"
+    role: dependency_confusion_target
+    description: "Spoofed organizational scope matching the ce-rwb npm publisher alias."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-scope-005
+    type: npm_scope
+    value: "@payments-widget"
+    role: dependency_confusion_target
+    description: "Spoofed organizational scope — payments-shape generic."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-scope-006
+    type: npm_scope
+    value: "@travel-autotests"
+    role: dependency_confusion_target
+    description: "Spoofed organizational scope — travel-tech test-automation shape."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-scope-007
+    type: npm_scope
+    value: "@t-in-one"
+    role: dependency_confusion_target
+    description: "Spoofed organizational scope matching the t-in-one npm publisher alias."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-scope-008
+    type: npm_scope
+    value: "@capibar.chat"
+    role: dependency_confusion_target
+    description: "Spoofed organizational scope. Pre-staged ui-kit 99.0.7 on 2026-05-04 (t-in-one)."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-scope-009
+    type: npm_scope
+    value: "@sber-ecom-core"
+    role: dependency_confusion_target
+    description: "Spoofed organizational scope. Direct Sberbank SberPay payment widget impersonation. Pre-staged sberpay-widget 99.0.7 on 2026-05-04 (t-in-one)."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-spoofed-domain-001
+    type: domain
+    value: github.cloudplatform-single-spa.io
+    defanged_original: "github.cloudplatform-single-spa[.]io"
+    role: spoofed_enterprise_metadata
+    confidence: high
+    description: "Fake GitHub Enterprise repository URL referenced in malicious package.json files — NOT an actual GitHub Enterprise instance. Detection opportunity for any environment that resolves or attempts to fetch from this hostname."
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-spoofed-domain-002
+    type: domain
+    value: docs.cloudplatform-single-spa.io
+    defanged_original: "docs.cloudplatform-single-spa[.]io"
+    role: spoofed_enterprise_metadata
+    confidence: high
+    description: "Fake documentation hostname referenced in malicious package.json metadata. Detection opportunity for DNS / proxy block."
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-spoofed-domain-003
+    type: domain
+    value: jira.cloudplatform-single-spa.io
+    defanged_original: "jira.cloudplatform-single-spa[.]io"
+    role: spoofed_enterprise_metadata
+    confidence: high
+    description: "Fake Jira hostname referenced in malicious package.json metadata. Detection opportunity for DNS / proxy block."
+    first_seen: 2026-05-28
+    last_seen: 2026-05-29
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-detection-pattern-001
+    type: detection_pattern
+    value: "npm install postinstall hook + HTTPS GET to oob.moika.tech/payload/{win,mac,linux} with X-Secret header"
+    role: behavior_signature
+    confidence: high
+    description: "Composite behavior signature: postinstall hook execution chained with outbound HTTPS to oob.moika.tech bearing the X-Secret header. EDR / proxy detection lever."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+  - id: mstic-npm-stager-filename-001
+    type: filename
+    value: "scripts/postinstall.js"
+    role: malware_stager
+    confidence: high
+    description: "Obfuscator.io-style obfuscation, ~7 KB. Shipped under nine spoofed scopes across 33 packages. Org-policy 'npm install --ignore-scripts' blocks execution outright."
+    source: finding-2026-05-30-0001
+    source_attribution: ["MSTIC 2026-05-29"]
+
+hunt_queries:
+  - id: mstic-npm-hunt-x-secret-header
+    platform: splunk
+    title: "MSTIC 33-package npm cluster — X-Secret header hunt (highest-fidelity signal)"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      ("X-Secret: l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1"
+        OR header="*l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1*"
+        OR http_request_headers="*l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1*")
+      | stats count by user, src_ip, dest_host, http_user_agent, _time
+      | sort -_time
+    notes: >
+      The X-Secret value is hardcoded into the postinstall stager. ANY
+      outbound HTTP request carrying this header value, to ANY destination,
+      is high-confidence malicious regardless of where the request is
+      going. Single highest-fidelity detection in the cluster.
+
+  - id: mstic-npm-hunt-c2-domain
+    platform: splunk
+    title: "MSTIC 33-package npm cluster — oob.moika.tech C2 hunt"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (dest_host="*oob.moika.tech" OR domain="*oob.moika.tech"
+        OR query="*oob.moika.tech" OR url="*oob.moika.tech*")
+      | stats count by user, src_ip, dest_host, url, _time
+      | sort -_time
+    notes: >
+      oob.moika.tech is purpose-built C2 infrastructure for this campaign.
+      ANY hit from a US defense contractor environment warrants immediate
+      developer-laptop EDR pivot and CI/CD-pipeline review.
+
+  - id: mstic-npm-hunt-spoofed-enterprise-metadata
+    platform: splunk
+    title: "MSTIC 33-package npm cluster — cloudplatform-single-spa.io spoofed-metadata hunt"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (dest_host="*cloudplatform-single-spa.io"
+        OR query="*cloudplatform-single-spa.io"
+        OR domain="*cloudplatform-single-spa.io")
+      | stats count by user, src_ip, dest_host, _time
+      | sort -_time
+    notes: >
+      github.* / docs.* / jira.* cloudplatform-single-spa.io subdomains
+      are fake-enterprise-metadata hostnames referenced in malicious
+      package.json files. Any resolution attempt indicates a developer
+      pulled or processed one of the 33 malicious packages.
+
+  - id: mstic-npm-hunt-maintainer-emails
+    platform: splunk
+    title: "MSTIC 33-package npm cluster — yandex.ru maintainer alias hunt"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      ("mr.4nd3r50n@yandex.ru" OR "ogvanta@yandex.ru" OR "t-in-one@yandex.ru"
+        OR email="mr.4nd3r50n@yandex.ru" OR email="ogvanta@yandex.ru"
+        OR email="t-in-one@yandex.ru")
+      | stats count by index, source, sourcetype, _time
+      | sort -_time
+    notes: >
+      Maintainer email aliases. Hit potentially indicates correspondence,
+      package metadata cached locally, or attribution-research artifacts.
+      Low-frequency strong signal.
+
+  - id: mstic-npm-hunt-stager-behavior
+    platform: edr
+    title: "MSTIC 33-package npm cluster — postinstall hook behavioral hunt"
+    query_type: pseudo_kql
+    query: |
+      DeviceProcessEvents
+      | where InitiatingProcessFileName in ("node.exe", "node", "npm.exe", "npm")
+        and (ProcessCommandLine contains "postinstall"
+             or ProcessCommandLine contains "scripts/postinstall.js")
+      | join (DeviceNetworkEvents
+              | where RemoteUrl contains "oob.moika.tech"
+                 or RemoteUrl contains "cloudplatform-single-spa.io")
+        on DeviceId
+      | project DeviceId, AccountName, Timestamp, ProcessCommandLine, RemoteUrl
+    notes: >
+      Behavioral correlation: postinstall hook execution chained with
+      outbound HTTPS to either C2 host or spoofed-enterprise-metadata
+      hostname. High-fidelity composite signal.
+
+ttl_review: 2026-08-28        # 90-day cluster review checkpoint

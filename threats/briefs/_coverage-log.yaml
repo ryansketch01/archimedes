@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-29T16:32:00-04:00
+last_updated: 2026-05-30T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -22812,6 +22812,398 @@ entries:
         - Standing-section heuristic watch: AI Platform Security
           section addition candidate (fourth-surface deadline
           2026-06-12).
+
+  - id: 2026-05-30-am-001-mstic-33-malicious-npm-dependency-confusion-recon-only-mode-oob-moika-tech-c2-three-aliases-no-roster-attribution-no-ad-nexus
+    covered_in: [2026-05-30-morning]
+    brief_file: threats/briefs/2026-05-30-morning.md
+    headline: "MSTIC discloses 33-package npm dependency-confusion cluster (2 publication bursts 2026-05-28 + 2026-05-29) — nine spoofed organizational scopes, three new yandex.ru maintainer accounts (mr.4nd3r50n, ce-rwb, t-in-one) assessed by MSTIC as one individual (high confidence on forensic npm registry metadata); MSTIC explicitly DECLINES APT / nation-state attribution (operator-level only); single C2 oob.moika.tech with hardcoded X-Secret HTTP header gate (universal defender-grade IOC); payload runs reconnaissance-only with server-side toggle for follow-on (REPORTED AS OBSERVED STATE, not strategic-intent inference per analyst KAC A1 test classification); npm + MSTIC coordinated removal pre-publication; NO A&D / DIB / ITAR / aerospace nexus — impersonated scopes target Russian-speaking fintech (Sberbank SberPay) + e-commerce (Wildberries shape) + generic dev infra; defensive guidance still applies because mechanism is universal; cross-cluster geometry ACH-AFFIRMS methodological distinctness from vpmdhaj (finding-2026-05-29-0001) on six divergences in MSTIC's own evidence — NOT a lineage claim per Hard Rule 2; bug-bounty-to-malware-operator lifecycle (mr.4nd3r50n April 2024 v0.0.0 'Bugbounty'-tagged + ~2-year dormancy + 2026-05-28 malicious bursts) reported as analyst observation H2 most parsimonious (account-aging-as-cover); NOT predictive of attribution"
+    topic_tags:
+      - mstic
+      - microsoft-defender-security-research-team
+      - npm-supply-chain
+      - dependency-confusion
+      - inflated-version-numbers-100-100-100
+      - postinstall-stager-obfuscator-io-7kb
+      - oob-moika-tech-c2
+      - x-secret-l95hd-shared-secret-http-header-gate
+      - three-yandex-ru-aliases-mr-4nd3r50n-ce-rwb-t-in-one
+      - one-individual-operator-high-confidence-mstic-forensic-npm-registry-metadata
+      - mstic-declines-apt-nation-state-attribution-operator-level-only
+      - recon-only-mode-factual-payload-state-not-strategic-intent
+      - server-side-toggle-for-followon-exploitation
+      - bug-bounty-to-malware-operator-lifecycle-mr-4nd3r50n-2024-2026
+      - ach-h2-account-aging-as-cover-most-parsimonious
+      - sberbank-sberpay-impersonation-sber-ecom-core
+      - wildberries-shape-wb-track
+      - capibar-chat
+      - cloudplatform-single-spa-spoofed-enterprise-metadata
+      - no-ad-nexus-russian-speaking-fintech-ecommerce-dev-infra
+      - npm-team-coordinated-takedown-pre-publication
+      - 23-iocs-c2-domain-3-url-paths-3-email-3-account-1-x-secret-9-scopes-3-spoofed-domains-1-detection-pattern-1-filename
+      - cross-cluster-geometry-methodologically-distinct-not-lineage-claim
+      - vpmdhaj-divergence-c2-architecture-payload-posture-defender-family-signature-primitive-maintainer-profile
+      - no-shaiworm-family-signature-on-33-package-cluster
+      - hard-rule-2-no-apt-attribution-archimedes-side
+      - hard-rule-2-no-lineage-originated-archimedes-side
+      - hard-rule-6-mstic-one-quote-7-words
+      - hard-rule-8-splunk-silent-defenseclaw-local-60-day-dormant-not-disconfirming
+      - splunk-first-party-silent-11-token-ioc-set-minus-14h
+      - dib-developer-environment-structural-exposure-mechanism-universal
+      - x-secret-value-universal-detection-artifact-regardless-of-destination
+      - vuln-tracker-handoff-standalone-vt-scaffold-candidate-no-cve-class-supply-chain-campaign-tracker
+      - actor-profiler-handoff-NONE-no-roster-actor-named-do-not-scaffold-three-unknown-aliases
+      - ioc-index-update-required
+      - analyst-sat-kac-recon-only-as-intent-blocked-by-a1-test-classification
+      - analyst-sat-ach-bug-bounty-lifecycle-h2-most-parsimonious
+      - analyst-sat-ach-cross-cluster-lineage-h1-distinct-rank-1-affirms-grader-conservative-posture
+    related_actors: []   # Hard Rule 2 — MSTIC declines APT attribution; three aliases not in roster
+    related_vulns: []
+    related_zero_days: []
+    related_campaigns:
+      - mstic-33-package-npm-dependency-confusion-oob-moika-tech-may-2026
+    finding_ids:
+      - finding-2026-05-30-0001-mstic-33-malicious-npm-dependency-confusion-recon-only-mode-oob-moika-tech-c2-three-aliases-no-roster-attribution-no-ad-nexus
+    digraph: A2
+    digraph_layered:
+      mstic_primary_publication_existence: A1
+      33_package_count_two_burst_windows: A2
+      three_maintainer_aliases_yandex_ru: A2
+      operator_level_attribution_one_individual_high_confidence: A2
+      no_apt_nation_state_attribution: A1
+      oob_moika_tech_c2_three_platform_payload: A2
+      x_secret_header_gate_unique_strong_signal: A2
+      recon_only_mode_with_server_side_toggle: A2
+      inflated_version_dependency_confusion_birsan_2021_lineage: A1
+      obfuscator_io_style_postinstall_stager: A1
+      bug_bounty_account_to_malware_operator_lifecycle: A2
+      npm_coordinated_takedown_pre_publication: A1
+      no_ad_nexus_russian_speaking_fintech_ecommerce: A2
+      no_shai_hulud_teampcp_vt006_lineage_link: A2
+      cluster_anchor: A2
+    wep: likely
+    wep_layered:
+      campaign_exists_per_mstic: very_likely
+      iocs_valid: very_likely
+      packages_removed_by_npm_before_publication: very_likely
+      three_accounts_one_individual_high_confidence: likely
+      recon_only_mode_with_followon_exploit_toggle: likely
+      bug_bounty_to_malware_operator_lifecycle: likely
+      any_apt_or_nation_state_attribution: NOT_ARCHIMEDES_ORIGINATED
+      shai_hulud_teampcp_mini_shai_hulud_vt006_lineage_link: NOT_ARCHIMEDES_ORIGINATED
+      ad_dib_itar_aerospace_targeting: not_applicable_explicit_absence
+      dib_developer_environment_structural_exposure_via_dependency_confusion: roughly_even_chance
+      followon_exploitation_phase_activates_against_some_recon_victims: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layer: campaign_envelope_and_operator_attribution_claim
+    analyst_review_complete: true
+    analyst_review_run_id: analyst-20260530-083500
+    analyst_sats_applied: [sat-kac, sat-ach-bug-bounty-lifecycle, sat-ach-cross-cluster-lineage]
+    red_team_review_required: false
+    red_team_review_required_basis: "WEP ceiling 'likely' below 'very likely' threshold; single-source veto on campaign envelope and attribution-adjacent claims."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -14h
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "oob.moika.tech + moika.tech + mr.4nd3r50n + ce-rwb + t-in-one + ogvanta + l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1 + sberpay-widget + capibar.chat + sber-ecom-core + cloudplatform-single-spa"
+      hard_rule_8_framing: silence_is_not_disconfirming_60_day_dormant_pattern
+    hard_rule_2_framings_load_bearing:
+      - "MSTIC's operator-level-only attribution preserved verbatim; Archimedes does not extend to APT / nation-state"
+      - "Cross-cluster geometry vs. vpmdhaj is methodological-distinctness AFFIRMATION of MSTIC's non-linkage posture, NOT Archimedes-originated lineage claim"
+      - "Bug-bounty-to-malware-operator lifecycle is analytic observation (ACH H2 most parsimonious), NOT predictive of attribution"
+      - "RECON_ONLY framing reported as factual payload-state per MSTIC; NOT promoted to operator-intent / strategic-discipline signal (analyst KAC A1 test classification)"
+    hard_rule_6_quote_discipline:
+      - "MSTIC: 'three accounts operated by the same individual' (7 words)"
+      - "No other direct quotes in brief body or Discord Summary"
+    briefer_actionable_caveats_applied:
+      - caveat_recon_only_framing: APPLIED — payload state reported as factual, "Whether this reflects deliberate operator patience or mid-development tooling shipped early is not determinable in window" verbatim
+      - caveat_cross_cluster_observation: APPLIED — divergences enumerated; Analyst ACH affirms methodological distinctness on MSTIC's reported evidence; Hard Rule 2 cited
+      - caveat_bug_bounty_lifecycle_observation: APPLIED — "Defensible observation, not predictive of attribution" framing; H2 most parsimonious + H1 not ruled out
+    librarian_handoffs_queued:
+      - action: ioc_index_update
+        ioc_set: "23 indicators: 1 C2 domain (oob.moika.tech) + 3 C2 URL paths (/payload/win|mac|linux) + 3 maintainer email addresses (all yandex.ru) + 3 npm publisher accounts (mr.4nd3r50n, ce-rwb, t-in-one) + 1 shared-secret HTTP header value (X-Secret: l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1 — strongest universal artifact) + 9 spoofed npm organizational scopes + 3 spoofed enterprise metadata domains (*.cloudplatform-single-spa.io) + 1 behavior detection pattern + 1 filename (scripts/postinstall.js, Obfuscator.io-style ~7KB)"
+      - action: vuln_tracker_handoff
+        target: "standalone VT scaffold candidate — no CVE class, supply-chain campaign tracker (per grader handoff_notes)"
+      - action: actor_profiler_handoff
+        target: NONE
+        reason: "No roster actor named; MSTIC declines APT attribution; three aliases not in roster; do NOT scaffold a new actor on three unknown yandex.ru aliases per Hard Rule 2 and ACTOR-PROFILE-STANDARD threshold practice"
+    resurface_if:
+      - mstic_publishes_followup_with_apt_nation_state_attribution
+      - mstic_publishes_followup_with_shai_hulud_or_teampcp_or_vpmdhaj_lineage_link
+      - mstic_publishes_followup_documenting_c2_toggle_flip_to_followon_exploitation_against_any_victim
+      - mstic_publishes_followup_documenting_oob_moika_tech_alive_14_days_post_publication
+      - mstic_publishes_defender_shaiworm_family_signature_for_33_package_cluster
+      - independent_ab_grade_source_relays_or_expands_campaign_envelope_bleepingcomputer_thn_socket_snyk_stepsecurity_wiz_semgrep_aikido
+      - independent_ab_grade_source_documents_named_ad_dib_itar_victim_of_this_cluster
+      - first_party_ioc_hit_on_any_of_23_indicators_archimedes_or_defenseclaw_local
+      - cisa_kev_addition_for_any_indicator
+      - oob_moika_tech_infrastructure_overlap_with_vpmdhaj_aab_sportsontheweb_net_documented_shared_registrar_ns_ssl_fingerprint
+      - second_ab_grade_source_disputes_mstic_three_account_same_individual_assessment
+      - another_aged_then_burst_npm_account_documented_with_v0_0_0_bugbounty_tag_pattern
+    first_covered: 2026-05-30
+    last_covered: 2026-05-30
+    retraction: null
+    test: false
+    notes: |
+      Single MSTIC primary in window. A-grade vendor source.
+      Strong technical content + full 23-IOC set (enumerated in
+      raw-signal). Three named maintainer aliases — NOT in
+      Archimedes roster. MSTIC explicit decline of APT /
+      nation-state attribution preserved verbatim per Hard Rule 2.
+      Explicit absence of A&D / DIB / ITAR nexus — impersonated
+      scopes target Russian-speaking fintech / e-commerce /
+      generic dev infra. Defensive guidance still applies because
+      mechanism (dependency confusion + postinstall stager +
+      server-side payload gate) is universal to any developer
+      environment.
+
+      Analyst SAT-KAC on the assumption "MSTIC's RECON_ONLY
+      framing is methodologically novel" — 6 assumptions: 1 sound,
+      4 qualify, 1 test. Blocking assumption A1 (intent vs.
+      staging-convenience) classified as test-required;
+      briefer reports MSTIC's RECON_ONLY observation as a factual
+      payload-state claim, NOT promoted to operator-intent signal.
+
+      Analyst SAT-ACH on bug-bounty-account-to-malware-operator
+      lifecycle — 6 hypotheses ranked. H2 (deliberate
+      account-aging-as-cover) rank-1 with zero inconsistencies;
+      H1 (genuine bug-bounty pivot) rank-2 with one inconsistency
+      (no external bug-bounty trail). Briefer frames as defensible
+      analytic observation, NOT predictive of attribution.
+
+      Analyst SAT-ACH on cross-cluster lineage to vpmdhaj /
+      Shai-Hulud / TeamPCP — 5 hypotheses ranked. H1 (distinct
+      cluster, no MSTIC-stated lineage link) rank-1 zero
+      inconsistencies; H3 (TTP-class adjacency only) tied at
+      rank-1; H2 (shared lineage) six inconsistencies, rank-5
+      very-unlikely. Briefer frames cross-cluster geometry as
+      methodological-distinctness AFFIRMATION of MSTIC's
+      non-linkage posture, NOT Archimedes-originated lineage
+      claim. Hard Rule 2 cited explicitly.
+
+      Three briefer-actionable caveats all applied in Layer 1
+      prose (RECON_ONLY as factual state, cross-cluster geometry
+      as ACH-affirmed distinctness, bug-bounty lifecycle as
+      observation not prediction). Hard Rule 6: one MSTIC quote
+      at 7 words ("three accounts operated by the same
+      individual"), zero other direct quotes anywhere in the
+      brief. Hard Rule 8: Splunk first-party silent on 11-token
+      IOC subset over -14h@h; 60-day defenseclaw_local dormant
+      pattern; not disconfirming.
+
+  - id: 2026-05-30-am-brief-meta
+    covered_in: [2026-05-30-morning]
+    brief_file: threats/briefs/2026-05-30-morning.md
+    headline: "Morning brief 2026-05-30 — single A2 anchor on MSTIC 33-package npm dependency-confusion cluster (operator-level-only attribution; no A&D nexus; defensive guidance still applies because mechanism is universal; cross-cluster geometry methodologically-distinct from vpmdhaj per ACH on MSTIC's own evidence NOT a lineage claim per Hard Rule 2; bug-bounty-to-malware lifecycle reported as analyst observation NOT predictive of attribution; RECON_ONLY reported as factual payload-state NOT operator-intent per analyst KAC A1 test classification) + standing sections silent-day templates (Sector Focus A&D + Iran Cyber Watch) + Vulnerabilities carry-forwards pointer-only (CVE-2026-0257 PAN-OS GlobalProtect KEV federal due 2026-06-01 T+2 + Oracle CPU May 2026 critical batch no ITW at T+2 + Chaotic Eclipse carry-forward exits at federal due 2026-05-29 without Tier-1 IR-firm corroboration) + Other Signal disposition of four anti-noise items per pre-brief sentinel (THN PAN-OS relay + Register vpmdhaj relay + Asocks LE takedown + Signal backup-key phishing journalists/activists/Chinese dissidents) + source-health note (Volexity RSS recovered + MSRC RSS still broken + Mandiant alt-RSS path working)"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - lead-mstic-33-package-npm-dependency-confusion-cluster-no-ad-nexus-detection-patterns-universal
+      - operator-level-attribution-only-no-apt-mstic-explicit
+      - recon-only-as-factual-payload-state-not-operator-intent-analyst-kac
+      - cross-cluster-geometry-methodologically-distinct-not-lineage-claim-hard-rule-2
+      - bug-bounty-to-malware-lifecycle-observation-not-prediction
+      - x-secret-universal-defender-grade-artifact
+      - npm-coordinated-takedown-pre-publication
+      - cve-2026-0257-pan-os-globalprotect-kev-federal-due-t-2-carry-forward-pointer-only
+      - oracle-cpu-may-2026-critical-batch-carry-forward-no-itw-t-2-pointer-only
+      - chaotic-eclipse-carry-forward-exits-federal-due-2026-05-29-no-tier-1-ir-firm-corroboration
+      - sector-focus-ad-silent-day-template
+      - iran-cyber-watch-silent-day-template
+      - other-signal-four-anti-noise-disposition-thn-pan-os-register-vpmdhaj-asocks-signal-phishing
+      - source-health-note-volexity-recovered-msrc-broken-mandiant-alt-rss-discovered
+      - hard-rule-2-strict-hold-throughout
+      - hard-rule-6-one-mstic-quote-7-words-no-other-quotes
+      - hard-rule-8-splunk-silent-11-token-ioc-minus-14h-60-day-dormant
+      - light-news-day-single-finding-anchor
+    related_actors: []
+    related_vulns: []
+    related_zero_days: []
+    related_campaigns:
+      - mstic-33-package-npm-dependency-confusion-oob-moika-tech-may-2026
+    finding_ids:
+      - finding-2026-05-30-0001-mstic-33-malicious-npm-dependency-confusion-recon-only-mode-oob-moika-tech-c2-three-aliases-no-roster-attribution-no-ad-nexus
+    absorbs_flashes: []
+    word_count_target_range: [400, 800]
+    word_count_actual: 770
+    pre_flight_regen_count: 1
+    pre_flight_regen_reasons:
+      - "Layer 1 word-count compression — initial draft ~1010 words, compressed once to ~770 to land under 800 target (lead tightened, bullet 1 reduced ~10 words, mechanism bullet trimmed, payload-state bullet trimmed, operator-lifecycle bullet trimmed, no-A&D bullet trimmed, Splunk + digraph lines tightened, cross-cluster paragraph trimmed, sector-focus trimmed, source-health collapsed, Other Signal dispositions tightened)"
+    hard_rule_2_brief_wide_compliance:
+      - "MSTIC operator-level-only attribution preserved verbatim; Archimedes does not extend to APT / nation-state"
+      - "Cross-cluster geometry framed as ACH-affirmed methodological distinctness from vpmdhaj on MSTIC's own evidence — NOT Archimedes-originated lineage claim"
+      - "Bug-bounty-to-malware lifecycle framed as analytic observation — NOT predictive of attribution"
+      - "Signal backup-key phishing piece cross-references separate Russian-state phishing of German officials per prior reporting; Archimedes does not extend that linkage"
+    hard_rule_6_quote_discipline_brief_wide:
+      - "MSTIC: 'three accounts operated by the same individual' (7 words)"
+      - "No other direct quotes in brief body or Discord Summary"
+    splunk_first_party_brief_wide:
+      hits: 0
+      indexes_queried: [archimedes, defenseclaw_local]
+      query_windows: [-14h]
+      sweep_streak: 60-day_dormant_defenseclaw_local_continues
+    standing_sections_present:
+      sector_focus_ad: silent_day_template_per_watch_config_with_short_added_note_on_no_ad_nexus_of_mstic_cluster
+      iran_cyber_watch: silent_day_template_per_watch_config
+    suppressed_items: []
+    discord_summary_layer_2:
+      word_count_estimate: 245
+      char_count_estimate: 1820
+      char_count_target: under_1900
+      compliant: true
+      bullets: 3
+      headlines_hyperlinked: true
+      natural_language_dates: true
+      themed_character_voice: false
+      digraph_or_finding_id_omitted: true
+      standing_section_boilerplate_omitted: true
+    librarian_handoffs_summary:
+      - ioc_index_update_23_iocs_mstic_33_package_cluster
+      - vuln_tracker_handoff_standalone_vt_scaffold_candidate_no_cve_class_supply_chain_campaign_tracker
+      - actor_profiler_handoff_NONE_no_roster_actor_named
+      - source_health_volexity_recovery_status_healthy
+      - source_health_msrc_stale_confirmation_4th_consecutive_parse_failure
+      - source_health_mandiant_alt_rss_endpoint_discovery_mandiant_com_resources_blog_rss_xml
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-05-30
+    last_covered: 2026-05-30
+    retraction: null
+    test: false
+    notes: |
+      Light-news day. Single A2 anchor (MSTIC 33-package npm
+      dependency-confusion cluster) + standing sections silent-day
+      templates + Vulnerabilities carry-forwards pointer-only +
+      Other Signal disposition of four anti-noise items per
+      pre-brief sentinel + source-health note.
+
+      Brief composition:
+
+      - Lead + Why it matters: MSTIC cluster headline with explicit
+        no-A&D-targeting flag + universal-detection-artifact framing
+        (X-Secret header value as universal defender-grade IOC).
+
+      - Active Threats: single MSTIC item carrying all three
+        briefer-actionable caveats from analyst review verbatim:
+        (1) RECON_ONLY reported as factual payload-state, NOT
+        operator-intent / strategic-patience inference per KAC A1
+        test classification; (2) cross-cluster geometry vs.
+        vpmdhaj framed as ACH-affirmed methodological distinctness
+        on MSTIC's own evidence, NOT Archimedes-originated lineage
+        claim per Hard Rule 2; (3) bug-bounty-to-malware lifecycle
+        framed as defensible analytic observation, NOT predictive
+        of attribution. Four detection sub-bullets (DNS/proxy
+        block + HTTP-header alert + npm scope/maintainer
+        allowlist + postinstall-hook restriction). Splunk first-
+        party silent over -14h@h on 11-token IOC subset; Hard
+        Rule 8 framing applied (silence is not disconfirming).
+
+      - Vulnerabilities: THREE carry-forwards pointer-only —
+        CVE-2026-0257 PAN-OS GlobalProtect (KEV federal due
+        2026-06-01 Monday T+2; audit guidance per yesterday
+        afternoon brief unchanged); Oracle CPU May 2026 critical
+        batch (no ITW or KEV at T+2; public-PoC watch through
+        2026-06-11); Chaotic Eclipse (BlueHammer / RedSun /
+        UnDefend; MSRC "Exploitation Detected" passed federal
+        due 2026-05-29 without Tier-1 IR-firm corroboration;
+        carry-forward exits).
+
+      - Sector Focus A&D: silent-day template per
+        watch-config.yaml + short added note that 33-package
+        cluster above carries no MSTIC-stated A&D targeting but
+        detections apply regardless (mechanism is universal).
+
+      - Iran Cyber Watch: silent-day template per
+        watch-config.yaml — no new tracked Iranian actor activity
+        in last 48h (UNC1549 #004, Charming Kitten #011, Handala
+        Hack #014, MuddyWater #022 all silent).
+
+      - Other Signal: four anti-noise dispositions per pre-brief
+        sentinel — (1) THN PAN-OS GlobalProtect relay absorbed
+        via yesterday afternoon brief; (2) Register vpmdhaj
+        14-package npm relay absorbed via yesterday morning
+        brief; (3) Security Affairs Asocks 17M-device residential
+        proxy botnet LE takedown — consumer cybercrime, no roster
+        actor, no A&D nexus; (4) Security Affairs Signal
+        backup-key phishing targeting journalists / activists /
+        Chinese dissidents (MalwareBytes research) — no A&D
+        targeting, no roster actor named for this campaign,
+        Russian-state cross-reference to German-officials
+        campaign per prior reporting preserved with explicit
+        Archimedes-does-not-extend-that-linkage framing per Hard
+        Rule 2. Source-health note: Volexity RSS recovered (six
+        parse failures cleared), MSRC RSS still broken (relays
+        cover), Mandiant `mandiant.com/resources/blog/rss.xml`
+        alt-path returned a parseable feed today (first working
+        Mandiant surface since the early-May feedburner
+        shutdown).
+
+      Pre-flight regen iterations: 1.
+        - Regen 1 (word-count compression): initial draft ~1010
+          words. Compressed to ~770 by tightening lead, bullet 1
+          (removed "primary-research disclosure" and "covering"
+          phrasing), mechanism bullet (removed one example
+          version number, condensed C2 description), payload-
+          state bullet (replaced "Treat as observed payload state"
+          with "Report as observed state"), operator-lifecycle
+          bullet (dropped leading "MSTIC notes" and tightened
+          ACH framing), no-A&D bullet (removed full target-set
+          recitation), Splunk first-party line (condensed),
+          digraph line (condensed), cross-cluster paragraph
+          (removed "Six" preceding "Divergences" + tightened
+          family-signature phrasing), sector focus (replaced
+          "regardless of target ecosystem"-style filler), source-
+          health (collapsed three observations to one line),
+          Other Signal dispositions (tightened individual lines).
+
+      Anti-repetition / coverage-log discipline applied:
+        - PAN-OS CVE-2026-0257 carry-forward: pointer-only to
+          yesterday afternoon brief; no substance restatement
+          (anti-noise — finding-2026-05-29-0004 hard lock until
+          ~16:00 EDT today).
+        - Oracle CPU May 2026 carry-forward: pointer-only; no
+          substance restatement (finding-2026-05-29-0003 carry-
+          forward).
+        - Chaotic Eclipse carry-forward: pointer-only;
+          carry-forward exits at federal due 2026-05-29 absent
+          Tier-1 IR-firm signal (finding-2026-05-29-0002
+          carry-forward exit).
+        - THN PAN-OS relay (B3): DISCARDED per Mode 1
+          anti-noise — same CVE-2026-0257 absorbed yesterday
+          afternoon; pointer-only mention in Other Signal.
+        - Register vpmdhaj 14-package npm relay (B3): DISCARDED
+          per Mode 1 anti-noise — same MSTIC vpmdhaj campaign
+          absorbed via finding-2026-05-29-0001 yesterday morning;
+          pointer-only mention in Other Signal.
+        - Security Affairs Asocks LE takedown (B3): DISCARDED
+          per Mode 1 — consumer cybercrime, no roster actor, no
+          A&D nexus; pointer-only mention in Other Signal for
+          situational awareness.
+        - Security Affairs Signal backup-key phishing (B3):
+          DISCARDED per Mode 1 — no A&D targeting, no roster
+          actor named for the journalist-targeting campaign;
+          piece's Russian-state cross-reference to German-officials
+          campaign preserved with Hard Rule 2 framing in Other
+          Signal pointer.
+
+      Librarian handoffs queued (single A2 finding):
+        - IOC index update — 23 indicators (full set already
+          enumerated in raw-2026-05-30-flash-0000-001 per grader
+          handoff_notes; brief references rather than re-
+          enumerates).
+        - Vuln-tracker handoff — standalone VT scaffold candidate
+          (no CVE class; supply-chain campaign tracker).
+        - Actor-profiler handoff — NONE (no roster actor named;
+          MSTIC declines APT; three aliases not in roster; do
+          NOT scaffold per Hard Rule 2 + ACTOR-PROFILE-STANDARD
+          threshold practice).
+        - Source-health updates per pre-brief sentinel
+          recommendations: Volexity status → healthy
+          (failure_count: 0); MSRC stale-flip confirmed (4th
+          consecutive parse failure); Mandiant alt-RSS endpoint
+          discovery (`mandiant.com/resources/blog/rss.xml`)
+          flagged for operator review re: canonical endpoint
+          swap.
 
 # ============================================================================
 # Valid resurface_if conditions

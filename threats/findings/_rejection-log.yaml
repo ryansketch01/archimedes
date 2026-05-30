@@ -13,6 +13,427 @@ last_updated: 2026-05-20  # afternoon-20260520-160000 produced 3 rejections (rej
 # Prior summary preserved: morning-20260517-080000 produced 0 rejections and 1 promotion (finding-2026-05-17-0001 The Hacker News Grafana Labs GitHub-token-enabled codebase-download + extortion-attempt-refused disclosure, attributed by THN to CoinbaseCartel — a September-2025-emergence data-extortion group framed by Halcyon + Fortinet FortiGuard Labs as an ecosystem-offshoot of ShinyHunters, Scattered Spider, and LAPSUS$; CoinbaseCartel NOT on _roster.yaml; Scattered Spider (#013 HIGH) ecosystem-lineage framing reported strictly as actor-profile heritage attached to CoinbaseCartel and NOT propagated as direct attribution of the Grafana incident to Scattered Spider operators per Hard Rule 2 + LEGAL-POLICY no-attribution-laundering rule; B2/likely cluster anchor with single-source veto on both incident-facts layer and CoinbaseCartel attribution layer — THN is sole directly-retrieved B-grade primary, Grafana's own statement summarized but not directly retrieved by collector (flagged for next-sweep follow-up as second-corpus-citation candidate analogous to openai-self-disclosure on finding-2026-05-14-0008), Halcyon + Fortinet + Hackmanac + Ransomware.live all THN-cited but not directly retrieved; no CVE / no IOCs / no first-party Splunk telemetry match — 35th consecutive dormant non-self-telemetry sweep; no A&D-prime victim named; monitoring-grade only, NOT FLASH-eligible (collector evaluation 0 of 6 triggers fired confirmed by grader), NOT daily-brief-action (no defensive-posture-action to take), NOT actor-profile-update (Hard Rule 2 binds), eligible for daily-brief-monitoring + weekly-synthesis only; analyst_review_required=true for two load-bearing items: (1) Scattered Spider dossier-hygiene question on whether Halcyon + Fortinet ecosystem-lineage framing warrants a corpus-tracked relationship entry in Scattered-Spider/ dossier on next /update-tracking cycle (defer to analyst, do NOT auto-update), (2) A&D-estate-exposure inference layer ACH/KAC candidate on whether Grafana's deployment pattern in defense-prime engineering / DoD-agency / MSSP environments translates to material A&D-adjacent exposure given Grafana's confirmed no-customer-data/no-customer-systems scope-limitation; red_team_review_required=false (WEP capped at "likely" by single-source veto, below "very likely" red-team-review floor); related-clusters lineage flagged to OpenAI/TanStack finding-2026-05-14-0008 + SailPoint raw-2026-05-11-am-001 + Checkmarx Jenkins AST plugin raw-2026-05-11-flash-0600-001 as sibling instances of the May-2026 software-vendor supply-chain credential-exposure pattern (different actors, different mechanisms, same incident shape — pattern flagged for situational-awareness coverage only, NOT framed as single-actor campaign per Hard Rule 2). Two in-window raw-signal sentinel-sweep members reference the Grafana cluster (raw-2026-05-17-flash-0600-000 + raw-2026-05-17-am-000 inline evaluations) but the sentinels themselves remain non-promotable tombstones per established precedent. Five other in-window raw-signal members are all sentinel sweeps with zero substantive content (raw-2026-05-16-flash-1130-000 + raw-2026-05-16-pm-000 + raw-2026-05-16-flash-1730-000 + raw-2026-05-17-flash-0000-000 + raw-2026-05-17-flash-0600-000 + raw-2026-05-17-am-000 — all sentinel tombstones, no rejection-log entries needed). raw-2026-05-16-pm-001 Symantec Fast16 already promoted to finding-2026-05-16-0003 in prior afternoon-20260516-160000 run, NOT re-graded. Turla/Kazuar D+2 relay layer duplicate-locked against finding-2026-05-14-0006 / reject-2026-05-16-0001 per anti-noise rule 1 — BleepingComputer 2026-05-16T10:15 EDT item in BleepingComputer top-feed-position is the SAME surface already rejected, NOT re-graded. Dark Reading 2026-05-17 thought-leadership opinion piece ("The Boring Stuff is Dangerous Now") evaluated and discarded by collector at the filter-trail layer for failing A&D / roster / vuln-index filter; this is a collector-side discard NOT a grader-rejection-log-entry candidate. No new source-grades.yaml additions proposed this run (Hackmanac + Ransomware.live + Halcyon + Fortinet FortiGuard Labs are flagged as non-tracked CTI relay surfaces in finding-2026-05-17-0001 source_reliability.librarian_handoff in case a future sweep directly retrieves their underlying publications, but no provisional-grade additions proposed at this sweep). Splunk first-party sweep across "Grafana" + "CoinbaseCartel" tokens against archimedes + defenseclaw_local indexes over 7d window returned ZERO non-pipeline-internal events — 35th consecutive sweep with dormant non-archimedes-internal stream pattern. Audit-trail block updated below; no new rejection entries this run. Earlier afternoon-20260516-160000 produced 0 rejections and 1 promotion (finding-2026-05-16-0003 Symantec Fast16 / SentinelLABS lineage extension — pre-Stuxnet 2005-era simulation-sabotage framework targeting nuclear-weapons-simulation toolchains via LS-DYNA / AUTODYN; Symantec Threat Hunter Team + Carbon Black A-grade primary at provisional-A second-corpus-citation within ratification window T-2h15m; A2/likely with single-source-veto on framework-discovery line — Symantec explicitly cites SentinelLABS April 2026 as origin so independence test FAILS; novel Symantec additions AUTODYN target + Intel Fortran compiler constraint; no IOCs / no CVEs / no active exploitation / no modern variant known / no attribution; Security Boulevard "Linked to US-Iran Cyber Tensions" relay-layer editorial framing flagged by collector and NOT propagated per Hard Rule 2; Antiy Labs Chinese-AV counter-narrative flagged as third-party commentary not independent corroboration). Two in-window PM raw-signal members processed: (1) raw-2026-05-16-pm-000 sentinel sweep → non-promotable tombstone per established precedent (no rejection-log entry needed); (2) raw-2026-05-16-pm-001 Symantec Fast16 → promoted to finding-2026-05-16-0003. Zero rejection-log entries this run. 33rd consecutive dormant non-self-telemetry Splunk sweep verified via grader's 30d sweep across 7 fast16 IOC tokens (fast16, Fast16, LS-DYNA, AUTODYN, "Intel Fortran", svcmgmt, "fast16.sys") returning zero non-pipeline-internal events. No new source-grades.yaml additions proposed (Symantec already at provisional-A; SentinelLABS already at provisional-A; both within respective ratification windows). Earlier morning-20260516-080000 produced 1 rejection (MSTIC Turla/Kazuar THN-relay-day-2 duplicate of finding-2026-05-14-0006 — see reject-2026-05-16-0001 below) and 2 promotions (finding-2026-05-16-0001 NGINX Rift depthfirst PoC GitHub publication carry-forward extension on finding-2026-05-14-0002 / VT-007; SecurityWeek Ionut Arghire B-grade primary; B2/likely with single-source-veto on new operational-delta layer; Hard Rule 3 prevents direct PoC URL verification; depthfirst elevation candidate provisional-F → provisional-C per "first technical write-up publication" trigger. finding-2026-05-16-0002 Pwn2Own Berlin 2026 Day 3 final results carry-forward continuation on finding-2026-05-15-0004 — ZDI/Dustin Childs sole originating primary at provisional-A starting grade per Bitdefender/Symantec/Cisco-Talos/Darktrace precedent; A2/likely with single-source-veto on contest-event layer but WEP not capped per vendor-authority-on-own-contest treatment analogous to F5/finding-2026-05-14-0002; Day 3 = 3 exploits / $34,500; event total $943,250 / 42 zero-days; Day 2 Orange Tsai/DEVCORE Exchange chain embargo still active to ~2026-08-13; OpenAI Codex external-control-abuse result is second 2026 OpenAI-as-target surface but one data point is NOT yet a pattern). Three in-window AM raw-signal members graded (excluding sentinel): (1) raw-2026-05-15-flash-1800-001 MSTIC Turla/Kazuar THN-relay → REJECTED as duplicate of finding-2026-05-14-0006; (2) raw-2026-05-16-flash-0600-001 NGINX Rift PoC → promoted to finding-2026-05-16-0001; (3) raw-2026-05-16-am-001 Pwn2Own Day 3 → promoted to finding-2026-05-16-0002. Sentinel raw-2026-05-16-am-000 non-promotable per established precedent. One provisional source-grades.yaml addition proposed for librarian pickup: zdi-blog at provisional-A (first corpus citation as Pwn2Own contest organizer / contest-coordination vendor-research publication). One source-grade elevation proposed: depthfirst provisional-F → provisional-C per "first technical write-up publication" trigger (GitHub PoC repository constitutes technical-output publication even though Archimedes did not fetch contents per Hard Rule 3). Splunk first-party sweep across all IOC tokens (CVE-2026-42945, NGINX Rift, depthfirst, ngx_http_rewrite_module, Pwn2Own, Orange Tsai, DEVCORE, Kazuar, Secret Blizzard, Turla, Kazuar SHA-256 hashes) returned ZERO non-archimedes-internal events over 30-day window — 30th consecutive sweep with dormant non-archimedes-internal stream pattern. Audit-trail block updated below with new rejection entry reject-2026-05-16-0001. (finding-2026-05-15-0003 CISA adds CVE-2026-42897 Microsoft Exchange OWA XSS zero-day to KEV catalog dueDate 2026-05-29 federal deadline A2/likely with single-source-veto on active-exploitation claim layer carry-forward from FLASH-0001 — KEV listing is procedural concurrence under BOD 22-01 not independent IR telemetry; finding-2026-05-15-0004 Pwn2Own Berlin 2026 Day 2 DEVCORE Orange Tsai 3-bug RCE-to-SYSTEM chain demonstrated against Microsoft Exchange $200K payout no CVE assigned 90-day ZDI responsible-disclosure clock running B3/roughly-even-chance with single-source-veto applied — BleepingComputer is sole directly-retrieved primary, ZDI and DEVCORE cited-only not retrieved; finding-2026-05-15-0005 node-ipc npm compromise four-firm research consensus on UNATTRIBUTED status Socket+StepSecurity+Ox Security+Upwind decline TeamPCP/Shai-Hulud/Mini Shai-Hulud lineage corroboration-strengthening update to finding-2026-05-14-0009 plus new operational-discipline detail layer 29400-DNS-queries-per-500KB exfil-overhead metric and file-size ceiling and path exclusions and no-persistence-cleanup-behavior B2/likely on compromise-mechanism layer very-likely on UNATTRIBUTED-disposition layer). Four in-window PM raw-signal members graded: (1) raw-2026-05-15-pm-000 sentinel sweep → non-promotable tombstone per established precedent; (2) raw-2026-05-15-pm-001 → finding-0003; (3) raw-2026-05-15-pm-002 → finding-0004; (4) raw-2026-05-15-pm-003 → finding-0005. Two provisional source-grades.yaml additions proposed for librarian pickup: ox-security at B (first corpus surface as cited firm), upwind at B (second corpus surface; first was finding-2026-05-12-FLASH-0001). Splunk first-party sweep across all IOC tokens (CVE-2026-42897, Exchange, OWA, sh.azurestaticprovider, node-ipc, atiertant, Pwn2Own, Orange Tsai, DEVCORE) returned ZERO non-archimedes-internal events over 7-day window — 26th consecutive sweep with dormant non-archimedes-internal stream pattern. Earlier morning-20260515-080000 run produced 0 rejections and 2 promotions; earlier flash-grade-20260515-060000 run produced 0 rejections and 2 promotions. Audit-trail block updated below; no new rejection entries this run.
 
 entries:
+  - rejection_id: reject-2026-05-30-0001
+    rejected_at: 2026-05-30T16:08:00-04:00
+    grading_run_id: afternoon-20260530-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-30-pm-001-bleepingcomputer-rapid7-panos-globalprotect-cve-2026-0257-active-exploitation-confirmed-vultr-dromatics-iocs
+    cluster_topic: >
+      BleepingComputer (Lawrence Abrams 2026-05-30 14:02 EDT) +
+      Rapid7 MDR dedicated blog post + The Hacker News (Ravie
+      Lakshmanan 2026-05-30 02:41 EDT) + Palo Alto PSIRT advisory
+      revision (2026-05-29, severity Medium → High) cluster
+      confirming third-party MDR-observed active exploitation of
+      CVE-2026-0257 PAN-OS GlobalProtect authentication bypass
+      across multiple Rapid7 customers since 2026-05-17 — two waves
+      from Vultr (104.207.144.154) and Dromatics Systems
+      (146.19.216.119/120/125) hosting infrastructure, forged
+      GlobalProtect override-cookie technique, spoofed MAC
+      `aa:bb:cc:dd:ee:ff`, no observed lateral movement, no actor
+      attribution, no named A&D-prime victim. Carry-forward
+      ESCALATION of finding-2026-05-29-0004 (A2 anchor on same CVE);
+      lock modified, not anti-noise duplicate. Material posture
+      shift from vendor-self-attestation "limited" framing to
+      third-party-corroborated MDR-observed active exploitation
+      with named hosting infrastructure + machine names + spoofed
+      MAC + dates. NOT a new finding promotion — finding-update
+      block + vuln-tracker dossier handoff scope.
+    rejection_reasons:
+      - anti_noise_carry_forward_to_existing_finding_2026_05_29_0004
+      - material_posture_shift_belongs_in_finding_update_block_not_new_finding_promotion
+      - same_cve_same_vendor_same_exploitation_class_no_new_actor_attribution_no_new_named_a_and_d_victim
+      - collector_explicit_handoff_grader_should_not_promote_new_finding_for_same_cve_same_a2_dossier_carries_forward_with_updated_content
+      - new_iocs_belong_in_ioc_set_update_field_of_existing_finding_not_new_cluster
+      - vuln_tracker_dossier_handoff_scope_per_collector_extraction_notes
+      - all_six_flash_triggers_fail_per_collector_flash_sweep_disposition_evaluation
+      - critical_override_fails_two_of_four_conditions_cvss_7_8_below_10_0_no_tracked_actor_no_named_a_and_d_victim
+    sources:
+      - source_yaml_id: rapid7
+        grade: A
+        role: Originating third-party MDR telemetry — dedicated emergent-threat-response blog post observing CVE-2026-0257 exploitation across numerous customers; two-wave timeline with IPs, hostnames, MAC, detection rules, PoC reference; second corpus surface within 24h after finding-2026-05-29-0004 promotion
+      - source_yaml_id: palo-alto-psirt
+        grade: A
+        provisional: true
+        role: Vendor self-disclosure on own product — advisory revised 2026-05-29 severity Medium → High; verbatim ITW attestation "limited exploit attempts on unpatched PAN-OS devices without mitigations applied" preserved per Hard Rule 6 (11 words)
+      - source_yaml_id: cisa-kev
+        grade: A
+        role: KEV listing dated 2026-05-29; federal due 2026-06-01 (Monday, T+2 from this raw-signal); state unchanged in window — pre-existing carry-forward from finding-2026-05-29-0004
+      - source_yaml_id: bleepingcomputer
+        grade: B
+        role: Co-primary relay (Lawrence Abrams 2026-05-30 14:02 EDT) bringing Rapid7 + Palo Alto PSIRT + CISA KEV cluster into PM-30 brief window; no independent observation
+      - source_yaml_id: thehackernews
+        grade: B
+        role: Corroborating media relay (Ravie Lakshmanan 2026-05-30 02:41 EDT); no independent observation; confirms Rapid7 + Palo Alto PSIRT + CISA KEV cluster
+    would_be_digraph: A2_carry_forward_escalation_lock_modified_not_new_finding_class
+    rejection_detail: >
+      This cluster is a carry-forward ESCALATION of the PAN-OS
+      GlobalProtect CVE-2026-0257 finding already anchored at
+      finding-2026-05-29-0004 (A2, promoted afternoon-20260529).
+      The collector frontmatter explicitly flags this as a
+      "carry-forward escalation handoff on finding-2026-05-29-0004
+      A2, not a fresh anti-noise duplicate" and states verbatim:
+      "The grader should NOT promote a new finding for the same
+      CVE; the same A2 dossier carries forward with updated
+      content."
+
+      Grader concurs. Per the reject-2026-05-23-0001 (LiteSpeed
+      CVE-2026-48172 NVD-confirmation) + reject-2026-05-20-0001
+      (Grafana token-rotation TanStack continuation) precedent
+      class: same-CVE same-vendor same-exploitation-status with new
+      operational facts on the IOC / telemetry / advisory-revision
+      layer is a finding-update-block + vuln-tracker dossier scope,
+      not a new-finding promotion.
+
+      What is genuinely new this sweep (and belongs in the existing
+      finding's update block):
+
+        1. Rapid7 MDR dedicated blog post (URL slug
+           `etr-rapid7-observed-exploitation-of-pan-os-globalprotect-authentication-bypass-vulnerability-cve-2026-0257`)
+           published with two-wave telemetry — escalating the
+           parent finding's "Rapid7 MDR observed successful
+           exploitation across numerous customers" claim from the
+           originating short-form blog to a dedicated long-form
+           publication with full IOC table, detection rules, and
+           PoC reference.
+        2. Four IPv4 IOCs (104.207.144.154 Vultr first-wave;
+           146.19.216.119/120/125 Dromatics second-wave),
+           two hostname IOCs (GP-CLIENT Linux first-wave;
+           DESKTOP-GP01 Windows second-wave), one spoofed MAC IOC
+           (aa:bb:cc:dd:ee:ff consistent across both waves),
+           two hosting-provider ASN-org references (Vultr,
+           Dromatics Systems). These IOCs were not enumerated in
+           the parent finding's promotion artifact. They belong
+           in the parent finding's iocs_observed update field and
+           in the VT-CVE-2026-0257 vuln-tracker dossier (already
+           scaffolded at threats/vulnerabilities/CVE-2026-0257-pan-os-globalprotect-auth-bypass/).
+        3. Three Rapid7 InsightIDR detection rule names disclosed:
+           "Suspicious Authentication - Palo Alto GlobalProtect
+           Cookie Authentication to Local Admin", "VPN
+           Authentication via Spoofed MAC Address", "Local Account
+           Logon via Generic Non-Human Identity". These are
+           cross-EDR-stack adaptable detection-engineering
+           artifacts and belong in the vuln-tracker dossier's
+           detection-engineering section.
+        4. Two-wave timeline with timestamps (2026-05-17 / 2026-05-18
+           01:51:37 UTC first-wave alert trigger; 2026-05-21
+           01:54:38 UTC second-wave) — confirms parent finding's
+           "exploitation_first_observed: 2026-05-17" field.
+        5. Rapid7 forensic technique disclosure (PAN-OS tech-support
+           file analysis observing CAS-disabled + override-cookie-
+           enabled + unfamiliar VPN session = two-of-three
+           exploitability conditions present) — confirms parent
+           finding's three-condition exploitability prerequisite
+           and provides post-hoc detection pattern.
+        6. Public Rapid7 Labs GitHub PoC for CVE-2026-0257 — raises
+           operational urgency for unpatched estates beyond the
+           federal KEV mandate; relevant for the parent finding's
+           exploitation-pressure assessment field.
+
+      NOT a new finding because:
+        - Same vulnerability (CVE-2026-0257)
+        - Same vendor (Palo Alto Networks PAN-OS GlobalProtect)
+        - Same exploitation class (third-party MDR-observed across
+          multiple customers since 2026-05-17, no observed lateral
+          movement)
+        - Same patch boundary (PAN-OS 12.1.7 / 11.2.12 / 11.1.15 /
+          10.2.18-h6 — already in parent finding)
+        - Same vendor-attestation framing ("limited exploit
+          attempts on unpatched PAN-OS devices without mitigations
+          applied" verbatim, already in parent finding)
+        - Same KEV listing state (added 2026-05-29, due 2026-06-01
+          — unchanged in window; pre-existing carry-forward)
+        - No new actor named — Rapid7 explicitly declines actor
+          attribution ("same threat actor" across waves is
+          forensic-cluster language, not group naming); zero of
+          22 roster actors named. Hard Rule 2 fully preserved.
+        - No new named A&D-prime victim — Rapid7 reports
+          "numerous customers" without sector breakdown.
+
+      All six FLASH triggers fail per collector evaluation
+      (preserved verbatim in raw-signal frontmatter):
+        T1 critical-cve-exploited: CVSS v4 = 7.8, below ≥9.0 floor
+          → NO FIRE. CISA "Urgency: HIGHEST" framing does not
+          change the CVSS-based gate.
+        T2 actor-attribution: Rapid7 declines attribution; zero
+          roster actors named → NO FIRE.
+        T3 first-party IOC hit: Splunk -30d query on full IOC set
+          returned 5 archimedes:operation events (Archimedes' own
+          brief publish/commit operations), zero defenseclaw_local
+          hits → NO FIRE. Hard Rule 8 silence-is-not-disconfirming
+          applies.
+        T4 tracked-actor TTP change: no actor attribution → NO FIRE.
+        T5 A&D-sector campaign: numerous customers without sector
+          breakdown; no named A&D-prime or DIB victim → NO FIRE.
+        T6 zero-day-no-patch: patches available across all four
+          PAN-OS branches since 2026-05-13 PSIRT advisory; not
+          zero-day → NO FIRE.
+
+      Critical override evaluation fails two of four conditions:
+      CVSS 10.0 FAIL (7.8) + active exploitation PASS + tracked
+      actor FAIL (no attribution) + A&D watchlist hit PASS (VT/CVE
+      in tracked-vulns set, A&D fleet exposure broad). Two of four
+      fail → critical override does NOT fire.
+
+      Briefer action: surface this update in PM-30 afternoon brief
+      as a finding-update block on finding-2026-05-29-0004,
+      enumerating the four new IPs, the Rapid7 dedicated post URL,
+      the BleepingComputer + THN relay surfaces, the three
+      InsightIDR detection rule names, and the federal KEV due
+      date countdown to 2026-06-01 (Monday, T+2). Operational
+      audit action carries forward unchanged from morning brief.
+
+      Vuln-tracker action: update threats/vulnerabilities/CVE-2026-0257-pan-os-globalprotect-auth-bypass/
+      dossier with the IOC table (4 IPs + 2 hostnames + 1 MAC +
+      2 ASN-orgs + 3 detection-rule-names + Rapid7 PoC reference),
+      detection-engineering section additions, and forensic-pattern
+      (TSF artifact) post-hoc detection guidance. Update
+      exploitation_status field to reflect Rapid7 dedicated
+      publication.
+
+      Per Hard Rule 2: NO actor attribution originated or extended.
+      Rapid7 explicitly declines attribution; The Hacker News +
+      BleepingComputer + Palo Alto PSIRT all preserve no-attribution
+      posture. Archimedes does not extend.
+
+      Per Hard Rule 6: One verbatim quote per source preserved,
+      all under 15 words. Palo Alto PSIRT 11 words; Rapid7 trimmed
+      to 14 words for brief use.
+
+      Per Hard Rule 7: No credential exposure observed in
+      publication.
+
+      Per Hard Rule 8: Splunk first-party silence is absent, not
+      disconfirming. Recorded verbatim.
+
+      Source-health observations forwarded to librarian:
+        - rapid7 blog (rapid7.com/blog/rss/) productive this sweep
+          with dedicated CVE-2026-0257 exploitation post;
+          last_successful_fetch should advance to 2026-05-30T15:30
+          EDT; provisional A grade unchanged
+        - mandiant resources alt path (mandiant.com/resources/blog/rss.xml)
+          parseable across AM-30 + PM-30 sweeps; canonical-path
+          swap decision now data-supported across two consecutive
+          sweeps
+        - msrc blog feed — fifth consecutive parse failure;
+          already STALE per AM-30 sweep
+        - volexity blog feed — intermittent recovery pattern
+          confirmed; AM-30 source-health entry already reflects
+          recovery
+        - palo-alto-psirt provisional A — second consecutive
+          surface within 72h ratification clock (clock ends
+          2026-06-01T16:00:00-04:00); productive grade
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention. Regrade only if a NEW operational fact surfaces
+      that isn't already captured in finding-2026-05-29-0004 plus
+      this update — specifically: a Tier-1 IR firm corroborating
+      with attribution (Mandiant / Volexity / Unit 42 / MSTIC /
+      CrowdStrike named-group attribution), a named A&D-prime or
+      DIB-tier victim disclosure, or CVSS revision to ≥9.0.
+
+  - rejection_id: reject-2026-05-30-0002
+    rejected_at: 2026-05-30T16:10:00-04:00
+    grading_run_id: afternoon-20260530-160000
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-30-pm-000-sentinel-pre-brief-sweep
+    cluster_topic: >
+      Canonical Saturday-afternoon PM-sentinel disposition record
+      for the 16:00 EDT 2026-05-30 afternoon brief grading pass.
+      Pre-brief collector sentinel (raw-2026-05-30-pm-000-sentinel-
+      pre-brief-sweep) is an internal collection-summary artifact
+      documenting the 8h window 2026-05-30T07:30 → 2026-05-30T15:30
+      EDT (following commit 115999b AM-30 morning brief — 1 finding
+      A2 MSTIC 33-package npm anchor — and the 12:00 EDT canonical
+      scheduled FLASH clean sentinel commit 3ac8b49 reconciled).
+      One substantive in-window item surfaced — BleepingComputer +
+      Rapid7 + The Hacker News + Palo Alto PSIRT cluster on
+      CVE-2026-0257 PAN-OS GlobalProtect active-exploitation
+      confirmation with Vultr / Dromatics IOCs (raw-2026-05-30-pm-
+      001, rejected this run as reject-2026-05-30-0001 carry-forward
+      escalation to finding-2026-05-29-0004). The PM sentinel itself
+      contains no external claim being graded — it is the
+      collector's own collection-summary record. One additional
+      in-window item collector-dispositioned: Security Affairs
+      ShinyHunters / Charter Communications 4.9M-record consumer
+      telecom data exposure (12:33 EDT, no A&D nexus, no new actor
+      attribution, no tracked CVE — DISCARDED per Mode 1; eligible
+      for one-line Other Signal mention if briefer wants).
+    rejection_reasons:
+      - sentinel_artifact_not_finding_eligible_event_class
+      - one_substantive_in_window_item_handled_as_carry_forward_escalation_reject_2026_05_30_0001
+      - in_window_collector_dispositioned_items_already_handled_or_carry_forward_only
+      - source_health_observations_runtime_fields_only_no_finding_event_class
+      - kev_state_unchanged_in_window_pre_existing_carry_forward_pan_os_federal_due_2026_06_01
+    sources:
+      - source_yaml_id: archimedes-internal
+        grade: A
+        role: Internal Archimedes collector sentinel record (run_id pre-brief-20260530-153000); 8h sweep window reconciled with the 12:00 EDT canonical scheduled FLASH clean sentinel (commit 3ac8b49); documents collector disposition only, no external source claim being graded
+      - source_yaml_id: cisa-kev
+        grade: A
+        role: KEV catalogVersion 2026.05.29 UNCHANGED since 18:00 sentinel yesterday and 00:00/06:00/12:00 sentinels this morning; today's add CVE-2026-8398 (Daemon Tools Lite) is consumer disc-mounting software, not A&D-tracked; CVE-2026-0257 PAN-OS federal due Monday 2026-06-01 (T+2) — KEV-listing posture unchanged this window
+      - source_yaml_id: nvd
+        grade: A
+        role: CRITICAL-window probe (pubStartDate=2026-05-30T11:30 pubEndDate=2026-05-30T15:30 cvssV3Severity=CRITICAL) returned 1 result — CVE-2018-25412 (Delta Sql 1.8.2 unauthenticated PHP file upload → RCE, CVSS 9.8); vintage 2018 PHP webapp, no patch in references, not A&D / aerospace / defense / tracked-vuln / tracked-actor; DISCARDED per Mode 1 (Trigger 1 fail — 2018-vintage CVE back-fill is not "active exploitation in window")
+      - source_yaml_id: bleepingcomputer
+        grade: B
+        role: One in-window item — Palo Alto GlobalProtect VPN auth bypass exploitation confirmation (Lawrence Abrams 2026-05-30 14:02 EDT) — RAW-SIGNALED as pm-001 and REJECTED this run as reject-2026-05-30-0001 (carry-forward escalation to finding-2026-05-29-0004, not new finding)
+      - source_yaml_id: thehackernews
+        grade: B
+        role: PAN-OS exploitation relay (Ravie Lakshmanan 2026-05-30 02:41 EDT) FOLDED INTO pm-001 as corroborating media relay; not a separate raw-signal
+      - source_yaml_id: rapid7
+        grade: A
+        provisional: true
+        role: Rapid7 MDR dedicated blog post on CVE-2026-0257 exploitation FOLDED INTO pm-001 as co-primary originating telemetry; not a separate raw-signal; productive grade — second consecutive surface within 72h ratification window after Gogs zero-day FLASH-1200-28
+      - source_yaml_id: palo-alto-psirt
+        grade: A
+        provisional: true
+        role: Palo Alto PSIRT advisory revision (severity Medium → High on 2026-05-29) FOLDED INTO pm-001 as vendor self-disclosure on own product; not a separate raw-signal; second consecutive surface within 72h ratification window (clock ends 2026-06-01T16:00:00-04:00)
+      - source_yaml_id: security-affairs
+        grade: B
+        role: One in-window item — ShinyHunters / Charter Communications 4.9M-record leak (Pierluigi Paganini 2026-05-30T16:33 UTC = 12:33 EDT) — consumer telecom data exposure, no A&D watchlist match, no new roster-actor attribution, no tracked CVE; DISCARDED per Mode 1 (no watchlist / roster / vuln-index hit); eligible for one-line Other Signal mention if briefer wants
+      - source_yaml_id: splunk-archimedes
+        grade: A
+        role: Splunk -30d query on CVE-2026-0257 IOC superset (4 IPs + 2 hostnames + GlobalProtect/Vultr/Dromatics/CVE-2026-0257 tokens) returned 5 archimedes:operation events (Archimedes' own brief publish/commit operations) and zero defenseclaw_local hits; Hard Rule 8 silence-is-not-disconfirming applies; 60+ day dormant non-self-telemetry sweep continues
+    would_be_digraph: N/A_no_external_claim_being_graded_sentinel_artifact_disposition_record
+    rejection_detail: >
+      This rejection entry is the canonical Saturday-afternoon PM-
+      sentinel disposition record for the 16:00 EDT 2026-05-30
+      afternoon brief grading pass. The pre-brief collector sentinel
+      (raw-2026-05-30-pm-000-sentinel-pre-brief-sweep) is an internal
+      collection-summary artifact — sentinel: true with no external
+      source claim being graded — documenting the 8h window
+      2026-05-30T07:30 → 2026-05-30T15:30 EDT.
+
+      Grader disposition: the substantive raw-signal this sweep cycle
+      is raw-2026-05-30-pm-001 (PAN-OS GlobalProtect CVE-2026-0257
+      active-exploitation confirmation with Vultr / Dromatics IOCs),
+      graded and REJECTED separately as reject-2026-05-30-0001
+      (carry-forward escalation to existing finding-2026-05-29-0004
+      A2 anchor, NOT new finding promotion); the PM sentinel itself
+      is rejected as a sentinel-class artifact (not a finding-
+      eligible event class).
+
+      Verification of collector disposition (Mode 1 procedure step 2):
+
+      (1) In-window items total 2 across all surveyed sources:
+          BleepingComputer PAN-OS exploitation (raw-signaled pm-001,
+          rejected reject-2026-05-30-0001) + Security Affairs
+          ShinyHunters / Charter consumer telecom breach (collector-
+          dispositioned in-place, no raw-signal).
+
+      (2) One in-window item is the substantive raw-signal handled
+          via carry-forward escalation rejection (reject-2026-05-30-
+          0001). The PAN-OS update belongs in finding-2026-05-29-0004
+          update block + VT-CVE-2026-0257 vuln-tracker dossier — see
+          reject-2026-05-30-0001 detail for full grading rationale,
+          all six FLASH trigger evaluations, and critical-override
+          failure analysis.
+
+      (3) One in-window item is collector-dispositioned in-place
+          (no raw-signal): Security Affairs ShinyHunters / Charter
+          Communications 4.9M-record consumer telecom data exposure
+          (16:33 UTC = 12:33 EDT). 4.9M unique email addresses +
+          names/phone/addresses; 85K employee directory records
+          (incl. job titles); Charter says no sensitive PII or CPNI
+          exfiltrated. Mode 1 filter result: NO A&D watchlist match;
+          NO new roster-actor attribution (ShinyHunters already in
+          corpus context from 7-Eleven / Canvas / SoundCloud findings
+          — no profile dossier exists yet; this surface adds no new
+          attribution claims); NO tracked CVE. Consumer telecom data
+          exposure; ShinyHunters extortion playbook already
+          established. Eligible for one-line Other Signal mention if
+          briefer wants — same handling as ASOCKS at 06:00 sentinel.
+
+      (4) NVD CRITICAL probe returned 1 vintage 2018 back-fill CVE
+          (CVE-2018-25412 Delta Sql 1.8.2) — not A&D / aerospace /
+          defense / tracked-vuln / tracked-actor; DISCARDED per
+          Mode 1 (Trigger 1 fail — 2018-vintage back-fill is not
+          "active exploitation in window" and Delta Sql is not in
+          any operator-profile fleet).
+
+      (5) CISA KEV catalogVersion 2026.05.29 unchanged across the 8h
+          window; today's add (CVE-2026-8398 Daemon Tools Lite) is
+          consumer disc-mounting software, not A&D-tracked.
+
+      (6) Anti-noise locks active and reconciled across the window
+          (preserved from raw-signal frontmatter):
+            - CVE-2026-0257 PAN-OS GlobalProtect: LOCK MODIFIED this
+              window (escalation handoff, not anti-noise dup) —
+              handled via reject-2026-05-30-0001
+            - ChatGPT platform abuse cluster (LLMShare + ChatGPhish):
+              raw-2026-05-29-pm-003 → finding-2026-05-29-0005 B3
+              (lock expires ~16:00 EDT today; clearing this window)
+            - MSRC / Chaotic Eclipse six-zero-day saga: lock expired
+              ~08:00 EDT, absorbed into morning brief
+            - Oracle CPU May 2026 critical batch: finding-2026-05-29-
+              0003 carry-forward; no in-window change
+            - MSTIC npm dependency-confusion 33-package cluster:
+              finding-2026-05-30-0001 A2 (lock active until ~00:30
+              EDT 2026-05-31)
+            - Gogs zero-day RCE + FortiClient EMS CVE-2026-35616 +
+              CIFSwitch Linux LPE + AP / Polish ABW Russian HUMINT
+              advisory: soft-cleared or disposed in-place; eligible
+              for monitorable mentions if briefer wants
+            - All AM-30 + PM-29 + AM-29 + PM-28 findings: implicit
+              absorption
+
+      Source-health observations forwarded to librarian (runtime
+      fields only — operator-set notes preserved verbatim):
+        - msrc blog feed: fifth consecutive parse failure; already
+          STALE per AM-30 sweep (status: stale, stale_since:
+          2026-05-30); no change this sweep; broken feed contained,
+          relay paths productive
+        - volexity blog feed: intermittent recovery pattern confirmed
+          (parseable at 12:00 + PM-30 sweep, after 6 consecutive
+          parse failures across 2026-05-29 + 0000/0600 2026-05-30);
+          AM-30 source-health entry already reflects recovery
+        - mandiant resources alt path (mandiant.com/resources/blog/rss.xml):
+          parseable across AM-30 + PM-30 sweeps; canonical-path swap
+          decision now data-supported across two consecutive sweeps
+        - rapid7 blog (rapid7.com/blog/rss/): productive this sweep
+          with dedicated CVE-2026-0257 exploitation post;
+          last_successful_fetch should advance to 2026-05-30T15:30
+          EDT
+        - palo-alto-psirt provisional A: second consecutive surface
+          within 72h ratification clock (clock ends 2026-06-01T16:00:00-04:00);
+          productive grade
+
+      Splunk first-party check (Hard Rule 8): targeted -30d query
+      across both defenseclaw_local and archimedes indices for the
+      CVE-2026-0257 IOC superset (4 IPs + 2 hostnames + GlobalProtect/
+      Vultr/Dromatics/CVE-2026-0257 tokens) returned 5 events, all
+      archimedes:operation from Archimedes' own brief publish/commit
+      operations referencing CVE-2026-0257; zero defenseclaw_local
+      hits. Silence is absent, not disconfirming. 60+ day dormant
+      non-self-telemetry sweep continues.
+
+      Quiet hours INACTIVE (15:30 EDT inside 09:00–21:00 active
+      window). Critical override evaluated and did not fire (PAN-OS
+      pm-001 has active exploitation + KEV but CVSS 7.8 below 10.0
+      floor AND no tracked-actor attribution AND no named A&D
+      victim; fails three of four conditions). Policy concerns: NONE.
+      All queries passive (RSS, public NVD/CISA-KEV endpoints,
+      vendor advisories on own products, first-party Splunk indexes).
+      No active recon against third-party targets. No prohibited
+      query patterns surfaced.
+
+      Per Hard Rule 1: doctrine/LEGAL-POLICY.md consulted before
+      grading; no prohibited material encountered; no credentials
+      surfaced (Hard Rule 7 compliance — none observed in any source).
+
+      Per Hard Rule 2: no actor attribution originated or extended.
+
+      Per Hard Rule 8: Splunk first-party silence is absent, not
+      disconfirming. Recorded verbatim.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY
+      retention. PM sentinel disposition records are not regradable;
+      if substantive in-window items surface that warrant separate
+      handling, they are raw-signaled and graded as separate clusters
+      (as pm-001 was this sweep).
+
   - rejection_id: reject-2026-05-20-0001
     rejected_at: 2026-05-20T16:18:00-04:00
     grading_run_id: afternoon-20260520-160000

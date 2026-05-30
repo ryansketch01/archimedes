@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-30T08:00:00-04:00
+last_updated: 2026-05-30T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -22242,7 +22242,7 @@ entries:
       against the nine Oracle CVEs through that window.
 
   - id: 2026-05-29-pm-001-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition
-    covered_in: [2026-05-29-afternoon]
+    covered_in: [2026-05-29-afternoon, 2026-05-30-afternoon]
     brief_file: threats/briefs/2026-05-29-afternoon.md
     headline: "STATE TRANSITION — CVE-2026-0257 PAN-OS GlobalProtect authentication bypass confirmed exploited in the wild; three independent A-grade primaries converge (Rapid7 ETR + CISA KEV add + Palo Alto PSIRT vendor self-attestation); CISA 3-day federal compliance due 2026-06-01 Monday (CISA standard treatment for vendor-acknowledged ITW per Ivanti EPMM + Cisco SD-WAN precedent, NOT exceptional critical-elevation signal per red-team layer 4); volume framings differ across sources and explicitly not collapsed (Rapid7 'across numerous customers' MDR-scoped vs Palo Alto 'limited exploit attempts' vendor-on-own-product); no Tier-1 IR firm corroboration in window (Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike silent); no lateral movement observed per Rapid7 scoped to MDR customer base 12-day window NOT generalized DIB-wide reassurance; three-condition exploitability prerequisite (auth-override enabled + CAS disabled + reused override-cookie cert) narrows exposed population but deployment-maturity skew is NOT source-established (Tier-2/SMB/legacy directional skew STRIPPED per analyst KAC-2 K2A1/K2A2); Archimedes framing high-priority audit + apply workaround immediately, NOT headline-critical (Rapid7 'treat as critical' preserved verbatim but not adopted as brief framing); NEW vuln-tracker scaffold candidate distinct from ZD-004 / CVE-2026-0300"
     topic_tags:
@@ -22362,7 +22362,7 @@ entries:
       - patch_adoption_data_published
       - cisa_kev_due_date_compliance_data_published_post_2026_06_01
     first_covered: 2026-05-29
-    last_covered: 2026-05-29
+    last_covered: 2026-05-30
     retraction: null
     test: false
     notes: |
@@ -22370,6 +22370,15 @@ entries:
       CVE-2026-0257. Three independent A-grade primaries (Rapid7 ETR
       MDR + CISA KEV catalog + Palo Alto Networks PSIRT advisory)
       converged in a 3-hour window 2026-05-29.
+
+      UPDATE 2026-05-30 PM: re-covered today via 2026-05-30-pm-001
+      (carry-forward escalation) — Rapid7 dedicated post adds named
+      hosting infrastructure (Vultr first wave 2026-05-17/18 +
+      Dromatics second wave 2026-05-21), consistent spoofed MAC
+      across both waves, two client hostnames, and a public Rapid7
+      Labs GitHub PoC. Resurface triggers escalation_to_exploitation
+      + new_iocs_published fired. Hard Rule 2 fully preserved
+      (Rapid7 declines, no upstream names anyone).
 
       Red-team qualified (not blocked) three downstream WEP layers
       DOWN per the qualifying_language_suggested + briefer_guidance
@@ -23204,6 +23213,393 @@ entries:
           discovery (`mandiant.com/resources/blog/rss.xml`)
           flagged for operator review re: canonical endpoint
           swap.
+
+  - id: 2026-05-30-pm-001-rapid7-dedicated-post-cve-2026-0257-pan-os-globalprotect-named-iocs-public-poc-update-on-2026-05-29-0004
+    covered_in: [2026-05-30-afternoon]
+    brief_file: threats/briefs/2026-05-30-afternoon.md
+    update_on:
+      - finding-2026-05-29-0004
+      - 2026-05-29-pm-001-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition
+    headline: "UPDATE on finding-2026-05-29-0004 — Rapid7 publishes dedicated CVE-2026-0257 PAN-OS GlobalProtect post with named hosting infrastructure (Vultr 104.207.144.154 first wave 2026-05-17/18 + Dromatics Systems 146.19.216.119/120/125 second wave 2026-05-21), consistent spoofed MAC aa:bb:cc:dd:ee:ff across both waves (forensic-cluster signal, NOT actor identification — Rapid7 explicitly declines), client hostnames GP-CLIENT (Linux first wave) + DESKTOP-GP01 (Windows second wave), and a public Rapid7 Labs GitHub PoC raising operational urgency beyond the federal KEV mandate; three Rapid7 InsightIDR detection rules referenced as Splunk-adaptation templates (Suspicious Authentication - Palo Alto GlobalProtect Cookie Authentication to Local Admin; VPN Authentication via Spoofed MAC Address; Local Account Logon via Generic Non-Human Identity); BleepingComputer (B) + The Hacker News (B) relay with source attribution; Palo Alto PSIRT + CISA KEV framings unchanged from yesterday; KEV federal deadline Monday 2026-06-01 (T+2); Hard Rule 2 fully preserved — Rapid7 declines, no upstream source names anyone, Archimedes does not extend; raw-2026-05-30-pm-001 rejected as carry-forward escalation per grader (NOT new finding — same A2 dossier carries forward)"
+    topic_tags:
+      - cve
+      - cve-2026-0257
+      - palo-alto-networks
+      - pan-os
+      - globalprotect
+      - authentication-bypass
+      - active-exploitation
+      - kev-federal-deadline-2026-06-01-monday-t-plus-2
+      - rapid7-mdr-dedicated-post
+      - bleepingcomputer-relay-source-attributed
+      - thehackernews-relay-source-attributed
+      - palo-alto-psirt-framing-unchanged
+      - cisa-kev-framing-unchanged
+      - two-wave-timeline-2026-05-17-vultr-2026-05-21-dromatics
+      - new-iocs-4-ipv4-2-hostnames-1-mac
+      - vultr-hosted-104-207-144-154
+      - dromatics-systems-146-19-216-119-120-125
+      - spoofed-mac-aa-bb-cc-dd-ee-ff-placeholder-pattern
+      - gp-client-desktop-gp01-hostnames
+      - public-poc-rapid7-labs-github
+      - forged-globalprotect-override-cookie-technique
+      - three-rapid7-insightidr-detection-rules-splunk-adaptation-templates
+      - rapid7-declines-actor-attribution
+      - hard-rule-2-no-actor-attribution-archimedes-side
+      - hard-rule-2-no-upstream-source-names-anyone
+      - hard-rule-6-zero-quotes-in-pm-brief
+      - hard-rule-8-splunk-silent-minus-30d-defenseclaw-local-60-day-dormant-not-disconfirming
+      - update-on-finding-2026-05-29-0004
+      - carry-forward-escalation-not-new-finding-per-grader
+      - rejection-of-raw-2026-05-30-pm-001-as-carry-forward-escalation
+      - structural-dib-relevance-pan-os-globalprotect-edge-vpn-dominance
+      - three-condition-prerequisite-auth-override-enabled-cas-disabled-cert-reuse
+      - psirt-workaround-disable-auth-override-or-dedicated-cert-or-enable-cas
+      - patched-versions-12-1-7-11-2-12-11-1-15-10-2-18-h6
+      - vt-scaffold-candidate-pan-os-cve-2026-0257-distinct-from-zd-004-cve-2026-0300
+      - detection-engineering-handoff-wednesday-brief
+    related_actors: []   # Hard Rule 2 — Rapid7 declines actor attribution; no upstream source names anyone
+    related_vulns:
+      - CVE-2026-0257
+    related_zero_days: []
+    related_campaigns:
+      - cve-2026-0257-pan-os-globalprotect-itw-state-transition-2026-05-29
+    finding_ids:
+      - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due
+    digraph: A2
+    digraph_layered:
+      rapid7_dedicated_post_existence: A1
+      two_wave_timeline_2026_05_17_and_2026_05_21: A2
+      vultr_first_wave_104_207_144_154: A1
+      dromatics_second_wave_146_19_216_119_120_125: A1
+      spoofed_mac_aa_bb_cc_dd_ee_ff_both_waves: A1
+      gp_client_desktop_gp01_hostnames: A1
+      public_poc_rapid7_labs_github: A1
+      three_insightidr_detection_rules_referenced: A1
+      rapid7_declines_actor_attribution: A1
+      kev_federal_deadline_2026_06_01_monday: A1
+      cluster_anchor: A2
+    wep: very_likely
+    wep_layered:
+      cve_2026_0257_active_exploitation_in_the_wild: very_likely
+      same_threat_actor_across_both_waves_forensic_cluster_only: likely
+      any_actor_attribution_to_named_group: NOT_ARCHIMEDES_ORIGINATED
+      public_poc_increases_operational_floor: very_likely
+      named_ad_dib_victim_in_publication: not_applicable_explicit_absence
+      structural_dib_exposure_pan_os_globalprotect_dominance: very_likely
+    single_source_veto_applied: false
+    single_source_veto_layer: cleared_per_yesterday_finding_grading_three_independent_a_grade_primaries
+    analyst_review_complete: not_required_carry_forward_update_no_new_analysis_layer
+    red_team_review_required: false
+    red_team_review_required_basis: "Carry-forward escalation update on finding-2026-05-29-0004 (already red-team-reviewed); WEP layered on actor attribution explicitly NOT_ARCHIMEDES_ORIGINATED; new substance is procedural-evidence layer (IOCs + PoC + relays) with A1-grade attestation per Rapid7's own publication."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "104.207.144.154 + 146.19.216.119 + 146.19.216.120 + 146.19.216.125 + GP-CLIENT + DESKTOP-GP01 + CVE-2026-0257 + GlobalProtect + Vultr + Dromatics"
+      hard_rule_8_framing: silence_is_not_disconfirming_60_day_dormant_pattern
+    hard_rule_2_framings_load_bearing:
+      - "Rapid7 explicitly declines actor attribution; 'same threat actor across both waves' is forensic-cluster language tied to the consistent spoofed MAC, NOT a group identification"
+      - "Archimedes does not extend the attribution"
+      - "No upstream source (Rapid7, BleepingComputer, The Hacker News, Palo Alto PSIRT, CISA KEV) names anyone"
+    hard_rule_6_quote_discipline:
+      - "Zero direct quotes in PM brief body or Discord Summary"
+    librarian_handoffs_queued:
+      - action: ioc_index_update
+        ioc_set: "4 IPv4 (104.207.144.154 Vultr first wave; 146.19.216.119/120/125 Dromatics second wave) + 2 hostnames (GP-CLIENT Linux first wave; DESKTOP-GP01 Windows second wave) + 1 MAC (aa:bb:cc:dd:ee:ff placeholder pattern; forensic-cluster signal across both waves)"
+      - action: vuln_tracker_update
+        target: "threats/vulnerabilities/PAN-OS-CVE-2026-0257/ (scaffolded candidate per yesterday afternoon brief; update with today's IOC set + public PoC + two-wave timeline + three InsightIDR rule references)"
+      - action: actor_profiler_handoff
+        target: NONE
+        reason: "Rapid7 declines actor attribution; no upstream source names anyone; do NOT scaffold per Hard Rule 2"
+      - action: detection_engineering_handoff_wednesday_brief
+        target: "Three Rapid7 InsightIDR detection rule names referenced as Splunk-adaptation templates: (1) Suspicious Authentication - Palo Alto GlobalProtect Cookie Authentication to Local Admin; (2) VPN Authentication via Spoofed MAC Address; (3) Local Account Logon via Generic Non-Human Identity. Hand off to Wednesday Threat Detection Weekly for SPL sketches + ATT&CK mapping."
+    resurface_if:
+      - new_ab_grade_source_relays_with_named_ad_dib_victim
+      - tier_1_ir_firm_corroboration_mandiant_volexity_unit_42_mstic_crowdstrike
+      - actor_attribution_origination_by_any_ab_grade_source
+      - first_party_ioc_hit_on_any_indicator_archimedes_or_defenseclaw_local
+      - federal_kev_deadline_passes_2026_06_01_status_tick
+      - patch_adherence_or_compliance_telemetry_post_2026_06_01
+      - new_iocs_published_by_any_ir_firm_on_same_campaign
+      - vuln_tracker_dossier_pan_os_cve_2026_0257_scaffold_completed
+      - independent_ir_firm_dispute_of_rapid7_observation
+    first_covered: 2026-05-29
+    last_covered: 2026-05-30
+    retraction: null
+    test: false
+    notes: |
+      UPDATE on yesterday afternoon's finding-2026-05-29-0004
+      coverage. raw-2026-05-30-pm-001 rejected by grader as
+      carry-forward escalation (NOT new finding) — same A2 dossier
+      carries forward with new evidence layer:
+
+      - Rapid7 published a dedicated post today (URL slug
+        etr-rapid7-observed-exploitation-of-pan-os-globalprotect-auth-bypass-vulnerability-cve-2026-0257)
+        expanding yesterday's report with two-wave timeline
+        (2026-05-17 Vultr + 2026-05-21 Dromatics), named IPs,
+        consistent spoofed MAC across both waves, client hostnames,
+        and a public Rapid7 Labs GitHub PoC.
+      - BleepingComputer (Lawrence Abrams, 2026-05-30 14:02 EDT)
+        and The Hacker News (Ravie Lakshmanan, 2026-05-30 02:41 EDT)
+        relay with source attribution. Both B-grade media relays.
+      - Palo Alto PSIRT and CISA KEV framings unchanged from
+        yesterday afternoon's coverage.
+      - Three Rapid7 InsightIDR detection rules referenced — handed
+        off to Wednesday Threat Detection Weekly for SPL sketches
+        + ATT&CK mapping.
+
+      Hard Rule 2 fully preserved: Rapid7 explicitly declines
+      actor attribution. "Same threat actor across both waves" is
+      forensic-cluster language tied to the consistent spoofed MAC,
+      NOT a group identification. No upstream source names anyone.
+      Archimedes does not extend.
+
+      Hard Rule 6: zero direct quotes in the PM brief body or
+      Discord Summary. Yesterday afternoon's brief carried two
+      verbatim quotes (Rapid7 8 words + Palo Alto PSIRT 8 words);
+      today's UPDATE relies on those by reference + new facts only.
+
+      Hard Rule 8: Splunk first-party silent over -30d on the full
+      IOC + product-keyword set (`104.207.144.154` + Dromatics
+      cluster + GP-CLIENT + DESKTOP-GP01 + CVE-2026-0257 +
+      GlobalProtect + Vultr + Dromatics). 60-day defenseclaw_local
+      dormancy continues. Absence of evidence not evidence of
+      absence.
+
+      Anti-repetition discipline: yesterday afternoon's brief
+      established the three-condition prerequisite + PSIRT
+      workaround + patched versions; today's UPDATE references
+      rather than restates. New substance only: Rapid7 dedicated
+      post, two-wave timeline, named hosting infrastructure,
+      consistent spoofed MAC, client hostnames, public PoC,
+      three InsightIDR detection rule references. This morning
+      brief's pointer-only carry-forward (T+2 to KEV deadline)
+      framing is now superseded by today's UPDATE substance —
+      anti-repetition rules permit the resurface under
+      escalation_to_exploitation + new_iocs_published triggers
+      relative to yesterday afternoon's resurface_if list (note:
+      yesterday's entry was 2026-05-29-pm-001; today's UPDATE
+      triggers two of its conditions explicitly).
+
+      Detection-engineering handoff queued for Wednesday brief:
+      three named Rapid7 InsightIDR detection rules as Splunk
+      adaptation templates with ATT&CK mapping.
+
+  - id: 2026-05-30-pm-002-security-affairs-shinyhunters-charter-4-9m-consumer-telecom-leak-other-signal-pointer-only-no-ad-nexus
+    covered_in: [2026-05-30-afternoon]
+    brief_file: threats/briefs/2026-05-30-afternoon.md
+    headline: "Security Affairs reports ShinyHunters claim of 4.9M-record consumer telecom leak attributed to Charter Communications — consumer-tier breach data; no DIB / ITAR / aerospace nexus; ShinyHunters is broker-class not roster actor; Other Signal pointer-only for situational awareness"
+    topic_tags:
+      - security-affairs
+      - shinyhunters-broker-class
+      - charter-communications
+      - consumer-telecom-leak-4-9m-records
+      - other-signal-monitoring-tier
+      - no-ad-nexus
+      - no-dib-itar-aerospace-relevance
+      - hard-rule-2-no-roster-actor-named
+      - pointer-only-situational-awareness
+    related_actors: []
+    related_vulns: []
+    related_zero_days: []
+    related_campaigns: []
+    finding_ids: []   # Not promoted; Other Signal pointer only
+    digraph: C3
+    wep: not_applicable_monitoring_tier
+    single_source_veto_applied: not_applicable_monitoring_tier
+    splunk_first_party:
+      status: not_queried_consumer_breach_no_a_d_relevance
+    hard_rule_2_framings_load_bearing:
+      - "ShinyHunters is broker-class, not in Archimedes roster"
+      - "No state-actor attribution originated or extended"
+    resurface_if:
+      - charter_named_as_dib_supplier_or_a_d_adjacent_in_followup_reporting
+      - shinyhunters_promoted_to_roster_via_separate_threshold_event
+      - leak_contents_disclose_a_d_employee_credentials_or_itar_adjacent_pii
+    first_covered: 2026-05-30
+    last_covered: 2026-05-30
+    retraction: null
+    test: false
+    notes: |
+      Optional Other Signal pointer per orchestrator handoff. No
+      A&D nexus. Consumer-tier breach data (telecom subscriber
+      records). ShinyHunters is broker-class (data-leak forum
+      operators), not a roster actor under Archimedes' threat-box
+      methodology. Pointer-only for situational awareness; not
+      promoted to a finding.
+
+  - id: 2026-05-30-pm-brief-meta
+    covered_in: [2026-05-30-afternoon]
+    brief_file: threats/briefs/2026-05-30-afternoon.md
+    headline: "Afternoon brief 2026-05-30 — UPDATE on finding-2026-05-29-0004 (CVE-2026-0257 PAN-OS GlobalProtect) with Rapid7 dedicated post + named IOCs (4 IPv4 + 2 hostnames + 1 MAC) + public Rapid7 Labs GitHub PoC + three InsightIDR detection rule references handed off to Wednesday Threat Detection brief; KEV federal deadline Monday 2026-06-01 T+2; Hard Rule 2 fully preserved (Rapid7 declines, no upstream names anyone, Archimedes does not extend); zero direct quotes in PM brief; standing sections silent-day templates (Sector Focus A&D + Iran Cyber Watch); Vulnerabilities carry-forward pointer-only (Oracle CPU May 2026 T+3 no ITW); Other Signal pointer-only (ShinyHunters/Charter 4.9M consumer telecom leak, no A&D nexus); 0 of 2 PM raw-signal items promoted (both rejected by grader — internal sentinel sweep + raw-2026-05-30-pm-001 as carry-forward escalation)"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - lead-update-on-cve-2026-0257-pan-os-globalprotect-rapid7-dedicated-post-named-iocs-public-poc
+      - kev-federal-deadline-2026-06-01-monday-t-plus-2
+      - rapid7-three-insightidr-detection-rules-wednesday-handoff
+      - carry-forward-escalation-update-no-new-finding
+      - oracle-cpu-may-2026-carry-forward-pointer-only-t-plus-3-no-itw
+      - sector-focus-ad-silent-day-template-plus-pan-os-structural-relevance-note
+      - iran-cyber-watch-silent-day-template
+      - other-signal-charter-shinyhunters-pointer-only-no-ad-nexus
+      - hard-rule-2-strict-hold-throughout
+      - hard-rule-2-rapid7-declines-no-upstream-names-anyone
+      - hard-rule-6-zero-quotes-pm-brief
+      - hard-rule-8-splunk-silent-minus-30d-60-day-dormant
+      - light-news-day-single-update-anchor
+      - 0-of-2-pm-raw-signal-items-promoted-both-rejected-by-grader
+    related_actors: []
+    related_vulns:
+      - CVE-2026-0257
+    related_zero_days: []
+    related_campaigns:
+      - cve-2026-0257-pan-os-globalprotect-itw-state-transition-2026-05-29
+    finding_ids:
+      - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due
+    absorbs_flashes: []
+    word_count_target_range: [400, 800]
+    word_count_actual: 612
+    pre_flight_regen_count: 0
+    pre_flight_pass_iteration: 1
+    hard_rule_2_brief_wide_compliance:
+      - "Rapid7 explicitly declines actor attribution — preserved verbatim"
+      - "No upstream source (Rapid7, BleepingComputer, The Hacker News, Palo Alto PSIRT, CISA KEV) names anyone"
+      - "Archimedes does not extend"
+      - "ShinyHunters in Other Signal is broker-class not roster actor; no state-actor attribution originated or extended"
+    hard_rule_6_quote_discipline_brief_wide:
+      - "Zero direct quotes in brief body or Discord Summary"
+    splunk_first_party_brief_wide:
+      hits: 0
+      indexes_queried: [archimedes, defenseclaw_local]
+      query_windows: [-30d]
+      sweep_streak: 60-day_dormant_defenseclaw_local_continues
+    standing_sections_present:
+      sector_focus_ad: silent_day_template_with_short_added_note_on_pan_os_structural_dib_relevance
+      iran_cyber_watch: silent_day_template_per_watch_config
+    suppressed_items: []
+    discord_summary_layer_2:
+      word_count_estimate: 220
+      char_count_estimate: 1640
+      char_count_target: under_1900
+      compliant: true
+      bullets: 3
+      headlines_hyperlinked: true
+      natural_language_dates: true
+      themed_character_voice: false
+      digraph_or_finding_id_omitted: true
+      standing_section_boilerplate_omitted: true
+    librarian_handoffs_summary:
+      - ioc_index_update_7_iocs_pan_os_cve_2026_0257_two_wave_4ipv4_2hostnames_1mac
+      - vuln_tracker_update_pan_os_cve_2026_0257_dossier_with_two_wave_timeline_iocs_public_poc_insightidr_rules
+      - actor_profiler_handoff_NONE_rapid7_declines_no_upstream_names_anyone
+      - detection_engineering_handoff_wednesday_brief_three_rapid7_insightidr_rules_splunk_adaptation
+      - source_health_no_changes_this_window
+    resurface_if:
+      - kev_deadline_monday_2026_06_01_status_tick_t_plus_0
+      - tier_1_ir_firm_corroboration_mandiant_volexity_unit_42_mstic_crowdstrike_on_cve_2026_0257
+      - new_ab_grade_source_relays_with_named_ad_dib_victim
+      - actor_attribution_origination_by_any_ab_grade_source
+      - first_party_ioc_hit_on_any_indicator_archimedes_or_defenseclaw_local
+    first_covered: 2026-05-30
+    last_covered: 2026-05-30
+    retraction: null
+    test: false
+    notes: |
+      Light-news day. Single UPDATE anchor on yesterday afternoon's
+      finding-2026-05-29-0004 (CVE-2026-0257 PAN-OS GlobalProtect)
+      + standing sections silent-day templates + Vulnerabilities
+      carry-forward pointer-only + Other Signal pointer-only.
+
+      Brief composition:
+
+      - Lead + Why it matters: Monday KEV deadline T+2 + Rapid7
+        dedicated post + named IOCs + public PoC framing — the
+        actionable detail is the closed window between vendor
+        advisory (May 13) and public PoC (today) against an edge-
+        VPN appliance dominant in DIB networks.
+
+      - Active Threats: single UPDATE item on
+        finding-2026-05-29-0004 carrying new substance only:
+        Rapid7 dedicated post, two-wave timeline (May 17 Vultr +
+        May 21 Dromatics), four named IPs, consistent spoofed MAC
+        across both waves, two client hostnames, public Rapid7
+        Labs GitHub PoC, three InsightIDR detection rule
+        references for Splunk adaptation, Hard Rule 2 explicit
+        framing (Rapid7 declines, no upstream names anyone,
+        Archimedes does not extend), Hard Rule 8 Splunk silence
+        framing, A&D action with three-condition prerequisite +
+        PSIRT workaround + patched-version branches + IOC
+        ingestion direction.
+
+      - Vulnerabilities: Oracle CPU May 2026 critical batch
+        pointer-only carry-forward (no ITW or KEV at T+3;
+        public-PoC watch through 2026-06-11).
+
+      - Sector Focus A&D: silent-day template + short added note
+        that CVE-2026-0257 still carries structural DIB relevance
+        via PAN-OS GlobalProtect's dominant edge-VPN footprint.
+
+      - Iran Cyber Watch: silent-day template per
+        watch-config.yaml.
+
+      - Other Signal: ShinyHunters / Charter 4.9M consumer
+        telecom leak pointer-only — no DIB / ITAR / aerospace
+        nexus; ShinyHunters broker-class not roster actor.
+
+      Pre-flight: 13/13 passed on iteration 1. Zero regenerations
+      needed. Layer 2 Discord Summary estimated ~1640 chars under
+      1900 ceiling; three bullets (one Active Threats UPDATE +
+      one Vulnerabilities carry-forward + one Other Signal
+      pointer); natural-language dates ("Monday," "May 17," "May
+      21," "June 11"); zero digraph or finding-id citations in
+      Layer 2 (all confined to Layer 1).
+
+      Anti-repetition discipline:
+        - finding-2026-05-29-0004 (CVE-2026-0257 PAN-OS
+          GlobalProtect): UPDATE qualifies under
+          escalation_to_exploitation + new_iocs_published
+          resurface triggers from yesterday afternoon's
+          2026-05-29-pm-001 entry — substantive new evidence
+          layer (Rapid7 dedicated post + named IOCs + public
+          PoC + InsightIDR rule references). Yesterday afternoon
+          established three-condition prerequisite + PSIRT
+          workaround + patched-version branches; today references
+          rather than restates.
+        - This morning's 2026-05-30-am-brief carried CVE-2026-0257
+          as pointer-only ("audit guidance per yesterday afternoon
+          brief unchanged"); today's PM UPDATE supersedes that
+          pointer with new substance.
+        - Oracle CPU May 2026: pointer-only continuation from
+          this morning's pointer-only carry-forward (T+2 → T+3
+          status tick only).
+
+      Librarian handoffs queued:
+        - IOC index update — 7 new indicators (4 IPv4, 2
+          hostnames, 1 MAC) on the existing CVE-2026-0257
+          campaign.
+        - Vuln-tracker update — populate the scaffolded
+          threats/vulnerabilities/PAN-OS-CVE-2026-0257/ dossier
+          with today's two-wave timeline, IOCs, public PoC
+          reference, and three InsightIDR rule names.
+        - Actor-profiler handoff — NONE (Rapid7 declines; no
+          upstream source names anyone; do NOT scaffold per
+          Hard Rule 2).
+        - Detection-engineering handoff queued for Wednesday
+          (2026-06-03) Threat Detection Weekly: three Rapid7
+          InsightIDR detection rule names as Splunk-adaptation
+          templates with ATT&CK mapping.
+
+      Grader handoff status: 0 of 2 PM raw-signal items
+      promoted — raw-2026-05-30-pm-000 (internal sentinel sweep,
+      standard rejection); raw-2026-05-30-pm-001 (PAN-OS
+      CVE-2026-0257 active exploitation confirmation, rejected
+      as carry-forward escalation to existing
+      finding-2026-05-29-0004, NOT a new finding). PM brief
+      composed entirely from carry-forward escalation update +
+      pointer-only carry-forwards + standing sections.
 
 # ============================================================================
 # Valid resurface_if conditions

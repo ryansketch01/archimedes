@@ -4271,16 +4271,584 @@ entries:
 
       Keep this rejection entry for 1 year per LEGAL-POLICY retention.
 
+  - rejection_id: reject-2026-05-31-0001
+    rejected_at: 2026-05-31T16:10:00-04:00
+    grading_run_id: afternoon-20260531-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-05-30-flash-evening-cleansweep
+      - raw-2026-05-31-flash-0000-000-sentinel-clean-sweep
+      - raw-2026-05-31-flash-0600-000-sentinel-clean-sweep
+      - raw-2026-05-31-am-000-sentinel-pre-brief-sweep
+      - raw-2026-05-31-flash-1200-000-sentinel-clean-sweep
+      - raw-2026-05-31-pm-000-sentinel-pre-brief-sweep
+    cluster_topic: >
+      Canonical Sunday-afternoon PM-31 sentinel cluster disposition for
+      the 16:00 EDT 2026-05-31 afternoon brief grading pass. The cluster
+      absorbs SIX sentinel raw-signal artifacts covering the full 24h
+      window from 2026-05-30T16:00 EDT (commit f0993be afternoon-30
+      brief publish) through 2026-05-31T15:35 EDT (PM-31 pre-brief
+      collection complete): one operator-triggered evening FLASH
+      sentinel (2026-05-30 18:05 EDT, ~2h window, 0/6 triggers,
+      commit 2caeb04); three canonical scheduled FLASH sentinels
+      (2026-05-31 00:05 EDT, ~6h, 0/6, commit 006c201; 06:05 EDT,
+      ~6h, 0/6, commit a2ca2af; 12:05 EDT, ~6h, 0/6, commit 2e13811);
+      and two pre-brief collector sentinels (AM-31 07:32 EDT, 14h
+      pre-brief, 0 substantive items, anchoring morning brief commit
+      5c27799 with 0 new findings; PM-31 15:35 EDT, 8h pre-brief,
+      0 substantive items). All six are internal collection-summary
+      artifacts; none contains an external source claim being graded.
+
+      Net in-window external content surveyed across all six sentinels:
+      ZERO items survived Mode 1 watchlist / roster / vuln-index filters
+      to become finding-class candidates. Six items in the PM-31 8h
+      window were collector-dispositioned in-place: (a) NVD critical
+      CVE-2026-10187 Totolik consumer SOHO router stack-overflow CVSS
+      9.8 — consumer-class, no A&D nexus, no roster, no tracked CVE
+      (same disposition class as prior Edimax / D-Link / ipTIME /
+      TRENDnet consumer router CVEs at 00:00 / 06:00 sentinels and
+      AM-30 sweep); (b) BleepingComputer WP Maps Pro WordPress plugin
+      admin-account-creation exploitation (Bill Toulas 10:06 EDT) —
+      WordPress plugin, no A&D nexus, no roster actor, no tracked CVE;
+      (c) Hacker News Dutch Politie + NCSC botnet takedown 17M devices
+      / 200+ servers seized — no roster actor named, no A&D nexus;
+      (d) SecurityAffairs CVE-2026-0257 Paganini relay at 13:52 EDT
+      (B-grade trade-press relay of Rapid7 MDR telemetry already in
+      raw-2026-05-30-pm-001 and brief-covered in afternoon-30 +
+      morning-31 — adds no new operational substance; ratifies
+      Rapid7-disputed-Palo Alto-medium-severity framing); (e) two
+      SecurityAffairs newsletter aggregations (Round 99 + Round 579 —
+      newsletter-class link compilations, not fresh primary research);
+      (f) SANS ISC YARA-X 1.17.0 release announcement (defensive
+      tooling). All collector-dispositioned per Mode 1 / Anti-Noise
+      Rule 1 / Hard Rule 2 (no novel attribution); none promoted to
+      raw-signal.
+
+      AM-31 14h window also produced ZERO substantive items per AM-31
+      sentinel summary (commit 5c27799 morning brief shipped with
+      0 new findings); both pre-brief windows were absorbed into the
+      PAN-OS CVE-2026-0257 status-tick carry-forward narrative. Three
+      scheduled FLASH sentinels in window each evaluated 6 triggers
+      and fired 0; the evening operator-triggered sentinel likewise
+      0/6. PAN-OS CVE-2026-0257 carry-forward dominated all six
+      windows; KEV federal compliance deadline is Monday 2026-06-01
+      EOD = T+1 from PM-31 sweep time (~32 hours).
+    rejection_reasons:
+      - sentinel_artifact_not_finding_eligible_event_class
+      - zero_in_window_external_claims_survived_mode_1_filter_across_all_six_sentinels
+      - all_in_window_collector_dispositioned_items_handled_in_place_or_anti_noise_carry_forward
+      - source_health_observations_runtime_fields_only_no_finding_event_class
+      - kev_state_unchanged_in_window_pre_existing_pan_os_carry_forward_federal_due_2026_06_01_eod_monday_t_plus_1
+      - nvd_critical_bucket_consumer_class_only_no_a_and_d_nexus_below_trigger_1_floor
+      - security_affairs_paganini_pan_os_relay_b_grade_trade_press_corroborative_layer_no_new_operational_substance_below_promotion_threshold
+      - security_affairs_newsletter_aggregations_link_compilations_not_fresh_primary_research
+      - bleepingcomputer_wp_maps_pro_wordpress_plugin_no_a_and_d_nexus_no_roster
+      - hacker_news_dutch_politie_ncsc_botnet_takedown_no_roster_no_a_and_d
+      - hard_rule_2_no_novel_attribution_on_security_affairs_newsletter_aggregation_layer
+      - splunk_first_party_zero_hits_on_priority_ioc_superset_pan_os_apt28_muddywater_charming_kitten_unc1549_teampcp
+    sources:
+      - source_yaml_id: archimedes-internal
+        grade: A
+        role: Six internal Archimedes collector sentinel records (evening operator-triggered 2026-05-30 18:05 + scheduled FLASH 00:00/06:00/12:00 + AM-31 + PM-31 pre-brief); collectively cover the full 24h window 2026-05-30T16:00 EDT (post-afternoon-30 brief commit f0993be) through 2026-05-31T15:35 EDT (PM-31 pre-brief collection complete); document collector dispositions only, no external source claim being graded
+      - source_yaml_id: cisa-kev
+        grade: A
+        role: KEV catalogVersion 2026.05.29 UNCHANGED across all six sentinels in window. Zero entries dated 2026-05-30 or 2026-05-31. Most recent KEV addition remains CVE-2026-0257 PAN-OS (2026-05-29, dueDate 2026-06-01 = Monday EOD T+1 from PM-31 sweep time). Anti-Noise Rule 1 covers via AM-31 brief carry-forward + finding-2026-05-29-0004 PAN-OS anchor
+      - source_yaml_id: nvd
+        grade: A
+        role: CRITICAL-window probes across all six sentinels returned aggregate 1 CRITICAL result (CVE-2026-10187 Totolik consumer SOHO router CVSS 9.8, surfaced in PM-31 window 15:16 UTC) + 10 HIGH results (consumer SOHO routers + 1 education-sector school-management software + Open5GS PoC-only); ALL discarded per Mode 1 (no watchlist / roster / vuln-index hit; no ITW per A-grade source; below or at Trigger 1 floor)
+      - source_yaml_id: security-affairs
+        grade: B
+        role: One in-window CVE-2026-0257 relay (Paganini 13:52 EDT) ratifying Rapid7-disputed-Palo Alto-medium-severity framing — B-grade trade-press corroborative layer on the existing carry-forward; adds no new operational substance; analyst awareness only (not promotion-worthy on its own). Plus two newsletter aggregations (Round 99 + Round 579) — link compilations not fresh primary research; eligible for orchestrator awareness on potential future raw-signal targets (Nimbus Manticore Iran-conflict ops Check Point Research; Screening Serpens 2026 Iranian APT espionage campaigns; Lazarus RemotePE fileless RAT; Showboat malware family targeting telecom; TrapDoor 34-package supply-chain compromise spanning npm + PyPI + Crates.io) if underlying primaries surface within A/B-grade reach windows; NOT promoted via secondary newsletter relay per Hard Rule 2
+      - source_yaml_id: bleepingcomputer
+        grade: B
+        role: One in-window item — WP Maps Pro WordPress plugin admin-account-creation exploitation (Bill Toulas 10:06 EDT) — active exploitation but WordPress plugin, no A&D nexus, no roster actor, no tracked CVE; DISCARDED per Mode 1 (no watchlist / roster / vuln-index hit)
+      - source_yaml_id: thehackernews
+        grade: B
+        role: One in-window item — Dutch Authorities Dismantle Botnet Linked to 17 Million Infected Devices (2026-05-31T12:22 UTC = 08:22 EDT) — Dutch Politie + NCSC takedown action with 200+ servers seized; no roster actor named, no A&D nexus; DISCARDED per Mode 1
+      - source_yaml_id: sans-isc
+        grade: B
+        role: One in-window item — YARA-X 1.17.0 release announcement (12:01 EDT) — defensive tooling release, not threat-intel-class; DISCARDED per Mode 1
+      - source_yaml_id: rapid7
+        grade: A
+        provisional: true
+        role: No follow-on PAN-OS post in window since 2026-05-29 etr-blog primary that anchors finding-2026-05-29-0004; Rapid7 silent across full 24h window
+      - source_yaml_id: palo-alto-psirt
+        grade: A
+        provisional: true
+        role: No advisory revision in window since 2026-05-29 severity Medium→High revision folded into finding-2026-05-29-0004; PSIRT silent across full 24h window
+      - source_yaml_id: mandiant
+        grade: A
+        role: Alt-endpoint validated across all six sentinels (0 in-window items); Sunday cadence effectively zero; corpus carry-forward only
+      - source_yaml_id: unit42
+        grade: A
+        role: Pre-window content unchanged across all six sentinels (last_modified 2026-05-29T21:16:24 GMT); 0 in-window items
+      - source_yaml_id: crowdstrike
+        grade: A
+        role: Persistent dateless-RSS pattern continued across all six sentinels; 0 in-window items confirmable; top-of-list unchanged
+      - source_yaml_id: cisco-talos
+        grade: A
+        role: 15 items in feed total; 0 in-window items across all six sentinels
+      - source_yaml_id: sentinellabs
+        grade: A
+        role: Pre-window content unchanged across all six sentinels (last_modified 2026-05-29T22:03:17 GMT); 0 in-window items
+      - source_yaml_id: welivesecurity
+        grade: A
+        role: 100 items in feed total; 0 in-window items across all six sentinels
+      - source_yaml_id: volexity
+        grade: A
+        role: Intermittent parse-error / RECOVERY pattern across the six sentinels; WebFetch fallback confirms most-recent post still 2025-12-04 pre-window; 0 in-window items
+      - source_yaml_id: check-point
+        grade: A
+        role: Pre-window content unchanged (last_modified 2026-05-26T12:13:08 GMT); 0 in-window items
+      - source_yaml_id: securelist
+        grade: A
+        role: Pre-window content unchanged (last_modified 2026-05-29T07:00:51 GMT); 0 in-window items
+      - source_yaml_id: mstic
+        grade: A
+        role: Parent feed reachable in PM-31 sweep (last_modified 2026-05-30T00:15 GMT pre-window); 0 in-window items; threat-intelligence subpath intermittently 404 (already-documented retirement pattern); held healthy on parent-feed productive path
+      - source_yaml_id: msrc
+        grade: A
+        role: Remains stale across all six sentinels (9th consecutive parse failure since 2026-05-29 18:00); MSRC content continues to relay via Security Affairs / The Register / SecurityWeek per source-health notes; none carried in-window MSRC content
+      - source_yaml_id: cisa-advisories
+        grade: A
+        role: 30 items in feed total; 0 in-window items across all six sentinels
+      - source_yaml_id: securityweek
+        grade: B
+        provisional: true
+        role: At window-start boundary (last_modified 2026-05-30T16:01:49 GMT); 0 in-window items across all six sentinels
+      - source_yaml_id: krebsonsecurity
+        grade: B
+        role: Pre-window content unchanged (last_modified 2026-05-25T13:21:49 GMT, multi-day cadence); 0 in-window items
+      - source_yaml_id: darkreading
+        grade: B
+        role: Future-dated event-listing rotations (Name That Toon Contest 2026-06-26; Infosecurity Europe 2026-06-02) NOT content; DISCARDED per Mode 1 (same pattern across multiple sentinels)
+      - source_yaml_id: the-record
+        grade: B
+        role: 5 items in feed total; 0 in-window items (Saturday→Sunday weekend quiet cadence)
+      - source_yaml_id: the-register-security
+        grade: B
+        role: 50 items in feed total; 0 in-window items across the surveyed sentinels
+      - source_yaml_id: snyk
+        grade: A
+        role: 1631 items total; 0 in-window items
+      - source_yaml_id: rapid7-feed-server
+        grade: A
+        role: last_modified in-window from feed-server activity but 0 in-window items after since-filter (server-cache refresh, not content addition)
+      - source_yaml_id: industrialcyber-co
+        grade: B
+        role: 3rd consecutive 403 in window (06:00 + AM-31 + PM-31); WAF/Akamai bot-block pattern already documented; held healthy on operator note context (not load-bearing); failure_count approaching stale threshold pending operator decision
+      - source_yaml_id: splunk-archimedes
+        grade: A
+        role: Splunk -8h sweep on PAN-OS + APT28 + MuddyWater + Charming Kitten + UNC1549 + TeamPCP + Exchange CVE-2026-42897 priority IOC superset returned 0 hits across defenseclaw_local + (archimedes NOT sourcetype=archimedes:*); PM-31 sentinel also reported 5 hits on -24h sweep B but all archimedes:operation pipeline self-references (today's morning-31 brief commit 5c27799 + 12:00 FLASH commit 2e13811 + yesterday's afternoon-30 brief commit f0993be — keyword matches on payload content "CVE-2026-0257" / "Vultr" / "Dromatics" inside our own brief metadata, NOT external observations). 17th consecutive dormant non-archimedes-internal stream pattern. Per Hard Rule 8 silence is not disconfirming
+    would_be_digraph: N/A_no_external_claim_being_graded_sentinel_artifact_disposition_record
+    rejection_detail: >
+      This rejection entry is the canonical Sunday-afternoon PM-31
+      sentinel cluster disposition record for the 16:00 EDT 2026-05-31
+      afternoon brief grading pass. The cluster ABSORBS SIX sentinel
+      raw-signal artifacts spanning the full 24h window from the
+      2026-05-30 16:00 EDT afternoon-30 brief publish (commit f0993be)
+      through the 2026-05-31 15:35 EDT PM-31 pre-brief collection
+      complete. All six are internal collection-summary artifacts;
+      none contains an external source claim being graded; the cluster
+      is rejected as a sentinel-class artifact (not a finding-eligible
+      event class) per consistent doctrine pattern matching reject-
+      2026-05-30-0002 (PM-30 sentinel cluster), reject-2026-05-29-0001
+      adjacent precedent, and the AM-28 sentinel sweep absorption
+      pattern in legacy_morning_20260528_080000.
+
+      Verification of collector disposition (Mode 1 procedure step 2):
+
+      (1) IN-WINDOW ITEM SURVEY across all six sentinels. Total
+          in-window content from external sources: SIX items
+          collector-dispositioned in-place during PM-31 sweep, ZERO
+          items in evening + 00:00 + 06:00 + AM-31 + 12:00 sentinels.
+
+          PM-31 in-window items:
+            (a) NVD CVE-2026-10187 Totolik N300RH consumer SOHO router
+                stack-buffer-overflow setWiFiBasicConfig KeyStr CVSS 9.8
+                (15:16 UTC = 11:16 EDT). Consumer-class SOHO router,
+                no A&D nexus, no roster, no tracked CVE. DISCARDED per
+                Mode 1 (same disposition class as Edimax / D-Link /
+                ipTIME / TRENDnet consumer router CVEs across overnight
+                + AM-30 + 00:00 + 06:00 sentinels). Below Trigger 1
+                CVSS 9.0 floor (matches floor numerically but not
+                "widely deployed" enterprise / A&D product for Trigger 6
+                qualification).
+            (b) BleepingComputer WP Maps Pro WordPress plugin bug
+                exploited to create admin accounts (Bill Toulas 14:06
+                UTC = 10:06 EDT). Active exploitation but WordPress
+                plugin, no A&D nexus, no roster, no tracked CVE.
+                DISCARDED per Mode 1.
+            (c) The Hacker News Dutch Authorities Dismantle Botnet
+                Linked to 17 Million Infected Devices (12:22 UTC =
+                08:22 EDT). Dutch Politie + NCSC takedown action,
+                200+ servers seized; no roster actor named, no A&D
+                nexus. DISCARDED per Mode 1.
+            (d) Security Affairs CVE-2026-0257 Rapid7-Caught-Attackers
+                relay (Pierluigi Paganini 17:52 UTC = 13:52 EDT).
+                B-grade trade-press relay of Rapid7 MDR telemetry
+                already in raw-2026-05-30-pm-001 and brief-covered in
+                afternoon-30 + morning-31; reaffirms Rapid7 first wave
+                2026-05-17 01:51 UTC + second wave 2026-05-21 + hostname
+                pairs GP-CLIENT / DESKTOP-GP01 + spoofed MAC
+                aa:bb:cc:dd:ee:ff + Vultr / Dromatics Systems hosting;
+                notably frames Palo Alto's initial medium-severity
+                rating as "Rapid7 disagreed from the start". Provides
+                B2-grade corroborative layer ratifying the existing
+                MDR-telemetry framing but adds no new operational
+                substance — analyst awareness only; below promotion
+                threshold on its own. DISCARDED per Mode 1 +
+                Anti-Noise Rule 1 (covered via AM-31 brief carry-
+                forward + finding-2026-05-29-0004 PAN-OS anchor).
+            (e) Security Affairs Malware Newsletter Round 99 (14:53 UTC
+                = 10:53 EDT) + Round 579 International Edition (14:32
+                UTC = 10:32 EDT). Aggregated link compilations
+                referencing many external primaries (Glassworm
+                CrowdStrike takedown — already absorbed via roster
+                #005 pre-window; FortiClient EMS CVE-2026-35616 EKZ
+                Infostealer — already in corpus via FLASH-1200-2026-
+                05-28; TrapDoor crypto-stealer supply-chain 34 packages
+                across npm + PyPI + Crates.io; Nimbus Manticore Iranian
+                conflict operations Check Point Research; Screening
+                Serpens 2026 Iranian APT espionage campaigns;
+                Lazarus RemotePE fileless RAT; Showboat malware family
+                targeting international telecom firms; Laravel Lang
+                RCE backdoor 700+ versions). DISCARDED per Mode 1 —
+                newsletter-class aggregation not fresh primary
+                research; Hard Rule 2 prevents promotion via secondary
+                newsletter relay. Flagged for orchestrator awareness
+                as potential future raw-signal targets IF underlying
+                A/B-grade primaries (Check Point Research / Kaspersky
+                GReAT / Lazarus-class research) surface within reach
+                windows.
+            (f) SANS ISC YARA-X 1.17.0 Release (16:01 UTC = 12:01 EDT).
+                Defensive tooling release announcement, not threat-
+                intel-class. DISCARDED per Mode 1.
+
+      (2) PER-TRIGGER FLASH EVALUATION (this PM-31 grading run, against
+          the same 6 triggers all four prior FLASH sentinels evaluated
+          and the AM-31 + PM-31 pre-brief sentinels evaluated): 0 of 6
+          fire.
+
+            - Trigger 1 (Critical CVE + active exploitation): NO FIRE.
+              NVD PM-31 8h window returned 1 CRITICAL (CVE-2026-10187
+              Totolik consumer SOHO router CVSS 9.8 — no ITW, no A&D
+              nexus, below "widely deployed" Trigger 6 qualifier). KEV
+              catalog unchanged from afternoon-30 baseline. PAN-OS
+              CVE-2026-0257 carry-forward absorbed via AM-31 brief
+              (Anti-Noise Rule 1 covers; CVSS v4 7.8 below floor
+              regardless on this CVE).
+            - Trigger 2 (New attribution for tracked actor): NO FIRE.
+              0 in-window vendor research items from any A/B-grade
+              source naming a roster actor with NEW attribution.
+              Security Affairs Round 99 references Nimbus Manticore /
+              Screening Serpens / Lazarus RemotePE / Showboat as
+              newsletter links to external primaries NOT directly
+              retrieved this sweep; Hard Rule 2 prevents propagation.
+            - Trigger 3 (First-party IOC hit): NO FIRE. Grader-side
+              Splunk -8h sweep on priority IOC superset (4 PAN-OS IPs
+              + 2 PAN-OS hostnames + GlobalProtect/Vultr/Dromatics +
+              APT28 spray IPs + MuddyWater C2 + roster aliases +
+              TeamPCP + CVE-2026-42897 Exchange — see source list
+              splunk-archimedes role) returned 0 external hits.
+              17th consecutive dormant non-archimedes-internal stream.
+              Per Hard Rule 8 silence is not disconfirming.
+            - Trigger 4 (Tracked-actor TTP change): NO FIRE. 0 in-window
+              A/B-grade primary content on roster TTP change.
+            - Trigger 5 (Active nation-state campaign vs A&D): NO FIRE.
+              0 in-window A&D-named campaign content from any source.
+            - Trigger 6 (Zero-day without patch): NO FIRE. NVD HIGH/
+              CRITICAL bucket across the 24h window contained vendor-
+              coordinated disclosures with patches (no unpatched zero-
+              day signal from A-grade source). Consumer SOHO routers
+              not "widely deployed" in enterprise / A&D context.
+
+      (3) ANTI-NOISE LOCK STATE at PM-31 sweep time (16:00 EDT 2026-
+          05-31):
+            - PAN-OS CVE-2026-0257 (finding-2026-05-29-0004 anchor +
+              AM-31 brief commit 5c27799 status tick) — Anti-Noise
+              Rule 1 covers through ~16:00 EDT today. This PM-31
+              afternoon brief CLEARS the lock; afternoon-31 brief
+              should re-anchor as primary carry-forward update with
+              KEV Monday EOD deadline (T+1 from PM-31 sweep time =
+              ~32 hours) as operational anchor. SecurityAffairs
+              Paganini B-grade relay in window provides B2-grade
+              corroborative ratification of Rapid7-disputed-Palo Alto-
+              medium-severity framing — adds no new operational
+              substance; analyst awareness only.
+            - Oracle CPU May 2026 critical batch (finding-2026-05-29-
+              0003) — no in-window change; carry-forward unchanged.
+            - ChatGPT platform abuse cluster LLMShare + ChatGPhish
+              (finding-2026-05-29-0005) — lock cleared at ~16:00 EDT
+              Friday 2026-05-29; not load-bearing this window.
+            - MSRC / Chaotic Eclipse six-zero-day saga (finding-2026-
+              05-29-0002) — absorbed at AM-29 brief; no in-window
+              change.
+            - CrowdStrike Glassworm takedown (roster #005) — pre-window
+              (2026-05-26); previously absorbed.
+            - CIFSwitch Linux LPE + AP/Polish ABW Russian HUMINT
+              advisory — disposed in-place at 12:00 sentinel Friday;
+              not load-bearing this window.
+            - All AM-31 + AM-30 + PM-30 findings — implicit absorption.
+
+      (4) NO ROSTER ACTOR ATTRIBUTION CHANGES this run. Hard Rule 2
+          enforcement: zero in-window items make first-time actor
+          attribution claims via A/B-grade source. SecurityAffairs
+          newsletter aggregations reference Iranian-conflict (Nimbus
+          Manticore, Screening Serpens) and DPRK (Lazarus RemotePE)
+          and supply-chain (TrapDoor 34 packages) and telecom (Showboat)
+          topics but each is a newsletter link to external primary NOT
+          directly retrieved this sweep — Hard Rule 2 prevents
+          promotion via secondary relay. Orchestrator awareness flag
+          only; collector handoff to direct-retrieve underlying
+          primaries on next pass if A/B-grade reach windows permit.
+
+      (5) NO RED-TEAM REVIEW REQUIRED this run. Zero findings
+          promoted; the existing red-team review on finding-2026-05-
+          29-0004 PAN-OS anchor is unchanged across the window
+          (red-team-DOWN to "likely" on DIB-priority framing per
+          afternoon-30 + morning-31 brief carry-forwards).
+
+      (6) NO ANALYST REVIEW REQUIRED this run. Zero findings promoted.
+          finding-2026-05-29-0004 analyst-review flag (SAT-KAC on
+          Rapid7 no-lateral-movement interpretive ambiguity + three-
+          condition prereq DIB exposed-population shape) remains
+          carried by the existing finding; not re-flagged this run.
+
+      (7) NO FLASH CANDIDATES. All four FLASH sentinels in window
+          (evening operator-triggered + 00:00 + 06:00 + 12:00
+          scheduled) fired 0 of 6 triggers. Aggregate window FLASH
+          posture across the full 24h: clean. Anti-Noise Rule 1 covers
+          all in-window content. PM-31 afternoon brief Sunday-quiet-
+          day template applies.
+
+      Per INTEL-GRADING.md inclusion thresholds: sentinel-class
+      artifacts with zero in-window finding-eligible event-class
+      claims do not clear C3 monitoring inclusion as standalone
+      promotions. Disposition is the canonical sentinel-cluster
+      rejection record. All six raw-signal members updated with
+      rejected_at + rejection_id pointing to this entry.
+
+      Regrade if: (a) PAN-OS CVE-2026-0257 receives a fresh A-grade
+      Tier-1 IR firm corroborating with attribution (Mandiant /
+      Volexity / Unit 42 / MSTIC / CrowdStrike named-group
+      attribution) — would warrant new finding distinct from carry-
+      forward; (b) a named A&D-prime or DIB-tier victim disclosure
+      surfaces — would warrant new finding with red-team review;
+      (c) CVE-2026-0257 CVSS revision to ≥9.0 — would warrant FLASH
+      Trigger 1 reconsideration; (d) any of the Security Affairs
+      newsletter underlying primaries surface directly via A/B-grade
+      reach (Check Point Research Nimbus Manticore Iranian conflict
+      ops; Kaspersky GReAT or similar on Screening Serpens 2026
+      Iranian APT campaigns; Lazarus RemotePE fileless RAT primary;
+      Showboat malware family telecom-targeting primary; TrapDoor
+      crypto-stealer 34-package supply-chain primary) — would warrant
+      fresh raw-signal collection + grading on the underlying primary
+      (not the newsletter aggregation); (e) first-party Splunk hit on
+      any priority IOC across the dormant 17-consecutive-sweep window
+      — would warrant FLASH Trigger 3 fire per Hard Rule 8 first-
+      party precedence.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 41
-  most_recent_run: afternoon-20260529-160000
+  total_rejections: 42
+  most_recent_run: afternoon-20260531-160000
   most_recent_run_rejections: 1
-  most_recent_run_promotions: 2
+  most_recent_run_promotions: 0
   most_recent_run_absorptions: 0
-  most_recent_run_promotion_ids:
+  most_recent_run_promotion_ids: []
+  most_recent_run_absorption_ids: []
+  most_recent_run_rejection_ids:
+    - reject-2026-05-31-0001    # Canonical PM-31 sentinel cluster disposition record absorbing SIX raw-signal members covering full 24h window 2026-05-30 16:00 EDT (post-afternoon-30 brief commit f0993be) through 2026-05-31 15:35 EDT (PM-31 pre-brief collection complete): raw-2026-05-30-flash-evening-cleansweep (operator-triggered ~2h 0/6 commit 2caeb04) + raw-2026-05-31-flash-0000 (scheduled ~6h 0/6 commit 006c201) + raw-2026-05-31-flash-0600 (scheduled ~6h 0/6 commit a2ca2af) + raw-2026-05-31-am (14h pre-brief anchoring morning-31 brief commit 5c27799 with 0 new findings) + raw-2026-05-31-flash-1200 (scheduled ~6h 0/6 commit 2e13811) + raw-2026-05-31-pm (8h pre-brief 0 substantive items). All six are internal collection-summary artifacts; ZERO external claims survived Mode 1 filter to become finding-class candidates. Six in-window items collector-dispositioned in PM-31 8h window: (a) NVD CVE-2026-10187 Totolik consumer SOHO router CVSS 9.8 — no A&D nexus; (b) BC WP Maps Pro WordPress plugin admin-account exploitation — no A&D; (c) THN Dutch Politie/NCSC 17M-device botnet takedown — no roster / A&D; (d) Security Affairs Paganini CVE-2026-0257 relay — B-grade trade-press corroborative layer on existing PAN-OS carry-forward, no new operational substance; (e) Security Affairs Round 99 + Round 579 newsletter aggregations — link compilations not fresh primary research; (f) SANS ISC YARA-X 1.17.0 release — defensive tooling. All four FLASH sentinels in window fired 0 of 6 triggers; AM-31 + PM-31 pre-brief sentinels 0 substantive items each. Anti-Noise Rule 1 covers PAN-OS CVE-2026-0257 carry-forward; PM-31 afternoon brief should re-anchor as primary carry-forward update with KEV Monday EOD T+1 deadline (2026-06-01 = ~32 hours from PM-31 sweep). Grader-side Splunk -8h sweep on PAN-OS + APT28 + MuddyWater + Charming Kitten + UNC1549 + TeamPCP + Exchange CVE-2026-42897 priority IOC superset returned 0 hits across defenseclaw_local + (archimedes NOT sourcetype=archimedes:*); 17th consecutive dormant non-archimedes-internal stream. No FLASH candidates; no roster attribution changes; no red-team review required; no analyst review required (zero promotions). Hard Rule 2 enforcement: SecurityAffairs newsletter references to Nimbus Manticore Iranian conflict ops / Screening Serpens 2026 Iranian APT campaigns / Lazarus RemotePE fileless RAT / Showboat telecom-targeting malware / TrapDoor crypto-stealer 34-package supply-chain compromise are newsletter links to external primaries NOT directly retrieved this sweep — orchestrator awareness flag only; collector handoff to direct-retrieve underlying primaries on next pass if A/B-grade reach windows permit.
+  most_recent_run_note: >
+    afternoon-20260531-160000 grading processed SIX raw-signal items
+    from the 24h window 2026-05-30T16:00 EDT (post-afternoon-30 brief
+    publish commit f0993be) through 2026-05-31T15:35 EDT (PM-31 pre-
+    brief collection complete). All six are sentinel-class artifacts
+    with promoted=false and no external source claim being graded:
+
+      - raw-2026-05-30-flash-evening-cleansweep (operator-triggered
+        evening FLASH 2026-05-30 18:05 EDT, ~2h window, 0/6 triggers
+        fired, commit 2caeb04)
+      - raw-2026-05-31-flash-0000-000-sentinel-clean-sweep (canonical
+        scheduled FLASH 00:05 EDT, ~6h window, 0/6, commit 006c201)
+      - raw-2026-05-31-flash-0600-000-sentinel-clean-sweep (canonical
+        scheduled FLASH 06:05 EDT, ~6h window, 0/6, commit a2ca2af)
+      - raw-2026-05-31-am-000-sentinel-pre-brief-sweep (AM-31 pre-brief
+        collector sentinel 07:32 EDT, 14h pre-brief window, anchoring
+        morning-31 brief commit 5c27799 published with 0 new findings)
+      - raw-2026-05-31-flash-1200-000-sentinel-clean-sweep (canonical
+        scheduled FLASH 12:05 EDT, ~6h window, 0/6, commit 2e13811)
+      - raw-2026-05-31-pm-000-sentinel-pre-brief-sweep (PM-31 pre-brief
+        collector sentinel 15:35 EDT, 8h pre-brief window, this run's
+        primary disposition target)
+
+    All six absorbed into reject-2026-05-31-0001 as the canonical
+    Sunday-afternoon PM-31 sentinel cluster disposition record per
+    consistent doctrine pattern (matching reject-2026-05-30-0002 PM-30
+    sentinel cluster, the AM-28 sentinel sweep absorption pattern in
+    legacy_morning_20260528_080000, and adjacent reject-2026-05-29-0001
+    precedent). Disposition reason: sentinel-class artifacts with zero
+    in-window finding-eligible event-class claims do not clear C3
+    monitoring inclusion as standalone promotions.
+
+    Zero promotions this run. Zero absorptions this run. One rejection
+    (the cluster disposition record itself).
+
+    In-window external content surveyed (collector-dispositioned in
+    place across all six sentinels): six items in PM-31 8h window
+    only — NVD CVE-2026-10187 Totolik consumer SOHO router CVSS 9.8
+    (15:16 UTC, consumer-class no-A&D-nexus); BleepingComputer WP
+    Maps Pro WordPress plugin admin-account creation exploitation
+    (14:06 UTC Bill Toulas, no-A&D); The Hacker News Dutch Politie+
+    NCSC 17M-device botnet takedown 200+ servers seized (12:22 UTC,
+    no roster / no A&D); Security Affairs Paganini CVE-2026-0257
+    Rapid7-Caught-Attackers relay (13:52 UTC, B-grade trade-press
+    corroborative layer on existing PAN-OS carry-forward — ratifies
+    Rapid7-disputed-Palo Alto-medium-severity framing; adds no new
+    operational substance; analyst awareness only); Security Affairs
+    Malware Newsletter Round 99 (10:53 UTC) + Round 579 International
+    Edition (10:32 UTC) — newsletter-class link compilations, not
+    fresh primary research; Hard Rule 2 prevents promotion via
+    secondary newsletter relay; flagged for orchestrator awareness
+    on Nimbus Manticore Iranian conflict ops (Check Point Research)
+    + Screening Serpens 2026 Iranian APT espionage campaigns
+    (Kaspersky GReAT or similar) + Lazarus RemotePE fileless RAT
+    + Showboat malware family telecom-targeting + TrapDoor 34-
+    package crypto-stealer supply-chain compromise as potential
+    future raw-signal targets IF underlying primaries surface
+    within A/B-grade reach windows; SANS ISC YARA-X 1.17.0 release
+    announcement (16:01 UTC, defensive tooling). AM-31 14h window
+    also produced zero substantive items per AM-31 sentinel summary
+    (morning-31 brief shipped 0 new findings, PAN-OS T+1 status tick
+    only). All four FLASH sentinels (evening operator-triggered +
+    00:00 + 06:00 + 12:00 scheduled) fired 0 of 6 triggers; aggregate
+    24h window FLASH posture: clean across all four sentinels.
+
+    Anti-noise lock state at PM-31 sweep time (16:00 EDT 2026-05-31):
+      - PAN-OS CVE-2026-0257 carry-forward (finding-2026-05-29-0004
+        + AM-31 brief commit 5c27799 status tick) — Anti-Noise Rule 1
+        covers through ~16:00 EDT today; PM-31 afternoon brief CLEARS
+        the lock and re-anchors as primary carry-forward update with
+        KEV federal compliance deadline Monday 2026-06-01 EOD = T+1
+        from PM-31 sweep time (~32 hours) as operational anchor.
+        SecurityAffairs B-grade Paganini relay in window provides
+        corroborative layer ratifying Rapid7-disputed framing;
+        analyst awareness only, below promotion threshold.
+      - Oracle CPU May 2026 critical batch (finding-2026-05-29-0003)
+        — unchanged carry-forward; no in-window change.
+      - ChatGPT platform abuse cluster (finding-2026-05-29-0005)
+        LLMShare + ChatGPhish — lock cleared at ~16:00 EDT Friday
+        2026-05-29; not load-bearing this window.
+      - MSRC / Chaotic Eclipse six-zero-day saga (finding-2026-05-
+        29-0002) — absorbed at AM-29 brief; unchanged.
+      - CrowdStrike Glassworm takedown (roster #005) — pre-window
+        (2026-05-26); previously absorbed.
+      - CIFSwitch Linux LPE + AP/Polish ABW Russian HUMINT advisory
+        — disposed in-place at 12:00 sentinel Friday; unchanged.
+      - All AM-31 + AM-30 + PM-30 findings — implicit absorption.
+
+    Grader-side first-party Splunk -8h sweep on priority IOC superset
+    (4 PAN-OS IPs + 2 PAN-OS hostnames + GlobalProtect / Vultr /
+    Dromatics / CVE-2026-0257 / CVE-2026-42897 + APT28 spray IPs
+    70.34.253.247 + 91.149.253.118 + MuddyWater C2 179.43.177.220
+    + roster aliases MuddyWater / UNC1549 / Charming Kitten / APT28
+    + TeamPCP) returned 0 external hits across defenseclaw_local +
+    (archimedes NOT sourcetype=archimedes:*). PM-31 sentinel also
+    reported 5 hits on -24h sweep B but all archimedes:operation
+    pipeline self-references (today's morning-31 brief commit
+    5c27799 + 12:00 FLASH commit 2e13811 + yesterday's afternoon-30
+    brief commit f0993be — keyword matches on payload content inside
+    our own brief and finding metadata, NOT external observations).
+    17th consecutive dormant non-archimedes-internal stream pattern.
+    Per Hard Rule 8 silence is not disconfirming. Trigger 3 NO FIRE.
+
+    NO FINDINGS carry analyst_review_required flag this run (zero
+    promotions; finding-2026-05-29-0004 existing flag on PAN-OS
+    SAT-KAC carries over unchanged via the existing finding, not
+    re-set this run). NO FINDINGS carry red_team_review_required
+    flag this run (zero promotions; finding-2026-05-29-0004 existing
+    red-team review already executed and DOWN-graded to "likely" on
+    DIB-priority framing per afternoon-30 + morning-31 brief carry-
+    forwards). NO FLASH-WORTHY items discovered (rare-on-scheduled-
+    PM expected behavior confirmed; all four in-window FLASH
+    sentinels 0/6 clean).
+
+    NO source-grade revisions proposed this run. NO new provisional-
+    source first-citations this run. NO new roster actor attribution
+    changes (Hard Rule 2 enforcement: SecurityAffairs newsletter
+    references to Iranian-conflict + DPRK + supply-chain + telecom
+    topics are newsletter links to external primaries NOT directly
+    retrieved this sweep; orchestrator awareness flag only).
+
+    Vuln-tracker handoffs this run: NONE. PAN-OS CVE-2026-0257
+    dossier (VT-2026-0257 scaffold from PM-29 finding-2026-05-29-
+    0004) remains carry-forward; T+1 KEV deadline status tick is
+    briefer's update-block carry-forward content, not vuln-tracker
+    state-transition event.
+
+    Briefer-orchestrator handoffs:
+      - PRIMARY: PM-31 afternoon brief should re-anchor on PAN-OS
+        CVE-2026-0257 carry-forward as the operational anchor with
+        KEV federal compliance Monday 2026-06-01 EOD = T+1 framing.
+        SecurityAffairs Paganini B-grade trade-press relay provides
+        corroborative ratification of Rapid7-disputed-Palo Alto-
+        medium-severity framing — incorporate as one-line corroborative
+        note in update block; do NOT treat as new finding-class event.
+      - Routine carry-forward at briefer discretion: Oracle CPU May
+        2026 batch; ChatGPT platform abuse cluster; MSRC Chaotic
+        Eclipse saga; CrowdStrike Glassworm takedown; CIFSwitch Linux
+        LPE; AP/Polish ABW Russian HUMINT advisory.
+      - Iran Cyber Watch / A&D standing sections: silent-day templates
+        apply absent fresh primary content. SecurityAffairs newsletter
+        references to Nimbus Manticore Iranian conflict ops + Screening
+        Serpens 2026 Iranian APT espionage campaigns are eligible for
+        orchestrator-awareness one-line mention IF briefer wants to
+        flag potential collector-handoff targets; NOT briefer's role
+        to promote these via newsletter aggregation.
+
+    Collector handoffs:
+      - DIRECT-RETRIEVE underlying primaries for SecurityAffairs
+        Round 99 referenced topics on next sweep where reach permits:
+        Check Point Research Nimbus Manticore Iranian conflict ops;
+        Kaspersky GReAT (or similar A/B-grade) Screening Serpens
+        2026 Iranian APT espionage campaigns; Lazarus RemotePE
+        fileless RAT primary; Showboat malware family telecom-
+        targeting primary; TrapDoor crypto-stealer 34-package supply-
+        chain primary spanning npm + PyPI + Crates.io. Direct-
+        retrieval would transform secondary-newsletter-relay into
+        primary-source grading eligibility per Hard Rule 2.
+      - INDUSTRIAL CYBER 403 stale-flip threshold: 3rd consecutive
+        403 across 06:00 + AM-31 + PM-31 sweeps. failure_count
+        approaching stale flip; operator decision pending whether
+        to flip stale or maintain held-healthy status given B-grade
+        media sanity-check not load-bearing; recommend operator
+        decision on next sweep if pattern continues.
+
+    Pre-flight enforcement confirmed all six raw-signal members have
+    test: false in frontmatter. NO findings carry test: true flag.
+
+  # Prior run preserved below
+  legacy_afternoon_20260529_160000:
+    most_recent_run: afternoon-20260529-160000
+    most_recent_run_rejections: 1
+    most_recent_run_promotions: 2
+    most_recent_run_absorptions: 0
+    most_recent_run_promotion_ids:
+      - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due-DEMOTED-TO-LEGACY-PRESERVATION
+      - finding-2026-05-29-0005-bleepingcomputer-thn-push-security-permiso-llmshare-malvertising-chatgphish-renderer-trust-paired-chatgpt-platform-abuse-research-class-DEMOTED-TO-LEGACY-PRESERVATION
+    most_recent_run_absorption_ids: []
+    most_recent_run_rejection_ids:
+      - reject-2026-05-29-0001-DEMOTED-TO-LEGACY-PRESERVATION
+    legacy_note: "Per-run metadata preserved for run-trail continuity. Full per-finding context for the afternoon-29 run is preserved via finding-2026-05-29-0004 + finding-2026-05-29-0005 + 2026-05-29-afternoon brief frontmatter + reject-2026-05-29-0001 rejection record. Superseded by PM-31 active run above."
+
+  # Legacy block preserved below — original afternoon-29 promotion entries verbatim follow this _meta block for compatibility with downstream tooling that may still parse the original keys; primary state is the current PM-31 run above
+  legacy_afternoon_20260529_160000_verbatim_promotion_ids:
     - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due      # Afternoon brief 16:00 EDT - Rapid7 (A provisional) + CISA KEV (A) + Palo Alto Networks PSIRT (NEW first-citation provisional A vendor-on-own-product) three independent A-grade primaries converge in 3-hour window on CVE-2026-0257 PAN-OS GlobalProtect authentication bypass; Rapid7 MDR first-party observed exploitation "across numerous customers" since 2026-05-17 with "no indication of successful lateral movement" and IOC publication (4 IPv4 + 2 machine names + 1 spoofed placeholder MAC + 2 commodity hosting providers); CISA KEV catalog republished 2026-05-29 with aggressive 3-day federal compliance due date 2026-06-01 (Monday); Palo Alto PSIRT vendor first-person attestation "limited exploit attempts on unpatched PAN-OS devices without mitigations applied"; vendor-assigned CVSS v4 7.8 medium but Rapid7 explicitly recommends "treat as critical"; state transition on previously known-but-procedurally-quiet CVE (advisory existed since 2026-05-13 T+16 days); three-condition exploitability prerequisite (auth-override enabled + CAS disabled + reused override-cookie cert) is non-default = exposed population narrower than full PAN-OS deployed base; NO actor attribution; NO named A&D-prime victim; structural DIB relevance HIGH (PAN-OS GlobalProtect dominant enterprise SSL VPN edge appliance) but exposed population skews tier-2 subsupplier legacy / migration-in-progress / SMB-lower-maturity deployments; Splunk -30d 0 hits across full IOC set on both indices (48th consecutive dormant non-self sweep). Cluster digraph A2 (three independent A-grade primaries on procedural layer; A2 cluster anchor takes conservative grade reflecting somewhat softer independence on exact volume/scope of exploitation claim — CISA KEV may have incorporated Rapid7 telemetry; Palo Alto "limited exploit attempts" hedge does not fully corroborate Rapid7 "across numerous customers" stronger framing); credibility 2 Probably True; single-source veto does NOT apply on cluster anchor (multi-source); WEP ceiling very_likely on procedural ITW state transition + critical-priority patch posture; likely on Rapid7 single-IR-firm volume claim + no-lateral-movement interpretive layer + structural-DIB-exposure framing; roughly_even_chance on Tier-1 IR-firm attribution corroboration within 30 days. Trigger 1 (FLASH) marginal-fail on CVSS-floor (7.8 < 9.0); Trigger evaluation in PM-000 sentinel 0/6 fire (no FLASH override). Eligible for daily_brief_action + weekly_synthesis + vuln_tracker_handoff (CVE-2026-0257 NEW dossier scaffold; NOT in _index.yaml; distinct from ZD-004 CVE-2026-0300). analyst_review_required true (SAT-KAC on Rapid7 no-lateral-movement interpretive ambiguity + three-condition prereq DIB exposed-population shape); red_team_review_required true (WEP very_likely on ITW state transition warrants challenge per doctrine threshold; four specific layers flagged). Librarian handoffs: add palo-alto-psirt to source-grades.yaml at provisional A with full proposal block (precedent: cisco-psirt + f5-psirt + kernel-org-netdev + openai-self-disclosure + github-self-disclosure + litespeed-self-disclosure); post source-grade-log.md entry; flag for #actor-review human ratification per provisional-A workflow. Rapid7 second-24h-surface after Gogs (Jonah Burgess byline yesterday; MDR institutional byline today) strengthens case for full-A ratification at next review cycle.
     - finding-2026-05-29-0005-bleepingcomputer-thn-push-security-permiso-llmshare-malvertising-chatgphish-renderer-trust-paired-chatgpt-platform-abuse-research-class      # Afternoon brief 16:00 EDT - BleepingComputer (B) relay of Push Security (NEW first-citation provisional B) LLMShare malvertising campaign + The Hacker News (B provisional) relay of Permiso Security (NEW first-citation provisional B; Andi Ahmeti byline) ChatGPhish renderer-trust vulnerability — paired ChatGPT platform-abuse research surfacings within 14-minute window (BC 18:21:36 UTC; THN 18:07:12 UTC) on two DISTINCT mechanism classes. LLMShare: ChatGPT shared-link feature (chatgpt.com/s/) abused to display fake OpenAI outage notice on legitimate chatgpt.com domain → redirect via initial Google ads access to malware disguised as ChatGPT desktop app (macOS + Windows samples; Windows exhibits VM-detection); 3 IOCs published (openew[.]app domain + 2 SHA-256 hashes verified via VirusTotal). ChatGPhish: ChatGPT response renderer implicitly trusts Markdown links and images from summarized third-party web pages, enabling prompt-injection-and-phishing via attacker-controlled summarized pages; auto-image-fetch exposes user IP/UA/Referer; clickable malicious Markdown rendered live; potential for fake system-style security alerts in trusted AI interface; vulnerability-class disclosure with NO CVE assigned + NO OpenAI response timeline detail in THN summary; researcher-coined working name. NEITHER vendor attributes; BOTH media-tier relays preserve unattributed framing per Hard Rule 2; LLMShare and ChatGPhish are explicit researcher-coined working names per Hard Rule 2 framing. NO A&D-prime named target either side. NO tracked CVE either side. Cluster digraph B3 (paired media-tier B-grade relays of provisional-B vendor-research first-citations; each arm single-source per independence-test fail — BC cites Push Security as origin, THN cites Permiso as origin; per-arm single-source veto applies; Push Security and Permiso are independent of each other but cover DIFFERENT mechanism classes so do NOT corroborate either's individual claim; two-paired-surfacings is cluster-context pattern not independent corroboration); credibility 3 Possibly True per arm; single-source veto applies per-arm; WEP ceiling capped at "likely" on each arm's individual claim layer; very_likely on procedural disclosure-existence; roughly_even_chance on third-comparable-LLM-platform-abuse-surface-within-14-days standing-section addition heuristic. Eligible for daily_brief_monitoring + weekly_synthesis ONLY; ineligible for flash + daily_brief_action + actor_profile_update + vuln_tracker_handoff (no CVE, commodity-research class). analyst_review_required false (research-class disclosure on two distinct vulnerability/abuse classes; standard SAT topics not load-bearing; optional SAT-KAC on cross-cluster AI-platform-abuse pattern-of-interest + A&D-prime employee exposure framing); red_team_review_required false (WEP caps at likely per per-arm single-source veto). Librarian handoffs: add push-security AND permiso-security to source-grades.yaml at provisional B with full proposal blocks (peer class: StepSecurity / Socket / Sysdig / Zellic / Aikido / Ox / Upwind / Arctic Wolf); post source-grade-log.md entries; flag both for #actor-review ratification per provisional-B workflow. Collector handoff: direct-retrieve Permiso primary write-up URL on ChatGPhish next pass (not captured in THN coverage). Briefer-orchestrator handoff: standing-section addition heuristic at three-in-19-days boundary (two surfaces today + finding-2026-05-10-0001 claude.ai/share/ MacSync); if third comparable LLM-platform-abuse surface lands in next 14 days, propose watch-config.yaml "AI Platform Security" standing section per ad-sector + iran-cyber precedent.
   most_recent_run_absorption_ids: []

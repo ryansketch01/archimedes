@@ -35,6 +35,9 @@ iocs_extracted: false
 iocs_count: 0
 text_word_count: 1185
 promoted: false
+rejected_at: 2026-05-31T16:10:00-04:00
+rejection_id: reject-2026-05-31-0001
+rejection_disposition: sentinel_artifact_absorbed_into_canonical_pm31_cluster
 ttl_expires_at: 2026-08-29T00:05:00-04:00
 test: false
 quiet_hours_active: true

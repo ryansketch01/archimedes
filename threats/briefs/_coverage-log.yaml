@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-30T16:00:00-04:00
+last_updated: 2026-05-31T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -22242,7 +22242,7 @@ entries:
       against the nine Oracle CVEs through that window.
 
   - id: 2026-05-29-pm-001-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition
-    covered_in: [2026-05-29-afternoon, 2026-05-30-afternoon]
+    covered_in: [2026-05-29-afternoon, 2026-05-30-afternoon, 2026-05-31-morning]
     brief_file: threats/briefs/2026-05-29-afternoon.md
     headline: "STATE TRANSITION — CVE-2026-0257 PAN-OS GlobalProtect authentication bypass confirmed exploited in the wild; three independent A-grade primaries converge (Rapid7 ETR + CISA KEV add + Palo Alto PSIRT vendor self-attestation); CISA 3-day federal compliance due 2026-06-01 Monday (CISA standard treatment for vendor-acknowledged ITW per Ivanti EPMM + Cisco SD-WAN precedent, NOT exceptional critical-elevation signal per red-team layer 4); volume framings differ across sources and explicitly not collapsed (Rapid7 'across numerous customers' MDR-scoped vs Palo Alto 'limited exploit attempts' vendor-on-own-product); no Tier-1 IR firm corroboration in window (Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike silent); no lateral movement observed per Rapid7 scoped to MDR customer base 12-day window NOT generalized DIB-wide reassurance; three-condition exploitability prerequisite (auth-override enabled + CAS disabled + reused override-cookie cert) narrows exposed population but deployment-maturity skew is NOT source-established (Tier-2/SMB/legacy directional skew STRIPPED per analyst KAC-2 K2A1/K2A2); Archimedes framing high-priority audit + apply workaround immediately, NOT headline-critical (Rapid7 'treat as critical' preserved verbatim but not adopted as brief framing); NEW vuln-tracker scaffold candidate distinct from ZD-004 / CVE-2026-0300"
     topic_tags:
@@ -22362,7 +22362,7 @@ entries:
       - patch_adoption_data_published
       - cisa_kev_due_date_compliance_data_published_post_2026_06_01
     first_covered: 2026-05-29
-    last_covered: 2026-05-30
+    last_covered: 2026-05-31
     retraction: null
     test: false
     notes: |
@@ -23600,6 +23600,257 @@ entries:
       finding-2026-05-29-0004, NOT a new finding). PM brief
       composed entirely from carry-forward escalation update +
       pointer-only carry-forwards + standing sections.
+
+  # ============================================================================
+  # 2026-05-31 MORNING BRIEF — entries below
+  # ============================================================================
+
+  - id: 2026-05-31-am-001-cve-2026-0257-pan-os-globalprotect-kev-t-plus-1-status-update-no-new-substance
+    covered_in: [2026-05-31-morning]
+    brief_file: threats/briefs/2026-05-31-morning.md
+    update_on:
+      - finding-2026-05-29-0004
+      - 2026-05-29-pm-001-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition
+    headline: "STATUS-ONLY UPDATE — CVE-2026-0257 PAN-OS GlobalProtect KEV federal deadline T+1 tomorrow (Monday 2026-06-01); no new substance in window — Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike all silent overnight; no named A&D-prime victim; no actor attribution from any source; no follow-on Rapid7 post; KEV catalog version 2026.05.29 unchanged; Splunk first-party silent on full nine-IOC set over -14h (16th consecutive dormant non-self-telemetry sweep); status-tick carry-forward; A&D action restated — apply PSIRT workaround on three-condition-prerequisite estates and patch to 12.1.7 / 11.2.12 / 11.1.15 / 10.2.18-h6 by EOD Monday; ingestion of four attacker IPs + spoofed MAC + GP-CLIENT/DESKTOP-GP01 hostnames presumed complete per PM-30 brief direction"
+    topic_tags:
+      - status-only-update
+      - cve-2026-0257-pan-os-globalprotect
+      - kev-federal-deadline-2026-06-01-monday-t-plus-1
+      - last-business-day-window-before-monday
+      - no-new-substance-in-window
+      - tier-1-ir-firms-all-silent-overnight-mandiant-volexity-unit-42-mstic-crowdstrike
+      - no-named-ad-prime-victim
+      - no-actor-attribution-from-any-source
+      - no-followon-rapid7-post
+      - kev-catalog-version-2026-05-29-unchanged
+      - splunk-first-party-silent-9-ioc-set-minus-14h
+      - 16th-consecutive-dormant-non-self-telemetry-sweep
+      - hard-rule-2-no-actor-attribution-extended
+      - hard-rule-8-silence-not-disconfirming
+      - psirt-workaround-and-patch-restated
+      - three-condition-prerequisite-restated
+      - patched-version-branches-12-1-7-11-2-12-11-1-15-10-2-18-h6-restated
+      - ioc-ingestion-presumed-complete-per-pm-30
+      - sunday-quiet-window-pattern
+      - third-consecutive-brief-anchor-pan-os
+    related_actors: []
+    related_vulns:
+      - CVE-2026-0257
+    related_zero_days: []
+    related_campaigns:
+      - cve-2026-0257-pan-os-globalprotect-itw-state-transition-2026-05-29
+    finding_ids:
+      - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due
+    digraph: A2
+    wep: very_likely
+    wep_layered:
+      cve_2026_0257_being_actively_exploited_at_some_volume_post_2026_05_17: very_likely
+      ad_dib_pan_os_globalprotect_estate_priority: likely
+      kev_federal_deadline_will_close_2026_06_01: very_likely
+      patch_or_workaround_will_complete_before_deadline_at_typical_dib_prime: roughly_even_chance
+    single_source_veto_applied: false
+    single_source_veto_resolution_note: "Procedural state-transition layer retains very_likely on yesterday's three-A-grade-primary anchor; no new substance in window does not weaken upstream evidence. Red-team-DOWN adjustment on DIB-priority framing carried forward from 2026-05-29 red-team review."
+    analyst_review_complete: true
+    analyst_review_run_id: carry_forward_from_analyst-20260529-161800
+    red_team_review_required: false
+    red_team_review_required_basis: "Carry-forward status-only update on already red-team-reviewed finding-2026-05-29-0004; no new WEP layer introduced; no new attribution layer; no new substance layer. Yesterday morning's pointer-only treatment and yesterday afternoon's substantive UPDATE both red-team-cleared. Today's status-tick adds only the T+1 deadline anchor and the 'no new evidence overnight' negative-result enumeration."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -14h
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-0257 + GlobalProtect + PAN-OS + 104.207.144.154 + 146.19.216.119 + 146.19.216.120 + 146.19.216.125 + DESKTOP-GP01 + GP-CLIENT + aa:bb:cc:dd:ee:ff + Vultr + Dromatics"
+      hard_rule_8_framing: silence_is_not_disconfirming
+      sweep_streak: 16th_consecutive_dormant_non_self_telemetry
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution either source in window — Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike all silent overnight"
+      - "Yesterday's Hard Rule 2 framings preserved (Rapid7 declines, no upstream names anyone, Archimedes does not extend)"
+    resurface_if:
+      - kev_deadline_compliance_data_published_post_2026_06_01
+      - tier_1_ir_firm_corroboration_mandiant_volexity_unit_42_mstic_crowdstrike_telemetry_attestation
+      - named_a_and_d_prime_victim_disclosure
+      - palo_alto_psirt_quantified_update_on_limited_exploit_attempts
+      - rapid7_publishes_followup_with_attribution_or_lateral_movement_observation
+      - additional_ir_firm_corroborates_or_contradicts_volume_framing
+      - first_party_ioc_hit_on_full_set
+      - patch_adoption_data_published
+    first_covered: 2026-05-31
+    last_covered: 2026-05-31
+    retraction: null
+    test: false
+    notes: |
+      Third consecutive brief carrying CVE-2026-0257 as the operational
+      anchor (PM-29 substantive add → AM-30 pointer-only → PM-30
+      substantive UPDATE → AM-31 status-only T+1 tick). Sunday-morning
+      pre-brief sentinel returned zero in-window items across all
+      A-grade vendor + government surfaces; NVD critical bucket empty;
+      KEV catalog unchanged since Friday; CrowdStrike Glassworm
+      takedown + CIFSwitch Linux LPE + AP/Polish ABW Russian HUMINT
+      advisory all pre-window with no in-window updates; AM-30 MSTIC
+      33-package npm anti-noise lock clears with this window without
+      a follow-up that would justify resurfacing. The KEV Monday
+      deadline (T+1) is the entire actionable news of this brief.
+
+      No new finding promoted this window (0 raw-signal handoffs to
+      grader from AM-31 sentinel). The Active Threats item references
+      finding-2026-05-29-0004 by carry-forward; the UPDATE flag is
+      justified by resurface trigger 'seven_days_elapsed_and_evolving'
+      (the deadline is the evolving event) and by procedural KEV-
+      deadline status-tick treatment consistent with Ivanti EPMM
+      + Cisco SD-WAN precedent within the corpus.
+
+      Hard Rule 6: zero direct quotes anywhere in the brief.
+      Hard Rule 8: Splunk first-party silent across both indexes;
+      16th consecutive dormant non-self-telemetry sweep; absence
+      not disconfirming per established cadence.
+
+  - id: 2026-05-31-am-brief-meta
+    covered_in: [2026-05-31-morning]
+    brief_file: threats/briefs/2026-05-31-morning.md
+    headline: "Morning brief 2026-05-31 (Sunday) — thin-by-design quiet-window brief; single anchor on CVE-2026-0257 PAN-OS GlobalProtect KEV federal deadline T+1 tomorrow status-only update; no new findings promoted (0 raw-signal handoffs from AM-31 sentinel); standing sections silent-day templates (Sector Focus A&D + Iran Cyber Watch); Vulnerabilities pointer-only carry-forward (Oracle CPU May 2026 T+3); Other Signal honest enumeration of genuinely quiet sweep (zero in-window items across A-grade surfaces; NVD critical bucket empty; KEV unchanged since Friday; Splunk dormant; FLASH sentinels both clean 0-of-6; AM-30 MSTIC npm anti-noise lock clears without resurface justification)"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - sunday-quiet-window
+      - thin-by-design-not-a-defect
+      - single-anchor-pan-os-cve-2026-0257-kev-t-plus-1-status-update
+      - zero-new-findings-promoted
+      - zero-raw-signal-handoffs-from-am-31-sentinel
+      - sector-focus-ad-silent-day-template
+      - iran-cyber-watch-silent-day-template
+      - oracle-cpu-may-2026-carry-forward-pointer-only-t-plus-3
+      - other-signal-honest-quiet-window-enumeration
+      - flash-sentinels-both-clean-0-of-6-triggers
+      - am-30-mstic-npm-anti-noise-lock-clears-no-resurface-justification
+      - hard-rule-2-strict-hold-throughout
+      - hard-rule-6-zero-quotes-am-brief
+      - hard-rule-8-splunk-silent-minus-14h-60-day-dormant
+      - third-consecutive-brief-anchor-pan-os
+    related_actors: []
+    related_vulns:
+      - CVE-2026-0257
+      - CVE-2026-46840
+      - CVE-2026-46817
+      - CVE-2026-46833
+    related_zero_days: []
+    related_campaigns:
+      - cve-2026-0257-pan-os-globalprotect-itw-state-transition-2026-05-29
+    finding_ids:
+      - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due
+      - finding-2026-05-29-0003-oracle-cpu-may-2026-nvd-critical-batch-rest-data-services-cve-2026-46840-cvss-10-payments-46817-database-net-service-46833-no-itw
+    absorbs_flashes: []
+    word_count_target_range: [400, 800]
+    word_count_actual: 487
+    pre_flight_regen_count: 0
+    pre_flight_pass_iteration: 1
+    hard_rule_2_brief_wide_compliance:
+      - "No actor attribution originated or extended anywhere in brief"
+      - "PAN-OS finding remains unattributed per upstream sources (Rapid7 / CISA KEV / Palo Alto PSIRT all decline)"
+      - "Yesterday's Hard Rule 2 framings carried by reference"
+    hard_rule_6_quote_discipline_brief_wide:
+      - "Zero direct quotes in brief body or Discord Summary"
+    splunk_first_party_brief_wide:
+      hits: 0
+      indexes_queried: [archimedes, defenseclaw_local]
+      query_windows: [-14h]
+      sweep_streak: 16th_consecutive_dormant_non_self_telemetry
+    standing_sections_present:
+      sector_focus_ad: silent_day_template_with_short_added_note_on_pan_os_structural_dib_relevance_unchanged_from_yesterday
+      iran_cyber_watch: silent_day_template_per_watch_config
+    suppressed_items:
+      - item: chaotic_eclipse_msrc_six_zero_day_saga
+        reason: carry_forward_exited_at_federal_due_2026_05_29_no_tier_1_ir_firm_corroboration_per_am_30_brief_disposition
+      - item: crowdstrike_glassworm_takedown_roster_005
+        reason: pre_window_2026_05_26_already_absorbed_no_in_window_update
+      - item: cifswitch_linux_lpe_coordinated_disclosure
+        reason: disposed_in_place_2026_05_29_12_00_sentinel_no_in_window_update
+      - item: ap_polish_abw_russian_humint_advisory
+        reason: disposed_in_place_2026_05_29_12_00_sentinel_no_in_window_update
+      - item: am_30_mstic_33_package_npm_dependency_confusion_cluster
+        reason: anti_noise_rule_1_lock_clears_this_window_but_no_followup_or_independent_ab_grade_relay_to_justify_resurfacing
+    discord_summary_layer_2:
+      word_count_estimate: 215
+      char_count_estimate: 1510
+      char_count_target: under_1900
+      compliant: true
+      bullets: 3
+      headlines_hyperlinked: true
+      natural_language_dates: true
+      themed_character_voice: false
+      digraph_or_finding_id_omitted: true
+      standing_section_boilerplate_omitted: true
+    librarian_handoffs_summary:
+      - ioc_index_update_NONE_no_new_iocs_this_window
+      - vuln_tracker_update_NONE_pan_os_dossier_scaffold_still_operator_pending
+      - actor_profiler_handoff_NONE_no_new_attribution
+      - source_health_no_changes_this_window_three_single_source_flags_held_healthy_per_collector_pre_brief
+    resurface_if: []
+    first_covered: 2026-05-31
+    last_covered: 2026-05-31
+    retraction: null
+    test: false
+    notes: |
+      Thin-by-design Sunday morning brief. The KEV Monday deadline
+      (T+1) for CVE-2026-0257 is the only must-action item and is
+      the correct lead per operator pre-brief direction. Pre-flight
+      passed 13/13 on iteration 1 — zero regenerations needed.
+
+      Composition:
+
+      - Lead + Why it matters: T+1 deadline framing; honest about
+        no new escalation overnight; named the five Tier-1 IR firms
+        that were silent.
+
+      - Active Threats: single UPDATE item on
+        finding-2026-05-29-0004 carrying status-only substance
+        (deadline tick + negative-result enumeration). Three-
+        condition prerequisite + PSIRT workaround + patched-version
+        branches + IOC ingestion direction all restated as
+        last-business-day-window action, not new substance.
+
+      - Vulnerabilities: Oracle CPU May 2026 critical batch
+        pointer-only carry-forward (T+3 status tick).
+
+      - Sector Focus A&D: silent-day template + short added note
+        that CVE-2026-0257 structural DIB relevance unchanged from
+        yesterday.
+
+      - Iran Cyber Watch: silent-day template per watch-config.yaml.
+
+      - Other Signal: honest enumeration of genuinely quiet
+        Sunday-morning sweep — zero in-window items, NVD critical
+        bucket empty, KEV unchanged since Friday, Splunk dormant,
+        00:00 + 06:00 FLASH sentinels both 0-of-6, AM-30 MSTIC npm
+        anti-noise lock clears without resurface justification.
+
+      Anti-repetition discipline:
+        - finding-2026-05-29-0004 (CVE-2026-0257): UPDATE on
+          deadline status (T+2 → T+1); resurface trigger
+          'seven_days_elapsed_and_evolving' satisfied by the
+          deadline itself as the evolving event. Substantive content
+          intentionally NOT restated — references yesterday's
+          afternoon brief for operational detail. Third consecutive
+          brief anchoring on this CVE, framing tightened to status-
+          only to avoid noise.
+        - finding-2026-05-29-0003 (Oracle CPU): pointer-only
+          continuation; T+2 → T+3 status tick only.
+        - Chaotic Eclipse, Glassworm, CIFSwitch, AP/ABW: explicitly
+          suppressed per disposition reasons above.
+        - MSTIC 33-package npm cluster (AM-30): anti-noise lock
+          clears with this window but no follow-up or independent
+          A/B-grade relay surfaced to justify resurfacing.
+
+      Discord Summary Layer 2: estimated ~215 words / ~1510 chars
+      under 1900 ceiling; three bullets (one Active Threats UPDATE
+      + one Vulnerabilities carry-forward + one Other Signal honest
+      quiet-window enumeration); natural-language dates ("Monday
+      June 1," "Friday," "June 11"); zero digraph or finding-id
+      citations in Layer 2 (all confined to Layer 1).
+
+      Grader handoff status: 0 of 0 raw-signal items promoted —
+      AM-31 sentinel returned a clean sweep with zero in-window
+      handoffs to grader. Brief composed entirely from carry-
+      forward state.
 
 # ============================================================================
 # Valid resurface_if conditions

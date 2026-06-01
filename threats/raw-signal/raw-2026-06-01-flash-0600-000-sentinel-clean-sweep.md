@@ -40,6 +40,9 @@ iocs_extracted: false
 iocs_count: 0
 text_word_count: 1340
 promoted: false
+rejected_at: 2026-06-01T07:55:00-04:00
+rejection_id: reject-2026-06-01-0001
+grading_run_id: morning-20260601-080000
 ttl_expires_at: 2026-08-30T06:05:00-04:00
 test: false
 quiet_hours_active: true

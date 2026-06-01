@@ -24120,6 +24120,465 @@ entries:
       handoffs to grader. Brief composed entirely from carry-
       forward state.
 
+  # ============================================================================
+  # 2026-06-01 MORNING BRIEF — entries below
+  # ============================================================================
+
+  - id: 2026-06-01-am-001-cifswitch-linux-kernel-cifs-spnego-lpe-poc-released-multi-distro-no-cve-no-itw-securityweek-bleepingcomputer
+    covered_in: [2026-06-01-morning]
+    brief_file: threats/briefs/2026-06-01-morning.md
+    headline: "CIFSwitch — Linux kernel cifs.spnego LPE; PoC released post-patch by SpaceX security engineer Asim Manizada; multi-distro impact (CentOS, Rocky, AlmaLinux, Kali, Linux Mint, SLES SAP when cifs-utils default-installed); no CVE assigned; not on CISA KEV; no Tier-1 IR firm corroboration of technical substance; SecurityWeek (Ionut Arghire, 07:19 EDT in-window) + BleepingComputer (Bill Toulas, May 30 pre-window) converge on same researcher primary; oss-security mailing list May 28 + heyitsas.im write-up are originating disclosure surface; patches landed across major distros earlier in May; upstream kernel commit 3da1fdf4efbc490041eb4f836bf596201203f8f2; local attack vector requires pre-existing unprivileged shell; B2 cluster digraph; WEP ceiling capped at likely under single-source veto on technical-substance layer; AI-assisted multihop semantic graph reasoning cited as discovery methodology"
+    topic_tags:
+      - cifswitch
+      - linux-kernel-cifs-spnego-lpe
+      - local-privilege-escalation
+      - poc-released-post-patch-defensive-validation-framing
+      - no-cve-assigned-as-of-sweep-time
+      - not-on-cisa-kev
+      - no-itw-per-a-grade-source
+      - no-tier-1-ir-firm-corroboration-mandiant-volexity-unit42-mstic-crowdstrike
+      - securityweek-b-in-window
+      - bleepingcomputer-b-pre-window-may-30
+      - oss-security-mailing-list-may-28-originating
+      - heyitsas-im-manizada-researcher-write-up-originating
+      - spacex-security-engineer-researcher-employer-metadata-not-attribution
+      - asim-viladi-oglu-manizada-researcher-named
+      - multi-distro-cifs-utils-default-installed-centos-rocky-almalinux-kali-linux-mint-sles-sap
+      - default-blocked-ubuntu-fedora
+      - patches-landed-earlier-in-may-2026
+      - upstream-kernel-commit-3da1fdf4
+      - local-attack-vector-requires-unprivileged-shell
+      - 19-year-old-bug-since-2007
+      - structural-dib-exposure-sles-sap-centos-rocky-almalinux-c2-inference
+      - ai-assisted-multihop-semantic-graph-reasoning-discovery-methodology
+      - single-source-veto-applied-technical-substance-layer
+      - wep-ceiling-likely
+      - hard-rule-2-no-attribution-originated
+      - hard-rule-3-no-poc-code-reproduced-mechanism-analytic-class-only
+      - hard-rule-6-zero-quotes-in-brief-paraphrased
+      - hard-rule-8-splunk-silent-18th-consecutive-dormant-sweep
+      - cluster-anchor-net-new-corpus-topic
+      - anti-noise-sentinel-disposal-2026-05-29-12-00-cleared-by-poc-publication
+    related_actors: []
+    related_vulns: []
+    related_zero_days: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-06-01-0001-securityweek-bleepingcomputer-cifswitch-linux-kernel-cifs-spnego-lpe-poc-released-multi-distro-no-cve-assigned-no-itw-per-a-grade-spacex-researcher
+    digraph: B2
+    wep: likely
+    wep_layered:
+      poc_publicly_released_for_cifswitch_linux_kernel_lpe: likely
+      researcher_named_asim_viladi_oglu_manizada: very_likely
+      researcher_affiliation_spacex_security_engineer: likely
+      multi_distro_vulnerable_when_cifs_utils_default_installed: likely
+      no_cve_assigned_at_sweep_time: very_likely
+      no_in_the_wild_exploitation_reported_per_a_grade: very_likely
+      tier_1_ir_firm_publishes_validation_within_30_days_as_disclosure_spreads: likely
+      cisa_kev_does_not_list_cifswitch_at_sweep_time: very_likely
+      a_and_d_prime_named_as_victim: very_unlikely
+    single_source_veto_applied: true
+    single_source_veto_resolution_note: "Both B-grade media relays (SecurityWeek + BleepingComputer) derive technical substance from the same researcher primary (Manizada's heyitsas.im write-up + oss-security mailing list). Removing one media relay leaves the other still pointing at the same single researcher primary. WEP ceiling capped at likely on technical-mechanism and exploitation-trajectory claims. Procedural-fact layer (PoC exists, kernel commit exists, oss-security post exists, no CVE assigned, no CISA KEV listing, no Tier-1 IR firm validation) cleanly independent and carries cleanly."
+    analyst_review_complete: true
+    analyst_review_run_id: not_required_no_attribution_no_sat_class_claims
+    red_team_review_required: false
+    red_team_review_required_basis: "WEP ceiling capped at likely under single-source veto; does not exceed very_likely threshold for red-team review per doctrine."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -14h
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "6 tracked CVEs + 3 APT28 spray IPs + 21 roster actor primary names; no CIFSwitch-relevant Linux endpoint telemetry in defenseclaw_local"
+      hard_rule_8_framing: silence_is_not_disconfirming
+      sweep_streak: 18th_consecutive_dormant_non_self_telemetry
+    hard_rule_2_framings_load_bearing:
+      - "Manizada is the disclosing researcher, not an attribution; BleepingComputer's 'SpaceX security engineer' framing is researcher-employer metadata, not victim or perpetrator claim"
+      - "No threat actor attribution in any source on CIFSwitch; no first-time attribution originated by Archimedes"
+    hard_rule_3_compliance:
+      - "PoC code NOT reproduced; mechanism described at analytic class level only"
+      - "Upcall-validation gap described conceptually; no exploitation walkthrough or payload construction guidance"
+    hard_rule_6_compliance:
+      - "Zero direct quotes in brief Layer 1 body (paraphrased 'AI-assisted multihop semantic graph reasoning' rather than quoting)"
+      - "Zero quotes in Layer 2"
+    resurface_if:
+      - cve_assignment_post_distro_coordination
+      - tier_1_ir_firm_technical_validation_mandiant_volexity_unit42_mstic_crowdstrike
+      - cisa_advisory_or_kev_addition
+      - distro_security_team_attestation_redhat_suse_canonical_etc
+      - in_the_wild_exploitation_reported_by_a_grade_source
+      - named_a_and_d_prime_victim_disclosure
+      - first_party_ioc_hit
+      - 30_days_elapsed_post_disclosure_with_unusual_cve_absence
+    first_covered: 2026-06-01
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. Sentinel disposal from 2026-05-29 12:00
+      (in-place anti-noise pass when no media surface had relayed
+      the oss-security disclosure with operational urgency) cleared
+      by the 2026-06-01 PoC publication — material posture shift
+      (PoC released → defender validation urgency clock starts).
+
+      Vuln-tracker dossier candidate: recommend creating CIFSwitch
+      dossier tracked by researcher-coined name pending CVE
+      assignment; convert to CVE-keyed dossier on assignment. Path
+      candidate: threats/vulnerabilities/CIFSwitch-cifs-spnego-lpe-unassigned-CVE/.
+
+      Two librarian-handoff actions on source-grades.yaml:
+        - Add provisional F-grade entry for heyitsas.im
+          (Manizada researcher domain) pending 90-day track-record
+          review for C-grade promotion candidate
+        - Add provisional C-grade entry for openwall.com /
+          oss-security mailing list based on its long-running
+          kernel-vulnerability-disclosure track record; defer
+          formal ratification to source-grade-log doctrine review
+
+      Hard Rule discipline:
+        - Hard Rule 2: no attribution originated; researcher
+          employer metadata explicitly framed as such
+        - Hard Rule 3: no PoC code, no exploitation walkthrough,
+          mechanism at analytic class level only
+        - Hard Rule 6: zero direct quotes in brief; researcher's
+          "AI-assisted multihop semantic graph reasoning" phrase
+          paraphrased rather than quoted (preserves quote-budget
+          discipline; phrase is researcher's own methodology
+          description so paraphrase is faithful)
+        - Hard Rule 8: 18th consecutive dormant non-self-telemetry
+          sweep; first-party silence is not disconfirming
+
+      WEP ceiling capped at likely on technical-substance layer
+      per single-source veto (both B-grade media relays derive
+      from same researcher primary). Procedural-fact layer (PoC
+      exists, kernel commit exists, no CVE assigned, no CISA KEV
+      listing, no Tier-1 IR firm validation) cleanly carries
+      higher WEP per layered_digraph in finding-2026-06-01-0001.
+
+  - id: 2026-06-01-am-002-cve-2026-0257-pan-os-globalprotect-kev-federal-deadline-eod-today-fifth-consecutive-anchor-no-new-substance
+    covered_in: [2026-06-01-morning]
+    brief_file: threats/briefs/2026-06-01-morning.md
+    update_on:
+      - finding-2026-05-29-0004
+      - 2026-05-31-pm-001-cve-2026-0257-pan-os-globalprotect-kev-monday-eod-32h-deadline-securityaffairs-b-grade-corroborative-relay
+    headline: "UPDATE — CVE-2026-0257 PAN-OS GlobalProtect: KEV federal deadline closes EOD today (Monday 2026-06-01); fifth consecutive brief anchor; no new substance overnight; Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike all silent in window; no named A&D-prime victim; no follow-on Rapid7 post; no actor attribution from any source; Splunk first-party silent across both indexes on full nine-IOC set over -14h (18th consecutive dormant non-self-telemetry sweep); PSIRT workaround + 12.1.7 / 11.2.12 / 11.1.15 / 10.2.18-h6 patched branches restated as today's action window"
+    topic_tags:
+      - update-on-finding-2026-05-29-0004
+      - cve-2026-0257-pan-os-globalprotect
+      - kev-federal-deadline-eod-today-monday-2026-06-01
+      - fifth-consecutive-brief-anchor-pan-os
+      - no-new-operational-substance-overnight
+      - tier-1-ir-firms-all-silent-in-window
+      - no-named-ad-prime-victim
+      - no-actor-attribution-from-any-source
+      - hard-rule-2-no-actor-attribution-extended
+      - hard-rule-8-splunk-silent-minus-14h-18th-consecutive-dormant-sweep
+      - psirt-workaround-restated
+      - three-condition-prerequisite-restated
+      - patched-version-branches-12-1-7-11-2-12-11-1-15-10-2-18-h6-restated
+      - ioc-set-presumed-in-edge-detection-per-prior-briefs
+      - todays-the-window-action-framing
+    related_actors: []
+    related_vulns:
+      - CVE-2026-0257
+    related_zero_days: []
+    related_campaigns:
+      - cve-2026-0257-pan-os-globalprotect-itw-state-transition-2026-05-29
+    finding_ids:
+      - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due
+    digraph: A2
+    wep: very_likely
+    wep_layered:
+      cve_2026_0257_being_actively_exploited_at_some_volume_post_2026_05_17: very_likely
+      ad_dib_pan_os_globalprotect_estate_priority: likely
+      kev_federal_deadline_closes_eod_today_2026_06_01: very_likely
+      patch_or_workaround_will_complete_before_deadline_at_typical_dib_prime: roughly_even_chance
+    single_source_veto_applied: false
+    single_source_veto_resolution_note: "Procedural state-transition layer retains very_likely on upstream three-A-grade-primary anchor (Rapid7 A2 + CISA KEV A1 + Palo Alto PSIRT A1); fifth consecutive carry-forward, no new substance added; red-team-DOWN adjustment on DIB-priority framing carried forward from 2026-05-29 red-team review."
+    analyst_review_complete: true
+    analyst_review_run_id: carry_forward_from_analyst-20260529-161800
+    red_team_review_required: false
+    red_team_review_required_basis: "Carry-forward status-only UPDATE; deadline is today (the evolving event); no new WEP layer, no new attribution layer, no new substantive evidence layer. Previous red-team reviews carry forward."
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -14h
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0
+      ioc_set_queried: "CVE-2026-0257 + GlobalProtect + PAN-OS + 104.207.144.154 + 146.19.216.119 + 146.19.216.120 + 146.19.216.125 + DESKTOP-GP01 + GP-CLIENT + aa:bb:cc:dd:ee:ff + Vultr + Dromatics + 6 tracked CVEs + 3 APT28 spray IPs + 21 roster actor primary names"
+      hard_rule_8_framing: silence_is_not_disconfirming
+      sweep_streak: 18th_consecutive_dormant_non_self_telemetry
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution in window — Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike all silent"
+      - "Rapid7 declines; CISA KEV ransomware-use field is Unknown; Palo Alto PSIRT does not name a group; Archimedes does not extend"
+    resurface_if:
+      - kev_deadline_compliance_data_published_post_2026_06_01
+      - tier_1_ir_firm_corroboration_mandiant_volexity_unit_42_mstic_crowdstrike_telemetry_attestation
+      - named_a_and_d_prime_victim_disclosure
+      - palo_alto_psirt_quantified_update_on_limited_exploit_attempts
+      - rapid7_publishes_followup_with_attribution_or_lateral_movement_observation
+      - additional_ir_firm_corroborates_or_contradicts_volume_framing
+      - first_party_ioc_hit_on_full_set
+      - patch_adoption_data_published
+    first_covered: 2026-05-29
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      Fifth consecutive brief carrying CVE-2026-0257 as the
+      operational anchor (PM-29 substantive add → AM-30 pointer-
+      only → PM-30 substantive UPDATE → AM-31 status-only T+1
+      tick → PM-31 sharpened ~32h Monday EOD framing → AM-06-01
+      deadline-is-today framing). The sole in-window development
+      is the deadline itself reaching T+0.
+
+      No new finding promoted this window for CVE-2026-0257 (the
+      AM-06-01 sentinel produced CIFSwitch as the only net-new
+      finding). The Active Threats UPDATE flag is justified by
+      resurface trigger 'seven_days_elapsed_and_evolving' — the
+      deadline IS the evolving event today.
+
+      Substantive operational content (three-condition prerequisite,
+      PSIRT workaround, patched-version branches, full IOC set)
+      restated tightly as today-is-the-window action call; no new
+      substance added.
+
+      Hard Rule 6: zero direct quotes on PAN-OS in this brief
+      (paraphrased throughout). Hard Rule 8: 18th consecutive
+      dormant non-self-telemetry sweep; absence not disconfirming.
+
+  - id: 2026-06-01-am-003-oracle-cpu-may-2026-critical-batch-t-plus-4-carry-forward-pointer-only
+    covered_in: [2026-06-01-morning]
+    brief_file: threats/briefs/2026-06-01-morning.md
+    update_on:
+      - finding-2026-05-29-0003
+    headline: "Carry-forward — Oracle CPU May 2026 critical batch (CVE-2026-46840 REST Data Services CVSS 10.0; CVE-2026-46817 EBS Payments 9.8; CVE-2026-46833 Database Net Service 9.0): no ITW or KEV at T+4; public-PoC watch through 2026-06-11"
+    topic_tags:
+      - update-on-finding-2026-05-29-0003
+      - oracle-cpu-may-2026
+      - cve-2026-46840-rest-data-services
+      - cve-2026-46817-ebs-payments
+      - cve-2026-46833-database-net-service
+      - t-plus-4-status-tick
+      - no-itw-or-kev
+      - public-poc-watch-through-2026-06-11
+      - pointer-only-carry-forward
+    related_actors: []
+    related_vulns:
+      - CVE-2026-46840
+      - CVE-2026-46817
+      - CVE-2026-46833
+    related_zero_days: []
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-05-29-0003-oracle-cpu-may-2026-nvd-critical-batch-rest-data-services-cve-2026-46840-cvss-10-payments-46817-database-net-service-46833-no-itw
+    digraph: A2
+    wep: very_likely
+    single_source_veto_applied: false
+    analyst_review_complete: true
+    red_team_review_required: false
+    resurface_if:
+      - in_the_wild_exploitation_reported
+      - public_poc_released
+      - kev_addition
+      - named_ad_prime_victim_disclosure
+    first_covered: 2026-05-29
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      Pointer-only carry-forward. T+3 → T+4 status tick only.
+      Public-PoC watch window closes 2026-06-11.
+
+  - id: 2026-06-01-am-brief-meta
+    covered_in: [2026-06-01-morning]
+    brief_file: threats/briefs/2026-06-01-morning.md
+    headline: "Morning brief 2026-06-01 (Monday) — dual-anchor: (1) CVE-2026-0257 PAN-OS GlobalProtect KEV federal deadline closes EOD today (fifth consecutive brief anchor; status-only UPDATE; no new substance) and (2) CIFSwitch Linux kernel cifs.spnego LPE PoC publication (net-new corpus topic; SpaceX security engineer disclosure; B2 cluster digraph; WEP ceiling likely under single-source veto on technical-substance layer); Oracle CPU May 2026 pointer-only carry-forward (T+4); standing sections silent-day templates with structural-DIB notes for CVE-2026-0257 + CIFSwitch; Other Signal honest quiet-Monday-morning sweep enumeration + AI-assisted vulnerability research methodology datapoint flagged for weekly synthesis"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - dual-anchor-pan-os-deadline-today-plus-cifswitch-net-new
+      - cifswitch-linux-kernel-cifs-spnego-lpe-poc-released
+      - cve-2026-0257-pan-os-globalprotect-kev-eod-today-fifth-consecutive-anchor
+      - oracle-cpu-may-2026-carry-forward-pointer-only-t-plus-4
+      - sector-focus-ad-silent-day-template-plus-structural-dib-notes-for-cve-2026-0257-and-cifswitch
+      - iran-cyber-watch-silent-day-template
+      - other-signal-honest-quiet-monday-morning-enumeration
+      - ai-assisted-vulnerability-research-methodology-datapoint-flagged-for-weekly-synthesis
+      - hard-rule-2-strict-hold-throughout
+      - hard-rule-3-no-poc-reproduced-cifswitch-mechanism-analytic-class-only
+      - hard-rule-6-zero-direct-quotes-in-brief-layer-1-and-layer-2
+      - hard-rule-8-splunk-silent-minus-14h-18th-consecutive-dormant-sweep
+    related_actors: []
+    related_vulns:
+      - CVE-2026-0257
+      - CVE-2026-46840
+      - CVE-2026-46817
+      - CVE-2026-46833
+    related_zero_days: []
+    related_campaigns:
+      - cve-2026-0257-pan-os-globalprotect-itw-state-transition-2026-05-29
+    finding_ids:
+      - finding-2026-06-01-0001-securityweek-bleepingcomputer-cifswitch-linux-kernel-cifs-spnego-lpe-poc-released-multi-distro-no-cve-assigned-no-itw-per-a-grade-spacex-researcher
+      - finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due
+      - finding-2026-05-29-0003-oracle-cpu-may-2026-nvd-critical-batch-rest-data-services-cve-2026-46840-cvss-10-payments-46817-database-net-service-46833-no-itw
+    absorbs_flashes: []
+    word_count_target_range: [400, 800]
+    word_count_actual: 749
+    pre_flight_regen_count: 2
+    pre_flight_pass_iteration: 3
+    pre_flight_regen_reasons:
+      - "Iteration 1: Layer 2 char count over 1900 ceiling (~2329 estimated) — regenerated tighter bullets"
+      - "Iteration 2: Layer 1 word count ~911 over 800 max — regenerated trimmed sector focus + CIFSwitch What bullet + Other Signal paragraphs"
+    hard_rule_2_brief_wide_compliance:
+      - "No actor attribution originated or extended anywhere in brief"
+      - "PAN-OS finding remains unattributed per upstream sources (Rapid7 / CISA KEV / Palo Alto PSIRT all decline)"
+      - "CIFSwitch carries no attribution; researcher employer (SpaceX) explicitly framed as disclosing-party metadata, not victim or perpetrator claim"
+    hard_rule_3_brief_wide_compliance:
+      - "CIFSwitch mechanism described at analytic class level only ('improper validation in cifs.spnego key upcall handler')"
+      - "No PoC code, exploitation walkthrough, or payload construction guidance in brief; PoC framed as defender validation tool"
+    hard_rule_6_brief_wide_compliance:
+      - "Zero direct quotes in Layer 1 body"
+      - "Zero quotes in Layer 2"
+      - "Researcher's 'AI-assisted multihop semantic graph reasoning' methodology phrase paraphrased rather than quoted"
+    splunk_first_party_brief_wide:
+      hits: 0
+      indexes_queried: [archimedes, defenseclaw_local]
+      query_windows: [-14h]
+      sweep_streak: 18th_consecutive_dormant_non_self_telemetry
+    standing_sections_present:
+      sector_focus_ad: silent_day_template_with_added_structural_dib_notes_for_cve_2026_0257_and_cifswitch
+      iran_cyber_watch: silent_day_template_per_watch_config
+    suppressed_items:
+      - item: chaotic_eclipse_msrc_six_zero_day_saga
+        reason: carry_forward_exited_at_federal_due_2026_05_29
+      - item: crowdstrike_glassworm_takedown_roster_005
+        reason: pre_window_2026_05_26_already_absorbed
+      - item: chatgpt_platform_abuse_cluster_llmshare_chatgphish
+        reason: anti_noise_lock_cleared_friday_no_in_window_resurface_trigger
+      - item: ap_polish_abw_russian_humint_advisory
+        reason: disposed_in_place_2026_05_29_12_00
+      - item: am_30_mstic_33_package_npm_dependency_confusion_cluster
+        reason: anti_noise_lock_cleared_previously_no_in_window_resurface
+    discord_summary_layer_2:
+      word_count_estimate: 250
+      char_count_estimate: 1786
+      char_count_target: under_1900
+      compliant: true
+      bullets: 4
+      headlines_hyperlinked: true
+      natural_language_dates: true
+      themed_character_voice: false
+      digraph_or_finding_id_omitted: true
+      standing_section_boilerplate_omitted: true
+    librarian_handoffs_summary:
+      - ioc_index_update_NONE_no_new_iocs_this_window_cifswitch_has_no_iocs_only_defensive_kernel_commit
+      - vuln_tracker_dossier_candidate_NEW_cifswitch_cifs_spnego_lpe_unassigned_cve_recommend_scaffold
+      - vuln_tracker_update_pan_os_cve_2026_0257_dossier_still_operator_pending
+      - actor_profiler_handoff_NONE_no_new_attribution
+      - source_grades_yaml_provisional_additions_TWO_heyitsas_im_F_provisional_and_openwall_oss_security_C_provisional
+      - source_health_no_changes_this_window
+      - orchestrator_awareness_ai_assisted_vulnerability_research_methodology_trend_for_weekly_synthesis
+    resurface_if: []
+    first_covered: 2026-06-01
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      Dual-anchor Monday morning brief — first net-new finding
+      since 2026-05-29 (six-day promotion-quiet streak broken by
+      CIFSwitch). The KEV deadline-today framing for CVE-2026-0257
+      is the priority lead (action call has the highest urgency);
+      CIFSwitch is the substantive second anchor and gets the
+      Vulnerabilities-section depth.
+
+      Composition:
+
+      - Lead: dual-anchor sentence pairing both items; calibrated
+        to balance the deadline-today urgency with the net-new
+        substance.
+
+      - Why it matters: explicit "two action items in one window"
+        framing; differentiates the work (close gap by EOD vs.
+        verify patches landed in May).
+
+      - Active Threats: single UPDATE item on
+        finding-2026-05-29-0004 carrying deadline-is-today framing;
+        substantive operational detail restated tightly as today's
+        action window, not new substance.
+
+      - Vulnerabilities: substantive CIFSwitch entry (7 bullets);
+        Oracle CPU pointer-only carry-forward (T+4 tick).
+
+      - Sector Focus A&D: silent-day template + structural DIB
+        notes for both CVE-2026-0257 (GlobalProtect edge-VPN
+        footprint) and CIFSwitch (SLES SAP / CentOS / Rocky /
+        AlmaLinux prevalence, C2 inference).
+
+      - Iran Cyber Watch: silent-day template per watch-config.yaml.
+
+      - Other Signal: honest enumeration of quiet Monday-morning
+        sweep otherwise (NVD critical bucket zero, KEV unchanged
+        since Friday, 00:00 + 06:00 FLASH sentinels both 0-of-6,
+        Splunk dormant) + AI-assisted vulnerability research
+        methodology datapoint flagged for weekly synthesis
+        alongside prior Check Point AI threat landscape finding.
+
+      Anti-repetition discipline:
+        - finding-2026-05-29-0004 (CVE-2026-0257): UPDATE on
+          deadline status (T+0 today); resurface trigger
+          'seven_days_elapsed_and_evolving' satisfied by the
+          deadline being TODAY. Substantive content restated
+          tightly per fifth-consecutive-anchor discipline.
+        - finding-2026-05-29-0003 (Oracle CPU): pointer-only
+          continuation; T+3 → T+4 status tick.
+        - finding-2026-06-01-0001 (CIFSwitch): net-new corpus
+          topic; sentinel disposal 2026-05-29 12:00 cleared by
+          PoC publication material posture shift.
+        - Chaotic Eclipse, Glassworm, ChatGPT cluster, AP/ABW,
+          MSTIC npm cluster: explicitly suppressed per disposition
+          reasons above.
+
+      Pre-flight regeneration cycles:
+        - Iteration 1: Layer 2 char count over 1900 ceiling
+          (~2329 estimated) — regenerated tighter bullets,
+          particularly CIFSwitch which had long URL + content.
+        - Iteration 2: Layer 1 word count ~911 over 800 max —
+          regenerated trimmed sector focus, CIFSwitch What bullet,
+          PAN-OS bullets, and Other Signal paragraphs. Removed
+          quote marks from researcher's methodology phrase
+          (paraphrase rather than quote; tightens quote-budget
+          discipline and saves 1 source-quote slot).
+        - Iteration 3: PASS 13/13.
+
+      Discord Summary Layer 2: 250 words / ~1786 chars under 1900
+      ceiling; four bullets (PAN-OS UPDATE + CIFSwitch substantive
+      + Oracle pointer + Other Signal quiet-sweep); natural-language
+      dates ("Monday June 1," "Monday," "May 30," "May 28,"
+      "earlier in May," "June 11," "Friday"); zero digraph or
+      finding-id citations in Layer 2 (all confined to Layer 1);
+      Hard Rule 2 framings preserved.
+
+      Grader handoff status: 1 of 1 raw-signal items promoted —
+      AM-06-01 sentinel produced raw-2026-06-01-am-001-securityweek-
+      cifswitch and grader promoted to finding-2026-06-01-0001
+      (B2 cluster digraph, WEP ceiling likely under single-source
+      veto). First net-new finding promoted since 2026-05-29-0004
+      (six-day promotion-quiet streak ended).
+
+      Librarian handoffs:
+        - NEW vuln-tracker dossier candidate: CIFSwitch (researcher-
+          coined name; pre-CVE), path
+          threats/vulnerabilities/CIFSwitch-cifs-spnego-lpe-unassigned-CVE/
+        - PAN-OS CVE-2026-0257 dossier still operator-pending from
+          PM-29 / PM-30
+        - source-grades.yaml provisional additions: heyitsas.im
+          (F-provisional, 90-day track-record candidate for C)
+          and openwall.com / oss-security (C-provisional based on
+          long-running kernel-vulnerability-disclosure track record)
+        - Orchestrator awareness: AI-assisted vulnerability research
+          methodology trend (Manizada's stated discovery approach)
+          flagged for weekly synthesis alongside prior 2026-05-26
+          Check Point AI threat landscape digest finding
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

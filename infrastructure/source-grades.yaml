@@ -90,6 +90,18 @@ government_sources:
     urls:
       - https://www.gov.pl/web/sluzby-specjalne/abw
 
+  - id: ccb
+    name: "Centre for Cybersecurity Belgium (CCB)"
+    category: government
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-01
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-06-01-0002 (Windows Netlogon CVE-2026-41089 ITW state transition; sole government-CERT primary, re-reported by BleepingComputer and SecurityWeek). National cybersecurity authority of Belgium — official-body / government-CERT category. Provisional B follows the same conservative starting-grade precedent as Polish ABW (2026-05-08 provisional B baseline for foreign-government national-security-agency / CERT-class sources where attribution methodology is not yet visible to Archimedes across multiple findings). CCB's Netlogon advisory observed ITW exploitation without publishing technical IOCs or actor attribution — same evidentiary profile as the ABW first surface. Operator may ratify at B, upgrade toward A if subsequent CCB outputs include verifiable technical content (IOCs, telemetry, methodology), or downgrade if subsequent advisories prove low-fidelity. Pending human ratification per source-grade-log.md."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://ccb.belgium.be/en
+
 # ============================================================================
 # Tier-1 Threat Intel Firms
 # ============================================================================

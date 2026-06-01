@@ -4841,21 +4841,504 @@ entries:
 
       Keep this rejection entry for 1 year per LEGAL-POLICY retention.
 
+  - rejection_id: reject-2026-06-01-0002
+    rejected_at: 2026-06-01T16:08:00-04:00
+    grading_run_id: afternoon-20260601-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-01-flash-1200-003-securityweek-pan-os-cve-2026-0257-exploitation-timeline-rapid7
+    cluster_topic: >
+      SecurityWeek (Ionut Arghire 2026-06-01T10:00 UTC = 06:00 EDT)
+      relay of Rapid7 observational data on CVE-2026-0257 PAN-OS
+      GlobalProtect authentication bypass — purporting to provide
+      exploitation timeline + infrastructure detail (Wave 1 May 17
+      Vultr, Wave 2 May 21 Dromatics Systems, forged cookies on
+      local admin account, 8/10 cookie acceptance without VPN
+      session, subset granted VPN IP assignment). Raw-signal
+      self-classified disposition: carry_forward_update_for_tracked
+      _finding. Anti-Noise Rule 1 explicitly applies per raw-signal
+      self-evaluation (anti_noise.applies: true).
+    rejection_reasons:
+      - anti_noise_rule_1_carry_forward_no_materially_new_content_vs_existing_tracked_finding
+      - existing_finding_2026_05_29_0004_already_records_all_purportedly_new_iocs_and_timeline_data
+      - morning_brief_2026_06_01_already_covered_t_plus_0_federal_kev_deadline_status_tick
+      - no_state_transition_no_new_attribution_no_new_cve_no_new_mechanism_class
+      - source_quality_high_but_information_already_corpus_tracked
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        grade_provisional: true
+        role: B-grade relay of Rapid7 observational data; B-grade media-class relay precedent applies
+      - source_yaml_id: rapid7
+        grade: A
+        grade_provisional: true
+        role: A-grade originating data source — but the underlying Rapid7 PAN-OS observational data is already corpus-tracked through finding-2026-05-29-0004 (Rapid7 ETR blog 2026-05-29T16:49 UTC publication anchored the existing finding directly)
+    cve_in_question:
+      cve: CVE-2026-0257
+      vuln_index_entry: ZD-004
+      existing_finding: finding-2026-05-29-0004
+      existing_finding_state: corpus_tracked_active_exploitation_kev_listed_3_day_federal_deadline_closing_eod_2026_06_01
+      morning_brief_status_tick: 2026-06-01-morning brief carried T+0 federal deadline status tick
+    materially_new_content_assessment: >
+      ZERO materially new content vs. existing tracked finding.
+      Cross-checked against finding-2026-05-29-0004:
+
+      (1) Exploitation start date May 17, 2026 — ALREADY recorded
+          in finding-2026-05-29-0004 digraph_layered field
+          "rapid7_earliest_observed_exploitation_2026_05_17: A2"
+          and in the digraph_anchor narrative ("The earliest date
+          for observed exploitation was May 17, 2026").
+
+      (2) Wave 1 Vultr hosting infrastructure — ALREADY recorded
+          in finding-2026-05-29-0004 ioc enumeration ("Vultr
+          (hosting_provider) — commodity hosting provider for
+          source IPs; not actor-diagnostic"); also recorded in
+          the Splunk query for first-party precedence
+          ("Vultr OR \"Dromatics Systems\"").
+
+      (3) Wave 2 Dromatics Systems hosting infrastructure —
+          ALREADY recorded in finding-2026-05-29-0004 ioc
+          enumeration ("Dromatics Systems (hosting_provider) —
+          commodity hosting provider for source IPs; not
+          actor-diagnostic").
+
+      (4) Forged cookies on local admin account — ALREADY
+          implicitly covered by finding-2026-05-29-0004 mechanism
+          description ("absent signature verification in
+          main_DecryptAppAuthCookie()"); the forged-cookie
+          tradecraft IS the exploitation mechanism. No new
+          tradecraft layer.
+
+      (5) 8/10 cookie acceptance without VPN session / subset
+          granted VPN IP assignment — variable-success
+          characterization is a slight elaboration on Rapid7's
+          existing "successful exploitation across numerous
+          customers, however we did not observe any indication
+          of successful lateral movement from the devices"
+          framing in finding-2026-05-29-0004. Not material new
+          content; it's framing nuance.
+
+      Net: this SecurityWeek-relayed Rapid7 timeline data is a
+      relay rebroadcast of content already corpus-tracked through
+      the originating Rapid7 ETR blog primary that anchored
+      finding-2026-05-29-0004.
+    would_be_digraph: B2_relay_of_existing_a2_corpus_state_not_promotion_eligible
+    review_notes: >
+      Anti-noise rejection. The underlying material is high-quality
+      A-grade Rapid7 observational data that is ALREADY corpus-
+      tracked through finding-2026-05-29-0004. SecurityWeek's
+      relay does not constitute new content; it constitutes
+      cross-publisher rebroadcast of corpus-known information.
+
+      Morning brief 2026-06-01 already carried the CVE-2026-0257
+      T+0 federal KEV deadline status tick as carry-forward
+      content. Afternoon brief 2026-06-01 will cover the T+0
+      deadline conclusion (EOD 2026-06-01) as continuing carry-
+      forward, not as a new finding.
+
+      Regrade triggers if conditions change:
+      (a) Rapid7 OR another A-grade IR firm (Mandiant / Unit 42 /
+          MSTIC / CrowdStrike) publishes NEW exploitation data
+          materially advancing the existing assessment — would
+          warrant fresh raw-signal collection on the originating
+          primary, not this SecurityWeek relay rebroadcast.
+      (b) Attribution claim surfaces from any A-grade vendor —
+          finding-2026-05-29-0004 has preserved the attribution
+          void; any attribution would trigger analyst SAT-ACH
+          handoff and new finding consideration.
+      (c) New IOC enumeration materially expanding finding-2026-
+          05-29-0004's 4-IP + 2-machine-name + 1-spoofed-MAC +
+          2-hosting-provider set — would warrant IOC-update
+          carry-forward to the existing finding, not a new
+          finding promotion.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-01-0003
+    rejected_at: 2026-06-01T16:08:00-04:00
+    grading_run_id: afternoon-20260601-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-01-pm-003-krebs-meta-ai-bot-instagram-space-force-pro-iran-defacement
+    cluster_topic: >
+      Krebs on Security (Brian Krebs, 2026-06-01T17:32 UTC =
+      13:32 EDT) reports pro-Iran hackers exploited Meta's AI
+      support assistant bot to deface the Instagram accounts of
+      the Obama White House and the Chief Master Sergeant of the
+      U.S. Space Force over the weekend 2026-05-30 / 2026-05-31.
+      Exploit class is workflow-design flaw in Meta's LLM
+      customer-support recovery bot (accepted attacker-supplied
+      new-email-address binding to victim accounts during
+      password-reset workflow); VPN-geofence-bypass used to
+      satisfy Meta's geo-coherence anti-fraud checks. Meta
+      shipped emergency patch over the weekend. Attribution per
+      Krebs is generic "pro-Iran hackers" — no specific tracked
+      roster actor named (UNC1549 / Charming Kitten / Handala
+      Hack / MuddyWater / APT34 all roster-tracked but none
+      named by Krebs).
+    rejection_reasons:
+      - generic_actor_class_pro_iran_no_tracked_roster_match
+      - hard_rule_2_archimedes_does_not_originate_attribution_to_named_roster_actor_absent_a_grade_source
+      - space_force_NOT_on_aerospace_defense_watchlist_uniformed_branch_not_contractor
+      - no_a_and_d_prime_named_victim_no_contractor_system_compromise
+      - incident_class_reputational_impact_only_meta_back_end_not_breached_per_andy_stone_meta_comms
+      - no_cve_assigned_workflow_design_flaw_not_cve_classifiable
+      - patch_shipped_emergency_weekend_2026_05_30_2026_05_31_meta_remediated
+      - would_be_digraph_b3_below_c3_monitoring_threshold_on_a_and_d_relevance_dimension
+      - krebs_b_grade_source_acceptable_but_inclusion_threshold_fails_on_relevance_not_source_quality
+    sources:
+      - source_yaml_id: krebs
+        grade: B
+        grade_provisional: false
+        role: Sole primary. Krebs is grade B ratified per source-grades.yaml. Single-source veto would apply if promoted; combined with inclusion-threshold failure on A&D relevance, rejection is the correct disposition.
+    watchlist_relevance_assessment: >
+      The aerospace-defense watchlist (infrastructure/watchlists/
+      aerospace-defense.yaml) names contractor primes
+      (Lockheed Martin, Boeing, RTX, Northrop Grumman, L3Harris,
+      Leidos, SAIC, etc.) — companies, not uniformed branches.
+      U.S. Space Force is a uniformed branch of the U.S. Armed
+      Forces under the Department of the Air Force, NOT a
+      contractor on the watchlist.
+
+      The raw-signal correctly self-identifies the relevance as
+      "borderline_indirect" — Space Force is operationally a peer-
+      customer of every contractor prime named on the watchlist,
+      but the incident itself is (a) targeting a Space Force
+      official's PERSONAL-OR-POSITION Instagram account, not Space
+      Force / DoD / contractor SYSTEMS; (b) reputational-impact-
+      only with no contractor system compromise; (c) attribution
+      generic ("pro-Iran") with no roster match; (d) motive per
+      Krebs is Instagram-account-resale commercial with pro-Iran
+      defacement as side-effect-flex, not primary IO objective
+      against the spacecraft program leadership chain.
+
+      Grader judgment: Space-Force-as-peer-customer is too
+      attenuated a connection to clear the daily-brief-action
+      threshold for A&D-prime contractor audience. The relevance
+      class is closer to general-awareness ("Iranian IO posture
+      against U.S. military social media surfaces") than
+      actionable-intelligence ("specific defensive action
+      A&D-prime should take").
+    ai_attack_surface_relevance_assessment: >
+      The exploit class — social-engineering an LLM-driven
+      customer-support recovery workflow into binding attacker-
+      controlled email addresses to victim accounts — generalizes
+      beyond Meta / Instagram to any consumer-or-enterprise
+      platform deploying LLM agents in account-recovery workflows.
+      A&D-prime enterprise IAM / helpdesk LLM deployments are
+      increasingly common; the exploit-class portability is
+      defensive-relevance signal.
+
+      However: this signal is currently single-source (Krebs),
+      single-platform (Meta), and the patch is shipped. Sustained
+      defensive intelligence value requires either:
+      (a) A second consumer or enterprise platform confirming
+          exposure to the same LLM-recovery-workflow manipulation
+          class — would broaden the defensive-relevance
+          assessment;
+      (b) An A-grade vendor (Mandiant / Unit 42 / MSTIC / industry
+          AI-security firm) publishing AI-bot-account-recovery-
+          exploit-class research broadening the class beyond Meta —
+          would constitute a research-class finding eligible for
+          weekly synthesis;
+      (c) An A&D-prime CISO public statement on AI-bot account-
+          recovery exposure in their environment — would shift
+          to direct A&D action item.
+
+      None present at sweep time. The AI-attack-surface signal is
+      preserved as a watch signal for future re-evaluation but
+      does not itself clear the brief-action threshold.
+    attribution_assessment: >
+      Krebs uses "pro-Iran hackers" generic descriptor throughout.
+      No A-grade vendor (Mandiant / CrowdStrike / MSTIC / Unit 42 /
+      ESET / Sophos) has named the specific Iranian cluster behind
+      the Telegram-channel coordination. Per Hard Rule 2,
+      Archimedes does NOT upgrade Krebs's generic "pro-Iran"
+      framing to UNC1549 / Charming Kitten / Handala Hack /
+      MuddyWater / APT34 attribution absent A-grade vendor
+      publication of the specific link.
+
+      The Telegram-driven, Instagram-account-resale-motivated
+      profile of the operation does not fit any of the five
+      Iran-attributed actors on _roster.yaml:
+      - UNC1549: A&D-prime spear-phishing (#004 MEDIUM)
+      - Charming Kitten: dissident / journalist / think-tank
+        long-running espionage (#011 LOW)
+      - Handala Hack: Israeli-target hack-and-leak ops with
+        data-broker dimension (#014 HIGH, profile pending)
+      - MuddyWater: MENA-government espionage with periodic
+        industrial-victim broadening (#022 LOW)
+      - APT34: long-running MENA telecom / energy / government
+        espionage (#023 MEDIUM)
+
+      The Meta-AI-bot Instagram resale operation profile is
+      closer to Iranian hacktivist freelancer or IRGC Cyber-IO
+      collateral-flex than to any named-tier APT in the roster.
+      Recommended future action: if operator wants Iranian
+      hacktivist-cluster tracking, /new-actor scaffolding would
+      be the path — but this raw-signal alone does NOT constitute
+      scaffolding evidence (no specific named actor, no
+      sustained-campaign track record, no attribution claim).
+    would_be_digraph: B3
+    review_notes: >
+      Rejection grounds: A&D relevance threshold failure (not
+      source-quality failure). Krebs is solid B-grade source; the
+      reporting is accurate. The cluster fails the daily-brief-
+      action inclusion threshold because (a) no A&D-prime named
+      victim, (b) no contractor system compromise, (c) attribution
+      generic and below novel-attribution threshold per Hard Rule
+      2, (d) Space Force is not on the contractor watchlist,
+      (e) the AI-attack-surface signal is preserved as a watch
+      signal but is currently single-platform single-source.
+
+      The cluster's would-be digraph is B3 (B-grade source, single-
+      source, no corroboration, novel-attribution-via-roster
+      explicitly NOT pursued). B3 falls below the C3 monitoring
+      threshold on the A&D-relevance dimension and is therefore
+      not eligible for any brief output.
+
+      Regrade triggers if conditions change:
+      (a) A-grade vendor publication naming the specific Iranian
+          cluster behind the Telegram coordination — would unlock
+          attribution-class consideration; if cluster is roster-
+          tracked, finding promotion with attribution; if novel,
+          analyst handoff for /new-actor scaffolding evaluation.
+      (b) Second consumer or enterprise platform confirming
+          exposure to the same LLM-recovery-workflow manipulation
+          class — broadens AI-attack-surface to research-class
+          finding eligible for weekly synthesis.
+      (c) A&D-prime executive Instagram account compromised via
+          the same Meta AI bot mechanism — shifts watchlist-
+          relevance from borderline-indirect to direct; warrants
+          A&D-prime-targeted finding promotion.
+      (d) DoD / Space Force public response naming the incident
+          as Iranian targeting of military spacecraft program
+          leadership — shifts the IO-posture interpretation;
+          may warrant weekly synthesis surface on Iranian
+          IO posture against U.S. military adjacent to the
+          spacecraft / launch / GPS contractor program estate.
+      (e) Meta security communications / official post-mortem on
+          the AI bot exploit — vendor-self-disclosure-class
+          (provisional A per github-blog-self-disclosure /
+          openai-self-disclosure precedent); would warrant
+          fresh raw-signal grading on the Meta primary, with
+          AI-attack-surface research-class consideration.
+
+      Note for actor-profiler: the absence of a clean roster
+      match for "Iranian hacktivist / IRGC Cyber-IO collateral-
+      flex / Telegram-coordinated Instagram-account-resale"
+      operator class is a roster-gap observation. Not
+      actionable this finding but noted for potential future
+      /new-actor scaffolding consideration if the operator
+      wants Iranian-hacktivist-cluster tracking.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 43
-  most_recent_run: morning-20260601-080000
-  most_recent_run_rejections: 1
-  most_recent_run_promotions: 1
+  total_rejections: 45
+  most_recent_run: afternoon-20260601-160000
+  most_recent_run_rejections: 2
+  most_recent_run_promotions: 4
   most_recent_run_absorptions: 0
   most_recent_run_promotion_ids:
+    - finding-2026-06-01-0002-bleepingcomputer-securityweek-ccb-windows-netlogon-cve-2026-41089-itw-state-transition-single-government-source-b-grade    # PM-1 afternoon brief — CVE-2026-41089 Windows Netlogon state transition. CCB (Centre for Cybersecurity Belgium) is sole effective primary on the active-exploitation claim (single B-grade government-CERT source); BleepingComputer + SecurityWeek both relay-only on the exploitation claim layer; Microsoft MSRC advisory NOT updated to confirm exploitation at sweep time; no A-grade vendor IR firm independent corroboration. Cluster digraph B2 (single effective B-grade primary on the operational claim; procedural-facts layer A1 on CVE / CVSS / affected products / patch availability via NVD + MSRC). Single-source veto APPLIED on active-exploitation claim layer; WEP ceiling capped at "likely" on the ITW exploitation claim; very_likely on procedural facts. State transition from prior corpus surface finding-2026-05-12-0003 (May Patch Tuesday cluster catalogued this CVE with exploitation_status: not_observed_per_vendor_at_patch_time). Eligible for daily_brief_action + daily_brief_monitoring + weekly_synthesis. analyst_review_required TRUE (WEP "likely" + AD-DC attack-surface = HIGH-priority defensive interest for A&D primes). red_team_review_required FALSE (WEP ceiling "likely" not "very likely"; single-source veto holds the ceiling). New provisional source first-citation flagged for librarian handoff: ccb-belgium provisional B per government-CERT-class precedent (Polish ABW 2026-05-08 provisional B). vuln-tracker handoff: scaffold CVE-2026-41089 as new VT- entry.
+    - finding-2026-06-01-0003-rapid7-hp-poly-vvx-trio-cve-2026-0826-unauthenticated-rce-voip-coordinated-disclosure-ice-prerequisite-no-itw    # PM-1 afternoon brief — CVE-2026-0826 HP Poly VVX/Trio unauthenticated RCE coordinated zero-day disclosure. Rapid7 (provisional A since 2026-05-06) originating with named researcher byline (Stephen Fewer, Senior Principal Security Researcher); 5-month vendor coordination timeline; HP shipped patched firmware UCS 6.4.8 / 8.1.7 / 7.2.8 at coordinated disclosure; Metasploit module published for defender validation; NO ITW exploitation reported. Mechanism is stack-based buffer overflow in ParseICECandidate function within /usr/local/root/polyapp binary, memcpy without length validation on SDP candidate attributes via SIP/SDP over UDP port 5060. CRITICAL risk modifier: ICE (Interactive Connectivity Establishment) must be EXPLICITLY ENABLED — NOT default — for remote-exploitation path to apply; most deployed devices not remotely exploitable absent deliberate ICE configuration. Cluster digraph A2. Single-source veto APPLIED on technical-mechanism layer (Rapid7 sole originating primary; coordinated-disclosure class does not attract independent corroboration at disclosure by design); WEP ceiling "likely" on mechanism, "very_likely" on procedural facts. A&D relevance MEDIUM-INDIRECT (DoD contractor desk/conference telephony; SCIF-adjacent perimeter buildings; ICE-not-default reduces practical surface). analyst_review_required TRUE (WEP "likely" on mechanism layer + enterprise VoIP A&D-relevant attack surface). red_team_review_required FALSE (WEP ceiling "likely" not "very likely"). vuln-tracker handoff: deferred dossier scaffolding pending watch-signal escalation (ITW, KEV, A&D-prime named victim).
+    - finding-2026-06-01-0004-socket-thn-miasma-mini-shai-hulud-redhat-cloud-services-npm-supply-chain-vt006-family-expansion-anthropic-impersonation-c2    # PM-1 afternoon brief — Miasma Mini Shai-Hulud campaign compromising at least 8 @redhat-cloud-services npm packages; Socket Research Team (provisional B since 2026-05-14) originating + The Hacker News (Ravie Lakshmanan, provisional B) relay. THIRD documented Mini Shai-Hulud family ecosystem expansion in Archimedes corpus after VT-006 origination 2026-05-12 (npm @tanstack) and VT-009 KEV-add 2026-05-27 (Nx Console). Socket EXPLICITLY declines Miasma-specific actor attribution: "Attribution remains unclear, as the publicly available tooling lowers the barrier to entry..."; TeamPCP named only as prior-campaign open-sourcer of underlying Shai-Hulud tooling lineage, NOT as Miasma operator (Hard Rule 2 compliance positive). Novel tradecraft layer: C2 endpoint api.anthropic[.]com:443/v1/api impersonating Anthropic's legitimate API (requires DNS-and-cert-pinning verification against Anthropic-legitimate infrastructure before blocking). Cluster digraph B2 (Socket provisional B sole primary on Miasma-specific operational details; THN co-attributor list — Wiz/JFrog/MSTIC/OX/SafeDep/StepSecurity/Aikido — appears reporter-aggregated, not vendor-co-published; MSTIC no blog identified at sweep time). Single-source veto APPLIED on Miasma-specific operational layer (8 packages, api.anthropic C2, SHA-256 hashes, encryption scheme); WEP ceiling "likely" on Miasma-specific layer; "very_likely" on family-identification layer via VT-006 corpus state corroboration. A&D relevance LOWER than VT-006 origination (@redhat-cloud-services no aviation-specific package set vs. @squawk aviation-data packages in VT-006). analyst_review_required TRUE (WEP "likely" on Miasma-specific layer + tooling-lineage attribution claims requiring SAT-class consideration). red_team_review_required FALSE (WEP ceiling "likely" not "very likely"). vuln-tracker handoff: extend VT-006 scope-of-coverage to enumerate Miasma as documented family variant. Three attribution claims preserved verbatim: Mini Shai-Hulud family mechanism identification (mechanism, not actor); TeamPCP prior-campaign tooling-origin lineage ONLY (not Miasma attribution); unattributed Miasma operator (Socket explicitly declines).
+    - finding-2026-06-01-0005-cisa-kev-cve-2024-21182-oracle-weblogic-3-day-fceb-deadline-shortest-in-corpus-history-t3-iiop-pre-auth-network-compromise    # PM-1 afternoon brief — CISA KEV adds CVE-2024-21182 (Oracle WebLogic Server Unspecified Vulnerability) in catalog version 2026.06.01 with extraordinarily aggressive 3-day FCEB remediation deadline (2026-06-04) — SHORTEST FCEB deadline in Archimedes corpus history (ZD-004 PAN-OS 21d; VT-006/VT-008/VT-009 14d; ZD-004 PAN-OS CVE-2026-0257 this morning's deadline also 3d → two consecutive 3-day FCEB deadlines within ~96 hours). Pre-auth T3/IIOP network-vector compromise on Oracle WebLogic Server middleware. Oracle patched the CVE in July 2024 Critical Patch Update — 22 months mature at KEV-add. CISA Known-Ransomware-Campaign-Use field "Unknown"; no actor attribution. Cluster digraph A2 (CISA-KEV grade A ratified canonical authority on KEV catalog; procedural KEV facts sub-grade A1 via canonical-by-definition; underlying ACTIVE EXPLOITATION operational claim sub-grade A2 — CISA self-canonical but underlying evidence basis unpublished per KEV procedural design; no third-party A/B-grade IR firm corroboration at sweep time). Single-source veto APPLIED on underlying active-exploitation operational claim layer; WEP ceiling "likely" on operational claim; "very_likely" on procedural KEV facts. A&D relevance INDIRECT via DIB middleware footprint (PeopleSoft, JD Edwards, Siebel, contractor portal/partner-flow gateway applications, ITAR-regulated application middleware behind classified-adjacent enclaves). analyst_review_required TRUE (WEP "likely" on operational claim layer + aggressive 3-day FCEB deadline signals CISA assessment beyond CVSS-numeric — SAT-class consideration warranted on the "two consecutive 3-day FCEB deadlines within ~96 hours" pattern). red_team_review_required FALSE (WEP ceiling "likely" not "very likely"). vuln-tracker handoff: scaffold CVE-2024-21182 as new VT- entry.
+  prior_morning_run_promotion_ids:
     - finding-2026-06-01-0001-securityweek-bleepingcomputer-cifswitch-linux-kernel-cifs-spnego-lpe-poc-released-multi-distro-no-cve-assigned-no-itw-per-a-grade-spacex-researcher    # AM-1 morning brief - SecurityWeek (B in-window 2026-06-01 07:19 EDT) + BleepingComputer (B pre-window 2026-05-30) converging on Asim Viladi Oglu Manizada researcher disclosure of CIFSwitch — Linux kernel cifs.spnego key upcall LPE; multi-distro impact when cifs-utils default-installed (Mint, CentOS, Rocky, Kali, AlmaLinux, SLES SAP per WebSearch corroboration); patches landed earlier in May 2026; PoC released 2026-06-01 framed for defender validation; upstream kernel commit 3da1fdf4efbc490041eb4f836bf596201203f8f2; NO CVE assigned; NO ITW per A-grade source; CISA KEV does NOT list (catalog 2026.05.29 unchanged); NO A-grade Tier-1 IR firm (Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike / Cisco Talos / SentinelLabs) has published independent validation; NO actor attribution; NO A&D-prime named as victim (Manizada is SpaceX security engineer = disclosing-party metadata, not victim/perpetrator claim); structural DIB exposure indirect via SLES SAP + CentOS / Rocky / AlmaLinux DIB-prevalence (C2 grade structural inference); attack class LPE not initial-access (threat model = attacker who already landed unprivileged shell now elevates). Cluster digraph B2 (SecurityWeek B + BleepingComputer B; both derive from same researcher primary on technical substance; publisher-independence holds but evidence-basis independence fails; procedural-fact layer A1 on kernel commit / oss-security post existence / no-CVE / no-KEV / no-A-grade-ITW; technical-substance layer B2 with single-source veto applied). Single-source veto APPLIED on technical-substance layer; WEP ceiling capped at "likely" on operationally significant predictive claims. Eligible for FLASH + daily_brief_action + daily_brief_monitoring + weekly_synthesis + vuln_tracker_dossier_candidate (recommend vuln-tracker create CIFSwitch dossier tracked by researcher-coined name pending CVE; convert to CVE-keyed dossier on assignment). Not actor-profile-eligible (no attribution). analyst_review_required FALSE (no attribution claim; WEP at "likely"; no SAT-ACH / SAT-KAC required). red_team_review_required FALSE (WEP ceiling at "likely" does not exceed "very likely" threshold for red-team review). Two NEW provisional source first-citations flagged for librarian handoff: heyitsas-im-manizada-cifswitch-writeup (researcher write-up domain, provisional F per cheatsheet pending 90-day track-record review) + openwall-oss-security-mailing-list (community mailing list, provisional C candidate for B with track-record review).
   most_recent_run_absorption_ids: []
   most_recent_run_rejection_ids:
+    - reject-2026-06-01-0002    # PM-1 afternoon — CVE-2026-0257 PAN-OS GlobalProtect SecurityWeek (B) relay of Rapid7 (A) exploitation timeline + Vultr/Dromatics infrastructure detail. Self-classified as carry_forward_update_for_tracked_finding with anti_noise.applies: true. Rejected for Anti-Noise Rule 1: ZERO materially new content vs. existing finding-2026-05-29-0004 which already records all purportedly new IOCs and timeline data (May 17 exploitation start, Vultr Wave 1, Dromatics Wave 2, forged cookies, 8/10 cookie acceptance, subset VPN IP assignment). Morning brief 2026-06-01 already carried T+0 federal KEV deadline status tick as carry-forward. Source quality high (Rapid7 A); information already corpus-tracked. Would-be digraph: B2 relay of existing A2 corpus state, not promotion eligible.
+    - reject-2026-06-01-0003    # PM-1 afternoon — Krebs (B ratified) on pro-Iran hackers exploiting Meta AI support assistant bot to deface Obama White House + Chief Master Sergeant of U.S. Space Force Instagram accounts via attacker-supplied new-email-binding during password-reset workflow + VPN-geofence-bypass over weekend 2026-05-30/2026-05-31. Rejected on inclusion-threshold (A&D relevance), NOT source-quality. Generic "pro-Iran hackers" attribution — no tracked roster match per Hard Rule 2; Space Force is uniformed branch NOT contractor on aerospace-defense watchlist; reputational-impact-only incident, no DoD/Space Force/contractor system compromise; Meta back-end NOT breached per Andy Stone; workflow-design flaw not CVE-classifiable; emergency patch shipped over weekend. AI-attack-surface signal preserved as watch signal (single-platform single-source at this time). Would-be digraph: B3 (B-grade source, single-source, no corroboration, novel-attribution-via-roster explicitly NOT pursued); B3 falls below C3 monitoring threshold on A&D-relevance dimension; not eligible for any brief output. Roster-gap observation noted for actor-profiler: "Iranian hacktivist / IRGC Cyber-IO collateral-flex / Telegram-coordinated Instagram-account-resale" operator class not roster-tracked; not actionable this finding but noted for potential future /new-actor scaffolding consideration.
+  prior_morning_run_rejection_ids:
     - reject-2026-06-01-0001    # Canonical Sunday-Monday rollover AM-1 sentinel cluster disposition record absorbing TWO raw-signal members covering ~14h window 2026-05-31T17:30 EDT (1h30m post-PM-31 brief commit fa3fff1) through 2026-06-01T07:30 EDT (AM-1 pre-brief collection complete): raw-2026-06-01-flash-0600-000-sentinel-clean-sweep (canonical FLASH 06:05 EDT, ~6h window, 0/6 triggers fired, quiet hours active, commit 93987f4) + raw-2026-06-01-am-000-sentinel-pre-brief-sweep (AM-1 pre-brief collector sentinel 07:30 EDT, 14h pre-brief window, ONE substantive companion raw-signal CIFSwitch promoted separately as finding-2026-06-01-0001 B2 NOT included in this sentinel-rejection cluster). Both sentinels are internal collection-summary artifacts; ZERO external claims being graded in either sentinel itself. In-window external content surveyed: ONE substantive item promoted (CIFSwitch via raw-2026-06-01-am-001 → finding-2026-06-01-0001 B2); FIVE+ items collector-dispositioned in-place (Securelist Containers on fire defensive survey; BC Microsoft KB5089549 Windows install issue not security vulnerability; The Register Dashlane consumer brute-force + Putin submarines UK subsea cables physical-layer policy; Security Affairs PAN-OS KEV relay anti-noise + Pentagon location-data op-ed; Dark Reading two events-page metadata; SANS ISC StormCast podcast + NetSupport RAT commodity; THN WP Maps Pro WordPress plugin). NVD CRITICAL 0 results both windows; NVD HIGH 11 items all consumer / student / open-source / industrial-IoT discarded per Mode 1. CISA KEV catalog version 2026.05.29 UNCHANGED; most-recent KEV addition remains CVE-2026-0257 PAN-OS dueDate 2026-06-01 = today T+0 federal deadline (carry-forward covered by AM-31 T+1 + PM-31 T-1 brief anchors; AM-1 brief picks up T+0 status tick as standard carry-forward, no FLASH escalation per Anti-Noise Rule 1). Grader-side Splunk -14h sweep on priority IOC superset (6 tracked CVEs + 3 APT28 spray IPs + 21 roster actor primary names) returned 0 external hits across defenseclaw_local + (archimedes NOT sourcetype=archimedes:*); 15th consecutive dormant non-archimedes-internal stream pattern. Per Hard Rule 8 silence is not disconfirming. Trigger 3 NO FIRE both sentinels. No FLASH candidates fired (FLASH 0/6 triggers); ONE finding-class promotion this run (CIFSwitch); no roster attribution changes; no red-team review required; no analyst review required. Hard Rule 2 enforcement: NO novel attribution originated this run; CIFSwitch researcher disclosure carries NO actor attribution (only disclosing-party metadata).
   most_recent_run_note: >
+    afternoon-20260601-160000 grading processed SIX substantive
+    raw-signal candidates from the ~8h window 2026-06-01T07:30 EDT
+    (AM-1 pre-brief collection complete + AM-1 brief publish
+    commit dbe8a69 at 08:00 EDT) through 2026-06-01T15:30 EDT
+    (PM-1 pre-brief collection complete). Four promotions; two
+    rejections. Skipped raw-2026-06-01-am-001 (CIFSwitch, already
+    promoted as finding-2026-06-01-0001 in morning run) and four
+    sentinel sweep files (am-000, pm-000, flash-0600-000,
+    flash-1200-000 — non-gradeable zero-result canonical sweeps).
+
+    Items promoted this run:
+
+      - raw-2026-06-01-flash-1200-001-bleepingcomputer-securityweek-windows-netlogon-cve-2026-41089-ccb-confirms-itw
+        → finding-2026-06-01-0002 (B2) — CVE-2026-41089 Windows
+        Netlogon state transition; CCB B-grade government sole
+        primary on ITW claim; single-source veto APPLIED on
+        active-exploitation claim layer; WEP "likely" on
+        exploitation, "very_likely" on procedural facts; A&D
+        relevance HIGH structural (universal AD-DC infrastructure);
+        analyst_review_required TRUE; red_team_review_required
+        FALSE; vuln-tracker handoff to scaffold new VT- entry;
+        new provisional source first-citation ccb-belgium
+        flagged for librarian handoff.
+
+      - raw-2026-06-01-flash-1200-002-rapid7-hp-poly-vvx-trio-cve-2026-0826-unauthenticated-rce-voip
+        → finding-2026-06-01-0003 (A2) — CVE-2026-0826 HP Poly
+        VVX/Trio unauthenticated RCE coordinated zero-day
+        disclosure; Rapid7 (provisional A) originating with named
+        researcher byline + 5-month vendor coordination + patches
+        at disclosure + Metasploit module for defender validation;
+        NO ITW; ICE-not-default critical risk modifier; single-
+        source veto APPLIED on technical-mechanism layer
+        (coordinated-disclosure class); WEP "likely" on mechanism;
+        A&D relevance MEDIUM-INDIRECT; analyst_review_required
+        TRUE; red_team_review_required FALSE; vuln-tracker handoff
+        deferred dossier scaffolding pending watch-signal
+        escalation.
+
+      - raw-2026-06-01-pm-001-thn-socket-miasma-mini-shai-hulud-redhat-cloud-services-npm-supply-chain
+        → finding-2026-06-01-0004 (B2) — Miasma Mini Shai-Hulud
+        campaign third documented VT-006 family ecosystem
+        expansion; Socket provisional B originating + THN
+        provisional B relay; Socket EXPLICITLY declines Miasma-
+        specific attribution (Hard Rule 2 compliance positive);
+        TeamPCP referenced only as prior-campaign tooling-origin
+        lineage NOT Miasma operator; novel C2 tradecraft layer
+        api.anthropic[.]com:443/v1/api impersonating Anthropic
+        legitimate API; single-source veto APPLIED on Miasma-
+        specific operational layer; WEP "likely" on Miasma-
+        specific layer + "very_likely" on family-identification
+        layer via VT-006 corpus corroboration; A&D relevance
+        LOWER than VT-006 origination (@redhat-cloud-services
+        no aviation-specific package set); analyst_review_required
+        TRUE; red_team_review_required FALSE; vuln-tracker
+        handoff to extend VT-006 scope-of-coverage.
+
+      - raw-2026-06-01-pm-002-cisa-kev-cve-2024-21182-oracle-weblogic-3-day-fceb-deadline
+        → finding-2026-06-01-0005 (A2) — CISA KEV adds
+        CVE-2024-21182 Oracle WebLogic in catalog version
+        2026.06.01 with extraordinarily aggressive 3-day FCEB
+        remediation deadline (2026-06-04) — joint shortest
+        deadline in Archimedes corpus history; two consecutive
+        3-day FCEB deadlines within ~96 hours (PAN-OS + WebLogic);
+        Oracle CPU July 2024 patched 22 months mature; pre-auth
+        T3/IIOP network-vector compromise; CISA canonical-by-
+        definition on KEV procedural facts (sub-grade A1);
+        underlying ACTIVE EXPLOITATION operational claim sub-
+        grade A2 (CISA evidence basis unpublished per procedural
+        design; no third-party A/B IR-firm corroboration); single-
+        source veto APPLIED on underlying operational claim
+        layer; WEP "likely" on operational claim + "very_likely"
+        on procedural KEV facts; A&D relevance INDIRECT via DIB
+        middleware footprint; analyst_review_required TRUE
+        (SAT-class consideration warranted on two-consecutive-
+        3-day-FCEB pattern); red_team_review_required FALSE;
+        vuln-tracker handoff to scaffold new VT- entry.
+
+    Items rejected this run:
+
+      - raw-2026-06-01-flash-1200-003-securityweek-pan-os-cve-2026-0257-exploitation-timeline-rapid7
+        → reject-2026-06-01-0002 (Anti-Noise Rule 1 / no
+        materially new content vs. existing finding-2026-05-29-
+        0004 which already records all purportedly new IOCs and
+        timeline data; would-be digraph B2 relay of A2 corpus
+        state; source quality high but information already
+        corpus-tracked).
+
+      - raw-2026-06-01-pm-003-krebs-meta-ai-bot-instagram-space-force-pro-iran-defacement
+        → reject-2026-06-01-0003 (A&D-relevance inclusion-
+        threshold failure; would-be digraph B3 falls below C3
+        monitoring threshold; generic "pro-Iran" attribution
+        no roster match per Hard Rule 2; Space Force not on
+        contractor watchlist; reputational-impact-only no system
+        compromise; AI-attack-surface signal preserved as watch
+        signal; Krebs source quality acceptable B but rejection
+        is on relevance not source).
+
+    Items skipped this run (pre-existing dispositions):
+
+      - raw-2026-06-01-am-001-securityweek-cifswitch-* (already
+        promoted to finding-2026-06-01-0001 in morning run;
+        skipped per orchestrator instruction)
+      - raw-2026-06-01-am-000-sentinel-pre-brief-sweep (already
+        rejected via reject-2026-06-01-0001; sentinel-class
+        non-gradeable)
+      - raw-2026-06-01-pm-000-sentinel-pre-brief-sweep (sentinel-
+        class non-gradeable; absorbed into PM-1 sentinel disposition
+        — implicit; not eligible for finding-class grading)
+      - raw-2026-06-01-flash-0600-000-sentinel-clean-sweep (already
+        rejected via reject-2026-06-01-0001; sentinel-class non-
+        gradeable)
+      - raw-2026-06-01-flash-1200-000-sentinel-clean-sweep (sentinel-
+        class non-gradeable; absorbed into PM-1 sentinel disposition
+        — implicit; not eligible for finding-class grading)
+
+    Four promotions. Zero absorptions (the PM-1 sentinel sweep
+    files are not absorbed into a new rejection cluster this run
+    — they remain non-gradeable artifacts and will be implicitly
+    handled in the PM-1 brief). Two rejections this run; total
+    rejections lifetime = 45.
+
+    Grader-side Splunk -30d sweep across defenseclaw_local +
+    archimedes for the priority IOC superset (CVE-2026-41089,
+    Netlogon, CVE-2026-0826, polyapp, CVE-2024-21182, WebLogic,
+    @redhat-cloud-services, Miasma, api.anthropic) returned 0
+    substantive external-event hits. The two corpus matches were
+    Archimedes operational self-records (sweep summary mentioning
+    Netlogon by name, and finding-2026-05-12-0003 May Patch
+    Tuesday related_vulns array listing CVE-2026-41089 at patch
+    time — the prior-state record this PM-1 finding-2026-06-01-
+    0002 transitions). 16th consecutive dormant non-archimedes-
+    internal stream pattern. Per Hard Rule 8 silence is not
+    disconfirming. Trigger 3 NO FIRE on PM-1 candidates.
+
+    Hard Rule 2 enforcement summary this run:
+      - finding-2026-06-01-0002 (Netlogon): NO attribution; CCB +
+        BleepingComputer + SecurityWeek do not name actor;
+        opportunistic-by-unknown framing preserved.
+      - finding-2026-06-01-0003 (HP Poly): NO attribution;
+        coordinated-disclosure class.
+      - finding-2026-06-01-0004 (Miasma): Three attribution claims
+        preserved verbatim — Mini Shai-Hulud family mechanism
+        identification (mechanism not actor); TeamPCP prior-
+        campaign tooling-origin lineage ONLY (Socket explicit
+        decline of Miasma attribution); unattributed Miasma
+        operator (Socket explicit decline).
+      - finding-2026-06-01-0005 (Oracle WebLogic KEV): NO
+        attribution; CISA KEV ransomware-campaign-use Unknown
+        preserved verbatim.
+      - reject-2026-06-01-0003 (Krebs Space Force): Hard Rule 2
+        enforced — "pro-Iran hackers" generic class preserved
+        verbatim; NO upgrade to UNC1549 / Charming Kitten / etc.
+        absent A-grade source.
+
+    Two findings carry analyst_review_required TRUE flag this run
+    (finding-2026-06-01-0002 Netlogon + finding-2026-06-01-0004
+    Miasma + finding-2026-06-01-0003 HP Poly + finding-2026-06-01-
+    0005 WebLogic — all four PM-1 promotions). No findings carry
+    red_team_review_required this run (all four WEP ceilings at
+    "likely" not "very likely"; single-source vetos hold the
+    ceilings).
+
+    New provisional source first-citation flagged for librarian
+    handoff: ccb-belgium provisional B per government-CERT-class
+    precedent (Polish ABW 2026-05-08 provisional B). CCB-direct
+    retrieval recommended on next-cycle collection to lift relay-
+    only flag.
+
+    Vuln-tracker handoffs this run:
+      - Scaffold new VT- entry for CVE-2026-41089 (Windows
+        Netlogon — state transition to ITW confirmed B-grade)
+      - Scaffold new VT- entry for CVE-2024-21182 (Oracle
+        WebLogic — KEV-listed 3-day FCEB deadline)
+      - Extend VT-006 scope-of-coverage to enumerate Miasma as
+        documented Mini Shai-Hulud family ecosystem expansion
+      - Defer dedicated dossier scaffolding for CVE-2026-0826
+        (HP Poly) pending watch-signal escalation
+
+    Prior morning run summary (preserved for context):
+
     morning-20260601-080000 grading processed THREE raw-signal items
     from the ~14h window 2026-05-31T17:30 EDT (1h30m post-PM-31 brief
     publish commit fa3fff1) through 2026-06-01T07:30 EDT (AM-1 pre-

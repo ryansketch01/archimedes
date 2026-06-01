@@ -1,0 +1,57 @@
+# Vuln-tracker handoff queue
+#
+# Briefer / grader / librarian append entries here when a finding surfaces a
+# CVE that warrants vuln-tracker action (new dossier scaffold, or material
+# update to an existing dossier). Vuln-tracker reads this on its next pass,
+# scaffolds / updates dossiers, and moves processed entries to the archive
+# block at the bottom of this file.
+#
+# Schema:
+#   - cve: CVE-YYYY-NNNNN
+#     action: new | update
+#     source_finding: finding-YYYY-MM-DD-NNNN
+#     source_brief: YYYY-MM-DD-{morning,afternoon,flash-HHMM}
+#     queued_at: ISO timestamp
+#     queued_by: librarian-<run_id> | briefer-<run_id> | manual
+#     note: one-line summary of why it's queued and what the dossier needs
+#     existing_dossier: relative path (for update actions) | null
+#
+# Vuln-tracker procedure:
+#   1. Read `queue:` block, process each entry
+#   2. Scaffold dossier under threats/vulnerabilities/CVE-YYYY-NNNNN/ for new
+#   3. For updates, edit existing dossier and append a changelog entry
+#   4. Move processed entry to `archive:` with disposition + processed_at
+#   5. Commit dossier + queue update together
+
+queue:
+  - cve: CVE-2026-0826
+    action: new
+    source_finding: finding-2026-06-01-0003
+    source_brief: 2026-06-01-afternoon
+    queued_at: 2026-06-01T16:05:00-04:00
+    queued_by: librarian-20260601-160500
+    note: "HP Poly VVX/Trio coordinated unauth RCE zero-day disclosed 2026-06-01 per Rapid7 (5-month coordinated). Vendor patch + Metasploit shipped concurrently. No ITW. Reachable only when ICE (Interactive Connectivity Establishment) is enabled — factory default OFF but provisioning templates / Teams Direct Routing / CUCM integrations / MSP golden-images may enable. DIB voice-tier endpoints are VLAN-adjacent to engineering workstations. Dossier should capture: affected firmware ranges, ICE-state operational-verification guidance, provisioning-template inventory checklist, no-ITW-yet caveat with watch trigger if exploitation observed."
+    existing_dossier: null
+
+  - cve: CVE-2024-21182
+    action: new
+    source_finding: finding-2026-06-01-0005
+    source_brief: 2026-06-01-afternoon
+    queued_at: 2026-06-01T16:05:00-04:00
+    queued_by: librarian-20260601-160500
+    note: "Oracle WebLogic T3/IIOP unauthenticated takeover. CISA KEV-added 2026-06-01 with 3-day FCEB due 2026-06-04 (shortest-in-corpus-history alongside concurrent PAN-OS CVE-2026-0257). Pattern note: two consecutive 3-day FCEB deadlines within ~96h flagged for weekly-synthesis attention. DFARS 252.204-7012 / CMMC 2.0 do NOT mandate KEV inheritance — dossier should frame as elevated-urgency signal, not mandate. T3/IIOP exposure concentrates in legacy / shadow-IT / acquisition-inherited residual WebLogic estates. Dossier should capture: affected versions, T3/IIOP exposure-detection guidance, acquisition-inherited-asset inventory checklist, KEV deadline + FCEB due date, DFARS/CMMC governance framing."
+    existing_dossier: null
+
+  - cve: CVE-2026-41089
+    action: update
+    source_finding: finding-2026-06-01-0002
+    source_brief: 2026-06-01-afternoon
+    queued_at: 2026-06-01T16:05:00-04:00
+    queued_by: librarian-20260601-160500
+    note: "Windows Netlogon — ITW state transition per Belgian CCB advisory (single-government-source B-grade with BleepingComputer + SecurityWeek re-reporters). Originally surfaced in 2026-05-12 Patch Tuesday cluster (parent finding-2026-05-12-0003). Leading ACH hypothesis is authenticated-to-DA escalation (H2), not cold-start cross-domain pre-auth compromise (H1) — both drive the same defender action (May 2026 Patch Tuesday rollup confirmation on all DCs and Netlogon-participating member servers). Dossier update should: add ITW timeline event (2026-06-01 CCB advisory), update exploitation status, append CCB advisory URL, note H1/H2 ACH framing, retain no-actor-attribution discipline (CCB names no actor; Archimedes does not originate)."
+    existing_dossier: null  # check if a CVE-2026-41089 dossier was scaffolded after Patch Tuesday; if so, set path here
+
+# ============================================================================
+# Archive — processed entries
+# ============================================================================
+archive: []

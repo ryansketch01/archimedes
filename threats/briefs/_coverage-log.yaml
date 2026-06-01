@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-05-31T16:00:00-04:00
+last_updated: 2026-06-01T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -24578,6 +24578,521 @@ entries:
           methodology trend (Manizada's stated discovery approach)
           flagged for weekly synthesis alongside prior 2026-05-26
           Check Point AI threat landscape digest finding
+
+  - id: 2026-06-01-pm-001-cve-2026-41089-netlogon-itw-state-transition-ccb-belgium
+    covered_in: [2026-06-01-afternoon]
+    headline: "UPDATE — CVE-2026-41089 Windows Netlogon ITW state transition per Belgian CCB; BleepingComputer + SecurityWeek re-report; no attribution; B2 single-source-veto; WEP likely on ITW characterization"
+    topic_tags:
+      - cve
+      - cve-2026-41089
+      - netlogon
+      - windows
+      - domain-controller
+      - ccb-belgium
+      - bleepingcomputer
+      - securityweek
+      - itw-state-transition
+      - patch-tuesday-may-2026-update
+      - single-source-veto
+      - hard-rule-2-no-attribution
+      - dib-windows-estate-structural
+    related_actors: []
+    related_vulns: [CVE-2026-41089]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-01-0002]
+    parent_finding: finding-2026-05-12-0003   # May 2026 Patch Tuesday cluster
+    update_of: 2026-05-12-pm-004
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - tier_1_ir_firm_corroboration_mandiant_crowdstrike_unit42_mstic_volexity
+      - public_poc_publication
+      - kev_addition
+      - new_attribution
+      - first_party_ioc_hit
+      - new_victims_confirmed
+    first_covered: 2026-06-01
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      UPDATE on the May 12-13 Patch Tuesday cluster
+      (2026-05-12-pm-004). Resurface trigger satisfied:
+      escalation_to_exploitation per CCB ITW observation;
+      'public_poc_cve_2026_41089_netlogon' resurface condition
+      not yet triggered but CCB ITW state transition is
+      independent material update.
+
+      Hard Rule 2 honored — CCB advisory does not name an
+      actor; brief states explicitly. Archimedes does not
+      originate attribution.
+
+      Analyst caveat preserved in brief: leading ACH
+      hypothesis is H2 (authenticated-to-DA escalation),
+      NOT H1 (cold-start cross-domain pre-auth compromise).
+      Both drive same defender action. Brief does not
+      assert kill-chain shape beyond CCB's stated
+      observation.
+
+      Single-source veto applied — CCB is primary;
+      BleepingComputer and SecurityWeek are derivative
+      re-reporters. WEP capped at "likely" on ITW
+      characterization layer.
+
+      Tripwires for future resurface: any Tier-1 IR firm
+      (Mandiant / CrowdStrike / Unit 42 / MSTIC / Volexity)
+      publishes corroborating telemetry; KEV addition;
+      public PoC; first-party IOC.
+
+  - id: 2026-06-01-pm-002-cve-2026-0826-hp-poly-vvx-trio-coordinated-zero-day-unauth-rce-rapid7
+    covered_in: [2026-06-01-afternoon]
+    headline: "CVE-2026-0826 HP Poly VVX/Trio coordinated zero-day unauth RCE — Rapid7 5-month disclosure; vendor patch + Metasploit module concurrent; ICE-enabled pre-condition; no ITW; A2/likely"
+    topic_tags:
+      - cve
+      - cve-2026-0826
+      - hp-poly
+      - vvx
+      - trio
+      - voice-tier
+      - desk-phone
+      - unauth-rce
+      - ice-interactive-connectivity-establishment
+      - rapid7
+      - coordinated-disclosure-5-month
+      - metasploit-module-concurrent
+      - no-itw
+      - dib-voice-tier-vlan-adjacent-engineering-workstations
+    related_actors: []
+    related_vulns: [CVE-2026-0826]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-01-0003]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - itw_observation
+      - kev_addition
+      - public_exploit_outside_metasploit
+      - new_victims_confirmed
+      - first_party_ioc_hit
+    first_covered: 2026-06-01
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic — first coverage of CVE-2026-
+      0826. Rapid7 coordinated 5-month disclosure with
+      vendor patch and Metasploit module shipping
+      concurrent. No ITW.
+
+      Analyst caveat preserved: ICE factory default is
+      OFF, but this is a PRE-CONDITION TO VERIFY in the
+      defender's operational state — NOT inherited risk
+      reduction. Provisioning templates, Teams Direct
+      Routing, CUCM integrations, and MSP golden-images
+      may enable ICE regardless of factory default.
+      Brief framing: "verify ICE state in provisioning
+      templates as well as device-level — operational
+      state, not factory state, is what matters."
+
+      DIB relevance: voice-tier endpoints inside DIB
+      sites typically out of EDR scope but on the same
+      VLAN as engineering workstations. RCE-on-phone
+      establishes a foothold under the EDR floor.
+
+      Tripwires: any ITW observation; KEV addition;
+      public exploit outside the Metasploit module
+      (suggests independent weaponization);
+      first-party IOC.
+
+  - id: 2026-06-01-pm-003-miasma-mini-shai-hulud-npm-redhat-cloud-services-anthropic-api-c2
+    covered_in: [2026-06-01-afternoon]
+    headline: "Miasma — Mini Shai-Hulud npm wave hits @redhat-cloud-services/* packages per Socket; novel Anthropic API C2 impersonation; THN relays; B2/likely; Hard Rule 2 critical — TeamPCP tooling-lineage NOT extended to operator attribution"
+    topic_tags:
+      - npm
+      - supply-chain
+      - shai-hulud-family
+      - mini-shai-hulud
+      - miasma
+      - redhat-cloud-services
+      - socket
+      - thn
+      - novel-tradecraft-anthropic-api-c2-impersonation
+      - post-install-hooks-cicd-secret-exfiltration
+      - hard-rule-2-teampcp-tooling-lineage-not-operator-attribution
+      - ach-three-way-tie-rank-1
+      - dib-cicd-dependency-manifest-grep
+    related_actors: []   # Hard Rule 2 — TeamPCP tooling-lineage referenced by Socket but Archimedes does not extend to operator attribution; ACH places TeamPCP-direct LAST
+    related_vulns: []
+    related_campaigns: [miasma-mini-shai-hulud-2026-06-01]
+    finding_ids: [finding-2026-06-01-0004]
+    digraph: B2
+    wep: likely
+    hard_rule_2_attribution_discipline:
+      socket_claim: "TeamPCP tooling-lineage"
+      archimedes_treatment: "MECHANISM-CLASS continuity, NOT operator-class continuity"
+      ach_hypothesis_ranking:
+        H1_teampcp_direct: rank_LAST
+        H2_tooling_leaked_and_reused: rank_1_tied
+        H4_heterogeneous_opportunistic: rank_1_tied
+        H5_composite_affiliate: rank_1_tied
+      brief_framing: "Archimedes does not extend Miasma operator attribution to TeamPCP. Defender action is mechanism-class."
+    resurface_if:
+      - additional_compromised_packages
+      - tier_1_ir_firm_corroboration
+      - independent_a_grade_third_source_attributes_operator_without_socket_citation_chain
+      - new_c2_observables_beyond_anthropic_api_impersonation
+      - first_party_ioc_hit
+    first_covered: 2026-06-01
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic for the Miasma wave specifically;
+      broader Shai-Hulud family extensively covered May 12
+      onward (see 2026-05-12-flash-0600-001, 2026-05-12-am-
+      001, 2026-05-18-am-006, 2026-05-18-pm-002, 2026-05-19-
+      am-001, 2026-05-29-am-001).
+
+      Hard Rule 2 critical hold: Socket references TeamPCP
+      tooling-lineage. Analyst ACH places three hypotheses
+      tied at rank 1 (H2 tooling-leaked-and-reused / H4
+      heterogeneous-opportunistic / H5 composite-affiliate)
+      with TeamPCP-direct (H1) ranked LAST. Brief explicitly
+      states "Archimedes does not extend Miasma operator
+      attribution to TeamPCP." Defender action is
+      mechanism-class.
+
+      Novel tradecraft: C2 traffic impersonating the
+      Anthropic API endpoint. Analyst flagged as
+      campaign-specific candidate — brief explicitly warns
+      "do not anchor long-term detection on this IOC alone."
+
+      Defender pre-condition baked into brief:
+      `grep -r '@redhat-cloud-services/' package*.json`
+      across CI/CD repos. Family-class mechanism
+      (post-install hooks exfiltrating CI/CD secrets) is
+      the durable defender concern.
+
+      Resurface tripwire that would lift the Hard Rule 2
+      hold: independent A-grade third source attributing
+      operator without the Socket citation chain. Until
+      then, Archimedes restates the lineage-class observation
+      without extending to operator-class attribution.
+
+  - id: 2026-06-01-pm-004-cve-2024-21182-oracle-weblogic-cisa-kev-3day-fceb-due-2026-06-04
+    covered_in: [2026-06-01-afternoon]
+    headline: "UPDATE — CVE-2024-21182 Oracle WebLogic T3/IIOP unauthenticated take-over added to CISA KEV; 3-day FCEB due 2026-06-04; second 3-day FCEB deadline in ~96 hours (PAN-OS today, WebLogic Thursday); A2 operational / A1 procedural"
+    topic_tags:
+      - cve
+      - cve-2024-21182
+      - oracle-weblogic
+      - t3-iiop-unauthenticated-take-over
+      - cisa-kev-addition
+      - fceb-3day-deadline
+      - dfars-cmmc-no-mandate-on-kev-inheritance
+      - elevated-urgency-signal-per-organization-specific-governance
+      - legacy-shadow-it-acquisition-inherited-residual-weblogic
+      - two-deadline-96h-fceb-pattern-pan-os-weblogic
+    related_actors: []
+    related_vulns: [CVE-2024-21182, CVE-2026-0257]   # CVE-2026-0257 referenced via pattern note
+    related_campaigns: []
+    finding_ids: [finding-2026-06-01-0005]
+    digraph: A2
+    digraph_layered:
+      operational_exploitation_claim: A2
+      procedural_kev_facts: A1
+    wep: likely
+    resurface_if:
+      - tier_1_ir_firm_publishes_active_exploitation_telemetry
+      - new_victims_confirmed
+      - patch_adoption_data
+      - kev_deadline_passes_with_residual_exposure
+      - cisa_cadence_recalibration_pattern_continues_third_three_day_deadline
+      - first_party_ioc_hit
+    first_covered: 2026-06-01
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. CISA KEV addition is the
+      procedural anchor (A1 layered); ITW characterization
+      operational layer at A2. WEP capped at likely on the
+      exploitation framing.
+
+      Analyst caveat preserved in brief: DFARS 252.204-7012
+      and CMMC 2.0 do NOT mandate inheriting KEV deadlines.
+      Brief reframes "3-day FCEB deadline" → "elevated-
+      urgency signal per organization-specific governance."
+      T3/IIOP exposure typically concentrates in legacy /
+      shadow-IT / acquisition-inherited residual WebLogic.
+
+      Pattern note carried in brief and Other Signal:
+      two consecutive 3-day FCEB deadlines within ~96
+      hours (PAN-OS CVE-2026-0257 closes EOD today;
+      WebLogic adds today, due Thursday 2026-06-04).
+      Brief frames as "may be coincidence, cadence
+      recalibration, or campaign signal" — Archimedes
+      notes the pattern; does not assert cause.
+
+      Resurface tripwire for cadence-pattern hypothesis:
+      a THIRD 3-day FCEB deadline within ~7 days of
+      these two would lift the coincidence hypothesis
+      meaningfully.
+
+  - id: 2026-06-01-pm-005-cve-2026-0257-pan-os-carry-forward-pointer-only-deadline-day-evening
+    covered_in: [2026-06-01-afternoon]
+    headline: "Carry-forward — CVE-2026-0257 PAN-OS GlobalProtect KEV federal deadline closes EOD tonight; no new substance this window; pointer-only continuation of morning brief's operational package"
+    topic_tags:
+      - cve-2026-0257
+      - pan-os
+      - globalprotect
+      - kev-deadline-eod-today-evening
+      - pointer-only-carry-forward
+      - rapid7-timeline-data-rejected-anti-noise
+      - status-tick-no-new-substance
+    related_actors: []
+    related_vulns: [CVE-2026-0257]
+    related_campaigns: [cve-2026-0257-pan-os-globalprotect-itw-state-transition-2026-05-29]
+    finding_ids: [finding-2026-05-29-0004]
+    update_of: 2026-06-01-am-002
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - new_victims_confirmed_named_ad_prime
+      - first_party_splunk_ioc_hit
+      - tier_1_ir_firm_independent_telemetry
+      - vendor_patch_revision_or_workaround_update
+    first_covered: 2026-05-29
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      Sixth consecutive brief carrying PAN-OS coverage
+      (2026-05-29-pm-001, 2026-05-30-am, 2026-05-30-pm,
+      2026-05-31-am, 2026-05-31-pm, 2026-06-01-am, now
+      2026-06-01-pm). Pointer-only treatment this window —
+      operator directive stated Rapid7 timeline data was
+      rejected as anti-noise this afternoon; no new
+      substance to add. Brief points back to morning
+      brief for the operational package and notes
+      deadline closes EOD tonight.
+
+      After tonight's deadline closes, future resurface
+      requires a non-deadline-status material update:
+      named A&D-prime victim, first-party Splunk IOC,
+      Tier-1 IR firm independent telemetry, or vendor
+      patch/workaround revision.
+
+  - id: 2026-06-01-pm-brief-meta
+    covered_in: [2026-06-01-afternoon]
+    brief_file: threats/briefs/2026-06-01-afternoon.md
+    headline: "Afternoon brief 2026-06-01 (Monday) — four-item dense window: (1) UPDATE CVE-2026-41089 Windows Netlogon ITW state transition per Belgian CCB (B2, single-source-veto, no attribution per Hard Rule 2); (2) Miasma — Mini Shai-Hulud npm wave hits @redhat-cloud-services/* per Socket with novel Anthropic API C2 impersonation (B2, Hard Rule 2 critical: TeamPCP tooling-lineage NOT extended to operator attribution, ACH three-way tie rank 1); (3) CVE-2026-0826 HP Poly VVX/Trio coordinated unauth RCE zero-day patched today per Rapid7 (A2, ICE-enabled pre-condition to verify NOT inherited risk reduction); (4) UPDATE CVE-2024-21182 Oracle WebLogic T3/IIOP added to CISA KEV with 3-day FCEB due 2026-06-04 (A2 operational/A1 procedural, two-deadline-96h pattern flagged); PAN-OS pointer-only carry-forward as deadline closes EOD tonight; standing sections silent-day templates; Other Signal flags two-deadline FCEB pattern and CCB-as-national-CERT-leading-Tier-1-IR-firm sequencing for weekly synthesis"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - four-item-dense-window
+      - cve-2026-41089-netlogon-itw-state-transition-update
+      - miasma-mini-shai-hulud-redhat-cloud-services-anthropic-api-c2
+      - cve-2026-0826-hp-poly-vvx-trio-coordinated-zero-day
+      - cve-2024-21182-oracle-weblogic-cisa-kev-3day-fceb-due-thursday
+      - pan-os-cve-2026-0257-pointer-only-deadline-day-evening
+      - two-deadline-96h-fceb-pattern-pan-os-weblogic
+      - ccb-as-national-cert-leading-tier-1-ir-firm-corroboration-sequencing
+      - hard-rule-2-teampcp-tooling-lineage-not-operator-attribution
+      - hard-rule-2-netlogon-no-attribution
+      - hard-rule-6-zero-direct-quotes-layer-1-and-layer-2
+    related_actors: []
+    related_vulns:
+      - CVE-2026-41089
+      - CVE-2026-0826
+      - CVE-2024-21182
+      - CVE-2026-0257
+    related_zero_days: []
+    related_campaigns:
+      - miasma-mini-shai-hulud-2026-06-01
+    finding_ids:
+      - finding-2026-06-01-0002
+      - finding-2026-06-01-0003
+      - finding-2026-06-01-0004
+      - finding-2026-06-01-0005
+    absorbs_flashes: []
+    word_count_target_range: [400, 800]
+    word_count_actual: 783
+    pre_flight_regen_count: 1
+    pre_flight_pass_iteration: 2
+    pre_flight_regen_reasons:
+      - "Iteration 1: Layer 1 word count ~916 over 800 max; Layer 2 char count estimated ~2095 over 1900 ceiling. Regenerated: tightened lead, consolidated What/Why-it-matters bullets in each item, removed dedicated Source-line redundancy where URLs already inline, trimmed Sector Focus and Other Signal, shortened Layer 2 headlines and Miasma A&D action wording."
+    pre_flight_checklist_iteration_2:
+      item_01_every_item_has_source_url: pass
+      item_02_every_item_has_admiralty_digraph: pass
+      item_03_no_repeat_without_material_update: pass
+      item_04_lead_states_impact: pass
+      item_05_no_banned_phrases: pass
+      item_06_standing_sections_present: pass
+      item_07_forward_wep_vocabulary: pass
+      item_08_word_count_in_range: pass
+      item_09_actor_vuln_references_link_to_dossiers: pass
+      item_10_tlp_noted: pass
+      item_11_single_source_veto_respected: pass
+      item_12_quote_discipline: pass_zero_quotes
+      item_13_layer_2_discord_summary_compliance: pass
+    hard_rule_2_brief_wide_compliance:
+      - "Netlogon: CCB names no actor; Archimedes does not originate attribution"
+      - "Miasma: Socket references TeamPCP tooling-lineage; Archimedes does NOT extend operator attribution to TeamPCP; ACH places TeamPCP-direct LAST"
+      - "HP Poly: no attribution; Rapid7 coordinated disclosure with vendor"
+      - "WebLogic: CISA KEV addition; no actor named"
+    hard_rule_6_brief_wide_compliance:
+      - "Zero direct quotes in Layer 1 body"
+      - "Zero direct quotes in Layer 2"
+    standing_sections_present:
+      sector_focus_ad: silent_day_template_with_four_item_structural_dib_exposure_summary
+      iran_cyber_watch: silent_day_template_per_watch_config
+    suppressed_items:
+      - item: pan_os_cve_2026_0257_substantive_carry_forward
+        reason: rapid7_timeline_data_rejected_anti_noise_per_operator_directive_pointer_only_with_link_back_to_morning_brief
+      - item: cifswitch_linux_kernel_lpe_morning_brief_secondary_anchor
+        reason: no_new_development_in_window_per_operator_directive_no_resurface
+      - item: oracle_cpu_may_2026_critical_batch
+        reason: morning_brief_carry_forward_already_at_pointer_only_no_in_window_update
+    discord_summary_layer_2:
+      word_count_estimate: 270
+      char_count_estimate: 1750
+      char_count_target: under_1900
+      compliant: true
+      bullets: 5
+      headlines_hyperlinked: true
+      natural_language_dates: true
+      themed_character_voice: false
+      digraph_or_finding_id_omitted: true
+      standing_section_boilerplate_omitted: true
+      hard_rule_2_framings_preserved: true
+      italic_emphasis_on_action_calls: true
+    librarian_handoffs_summary:
+      - ioc_index_update_DEFERRED_miasma_ioc_set_pending_socket_publication_of_full_set
+      - vuln_tracker_dossier_candidate_NEW_cve_2026_0826_hp_poly_vvx_trio_coordinated_zero_day
+      - vuln_tracker_dossier_candidate_NEW_cve_2024_21182_oracle_weblogic_kev_anchor
+      - vuln_tracker_dossier_update_cve_2026_41089_netlogon_itw_state_transition
+      - actor_profiler_handoff_NONE_no_new_attribution_hard_rule_2_holds_on_miasma_and_netlogon
+      - source_grades_yaml_provisional_addition_ccb_belgium_provisional_b_first_corpus_surface_national_cert
+      - source_health_no_changes_this_window
+      - orchestrator_awareness_two_deadline_96h_fceb_pattern_pan_os_weblogic_for_weekly_synthesis
+      - orchestrator_awareness_ccb_as_national_cert_escalating_itw_ahead_of_us_side_tier_1_ir_firm_corroboration_sequencing_datapoint
+    resurface_if: []
+    first_covered: 2026-06-01
+    last_covered: 2026-06-01
+    retraction: null
+    test: false
+    notes: |
+      Four-item dense afternoon window — sharp contrast to
+      morning's two-anchor structure. All four items are
+      analyst-reviewed with no red-team flags; all are WEP
+      ceiling "likely"; all carry explicit Hard Rule 2
+      discipline.
+
+      Composition:
+
+      - Lead: four-item enumeration in single sentence;
+        each item named with CVE / actor / mechanism so
+        scanning reader catches the full window scope.
+
+      - Why it matters: four discrete defender actions
+        framed; differentiates the work types
+        (patch confirmation / patch cycle / dependency
+        manifest grep).
+
+      - Active Threats: Netlogon UPDATE (material update
+        on May 12-13 Patch Tuesday cluster, ITW state
+        transition) + Miasma (net-new Shai-Hulud-family
+        wave with critical Hard Rule 2 hold on TeamPCP
+        tooling-lineage attribution extension).
+
+      - Vulnerabilities: HP Poly (net-new coordinated
+        zero-day with ICE pre-condition caveat) +
+        WebLogic UPDATE (CISA KEV addition with DFARS/
+        CMMC-no-inheritance reframing + two-deadline-
+        96h pattern note) + PAN-OS pointer-only carry-
+        forward.
+
+      - Sector Focus A&D: silent-day template + structural
+        DIB exposure summary across all four items.
+
+      - Iran Cyber Watch: silent-day template per
+        watch-config.yaml.
+
+      - Other Signal: two-deadline-96h FCEB pattern flagged
+        for weekly synthesis; CCB-as-national-CERT-leading-
+        Tier-1-IR-firm-corroboration sequencing flagged.
+
+      Anti-repetition discipline:
+        - finding-2026-06-01-0002 (CVE-2026-41089
+          Netlogon): UPDATE on 2026-05-12-pm-004 Patch
+          Tuesday cluster; resurface trigger
+          'escalation_to_exploitation' satisfied by CCB
+          ITW observation; new finding-id allocated for
+          the ITW state transition specifically.
+        - finding-2026-06-01-0003 (CVE-2026-0826 HP
+          Poly): net-new corpus topic.
+        - finding-2026-06-01-0004 (Miasma Mini Shai-
+          Hulud): net-new wave within previously-covered
+          Shai-Hulud family lineage; Hard Rule 2
+          discipline preserved on TeamPCP attribution.
+        - finding-2026-06-01-0005 (CVE-2024-21182
+          Oracle WebLogic): net-new corpus topic;
+          procedural A1 anchor via CISA KEV.
+        - finding-2026-05-29-0004 (CVE-2026-0257 PAN-
+          OS): pointer-only carry-forward; deadline
+          closes EOD tonight; Rapid7 timeline data
+          rejected as anti-noise per operator directive.
+        - CIFSwitch (morning brief secondary anchor):
+          explicitly suppressed per operator directive
+          (no new development in window).
+        - Oracle CPU May 2026: already at pointer-only
+          in morning brief; no in-window update.
+
+      Pre-flight regeneration:
+        - Iteration 1: Layer 1 word count ~916 over 800
+          max; Layer 2 char count estimated ~2095 over
+          1900 ceiling. Regenerated tighter What/Why-it-
+          matters bullets across all four items; removed
+          dedicated Source-line redundancy where URLs
+          already inline; shortened Layer 2 headlines
+          and trimmed Sector Focus + Other Signal.
+        - Iteration 2: PASS 13/13.
+
+      Discord Summary Layer 2: ~270 words / ~1750 chars
+      under 1900 ceiling; five bullets (Netlogon UPDATE +
+      Miasma + HP Poly + WebLogic UPDATE + PAN-OS pointer-
+      only); natural-language dates ("Monday," "Thursday
+      June 4"); zero digraph/WEP/finding-id citations in
+      Layer 2; Hard Rule 2 framing preserved ("Archimedes
+      does not extend operator attribution"); italic
+      emphasis on action calls.
+
+      Grader handoff status: 4 of 4 raw-signal items
+      promoted (Netlogon, HP Poly, Miasma, WebLogic).
+      Second consecutive day with promotions ending a
+      six-day quiet streak.
+
+      Librarian handoffs:
+        - NEW vuln-tracker dossier candidate: CVE-2026-
+          0826 HP Poly VVX/Trio coordinated zero-day
+        - NEW vuln-tracker dossier candidate: CVE-2024-
+          21182 Oracle WebLogic (KEV-anchored)
+        - vuln-tracker dossier update: CVE-2026-41089
+          Netlogon (ITW state transition layer added to
+          Patch Tuesday cluster dossier or scaffolded
+          as standalone)
+        - actor-profiler: NO handoff — Hard Rule 2
+          holds on both Miasma TeamPCP tooling-lineage
+          and Netlogon attribution
+        - source-grades.yaml provisional addition:
+          ccb.belgium.be (B-provisional, first corpus
+          surface for the Belgian national CERT,
+          track-record candidate)
+        - Orchestrator awareness: two-deadline-96h FCEB
+          pattern + CCB-as-national-CERT-leading-Tier-1-
+          IR-firm-corroboration sequencing for weekly
+          synthesis
 
 # ============================================================================
 # Valid resurface_if conditions

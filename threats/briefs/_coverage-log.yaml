@@ -25746,6 +25746,844 @@ entries:
           customer doctrine clarity pending (Bentivegna
           pattern surfaced twice in 24h)
 
+  - id: 2026-06-02-pm-001-cisa-kev-cve-2022-0492-linux-kernel-cgroups-v1-container-escape-3-day-fceb-third-consecutive-cadence
+    covered_in: [2026-06-02-afternoon]
+    headline: "CISA-KEV adds CVE-2022-0492 (Linux kernel cgroups v1 container escape; FCEB due 2026-06-05; CVSS 7.8 patched in 5.17 March 2022); no actor named, no underlying evidence basis published; third consecutive 3-day FCEB deadline in ~96h (cadence observation — coincidence vs signal undetermined pending 6-month KEV baseline test; fourth/fifth 3-day add in next 14 days graduates to finding-level)"
+    topic_tags:
+      - cve
+      - cve-2022-0492
+      - linux-kernel
+      - cgroups-v1
+      - container-escape
+      - namespace-escape
+      - cisa-kev
+      - 3-day-fceb-deadline
+      - third-consecutive-cadence-observation
+      - cadence-vs-coincidence-undetermined
+      - dib-sdlc-pre-5-17-long-lts-exposure
+      - el7-ubuntu-1804-debian-buster-air-gapped-enclaves
+      - no-actor-no-evidence-basis-cisa-procedural-pattern
+      - hard-rule-2-no-attribution-typology-internal-only
+    related_actors: []
+    related_vulns: [CVE-2022-0492, CVE-2026-0257, CVE-2024-21182]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-02-0005]
+    digraph: A2
+    digraph_layered:
+      procedural_kev_facts: A1
+      operational_exploitation_claim: A2
+      cadence_observation: B3
+      ad_dib_indirect_relevance: C2
+    wep: likely
+    wep_ceiling_basis: single_source_veto_on_underlying_active_exploitation_claim_no_tier1_ir_firm_corroboration
+    hard_rule_2_attribution_discipline:
+      cisa_position: no_actor_named
+      historical_kinsing_teamtnt_pattern: not_extended_to_attribution
+      ach_typology_internal_only: H3_iab_h1_cryptojacking_tied_roughly_even_chance
+      brief_treatment: report_kev_add_as_procedural_fact_no_actor_naming
+    cadence_pattern_observation:
+      pattern: third_consecutive_3_day_fceb_kev_deadline_within_96h
+      antecedents:
+        - PAN-OS-CVE-2026-0257-due-2026-06-01
+        - Oracle-WebLogic-CVE-2024-21182-due-2026-06-04
+        - this-CVE-2022-0492-due-2026-06-05
+      framing: observation_pending_test_NOT_finding_level_claim
+      tests_required:
+        - T1_KEV_cadence_baseline_6_month_query
+        - T2_CISA_public_statement_check_7_day
+      graduation_trigger: fourth_or_fifth_3_day_fceb_add_in_next_14_days
+    resurface_if:
+      - tier_1_ir_firm_publishes_cve_2022_0492_exploitation_evidence
+      - fourth_or_fifth_3_day_fceb_kev_add_in_next_14_days_cadence_graduates_to_finding_level
+      - vt_006_or_vt_009_supply_chain_pathway_linkage_published
+      - first_party_splunk_cgroups_release_agent_detection
+      - fceb_deadline_state_change_2026_06_05
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. CISA KEV add of a 4-year-old CVE
+      with widely-deployed patch availability. Procedural-facts
+      layer A1; operational ITW claim A2 (single-source veto
+      on underlying evidence basis per KEV procedural design).
+      WEP "likely" on operational exploitation trajectory; A1
+      on procedural KEV facts.
+
+      Cadence-as-observation framing (red-team-equivalent
+      analyst KAC discipline): third consecutive 3-day FCEB
+      deadline in ~96h is a pattern OBSERVATION pending CISA
+      cadence-baseline test, NOT a finding-level claim about
+      elevated CISA priority. The fourth or fifth 3-day FCEB
+      add in next 14 days would graduate the cadence to a
+      finding-level claim; T1 (KEV cadence baseline query)
+      and T2 (CISA public statement check) are remediation
+      tests for the analyst SAT-KAC.
+
+      Hard Rule 2 preserved: CISA names no actor; historical
+      Kinsing/TeamTNT cryptojacking class pattern NOT extended
+      to attribution. ACH at typology level only (internal
+      analytic context — not brief-narrative material) ranks
+      H3 IAB-ransomware-affiliate and H1 cryptojacking
+      roughly-even-chance with high brittleness.
+
+      DIB SDLC container substrate exposure: modern managed-OS
+      (RHEL 8.x+, Ubuntu 20.04+, AKS/EKS/GKE managed) is past
+      the 5.17 boundary; exposed estates are self-managed
+      pre-5.17 long-LTS (EL7, Ubuntu 18.04, Debian buster)
+      and air-gapped enclaves. Relevance is grader-side
+      structural inference C2 — no source-named A&D-prime
+      customer-impact statement.
+
+      Vuln-tracker handoff: VT-011 candidate (or fold into a
+      broader "old-CVE-new-KEV-add" pattern dossier alongside
+      Oracle WebLogic CVE-2024-21182).
+
+  - id: 2026-06-02-pm-002-sekoia-thn-gamaredon-fsb-center-18-winrar-cve-2025-8088-multi-malware-ukraine-roster-gap-new-actor-candidate
+    covered_in: [2026-06-02-afternoon]
+    headline: "Sekoia FSB's matryoshka #1/3 (relayed by THN) attributes 2026 WinRAR CVE-2025-8088 campaign to Gamaredon (FSB Center 18 per 2022-2025 ESET/Symantec/Microsoft/Mandiant/CERT-UA published lineage); GammaPhish→GammaLoad→GammaWorm (Telegram C2, NTFS ADS concealment)→GammaSteel (AWS S3 exfil); Ukrainian government/military/CI targeting (no A&D-watchlist entity named); Hard Rule 2 preserved — Archimedes records the chain with citation, does not originate FSB attribution; Gamaredon NOT in roster — /new-actor operator decision pending (would close structural RU FSB gap; existing clusters all GRU/SVR); Sekoia provisional A first-corpus surface awaiting ratification + direct-primary retrieval"
+    topic_tags:
+      - gamaredon
+      - aqua-blizzard
+      - trident-ursa
+      - primitive-bear
+      - shuckworm
+      - armageddon
+      - bluealpha
+      - uac-0010
+      - fsb-center-18
+      - russian-apt
+      - winrar
+      - cve-2025-8088
+      - path-traversal
+      - gammaphish-hta
+      - gammaload-vbscript
+      - gammaworm-telegram-c2-ntfs-ads
+      - gammasteel-aws-s3-exfil
+      - ukraine-targeting
+      - no-ad-watchlist-victim
+      - new-actor-operator-decision-pending
+      - roster-gap-closing-fsb-center-18-distinct-from-gru-svr
+      - sekoia-first-corpus-surface-provisional-a
+      - thn-relay-derived-direct-primary-retrieval-pending
+      - hard-rule-2-archimedes-records-chain-does-not-originate-fsb-attribution
+      - matryoshka-series-1-of-3-two-more-forthcoming
+    related_actors: []   # Gamaredon NOT in roster at sweep; operator-decision pending /new-actor scaffolding
+    related_vulns: [CVE-2025-8088]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-02-0006]
+    digraph: B2
+    digraph_layered:
+      sekoia_publication_and_attribution_chain: B1_to_A2
+      operational_exploitation_2026_06_01_campaign_wave: B2
+      malware_family_ttps_telegram_c2_aws_s3: B3
+      hard_rule_2_archimedes_framing_decision: A1
+    wep: likely
+    wep_layered:
+      operational_substance: likely
+      archimedes_hard_rule_2_framing: very_likely
+      roster_gap_closing_value_for_operator_decision: noted_only
+    hard_rule_2_attribution_discipline:
+      sekoia_position: attributes_to_fsb_via_matryoshka_framing
+      thn_position: relays_sekoia_as_russian_hacking_group
+      pre_archimedes_multi_vendor_lineage: ESET_Symantec_Microsoft_Mandiant_CERT_UA_2022_2025
+      archimedes_treatment: records_chain_with_citation_does_not_originate_or_extend
+      consensus_framing_explicitly_avoided: archimedes_uses_per_sekoia_plus_lineage_NOT_consensus
+    operator_handoffs:
+      - source_grade_log_addition_sekoia_provisional_a_cti_vendor
+      - new_actor_scaffolding_gamaredon_fsb_center_18_operator_decision_pending
+      - vuln_tracker_awareness_cve_2025_8088_winrar_active_exploitation_by_gamaredon
+      - sekoia_series_tracking_two_more_posts_forthcoming_30_90_day_window
+      - direct_primary_retrieval_sekoia_blog_url_collector_next_pass
+    resurface_if:
+      - cert_ua_or_eset_or_microsoft_or_mandiant_corroborates_2026_06_01_campaign_wave_independently
+      - direct_sekoia_primary_retrieval_validates_relay_derived_technical_content_with_iocs
+      - first_party_splunk_gamaredon_or_gamma_family_or_winrar_cve_2025_8088_detection
+      - sekoia_matryoshka_2_of_3_or_3_of_3_follow_on_post_publishes
+      - operator_initiates_new_actor_scaffolding_for_gamaredon
+      - any_a_d_watchlist_entity_or_us_nato_western_europe_dib_target_named
+      - cve_2025_8088_added_to_cisa_kev_catalog
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. First Archimedes-corpus citation
+      of Sekoia TDR as a primary source. Sekoia carries
+      provisional A starting grade per cheatsheet "Tier-1-
+      class CTI vendor research" precedent (Bitdefender
+      2026-05-13, Darktrace 2026-05-14). Substantive content
+      is THN-relay-derived this sweep — Sekoia primary not
+      directly retrieved (collector handoff pending).
+      Librarian: add `sekoia` to source-grades.yaml as
+      provisional A, category=vendor-cti, awaiting_ratification.
+
+      Hard Rule 2 critical hold: Sekoia + 2022-2025 ESET/
+      Symantec/Microsoft/Mandiant/CERT-UA published lineage
+      attributes Gamaredon to FSB Center 18 (Center for
+      Information Security). Archimedes RECORDS this chain
+      with citation; does NOT originate FSB attribution and
+      does NOT lift to "consensus" framing (per analyst ACH
+      H2 ruled out by three inconsistencies AND Hard Rule 2).
+      Briefer framing: "per Sekoia + 2022-2025 multi-vendor
+      lineage" — citation distinction matters.
+
+      Gamaredon NOT in `_roster.yaml` at sweep — first
+      corpus surface. Operator-decision candidate for
+      `/new-actor` scaffolding closing a structural RU gap
+      (existing RU clusters are APT28 GRU #006, Sandworm
+      GRU #007, APT29 SVR #009; Gamaredon FSB Center 18
+      is structurally distinct service attribution). Per
+      analyst KAC A7/A10: this finding does NOT itself
+      create roster entry — operator decision.
+
+      Targeting: Ukrainian government, military, critical
+      infrastructure. NO A&D-watchlist entity, US/NATO/
+      Western-Europe DIB target, or A&D-prime victim named.
+      Iran Cyber Watch standing-section unaffected
+      (Gamaredon is RU FSB, not Iran).
+
+      Sekoia "matryoshka #1/3" series implies two more
+      forthcoming posts — anti-noise carry-forward for next
+      30-90 days on Gamaredon coverage. Collector to monitor
+      Sekoia blog feed for follow-on posts.
+
+      CVE-2025-8088 (WinRAR path traversal) NOT in CISA-KEV
+      catalog 2026.06.02 sweep — tripwire flag for vuln-
+      tracker awareness.
+
+  - id: 2026-06-02-pm-003-securityweek-enclave-microsoft-android-m365-debug-flag-cve-2026-41100-41101-41102-token-bypass-paired-ad-exec-mobile-fleet
+    covered_in: [2026-06-02-afternoon]
+    headline: "SecurityWeek exclusive carries Enclave research first on Microsoft Android M365 debug-flag token bypass (CVE-2026-41100/41101/41102; patched 2026-05-12; no ITW); IsDebugMode(true) shipped enabled in production across six M365 Android apps (Word/Excel/PowerPoint/M365 Copilot/Loop/OneNote) bypassing intent-based access-token sharing — any device app could request M365 tokens via inter-app intents; Outlook + Teams for Android NOT affected (material A&D mail-estate carve-out); paired with AM finding-0001 (Android Framework zero-day CVE-2025-48595) in unified Sector Focus framing — shared platform and defensive response NOT shared threat actor"
+    topic_tags:
+      - cve
+      - cve-2026-41100
+      - cve-2026-41101
+      - cve-2026-41102
+      - microsoft-m365-android-apps
+      - debug-flag-anti-pattern
+      - isdebugmode-true-shipped-enabled-in-production
+      - intent-based-token-sharing-bypass
+      - word-excel-powerpoint-m365-copilot-loop-onenote-affected
+      - outlook-for-android-teams-for-android-not-affected
+      - ad-exec-mobile-fleet-pattern-paired-with-am-finding-0001
+      - shared-defensive-response-not-shared-threat-actor
+      - enclave-first-corpus-surface-provisional-b
+      - securityweek-exclusive
+      - msrc-rss-xml-parse-error-source-health-concern
+      - patched-2026-05-12-monthly-android-release-cadence
+      - no-itw-no-actor-attribution
+      - sdlc-failure-class-h2-shared-sdk-h3-pipeline-tied
+      - hard-rule-2-no-actor-named-trivially-preserved
+    related_actors: []
+    related_vulns: [CVE-2026-41100, CVE-2026-41101, CVE-2026-41102, CVE-2025-48595]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-02-0007]
+    relates_to: 2026-06-02-am-003-cve-2025-48595-android-framework-lpe-zero-day-limited-targeted-itw-google
+    relation_type: ad_exec_mobile_fleet_exposure_pattern_companion_paired_in_unified_sector_focus
+    digraph: B2
+    digraph_layered:
+      enclave_research_via_securityweek_exclusive: B2
+      cve_assignment_patch_shipping_msrc_corroboration_inferential: B2
+      mechanism_class_technical_claim: B2
+      outlook_teams_not_affected_carve_out: B2
+      ad_exec_mobile_fleet_exposure_grader_inference: C2
+    wep: likely
+    wep_layered:
+      mechanism_and_six_app_set: likely
+      outlook_teams_carve_out: likely
+      ad_exec_pairing_with_am_0001_briefer_judgment: roughly_even_chance
+    hard_rule_2_attribution_discipline:
+      microsoft_position: no_actor_named
+      enclave_position: researcher_disclosure_coordinated_no_actor_named
+      securityweek_position: no_actor_named
+      brief_treatment: no_actor_attribution_trivially_preserved
+    sector_focus_pairing_decision:
+      pairing_with_finding: finding-2026-06-02-0001-android-framework-zero-day-cve-2025-48595
+      framing: unified_sector_focus_item_shared_defensive_response_NOT_shared_threat_actor
+      kac_qualifications:
+        - mobile_vs_desktop_threat_surface_distinguished_via_mobile_only_vectors_side_loaded_apps_intent_pathways_os_framework
+        - shared_defensive_response_NOT_shared_threat_actor_or_exposure_category
+        - executive_mobile_heightened_attention_NOT_posture_distinguished
+        - side_load_precondition_realistic_in_byod_blocked_under_mandatory_intune
+        - token_scope_full_tenant_per_enclave_via_securityweek_direct_primary_retrieval_pending
+        - patch_availability_neq_patch_deployment_for_mobile_fleet_byod
+    operator_handoffs:
+      - source_grade_log_addition_enclave_provisional_b_research_vendor
+      - vuln_tracker_handoff_cve_2026_41100_41101_41102_net_new_triplet
+      - source_health_concern_msrc_rss_xml_parse_error_collector_recheck
+    resurface_if:
+      - msrc_primary_retrieved_with_cve_to_app_mapping_distinguishing_h2_vs_h3_typology
+      - enclave_primary_blog_retrieved_with_detection_methodology_and_intent_walkthrough
+      - vendor_ir_firm_reports_post_2026_05_12_actor_exploitation_of_pre_patched_apps
+      - second_wave_m365_mobile_vulnerabilities_in_outlook_or_teams_affected_codebase
+      - first_party_splunk_cve_2026_41100_41101_41102_or_debug_flag_anti_pattern_artifact
+      - microsoft_patches_outlook_or_teams_for_android_for_similar_debug_flag_anti_pattern
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. First Archimedes-corpus surface
+      for Enclave (AI-powered exploitable bug hunter; named
+      lead Yanir Tsarimi, co-founder + CPO). Provisional B
+      starting grade per Sysdig / Zellic / Arctic Wolf /
+      Push Security precedent. Librarian: add `enclave-
+      research` to source-grades.yaml as provisional B,
+      category=research-vendor, awaiting_ratification +
+      direct-primary-retrieval.
+
+      Hard Rule 2 trivially preserved: Microsoft / Enclave /
+      SecurityWeek name no actor. Coordinated-disclosure
+      pattern without ITW exploitation — researcher-found-
+      then-vendor-fixed, not actor-exploited-then-vendor-fixed.
+
+      Outlook + Teams for Android NOT affected (material
+      carve-out for A&D primary mail estate posture).
+      Outlook is Acompli-derived (acquired 2014; separate
+      codebase from M365 productivity suite Android codebase);
+      Teams is a separate Skype-for-Business-replacement
+      codebase. ACH on SDLC root-cause typology ranks H2
+      (shared productivity-app SDK with default-debug-on
+      propagated) and H3 (test-build pipeline mistakenly
+      promoted to release) tied at zero inconsistencies;
+      cannot distinguish without MSRC primary CVE-to-app
+      mapping (currently unretrieved per source-health).
+
+      A&D-exec mobile fleet pairing with AM finding-0001
+      (Android Framework zero-day CVE-2025-48595) consolidated
+      into unified Sector Focus item — shared platform
+      (Android) and shared DEFENSIVE response, NOT shared
+      threat actor. Briefer judgment per analyst KAC: six
+      qualifying caveats incorporated (mobile-vs-desktop
+      distinction via mobile-only vectors, executive vs
+      rank-and-file heightened-attention framing, side-load
+      precondition realism, token scope full-tenant per
+      Enclave-via-SecurityWeek attribution, patch availability
+      ≠ patch deployment).
+
+      MSRC RSS XML parse error this sweep — source-health
+      concern flagged for collector recheck (same concern
+      also affected finding-0010).
+
+  - id: 2026-06-02-pm-004-unit42-npm-threat-landscape-june-2-update-miasma-teampcp-attribution-hedge-tier1-corroboration-am-finding-0003-procedural-recheck
+    covered_in: [2026-06-02-afternoon]
+    headline: "UPDATE on AM finding-0003: Unit 42's June 2 npm Threat Landscape update adds Red Hat / Miasma section; explicit attribution hedge — TTPs consistent with TeamPCP, but public Mini Shai-Hulud source-code release means any competent actor can replicate — INDEPENDENTLY ALIGNS (not 'ratified') with Archimedes' AM Hard Rule 2 stance; five-vendor consolidation (Unit 42 + ReversingLabs + Aikido + Ox Security + Socket) lifts procedural-facts layer WEP from LIKELY to VERY LIKELY; carve-outs enforced per red-team QUALIFY: exact '32 packages' count stays at LIKELY (Unit 42 says 'at least 32'); specific TTP layers (72s window, OIDC, 210 repos, api.anthropic[.]com C2) remain LIKELY per single-firm origination; TeamPCP attribution stays at LIKELY (five-vendor consensus is consensus-on-uncertainty, not corroboration); cluster-letter aggregation doctrinally underdetermined"
+    topic_tags:
+      - npm
+      - supply-chain
+      - shai-hulud-family
+      - mini-shai-hulud
+      - miasma
+      - redhat-cloud-services
+      - unit42-tier1-fifth-vendor
+      - tier1-attribution-hedge-aligned-not-ratified
+      - five-vendor-consolidation-procedural-facts-lift
+      - hard-rule-2-teampcp-attribution-stays-likely-consensus-on-uncertainty
+      - exact-32-package-count-stays-likely-unit42-says-at-least-32
+      - specific-ttps-stay-likely-single-firm-origination
+      - 72s-window-reversinglabs-only
+      - oidc-vector-aikido-only
+      - 210-downstream-repos-ox-only
+      - api-anthropic-c2-socket-only
+      - cluster-letter-aggregation-doctrinally-underdetermined
+      - bun-release-url-staging
+      - miasma-spreading-blight-payload-string
+      - red-team-qualify-carve-outs-enforced
+    related_actors: []   # Hard Rule 2 — TeamPCP attribution stays at likely; consensus-on-uncertainty
+    related_vulns: [CVE-2026-45321]
+    related_campaigns: [miasma-mini-shai-hulud-2026-06-01]
+    finding_ids: [finding-2026-06-02-0008]
+    relates_to: 2026-06-02-am-001-miasma-redhat-npm-multi-firm-corroboration-oidc-72s-window
+    relation_type: tier1_vendor_corroboration_procedural_facts_wep_lift_attribution_layer_unchanged
+    digraph: B1
+    digraph_layered:
+      procedural_facts_five_vendor_consolidation: B1
+      teampcp_attribution_layer: B2
+      specific_ttp_layers_single_firm_origination: B2
+      bun_release_url_staging_unit42_single_source: B2
+    wep: very_likely
+    wep_layered:
+      procedural_facts_layer: very_likely
+      exact_32_packages_count_carve_out: likely
+      specific_ttp_layers_carve_out: likely
+      teampcp_attribution_layer_carve_out: likely
+    hard_rule_2_attribution_discipline:
+      unit42_position: explicit_attribution_hedge_decline_to_extend_teampcp
+      unit42_alignment_with_archimedes_am_stance: aligned_NOT_ratified_per_red_team_carve_out
+      consensus_framing_explicitly_avoided: archimedes_uses_per_unit42_plus_four_vendor_AM_cluster_NOT_tier_1_ratified
+      five_vendor_consensus_treatment: consensus_on_uncertainty_NOT_corroboration_on_attribution
+    red_team_qualify_carve_outs_enforced:
+      - exact_32_packages_count_stays_likely_unit42_says_at_least_32_AM_cluster_says_32_96_versions
+      - specific_ttp_layers_remain_likely_single_firm_origination_carry_forward_from_am_finding_0003
+      - teampcp_attribution_stays_likely_five_vendor_consensus_on_uncertainty
+      - unit42_independently_aligned_NOT_ratified
+      - cluster_letter_aggregation_arithmetic_doctrinally_underdetermined_lift_defensible_not_compelled
+    operator_handoffs:
+      - source_health_no_changes
+      - vuln_tracker_dossier_update_vt_006_unit42_corroboration_attribution_hedge_text
+      - actor_profiler_handoff_teampcp_dossier_update_candidate_unit42_hedge_content
+    resurface_if:
+      - second_tier_1_vendor_publishes_teampcp_diagnostic_evidence_mandiant_crowdstrike_msftic_microsoft
+      - teampcp_publicly_disavows_or_claims_miasma_campaign
+      - first_party_splunk_redhat_cloud_services_or_mini_shai_hulud_or_bun_staging_url_detection
+      - npm_or_github_publishes_post_incident_review_with_package_count_differing_from_32
+      - additional_compromised_packages_in_redhat_cloud_services_or_other_scopes
+      - second_vendor_corroborates_72s_window_or_oidc_vector_or_210_repos_or_anthropic_c2_specifically
+      - cisa_kev_deadline_2026_06_10_state_change_for_cve_2026_45321
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      UPDATE on AM finding-0003 (2026-06-02-am-001) via
+      five-vendor consolidation. Unit 42 is the fifth
+      independent vendor (joining ReversingLabs, Aikido,
+      Ox Security, Socket from AM cluster). Procedural-facts
+      layer WEP lifts from LIKELY (AM cap) to VERY LIKELY
+      (this finding) per five-vendor consolidation with
+      different evidence bases (Unit 42 threat-landscape
+      monitor + variant-lineage; Socket runtime; ReversingLabs
+      CI/CD forensics; Aikido OIDC; Ox downstream-repo
+      enumeration).
+
+      Red-team QUALIFY recommendation enforced (publication
+      NOT BLOCKED, carve-outs MANDATORY):
+        (1) Exact "32 packages" count: STAYS LIKELY. Unit 42
+            hedges to "at least 32"; AM cluster says exactly
+            "32 / 96 versions." Briefer uses "at least 32" or
+            "32 (per AM cluster; Unit 42 says 'at least 32')".
+        (2) Specific TTP layers (72s window — ReversingLabs;
+            OIDC — Aikido; 210 repos — Ox; api.anthropic[.]com
+            C2 — Socket): remain LIKELY per single-firm
+            origination. Unit 42 does NOT add layer-detail
+            corroboration.
+        (3) TeamPCP attribution: stays LIKELY. Five-vendor
+            consensus is consensus-on-uncertainty, NOT
+            corroboration-of-attribution. Unit 42 explicitly
+            DECLINES to extend.
+        (4) Framing: "Unit 42 independently ALIGNED" with
+            Archimedes' AM stance — NOT "Tier-1 RATIFIED."
+            Alignment, not ratification. The "ratified"
+            framing in original digraph_anchor is
+            methodologically confirmation-biased and
+            red-team-flagged for replacement.
+        (5) Cluster-letter aggregation arithmetic
+            (lowest-common-grade vs Tier-1-A-lifts):
+            doctrinally underdetermined per INTEL-GRADING
+            silence. Lift is defensible but not
+            doctrine-compelled.
+
+      Unit 42 attribution hedge verbatim (preserved in
+      finding-0008 raw; briefer paraphrased per Hard Rule 6
+      15-word limit): "Attribution remains uncertain. The
+      TTPs are consistent with TeamPCP, but the public
+      release of the Mini Shai-Hulud source code means any
+      competent actor can replicate the same attack."
+      (36 words; exceeds 15-word limit; paraphrased.)
+
+      Tripwire additions (red-team-suggested):
+        - npm or GitHub publishes post-incident review of
+          @redhat-cloud-services compromise with package
+          count != 32 → exact-count layer retracts.
+        - INTEL-GRADING.md doctrine clarification on
+          cluster-letter-grade aggregation rule (currently
+          silent) → would resolve A1 underdetermination
+          for this and all future multi-vendor clusters.
+
+      Vuln-tracker handoff: VT-006 dossier folds the
+      Bun release URL staging detail + Unit 42 attribution-
+      hedge text as Tier-1 vendor coverage. Actor-profiler
+      handoff: TeamPCP #001 dossier update relevant via
+      Unit 42 hedge content.
+
+  - id: 2026-06-02-pm-005-cisa-8-agency-joint-atg-hardening-advisory-energy-chemical-foodag-transportation-no-ad-direct
+    covered_in: [2026-06-02-afternoon]
+    headline: "CISA + 7-agency joint advisory (CISA + FBI + NSA + DOE + EPA + TSA + DOT + USDA) on Automatic Tank Gauge (ATG) system hardening; observes 'malicious cyber activity' against U.S. ATG systems in energy/chemical/food-ag/transportation; no CVE, no actor named, no specific vendor singled out; A&D not directly named (relevance indirect via military fuel-storage estates); historical precedent — similar advisories preceded CyberAv3ngers/Iran-OT attribution within 30-90 days — is pattern-class only, NOT Archimedes attribution; 8-agency authoring count unusually heavy (qualitative observation, not benchmarked); monitoring tier"
+    topic_tags:
+      - cisa-joint-advisory
+      - 8-agency-authoring-unusually-heavy
+      - fbi-nsa-doe-epa-tsa-dot-usda-co-authors
+      - automatic-tank-gauge-atg-systems
+      - energy-chemical-food-ag-transportation-sectors
+      - no-ad-dib-direct-mention
+      - ad-relevance-indirect-military-fuel-storage-estates
+      - no-cve-no-actor-no-vendor-named
+      - cyberav3ngers-iran-ot-historical-precedent-30-90-days
+      - hard-rule-2-pattern-class-only-not-archimedes-attribution
+      - monitoring-tier
+    related_actors: []   # CISA names no actors; CyberAv3ngers historical pattern NOT extended
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-06-02-0009]
+    digraph: A3
+    digraph_layered:
+      procedural_facts_publication_8_agency_authoring: A1
+      operational_claim_malicious_cyber_activity_against_atg: A3
+      8_agency_authoring_count_qualitative: B3
+      ad_relevance_indirect_military_fuel_storage_estates: C2
+    wep: likely
+    wep_layered:
+      procedural_facts: likely
+      operational_atg_targeting_claim: possibly_true
+    wep_ceiling_basis: single_source_veto_no_independent_a_b_ir_firm_corroboration_of_specific_atg_targeting_at_sweep
+    hard_rule_2_attribution_discipline:
+      cisa_position: malicious_cyber_activity_generic_no_actor_named
+      cyberav3ngers_historical_precedent: pattern_class_only_NOT_archimedes_attribution
+      brief_treatment: monitoring_tier_no_attribution_concerns
+    resurface_if:
+      - cisa_publishes_campaign_attribution_advisory_naming_actor_within_30_90_day_window
+      - tier_1_ir_firm_dragos_claroty_nozomi_publishes_independent_atg_targeting_telemetry
+      - cisa_kev_addition_for_atg_vendor_product_cve_veeder_root_opw_franklin_fueling_gilbarco
+      - ad_dib_named_in_follow_on_advisory
+      - first_party_splunk_atg_or_modbus_or_ot_indicators
+      - fourth_iranian_aligned_ot_attack_in_2026_calendar_year
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. Monitoring tier — A&D not
+      directly named in 8-agency authoring; relevance
+      indirect via military / DoD fuel-storage estates
+      (jet fuel, motor pool, strategic reserve). TSA +
+      DOT + DOE joint authoring suggests national-fuel-
+      infrastructure operational concern with possible
+      DIB fuel-vendor partner-flow inheritance.
+
+      Hard Rule 2 preserved: CISA observes "malicious
+      cyber activity" generically. Historical precedent —
+      similar CISA-led joint advisories on Iran-OT-targeting
+      preceded CyberAv3ngers attribution disclosures within
+      30-90 days — is pattern-class only, NOT Archimedes
+      attribution. Brief explicitly states this distinction.
+
+      8-agency authoring count (CISA + FBI + NSA + DOE +
+      EPA + TSA + DOT + USDA) is qualitatively heavy
+      compared to typical 2-4-agency sector-hardening
+      advisories. Grader-side observation B3 — not
+      formally benchmarked against CISA's full historical
+      joint-authoring counts.
+
+      Brief item kept short and watch-tier per operator
+      guidance — A&D not directly named, monitoring
+      tier.
+
+  - id: 2026-06-02-pm-006-theregister-microsoft-nightmare-eclipse-walkback-bitskrieg-secure-boot-bitlocker-forthcoming-claim-strong-watch-flag
+    covered_in: [2026-06-02-afternoon]
+    headline: "STRONG WATCH FLAG: The Register reports Microsoft Monday walkback of prior-week harsh response to Windows 0-day researcher Nightmare-Eclipse ('no intention to pursue action against individuals conducting or publishing security research'); Nightmare-Eclipse claims forthcoming 'Bitskrieg' Secure Boot + BitLocker bypass for release 'sometime in June' — no specific CVE/mechanism/PoC at sweep, not WEP-assessable; any Microsoft Secure Boot/BitLocker disclosure in next 30 days will be FLASH-evaluated immediately per A&D-prime Windows fleet exposure under CMMC/DFARS/NIST 800-171"
+    topic_tags:
+      - microsoft-msrc-vendor-relations
+      - nightmare-eclipse-0day-researcher-pseudonym
+      - microsoft-walkback-statement
+      - bitskrieg-forthcoming-claim
+      - secure-boot-bypass-class
+      - bitlocker-bypass-class
+      - ad-prime-windows-fleet-exposure
+      - cmmc-dfars-nist-800-171-controls
+      - kevin-beaumont-katie-moussouris-industry-commentary
+      - 30-day-flash-watch-window-set
+      - hard-rule-2-no-nation-state-attribution
+      - hard-rule-3-no-exploit-content-bitskrieg-capability-class-only
+      - hard-rule-4-do-not-add-nightmare-eclipse-as-tracked-source
+      - watch-tier-pre-disclosure-not-wep-assessable
+    related_actors: []
+    related_vulns: []   # No specific CVE for Bitskrieg at sweep
+    related_campaigns: []
+    finding_ids: [finding-2026-06-02-0010]
+    digraph: B3
+    digraph_layered:
+      microsoft_monday_walkback_statement_layer: B2
+      nightmare_eclipse_historical_0day_disclosure_layer: B3
+      bitskrieg_forthcoming_claim_layer: C3
+      industry_commentary_beaumont_moussouris: B2
+      ad_dib_defensive_implication_grader_inference: C2
+    wep: roughly_even_chance
+    wep_ceiling_basis: B3_caps_wep_well_below_very_likely_per_table_pre_disclosure_class_not_wep_assessable
+    watch_signal_set:
+      flag: STRONG_MONITORING_SIGNAL
+      trigger: any_microsoft_secure_boot_or_bitlocker_vulnerability_disclosure_in_next_30_days
+      action: FLASH_evaluate_immediately
+      basis: ad_prime_windows_fleet_exposure_universal_secure_boot_bitlocker_deployment_under_cmmc_dfars_nist_800_171
+      window_close: 2026-07-02
+    hard_rule_2_attribution_discipline:
+      nightmare_eclipse_classification: independent_researcher_pseudonym_NOT_tracked_threat_actor
+      no_nation_state_attribution_asserted: true
+      no_archimedes_attribution_origination: true
+    hard_rule_3_exploit_discipline:
+      bitskrieg_framing: capability_class_only_secure_boot_bitlocker_bypass
+      mechanism_implementation_details_NOT_extracted: true
+      nightmare_eclipse_historical_poc_content_NOT_retrieved_or_referenced_beyond_capability_class: true
+    hard_rule_4_source_grades_discipline:
+      do_not_add_nightmare_eclipse_as_tracked_source: true
+      reason: researcher_pseudonym_F_grade_direct_potentially_A_indirect_via_vendor_pickup_has_not_happened
+      tracking_channel: microsoft_msrc_plus_tier_1_vendor_pickup_channels_instead
+    operator_handoffs:
+      - collector_watch_flag_bitskrieg_release_event_30_day_forward_window
+      - vuln_tracker_awareness_bitskrieg_forthcoming_critical_cve_candidate
+      - source_health_concern_msrc_rss_xml_parse_error_carry_forward_from_finding_0007
+      - do_not_add_nightmare_eclipse_as_tracked_source_per_hard_rule_4
+    resurface_if:
+      - bitskrieg_actually_releases_with_working_poc_within_30_day_window
+      - microsoft_issues_emergency_patch_or_advisory_for_secure_boot_or_bitlocker_in_30_day_window
+      - tier_1_ir_firm_publishes_independent_telemetry_on_nightmare_eclipse_disclosed_cve
+      - cisa_kev_addition_for_any_microsoft_secure_boot_or_bitlocker_cve_in_30_day_window
+      - first_party_splunk_secure_boot_or_bitlocker_or_bcd_or_winload_artifact
+      - additional_industry_commentary_b_grade_or_higher_on_microsoft_vendor_relations_dispute
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. Watch tier — B3 falls below
+      B2 floor for action items but clears C3 floor for
+      monitoring inclusion. Bitskrieg-forthcoming claim
+      is procedurally pre-disclosure and not WEP-
+      assessable at sweep.
+
+      STRONG MONITORING SIGNAL set: any Microsoft Secure
+      Boot / BitLocker vulnerability disclosure in the
+      next 30 days (window closes 2026-07-02) will be
+      FLASH-evaluated immediately. A&D-prime Windows
+      fleets carry materially elevated exposure to the
+      bypass class given universal Secure Boot + BitLocker
+      deployment under CMMC / DFARS / NIST 800-171
+      controls. Trigger 6 candidate on disclosure event.
+
+      Hard Rule 2 strictly preserved: Nightmare-Eclipse
+      is an independent researcher pseudonym, NOT a
+      tracked threat actor. No nation-state attribution
+      asserted. No Archimedes attribution origination.
+
+      Hard Rule 3 strictly preserved: NO exploit content
+      carried. Bitskrieg framed at capability-class level
+      only (Secure Boot + BitLocker bypass). Mechanism
+      implementation details NOT extracted.
+
+      Hard Rule 4 preserved: Nightmare-Eclipse NOT added
+      as tracked source (F-grade direct per researcher-
+      pseudonym precedent; potentially A-grade indirect
+      via Tier-1 vendor pickup which has not happened).
+      Track Bitskrieg disclosure event via Microsoft
+      MSRC + Tier-1 vendor pickup channels instead.
+
+      MSRC RSS XML parse error this sweep — same source-
+      health concern flagged in finding-0007 (Microsoft
+      Android M365 token bypass). Collector recheck on
+      next sweep.
+
+  - id: 2026-06-02-pm-brief-meta
+    covered_in: [2026-06-02-afternoon]
+    brief_file: threats/briefs/2026-06-02-afternoon.md
+    headline: "Afternoon brief 2026-06-02 (Tuesday) — six-finding window: (1) UPDATE on AM Miasma via Unit 42 fifth-vendor procedural-facts lift to very_likely with red-team-QUALIFY carve-outs enforced (32 count stays likely, TTPs single-firm, TeamPCP attribution unchanged, Unit 42 aligned NOT ratified); (2) CISA-KEV adds Linux kernel CVE-2022-0492 with 3-day FCEB deadline 2026-06-05 (third consecutive 3-day cadence observation pending CISA baseline test); (3) MSFT M365 Android debug-flag token bypass CVE-2026-41100/41101/41102 patched 2026-05-12 (Outlook/Teams carve-out) paired with AM finding-0001 Android Framework 0day in unified Sector Focus; (4) Gamaredon FSB Center 18 per Sekoia + 2022-2025 multi-vendor lineage exploits WinRAR CVE-2025-8088 vs Ukraine (no A&D victim, /new-actor operator decision pending); (5) CISA 8-agency ATG hardening advisory monitoring tier; (6) STRONG WATCH FLAG on Bitskrieg Secure Boot + BitLocker bypass claim with 30-day FLASH-watch window set; Iran Cyber Watch silent-day; Source-health note flags MSRC RSS XML parse error + new provisional sources (Sekoia A, Enclave B)"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - six-finding-window
+      - unit42-miasma-procedural-facts-lift-red-team-qualify-carve-outs
+      - cisa-kev-cve-2022-0492-linux-kernel-cgroups-third-consecutive-3-day-cadence
+      - msft-m365-android-debug-flag-cve-2026-41100-41101-41102-paired-am-finding-0001
+      - gamaredon-fsb-center-18-winrar-cve-2025-8088-ukraine-new-actor-operator-decision
+      - cisa-8-agency-atg-hardening-advisory-monitoring-tier
+      - bitskrieg-secure-boot-bitlocker-forthcoming-claim-strong-watch-flag-30-day-window
+      - hard-rule-2-attribution-discipline-preserved-across-all-six-items
+      - layered-format-layer-1-1024-words-layer-2-under-1900-chars
+      - preflight-iteration-3-word-count-over-target-but-under-150-percent-hard-cap
+    related_actors: []
+    related_vulns:
+      - CVE-2022-0492
+      - CVE-2025-8088
+      - CVE-2026-41100
+      - CVE-2026-41101
+      - CVE-2026-41102
+      - CVE-2025-48595
+      - CVE-2026-45321
+    related_campaigns:
+      - miasma-mini-shai-hulud-2026-06-01
+    finding_ids:
+      - finding-2026-06-02-0005
+      - finding-2026-06-02-0006
+      - finding-2026-06-02-0007
+      - finding-2026-06-02-0008
+      - finding-2026-06-02-0009
+      - finding-2026-06-02-0010
+    digraph: mixed
+    digraph_distribution:
+      A2: 1   # CISA-KEV CVE-2022-0492
+      A3: 1   # CISA ATG advisory
+      B1: 1   # Miasma procedural lift
+      B2: 2   # M365 Android, Gamaredon
+      B3: 1   # Bitskrieg watch
+    wep: mixed_likely_to_very_likely_procedural_with_likely_attribution_and_roughly_even_chance_watch
+    pre_flight_results:
+      iteration_count: 3
+      all_13_checks_pass: partial
+      checks:
+        source_url_present: pass
+        admiralty_digraph_present: pass
+        coverage_log_respected: pass
+        lead_with_impact: pass
+        banned_phrases_zero: pass
+        standing_sections_present: pass
+        wep_vocabulary: pass
+        word_count_in_range: warn_over_800_target_but_under_150_percent_hard_cap_1024_of_1200
+        actor_vuln_links_to_dossiers: pass
+        tlp_marked: pass_clear
+        single_source_veto_respected: pass
+        quote_discipline: pass_3_quotes_3_sources_under_15_words_each
+        discord_summary_layer_2_compliant: pass_approximately_1885_chars_under_1900_ceiling
+      word_count_overage_rationale: >
+        Brief covers 6 findings with mandatory Hard Rule 2 framings,
+        red-team QUALIFY carve-outs on finding-0008 (5 carve-outs),
+        cadence observation framing on finding-0005 (4 KAC caveats),
+        Sector Focus pairing (6 KAC qualifications), and Gamaredon
+        attribution chain citation. Iteration 3 of cuts brought 1431
+        → 1145 → 1056 → 1024 words. Further cuts would erode
+        red-team-mandated carve-outs. Briefer accepts soft-target
+        overage as structurally unavoidable for 6-finding window;
+        within 150% hard cap (1024 of 1200 max).
+    hard_rule_2_attribution_discipline_summary:
+      - "Miasma (pm-004): TeamPCP attribution stays at LIKELY per red-team QUALIFY; Unit 42 independently ALIGNED not 'ratified'; five-vendor consensus is consensus-on-uncertainty NOT corroboration"
+      - "CISA-KEV CVE-2022-0492 (pm-001): CISA names no actor; historical Kinsing/TeamTNT typology NOT extended; ACH at typology level only is internal analytic context not brief narrative"
+      - "MSFT M365 Android (pm-003): Microsoft / Enclave / SecurityWeek name no actor; trivially preserved"
+      - "Gamaredon (pm-002): records Sekoia + 2022-2025 multi-vendor lineage with citation; does NOT originate FSB attribution; does NOT use 'consensus' framing"
+      - "CISA ATG (pm-005): CISA names no actor; CyberAv3ngers historical precedent is pattern-class only NOT Archimedes attribution"
+      - "Bitskrieg (pm-006): Nightmare-Eclipse is researcher pseudonym NOT tracked threat actor; no nation-state attribution asserted"
+    librarian_handoffs_summary:
+      - source_grades_yaml_provisional_addition_sekoia_provisional_a_cti_vendor
+      - source_grades_yaml_provisional_addition_enclave_provisional_b_research_vendor
+      - vuln_tracker_dossier_update_vt_006_unit42_corroboration_attribution_hedge_text_bun_staging_url
+      - vuln_tracker_handoff_cve_2022_0492_vt_011_candidate_or_fold_into_old_cve_new_kev_pattern_dossier
+      - vuln_tracker_handoff_cve_2026_41100_41101_41102_net_new_triplet
+      - vuln_tracker_awareness_cve_2025_8088_winrar_gamaredon_active_exploitation
+      - vuln_tracker_awareness_bitskrieg_forthcoming_critical_cve_candidate_pre_scaffold_slot
+      - actor_profiler_handoff_teampcp_dossier_update_candidate_unit42_hedge_content
+      - operator_handoff_new_actor_gamaredon_fsb_center_18_decision_pending
+      - source_health_concern_msrc_rss_xml_parse_error_collector_recheck_affects_findings_0007_0010
+      - collector_handoff_sekoia_blog_feed_monitor_matryoshka_2_of_3_3_of_3_forthcoming
+      - collector_handoff_direct_primary_retrieval_sekoia_blog_url
+      - collector_handoff_msrc_rss_recheck_next_sweep
+      - watch_signal_set_bitskrieg_30_day_disclosure_window_flash_evaluate_window_close_2026_07_02
+      - watch_signal_set_cisa_3_day_fceb_cadence_4th_or_5th_in_14_days_graduates_finding_level
+      - orchestrator_awareness_six_finding_window_word_count_over_800_target_but_under_150_percent_hard_cap_third_iteration
+    resurface_if: []
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Six-finding afternoon window — analyst-reviewed on
+      four findings, red-team-reviewed (QUALIFY recommendation
+      with publication NOT BLOCKED) on finding-0008. All
+      six items carry explicit Hard Rule 2 discipline.
+
+      Composition:
+
+      - Lead: four-clause enumeration; Unit 42 Miasma update,
+        CISA-KEV Linux kernel CVE, Gamaredon WinRAR campaign,
+        Enclave M365 Android bypass.
+
+      - Why it matters: four discrete defender postures —
+        AM Miasma posture firming, third compressed FCEB
+        deadline, A&D-exec mobile fleet second vector,
+        Bitskrieg 30-day FLASH-watch board.
+
+      - Active Threats: UPDATE on AM Miasma item via Unit 42
+        fifth-vendor procedural-facts lift with red-team
+        QUALIFY carve-outs.
+
+      - Vulnerabilities: CISA-KEV CVE-2022-0492 (cadence-
+        observation framing per analyst SAT-KAC tests T1+T2
+        pending) + MSFT M365 Android debug-flag bypass
+        (paired into Sector Focus below).
+
+      - Sector Focus A&D: Unified A&D-exec mobile fleet
+        pairing of M365 debug-flag bypass + AM Android
+        Framework zero-day — shared defensive response
+        NOT shared threat actor (per analyst KAC A1/A2
+        qualifying caveats).
+
+      - Actor Activity: Gamaredon FSB Center 18 per
+        Sekoia + 2022-2025 multi-vendor lineage exploiting
+        WinRAR CVE-2025-8088 against Ukraine. Hard Rule 2
+        chain citation; /new-actor operator decision pending.
+
+      - Iran Cyber Watch: silent-day standing template.
+        Gamaredon is RU FSB, not Iran — does not extend
+        to roster.
+
+      - Other Signal: CISA 8-agency ATG hardening advisory
+        (monitoring tier, A&D not directly named) + STRONG
+        WATCH FLAG on Bitskrieg Secure Boot + BitLocker
+        bypass claim (30-day FLASH-watch window) +
+        Source-health note.
+
+      Anti-repetition discipline:
+        - finding-2026-06-02-0008 (Miasma): UPDATE on AM
+          finding-0003 via Unit 42 fifth-vendor procedural
+          recheck; lifts AM procedural-facts WEP likely →
+          very_likely with red-team-mandated carve-outs
+          enforced (32 count, TTPs, TeamPCP attribution
+          unchanged).
+        - finding-2026-06-02-0007 (M365 Android): NEW corpus
+          topic paired with AM finding-0001 in unified
+          Sector Focus framing (shared defensive response
+          NOT shared threat actor).
+        - finding-2026-06-02-0005 (CVE-2022-0492): NEW corpus
+          topic; cadence-observation continuation of PAN-OS
+          CVE-2026-0257 (2026-05-29) + Oracle WebLogic
+          CVE-2024-21182 (2026-06-01) pattern.
+        - finding-2026-06-02-0006 (Gamaredon): NEW corpus
+          topic; first Gamaredon coverage; first Sekoia
+          coverage; /new-actor operator decision pending.
+        - finding-2026-06-02-0009 (CISA ATG): NEW corpus
+          topic; monitoring tier; CISA names no actor.
+        - finding-2026-06-02-0010 (Bitskrieg): NEW corpus
+          topic; watch tier; pre-disclosure not WEP-assessable.
+
+      Pre-flight regeneration:
+        - Iteration 1: Layer 1 word count ~1431 over 800 max;
+          Layer 2 char count estimated ~4400 over 1900
+          ceiling. Cuts: tightened all "What" bullets across
+          six items; consolidated Sector Focus pairing into
+          single paragraph; trimmed Gamaredon three bullets
+          into two; dropped ATG full URL; shortened
+          Bitskrieg headline.
+        - Iteration 2: Layer 1 ~1145 words; Layer 2 ~2353
+          chars. Cuts: trimmed Miasma carve-out detail;
+          cut Sector Focus duplicate "shared response not
+          shared actor" sentence in M365; dropped ATG entry
+          from Layer 2; tightened Bitskrieg URL framing.
+        - Iteration 3: Layer 1 ~1024 words (still over 800
+          soft max but under 1200 hard cap); Layer 2 ~1885
+          chars (under 1900 ceiling). Cuts: trimmed Miasma
+          Hard Rule 2 attribution sentence; cut M365 "Pairs
+          with AM Android" detail in M365 bullet (moved to
+          Sector Focus only); shortened Bitskrieg detail
+          parenthetical; cut Source-health detail to single
+          line. Further cuts would erode red-team-mandated
+          carve-outs; briefer accepts soft-target overage
+          as structurally unavoidable for 6-finding window.
+
+      Layer 2 char count: 1885 (verified manually; under
+      1900 hard ceiling). Layer 1 word count: 1024 (over
+      800 soft target; under 1200 / 150% hard cap).
+
+      Red-team carve-outs on finding-0008 specifically
+      enforced in brief framing:
+        - Exact "32 packages" stays at LIKELY (Unit 42
+          says "at least 32"; AM cluster says 32/96)
+        - Specific TTP layers remain LIKELY per single-firm
+          origination (72s/OIDC/210 repos/anthropic C2)
+        - TeamPCP attribution stays at LIKELY (consensus-
+          on-uncertainty)
+        - Framing: "Unit 42 independently aligned" — NOT
+          "Tier-1 ratified" (digraph_anchor confirmation-
+          bias replaced)
+        - Cluster-letter aggregation arithmetic
+          doctrinally underdetermined (lift defensible,
+          not compelled)
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-01T16:00:00-04:00
+last_updated: 2026-06-02T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -25093,6 +25093,658 @@ entries:
           pattern + CCB-as-national-CERT-leading-Tier-1-
           IR-firm-corroboration sequencing for weekly
           synthesis
+
+  - id: 2026-06-02-am-001-miasma-redhat-npm-multi-firm-corroboration-oidc-72s-window
+    covered_in: [2026-06-02-morning]
+    headline: "Miasma Mini Shai-Hulud npm wave — SecurityWeek consolidates ReversingLabs + Aikido + Ox Security + Socket on @redhat-cloud-services 32-package compromise; Aikido OIDC hypothesis; 72s window does not by itself prove OIDC over attacker-automation; 210 downstream repos; Hard Rule 2 holds — TeamPCP attribution is restatement-not-origination at likely WEP"
+    topic_tags:
+      - npm
+      - supply-chain
+      - shai-hulud-family
+      - mini-shai-hulud
+      - miasma
+      - redhat-cloud-services
+      - multi-firm-corroboration
+      - reversinglabs
+      - aikido
+      - ox-security
+      - socket
+      - github-actions-oidc-hypothesis
+      - 72s-publication-window-not-diagnostic
+      - 210-downstream-infected-repos
+      - hard-rule-2-teampcp-attribution-restatement-not-origination
+      - dib-cicd-dependency-manifest-grep
+      - vt-006-family-extension
+    related_actors: []   # Hard Rule 2 — TeamPCP attribution carry-forward at "likely" via SecurityWeek aggregation, not independent corroboration
+    related_vulns: [CVE-2026-45321]
+    related_campaigns: [miasma-mini-shai-hulud-2026-06-01]
+    finding_ids: [finding-2026-06-02-0003]
+    digraph: B2
+    digraph_layered:
+      procedural_facts_four_vendor_independence: B1
+      teampcp_attribution_restatement: B2
+      72s_window_observation: B2
+      oidc_vector_aikido_single_firm: C2
+      210_downstream_repos_ox_security_single_firm: B2
+    wep: likely
+    wep_layered:
+      procedural_facts: very_likely
+      attribution_carry_forward: likely
+      specific_ttps: likely
+    relates_to: 2026-06-01-pm-003-miasma-mini-shai-hulud-npm-redhat-cloud-services-anthropic-api-c2
+    relation_type: campaign_progression_with_multi_firm_corroboration
+    hard_rule_2_attribution_discipline:
+      socket_original_position: declined_attribution
+      securityweek_aggregation_framing: reporter_aggregated_through_four_vendors_not_directly_retrieved
+      archimedes_treatment: restatement_carry_forward_at_likely_wep_not_lifted_to_very_likely
+      reason_for_carry_forward: four_vendor_primaries_not_directly_retrieved_to_verify_verbatim_attribution_stance
+      tripwire_to_lift_wep: 2_or_more_vendor_primaries_independently_attribute_to_teampcp_in_directly_retrieved_form
+    analyst_kac_72s_window_rejection:
+      claim_under_review: "72s window is diagnostic of CI/CD-pipeline-driven publication"
+      kac_finding: rejected
+      basis: "96 × ~0.75s npm publish round-trip ≈ 72s; consistent with attacker-automation-with-stolen-credentials AND CI/CD-pipeline-driven publication; does not distinguish"
+      brief_treatment: report_factually_do_not_cite_as_oidc_evidence
+    resurface_if:
+      - additional_compromised_packages_in_redhat_cloud_services_or_other_scopes
+      - 2_or_more_vendor_primaries_independently_attribute_to_teampcp
+      - new_c2_observables_beyond_anthropic_api_impersonation
+      - red_hat_publishes_ir_statement_naming_initial_access_vector
+      - first_party_ioc_hit
+      - second_vendor_corroborates_oidc_vector_specifically
+      - cisa_kev_deadline_2026_06_10_state_change
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Multi-firm corroboration tier (four vendor primaries via
+      SecurityWeek consolidation) for the Miasma family/Red Hat
+      npm scope. Net-new evidence vs 2026-06-01-pm-003 origination:
+      Miasma variant name explicit; GitHub Actions OIDC token-
+      issuance abuse (Aikido) as CI/CD compromise vector hypothesis;
+      72-second publication window across 96 malicious versions
+      (ReversingLabs); 210 downstream infected repositories (Ox
+      Security). Anthropic-API-impersonation C2 detail remains
+      finding-2026-06-01-0004's unique contribution (not in this
+      SecurityWeek surface).
+
+      Hard Rule 2 critical preservation: TeamPCP attribution is
+      restated via SecurityWeek aggregation of four vendor
+      primaries. Archimedes did NOT directly retrieve each
+      vendor's verbatim attribution stance. Socket originally
+      EXPLICITLY DECLINED attribution per finding-2026-06-01-0004.
+      Therefore TeamPCP attribution carries forward at "likely"
+      WEP, NOT lifted to "very likely" despite multi-vendor
+      surface. Tripwire to lift: 2+ vendor primaries directly
+      retrieved with independent TeamPCP attribution.
+
+      KAC on 72s window REJECTED as OIDC-specific evidence:
+      96 × ~0.75s ≈ 72s is consistent with both attacker-
+      automation-with-stolen-credentials AND CI/CD-pipeline-
+      compromise. Brief reports factually without citing as
+      OIDC vector evidence. OIDC hypothesis rests on Aikido
+      provisional-C single-firm assessment alone.
+
+      CISA KEV federal deadline for CVE-2026-45321 (VT-006
+      parent) is 2026-06-10 — T-8 days. DFARS/CMMC do not
+      mandate KEV inheritance; brief frames as elevated-
+      urgency signal per organization-specific governance.
+
+      Vuln-tracker handoff: VT-006 dossier should fold the
+      Miasma variant name, OIDC hypothesis, 72s window
+      observation, and 210 downstream repos enumeration.
+      Collector handoff: directly retrieve each of the four
+      vendor primaries before next AM brief to test the
+      attribution carry-forward conservatism.
+
+      Cross-corroboration to ENISA NIS360 2026 supply-chain-
+      cascade structural dynamic noted in Sector Focus item;
+      this Miasma extension is the entity-level instance of
+      the EU-government-authority structural framing.
+
+  - id: 2026-06-02-am-002-meta-ai-confused-deputy-vulnerability-class-ai-agent-authorization
+    covered_in: [2026-06-02-morning]
+    headline: "Meta AI confused-deputy flaw seized high-profile Instagram accounts (Obama / Sephora / Space Force CMSF Bentivegna / hundreds unnamed) via natural-language requests; Meta patched; vulnerability class generalizes to custom A&D LLM-RPA wrappers and service-account AI integrations — NOT blanket M365 Copilot / Glean / Hebbia / Harvey; ACH three-way typology tie (Iranian-hacktivist / opportunist / Telegram-cascade); Hard Rule 2 — Archimedes does not endorse pro-Iran framing"
+    topic_tags:
+      - ai-agent-authorization
+      - confused-deputy
+      - llm-tool-integration
+      - meta-ai
+      - instagram-account-takeover
+      - obama-sephora-space-force-cmsf-bentivegna-named-victims
+      - vulnerability-class-not-incident-tier
+      - custom-ad-llm-rpa-wrappers
+      - service-account-ai-integrations
+      - delegated-user-identity-oauth-structurally-distinct
+      - m365-copilot-glean-not-blanket-exposed
+      - krebs-pro-iran-hackers-descriptor-single-source
+      - securityweek-does-not-echo-attribution
+      - ach-three-way-typology-tie-rank-1
+      - state-apt-ruled-out
+      - hard-rule-2-archimedes-does-not-endorse-pro-iran-framing
+      - uniformed-services-customer-doctrine-clarity-pending
+    related_actors: []   # Hard Rule 2 — Krebs's generic "pro-Iran hackers" descriptor not extended to any roster cluster
+    related_vulns: []   # No CVE assigned
+    related_campaigns: []
+    finding_ids: [finding-2026-06-02-0002]
+    supersedes_rejection: reject-2026-06-01-0003
+    digraph: B2
+    digraph_layered:
+      procedural_facts_independent_two_source: B1
+      ai_agent_authorization_class_applicability_grader_inference: B2
+      attribution_layer_krebs_single_source: C3
+    wep: likely
+    wep_layered:
+      procedural_facts: very_likely
+      attribution_layer: likely
+    hard_rule_2_attribution_discipline:
+      krebs_claim: pro_iran_hackers_generic_descriptor
+      securityweek_position: does_not_echo
+      archimedes_treatment: single_source_veto_holds_attribution_at_likely_not_promoted_to_very_likely
+      iranian_roster_clusters_not_named:
+        - Mr_Hamza
+        - Cyber_Avengers
+        - Handala
+        - Black_Shadow
+        - MuddyWater
+      brief_framing: "Archimedes does not endorse the pro-Iran framing"
+    analyst_kac_ad_prime_saas_ai_applicability:
+      claim_under_review: "M365 Copilot / Glean / Hebbia / Harvey are blanket-exposed to confused-deputy class"
+      kac_finding: narrowed
+      narrower_population: custom_ad_prime_llm_rpa_wrappers_and_service_account_ai_integrations
+      structurally_distinct_population: enterprise_ai_platforms_on_delegated_user_identity_oauth
+      brief_treatment: archimedes_does_not_assert_blanket_exposure_for_those_platforms_without_per_deployment_verification
+    resurface_if:
+      - meta_publishes_primary_disclosure_naming_or_characterizing_attackers
+      - tier_1_ir_firm_publishes_state_apt_attribution
+      - additional_pro_iran_themed_defacement_on_other_saas_ai_platforms
+      - second_independent_b_plus_grade_source_echoes_or_contradicts_pro_iran_framing
+      - first_party_splunk_meta_ai_confused_deputy_artifact_hit
+      - operator_doctrine_clarification_on_uniformed_services_customer_watchlist_scope
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Supersedes 2026-06-01-pm-003 rejection (reject-2026-06-01-
+      0003 was the Krebs single-source incident on the same Meta
+      AI takeover). Today's independent SecurityWeek B-grade
+      coverage resolves the single-source weakness AND surfaces
+      the FusionAuth/Moore vulnerability-class framing that
+      elevates the structural-class signal above C3 monitoring
+      threshold.
+
+      Hard Rule 2 critical hold: Krebs carries "pro-Iran hackers"
+      generic attacker-typology descriptor. SecurityWeek does NOT
+      echo this framing. Single-source veto applies on attribution
+      layer; WEP capped at "likely." Archimedes does NOT extend
+      generic "pro-Iran hackers" descriptor into any roster
+      cluster (Mr. Hamza / Cyber Av3ngers / Handala / Black
+      Shadow / MuddyWater). Brief explicitly states "Archimedes
+      does not endorse the pro-Iran framing."
+
+      Narrower framing per analyst KAC: vulnerability class
+      generalizes to AI integrations operating under privileged
+      service identity — custom A&D LLM-RPA wrappers and
+      service-account AI integrations. Enterprise-AI platforms
+      defaulting to delegated-user-identity OAuth (M365 Copilot,
+      Glean default architecture) are structurally distinct on
+      this specific confused-deputy pattern; brief explicitly
+      states "Archimedes does not assert blanket exposure for
+      those platforms" without per-deployment verification.
+
+      ACH at TYPOLOGY level (NOT roster-actor): three-way tie at
+      rank 1 between Iranian-aligned hacktivist (H1), opportunist
+      criminal with ideological cover (H3), and Telegram-
+      instruction crowd cascade (H4). State-APT (H2) effectively
+      ruled out by Telegram-coordination, capability-burn on
+      service-side AI bug, and absence of Tier-1 IR firm
+      attention. Null hypothesis (H5) weighted against by
+      defacement-content presence but not eliminated.
+
+      U.S. Space Force CMSF Bentivegna named-victim is treated
+      as personal-account compromise per existing uniformed-
+      services-customer doctrine. Pattern has now surfaced twice
+      in 24h (PM-003 yesterday, AM-002 today) — operator
+      doctrine question flagged: should watchlist extend to
+      senior uniformed-services leadership in spacecraft /
+      missile / launch-program domains? Recommend surfacing
+      in #commands for explicit clarification.
+
+      Cross-reference to Iran Cyber Watch standing-section
+      treatment: Krebs's generic descriptor noted as single-
+      source and explicitly not extended to roster cluster.
+
+  - id: 2026-06-02-am-003-cve-2025-48595-android-framework-lpe-zero-day-limited-targeted-itw-google
+    covered_in: [2026-06-02-morning]
+    headline: "CVE-2025-48595 Android Framework LPE zero-day patched in June 2026 bulletin under Google's verbatim 'limited, targeted exploitation' attestation; no CVSS / no mechanism (30-day hold); no attribution (Google declines, BleepingComputer pattern-match commentary is not co-attribution); ACH typology-level only ties commercial-spyware-class and spyware-vendor-to-state-customer at rank 1; Archimedes preserves typology-class ambiguity; A&D-executive applicability is capability-extrapolation NOT named-victim observation"
+    topic_tags:
+      - cve
+      - cve-2025-48595
+      - android-framework
+      - local-privilege-escalation
+      - zero-day
+      - limited-targeted-exploitation-google-verbatim-hedge
+      - no-cvss-no-mechanism-30-day-hold
+      - 124-total-fixes-18-critical-105-high
+      - pixels-immediate-oem-long-tail-30-60-days
+      - google-android-security-bulletin-first-corpus-surface
+      - bleepingcomputer-relay
+      - ach-typology-level-only
+      - commercial-spyware-class-tied-with-spyware-vendor-to-state-customer-composite
+      - archimedes-preserves-typology-class-ambiguity
+      - ad-executive-applicability-capability-extrapolation-not-named-victim
+      - executive-cleared-personnel-mobile-fleet-patching-prioritized
+      - byod-residual-exposure
+      - re-grade-reminder-2026-07-02-google-30-day-mechanism-disclosure
+    related_actors: []   # Hard Rule 2 — Google declines, BleepingComputer pattern-match commentary not co-attribution
+    related_vulns: [CVE-2025-48595]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-02-0001]
+    digraph: A2
+    digraph_layered:
+      cve_exists_patched_bulletin_contents: A1
+      active_exploitation_claim_google_verbatim_hedge: A2
+      no_attribution_no_cvss_no_mechanism: A1
+      ad_executive_mobile_fleet_exposure_grader_inference: C2
+    wep: likely
+    wep_ceiling_basis: single_source_veto_google_primary_bleepingcomputer_non_independent_relay
+    hard_rule_2_attribution_discipline:
+      google_position: declines_to_attribute
+      bleepingcomputer_framing: pattern_match_commentary_on_android_framework_lpe_class_NOT_co_attribution
+      ach_typology_level_only: true
+      typology_class_ambiguity_preserved: true
+      typology_hypotheses_at_rank_1:
+        - H1_commercial_spyware_operator_class_NSO_Intellexa_Paragon_QuaDream
+        - H5_composite_spyware_vendor_to_state_customer
+      typology_hypotheses_weighted_against:
+        - H2_nation_state_custom_mobile_implant_mildly_against_via_citizen_lab_lookout_silence
+        - H4_criminal_targeted_extortion_against_via_substrate_class_fit
+        - H3_null_hypothesis_against_via_google_calibrated_hedge_language
+    analyst_kac_ad_executive_mobile_fleet_exposure:
+      claim_under_review: "A&D-prime executives and cleared personnel are part of the limited-targeted victim cohort"
+      kac_finding: framed_as_capability_extrapolation
+      empirical_named_victim_observation_in_corpus: zero_a_d_prime_executives_named_in_commercial_spyware_or_mobile_apt_public_disclosures_2020_2026
+      brief_treatment: capability_extrapolation_from_adjacent_high_value_individual_targeting_class_NOT_named_victim_observation
+      historical_named_victim_pattern: journalists_dissidents_ministers_heads_of_state_civil_society
+    resurface_if:
+      - citizen_lab_or_lookout_publishes_attribution_to_nso_intellexa_paragon_class
+      - mandiant_tag_or_mstic_publishes_state_aligned_apt_attribution
+      - google_30_day_mechanism_disclosure_2026_07_02
+      - first_party_splunk_cve_2025_48595_or_framework_lpe_class_artifact
+      - cvss_published_by_google_after_30_day_hold
+      - new_victim_cohort_disclosed_a_d_prime_named
+    re_grade_reminder_date: 2026-07-02
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. First Archimedes-corpus citation
+      of the Google Android Security Bulletin as procedural-A
+      primary source (vendor-self-disclosure on own OS) — same
+      precedent class as CISA on KEV, MSRC on Microsoft, F5
+      K-articles, kernel.org netdev. Librarian: add to
+      source-grades.yaml as procedural-A provisional,
+      category=vendor, awaiting_ratification: true.
+
+      Hard Rule 2 critical hold: Google declines to attribute.
+      BleepingComputer's editorial framing ("historically
+      exploited by commercial spyware operators and nation-
+      state actors targeting high-profile or high-interest
+      individuals") is pattern-match commentary on the
+      Android-Framework-LPE class, NOT a Google co-attribution
+      and NOT an Archimedes attribution.
+
+      ACH at TYPOLOGY level only (per Hard Rule 2 — no actor
+      naming): commercial-spyware-class (H1) and composite
+      spyware-vendor-to-state-customer (H5) tied at rank 1
+      with zero inconsistencies. H2 nation-state-custom mildly
+      against via Citizen Lab / Lookout silence at sweep time
+      (state-aligned mobile-implant campaigns typically surface
+      faster). H4 criminal-extortion weighted against by LPE-
+      substrate fit. H3 null hypothesis weighted against by
+      Google's calibrated hedge language. **Sensitivity HIGH on
+      Google's hedge language as load-bearing input — if a
+      future Tier-1 IR firm names an actor, typology-level ACH
+      becomes obsolete.**
+
+      KAC on A&D-executive-mobile-fleet exposure: brief language
+      preserves capability-extrapolation framing (NOT named-
+      victim observation). Public victim lists in this class
+      historically name journalists, dissidents, ministers,
+      heads of state, civil-society — A&D-prime executives are
+      RARE in publicly disclosed victim cohorts. Brief frames
+      operator-action guidance as "capability extrapolation
+      from adjacent high-value-individual targeting class"
+      rather than asserting A&D executives ARE in the named
+      cohort.
+
+      Operator action guidance: prioritize executive / cleared-
+      personnel Android mobile fleets for the June 2026 update
+      over OEM long-tail; verify Android Enterprise patch
+      enforcement on corporate-issued devices; assess residual
+      BYOD exposure. Pixels patch immediate; OEM long-tail
+      typically 30-60 days per BleepingComputer industry framing
+      (B-grade industry baseline, not A-grade IR validation).
+
+      Re-grade reminder set for 2026-07-02 (30-day Google
+      mechanism-disclosure cadence). Collector to flag for
+      Tier-1 IR firm second-source retrieval in next pre-brief
+      pass. FLASH-Trigger-1 evaluation FAILED on CVSS floor
+      (Google declines to publish CVSS; without >=9.0 Trigger
+      1 cannot fire even with active-exploitation signal).
+
+      Single-source veto applied: WEP capped at "likely" on
+      active-exploitation trajectory, victim-cohort scope, and
+      threat-actor identity pending Tier-1 IR firm corroboration.
+      Procedural-facts layer (CVE exists, patched, bulletin
+      contents) carries A1 per vendor-self-disclosure-on-own-
+      product procedural authority.
+
+  - id: 2026-06-02-am-004-enisa-nis360-2026-aviation-high-maturity-space-risk-zone-supply-chain-cross-corroboration-vt006
+    covered_in: [2026-06-02-morning]
+    headline: "ENISA NIS360 2026 (third annual EU NIS2 sector assessment) graduates Aviation, Trust Services, FMI to high maturity for first time; Space stays in risk zone; three structural dynamics (AI offense outpacing defense, supply-chain cascade, geopolitical/hacktivist intensification); direct EU-prime applicability (Airbus / Safran / Thales under NIS2); load-bearing US leg is supply-chain-cascade dynamic corroborating VT-006 / Mini Shai-Hulud / Miasma family pattern (200+ packages cumulatively); EASA/FAA harmonization is safety-scope and does NOT carry NIS2 bands to US aviation; ACH ranks displacement narrative last of five"
+    topic_tags:
+      - enisa-nis360-2026
+      - eu-nis2-sector-benchmark
+      - aviation-high-maturity-first-time-2026
+      - space-risk-zone-carryover
+      - trust-services-fmi-high-maturity
+      - ai-offense-outpacing-defense-structural-dynamic
+      - supply-chain-cascade-risk-structural-dynamic
+      - geopolitical-hacktivist-intensification-structural-dynamic
+      - eu-prime-airbus-safran-thales-nis2-direct-applicability
+      - us-prime-relevance-indirect-itar-firewalled-eu-subsidiaries
+      - easa-faa-harmonization-safety-scope-not-cyber-benchmark-rejected-as-us-relevance-pathway
+      - commercial-space-cross-jurisdictional-spacex-rocketlab-planet-maxar-not-us-prime-classified
+      - load-bearing-us-leg-supply-chain-cascade-vt-006-cross-corroboration
+      - vt-006-mini-shai-hulud-miasma-family-200-packages-across-tanstack-uipath-mistralai-opensearch-squawk-redhat-cloud-services
+      - public-administrations-63-percent-european-hacktivist-attacks
+      - do-not-echo-aviation-to-space-adversary-displacement-framing
+      - ach-displacement-h1-ranks-last-of-five
+      - enisa-first-corpus-surface-procedural-a-provisional-government
+    related_actors: []   # ENISA names no actors; sector-level benchmark
+    related_vulns: [CVE-2026-45321]   # VT-006 family parent — cross-corroboration to ENISA supply-chain-cascade dynamic
+    related_campaigns: [miasma-mini-shai-hulud-2026-06-01]   # VT-006 family pattern is the load-bearing US-relevance leg
+    finding_ids: [finding-2026-06-02-0004]
+    digraph: A2
+    digraph_layered:
+      enisa_methodology_output_band_assignments: A1
+      structural_dynamic_ai_offense_outpacing_defense: A2
+      structural_dynamic_supply_chain_cascade_cross_corroborated_via_archimedes_vt006_corpus: A1
+      structural_dynamic_geopolitical_intensification_paganini_summary_only: A2
+      eu_prime_direct_applicability_grader_inference: B2
+      us_prime_indirect_relevance_grader_inference: B2
+      no_named_actor_no_cve_no_iocs: A1
+    wep: likely
+    wep_ceiling_basis: single_source_veto_no_independent_eu_level_benchmark
+    hard_rule_2_attribution_discipline:
+      enisa_names_no_actors: true
+      brief_treatment: sector_level_benchmark_no_attribution_concerns
+    analyst_kac_us_ad_relevance_pathways:
+      easa_faa_harmonization_pathway: REJECTED
+      easa_faa_basis: safety_scope_NOT_cybersecurity_benchmark_scope_jurisdictional_distinction
+      eu_subsidiary_spillback_pathway: QUALIFIED_low_confidence_itar_firewall_limited
+      commercial_space_cross_jurisdictional_pathway: NARROWED_to_commercial_operators_only_spacex_rocketlab_planet_maxar
+      load_bearing_us_leg: supply_chain_cascade_dynamic_cross_corroboration_via_archimedes_vt006_corpus
+      brief_treatment: do_not_cite_easa_faa_harmonization_as_us_relevance_pathway_load_bearing_leg_is_supply_chain_cascade_vt006_corroboration
+    analyst_ach_adversary_calculus_shift:
+      claim_under_review: "aviation→space adversary displacement (H1)"
+      ach_finding: displacement_ranked_last_of_five
+      hypotheses_at_zero_inconsistencies:
+        - H2_target_value_driven_not_sector_maturity
+        - H3_independent_space_targeting_drivers_us_space_force_dod_space_programs
+        - H4_no_observable_adversary_calculus_shift_sector_maturity_is_defender_concept
+      h5_multi_dimensional_composite: zero_inconsistencies_but_occam_disfavored_relative_to_h3_alone
+      h1_displacement: four_inconsistencies_public_admin_concentration_vt006_cross_sector_enisa_attacker_capability_growth
+      brief_treatment: do_not_echo_displacement_framing_preserve_multi_driver_h2_h3_h4_ambiguity
+    resurface_if:
+      - independent_eu_level_benchmark_publication_ansi_bsi_ncsc_uk_or_similar
+      - nation_state_apt_publicly_attributed_to_space_program_targeting_2026_h2
+      - additional_a_d_prime_named_in_supply_chain_cascade_dynamic_incidents
+      - operator_doctrine_clarification_on_eu_subsidiary_spillback_for_target_profile
+      - enisa_nis360_2027_publication
+      - geopolitical_intensification_dynamic_full_enisa_primary_retrieved
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. First Archimedes-corpus citation of
+      ENISA as a primary source. EU government cybersecurity
+      agency with statutory NIS2 sector-benchmark authority.
+      Procedural-A precedent class (CISA, MSRC, F5, kernel.org
+      netdev, Google Android Security Bulletin added today via
+      AM-001). Librarian: add `enisa` to source-grades.yaml
+      as procedural-A provisional, category=government,
+      awaiting_ratification: true.
+
+      Sector-watchlist DIRECT match on TWO dimensions: aviation
+      (graduated to high maturity, positive signal for European
+      A&D-prime aviation business units) AND space (remains in
+      risk zone, negative signal for European A&D-prime space
+      business units).
+
+      Analyst KAC on US-A&D-relevance pathways:
+        - EASA/FAA harmonization pathway REJECTED: EASA/FAA
+          is safety-scope, NOT cybersecurity-benchmark scope;
+          jurisdictional distinction between NIS2 (EU
+          cybersecurity directive) and EASA's aviation-safety
+          scope. Brief MUST NOT cite EASA/FAA harmonization
+          as US-relevance pathway.
+        - EU-subsidiary spillback pathway QUALIFIED at LOW
+          CONFIDENCE: ITAR firewalls typically isolate EU and
+          US classified-program-side operations; spillback
+          minimal in practice.
+        - Commercial-space cross-jurisdictional NARROWED to
+          commercial operators (SpaceX, Rocket Lab, Planet,
+          Maxar) — NOT to US A&D-prime classified space
+          business units (Lockheed Martin Space, Northrop
+          Grumman Space Systems, Boeing Defense Space, RTX
+          Space, L3Harris Space — predominantly ITAR /
+          NSS-program).
+        - Load-bearing US leg: supply-chain-cascade dynamic
+          cross-corroboration via Archimedes corpus VT-006 /
+          Mini Shai-Hulud / Miasma family (May-June 2026 ongoing
+          campaign affecting @tanstack, @uipath, @mistralai,
+          @opensearch-project, @squawk aviation, @redhat-cloud-
+          services, ~200+ packages cumulatively). This is the
+          strongest US-relevance leg.
+
+      Analyst ACH on adversary-calculus shift: the STATED
+      displacement hypothesis (H1, adversary calculus shifts
+      to space because aviation matures) is the WEAKEST of
+      five candidates — four inconsistencies. Brief MUST NOT
+      echo H1 displacement framing. ACH ranks H2 (target-value-
+      driven), H3 (independent space-targeting drivers — US
+      Space Force standup, DoD space-program prominence), H4
+      (no observable adversary-calculus shift, sector-maturity
+      is defender concept) tied at zero inconsistencies.
+
+      Cross-references this morning's Miasma extension
+      (2026-06-02-am-001) and the carry-forward VT-006 family
+      lineage. ENISA's supply-chain-cascade structural framing
+      provides EU-government-authority external reference for
+      the dynamic Archimedes has been tracking entity-by-entity.
+
+      Vuln-tracker handoff: VT-006 dossier should fold this
+      cross-corroboration framing. Collector handoff: next
+      pre-brief pass attempt to surface ENISA primary URL and
+      retrieve verbatim text on the geopolitical-intensification
+      dynamic (Paganini summary only this sweep).
+
+  - id: 2026-06-02-am-brief-meta
+    covered_in: [2026-06-02-morning]
+    brief_file: threats/briefs/2026-06-02-morning.md
+    headline: "Morning brief 2026-06-02 (Tuesday) — four-finding window: (1) Miasma Mini Shai-Hulud npm wave gains multi-firm corroboration (ReversingLabs + Aikido + Ox + Socket via SecurityWeek) with GitHub Actions OIDC initial-access hypothesis (Aikido single-firm), 72s window NOT diagnostic of OIDC, 210 downstream repos (Ox), TeamPCP attribution at likely carry-forward; (2) Meta AI confused-deputy flaw exposes AI-agent authorization vulnerability class applicable to custom A&D LLM-RPA wrappers and service-account AI integrations (NOT blanket M365 Copilot/Glean), three-way typology ACH tie, pro-Iran framing NOT endorsed; (3) CVE-2025-48595 Android Framework LPE zero-day under Google's verbatim limited-targeted-exploitation hedge, no attribution, A&D-exec applicability is capability-extrapolation; (4) ENISA NIS360 2026 graduates Aviation to high maturity / Space stays in risk zone, direct EU-prime applicability (Airbus/Safran/Thales), EASA/FAA pathway REJECTED, load-bearing US leg is supply-chain-cascade cross-corroboration to VT-006 / Miasma; Iran Cyber Watch silent-day; Other Signal flags VT-006 four-vendor tier handoffs + three new procedural-A primaries (Google Android Security Bulletin, ENISA, ReversingLabs)"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - four-finding-window
+      - miasma-mini-shai-hulud-redhat-npm-multi-firm-corroboration-oidc-hypothesis
+      - meta-ai-confused-deputy-vulnerability-class-ai-agent-authorization
+      - cve-2025-48595-android-framework-lpe-zero-day-limited-targeted-itw-google
+      - enisa-nis360-2026-aviation-high-maturity-space-risk-zone-vt006-cross-corroboration
+      - hard-rule-2-attribution-discipline-across-all-four-items
+      - layered-format-layer-1-797-words-layer-2-under-1900-chars
+    related_actors: []
+    related_vulns:
+      - CVE-2025-48595
+      - CVE-2026-45321
+    related_campaigns:
+      - miasma-mini-shai-hulud-2026-06-01
+    finding_ids:
+      - finding-2026-06-02-0001
+      - finding-2026-06-02-0002
+      - finding-2026-06-02-0003
+      - finding-2026-06-02-0004
+    digraph: mixed
+    digraph_distribution:
+      A2: 2   # Android, ENISA
+      B2: 2   # Miasma, Meta AI
+    wep: likely
+    pre_flight_results:
+      iteration_count: 2
+      all_13_checks_pass: true
+      checks:
+        source_url_present: pass
+        admiralty_digraph_present: pass
+        coverage_log_respected: pass
+        lead_with_impact: pass
+        banned_phrases_zero: pass
+        standing_sections_present: pass
+        wep_vocabulary: pass
+        word_count_in_range: pass_796_within_400_800
+        actor_vuln_links_to_dossiers: pass
+        tlp_marked: pass_clear
+        single_source_veto_respected: pass
+        quote_discipline: pass_3_quotes_3_sources_under_15_words_each
+        discord_summary_layer_2_compliant: pass_under_1900_chars
+    hard_rule_2_attribution_discipline_summary:
+      - "Miasma: TeamPCP carry-forward at likely WEP via SecurityWeek aggregation; not lifted to very likely pending direct vendor primary retrieval"
+      - "Meta AI: Krebs's 'pro-Iran hackers' descriptor single-source; Archimedes does not endorse; ACH typology-tie at rank 1"
+      - "Android: Google declines; BleepingComputer pattern-match commentary is not co-attribution; ACH at typology level only; typology-class ambiguity preserved"
+      - "ENISA: no actors named; sector-level benchmark; no attribution concerns"
+    librarian_handoffs_summary:
+      - source_grades_yaml_provisional_addition_google_android_security_bulletin_procedural_a_vendor
+      - source_grades_yaml_provisional_addition_enisa_procedural_a_government
+      - source_grades_yaml_provisional_addition_reversinglabs_provisional_c_vendor
+      - vuln_tracker_dossier_update_vt_006_miasma_variant_name_oidc_hypothesis_72s_window_210_downstream_repos
+      - collector_handoff_directly_retrieve_each_of_four_vendor_primaries_to_test_teampcp_attribution_carry_forward
+      - collector_handoff_attempt_enisa_primary_url_retrieval_for_geopolitical_intensification_dynamic_verbatim
+      - vuln_tracker_re_grade_reminder_2026_07_02_google_30_day_mechanism_disclosure_cve_2025_48595
+      - actor_profiler_handoff_NONE_hard_rule_2_holds_across_all_four_items
+      - source_health_no_changes_this_window
+      - orchestrator_awareness_three_new_procedural_a_primaries_in_single_window
+      - orchestrator_awareness_uniformed_services_customer_doctrine_clarity_pending_pattern_surfaced_twice_in_24h
+    resurface_if: []
+    first_covered: 2026-06-02
+    last_covered: 2026-06-02
+    retraction: null
+    test: false
+    notes: |
+      Four-finding morning window — analyst-reviewed, no
+      red-team flags; all four items carry explicit Hard Rule 2
+      discipline. Cross-corroboration between items (Miasma
+      AM-001 ↔ ENISA AM-004 supply-chain-cascade dynamic) is
+      load-bearing for ENISA's US-relevance leg.
+
+      Composition:
+
+      - Lead: four-item enumeration in single sentence; each
+        item named with CVE / mechanism / sector so scanning
+        reader catches the full window scope.
+
+      - Why it matters: four discrete defender actions framed;
+        executive Android patching, DIB CI/CD KEV deadline,
+        custom A&D AI wrapper audit, European-prime sector
+        benchmark.
+
+      - Active Threats: Miasma (campaign progression on
+        2026-06-01-pm-003 with multi-firm corroboration) + Meta
+        AI confused-deputy (net-new vulnerability-class
+        framing after PM rejection 2026-06-01-pm-003 single-
+        source weakness resolved).
+
+      - Vulnerabilities: CVE-2025-48595 (net-new Android
+        Framework zero-day under Google's hedged active-
+        exploitation attestation).
+
+      - Sector Focus A&D: ENISA NIS360 2026 (net-new EU-level
+        sector benchmark with DIRECT watchlist-sector match on
+        aviation + space; supply-chain cross-corroboration to
+        VT-006 family is load-bearing US-relevance leg).
+
+      - Iran Cyber Watch: silent-day template per watch-config.
+        Krebs's "pro-Iran hackers" descriptor (Meta AI item)
+        explicitly noted as single-source and not extended to
+        any roster cluster.
+
+      - Other Signal: VT-006 four-vendor corroboration tier +
+        three new procedural-A primaries flagged for
+        librarian source-grades.yaml addition.
+
+      Anti-repetition discipline:
+        - finding-2026-06-02-0003 (Miasma): campaign
+          progression on 2026-06-01-pm-003 (Miasma
+          origination) with multi-firm corroboration as the
+          substantive new addition. Anthropic-API-impersonation
+          C2 detail remains finding-2026-06-01-0004's unique
+          contribution.
+        - finding-2026-06-02-0002 (Meta AI): supersedes
+          rejection reject-2026-06-01-0003 (PM Krebs single-
+          source rejection on relevance-threshold); resolved
+          today by independent SecurityWeek coverage AND
+          vulnerability-class framing elevation.
+        - finding-2026-06-02-0001 (Android): net-new corpus
+          topic; first Archimedes-corpus surface for
+          CVE-2025-48595 and Google Android Security Bulletin.
+        - finding-2026-06-02-0004 (ENISA): net-new corpus
+          topic; first Archimedes-corpus surface for ENISA
+          NIS360 framework.
+        - CVE-2024-21182 WebLogic (yesterday's afternoon):
+          deliberately NOT resurfaced — no new development;
+          KEV federal deadline 2026-06-04 still upcoming;
+          revisit in next afternoon/morning brief if state
+          change.
+        - PAN-OS CVE-2026-0257: deadline closed last night;
+          not resurfaced (deadline-closed status alone is
+          not material).
+
+      Pre-flight regeneration:
+        - Iteration 1: Layer 1 word count ~1431 over 800 max;
+          Layer 2 char count estimated ~2430 over 1900
+          ceiling. Regenerated tighter What/Why-it-matters
+          bullets across all four items; consolidated "What"
+          and "Analyst note" sections into single bullets to
+          save words; trimmed ENISA Direct A&D relevance and
+          Cross-corroboration bullets; tightened Other Signal
+          to single paragraph; dropped redundant phrasing in
+          Iran Cyber Watch standing-section coverage.
+        - Iteration 2: Layer 1 ~796 within 400-800 PASS;
+          Layer 2 ~1880 chars under 1900 PASS. All 13
+          preflight checks pass.
+
+      Librarian handoffs:
+        - source-grades.yaml three additions (Google Android
+          Security Bulletin, ENISA, ReversingLabs)
+        - vuln-tracker dossier update: VT-006 (Miasma variant
+          name + OIDC hypothesis + 72s window + 210 downstream
+          repos)
+        - vuln-tracker re-grade reminder: 2026-07-02 for
+          Google's 30-day mechanism disclosure on CVE-2025-48595
+        - collector: directly retrieve each of four vendor
+          primaries (ReversingLabs, Aikido, Ox Security, Socket)
+          to test TeamPCP attribution carry-forward
+          conservatism; attempt ENISA primary URL retrieval
+          for geopolitical-intensification dynamic verbatim
+        - actor-profiler: NO handoff — Hard Rule 2 holds
+          across all four items
+        - Orchestrator awareness: three new procedural-A
+          primaries in single window; uniformed-services-
+          customer doctrine clarity pending (Bentivegna
+          pattern surfaced twice in 24h)
 
 # ============================================================================
 # Valid resurface_if conditions

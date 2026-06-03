@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-02T08:00:00-04:00
+last_updated: 2026-06-03T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -26067,7 +26067,7 @@ entries:
       also affected finding-0010).
 
   - id: 2026-06-02-pm-004-unit42-npm-threat-landscape-june-2-update-miasma-teampcp-attribution-hedge-tier1-corroboration-am-finding-0003-procedural-recheck
-    covered_in: [2026-06-02-afternoon]
+    covered_in: [2026-06-02-afternoon, 2026-06-03-morning]
     headline: "UPDATE on AM finding-0003: Unit 42's June 2 npm Threat Landscape update adds Red Hat / Miasma section; explicit attribution hedge — TTPs consistent with TeamPCP, but public Mini Shai-Hulud source-code release means any competent actor can replicate — INDEPENDENTLY ALIGNS (not 'ratified') with Archimedes' AM Hard Rule 2 stance; five-vendor consolidation (Unit 42 + ReversingLabs + Aikido + Ox Security + Socket) lifts procedural-facts layer WEP from LIKELY to VERY LIKELY; carve-outs enforced per red-team QUALIFY: exact '32 packages' count stays at LIKELY (Unit 42 says 'at least 32'); specific TTP layers (72s window, OIDC, 210 repos, api.anthropic[.]com C2) remain LIKELY per single-firm origination; TeamPCP attribution stays at LIKELY (five-vendor consensus is consensus-on-uncertainty, not corroboration); cluster-letter aggregation doctrinally underdetermined"
     topic_tags:
       - npm
@@ -26132,7 +26132,7 @@ entries:
       - second_vendor_corroborates_72s_window_or_oidc_vector_or_210_repos_or_anthropic_c2_specifically
       - cisa_kev_deadline_2026_06_10_state_change_for_cve_2026_45321
     first_covered: 2026-06-02
-    last_covered: 2026-06-02
+    last_covered: 2026-06-03
     retraction: null
     test: false
     notes: |
@@ -26270,7 +26270,7 @@ entries:
       tier.
 
   - id: 2026-06-02-pm-006-theregister-microsoft-nightmare-eclipse-walkback-bitskrieg-secure-boot-bitlocker-forthcoming-claim-strong-watch-flag
-    covered_in: [2026-06-02-afternoon]
+    covered_in: [2026-06-02-afternoon, 2026-06-03-morning]
     headline: "STRONG WATCH FLAG: The Register reports Microsoft Monday walkback of prior-week harsh response to Windows 0-day researcher Nightmare-Eclipse ('no intention to pursue action against individuals conducting or publishing security research'); Nightmare-Eclipse claims forthcoming 'Bitskrieg' Secure Boot + BitLocker bypass for release 'sometime in June' — no specific CVE/mechanism/PoC at sweep, not WEP-assessable; any Microsoft Secure Boot/BitLocker disclosure in next 30 days will be FLASH-evaluated immediately per A&D-prime Windows fleet exposure under CMMC/DFARS/NIST 800-171"
     topic_tags:
       - microsoft-msrc-vendor-relations
@@ -26331,7 +26331,7 @@ entries:
       - first_party_splunk_secure_boot_or_bitlocker_or_bcd_or_winload_artifact
       - additional_industry_commentary_b_grade_or_higher_on_microsoft_vendor_relations_dispute
     first_covered: 2026-06-02
-    last_covered: 2026-06-02
+    last_covered: 2026-06-03
     retraction: null
     test: false
     notes: |
@@ -26583,6 +26583,658 @@ entries:
         - Cluster-letter aggregation arithmetic
           doctrinally underdetermined (lift defensible,
           not compelled)
+
+  - id: 2026-06-03-am-001-mstic-miasma-red-hat-npm-a-grade-originating-primary-sixth-vendor-two-tier1-declination-signals-novel-capability-layers
+    covered_in: [2026-06-03-morning]
+    headline: "UPDATE on 2026-06-02-pm-004: MSTIC publishes A-grade originating primary on Red Hat npm Miasma with first-party Defender + Microsoft Threat Intelligence telemetry; sixth vendor in cluster; procedural-facts WEP very_likely anchored on THREE directly-retrieved primaries (MSTIC + Unit 42 + Socket), NOT six-vendor consensus; two Tier-1 vendors leave operator open on TeamPCP-Miasma extension (Unit 42 explicit hedge primary-strength; MSTIC silence-with-family-signature-tag secondary-strength); MSTIC sole-originator novel TTPs at likely per single-source veto — destructive tripwire rm -rf ~/ on decoy-token interaction (tradecraft protection NOT operational objective, Miasma-extension only do NOT propagate to VT-006 family axis), Sigstore-Fulcio/Rekor OIDC provenance forgery for npm publish rights, 16 attacker-controlled GitHub accounts rotating per session, upstream RedHatInsights/javascript-clients CI/CD pipeline compromise as initial vector, Bun runtime second-stage, dormant api.anthropic[.]com :443/v1/api endpoint marked noop:true (cross-corroborates Socket prior observation at endpoint level); VT-006 base TeamPCP attribution at likely UNAFFECTED by Miasma extension declination"
+    topic_tags:
+      - npm
+      - supply-chain
+      - shai-hulud-family
+      - mini-shai-hulud
+      - miasma
+      - redhat-cloud-services
+      - mstic-tier1-sixth-vendor
+      - a-grade-originating-primary
+      - first-party-defender-telemetry
+      - two-tier1-declination-signals-not-affirmative-declination
+      - three-directly-retrieved-primaries-anchor
+      - lower-grade-chain-preserved-not-load-bearing
+      - novel-capability-layers-mstic-sole-originator
+      - destructive-tripwire-tradecraft-protection-not-operational-objective
+      - sigstore-fulcio-rekor-provenance-forgery-oidc
+      - 16-account-rotation
+      - upstream-redhatinsights-javascript-clients-cicd-pipeline-compromise
+      - bun-runtime-second-stage
+      - dormant-anthropic-c2-endpoint-noop-true-monitor-not-blocklist
+      - api-anthropic-cross-corroborated-mstic-plus-socket-endpoint-level
+      - vt-006-base-teampcp-attribution-unaffected
+      - hard-rule-2-archimedes-does-not-originate-attribution
+    related_actors: []   # Hard Rule 2 — Miasma extension UNATTRIBUTED in corpus; two Tier-1 declination signals
+    related_vulns: [CVE-2026-45321]   # VT-006 base parent CVE — KEV deadline 2026-06-10 still standing
+    related_campaigns: [miasma-mini-shai-hulud-2026-06-01]
+    finding_ids: [finding-2026-06-03-0001]
+    relates_to: 2026-06-02-pm-004-unit42-npm-threat-landscape-june-2-update-miasma-teampcp-attribution-hedge-tier1-corroboration-am-finding-0003-procedural-recheck
+    relation_type: tier1_a_grade_originating_primary_with_second_attribution_declination_signal_and_substantive_capability_lift
+    digraph: B1
+    digraph_layered:
+      procedural_facts_three_directly_retrieved_primaries_anchor: A1
+      novel_capability_layers_mstic_sole_originator: A2
+      attribution_layer_two_tier1_declination_signals: A1
+      api_anthropic_endpoint_cross_corroborated_mstic_plus_socket: B1
+    wep: very_likely
+    wep_layered:
+      procedural_facts_layer: very_likely
+      novel_capability_layers_carve_out_single_source_veto: likely
+      teampcp_on_miasma_attribution: unlikely
+      vt_006_base_teampcp_attribution_unaffected_at_likely: likely
+    hard_rule_2_attribution_discipline:
+      mstic_position: silence_with_family_signature_tag_zero_teampcp_mini_shai_hulud_tanstack_cve_2026_45321_links_in_body
+      unit42_position_carried_forward: explicit_attribution_hedge_decline_to_extend_teampcp
+      framing_in_brief: two_tier1_vendors_decline_to_affirm_teampcp_attribution_on_miasma_extension_NOT_two_tier1_declinations
+      framing_strength: unit42_explicit_primary_strength_mstic_silence_with_family_signature_tag_secondary_strength
+      red_team_carve_outs_enforced: true
+      vt_006_base_attribution_unaffected_logical_scope_discipline: true
+      wep_anchor_anchored_on_three_directly_retrieved_primaries_NOT_six_vendor_consensus: true
+    red_team_qualify_carve_outs_enforced:
+      - language_hedge_two_tier1_vendors_decline_to_affirm_NOT_two_tier1_declinations
+      - wep_lift_anchored_on_three_directly_retrieved_primaries_NOT_six_vendor_consensus
+      - api_anthropic_defensive_line_configured_noop_at_mstic_observation_do_NOT_generic_blocklist_monitor_for_pattern_treat_as_latent_live
+      - destructive_tripwire_framed_as_tradecraft_protection_NOT_operational_objective_miasma_extension_only_do_NOT_lift_vt_006_family_destructive_axis
+      - vt_006_base_teampcp_attribution_unaffected_logical_scope_discipline
+    operator_handoffs:
+      - vuln_tracker_dossier_update_vt_006_mstic_a_grade_originating_primary_six_vendor_cluster
+      - vuln_tracker_dossier_update_vt_006_novel_capability_layers_destructive_tripwire_sigstore_fulcio_rekor_forgery_16_account_rotation_upstream_pipeline_compromise_bun_runtime_dormant_anthropic_c2
+      - actor_profiler_handoff_teampcp_dossier_update_candidate_mstic_silence_with_family_signature_tag_secondary_strength_unit42_explicit_hedge_primary_strength_corpus_stance_miasma_extension_unattributed
+      - source_grades_yaml_no_changes_mstic_already_ratified_a
+      - watch_signal_set_api_anthropic_endpoint_state_transition_third_observation_re_grades_endpoint_layer
+    resurface_if:
+      - third_tier_1_a_grade_vendor_publishes_independent_teampcp_attribution_diagnostic_evidence_on_miasma_extension
+      - teampcp_publicly_disavows_or_claims_miasma_campaign
+      - first_party_splunk_miasma_or_redhat_cloud_services_or_anthropic_v1_api_or_bun_runtime_detection
+      - npm_or_github_publishes_post_incident_review_with_package_count_or_attribution_differing_from_corpus_stance
+      - additional_compromised_packages_in_redhat_cloud_services_or_other_scopes_with_miasma_marker
+      - second_independent_vendor_corroborates_destructive_tripwire_on_other_shai_hulud_family_campaign_lifts_family_destructive_axis_above_protection_class
+      - cisa_kev_deadline_2026_06_10_state_change_for_cve_2026_45321
+      - api_anthropic_endpoint_third_observation_state_active_or_state_dormant_re_grades_endpoint_layer
+      - mstic_publishes_follow_up_with_explicit_actor_attribution_or_explicit_declination
+    first_covered: 2026-06-03
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      UPDATE on 2026-06-02-pm-004 via MSTIC A-grade
+      originating primary. MSTIC is sixth independent
+      vendor in cluster and second Tier-1 A-grade joining
+      Unit 42. Brief led on this finding.
+
+      Red-team carve-outs MANDATORY and ENFORCED in brief
+      framing:
+        (1) Language hedge: brief uses "two Tier-1 vendors
+            decline to affirm TeamPCP attribution on the
+            Miasma extension" — NOT "two Tier-1
+            declinations." Unit 42 is explicit hedge
+            (primary-strength); MSTIC is silence-with-
+            family-signature-tag (secondary-strength).
+            Distinction preserved in body text.
+        (2) WEP lift anchor: brief anchors procedural-facts
+            very_likely on "three directly-retrieved
+            primaries — MSTIC first-party Defender +
+            Unit 42 monitor-post + Socket runtime" —
+            NOT "six-vendor consensus." Three of those
+            six (Aikido C + Ox B + ReversingLabs C)
+            entered through ONE SecurityWeek aggregation
+            per finding-2026-06-02-0003; that's correlation
+            not independence. Lower-grade chain preserved
+            but not load-bearing.
+        (3) api.anthropic[.]com defensive line: brief uses
+            "configured noop:true at MSTIC observation;
+            monitor for unusual /v1/api traffic from CI
+            runner contexts; do NOT generic-blocklist;
+            treat as latent-live." Host carries legitimate
+            Anthropic API consumption — blocklist would
+            break legit ML/AI workflows. Hunt-on-pattern
+            NOT block-on-host. Brief does NOT advance any
+            "active → dormant transition" narrative —
+            Socket's role:c2_exfiltration_primary is
+            structural designation NOT runtime state-flag.
+        (4) Destructive tripwire rm -rf ~/: framed as
+            "destructive tradecraft protection (fires on
+            decoy-token interaction)" — NOT "destructive
+            operational objective." Miasma-extension level
+            only. Brief does NOT propagate to VT-006
+            family-level risk axis. Briefer language did
+            not lift family destructive ceiling on this
+            one capability.
+        (5) VT-006 base TeamPCP attribution UNAFFECTED:
+            brief explicitly states MSTIC silence on
+            Miasma extension does not unsay
+            Wiz/Snyk/StepSecurity affirmative TeamPCP
+            attribution on VT-006 base (CVE-2026-45321 /
+            TanStack) at "likely." Logical-scope
+            discipline preserved.
+
+      MSTIC body text quoted ZERO times at >15 words in
+      brief. Defender-signature names + decoy-token
+      substring + MSTIC named-team byline all <15 words
+      per Hard Rule 6.
+
+      Splunk first-party check (per Hard Rule 8) ran in
+      finding-2026-06-03-0001: -30d sweep across
+      defenseclaw_local + archimedes-NOT-archimedes-
+      internal on superset (api.anthropic.com, Miasma,
+      @redhat-cloud-services, ShaiWorm, polyapp, multiple
+      Miasma IOC keywords). 0 events. First-party silence
+      preserved as data point per the 20+-day non-
+      archimedes-internal silent stream pattern, NOT
+      disconfirming.
+
+      Tripwire additions:
+        - api.anthropic[.]com endpoint third observation
+          (state active or state dormant) re-grades the
+          endpoint layer.
+        - Destructive tripwire corroboration on another
+          Shai-Hulud family campaign would lift family
+          destructive axis above protection-class.
+        - MSTIC follow-up with explicit actor attribution
+          or explicit declination would resolve the
+          declination-signal-strength ambiguity.
+
+  - id: 2026-06-03-am-002-bleepingcomputer-vs-code-github-oauth-token-theft-zero-day-askar-poc-full-disclosure-microsoft-disclosure-policy-current-third-data-point
+    covered_in: [2026-06-03-morning]
+    headline: "VS Code zero-day allows GitHub OAuth token theft via webview-message-passing → rogue extension install → github.dev OAuth token extraction; researcher Ammar Askar disclosed with 1-hour pre-notification to GitHub citing prior MSRC experience; public PoC; no CVE; no patch; no ITW; THIRD data point in Microsoft disclosure-policy current arc (after 2026-06-02 PM Bitskrieg/Nightmare-Eclipse and 2026-06-02 PM Microsoft Monday walkback); paired in Other Signal arc roll-up with Huntress search: URI vendor-explicit-decline (fourth data point, strongest)"
+    topic_tags:
+      - vs-code-zero-day
+      - github-oauth-token-theft
+      - webview-message-passing-rogue-extension-class
+      - github-dev-oauth-extraction
+      - ammar-askar-researcher-pseudonym-real-name
+      - public-poc-1-hour-github-pre-notification
+      - no-cve-no-patch-no-itw-class
+      - microsoft-disclosure-policy-current-third-data-point
+      - msrc-prior-negative-experience-cited-rationale
+      - single-source-veto-applied-wep-likely-ceiling
+      - ad-defensive-framing-github-enterprise-oauth-app-policies
+      - rotate-github-dev-tokens-24h-window
+      - gate-github-dev-sso-pending-patch
+    related_actors: []   # No actor attribution; researcher disclosure
+    related_vulns: []   # No CVE assigned at sweep
+    related_campaigns: []
+    finding_ids: [finding-2026-06-03-0002]
+    relates_to: 2026-06-02-pm-006-theregister-microsoft-nightmare-eclipse-walkback-bitskrieg-secure-boot-bitlocker-forthcoming-claim-strong-watch-flag
+    relation_type: microsoft_disclosure_policy_current_third_independent_data_point
+    digraph: B3
+    digraph_layered:
+      bleepingcomputer_disclosure_procedural_facts: A1
+      vulnerability_technical_mechanism_class_single_source: B3
+      researcher_self_statement_msrc_prior_experience: B2
+      microsoft_github_silence_at_publication: A1
+      third_data_point_in_microsoft_disclosure_policy_arc: A1
+    wep: likely
+    wep_layered:
+      disclosure_event_procedural_facts: very_likely
+      technical_mechanism_claim_single_source_veto_capped: likely
+      ad_defensive_implication_indirect_inference: roughly_even_chance
+      third_data_point_in_microsoft_disclosure_policy_arc: very_likely
+    hard_rule_2_attribution_discipline:
+      researcher_disclosure_no_actor_attribution: true
+      msrc_prior_experience_cited_as_rationale_preserved_as_data_point_in_disclosure_policy_arc_not_attribution: true
+    operator_handoffs:
+      - vuln_tracker_handoff_scaffold_pending_cve_assignment
+      - librarian_no_provisional_source_changes_bleepingcomputer_already_ratified_b
+      - watch_signal_set_microsoft_github_official_response_or_cve_assignment_re_grades_finding
+    resurface_if:
+      - microsoft_or_github_official_response_statement
+      - a_grade_ir_firm_telemetry_on_attempted_exploitation
+      - cve_assignment
+      - vendor_patch
+      - token_theft_observation_in_any_a_grade_vendor_blog_or_first_party_telemetry
+      - microsoft_disclosure_policy_arc_5th_or_later_data_point_within_14_days
+    first_covered: 2026-06-03
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier inclusion (B3 below B2 action floor,
+      single-source, PoC-only, no ITW). Placed in Other
+      Signal under disclosure-policy arc roll-up rather
+      than standalone. Third data point in Microsoft
+      disclosure-policy current within ~30h.
+
+      Hard Rule 2: researcher disclosure, no actor
+      attribution. Askar cited prior MSRC negative
+      experience as rationale for full disclosure with
+      1-hour pre-notification — preserved as data point
+      in disclosure-policy arc, NOT as actor attribution.
+
+      Hard Rule 3: BleepingComputer references the GitHub
+      PoC URL but does NOT walk through exploit
+      construction. Brief records vulnerability mechanism
+      CLASS at category level only. No PoC content copied
+      into corpus.
+
+      Hard Rule 6: researcher quote "I really don't want
+      to deal with MSRC on VSCode bugs" (12 words)
+      preserved in raw-signal IOC field; NOT surfaced in
+      brief body text at all. Brief uses paraphrase only.
+
+      Disclosure-policy arc continues to evolve. If a
+      fifth independent data point lands within 14 days
+      → analyst SAT-ACH on whether MSRC has structurally
+      shifted disclosure-handling posture vs individual
+      decisions accumulating coincidentally.
+
+  - id: 2026-06-03-am-003-securityweek-thn-http2-bomb-cve-2026-49975-nginx-apache-iis-envoy-pingora-dos-mixed-patch-calif-codex-disclosure
+    covered_in: [2026-06-03-morning]
+    headline: "HTTP/2 Bomb CVE-2026-49975 — combined HPACK Bomb + Slowloris chain produces seconds-fast DoS against major web servers in default configurations; Calif (California-based research firm using OpenAI Codex) is originating research; NGINX patched ~6 weeks ago in 1.29.8+ (new max_headers directive defaulting to 1000); Apache HTTPD patched ~1 week ago in 2.4.64+ / mod_http2 2.0.41+; Microsoft IIS unpatched; Envoy unpatched; Cloudflare Pingora unpatched; SecurityWeek says 880,000 default-configured websites potentially exposed; PoC publicly released; no ITW; DIB A&D action — validate NGINX 1.29.8+ and Apache 2.4.64+ baselines at web edge, cap HPACK header counts and connection rates at IIS/Envoy/Pingora proxy layers"
+    topic_tags:
+      - cve-2026-49975
+      - http2-bomb
+      - hpack-bomb-slowloris-combined-chain
+      - dos-class-no-rce
+      - nginx-patched-1-29-8
+      - apache-httpd-patched-2-4-64-mod-http2-2-0-41
+      - iis-unpatched
+      - envoy-unpatched
+      - cloudflare-pingora-unpatched
+      - calif-california-research-firm-openai-codex
+      - poc-public-no-itw
+      - 880000-default-configured-websites-exposed-per-securityweek
+      - dib-ad-web-edge-action-validate-baselines-cap-hpack-headers-connection-rates
+      - mixed-patch-posture-vendor-matrix
+    related_actors: []   # No actor attribution; research disclosure
+    related_vulns: [CVE-2026-49975, CVE-2025-53020, CVE-2016-6581, CVE-2016-8740, CVE-2016-1546]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-03-0003]
+    digraph: B3
+    digraph_layered:
+      securityweek_thn_disclosure_with_cve_assignment_procedural: A1
+      cve_2026_49975_canonical_nvd_record: A1
+      historical_component_cves_canonical_nvd_records: A1
+      affected_product_set_single_research_source_through_two_relays: B2
+      patch_posture_per_vendor_single_research_source_through_two_relays: B2
+      ad_defensive_implication_for_web_edge_estates: C2
+    wep: likely
+    wep_layered:
+      cve_2026_49975_procedural_fact: very_likely
+      historical_component_cves: very_likely
+      affected_product_set_capped_single_source_veto: likely
+      patch_posture_per_vendor_capped_single_source_veto: likely
+      ad_web_edge_defensive_implication: likely
+    hard_rule_2_attribution_discipline:
+      research_disclosure_no_actor_attribution: true
+    operator_handoffs:
+      - vuln_tracker_handoff_scaffold_cve_2026_49975_new_vt_dossier_candidate
+      - vuln_tracker_awareness_historical_component_cves_2016_6581_2016_8740_2016_1546_2025_53020_cluster
+      - librarian_no_provisional_source_changes_securityweek_and_thn_already_ratified_b
+    resurface_if:
+      - in_the_wild_exploitation_observation_by_any_a_grade_ir_firm_or_first_party_telemetry
+      - microsoft_iis_official_patch_or_advisory
+      - envoy_official_patch_or_advisory
+      - cloudflare_pingora_official_patch_or_advisory
+      - cve_2026_49975_added_to_cisa_kev
+      - additional_affected_web_server_vendor_disclosed_litespeed_caddy_haproxy_traefik
+      - first_party_splunk_http2_dos_or_hpack_anomaly_detection
+    first_covered: 2026-06-03
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. Monitoring tier — B3 below
+      B2 action floor; DoS-class severity below RCE; no
+      ITW; PoC public but no attributed exploitation.
+
+      Mixed-patch posture is the operative defender
+      framing: NGINX + Apache shops are in patch-validation
+      mode (recent patches); IIS / Envoy / Pingora shops
+      are in interim-mitigation mode (proxy-layer HPACK
+      header-count caps + connection-rate limits) pending
+      vendor patches.
+
+      Calif is the originating research firm; both
+      SecurityWeek and THN are media relays of the same
+      Calif research. Per finding's grading, this is
+      single-research-source-through-two-relays — capped
+      at "likely" on substantive technical claims per
+      single-source veto. CVE-2026-49975 assignment is
+      canonical-by-definition.
+
+      Vuln-tracker scaffold pending: CVE-2026-49975 net-
+      new VT-* dossier candidate; historical component
+      CVEs (CVE-2016-6581 + CVE-2016-8740 + CVE-2016-1546
+      + CVE-2025-53020) cluster pre-scaffold awareness.
+
+  - id: 2026-06-03-am-004-thn-huntress-unpatched-windows-search-uri-ntlmv2-leak-microsoft-declined-cve-2026-33829-sibling-disclosure-policy-current-fourth-data-point
+    covered_in: [2026-06-03-morning]
+    headline: "Unpatched Windows search: URI handler NTLMv2 hash leak via crumb=location: UNC-path parameter — Huntress (Andrew Schwartz) originating research; Microsoft DECLINED remediation on 2026-04-15 with verbatim servicing-bar statement; sibling-by-mechanism to CVE-2026-33829 (Snipping Tool ms-screensketch: URI handler, patched April 2026) and historical CVE-2023-35636 (Varonis crumb-parameter, February 2024); no CVE assigned; no patch; no ITW; FOURTH and STRONGEST data point in Microsoft disclosure-policy current arc within ~30h (vendor-explicit-decline is the strongest disclosure-policy artifact); paired in Other Signal arc roll-up with BleepingComputer VS Code zero-day disclosure"
+    topic_tags:
+      - unpatched-windows-search-uri-handler
+      - ntlmv2-hash-leak
+      - crumb-location-unc-path-parameter
+      - microsoft-declined-remediation-2026-04-15
+      - microsoft-servicing-bar-quote-12-words
+      - sibling-cve-2026-33829-snipping-tool-ms-screensketch-patched-april-2026
+      - historical-cve-2023-35636-varonis-crumb-parameter-february-2024
+      - no-cve-no-patch-no-itw-class
+      - microsoft-disclosure-policy-current-fourth-strongest-data-point
+      - vendor-explicit-decline-strongest-artifact
+      - huntress-andrew-schwartz-byline-originating
+      - thn-relay-of-huntress
+      - ad-defensive-framing-block-search-uri-gpo-applocker-cleared-personnel-endpoints
+      - egress-filter-outbound-smb-non-corporate-destinations
+      - cmmc-dfars-ntlm-relay-exposure-data-point
+    related_actors: []   # No actor attribution; researcher disclosure after vendor decline
+    related_vulns: [CVE-2026-33829, CVE-2023-35636]   # Sibling + historical
+    related_campaigns: []
+    finding_ids: [finding-2026-06-03-0004]
+    relates_to: 2026-06-02-pm-006-theregister-microsoft-nightmare-eclipse-walkback-bitskrieg-secure-boot-bitlocker-forthcoming-claim-strong-watch-flag
+    relation_type: microsoft_disclosure_policy_current_fourth_independent_strongest_data_point_vendor_explicit_decline
+    digraph: B3
+    digraph_layered:
+      thn_relay_of_huntress_disclosure_procedural: A1
+      huntress_originating_research_byline_provisional_b: B2
+      vulnerability_technical_mechanism_class_single_source_through_relay: B3
+      microsoft_declined_remediation_verbatim_self_statement_via_huntress: B2
+      sibling_cve_2026_33829_canonical_nvd_record_patched_april_2026: A1
+      historical_cve_2023_35636_canonical_nvd_record_patched_february_2024: A1
+      fourth_data_point_in_microsoft_disclosure_policy_arc_strongest_vendor_explicit_decline: A1
+    wep: likely
+    wep_layered:
+      disclosure_event_procedural_facts: very_likely
+      technical_mechanism_claim_single_source_veto_capped: likely
+      microsoft_declined_remediation_verbatim_self_statement: very_likely
+      sibling_cve_2026_33829_canonical_reference: very_likely
+      ad_defensive_implication_for_cleared_personnel_endpoints: likely
+      fourth_data_point_in_microsoft_disclosure_policy_arc_strongest: very_likely
+    hard_rule_2_attribution_discipline:
+      researcher_disclosure_after_vendor_decline_no_actor_attribution: true
+      microsoft_verbatim_self_statement_preserved_per_hard_rule_6_12_words: true
+    operator_handoffs:
+      - librarian_provisional_source_addition_candidate_huntress_provisional_b_research_first_surface
+      - vuln_tracker_handoff_consider_microsoft_uri_handler_ntlm_leak_pattern_dossier_cluster_cve_2023_35636_cve_2026_33829_unassigned_search_uri
+      - watch_signal_set_microsoft_github_official_response_or_cve_assignment_re_grades_finding
+    resurface_if:
+      - microsoft_reverses_decline_and_issues_patch
+      - cve_assignment_by_third_party_mitre_or_external_cve_numbering_authority
+      - a_grade_ir_firm_telemetry_on_attempted_exploitation
+      - in_the_wild_observation_by_first_party_telemetry
+      - microsoft_disclosure_policy_arc_5th_or_later_data_point_within_14_days
+      - additional_sibling_uri_handler_ntlm_leak_cve_disclosed
+      - huntress_publishes_follow_up_research_or_first_party_telemetry
+    first_covered: 2026-06-03
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier inclusion (B3 below B2 action floor,
+      single-source, no ITW, vendor declined remediation
+      but no exploitation). Placed in Other Signal under
+      disclosure-policy arc roll-up rather than standalone.
+      FOURTH and STRONGEST data point in Microsoft
+      disclosure-policy current within ~30h — the
+      vendor-explicit-decline framing is the strongest
+      artifact in the arc because Microsoft's verbatim
+      servicing-bar statement is documented (not just
+      MSRC silence or researcher inference).
+
+      Hard Rule 6 (15-word quote limit, max one quote per
+      source): Microsoft's verbatim statement "only
+      Important and Critical severity cases meet our bar
+      for servicing" is exactly 12 words, well within
+      limit. One quote, one source (Microsoft via Huntress
+      via THN relay chain). Quote preserved in brief body
+      text per its load-bearing function as the strongest
+      disclosure-policy artifact.
+
+      Hard Rule 2: researcher disclosure after vendor
+      decline; no actor attribution. Sibling CVE-2026-33829
+      and historical CVE-2023-35636 are canonical NVD
+      references; no actor attribution attaches.
+
+      Hard Rule 8 (Splunk first-party): -30d sweep on
+      search:URI + crumb=location: + ms-screensketch +
+      Net-NTLMv2-leak superset across defenseclaw_local +
+      archimedes-NOT-archimedes-internal. 0 events. Per
+      Rule 8 silence not disconfirming.
+
+      Disclosure-policy arc status after this entry:
+        - Data point 1: Nightmare-Eclipse Bitskrieg
+          forthcoming claim + Microsoft prior-week harsh
+          response (per 2026-06-02-pm-006)
+        - Data point 2: Microsoft Monday walkback (per
+          2026-06-02-pm-006)
+        - Data point 3: Ammar Askar VS Code zero-day with
+          1-hour GitHub pre-notification citing prior
+          MSRC experience (per 2026-06-03-am-002 above)
+        - Data point 4 (THIS, STRONGEST): Huntress
+          search: URI handler with Microsoft verbatim
+          servicing-bar decline
+      If fifth independent data point lands within 14
+      days → analyst SAT-ACH on whether MSRC has
+      structurally shifted disclosure-handling posture
+      vs individual decisions accumulating coincidentally.
+
+      Provisional source addition candidate: Huntress
+      (provisional B, research first-surface vendor).
+      Librarian handoff: add to source-grades.yaml on
+      next sweep.
+
+      Vuln-tracker handoff: consider Microsoft URI
+      handler NTLM leak pattern dossier clustering
+      CVE-2023-35636 + CVE-2026-33829 + unassigned
+      search: URI handler — this is now a three-CVE
+      pattern across the ms-search-style URI handler
+      surface.
+
+  - id: 2026-06-03-am-brief-meta
+    covered_in: [2026-06-03-morning]
+    brief_file: threats/briefs/2026-06-03-morning.md
+    headline: "Morning brief 2026-06-03 (Wednesday) — four-finding window led by UPDATE on Miasma via MSTIC A-grade originating primary (sixth vendor, first-party Defender + Microsoft Threat Intelligence telemetry, two Tier-1 vendors leave operator open on TeamPCP-Miasma extension, novel TTPs at likely per single-source veto including destructive tripwire rm -rf ~/ framed as tradecraft protection NOT operational objective, Sigstore-Fulcio/Rekor OIDC provenance forgery, dormant api.anthropic[.]com /v1/api endpoint with monitor-not-blocklist defensive line, VT-006 base TeamPCP attribution UNAFFECTED at likely); HTTP/2 Bomb CVE-2026-49975 with mixed-patch posture (NGINX & Apache patched; IIS/Envoy/Pingora unpatched); Microsoft disclosure-policy arc roll-up clusters Other Signal under one arc heading — VS Code zero-day (Askar, public PoC, 1-hour GitHub pre-notification, third data point), Windows search: URI NTLMv2 leak (Huntress, Microsoft verbatim servicing-bar decline 2026-04-15, fourth and strongest data point), Bitskrieg watch from 2026-06-02 PM rides under arc heading rather than standalone; Sector Focus A&D silent-day with Miasma indirect-reach context; Actor Activity silent-day with Gamaredon carry-over reference; Iran Cyber Watch silent-day standing template"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - four-finding-window
+      - mstic-a-grade-originating-primary-miasma-update
+      - two-tier1-vendors-decline-to-affirm-teampcp-miasma-extension
+      - red-team-carve-outs-enforced-language-hedges
+      - http2-bomb-cve-2026-49975-mixed-patch-posture
+      - microsoft-disclosure-policy-arc-fourth-data-point-strongest
+      - other-signal-arc-rollup-vs-code-windows-search-uri-bitskrieg-watch
+      - sector-focus-ad-silent-day-with-miasma-indirect-reach-context
+      - actor-activity-silent-day-gamaredon-carry-over
+      - iran-cyber-watch-silent-day
+      - hard-rule-2-archimedes-does-not-originate-attribution
+      - hard-rule-6-quote-discipline-microsoft-12-word-quote
+      - hard-rule-8-splunk-first-party-zero-events-on-superset
+    related_actors: []   # Hard Rule 2 — Miasma extension UNATTRIBUTED; no other actors named in brief
+    related_vulns: [CVE-2026-45321, CVE-2026-49975, CVE-2026-33829, CVE-2023-35636]
+    related_campaigns: [miasma-mini-shai-hulud-2026-06-01]
+    findings_referenced:
+      - finding-2026-06-03-0001
+      - finding-2026-06-03-0002
+      - finding-2026-06-03-0003
+      - finding-2026-06-03-0004
+    relates_to:
+      - 2026-06-02-pm-004-unit42-npm-threat-landscape-june-2-update-miasma-teampcp-attribution-hedge-tier1-corroboration-am-finding-0003-procedural-recheck
+      - 2026-06-02-pm-006-theregister-microsoft-nightmare-eclipse-walkback-bitskrieg-secure-boot-bitlocker-forthcoming-claim-strong-watch-flag
+    digraph: composite_B1_to_B3_per_item
+    wep_layered:
+      lead_miasma_procedural_facts: very_likely
+      lead_miasma_novel_ttp_layers: likely
+      lead_miasma_teampcp_attribution: unlikely
+      http2_bomb_cve_assignment: very_likely
+      http2_bomb_affected_product_matrix_single_source_through_relays: likely
+      vs_code_zero_day_technical_mechanism: likely
+      windows_search_uri_microsoft_verbatim_servicing_bar_decline: very_likely
+      microsoft_disclosure_policy_arc_pattern_class_only: monitoring_tier
+    preflight:
+      result: passed
+      checks:
+        source_url_present: pass
+        admiralty_digraph_present: pass
+        coverage_log_respected_update_flag_used_on_miasma_resurface: pass
+        coverage_log_respected_bitskrieg_rides_under_disclosure_policy_arc: pass
+        lead_with_impact: pass
+        banned_phrases_zero: pass
+        standing_sections_present_sector_focus_iran_cyber: pass
+        actor_activity_silent_day_included_per_canonical_structure: pass
+        wep_vocabulary_used_throughout: pass
+        word_count_948_over_800_soft_target_under_1200_hard_cap: pass_with_overage_rationale
+        actor_vuln_links_to_dossiers: pass
+        tlp_marked: pass_clear
+        single_source_veto_respected_novel_ttp_layers_capped_at_likely_and_vs_code_mechanism_capped_at_likely: pass
+        quote_discipline: pass_1_quote_microsoft_via_huntress_via_thn_12_words
+        discord_summary_layer_2_compliant: pass_under_1900_chars
+      word_count_overage_rationale: >
+        Brief covers 4 findings with mandatory red-team carve-outs
+        on Miasma lead (5 language hedges woven into prose),
+        disclosure-policy arc roll-up clustering 3 data points under
+        one heading, HTTP/2 Bomb mixed-patch posture matrix
+        spanning 5 vendor products, and standing-section silent-day
+        templates. Iteration 1 of cuts brought ~1331 → 948 words.
+        Further cuts would erode red-team-mandated language hedges
+        (anchor on three directly-retrieved primaries not six-vendor
+        consensus; two Tier-1 vendors decline to affirm not "two
+        Tier-1 declinations"; api.anthropic defensive line monitor-
+        not-blocklist with latent-live framing; destructive tripwire
+        tradecraft-protection-not-operational-objective; VT-006
+        base unaffected). Briefer accepts soft-target overage as
+        structurally necessary for red-team carve-out preservation;
+        within 150% hard cap (948 of 1200 max).
+    hard_rule_2_attribution_discipline_summary:
+      - "Miasma (am-001): TeamPCP attribution on Miasma extension UNATTRIBUTED; two Tier-1 vendors leave the operator open (Unit 42 explicit hedge primary-strength; MSTIC silence-with-family-signature-tag secondary-strength); brief uses 'leave the operator open' / 'decline to affirm' framing NOT 'declination'; VT-006 base TeamPCP attribution at likely UNAFFECTED by Miasma extension framing"
+      - "VS Code zero-day (am-002): researcher disclosure, no actor attribution; Askar MSRC prior-experience preserved as disclosure-policy arc data point NOT attribution"
+      - "HTTP/2 Bomb (am-003): research disclosure, no actor attribution"
+      - "Windows search: URI (am-004): researcher disclosure after vendor decline, no actor attribution; Microsoft verbatim servicing-bar statement preserved at 12 words per Hard Rule 6"
+      - "Bitskrieg/Nightmare-Eclipse (carry from pm-006): Nightmare-Eclipse is researcher pseudonym NOT tracked threat actor; rides under disclosure-policy arc heading rather than standalone"
+    librarian_handoffs_summary:
+      - source_grades_yaml_provisional_addition_candidate_huntress_provisional_b_research_first_surface
+      - vuln_tracker_dossier_update_vt_006_mstic_a_grade_originating_primary_six_vendor_cluster_novel_capability_layers
+      - vuln_tracker_handoff_scaffold_cve_2026_49975_new_vt_dossier_candidate_http2_bomb
+      - vuln_tracker_handoff_consider_microsoft_uri_handler_ntlm_leak_pattern_dossier_clustering_cve_2023_35636_plus_cve_2026_33829_plus_unassigned_search_uri
+      - vuln_tracker_handoff_scaffold_pending_cve_assignment_vs_code_zero_day
+      - actor_profiler_handoff_teampcp_dossier_update_candidate_mstic_silence_with_family_signature_tag_secondary_strength_corpus_stance_miasma_extension_unattributed
+      - watch_signal_set_microsoft_disclosure_policy_arc_5th_data_point_within_14_days_triggers_analyst_sat_ach
+      - watch_signal_set_api_anthropic_endpoint_state_transition_third_observation_re_grades_endpoint_layer
+      - watch_signal_set_http2_bomb_in_the_wild_observation_by_any_a_grade_ir_firm_triggers_finding_level
+      - watch_signal_set_vs_code_zero_day_microsoft_github_official_response_or_cve_assignment_re_grades_finding
+    resurface_if: []
+    first_covered: 2026-06-03
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      Four-finding morning window — analyst- and red-team-
+      reviewed on finding-0001 (Miasma) with red-team
+      QUALIFY recommendation (publication NOT blocked,
+      five carve-outs MANDATORY and ENFORCED in brief
+      prose).
+
+      Composition:
+
+      - Lead: MSTIC sixth-vendor procedural-facts lift +
+        two-Tier-1-decline-to-affirm framing + novel TTPs
+        + dormant Anthropic C2 endpoint corroboration.
+
+      - Why it matters: three directly-retrieved
+        primaries anchor (NOT six-vendor consensus);
+        DIB CI/CD owners now have Defender signatures
+        and Advanced Hunting KQL; fourth Microsoft
+        decline-to-patch / full-disclosure data point;
+        HTTP/2 Bomb mixed-patch posture.
+
+      - Active Threats: UPDATE on 2026-06-02-pm-004
+        Miasma via MSTIC A-grade originating primary;
+        red-team carve-outs woven into prose.
+
+      - Vulnerabilities: HTTP/2 Bomb CVE-2026-49975
+        mixed-patch posture (NGINX & Apache patched;
+        IIS/Envoy/Pingora unpatched).
+
+      - Sector Focus A&D: silent-day with Miasma
+        indirect-reach context (@redhat-cloud-services
+        dependency-graph propagation into prime CI/CD
+        pipelines; no DIB-prime named victim).
+
+      - Actor Activity: silent-day with Gamaredon
+        carry-over reference (Sekoia matryoshka #2/3
+        and #3/3 not yet published).
+
+      - Iran Cyber Watch: silent-day standing template.
+
+      - Other Signal: Microsoft disclosure-policy arc
+        roll-up clustering VS Code zero-day (Askar) +
+        Windows search: URI (Huntress) + Bitskrieg
+        watch (carry from pm-006) under one arc heading;
+        arc is monitoring-tier signal pending fifth
+        data point.
+
+      Anti-repetition discipline:
+        - 2026-06-02-pm-004 (Miasma): UPDATE with
+          MSTIC A-grade originating primary as resurface
+          trigger (major source upgrade per
+          INTEL-BRIEF-STANDARDS resurface rules);
+          covered_in updated.
+        - 2026-06-02-pm-006 (Bitskrieg): RESURFACE
+          under disclosure-policy arc heading rather
+          than standalone (paired with VS Code +
+          Windows search: URI as arc cluster);
+          covered_in updated.
+        - finding-2026-06-03-0002 (VS Code): NEW corpus
+          topic; monitoring tier under disclosure-policy
+          arc; B3 below B2 action floor.
+        - finding-2026-06-03-0003 (HTTP/2 Bomb): NEW
+          corpus topic; B3 mixed-patch posture; DoS-class
+          below RCE; PoC public no ITW.
+        - finding-2026-06-03-0004 (Windows search: URI):
+          NEW corpus topic; monitoring tier under
+          disclosure-policy arc; STRONGEST data point
+          in arc (Microsoft verbatim servicing-bar
+          decline).
+
+      Pre-flight regeneration:
+        - Iteration 1: Layer 1 word count ~1331 over 800
+          target; Layer 2 char count estimated ~2862
+          over 1900 ceiling. Cuts: collapsed
+          api.anthropic defensive line into DIB action
+          bullet; collapsed VT-006-unaffected line into
+          WEP-lift bullet; trimmed Other Signal A&D
+          defensive-framing detail; tightened Vuln
+          section; tightened Layer 2 Active Threats
+          bullet (dropped TTP list inline detail);
+          dropped Microsoft 12-word quote from Layer 2
+          (preserved in Layer 1); tightened Other Signal
+          Layer 2 bullet.
+        - Final: Layer 1 948 words (over 800 soft target
+          but under 1200 / 150% hard cap); Layer 2
+          ~1893 chars (under 1900 hard ceiling). Further
+          cuts would erode red-team-mandated language
+          hedges; briefer accepts soft-target overage as
+          structurally necessary.
+
+      Layer 2 char count: ~1893 (under 1900 hard ceiling).
+      Layer 1 word count: 948 (over 800 soft target;
+      under 1200 / 150% hard cap).
+
+      Red-team carve-outs enforced in brief framing per
+      finding-0001 carryover (all five MANDATORY):
+        (1) Language hedge: "two Tier-1 vendors decline
+            to affirm" / "leave the operator open" —
+            NOT "two Tier-1 declinations"
+        (2) WEP lift anchor: "three directly-retrieved
+            primaries — MSTIC + Unit 42 + Socket" —
+            NOT "six-vendor consensus"
+        (3) api.anthropic[.]com defensive line:
+            "configured noop:true at MSTIC observation;
+            monitor for unusual /v1/api traffic from CI
+            runner contexts; do NOT generic-blocklist;
+            treat as latent-live"
+        (4) Destructive tripwire: framed as "destructive
+            tradecraft protection, not operational
+            objective"; Miasma-extension only; do NOT
+            propagate to VT-006 family destructive axis
+        (5) VT-006 base TeamPCP attribution at "likely"
+            UNAFFECTED by Miasma extension framing
 
 # ============================================================================
 # Valid resurface_if conditions

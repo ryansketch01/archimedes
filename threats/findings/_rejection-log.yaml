@@ -5257,16 +5257,153 @@ entries:
 
       Keep this rejection entry for 1 year per LEGAL-POLICY retention.
 
+  - rejection_id: reject-2026-06-03-0002
+    rejected_at: 2026-06-03T16:28:00-04:00
+    grading_run_id: afternoon-20260603-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-03-pm-005-theregister-microsoft-disclosure-policy-arc-askar-vs-code-nightmare-eclipse-starlabs-explicit-linkage-not-5th-data-point
+    cluster_topic: >
+      The Register (2026-06-03 10:30 EDT in-window) meta-coverage
+      piece "Another bug hunter leaks Microsoft exploits in
+      defiance of company's handling of vulnerability disclosures"
+      — frames the Microsoft disclosure-policy arc via Askar VS
+      Code zero-day + Nightmare-Eclipse (six zero-days, three
+      ITW per The Register) + StarLabs VS Code XSS-marked-
+      ineligible reference + Microsoft Digital Crimes Unit
+      threatened-then-backed-down framing. Arc-as-narrative
+      meta-consolidation; does NOT introduce a fifth independent
+      decline-to-patch / full-disclosure event.
+    rejection_reasons:
+      - anti_noise_rule_1_meta_arc_coverage_zero_materially_new_independent_disclosure_event
+      - watch_signal_arc_data_point_count_remains_at_4_not_lifted_to_5
+      - all_arc_data_points_already_corpus_tracked_via_existing_findings_06_03_0002_06_03_0004_06_02_0010
+    sources:
+      - source_yaml_id: theregister
+        grade: B
+        grade_provisional: false
+        role: Sole publisher (The Register) on meta-arc framing piece. B-grade ratified per source-grades.yaml. Adds qualitative arc-narrative content (Nightmare-Eclipse explicit count + DCU-backdown context + StarLabs explicit-link) but no new independent disclosure event substantive to the watch_signal.
+    relation_to_existing_findings:
+      arc_data_point_count_as_of_pm_20260603_grader: 4
+      arc_data_points:
+        - finding-2026-06-02-0010-theregister-microsoft-nightmare-eclipse-0day-researcher-dispute-bitskrieg-secure-boot-bitlocker-forthcoming-claim   # data point 1 — Bitskrieg / Nightmare Eclipse
+        - finding-2026-06-03-0002-bleepingcomputer-vs-code-github-oauth-token-theft-zero-day-askar-poc-full-disclosure-microsoft-disclosure-policy-current   # data point 2 — Askar VS Code
+        - finding-2026-06-03-0004-thn-huntress-unpatched-windows-search-uri-ntlmv2-leak-microsoft-declined-cve-2026-33829-sibling-disclosure-policy-current   # data point 3 — Windows Search URI NTLMv2 leak
+        - "StarLabs VS Code XSS ineligible/low-severity (surfaced via Askar's complaint in AM brief finding-2026-06-03-0002, reflected in AM brief 'arc now at four' framing)"   # data point 4 — StarLabs (already counted in AM)
+      what_the_register_relay_adds: >
+        Qualitative arc-narrative content only:
+        (a) Most explicit Archimedes-corpus statement of
+            Nightmare-Eclipse count + ITW ratio to date ("six
+            zero-days, three of which were quickly confirmed
+            to be exploited by attackers in the wild").
+        (b) Microsoft Digital Crimes Unit threatened-then-
+            backed-down framing toward Nightmare-Eclipse (new
+            qualitative detail not in AM corpus).
+        (c) Askar's "few levers I have to influence MSRC" full-
+            disclosure-as-policy-lever framing (new but
+            consistent with AM finding-2026-06-03-0002 framing).
+        (d) Explicit linkage of StarLabs + Nightmare-Eclipse +
+            Askar via Askar's own statement — explicitly counted
+            in AM watch_signal at 4 data points.
+      what_the_register_does_NOT_add: >
+        NO fifth independent decline-to-patch / full-disclosure
+        event. The watch_signal "microsoft_disclosure_policy_
+        arc_5th_data_point" requires "a fifth independent
+        decline-to-patch / full-disclosure event surfaces in
+        next 14d." The Register piece is META-CONSOLIDATION of
+        the existing four data points, not a new fifth event.
+        Watch_signal data-point count REMAINS AT 4. The 14-day
+        clock from AM brief 2026-06-03 continues unchanged.
+    anti_noise_rule_applied: ANTI_NOISE_RULE_1
+    anti_noise_rule_detail: >
+      Rule 1: zero materially new INDEPENDENT-DISCLOSURE-EVENT
+      content vs. existing arc-tracked findings. The Register
+      adds qualitative arc-narrative framing (DCU-backdown,
+      explicit Nightmare-Eclipse count, StarLabs explicit-link
+      via Askar) but no new disclosure event qualifies as the
+      "fifth independent data point" required for SAT-ACH
+      escalation per AM brief watch_signal trigger. Per
+      precedent of reject-2026-06-03-0001 (anti-noise restatement
+      via single-publisher relay of corpus-tracked content),
+      this Register meta-coverage piece is rejected as anti-
+      noise arc-narrative meta-consolidation rather than new
+      finding promotion.
+
+      DISTINCTION FROM CARRY-FORWARD UPDATE: PM-004 BleepingComputer
+      HTTP/2 Bomb update was handled as CARRY-FORWARD UPDATE
+      to finding-2026-06-03-0003 because the BleepingComputer
+      piece added new TECHNICAL-DETAIL content (per-server
+      timing, amplification ratios, named-researcher byline)
+      to a corpus-tracked finding. The Register meta-coverage
+      piece adds QUALITATIVE arc-narrative content to a
+      WATCH_SIGNAL that requires NEW INDEPENDENT-DISCLOSURE-
+      EVENT count to escalate. Different distinction: technical-
+      detail enrichment of a finding vs. event-count meta-
+      coverage of a watch_signal. The latter does not warrant
+      finding promotion or carry-forward; appropriate disposition
+      is rejection log entry with watch_signal state preserved.
+    would_be_digraph: B3 (The Register sole publisher B; sole-publisher-single-source pattern; cluster anchor would be B3 by single-publisher + arc-narrative-meta-coverage class)
+    watch_signal_state_after_rejection:
+      watch_signal_id: microsoft_disclosure_policy_arc_5th_data_point
+      data_point_count: 4
+      clock_started: 2026-06-03 (AM brief)
+      clock_window: 14 days
+      escalation_trigger: fifth independent decline-to-patch / full-disclosure event
+      escalation_action_on_trigger: analyst SAT-ACH on Microsoft disclosure-policy current arc
+    review_notes: >
+      Rejection grounds: Anti-noise arc-narrative meta-coverage.
+      Source quality is acceptable (The Register B ratified);
+      the substantive arc data points are ALREADY corpus-tracked
+      via finding-2026-06-02-0010 (Bitskrieg / Nightmare-Eclipse),
+      finding-2026-06-03-0002 (Askar VS Code), finding-2026-06-
+      03-0004 (Windows Search URI NTLMv2 leak), and AM-counted
+      StarLabs VS Code XSS reference. Promoting this raw-signal
+      as a new finding would produce a duplicate corpus entry
+      with no new analytic content.
+
+      Regrade triggers if conditions change:
+      (a) A FIFTH independent decline-to-patch / full-disclosure
+          event surfaces in the next 13 days (AM brief 14-day
+          clock from 2026-06-03; clock continues unchanged) →
+          analyst SAT-ACH on Microsoft disclosure-policy current
+          arc, plus potential new finding promotion or carry-
+          forward to the arc-aggregator finding.
+      (b) Nightmare-Eclipse releases the forthcoming "Bitskrieg"
+          Secure Boot + BitLocker bypass (per finding-2026-06-
+          02-0010 monitoring) → immediate FLASH-evaluation given
+          Trigger 6 (A&D-prime Windows fleet universal Secure
+          Boot + BitLocker deployment under CMMC/DFARS/NIST
+          800-171 controls).
+      (c) Microsoft Digital Crimes Unit takes action against a
+          security researcher → would constitute net-new
+          procedural event in the disclosure-policy arc;
+          warrants new finding promotion regardless of DCU-
+          backdown qualitative-content priors.
+      (d) Microsoft publishes a clarified disclosure / servicing
+          policy update → would constitute net-new procedural
+          event; warrants new finding promotion.
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 46        # +1 from afternoon-20260602-160000 → morning-20260603-080000 (reject-2026-06-03-0001 added: Security Affairs anti-noise restatement of finding-2026-06-01-0003 Rapid7 HP Poly CVE-2026-0826)
-  most_recent_run: morning-20260603-080000
+  total_rejections: 47        # +1 from morning-20260603-080000 → afternoon-20260603-160000 (reject-2026-06-03-0002 added: The Register anti-noise arc-narrative meta-coverage of Microsoft disclosure-policy current arc; watch_signal data-point count remains at 4)
+  most_recent_run: afternoon-20260603-160000
   most_recent_run_rejections: 1
-  most_recent_run_promotions: 4
-  most_recent_run_absorptions: 0
-  most_recent_run_promotion_ids_morning_20260603:
+  most_recent_run_promotions: 3            # PM-001 + PM-002 + PM-003 promoted; PM-004 carry-forward update to finding-2026-06-03-0003 (not new promotion); PM-005 rejected
+  most_recent_run_absorptions: 1           # PM-004 absorbed as carry-forward update into finding-2026-06-03-0003
+  most_recent_run_promotion_ids_afternoon_20260603:
+    - finding-2026-06-03-0005-cisa-kev-cve-2026-45247-mirasvit-magento-php-deserialization-rce-3-day-due-sansec-imperva-itw    # PM-1 afternoon brief — CISA KEV catalog addition (2026-06-03 08:00 EDT in-window) of CVE-2026-45247 Mirasvit Full Page Cache Warmer Deserialization of Untrusted Data (Magento 2 PHP Object Injection unauth RCE; CVSS 9.8) with UNUSUALLY COMPRESSED 3-DAY FEDERAL DUE DATE 2026-06-06 (vs. BOD 22-01 norm 14-21 days). Sansec originated research (Magento-specialist; provisional C first-surface vendor); Imperva first-party WAF telemetry confirms ITW exploitation attempts (provisional B first-surface established appsec vendor). ~6000 stores exposed per Sansec scan. Cluster digraph A2 (CISA + NVD ratified-A backbone + Sansec provisional-C originating + Imperva provisional-B WAF telemetry across three independent evidence bases). Single-source veto NOT applied at cluster-anchor procedural layer (cross-corroborated); APPLIED at Sansec single-source-on-6000-stores-aggregate + Imperva single-source-on-WAF-pattern indicator layers. WEP "very_likely" on procedural facts (CISA-KEV add, NVD canonical, affected-product identification); "likely" on substantive operational claims (active exploitation, A&D-prime exposure). Hard Rule 2 PRESERVED — three-vendor attribution declination preserved verbatim; Sansec declination-despite-Magecart-visibility is analytic-discipline signal. Eligible for daily_brief_action + daily_brief_monitoring + weekly_synthesis + vuln_tracker_dossier_candidate. analyst_review_required TRUE (3-day-compressed-clock + parsimonious attacker-class question warrant SAT-KAC + SAT-ACH; Sansec/Imperva first-surface vendor ratification path). red_team_review_required FALSE (WEP ceiling "very_likely" only at procedural-fact layer; substantive operational claims at "likely"). Operator handoffs: (a) librarian source-grades.yaml addition + source-grade-log entry for sansec provisional C + imperva provisional B (72h ratification clocks to 2026-06-06); (b) vuln-tracker VT-* scaffold candidate for CVE-2026-45247 with CISA-KEV-due-date watch; (c) briefer action-tier inclusion frame on 3-day compressed federal due-date as standout signal + Imperva WAF cookie-regex indicator as defender pivot; (d) monitor Tier-1 IR firm independent ITW corroboration + A&D-supplier compromise disclosure.
+    - finding-2026-06-03-0006-symantec-carbon-black-stock-exchange-outlook-150-day-espionage-aspose-dropbox-onedrive-no-attribution-reusable-ttps-against-ad    # PM-1 afternoon brief — Symantec Threat Hunter Team + Carbon Black joint write-up ("this week" on security.com) on 150-day suspected-espionage compromise of single senior executive's Outlook mailbox at unidentified major global stock exchange. SecurityWeek (Eduard Kovacs, 2026-06-03 08:46 EDT) + SecurityAffairs (Pierluigi Paganini, 2026-06-03 14:13 EDT) tier-2 relays in-window. Symantec provisional A (second-corpus-citation since 2026-05-13 MuddyWater/Seedworm first-citation; analytic-discipline ratification signal). Reusable TTPs: Aspose-wrapped OST→PST extraction with cumulative-window cadence (8 subsequent runs at 2-4 week intervals through 2026-02-17); Dropbox + OneDrive Personal exfil with hardcoded Microsoft IPs to bypass DNS-tier logging; scheduled-task rotation under Adobe/Lenovo/OneDrive masquerade across 5-min/5-hr/15-hr/24-hr intervals; binary masquerading rotation across three phases (Oct 2025 / Feb 2026 / Mar 2026). Cluster digraph B2 (Symantec single-vendor-origination through two publisher-independent B-grade relays; evidence-basis-independence FAILS through single-Symantec-primary; first-party Carbon Black EDR telemetry as originating evidence basis). Single-source veto APPLIED on substantive operational claims; NOT applied on procedural-fact + attribution-declination layers. WEP "likely" on substantive operational claims (mechanism + cadence + persistence + exfil); "very_likely" on procedural facts. NO actor attribution (Symantec verbatim declines). NO A&D-prime named victim. Hard Rule 2 PRESERVED — Symantec "almost certainly state-linked given the target and the patience involved" hedge preserved verbatim without upgrade. Hard Rule 6 PRESERVED (two short Symantec quotes ≤15 words; one per relay source). Eligible for daily_brief_monitoring + weekly_synthesis + actor_profile_awareness. NOT eligible for daily_brief_action (no A&D-prime exposure mapping at sweep). analyst_review_required TRUE (TTP-reusability assumption + state-linked-actor-class hypothesis decomposition warrant SAT-KAC + SAT-ACH; actor-profiler awareness handoff for cross-roster TTP-matching in 30-90 day window). red_team_review_required FALSE (WEP ceiling "likely" on substantive operational claims). Operator handoffs: (a) actor-profiler awareness for state-linked-espionage-actor-unnamed TTP-pattern tracking; (b) librarian forward Symantec second-corpus-citation positive ratification signal to operator; (c) briefer tradecraft/monitoring tier inclusion with reusable-TTPs framing for A&D Outlook estates; (d) hash-based Splunk pivot pending IOC extraction from Symantec primary at security.com.
+    - finding-2026-06-03-0007-securityweek-defiant-wordfence-cve-2026-8206-kirki-burst-statistics-wordpress-itw-thousands-attacks-24h-commodity-mass-exploitation    # PM-1 afternoon brief — SecurityWeek (Ionut Arghire, 2026-06-03 09:00 EDT in-window) relays Defiant/Wordfence active-exploitation telemetry on CVE-2026-8206 Kirki Customizer Framework unauthenticated privesc / account takeover (CVSS 9.8; affected 6.0.0-6.0.6; patched 6.0.7) + Burst Statistics plugin (no CVE at publication; affected 3.4.0-3.4.1.1; patched 3.4.2). Defiant claims "blocked thousands of attacks targeting these vulnerabilities over the past 24 hours" (13 words, Hard Rule 6 compliant). NO actor attribution; commodity mass-exploitation framing. NO A&D-prime named victim. Defiant/Wordfence FIRST Archimedes-corpus surface (provisional B per established-WAF-vendor precedent). Cluster digraph B3 — SecurityWeek B sole publisher + Defiant provisional B sole originating vendor; single-source-through-single-relay pattern fails both publisher-independence and evidence-basis-independence tests. Single-source veto APPLIED. WEP "likely" on substantive operational claims (ITW exploitation magnitude + version matrix); "very_likely" on procedural-fact layer (publication itself). A&D relevance SCOPE-LIMITED — most DIB primes do NOT run WordPress for primary corporate IT; marketing-microsite tier + Tier-2/Tier-3 supplier outreach is the relevant defender path. Hard Rule 2 PRESERVED — generic "threat actors" framing preserved without upgrade. Eligible for daily_brief_monitoring + weekly_synthesis. NOT eligible for daily_brief_action (B3 below B2 floor; no A&D-prime exposure mapping). analyst_review_required FALSE (WEP ceiling "likely"; no SAT-ACH/KAC trigger conditions). red_team_review_required FALSE. Operator handoffs: (a) librarian source-grades.yaml addition + source-grade-log entry for defiant-wordfence provisional B (72h ratification clock to 2026-06-06); (b) NOT a vuln-tracker dossier candidate (commodity WordPress-ecosystem class with no A&D-prime exposure mapping); re-evaluate if CISA KEV adds CVE-2026-8206; (c) briefer monitoring-tier with supplier-outreach framing rather than prime-tier action; (d) monitor NVD canonical retrieval + Tier-1 firm independent corroboration + CISA KEV addition.
+  most_recent_run_carry_forward_updates_afternoon_20260603:
+    - finding-2026-06-03-0003-securityweek-thn-http2-bomb-cve-2026-49975-nginx-apache-iis-envoy-pingora-dos-mixed-patch-calif-codex-disclosure    # PM-1 carry-forward update — BleepingComputer (Bill Toulas, 2026-06-03 15:08 EDT in-window) third publisher-independent B-grade relay of same Calif primary research; adds new technical detail (per-server memory-exhaustion timelines Envoy ~10s / Apache ~18s / nginx ~45s / IIS ~45s; amplification ratios Envoy 5700:1 / Apache httpd 4000:1) + AI-assisted-research methodology specificity (OpenAI's Codex software agent under guidance of researchers at offensive security firm Calif; Quang Luong named as researcher). Cluster size 1→2; raw-signal members extended to include raw-2026-06-03-pm-004. Digraph UNCHANGED at B3 (third publisher-independent relay does NOT satisfy evidence-basis-independence per admiralty-grading skill Step 4 when all relays share same originating vendor telemetry). WEP ceiling UNCHANGED at "likely" on substantive technical claims; "very_likely" unchanged at procedural-fact layer. NEW LAYERED CLAIMS at "likely": per-server timing + amplification ratios + AI-methodology specificity (all single-research-source via BleepingComputer relay of Calif primary). DEFENSIVE PRIORITY IMPLICATION: Envoy is highest-priority unpatched stack (10s memory exhaustion + 5,700:1 amplification ratio) — DIB-primes running Envoy at service-mesh / API-gateway tier should prioritize header-count rate-limiting at upstream proxy until patch available. AI-METHODOLOGY WATCH-SIGNAL: Codex-assisted vulnerability discovery in widely-deployed HTTP server stacks consistent with broader "AI lowers attacker discovery cost" thesis; not new to corpus this window. NOT classified as anti-noise restatement (reject-2026-06-03-0001 Rapid7-HP-Poly precedent does NOT apply — new quantitative + methodology detail is materially new vs. AM coverage). analyst_review_required UNCHANGED (FALSE); red_team_review_required UNCHANGED (FALSE). Briefer handoff: fold per-server timing + amplification ratios + AI-methodology specificity into existing finding-0003 monitoring-tier brief surface if PM brief carries HTTP/2 Bomb; Envoy-priority framing is new operationally-relevant defender pivot.
+  most_recent_run_rejection_ids_afternoon_20260603:
+    - reject-2026-06-03-0002      # The Register anti-noise arc-narrative meta-coverage of Microsoft disclosure-policy current arc; watch_signal data-point count remains at 4 (not lifted to 5); meta-consolidation of corpus-tracked findings 06-02-0010 + 06-03-0002 + 06-03-0004 + AM-counted StarLabs reference
+  prior_morning_run_promotion_ids_morning_20260603:
     - finding-2026-06-03-0001-mstic-miasma-red-hat-npm-credential-stealing-worm-a-grade-originating-primary-second-tier1-attribution-declination-vt006-family-extension    # AM-1 morning brief — MSTIC (ratified A) publishes FIRST A-grade ORIGINATING PRIMARY on Red Hat npm "Miasma" credential-stealing supply-chain campaign with first-party Defender + Microsoft Threat Intelligence telemetry (2026-06-02 16:45 PDT / 2026-06-03 00:45 EDT in-window). Cluster digraph B1 (cluster-anchor conservative lowest-common-grade aggregation across six-vendor cluster including C-grade members; procedural-facts layer A1 layered via MSTIC + Unit 42 two Tier-1 A-grade Defender/monitor telemetry + four-vendor cluster from finding-2026-06-02-0003). CRITICAL ANALYTIC EVENTS: (1) SECOND Tier-1 A-grade vendor explicitly DECLINES TeamPCP attribution on Red Hat / Miasma extension — MSTIC body text contains ZERO mentions of TeamPCP / Mini Shai-Hulud campaign-attribution / TanStack / CVE-2026-45321 — after Unit 42's explicit hedge in finding-2026-06-02-0008. TWO Tier-1 A-grade declinations vs. ZERO Tier-1 affirmations. Lower-grade affirmation chain (Aikido C + Ox B + ReversingLabs C + Socket B via SecurityWeek aggregation per AM finding-2026-06-02-0003) BRACKETED. Per Hard Rule 2: VT-006 BASE campaign Mini Shai-Hulud TanStack / CVE-2026-45321 TeamPCP attribution at "likely" UNAFFECTED — MSTIC silence on extension does NOT unsay Wiz/Snyk/StepSecurity affirmative on base campaign. (2) NOVEL CAPABILITY LAYERS: destructive tripwire `rm -rf ~/` on decoy honeytoken invalidation (NEW capability class for Shai-Hulud family), Sigstore provenance forgery via Fulcio + Rekor with OIDC token exchange for publish rights, 16 attacker-controlled GitHub accounts rotating per session, upstream RedHatInsights/javascript-clients CI/CD pipeline compromise as initial vector (distinct from earlier maintainer-account-compromise framing), Bun JavaScript runtime as second-stage execution environment, dormant api.anthropic[.]com:443/v1/api endpoint marked noop:true (held in reserve at MSTIC observation phase). (3) FIRST INDEPENDENT CORROBORATION on Socket's api.anthropic[.]com C2 observation from finding-2026-06-01-0004 (MSTIC + Socket cross-corroborate at endpoint level with different evidence bases). (4) PROCEDURAL-FACTS WEP LIFT event: six-vendor consolidation including two Tier-1 A-grade with first-party telemetry lifts procedural-facts WEP to "very_likely" — analyst should formally recheck finding-2026-06-02-0008 + finding-2026-06-02-0003 procedural-facts. Single-source veto NOT applied at cluster-anchor procedural layer (six-vendor consensus); APPLIED at MSTIC-sole-originator novel-capability layers; NOT applied at api.anthropic[.]com endpoint (MSTIC + Socket cross-corroborated). WEP "very_likely" on procedural facts + api.anthropic[.]com endpoint existence; "likely" on novel-capability layers; "unlikely" on TeamPCP-on-Miasma attribution. analyst_review_required TRUE (attribution-divergence SAT-ACH + SAT-KAC on "Tier-1 silence = affirmative declination" + initial-vector adjudication MSTIC-upstream vs Aikido-maintainer-account + VT-006 family destructive-capability axis + api.anthropic state-transition adjudication). red_team_review_required TRUE (WEP "very_likely" on procedural-facts layer meets red-team invocation floor; red-team should argue against the "very_likely" lift, the "Tier-1 declination" framing, the destructive-tripwire family-risk lift, and the api.anthropic dormancy/active state-transition hypotheses). Operator handoffs: (a) AM finding 0003 + PM finding 0008 procedural-facts WEP recheck candidate; (b) VT-006 dossier update candidate (vuln-tracker) + separate VT-011 placeholder candidate for Miasma; (c) TeamPCP dossier recheck candidate (actor-profiler — narrow scope to VT-006 base campaign, exclude Miasma extension; consider Miasma-operator-unattributed placeholder); (d) brief LEAD candidate for AM brief; (e) anti-noise carry-forward for next 72h on Miasma TeamPCP attribution claims from non-Tier-1 sources.
     - finding-2026-06-03-0002-bleepingcomputer-vs-code-github-oauth-token-theft-zero-day-askar-poc-full-disclosure-microsoft-disclosure-policy-current    # AM-1 morning brief — BleepingComputer (Sergiu Gatlan, 2026-06-03 02:50 EDT in-window) on researcher Ammar Askar VS Code zero-day enabling GitHub OAuth token theft via webview-driven rogue extension install on github.dev; public PoC, no CVE, no patch, 1-hour pre-notification to GitHub, no ITW. SECOND data point in Microsoft disclosure-policy current arc (after finding-2026-06-02-0010 Nightmare-Eclipse / Bitskrieg + Microsoft Monday walkback). Cluster digraph B3 — BleepingComputer sole primary B-grade media; no Tier-1 vendor independent corroboration of mechanism or remediation at sweep. Single-source veto APPLIED on technical mechanism. WEP ceiling "likely" on mechanism, "very_likely" on procedural disclosure facts. NOT eligible for FLASH or daily_brief_action (B3 below B2 floor); eligible for daily_brief_monitoring + weekly_synthesis. Hard Rule 2 PRESERVED (no actor attribution — researcher disclosure). Hard Rule 3 PRESERVED (mechanism class only, no PoC content extracted). analyst_review_required FALSE (WEP at "likely"); red_team_review_required FALSE. Operator handoffs: (a) briefer monitoring-tier inclusion with disclosure-policy current arc cross-reference; (b) monitor Microsoft / GitHub official response, A-grade IR firm telemetry, CVE assignment, vendor patch for re-evaluation triggers.
     - finding-2026-06-03-0003-securityweek-thn-http2-bomb-cve-2026-49975-nginx-apache-iis-envoy-pingora-dos-mixed-patch-calif-codex-disclosure    # AM-1 morning brief — SecurityWeek (Ionut Arghire, 2026-06-03 06:52 EDT in-window) + The Hacker News (2026-06-03 04:33 EDT in-window) BOTH relay primary research by "Calif" (first-surface unknown vendor; provisional C per librarian handoff) on combined HTTP/2 Bomb DoS attack chain. Components: CVE-2016-6581 (HPACK Bomb) + CVE-2016-8740 / CVE-2016-1546 (Apache Slow Read) + CVE-2025-53020 (Apache HPACK fix) + new CVE-2026-49975 assigned for combined chain. Affects NGINX (patched 1.29.8+), Apache HTTPD (patched 2.4.64+), Microsoft IIS (unpatched), Envoy (unpatched), Cloudflare Pingora (unpatched). Per SecurityWeek aggregate ~880,000 vulnerable default-config websites. PoC publicly released. NO ITW. DoS-class only (NOT RCE) — distinguishes from VT-006/VT-008 supply-chain RCE classes. Cluster digraph B3 — publisher-independence holds across SecurityWeek + THN but evidence-basis-independence FAILS through single-Calif-primary origin; B-grade media + provisional-C unknown-vendor originating researcher. Single-source veto APPLIED on substantive technical content. WEP ceiling "likely" on combined-chain exploitability + per-vendor patch posture; "very_likely" on CVE assignment + historical component CVE records (canonical NVD layer). NOT eligible for FLASH or daily_brief_action; eligible for daily_brief_monitoring + weekly_synthesis. Hard Rule 2 PRESERVED (researcher disclosure, no actor attribution). analyst_review_required FALSE; red_team_review_required FALSE. Operator handoffs: (a) librarian source-grades.yaml addition + source-grade-log entry for calif-research provisional C (72h ratification clock to 2026-06-06); (b) vuln-tracker scaffold decision (admit DoS-class into corpus or not); (c) briefer monitoring-tier inclusion with patch-validation framing; (d) monitor Microsoft IIS / Envoy / Cloudflare Pingora patch advisories.

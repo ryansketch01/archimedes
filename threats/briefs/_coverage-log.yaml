@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-03T08:00:00-04:00
+last_updated: 2026-06-03T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -26825,7 +26825,7 @@ entries:
       decisions accumulating coincidentally.
 
   - id: 2026-06-03-am-003-securityweek-thn-http2-bomb-cve-2026-49975-nginx-apache-iis-envoy-pingora-dos-mixed-patch-calif-codex-disclosure
-    covered_in: [2026-06-03-morning]
+    covered_in: [2026-06-03-morning, 2026-06-03-afternoon]
     headline: "HTTP/2 Bomb CVE-2026-49975 — combined HPACK Bomb + Slowloris chain produces seconds-fast DoS against major web servers in default configurations; Calif (California-based research firm using OpenAI Codex) is originating research; NGINX patched ~6 weeks ago in 1.29.8+ (new max_headers directive defaulting to 1000); Apache HTTPD patched ~1 week ago in 2.4.64+ / mod_http2 2.0.41+; Microsoft IIS unpatched; Envoy unpatched; Cloudflare Pingora unpatched; SecurityWeek says 880,000 default-configured websites potentially exposed; PoC publicly released; no ITW; DIB A&D action — validate NGINX 1.29.8+ and Apache 2.4.64+ baselines at web edge, cap HPACK header counts and connection rates at IIS/Envoy/Pingora proxy layers"
     topic_tags:
       - cve-2026-49975
@@ -27235,6 +27235,591 @@ entries:
             propagate to VT-006 family destructive axis
         (5) VT-006 base TeamPCP attribution at "likely"
             UNAFFECTED by Miasma extension framing
+
+  - id: 2026-06-03-pm-001-cisa-kev-cve-2026-45247-mirasvit-magento-php-deserialization-rce-3-day-due-sansec-imperva-itw
+    covered_in: [2026-06-03-afternoon]
+    headline: "CVE-2026-45247 Mirasvit Full Page Cache Warmer / Magento 2 PHP deserialization unauth RCE (CVSS 9.8) added to CISA KEV with compressed 3-day federal due 2026-06-06; Sansec originating research on CacheWarmer cookie unserialize() sink; Imperva first-party WAF telemetry confirms active exploitation with serialized PHP object payloads matching CacheWarmer:(Tz|Qz|YT) pattern; ~6,000 stores running Mirasvit extensions per Sansec exposure scan; patched 1.11.12 released 2026-05-25; three-vendor attribution declination (CISA + Sansec + Imperva); analyst SAT-ACH five-way attacker-class tie at zero inconsistencies (commodity / novel-financial / state-affiliated / multi-actor / false-flag); SAT-KAC qualifies 3-day-clock framing as supporting signal not primary justification given second 3-day clock 24h prior; DIB A&D action — audit Magento for Mirasvit Cache Warmer extension, patch to 1.11.12+, WAF-filter CacheWarmer:(Tz|Qz|YT) cookie pattern, Tier-2/Tier-3 CMMC supplier outreach"
+    topic_tags:
+      - cve-2026-45247
+      - mirasvit-full-page-cache-warmer-magento-2
+      - php-object-injection-cwe-502-unserialize
+      - cisa-kev-3-day-federal-due-2026-06-06
+      - sansec-originating-research-first-corpus-surface
+      - imperva-first-party-waf-telemetry-itw
+      - cachewarmer-cookie-tz-qz-yt-base64-php-serialized-prefixes
+      - patched-1-11-12-released-2026-05-25
+      - approximately-6000-stores-running-mirasvit-extensions
+      - three-vendor-attribution-declination-cisa-sansec-imperva
+      - analyst-sat-ach-five-way-attacker-class-tie-roughly-even-chance
+      - analyst-sat-kac-3-day-clock-load-bearing-inference-qualify-not-primary
+      - second-3-day-kev-clock-24h-prior-linux-cgroups-cve-2022-0492-pattern-watch
+      - dib-ad-magento-supplier-portal-storefront-action-tier
+      - tier-2-tier-3-cmmc-level-1-2-supplier-outreach
+      - mass-exploitation-commodity-mass-scanning-parsimonious-but-not-differentially-supported
+    related_actors: []   # Hard Rule 2 — three-vendor declination preserved; Archimedes does not originate attribution
+    related_vulns: [CVE-2026-45247]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-03-0005]
+    digraph: A2
+    digraph_layered:
+      cisa_kev_added_procedural: A1
+      nvd_canonical_cve_record: A1
+      sansec_originating_research_substantive: B2_through_provisional_C_first_surface
+      imperva_waf_first_party_telemetry_substantive: B2_through_provisional_B_first_surface
+      patched_version_1_11_12_released_2026_05_25: B2
+      ad_defensive_implication_indirect_via_magento_supplier_portal: C2
+    wep: likely
+    wep_layered:
+      cisa_kev_add_with_3_day_clock_procedural: very_likely
+      nvd_canonical_cvss_9_8: very_likely
+      affected_product_mirasvit_full_page_cache_warmer_before_1_11_12: very_likely
+      unauthenticated_php_object_injection_cachewarmer_cookie_mechanism: likely
+      imperva_first_party_itw_observation: likely
+      sansec_approximately_6000_stores_magnitude: roughly_even_chance
+      ad_defensive_implication_dib_prime_magento_estates: likely
+      parsimonious_attacker_class_financially_motivated_mass_scanning: roughly_even_chance
+    hard_rule_2_attribution_discipline:
+      three_vendor_declination_preserved: true
+      archimedes_does_not_originate_attribution: true
+      analyst_sat_ach_five_way_attacker_class_tie_h1_h3_h4_h5_h6: true
+      h2_magecart_cluster_unnamed_mildly_disfavored: true
+    operator_handoffs:
+      - vuln_tracker_handoff_scaffold_cve_2026_45247_new_vt_dossier_candidate
+      - librarian_source_grades_yaml_provisional_addition_sansec_provisional_c_first_surface
+      - librarian_source_grades_yaml_provisional_addition_imperva_provisional_b_first_surface
+      - watch_signal_set_third_compressed_kev_clock_within_seven_days_triggers_kac_rerun
+      - watch_signal_set_tier_1_ir_firm_attribution_on_cve_2026_45247_collapses_ach_tie
+    resurface_if:
+      - tier_1_ir_firm_independent_corroboration_or_attribution_on_cve_2026_45247
+      - ad_prime_or_dib_supplier_disclosure_of_magento_storefront_compromise
+      - magecart_cluster_attribution_to_observed_exploitation_pattern
+      - cisa_post_kev_add_update_on_fceb_civilian_executive_branch_impact
+      - imperva_or_other_waf_vendor_follow_up_with_skimmer_payload_terminal_behavior
+      - cve_2026_45247_added_to_cisa_kev_pattern_third_3_day_clock_in_seven_days
+      - first_party_splunk_cachewarmer_cookie_pattern_or_mirasvit_extension_hit
+    first_covered: 2026-06-03
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. Action tier — A2 above B2
+      action floor; CISA-KEV procedural-fact at A1
+      layered with three-evidence-basis independence
+      (federal FCEB-or-near telemetry / Sansec source-
+      code analysis / Imperva commercial WAF telemetry).
+      Substantive operational claims capped at "likely"
+      per single-source veto on first-surface vendor
+      provisional grades.
+
+      Analyst SAT-KAC + SAT-ACH applied. KAC found 3-
+      day-clock framing rests on critical-centrality
+      low-confidence assumption (A2: FCEB-telemetry
+      basis) with three plausible alternative
+      explanations (publication coincidence with Sansec
+      / Imperva disclosure, holiday-calendar
+      compression, internal CISA cadence shift). Second
+      3-day clock 24h prior (Linux cgroups CVE-2022-0492
+      per finding-2026-06-02-0005) weakens the "anomaly"
+      reading. Briefer led with CVSS 9.8 + Imperva ITW +
+      canonical patch + extension audit — NOT 3-day
+      clock as dispositive of FCEB compromise.
+
+      ACH on attacker-class produced five-way tie at
+      zero inconsistencies; only H2 (established-
+      Magecart-cluster-Sansec-chose-not-to-name) mildly
+      disfavored by E1 (Sansec declination) + E7 (no
+      named skimmer-payload). Sansec's three-vendor
+      declination preserved per Hard Rule 2.
+
+      Vuln-tracker scaffold pending: CVE-2026-45247 net-
+      new VT-* dossier candidate (Magento ecosystem +
+      Mirasvit extension class).
+
+  - id: 2026-06-03-pm-002-symantec-carbon-black-150-day-stock-exchange-outlook-mailbox-espionage-aspose-dropbox-onedrive-personal-no-attribution-reusable-ttps-against-ad
+    covered_in: [2026-06-03-afternoon]
+    headline: "Symantec Threat Hunter Team + Carbon Black publish 150-day suspected-espionage Outlook mailbox theft against unnamed major global stock exchange executive (2025-10-10 to 2026-03-19); Aspose-wrapper OST→PST conversion in dated chunks with eight subsequent extraction runs at 2-4 week intervals; Dropbox + OneDrive Personal exfil; hardcoded Microsoft IPs bypass DNS-tier logging; scheduled-task rotation across 5min/5hr/15hr/24hr intervals under Adobe/Lenovo/OneDrive masquerade; full IOC set including file hashes published at security.com; Symantec explicitly declines attribution — verbatim hedge 'almost certainly state-linked given the target and the patience involved' (12 words, Hard Rule 6 compliant); no actor named; no A&D-prime victim; analyst SAT-ACH five-way state-class tie at zero inconsistencies; TTPs structurally reusable against A&D Outlook estates with A&D-specific control hedges; hardcoded-IP DNS-bypass itself the CTI insight — IP-tier egress visibility gap not closed by DNS blocklisting alone"
+    topic_tags:
+      - symantec-carbon-black-joint-writeup-second-corpus-citation
+      - symantec-positive-ratification-signal-attribution-discipline
+      - 150-day-dwell-mailbox-extraction-state-linked-espionage-hedge
+      - target-unnamed-major-global-stock-exchange-single-senior-executive-outlook-mailbox
+      - aspose-wrapper-ost-to-pst-conversion-legitimate-dotnet-library
+      - eight-subsequent-extraction-runs-2-to-4-week-intervals-adjoining-time-windows-cumulative-near-continuous-mailbox-theft
+      - dropbox-onedrive-personal-exfil-sanctioned-cloud-blend-bypass
+      - hardcoded-microsoft-ips-bypass-dns-tier-logging-ip-tier-egress-visibility-gap
+      - scheduled-task-rotation-5min-5hr-15hr-24hr-intervals
+      - adobe-lenovo-onedrive-masquerade-binary-rotation
+      - symantec-published-full-ioc-set-file-hashes-security-com
+      - no-actor-attribution-symantec-explicit-declination-preserved
+      - symantec-analytic-hedge-almost-certainly-state-linked-target-and-patience-12-words-hard-rule-6
+      - analyst-sat-ach-five-way-state-class-tie-russian-chinese-iranian-novel-state-false-flag-state
+      - dprk-financial-pivot-criminal-with-state-discipline-mildly-disfavored
+      - hard-rule-2-archimedes-does-not-name-state-class
+      - reusable-ttps-against-ad-outlook-estates-structurally-reusable-with-mechanism-transfer-hedges
+      - ad-specific-controls-applocker-wdac-itar-cui-casb-mechanism-transfer-hedge
+      - aspose-legitimate-footprint-ediscovery-litigation-hold-tooling-false-positive-base-rate
+      - defender-pivot-hash-based-splunk-pivot-aspose-namespace-scheduled-task-masquerade-personal-cloud-egress-hardcoded-ip-outbound
+      - other-signal-monitoring-tier-tradecraft-not-action-tier
+    related_actors: []   # Hard Rule 2 — Symantec declines attribution; Archimedes does not name a state class; five-way SAT-ACH tie preserved
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-06-03-0006]
+    digraph: B2
+    digraph_layered:
+      symantec_published_150_day_writeup_procedural: A1
+      symantec_carbon_black_first_party_edr_telemetry_originating: A1_through_provisional_A_second_citation_ratification_signal
+      mechanism_substantive_aspose_dropbox_onedrive_hardcoded_ip_scheduled_task_single_vendor_origination_through_two_publisher_independent_relays: B2
+      symantec_analytic_hedge_almost_certainly_state_linked: B2
+      ttps_reusable_against_ad_outlook_estates_grader_side_structural_inference: B2
+    wep: likely
+    wep_layered:
+      symantec_published_writeup_procedural: very_likely
+      target_unidentified_major_global_stock_exchange_executive_outlook_mailbox: very_likely
+      entry_vector_unknown: very_likely
+      150_day_dwell_2025_10_10_to_2026_03_19_carbon_black_edr_telemetry: likely
+      aspose_wrapper_ost_to_pst_mechanism: likely
+      dropbox_onedrive_personal_exfil_hardcoded_microsoft_ips: likely
+      scheduled_task_rotation_under_adobe_lenovo_onedrive_masquerade: likely
+      symantec_full_ioc_set_published_at_security_com: very_likely
+      no_actor_attribution_at_any_source: very_likely
+      symantec_analytic_hedge_almost_certainly_state_linked: likely
+      no_ad_watchlist_entity_named: very_likely
+      ttps_reusable_against_ad_prime_outlook_estates: likely
+      parsimonious_attacker_class_state_linked_espionage_disjunction: roughly_even_chance
+    hard_rule_2_attribution_discipline:
+      symantec_explicit_declination_preserved: true
+      symantec_analytic_hedge_preserved_verbatim_without_upgrade: true
+      no_tracked_roster_actor_named: true
+      analyst_sat_ach_five_way_state_class_tie_within_class_underdetermined: true
+      archimedes_does_not_name_state_class: true
+    hard_rule_6_quote_discipline:
+      symantec_quote_count: 1
+      symantec_quote_word_count: 12
+      quote_preserved_verbatim: "almost certainly state-linked given the target and the patience involved"
+    operator_handoffs:
+      - librarian_source_grades_yaml_symantec_second_citation_ratification_signal_attribution_discipline_positive
+      - actor_profiler_handoff_awareness_only_no_roster_actor_named_pattern_recur_30_90_days_scaffold_state_linked_espionage_actor_unnamed_placeholder_consideration
+      - watch_signal_set_stock_exchange_outlook_ttp_recurrence_against_second_high_value_executive_actor_profiler_scaffold
+      - vuln_tracker_no_handoff_no_cve_pure_tradecraft_finding
+    resurface_if:
+      - tier_1_ir_firm_independent_corroboration_or_attribution_to_named_actor
+      - symantec_followup_with_target_identity_attribution_or_financial_extraction_artifacts
+      - same_aspose_wrapper_cumulative_window_cadence_masquerade_rotation_ttp_combination_against_second_high_value_executive
+      - ad_prime_or_dib_supplier_disclosure_of_similar_long_dwell_mailbox_compromise
+      - first_party_splunk_aspose_namespace_or_hardcoded_microsoft_ip_egress_hit
+      - crowdstrike_overwatch_mandiant_mtrends_mstic_digital_defense_report_attribution
+    first_covered: 2026-06-03
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. Monitoring tier — B2 above
+      B2 monitoring floor but framed as
+      tradecraft/reusable-TTPs-signal rather than
+      action-tier (no A&D-prime exposure mapping at
+      sweep; financial-sector single-victim).
+
+      Symantec second-citation positive ratification
+      signal forwarded to librarian — analytic
+      discipline in declining attribution despite
+      operational-discipline + target-value strongly
+      implying state-linked espionage. Provisional A
+      since 2026-05-13; 72h ratification clock long
+      elapsed; this is the second-citation evidence
+      layer.
+
+      Analyst SAT-KAC + SAT-ACH applied. KAC on TTP-
+      reusability identified A2 (A&D SOC IP-tier
+      egress visibility) and A6 (Aspose.Email base-
+      rate at A&D primes) as TEST-classified critical
+      assumptions — both load-bearing for defender-
+      pivot Splunk-hunt section. Brief framing hedges
+      "TTPs reusable against A&D-prime Outlook estates"
+      — structurally reusable but A&D-specific
+      controls (AppLocker/WDAC, ITAR/CUI, CASB) may
+      break specific mechanism transfer; GENERAL
+      mailbox-theft objective transfers regardless.
+
+      ACH on state-linked-actor-class produced five-
+      way tie at zero inconsistencies across Russian-
+      class / Chinese-class / Iranian-class / novel-
+      state-class / false-flag-state. DPRK financial-
+      pivot (H4) and criminal-with-state-discipline
+      (H5) accumulate 3 inconsistencies each —
+      disfavored but not ruled out. State-linked
+      disjunction supported at WEP "likely"; within-
+      class differentiation roughly_even_chance.
+      Symantec's "almost certainly state-linked"
+      hedge supported by observable evidence; no
+      single state class differentially supported.
+
+      Briefer framed "hardcoded-IP DNS-bypass is
+      itself the CTI insight" — IP-tier egress
+      visibility gap is structurally not closed by
+      DNS-tier blocklisting alone. This is the
+      strongest CTI takeaway for A&D SOCs regardless
+      of attribution resolution.
+
+      Actor-profiler awareness handoff: state-linked-
+      espionage-actor-unnamed scaffold candidate if
+      TTP combination recurs against second high-
+      value executive in next 30-90 days. Operator
+      decision.
+
+  - id: 2026-06-03-pm-003-securityweek-defiant-wordfence-cve-2026-8206-kirki-burst-statistics-wordpress-itw-thousands-attacks-24h-commodity-mass-exploitation
+    covered_in: [2026-06-03-afternoon]
+    headline: "CVE-2026-8206 Kirki Customizer Framework WordPress plugin unauthenticated privesc / account takeover (CVSS 9.8; affected 6.0.0-6.0.6; patched 6.0.7) plus sibling Burst Statistics plugin (no CVE; affected 3.4.0-3.4.1.1; patched 3.4.2) under active mass-exploitation per Defiant/Wordfence (thousands of blocked attacks past 24h, single-source through SecurityWeek relay); no actor attribution; commodity mass-exploitation framing; monitoring tier — A&D-prime WordPress estates typically segregated from CUI/ITAR networks; Tier-2/Tier-3 supplier outreach operational pivot — small-business defense contractors hosting on WordPress should patch today"
+    topic_tags:
+      - cve-2026-8206
+      - kirki-customizer-framework-wordpress-plugin-unauth-privesc-account-takeover
+      - burst-statistics-wordpress-plugin-sibling-no-cve-at-publication
+      - defiant-wordfence-first-corpus-surface-provisional-b-established-waf-vendor
+      - thousands-of-attacks-past-24-hours-single-source-magnitude-aggregate
+      - kirki-affected-6-0-0-to-6-0-6-patched-6-0-7
+      - burst-statistics-affected-3-4-0-to-3-4-1-1-patched-3-4-2
+      - no-actor-attribution-generic-threat-actors-defiant-via-securityweek
+      - commodity-mass-exploitation-parsimonious-not-archimedes-originated
+      - monitoring-tier-b3-below-action-floor
+      - ad-prime-wordpress-segregated-from-cui-itar-typical-pattern
+      - tier-2-tier-3-supplier-outreach-small-business-defense-contractors-wordpress
+      - single-source-through-single-relay-veto-applied
+    related_actors: []   # Hard Rule 2 — no actor attribution; Defiant uses generic "threat actors" framing
+    related_vulns: [CVE-2026-8206]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-03-0007]
+    digraph: B3
+    digraph_layered:
+      securityweek_published_disclosure_procedural: A1
+      cve_2026_8206_assignment_canonical_nvd_record_but_not_retrieved_at_sweep: B2
+      affected_versions_kirki_6_0_0_through_6_0_6_patched_6_0_7: B2
+      burst_statistics_affected_3_4_0_through_3_4_1_1_patched_3_4_2: B2
+      defiant_wordfence_thousands_attacks_24h_magnitude_aggregate: B3
+      ad_defensive_implication_scope_limited_to_wordpress_marketing_microsite_tier_2_tier_3_supplier_estates: C2
+    wep: likely
+    wep_layered:
+      securityweek_published_disclosure_procedural: very_likely
+      cve_2026_8206_account_takeover_mechanism: likely
+      cvss_9_8_critical: likely
+      affected_versions_kirki_6_0_0_through_6_0_6_patched_6_0_7: likely
+      burst_statistics_affected_3_4_0_through_3_4_1_1_patched_3_4_2: likely
+      defiant_thousands_attacks_24h_itw_magnitude: likely
+      no_actor_attribution: very_likely
+      ad_defensive_implication_scope_wordpress_marketing_microsite_tier_2_tier_3: likely
+      parsimonious_attacker_class_opportunistic_financially_motivated_wordpress_targeting: roughly_even_chance
+    hard_rule_2_attribution_discipline:
+      no_actor_attribution_at_any_source: true
+      defiant_uses_generic_threat_actors_framing_not_named_cluster: true
+      archimedes_does_not_originate_attribution: true
+    operator_handoffs:
+      - librarian_source_grades_yaml_provisional_addition_defiant_wordfence_provisional_b_first_surface
+      - vuln_tracker_handoff_low_priority_wordpress_ecosystem_commodity_mass_exploitation_cluster_consideration
+    resurface_if:
+      - tier_1_ir_firm_attribution_to_named_actor_on_kirki_or_burst_statistics_exploitation
+      - ad_prime_or_dib_supplier_disclosure_of_kirki_or_burst_statistics_exploitation
+      - cve_2026_8206_added_to_cisa_kev
+      - first_party_splunk_kirki_or_burst_statistics_exploitation_indicator
+      - wordpress_ecosystem_kev_add_pattern_third_or_fourth_instance_accumulates
+    first_covered: 2026-06-03
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      Net-new corpus topic. Monitoring tier — B3 below
+      B2 action floor; single-source-through-single-
+      relay veto applied on substantive operational
+      claims (ITW magnitude + affected-version matrix +
+      patched-version detail). Commodity mass-
+      exploitation framing dilutes A&D-prime
+      relevance — Tier-2/Tier-3 supplier outreach is
+      the operational pivot rather than prime-tier
+      action.
+
+      A&D-prime marketing-microsite WordPress estates
+      are typically segregated from primary CUI/ITAR
+      networks, so first-party visibility on
+      WordPress-tier exploitation is structurally
+      limited. Brief frames as supplier-outreach
+      rather than action-tier.
+
+      Defiant/Wordfence first-surface unknown vendor
+      in Archimedes corpus — provisional B per
+      established-WAF-vendor precedent forwarded to
+      librarian.
+
+  - id: 2026-06-03-pm-update-003-http2-bomb-cve-2026-49975-envoy-priority-timing-amplification-specificity-ai-methodology-fold
+    covered_in: [2026-06-03-afternoon]
+    headline: "UPDATE on 2026-06-03-am-003 (HTTP/2 Bomb CVE-2026-49975) — PM telemetry sharpens per-server impact and amplification ratios: Envoy ~10s to DoS at ~5,700:1 amplification (sharpest unpatched edge), Apache ~18s at ~4,000:1, NGINX ~45s, IIS ~45s; Calif's combined HPACK Bomb + Slowloris chain remains disclosure path; OpenAI Codex methodology specificity preserved as methodology not actor signature; NGINX 1.29.8+ and Apache 2.4.64+ patched, IIS / Envoy / Cloudflare Pingora unpatched; no ITW; B3 digraph + 'likely' WEP unchanged; defender pivot prioritizes Envoy for interim mitigation given 10s/5,700:1 profile"
+    topic_tags:
+      - cve-2026-49975-update-on-am-003
+      - envoy-sharpest-unpatched-edge-10s-5700x-amplification
+      - apache-18s-4000x-amplification
+      - nginx-iis-45s-timing
+      - per-server-timing-amplification-ratios-specificity
+      - calif-openai-codex-methodology-specificity-preserved-not-actor-signature
+      - http2-bomb-defender-pivot-envoy-prioritized-interim-mitigation
+      - mixed-patch-posture-vendor-matrix-unchanged-from-am
+      - b3-digraph-likely-wep-unchanged-from-am-grading
+    related_actors: []
+    related_vulns: [CVE-2026-49975]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-03-0003]   # carry-forward UPDATE
+    digraph: B3
+    wep: likely
+    wep_layered:
+      cve_2026_49975_procedural_fact: very_likely
+      per_server_timing_amplification_specificity: likely
+      affected_product_matrix_carry_forward_unchanged: likely
+      ad_defensive_implication_envoy_priority: likely
+    hard_rule_2_attribution_discipline:
+      research_disclosure_no_actor_attribution: true
+    operator_handoffs:
+      - vuln_tracker_handoff_vt_dossier_candidate_cve_2026_49975_amplification_ratio_per_vendor_added
+    resurface_if:
+      - in_the_wild_exploitation_observation_by_any_a_grade_ir_firm_or_first_party_telemetry
+      - microsoft_iis_official_patch_or_advisory
+      - envoy_official_patch_or_advisory
+      - cloudflare_pingora_official_patch_or_advisory
+      - cve_2026_49975_added_to_cisa_kev
+      - additional_affected_web_server_vendor_disclosed_litespeed_caddy_haproxy_traefik
+      - first_party_splunk_http2_dos_or_hpack_anomaly_detection
+    first_covered: 2026-06-03   # original AM coverage same date
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      UPDATE on AM finding-0003. Per-server timing and
+      amplification ratios sharpen Envoy as the
+      priority defender pivot (10s/5,700:1 profile).
+      Calif/OpenAI Codex methodology preserved as
+      research methodology specificity, NOT actor
+      signature. Digraph + WEP unchanged at B3/likely.
+
+      Folded into PM Vulnerabilities section under
+      UPDATE flag rather than carrying as separate
+      action item — material update per INTEL-BRIEF-
+      STANDARDS resurface rule (new technical detail
+      sharpening defender prioritization).
+
+  - id: 2026-06-03-pm-brief-meta
+    covered_in: [2026-06-03-afternoon]
+    headline: "PM brief composition meta — three new findings (CVE-2026-45247 Mirasvit Magento KEV + Symantec stock-exchange Outlook 150-day espionage + CVE-2026-8206 Kirki WordPress) + one carry-forward UPDATE (HTTP/2 Bomb Envoy-priority timing); analyst SAT-KAC + SAT-ACH on findings 0005 and 0006; Hard Rule 2 preserved across three-vendor declination (Mirasvit) + Symantec declination + Defiant generic-threat-actors framing; word count 1118 over 800 soft target with rationale (red-team carve-outs + analyst hedge preservation across two findings)"
+    topic_tags:
+      - pm-brief-2026-06-03
+      - three-new-findings-plus-one-carry-forward-update
+      - cve-2026-45247-mirasvit-magento-action-tier
+      - symantec-stock-exchange-outlook-150-day-other-signal-monitoring-tier
+      - cve-2026-8206-kirki-wordpress-vulnerabilities-monitoring-tier
+      - http2-bomb-cve-2026-49975-update-vulnerabilities-monitoring-tier
+      - hard-rule-2-three-vendor-declination-mirasvit-plus-symantec-declination-plus-defiant-generic
+      - analyst-sat-kac-3-day-clock-load-bearing-qualify-finding-0005
+      - analyst-sat-ach-five-way-attacker-class-tie-finding-0005
+      - analyst-sat-kac-ttp-reusability-two-test-classified-assumptions-finding-0006
+      - analyst-sat-ach-five-way-state-class-tie-finding-0006
+      - hard-rule-6-symantec-12-word-quote-preserved-verbatim
+      - hard-rule-8-splunk-first-party-zero-events-on-superset-pm-000-sentinel
+      - sector-focus-ad-silent-day-with-indirect-magento-wordpress-context
+      - actor-activity-silent-day-gamaredon-carry-over
+      - iran-cyber-watch-silent-day
+    findings_referenced:
+      - finding-2026-06-03-0003   # carry-forward UPDATE
+      - finding-2026-06-03-0005
+      - finding-2026-06-03-0006
+      - finding-2026-06-03-0007
+    relates_to:
+      - 2026-06-03-am-003-securityweek-thn-http2-bomb-cve-2026-49975-nginx-apache-iis-envoy-pingora-dos-mixed-patch-calif-codex-disclosure
+      - 2026-06-02-pm-005-cisa-kev-cve-2022-0492-linux-kernel-cgroups-3-day-fceb-deadline-pattern-anchor
+    digraph: composite_A2_to_B3_per_item
+    wep_layered:
+      lead_cve_2026_45247_procedural: very_likely
+      lead_cve_2026_45247_substantive_active_exploitation_ad_prime_exposure: likely
+      lead_cve_2026_45247_attacker_class_five_way_tie: roughly_even_chance
+      symantec_stock_exchange_procedural: very_likely
+      symantec_stock_exchange_substantive_operational: likely
+      symantec_stock_exchange_state_class_disjunction: likely
+      symantec_stock_exchange_within_state_class_five_way_tie: roughly_even_chance
+      ttps_reusable_against_ad_outlook_estates_with_hedges: likely
+      cve_2026_8206_kirki_substantive_itw_magnitude_single_source_through_single_relay: likely
+      http2_bomb_per_server_timing_amplification_specificity_update_carry_forward: likely
+    preflight:
+      result: passed
+      checks:
+        source_url_present: pass
+        admiralty_digraph_present: pass
+        coverage_log_respected_update_flag_used_on_http2_bomb_carry_forward: pass
+        lead_with_impact: pass_cve_2026_45247_kev_imperva_itw_patch_available_action_today
+        banned_phrases_zero: pass
+        standing_sections_present_sector_focus_iran_cyber_actor_activity: pass
+        wep_vocabulary_used_throughout: pass
+        word_count_1118_over_800_soft_target_under_1200_hard_cap: pass_with_overage_rationale
+        actor_vuln_links_to_dossiers: pass
+        tlp_marked: pass_clear
+        single_source_veto_respected: pass_kirki_capped_likely_http2_bomb_capped_likely_symantec_substantive_capped_likely_mirasvit_substantive_capped_likely
+        quote_discipline: pass_1_quote_symantec_via_securityaffairs_12_words
+        discord_summary_layer_2_compliant: pass_under_1900_chars_iteration_2
+      word_count_overage_rationale: >
+        Brief covers 3 new findings + 1 carry-forward UPDATE with
+        analyst SAT-KAC + SAT-ACH preservation across two findings
+        (Mirasvit 3-day-clock qualifying caveat + Symantec TTP-
+        reusability hedge + ACH five-way ties on both Mirasvit
+        attacker-class and Symantec state-class). Iteration 1 of
+        cuts brought ~1320 → 1118 words. Further cuts would erode
+        analyst-mandated language hedges (3-day clock framed as
+        supporting signal not primary; TTPs structurally reusable
+        BUT A&D-specific controls may break mechanism transfer;
+        five-way ACH ties preserved per Hard Rule 2 declination
+        integrity; Symantec quote preserved verbatim under 15-word
+        limit; hardcoded-IP DNS-bypass framed as CTI-insight not
+        just IOC). Briefer accepts soft-target overage as
+        structurally necessary; within 150% hard cap (1118 of 1200
+        max). AM precedent: 948 words with similar red-team carve-
+        out preservation rationale.
+    hard_rule_2_attribution_discipline_summary:
+      - "CVE-2026-45247 Mirasvit (pm-001): three-vendor declination (CISA + Sansec + Imperva); analyst SAT-ACH five-way attacker-class tie at zero inconsistencies (commodity / novel-financial / state-affiliated / multi-actor / false-flag); Archimedes does not originate attribution; H2 established-Magecart-cluster-unnamed mildly disfavored but not ruled out"
+      - "Symantec stock exchange (pm-002): explicit Symantec declination preserved; analytic hedge 'almost certainly state-linked given the target and the patience involved' preserved verbatim WITHOUT upgrade (12 words, Hard Rule 6 compliant); analyst SAT-ACH five-way state-class tie at zero inconsistencies (Russian / Chinese / Iranian / novel-state / false-flag-state); Archimedes does not name a state class; DPRK-financial and criminal-with-state-discipline mildly disfavored at 3 inconsistencies each"
+      - "Kirki WordPress (pm-003): no actor attribution; Defiant uses generic 'threat actors' framing; commodity mass-exploitation framing preserved without upgrade"
+      - "HTTP/2 Bomb UPDATE (pm-update-003): research disclosure, no actor attribution; OpenAI Codex preserved as methodology specificity NOT actor signature"
+    librarian_handoffs_summary:
+      - source_grades_yaml_provisional_addition_candidate_sansec_provisional_c_first_surface
+      - source_grades_yaml_provisional_addition_candidate_imperva_provisional_b_first_surface
+      - source_grades_yaml_provisional_addition_candidate_defiant_wordfence_provisional_b_first_surface
+      - source_grades_yaml_symantec_second_citation_ratification_signal_attribution_discipline_positive
+      - vuln_tracker_handoff_scaffold_cve_2026_45247_new_vt_dossier_candidate_mirasvit_magento_php_deserialization
+      - vuln_tracker_handoff_vt_dossier_update_cve_2026_49975_envoy_priority_amplification_per_vendor
+      - actor_profiler_handoff_awareness_only_stock_exchange_outlook_ttp_set_state_linked_espionage_actor_unnamed_placeholder_30_90_day_recurrence_watch
+      - watch_signal_set_third_compressed_kev_clock_within_seven_days_triggers_kac_rerun
+      - watch_signal_set_tier_1_ir_firm_attribution_on_cve_2026_45247_collapses_ach_tie
+      - watch_signal_set_stock_exchange_outlook_ttp_recurrence_against_second_high_value_executive_actor_profiler_scaffold
+      - watch_signal_set_microsoft_iis_envoy_pingora_official_patch_or_advisory_on_http2_bomb
+    resurface_if: []
+    first_covered: 2026-06-03
+    last_covered: 2026-06-03
+    retraction: null
+    test: false
+    notes: |
+      Four-item PM window — analyst-reviewed on finding-0005
+      (Mirasvit SAT-KAC on 3-day-clock + SAT-ACH on attacker-
+      class) and finding-0006 (Symantec SAT-KAC on TTP-
+      reusability + SAT-ACH on state-linked-actor-class).
+      Red-team NOT invoked — no substantive operational claim
+      above WEP "likely" in any item.
+
+      Composition:
+
+      - Lead: CVE-2026-45247 Mirasvit Magento KEV with
+        Imperva ITW + canonical patch + extension audit
+        framing; 3-day clock as supporting signal NOT
+        primary justification per analyst SAT-KAC.
+
+      - Why it matters: Magento at DIB-prime e-commerce /
+        supplier portals; small-to-mid Magento commerce
+        base documented; pair with Symantec TTP signal +
+        HTTP/2 Bomb Envoy update.
+
+      - Active Threats: CVE-2026-45247 with full four-
+        bullet structure (What / Attribution / DIB action /
+        3-day-clock counter-framing) + digraph + WEP.
+
+      - Vulnerabilities: HTTP/2 Bomb UPDATE (Envoy
+        priority + amplification specificity); Kirki
+        WordPress monitoring-tier (single-source-through-
+        single-relay veto).
+
+      - Sector Focus A&D: silent-day with Mirasvit +
+        Kirki indirect-reach context.
+
+      - Actor Activity: silent-day with Gamaredon
+        carry-over.
+
+      - Iran Cyber Watch: silent-day standing template.
+
+      - Other Signal: Symantec stock-exchange Outlook
+        150-day espionage; reusable TTPs framing with
+        A&D-specific control hedges; hardcoded-IP DNS-
+        bypass as CTI insight; defender pivot Splunk
+        hunts; Hard Rule 6 12-word Symantec quote
+        preserved verbatim.
+
+      Anti-repetition discipline:
+        - 2026-06-03-am-003 (HTTP/2 Bomb): RESURFACE
+          under UPDATE flag per material-update
+          resurface rule (per-server timing + amplification
+          ratios + Envoy-priority defender pivot net-new);
+          covered_in updated.
+        - finding-2026-06-03-0005 (Mirasvit Magento):
+          NEW corpus topic; A2 action-tier.
+        - finding-2026-06-03-0006 (Symantec stock
+          exchange): NEW corpus topic; B2 monitoring-
+          tier (tradecraft/reusable-TTPs framing).
+        - finding-2026-06-03-0007 (Kirki WordPress):
+          NEW corpus topic; B3 monitoring-tier
+          (commodity mass-exploitation).
+
+      Pre-flight regeneration:
+        - Iteration 1: Layer 1 word count ~1320 over 800
+          soft target; Layer 2 char count estimated
+          ~2495 over 1900 ceiling. Cuts: tightened
+          Symantec section across What/Attribution/Why-
+          it-matters/Defender-pivot bullets;
+          consolidated CVE-2026-45247 DIB-action bullet
+          to single paragraph; Layer 2 tightened
+          Mirasvit bullet body, HTTP/2 Bomb "Per-server
+          timing" condensed, Kirki "Tier-2/Tier-3" →
+          "Tier-2/3," Symantec body trimmed
+          repeatedly (~563 → ~520 → ~343 chars).
+        - Iteration 2: Layer 2 still over 1900;
+          additional cuts on Symantec body (removed
+          "Adobe/Lenovo/OneDrive" inline clause; "five-
+          way ACH tie" preserved); Mirasvit body
+          condensed (removed Sansec inline mention,
+          condensed action call); HTTP/2 Bomb body
+          condensed ("timing now specific" → "timing");
+          Symantec closing line tightened (DNS
+          blocklisting framing).
+        - Final: Layer 1 ~1118 words (over 800 soft
+          target but under 1200 / 150% hard cap);
+          Layer 2 ~1893 chars (under 1900 hard ceiling).
+          Further cuts would erode analyst-mandated
+          language hedges; briefer accepts soft-target
+          overage as structurally necessary; AM
+          precedent 948 words with similar rationale.
+
+      Layer 2 char count: ~1893 (under 1900 hard ceiling).
+      Layer 1 word count: 1118 (over 800 soft target;
+      under 1200 / 150% hard cap).
+
+      Analyst carve-outs enforced in brief framing:
+        (1) Mirasvit 3-day-clock: framed as supporting
+            signal NOT primary justification per
+            SAT-KAC A2 qualify; lead anchors on CVSS
+            9.8 + Imperva ITW + canonical patch +
+            extension presence audit independent of
+            clock-inference chain.
+        (2) Mirasvit attacker-class: five-way ACH
+            tie preserved at "roughly even chance";
+            H2 Magecart-cluster-unnamed mildly
+            disfavored; commodity-mass-scanning
+            framing plausible but NOT differentially
+            supported per Hard Rule 2.
+        (3) Symantec TTP-reusability: "TTPs
+            structurally reusable; A&D-specific
+            controls may break specific mechanism
+            transfer" — hedge preserved per SAT-KAC
+            A1/A3/A6 qualify+test.
+        (4) Symantec state-class: "Archimedes does
+            not name a state class" framing; five-
+            way state-class tie preserved per Hard
+            Rule 2; DPRK/criminal mildly disfavored
+            but not ruled out.
+        (5) Symantec quote preserved verbatim "almost
+            certainly state-linked given the target
+            and the patience involved" (12 words,
+            Hard Rule 6 compliant; one quote per
+            source).
+        (6) Hardcoded-IP DNS-bypass framed as
+            "itself the CTI insight" rather than
+            just-another-IOC — IP-tier egress
+            visibility gap not closed by DNS-tier
+            blocklisting alone.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -254,7 +254,7 @@ analysis_sections:
 
 # Lifecycle
 tlp: CLEAR
-published_in_briefs: [2026-06-02-afternoon, 2026-06-03-morning, 2026-06-04-morning]
+published_in_briefs: [2026-06-02-afternoon, 2026-06-03-morning, 2026-06-04-morning, 2026-06-04-afternoon]
 retracted: false
 retraction_brief_id: null
 

@@ -463,6 +463,40 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-06-04 — Cisco PSIRT — provisional-A ratification clock expired (no auto-revert per precedent)
+
+**Type:** Provisional ratification clock follow-on flag (no change applied this run)
+**Source ID:** `cisco-psirt`
+**Status:** 72h ratification clock 2026-05-20T16:00:00-04:00 → 2026-05-23T16:00:00-04:00 expired 12 days ago. Per established source-grade-log precedent (Symantec 2026-05-16 expired-clock entry; cisco-talos / arctic-wolf / litespeed / github-blog precedent class), expired ratification clocks do NOT auto-ratify nor auto-revert — operator decision still pending. Entry remains `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`. Cisco PSIRT continues to be graded at provisional-A for the duration of the pending-decision window.
+**Trigger for re-surfacing:** finding-2026-06-04-0001 (Cisco Unified CM SSRF CVE-2026-20230) is the second corpus citation of cisco-psirt as a dedicated source-grades.yaml id (first was finding-2026-05-20-0006 CVE-2026-20223 Cisco Secure Workload pre-auth REST API authentication bypass). Both findings rely on cisco-psirt at provisional-A; operator ratification of Cisco PSIRT at A would lock the procedural-facts grading for both CUCM SSRF and Secure Workload findings without disposition impact (single-source veto on predictive layers is independent of source-grade level on the procedural anchor).
+**Supporting findings:** [finding-2026-05-20-0006, finding-2026-06-04-0001]
+**Action this run:** No change to `source-grades.yaml`. Cisco PSIRT provisional A (awaiting ratification) holds.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade cisco-psirt A` (bundled with the open aonan-guan / Symantec / Bitdefender / litespeed / github-blog / arctic-wolf / push-security / permiso-security / palo-alto-psirt ratification window).
+**Next review:** Bundle with the open ratification window; recommend operator action this week given the growing bundle and the doubled corpus surface on cisco-psirt specifically.
+
+---
+
+## 2026-06-04 — Five Eyes Counterintelligence Joint Advisory (MI5 / FBI / ASIO / CSIS / NZSIS) — (none) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `mi5-fbi-asio-csis-nzsis-joint`
+**Reason:** First Archimedes-corpus citation of the Five Eyes counterintelligence joint-advisory publication channel via `finding-2026-06-04-0002` ("Safeguarding Our Secrets" joint advisory on China's military intelligence services running LinkedIn-led HUMINT recruitment against cleared personnel; MI5 lead with FBI / ASIO / CSIS / NZSIS co-signatories; published 2026-06-04 via mi5.gov.uk and confirmed by The Record and additional Tier-1 trade press relays). Proposed grade A by the grader as procedurally consistent with the established precedent class for government joint-advisory products at A grade: CISA + NSA + FBI Flash joint cybersecurity advisories, CISA + NCSC joint advisories, CISA + ASD + CSIS / NCSC-NZ joint advisories. Five Eyes counterintelligence joint publications are first-party authoritative on the procedural facts of the advisory (named victim populations, named tradecraft patterns, named tradecraft hand-off mechanisms, named monetary scale, named partnering-agency coordination).
+**Hard Rule 2 attribution boundary preserved:** This advisory's attribution string is **"China's military intelligence services"** — generic PLA-linked, NOT a specific tracked actor. The provisional-A grade scope applies to the procedural facts of the advisory; it does NOT extend to actor-attribution propagation. Archimedes does NOT propagate this to APT41 / Volt Typhoon / Salt Typhoon / APT40 / any roster-tracked actor without an independent A-grade vendor attribution layer. Finding 0002 preserves "China's military intelligence services" verbatim in its primary attribution field and explicitly declines roster mapping; `related_actors: []` on the brief is the structural counterpart.
+**Methodological positives on first surface:**
+- Five-agency joint co-signatory pattern is the strongest counterintelligence-advisory framing format short of an executive-branch attribution statement; multi-agency cross-validation already baked in at publication time.
+- Tradecraft framing is precise and operationally actionable: LinkedIn-led outreach, front-company-as-consultancy/think-tank/HR-firm pretext, virtual-interview probing on role and unit, encrypted-messaging hand-off, $100s–$1000s per intelligence report (monetary-scale framing is doctrinally novel for Five Eyes counterintelligence advisories on PLA-linked HUMINT).
+- Named victim populations: "Indo-Pacific stationed military" and "anyone with access to classified or privileged information" with explicit "indirect or peripheral access" language extending to academics, journalists, think-tank staff. DIB primes NOT explicitly named; advisory scope is implicit-but-materially-applicable to A&D cleared-personnel populations.
+- Two leverage-point framing for defensive posture (FSO/DCSA partnership AND HR/corporate-recruiter due diligence) maps cleanly to existing DIB defensive architecture.
+**Supporting findings:** [finding-2026-06-04-0002]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification per established government-joint-advisory precedent (provisional A is not a downgrade requiring human review per Hard Rule 5). Five Eyes advisory itself is summarized in the 2026-06-04 afternoon brief Discord Summary section posted to `#intel-briefs` per librarian Mode 1.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade mi5-fbi-asio-csis-nzsis-joint A` (or operator downgrade to B / hold pending direct-retrieval of the mi5.gov.uk primary PDF on next collector pass).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: false` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-06-04-0002` Five Eyes counterintelligence advisory anchor is A2 with the joint advisory as the originating primary; The Record + additional trade press relays are corroborating layers. Provisional A grading holds the A2 digraph. Operator downgrade to B would re-grade to B2 but would NOT change the brief disposition (counterintelligence-tradecraft framing is procedural, no WEP cap inversion).
+**72h ratification clock:** 2026-06-07T16:24:00-04:00 (72h from afternoon brief composition).
+**Next review:** ratification target 2026-06-11 (7 days; bundled with the open cisco-psirt / aonan-guan / Symantec / Bitdefender / litespeed / github-blog / arctic-wolf / push-security / permiso-security / palo-alto-psirt ratification window — recommend operator action this week given the growing bundle).
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

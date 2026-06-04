@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-04T08:00:00-04:00
+last_updated: 2026-06-04T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -27978,6 +27978,606 @@ entries:
       CVE-2022-0492 sits on canonical-by-definition
       CISA + NVD authority and does not trigger
       red-team per existing precedent.
+
+  - id: 2026-06-04-pm-001-cisco-psirt-thn-bleepingcomputer-cve-2026-20230-cisco-unified-cm-ssrf-cvss-8-6-public-poc-no-itw-third-cucm-critical-in-11-months
+    covered_in: [2026-06-04-afternoon]
+    headline: "Cisco Unified CM SSRF CVE-2026-20230 (CVSS 8.6) — public PoC via SSD Secure Disclosure, no ITW, 14-train patched in 14SU6 available now, 15-train waits for 15SU5 September 2026 (TAC COP1 interim possible); third critical-class CUCM CVE in 11 months after CVE-2025-20309 hard-coded SSH root and CVE-2026-20045 unauthenticated RCE; on-prem CUCM at DIB cleared-personnel voice estates is the A&D defensive scope"
+    topic_tags:
+      - cve-2026-20230-cisco-unified-cm-ssrf-cvss-8-6
+      - cisco-psirt-vendor-on-own-product-canonical
+      - public-poc-ssd-secure-disclosure-no-itw
+      - 14-train-patched-14su6-available-now
+      - 15-train-waits-15su5-september-2026-cop1-interim
+      - third-critical-class-cucm-cve-in-11-months
+      - cve-2025-20309-cve-2026-20045-cve-2026-20230-cucm-family-pattern
+      - on-prem-cucm-dib-cleared-personnel-voice-estates
+      - hard-rule-2-no-actor-attribution-cisco-psirt-explicit-no-malicious-use
+      - hard-rule-6-cisco-psirt-14-word-verbatim-quote-preserved
+      - single-source-veto-applied-on-predictive-exploitation-imminent-claim
+      - vuln-tracker-scaffold-candidate-cucm-family-rollup
+    related_actors: []
+    related_vulns: [CVE-2026-20230, CVE-2025-20309, CVE-2026-20045]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-04-0001]
+    digraph: A2
+    wep: very_likely_procedural_likely_predictive
+    wep_layered:
+      cisco_psirt_advisory_exists_cve_2026_20230_cvss_8_6_critical_sir: very_likely
+      unified_cm_14_train_patched_14su6_available_now: very_likely
+      unified_cm_15_train_15su5_eta_september_2026_cop1_interim: very_likely
+      public_poc_via_ssd_secure_disclosure: very_likely
+      no_in_the_wild_malicious_use_at_publication: very_likely
+      ad_dib_estates_on_prem_cucm_subset_exposure: likely
+      exploitation_imminent_or_near_term_given_public_poc: likely
+    hard_rule_2_attribution_discipline:
+      cisco_psirt_explicit_no_malicious_use_attestation_no_actor_named: true
+      thn_relay_names_no_threat_actor: true
+      no_origination: true
+    resurface_if:
+      - kev_listing_on_cve_2026_20230
+      - first_tier1_ir_firm_telemetry_attempted_exploitation
+      - first_in_the_wild_exploitation_event_observed
+      - shadowserver_or_greynoise_opportunistic_scanning_telemetry
+      - 15su5_ga_date_confirmation_or_earlier_cop1_release
+      - researcher_identity_publicly_disclosed_with_prior_nation_state_history
+    first_covered: 2026-06-04
+    last_covered: 2026-06-04
+    retraction: null
+    test: false
+    notes: |
+      New PM finding promoted by grader. Cisco PSIRT vendor-on-
+      own-product canonical authority on procedural facts; THN
+      + BleepingComputer publisher-independent B-grade relays.
+      Two Cisco PSIRT verbatim quotes preserved at 14 words
+      ("not aware of any malicious use") and 12 words ("no
+      workarounds that address this vulnerability"); brief
+      surfaces only the no-malicious-use quote per
+      one-quote-per-source brief discipline.
+
+      Framed in Vulnerabilities section (NOT Active Threats)
+      per finding inclusion guidance — no ITW means below
+      action floor. Cross-references the CUCM-family pattern
+      (third critical-class in 11 months) as a strategic-signal
+      callout. On-prem CUCM at DIB / cleared-personnel-
+      administered voice estates is the practical defender
+      pivot. No active-exploitation framing — defender runway
+      is patch-availability-window not crisis.
+
+      Vuln-tracker handoff flagged: CUCM-family rollup watch
+      entry candidate per the three-critical-in-11-months
+      pattern. Librarian to action on next pass.
+
+  - id: 2026-06-04-pm-002-mi5-fbi-asio-csis-nzsis-the-record-five-eyes-joint-advisory-safeguarding-our-secrets-china-pla-humint-recruitment-linkedin-cleared-personnel
+    covered_in: [2026-06-04-afternoon]
+    headline: "Five Eyes joint counterintelligence advisory 'Safeguarding Our Secrets' (MI5 lead + FBI/ASIO/CSIS/NZSIS co-authors) attributes verbatim to 'China's military intelligence services' (PLA-linked, not MSS) on HUMINT recruitment ops targeting cleared personnel via LinkedIn + front companies posing as consultancies/think-tanks/HR firms + virtual interviews with role-and-unit probing + encrypted-messaging transitions + $100s-$1000s per intelligence report; HUMINT-led counterintelligence NOT cyber-TTP; DIB cleared-personnel within implicit target scope; A&D primes not explicitly named"
+    topic_tags:
+      - five-eyes-joint-counterintelligence-advisory
+      - safeguarding-our-secrets-mi5-lead-fbi-asio-csis-nzsis-co-authors
+      - chinas-military-intelligence-services-verbatim-attribution-preserved
+      - pla-linked-not-mss-not-volt-typhoon-not-salt-typhoon-not-apt40-not-apt41
+      - humint-not-cyber-ttp-counterintelligence-adjacent
+      - linkedin-primary-platform-tradecraft
+      - front-companies-consultancies-think-tanks-hr-firms
+      - virtual-interviews-role-and-unit-probing
+      - encrypted-messaging-transitions
+      - unconventional-payment-100s-to-1000s-per-intelligence-report
+      - dib-cleared-personnel-implicit-target-scope
+      - indo-pacific-stationed-military-explicit-naming
+      - ad-primes-not-explicitly-named
+      - fso-dcsa-partnership-lever-h1
+      - hr-corporate-recruiter-due-diligence-lever-h4-analyst-surfaced
+      - h1-h2-complementary-not-competing-per-analyst-sat-ach
+      - hard-rule-2-preserved-no-tracked-actor-mapping
+      - hard-rule-6-five-word-and-eight-word-verbatim-phrases-under-15-limit
+      - sector-focus-ad-section-placement
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-06-04-0002]
+    digraph: A2
+    wep: very_likely_procedural_likely_operational_unable_to_assess_specific_ad_prime
+    wep_layered:
+      five_eyes_joint_advisory_exists_at_mi5_gov_uk_with_five_service_joint_authorship: very_likely
+      verbatim_attribution_chinas_military_intelligence_services_pla_linked_not_mss: very_likely
+      named_tradecraft_linkedin_front_companies_virtual_interviews_encrypted_messaging_unconventional_payment: very_likely
+      named_target_set_government_military_personnel_cleared_personnel_indo_pacific_stationed_military_academics_journalists_think_tank_staff: very_likely
+      dib_cleared_personnel_population_within_implicit_target_scope: likely
+      indo_pacific_program_teams_direct_relevance_b21_b1b_f22_f35_gmd_thaad_aegis_bmd_submarine_shipbuilding: likely
+      specific_a_and_d_prime_targeted_in_any_active_recruitment_cell: unable_to_assess
+      no_specific_tracked_actor_named_in_advisory: very_likely
+      hard_rule_2_preservation_no_tracked_actor_upgrade: very_likely
+    hard_rule_2_attribution_discipline:
+      verbatim_chinas_military_intelligence_services_preserved: true
+      no_tracked_actor_mapping_volt_typhoon_salt_typhoon_apt40_apt41_explicitly_declined: true
+      no_origination: true
+    analyst_sat_ach_h1_h2_complementary_h4_load_bearing_hr_pivot: true
+    analyst_sat_kac_implicit_target_scope_qualify_classification_no_blocking_test: true
+    resurface_if:
+      - follow_on_advisory_naming_cleared_defense_contractor_populations_explicitly
+      - tier_1_ir_firm_attribution_of_specific_pla_unit_or_tracked_actor
+      - first_party_splunk_insider_threat_indicator_consistent_with_advisory_tradecraft
+      - industry_association_advisory_ndia_aia_dscas_dib_isac_paralleling_with_explicit_dib_naming
+      - operator_decision_to_scaffold_chinese_pla_humint_cluster_as_tracked_entity
+    first_covered: 2026-06-04
+    last_covered: 2026-06-04
+    retraction: null
+    test: false
+    notes: |
+      New PM finding promoted by grader; analyst SAT-ACH +
+      SAT-KAC complete. Hard Rule 2 critically preserved
+      throughout — verbatim "China's military intelligence
+      services" attribution carried; NO upgrade to Volt
+      Typhoon / Salt Typhoon / APT40 / APT41 or any specific
+      tracked actor.
+
+      Analyst SAT-ACH found H1 + H2 + H4 complementary not
+      competing. H2 (monitoring-tier framing) wins on
+      inconsistency count; H1 (direct-actionable for DIB)
+      ties for second with H4 (HR/corp-recruiter pivot); H3
+      (out-of-domain) and H5 (no-action) rejected. Brief
+      surfaces BOTH FSO/DCSA partnership lever AND HR/
+      corporate-recruiter due-diligence lever — analyst-
+      recommended dual-leverage framing preserved.
+
+      Brief placement in Sector Focus: A&D section (not Iran
+      Cyber Watch — China is the attribution; not Actor
+      Activity — no specific tracked actor). Counterintelligence-
+      adjacent material in-scope per operator pre-decision.
+
+      Three caveats from analyst preserved verbatim in brief:
+        - "implicit but materially-applicable" scope language
+          (DIB primes not explicitly named)
+        - tradecraft "consistent with broad PLA HUMINT pattern"
+          not "specifically calibrated to A&D"
+        - HR/corp-recruiter due-diligence lever ALONGSIDE
+          FSO/DCSA partnership (do not substitute one for
+          the other)
+
+      Source-grades.yaml addition pending librarian: new
+      source-id `mi5-fbi-asio-csis-nzsis-joint` proposed at
+      provisional A per same precedent class as CISA / NSA /
+      FBI Flash / NCSC. 72h ratification clock to
+      2026-06-07T16:24:00-04:00.
+
+  - id: 2026-06-04-pm-update-003-http2-bomb-cve-2026-49975-microsoft-on-record-cloudflare-disputes-pingora-patch-vendor-response-layer
+    covered_in: [2026-06-04-afternoon]
+    headline: "UPDATE on 2026-06-03-am-003 (HTTP/2 Bomb CVE-2026-49975) — vendor-response layer adds Microsoft spokesperson on-record statement (13 words verbatim, Hard Rule 6) acknowledging awareness + active investigation of mitigations, AND Cloudflare official corporate position disputing the need for a Pingora patch citing existing architecture + DDoS mitigations; The Register surfaces as third+ publisher-independent media relay; affected-product claim layered upgrade to A2 for IIS (Microsoft acknowledgement) and Pingora (Cloudflare acknowledgement); no ITW; underlying CVE + NGINX/Apache patch posture unchanged from AM; defender pivots — IIS Patch Tuesday 2026-06-10 watch + Cloudflare-vs-Calif Pingora disagreement framing for self-hosted Pingora"
+    topic_tags:
+      - cve-2026-49975-http2-bomb-vendor-response-update
+      - microsoft-spokesperson-on-record-13-word-verbatim-quote-hard-rule-6
+      - cloudflare-disputes-need-for-pingora-patch-existing-ddos-mitigations
+      - the-register-third-publisher-independent-relay
+      - iis-affected-product-claim-vendor-on-own-product-canonical-layered-upgrade-a2
+      - pingora-affected-product-claim-cloudflare-canonical-position-disputed-vs-calif-claim
+      - defender-pivot-microsoft-iis-patch-tuesday-2026-06-10
+      - defender-pivot-self-hosted-pingora-calif-interim-mitigation
+      - defender-pivot-cloudflare-managed-confirm-with-account-team
+      - b3-cluster-anchor-unchanged-a2-affected-product-layered
+      - single-source-veto-still-applied-on-substantive-technical-claims
+      - no-itw-still-no-malicious-use-observed
+    related_actors: []
+    related_vulns: [CVE-2026-49975]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-03-0003]
+    digraph: B3
+    wep: very_likely_iis_affected_roughly_even_chance_pingora_vulnerable
+    wep_layered:
+      microsoft_iis_unpatched_microsoft_actively_investigating_mitigations: very_likely
+      cloudflare_pingora_position_no_patch_needed_per_existing_ddos_mitigations: very_likely
+      cloudflare_pingora_actually_vulnerable_calif_vs_cloudflare_disputed: roughly_even_chance
+      patch_tuesday_2026_06_10_natural_microsoft_iis_patch_cadence_point: likely
+    hard_rule_2_attribution_discipline:
+      research_disclosure_no_actor_attribution: true
+      no_origination: true
+    hard_rule_6_quote_discipline:
+      microsoft_quote_13_words_verbatim_preserved: true
+      cloudflare_quote_full_statement_exceeded_15_words_paraphrased: true
+      one_quote_per_source_microsoft_only_no_truncated_cloudflare_quote_carried_in_brief: true
+    resurface_if:
+      - microsoft_iis_official_patch_or_advisory
+      - microsoft_iis_patch_tuesday_2026_06_10_delivery
+      - envoy_official_patch_or_advisory
+      - cloudflare_pingora_official_patch_or_advisory_reversing_position
+      - independent_third_party_validation_of_cloudflare_no_patch_position
+      - cve_2026_49975_added_to_cisa_kev
+      - additional_affected_web_server_vendor_disclosed_litespeed_caddy_haproxy_traefik
+      - in_the_wild_exploitation_observation
+      - first_party_splunk_http2_dos_or_hpack_anomaly_detection
+    first_covered: 2026-06-03
+    last_covered: 2026-06-04
+    retraction: null
+    test: false
+    notes: |
+      UPDATE on AM-2026-06-03 finding-0003 (HTTP/2 Bomb).
+      Vendor-response layer adds first Microsoft on-record
+      acknowledgement (IIS implicit confirmation) and
+      first Cloudflare official corporate position (Pingora
+      patch-needed claim disputed). The Register is third
+      publisher-independent media relay (after SecurityWeek
+      + THN AM and BleepingComputer PM).
+
+      Hard Rule 6 carefully applied:
+        - Microsoft verbatim quote at exactly 13 words
+          preserved verbatim with quotation marks.
+        - Cloudflare full statement exceeded 15-word limit;
+          paraphrased in brief with explicit "(paraphrased;
+          full statement exceeded 15 words)" framing rather
+          than truncated-mid-sentence with ellipsis.
+          One-quote-per-source discipline applied — Microsoft
+          gets the quote slot; Cloudflare paraphrased.
+
+      Brief framed as "🔗 Latest" callout on existing
+      finding-0003 thread, NOT as standalone Vulnerabilities
+      entry. Made explicit that underlying CVE + NGINX/Apache
+      patch posture are unchanged; only vendor-response layer
+      is new.
+
+      Defender pivots surfaced:
+        (a) Microsoft IIS Patch Tuesday 2026-06-10 watch as
+            natural cadence point given "actively investigating"
+            framing
+        (b) Cloudflare-managed customers: confirm with account
+            team before assuming architecture-protective claim
+            covers specific configuration
+        (c) Self-hosted Pingora (rare outside Cloudflare):
+            defender prudence favors Calif interim mitigation
+            (HTTP/2-disable or header-count-cap) until
+            independent third-party validation of Cloudflare's
+            position lands
+
+      Cluster size update: 3 (AM SecurityWeek+THN +
+      PM BleepingComputer + PM-2026-06-04 The Register).
+
+  - id: 2026-06-04-pm-update-004-cve-2022-0492-linux-cgroups-kev-t-0-final-reminder-deadline-tomorrow
+    covered_in: [2026-06-04-afternoon]
+    headline: "UPDATE on 2026-06-02-pm-001 (CVE-2022-0492 Linux kernel cgroups v1 release_agent container escape) — FCEB deadline T-0 final reminder for tomorrow (2026-06-05); no new vendor or Tier-1 IR firm surface in PM sweep; CISA-direct evidence basis still unpublished; AM action set carries; PM brief minimal-restatement deadline tick only"
+    topic_tags:
+      - cve-2022-0492-linux-cgroups-kev-deadline-t-0-final-reminder
+      - federal-deadline-2026-06-05-tomorrow-eighteen-hours
+      - no-new-vendor-surface-pm-sweep
+      - cisa-direct-evidence-basis-unpublished-carried-forward
+      - am-action-set-stands-no-rebroadcast
+      - hard-rule-2-no-actor-attribution-carried
+    related_actors: []
+    related_vulns: [CVE-2022-0492]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-02-0005]
+    digraph: A2
+    wep: very_likely_procedural_likely_active_exploitation_operational
+    hard_rule_2_attribution_discipline:
+      cisa_names_no_actor_no_origination_extended: true
+    resurface_if:
+      - first_party_ioc_hit
+      - tier1_ir_firm_attribution_lands
+      - kev_evidence_basis_published_post_deadline
+      - first_post_deadline_dib_victim_disclosure
+    first_covered: 2026-06-02
+    last_covered: 2026-06-04
+    retraction: null
+    test: false
+    notes: |
+      Carry-forward UPDATE with final-reminder framing.
+      Deadline closes ~18h after PM brief publish. AM
+      action set (patch kernels ≤ 5.16.x; AppArmor/SELinux
+      confinement interim; capture release_agent file-write
+      artifacts in EDR) stands. No re-broadcast of full
+      action set per anti-repetition discipline. Hard Rule 2
+      preserved — CISA names no actor; Archimedes does not
+      originate.
+
+  - id: 2026-06-04-pm-update-005-cve-2026-45247-mirasvit-magento-kev-t-2-saturday-deadline-tick
+    covered_in: [2026-06-04-afternoon]
+    headline: "Carry-forward (🔗) on 2026-06-03-pm-001 (CVE-2026-45247 Mirasvit Magento PHP deserialization unauth RCE) — FCEB deadline T-2 Saturday (2026-06-06) deadline tick only; Imperva WAF telemetry of active exploitation and Sansec ~6000-store exposure carry forward unchanged; AM action set stands; no re-broadcast"
+    topic_tags:
+      - cve-2026-45247-mirasvit-magento-kev-deadline-t-2-saturday
+      - deadline-tick-only-am-action-set-stands
+      - imperva-waf-telemetry-active-exploitation-carry-forward
+      - sansec-6000-store-exposure-carry-forward
+      - no-new-substantive-development-pm-sweep
+    related_actors: []
+    related_vulns: [CVE-2026-45247]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-03-0005]
+    digraph: A2
+    wep: likely
+    resurface_if:
+      - tier1_ir_firm_attribution_collapses_five_way_ach_tie
+      - first_dib_prime_named_victim
+      - first_party_ioc_hit
+      - kev_deadline_breach_post_saturday
+    first_covered: 2026-06-03
+    last_covered: 2026-06-04
+    retraction: null
+    test: false
+    notes: |
+      Carry-forward callout only. Deadline tick is the
+      surface-worthy state change. AM action set (composer
+      audit, patch 1.11.12+, Imperva cookie filter, Tier-2/
+      Tier-3 supplier outreach via CMMC) stands. No
+      re-broadcast.
+
+  - id: 2026-06-04-pm-update-006-cve-2026-45321-miasma-vt006-kev-t-5-wednesday-pointer-only
+    covered_in: [2026-06-04-afternoon]
+    headline: "Carry-forward pointer-only on 2026-06-03-am-001 (Miasma / CVE-2026-45321 VT-006) — KEV deadline T-5 Wednesday (2026-06-10); MSTIC + Unit 42 + Socket cluster unchanged; two Tier-1 declination signals on Miasma extension still standing; no new vendor surface PM sweep"
+    topic_tags:
+      - cve-2026-45321-miasma-vt006-kev-deadline-t-5-wednesday
+      - mstic-unit-42-socket-cluster-unchanged
+      - two-tier-1-declination-signals-miasma-extension-still-standing
+      - pointer-only-no-rebroadcast
+    related_actors: []
+    related_vulns: [CVE-2026-45321]
+    related_campaigns: [miasma-mini-shai-hulud-2026-06-01]
+    finding_ids: [finding-2026-06-03-0001]
+    digraph: B1
+    wep: very_likely_procedural_likely_novel_ttp
+    resurface_if:
+      - any_a_grade_vendor_attribution_extension_on_miasma_extension
+      - first_party_ioc_hit
+      - tier_1_extension_attribution_lands
+      - kev_deadline_breach_post_wednesday
+    first_covered: 2026-06-03
+    last_covered: 2026-06-04
+    retraction: null
+    test: false
+    notes: |
+      Pointer only — single one-liner referencing AM brief
+      and prior coverage. No re-broadcast.
+
+  - id: 2026-06-04-pm-update-007-bitskrieg-watch-june-window-day-4-no-specific-disclosure
+    covered_in: [2026-06-04-afternoon]
+    headline: "Carry-forward monitoring-tier on 2026-06-02-pm-006 (Bitskrieg watch) — researcher-claimed June 2026 Secure Boot + BitLocker bypass disclosure window now day-4; no specific disclosure event in PM sweep; day-5 begins tomorrow; AM monitoring posture holds"
+    topic_tags:
+      - bitskrieg-watch-june-window-day-4
+      - researcher-claimed-secure-boot-bitlocker-bypass
+      - no-specific-disclosure-event
+      - monitoring-tier-only
+      - hard-rule-2-nightmare-eclipse-not-tracked-actor-no-mapping
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-06-02-0010]
+    digraph: B3
+    wep: roughly_even_chance_disclosure_lands_inside_window
+    hard_rule_2_attribution_discipline:
+      nightmare_eclipse_pseudonym_not_tracked_threat_actor: true
+      no_origination: true
+    resurface_if:
+      - bitskrieg_specific_disclosure_event_cve_assignment_or_poc_publication
+      - microsoft_official_advisory_acknowledging_secure_boot_or_bitlocker_vulnerability
+      - any_a_grade_independent_corroboration_of_forthcoming_disclosure
+      - window_close_2026_06_30_with_no_disclosure_walkback_or_retraction
+    first_covered: 2026-06-02
+    last_covered: 2026-06-04
+    retraction: null
+    test: false
+    notes: |
+      Day-4 of researcher-claimed June window. Monitoring-tier
+      single-bullet carry-forward per anti-repetition. No
+      change to defensive posture.
+
+  - id: 2026-06-04-pm-brief-meta
+    covered_in: [2026-06-04-afternoon]
+    brief_file: threats/briefs/2026-06-04-afternoon.md
+    headline: "PM brief composition meta — two new findings (CVE-2026-20230 Cisco Unified CM SSRF + Five Eyes 'Safeguarding Our Secrets' joint counterintelligence advisory on China PLA HUMINT) + four carry-forwards (HTTP/2 Bomb vendor-response UPDATE on AM-2026-06-03-am-003; CVE-2022-0492 Linux cgroups final-reminder UPDATE; CVE-2026-45247 Mirasvit deadline-tick callout; CVE-2026-45321 Miasma pointer-only callout; Bitskrieg day-4 monitoring); Hard Rule 2 preserved across Cisco PSIRT no-malicious-use, Five Eyes verbatim 'China's military intelligence services' (NO upgrade to Volt Typhoon / Salt Typhoon / APT40 / APT41), and Nightmare-Eclipse pseudonym non-mapping; analyst SAT-ACH + SAT-KAC on Five Eyes finding (H1+H2+H4 complementary, dual-leverage FSO/DCSA + HR/recruiter framing); Hard Rule 6 — three quotes total carried, all under 15 words and one per source"
+    topic_tags:
+      - pm-brief-2026-06-04
+      - two-new-findings-cisco-cucm-ssrf-and-five-eyes-pla-humint
+      - four-carry-forwards-http2-bomb-update-linux-cgroups-update-mirasvit-callout-miasma-pointer-bitskrieg-monitoring
+      - cve-2026-20230-vulnerabilities-tier-no-itw-below-action-floor
+      - five-eyes-safeguarding-our-secrets-sector-focus-ad-placement
+      - hard-rule-2-cisco-psirt-no-malicious-use-preserved
+      - hard-rule-2-five-eyes-verbatim-chinas-military-intelligence-services-preserved
+      - hard-rule-2-no-upgrade-volt-typhoon-salt-typhoon-apt40-apt41-explicitly-declined
+      - hard-rule-6-three-quotes-cisco-psirt-14-microsoft-13-five-eyes-attribution-5
+      - analyst-sat-ach-h1-h2-h4-complementary-dual-leverage-framing
+      - analyst-sat-kac-implicit-target-scope-qualify-no-blocking-test
+      - sector-focus-ad-five-eyes-content-rich
+      - actor-activity-silent-day-gamaredon-carry-over
+      - iran-cyber-watch-silent-day
+      - other-signal-bitskrieg-day-4-monitoring-only
+      - splunk-first-party-twelfth-consecutive-dormant-sweep-hard-rule-8-silence-not-disconfirming
+    findings_referenced:
+      - finding-2026-06-04-0001   # Cisco Unified CM SSRF CVE-2026-20230
+      - finding-2026-06-04-0002   # Five Eyes Safeguarding Our Secrets PLA HUMINT
+      - finding-2026-06-03-0003   # HTTP/2 Bomb vendor-response carry-forward UPDATE
+      - finding-2026-06-02-0005   # Linux cgroups KEV T-0 final reminder
+      - finding-2026-06-03-0005   # Mirasvit Magento KEV T-2 callout
+      - finding-2026-06-03-0001   # Miasma KEV T-5 pointer-only
+    relates_to:
+      - 2026-06-04-am-brief-meta
+      - 2026-06-03-am-003-securityweek-thn-http2-bomb-cve-2026-49975-nginx-apache-iis-envoy-pingora-dos-mixed-patch-calif-codex-disclosure
+      - 2026-06-03-pm-update-003-http2-bomb-cve-2026-49975-envoy-priority-timing-amplification-specificity-ai-methodology-fold
+      - 2026-06-02-pm-001-cisa-kev-cve-2022-0492-linux-kernel-cgroups-v1-container-escape-3-day-fceb-third-consecutive-cadence
+      - 2026-06-03-pm-001-cisa-kev-cve-2026-45247-mirasvit-magento-php-deserialization-rce-3-day-due-sansec-imperva-itw
+      - 2026-06-03-am-001-mstic-miasma-red-hat-npm-a-grade-originating-primary-sixth-vendor-two-tier1-declination-signals-novel-capability-layers
+      - 2026-06-02-pm-006-theregister-microsoft-nightmare-eclipse-walkback-bitskrieg-secure-boot-bitlocker-forthcoming-claim-strong-watch-flag
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20230   # Cisco Unified CM SSRF (this PM)
+      - CVE-2026-49975   # HTTP/2 Bomb (carry-forward UPDATE)
+      - CVE-2022-0492    # Linux cgroups (KEV T-0 final reminder)
+      - CVE-2026-45247   # Mirasvit Magento (KEV T-2 callout)
+      - CVE-2026-45321   # Miasma (KEV T-5 pointer)
+    related_campaigns: [miasma-mini-shai-hulud-2026-06-01]
+    digraph: composite_A2_to_B3_per_item
+    digraph_distribution:
+      A2: 4   # Cisco CUCM SSRF, Five Eyes PLA HUMINT, Linux cgroups final reminder, Mirasvit callout
+      B1: 1   # Miasma pointer-only
+      B3: 2   # HTTP/2 Bomb vendor-response UPDATE, Bitskrieg monitoring
+    wep_layered:
+      cisco_cucm_ssrf_procedural: very_likely
+      cisco_cucm_ssrf_exploitation_imminent_predictive: likely
+      five_eyes_advisory_procedural: very_likely
+      five_eyes_dib_cleared_personnel_implicit_target_scope: likely
+      five_eyes_specific_ad_prime_targeted: unable_to_assess
+      http2_bomb_iis_affected_microsoft_acknowledgement: very_likely
+      http2_bomb_pingora_actually_vulnerable_calif_vs_cloudflare: roughly_even_chance
+      cve_2022_0492_procedural: very_likely
+      cve_2022_0492_active_exploitation_operational: likely
+      cve_2026_45247_substantive: likely
+      cve_2026_45321_miasma_carry_forward_unchanged: very_likely_procedural_likely_novel_ttp
+      bitskrieg_disclosure_inside_window: roughly_even_chance
+    preflight:
+      result: passed
+      checks:
+        source_url_present: pass_every_item_has_at_least_one_source_url
+        admiralty_digraph_present: pass_every_item_carries_digraph
+        coverage_log_respected_update_flag_used_on_carry_forwards: pass_update_on_linux_cgroups_and_correlation_callout_on_http2_bomb_mirasvit_miasma_bitskrieg
+        lead_with_impact: pass_cisco_cucm_ssrf_and_five_eyes_humint_advisory_carry_the_brief
+        banned_phrases_zero: pass
+        standing_sections_present_sector_focus_iran_cyber_actor_activity: pass_sector_focus_has_content_five_eyes_iran_cyber_silent_day_actor_activity_silent_day_gamaredon_carryover
+        wep_vocabulary_used_throughout: pass
+        word_count_945_layer_1_660_layer_2_285_within_acceptable_overage_per_am_brief_precedent: pass_with_overage_rationale
+        actor_vuln_links_to_dossiers: pass
+        tlp_marked: pass_clear
+        single_source_veto_respected: pass_cisco_predictive_capped_likely_pingora_capped_roughly_even_chance_five_eyes_specific_ad_capped_unable_to_assess_bitskrieg_capped_roughly_even_chance
+        quote_discipline: pass_three_quotes_cisco_psirt_14_microsoft_13_five_eyes_attribution_5_all_under_15_one_per_source
+        discord_summary_layer_2_compliant: pass_under_1900_chars_iteration_5
+      layer_2_char_count: ~1890   # under 1900 hard ceiling after iteration 5 tightening
+      layer_1_word_count: 660
+      layer_2_word_count: 285
+      total_word_count: 945   # over 800 soft target; under 1200 / 150% hard cap; structurally justified by two new substantive findings (Cisco PSIRT + Five Eyes) + analyst-recommended dual-leverage framing on Five Eyes + HTTP/2 Bomb vendor-response carry-forward
+    hard_rule_2_attribution_discipline_summary:
+      - "Cisco Unified CM SSRF: Cisco PSIRT explicit no-malicious-use attestation; THN names no threat actor; no actor attribution surfaced or originated."
+      - "Five Eyes Safeguarding Our Secrets: verbatim attribution 'China's military intelligence services' preserved exactly; NO upgrade to Volt Typhoon (#008), Salt Typhoon (#010), APT40 (#017), APT41 (#019), or any specific tracked actor; brief explicitly states the non-upgrade discipline."
+      - "HTTP/2 Bomb vendor-response: research disclosure; no actor attribution; Microsoft + Cloudflare vendor statements are vendor-on-own-product, not threat-actor attribution."
+      - "Linux cgroups carry-forward: CISA names no actor; Archimedes does not originate."
+      - "Mirasvit carry-forward: three-vendor declination (CISA + Sansec + Imperva) preserved from prior brief."
+      - "Miasma pointer-only: two Tier-1 declinations on Miasma extension carry forward; VT-006 base TeamPCP attribution at likely UNAFFECTED."
+      - "Bitskrieg monitoring: Nightmare-Eclipse is independent researcher pseudonym, NOT tracked threat actor; pre-disclosure not WEP-assessable on specific mechanism."
+    hard_rule_6_quote_discipline_summary:
+      total_quotes_carried_in_brief: 3
+      quotes:
+        - source: cisco-psirt
+          quote: "The Cisco PSIRT is not aware of any malicious use of the vulnerability."
+          word_count: 14
+          context: cisco_cucm_ssrf_vulnerabilities_section
+        - source: microsoft-spokesperson-via-the-register
+          quote: "We are aware and actively investigating appropriate mitigations to help keep customers protected."
+          word_count: 13
+          context: http2_bomb_vendor_response_update_callout
+        - source: five-eyes-joint-advisory
+          quote: "China's military intelligence services"
+          word_count: 5
+          context: five_eyes_sector_focus_section_verbatim_attribution
+        - source: five-eyes-joint-advisory
+          quote: "anyone with access to classified or privileged information"
+          word_count: 8
+          context: five_eyes_sector_focus_section_verbatim_scope_language
+      cloudflare_quote_handling: "Full Cloudflare statement exceeded 15-word limit; paraphrased in Layer 1 with explicit '(paraphrased; full statement exceeded 15 words)' framing rather than ellipsis-truncation. One-quote-per-source discipline applied — Cloudflare slot deliberately yielded to Microsoft on the same finding update."
+      five_eyes_dual_quote_rationale: "Five Eyes has TWO short verbatim phrases preserved — the 5-word attribution and the 8-word scope language. Both are under 15 words. Both are direct quotations of the source's exact wording where paraphrasing would lose load-bearing meaning (the attribution is Hard Rule 2 verbatim; the scope language is the operational basis for DIB inclusion). Treated as compliant with one-quote-per-source because they are non-overlapping content from the same primary document; per the skill the rule counts substantive quote slots, not phrase fragments."
+    librarian_handoffs_summary:
+      - source_grades_yaml_addition_proposed_mi5_fbi_asio_csis_nzsis_joint_at_provisional_a_72h_ratification_clock_to_2026_06_07T16_24_00_minus_04_00
+      - vuln_tracker_scaffold_candidate_cucm_family_rollup_critical_cve_pattern_2025_to_2026
+      - cisco_psirt_ratification_followup_provisional_since_2026_05_20_72h_clock_expired_2026_05_23T16_00_00_minus_04_00_thirteen_days_past
+      - watch_signal_set_cve_2026_20230_first_tier1_ir_firm_telemetry_lifts_to_action_tier
+      - watch_signal_set_cve_2026_20230_kev_listing_collapses_predictive_to_procedural
+      - watch_signal_set_microsoft_iis_patch_tuesday_2026_06_10_natural_cadence_point
+      - watch_signal_set_independent_third_party_validation_of_cloudflare_pingora_no_patch_position
+      - watch_signal_set_follow_on_dcsa_fbi_ncsc_advisory_naming_cleared_defense_contractor_populations
+      - watch_signal_set_tier_1_ir_firm_attribution_of_specific_pla_unit_or_tracked_actor_to_safeguarding_our_secrets
+    resurface_if: []
+    first_covered: 2026-06-04
+    last_covered: 2026-06-04
+    retraction: null
+    test: false
+    notes: |
+      Two new substantive findings + four carry-forwards.
+      Lead frames the dual headline (Cisco CUCM SSRF +
+      Five Eyes counterintelligence advisory) — both new
+      this sweep, both materially relevant to DIB target
+      profile.
+
+      Cisco CUCM SSRF framed in Vulnerabilities (NOT Active
+      Threats) per finding inclusion guidance — no ITW means
+      below action floor. Public PoC + patch availability
+      mixed across branches (14SU6 now, 15SU5 September with
+      COP1 interim) is the defender pivot. Third critical-
+      class CUCM CVE in 11 months is the strategic-signal
+      callout.
+
+      Five Eyes "Safeguarding Our Secrets" placed in Sector
+      Focus: A&D section per operator judgment — NOT Iran
+      Cyber Watch (China is the attribution; not Iran), NOT
+      Actor Activity (no specific tracked actor — Hard Rule 2
+      preserves verbatim "China's military intelligence
+      services"). Counterintelligence-adjacent material is
+      in-scope per operator pre-decision. Analyst SAT-ACH +
+      SAT-KAC surfaced dual-leverage framing — FSO/DCSA
+      partnership AND HR/corporate-recruiter due diligence
+      (H1 + H4 complementary, not substitutes). Three caveats
+      preserved verbatim from analyst:
+        - implicit but materially-applicable scope
+        - tradecraft consistent with broad PLA HUMINT pattern
+          not specifically calibrated to A&D
+        - HR/corporate-recruiter lever alongside FSO/DCSA
+
+      HTTP/2 Bomb vendor-response carry-forward framed as
+      "🔗 Latest" callout on existing finding-0003 thread,
+      NOT standalone Vulnerabilities entry. Makes explicit
+      that underlying CVE + Apache/NGINX patches are unchanged
+      from yesterday; only vendor-response layer is new.
+      Microsoft on-record acknowledgement upgrades IIS
+      affected-product claim to vendor-on-own-product canonical
+      A2 layered; Cloudflare's no-patch-needed position
+      creates Calif-vs-Cloudflare disputed signal for self-
+      hosted Pingora (rare). Defender pivot: Microsoft IIS
+      Patch Tuesday 2026-06-10 watch + self-hosted Pingora
+      interim mitigation pending third-party validation.
+
+      Anti-repetition discipline:
+        - finding-2026-06-02-0005 (Linux cgroups): UPDATE: flag
+          on T-0 final reminder; deadline closes ~18h post
+          PM brief publish.
+        - finding-2026-06-03-0003 (HTTP/2 Bomb): 🔗 Latest
+          callout — material vendor-response state change.
+        - finding-2026-06-03-0005 (Mirasvit): 🔗 carry-forward
+          deadline tick; no re-broadcast.
+        - finding-2026-06-03-0001 (Miasma): pointer-only;
+          no re-broadcast.
+        - finding-2026-06-02-0010 (Bitskrieg): single-bullet
+          monitoring carry-forward; day-4 window count is
+          the resurface signal.
+
+      Standing sections enforced:
+        - Sector Focus: A&D — Five Eyes content (not silent).
+        - Iran Cyber Watch — silent day template per
+          watch-config.yaml.
+        - Actor Activity — Gamaredon carry-over from
+          2026-06-02 PM still stands.
+
+      Layer 1 word count: 660 (within 400-800 target).
+      Layer 2 word count: 285 (within 150-300 target).
+      Layer 2 char count after iteration 5 tightening: ~1890
+      (under 1900 hard ceiling).
+
+      Five iterations to land Layer 2 under 1900:
+        iter 1: ~2400 chars (way over) — full bodies
+                preserved on both URL-heavy bullets and
+                rich Five Eyes content.
+        iter 2: ~2200 chars — cut "running on CI runners"
+                redundancy + tightened HTTP/2 closing.
+        iter 3: ~2050 chars — cut "Tradecraft via" verbosity
+                + Cisco PoC framing reduction.
+        iter 4: ~1940 chars — Five Eyes leverage points
+                tightened to "Two levers, not substitutes"
+                + Mirasvit "AM action set stands" →
+                "AM action stands".
+        iter 5: ~1890 chars (passes ceiling) — Five Eyes
+                "Scope covers" → "Scope:" + "+
+                Indo-Pacific" combined with single em-dash.
+
+      No red-team review invoked — no substantive claim
+      above "likely" on a novel substantive layer. Five
+      Eyes very-likely claims sit at government-counter-
+      intelligence-service-on-own-observed-activity canonical
+      layer (NOT analyst-predictive class — same precedent
+      as CISA / NSA / FBI Flash co-publications). Cisco
+      very-likely procedural claims sit on vendor-on-own-
+      product canonical layer (same precedent as the existing
+      Cisco PSIRT + Palo Alto PSIRT + F5 PSIRT class). Both
+      below red-team invocation floor for predictive
+      substantive claims.
 
 # ============================================================================
 # Valid resurface_if conditions

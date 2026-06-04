@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-05-29T16:32:00-04:00
+last_updated: 2026-06-04T16:24:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -101,6 +101,23 @@ government_sources:
     active: true
     urls:
       - https://ccb.belgium.be/en
+
+  - id: mi5-fbi-asio-csis-nzsis-joint
+    name: "Five Eyes Counterintelligence Joint Advisory (MI5 / FBI / ASIO / CSIS / NZSIS)"
+    category: government
+    grade: A
+    provisional: true
+    provisional_since: 2026-06-04
+    provisional_reason: "First Archimedes-corpus citation of the Five Eyes counterintelligence joint-advisory publication channel via finding-2026-06-04-0002 (\"Safeguarding Our Secrets\" joint advisory on China's military intelligence services running LinkedIn-led HUMINT recruitment against cleared personnel; MI5 lead with FBI / ASIO / CSIS / NZSIS co-signatories; published 2026-06-04 via mi5.gov.uk and confirmed by The Record and additional Tier-1 trade press relays). Same precedent class as existing A-grade government joint-advisory products: CISA + NSA + FBI Flash joint cybersecurity advisories, CISA + NCSC joint advisories, CISA + ASD + CSIS / NCSC-NZ joint advisories. Five Eyes counterintelligence joint publications are first-party authoritative on the procedural facts of the advisory (named victim populations, named tradecraft patterns, named tradecraft hand-off mechanisms, named monetary scale, named partnering-agency coordination), with verbatim attribution preserved per Hard Rule 2 (this advisory's attribution string is \"China's military intelligence services\" — generic PLA-linked, NOT a specific tracked actor; do NOT propagate to APT41 / Volt Typhoon / Salt Typhoon / APT40 or any roster-tracked actor without an independent A-grade vendor attribution layer). Scope of A grade: counterintelligence tradecraft characterization, named-agency partnering coordination, victim-population scoping, monetary-scale framing, mechanism descriptions (LinkedIn outreach, front-company-as-recruiter, virtual interviews, encrypted-messaging hand-off). 72h ratification clock to 2026-06-07T16:24:00-04:00 (72h from afternoon brief composition). Pending human ratification per source-grade-log.md."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: false
+    active: true
+    urls:
+      - https://www.mi5.gov.uk/
+      - https://www.fbi.gov/
+      - https://www.asio.gov.au/
+      - https://www.canada.ca/en/security-intelligence-service.html
+      - https://www.nzsis.govt.nz/
 
 # ============================================================================
 # Tier-1 Threat Intel Firms

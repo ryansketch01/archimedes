@@ -5386,24 +5386,201 @@ entries:
 
       Keep this rejection entry for 1 year per LEGAL-POLICY retention.
 
+  - rejection_id: reject-2026-06-04-0001
+    rejected_at: 2026-06-04T08:05:00-04:00
+    grading_run_id: morning-20260604-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-03-flash-1800-000-sentinel-clean-sweep   # canonical Tuesday-evening FLASH sentinel; 0/6 triggers fired; 6h window 12:00-18:00 EDT 2026-06-03
+      - raw-2026-06-04-flash-0000-000-sentinel-clean-sweep   # canonical Wednesday-midnight FLASH sentinel; 0/6 triggers fired; 6h window 18:00 EDT 2026-06-03 - 00:00 EDT 2026-06-04; quiet hours active
+      - raw-flash-0600-2026-06-04-000-sentinel-clean-sweep   # canonical Wednesday-morning FLASH sentinel; 0/6 triggers fired; 6h window 00:00-06:00 EDT 2026-06-04; quiet hours active
+    cluster_topic: >
+      Canonical Tuesday-Wednesday rollover AM-1 sentinel cluster
+      disposition record absorbing THREE sentinel raw-signal
+      members covering ~14h window 2026-06-03T15:30 EDT (1h after
+      PM-03 brief commit 972d04b) through 2026-06-04T07:30 EDT
+      (AM-04 pre-brief collection window opens): raw-2026-06-03-
+      flash-1800-000-sentinel-clean-sweep (canonical FLASH 18:00
+      EDT, ~6h window, 0/6 triggers fired, commit 8f631e8) +
+      raw-2026-06-04-flash-0000-000-sentinel-clean-sweep
+      (canonical FLASH 00:00 EDT, ~6h window, 0/6 triggers fired,
+      quiet hours active, commit 63a1126) + raw-flash-0600-2026-
+      06-04-000-sentinel-clean-sweep (canonical FLASH 06:00 EDT,
+      ~6h window, 0/6 triggers fired, quiet hours active, commit
+      b7e2e64). All three sentinels are internal collection-
+      summary artifacts; ZERO external claims being graded in
+      any sentinel itself.
+    rejection_reasons:
+      - sentinel_class_non_gradeable_collection_summary_artifact
+      - flash_sweep_zero_triggers_fired_canonical_clean_sweep_pattern
+      - no_external_claims_in_sentinel_content_to_grade
+    sources:
+      - source_yaml_id: sentinel
+        grade: N/A
+        grade_provisional: false
+        role: Internal Archimedes FLASH sentinel records; 0/6 triggers fired across all three 6h FLASH windows. THIRD consecutive overnight clean sweep cycle (1800/0000/0600). Sentinel-class items are administrative records, not finding-class signal.
+    in_window_external_content_surveyed: >
+      In-window content evaluated by FLASH sweeps (NOT raw-signaled,
+      flagged for AM-04 briefer carry consideration):
+
+      (a) TA4922 / Atlas RAT (Proofpoint via BleepingComputer 17:45
+          EDT 2026-06-03) — Chinese-speaking crime group expands to
+          Europe (DE/IT/UK/SA), financial + gov + HR targeting; NEW
+          malware (Atlas RAT, RomulusLoader, SilentRunLoader);
+          NOT a FLASH (TA4922 not in _roster.yaml; aliases Silver
+          Fox / Void Arachne not tracked; no A&D targeting; no
+          watchlist hit). Carry to AM-04 brief for awareness as
+          cybercrime tradecraft datapoint if briefer wants.
+      (b) Cisco CVE-2026-20230 (Unified CM / Unified CM SME
+          WebDialer SSRF) advisory 2026-06-04: CVSS 8.6 (below
+          9.0 FLASH floor); patch available (14SU6); Cisco PSIRT
+          explicitly states "does not appear to have been exploited
+          in attacks"; PoC publicly available is NOT active-
+          exploitation per Trigger 1. FAIL on CVSS floor + FAIL
+          on ITW. Carry to AM-04 brief Vulnerabilities monitoring-
+          tier if briefer wants.
+      (c) Pakistan-Afghan Xeno RAT (Dark Reading 2026-06-04 00:01
+          EDT, Nate Nelson byline) — Pakistani APT (Transparent
+          Tribe / SideWinder / APT36-class) NOT in _roster.yaml;
+          victim is Afghan sovereign government (NOT A&D); Xeno
+          RAT is commodity (publicly available .NET RAT); sole
+          single-source. Per Hard Rule 2 Archimedes does NOT
+          originate roster cross-walk. NOT a FLASH; carry to
+          AM-04 brief only if independent A-grade corroboration
+          emerges.
+      (d) THN re-relays of existing corpus items (CISA KEV Mirasvit
+          add → finding-2026-06-03-0005; Stock Exchange Outlook →
+          finding-2026-06-03-0006; VS Code OAuth zero-day →
+          finding-2026-06-03-0002). All anti-noise dedup applies
+          per Anti-Noise Rule 1.
+      (e) University of Toronto AI-worm research paper (The
+          Register research desk, 2026-06-04 06:00 EDT sweep) —
+          academic publication on AI-assisted lateral-movement
+          worm built atop publicly available open-weight LLM;
+          lab-only (FakeCorp test network, no EDR/AV/FW); slow
+          propagation (~5 days to half-network); code not publicly
+          released. Reinforces "AI is being operationalized for
+          known-vulnerability exploitation, not zero-days" thesis.
+          NOT a FLASH; strong AM-04 Other Signal or weekly
+          synthesis carry candidate.
+      (f) The Record (2026-06-04 07:05 EDT) "CISA directive for AI
+          executive order to be released this week" (Andersen at
+          TechNet Cyber, Baltimore) — US government policy/process
+          item; not a threat-intel trigger; carry to AM-04
+          standing-section if briefer wants.
+      (g) SecurityAffairs Europol Operation KRATOS illegal-streaming
+          takedown (29 arrests, 9 OCGs, 27k+ illegal URLs) —
+          law-enforcement piracy operation, not threat-intel
+          trigger.
+      (h) The Register Commvault CTO commentary on AI-enabled
+          cybercriminals (vendor-marketing analysis piece, no
+          original telemetry, no named actor, no CVE). Not
+          trigger-worthy.
+
+      NVD modified-feed in window: no new >=9.0-with-ITW entries
+      surfaced. CISA KEV catalog UNCHANGED in window since 2026-
+      06-03 Mirasvit add (already in PM-03 brief at A2 digraph).
+    splunk_first_party_check: >
+      Grader-side Splunk -24h sweep across defenseclaw_local +
+      (archimedes NOT sourcetype=archimedes:*) for the priority
+      IOC superset (api.anthropic.com, Miasma, @redhat-cloud-
+      services, ShaiWorm, polyapp, CVE-2026-0826, CVE-2026-49975,
+      search-URI, crumb=location, github.dev, CacheWarmer cookie,
+      Aspose, Kirki, CVE-2026-45247, CVE-2026-8206) returned ZERO
+      events. 22nd consecutive dormant non-archimedes-internal
+      stream pattern. Per Hard Rule 8 silence is NOT
+      disconfirming.
+    trigger_3_evaluation: NO_FIRE (defenseclaw_local index returns 0 events in window; no first-party telemetry to query against; archimedes index shows only operational/scheduler self-telemetry).
+    flash_disposition_summary: >
+      Three sentinels x 0/6 triggers fired = 18 trigger-evaluations
+      across 18h FLASH window with ZERO escalations. Critical
+      override conditions evaluated at 0600 sweep: 0 of 4 required
+      conditions met (CVSS 10.0 FAIL, confirmed active exploitation
+      FAIL, tracked-actor involved FAIL, A&D-watchlist entity
+      named FAIL). Override does not apply.
+    relation_to_existing_findings:
+      no_new_findings_promoted_this_run: true
+      carry_forward_candidates_to_AM_04_brief:
+        - finding-2026-06-03-0001-mstic-miasma-red-hat-npm-credential-stealing-worm-a-grade-originating-primary-second-tier1-attribution-declination-vt006-family-extension   # Lead candidate; analyst_review_required TRUE; red_team_review_required TRUE
+        - finding-2026-06-03-0005-cisa-kev-cve-2026-45247-mirasvit-magento-php-deserialization-rce-3-day-due-sansec-imperva-itw   # 3-day federal due date 2026-06-06 = T-2; action-tier carry
+        - finding-2026-06-03-0002-bleepingcomputer-vs-code-github-oauth-token-theft-zero-day-askar-poc-full-disclosure-microsoft-disclosure-policy-current   # disclosure-policy arc carry; SecurityAffairs/Paganini narrative-layer addition flagged in 0600 sweep
+        - finding-2026-06-03-0003-securityweek-thn-http2-bomb-cve-2026-49975-nginx-apache-iis-envoy-pingora-dos-mixed-patch-calif-codex-disclosure   # monitoring-tier carry; no ITW escalation in window
+        - finding-2026-06-03-0004-thn-huntress-unpatched-windows-search-uri-ntlmv2-leak-microsoft-declined-cve-2026-33829-sibling-disclosure-policy-current   # disclosure-policy arc carry
+        - finding-2026-06-03-0006-symantec-carbon-black-stock-exchange-outlook-150-day-espionage-aspose-dropbox-onedrive-no-attribution-reusable-ttps-against-ad   # reusable-TTPs-against-A&D monitoring-tier carry
+        - finding-2026-06-03-0007-securityweek-defiant-wordfence-cve-2026-8206-kirki-burst-statistics-wordpress-itw-thousands-attacks-24h-commodity-mass-exploitation   # monitoring-tier carry (commodity mass exploitation)
+        - finding-2026-06-02-0005-cisa-kev-cve-2022-0492-linux-kernel-cgroups-v1-container-escape-3-day-fceb-deadline-3rd-consecutive-3-day-kev   # 2026-06-05 = T-1 federal due date
+        - finding-2026-06-02-0010-theregister-microsoft-nightmare-eclipse-0day-researcher-dispute-bitskrieg-secure-boot-bitlocker-forthcoming-claim   # Bitskrieg watch (June release window active)
+    anti_noise_rule_applied: SENTINEL_CLUSTER_DISPOSITION_NOT_REGULAR_ANTI_NOISE
+    anti_noise_rule_detail: >
+      Sentinel-class items are by-doctrine non-gradeable; they
+      document the FLASH-sweep evaluation pattern with explicit
+      0/6 trigger counts and notable-but-non-triggering items.
+      They are not external content being claim-graded. Logging
+      as sentinel-cluster rejection follows the canonical
+      precedent set by reject-2026-06-01-0001 (Sunday-Monday
+      rollover sentinel cluster) and reject-2026-05-26-* series.
+      This is documentation of clean-sweep disposition for
+      audit-trail purposes, not anti-noise rejection of
+      finding-class content.
+    would_be_digraph: N/A (sentinel-class non-gradeable; no claims to digraph)
+    review_notes: >
+      Canonical clean-sweep disposition. Three consecutive 6h
+      FLASH windows with 0/6 triggers fired each. AM-04 pre-brief
+      collection has not yet produced new substantive raw-signal
+      at the time of this grading-run start (08:00 EDT 2026-06-04).
+
+      This run-summary entry is the morning-20260604-080000
+      grading-run record; it documents that the grading phase
+      processed the available un-promoted raw-signal in the 24h
+      window and found ZERO finding-class promotions and ZERO
+      substantive rejections beyond the sentinel-cluster
+      disposition logged here.
+
+      Items skipped this run (pre-existing dispositions):
+
+        - All raw-2026-06-03-am-* files (five already promoted to
+          findings-2026-06-03-0001 through 0004 + 0003-no-finding-
+          number-skip in morning-20260603-080000 run; raw-am-005
+          → finding-2026-06-03-0004 per AM-03 promotion record)
+        - All raw-2026-06-03-pm-* files (three already promoted to
+          findings-2026-06-03-0005 through 0007 in afternoon-
+          20260603-160000 run; raw-pm-004 absorbed as carry-forward
+          to finding-2026-06-03-0003; raw-pm-005 already rejected
+          as reject-2026-06-03-0002)
+
+      Total run dispositions:
+        - Substantive promotions: 0
+        - Substantive rejections: 0
+        - Sentinel-cluster rejections: 1 (this entry; absorbs 3
+          sentinel raw-signal members)
+        - Carry-forward updates: 0
+        - Absorptions: 0
+
+      Keep this rejection entry for 1 year per LEGAL-POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================
 _meta:
-  total_rejections: 47        # +1 from morning-20260603-080000 → afternoon-20260603-160000 (reject-2026-06-03-0002 added: The Register anti-noise arc-narrative meta-coverage of Microsoft disclosure-policy current arc; watch_signal data-point count remains at 4)
-  most_recent_run: afternoon-20260603-160000
-  most_recent_run_rejections: 1
-  most_recent_run_promotions: 3            # PM-001 + PM-002 + PM-003 promoted; PM-004 carry-forward update to finding-2026-06-03-0003 (not new promotion); PM-005 rejected
-  most_recent_run_absorptions: 1           # PM-004 absorbed as carry-forward update into finding-2026-06-03-0003
-  most_recent_run_promotion_ids_afternoon_20260603:
+  total_rejections: 48        # +1 from afternoon-20260603-160000 → morning-20260604-080000 (reject-2026-06-04-0001 added: canonical Tuesday-Wednesday rollover sentinel cluster disposition absorbing three sentinel raw-signal members; 0/6 triggers fired across all three 6h FLASH windows; no substantive raw-signal in 24h window beyond already-promoted PM-03 corpus)
+  most_recent_run: morning-20260604-080000
+  most_recent_run_rejections: 1            # reject-2026-06-04-0001 (sentinel cluster, three members)
+  most_recent_run_promotions: 0            # ZERO substantive promotions; AM-04 pre-brief collection has not yet produced new raw-signal at grading-run start; all PM-03 raw-signal already processed in afternoon-20260603-160000 run
+  most_recent_run_absorptions: 0
+  most_recent_run_promotion_ids_morning_20260604: []
+  most_recent_run_carry_forward_updates_morning_20260604: []
+  most_recent_run_rejection_ids_morning_20260604:
+    - reject-2026-06-04-0001   # Canonical Tuesday-Wednesday rollover AM-1 sentinel cluster disposition absorbing three sentinel raw-signal members (18:00 EDT 2026-06-03 / 00:00 EDT 2026-06-04 / 06:00 EDT 2026-06-04); 0/6 triggers fired each window = 18 trigger-evaluations zero escalations; critical-override 0 of 4 conditions met; carry-forward candidates list nine PM-03 + PM-02 + AM-03 findings for AM-04 briefer
+  prior_afternoon_run_promotion_ids_afternoon_20260603:
     - finding-2026-06-03-0005-cisa-kev-cve-2026-45247-mirasvit-magento-php-deserialization-rce-3-day-due-sansec-imperva-itw    # PM-1 afternoon brief — CISA KEV catalog addition (2026-06-03 08:00 EDT in-window) of CVE-2026-45247 Mirasvit Full Page Cache Warmer Deserialization of Untrusted Data (Magento 2 PHP Object Injection unauth RCE; CVSS 9.8) with UNUSUALLY COMPRESSED 3-DAY FEDERAL DUE DATE 2026-06-06 (vs. BOD 22-01 norm 14-21 days). Sansec originated research (Magento-specialist; provisional C first-surface vendor); Imperva first-party WAF telemetry confirms ITW exploitation attempts (provisional B first-surface established appsec vendor). ~6000 stores exposed per Sansec scan. Cluster digraph A2 (CISA + NVD ratified-A backbone + Sansec provisional-C originating + Imperva provisional-B WAF telemetry across three independent evidence bases). Single-source veto NOT applied at cluster-anchor procedural layer (cross-corroborated); APPLIED at Sansec single-source-on-6000-stores-aggregate + Imperva single-source-on-WAF-pattern indicator layers. WEP "very_likely" on procedural facts (CISA-KEV add, NVD canonical, affected-product identification); "likely" on substantive operational claims (active exploitation, A&D-prime exposure). Hard Rule 2 PRESERVED — three-vendor attribution declination preserved verbatim; Sansec declination-despite-Magecart-visibility is analytic-discipline signal. Eligible for daily_brief_action + daily_brief_monitoring + weekly_synthesis + vuln_tracker_dossier_candidate. analyst_review_required TRUE (3-day-compressed-clock + parsimonious attacker-class question warrant SAT-KAC + SAT-ACH; Sansec/Imperva first-surface vendor ratification path). red_team_review_required FALSE (WEP ceiling "very_likely" only at procedural-fact layer; substantive operational claims at "likely"). Operator handoffs: (a) librarian source-grades.yaml addition + source-grade-log entry for sansec provisional C + imperva provisional B (72h ratification clocks to 2026-06-06); (b) vuln-tracker VT-* scaffold candidate for CVE-2026-45247 with CISA-KEV-due-date watch; (c) briefer action-tier inclusion frame on 3-day compressed federal due-date as standout signal + Imperva WAF cookie-regex indicator as defender pivot; (d) monitor Tier-1 IR firm independent ITW corroboration + A&D-supplier compromise disclosure.
     - finding-2026-06-03-0006-symantec-carbon-black-stock-exchange-outlook-150-day-espionage-aspose-dropbox-onedrive-no-attribution-reusable-ttps-against-ad    # PM-1 afternoon brief — Symantec Threat Hunter Team + Carbon Black joint write-up ("this week" on security.com) on 150-day suspected-espionage compromise of single senior executive's Outlook mailbox at unidentified major global stock exchange. SecurityWeek (Eduard Kovacs, 2026-06-03 08:46 EDT) + SecurityAffairs (Pierluigi Paganini, 2026-06-03 14:13 EDT) tier-2 relays in-window. Symantec provisional A (second-corpus-citation since 2026-05-13 MuddyWater/Seedworm first-citation; analytic-discipline ratification signal). Reusable TTPs: Aspose-wrapped OST→PST extraction with cumulative-window cadence (8 subsequent runs at 2-4 week intervals through 2026-02-17); Dropbox + OneDrive Personal exfil with hardcoded Microsoft IPs to bypass DNS-tier logging; scheduled-task rotation under Adobe/Lenovo/OneDrive masquerade across 5-min/5-hr/15-hr/24-hr intervals; binary masquerading rotation across three phases (Oct 2025 / Feb 2026 / Mar 2026). Cluster digraph B2 (Symantec single-vendor-origination through two publisher-independent B-grade relays; evidence-basis-independence FAILS through single-Symantec-primary; first-party Carbon Black EDR telemetry as originating evidence basis). Single-source veto APPLIED on substantive operational claims; NOT applied on procedural-fact + attribution-declination layers. WEP "likely" on substantive operational claims (mechanism + cadence + persistence + exfil); "very_likely" on procedural facts. NO actor attribution (Symantec verbatim declines). NO A&D-prime named victim. Hard Rule 2 PRESERVED — Symantec "almost certainly state-linked given the target and the patience involved" hedge preserved verbatim without upgrade. Hard Rule 6 PRESERVED (two short Symantec quotes ≤15 words; one per relay source). Eligible for daily_brief_monitoring + weekly_synthesis + actor_profile_awareness. NOT eligible for daily_brief_action (no A&D-prime exposure mapping at sweep). analyst_review_required TRUE (TTP-reusability assumption + state-linked-actor-class hypothesis decomposition warrant SAT-KAC + SAT-ACH; actor-profiler awareness handoff for cross-roster TTP-matching in 30-90 day window). red_team_review_required FALSE (WEP ceiling "likely" on substantive operational claims). Operator handoffs: (a) actor-profiler awareness for state-linked-espionage-actor-unnamed TTP-pattern tracking; (b) librarian forward Symantec second-corpus-citation positive ratification signal to operator; (c) briefer tradecraft/monitoring tier inclusion with reusable-TTPs framing for A&D Outlook estates; (d) hash-based Splunk pivot pending IOC extraction from Symantec primary at security.com.
     - finding-2026-06-03-0007-securityweek-defiant-wordfence-cve-2026-8206-kirki-burst-statistics-wordpress-itw-thousands-attacks-24h-commodity-mass-exploitation    # PM-1 afternoon brief — SecurityWeek (Ionut Arghire, 2026-06-03 09:00 EDT in-window) relays Defiant/Wordfence active-exploitation telemetry on CVE-2026-8206 Kirki Customizer Framework unauthenticated privesc / account takeover (CVSS 9.8; affected 6.0.0-6.0.6; patched 6.0.7) + Burst Statistics plugin (no CVE at publication; affected 3.4.0-3.4.1.1; patched 3.4.2). Defiant claims "blocked thousands of attacks targeting these vulnerabilities over the past 24 hours" (13 words, Hard Rule 6 compliant). NO actor attribution; commodity mass-exploitation framing. NO A&D-prime named victim. Defiant/Wordfence FIRST Archimedes-corpus surface (provisional B per established-WAF-vendor precedent). Cluster digraph B3 — SecurityWeek B sole publisher + Defiant provisional B sole originating vendor; single-source-through-single-relay pattern fails both publisher-independence and evidence-basis-independence tests. Single-source veto APPLIED. WEP "likely" on substantive operational claims (ITW exploitation magnitude + version matrix); "very_likely" on procedural-fact layer (publication itself). A&D relevance SCOPE-LIMITED — most DIB primes do NOT run WordPress for primary corporate IT; marketing-microsite tier + Tier-2/Tier-3 supplier outreach is the relevant defender path. Hard Rule 2 PRESERVED — generic "threat actors" framing preserved without upgrade. Eligible for daily_brief_monitoring + weekly_synthesis. NOT eligible for daily_brief_action (B3 below B2 floor; no A&D-prime exposure mapping). analyst_review_required FALSE (WEP ceiling "likely"; no SAT-ACH/KAC trigger conditions). red_team_review_required FALSE. Operator handoffs: (a) librarian source-grades.yaml addition + source-grade-log entry for defiant-wordfence provisional B (72h ratification clock to 2026-06-06); (b) NOT a vuln-tracker dossier candidate (commodity WordPress-ecosystem class with no A&D-prime exposure mapping); re-evaluate if CISA KEV adds CVE-2026-8206; (c) briefer monitoring-tier with supplier-outreach framing rather than prime-tier action; (d) monitor NVD canonical retrieval + Tier-1 firm independent corroboration + CISA KEV addition.
-  most_recent_run_carry_forward_updates_afternoon_20260603:
+  prior_afternoon_run_carry_forward_updates_afternoon_20260603:
     - finding-2026-06-03-0003-securityweek-thn-http2-bomb-cve-2026-49975-nginx-apache-iis-envoy-pingora-dos-mixed-patch-calif-codex-disclosure    # PM-1 carry-forward update — BleepingComputer (Bill Toulas, 2026-06-03 15:08 EDT in-window) third publisher-independent B-grade relay of same Calif primary research; adds new technical detail (per-server memory-exhaustion timelines Envoy ~10s / Apache ~18s / nginx ~45s / IIS ~45s; amplification ratios Envoy 5700:1 / Apache httpd 4000:1) + AI-assisted-research methodology specificity (OpenAI's Codex software agent under guidance of researchers at offensive security firm Calif; Quang Luong named as researcher). Cluster size 1→2; raw-signal members extended to include raw-2026-06-03-pm-004. Digraph UNCHANGED at B3 (third publisher-independent relay does NOT satisfy evidence-basis-independence per admiralty-grading skill Step 4 when all relays share same originating vendor telemetry). WEP ceiling UNCHANGED at "likely" on substantive technical claims; "very_likely" unchanged at procedural-fact layer. NEW LAYERED CLAIMS at "likely": per-server timing + amplification ratios + AI-methodology specificity (all single-research-source via BleepingComputer relay of Calif primary). DEFENSIVE PRIORITY IMPLICATION: Envoy is highest-priority unpatched stack (10s memory exhaustion + 5,700:1 amplification ratio) — DIB-primes running Envoy at service-mesh / API-gateway tier should prioritize header-count rate-limiting at upstream proxy until patch available. AI-METHODOLOGY WATCH-SIGNAL: Codex-assisted vulnerability discovery in widely-deployed HTTP server stacks consistent with broader "AI lowers attacker discovery cost" thesis; not new to corpus this window. NOT classified as anti-noise restatement (reject-2026-06-03-0001 Rapid7-HP-Poly precedent does NOT apply — new quantitative + methodology detail is materially new vs. AM coverage). analyst_review_required UNCHANGED (FALSE); red_team_review_required UNCHANGED (FALSE). Briefer handoff: fold per-server timing + amplification ratios + AI-methodology specificity into existing finding-0003 monitoring-tier brief surface if PM brief carries HTTP/2 Bomb; Envoy-priority framing is new operationally-relevant defender pivot.
-  most_recent_run_rejection_ids_afternoon_20260603:
+  prior_afternoon_run_rejection_ids_afternoon_20260603:
     - reject-2026-06-03-0002      # The Register anti-noise arc-narrative meta-coverage of Microsoft disclosure-policy current arc; watch_signal data-point count remains at 4 (not lifted to 5); meta-consolidation of corpus-tracked findings 06-02-0010 + 06-03-0002 + 06-03-0004 + AM-counted StarLabs reference
-  prior_morning_run_promotion_ids_morning_20260603:
+  legacy_morning_run_promotion_ids_morning_20260603:
     - finding-2026-06-03-0001-mstic-miasma-red-hat-npm-credential-stealing-worm-a-grade-originating-primary-second-tier1-attribution-declination-vt006-family-extension    # AM-1 morning brief — MSTIC (ratified A) publishes FIRST A-grade ORIGINATING PRIMARY on Red Hat npm "Miasma" credential-stealing supply-chain campaign with first-party Defender + Microsoft Threat Intelligence telemetry (2026-06-02 16:45 PDT / 2026-06-03 00:45 EDT in-window). Cluster digraph B1 (cluster-anchor conservative lowest-common-grade aggregation across six-vendor cluster including C-grade members; procedural-facts layer A1 layered via MSTIC + Unit 42 two Tier-1 A-grade Defender/monitor telemetry + four-vendor cluster from finding-2026-06-02-0003). CRITICAL ANALYTIC EVENTS: (1) SECOND Tier-1 A-grade vendor explicitly DECLINES TeamPCP attribution on Red Hat / Miasma extension — MSTIC body text contains ZERO mentions of TeamPCP / Mini Shai-Hulud campaign-attribution / TanStack / CVE-2026-45321 — after Unit 42's explicit hedge in finding-2026-06-02-0008. TWO Tier-1 A-grade declinations vs. ZERO Tier-1 affirmations. Lower-grade affirmation chain (Aikido C + Ox B + ReversingLabs C + Socket B via SecurityWeek aggregation per AM finding-2026-06-02-0003) BRACKETED. Per Hard Rule 2: VT-006 BASE campaign Mini Shai-Hulud TanStack / CVE-2026-45321 TeamPCP attribution at "likely" UNAFFECTED — MSTIC silence on extension does NOT unsay Wiz/Snyk/StepSecurity affirmative on base campaign. (2) NOVEL CAPABILITY LAYERS: destructive tripwire `rm -rf ~/` on decoy honeytoken invalidation (NEW capability class for Shai-Hulud family), Sigstore provenance forgery via Fulcio + Rekor with OIDC token exchange for publish rights, 16 attacker-controlled GitHub accounts rotating per session, upstream RedHatInsights/javascript-clients CI/CD pipeline compromise as initial vector (distinct from earlier maintainer-account-compromise framing), Bun JavaScript runtime as second-stage execution environment, dormant api.anthropic[.]com:443/v1/api endpoint marked noop:true (held in reserve at MSTIC observation phase). (3) FIRST INDEPENDENT CORROBORATION on Socket's api.anthropic[.]com C2 observation from finding-2026-06-01-0004 (MSTIC + Socket cross-corroborate at endpoint level with different evidence bases). (4) PROCEDURAL-FACTS WEP LIFT event: six-vendor consolidation including two Tier-1 A-grade with first-party telemetry lifts procedural-facts WEP to "very_likely" — analyst should formally recheck finding-2026-06-02-0008 + finding-2026-06-02-0003 procedural-facts. Single-source veto NOT applied at cluster-anchor procedural layer (six-vendor consensus); APPLIED at MSTIC-sole-originator novel-capability layers; NOT applied at api.anthropic[.]com endpoint (MSTIC + Socket cross-corroborated). WEP "very_likely" on procedural facts + api.anthropic[.]com endpoint existence; "likely" on novel-capability layers; "unlikely" on TeamPCP-on-Miasma attribution. analyst_review_required TRUE (attribution-divergence SAT-ACH + SAT-KAC on "Tier-1 silence = affirmative declination" + initial-vector adjudication MSTIC-upstream vs Aikido-maintainer-account + VT-006 family destructive-capability axis + api.anthropic state-transition adjudication). red_team_review_required TRUE (WEP "very_likely" on procedural-facts layer meets red-team invocation floor; red-team should argue against the "very_likely" lift, the "Tier-1 declination" framing, the destructive-tripwire family-risk lift, and the api.anthropic dormancy/active state-transition hypotheses). Operator handoffs: (a) AM finding 0003 + PM finding 0008 procedural-facts WEP recheck candidate; (b) VT-006 dossier update candidate (vuln-tracker) + separate VT-011 placeholder candidate for Miasma; (c) TeamPCP dossier recheck candidate (actor-profiler — narrow scope to VT-006 base campaign, exclude Miasma extension; consider Miasma-operator-unattributed placeholder); (d) brief LEAD candidate for AM brief; (e) anti-noise carry-forward for next 72h on Miasma TeamPCP attribution claims from non-Tier-1 sources.
     - finding-2026-06-03-0002-bleepingcomputer-vs-code-github-oauth-token-theft-zero-day-askar-poc-full-disclosure-microsoft-disclosure-policy-current    # AM-1 morning brief — BleepingComputer (Sergiu Gatlan, 2026-06-03 02:50 EDT in-window) on researcher Ammar Askar VS Code zero-day enabling GitHub OAuth token theft via webview-driven rogue extension install on github.dev; public PoC, no CVE, no patch, 1-hour pre-notification to GitHub, no ITW. SECOND data point in Microsoft disclosure-policy current arc (after finding-2026-06-02-0010 Nightmare-Eclipse / Bitskrieg + Microsoft Monday walkback). Cluster digraph B3 — BleepingComputer sole primary B-grade media; no Tier-1 vendor independent corroboration of mechanism or remediation at sweep. Single-source veto APPLIED on technical mechanism. WEP ceiling "likely" on mechanism, "very_likely" on procedural disclosure facts. NOT eligible for FLASH or daily_brief_action (B3 below B2 floor); eligible for daily_brief_monitoring + weekly_synthesis. Hard Rule 2 PRESERVED (no actor attribution — researcher disclosure). Hard Rule 3 PRESERVED (mechanism class only, no PoC content extracted). analyst_review_required FALSE (WEP at "likely"); red_team_review_required FALSE. Operator handoffs: (a) briefer monitoring-tier inclusion with disclosure-policy current arc cross-reference; (b) monitor Microsoft / GitHub official response, A-grade IR firm telemetry, CVE assignment, vendor patch for re-evaluation triggers.
     - finding-2026-06-03-0003-securityweek-thn-http2-bomb-cve-2026-49975-nginx-apache-iis-envoy-pingora-dos-mixed-patch-calif-codex-disclosure    # AM-1 morning brief — SecurityWeek (Ionut Arghire, 2026-06-03 06:52 EDT in-window) + The Hacker News (2026-06-03 04:33 EDT in-window) BOTH relay primary research by "Calif" (first-surface unknown vendor; provisional C per librarian handoff) on combined HTTP/2 Bomb DoS attack chain. Components: CVE-2016-6581 (HPACK Bomb) + CVE-2016-8740 / CVE-2016-1546 (Apache Slow Read) + CVE-2025-53020 (Apache HPACK fix) + new CVE-2026-49975 assigned for combined chain. Affects NGINX (patched 1.29.8+), Apache HTTPD (patched 2.4.64+), Microsoft IIS (unpatched), Envoy (unpatched), Cloudflare Pingora (unpatched). Per SecurityWeek aggregate ~880,000 vulnerable default-config websites. PoC publicly released. NO ITW. DoS-class only (NOT RCE) — distinguishes from VT-006/VT-008 supply-chain RCE classes. Cluster digraph B3 — publisher-independence holds across SecurityWeek + THN but evidence-basis-independence FAILS through single-Calif-primary origin; B-grade media + provisional-C unknown-vendor originating researcher. Single-source veto APPLIED on substantive technical content. WEP ceiling "likely" on combined-chain exploitability + per-vendor patch posture; "very_likely" on CVE assignment + historical component CVE records (canonical NVD layer). NOT eligible for FLASH or daily_brief_action; eligible for daily_brief_monitoring + weekly_synthesis. Hard Rule 2 PRESERVED (researcher disclosure, no actor attribution). analyst_review_required FALSE; red_team_review_required FALSE. Operator handoffs: (a) librarian source-grades.yaml addition + source-grade-log entry for calif-research provisional C (72h ratification clock to 2026-06-06); (b) vuln-tracker scaffold decision (admit DoS-class into corpus or not); (c) briefer monitoring-tier inclusion with patch-validation framing; (d) monitor Microsoft IIS / Envoy / Cloudflare Pingora patch advisories.
@@ -5432,8 +5609,8 @@ _meta:
     - finding-2026-06-01-0005-cisa-kev-cve-2024-21182-oracle-weblogic-3-day-fceb-deadline-shortest-in-corpus-history-t3-iiop-pre-auth-network-compromise    # PM-1 afternoon brief — CISA KEV adds CVE-2024-21182 (Oracle WebLogic Server Unspecified Vulnerability) in catalog version 2026.06.01 with extraordinarily aggressive 3-day FCEB remediation deadline (2026-06-04) — SHORTEST FCEB deadline in Archimedes corpus history (ZD-004 PAN-OS 21d; VT-006/VT-008/VT-009 14d; ZD-004 PAN-OS CVE-2026-0257 this morning's deadline also 3d → two consecutive 3-day FCEB deadlines within ~96 hours). Pre-auth T3/IIOP network-vector compromise on Oracle WebLogic Server middleware. Oracle patched the CVE in July 2024 Critical Patch Update — 22 months mature at KEV-add. CISA Known-Ransomware-Campaign-Use field "Unknown"; no actor attribution. Cluster digraph A2 (CISA-KEV grade A ratified canonical authority on KEV catalog; procedural KEV facts sub-grade A1 via canonical-by-definition; underlying ACTIVE EXPLOITATION operational claim sub-grade A2 — CISA self-canonical but underlying evidence basis unpublished per KEV procedural design; no third-party A/B-grade IR firm corroboration at sweep time). Single-source veto APPLIED on underlying active-exploitation operational claim layer; WEP ceiling "likely" on operational claim; "very_likely" on procedural KEV facts. A&D relevance INDIRECT via DIB middleware footprint (PeopleSoft, JD Edwards, Siebel, contractor portal/partner-flow gateway applications, ITAR-regulated application middleware behind classified-adjacent enclaves). analyst_review_required TRUE (WEP "likely" on operational claim layer + aggressive 3-day FCEB deadline signals CISA assessment beyond CVSS-numeric — SAT-class consideration warranted on the "two consecutive 3-day FCEB deadlines within ~96 hours" pattern). red_team_review_required FALSE (WEP ceiling "likely" not "very likely"). vuln-tracker handoff: scaffold CVE-2024-21182 as new VT- entry.
   legacy_morning_20260601_promotion_ids_with_summary:    # PRESERVED for audit trail; was canonical "prior_morning_run_promotion_ids" before afternoon-20260602-160000 run
     - finding-2026-06-01-0001-securityweek-bleepingcomputer-cifswitch-linux-kernel-cifs-spnego-lpe-poc-released-multi-distro-no-cve-assigned-no-itw-per-a-grade-spacex-researcher    # AM-1 morning brief - SecurityWeek (B in-window 2026-06-01 07:19 EDT) + BleepingComputer (B pre-window 2026-05-30) converging on Asim Viladi Oglu Manizada researcher disclosure of CIFSwitch — Linux kernel cifs.spnego key upcall LPE; multi-distro impact when cifs-utils default-installed (Mint, CentOS, Rocky, Kali, AlmaLinux, SLES SAP per WebSearch corroboration); patches landed earlier in May 2026; PoC released 2026-06-01 framed for defender validation; upstream kernel commit 3da1fdf4efbc490041eb4f836bf596201203f8f2; NO CVE assigned; NO ITW per A-grade source; CISA KEV does NOT list (catalog 2026.05.29 unchanged); NO A-grade Tier-1 IR firm (Mandiant / Volexity / Unit 42 / MSTIC / CrowdStrike / Cisco Talos / SentinelLabs) has published independent validation; NO actor attribution; NO A&D-prime named as victim (Manizada is SpaceX security engineer = disclosing-party metadata, not victim/perpetrator claim); structural DIB exposure indirect via SLES SAP + CentOS / Rocky / AlmaLinux DIB-prevalence (C2 grade structural inference); attack class LPE not initial-access (threat model = attacker who already landed unprivileged shell now elevates). Cluster digraph B2 (SecurityWeek B + BleepingComputer B; both derive from same researcher primary on technical substance; publisher-independence holds but evidence-basis independence fails; procedural-fact layer A1 on kernel commit / oss-security post existence / no-CVE / no-KEV / no-A-grade-ITW; technical-substance layer B2 with single-source veto applied). Single-source veto APPLIED on technical-substance layer; WEP ceiling capped at "likely" on operationally significant predictive claims. Eligible for FLASH + daily_brief_action + daily_brief_monitoring + weekly_synthesis + vuln_tracker_dossier_candidate (recommend vuln-tracker create CIFSwitch dossier tracked by researcher-coined name pending CVE; convert to CVE-keyed dossier on assignment). Not actor-profile-eligible (no attribution). analyst_review_required FALSE (no attribution claim; WEP at "likely"; no SAT-ACH / SAT-KAC required). red_team_review_required FALSE (WEP ceiling at "likely" does not exceed "very likely" threshold for red-team review). Two NEW provisional source first-citations flagged for librarian handoff: heyitsas-im-manizada-cifswitch-writeup (researcher write-up domain, provisional F per cheatsheet pending 90-day track-record review) + openwall-oss-security-mailing-list (community mailing list, provisional C candidate for B with track-record review).
-  most_recent_run_absorption_ids: []
-  most_recent_run_rejection_ids:
+  legacy_morning_20260603_absorption_ids: []
+  legacy_morning_20260603_rejection_ids:
     - reject-2026-06-03-0001    # AM-1 morning — Security Affairs (Paganini, B) RELAY of Rapid7 (provisional A) HP Poly CVE-2026-0826 unauth root RCE disclosure. ALREADY corpus-tracked via finding-2026-06-01-0003 (PM-1 afternoon 2026-06-01). Anti-Noise Rule 1: zero materially new content vs. existing finding 0003 which already records CVE, mechanism (256-byte stack buffer in polyapp SDP/ICE handler), affected products (VVX 150/250/350/450 + Trio 8800/8500/8300), firmware 6.4.7.4477, patches via Poly Lens, ICE-enabled-prerequisite risk modifier, NO ITW, no actor attribution. Source quality acceptable (Security Affairs B + Rapid7 A); information already corpus-tracked. Would-be digraph B2; rejection is anti-noise restatement, not source-quality failure. Precedent: reject-2026-06-01-0002 (SecurityWeek B relay of Rapid7 A PAN-OS CVE-2026-0257 — same pattern rejected 2026-06-01).
   legacy_afternoon_20260602_rejection_ids: []    # PRESERVED — afternoon-20260602-160000 had ZERO rejections; all six PM raw-signal items promoted
   legacy_afternoon_20260601_rejection_ids:
@@ -5442,6 +5619,86 @@ _meta:
   legacy_morning_20260601_rejection_ids:
     - reject-2026-06-01-0001    # Canonical Sunday-Monday rollover AM-1 sentinel cluster disposition record absorbing TWO raw-signal members covering ~14h window 2026-05-31T17:30 EDT (1h30m post-PM-31 brief commit fa3fff1) through 2026-06-01T07:30 EDT (AM-1 pre-brief collection complete): raw-2026-06-01-flash-0600-000-sentinel-clean-sweep (canonical FLASH 06:05 EDT, ~6h window, 0/6 triggers fired, quiet hours active, commit 93987f4) + raw-2026-06-01-am-000-sentinel-pre-brief-sweep (AM-1 pre-brief collector sentinel 07:30 EDT, 14h pre-brief window, ONE substantive companion raw-signal CIFSwitch promoted separately as finding-2026-06-01-0001 B2 NOT included in this sentinel-rejection cluster). Both sentinels are internal collection-summary artifacts; ZERO external claims being graded in either sentinel itself. In-window external content surveyed: ONE substantive item promoted (CIFSwitch via raw-2026-06-01-am-001 → finding-2026-06-01-0001 B2); FIVE+ items collector-dispositioned in-place (Securelist Containers on fire defensive survey; BC Microsoft KB5089549 Windows install issue not security vulnerability; The Register Dashlane consumer brute-force + Putin submarines UK subsea cables physical-layer policy; Security Affairs PAN-OS KEV relay anti-noise + Pentagon location-data op-ed; Dark Reading two events-page metadata; SANS ISC StormCast podcast + NetSupport RAT commodity; THN WP Maps Pro WordPress plugin). NVD CRITICAL 0 results both windows; NVD HIGH 11 items all consumer / student / open-source / industrial-IoT discarded per Mode 1. CISA KEV catalog version 2026.05.29 UNCHANGED; most-recent KEV addition remains CVE-2026-0257 PAN-OS dueDate 2026-06-01 = today T+0 federal deadline (carry-forward covered by AM-31 T+1 + PM-31 T-1 brief anchors; AM-1 brief picks up T+0 status tick as standard carry-forward, no FLASH escalation per Anti-Noise Rule 1). Grader-side Splunk -14h sweep on priority IOC superset (6 tracked CVEs + 3 APT28 spray IPs + 21 roster actor primary names) returned 0 external hits across defenseclaw_local + (archimedes NOT sourcetype=archimedes:*); 15th consecutive dormant non-archimedes-internal stream pattern. Per Hard Rule 8 silence is not disconfirming. Trigger 3 NO FIRE both sentinels. No FLASH candidates fired (FLASH 0/6 triggers); ONE finding-class promotion this run (CIFSwitch); no roster attribution changes; no red-team review required; no analyst review required. Hard Rule 2 enforcement: NO novel attribution originated this run; CIFSwitch researcher disclosure carries NO actor attribution (only disclosing-party metadata).
   most_recent_run_note: >
+    morning-20260604-080000 grading processed ZERO substantive
+    raw-signal candidates in the ~24h window 2026-06-03T15:30 EDT
+    (PM-03 pre-brief collection complete; PM-03 brief commit 972d04b
+    at 16:38 EDT) through 2026-06-04T08:00 EDT (AM-04 grading-phase
+    start; AM-04 pre-brief collector has not yet produced raw-signal
+    at this grading-run start). ZERO promotions; ZERO substantive
+    rejections; ONE sentinel-cluster rejection (reject-2026-06-04-
+    0001 absorbing three sentinel raw-signal members 1800/0000/0600
+    FLASH sweeps, 0/6 triggers each = 18 trigger-evaluations with
+    zero escalations).
+
+    Items processed this run (morning-20260604-080000):
+
+      - raw-2026-06-03-flash-1800-000-sentinel-clean-sweep
+        (sentinel-class; absorbed into reject-2026-06-04-0001)
+      - raw-2026-06-04-flash-0000-000-sentinel-clean-sweep
+        (sentinel-class; absorbed into reject-2026-06-04-0001)
+      - raw-flash-0600-2026-06-04-000-sentinel-clean-sweep
+        (sentinel-class; absorbed into reject-2026-06-04-0001)
+
+    Items skipped this run (pre-existing dispositions):
+
+      - All raw-2026-06-03-am-* files (all five already promoted to
+        findings-2026-06-03-0001 through 0004 + raw-am-003 →
+        finding-2026-06-03-0003 in morning-20260603-080000 run)
+      - All raw-2026-06-03-pm-* files (three substantive items
+        promoted to findings-2026-06-03-0005 through 0007 in
+        afternoon-20260603-160000 run; raw-pm-004 absorbed as
+        carry-forward update to finding-2026-06-03-0003; raw-pm-
+        005 rejected as reject-2026-06-03-0002 anti-noise
+        meta-arc-coverage)
+
+    Grader-side Splunk -24h sweep across defenseclaw_local +
+    (archimedes NOT sourcetype=archimedes:*) for the priority IOC
+    superset (api.anthropic.com, Miasma, @redhat-cloud-services,
+    ShaiWorm, polyapp, CVE-2026-0826, CVE-2026-49975, search-URI,
+    crumb=location, github.dev, CacheWarmer cookie, Aspose, Kirki,
+    CVE-2026-45247, CVE-2026-8206) returned ZERO events. 22nd
+    consecutive dormant non-archimedes-internal stream pattern.
+    Per Hard Rule 8 silence is NOT disconfirming.
+
+    Hard Rule 2 enforcement this run: NO novel attribution
+    originated. No finding-class clusters processed; no attribution
+    claims to preserve or reject. Sentinel-cluster disposition
+    carries no attribution claims.
+
+    No analyst_review_required findings this run (zero promotions).
+    No red_team_review_required findings this run (zero promotions).
+    No new provisional source first-citations this run (zero
+    promotions). No vuln-tracker or actor-profiler handoffs this
+    run beyond standing carry-forward from PM-03 corpus.
+
+    Carry-forward candidates for AM-04 briefer (NOT promoted by
+    this grading run; flagged for briefer composition consideration):
+    nine findings — see reject-2026-06-04-0001
+    relation_to_existing_findings.carry_forward_candidates_to_AM_04_brief
+    field for the canonical list. Standout candidates:
+
+      (1) finding-2026-06-03-0001 (MSTIC Miasma B1) — strongest
+          AM-03 lead carries forward; analyst_review_required TRUE
+          + red_team_review_required TRUE.
+      (2) finding-2026-06-03-0005 (Mirasvit CISA KEV A2) — T-2
+          federal due date 2026-06-06 carry; action-tier.
+      (3) finding-2026-06-02-0005 (Linux cgroups CISA KEV A2) —
+          T-1 federal due date 2026-06-05 carry; action-tier.
+      (4) finding-2026-06-02-0010 (Bitskrieg watch B3) — June
+          release window active; FLASH-trigger-6 candidate on
+          disclosure event.
+
+    Note on the legacy_morning_run_promotion_ids_morning_20260603
+    and legacy_morning_20260603_rejection_ids labels in this _meta
+    block: these previously occupied the most_recent_run_* namespace
+    when AM-03 was the canonical most-recent run; afternoon-20260603-
+    160000 ran later that day and relabeled them to prior_*; this
+    morning-20260604-080000 run further relabels to legacy_* per
+    append-only audit-trail convention. The afternoon-20260603 run
+    state is fully preserved in prior_afternoon_run_* keys at this
+    block.
+
+  legacy_most_recent_run_note_morning_20260603: >
     morning-20260603-080000 grading processed FIVE substantive
     raw-signal candidates from the ~16h window 2026-06-02T15:30 EDT
     (PM-1 pre-brief collection complete) through 2026-06-03T07:30 EDT

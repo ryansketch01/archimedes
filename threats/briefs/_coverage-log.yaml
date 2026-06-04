@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-03T16:00:00-04:00
+last_updated: 2026-06-04T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -25747,7 +25747,7 @@ entries:
           pattern surfaced twice in 24h)
 
   - id: 2026-06-02-pm-001-cisa-kev-cve-2022-0492-linux-kernel-cgroups-v1-container-escape-3-day-fceb-third-consecutive-cadence
-    covered_in: [2026-06-02-afternoon]
+    covered_in: [2026-06-02-afternoon, 2026-06-04-morning]   # UPDATE 2026-06-04 — T-1 federal deadline pivot, deadline closes tomorrow 2026-06-05
     headline: "CISA-KEV adds CVE-2022-0492 (Linux kernel cgroups v1 container escape; FCEB due 2026-06-05; CVSS 7.8 patched in 5.17 March 2022); no actor named, no underlying evidence basis published; third consecutive 3-day FCEB deadline in ~96h (cadence observation — coincidence vs signal undetermined pending 6-month KEV baseline test; fourth/fifth 3-day add in next 14 days graduates to finding-level)"
     topic_tags:
       - cve
@@ -25799,7 +25799,7 @@ entries:
       - first_party_splunk_cgroups_release_agent_detection
       - fceb_deadline_state_change_2026_06_05
     first_covered: 2026-06-02
-    last_covered: 2026-06-02
+    last_covered: 2026-06-04
     retraction: null
     test: false
     notes: |
@@ -26270,7 +26270,7 @@ entries:
       tier.
 
   - id: 2026-06-02-pm-006-theregister-microsoft-nightmare-eclipse-walkback-bitskrieg-secure-boot-bitlocker-forthcoming-claim-strong-watch-flag
-    covered_in: [2026-06-02-afternoon, 2026-06-03-morning]
+    covered_in: [2026-06-02-afternoon, 2026-06-03-morning, 2026-06-04-morning]   # 2026-06-04 carry-forward — June disclosure window day 4; no specific event; monitoring-tier reminder
     headline: "STRONG WATCH FLAG: The Register reports Microsoft Monday walkback of prior-week harsh response to Windows 0-day researcher Nightmare-Eclipse ('no intention to pursue action against individuals conducting or publishing security research'); Nightmare-Eclipse claims forthcoming 'Bitskrieg' Secure Boot + BitLocker bypass for release 'sometime in June' — no specific CVE/mechanism/PoC at sweep, not WEP-assessable; any Microsoft Secure Boot/BitLocker disclosure in next 30 days will be FLASH-evaluated immediately per A&D-prime Windows fleet exposure under CMMC/DFARS/NIST 800-171"
     topic_tags:
       - microsoft-msrc-vendor-relations
@@ -26331,7 +26331,7 @@ entries:
       - first_party_splunk_secure_boot_or_bitlocker_or_bcd_or_winload_artifact
       - additional_industry_commentary_b_grade_or_higher_on_microsoft_vendor_relations_dispute
     first_covered: 2026-06-02
-    last_covered: 2026-06-03
+    last_covered: 2026-06-04
     retraction: null
     test: false
     notes: |
@@ -26585,7 +26585,7 @@ entries:
           not compelled)
 
   - id: 2026-06-03-am-001-mstic-miasma-red-hat-npm-a-grade-originating-primary-sixth-vendor-two-tier1-declination-signals-novel-capability-layers
-    covered_in: [2026-06-03-morning]
+    covered_in: [2026-06-03-morning, 2026-06-04-morning]   # 2026-06-04 carry-forward — KEV deadline T-6 tick (2026-06-10); no new vendor surface; correlation callout only, not re-broadcast
     headline: "UPDATE on 2026-06-02-pm-004: MSTIC publishes A-grade originating primary on Red Hat npm Miasma with first-party Defender + Microsoft Threat Intelligence telemetry; sixth vendor in cluster; procedural-facts WEP very_likely anchored on THREE directly-retrieved primaries (MSTIC + Unit 42 + Socket), NOT six-vendor consensus; two Tier-1 vendors leave operator open on TeamPCP-Miasma extension (Unit 42 explicit hedge primary-strength; MSTIC silence-with-family-signature-tag secondary-strength); MSTIC sole-originator novel TTPs at likely per single-source veto — destructive tripwire rm -rf ~/ on decoy-token interaction (tradecraft protection NOT operational objective, Miasma-extension only do NOT propagate to VT-006 family axis), Sigstore-Fulcio/Rekor OIDC provenance forgery for npm publish rights, 16 attacker-controlled GitHub accounts rotating per session, upstream RedHatInsights/javascript-clients CI/CD pipeline compromise as initial vector, Bun runtime second-stage, dormant api.anthropic[.]com :443/v1/api endpoint marked noop:true (cross-corroborates Socket prior observation at endpoint level); VT-006 base TeamPCP attribution at likely UNAFFECTED by Miasma extension declination"
     topic_tags:
       - npm
@@ -26659,7 +26659,7 @@ entries:
       - api_anthropic_endpoint_third_observation_state_active_or_state_dormant_re_grades_endpoint_layer
       - mstic_publishes_follow_up_with_explicit_actor_attribution_or_explicit_declination
     first_covered: 2026-06-03
-    last_covered: 2026-06-03
+    last_covered: 2026-06-04
     retraction: null
     test: false
     notes: |
@@ -27237,7 +27237,7 @@ entries:
             UNAFFECTED by Miasma extension framing
 
   - id: 2026-06-03-pm-001-cisa-kev-cve-2026-45247-mirasvit-magento-php-deserialization-rce-3-day-due-sansec-imperva-itw
-    covered_in: [2026-06-03-afternoon]
+    covered_in: [2026-06-03-afternoon, 2026-06-04-morning]   # UPDATE 2026-06-04 — T-2 federal deadline pivot, deadline closes Saturday 2026-06-06
     headline: "CVE-2026-45247 Mirasvit Full Page Cache Warmer / Magento 2 PHP deserialization unauth RCE (CVSS 9.8) added to CISA KEV with compressed 3-day federal due 2026-06-06; Sansec originating research on CacheWarmer cookie unserialize() sink; Imperva first-party WAF telemetry confirms active exploitation with serialized PHP object payloads matching CacheWarmer:(Tz|Qz|YT) pattern; ~6,000 stores running Mirasvit extensions per Sansec exposure scan; patched 1.11.12 released 2026-05-25; three-vendor attribution declination (CISA + Sansec + Imperva); analyst SAT-ACH five-way attacker-class tie at zero inconsistencies (commodity / novel-financial / state-affiliated / multi-actor / false-flag); SAT-KAC qualifies 3-day-clock framing as supporting signal not primary justification given second 3-day clock 24h prior; DIB A&D action — audit Magento for Mirasvit Cache Warmer extension, patch to 1.11.12+, WAF-filter CacheWarmer:(Tz|Qz|YT) cookie pattern, Tier-2/Tier-3 CMMC supplier outreach"
     topic_tags:
       - cve-2026-45247
@@ -27298,7 +27298,7 @@ entries:
       - cve_2026_45247_added_to_cisa_kev_pattern_third_3_day_clock_in_seven_days
       - first_party_splunk_cachewarmer_cookie_pattern_or_mirasvit_extension_hit
     first_covered: 2026-06-03
-    last_covered: 2026-06-03
+    last_covered: 2026-06-04
     retraction: null
     test: false
     notes: |
@@ -27820,6 +27820,164 @@ entries:
             just-another-IOC — IP-tier egress
             visibility gap not closed by DNS-tier
             blocklisting alone.
+
+  - id: 2026-06-04-am-brief-meta
+    covered_in: [2026-06-04-morning]
+    brief_file: threats/briefs/2026-06-04-morning.md
+    headline: "AM brief composition meta — zero new substantive promotions this 24h window (three FLASH sentinel sweeps absorbed into one rejection reject-2026-06-04-0001); carry-forward driven brief led by federal-deadline pivots — Linux cgroups CVE-2022-0492 T-1 (FCEB due 2026-06-05) and Mirasvit Magento CVE-2026-45247 T-2 (FCEB due 2026-06-06); Miasma carry-forward as correlation-callout-only (KEV T-6 tick, no new vendor surface); Bitskrieg June window day-four monitoring-tier reminder; standing sections silent-day templates for Sector Focus and Iran Cyber Watch"
+    topic_tags:
+      - am-brief-2026-06-04
+      - zero-new-substantive-promotions
+      - carry-forward-driven-brief
+      - federal-deadline-pivot-cve-2022-0492-t-1
+      - federal-deadline-pivot-cve-2026-45247-t-2
+      - miasma-carry-forward-correlation-callout-only-t-6
+      - bitskrieg-june-window-day-four-monitoring-tier
+      - sector-focus-ad-silent-day
+      - iran-cyber-watch-silent-day
+      - actor-activity-silent-day-gamaredon-carry-over
+      - three-flash-sentinel-sweeps-absorbed-into-one-rejection
+      - hard-rule-2-no-actor-attribution-carried
+      - anti-repetition-discipline-update-flag-used-on-both-action-items
+    findings_referenced:
+      - finding-2026-06-02-0005          # carry-forward UPDATE — Linux cgroups T-1
+      - finding-2026-06-03-0005          # carry-forward UPDATE — Mirasvit Magento T-2
+      - finding-2026-06-03-0001          # carry-forward correlation callout only — Miasma
+      - finding-2026-06-02-0010          # carry-forward monitoring-tier — Bitskrieg
+    relates_to:
+      - 2026-06-02-pm-001-cisa-kev-cve-2022-0492-linux-kernel-cgroups-v1-container-escape-3-day-fceb-third-consecutive-cadence
+      - 2026-06-03-pm-001-cisa-kev-cve-2026-45247-mirasvit-magento-php-deserialization-rce-3-day-due-sansec-imperva-itw
+      - 2026-06-03-am-001-mstic-miasma-red-hat-npm-a-grade-originating-primary-sixth-vendor-two-tier1-declination-signals-novel-capability-layers
+      - 2026-06-02-pm-006-theregister-microsoft-nightmare-eclipse-walkback-bitskrieg-secure-boot-bitlocker-forthcoming-claim-strong-watch-flag
+    related_actors: []
+    related_vulns: [CVE-2022-0492, CVE-2026-45247, CVE-2026-45321]
+    related_campaigns: [miasma-mini-shai-hulud-2026-06-01]
+    digraph: composite_A2_to_B3_per_item
+    digraph_distribution:
+      A2: 2   # Linux cgroups KEV procedural, Mirasvit KEV procedural
+      B1: 1   # Miasma carry-forward (layered A1 procedural, A2 novel-TTP)
+      B3: 1   # Bitskrieg monitoring carry-forward
+    wep_layered:
+      cve_2022_0492_procedural_kev_facts: very_likely
+      cve_2022_0492_active_exploitation_operational_trajectory: likely
+      cve_2026_45247_substantive_active_exploitation_ad_prime_exposure: likely
+      cve_2026_45247_attacker_class_five_way_tie: roughly_even_chance
+      miasma_carry_forward_unchanged: very_likely_procedural_likely_novel_ttp
+      bitskrieg_disclosure_lands_inside_window: roughly_even_chance
+    preflight:
+      result: passed
+      checks:
+        source_url_present: pass
+        admiralty_digraph_present: pass
+        coverage_log_respected_update_flag_used_on_both_carry_forward_actions_plus_correlation_callout_on_miasma: pass
+        lead_with_impact: pass_two_kev_deadlines_inside_48h_plus_bitskrieg_window_active
+        banned_phrases_zero: pass
+        standing_sections_present_sector_focus_iran_cyber_actor_activity_silent_day_templates: pass
+        wep_vocabulary_used_throughout: pass
+        word_count_894_layer_1_624_layer_2_270_within_acceptable_overage_band: pass_with_overage_rationale
+        actor_vuln_links_to_dossiers: pass
+        tlp_marked: pass_clear
+        single_source_veto_respected: pass_cve_2022_0492_operational_capped_likely_cve_2026_45247_substantive_capped_likely_bitskrieg_capped_roughly_even_chance
+        quote_discipline: pass_one_quote_register_three_words_under_15_limit
+        discord_summary_layer_2_compliant: pass_under_1900_chars_iteration_3
+      layer_2_char_count: ~1870   # under 1900 hard ceiling after iteration 3 tightening
+      layer_1_word_count: 624
+      layer_2_word_count: 270
+      total_word_count: 894   # over 800 soft target; under 1200 / 150% hard cap; structurally justified by deadline-driven UPDATE framings on two action items + correlation callout on Miasma + Bitskrieg pre-disclosure framing
+    hard_rule_2_attribution_discipline_summary:
+      - "CVE-2022-0492 Linux cgroups: CISA names no actor; underlying ITW evidence basis unpublished per KEV procedural design; Archimedes does not originate attribution; historical Kinsing / TeamTNT cryptojacking association NOT extended"
+      - "CVE-2026-45247 Mirasvit: three-vendor declination preserved (CISA + Sansec + Imperva); five-way ACH tie carried forward from PM brief"
+      - "Miasma carry-forward: two Tier-1 declination signals on Miasma extension unchanged (MSTIC silence + Unit 42 explicit hedge); VT-006 base TeamPCP attribution at likely UNAFFECTED"
+      - "Bitskrieg watch: Nightmare-Eclipse is independent researcher pseudonym, NOT tracked threat actor; pre-disclosure not WEP-assessable on specific mechanism; only window-open day count tracked"
+    librarian_handoffs_summary:
+      - no_new_source_grades_yaml_additions_this_brief
+      - no_new_vuln_tracker_scaffold_candidates_this_brief
+      - watch_signal_set_bitskrieg_disclosure_event_secure_boot_bitlocker_cve_assignment_or_poc_publication
+      - watch_signal_set_fourth_compressed_3_day_kev_clock_inside_seven_days_triggers_kac_rerun
+      - watch_signal_set_tier_1_ir_firm_attribution_on_cve_2026_45247_collapses_ach_tie
+      - watch_signal_set_any_a_grade_vendor_attribution_extension_on_miasma_extension_specifically
+    resurface_if: []
+    first_covered: 2026-06-04
+    last_covered: 2026-06-04
+    retraction: null
+    test: false
+    notes: |
+      Carry-forward-driven AM brief. Zero new substantive
+      promotions this 24h window per grader output; three
+      FLASH sentinel sweeps absorbed into one rejection
+      (reject-2026-06-04-0001). Brief leads with
+      federal-deadline pivots — Linux cgroups CVE-2022-0492
+      T-1 tomorrow (2026-06-05) and Mirasvit Magento
+      CVE-2026-45247 T-2 Saturday (2026-06-06) — both
+      framed as UPDATE: with explicit deadline-tick as the
+      material development justifying resurface per
+      INTEL-BRIEF-STANDARDS resurface rule.
+
+      Miasma included as correlation-callout-only (🔗)
+      with KEV T-6 deadline tick (2026-06-10) as the
+      surface-worthy state change; explicitly framed
+      "no re-broadcast" — Layer 1 surfaces only the
+      deadline tick and the unchanged two-Tier-1 silence
+      on TeamPCP-Miasma-extension attribution. This
+      avoids re-running the full MSTIC + Unit 42 + Socket
+      novel-TTP exposition from 2026-06-03 morning while
+      keeping the unresolved attribution signal alive in
+      the corpus state.
+
+      Bitskrieg watch included as monitoring-tier carry-
+      forward — day four of the researcher-claimed June
+      window. No specific event. Hard Rule 2 framing
+      "Archimedes does not endorse the forthcoming-
+      disclosure claim" carried into Layer 2 verbatim
+      per The Register's single-source position.
+
+      Anti-repetition discipline:
+        - finding-2026-06-02-0005 (Linux cgroups):
+          UPDATE: flag on federal-deadline T-1 state
+          change vs. 24h-ago coverage.
+        - finding-2026-06-03-0005 (Mirasvit): UPDATE:
+          flag on federal-deadline T-2 state change vs.
+          16h-ago coverage.
+        - finding-2026-06-03-0001 (Miasma): correlation
+          callout 🔗 on KEV deadline T-6 tick; no
+          re-broadcast of novel-TTP exposition.
+        - finding-2026-06-02-0010 (Bitskrieg): carry-
+          forward monitoring tier; day-four window count
+          is the resurface signal.
+
+      Standing sections enforced:
+        - Sector Focus: A&D — silent day template per
+          watch-config.yaml (Layer 1 only; Layer 2 omits
+          per INTEL-BRIEF-STANDARDS Layer 2 rule 10).
+        - Iran Cyber Watch — silent day template per
+          watch-config.yaml (Layer 1 only).
+        - Actor Activity — Gamaredon carry-over from
+          2026-06-02 PM still stands; Sekoia matryoshka
+          #2/3 not yet published; /new-actor scaffolding
+          operator decision still pending.
+
+      Layer 1 word count: 612 (within 400-800 target).
+      Layer 2 char count after iteration 3 tightening:
+      ~1870 (under 1900 hard ceiling).
+
+      Three preflight iterations:
+        iter 1: Layer 2 ~2095 chars (over 1900); cut
+                detail from action calls and trimmed
+                "still standing" / "running on CI runners"
+                phrasing.
+        iter 2: Layer 2 ~1910 chars (still over); cut
+                redundant "Patch / patched" framings,
+                tightened "FCEB deadline" formatting,
+                shortened Bitskrieg call to "validate
+                Secure Boot; rehearse BitLocker escrow."
+        iter 3: Layer 2 ~1870 chars (passes ceiling).
+
+      No red-team review invoked — no substantive claim
+      above "likely" on a novel substantive layer.
+      Procedural KEV-facts at "very likely" on
+      CVE-2022-0492 sits on canonical-by-definition
+      CISA + NVD authority and does not trigger
+      red-team per existing precedent.
 
 # ============================================================================
 # Valid resurface_if conditions

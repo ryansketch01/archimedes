@@ -19,6 +19,10 @@ iocs_extracted: false
 iocs_count: 0
 text_word_count: 320
 promoted: false
+rejected_at: 2026-06-04T08:05:00-04:00
+rejection_id: reject-2026-06-04-0001
+rejection_grading_run_id: morning-20260604-080000
+rejection_reason_short: sentinel_class_non_gradeable_canonical_clean_sweep_disposition
 ttl_expires_at: 2026-09-02T00:05:00-04:00
 ---
 

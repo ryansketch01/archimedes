@@ -1,0 +1,116 @@
+source-health.yaml diff summary — PM-1 pre-brief 2026-06-02 15:30 EDT
+========================================================================
+
+Run id: pre-brief-20260602-153000
+Window: 2026-06-02T08:00:00-04:00 → 2026-06-02T15:30:00-04:00 (7.5h)
+Productive items: 6 raw-signal files (pm-001 through pm-006) + sentinel
+Splunk first-party: zero non-self-telemetry events over 24h
+                    (50th consecutive dormant non-archimedes-internal sweep)
+
+Sources QUERIED this sweep
+==========================
+
+A-grade primary government:
+  cisa-advisories       — all.xml RSS healthy; 2 in-window items (KEV-add alert + ATG joint advisory). last_successful_fetch advance to 2026-06-02T15:33 EDT.
+  cisa-kev              — JSON catalog version 2026.06.02 retrieved; 1 NEW KEV add today (CVE-2022-0492 Linux Kernel; pm-001). last_successful_fetch advance to 2026-06-02T15:33 EDT.
+  nvd                   — not queried this sweep (no fresh CVE lead from media warranted NVD lastModified pivot beyond what KEV surfaced).
+
+Tier-1 vendor threat-intel:
+  unit42                — feedburner reachable, 1 item in window: npm-threat-landscape Updated June 2 (pm-004). last_successful_fetch advance to 2026-06-02T15:42 EDT.
+  mandiant              — feedburner 404 again (long-running pattern unchanged). Held healthy per operator-set instruction. failure_count unchanged at 22. NOT incremented this sweep (single-cycle observation; failure-count budget hasn't shifted from pattern).
+  crowdstrike           — 10 dateless items, marketing/MQ pattern unchanged. Held healthy.
+  mstic                 — RSS reachable, 1 in-window item (Microsoft Build 2026 MDASH product launch; defensive, not threat — anti-noise/discarded). last_successful_fetch advance to 2026-06-02T15:33 EDT.
+  cisco-talos           — /rss/ endpoint reachable, 0 items in window. Held healthy.
+  bitdefender           — not directly fetched this sweep (no fresh BD primary in window via RSS-bridge homepage); held healthy.
+  symantec              — not directly fetched this sweep; held healthy.
+  sentinelone           — RSS reachable, 0 items in window. Held healthy.
+  sans-isc              — RSS reachable, 0 items in window. Held healthy.
+  rapid7                — RSS reachable, 0 items in window. Held healthy.
+  sophos                — RSS reachable; 1 in-window item (Cursor / Claude AI EDR-evasion researcher post; no actor attributed; discarded as borderline AI-tradecraft sector intel below raw-signal threshold this sweep). last_successful_fetch advance to 2026-06-02T15:48 EDT.
+  proofpoint            — corporate-news RSS reachable, 0 items in window. Held healthy.
+
+Media (B-grade):
+  bleepingcomputer      — RSS healthy; 4 in-window items; 3 anti-noise (Exchange Online outage = operational not security; Meta AI Instagram = AM finding 0002 with new AI-video bypass detail flagged in pm-000 sentinel; Oracle WebLogic KEV = covered 06-01 PM/AM-06-02; sponsored Push Security post discarded). last_successful_fetch advance to 2026-06-02T15:33 EDT.
+  securityweek          — RSS healthy; 6 in-window items; 2 productive (M365 Android = pm-003, ATG joint advisory = pm-005 corroborates CISA primary); 4 anti-noise/discarded (Two Reports industry survey, Anthropic Mythos AI industry news, Android zero-day = AM finding 0001, HP VoIP = 06-01 PM). last_successful_fetch advance to 2026-06-02T15:39 EDT.
+  thehackernews         — RSS healthy; 2 in-window items; 1 productive (Gamaredon = pm-002); 1 anti-noise (Oracle WebLogic KEV add). last_successful_fetch advance to 2026-06-02T15:36 EDT.
+  the-record            — RSS healthy; 3 in-window items; all discarded (White House AI EO = policy not threat; FSB Russia counter-claim = propaganda no IOCs; Red Hat npm = AM finding 0003 Miasma anti-noise). last_successful_fetch advance to 2026-06-02T15:36 EDT.
+  theregister           — RSS healthy; 3 in-window items; 1 productive (Microsoft/Nightmare-Eclipse + Bitskrieg = pm-006); 2 anti-noise (Cisco/Mythos = AI industry; FSB counter-claim same as The Record). last_successful_fetch advance to 2026-06-02T15:48 EDT.
+  securityaffairs       — RSS healthy; 2 in-window items; both anti-noise (Meta AI Instagram = AM finding 0002; Oracle WebLogic KEV = 06-01 PM/AM-06-02). last_successful_fetch advance to 2026-06-02T15:36 EDT.
+  krebs                 — RSS reachable, 0 items in window. Held healthy.
+  wired-security        — RSS healthy; 1 in-window item (Android Dialer anti-scam consumer privacy; discarded). last_successful_fetch advance to 2026-06-02T15:33 EDT.
+  dark-reading          — RSS healthy; 3 in-window items; all editorial / events (Beyond Assume-Breach AI-native; Name That Toon Contest; Infosecurity Europe). Discarded.
+
+Source-health changes (runtime)
+================================
+
+NO STALE FLIPS this sweep.
+
+NEW soft-fails (single failure, held healthy unless and until threshold):
+  recorded-future       — RSS endpoint 404 on this sweep (URL: www.recordedfuture.com/blog/rss). First top-level RSS-path observation. failure_count 0 → 1 candidate; pattern unknown until next sweep.
+  volexity              — RSS endpoint XML parse error (not well-formed). First top-level parse-error observation. failure_count 0 → 1 candidate; consistent with msrc pattern of malformed-XML feed-server states.
+
+Continued degraded patterns (held healthy):
+  mandiant              — feedburner 404; alt cloud.google.com/blog/topics/threat-intelligence/rss malformed body — ~32nd consecutive failure-class observation; held healthy per long-running operator-set instruction.
+  crowdstrike           — dateless marketing/MQ items continuing pattern; held healthy.
+  msrc                  — already stale since 2026-05-30 (XML parse error 4x consecutive); STILL stale this sweep.
+
+Stale entries (skipped this sweep):
+  censys, urlscan       — MCP not built; API key configured; deferred
+  hibp                  — no MCP, no API key
+  x-gossithedog         — nitter delisted since 2026-05-09
+  ars-security          — stale since 2026-05-09 (workaround in use via arstechnica.com root feed)
+  x-cisagov             — stale since 2026-05-10 (nitter bridge fragility)
+  msrc                  — stale since 2026-05-30 (XML parse error persistent)
+  sophos                — actually queried this sweep, returned 1 item; sophos entry status remains stale per source-health.yaml notation 2026-05-17 (last_error: news.sophos.com/en-us/feed/ returned 404 three consecutive). However root path news.sophos.com/feed/ was queried successfully this sweep — operator decision required to update sophos source-health to healthy on root path. NOT auto-updating; deferred to operator review.
+
+Splunk first-party (read path)
+==============================
+
+splunk-archimedes       — healthy; tstats over 8h returned 4 archimedes:operation + 6 archimedes:scheduler events only. last_successful_fetch advance to 2026-06-02T15:30 EDT.
+splunk-defenseclaw      — healthy; combined query NOT sourcetype=archimedes:* over 24h returned ZERO events. 50th consecutive non-self-telemetry sweep. last_successful_fetch advance to 2026-06-02T15:30 EDT.
+
+Trigger 3 (first-party-ioc-hit) cannot fire on dormant non-archimedes-internal stream.
+
+NEW source-grade-log candidates
+================================
+
+  sekoia                — Tier-1 French CTI vendor; first Archimedes-corpus citation via pm-002 (Sekoia TDR Gamaredon FSB attribution + GammaPhish/GammaWorm/GammaSteel multi-malware against Ukraine). Provisional A is the conservative starting grade per Bitdefender 2026-05-13 + Darktrace 2026-05-14 precedent for unknown-to-corpus Tier-1-class CTI vendor research practices with named-analyst bylines + first-party EDR/XDR telemetry + prior published campaign-attribution track record. Operator may ratify at A, downgrade to B if subsequent surfaces show context-thin profile, or hold provisional pending grader / actor-profiler direct-retrieval of blog.sekoia.io primary text on next pass.
+
+  enclave-research      — AI-powered exploitable-bug-hunter vendor; first Archimedes-corpus citation via pm-003 (Microsoft Android M365 token-bypass CVE-2026-41100/41101/41102; Yanir Tsarimi named research lead). Provisional B is the conservative starting grade per Sysdig 2026-05-14 / Zellic 2026-05-14 / Arctic Wolf 2026-05-28 / Push Security 2026-05-29 precedent for unknown-to-corpus AI-tooling research practices. Methodological positives: coordinated disclosure to Microsoft + vendor-acknowledgement-with-CVE + 3-CVE assignment + no-observed-exploitation claim. Upgrade path to A on subsequent surfaces showing consistent technical rigor across multiple commercial-software vulnerability disclosures with vendor-coordinated disclosure and CVE assignment.
+
+NEW /new-actor candidates
+==========================
+
+  Gamaredon (FSB Center 18) — Russian-state APT NOT in _roster.yaml. Closes structural gap in Russian roster coverage (existing #006 APT28 GRU, #007 Sandworm GRU, #009 APT29 SVR are all GRU/SVR — FSB Center 18 has no representation). Aliases per cross-vendor consensus: Aqua Blizzard, Trident Ursa, Primitive Bear, Shuckworm, Armageddon, BlueAlpha, UAC-0010. Operator-decision candidate per ACTOR-PROFILE-STANDARD.
+
+NEW vuln-tracker candidates
+===========================
+
+  CVE-2022-0492         — Linux Kernel cgroups v1 release_agent container escape. CISA KEV-added 2026-06-02 with 3-day federal deadline (2026-06-05). CVSS 7.8 HIGH. Patched in kernel 5.17 (March 2022). Vuln-tracker may scaffold VT-011 dossier on next pass; rationale per pm-001.
+
+  CVE-2026-41100 / 41101 / 41102 — Microsoft 365 Android apps debug-flag token bypass cluster. Patched 2026-05-12. No observed exploitation. Vuln-tracker may scaffold VT-* dossier on next pass given A&D-exec mobile fleet relevance; rationale per pm-003.
+
+  CVE-2025-8088         — WinRAR path traversal exploited by Gamaredon (Sekoia per THN relay). Vuln-tracker awareness; check KEV status (NOT in catalog 2026.06.02 sweep today). Rationale per pm-002.
+
+Anti-noise summary
+==================
+
+Topics already covered (filtered as anti-noise this sweep):
+- Meta AI Instagram account-takeover (AM finding 0002; BC adds AI-video facial-recognition bypass detail — grader call on whether to fold or treat as carry-forward update)
+- Oracle WebLogic CVE-2024-21182 KEV add (06-01 PM brief + 06-02 AM continuity)
+- HP VoIP CVE-2026-0826 (06-01 PM brief)
+- Android Framework CVE-2025-48595 (AM finding 0001)
+- Miasma / @redhat-cloud-services / Red Hat npm 32-package compromise (AM finding 0003; PM Unit 42 corroboration in pm-004 is TIER-1 attribution-hedge support — promote to PM brief as update-on-AM or Active-Threats refresh per briefer discretion)
+
+Carry-forward items handed to grader for PM brief
+==================================================
+
+1. pm-001 — CVE-2022-0492 KEV add, 3-day federal deadline 2026-06-05; vuln-tracker handoff candidate for VT-011 scaffolding.
+2. pm-002 — Gamaredon FSB / WinRAR / Ukraine targeting; OPERATOR DECISION pending on /new-actor + source-grade-log (sekoia). Sekoia "FSB's matryoshka #1/3" implies #2 and #3 forthcoming; collector watch flag for Sekoia blog series.
+3. pm-003 — Microsoft Android M365 apps token-bypass cluster (Enclave research); CVE-2026-41100/41101/41102 patched 2026-05-12, no exploitation; A&D-exec mobile fleet pair-context with AM finding 0001.
+4. pm-004 — Unit 42 npm threat landscape Updated June 2; Tier-1 corroboration of Archimedes' AM Hard Rule 2 stance on TeamPCP / Miasma; VT-006 dossier update candidate.
+5. pm-005 — CISA + 7-agency joint ATG hardening advisory; sector-intelligence carry-context for critical-infrastructure; actor-profiler awareness for follow-on 30-90 day attribution candidates per Iran-OT precedent.
+6. pm-006 — The Register / Microsoft–Nightmare-Eclipse 0-day disclosure dispute + claimed forthcoming "Bitskrieg" Secure Boot + BitLocker bypass; STRONG flag for Trigger 6 next-sweep evaluation if Bitskrieg releases.
+
+Next sweep: 16:00 EDT 2026-06-02 afternoon brief composition (grader/briefer takeover).
+Following: 18:00 EDT FLASH sweep covering 12:00 → 18:00 EDT window.

@@ -1,0 +1,51 @@
+{
+  "event_type": "flash_sweep",
+  "run_id": "flash-sweep-20260517-120000",
+  "sweep_type": "scheduled",
+  "sweep_window_start": "2026-05-17T06:00:00-04:00",
+  "sweep_window_end": "2026-05-17T12:00:00-04:00",
+  "triggers_fired": 0,
+  "triggers_evaluated": 6,
+  "disposition": "clean",
+  "discord_post_status": null,
+  "discord_message_id": null,
+  "discord_channel": null,
+  "quiet_hours_active": false,
+  "quiet_hours_state": "active_window",
+  "critical_override_evaluated": false,
+  "critical_override_applied": false,
+  "consecutive_dormant_non_self_telemetry_splunk_sweeps": 36,
+  "in_window_items_evaluated": 2,
+  "in_window_items_discarded": 2,
+  "in_window_items_duplicate_locked": 0,
+  "anti_noise_locks_active": [
+    "turla-kazuar-relay",
+    "CVE-2026-42897",
+    "CVE-2026-20182",
+    "CVE-2026-42945",
+    "symantec-fast16",
+    "pwn2own-day2-exchange"
+  ],
+  "discarded_items": [
+    {
+      "source": "thehackernews",
+      "published_at": "2026-05-17T07:57:00-04:00",
+      "topic": "CVE-2026-42945 NGINX honeypot probes",
+      "primary_failure_reason": "VulnCheck B-grade scanner-class probes; THN editorial framing exceeds scoped claim; Hard Rule 2",
+      "status_update_candidate_for_afternoon_brief": true
+    },
+    {
+      "source": "bleepingcomputer",
+      "published_at": "2026-05-17T10:43:00-04:00",
+      "topic": "Tycoon2FA device-code phishing",
+      "primary_failure_reason": "Commodity criminal PhaaS; no tracked actor; no A&D entity; no CVE",
+      "status_update_candidate_for_afternoon_brief": false
+    }
+  ],
+  "sentinel_raw_signal_file": "threats/raw-signal/raw-2026-05-17-flash-1200-000-sentinel-sweep.md",
+  "prior_sweep_commit": "83cb46f",
+  "intervening_brief_commit": "c8a140d",
+  "source_health_observations_deferred": 2,
+  "source_health_recoveries_observed": 1,
+  "source_health_yaml_modified": false
+}

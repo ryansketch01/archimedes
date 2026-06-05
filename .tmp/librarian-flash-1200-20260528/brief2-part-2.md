@@ -1,0 +1,9 @@
+**Exploitation framing (single-source veto on imminence).** Rapid7 attests no confirmed in-wild exploitation of this specific flaw at disclosure. BleepingComputer cites the related **CVE-2025-8110** Gogs flaw as historical exploitation context only — *not* claimed as the current flaw. The "imminent exploitation" framing on this brief is Archimedes-side inference from public disclosure, install-base size, open-registration default, and the historical-pattern precedent — *not* a Rapid7 direct attestation. WEP capped at *likely*; lift conditions are independent vendor-IR observation, CISA KEV addition once CVE assigned, or Shodan / Shadowserver telemetry confirming widespread post-disclosure scanning.
+
+**Impact.** A&D-prime direct exposure is **structural-indirect**: self-hosted SCM is competitive with GitHub Enterprise / GitLab Self-Managed / Bitbucket Data Center in the DIB / ITAR / CMMC engineering-team setting, but the Gogs install-base geographic skew (Asia and Europe primary) suggests the typical deployment may not be US-DIB. **No A&D-prime, sector, or geography has been named.** No actor attribution from any source; *Archimedes does not originate one.*
+
+**First-party Splunk.** Zero hits at -30d on Gogs product + Rapid7 researcher sweep across `defenseclaw_local` + `archimedes`. Per Hard Rule 8: silence is not contradiction. 67th consecutive dormant non-self sweep.
+
+**Trigger 6 fit caveat.** Spec requires "exploitation confirmed or imminent per A-grade source." Rapid7 (A provisional) attests preconditions, not imminence; the imminence reading is orchestrator inference. Trigger fires on the totality. Critical override 0/4 — fails all four prongs.
+
+-# (part 2/3)

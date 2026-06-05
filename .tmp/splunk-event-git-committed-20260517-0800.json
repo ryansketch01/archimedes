@@ -1,0 +1,30 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-20260517-080000",
+  "commit_hash": "c8a140d",
+  "branch": "main",
+  "pushed_to_remote": true,
+  "remote": "origin",
+  "files_changed": 12,
+  "insertions": 2362,
+  "deletions": 4,
+  "new_files": [
+    "threats/briefs/2026-05-17-morning.md",
+    "threats/findings/finding-2026-05-17-0001.md",
+    "threats/raw-signal/raw-2026-05-16-flash-1730-000-sentinel-sweep.md",
+    "threats/raw-signal/raw-2026-05-17-am-000-sentinel-pre-brief-sweep.md"
+  ],
+  "modified_files": [
+    "threats/briefs/_coverage-log.yaml",
+    "threats/findings/_rejection-log.yaml",
+    "threats/findings/finding-2026-05-14-0005.md",
+    "threats/findings/finding-2026-05-15-0002.md",
+    "threats/findings/finding-2026-05-15-FLASH-0001.md",
+    "threats/findings/finding-2026-05-16-0001.md",
+    "threats/findings/finding-2026-05-16-0002.md",
+    "threats/findings/finding-2026-05-16-0003.md"
+  ],
+  "gitleaks_result": "no_leaks_found",
+  "artifact_type": "morning_brief",
+  "brief_id": "2026-05-17-morning"
+}

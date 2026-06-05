@@ -1,0 +1,55 @@
+{
+  "event_type": "brief_published",
+  "run_id": "librarian-20260509-160000",
+  "brief_id": "2026-05-09-afternoon",
+  "brief_type": "afternoon",
+  "preflight_result": "passed",
+  "tlp": "CLEAR",
+  "discord_channel": "intel-briefs",
+  "discord_message_id": "1502767161662378086",
+  "discord_post_status": 200,
+  "findings_count": 0,
+  "findings_referenced": [
+    "finding-2026-05-06-FLASH-0002",
+    "finding-2026-05-08-0002",
+    "finding-2026-05-08-0005",
+    "finding-2026-05-09-0001"
+  ],
+  "findings_referenced_count": 4,
+  "word_count": 645,
+  "brief_path": "threats/briefs/2026-05-09-afternoon.md",
+  "disposition": "status-only",
+  "findings_new_today": 0,
+  "findings_carried_status_only": [
+    "finding-2026-05-06-FLASH-0002",
+    "finding-2026-05-08-0002",
+    "finding-2026-05-08-0005",
+    "finding-2026-05-09-0001"
+  ],
+  "auto_downgrade_clocks_carried": [
+    {
+      "finding": "finding-2026-05-06-FLASH-0002",
+      "fired_at": "2026-05-09T12:18:00-04:00",
+      "consequence": "attribution_leg_a2_likely_to_c3_possibly_true"
+    }
+  ],
+  "patch_backlog_deadlines_carried": [
+    "CVE-2026-6973",
+    "CVE-2026-42208",
+    "CVE-2026-30445",
+    "CVE-2026-0300-10.2-11.1",
+    "CVE-2026-31431",
+    "CVE-2026-29841",
+    "CVE-2026-0300-11.2-12.1"
+  ],
+  "related_vulns": [
+    "CVE-2026-6973",
+    "CVE-2026-43284",
+    "CVE-2026-43500",
+    "CVE-2026-42087",
+    "CVE-2026-42088",
+    "CVE-2026-42084",
+    "CVE-2026-42085",
+    "CVE-2026-42086"
+  ]
+}

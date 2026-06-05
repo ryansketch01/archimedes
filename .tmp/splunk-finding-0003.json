@@ -1,0 +1,22 @@
+{
+  "event_type": "finding_promoted",
+  "run_id": "librarian-20260514-080045",
+  "finding_id": "finding-2026-05-14-0003",
+  "promoted_by": "grader",
+  "grading_run_id": "morning-20260514-080000",
+  "brief_id": "2026-05-14-morning",
+  "finding_path": "threats/findings/finding-2026-05-14-0003.md",
+  "digraph_copy_fail": "A2",
+  "digraph_fragnesia": "B2",
+  "analyst_split_applied": true,
+  "topic": "Linux kernel LPE cluster — Copy Fail KEV-deadline-tomorrow + Fragnesia PoC",
+  "related_vulns": ["CVE-2026-31431", "CVE-2026-46300"],
+  "vuln_tracker_handoffs_queued": ["VT-008", "VT-009"],
+  "kev_copy_fail": true,
+  "kev_deadline_copy_fail": "2026-05-15",
+  "kev_t_minus_days_at_brief": 1,
+  "fragnesia_poc_published": true,
+  "fragnesia_exploitation_status": "not_observed",
+  "analyst_review_complete": true,
+  "ach_top_hypothesis_fragnesia": "H3_slow_weaponization_dirty_pipe_dirty_cow_baserate"
+}

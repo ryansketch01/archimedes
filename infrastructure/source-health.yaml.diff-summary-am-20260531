@@ -1,0 +1,115 @@
+Source-health runtime updates from AM-31 pre-brief sweep
+========================================================
+Sweep: pre-brief-20260531-073000
+Window: 2026-05-30T17:30:00-04:00 → 2026-05-31T07:30:00-04:00
+Mode: pre_brief_collection
+Sentinel raw-signal: raw-2026-05-31-am-000-sentinel-pre-brief-sweep.md
+
+Field-ownership rule: runtime fields only (status, last_successful_fetch,
+failure_count, stale_since, last_error). Operator-set `notes:` and any
+unrecognized keys MUST be preserved verbatim.
+
+----------------------------------------------------------------------
+Per-source runtime updates this sweep
+----------------------------------------------------------------------
+
+mandiant:
+  last_successful_fetch: 2026-05-31T07:30:00-04:00   (was 2026-05-31T00:05:00-04:00)
+  failure_count: 20                                   (unchanged)
+  status: healthy                                     (unchanged)
+  stale_since: null                                   (unchanged)
+  last_error: |
+    ALT-ENDPOINT mandiant.com/resources/blog/rss.xml validates at 2026-05-31T07:30
+    AM-31 pre-brief sweep (status 200, 20 items in feed; 0 in-window items —
+    Saturday→Sunday weekend quiet cadence). Feedburner path not retested this sweep;
+    alt path validated across AM-30 + PM-30 + evening-30 + 00:00/06:00 FLASH + this
+    AM-31 pre-brief (6 consecutive successful alt-path validations). Operator
+    canonical-swap decision overdue.
+
+mstic:
+  failure_count: 2                                    (was 0; 06:00 sentinel observed 0→1, this sweep 1→2)
+  status: healthy                                     (held; alt-path parent feed remains documented productive path)
+  last_successful_fetch: 2026-05-19T07:30:00-04:00    (unchanged — last documented productive fetch via parent feed)
+  stale_since: null                                   (unchanged)
+  last_error: |
+    Threat-intelligence-specific path microsoft.com/en-us/security/blog/threat-
+    intelligence/feed/ returned 404 on 2026-05-31T06:00 FLASH AND 2026-05-31T07:30
+    AM-31 pre-brief (2 consecutive failures). Held healthy because operator-set
+    notes already document the threat-intelligence-specific path as potentially
+    retired in favor of the parent feed microsoft.com/en-us/security/blog/feed/;
+    parent feed remains the documented productive path. Alt-path test not invoked
+    this sweep (Sunday-morning Tier-1 vendor cadence is effectively zero).
+
+volexity:
+  failure_count: 1                                    (was 0; this sweep 0→1)
+  status: healthy                                     (held)
+  last_successful_fetch: 2026-05-30T07:30:00-04:00    (unchanged)
+  stale_since: null                                   (unchanged)
+  last_error: |
+    RSS feed parse error at 2026-05-31T07:30 AM-31 pre-brief — `not well-formed
+    (invalid token) at line 17 col 68`. 3rd consecutive parse failure after the
+    2026-05-30 AM-30 "RECOVERED" status (00:00 + 06:00 + this sweep). Matches the
+    recurring intermittent parse-error pattern flagged in operator-set notes
+    (Session 15 / Session 16 observation lineage). WebFetch fallback validates
+    source reachability — most-recent post is still 2025-12-04 (Russian spoofing
+    of European security events) unchanged. Held healthy on aggregated
+    reachability.
+
+industrialcyber-co:
+  failure_count: 2                                    (was 1; this sweep 1→2)
+  status: healthy                                     (held — B-grade media sanity-check, not load-bearing)
+  last_successful_fetch: 2026-05-13T18:10:00-04:00    (unchanged)
+  stale_since: null                                   (unchanged)
+  last_error: |
+    Feed 403 at 2026-05-31T06:00 FLASH AND 2026-05-31T07:30 AM-31 pre-brief (2
+    consecutive 403s). Matches the recurring WAF/Akamai bot-block pattern on the
+    /feed/ endpoint documented in operator-set notes. Held healthy because the
+    source is a B-grade media sanity-check layer that does not load-bear on any
+    trigger; absence does not block trigger evaluation.
+
+msrc:
+  failure_count: 5                                    (was 4; this sweep 4→5)
+  status: stale                                       (unchanged)
+  last_successful_fetch: null                         (unchanged)
+  stale_since: 2026-05-30                             (unchanged)
+  last_error: |
+    Feed parse error 5x consecutive (18:00 2026-05-29 + 00:00/06:00/07:30
+    2026-05-30 + 00:00/06:00/07:30 2026-05-31 with 06:00 sentinel-counted as the
+    7th and this sweep as the 8th) — `not well-formed (invalid token) at line 127
+    col 158`. Stale flip already applied 2026-05-30. MSRC content continues to
+    reach corpus via Security Affairs / The Register / SecurityWeek relays.
+
+All other A-grade vendor + B-grade media sources advanced
+last_successful_fetch to 2026-05-31T07:30:00-04:00 on healthy fetch with 0
+in-window items (routine sweep). Specifically:
+
+  - crowdstrike, unit42, cisco-talos, sentinelone, eset (welivesecurity),
+    bitdefender, check-point (securelist), greynoise, rapid7, recorded-future,
+    snyk
+  - cisa-advisories, cisa-kev, nvd, x-cisagov
+  - bleepingcomputer, thehackernews, securityweek, securityaffairs, the-record,
+    sans-isc, krebs, darkreading, theregister
+
+----------------------------------------------------------------------
+No stale flips this sweep
+----------------------------------------------------------------------
+
+No new stale flips. Three single-source health flags (MSTIC 404 recurrence,
+Volexity parse-error recurrence, Industrial Cyber 403 recurrence) all held
+healthy under their respective established failure patterns documented in
+operator-set notes.
+
+----------------------------------------------------------------------
+Operator action required
+----------------------------------------------------------------------
+
+(None new this sweep; carry-forward items only.)
+
+- Mandiant canonical-path swap decision — feedburner.com/Mandiant deprecated,
+  alt mandiant.com/resources/blog/rss.xml validated across 6+ consecutive
+  sweeps. Decision overdue.
+
+- Sophos alt-path discovery — news.sophos.com/en-us/feed/ remains 404 since
+  2026-05-17 stale flip. No change.
+
+- Other long-standing carry-forward items per prior sweep diff-summaries.

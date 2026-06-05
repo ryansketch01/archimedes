@@ -1,0 +1,15 @@
+{
+  "event_type": "flash_sweep_completed",
+  "sweep_time": "2026-05-23T12:00:00-04:00",
+  "result": "no_triggers",
+  "triggers_fired": 0,
+  "triggers_evaluated": 6,
+  "candidates_collected": 0,
+  "raw_signal_written": 0,
+  "briefs_generated": 0,
+  "discord_posted": false,
+  "quiet_hours": false,
+  "run_id": "flash-sweep-20260523-120000",
+  "prior_sweep": "2026-05-23T06:00:00-04:00",
+  "notes": "Items evaluated and suppressed: LiteSpeed CVE-2026-48172 anti-noise locked; Drupal CVE-2026-9082 morning-brief absorbed; Laravel-Lang Composer morning-brief absorbed; Underminr DNS evasion class-of-attack only no FLASH triggers; Anthropic research story not threat-reporting; Linux ksmbd CVE-2026-31613 + CVE-2026-43490 no active exploitation; CISA KEV 12:00 pull zero additions; Fortinet PSIRT no new advisories in window. Mandiant RSS parse-error pattern persists (failure_count=18, held healthy)."
+}

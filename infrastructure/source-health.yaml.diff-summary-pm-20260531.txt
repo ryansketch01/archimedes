@@ -1,0 +1,80 @@
+Source-Health Runtime Updates — PM-31 Pre-Brief Sweep (2026-05-31 15:30 EDT)
+============================================================================
+
+Run ID: pre-brief-20260531-153000
+Sweep window: 2026-05-31T07:30:00-04:00 → 2026-05-31T15:30:00-04:00 (8h)
+Sentinel: raw-2026-05-31-pm-000-sentinel-pre-brief-sweep.md
+Disposition: CLEAN (0 in-window items survived Mode 1 filter)
+
+Runtime field touches per field-ownership rule (operator-set `notes`
+preserved verbatim; only `status`, `last_successful_fetch`,
+`failure_count`, `stale_since`, `last_error` modified):
+
+ENTRIES MODIFIED:
+-----------------
+
+1. _meta:
+   - last_updated: 2026-05-19T07:30:00-04:00 → 2026-05-31T15:30:00-04:00
+
+2. mandiant:
+   - last_successful_fetch: '2026-05-31T00:05:00-04:00' → '2026-05-31T15:30:00-04:00'
+   - last_error: updated to reflect alt-endpoint validation at PM-31
+     (mandiant.com/resources/blog/rss.xml status 200, 20 items in feed,
+     0 in-window; feedburner remains 404 — 31 consecutive failures;
+     held healthy; canonical-swap decision overdue)
+   - failure_count: 20 → 21 (feedburner 31st consecutive failure
+     incremented; alt-endpoint reachability is held-healthy override
+     per operator pattern)
+
+3. mstic:
+   - last_successful_fetch: 2026-05-19T07:30:00-04:00 → 2026-05-31T15:30:00-04:00
+   - last_error: cleared (parent feed reachable at PM-31; subpath
+     /threat-intelligence/feed/ retirement is documented in `notes`)
+   - failure_count: 0 → 0 (parent feed success; 12:00 sentinel's
+     1→2 increment on subpath was for the subpath, not parent; PM-31
+     resets effective baseline since parent feed is productive path)
+
+4. volexity:
+   - last_successful_fetch: 2026-05-30T07:30:00-04:00 → 2026-05-31T15:30:00-04:00
+   - last_error: updated to reflect RECOVERY confirmation at PM-31
+     after AM-31's parse-error recurrence (intermittent pattern
+     documented; status 200 + parse OK + 10 items in feed pre-window)
+   - failure_count: 0 → 0 (success; unchanged)
+
+5. industrialcyber-co:
+   - failure_count: 1 → 2 (third consecutive 403 across 06:00 sentinel
+     + AM-31 sentinel + this sweep; at stale-flip threshold per
+     failure_count≥2 rule)
+   - last_error: updated to reflect three-consecutive 403 pattern;
+     HELD HEALTHY per operator-pattern precedent (recurring WAF/Akamai
+     bot-block already documented in `notes`; not load-bearing this
+     sweep; recommend operator review for stale flip if pattern
+     persists across one or two more sweeps)
+   - status: healthy (unchanged — held per operator pattern; not flipped
+     stale yet pending operator review or one more consecutive failure)
+
+ENTRIES OBSERVATIONALLY HEALTHY (last_successful_fetch advance considered
+but NOT modified in this diff to preserve diff surface area for entries
+with substantive runtime-state changes; healthy-fetch advances on these
+are observationally implicit and can be batched in operator-side YAML
+cleanup if desired):
+
+  bleepingcomputer, thehackernews, sans-isc, securityaffairs,
+  cisco-talos, sentinelone, unit42, crowdstrike, welivesecurity,
+  rapid7, snyk, check-point-research, securelist, cisa-advisories,
+  cisa-kev, the-record, theregister, darkreading, krebs.
+
+NO STALE FLIPS THIS SWEEP.
+
+NO POLICY VIOLATIONS, NO PROHIBITED QUERY PATTERNS.
+
+RECOMMENDED OPERATOR ACTIONS (carry-forward, not blocking):
+- mandiant feedburner: canonical-swap decision overdue (31 consecutive
+  failures; alt-endpoint validated across ~15+ sentinel sweeps)
+- industrialcyber-co: stale-flip consideration if 403 pattern persists
+- mstic subpath /threat-intelligence/feed/: confirm retirement and
+  remove from sweep config (parent feed remains productive path)
+- sophos: alt-path discovery still pending (stale since 2026-05-17)
+- x-cisagov / x-gossithedog: nitter pool decision still pending
+- proofpoint: threat-intel-specific /us/threat-insight/blog/feed
+  endpoint discovery still pending (corporate-news fallback is coarse)

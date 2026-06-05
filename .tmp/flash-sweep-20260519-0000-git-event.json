@@ -1,0 +1,18 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-flash-sweep-20260519-000500",
+  "commit_hash": "463d631b884ecdc43507600a020d1d6d3279c8c6",
+  "commit_hash_short": "463d631",
+  "branch": "main",
+  "pushed": true,
+  "push_target": "origin/main",
+  "push_range": "42559d2..463d631",
+  "files_changed": 1,
+  "insertions": 194,
+  "deletions": 0,
+  "artifacts": ["threats/raw-signal/raw-2026-05-19-flash-0000-000-sentinel-sweep.md"],
+  "artifact_type": "raw_signal_sentinel",
+  "context": "FLASH sweep 2026-05-19 00:00 EDT clean sweep, 0 of 6 triggers fired, 45th consecutive dormant non-self-telemetry Splunk sweep, Storm-2949 /new-actor candidate handoff to morning grader",
+  "gitleaks_result": "no_leaks_found",
+  "tlp": "CLEAR"
+}

@@ -1,0 +1,42 @@
+{
+  "event_type": "brief_published",
+  "run_id": "librarian-20260529-080030",
+  "brief_id": "2026-05-29-morning",
+  "brief_type": "morning",
+  "preflight_result": "passed",
+  "tlp": "CLEAR",
+  "discord_channel": "intel-briefs",
+  "discord_message_id": "1509902218990714890",
+  "discord_post_status": 200,
+  "findings_count": 3,
+  "findings_referenced": [
+    "finding-2026-05-29-0001",
+    "finding-2026-05-29-0002",
+    "finding-2026-05-29-0003"
+  ],
+  "word_count": 935,
+  "layer_2_char_count": 1929,
+  "layer_2_parts": 1,
+  "brief_path": "threats/briefs/2026-05-29-morning.md",
+  "absorbs_flash": [],
+  "related_vulns": [
+    "CVE-2026-33825",
+    "CVE-2026-45585",
+    "CVE-2026-46840",
+    "CVE-2026-46817",
+    "CVE-2026-46833"
+  ],
+  "proposed_vuln_dossier": [
+    "CVE-2026-46840",
+    "CVE-2026-46817",
+    "CVE-2026-46833"
+  ],
+  "digraphs": ["A2", "A2", "A2"],
+  "single_source_veto_resolved": ["finding-2026-05-29-0002"],
+  "source_grade_additions": ["securityaffairs", "theregister"],
+  "ioc_index_regenerated": false,
+  "ioc_index_regen_reason": "no_actor_iocs_yaml_changed_this_run",
+  "hard_rule_2_lineage_unresolved": ["finding-2026-05-29-0001"],
+  "splunk_first_party_status": "silent_-7d_-30d",
+  "host": "archimedes"
+}

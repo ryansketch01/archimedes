@@ -1,0 +1,48 @@
+{
+  "event_type": "flash_sweep",
+  "run_id": "flash-sweep-20260516-113000",
+  "sweep_type": "on_demand",
+  "sweep_window_start": "2026-05-16T06:00:00-04:00",
+  "sweep_window_end": "2026-05-16T11:30:00-04:00",
+  "triggers_fired": 0,
+  "triggers_evaluated": 6,
+  "disposition": "clean",
+  "discord_post_status": null,
+  "discord_message_id": null,
+  "discord_channel": null,
+  "quiet_hours_active": false,
+  "critical_override_evaluated": false,
+  "critical_override_applied": false,
+  "consecutive_dormant_non_self_telemetry_splunk_sweeps": 31,
+  "in_window_items_evaluated": 2,
+  "in_window_items_duplicate_locked": 2,
+  "anti_noise_locks_active": [
+    "turla-kazuar-relay",
+    "CVE-2026-42897",
+    "CVE-2026-20182",
+    "CVE-2026-42945",
+    "node-ipc-supply-chain",
+    "pwn2own-day2-exchange"
+  ],
+  "duplicate_lock_hits": [
+    {
+      "source": "bleepingcomputer",
+      "byline": "Bill Toulas",
+      "published_at": "2026-05-16T10:15:00-04:00",
+      "topic": "turla-kazuar-relay",
+      "locked_against": "finding-2026-05-14-0006",
+      "secondary_lock_against": "reject-2026-05-16-0001"
+    },
+    {
+      "source": "thehackernews",
+      "published_at": "2026-05-16T08:43:00-04:00",
+      "topic": "turla-kazuar-relay",
+      "locked_against": "finding-2026-05-14-0006",
+      "secondary_lock_against": "reject-2026-05-16-0001"
+    }
+  ],
+  "sentinel_raw_signal_file": "threats/raw-signal/raw-2026-05-16-flash-1130-000-sentinel-sweep.md",
+  "prior_sweep_commit": "d2560d4",
+  "intervening_brief_commit": "3cc6118",
+  "source_health_changes": 0
+}

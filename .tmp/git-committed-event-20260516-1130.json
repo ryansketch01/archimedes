@@ -1,0 +1,16 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-20260516-113500",
+  "upstream_run_id": "flash-sweep-20260516-113000",
+  "commit_sha": "9bc608f",
+  "parent_sha": "3cc6118",
+  "branch": "main",
+  "pushed_to_remote": true,
+  "remote": "origin",
+  "files_changed": 1,
+  "insertions": 95,
+  "deletions": 0,
+  "artifact_type": "flash_sweep_sentinel",
+  "gitleaks_status": "passed",
+  "commit_subject": "flash: 2026-05-16 11:30 on-demand — clean sweep, 0 triggers; 31st consecutive dormant non-self-telemetry Splunk sweep"
+}

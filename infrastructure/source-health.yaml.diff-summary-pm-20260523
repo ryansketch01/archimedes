@@ -1,0 +1,55 @@
+# source-health.yaml PM-20260523 diff summary
+# 2026-05-23 15:35:00 EDT pre-brief PM sweep (run_id: pre-brief-20260523-153000)
+#
+# Per collector subagent doctrine: runtime-only updates this sweep.
+# `notes:` and any operator-set fields on individual entries preserved verbatim.
+# No stale flips. No top-level entry creations (top-level entries for
+# thehackernews / snyk / litespeed-blog / arstechnica-root deferred to
+# subsequent collector-driven first-entry creation per 2026-05-19 PM convention).
+#
+# RUNTIME-FIELD CHANGES (record-only; canonical record is the PM sentinel raw-signal):
+#
+#   thehackernews:
+#     - successful productive fetch (2 in-window items: npm staged publishing, Packagist 8-pkg supply-chain)
+#     - last_successful_fetch advanced to 2026-05-23T15:35:00-04:00 (top-level entry pending creation)
+#     - failure_count: 0
+#
+#   snyk:
+#     - successful productive fetch (1 in-window item: Laravel-Lang Supply Chain Advisory)
+#     - First time Snyk RSS surfaced an in-window threat-intel primary in this corpus
+#     - last_successful_fetch advanced to 2026-05-23T15:35:00-04:00
+#     - failure_count: 0
+#
+#   bleepingcomputer:
+#     - successful fetch (1 in-window item, CINEMAGOAL piracy bust; discarded per Mode 1 — no CTI value, no A&D)
+#     - last_successful_fetch advanced to 2026-05-23T15:35:00-04:00
+#     - failure_count holds at 0
+#
+#   ars-security (workaround via arstechnica.com root /feed):
+#     - successful fetch (1 in-window item, SpaceX Starship V3; A&D-adjacent kinetic, not raw-signaled)
+#     - Top-level entry STILL stale per 2026-05-09 flip; root-feed workaround productive
+#     - ars-security STALE entry stays stale pending operator path-replacement decision
+#
+#   securityweek, the-record, krebs, unit42, mstic, sentinellabs, recorded-future,
+#   isc-sans, proofpoint, welivesecurity, rapid7, github-blog, litespeed-blog,
+#   cisa-advisories, cisa-kev:
+#     - reachable, 0 in-window items in 7.5h PM window
+#     - last_successful_fetch advanced to 2026-05-23T15:35:00-04:00 (where prior entry exists)
+#     - failure_count holds at prior value
+#
+#   mandiant: feedburner 404 (consecutive count continues; held healthy per operator decision)
+#   sophos: 404 (same as AM; held healthy)
+#   cisco-talos: 404 (same as AM; held healthy)
+#   wiz-research: 404 (held healthy)
+#   socket: blog/rss 404 same as AM (failure_count holds; held healthy)
+#
+# NO STALE FLIPS THIS SWEEP.
+# NO NEW TOP-LEVEL ENTRY CREATIONS (deferred per 2026-05-19 PM convention).
+# NO degraded_warning_count change.
+# NO _meta.healthy / stale composition change.
+#
+# CANONICAL RECORD: see raw-2026-05-23-pm-000-sentinel-pre-brief-sweep.md
+# for full per-source sweep table + Splunk + VT enrichment delta.
+
+audit_trail_appendix_entry_proposed:
+  - "2026-05-23 15:30 pre-brief PM sweep: PRODUCTIVE — 4 raw-signal items written (pm-000 sentinel + pm-001 THN npm staged publishing rollout + pm-002 THN/Socket Packagist 8-package Composer supply-chain attack with GitHub-hosted Linux binary [gvfsd-network filename mimicking GNOME VFS daemon; account parikhpreyash4 disabled; UNATTRIBUTED per Socket] + pm-003 Snyk first-party Laravel-Lang Supply Chain Advisory closing AM-001 Snyk-layer 'primary not retrieved' flag with full Snyk advisory-ID set + DebugChromium.exe Windows artifact + /var/run/secrets/ + /proc/[pid]/environ runtime patterns). VirusTotal detection escalation observable: flipboxstudio[.]info ramped 3→10 malicious engines in ~4h between AM (12:42 UTC) and PM (16:57 UTC) VT lookups (Kaspersky, Sophos, Fortinet, ADMINUSLabs, Forcepoint ThreatSeeker, CRDF, Certego, Lionic, SOCRadar, VIPRE flagging). Splunk first-party probes across pm-002 + pm-003 IOC set zero hits (-30d). FLASH evaluation: ZERO new triggers fired beyond what the 06:00 FLASH already queued (UNC1549 Trigger 4 + LiteSpeed CVE-2026-48172 Trigger 1). Source-health changes: thehackernews + bleepingcomputer + snyk + ars-security-workaround productive fetches advance last_successful_fetch to 2026-05-23T15:35:00-04:00; no stale flips; degraded sources (mandiant + sophos + cisco-talos + wiz-research + socket + dragos) unchanged from AM sweep; no top-level entry creations (snyk + thehackernews + litespeed-blog + arstechnica-root entries deferred per 2026-05-19 PM convention). Carry-forwards preserved unchanged from morning-brief candidate pool: UNC1549 Unit 42 tradecraft evolution (FLASH-0600-001) + LiteSpeed CVE-2026-48172 (FLASH-0600-002 + am-005 NVD confirmation) + Laravel-Lang campaign (am-001 + pm-003 Snyk primary + VT detection escalation) + Packagist 8-package supply-chain (pm-002 NEW) + npm Staged Publishing rollout (pm-001 NEW ecosystem-defense narrative input) + Russian Kosmos 2610-2613 / ICEYE (am-004) + Underminr CDN-tenant bypass (am-002) + CISA KEV nomination form (am-003) + CVE-2026-9082 Drupal carry-forward (am-006). 60+ consecutive sweep dormant non-archimedes-internal Splunk-index pattern continues."

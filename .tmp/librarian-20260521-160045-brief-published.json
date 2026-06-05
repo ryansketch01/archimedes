@@ -1,0 +1,41 @@
+{
+  "event_type": "brief_published",
+  "run_id": "librarian-20260521-160045",
+  "brief_id": "2026-05-21-afternoon",
+  "brief_type": "afternoon",
+  "preflight_result": "passed",
+  "tlp": "CLEAR",
+  "discord_channel": "intel-briefs",
+  "discord_message_id": "1507121538271281172",
+  "discord_post_status": 200,
+  "findings_count": 6,
+  "findings_referenced": [
+    "finding-2026-05-21-0008",
+    "finding-2026-05-21-0009",
+    "finding-2026-05-21-0010",
+    "finding-2026-05-21-0011",
+    "finding-2026-05-21-0012",
+    "finding-2026-05-21-0013"
+  ],
+  "word_count": 742,
+  "layer_1_word_count": 742,
+  "layer_2_word_count": 206,
+  "layer_2_char_count": 1751,
+  "brief_path": "threats/briefs/2026-05-21-afternoon.md",
+  "related_vulns": [
+    "CVE-2025-34291",
+    "CVE-2026-34926",
+    "CVE-2026-41144",
+    "CVE-2026-3593",
+    "ICSA-26-141-03",
+    "ICSA-26-141-01"
+  ],
+  "related_actors": [],
+  "grader_run_id": "afternoon-20260521-160000",
+  "analyst_run_id": "analyst-20260521-163000",
+  "red_team_review": "not_required_no_findings_at_very_likely_attribution_layer",
+  "rejected_count": 1,
+  "rejected_ids": ["reject-2026-05-21-0002"],
+  "iocs_introduced": 0,
+  "master_index_regen_required": false
+}

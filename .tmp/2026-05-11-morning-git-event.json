@@ -1,0 +1,31 @@
+{
+  "time": "2026-05-11T08:17:00-04:00",
+  "host": "archimedes",
+  "sourcetype": "archimedes:operation",
+  "index": "archimedes",
+  "event": {
+    "event_type": "git_committed",
+    "run_id": "librarian-20260511-080045",
+    "commit_sha": "7fff3e4",
+    "branch": "main",
+    "pushed": true,
+    "push_target": "origin/main",
+    "files_changed": 9,
+    "insertions": 2281,
+    "deletions": 7,
+    "commit_message_subject": "Publish morning brief 2026-05-11",
+    "brief_id": "2026-05-11-morning",
+    "gitleaks_status": "passed",
+    "files": [
+      "threats/briefs/2026-05-11-morning.md",
+      "threats/briefs/_coverage-log.yaml",
+      "threats/findings/finding-2026-05-11-0001.md",
+      "threats/findings/finding-2026-05-11-0002.md",
+      "threats/findings/_rejection-log.yaml",
+      "threats/raw-signal/raw-2026-05-11-am-000-sentinel-near-clean-sweep.md",
+      "threats/raw-signal/raw-2026-05-11-am-001-securityweek-sailpoint-github-repo-hack.md",
+      "threats/raw-signal/raw-2026-05-11-flash-0600-001-securityweek-checkmarx-jenkins-ast-plugin-compromise.md",
+      "threats/raw-signal/raw-2026-05-11-flash-0000-001-securityweek-hookedwing-socradar-aviation-non-flash.md"
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "event_type": "git_committed",
+  "run_id": "flash-sweep-20260510-060000",
+  "commit_hash": "c320684",
+  "branch": "main",
+  "commit_message": "FLASH sweep 2026-05-10 06:00 EDT — clean (zero triggers)",
+  "files_changed": 1,
+  "insertions": 412,
+  "deletions": 0,
+  "files": [
+    "threats/raw-signal/raw-2026-05-10-flash-0600-000-sentinel-clean-sweep.md"
+  ],
+  "pushed": true,
+  "catchup_push_exit": 0,
+  "gitleaks_result": "no_leaks_found",
+  "related_event": "flash_sweep_clean"
+}

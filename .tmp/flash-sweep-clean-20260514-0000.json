@@ -1,0 +1,12 @@
+{
+  "event_type": "flash_sweep_clean",
+  "sweep_time": "2026-05-14T00:00:00-04:00",
+  "window_hours": 6,
+  "quiet_hours": true,
+  "raw_signal_written": 0,
+  "findings_promoted": 0,
+  "splunk_first_party_hits": 0,
+  "triggers_evaluated": ["T1", "T2", "T3", "T4", "T5", "T6"],
+  "triggers_fired": [],
+  "notes": "Adjacent items observed but did not meet bar: BleepingComputer West Pharmaceutical breach (pharma sector, no attribution); CrowdStrike CORDIAL/SNARKY SPIDER marketing (actors not in roster). Two source-health regressions flagged for 07:30 pre-brief: industrialcyber.co 403, volexity.com feed XML parse error — not edited this run."
+}

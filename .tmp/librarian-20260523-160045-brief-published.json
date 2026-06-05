@@ -1,0 +1,41 @@
+{
+  "time": "2026-05-23T16:00:47-04:00",
+  "host": "archimedes",
+  "sourcetype": "archimedes:operation",
+  "index": "archimedes",
+  "event": {
+    "event_type": "brief_published",
+    "run_id": "librarian-20260523-160045",
+    "brief_id": "2026-05-23-afternoon",
+    "brief_type": "afternoon",
+    "preflight_result": "passed",
+    "tlp": "CLEAR",
+    "discord_channel": "intel-briefs",
+    "discord_message_id": "1507841819331924069",
+    "discord_post_status": 200,
+    "findings_count": 1,
+    "findings_referenced": ["finding-2026-05-23-0001", "finding-2026-05-23-0005"],
+    "findings_updated": ["finding-2026-05-23-0001"],
+    "findings_new": ["finding-2026-05-23-0005"],
+    "word_count": 767,
+    "layer_1_word_count": 767,
+    "layer_2_word_count": 200,
+    "layer_2_char_count": 1770,
+    "brief_path": "threats/briefs/2026-05-23-afternoon.md",
+    "absorbs_flash": [],
+    "related_vulns": [],
+    "related_actors": [],
+    "proposed_vuln_dossier": [],
+    "hard_rule_2_preserved": true,
+    "single_source_veto_active": ["finding-2026-05-23-0005"],
+    "ach_framing": "multi-actor convergence at ecosystem scope; not PHP-specific actor escalation",
+    "ioc_count_in_findings": 12,
+    "ioc_breakdown_finding_0005": {
+      "package_name": 8,
+      "url": 1,
+      "github_account": 1,
+      "filename": 1,
+      "file_path": 1
+    }
+  }
+}

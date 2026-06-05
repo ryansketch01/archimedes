@@ -1,0 +1,248 @@
+# source-health.yaml runtime diff summary — PM-29 pre-brief sweep
+# Generated 2026-05-29T15:55:00-04:00 by collector during PM-29 pre-brief
+# Window: 2026-05-29T12:05:00-04:00 → 2026-05-29T15:35:00-04:00 (3.5h)
+#
+# This file is the librarian-handoff record of runtime-field changes that
+# need to be applied to infrastructure/source-health.yaml. Operator-set
+# fields (notes, unrecognized keys) are NEVER touched per the operational
+# note in CLAUDE.md ("Field ownership: runtime vs operator-set").
+#
+# Field-change types in this diff:
+#   - last_successful_fetch → advanced to 2026-05-29T15:35:00-04:00 on
+#     productive-fetch sources
+#   - failure_count → incremented on parse-failure / 404-consecutive sources
+#   - status → stale flip candidate on volexity (5th consecutive failure
+#     threshold not yet reached this sweep — holding for 18:00 FLASH)
+#
+# All `notes:` fields and any other operator-set keys preserved verbatim.
+
+# ============================================================================
+# Sources with productive in-window fetches — advance last_successful_fetch
+# to 2026-05-29T15:35:00-04:00, keep failure_count=0, status=healthy
+# ============================================================================
+
+bleepingcomputer:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 2 in-window items: ChatGPT share-links Push Security (raw-signaled PM-003), 23andMe lawsuit (DISCARDED civil litigation)
+  # operator-set notes: preserved verbatim
+
+securityweek:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 1 in-window item: "In Other News" weekly roundup (raw-signaled PM-002)
+  # operator-set notes: preserved verbatim
+
+thehackernews:
+  # NEW TOP-LEVEL ENTRY — not previously in source-health.yaml runtime state
+  # First top-level state entry triggered by productive ChatGPhish surface PM-003
+  status: healthy
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  stale_since: null
+  last_error: null
+  # 1 in-window item: Permiso Security ChatGPhish (raw-signaled PM-003)
+
+the-record:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 0 in-window items (feed empty after since-filter)
+  # operator-set notes: preserved verbatim
+
+securityaffairs:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 1 in-window item: GREYVIBE Paganini (DISCARDED anti-noise lock active, PM-28-003 absorption)
+  # First top-level state entry triggered by AM-29 finding-29-0002 then PM-29 sweep
+  # If no top-level entry exists yet, create at failure_count=0; status=healthy
+
+theregister:
+  # NEW TOP-LEVEL ENTRY — not previously in source-health.yaml runtime state
+  status: healthy
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  stale_since: null
+  last_error: null
+  # 2 in-window items: Gogs zero-day re-coverage (DISCARDED anti-noise FLASH-1200-28); 23andMe lawsuit (DISCARDED civil litigation)
+
+mstic:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 0 in-window items (last_modified 17:21 UTC pre-window 13:21 EDT)
+  # operator-set notes: preserved verbatim
+
+unit42:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 0 in-window items (last_modified 19:11 GMT just-inside window from feed-server activity but 0 items after since-filter)
+  # operator-set notes: preserved verbatim
+
+cisa-kev:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # PRODUCTIVE — CVE-2026-0257 NEW addition dateAdded 2026-05-29; catalogVersion 2026.05.29; dateReleased 2026-05-29T19:00:06.3429Z
+  # Federal due 2026-06-01 (3-day aggressive timeline)
+  # operator-set notes: preserved verbatim
+
+cisa-advisories:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 0 in-window items (all.xml feed reachable, 30 items total, 0 after since-filter)
+  # operator-set notes: preserved verbatim
+
+krebs:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 0 in-window items (last_modified 2026-05-25 = quiet cadence)
+  # operator-set notes: preserved verbatim
+
+rapid7:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # PRODUCTIVE — 1 in-window item: Rapid7 ETR PAN-OS CVE-2026-0257 MDR observation (raw-signaled PM-001)
+  # SECOND productive surface in 24h after Gogs zero-day FLASH-1200-28 (Jonah Burgess byline)
+  # operator-set notes: preserved verbatim
+
+sentinelone:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 0 in-window items (SentinelOne blog last_modified 15:50 GMT inside-window from feed-server activity but 0 items after since-filter)
+  # operator-set notes: preserved verbatim
+
+cisco-talos:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 0 in-window items (RSS reachable via /rss/ endpoint; last_modified null but feed valid with 15 items, all pre-window)
+  # operator-set notes: preserved verbatim
+
+sans-isc:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 0 in-window items (rssfeed.xml last_modified 19:29 GMT inside-window from feed-server activity but 0 after since-filter)
+  # operator-set notes: preserved verbatim
+
+# ============================================================================
+# Sources with parse-error / 404 / 403 — failure_count increments
+# ============================================================================
+
+mandiant:
+  last_successful_fetch: 2026-05-07T15:30:00-04:00      # UNCHANGED — feedburner 404 persists
+  failure_count: 20                                       # was 19 at AM-29; +1 increment (twenty-third consecutive feedburner 404)
+  last_error: "feedburner.com/Mandiant returned 404 on 2026-05-29T15:30 PM pre-brief — twenty-third consecutive failure (failure_count incremented 19→20). Held healthy pending operator alt-endpoint decision per long-standing source-health policy. Pattern unchanged from prior sweeps."
+  # operator-set notes: preserved verbatim
+
+volexity:
+  last_successful_fetch: null                             # UNCHANGED
+  failure_count: 4                                        # was 3 at AM-29; +1 increment (fourth consecutive parse failure 0000/0600/1200/15:30 PM)
+  last_error: |
+    2026-05-29 15:30 PM pre-brief sweep: www.volexity.com/blog/feed/ returned malformed body
+    (XML parse error <unknown>:17:68 not well-formed invalid token) — fourth consecutive failure
+    (failure_count incremented 3→4 past-threshold). Volexity homepage WebFetch confirms most-recent
+    visible post dated 2025-12-04 — feed broken for 2026 content. Held healthy per operator
+    instruction pending alt-endpoint decision; if pattern persists at 18:00 FLASH as fifth
+    consecutive, STALE FLIP recommended.
+
+industrialcyber-co:
+  # 403 bot-block persistent — failure_count holds at prior count, last_error preserved
+  # Per 2-failure rule pattern but historical operator hold per persistent Akamai bot-block
+  # No state change this sweep; flag for operator alt-fetch-path decision
+
+# ============================================================================
+# Sources with dateless items (cadence anomaly, not a failure)
+# ============================================================================
+
+crowdstrike:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 10 dateless marketing/MQ items returned (RSS reachable, status 200, last_modified 15:57 GMT pre-window)
+  # Unchanged from 0000/0600/1200 sweeps — same 10 dateless items including Glassworm takedown post
+  # Twenty-third consecutive dateless marketing pattern; held healthy per operator policy
+  # operator-set notes: preserved verbatim
+
+# ============================================================================
+# Stale sources skipped per under-24h rule (no state change)
+# ============================================================================
+
+ars-security:
+  # stale since 2026-05-09; workaround via arstechnica.com/feed/ root path (per operator notes)
+  # PM-29 sweep: skipped per stale (no eligibility check this sweep — focus was high-priority feeds)
+  # No state change
+
+x-cisagov:
+  # stale since 2026-05-10; nitter bridge fragility; operator alt-pool decision pending
+  # PM-29 sweep: not invoked (FLASH-fast cadence not relevant for PM pre-brief; nitter pool fragility persists)
+  # No state change
+
+x-gossithedog:
+  # stale since 2026-05-09; nitter account delisted on nitter.net specifically
+  # PM-29 sweep: not invoked
+  # No state change
+
+# ============================================================================
+# Splunk first-party telemetry sweep
+# ============================================================================
+
+splunk-archimedes:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 48th consecutive sweep with dormant non-archimedes-internal events
+  # PM-29 -24h stats by sourcetype: archimedes:scheduler 17 + archimedes:operation 4 + archimedes:flash 4 = 25 events all archimedes-internal pipeline telemetry
+  # PM-29 -30d targeted CVE-2026-0257 IOC sweep across 4 IPs + 2 machine names + Vultr/Dromatics ASN strings + PAN-OS/GlobalProtect product strings: 0 hits
+  # Trigger 3 cannot fire
+  # operator-set notes: preserved verbatim
+
+splunk-defenseclaw:
+  last_successful_fetch: 2026-05-29T15:35:00-04:00
+  failure_count: 0
+  # 48th consecutive sweep with dormant non-archimedes-internal events; zero defenseclaw_local events in 24h
+  # operator-set notes: preserved verbatim
+
+# ============================================================================
+# Source-grades.yaml first-citation candidates — librarian handoff
+# ============================================================================
+# Three NEW first-citation source candidates surfaced this sweep:
+#
+# 1. Palo Alto Networks PSIRT (palo-alto-psirt)
+#    Class: vendor-self-disclosure-on-own-product
+#    Recommended provisional grade: A (per Cisco PSIRT / F5 / kernel-org-netdev / OpenAI /
+#    GitHub / LiteSpeed precedent)
+#    First-cited via: raw-2026-05-29-pm-001 (CVE-2026-0257 PAN-OS GlobalProtect ITW
+#    state transition)
+#    URL: https://security.paloaltonetworks.com/
+#
+# 2. Push Security (push-security)
+#    Class: vendor research firm
+#    Recommended provisional grade: B (per StepSecurity / Socket / Sysdig / Zellic / Aikido /
+#    Arctic Wolf peer class)
+#    First-cited via: raw-2026-05-29-pm-003 (LLMShare ChatGPT share-link malvertising
+#    campaign research)
+#    URL: https://pushsecurity.com/blog/
+#
+# 3. Permiso Security (permiso-security)
+#    Class: vendor research firm with named-analyst byline (Andi Ahmeti)
+#    Recommended provisional grade: B (per same peer class as Push Security)
+#    First-cited via: raw-2026-05-29-pm-003 (ChatGPhish ChatGPT response renderer
+#    Markdown-link-trust vulnerability disclosure)
+#    URL: tbd (Permiso primary write-up URL not captured this sweep; flag for next-pass
+#    direct retrieval)
+#
+# Librarian: add these three to source-grades.yaml at provisional grade with ratification
+# clock per 72h-default convention if source-grade-log review confirms.
+
+# ============================================================================
+# Summary
+# ============================================================================
+# - 14 sources advanced last_successful_fetch to 2026-05-29T15:35:00-04:00
+#   (bleepingcomputer, securityweek, thehackernews [new top-level], the-record,
+#    securityaffairs, theregister [new top-level], mstic, unit42, cisa-kev,
+#    cisa-advisories, krebs, rapid7, sentinelone, cisco-talos, sans-isc, crowdstrike,
+#    splunk-archimedes, splunk-defenseclaw)
+# - mandiant failure_count 19 → 20 (twenty-third consecutive feedburner 404 — held healthy
+#   per operator policy)
+# - volexity failure_count 3 → 4 (fourth consecutive parse failure — held healthy per
+#   operator policy; if 18:00 FLASH parse-fails as 5th consecutive, STALE FLIP)
+# - 3 source-grades.yaml first-citation candidates flagged for librarian handoff
+#   (palo-alto-psirt provisional A; push-security provisional B; permiso-security provisional B)
+# - 0 stale flips this sweep
+# - 0 new soft-failures this sweep beyond the 3 already-known persistent patterns
+#   (mandiant feedburner, volexity parse, industrialcyber-co 403)

@@ -1,0 +1,30 @@
+{
+  "event_type": "flash_sweep_clean",
+  "run_id": "flash-sweep-20260510-060000",
+  "sweep_id": "flash-sweep-20260510-060000",
+  "sweep_window_start": "2026-05-10T00:00:00-04:00",
+  "sweep_window_end": "2026-05-10T06:00:00-04:00",
+  "sweep_window_label": "2026-05-10T00:00->06:00 EDT",
+  "triggers_evaluated": 6,
+  "triggers_matched": 0,
+  "quiet_hours_active": true,
+  "critical_override_evaluated": false,
+  "critical_override_applied": false,
+  "discord_post_status": null,
+  "discord_message_id": null,
+  "flash_queue_updated": false,
+  "source_health_changes": [
+    "mandiant_failure_count_8_to_9",
+    "x_cisagov_failure_count_0_to_1"
+  ],
+  "cve_2026_0300_lineage_corroboration": "none",
+  "sentinel_raw_signal": "threats/raw-signal/raw-2026-05-10-flash-0600-000-sentinel-clean-sweep.md",
+  "trigger_outcomes": {
+    "trigger_1_critical_cve_exploited": false,
+    "trigger_2_tracked_actor_attribution": false,
+    "trigger_3_first_party_ioc_hit": false,
+    "trigger_4_tracked_actor_ttp_change": false,
+    "trigger_5_ad_sector_campaign": false,
+    "trigger_6_zero_day_no_patch": false
+  }
+}

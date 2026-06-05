@@ -1,0 +1,9 @@
+# ⚡ FLASH: Gogs self-hosted Git zero-day RCE — Rapid7 discloses after 60+ days of vendor silence; no patch, no CVE assigned
+
+*2026-05-28 12:40 EDT · A2 · WEP likely · TLP:CLEAR · posts immediately, within active hours*
+
+**Action.** There is no patch. DIB engineering teams running self-hosted Gogs (versions **0.14.2** and **0.15.0+dev**): (1) inventory Internet-exposed Gogs instances now — Shadowserver tracks 2,400+ globally, Shodan 1,000+; (2) **disable open registration** on every deployed instance (admin → site settings → `DISABLE_REGISTRATION = true`) — this collapses the effective pre-auth attack surface to known-user only; (3) restrict Gogs admin and web surfaces to VPN / IP allowlist; (4) monitor the Gogs upstream repository for a fix commit and CVE assignment. Gitea / Forgejo / GitLab / GitHub Enterprise deployments are **not affected** by this flaw.
+
+**What.** [Rapid7 senior security researcher Jonah Burges has disclosed](https://www.bleepingcomputer.com/news/security/new-gogs-zero-day-flaw-lets-hackers-get-remote-code-execution/) a zero-day argument-injection RCE in Gogs pull-request rebase handling — malicious branch names passed to `git rebase` during the "Rebase before merging" flow enable arbitrary command execution. A registered user account is technically required, but Gogs ships with **open registration enabled by default**, so any reachable instance is effectively pre-auth. Rapid7 reported the flaw to maintainers on **2026-03-17**, was acknowledged on 2026-03-28, and disclosed publicly today after 60+ days of vendor silence. **No CVE assigned. No patch.**
+
+-# (part 1/3)

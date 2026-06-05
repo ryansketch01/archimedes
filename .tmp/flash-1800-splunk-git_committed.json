@@ -1,0 +1,23 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-20260513-181500",
+  "commit_sha": "0418647",
+  "branch": "main",
+  "remote": "origin",
+  "push_status": "pushed",
+  "catchup_push_exit": 0,
+  "files_changed": 8,
+  "insertions": 2422,
+  "deletions": 12,
+  "commit_subject": "flash: 2026-05-13 18:00 — Symantec attributes Q1 2026 multi-victim espionage campaign to MuddyWater (A2, likely) — ChromElevator + SentinelOne-component DLL sideloading",
+  "brief_id": "flash-2026-05-13-1800",
+  "finding_id": "finding-2026-05-13-FLASH-1800-0001",
+  "actor_id": "022",
+  "gitleaks_result": "no_leaks_found",
+  "gitleaks_bytes_scanned": 173330,
+  "source_grades_changes": ["symantec_added_provisional_A", "industrialcyber-co_added_provisional_B_with_relay_conflation_caveat"],
+  "ioc_index_regenerated": true,
+  "ioc_index_indicator_delta": 4,
+  "ioc_index_total_before": 128,
+  "ioc_index_total_after": 132
+}

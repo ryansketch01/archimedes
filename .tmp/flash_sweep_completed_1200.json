@@ -1,0 +1,26 @@
+{
+  "event_type": "flash_sweep_completed",
+  "run_id": "librarian-20260526-120500",
+  "sweep_id": "flash-2026-05-26-1200",
+  "sweep_type": "flash-midday-manual",
+  "manual": true,
+  "invocation": "operator /flash manual midday",
+  "status": "clean",
+  "triggers_fired": 0,
+  "triggers_evaluated": 6,
+  "items_evaluated": 15,
+  "ioc_hits": 0,
+  "window": {
+    "start": "2026-05-26T06:00:00-04:00",
+    "end": "2026-05-26T12:05:00-04:00",
+    "duration_h": 6.08
+  },
+  "prior_sweep_anchor": "flash-2026-05-26-0600",
+  "prior_brief_anchor": "2026-05-26-morning",
+  "sentinel_raw_id": "raw-2026-05-26-flash-1200-000-sentinel-clean-sweep.md",
+  "discord_post_status": null,
+  "discord_channel": null,
+  "git_commit_sha": "95a1df8a68c0e90f268bb925bdb58db7759deec3",
+  "git_branch": "main",
+  "source_health_notes": "Mandiant RSS recovery confirmed for 3rd consecutive sweep; runtime flip deferred to PM-26 pre-brief"
+}

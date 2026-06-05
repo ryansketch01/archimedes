@@ -1,0 +1,20 @@
+{
+  "event_type": "finding_promoted",
+  "run_id": "librarian-20260514-080045",
+  "finding_id": "finding-2026-05-14-0001",
+  "promoted_by": "grader",
+  "grading_run_id": "morning-20260514-080000",
+  "brief_id": "2026-05-14-morning",
+  "finding_path": "threats/findings/finding-2026-05-14-0001.md",
+  "digraph": "A2",
+  "source_reliability": "A",
+  "credibility": 2,
+  "wep_ceiling": "likely",
+  "single_source_veto_applied": true,
+  "topic": "FrostyNeighbor / UNC1151 / Ghostwriter — ESET 2026-03+ Ukrtelecom spearphishing campaign",
+  "primary_source": "eset",
+  "related_actors_non_roster": ["UNC1151"],
+  "new_actor_candidate_flagged": true,
+  "analyst_review_complete": true,
+  "red_team_review_required": false
+}

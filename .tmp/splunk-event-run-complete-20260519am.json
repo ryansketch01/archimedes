@@ -1,0 +1,37 @@
+{
+  "event_type": "run_complete",
+  "run_id": "librarian-recovery-20260519-143200",
+  "phase": "librarian-recovery",
+  "mode": "post_scheduled_recovery",
+  "status": "success",
+  "brief_id": "2026-05-19-morning",
+  "recovery_operation": true,
+  "original_task_result": 267014,
+  "original_task_result_decoded": "SCHED_S_TASK_TERMINATED (0x41306)",
+  "original_task_run_time": "2026-05-19T08:00:01-04:00",
+  "recovery_run_time": "2026-05-19T14:32:24-04:00",
+  "recovery_complete_time": "2026-05-19T14:35:00-04:00",
+  "recovery_run_by": "operator",
+  "phases_executed": [
+    "preflight_check",
+    "status_flip_draft_to_published",
+    "legal_policy_content_scan",
+    "source_health_diff_application",
+    "layer_2_extraction",
+    "discord_post_intel_briefs",
+    "splunk_brief_published_event",
+    "git_add_commit_push",
+    "splunk_git_committed_event",
+    "splunk_run_complete_event"
+  ],
+  "phases_skipped_out_of_scope": [
+    "back_write_published_in_briefs (already complete)",
+    "ioc_master_index_regeneration (no IOC files modified)",
+    "finding_files_commit (out of recovery scope)",
+    "raw_signal_files_commit (out of recovery scope)"
+  ],
+  "anomalies_observed": [
+    "infrastructure/source-health.yaml is gitignored — diff applied to working tree but file is intentionally outside git history per .gitignore line 61",
+    "Two sources in the diff (thehackernews + darkreading) have no top-level source-health entries yet — deferred to collector-driven first-entry creation rather than librarian-side speculative addition"
+  ]
+}

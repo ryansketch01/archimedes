@@ -1,0 +1,37 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-20260521-160045",
+  "commit_hash": "8126c22",
+  "branch": "main",
+  "files_changed": 17,
+  "insertions": 4910,
+  "deletions": 8,
+  "files_added": [
+    "threats/briefs/2026-05-21-afternoon.md",
+    "threats/findings/finding-2026-05-21-0008.md",
+    "threats/findings/finding-2026-05-21-0009.md",
+    "threats/findings/finding-2026-05-21-0010.md",
+    "threats/findings/finding-2026-05-21-0011.md",
+    "threats/findings/finding-2026-05-21-0012.md",
+    "threats/findings/finding-2026-05-21-0013.md",
+    "threats/raw-signal/raw-2026-05-21-pm-000-sentinel-pre-brief-sweep.md",
+    "threats/raw-signal/raw-2026-05-21-pm-001-cisa-kev-double-add-langflow-trend-micro-apex-one.md",
+    "threats/raw-signal/raw-2026-05-21-pm-002-bleepingcomputer-chromium-service-worker-rce-google-accidental-issue-tracker-exposure.md",
+    "threats/raw-signal/raw-2026-05-21-pm-003-nasa-fprime-cve-2026-41144-spacecraft-flight-software-rce-cna-vendor-cvss-divergence.md",
+    "threats/raw-signal/raw-2026-05-21-pm-004-unit42-npm-threat-landscape-may21-managed-threat-hunting-cortex-xdr-koi-update.md",
+    "threats/raw-signal/raw-2026-05-21-pm-005-rapid7-q1-2026-threat-landscape-vuln-exploit-overtakes-social-engineering-iav.md",
+    "threats/raw-signal/raw-2026-05-21-pm-006-cisa-ics-batch-5-abb-br-automation-studio-cvss-9-8-hitachi-energy-gms600.md",
+    "threats/raw-signal/raw-2026-05-21-pm-007-isc-bind-9-cve-2026-3593-doh-heap-uaf-vendor-vs-nvd-cvss-divergence-unbound-adjacency.md"
+  ],
+  "files_modified": [
+    "threats/briefs/_coverage-log.yaml",
+    "threats/findings/_rejection-log.yaml"
+  ],
+  "brief_id": "2026-05-21-afternoon",
+  "brief_type": "afternoon",
+  "gitleaks_result": "clean",
+  "push_target": "origin/main",
+  "push_exit_code": 0,
+  "push_status": "pushed",
+  "tlp": "CLEAR"
+}

@@ -1,0 +1,18 @@
+{
+  "event_type": "grade_revision",
+  "run_id": "librarian-flash-1200-20260528",
+  "change_type": "new_source_provisional",
+  "source_id": "arctic-wolf",
+  "old_grade": null,
+  "new_grade": "B",
+  "category": "vendor_ir_research_firm",
+  "provisional": true,
+  "awaiting_ratification": true,
+  "ratification_clock": "2026-05-31T12:35:00-04:00",
+  "first_citation_finding": "finding-2026-05-28-FLASH-1200-0001",
+  "first_citation_brief": "flash-2026-05-28-1200-001-forticlient-ems-cve-2026-35616-arctic-wolf-active-exploitation",
+  "precedent_class": "vendor_ir_research_firm_stepsecurity_socket_sysdig_zellic_ox_upwind",
+  "human_review_required": false,
+  "actor_review_posted": false,
+  "reason_for_no_review": "new_provisional_at_conservative_starting_grade_not_a_downgrade"
+}

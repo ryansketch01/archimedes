@@ -1,0 +1,24 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-flash-1200-20260528",
+  "commit_sha": "ac6cb7f",
+  "branch": "main",
+  "subject": "flash: 2026-05-28 1200 - FortiClient EMS CVE-2026-35616 Arctic Wolf ITW (B2) + Gogs zero-day RCE Rapid7 no-patch (A2)",
+  "files_changed": 12,
+  "insertions": 2050,
+  "deletions": 7,
+  "pushed": true,
+  "push_target": "origin/main",
+  "gitleaks_result": "no_leaks_found",
+  "artifacts": [
+    "threats/briefs/2026-05-28-flash-1200-001-forticlient-ems-cve-2026-35616-arctic-wolf-active-exploitation.md",
+    "threats/briefs/2026-05-28-flash-1200-002-gogs-zero-day-rce-rapid7-disclosure-no-patch.md",
+    "threats/findings/finding-2026-05-28-FLASH-1200-0001-securityweek-forticlient-ems-cve-2026-35616-fresh-exploitation-arctic-wolf.md",
+    "threats/findings/finding-2026-05-28-FLASH-1200-0002-bleepingcomputer-gogs-zero-day-rce-rapid7-jonah-burges-no-patch.md",
+    "infrastructure/source-grades.yaml",
+    "infrastructure/source-grade-log.md",
+    "infrastructure/watch-config.yaml",
+    "threats/briefs/_coverage-log.yaml",
+    "threats/findings/_rejection-log.yaml"
+  ]
+}

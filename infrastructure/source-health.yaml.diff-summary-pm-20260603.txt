@@ -1,0 +1,63 @@
+source-health.yaml diff summary — 2026-06-03 PM pre-brief sweep
+================================================================
+
+Collector run: pre-brief-20260603-153000
+Mode: pre_brief_collection (Mode 1)
+Window: 2026-06-03T07:30 → 15:30 EDT (8h with 14h look-back tolerance)
+
+Per doctrine, the collector must distinguish runtime fields (status, last_successful_fetch,
+failure_count, stale_since, last_error) from operator-set fields (notes and any
+unrecognized keys, preserved verbatim).
+
+This sweep produced NO status changes, NO stale flips, NO recoveries, NO failure_count
+changes. Notes preserved verbatim across all entries.
+
+Proposed runtime-field updates (last_successful_fetch advance only) — to be applied
+by librarian Mode 3 or via direct YAML edit in the same pattern as prior PM-diff-summary
+files:
+
+Sources successfully fetched this sweep (RSS / WebFetch / KEV JSON), all healthy,
+all failure_count remained 0:
+
+  cisa-advisories:    last_successful_fetch → 2026-06-03T15:32:00-04:00  (1 in-window item: KEV-add alert)
+  cisa-kev:           last_successful_fetch → 2026-06-03T15:32:00-04:00  (full-catalog scan confirmed CVE-2026-45247 add)
+  nvd:                last_successful_fetch → (unchanged; not invoked this sweep — no fresh CVE lead required NVD lastModified pivot)
+  mandiant:           last_successful_fetch → 2026-06-03T15:33:00-04:00  (alt-endpoint rss.xml validated; 0 in-window; feedburner pattern unchanged at failure_count=22)
+  crowdstrike:        last_successful_fetch → (unchanged; not invoked this sweep beyond AM check; consistent dateless-marketing pattern)
+  mstic:              last_successful_fetch → 2026-06-03T15:33:00-04:00  (RSS parent-feed validated; 0 in-window; MSTIC Miasma piece from AM brief still most recent)
+  unit42:             last_successful_fetch → 2026-06-03T15:33:00-04:00  (feedburner validated; 0 in-window)
+  sans-isc:           last_successful_fetch → 2026-06-03T15:33:00-04:00  (rssfeed.xml validated; 1 in-window swagger.json scan diary, discarded as commodity-content)
+  krebs:              last_successful_fetch → 2026-06-03T15:33:00-04:00  (RSS validated; 0 in-window)
+  the-record:         last_successful_fetch → 2026-06-03T15:33:00-04:00  (RSS validated; 1 in-window CISA-staffing policy item, discarded as non-threat-intel)
+  bleepingcomputer:   last_successful_fetch → 2026-06-03T15:33:00-04:00  (RSS validated; 3 in-window items including HTTP/2 Bomb update — raw-2026-06-03-pm-004)
+  securityweek:       last_successful_fetch → 2026-06-03T15:33:00-04:00  (RSS validated; 5 in-window items including Kirki and stock-exchange — PM-002, PM-003)
+  rapid7:             last_successful_fetch → 2026-06-03T15:33:00-04:00  (RSS validated; 1 in-window marketing item, discarded)
+  cisco-talos:        last_successful_fetch → 2026-06-03T15:33:00-04:00  (RSS validated; 0 in-window)
+  (theregister, securityaffairs, thehackernews — no top-level source-health entries
+   yet exist for these; tracked via runtime use, consistent with prior collector
+   sweeps. Deferred to subsequent first-entry creation if/when librarian decides.)
+
+Splunk indexes:
+
+  splunk-archimedes:   last_successful_fetch → 2026-06-03T15:32:00-04:00  (targeted 24h IOC + actor + malware-family query; 0 non-archimedes-internal hits)
+  splunk-defenseclaw:  last_successful_fetch → 2026-06-03T15:32:00-04:00  (targeted 24h IOC + actor + malware-family query; 0 non-archimedes-internal hits)
+
+Sources skipped per status:stale (under-24h rule or persistent stale, no retry):
+
+  msrc:           stale since 2026-05-30 (feed parse error 4x consecutive)
+  ars-security:   stale since 2026-05-09 (endpoint 404, workaround in use on root feed)
+  x-cisagov:      stale since 2026-05-10 (nitter.net bridge fragility)
+  x-gossithedog:  stale since 2026-05-09 (account delisted on nitter.net)
+  sophos:         stale since 2026-05-17 (RSS path retired)
+
+No status changes this sweep.
+No failure_count changes this sweep.
+No new top-level entries created this sweep.
+No stale flips.
+No recoveries.
+No last_error changes.
+Operator notes preserved verbatim across all entries.
+
+_meta.notes recommended append (to be applied by librarian if running Mode 3 source-health update):
+
+  - "2026-06-03 15:30 pre-brief sweep: PRODUCTIVE — 5 raw-signal files written (PM-001 through PM-005) + sentinel PM-000. 1 item held below threshold (Acer Wave 7 CVE-2026-49200/49201, no ITW, no PoC, consumer mesh router — not raw-signaled, flagged in sentinel). PM-001 = CISA KEV add CVE-2026-45247 Mirasvit Magento PHP deserialization unauth RCE, CVSS 9.8, compressed 3-day federal due date 2026-06-06, Sansec originating, Imperva ITW telemetry. PM-002 = Symantec Threat Hunter Team + Carbon Black 150-day stock-exchange executive Outlook mailbox theft, no actor attribution, no A&D entity, but reusable TTPs (Aspose-wrapper OST→PST, Dropbox/OneDrive Personal exfil, hardcoded Microsoft IPs to bypass DNS logging) and published IOCs at security.com. PM-003 = SecurityWeek/Defiant CVE-2026-8206 Kirki WordPress plugin ITW (thousands of attacks in 24h per Wordfence). PM-004 = BleepingComputer HTTP/2 Bomb update with per-server timing + amplification ratios, update-on AM finding-0003, no ITW. PM-005 = The Register Microsoft-disclosure-policy arc meta-coverage; Nightmare-Eclipse explicit 6 zero-days / 3 ITW count + StarLabs reference; arc data-point count remains at 4 (NOT a fifth data point per AM watch_signal definition). 0 first-party Splunk hits. No tracked-roster actor activity in window. No tracked-vuln update on _index.yaml entries. vuln-watch keyword gogs-argument-injection-2026-05-28 has no in-window activity (CVE-assignment window begins 2026-06-04). No source-health status changes; no failure-count changes."

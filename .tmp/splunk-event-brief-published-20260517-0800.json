@@ -1,0 +1,41 @@
+{
+  "event_type": "brief_published",
+  "run_id": "librarian-20260517-080000",
+  "brief_id": "2026-05-17-morning",
+  "brief_type": "morning",
+  "preflight_result": "passed",
+  "tlp": "CLEAR",
+  "discord_channel": "intel-briefs",
+  "discord_message_id": "1505546204279214241",
+  "discord_post_status": 200,
+  "findings_count": 1,
+  "findings_referenced": [
+    "finding-2026-05-17-0001",
+    "finding-2026-05-16-0001",
+    "finding-2026-05-16-0002",
+    "finding-2026-05-16-0003",
+    "finding-2026-05-15-0002",
+    "finding-2026-05-14-0005",
+    "finding-2026-05-15-FLASH-0001"
+  ],
+  "layer_1_word_count": 778,
+  "layer_2_word_count": 277,
+  "layer_2_char_count": 1991,
+  "brief_path": "threats/briefs/2026-05-17-morning.md",
+  "absorbs_flash": [],
+  "related_vulns": ["CVE-2026-20182", "CVE-2026-42897", "CVE-2026-42945"],
+  "consecutive_dormant_splunk_sweep_count": 35,
+  "hard_rule_2_framings_load_bearing_count": 5,
+  "hard_rule_6_quotes_in_brief": 0,
+  "hard_rule_8_first_party_splunk_hits": 0,
+  "carry_forwards": [
+    "CVE-2026-20182_KEV_T_0_federal_deadline_today",
+    "CVE-2026-42897_KEV_T_minus_12d",
+    "Symantec_Fast16_provisional_A_ratification_clock_T_plus_13h_pending_operator_pass",
+    "NGINX_Rift_PoC_no_new_exploitation_signal",
+    "Pwn2Own_Berlin_Day2_Exchange_chain_embargo_unchanged",
+    "Turla_Kazuar_D2_relay_duplicate_locked"
+  ],
+  "layer_2_heading_dropped_for_2000char_compliance": true,
+  "notes": "Layer 2 extraction dropped the '## Discord Summary' heading line to fit Discord 2000-char single-message limit (2014 chars with heading vs 1991 without). Body content unchanged. Briefer Layer 2 word count is in spec (277, target 150-300); the heading itself pushed over by 23 chars."
+}

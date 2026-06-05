@@ -1,0 +1,370 @@
+# Source-health diff summary — 2026-05-16 15:30 pre-brief collection sweep (PM)
+#
+# Collector-emitted runtime-state change instructions to be applied by the
+# librarian during the afternoon brief commit phase. NOT part of the on-disk
+# source-health schema; side artifact for traceability + librarian handoff.
+#
+# RULE: Operator-set `notes:` and any unrecognized keys are PRESERVED VERBATIM.
+# Only runtime fields are modified: status, last_successful_fetch, failure_count,
+# stale_since, last_error. The `notes_append_text` directives append to the
+# existing notes string (do NOT replace).
+#
+# This diff-summary captures source-health observations from the 15:30 pre-brief
+# sweep. The 11:30 on-demand FLASH sweep (commit 9bc608f) was clean and emitted
+# changes via splunk event only (no diff-summary). This PM diff captures the
+# 8h pre-brief window (07:30 → 15:30 EDT).
+
+sweep_metadata:
+  run_id: pre-brief-20260516-153000
+  sweep_time: 2026-05-16T15:30:00-04:00
+  collection_mode: pre_brief_collection
+  window_start: 2026-05-16T07:30:00-04:00
+  window_end: 2026-05-16T15:30:00-04:00
+  window_hours: 8
+  raw_signal_files_written: 2    # pm-000 sentinel + pm-001 Symantec Fast16 historical-research (LS-DYNA + AUTODYN simulation-toolchain target set, A&D-sector-adjacent)
+  substantive_raw_signals: 1
+  flash_candidates: 0
+  health_changes_count: 7        # 1 recovery (symantec) + 6 second-consecutive-failure increments
+  first_citation_flags_for_operator: 0   # No new sources; Symantec Fast16 is the 2nd corpus citation for Symantec (within the 72h ratification clock to 2026-05-16T18:25)
+
+top_level_metadata_updates:
+  last_updated: 2026-05-16T15:30:00-04:00
+
+source_runtime_updates:
+
+  # ==========================================================================
+  # Productive this sweep (fetched + items returned + raw-signaled)
+  # ==========================================================================
+
+  - source_yaml_id: symantec
+    field_updates:
+      status: healthy
+      last_successful_fetch: 2026-05-16T15:35:00-04:00
+      failure_count: 0          # 1 → 0 RECOVERED
+      stale_since: null
+      last_error: null
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: RECOVERED. RSS feed path security.com/feeds/blog.xml + symantec-enterprise-blogs.security.com/feed STILL 404 BUT index-page WebFetch on security.com/threat-intelligence PRODUCTIVELY surfaced today's Fast16 post (2026-05-16 publication, 8-min read, Threat Hunter Team + Carbon Black byline) — "Fast16: Pre-Stuxnet Sabotage Tool Was Built to Subvert Nuclear Weapons Simulations" (URL: security.com/threat-intelligence/fast16-nuclear-sabotage). Captured in raw-2026-05-16-pm-001-symantec-fast16-pre-stuxnet-nuclear-simulation-sabotage.md as A&D-sector-adjacent historical research (LS-DYNA + AUTODYN simulation-toolchain target set, 2005-era framework, builds on SentinelLABS April 2026 originating research). SECOND corpus citation for Symantec (first was finding-2026-05-13-FLASH-1800-0001 MuddyWater/Seedworm). Right at the 72h ratification clock endpoint (T-2h45m from this sweep at 18:25:00 EDT). NOT a FLASH candidate (0 of 6 triggers fire — no CVE, no active exploitation, no roster actor, no IOCs, historical-research). Routes to afternoon brief regular flow. Failure_count reset 1→0; index-page WebFetch is the working substitute for the broken RSS feed path; operator may want to add the index-page surface to the collector sweep config as the primary path for Symantec, with RSS as the fallback (inverted from typical pattern given the RSS feed paths consistently 404).
+
+  # ==========================================================================
+  # Healthy this sweep, 0 items in window (productive A-grade primaries)
+  # ==========================================================================
+
+  - source_yaml_id: bleepingcomputer
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: RSS reachable (status 200, last_modified 2026-05-16T19:21:52 GMT in-window from feed-server activity), 1 item in 8h window after since-filter — "Russian hackers turn Kazuar backdoor into modular P2P botnet" (Bill Toulas, 2026-05-16T14:15 UTC = 10:15 EDT). WebFetch verified: PURE RELAY of MSTIC primary; cites Microsoft directly; NO new IOCs; NO new victims; NO new attribution (repeats Secret Blizzard / Turla / FSB designations); NO CVE. DUPLICATE-LOCKED against finding-2026-05-14-0006 (MSTIC primary, A1) + reject-2026-05-16-0001 (THN morning relay rejected by grader). Anti-noise lock `turla-kazuar-relay` active since 2026-05-15 18:00 (commit a76b9f1). DISCARDED — no raw signal written.
+
+  - source_yaml_id: thehackernews
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-16T19:18:50 GMT in-window from feed-server activity), 1 item in 8h window after since-filter — "Funnel Builder Flaw Under Active Exploitation Enables WooCommerce Checkout Skimming" (2026-05-16T15:20 UTC = 11:20 EDT). WebFetch confirmed: WordPress plugin (Funnel Builder versions < 3.15.0.3); NO official CVE; commodity WooCommerce checkout skimmer targeting 40,000+ stores; originating research = Sansec (Dutch e-commerce security firm, NO prior Archimedes-corpus citation — would be provisional-C on first surface per Trendyol-Albayrak / LayerX precedent if cited as primary); NO A&D / NO roster actor / NO tracked vuln; ONE IOC observed (`wss://protect-wss[.]com/ws`); DISCARDED per Mode 1 procedure (no watchlist / roster / vuln-index hit). NOT raw-signaled. Sansec flagged for operator awareness as potential future source-grade-log expansion if subsequent surfaces show consistent rigor.
+
+  - source_yaml_id: securityweek
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-16T12:45:50 GMT = 08:45 EDT inside window from feed-server activity), 0 items in 8h window after since-filter. The NGINX Rift PoC item from this morning's 06:00 FLASH (Ionut Arghire) is now ~9h aged and pre-window. No new SecurityWeek posts in afternoon window.
+
+  - source_yaml_id: krebs
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-16T19:24:22 GMT = 15:24 EDT inside window from feed-server activity, but no new posts since 2026-05-13), 0 items in 8h window. Multi-day Krebs cadence; Saturday-pattern-consistent.
+
+  - source_yaml_id: the-record
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: feed reachable (status 200), 0 items in 8h window. Saturday-quiet pattern.
+
+  - source_yaml_id: mstic
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: parent feed reachable (status 200, last_modified 2026-05-14T21:51:24 GMT pre-window — unchanged across morning and afternoon sweeps), 0 items in 8h window. MSTIC quiet through weekend; Kazuar primary from 2026-05-14 remains most recent MSTIC content. The Hacker News + BleepingComputer Day 2/D+2 relays both already duplicate-locked.
+
+  - source_yaml_id: unit42
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: feedburner reachable (status 200, last_modified 2026-05-15T19:46:17 GMT pre-window), 0 items in 8h window. Quiet weekend pattern.
+
+  - source_yaml_id: cisco-talos
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: blog.talosintelligence.com/rss/ reachable (status 200), 0 items in 8h window. Saturday-quiet pattern.
+
+  - source_yaml_id: securelist
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: securelist.com/feed/ reachable (status 200, last_modified 2026-05-15T10:15:14 GMT pre-window), 0 items in 8h window. Saturday-quiet pattern.
+
+  - source_yaml_id: eset
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: WeLiveSecurity feed (welivesecurity.com/en/rss/feed/) reachable (status 200), 0 items in 8h window.
+
+  - source_yaml_id: sentinelone
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: SentinelLabs feed reachable (status 200, last_modified 2026-05-15T19:30:15 GMT pre-window), 0 items in 8h window. The April 2026 originating Fast16 research from SentinelLabs is referenced by Symantec in today's Fast16 corroboration piece (see raw-2026-05-16-pm-001) but is itself an older publication outside the 8h window — anti-noise applies if the briefer or grader wants to retrieve the SentinelLabs primary they'd do so via the corroborating-context retrieval path, not as fresh raw-signal.
+
+  - source_yaml_id: sans-isc
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: rssfeed.xml reachable (status 200, last_modified 2026-05-16T19:29:05 GMT in-window from feed-server activity), 0 items in 8h window.
+
+  - source_yaml_id: rapid7
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: RSS reachable (status 200, last_modified 2026-05-16T19:16:28 GMT = 15:16 EDT inside window from feed-server activity but no new posts published), 0 items in 8h window.
+
+  - source_yaml_id: cisa-advisories
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: all.xml reachable via fetch_feed (status 200, 30 items in feed total), 0 items in 8h window after since-filter. CISA quiet through weekend.
+
+  - source_yaml_id: cisa-kev
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: KEV JSON catalog WebFetch-confirmed; ZERO new entries dated 2026-05-16. Most-recent remains CVE-2026-42897 (Microsoft Exchange Server, dateAdded 2026-05-15, dueDate 2026-05-29 = T-13 today). CVE-2026-20182 (Cisco SD-WAN, dateAdded 2026-05-14, dueDate 2026-05-17 = T-1 tomorrow / Sunday). Carry-forward state for evening + Monday morning brief.
+
+  - source_yaml_id: snyk
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: snyk.io/blog/feed/ reachable (status 200), 0 items in 8h window (5 items total in feed; cadence multi-day).
+
+  - source_yaml_id: darktrace
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: darktrace.com/blog/rss.xml reachable (status 200, last_modified 2026-05-16T00:51:49 GMT pre-window), 0 items in 8h window. Darktrace blog RSS path WORKED this sweep — improvement vs. yesterday's 404 noted in 2026-05-15 PM diff-summary (the /rss vs /rss.xml subpath was the issue). Recommend `darktrace.com/blog/rss.xml` (with .xml suffix) as canonical path going forward.
+
+  - source_yaml_id: zdi-blog
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: thezdi.com/blog/?format=rss reachable (status 200), 0 items in 8h window after since-filter. Day 3 Pwn2Own wrap from this morning (AM-001 raw signal) was published 2026-05-16 (date-only, no time stamp) and is now ~7h aged; the since-filter at 08:00 EDT excludes it from this PM window. Index-page WebFetch confirmed top-5 unchanged (Day Three, Day Two, Day One, Schedule, May 2026 Patch Tuesday Review). Day 2 Exchange chain embargo continues — no embargo-lift signal.
+
+  - source_yaml_id: cybersecurity-dive
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-15T15:20:47 GMT pre-window), 0 items in 8h window. Saturday-quiet pattern.
+
+  - source_yaml_id: check-point-research
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: research.checkpoint.com/feed/ reachable (status 200, last_modified 2026-05-14T13:56:25 GMT pre-window), 0 items in 8h window. Note: Check Point Research is not yet a tracked source in source-grades.yaml — first surface for this collector run. Provisional B grade if/when first cited (Tier-1 vendor research practice, named-analyst-byline track record on APT and malware research). Operator action: consider source-grade-log expansion candidate if Check Point Research publishes a corpus-citable item.
+
+  - source_yaml_id: crowdstrike
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-16T12:28:00 GMT = 08:28 EDT inside window from feed-server activity), 10 items in feed all dateless marketing/MQ rotation IDENTICAL to morning sweep. Pattern unchanged: top-of-list "Now Live: The CrowdStrike 2026 Financial Services Threat Landscape Report" (Counter Adversary Operations), then "Falcon AIDR Detects Threats at the Prompt Layer in Kubernetes AI Applications" (Karishma Asthana), then "May 2026 Patch Tuesday: 30 Critical Vulnerabilities Among 130 CVEs" (Falcon Exposure Management Team), then internal-tooling/automation/marketing/Gartner-MQ items. TWENTY-SIXTH+ consecutive sweep of dateless marketing/MQ rotation; pattern stable since 2026-05-08 PM. No threat-intel content surfaced this window. Operator decision long-pending: whether crowdstrike.com/blog/feed/ is the right endpoint for threat-research content vs. a marketing-rotation endpoint.
+
+  # ==========================================================================
+  # Soft-fail observations — second consecutive failures at ≥2 stale threshold,
+  # all held healthy this sweep pending next-sweep retry per the held-healthy
+  # discipline (avoids stale-flip thrash on oscillation patterns)
+  # ==========================================================================
+
+  - source_yaml_id: sophos
+    field_updates:
+      failure_count: 2          # 1 → 2 (AT ≥2 stale threshold)
+      status: healthy           # held healthy at threshold
+      last_error: |
+        2026-05-16 15:30 pre-brief: news.sophos.com/en-us/feed/ returned 404 again — second consecutive failure (also 07:30 morning sweep). failure_count 1→2 (AT ≥2 stale threshold). Held healthy this sweep pending next-sweep retry; recommend stale flip if 3rd consecutive failure. Feed path likely retired or moved; operator action — re-discover working Sophos / X-Ops RSS endpoint (try news.sophos.com/feed/ root path per 2026-05-11 prior-recovery observation, which is what the 2026-05-15 PM diff-summary captured as the working path).
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: news.sophos.com/en-us/feed/ 404 second consecutive (also 07:30 morning). Held healthy at threshold pending next-sweep retry. Recommend operator action: confirm `news.sophos.com/feed/` (root path) is the canonical Sophos / X-Ops RSS endpoint, and update source-grades.yaml urls list accordingly. The /en-us/feed/ subpath appears to be returning 404 consistently while the root path /feed/ recovered productively in the 2026-05-11 00:00 FLASH and was used by the 2026-05-15 PM sweep successfully.
+
+  - source_yaml_id: volexity
+    field_updates:
+      failure_count: 2          # 1 → 2 (AT ≥2 stale threshold)
+      status: healthy           # held healthy at threshold
+      last_error: |
+        2026-05-16 15:30 pre-brief: volexity.com/blog/feed/ returned XML parse error again — second consecutive failure (also 07:30 morning sweep). failure_count 1→2 (AT ≥2 stale threshold). Held healthy this sweep pending next-sweep retry. Body returns but cannot be parsed as RSS/Atom (malformed XML at <unknown>:17:68: not well-formed invalid token). Operator action — diagnose XML emission server-side or identify alternate feed path.
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: volexity.com/blog/feed/ second consecutive XML parse error (also 07:30 morning). The parse failure is at row 17 column 68, indicating a malformed character partway through the body — suggests server emits a body that begins valid XML but contains an invalid token mid-stream. May be a feed-renderer bug or character-encoding mismatch on Volexity's side. Held healthy at threshold pending next-sweep retry.
+
+  - source_yaml_id: bitdefender
+    field_updates:
+      failure_count: 2          # 1 → 2 (AT ≥2 stale threshold)
+      status: healthy           # held healthy at threshold
+      last_error: |
+        2026-05-16 15:30 pre-brief: bitdefender.com/blog/labs/feed/ returned 404 again — second consecutive failure (also 07:30 morning sweep). failure_count 1→2 (AT ≥2 stale threshold). Held healthy this sweep pending next-sweep retry; recommend stale flip if 3rd consecutive failure. Feed path likely retired; operator action — re-discover working Bitdefender Labs RSS endpoint.
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: bitdefender.com/blog/labs/feed/ second consecutive 404 (also 07:30 morning + 06:00 FLASH). Index-page WebFetch on businessinsights.bitdefender.com previously worked for surfacing the FamousSparrow primary 2026-05-13 — the corporate-insights surface remains the productive content path; the /labs/feed/ RSS path appears to have been retired. Held healthy at threshold pending next-sweep retry. Operator action: identify working Bitdefender Labs RSS endpoint or commit to the businessinsights index-page WebFetch fallback as the canonical Bitdefender surface (analogous to the Symantec security.com index-page-fallback pattern observed this sweep).
+
+  - source_yaml_id: industrialcyber-co
+    field_updates:
+      failure_count: 2          # 1 → 2 (AT ≥2 stale threshold)
+      status: healthy           # held healthy at threshold
+      last_error: |
+        2026-05-16 15:30 pre-brief: industrialcyber.co/feed/ returned 403 bot-block again — second consecutive failure (also 07:30 morning sweep). failure_count 1→2 (AT ≥2 stale threshold). Held healthy this sweep pending operator bot-bypass strategy or alternate-endpoint identification.
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: industrialcyber.co/feed/ second consecutive 403 (also 07:30 morning). WAF / Akamai bot-block pattern entrenched. Held healthy at threshold pending operator bot-bypass strategy. The relay-layer-conflation observation on first surface (2026-05-13 FLASH 18:00) remains the canonical reason Industrial Cyber relays need scrutiny when they ARE retrieved.
+
+  - source_yaml_id: wiz-research
+    field_updates:
+      failure_count: 2          # 1 → 2 (AT ≥2 stale threshold)
+      status: healthy           # held healthy at threshold
+      last_error: |
+        2026-05-16 15:30 pre-brief: wiz.io/blog feed paths (/rss.xml + /feed/) all 404 again — second consecutive failure (also 07:30 morning sweep). failure_count 1→2 (AT ≥2 stale threshold). Held healthy this sweep pending next-sweep retry. Base wiz.io/blog URL works for index-page WebFetch fallback. Operator action — identify working Wiz Research RSS endpoint.
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: wiz.io/blog RSS paths second consecutive 404 (also 07:30 morning). Wiz may not publish a stable RSS endpoint by design (consistent with prior 2026-05-15 PM observation). Index-page WebFetch remains the productive surface when threat-research content publishes. Held healthy at threshold pending operator path-decision (accept the no-RSS pattern and configure index-page WebFetch as canonical, or wait for Wiz to publish stable RSS).
+
+  - source_yaml_id: socket
+    field_updates:
+      failure_count: 2          # 1 → 2 (AT ≥2 stale threshold)
+      status: healthy           # held healthy at threshold
+      last_error: |
+        2026-05-16 15:30 pre-brief: socket.dev/blog feed paths (/rss.xml + /feed/) all 404 again — second consecutive failure (also 07:30 morning sweep). failure_count 1→2 (AT ≥2 stale threshold). Held healthy this sweep pending next-sweep retry. Base socket.dev/blog URL works for index-page WebFetch fallback. Operator action — identify working Socket RSS endpoint.
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: socket.dev/blog RSS paths second consecutive 404 (also 07:30 morning). Same handling pattern as Wiz Research and Bitdefender — vendor likely does not publish stable RSS; index-page WebFetch remains the productive surface. Held healthy at threshold pending operator path-decision.
+
+  # ==========================================================================
+  # Mandiant — persistent feedburner 404 pattern (held healthy pending operator decision)
+  # ==========================================================================
+
+  - source_yaml_id: mandiant
+    field_updates:
+      status: healthy           # held healthy pending operator alt-endpoint decision (long-running pattern)
+      last_error: |
+        feedburner.com/Mandiant returned 404 on 2026-05-16T15:30 pre-brief sweep — pattern continues from twenty-fourth+ consecutive feedburner 404 (per 2026-05-15 PM diff-summary, failure_count was at 23). cloud.google.com/blog/topics/threat-intelligence index page WebFetch surfaced top-8 visible titles same as morning sweep (GTIG AI Threat Tracker, BlackFile vishing, UNC6692 Snow Flurries, AI Models Find Vulns Faster, German Cyber Überfall, vSphere BRICKSTORM Defender's Guide, North Korea Axios NPM, M-Trends 2026) — all previously triangulated as out-of-window per prior sweeps. Held healthy pending operator alt-endpoint decision.
+      # failure_count: not incremented this sweep — the 2026-05-15 PM diff-summary incremented to 23,
+      # not yet applied to on-disk yaml; pattern reflected via narrative only this sweep.
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: feedburner 404 pattern continues from yesterday afternoon's diff-summary (failure_count 23 in that summary, not yet applied to disk per the morning-sweep observation that prior diff-summaries are accumulating). cloud.google.com/blog/topics/threat-intelligence index-page WebFetch surfaced top-8 visible titles unchanged from morning sweep (GTIG AI Threat Tracker / BlackFile / UNC6692 / deSouza AI / Überfall / BRICKSTORM / Axios NPM / M-Trends 2026); all out-of-window per prior triangulations. Pattern fully entrenched.
+
+  # ==========================================================================
+  # Splunk first-party observations (collector summary)
+  # ==========================================================================
+
+  - source_yaml_id: splunk-archimedes
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: combined NOT sourcetype=archimedes:* across both indexes returns ZERO events over 24h. Targeted IOC keyword sweep across 16 tracked actor + 7 tracked CVE tokens over 24h returned 7 hits — ALL archimedes:operation pipeline self-references (this morning's brief publish/commit at 3cc6118, 11:30 FLASH operation at 9bc608f, finding promotions / rejections from morning grader run, 2026-05-15 afternoon brief publish). THIRTY-SECOND consecutive sweep with dormant non-archimedes-internal stream pattern carrying from yesterday afternoon's 27th in 2026-05-15 PM diff-summary through today's 28th (00:00 FLASH commit 0d1debe) / 29th (06:00 FLASH commit d2560d4) / 30th (08:00 morning brief commit 3cc6118) / 31st (11:30 on-demand FLASH commit 9bc608f) / 32nd (this PM sweep). Trigger 3 (first-party-ioc-hit) cannot fire on a dormant non-archimedes-internal stream.
+
+  - source_yaml_id: splunk-defenseclaw
+    field_updates:
+      last_successful_fetch: 2026-05-16T15:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-16 15:30 pre-brief sweep: same as splunk-archimedes — zero non-archimedes-internal events over 24h. defenseclaw_local index unchanged from longstanding dormant pattern (32nd consecutive sweep).
+
+  # ==========================================================================
+  # Stale-skipped this sweep
+  # ==========================================================================
+
+  # x-cisagov: stale since 2026-05-10 (nitter bridge fragility) — skipped per under-24h-pool rule
+  #   pending operator nitter alt-pool or direct-X-API decision.
+  #   This sweep TESTED nitter.net/CISAgov/rss and got 1 in-window response (promotional video about "regional teamwork")
+  #   which is the source itself being alive — confirming bridge-instance fragility, not account loss.
+  #   No top-level state-flip; operator action remains pending.
+  # x-gossithedog: stale since 2026-05-09 (nitter account delisted) — skipped pending alt-instance investigation.
+  # ars-security: stale since 2026-05-09 (security-only feed retired). Workaround in use via root path
+  #   (arstechnica.com/feed/) — not invoked this sweep (no in-window cyber/CTI content from root surface).
+  # iran-monitor: stale-soft since 2026-05-07 (403 WAF) — skipped pending workaround.
+  # threatfox + malwarebazaar + github-advisories: stale-soft — skipped pending workarounds.
+  # censys + urlscan + hibp: stale since 2026-05-05 (no MCP / no key) — skipped pending operator action.
+
+# ============================================================================
+# First-citation flags for operator (source-grade-log expansion candidates)
+# ============================================================================
+
+awaiting_operator_decision_for_source_grade_log:
+  # No new candidacies THIS sweep — but two prior-flagged items remain pending:
+  # 1. Ox Security (flagged 2026-05-15 PM diff-summary, raw-2026-05-15-pm-003 / finding-2026-05-15-0005);
+  #    promoted from "awaiting direct retrieval" to "awaiting human ratification" in source-grades.yaml.
+  # 2. Sansec (Dutch e-commerce security, surfaced as Funnel Builder originating research relayed by THN this sweep);
+  #    NOT a first-citation in the Archimedes corpus today because Sansec was not cited as primary in any raw
+  #    signal — the Funnel Builder item was DISCARDED Mode 1, so the citation chain was never opened.
+  #    Flag for awareness only; operator may add a forward-looking provisional grade if the orchestrator
+  #    expects Sansec to recur on commodity-checkout-skimmer surfaces.
+
+awaiting_operator_decision_for_new_actor:
+  # No new candidacies this sweep. Prior-flagged candidates (Secret Blizzard/Turla; Twill Typhoon/Mustang Panda;
+  # FrostyNeighbor/Ghostwriter/UNC1151; UAT-8616) remain unchanged from yesterday afternoon's diff-summary.
+
+# ============================================================================
+# Ratification clock checkpoint
+# ============================================================================
+
+ratification_clocks:
+  - source_yaml_id: symantec
+    provisional_grade: A
+    provisional_since: 2026-05-13T18:25:00-04:00
+    seventy_two_hour_clock_endpoint: 2026-05-16T18:25:00-04:00
+    status_at_this_sweep: |
+      T-2h45m from sweep time (15:30 EDT). Symantec's SECOND corpus citation just published 2026-05-16
+      (Fast16 historical-research piece captured in raw-2026-05-16-pm-001) — this lands just inside
+      the 72h ratification clock window. The second-citation surface STRENGTHENS the provisional-A
+      case: Symantec demonstrated independent technical-research output on a non-related research line
+      (Fast16 ≠ MuddyWater first-citation topic), confirming the vendor-research-practice signal
+      rather than narrow first-citation-dependent attribution. Operator decision pending; if no human
+      ratification by 18:25 EDT (T-2h45m), the provisional status carries forward per source-grade-log
+      protocol.
+
+# ============================================================================
+# End of diff-summary-pm — handoff to librarian for afternoon brief commit.
+# ============================================================================

@@ -1,0 +1,95 @@
+Source-health.yaml runtime-update diff summary — 2026-06-01 AM-1 pre-brief
+=========================================================================
+
+Run: pre-brief-20260601-073000 (Mode 1 - pre-brief collection)
+Window: 2026-05-31T17:30:00-04:00 -> 2026-06-01T07:30:00-04:00 (14h)
+Script: source-health.yaml.runtime-update-am-20260601.py (ruamel.yaml round-trip)
+
+Top-level
+---------
+- last_updated: 2026-05-19T07:30:00-04:00  ->  2026-06-01T07:30:00-04:00
+
+Sources productively swept (timestamp advance only)
+---------------------------------------------------
+Each entry below: last_successful_fetch advanced to '2026-06-01T07:30:00-04:00'.
+All other runtime fields (status, failure_count, stale_since, last_error) and
+all operator-set fields (notes) preserved verbatim.
+
+  cisa-advisories         (was 2026-06-01T06:05:00-04:00, alt sweep at FLASH-0600)
+  cisa-kev                (was 2026-06-01T06:05:00-04:00)
+  nvd                     (was 2026-06-01T06:05:00-04:00)
+  crowdstrike             (was 2026-06-01T06:05:00-04:00, dateless-RSS pattern continues)
+  mstic                   (was 2026-06-01T06:05:00-04:00, last_modified pre-window unchanged)
+  unit42                  (was 2026-06-01T06:05:00-04:00, last_modified pre-window unchanged)
+  sans-isc                (was 2026-06-01T06:05:00-04:00)
+  the-record              (was 2026-06-01T06:05:00-04:00)
+  bleepingcomputer        (was 2026-06-01T06:05:00-04:00, 1 in-window item discarded per Mode 1)
+  securityweek            (was 2026-05-19T07:30:00-04:00, PRODUCTIVE: 1 raw-signal AM-1-001 CIFSwitch)
+  rapid7                  (was 2026-06-01T06:05:00-04:00)
+  sentinelone             (was 2026-06-01T06:05:00-04:00, last_modified pre-window unchanged)
+  cisco-talos             (was 2026-06-01T06:05:00-04:00)
+
+Sources with material runtime changes
+--------------------------------------
+
+  mandiant:
+    last_successful_fetch: 2026-06-01T06:05:00-04:00 -> 2026-06-01T07:30:00-04:00
+    failure_count:         21 -> 22
+    last_error: updated to note 32nd consecutive feedburner 404; alt endpoint
+                mandiant.com/resources/blog/rss.xml continues to validate.
+
+  industrialcyber-co:
+    last_successful_fetch: (unchanged — no productive fetch on this run)
+    failure_count: 1 -> 2
+    status:        healthy -> stale   *** STALE FLIP ***
+    stale_since:   null -> 2026-06-01
+    last_error: updated to note SECOND tracked 403 from rss-bridge MCP
+                path (first was 2026-05-16 07:30); WAF/Akamai bot-block
+                pattern recurrence consistent with prior operator notes.
+                Operator action: verify endpoint posture or alt-UA
+                workaround.
+
+New first-time top-level entries (collector-bootstrapped)
+---------------------------------------------------------
+Per the 2026-05-19 librarian doctrine note (line ~533 of source-health.yaml
+_meta.notes block): collector-driven first-entry creation for sources not
+previously tracked. All bootstrapped at status=healthy, failure_count=0,
+last_successful_fetch=2026-06-01T07:30:00-04:00, with an explanatory
+`notes:` field documenting the first-entry rationale.
+
+  thehackernews          (RSS reachable; 0 fresh items beyond FLASH-0600)
+  theregister            (security/headlines.atom; 2 in-window discards per Mode 1)
+  darkreading            (RSS reachable; 2 events-page metadata discards)
+  securelist             (RSS reachable; 1 in-window discard reaffirmed from FLASH-0600)
+  securityaffairs        (RSS reachable; 0 fresh items beyond FLASH-0600)
+  checkpoint-research    (RSS reachable; 0 in-window items, multi-day cadence)
+  welivesecurity         (RSS reachable; 0 in-window items)
+  greynoise              (Blog feed reachable; 0 in-window items)
+
+_meta block (not auto-updated by this run)
+------------------------------------------
+The top-level _meta block (total_active_sources / healthy / stale /
+stale_breakdown / degraded_warning_count) is operator-maintained per
+the field-ownership rule (counts encode operator-set context across
+sweeps, not derivable cleanly from a single-pass runtime update).
+After this run, expected approximate counts:
+  total_active_sources: 67 (was 59 + 8 newly-bootstrapped)
+  healthy: 60 (was 53 + 8 - 1 industrialcyber-co flip)
+  stale: 7 (was 6 + 1 industrialcyber-co)
+  degraded_warning_count: 6 (mandiant past-threshold continues)
+
+Operator action items
+---------------------
+1. Mandiant feedburner alt-endpoint canonical swap (32 consecutive 404s
+   over ~3 weeks). Recommend updating source-grades.yaml to point at
+   mandiant.com/resources/blog/rss.xml as the canonical feed and clearing
+   the failure_count on next sweep.
+
+2. industrialcyber-co WAF/Akamai bot-block — verify endpoint posture
+   (still serving RSS publicly, or restricted to authenticated access,
+   or requires User-Agent / Accept header workaround). WebFetch fallback
+   on specific article URLs remains operational; bulk-RSS-sweep is the
+   broken layer.
+
+3. Bootstrapped first-entries (8) should be reviewed by librarian and
+   _meta block updated to reflect new total_active_sources count.

@@ -1,0 +1,79 @@
+# 2026-06-01 06:00 EDT canonical scheduled FLASH sweep — runtime field diff summary
+#
+# Sun->Mon rollover; quiet hours ACTIVE (06:00 EDT inside 21:00-09:00 quiet window).
+# 0 of 6 triggers fired. Silent commit + log per FLASH-POLICY anti-noise doctrine.
+#
+# File-level:
+#   last_updated held per established intermittent-bump convention; collector documents
+#   but does not advance unilaterally without operator instruction.
+#
+# Sources updated (last_successful_fetch bumped to 2026-06-01T06:05:00-04:00):
+#   - mstic                 (status 200, last_modified 2026-05-30T00:15 GMT, pre-window unchanged)
+#   - unit42                (status 200, last_modified 2026-05-29T21:16 GMT, pre-window unchanged)
+#   - crowdstrike           (status 200, dateless feed pattern continues; 0 threat-research in-window)
+#   - cisco-talos           (status 200, 15 items in feed, 0 in-window)
+#   - sentinelone           (SentinelLabs status 200, last_modified 2026-05-29T22:03, pre-window)
+#   - welivesecurity        (status 200, 100 items, 0 in-window)
+#   - checkpoint            (status 200, last_modified 2026-05-26T12:13, pre-window)
+#   - securelist            (status 200, 1 in-window: "Containers on fire" - DISCARDED Mode 1)
+#   - greynoise             (status 200, last_modified 2026-05-31T22:37, pre-window)
+#   - rapid7                (status 200, 1 in-window: Nordics partner-channel - DISCARDED Mode 1)
+#   - cisa-kev              (full catalog scan; catalog version 2026.05.29 unchanged; 0 entries 2026-05-31+)
+#   - cisa-advisories       (status 200, 30 items in feed, 0 in-window)
+#   - nvd                   (lastModStartDate 6h window: 0 CRITICAL, 11 HIGH all DISCARDED Mode 1)
+#   - bleepingcomputer      (status 200, last_modified in-window from feed-server activity, 0 items)
+#   - the-hacker-news       (status 200, 1 in-window: WP Maps Pro WordPress - DISCARDED Mode 1)
+#   - securityaffairs       (status 200, 2 in-window: PAN-OS KEV relay anti-noise + Pentagon
+#                            location-data policy commentary - both DISCARDED Mode 1)
+#   - the-record            (status 200, 5 items in feed, 0 in-window; Sunday quiet cadence)
+#   - sans-isc              (status 200, 2 in-window: ISC podcast index + NetSupport RAT diary
+#                            - both DISCARDED Mode 1)
+#   - darkreading           (most-recent posts 2026-05-29, all pre-window; 0 in-window)
+#   - splunk-archimedes     (Sweep A: 0 non-archimedes-internal events -24h; Sweep B: 0 external
+#                            IOC hits across 35 priority indicators; 14th consecutive dormant sweep)
+#   - splunk-defenseclaw    (same - 14th consecutive dormant sweep)
+#
+# Sources with failure_count increment:
+#   - mandiant: failure_count 20->21 (feedburner.com/Mandiant 404, 31st consecutive);
+#     last_successful_fetch bumped on alt-endpoint validation (mandiant.com/resources/blog/rss.xml
+#     status 200, 20 items in feed at 2026-06-01T06:05). Held healthy pending operator
+#     alt-endpoint canonical-swap decision (now well overdue across 7+ sweeps).
+#     last_error refreshed to reflect 31st-consecutive count.
+#
+# Sources with transient soft-fail (not reaching stale threshold):
+#   - volexity: RSS parse error this sweep (same recurring intermittent pattern).
+#     Single failure does NOT flip stale; AM-30 recovery streak-reset preserved.
+#     failure_count NOT incremented this sweep.
+#
+# Stale sources unchanged (carry-forward):
+#   - msrc (stale since 2026-05-30 per AM-30 pre-brief - 8th+ consecutive parse failure;
+#     content continues to relay via Security Affairs / The Register / SecurityWeek)
+#   - censys / urlscan / hibp (MCP-pending, stable stale)
+#   - x-gossithedog / ars-security / x-cisagov (stable stale per prior sweeps)
+#   - sophos (stale since 2026-05-17, carry-forward unchanged)
+#
+# Notes preserved verbatim per operator-set field-ownership policy (Hard Rule on
+# source-health field ownership - runtime fields only).
+#
+# Splunk: 14th consecutive dormant non-self-telemetry pattern across both indexes.
+# Sweep B: 5 hits all archimedes-internal pipeline self-references (2026-05-31 morning +
+# afternoon brief + 12:00 FLASH commits whose payloads contained tracked CVE strings).
+# 0 external IOC matches across 35 priority indicators (CVEs / APT28 spray IPs / APT28 cloud-C2
+# domains / MuddyWater C2 domains / TeamPCP C2 domains / 20 roster actor primary names).
+#
+# Carry-forward awareness items (no source-health change required):
+#   - PAN-OS CVE-2026-0257 KEV T+0 federal deadline TODAY (2026-06-01). Anti-Noise Rule 1
+#     covers via 2026-05-31 morning (T+1 anchor) and afternoon (T-1 anchor) briefs through
+#     ~16:00 today. AM-31 pre-brief / 08:00 morning brief will pick up T+0 status tick.
+#   - Mandiant alt-endpoint canonical-swap decision still pending operator review (overdue
+#     across 7+ sweeps now)
+#   - MSTIC 33-package npm dependency-confusion cluster anchored 2026-05-30 AM-30 brief;
+#     Anti-Noise window expired
+#   - CrowdStrike Glassworm takedown (roster #005) anchored 2026-05-26; pre-window across
+#     8+ days; Anti-Noise window expired
+#   - SecurityAffairs newsletter referenced net-new originating-primary names (Nimbus Manticore,
+#     Screening Serpens/UNC1549, Lazarus RemotePE, TrapDoor, Showboat) per the 2026-05-31
+#     afternoon brief's briefer_orchestrator_flag - all flagged as 14h-window AM-31 pre-brief
+#     scope, NOT this 6h FLASH window
+#   - TeamPCP / VT-006 KEV-listing 2026-05-27 federal deadline 2026-06-10 carries forward as
+#     standard Anti-Noise Rule 1

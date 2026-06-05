@@ -1,0 +1,20 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-recovery-20260519-143200",
+  "commit_hash": "cd5f186",
+  "branch": "main",
+  "pushed": true,
+  "remote": "origin",
+  "files_changed": 2,
+  "files": [
+    "threats/briefs/2026-05-19-morning.md",
+    "threats/briefs/_coverage-log.yaml"
+  ],
+  "insertions": 925,
+  "deletions": 1,
+  "commit_message_summary": "brief: 2026-05-19 morning — RECOVERY commit (terminated task at ~09:10 EDT)",
+  "recovery_operation": true,
+  "original_task_result": 267014,
+  "gitleaks_hook_result": "no_leaks_found",
+  "source_health_runtime_field_only_updates_applied_but_not_committed_per_gitignore": true
+}

@@ -1,0 +1,19 @@
+{
+  "time": "2026-05-23T16:01:05-04:00",
+  "host": "archimedes",
+  "sourcetype": "archimedes:operation",
+  "index": "archimedes",
+  "event": {
+    "event_type": "ioc_index_regen_check",
+    "run_id": "librarian-20260523-160045",
+    "trigger": "afternoon-brief-finding-0005-12-iocs",
+    "regen_status": "no_change",
+    "total_indicators_before": 132,
+    "total_indicators_after": 132,
+    "actor_indicators": 132,
+    "unattributed_indicators": 25,
+    "finding_0005_iocs_count": 12,
+    "finding_0005_iocs_promotion_pending": true,
+    "promotion_pending_reason": "finding-0005 IOCs remain in-finding; no unattributed cluster file scaffolded this run; actor-profiler / cluster-management owns promotion to threats/iocs/unattributed/"
+  }
+}

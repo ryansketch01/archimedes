@@ -1,0 +1,21 @@
+{
+  "event_type": "finding_promoted",
+  "run_id": "librarian-20260514-080045",
+  "finding_id": "finding-2026-05-14-0002",
+  "promoted_by": "grader",
+  "grading_run_id": "morning-20260514-080000",
+  "brief_id": "2026-05-14-morning",
+  "finding_path": "threats/findings/finding-2026-05-14-0002.md",
+  "digraph": "A2",
+  "source_reliability": "A",
+  "credibility": 2,
+  "wep_ceiling_procedural": "very likely",
+  "wep_ceiling_claim": "likely",
+  "topic": "F5 K000160932 quarterly + CVE-2026-42945 NGINX Rift heap overflow",
+  "primary_source": "f5",
+  "related_vulns": ["CVE-2026-42945", "CVE-2026-41225", "CVE-2026-41957", "CVE-2026-34176", "CVE-2026-39459"],
+  "vuln_tracker_handoff_queued": "VT-007",
+  "exploitation_status": "not_observed_per_f5",
+  "patch_status": "patched",
+  "kev": false
+}

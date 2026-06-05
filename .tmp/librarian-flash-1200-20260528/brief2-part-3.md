@@ -1,0 +1,5 @@
+**Sources.** [BleepingComputer (2026-05-28 10:25 EDT, Sergiu Gatlan)](https://www.bleepingcomputer.com/news/security/new-gogs-zero-day-flaw-lets-hackers-get-remote-code-execution/) — B relay · Rapid7 (Jonah Burges, A provisional) — sole primary disclosure (direct URL pending next collection cycle).
+
+**Related.** [finding-2026-05-28-FLASH-1200-0002](../findings/finding-2026-05-28-FLASH-1200-0002-bleepingcomputer-gogs-zero-day-rce-rapid7-jonah-burges-no-patch.md). No prior Gogs coverage in corpus. Adjacent developer-tooling-exposure class: [finding-2026-05-12-FLASH-0001](../findings/finding-2026-05-12-FLASH-0001.md) (npm supply-chain) and [finding-2026-05-20-FLASH-0001](../findings/finding-2026-05-20-FLASH-0001.md) (VS Code marketplace) — different vectors, same SDLC exposure umbrella. Vuln-tracker handoff: MEDIUM-priority dossier pending CVE assignment.
+
+-# (part 3/3)

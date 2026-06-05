@@ -1,0 +1,23 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-20260522-185500",
+  "commit_hash": "d247506",
+  "branch": "main",
+  "pushed": true,
+  "push_destination": "origin/main",
+  "push_range": "37863ed..d247506",
+  "commit_subject": "flash: 2026-05-22 1800 — CVE-2026-9082 Drupal SQLi exploitation attempts confirmed ITW (UPDATE)",
+  "files_changed": 4,
+  "insertions": 1342,
+  "deletions": 3,
+  "files": [
+    "threats/briefs/flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change.md",
+    "threats/findings/finding-2026-05-22-0004-cisa-kev-drupal-cve-2026-9082-itw-confirmed.md",
+    "threats/raw-signal/raw-2026-05-22-flash-1800-001-cisa-kev-drupal-cve-2026-9082-itw-confirmed-imperva-15k-attempts-6k-sites.md",
+    "threats/briefs/_coverage-log.yaml"
+  ],
+  "gitleaks_result": "no_leaks_found",
+  "brief_id": "flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change",
+  "ioc_index_regenerated": false,
+  "ioc_index_regen_skip_reason": "finding has no network/file/domain/payload IOCs; CVE metadata only"
+}

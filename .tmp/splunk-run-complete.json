@@ -1,0 +1,37 @@
+{
+  "event_type": "run_complete",
+  "run_id": "librarian-20260514-080045",
+  "phase": "morning-brief-publication",
+  "subagent": "librarian",
+  "mode": "post_scheduled",
+  "started_at": "2026-05-14T08:00:45-04:00",
+  "completed_at": "2026-05-14T09:01:30-04:00",
+  "outcome": "success",
+  "outcomes_per_step": {
+    "preflight_content_scan": "passed",
+    "layer2_extraction": "succeeded (199 words / 1958 chars)",
+    "discord_post": "200 OK (message 1504467818937061428 in #intel-briefs)",
+    "splunk_brief_published": "200 OK",
+    "splunk_finding_promoted": "4/4 success (0001 / 0002 / 0003 / 0004)",
+    "splunk_grade_revision": "6/6 success (f5 / kernel-org-netdev / sysdig / zellic / thehackernews / depthfirst)",
+    "ioc_index_regeneration": "skipped (no actor iocs.yaml changed this cycle)",
+    "gitleaks_first_attempt": "blocked on CVE-2026-41957 false-positive",
+    "gitleaks_resolution": "added .gitleaks.toml allowlist regex",
+    "gitleaks_second_attempt": "passed",
+    "git_commit": "c776d52 to main (14 files / +5265 / -8)",
+    "git_push": "daefad5..c776d52 -> origin/main (success)",
+    "splunk_git_committed": "200 OK"
+  },
+  "splunk_events_emitted_count": 13,
+  "deferred_handoffs": [
+    "actor_profiler_unc1151_new_actor_candidacy",
+    "vuln_tracker_VT-007_NGINX_Rift",
+    "vuln_tracker_VT-008_Fragnesia",
+    "vuln_tracker_VT-009_Copy_Fail_KEV_priority",
+    "vuln_tracker_VT-010_PraisonAI",
+    "source_health_yaml_18_runtime_updates_via_collector_diff_summary"
+  ],
+  "hard_rule_violations": 0,
+  "hard_rule_5_pending_approval_holds": 0,
+  "tlp": "CLEAR"
+}

@@ -1,0 +1,316 @@
+# Source-health diff summary — 2026-05-23 07:30 pre-brief collection sweep (AM)
+#
+# Collector-emitted runtime-state change instructions to be applied by the
+# librarian during the morning brief commit phase. NOT part of the on-disk
+# source-health schema; side artifact for traceability + librarian handoff.
+#
+# RULE: Operator-set `notes:` and any unrecognized keys are PRESERVED VERBATIM.
+# Only runtime fields are modified: status, last_successful_fetch, failure_count,
+# stale_since, last_error. The `notes_append_text` directives append to the
+# existing notes string (do NOT replace).
+#
+# This diff-summary captures source-health observations from the 07:30 pre-brief
+# sweep covering 2026-05-22 17:30 EDT → 2026-05-23 07:30 EDT (14h window).
+# The 2026-05-23 00:00 + 06:00 FLASH sweeps have their own upstream artifacts
+# (raw-2026-05-23-flash-0000-000 sentinel; raw-2026-05-23-flash-0600-000 sentinel;
+# raw-2026-05-23-flash-0600-001 UNC1549 Trigger 4 QUEUED;
+# raw-2026-05-23-flash-0600-002 LiteSpeed CVE-2026-48172 Trigger 1 QUEUED).
+# This diff-summary covers the pre-brief-only sweep.
+
+sweep_metadata:
+  run_id: pre-brief-20260523-073000
+  sweep_time: 2026-05-23T07:30:00-04:00
+  collection_mode: pre_brief_collection
+  window_start: 2026-05-22T17:30:00-04:00
+  window_end: 2026-05-23T07:30:00-04:00
+  window_hours: 14
+  raw_signal_files_written: 7   # am-000 sentinel + am-001 Laravel-Lang + am-002 Underminr + am-003 CISA-KEV-form + am-004 ICEYE-Russia + am-005 LiteSpeed-NVD-confirmation + am-006 Drupal-KEV anti-noise
+  substantive_raw_signals: 4    # am-001 (Laravel-Lang) + am-002 (Underminr) + am-004 (Russia/ICEYE) + am-005 (LiteSpeed NVD confirmation hardens FLASH-0600-002)
+  anti_noise_carry_forwards: 2  # am-005 (LiteSpeed NVD confirms FLASH-0600-002) + am-006 (Drupal THN relay vs FLASH-1800-001)
+  flash_candidates_for_grader_evaluation: 0   # no NEW FLASH triggers this AM sweep — the 06:00 FLASH already queued UNC1549 Trigger 4 + LiteSpeed Trigger 1; today's AM sources produced NO additional FLASH-trigger candidates
+  flash_candidates_carried_from_overnight_flash_sweeps: 2  # raw-2026-05-23-flash-0600-001 (UNC1549) + raw-2026-05-23-flash-0600-002 (LiteSpeed CVE-2026-48172)
+  health_changes_count: 15      # 11 last_successful_fetch bumps; 4 new-404 endpoint observations flagged for operator
+  first_citation_flags_for_operator: 2  # ADAMnetworks (Underminr originating research, new vendor); Greg Gillinger / Integrity ISR (ICEYE orbital tracking originating research, new individual+firm)
+
+top_level_metadata_updates:
+  last_updated: 2026-05-23T07:30:00-04:00
+
+source_runtime_updates:
+
+  # ==========================================================================
+  # Productive this sweep (fetched + in-window items returned + raw-signaled)
+  # ==========================================================================
+
+  - source_yaml_id: thehackernews
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-23T11:09:30 GMT inside window from feed-server activity), 3 items in 14h window after since-filter. PRODUCTIVE — 3 raw-signaled. (1) Laravel-Lang PHP supply-chain compromise (Ravie Lakshmanan 2026-05-23T09:51Z, originating research Socket + Aikido Security / Ilyas Makari; 4 packages, 700+ malicious versions May 22-23, AES-256 credential-stealer framework, C2 flipboxstudio[.]info VT-malicious 3+1 engines; NO actor attribution; no CVE) → raw-2026-05-23-am-001 substantive supply-chain raw-signal. (2) LiteSpeed CVE-2026-48172 (Ravie Lakshmanan 2026-05-23T07:35Z) — relay of 2026-05-21 LiteSpeed vendor self-disclosure already captured in raw-2026-05-23-flash-0600-002 06:00 FLASH; THN provides CVSS 10.0 framing that NVD direct-retrieval this sweep CONFIRMS (CVSS v4.0 = 10.0, CWE-266) → raw-2026-05-23-am-005 anti-noise carry-forward + NVD-record-hardening. (3) Drupal CVE-2026-9082 KEV addition (Ravie Lakshmanan 2026-05-23T07:23Z) — relay of CVE-2026-9082 already captured in raw-2026-05-22-flash-1800-001 18:00 FLASH; anti-noise carry-forward only → raw-2026-05-23-am-006. THN remains the morning's primary signal-conveyance layer.
+
+  - source_yaml_id: securityweek
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: RSS reachable (status 200, etag W/1e45ab254aadb322798d42fc66a35b26, last_modified 2026-05-23T11:00:09 GMT inside window from feed-server activity), 1 item in 14h window after since-filter. PRODUCTIVE — 1 raw-signaled (raw-2026-05-23-am-002 "Underminr" CDN-tenant-routing bypass; Ionut Arghire byline 2026-05-23T11:00Z; originating research ADAMnetworks / CEO David Redekop; ~88M domains affected via shared-CDN edge bypass; NO CVE assigned; NO actor attribution; NO named CDN-vendor coordination). ADAMnetworks is FIRST-CITATION to corpus — flagged for operator source-grade evaluation (conservative provisional C starting per LayerX / Seqrite / Trendyol-Albayrak / Sysdig precedent for first-citation vendor research without prior track record). Real-world abuse claimed but unquantified; methodologically thin single-vendor disclosure — grader should hedge accordingly.
+
+  - source_yaml_id: the-record
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: feed reachable (status 200), 1 item in 14h window after since-filter — "CISA to allow researchers to report vulnerabilities to exploited bugs catalog" (2026-05-23T01:11Z). Policy/process item, NOT vulnerability-specific: CISA launched public KEV nomination form 2026-05-22; named officials Chris Butera (Acting EAD Cyber), Nick Anderson (Acting Director), Sean Cairncross (National Cyber Director). Procedural relevance to Archimedes is HIGH because cisa-kev is an A-grade source we track directly, and a faster KEV-addition pipeline could compress disclosure→KEV→FLASH window for tracked CVEs → raw-2026-05-23-am-003. The Record multi-day quiet pattern broken; new content cadence resumed for the morning.
+
+  - source_yaml_id: ars-security
+    field_updates:
+      # ars-security top-level entry remains stale per the 2026-05-09 flip; the
+      # ROOT arstechnica.com/feed/ workaround path (per the existing notes block)
+      # was used this sweep and was productive. No change to the stale top-level
+      # entry; record the workaround success in notes.
+      status: stale
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 3
+      stale_since: 2026-05-09
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: workaround in use (arstechnica.com/feed/ root path via fetch_feed) — 4 items in 14h window after since-filter. PRODUCTIVE on the WORKAROUND ROOT PATH; the original security-specific stale endpoint feeds.arstechnica.com/arstechnica/security remains untested (no retest this sweep). In-window items: "Four Russian satellites are now within striking distance of an ICEYE radarsat" (Stephen Clark 2026-05-22T22:50Z) raw-signaled as raw-2026-05-23-am-004 A&D-space-domain-adjacent (ICEYE Finnish SAR-constellation operator, Ukraine MoD partnership, Kosmos 2610-2613 launched 2026-04-16 Plesetsk on Soyuz-2.1b, orbital inclination adjustment <1° to within 500m–22km cross-track of ICEYE-X36 polar orbit 547km; originating analysis Greg Gillinger via Integrity Flash newsletter 2026-05-22; relay reconstruction since arstechnica.com WebFetch is blocked from this Claude Code session by host policy — flagged for operator direct-retrieval if brief inclusion warrants). Non-cyber kinetic event, but space-domain ISR adjacent to A&D sector. Three non-cyber items DISCARDED per Mode 1 (China shark finning policy, Ebola outbreak, Chromecast support). FIRST CITATION TO CORPUS: Greg Gillinger (retired USAF space intel officer) + Integrity ISR — flagged for operator source-grade evaluation.
+
+  - source_yaml_id: sans-isc
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: rssfeed.xml reachable (status 200, etag W/1e04-6527a73e34c8c, last_modified 2026-05-23T11:29:04 GMT inside window from feed-server activity), 1 item in 14h window after since-filter — "An Example of Stack String in High Level Language" (Sat 2026-05-23T05:49Z, training note about SEC670 / red teaming tools class). DISCARDED per Mode 1 procedure (training reflection, no threat-intel claim, no A&D / no roster / no vuln-index hit).
+
+  # ==========================================================================
+  # Healthy this sweep, 0 items in window
+  # ==========================================================================
+
+  - source_yaml_id: bleepingcomputer
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: RSS reachable (status 200, etag 8049518214ee03e4603159d40bd88def, last_modified 2026-05-23T11:26:50 GMT inside window from feed-server activity), 0 items in 14h window after since-filter. Overnight quiet across BleepingComputer (typical Saturday-morning cadence). NOTE for grader awareness: Krebs on Security's 2026-05-22 12:34 ET CISA-data-leak post (lawmakers demanding answers re: CISA contractor's AWS GovCloud keys / RSA private keys / agency secrets exposed on GitHub Nov 2025 → May 2026) is PRE-window (12:34 ET = 16:34 UTC vs window start 17:30 EDT = 21:30 UTC) — NOT raw-signaled this sweep, but the topic intersects with finding-2026-05-20-FLASH-0001 (GitHub internal-repos breach) and the broader 2026 supply-chain cluster. Operator may flag for /investigate if briefer wants context.
+
+  - source_yaml_id: krebs
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-22T21:18:08 GMT — post-window from feed-server activity), 0 items in 14h window after since-filter. The 2026-05-22 12:34 ET "Lawmakers Demand Answers as CISA Tries to Contain Data Leak" (CISA contractor's AWS GovCloud + RSA private keys + agency secrets leaked on GitHub Nov 2025 → May 2026; Sen. Maggie Hassan + Rep. Bennie Thompson + Rep. Delia Ramirez signatories) is PRE-window — captured in feed but published before window start. Krebs cadence consistent multi-day; no in-window content this sweep. Awareness-only.
+
+  - source_yaml_id: unit42
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: feedburner reachable (status 200, last_modified 2026-05-22T19:51:29 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. The Screening Serpens / UNC1549 publication 2026-05-22 was captured in raw-2026-05-23-flash-0600-001 06:00 FLASH; no fresh follow-on Unit 42 publication this AM window.
+
+  - source_yaml_id: mstic
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: parent feed (microsoft.com/en-us/security/blog/feed/) reachable (status 200, etag 046c780b627baa77586f3a66f6a25c87-gzip, last_modified 2026-05-22T17:57:00 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. No new MSTIC publications since the 2026-05-22 F5+Confluence intrusion piece (last_modified at 17:57 UTC = 13:57 EDT, pre-14h-window start 17:30 EDT).
+
+  - source_yaml_id: recorded-future
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: feed reachable (status 200, etag e6404f92b8415d7baf4f1610d0a8fe4d, last_modified 2026-05-22T20:45:47 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. Quiet cadence consistent with prior sweeps.
+
+  - source_yaml_id: cisa-advisories
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: all.xml reachable via fetch_feed (status 200, 30 items in feed total), 0 items in 14h window after since-filter. Quiet overnight CISA advisories cadence consistent with prior Saturday-morning sweeps.
+
+  - source_yaml_id: cisa-kev
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: KEV JSON re-checked via WebFetch with full-catalog scan for dateAdded >= 2026-05-22 — confirmed CVE-2026-9082 (Drupal Core, dateAdded 2026-05-22, dueDate 2026-05-27) remains the only KEV entry in window. This is unchanged from the raw-2026-05-22-flash-1800-001 18:00 FLASH catalogVersion 2026.05.22 capture; THN coverage 2026-05-23 is a relay (anti-noise carry-forward at raw-2026-05-23-am-006). PROCEDURAL ITEM: The Record reports CISA launched a public KEV nomination form 2026-05-22 — relevant to this source's governance/process (captured at raw-2026-05-23-am-003); update may compress future disclosure→KEV cadence for tracked CVEs. CVE-2026-9082 dueDate 2026-05-27 ~T-4 days from this sweep.
+
+  - source_yaml_id: nvd
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:55:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: NVD REST API directly invoked for CVE-2026-48172 (LiteSpeed cPanel Plugin) and CVE-2026-9082 (Drupal Core). PRODUCTIVE — closes 06:00 FLASH "CVSS pending NVD confirmation" flag: CVE-2026-48172 NVD-confirmed CVSS v4.0 = 10.0 CRITICAL, CWE-266 (Incorrect Privilege Assignment), description includes operationally-useful log-grep detection signature `grep -rE "cpanel_jsonapi_func=redisAble" /var/cpanel/logs /usr/local/cpanel/logs/`. CVE-2026-9082 NVD-confirmed CVSS v3.1 = 6.5 MEDIUM, CWE-89 (SQL Injection), affected versions span Drupal 8.9-11.3.9. Both records cited in raw-2026-05-23-am-005 (LiteSpeed) and raw-2026-05-23-am-006 (Drupal) respectively. NVD endpoint remains highly responsive.
+
+  - source_yaml_id: proofpoint
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: us/rss.xml reachable (status 200, etag 1779491450, last_modified 2026-05-22T23:10:50 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. Corporate-news alt-endpoint remains stable.
+
+  - source_yaml_id: sentinelone
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: SentinelLabs feed reachable (status 200, last_modified 2026-05-22T17:44:37 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. Consistent multi-week pattern.
+
+  # ==========================================================================
+  # Snyk + LiteSpeed Blog + GitHub Blog — healthy 0-in-window
+  # ==========================================================================
+
+  - source_yaml_id: snyk
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: blog/feed/ reachable (status 200), 0 items in 14h window after since-filter.
+
+  - source_yaml_id: litespeed-blog-self-disclosure
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: blog.litespeedtech.com/feed/ reachable (status 200, etag 384435665049ab3b106b791ebdb883fa, last_modified 2026-05-21T15:04:52 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. The 2026-05-21 LiteSpeed cPanel Plugin CVE-2026-48172 advisory was already captured in raw-2026-05-23-flash-0600-002 06:00 FLASH via THN relay; vendor feed itself confirms no fresh post since the advisory. NVD direct-retrieval this sweep (raw-2026-05-23-am-005) hardens the CVSS-10.0 framing. FIRST-CITATION provisional A source per source-grades.yaml 2026-05-23.
+
+  - source_yaml_id: github-blog-self-disclosure
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: github.blog/feed/ reachable (status 200, etag W/af0772f9266c9bf39a5869e26b711d0d, last_modified 2026-05-22T21:06:13 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. The 2026-05-20 GitHub internal-repos-breach disclosure (finding-2026-05-20-FLASH-0001) has had no follow-on github.blog post in this 14h window.
+
+  # ==========================================================================
+  # New 404s flagged for operator (no failure_count increment yet — first-observation pattern)
+  # ==========================================================================
+
+  - source_yaml_id: sophos
+    field_updates_observation_only: true
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep observation: news.sophos.com/en-us/feed/ returned 404 AGAIN at this sweep. Sophos source-health top-level entry has been STALE since 2026-05-17 per the en-us subpath 404 streak (failure_count=3). The status flag is unchanged at stale; no further failure_count increment recorded (it's already at-threshold). The 2026-05-11 00:00 root-path recovery (news.sophos.com/feed/) was a different endpoint — that root path remains untested this sweep. Operator action remains pending: identify the correct current Sophos News RSS path (root vs en-us subpath vs taxonomy-specific path).
+
+  - source_yaml_id: cisco-talos
+    field_updates:
+      failure_count: 3
+      status: healthy
+      last_error: |
+        2026-05-23 07:30 pre-brief sweep: blog.talosintelligence.com/feeds/posts/default returned 404 again — third consecutive failure (failure_count incremented 2→3 past-threshold). Held healthy per operator-set instruction pending alt-endpoint decision; if pattern persists across afternoon sweeps, operator should consider stale flip or alt-endpoint identification (consider blog.talosintelligence.com/feeds/posts/default?alt=rss as legacy fallback, or direct page-fetch on blog.talosintelligence.com landing).
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep observation: 404 streak extended to 3 (was 2 at 2026-05-19 07:30 pre-brief). Endpoint may be permanently retired; operator action pending alt-endpoint identification.
+
+  - source_yaml_id: bitdefender
+    field_updates:
+      failure_count: 2
+      status: healthy
+      last_error: |
+        2026-05-23 07:30 pre-brief sweep: bitdefender.com/blog/labs/rss/ returned 404 — second tracked top-level failure (failure_count incremented 1→2 to threshold). Held healthy pending operator alt-endpoint decision. Workaround precedent: Bitdefender has two publication surfaces (businessinsights.bitdefender.com corporate-research vs bitdefender.com/blog/labs/ Labs-specific); the businessinsights surface may be the productive one. Operator action pending alt-endpoint identification or MCP build.
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep observation: blog/labs/rss/ second failure. Pattern not yet established as persistent — may be alt-path. Operator action pending.
+
+  - source_yaml_id: wiz-research
+    field_updates:
+      failure_count: 2
+      status: healthy
+      last_error: |
+        2026-05-23 07:30 pre-brief sweep: wiz.io/blog/feed.xml returned 404 — second tracked top-level failure (failure_count incremented 1→2 to threshold). Held healthy pending operator alt-endpoint decision. Workaround precedent: Wiz publishes at wiz.io/blog with no obvious RSS link in the article header — may require MCP build for direct API or alt-path discovery.
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep observation: feed.xml second failure. Operator action pending.
+
+  - source_yaml_id: socket
+    field_updates:
+      failure_count: 2
+      status: healthy
+      last_error: |
+        2026-05-23 07:30 pre-brief sweep: socket.dev/blog/rss returned 404 — second tracked top-level failure (failure_count incremented 1→2 to threshold). Held healthy pending operator alt-endpoint decision. Workaround precedent: Socket publishes at socket.dev/blog with no obvious RSS link; the Laravel-Lang campaign was reached via THN relay this sweep (raw-2026-05-23-am-001) — direct Socket primary not retrieved. Operator action pending alt-endpoint identification.
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep observation: blog/rss second failure. THN serves as productive relay layer for Socket research per the Laravel-Lang campaign this sweep. Operator action pending alt-endpoint identification.
+
+  # ==========================================================================
+  # Mandiant — persistent feedburner failure pattern continues
+  # ==========================================================================
+
+  - source_yaml_id: mandiant
+    field_updates:
+      failure_count: 19
+      status: healthy
+      last_error: |
+        2026-05-23 07:30 pre-brief sweep: feedburner.com/Mandiant returned 404 again — twentieth-plus consecutive failure on a feedburner-dead pattern. failure_count incremented 18→19. Held healthy pending operator alt-endpoint decision; persistent feedburner shutdown remains the most parsimonious explanation. cloud.google.com/blog/topics/threat-intelligence/rss alt path remains malformed (parse error).
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep observation: feedburner 404 nineteenth-plus consecutive. Pattern entrenched since 2026-05-08. Operator alt-endpoint decision still pending. The Unit 42 Screening Serpens publication captured at raw-2026-05-23-flash-0600-001 is the morning's Iranian-APT primary — Mandiant feed silence has not impacted morning brief coverage this sweep.
+
+  # ==========================================================================
+  # Other healthy 0-in-window sources (status unchanged, last_successful_fetch bumped)
+  # ==========================================================================
+
+  - source_yaml_id: cyberwarrior76
+    field_updates:
+      last_successful_fetch: 2026-05-23T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-23 07:30 pre-brief sweep: substack feed reachable, 0 items in 14h window. Quiet multi-week cadence.
+
+flash_carry_forward_status:
+  # The two 06:00 FLASH candidates queued in raw-signal remain in the morning brief
+  # candidate pool. The librarian commit at 2026-05-23 06:25 EDT (db4684a) made them
+  # grader-actionable. The morning brief should evaluate:
+  #   - raw-2026-05-23-flash-0600-001 (UNC1549 Trigger 4): Unit 42 Screening Serpens tradecraft evolution
+  #     for Iran Cyber Watch standing section + sector-focus (historical A&D framing)
+  #   - raw-2026-05-23-flash-0600-002 (LiteSpeed CVE-2026-48172 Trigger 1): vendor self-disclosure
+  #     for Tracked Vulnerabilities (NEW vuln-tracker candidate); NVD CVSS-10.0 confirmation at am-005
+  - flash_id: raw-2026-05-23-flash-0600-001
+    trigger: trigger-4-tracked-actor-ttp-change
+    actor: UNC1549
+    status_at_07_30_sweep: queued_for_grader_morning_brief
+  - flash_id: raw-2026-05-23-flash-0600-002
+    trigger: trigger-1-critical-cve-exploited
+    cve: CVE-2026-48172
+    cvss_confirmed_v4: 10.0   # per NVD direct retrieval this AM sweep, raw-2026-05-23-am-005
+    status_at_07_30_sweep: queued_for_grader_morning_brief
+
+operator_first_citation_flags:
+  - subject: "ADAMnetworks (DNS/web-security vendor; CEO David Redekop named-byline quoted)"
+    citation_context: raw-2026-05-23-am-002 Underminr CDN-tenant-routing-bypass disclosure
+    proposed_provisional_grade: C
+    rationale: "First Archimedes-corpus citation. No prior peer-reviewed track record observable; thin methodologically (single-vendor disclosure of a class-of-attack with vague-but-large scope claim, no CVE, no named CDN-vendor coordination). Conservative C starting grade per LayerX (2026-05-08) / Seqrite (2026-05-08) / Trendyol-Albayrak (2026-05-10) / Sysdig (2026-05-14) / Zellic (2026-05-14) precedent."
+  - subject: "Greg Gillinger (retired US Air Force space intelligence officer) + Integrity ISR (private firm) via Integrity Flash newsletter"
+    citation_context: raw-2026-05-23-am-004 ICEYE radarsat / Russian Kosmos 2610-2613 orbital-shadowing reporting
+    proposed_provisional_grade: "C-B (operator decision)"
+    rationale: "First Archimedes-corpus citation. Gillinger is a named-byline individual analyst with explicit USAF space intelligence credentials and operates a private firm (Integrity ISR) providing combat-proven ISR/space-domain operational support and training. Single-source on the orbital-shadowing claim within his own newsletter publication layer, but the underlying observable (orbital tracking data) is independently verifiable in commercial-orbital-tracking data. Conservative C-starting per LayerX / Seqrite / Trendyol-Albayrak / Sysdig / Zellic precedent; B-defensible if operator weighs the named USAF-credentialed-analyst factor + independent-verifiability-of-underlying-observable. Operator decision."
+
+raw_signal_summary:
+  files_written_this_sweep: 7
+  files:
+    - raw-2026-05-23-am-000-sentinel-pre-brief-sweep.md
+    - raw-2026-05-23-am-001-thn-socket-aikido-laravel-lang-php-supply-chain-credential-stealer-flipboxstudio.md
+    - raw-2026-05-23-am-002-securityweek-adamnetworks-underminr-cdn-tenant-bypass-88m-domains.md
+    - raw-2026-05-23-am-003-the-record-cisa-kev-public-nomination-form-policy-change.md
+    - raw-2026-05-23-am-004-ars-technica-russian-kosmos-2610-2613-iceye-radarsat-ukraine-orbital-shadowing.md
+    - raw-2026-05-23-am-005-thn-litespeed-cve-2026-48172-nvd-cvss-v4-10-confirmation-anti-noise-carry-forward.md
+    - raw-2026-05-23-am-006-thn-drupal-cve-2026-9082-kev-addition-anti-noise-carry-forward.md
+  ioc_extractions:
+    new_unique_iocs_today: 7
+    new_iocs_with_vt_enrichment: 1   # flipboxstudio[.]info — VT 3 malicious + 1 suspicious engines
+    new_detection_signatures: 1   # LiteSpeed cpanel log-grep pattern published in NVD record
+  splunk_first_party_probes:
+    archimedes_index_hits_30d: 0
+    defenseclaw_local_index_hits_30d: 0
+    notes: "Both indexes remain dormant pattern observed across 60+ consecutive sweeps; absence not informative."

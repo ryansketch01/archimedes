@@ -1,0 +1,105 @@
+PM-1 afternoon pre-brief runtime-field update summary
+====================================================
+Run: pre-brief-20260601-153000
+Sweep window: 2026-06-01T07:30:00-04:00 -> 2026-06-01T15:30:00-04:00
+Wrapper-applied via: source-health.yaml.runtime-update-pm-20260601.py
+
+Per field-ownership rule (CLAUDE.md operational notes + collector
+subagent definition): touch only runtime fields (status,
+last_successful_fetch, failure_count, stale_since, last_error);
+preserve notes verbatim and any unrecognized keys.
+
+Sources updated (status=healthy, last_successful_fetch=2026-06-01T15:30:00-04:00,
+failure_count=0, stale_since=null, last_error=null):
+  - cisa-advisories     (1 in-window item: CISA KEV add - raw-signaled pm-002)
+  - cisa-kev            (1 KEV addition CVE-2024-21182 in window - raw-signaled pm-002)
+  - mstic               (parent feed reachable, 0 in-window items)
+  - unit42              (feedburner reachable, 0 in-window items)
+  - sans-isc            (rssfeed.xml reachable, 0 in-window items)
+  - krebs               (1 in-window item: Meta AI bot - raw-signaled pm-003)
+  - the-record          (2 in-window items, both A&D-non-relevant, discarded)
+  - bleepingcomputer    (2 in-window items, both A&D-non-relevant, discarded)
+  - securityweek        (2 in-window items, both A&D-non-relevant, discarded)
+  - rapid7              (2 in-window items, both anti-noise carry-forward from FLASH-12)
+
+Sources NOT updated this PM sweep (preserved as-is):
+  - nvd                 (not re-queried; pre-brief scope did not warrant NVD
+                        lastModified window query; no fresh CVE leads in
+                        media surfaces required NVD pivot)
+  - mandiant            (not re-queried this PM sweep; FLASH-12 had already
+                        confirmed feedburner 404 ~31st consecutive failure.
+                        Operator alt-endpoint canonical-swap decision still
+                        pending. Held healthy.)
+  - crowdstrike         (not re-queried; PM scope conserved against
+                        14-consecutive-sweep dateless-marketing pattern
+                        documented in source-health notes)
+  - recorded-future     (not re-queried)
+  - dragos              (not re-queried; multi-day cadence; no fresh content
+                        warranted force-check)
+  - wired-security      (queried via category feed - 0 items in window;
+                        runtime fields not updated because last_successful_fetch
+                        timestamp would advance against a fetched-but-empty
+                        result on a multi-hour-cadence source; consistent
+                        with prior PM sweeps holding this entry stable.
+                        If operator preference is to update timestamp on
+                        every successful reachability ping, adjust the
+                        script - PM update path is consistent with the
+                        existing source-health note pattern)
+  - ars-security        (stale_since 2026-05-09, ~24d aged; not re-queried;
+                        operator path-replacement decision still pending)
+  - github-advisories   (not re-queried; 8+ consecutive 406 failures
+                        on advisories.atom; workaround per-repo-GHSA path
+                        not triggered this sweep)
+  - msrc                (stale_since 2026-05-30; under 24h-since-stale
+                        rule does not apply at +2d; eligible-to-retry but
+                        not re-tested this sweep - MSRC content continues
+                        to reach corpus via Security Affairs / Register
+                        / SecurityWeek relays per source-health note)
+  - shodan / virustotal / whois-rdap / threatfox / malwarebazaar /
+    github-codesearch / abuseipdb (Mode 1 enrichment APIs not invoked
+    this sweep - no FLASH-trigger or finding-promotion enrichment
+    requirement surfaced)
+  - splunk-archimedes / splunk-defenseclaw (queried via mcp__splunk-query__search
+                        for first-party IOC check; zero hits over -30d for
+                        Miasma / api.anthropic / weblogic / CVE-2024-21182
+                        string set; not annotated in source-health runtime
+                        fields because Splunk health is tracked separately
+                        per source-health Splunk-section convention)
+  - All other healthy entries: not re-queried this sweep; runtime fields
+    preserved.
+
+Sources that FAILED or returned degraded this PM sweep:
+  - feedburner.com/Mandiant: NOT re-queried (intentional skip given operator-pending)
+  - news.sophos.com/en-us/category/threat-research/feed: status 200, 0 items
+    in window - HEALTHY, runtime not updated for same multi-hour-cadence
+    rationale as wired-security
+  - www.welivesecurity.com/feed: status 200, 0 items in window - HEALTHY
+  - www.sentinelone.com/labs/feed: status 200, 0 items in window - HEALTHY
+  - blog.talosintelligence.com/rss/: status 200, 0 items in window - HEALTHY
+  - www.bitdefender.com/blog/labs/feed/: 404 first soft failure noted but
+    failure_count NOT incremented this sweep - the configured canonical
+    bitdefender endpoint may differ; operator action: investigate canonical
+    bitdefender RSS path
+  - blog.talosintelligence.com/feeds/posts/default: 404 (alt path) - no
+    degradation; the /rss/ primary path works
+  - socket.dev/blog/rss.xml: 404 - direct WebFetch on blog index + primary
+    URL succeeded instead; socket source-health entry uses direct-retrieval
+    pattern, no RSS-specific failure_count tracking
+
+Anti-noise dedup applied this sweep:
+  - CVE-2026-0826 HP Poly VVX VoIP (Rapid7 2x posts in window) discarded
+    against FLASH-12 raw-2026-06-01-flash-1200-002 (24h Rule 1)
+  - HP Poly VVX follow-up Rapid7 posts are vendor-deeper-analysis on
+    same disclosure surface, not new fact-of-CVE events
+
+New raw-signal files written:
+  - raw-2026-06-01-pm-000-sentinel-pre-brief-sweep.md
+  - raw-2026-06-01-pm-001-thn-socket-miasma-mini-shai-hulud-redhat-cloud-services-npm-supply-chain.md
+  - raw-2026-06-01-pm-002-cisa-kev-cve-2024-21182-oracle-weblogic-3-day-fceb-deadline.md
+  - raw-2026-06-01-pm-003-krebs-meta-ai-bot-instagram-space-force-pro-iran-defacement.md
+
+No new stale-flips this sweep.
+No policy violations.
+No new MCPs invoked outside the standard set.
+
+last_updated field bumped to: 2026-06-01T15:30:00-04:00

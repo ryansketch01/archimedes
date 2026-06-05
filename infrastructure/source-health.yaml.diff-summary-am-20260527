@@ -1,0 +1,205 @@
+# source-health.yaml — runtime-field diff summary for AM-27 pre-brief
+#
+# Sweep id: pre-brief-2026-05-27-am
+# Sweep window: 2026-05-26T15:30:00-04:00 → 2026-05-27T07:35:00-04:00 (16.08h)
+# Companion raw-signal sentinel: threats/raw-signal/raw-2026-05-27-am-000-pre-brief-sweep.md
+#
+# Per .claude/agents/collector.md "After fetching" + "Field ownership: operator vs runtime":
+# The collector MAY only modify runtime fields:
+#   status, last_successful_fetch, failure_count, stale_since, last_error
+#
+# The collector MUST preserve operator-set fields verbatim:
+#   notes  + any other unrecognized keys
+#
+# This file documents the AM-27 runtime updates that should be applied to
+# infrastructure/source-health.yaml. Operator/librarian applies the actual
+# edits at commit time, preserving the established sidecar-diff-summary
+# pattern (per gitstatus context showing prior diff-summary files at AM-19,
+# AM-20, AM-23, AM-24, AM-25 + PM-17, PM-19, PM-21, PM-23, PM-24, PM-25).
+
+runtime_updates:
+
+  cisa-kev:
+    last_successful_fetch:
+      old: 2026-05-19T07:30:00-04:00
+      new: 2026-05-27T07:32:00-04:00
+    failure_count: 0  # unchanged
+    rationale: |
+      WebFetch of catalogVersion 2026.05.26 succeeded; no new adds since
+      2026-05-26T13:02 EDT addition of CVE-2026-48172 LiteSpeed cPanel.
+      Most recent KEV entries unchanged from 06:00 FLASH sentinel.
+
+  cisa-advisories:
+    last_successful_fetch:
+      old: 2026-05-19T07:30:00-04:00
+      new: 2026-05-27T07:32:00-04:00
+    failure_count: 0  # unchanged
+    rationale: |
+      fetch_feed cisa.gov/cybersecurity-advisories/all.xml succeeded
+      200 OK with 30 items in feed; 0 in 16h window.
+
+  bleepingcomputer:
+    last_successful_fetch:
+      old: 2026-05-19T07:30:00-04:00
+      new: 2026-05-27T07:31:00-04:00
+    failure_count: 0  # unchanged
+    rationale: |
+      fetch_feed succeeded 200 OK; last_modified Wed 27 May 2026 11:26
+      GMT; 5 items in window; PRODUCTIVE — 2 raw-signaled at AM-007
+      (Charter / ShinyHunters) + 1 BC-LiteSpeed restatement absorbed
+      under existing CVE-2026-48172 lock + 1 BC-KnowledgeDeliver
+      restatement absorbed under existing CVE-2026-5426 lock + 1
+      BC-Ajax-football LE op discarded + 1 BC-Win11-KB update discarded.
+
+  securityweek:
+    last_successful_fetch:
+      old: 2026-05-19T07:30:00-04:00
+      new: 2026-05-27T07:31:00-04:00
+    failure_count: 0  # unchanged
+    rationale: |
+      fetch_feed feedburner succeeded 200 OK; last_modified Wed 27 May
+      2026 11:01 GMT; 8 items in window; PRODUCTIVE — 3 raw-signaled at
+      AM-001 (GlassWorm relay layer) + AM-002 (Megalodon relay layer) +
+      AM-004 (SymJack relay) + AM-005 (LA Metro Iran relay).
+
+  the-record:
+    last_successful_fetch:
+      old: 2026-05-19T07:30:00-04:00
+      new: 2026-05-27T07:31:00-04:00
+    failure_count: 0  # unchanged
+    rationale: |
+      fetch_feed therecord.media/feed succeeded 200 OK; 5 items in feed
+      total; 0 in 16h window.
+
+  mstic:
+    last_successful_fetch:
+      old: 2026-05-19T07:30:00-04:00
+      new: 2026-05-27T07:31:00-04:00
+    failure_count: 0  # unchanged
+    rationale: |
+      fetch_feed microsoft.com/en-us/security/blog/feed succeeded
+      200 OK; last_modified Tue 26 May 2026 21:35 GMT = 17:35 EDT
+      yesterday IN WINDOW; 1 in-window item — Defender Experts
+      cryptojacking PRIMARY raw-signaled at AM-006 (poisoned search
+      results + AI chatbot recommendation poisoning + ScreenConnect +
+      DLL sideload + ~150 gleeze.com domains + GPU mining).
+
+  unit42:
+    last_successful_fetch:
+      old: 2026-05-19T07:30:00-04:00
+      new: 2026-05-27T07:31:00-04:00
+    failure_count: 0  # unchanged
+    rationale: |
+      fetch_feed feedburner.com/Unit42 succeeded 200 OK; last_modified
+      Tue 26 May 2026 16:56 GMT pre-window unchanged across 6 sweeps;
+      0 items in 16h window after since-filter.
+
+  crowdstrike:
+    last_successful_fetch:
+      old: 2026-05-12T06:00:00-04:00
+      new: 2026-05-27T07:31:00-04:00
+    failure_count: 0  # unchanged
+    rationale: |
+      fetch_feed crowdstrike.com/blog/feed/ succeeded 200 OK;
+      last_modified Wed 27 May 2026 04:17 GMT = 00:17 EDT IN WINDOW.
+      10 items, ALL published: null per persistent-dateless-marketing
+      pattern documented across 16+ consecutive prior sweeps. HOWEVER
+      one item this sweep IS the productive GlassWorm Disruption PRIMARY
+      (Counter Adversary Operations byline) — raw-signaled at AM-001
+      via WebFetch correlation with the SecurityWeek 06:10 EDT relay
+      timestamp. CrowdStrike feed produced a meaningful tracked-actor
+      primary this sweep despite the dateless metadata pattern.
+
+  cisco-talos:
+    last_successful_fetch:
+      old: 2026-05-24T15:30:00-04:00
+      new: 2026-05-27T07:31:00-04:00
+    failure_count: 0  # unchanged
+    rationale: |
+      fetch_feed blog.talosintelligence.com/rss/ succeeded 200 OK; 15
+      items in feed; 1 in 16h window — EvidenceForge synthetic-log
+      generation tool (David J. Bianco, Tool Talk class, 06:00 EDT
+      today). NO threat-intel content; discarded per Mode 1.
+
+  mandiant:
+    last_error:
+      old: "feedburner.com/Mandiant returned 404 on 2026-05-24T00:00 FLASH — twentieth consecutive failure (failure_count incremented 18→19). Held healthy pending operator alt-endpoint decision per long-standing source-health policy. Pattern unchanged from prior sweeps."
+      new: |
+        feedburner.com/Mandiant returned 404 on 2026-05-27T07:35 AM
+        pre-brief — long-standing pattern continues; alt endpoint
+        mandiant.com/resources/blog/rss.xml produces SIXTH consecutive
+        recovery this sweep (200 OK, 20 items in feed, 0 in 16h window
+        after since-filter). Endpoint canonicalization recommendation
+        persists from 06:00 FLASH sentinel: canonicalize mandiant.com/
+        resources/blog/rss.xml as productive Mandiant endpoint in
+        source-grades.yaml. NOT retried cloud.google.com/blog/topics/
+        threat-intelligence endpoint this sweep to avoid thrashing.
+        Operator alt-endpoint canonicalization decision still pending.
+    failure_count: 19  # unchanged — held per operator policy
+    rationale: |
+      Mandiant entry held healthy per long-standing operator policy
+      pending alt-endpoint canonicalization decision. The
+      mandiant.com/resources/blog/rss.xml endpoint is now SIX
+      consecutive successful recoveries (PM-26 12:00 / 18:00 / 00:00
+      sentinel / 06:00 sentinel / this AM-27 pre-brief). Recommendation
+      escalation for operator: this is a stable productive endpoint
+      and worth canonicalization.
+
+  volexity:
+    last_error:
+      old: |
+        2026-05-19 07:30 pre-brief sweep: www.volexity.com/blog/feed/ returned malformed body
+        (XML parse error <unknown>:17:68 not well-formed invalid token) — third consecutive failure
+        (failure_count incremented 2→3 past-threshold). Held healthy per operator-set instruction
+        pending alt-endpoint decision; if pattern persists across 12:00 FLASH / 15:30 pre-brief,
+        operator should consider stale flip or alt-endpoint identification. Prior context retained:
+        2026-05-16 07:30 pre-brief productive-fetch miss + 2026-05-19 06:00 FLASH parse error.
+      new: |
+        2026-05-27 07:35 AM pre-brief sweep: www.volexity.com/blog/feed/
+        returned malformed body (XML parse error <unknown>:17:68 not
+        well-formed invalid token) — FOURTH consecutive same-class
+        failure (failure_count incremented 3→4 past-threshold). Held
+        healthy per long-standing operator instruction pending
+        alt-endpoint decision. Recommendation to next sweep (12:00
+        FLASH or 15:30 PM pre-brief): consider stale flip if pattern
+        persists OR identify alt-endpoint (volexity.com homepage
+        WebFetch, alt /blog path discovery, MCP build). Prior context
+        retained: 2026-05-16 07:30 pre-brief productive-fetch miss +
+        2026-05-19 06:00 FLASH parse error + 2026-05-19 07:30 pre-brief
+        same parse error.
+    failure_count:
+      old: 3
+      new: 4
+    rationale: |
+      Fourth consecutive same-class XML parse error. Held healthy per
+      operator instruction. Recommendation: stale flip if persists
+      through next sweep.
+
+# Sources NOT updated this sweep (no fetch attempted, no state change):
+sources_not_updated:
+  - rapid7              # not invoked this sweep (FLASH-fast scope)
+  - sentinelone         # not invoked this sweep (no actionable in-window item)
+  - bitdefender         # not invoked this sweep
+  - symantec            # not invoked this sweep
+  - industrialcyber-co  # not invoked this sweep
+  - splunk-archimedes   # IS queried via Mode 4; no state field change applicable
+  - splunk-defenseclaw  # IS queried via Mode 4; no state field change applicable
+  - other twitter/x bridge sources  # not invoked this sweep
+  - threatfox / malwarebazaar / abuseipdb / shodan / virustotal / urlscan / etc.  # enrichment APIs, not invoked this sweep
+
+# Sources observed broken this sweep — operator decision required:
+sources_observed_broken_this_sweep_operator_decision_required:
+  - reliaquest          # /feed endpoint 404 Not Found; no alternative endpoint discovered; not in current source-health.yaml entries — first observation this sweep
+  - aikido-security     # /feed.xml endpoint 404 Not Found; not in current source-health.yaml entries — first observation this sweep (different from existing socket entry; aikido is a separate vendor)
+
+# Hard Rule field-ownership compliance:
+field_ownership_compliance:
+  rule: |
+    Per .claude/agents/collector.md "Field ownership: operator vs runtime":
+    Runtime fields (collector writes): status, last_successful_fetch,
+    failure_count, stale_since, last_error.
+    Operator-set fields (preserve verbatim): notes + any unrecognized keys.
+  this_sweep_changes_only_touched: |
+    last_successful_fetch (9 sources), last_error (2 sources — mandiant,
+    volexity), failure_count (1 source — volexity 3→4). No `notes:`
+    field changes proposed. No unrecognized keys touched.

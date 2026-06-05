@@ -1,0 +1,21 @@
+{
+  "event_type": "flash_run_completed",
+  "run_id": "librarian-20260522-185500",
+  "brief_id": "flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change",
+  "finding_id": "finding-2026-05-22-0004-cisa-kev-drupal-cve-2026-9082-itw-confirmed",
+  "trigger": "trigger-1-cve",
+  "outcome": "success",
+  "disposition": "posted",
+  "discord_message_id": "1507515649637744792",
+  "discord_channel": "flash-alerts",
+  "commit_hash": "d247506",
+  "pushed": true,
+  "queued": false,
+  "critical_override_applied": false,
+  "ioc_index_regenerated": false,
+  "phases_completed": ["content_safety", "discord_post", "splunk_flash_posted", "git_stage", "git_commit", "git_push", "splunk_git_committed"],
+  "anomalies": [],
+  "resumed_from_prior_halt": true,
+  "prior_halt_reason": "missing_layer_2_discord_summary",
+  "prior_halt_resolved_by": "briefer_regenerated_layer_2"
+}

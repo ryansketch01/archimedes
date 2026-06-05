@@ -1,0 +1,33 @@
+{
+  "time": "2026-05-23T16:01:32-04:00",
+  "host": "archimedes",
+  "sourcetype": "archimedes:operation",
+  "index": "archimedes",
+  "event": {
+    "event_type": "git_committed",
+    "run_id": "librarian-20260523-160045",
+    "brief_id": "2026-05-23-afternoon",
+    "commit_sha": "9e7abf1",
+    "commit_sha_parent": "90dac59",
+    "branch": "main",
+    "subject": "brief: 2026-05-23 afternoon — Packagist 8-pkg cross-ecosystem postinstall (finding-0005, B2, UNATTRIBUTED) + Laravel-Lang UPDATE (Snyk advisories, VT 3→10 engines)",
+    "files_changed": 9,
+    "insertions": 2489,
+    "deletions": 6,
+    "files": [
+      "threats/briefs/2026-05-23-afternoon.md",
+      "threats/briefs/_coverage-log.yaml",
+      "threats/findings/finding-2026-05-23-0005.md",
+      "threats/findings/finding-2026-05-23-0001.md",
+      "threats/findings/_rejection-log.yaml",
+      "threats/raw-signal/raw-2026-05-23-pm-000-sentinel-pre-brief-sweep.md",
+      "threats/raw-signal/raw-2026-05-23-pm-001-thn-github-npm-staged-publishing-2fa-allow-flags-supply-chain-controls.md",
+      "threats/raw-signal/raw-2026-05-23-pm-002-thn-socket-packagist-8-package-supply-chain-attack-github-hosted-linux-malware-parikhpreyash4.md",
+      "threats/raw-signal/raw-2026-05-23-pm-003-snyk-laravel-lang-supply-chain-advisory-primary-vt-detection-escalation.md"
+    ],
+    "gitleaks_passed": true,
+    "pushed": true,
+    "push_remote": "origin",
+    "push_range": "90dac59..9e7abf1"
+  }
+}

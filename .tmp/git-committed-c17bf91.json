@@ -1,0 +1,15 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-20260517-120500",
+  "commit_sha": "c17bf91",
+  "commit_short": "c17bf91",
+  "branch": "main",
+  "pushed": true,
+  "push_remote": "origin",
+  "files_changed": 1,
+  "files": ["threats/raw-signal/raw-2026-05-17-flash-1200-000-sentinel-sweep.md"],
+  "commit_type": "flash_sweep_clean",
+  "associated_run_id": "flash-sweep-20260517-120000",
+  "prior_commit": "c8a140d",
+  "gitleaks_passed": true
+}

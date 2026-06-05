@@ -1,0 +1,150 @@
+FLASH sweep diff-summary
+========================
+Run: flash-sweep-20260528-120000
+Sweep window: 2026-05-28 08:00 → 12:18 EDT (~4h)
+Mode: flash_sweep (Mode 2)
+
+Per Mode 2 procedure + field-ownership rule (CLAUDE.md "source-health.yaml
+field ownership: runtime vs operator-set"), this diff records sweep outcomes
+without rewriting the multi-paragraph operator notes that compound across
+sweeps. Operator may roll these observations into the in-file `notes:`
+fields on the next consolidation pass; until then this companion file is
+the durable record.
+
+Sources queried this sweep (active, healthy):
+  cisa-advisories       — all.xml endpoint: 403 on /cybersecurity-advisories
+                          web fetch this sweep (consistent with established
+                          WAF pattern). RSS / all.xml not re-tested this
+                          FLASH sweep — the morning brief consumed the
+                          all.xml feed at 07:30 and the BleepingComputer +
+                          SecurityWeek paths surfaced the FortiClient / Gogs
+                          items. No outcome change to source.
+  cisa-kev              — JSON catalog: REACHABLE. Most-recent KEV
+                          adds dated 2026-05-27. Zero 2026-05-28
+                          adds. No outcome change.
+  nvd                   — REST API: REACHABLE. Returned 4 critical
+                          (≥9.0) CVEs touched 08:00→16:00 EDT
+                          window — CVE-2026-34000, -34002 (X.Org)
+                          and CVE-2026-4408 (Samba), all already
+                          covered in AM brief; plus
+                          CVE-2026-42496 (Archive::Tar Perl, 9.1) —
+                          patched, no active exploitation, does NOT
+                          meet Trigger 1. Source HEALTHY.
+  bleepingcomputer      — site: REACHABLE. 3 in-window articles. One
+                          trigger-relevant (Gogs zero-day RCE via
+                          Rapid7 disclosure). HEALTHY.
+  thehackernews         — site: REACHABLE. 3 in-window articles. Two
+                          trigger-relevant (FortiClient EMS active
+                          exploitation, Microsoft pushback on
+                          uncoordinated zero-day disclosure of 6
+                          Defender/BitLocker flaws). HEALTHY.
+  securityweek          — site: REACHABLE. 6 in-window articles. One
+                          trigger-relevant (FortiClient EMS fresh
+                          exploitation, corroborates THN). HEALTHY.
+  unit42                — site: REACHABLE. Only 2026-05-28 piece is the
+                          World Cup attack-surface already covered in
+                          AM brief; nothing new. HEALTHY.
+  mandiant              — site: REACHABLE via Google Cloud blog index;
+                          MOST RECENT in listing is UNC6692 "Snow
+                          Flurries" — confirmed via WebSearch as April
+                          2026 publication, NOT 2026-05-28. No new
+                          Mandiant blog this sweep. HEALTHY.
+  msrc                  — site: 404 on /blog (page-content extract
+                          insufficient). De-facto coverage achieved
+                          via THN article on Chaotic Eclipse zero-days
+                          + Microsoft's response language. No status
+                          change; consider follow-up sweep via direct
+                          MSRC advisory page rather than blog index.
+  crowdstrike           — site: REACHABLE. Most recent posts
+                          2026-05-26 (GlassWorm takedown). No
+                          2026-05-28 content. HEALTHY.
+  rapid7                — RSS/site: not directly fetched this sweep;
+                          the Rapid7 Gogs disclosure surfaced via
+                          BleepingComputer relay. HEALTHY (no status
+                          change).
+  cisco-talos           — REACHABLE. 1 in-window post (DICOM heap
+                          overflow analysis, healthcare sector). Not
+                          a FLASH trigger. HEALTHY.
+  industrialcyber-co    — REACHABLE. 3 in-window posts (OMB cyber
+                          directive, GCHQ speech, CISA town halls).
+                          No FLASH-trigger material. HEALTHY.
+  socket                — REACHABLE. Most recent post 2026-05-27 (OSV
+                          157 false-positive withdrawal). No
+                          2026-05-28 supply-chain content. HEALTHY.
+  proofpoint            — REACHABLE. Most recent threat-insight post
+                          2026-05-27 (2026 vulnerability-exploitation
+                          piece, no in-window 2026-05-28 content).
+                          HEALTHY.
+  wiz-research          — REACHABLE. 1 in-window post (PQC adoption,
+                          not threat-intel actionable). HEALTHY.
+  sentinelone           — REACHABLE. No 2026-05-28 content. HEALTHY.
+  sophos                — site redirected 301 to /en-us/blog?taxonomy_
+                          blog_category=Threat+Research; not
+                          re-fetched this sweep (out of FLASH-fast
+                          scope after redirect). No outcome change.
+                          HEALTHY.
+  volexity              — REACHABLE. No 2026-05-28 content; most
+                          recent post December 2025. HEALTHY (cadence
+                          is slow).
+  krebs                 — REACHABLE. No 2026-05-28 content; most
+                          recent 2026-05-25. HEALTHY (cadence is
+                          slow).
+  darkreading           — site: 403. Soft failure; not incremented
+                          this sweep (single 403 not stale).
+                          Watching.
+  threatfox             — JSON-recent endpoint: REACHABLE. 2026-05-28
+                          IOCs returned (ClearFake / Magecart / Mirai
+                          / Vidar / Remcos / NanoCore / Cobalt Strike
+                          / ValleyRAT / ACR Stealer / FAKEUPDATES /
+                          Stealc / SmartApeSG / AdaptixC2 / RansomHub
+                          / Havoc / Pupy RAT). NONE tagged with
+                          tracked-actor name. Browse-endpoint API:
+                          ECONNREFUSED (consistent with existing
+                          notes — passive browse hit blocking).
+                          HEALTHY.
+  urlhaus               — abuse.ch browse: CAPTCHA wall (consistent
+                          with existing notes). No change.
+
+Splunk first-party sweep:
+  splunk-archimedes     — REACHABLE (Splunk health: Frank 10.2.2 OK).
+                          Targeted IOC / CVE / actor keyword sweeps
+                          over -24h returned only Archimedes' own
+                          pipeline self-references (brief_published
+                          for AM-28, flash_sweep_clean for 00:00
+                          sentinel, brief_published for PM-27).
+                          Zero non-archimedes-internal events.
+                          Pattern entrenched across N+ sweeps.
+                          HEALTHY.
+  splunk-defenseclaw    — REACHABLE. Zero events on tracked-IOC sweep
+                          over -24h. Pattern entrenched. HEALTHY.
+
+FLASH trigger evaluation outcome:
+  Trigger 1 (critical-cve-exploited):
+    - FortiClient EMS CVE-2026-35616 (9.1, Arctic Wolf-attested fresh
+      exploitation, SecurityWeek A-grade + THN B-grade). MATCHED.
+      Raw-signaled to raw-2026-05-28-flash-1200-001. Single-source
+      veto candidate (SW + THN both relay Arctic Wolf).
+  Trigger 2 (tracked-actor-attribution): NOT MATCHED. UNC6692 Snow
+    Flurries is April-2026 Mandiant content (not new); UNC6692 not on
+    roster; no other tracked-actor new attribution this sweep.
+  Trigger 3 (first-party-ioc-hit): NOT MATCHED. Splunk clean.
+  Trigger 4 (tracked-actor-ttp-change): NOT MATCHED.
+  Trigger 5 (ad-sector-campaign): NOT MATCHED. Unit 42 World Cup
+    already in AM-28 brief.
+  Trigger 6 (zero-day-no-patch):
+    - Gogs RCE (Rapid7 disclosure, no patch, ~2,400 exposed instances,
+      effectively pre-auth on default deployments due to open
+      registration). MATCHED borderline. Raw-signaled to
+      raw-2026-05-28-flash-1200-002. Exploitation "imminent" rather
+      than "confirmed"; grader to apply Hard Rule 2.
+    - Microsoft Defender / BitLocker / Windows zero-days (6 CVEs from
+      Chaotic Eclipse via THN, no patch, widely deployed; 3 of 6
+      claimed active in wild by disclosing party only — Microsoft
+      contests disclosure but does not corroborate or refute
+      exploitation). MATCHED borderline. Raw-signaled to
+      raw-2026-05-28-flash-1200-003. Single-source veto candidate on
+      "active in the wild" claim.
+
+Status changes: none this sweep (all queried sources healthy outcomes).
+Notes-merge: deferred per established field-ownership pattern; this
+file is the sweep record.

@@ -1,0 +1,234 @@
+# source-health.yaml runtime-field updates — PM-28 pre-brief collection sweep
+#
+# Generated: 2026-05-28T16:10:00-04:00
+# Sweep: pre-brief-2026-05-28-pm (window 2026-05-28T08:00 → 2026-05-28T15:35 EDT)
+# Sentinel raw-signal: threats/raw-signal/raw-2026-05-28-pm-000-pre-brief-sweep.md
+#
+# Per collector subagent doctrine field-ownership rule (.claude/agents/collector.md):
+# - Runtime fields (collector writes): status, last_successful_fetch, failure_count,
+#   stale_since, last_error.
+# - Operator-set fields (preserve verbatim): notes and any unrecognized keys.
+#
+# This diff summary documents the proposed runtime-field updates for librarian
+# application. Edit tool not used directly to avoid risk of dropping operator
+# notes from a multi-thousand-line YAML file; diff-summary pattern follows
+# operator-side convention already in repo (infrastructure/source-health.yaml.
+# diff-summary-am-20260527, -pm-20260527 et al.).
+#
+# Apply order: update runtime fields in source-health.yaml per the table below.
+# Preserve all `notes:` field content verbatim per field-ownership rule.
+
+updates:
+
+  # ============================================================
+  # Productive A/B-grade fetches in this sweep (advance timestamp)
+  # ============================================================
+
+  bleepingcomputer:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed bleepingcomputer.com/feed/ 200 OK (etag fd79ccebe0c5ebb8b3cd19bbe0a6e20e,
+      last_modified 2026-05-28T19:30:22 GMT inside window from feed-server activity);
+      6 in-window items. Productive surface: FBI fake FIFA websites World Cup
+      fraud (raw-signaled at PM-005 as co-relay with The Record); FortiClient EMS
+      CVE-2026-35616 already in FLASH-1200; Gogs zero-day already in FLASH-1200;
+      sponsored Kaseya SIEM filtered; Romanian Oregon hacking sentencing
+      consumer-LE not raw-signaled; webinar filtered.
+
+  securityweek:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed securityweek.com/feed/ 200 OK (etag W/"aacf9190643a2b629e78af27d9f160ef",
+      last_modified 2026-05-28T19:01:07 GMT inside window); 7 in-window items.
+      Productive surface: GreyVibe Russia-nexus WithSecure (raw-signaled PM-003);
+      Carnival ShinyHunters anti-noise (already in AM brief finding 0001);
+      FortiClient EMS already in FLASH-1200; Geordie funding business news
+      filtered; BTMOB Android commodity-malware filtered; IBM/Red Hat Project
+      Lightwell funding business news filtered; Edamame product news filtered.
+
+  the-record:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed therecord.media/feed/ 200 OK; 4 in-window items. Productive
+      surface: Group-IB Ghost Stadium China-criminal World Cup fraud (raw-signaled
+      PM-005 as co-relay with BleepingComputer); GCHQ Keast-Butler Russia
+      seabed-to-cyberspace (raw-signaled PM-006); Carnival ShinyHunters
+      anti-noise; Canadian luring-child-predator sentencing non-cyber discarded.
+
+  thehackernews:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed thehackernews.com/feeds/posts/default 200 OK
+      (last_modified 2026-05-28T18:58:10 GMT inside window); 4 in-window items.
+      All 4 anti-noise-locked: Gogs zero-day (FLASH-1200-002), FortiClient EMS
+      (FLASH-1200-001), Chaotic Eclipse / MSRC pushback (FLASH-1200-003 single-
+      source-veto candidate), ThreatsDay Bulletin editorial multi-item roundup
+      filtered.
+
+  mstic:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed microsoft.com/en-us/security/blog/feed 200 OK
+      (etag "d171c7b684d84ec6178a81476f8e2a21-gzip", last_modified
+      2026-05-28T15:00:00 GMT inside window — feed-server cadence-aligned
+      with new MSTIC publication); 1 in-window item — The Gentlemen ransomware /
+      Storm-2697 RaaS analysis (raw-signaled PM-002). Productive Tier-1 vendor
+      research surface with full IOC payload (3 SHA-256 hashes), full
+      command-line-arg documentation, 21-vector lateral movement TTPs, and
+      Microsoft Defender detection signature (Ransom:Win64/Gentlemen).
+      Storm-2697 / The Gentlemen NEW TO CORPUS — potential /new-actor scaffold
+      candidate (flagged to grader / actor-profiler).
+
+  cisa-advisories:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed cisa.gov/cybersecurity-advisories/all.xml 200 OK; 10 in-window
+      items (9 ICS / 1 medical / 1 supply-chain compromise alert). Productive
+      A-grade government surface. SUPPLY CHAIN ALERT raw-signaled at PM-004
+      (Nx Console + GitHub + Megalodon federal escalation). ICS batch (10
+      advisories) raw-signaled in single index file at PM-007 with per-advisory
+      adjacency notes. cisa.gov/news-events/alerts/... direct fetch returned
+      403 (long-standing WAF pattern noted in cisa-advisories standing notes);
+      all.xml RSS endpoint remains the productive path.
+
+  cisa-kev:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      WebFetch known_exploited_vulnerabilities.json 200 OK; catalog refreshed
+      2026-05-28T16:27:12.927Z (1,606 total vulnerabilities); ZERO new dateAdded
+      entries today. Most recent additions remain CVE-2026-48027 Nx Console +
+      CVE-2026-45321 TanStack (both dateAdded 2026-05-27, dueDate 2026-06-10 —
+      already corpus-covered yesterday at finding-2026-05-27-0007). Standing
+      carry-forwards CVE-2026-48172 LiteSpeed cPanel + CVE-2026-42897 Exchange
+      OWA both dueDate 2026-05-29 (tomorrow) unchanged from morning carry-forward.
+
+  nvd:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      WebFetch services.nvd.nist.gov/rest/json/cves/2.0 with lastModStartDate=
+      2026-05-28T12:00 EDT and lastModEndDate=2026-05-28T15:30 EDT, cvssV3Severity=
+      CRITICAL → 9 results. NONE matched A&D / tracked-vuln / tracked-actor
+      filters: 4 historical CVEs metadata-refresh-only (libxslt 2019-11068,
+      Log4j 2019-17571, OpenSSH 2023-28531, VLC 2023-47359); 2 already in AM
+      brief finding 0004 (CVE-2026-34000 + 34002 X.Org); CVE-2026-35223 Joomla
+      webservice access-control 9.8 non-A&D CMS; CVE-2026-44723 Vowpal Wabbit
+      CI/CD shell injection 9.9 niche-ML no tracked-actor / A&D direct mapping;
+      CVE-2026-24444 SDMC NE6037 cable modem 9.8 hardcoded password consumer
+      device. ALL DISCARDED per Mode 1.
+
+  wired-security:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed wired.com/feed/category/security/latest/rss 200 OK; 1 in-window
+      item — Dell Cameron 'The Pentagon Knew Enemies Could Track Troops' Phones
+      for Years. Now They Are' (2026-05-28T16:59:33Z = 12:59 EDT inside window).
+      Article body NOT directly retrieved (www.wired.com WebFetch BLOCKED —
+      long-standing pattern documented in wired-security notes since 2026-05-09);
+      content triangulated via WebSearch returning Reuters exclusive (US News +
+      Army Times + Dawn + 4 other wire outlets) which gave CENTCOM verbatim
+      quote + Wyden context + 11-Germany-sites + billion-coordinates / one-data-
+      broker scaffolding. Raw-signaled PM-001 — high A&D-direct DoD-named-victim
+      content despite WebFetch block. Productive surface despite block pattern.
+
+  krebs:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed krebsonsecurity.com/feed/ 200 OK (last_modified 2026-05-25T13:21:49
+      GMT pre-window, unchanged across multiple sweeps); 0 in-window items.
+      Normal Krebs cadence — most recent post still 2026-05-25. Anti-noise.
+
+  sans-isc:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed isc.sans.edu/rssfeed.xml 200 OK (etag W/"1f23-652e5bdbc6dc9",
+      last_modified 2026-05-28T19:29:04 GMT inside window from feed-server
+      activity); 0 in-window items after since-filter. Normal quiet cadence.
+
+  crowdstrike:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed crowdstrike.com/blog/feed/ 200 OK (etag "1553-652e1885dd0bc-gzip",
+      last_modified 2026-05-28T14:27:49 GMT inside window from feed-server
+      activity); 10 dateless marketing/MQ items — SIXTEENTH consecutive sweep
+      of the entrenched-noise pattern (CrowdStrike Identity Threat Detection
+      Gartner leader, Falcon AIDR Kubernetes prompt-layer marketing, Glassworm
+      takedown already in finding-2026-05-27-0001 AM brief etc.). Pattern fully
+      entrenched. Anti-noise applies. Operator decision on RSS-endpoint
+      replacement still pending.
+
+  unit42:
+    field_updates:
+      last_successful_fetch: 2026-05-28T15:31:00-04:00
+    rationale: |
+      fetch_feed feedburner.com/Unit42 200 OK (last_modified 2026-05-28T11:10:27 GMT
+      inside window); 0 in-window items after since-filter. Unit 42 already
+      supplied AM-002 and AM-003 morning brief findings (Out of the Crypt
+      extortion economy + 2026 World Cup attack surface); typical post-publication
+      quiet pattern.
+
+  # ============================================================
+  # Failures and structural-stale entries (increment failure_count)
+  # ============================================================
+
+  mandiant:
+    field_updates:
+      failure_count: 20  # was 19
+      last_error: |
+        feedburner.com/Mandiant returned 404 on 2026-05-28T15:30 pre-brief sweep —
+        TWENTIETH consecutive failure (failure_count incremented 19→20). Held
+        healthy pending operator alt-endpoint decision per long-standing source-
+        health policy. Pattern unchanged from prior sweeps. cloud.google.com/
+        blog/topics/threat-intelligence/rss alt-endpoint malformed-body pattern
+        continues.
+    rationale: |
+      Held healthy per source-health long-standing policy on operator-pending
+      alt-endpoint decision. Twentieth consecutive failure. mandiant.com/
+      resources/blog/rss.xml workaround endpoint (noted in 2026-05-28 06:00
+      FLASH source-health) was not pivoted-to this sweep; deferred to operator
+      ratification on whether to flip primary feedburner config.
+
+  msrc:
+    # NOTE: msrc is NOT in source-health.yaml as a top-level entry (it is
+    # subsumed under mstic in current source-grades.yaml schema). Documenting
+    # transient parse-error here for awareness only — no runtime-field update.
+    field_updates: {}
+    rationale: |
+      msrc.microsoft.com/blog/feed returned XML parse error this sweep
+      ("not well-formed (invalid token) at line 127"). Transient or persistent
+      unclear; not flipped to stale. Parent feed microsoft.com/en-us/security/
+      blog/feed (mstic id) reachable and PRODUCTIVE this sweep with The
+      Gentlemen / Storm-2697 publication. mstic id covers the same surface
+      effectively; msrc-specific endpoint awareness only.
+
+# ============================================================
+# Source-health policy invariants observed this sweep
+# ============================================================
+
+invariants_observed:
+  - All operator-set `notes:` fields preserved verbatim — runtime fields only
+    updated per the field-ownership rule (.claude/agents/collector.md "After
+    fetching" → "Field ownership: operator vs runtime").
+  - No status flips healthy → stale this sweep.
+  - No status flips stale → healthy this sweep (ars-security and github-advisories
+    remain stale per prior-sweep status; not re-tested this sweep).
+  - mandiant failure_count incremented 19 → 20 but held healthy per long-standing
+    policy on operator-pending alt-endpoint decision.
+  - cisa-advisories direct alert-page fetch returned 403 (standard WAF pattern);
+    all.xml RSS endpoint productive.
+  - wired-security RSS reachable but article body fetch blocked (long-standing);
+    WebSearch triangulation via Reuters wire successfully bridged content for
+    PM-001 raw-signal.
+
+end_diff_summary.

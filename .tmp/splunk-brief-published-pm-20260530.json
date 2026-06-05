@@ -1,0 +1,23 @@
+{
+  "event_type": "brief_published",
+  "run_id": "librarian-20260530-160030",
+  "brief_id": "2026-05-30-afternoon",
+  "brief_type": "afternoon",
+  "preflight_result": "passed",
+  "tlp": "CLEAR",
+  "discord_channel": "intel-briefs",
+  "discord_message_id": "1510375313912238091",
+  "discord_post_status": 200,
+  "findings_count": 0,
+  "findings_referenced": ["finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due"],
+  "word_count": 612,
+  "layer_2_word_count": 248,
+  "layer_2_char_count": 1552,
+  "brief_path": "threats/briefs/2026-05-30-afternoon.md",
+  "absorbs_flash": [],
+  "related_vulns": ["CVE-2026-0257"],
+  "disposition": "continuing-coverage",
+  "findings_new_today": 0,
+  "findings_carried_status_only": ["finding-2026-05-29-0004"],
+  "update_on": ["finding-2026-05-29-0004"]
+}

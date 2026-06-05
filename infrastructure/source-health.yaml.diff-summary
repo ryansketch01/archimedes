@@ -1,0 +1,259 @@
+# Source-health diff summary — 2026-05-15 07:30 pre-brief collection sweep
+#
+# Collector-emitted runtime-state change instructions to be applied by the
+# librarian during the morning brief commit phase. NOT part of the on-disk
+# source-health schema; side artifact for traceability + librarian handoff.
+#
+# RULE: Operator-set `notes:` and any unrecognized keys are PRESERVED VERBATIM.
+# Only runtime fields are modified: status, last_successful_fetch, failure_count,
+# stale_since, last_error. The `notes_append_text` directives append to the
+# existing notes string (do NOT replace).
+#
+# This diff-summary REPLACES the prior 2026-05-14 07:30 diff-summary file
+# (which was presumably consumed by yesterday's librarian commit cycle; the
+# 2026-05-14 15:30 PM diff-summary remains alongside in the working tree but
+# refers to yesterday's sweep, not this morning's).
+
+sweep_metadata:
+  run_id: pre-brief-20260515-073000
+  sweep_time: 2026-05-15T07:30:00-04:00
+  collection_mode: pre_brief_collection
+  window_start: 2026-05-14T17:30:00-04:00
+  window_end: 2026-05-15T07:30:00-04:00
+  window_hours: 14
+  raw_signal_files_written: 2    # AM-000 sentinel + AM-001 SecurityWeek Cisco SD-WAN pattern editorial
+  substantive_raw_signals: 1     # AM-001
+  flash_queue_carryforward: 2    # raw-2026-05-15-flash-0600-001 (Exchange CVE-2026-42897) + raw-2026-05-15-flash-0600-002 (TeamPCP Shai-Hulud source release)
+  pm_yesterday_carryforward: 1   # raw-2026-05-14-flash-2200-001 (TeamPCP Mistral AI repos sale; non-FLASH brief-update candidate)
+  health_changes_count: 16       # 15 last_successful_fetch advances + 1 mandiant failure_count increment
+
+top_level_metadata_updates:
+  last_updated: 2026-05-15T07:30:00-04:00
+
+source_runtime_updates:
+
+  cisa-advisories:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: all.xml reachable via fetch_feed (status 200, 30 items total in feed), 0 items in 14h window after since-filter. Last advisory pre-window. all.xml RSS path remains the productive endpoint.
+
+  cisa-kev:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: KEV JSON catalogVersion 2026.05.14, dateReleased 2026-05-14T17:31:13Z — unchanged from yesterday's PM sweep. Five most recent KEV adds unchanged: CVE-2026-20182 Cisco SD-WAN (2026-05-14, dueDate 2026-05-17 T-2 days) / CVE-2026-42208 BerriAI LiteLLM (2026-05-08, dueDate 2026-05-11 PAST) / CVE-2026-6973 Ivanti EPMM (2026-05-07, dueDate 2026-05-10 PAST) / CVE-2026-0300 PAN-OS (2026-05-06, dueDate 2026-05-09 PAST) / CVE-2026-31431 Linux Kernel Copy Fail (2026-05-01, dueDate 2026-05-15 = **TODAY**). CVE-2026-42897 Exchange zero-day (today's 06:00 FLASH primary) NOT YET on KEV at this sweep time — Microsoft MSRC self-disclosure plus BleepingComputer / The Hacker News relays carry the exploitation-detected framing without CISA KEV catalog enrollment yet. KEV-deadline calendar for morning brief: Copy Fail TODAY; Cisco SD-WAN T-2 days.
+
+  mandiant:
+    failure_count: 21    # 20→21, twenty-third consecutive feedburner 404
+    last_error: |
+      feedburner.com/Mandiant returned 404 on 2026-05-15T07:30 pre-brief — twenty-third consecutive failure (failure_count incremented 20→21). cloud.google.com/blog/topics/threat-intelligence index page not directly re-fetched this sweep (FLASH-fast inheritance from 06:00 FLASH which showed unchanged top-of-list since yesterday morning). Held healthy pending operator alt-endpoint decision.
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: feedburner 404 twenty-third consecutive; index page not re-fetched this sweep (FLASH-fast inheritance from 06:00 FLASH; unchanged top-of-list since yesterday morning). Pattern fully entrenched; operator alt-endpoint decision still pending.
+
+  crowdstrike:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: feed reachable (status 200, last_modified 2026-05-15T06:09:00 GMT in-window from feed-server activity), 10 items all dateless marketing/MQ rotation including "CrowdStrike 2026 Financial Services Threat Landscape Report" + "Falcon AIDR Detects Threats at Prompt Layer in Kubernetes AI Applications" + May 2026 Patch Tuesday rotation. No fresh threat-research content in 14h window. ~24th consecutive dateless-marketing-pattern sweep.
+
+  mstic:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: parent feed microsoft.com/en-us/security/blog/feed/ reachable (status 200, last_modified 2026-05-14T21:51:24 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. PM-002 Kazuar Secret Blizzard post from yesterday 11:00 EDT is now ~20h aged and out of window. MSTIC threat-intel-specific feed subpath not re-tested this sweep (sporadic-404 pattern carry-over).
+
+  unit42:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: feedburner reachable (status 200, last_modified 2026-05-15T11:30:00 GMT in-window from feed-server activity), 15 items, 1 item in 14h window after since-filter — Gremlin Stealer Evolved Tactics (Pranay Kumar Chhaparwal + Mark Lim, 2026-05-15T10:00:52 GMT = 06:00 EDT). Commodity infostealer research, NO threat-actor attribution, NO A&D sector mention, NO tracked CVE. 11 SHA256 hashes published + 1 C2 URL (hxxp[:]194.87.92[.]109/i.php). DISCARDED per Mode 1 (no watchlist / roster / vuln-index hit). First productive Unit 42 surface in 14h-window since 2026-05-08 cadence-quiet pattern broke.
+
+  sentinelone:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: SentinelLabs feed reachable (status 200, last_modified 2026-05-14T20:22:16 GMT pre-window), 0 items in 14h window. Pattern continues — multi-day cadence.
+
+  sans-isc:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: rssfeed.xml reachable (status 200, etag W/1cf1-651d98531eff4, last_modified 2026-05-15T11:29:04 GMT in-window from feed-server activity), 10 items total, 2 items in 14h window after since-filter — (1) Guest Diary New Malware Libraries means New Signatures (2026-05-15T06:38 EDT, defensive diary, no actor / no IOC / no A&D, DISCARDED Mode 1); (2) Stormcast podcast (2026-05-15T04:10 EDT, audio podcast index no body, DISCARDED Mode 1). Both DISCARDED per Mode 1 procedure.
+
+  krebs:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: feed reachable (status 200, last_modified 2026-05-15T11:29:23 GMT in-window from feed-server activity), 0 items in 14h window — normal cadence.
+
+  the-record:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: feed reachable (status 200, no last_modified header), 0 items in 14h window — normal cadence.
+
+  bleepingcomputer:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: RSS reachable (status 200, etag 0a10c7e328f5b388a508054de6ade742, last_modified 2026-05-15T11:25:35 GMT in-window from feed-server activity), 2 items in 14h window after since-filter — (1) MS Exchange CVE-2026-42897 zero-day exploited (Sergiu Gatlan, 2026-05-15T05:40 EDT) — ANTI-NOISE LOCKOUT to raw-2026-05-15-flash-0600-001; (2) TeamPCP Mistral AI repos for sale (Ionut Ilascu, 2026-05-14T18:50 EDT) — ANTI-NOISE LOCKOUT to raw-2026-05-14-flash-2200-001.
+
+  securityweek:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: RSS reachable (status 200, etag W/92a70d9c44ca63036f57614ea4e15a4c, last_modified 2026-05-15T11:07:00 GMT in-window from feed-server activity), 5 items in 14h window after since-filter — (1) American Lending Center Data Breach (Eduard Kovacs, 2026-05-15T07:06 EDT) financial-services-ransomware-late-report, DISCARDED Mode 1 (no A&D, no actor, ~1y-old ransomware investigation); (2) OpenAI Hit by TanStack Supply Chain Attack (Ionut Arghire, 2026-05-15T06:37 EDT) ANTI-NOISE LOCKOUT to PM-004 / finding-2026-05-14-0008; (3) TeamPCP Ups the Game Releases Shai-Hulud Worm's Source Code (Ionut Arghire, 2026-05-15T05:47 EDT) ANTI-NOISE LOCKOUT to raw-2026-05-15-flash-0600-002; (4) Chrome 148 Critical Patches (Ionut Arghire, 2026-05-15T03:25 EDT) DISCARDED Mode 1 (browser CVE cluster, no actor / no A&D / no ITW exploitation cited); (5) Cisco Patches Another SD-WAN Zero-Day, the Sixth Exploited in 2026 (Eduard Kovacs, 2026-05-15T02:28 EDT) — RAW-SIGNALED AS AM-001 (editorial pattern-context extending PM-001; "Six SD-WAN CVEs exploited in 2026" + "Talos's 10 activity clusters" framing).
+
+  thehackernews:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: feed reachable (status 200, last_modified 2026-05-15T10:11:34 GMT in-window from feed-server activity), 2 items in 14h window after since-filter — (1) On-Prem MS Exchange CVE-2026-42897 Exploited via Crafted Email (2026-05-15T02:19 EDT) ANTI-NOISE LOCKOUT to raw-2026-05-15-flash-0600-001; (2) CISA Adds Cisco SD-WAN CVE-2026-20182 to KEV After Admin Access Exploits (2026-05-15T01:28 EDT) ANTI-NOISE LOCKOUT to PM-001 (this relay carries CISA KEV-add context but no new facts beyond what was raw-signaled yesterday afternoon).
+
+  cisco-talos:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: blog.talosintelligence.com/rss/ reachable (status 200, etag W/e0e67-mowZDbrm5HvwG5Yp/mf1fIa9Kmo), 15 items total, 0 items in 14h window after since-filter. UAT-8616 SD-WAN cluster surfaced via SecurityWeek (Eduard Kovacs) editorial extension on PM-001 only — NOT a direct Talos publication this sweep.
+
+  darktrace:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: darktrace.com/blog/rss.xml reachable (status 200, 100 items total), 0 items in 14h window after since-filter. Cadence multi-day; PM-003 Twill Typhoon post from yesterday remains in feed but pre-window.
+
+  splunk-archimedes:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: Splunk health check reachable (Splunk 10.2.2 on Frank, license_state=OK). Combined NOT sourcetype=archimedes:* over 24h returns zero events; 24th consecutive dormant sweep with non-archimedes-internal stream. Targeted IOC keyword sweep across 18 tokens (CVE-2026-42897, CVE-2026-20182, CVE-2026-31431, Exchange, Catalyst, SD-WAN, TeamPCP, Shai-Hulud, Mistral, TanStack, UAT-8616, Secret Blizzard, Kazuar, Twill Typhoon, FrostyNeighbor, UNC1151, Salt Typhoon, FamousSparrow) returned 3 hits — ALL THREE archimedes:operation pipeline self-references (yesterday's FLASH cycles + today's 06:00 FLASH self-emissions). Trigger 3 (first-party-ioc-hit) cannot fire on a dormant non-archimedes-internal stream.
+
+  splunk-defenseclaw:
+    last_successful_fetch: 2026-05-15T07:30:00-04:00
+    failure_count: 0
+    notes_append_text: |2
+       2026-05-15 07:30 pre-brief: zero non-archimedes-internal events over 24h. 24th consecutive sweep; pattern fully entrenched. Index appears not receiving live security telemetry.
+
+# Soft-fail observations (held healthy, no failure_count incrementation per RSS-path-retired or WAF/Akamai-bot-block classifications):
+#   - bitdefender: bitdefender.com/blog/labs/feed/ returned 404 (RSS path retired; index-page WebFetch remains productive surface). Held healthy from yesterday's 14:30 first-fetch. last_successful_fetch NOT advanced (no productive surface this sweep).
+#   - symantec: symantec-enterprise-blogs.security.com/blogs/feeds/threat-intelligence returned 404 (RSS path retired; security.com/threat-intelligence index-page WebFetch remains productive surface). Held healthy from yesterday morning's sweep. last_successful_fetch NOT advanced (no productive surface this sweep).
+#   - industrialcyber-co: industrialcyber.co/feed/ returned 403 (WAF/Akamai bot-block pattern, not a connectivity failure, no failure_count increment). Held healthy from 2026-05-13T18:10 first-fetch entry.
+#   - socket: socket.dev/blog/rss.xml returned 404 (no RSS path identified for socket vendor). Tracked via SecurityWeek / BleepingComputer / Aikido / Snyk / Wiz relays; standalone socket-blog surface not yet wired.
+
+# Sources NOT modified this sweep (state held from prior sweep):
+#   - censys, urlscan, hibp (stale: no-MCP / no-key infrastructure-blocking)
+#   - threatfox, malwarebazaar (healthy with failure_count=1; pending MCP build)
+#   - github-advisories (healthy with failure_count=1; persistent 406 across 10+ checks)
+#   - ars-security (stale since 2026-05-09; workaround root path in use, no operator decision)
+#   - x-cisagov (stale flip 2026-05-10 12:00; nitter bridge fragile; eligible-retry windows passed without operator alt-pool decision)
+#   - x-gossithedog (stale since 2026-05-09; nitter delisted)
+#   - x-swiftonsecurity, x-vxunderground, x-falconfeedsio (healthy null-last_fetch; not invoked this sweep)
+#   - sophos (RSS reachable this sweep but 0 items; not modifying — last_successful_fetch advance applies only if items returned; held healthy from prior sweep)
+#   - dragos (failure_count=1 carry-over from 2026-05-13 first-failure entry; not re-tested this sweep)
+#   - eset (welivesecurity 0 items in window; held healthy from prior sweep)
+#   - iran-monitor (healthy with failure_count=1; WAF persistent; 11+ consecutive skips)
+#   - cyberwarrior76 (last_successful_fetch 2026-05-10; not re-tested this sweep)
+#   - wired-security (RSS reachable this sweep but 0 items; not modifying — last_successful_fetch held from prior sweep; held healthy)
+#   - proofpoint (corporate-news-feed-recovered 2026-05-11; threat-intel-feed still broken; not re-tested this sweep)
+#   - rapid7 (RSS reachable this sweep but 0 items in window after since-filter; not modifying — held healthy from prior sweep)
+#   - virustotal, whois-rdap, abuseipdb, shodan, github-codesearch (enrichment APIs; not invoked this sweep — no qualifying IOC enrichment needed for the AM-001 editorial-pattern raw-signal)
+#   - wiz-research, snyk, stepsecurity, semgrep, onapsis, aikido-security, safedep (not directly re-fetched this sweep; surfaced via SecurityWeek / BleepingComputer relays as needed for TeamPCP Shai-Hulud / TanStack carry-forward)
+#   - f5, kernel-org-netdev, zellic, sysdig (FLASH-fast inheritance from yesterday's sweeps; no fresh in-window content)
+#   - openai-self-disclosure (TanStack-breach confirmation from yesterday afternoon brief; ANTI-NOISE 24h lockout to 2026-05-15 16:00 EDT in effect; not directly re-fetched)
+#   - all youtube_sources (yt-mandiant, yt-cisagov, yt-crowdstrike, yt-john-hammond, yt-simply-cyber, yt-blackhat, yt-defcon, yt-adam-goss) — not invoked this sweep, no API-MCP wiring
+
+# ============================================================================
+# Anomalies and items to flag for downstream grader/briefer
+# ============================================================================
+anomalies_and_carry_forward:
+
+  - id: cve_2026_31431_copy_fail_kev_deadline_today
+    description: |
+      CVE-2026-31431 ("Copy Fail") Linux Kernel — KEV dueDate is 2026-05-15
+      = TODAY. Federal civilian agencies must remediate end-of-business today
+      per BOD 22-01. This is the deadline-day surface for the federal-deadline
+      calendar that yesterday's morning brief opened with "Copy Fail KEV
+      deadline tomorrow (act-today)". No fresh research-content surfaced this
+      sweep — the deadline is the news for the morning brief.
+
+  - id: cve_2026_20182_cisco_sd_wan_kev_deadline_t_minus_2
+    description: |
+      CVE-2026-20182 KEV dueDate is 2026-05-17 = T-2 days. SecurityWeek
+      editorial extension (AM-001) materially expands the framing from
+      "single zero-day on 3-day clock" to "sixth-of-six SD-WAN zero-days
+      exploited in 2026 with 10 Talos-tracked activity clusters operating
+      in parallel." Briefer should consider this strategic-framing pivot.
+
+  - id: flash_queue_two_items_pending_09_00
+    description: |
+      Quiet-hours-queued from 06:00 FLASH: raw-2026-05-15-flash-0600-001
+      (Exchange CVE-2026-42897 zero-day, MSRC self-disclosure, exploitation
+      detected, ESU-only patch path) + raw-2026-05-15-flash-0600-002 (TeamPCP
+      Shai-Hulud worm source-code release + BreachForums "supply chain
+      challenge" bounty). Both items become eligible for posting after
+      09:00 EDT. Orchestrator decision: post separately or fold into morning
+      brief as headline cluster.
+
+  - id: teampcp_cluster_three_surface_continuity
+    description: |
+      Three-surface TeamPCP campaign continuity over 14h window:
+      (1) Mistral AI 450 repos for sale ($25K BIN, one-week leak deadline,
+          per raw-2026-05-14-flash-2200-001 yesterday at 22:00) —
+          MONETIZATION stage of Mini Shai-Hulud / TanStack campaign.
+      (2) TeamPCP Shai-Hulud worm source code release on GitHub + BreachForums
+          "supply chain challenge" bounty (per raw-2026-05-15-flash-0600-002
+          this morning at 05:47 EDT) — TOOLING-DISTRIBUTION + bounty-recruit
+          stage.
+      (3) OpenAI TanStack confirmation continues surfacing via SecurityWeek
+          Ionut Arghire relay this morning (06:37 EDT) — ANTI-NOISE to PM-004
+          / finding-2026-05-14-0008 (originating yesterday afternoon).
+      Cluster signals TeamPCP campaign-maturity escalation: monetization +
+      open-sourcing toolkit + bounty model + sustained named-victim
+      confirmations. Brief should treat as multi-day campaign update, not
+      three independent items.
+
+  - id: msrc_exchange_kev_not_yet_enrolled
+    description: |
+      CVE-2026-42897 (this morning's 06:00 FLASH primary) is NOT yet on
+      CISA KEV at this sweep time despite MSRC's "Exploitation Detected"
+      tag + BleepingComputer + The Hacker News confirming active
+      exploitation. Standard KEV-enrollment lag pattern (Microsoft
+      MSRC self-discloses, CISA enrolls 24-72h later). Brief should note
+      KEV-enrollment timing as "expected within 24-72h" for federal
+      compliance-deadline planning, not present as a defect.
+
+  - id: uat_8616_observed_cluster_status_unchanged
+    description: |
+      UAT-8616 observed-cluster designation (per source-health.yaml
+      yesterday afternoon's uat_8616_candidacy_flag block) remains
+      unchanged. This sweep's AM-001 SecurityWeek editorial extension is
+      relay of Talos primary, not independent attribution. Recommended
+      operator action: track as observed cluster, defer roster promotion
+      until additional A-grade cluster-identity corroboration surfaces.
+
+  - id: new_actor_candidates_carry_forward
+    description: |
+      Three /new-actor candidacy flags from yesterday afternoon's sweep
+      remain pending operator decision:
+      - Secret Blizzard / Turla / VENOMOUS BEAR (high priority)
+      - Twill Typhoon / Mustang Panda / TA416 (medium priority)
+      - FrostyNeighbor / Ghostwriter / UNC1151 (medium priority,
+        second corpus surface in 6 days)
+      No new candidacy flags this morning sweep.
+
+# Recommended librarian action:
+# Apply runtime-field updates to infrastructure/source-health.yaml in-place
+# for the 16 entries above, preserving operator-set notes verbatim and
+# appending the dated observations via the notes_append_text directives.
+# Top-of-file last_updated: 2026-05-15T07:30:00-04:00.
+#
+# Two raw-signal files produced this sweep:
+#   - raw-2026-05-15-am-000-sentinel-pre-brief-sweep.md (sentinel + sweep summary)
+#   - raw-2026-05-15-am-001-securityweek-cisco-sd-wan-sixth-zero-day-pattern.md
+#     (substantive: editorial pattern-extension of PM-001 / CVE-2026-20182)
+#
+# Plus three carry-forward items from prior sweeps to feed the 08:00 brief:
+#   - raw-2026-05-15-flash-0600-001 (Exchange CVE-2026-42897 zero-day FLASH)
+#   - raw-2026-05-15-flash-0600-002 (TeamPCP Shai-Hulud source release FLASH)
+#   - raw-2026-05-14-flash-2200-001 (TeamPCP Mistral AI sale, non-FLASH brief-update)

@@ -1,0 +1,230 @@
+# source-health.yaml runtime-field updates — PM-27 pre-brief collection sweep
+#
+# Generated: 2026-05-27T15:55:00-04:00
+# Sweep: pre-brief-2026-05-27-pm (window 2026-05-27T07:35 → 2026-05-27T15:55 EDT)
+# Sentinel raw-signal: threats/raw-signal/raw-2026-05-27-pm-000-pre-brief-sweep.md
+#
+# Per collector subagent doctrine field-ownership rule (.claude/agents/collector.md):
+# - Runtime fields (collector writes): status, last_successful_fetch, failure_count,
+#   stale_since, last_error.
+# - Operator-set fields (preserve verbatim): notes and any unrecognized keys.
+#
+# This diff summary documents the proposed runtime-field updates for librarian
+# application. Edit tool unavailable in collector subagent context for this sweep;
+# diff-summary pattern follows operator-side convention already in repo
+# (infrastructure/source-health.yaml.diff-summary-am-20260527 et al.).
+#
+# Apply order: update runtime fields in source-health.yaml per the table below.
+# Preserve all `notes:` field content verbatim per field-ownership rule.
+
+updates:
+
+  # ============================================================
+  # Productive A/B-grade fetches in this sweep (advance timestamp)
+  # ============================================================
+
+  cisa-kev:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:35:00-04:00
+    rationale: |
+      WebFetch known_exploited_vulnerabilities.json succeeded;
+      catalogVersion 2026.05.27 confirmed; three new adds at 12:00 UTC
+      today (CVE-2026-45321 TanStack, CVE-2026-48027 Nx Console,
+      CVE-2026-8398 Daemon Tools Lite).
+
+  cisa-advisories:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:35:00-04:00
+    rationale: fetch_feed cisa.gov/cybersecurity-advisories/all.xml 200 OK; 30 items; 1 in-window matching the KEV-add alert post.
+
+  thehackernews:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed feedburner.com/TheHackersNews 200 OK; 5 in-window items.
+
+  bleepingcomputer:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed 200 OK; 3 in-window items (Glassworm restatement absorbed, FBI Silent Ransom discarded, Specops sponsored discarded).
+
+  securityweek:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed feedburner 200 OK; 5 in-window items all discarded (UK GCHQ + Pretalx + AI Risk Summit + funding + Romanian sentence).
+
+  the-record:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed 200 OK; 5 in-window items; LACMTA Iran second relay (Smalley) raw-signaled as PM-003.
+
+  mstic:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed microsoft.com/en-us/security/blog/feed 200 OK; 0 in window; healthy (PM-26 17:35 UTC cryptojacking primary remains most recent).
+
+  unit42:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed feedburner 200 OK; 0 in window; healthy.
+
+  crowdstrike:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed 200 OK; GlassWorm top-of-feed already absorbed under AM-27 finding-0001; dateless-marketing pattern continues for 9 of 10 items.
+
+  cisco-talos:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed blog.talosintelligence.com/rss/ 200 OK; 1 in-window item (MediaArea CVE cluster discarded per Mode 1).
+
+  rapid7:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed rapid7.com/blog/rss/ 200 OK; 0 in-window items; healthy.
+
+  sans-isc:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed isc.sans.edu/rssfeed.xml 200 OK; 0 in-window items beyond AM-27-absorbed Wednesday Stormcast podcast detail.
+
+  sentinelone:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:31:00-04:00
+    rationale: fetch_feed sentinelone.com/labs/feed/ 200 OK; last_modified inside window; 0 in-window items.
+
+  github-advisories:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:50:00-04:00
+    rationale: |
+      WebFetch github.com/advisories?query=type:reviewed+severity:critical&sort=published-desc
+      succeeded (workaround for long-standing 406 on advisories.atom — held since
+      2026-05-08 first-soft-fail). One A&D-RELEVANT advisory surfaced:
+      Yamcs CVE-2026-44632 GHSA-524g-x36v-9wm6 server-side code injection RCE
+      (CVSS 9.1, post-auth high-priv, patched 5.12.7, no ITW). Raw-signaled as PM-004.
+
+  # ============================================================
+  # Mandiant — eighth recovery on canonical productive endpoint
+  # ============================================================
+  mandiant:
+    field_updates:
+      last_successful_fetch: 2026-05-27T15:55:00-04:00
+      last_error: |
+        feedburner.com/Mandiant returned 404 on 2026-05-27T15:55 PM pre-brief —
+        long-standing pattern; alt mandiant.com/resources/blog/rss.xml endpoint
+        produces EIGHTH consecutive recovery this sweep (200 OK, 20 items, 0 in
+        window). Endpoint canonicalization recommendation elevated to operator-
+        decision-pending urgency tier.
+    field_updates_preserved_unchanged:
+      failure_count: 19
+      stale_since: null
+      status: healthy
+    rationale: |
+      Held healthy per long-standing operator policy. failure_count preserved
+      at 19 because the runtime-state field tracks feedburner-specific failures,
+      NOT the productive mandiant.com path. Canonicalization decision still
+      pending — recommendation elevated to operator-decision-required-pending
+      urgency this sweep (eighth recovery).
+
+  # ============================================================
+  # Volexity — fifth consecutive parse-error; stale flip recommendation elevated
+  # ============================================================
+  volexity:
+    field_updates:
+      failure_count: 5    # was 3 → 4 at AM-27 → 5 at this PM-27
+      last_error: |
+        2026-05-27 15:55 PM pre-brief sweep: www.volexity.com/blog/feed/
+        returned malformed body (XML parse error <unknown>:17:68 not well-formed
+        invalid token) — FIFTH CONSECUTIVE same-class failure across 2026-05-19
+        + 2026-05-26 PM-26 + 2026-05-27 06:00 FLASH + AM-27 + this PM-27.
+        STALE FLIP RECOMMENDATION ELEVATED to operator-decision-required.
+    field_updates_preserved_unchanged:
+      status: healthy        # held healthy per operator policy
+      stale_since: null
+      last_successful_fetch: null
+    rationale: |
+      Per long-standing operator instruction the source has been held healthy
+      across five consecutive same-class failures despite the failure_count
+      far exceeding the ≥2 stale threshold. This PM-27 sweep formally
+      elevates the stale-flip recommendation to operator-decision-required
+      tier — the alt-endpoint-discovery question or MCP-build question now
+      has a five-sweep observational window of recurring failure to anchor
+      the decision.
+
+# ============================================================
+# Sources NOT updated this sweep (no observation event)
+# ============================================================
+# Listed for audit-trail completeness; no field changes applied:
+#
+# - Already-stale sources held stale per existing disposition (no retry
+#   in this sweep): censys, urlscan, hibp, x-cisagov, x-gossithedog,
+#   ars-security, sophos.
+# - Other healthy sources not in priority RSS sweep set this PM-27 cycle
+#   (multi-day cadence): krebs, wired-security, recorded-future, mitre-
+#   attack, nsa-cnsa, fbi-flash, dod-cmmc, nvd (not invoked — no new CVE
+#   leads required NVD lastModified pivot this sweep beyond the GitHub
+#   Advisory + CISA KEV WebFetches).
+# - Provisional sources without prior top-level entries that may need
+#   first-citation tracking on subsequent surfaces: dark-reading (this
+#   PM-27 sweep), the-register (this PM-27 sweep) — both pending operator
+#   decision on whether to create dedicated top-level entries. Their
+#   feeds reachable this sweep; productive in surfacing primary-relay-
+#   tier content (The Register GlassWorm enrichment raw-signaled as
+#   PM-005); first-citation entries deferred to operator decision per
+#   source-grade-log workflow.
+
+# ============================================================
+# Pattern observations carried-forward for operator awareness
+# ============================================================
+#
+# 1. MANDIANT ENDPOINT CANONICALIZATION (eighth-time-pending urgency):
+#    mandiant.com/resources/blog/rss.xml = EIGHTH consecutive recovery
+#    across PM-26 12:00 / 18:00 / 00:00 / 06:00 / AM-27 / 12:00 / this
+#    PM-27. Source-grades.yaml `urls:` field references both endpoints
+#    (cloud.google.com/blog/topics/threat-intelligence as primary +
+#    mandiant.com/resources/blog as secondary). Operator decision:
+#    invert the order (canonicalize mandiant.com as primary) and
+#    document cloud.google.com as deprecated-or-broken on the feed-
+#    fetch path while preserving topic-page WebFetch as fallback.
+#
+# 2. VOLEXITY (fifth-consecutive parse-error): operator decision:
+#    (a) stale flip per ≥2 threshold finally honored; or
+#    (b) alt-endpoint identification (volexity.com homepage WebFetch
+#        for headline-tier signal); or
+#    (c) MCP-build for direct Volexity content retrieval.
+#
+# 3. CROWDSTRIKE persistent-dateless-marketing: ~14 consecutive sweeps
+#    of dateless top-of-feed content; useful primary content (today
+#    the GlassWorm takedown) surfaces only via dated relay layers.
+#    Operator decision deferred per existing pattern: source remains
+#    technically reachable, not a stale-flip candidate.
+#
+# 4. DARK READING WebFetch-403-on-article-body: pattern observed
+#    today on two productive in-window article URLs (Latin American
+#    cybercriminals + AI-assisted exploit development). Similar to
+#    Wired Claude Code blocking pattern documented since 2026-05-09.
+#    Yield reduced to headline-tier only.
+
+# ============================================================
+# Splunk first-party (audit trail)
+# ============================================================
+splunk_archimedes:
+  field_updates:
+    last_successful_fetch: 2026-05-27T15:35:00-04:00
+  rationale: mcp__splunk-query targeted 42-IOC sweep -9h@h returned ZERO non-archimedes-internal events; 67th consecutive dormant non-self sweep on defenseclaw_local.
+
+splunk_defenseclaw:
+  field_updates:
+    last_successful_fetch: 2026-05-27T15:35:00-04:00
+  rationale: Cross-index sweep included; ZERO events; 67th consecutive dormant non-self sweep.
+
+# ============================================================
+# Meta — _meta:total_active_sources / healthy / stale counts
+# ============================================================
+# No net change to source counts this sweep. Stale set unchanged
+# (censys, urlscan, hibp, x-gossithedog, ars-security, x-cisagov, sophos).
+# Healthy set unchanged at composition level; only failure_count and
+# last_successful_fetch deltas this sweep. degraded_warning_count
+# unchanged at 6 (mandiant past-threshold continues; iran-monitor +
+# threatfox + malwarebazaar + github-advisories continue; dragos
+# continues; volexity now at failure_count=5 past-threshold but held
+# healthy; net degraded_warning_count 7 counting volexity).

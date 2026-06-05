@@ -1,0 +1,21 @@
+{
+  "event_type": "git_committed",
+  "run_id": "librarian-20260530-160030",
+  "commit_sha": "f0993be",
+  "branch": "main",
+  "pushed": true,
+  "push_target": "origin/main",
+  "subject": "Publish 2026-05-30-afternoon brief (0 new findings, PAN-OS CVE-2026-0257 carry-forward update — Rapid7 IOCs + Monday KEV T+2)",
+  "files_changed": 6,
+  "insertions": 1331,
+  "deletions": 4,
+  "artifacts": [
+    "threats/briefs/2026-05-30-afternoon.md",
+    "threats/briefs/_coverage-log.yaml",
+    "threats/findings/_rejection-log.yaml",
+    "threats/findings/finding-2026-05-29-0004-rapid7-cisa-kev-palo-alto-psirt-cve-2026-0257-pan-os-globalprotect-auth-bypass-itw-state-transition-3day-federal-due.md",
+    "threats/raw-signal/raw-2026-05-30-pm-000-sentinel-pre-brief-sweep.md",
+    "threats/raw-signal/raw-2026-05-30-pm-001-bleepingcomputer-rapid7-panos-globalprotect-cve-2026-0257-active-exploitation-confirmed-vultr-dromatics-iocs.md"
+  ],
+  "gitleaks_result": "clean"
+}

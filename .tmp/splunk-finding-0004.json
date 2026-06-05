@@ -1,0 +1,20 @@
+{
+  "event_type": "finding_promoted",
+  "run_id": "librarian-20260514-080045",
+  "finding_id": "finding-2026-05-14-0004",
+  "promoted_by": "grader",
+  "grading_run_id": "morning-20260514-080000",
+  "brief_id": "2026-05-14-morning",
+  "finding_path": "threats/findings/finding-2026-05-14-0004.md",
+  "digraph": "B2",
+  "source_reliability": "B",
+  "credibility": 2,
+  "wep_ceiling": "very likely",
+  "topic": "PraisonAI CVE-2026-44338 scanner-velocity (Sysdig) — 3h44m disclosure-to-probe",
+  "primary_source": "sysdig",
+  "scanner_ua": "CVE-Detector/1.0",
+  "related_vulns": ["CVE-2026-44338"],
+  "vuln_tracker_handoff_queued": "VT-010",
+  "exploitation_status": "scanner_only_not_interactive_per_sysdig",
+  "patch_status": "patched_at_disclosure"
+}

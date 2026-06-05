@@ -1,0 +1,20 @@
+
+# ⚡ FLASH: Gogs self-hosted Git zero-day RCE — Rapid7 discloses after 60+ days of vendor silence; no patch, no CVE assigned
+
+*2026-05-28 12:40 EDT · A2 · WEP likely · TLP:CLEAR · posts immediately, within active hours*
+
+**Action.** There is no patch. DIB engineering teams running self-hosted Gogs (versions **0.14.2** and **0.15.0+dev**): (1) inventory Internet-exposed Gogs instances now — Shadowserver tracks 2,400+ globally, Shodan 1,000+; (2) **disable open registration** on every deployed instance (admin → site settings → `DISABLE_REGISTRATION = true`) — this collapses the effective pre-auth attack surface to known-user only; (3) restrict Gogs admin and web surfaces to VPN / IP allowlist; (4) monitor the Gogs upstream repository for a fix commit and CVE assignment. Gitea / Forgejo / GitLab / GitHub Enterprise deployments are **not affected** by this flaw.
+
+**What.** [Rapid7 senior security researcher Jonah Burges has disclosed](https://www.bleepingcomputer.com/news/security/new-gogs-zero-day-flaw-lets-hackers-get-remote-code-execution/) a zero-day argument-injection RCE in Gogs pull-request rebase handling — malicious branch names passed to `git rebase` during the "Rebase before merging" flow enable arbitrary command execution. A registered user account is technically required, but Gogs ships with **open registration enabled by default**, so any reachable instance is effectively pre-auth. Rapid7 reported the flaw to maintainers on **2026-03-17**, was acknowledged on 2026-03-28, and disclosed publicly today after 60+ days of vendor silence. **No CVE assigned. No patch.**
+
+**Exploitation framing (single-source veto on imminence).** Rapid7 attests no confirmed in-wild exploitation of this specific flaw at disclosure. BleepingComputer cites the related **CVE-2025-8110** Gogs flaw as historical exploitation context only — *not* claimed as the current flaw. The "imminent exploitation" framing on this brief is Archimedes-side inference from public disclosure, install-base size, open-registration default, and the historical-pattern precedent — *not* a Rapid7 direct attestation. WEP capped at *likely*; lift conditions are independent vendor-IR observation, CISA KEV addition once CVE assigned, or Shodan / Shadowserver telemetry confirming widespread post-disclosure scanning.
+
+**Impact.** A&D-prime direct exposure is **structural-indirect**: self-hosted SCM is competitive with GitHub Enterprise / GitLab Self-Managed / Bitbucket Data Center in the DIB / ITAR / CMMC engineering-team setting, but the Gogs install-base geographic skew (Asia and Europe primary) suggests the typical deployment may not be US-DIB. **No A&D-prime, sector, or geography has been named.** No actor attribution from any source; *Archimedes does not originate one.*
+
+**First-party Splunk.** Zero hits at -30d on Gogs product + Rapid7 researcher sweep across `defenseclaw_local` + `archimedes`. Per Hard Rule 8: silence is not contradiction. 67th consecutive dormant non-self sweep.
+
+**Trigger 6 fit caveat.** Spec requires "exploitation confirmed or imminent per A-grade source." Rapid7 (A provisional) attests preconditions, not imminence; the imminence reading is orchestrator inference. Trigger fires on the totality. Critical override 0/4 — fails all four prongs.
+
+**Sources.** [BleepingComputer (2026-05-28 10:25 EDT, Sergiu Gatlan)](https://www.bleepingcomputer.com/news/security/new-gogs-zero-day-flaw-lets-hackers-get-remote-code-execution/) — B relay · Rapid7 (Jonah Burges, A provisional) — sole primary disclosure (direct URL pending next collection cycle).
+
+**Related.** [finding-2026-05-28-FLASH-1200-0002](../findings/finding-2026-05-28-FLASH-1200-0002-bleepingcomputer-gogs-zero-day-rce-rapid7-jonah-burges-no-patch.md). No prior Gogs coverage in corpus. Adjacent developer-tooling-exposure class: [finding-2026-05-12-FLASH-0001](../findings/finding-2026-05-12-FLASH-0001.md) (npm supply-chain) and [finding-2026-05-20-FLASH-0001](../findings/finding-2026-05-20-FLASH-0001.md) (VS Code marketplace) — different vectors, same SDLC exposure umbrella. Vuln-tracker handoff: MEDIUM-priority dossier pending CVE assignment.

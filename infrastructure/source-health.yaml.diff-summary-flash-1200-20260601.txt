@@ -1,0 +1,156 @@
+source-health.yaml runtime field updates for FLASH 12:00 EDT 2026-06-01
+run_id: flash-sweep-20260601-120000
+generated_at: 2026-06-01T12:00:00-04:00
+
+RUNTIME FIELDS TO UPDATE (per collector field-ownership doctrine):
+Only: status, last_successful_fetch, failure_count, stale_since, last_error
+Preserve verbatim: notes and all other operator-set fields
+
+---
+
+bleepingcomputer:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # status, stale_since, last_error: unchanged (healthy)
+  # 3 new in-window items: CVE-2026-41089 RAW-SIGNALED; 2 Microsoft service
+  # outage/KB items DISCARDED; 1 sponsored content DISCARDED
+
+securityweek:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # status, stale_since, last_error: unchanged (healthy)
+  # 3 new in-window items: CVE-2026-41089 RAW-SIGNALED; CVE-2026-0257
+  # exploitation timeline RAW-SIGNALED (carry-forward); Dragos/Phosphorus
+  # M&A DISCARDED; Pentagon AI DISCARDED; CIFSwitch anti-noise DISCARDED
+
+the-hacker-news:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 2 new in-window items: Dragon Weave China-aligned DISCARDED (C-grade source,
+  # no roster actor, no A&D-prime); Weekly Recap DISCARDED (anti-noise covers all)
+
+the-record:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 1 in-window item: Microsoft researcher policy news DISCARDED
+
+securityaffairs:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 2 in-window items: Ransomware business-hours stats DISCARDED; WP Maps Pro
+  # CVE-2026-8732 DISCARDED (consumer-tier, anti-noise same class as FLASH-0600)
+
+checkpoint:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 1 in-window item: Weekly bulletin scanned for FLASH triggers (Gogs zero-day
+  # Trigger 6 evaluated -- no A-grade originating source on exploitation claim;
+  # CCB Netlogon carry-forward; CVE-2026-0257 anti-noise). Not raw-signaled as
+  # non-originating weekly digest.
+
+rapid7:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 2 in-window items: CVE-2026-0826 HP Poly VVX/Trio disclosure RAW-SIGNALED;
+  # companion blog post "How an Old Bug Can Feed AI-Powered Impersonation"
+  # RAW-SIGNALED (captured in same raw-signal file 002 as supporting context)
+
+mandiant:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 22
+  # failure_count note: unchanged from AM-1 (22 = feedburner-only; alt endpoint
+  # mandiant.com/resources/blog/rss.xml healthy, 0 in-window items this sweep).
+  # No re-increment this sweep -- alt endpoint healthy, feedburner state unchanged
+  # since AM-1 where it was last incremented. Operator alt-endpoint canonical-swap
+  # decision still overdue.
+
+unit42:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 0 in-window items; last_modified 2026-05-29T21:16 GMT unchanged
+
+mstic:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 0 in-window items; last_modified 2026-05-30T00:15 GMT unchanged
+
+crowdstrike:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 10 items all published:null (18th+ consecutive dateless-RSS pattern)
+  # last_modified 2026-06-01T07:07 GMT = 03:07 EDT pre-window
+
+cisco-talos:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 0 in-window items (15 items in feed, pre-window)
+
+sentinelone:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # SentinelLabs feed 0 in-window; last_modified 2026-05-29T22:03 GMT unchanged
+
+welivesecurity:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 0 in-window items (100 items in feed, pre-window)
+
+greynoise:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # 0 in-window items; last_modified 2026-05-31T22:37 GMT unchanged
+
+volexity:
+  failure_count: 0
+  # Transient parse failure this sweep (recurring intermittent pattern from
+  # FLASH-0600 / AM-1). Held healthy; failure_count not incremented beyond 0
+  # per recovery established at AM-30. Single intermittent parse error on a
+  # healthy feed does not regress the recovery.
+
+cisa-advisories:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # all.xml feed 0 in-window items (30 in feed)
+
+cisa-kev:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # JSON catalog full scan: version unchanged 2026.05.29; 0 new entries
+  # CVE-2026-41089 NOT in KEV catalog at this sweep
+
+nvd:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # lastModStartDate window query 2026-06-01T10:00Z->16:00Z: 0 CRITICAL,
+  # 0 new HIGH beyond FLASH-0600 already-evaluated set
+
+splunk-archimedes:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # Sweep A: NOT sourcetype=archimedes:* over -6h: 0 events (17th consecutive)
+  # Sweep B: targeted IOC sweep across 38 indicators incl CVE-2026-41089 +
+  # CVE-2026-0826 + "netlogon" + "HP Poly" + "VVX": 0 hits. Trigger 3 NO FIRE.
+
+splunk-defenseclaw:
+  last_successful_fetch: '2026-06-01T12:00:00-04:00'
+  failure_count: 0
+  # Combined NOT sourcetype=archimedes:* over -6h: 0 events (consistent dormant
+  # pattern)
+
+---
+
+UNCHANGED STATUS (stale sources not retried this sweep):
+msrc: stale (9th+ consecutive parse failure; under-24h threshold may apply)
+ars-security: stale (stale_since 2026-05-09; eligible-to-retry at >24h but
+  FLASH-fast scope; operator path-replacement still pending)
+x-cisagov: stale (stale_since 2026-05-10; bridge fragility; operator action pending)
+x-gossithedog: stale (stale_since 2026-05-09)
+censys: stale (no MCP built)
+urlscan: stale (no MCP built)
+hibp: stale (no API key)
+threatfox: healthy but skipped (MCP not built; CAPTCHA wall on WebFetch)
+malwarebazaar: healthy but skipped (MCP not built)
+sophos: stale (stale_since 2026-05-17; failure_count 3)
+
+NO NEW STALE FLIPS THIS SWEEP.
+NO NEW FAILURE-COUNT INCREMENTS beyond mandiant's unchanged feedburner pattern.

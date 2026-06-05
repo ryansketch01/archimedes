@@ -1,0 +1,26 @@
+{
+  "event_type": "flash_sweep_clean",
+  "run_id": "flash-sweep-20260518-060000",
+  "sweep_timestamp": "2026-05-18T06:00:00-04:00",
+  "trigger_count": 0,
+  "items_discarded": 8,
+  "dormancy_streak": 41,
+  "quiet_hours_state": "active-quiet",
+  "splunk_self_telemetry_events_6h": 4,
+  "splunk_external_ioc_events_24h": 0,
+  "splunk_defenseclaw_events_24h": 0,
+  "discord_posted": false,
+  "discord_queued": false,
+  "git_commit_sha": "a8121bc",
+  "sentinel_tombstone_path": "threats/raw-signal/raw-2026-05-18-flash-0600-000-sentinel-sweep.md",
+  "status_update_candidates_for_grader": 3,
+  "candidate_summary": "CVE-2026-31635 DirtyDecrypt Linux kernel rxgk LPE; Shai-Hulud worm clones 4 npm packages UNATTRIBUTED; Grafana/Coinbase Cartel breach (Scattered Spider cluster-adjacent pending A-grade corroboration)",
+  "carry_forwards_count": 8,
+  "carry_forwards_refined_this_sweep": 5,
+  "hard_rule_compliance": {
+    "rule_2_no_novel_attribution": true,
+    "rule_3_no_poc_urls": true,
+    "rule_4_no_active_scanning": true
+  },
+  "tlp": "CLEAR"
+}

@@ -1,0 +1,58 @@
+# 2026-05-31 00:00 EDT canonical scheduled FLASH sweep — runtime field diff summary
+#
+# File-level:
+#   last_updated bumped to 2026-05-31T00:05:00-04:00
+#
+# Sources updated (last_successful_fetch bumped to 2026-05-31T00:05:00-04:00):
+#   - cisa-advisories       (status 200, 30 items in feed, 0 in-window)
+#   - cisa-kev              (full catalog scan via WebFetch; 0 entries dated 2026-05-30+)
+#   - nvd                   (lastModStartDate 6h window query; 0 critical, 6 high all DISCARDED)
+#   - mstic                 (status 200, pre-window unchanged)
+#   - unit42                (status 200, pre-window unchanged)
+#   - crowdstrike           (status 200, dateless marketing pattern continues — 15th consecutive)
+#   - cisco-talos           (status 200, 15 items in feed, 0 in-window)
+#   - sentinelone           (SentinelLabs status 200, pre-window unchanged)
+#   - rapid7                (status 200, 0 in-window)
+#   - sans-isc              (status 200, 0 in-window)
+#   - bleepingcomputer      (status 200, last_modified in-window from feed-server activity, 0 items)
+#   - the-record            (status 200, 5 items in feed, 0 in-window)
+#   - securityweek          (status 200, 0 in-window)
+#   - securityaffairs       (status 200, 0 in-window — first entry would be useful but not adding speculatively)
+#   - thehackernews         (status 200, 50 items in feed, 0 in-window — no top-level source-health entry yet)
+#   - darkreading           (status 200, 50 items, 2 in-window items both future-dated event listings, DISCARDED)
+#   - welivesecurity        (status 200, 100 items, 0 in-window — no top-level source-health entry yet)
+#   - greynoise             (status 200, pre-window unchanged)
+#   - securelist            (status 200, pre-window unchanged)
+#   - checkpoint            (status 200, pre-window unchanged)
+#   - krebs                 (status 200, pre-window — multi-day cadence)
+#   - splunk-archimedes     (24h sweep: 0 non-archimedes-internal events; 0 IOC hits across 25 priority indicators — 13th consecutive dormant sweep)
+#   - splunk-defenseclaw    (same — 13th consecutive dormant sweep)
+#
+# Sources with failure_count increment:
+#   - mandiant: failure_count 19→20 (feedburner.com/Mandiant 404, 30th consecutive); last_successful_fetch
+#     bumped on alt-endpoint validation (mandiant.com/resources/blog/rss.xml status 200, 20 items). Held
+#     healthy per operator-set instruction pending alt-endpoint canonical-swap decision. last_error updated
+#     to reflect 30th-consecutive count.
+#
+# Sources with transient soft-fail (not reaching stale threshold):
+#   - volexity: RSS parse error this sweep (same recurring intermittent pattern). Single failure does not
+#     flip stale; recovery was confirmed at AM-30 pre-brief 2026-05-30 (failure_count=0). Held healthy.
+#     failure_count NOT incremented this sweep — the AM-30 recovery cleared prior streak.
+#
+# Stale sources unchanged (carry-forward):
+#   - msrc (stale since 2026-05-30 per AM-30 pre-brief — 6th consecutive parse failure)
+#   - censys / urlscan / hibp (MCP-pending, stable stale)
+#   - x-gossithedog / ars-security / x-cisagov (stable stale per prior sweeps)
+#   - sophos (stale since 2026-05-17, carry-forward unchanged)
+#
+# Notes preserved verbatim per operator-set field-ownership policy (Hard Rule on
+# source-health field ownership — runtime fields only).
+#
+# Splunk: 13th consecutive dormant non-self-telemetry pattern across both indexes.
+# 0 hits across 25 priority IOCs over 24h.
+#
+# Carry-forward awareness items (no source-health change required):
+#   - CrowdStrike Glassworm takedown (roster #005) 2026-05-26 still visible in dateless feed, pre-window
+#   - Mandiant alt-endpoint canonical-swap decision still pending operator review
+#   - PAN-OS CVE-2026-0257 covered in 2026-05-30-afternoon brief; Anti-Noise Rule 1 covers through ~16:00 today
+#   - MSTIC 33-package npm cluster covered in 2026-05-30-morning brief; Anti-Noise Rule 1 covers through ~08:00 today

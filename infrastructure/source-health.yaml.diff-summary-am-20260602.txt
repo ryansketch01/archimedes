@@ -1,0 +1,277 @@
+source-health.yaml runtime-field updates - AM-1 pre-brief sweep 2026-06-02T07:30 EDT
+=====================================================================================
+
+Pre-brief collection sweep at 2026-06-02T07:30 EDT covered the 14h window
+2026-06-01T17:30 → 2026-06-02T07:30 EDT for the 08:00 EDT morning brief.
+
+Runtime-field updates (status, last_successful_fetch, failure_count, stale_since,
+last_error). All operator-set `notes` blocks PRESERVED VERBATIM per the
+field-ownership doctrine in `doctrine/INTEL-OPERATIONS.md` and the
+`.claude/agents/collector.md` "After fetching" section.
+
+Schema reminder:
+  - Runtime fields (collector writes): status, last_successful_fetch,
+    failure_count, stale_since, last_error
+  - Operator-set fields (preserve verbatim): notes (and any other unrecognized
+    keys)
+
+Sources successfully polled this sweep — advance last_successful_fetch to
+2026-06-02T07:30:00-04:00, hold status=healthy, failure_count unchanged:
+=====================================================================================
+
+cisa-advisories:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - all.xml feed status 200, 30 items total, 0 items in 14h window after
+    since-filter; productive endpoint healthy
+  - failure_count unchanged at 0
+
+cisa-kev:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - WebFetch confirmed zero new entries dated 2026-06-02; CVE-2024-21182 Oracle
+    WebLogic remains most recent (added 2026-06-01, due 2026-06-04 = T-2d)
+  - PAN-OS CVE-2026-0257 due-date 2026-06-01 has passed; KEV standard pattern
+    no compliance-status update on past-due entries
+  - failure_count unchanged at 0
+
+nvd:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - lastModStartDate window query 2026-06-01T21:30 → 2026-06-02T11:30 EDT
+  - cvssV3Severity=CRITICAL: 1 new disclosure (CVE-2026-8206 Kirki WordPress
+    9.8, consumer plugin, DISCARDED per Mode 1)
+  - cvssV3Severity=HIGH: 7 entries (X.Org Xwayland, Synology Presto, JetBrains
+    TeamCity, cpp-httplib, OpenShift Route, Oceanic ValeApp), none A&D-stack
+    or identity-infra, all DISCARDED per Mode 1
+  - failure_count unchanged at 0
+
+mandiant:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+    (via alt endpoint mandiant.com/resources/blog/rss.xml status 200, 20 items
+    in feed, 0 items in window)
+  - failure_count unchanged at 22 (held healthy per operator decision pending
+    canonical alt-endpoint swap; 32+ consecutive feedburner 404s carry-forward)
+  - last_error unchanged (last error string already documents the carry-forward
+    pattern; no new failure observed this sweep)
+
+unit42:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - feedburner feed status 200, last_modified 2026-06-02T11:15 GMT
+  - 1 in-window item: Operation FlutterBridge / FlutterShell macOS malvertising
+    (Ido Asher / Noa Dekel / Tom Fakterman bylines, CL-CRI-1089 cluster,
+    cybercrime). DISCARDED per Mode 1 (no A&D, no roster).
+  - failure_count unchanged at 0
+
+mstic:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - feed status 200, last_modified 2026-05-30T00:15 GMT (pre-window unchanged)
+  - 0 in-window items
+  - failure_count unchanged at 0
+
+crowdstrike:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+    (homepage WebFetch — 3 NVIDIA AI-product marketing items dated 2026-06-01,
+    no threat-research content; 17th consecutive dateless / marketing-only pattern)
+  - failure_count unchanged at 0
+
+sentinelone:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - SentinelLabs feed status 200, last_modified 2026-06-01T18:57 GMT (pre-window)
+  - 0 in-window items
+  - failure_count unchanged at 0
+
+cisco-talos:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - /rss/ endpoint status 200, 0 in-window items (correct working endpoint
+    per source-health.yaml notes carry-forward)
+  - failure_count unchanged at 0
+
+sans-isc:
+  - last_successful_fetch: '2026-06-01T06:05:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - rssfeed.xml status 200, last_modified 2026-06-02T11:29 GMT
+  - 2 in-window items: SVG phishing diary (Xavier Mertens 07:29 GMT, defensive
+    content) + Stormcast podcast 02:00 GMT (awareness-only). Both DISCARDED
+    per Mode 1.
+  - failure_count unchanged at 0
+
+bleepingcomputer:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - feed status 200, last_modified 2026-06-02T11:24 GMT
+  - 1 in-window item: CVE-2025-48595 Android Framework zero-day actively
+    exploited (Sergiu Gatlan byline 11:10 GMT = 07:10 EDT). RAW-SIGNALED AM-001.
+  - failure_count unchanged at 0
+
+securityweek:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - feed status 200, last_modified 2026-06-02T10:48 GMT
+  - 4 in-window items: Meta AI Instagram confused-deputy (Arghire byline,
+    06:48 EDT — RAW-SIGNALED AM-002); Red Hat npm 32-package Miasma /
+    Mini Shai-Hulud (Arghire byline, 05:51 EDT — RAW-SIGNALED AM-003);
+    Dashlane brute-force vault download (Kovacs byline, 04:07 EDT — DISCARDED
+    Mode 1); Oracle CSPU first monthly 77 vulns (Arghire byline, 03:20 EDT
+    — DISCARDED Mode 1).
+  - failure_count unchanged at 0
+
+rapid7:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - feed status 200, last_modified 2026-06-02T11:16 GMT
+  - 0 in-window items
+  - failure_count unchanged at 0
+
+krebs:
+  - last_successful_fetch: '2026-05-19T07:30:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - feed status 200, last_modified 2026-06-02T11:21 GMT
+  - 0 in-window items via since-filter; homepage WebFetch confirms most-recent
+    post is 2026-06-01-dated Meta AI Instagram piece (cross-corroboration of
+    SecurityWeek AM-002, preserved in AM-002 frontmatter)
+  - failure_count unchanged at 0
+
+the-record:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - feed status 200, 0 in-window items
+  - failure_count unchanged at 0
+
+splunk-archimedes:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - tstats over 24h: archimedes:operation 11 + archimedes:scheduler 17 = 28
+    routine internal-telemetry events. NOT sourcetype=archimedes:* IOC-keyword
+    sweep over 20 high-priority tokens (CVE-2025-48595, CVE-2026-41089 Netlogon,
+    CVE-2026-0257, CVE-2024-21182, Miasma, Mini Shai-Hulud, TeamPCP, UNC1549,
+    Charming Kitten, APT28, APT29, APT37, MuddyWater, FlutterShell, SideCopy,
+    redhat-cloud-services, Xeno RAT) returned ZERO hits. Trigger-3 cannot fire
+    on silent telemetry stream. 49th consecutive non-self-telemetry sweep.
+  - failure_count unchanged at 0
+
+splunk-defenseclaw:
+  - last_successful_fetch: '2026-06-01T12:00:00-04:00' → '2026-06-02T07:30:00-04:00'
+  - 0 non-archimedes-internal events in 24h. Index continues to appear not
+    receiving live security telemetry. Trigger-3 cannot fire.
+  - failure_count unchanged at 0
+
+Held-state sources (no last_successful_fetch advance, no failure_count change,
+status unchanged):
+=====================================================================================
+
+wired-security:
+  - Not polled this sweep (FLASH-fast scope policy carries over to AM-1 for
+    Wired's multi-hour roundup cadence; no fresh roundup in window per prior
+    sweep pattern)
+  - last_successful_fetch unchanged at 2026-05-10T18:00:00-04:00
+  - status unchanged: healthy
+  - failure_count unchanged at 0
+
+proofpoint:
+  - Not polled this sweep (multi-day cadence on corporate-news alt endpoint;
+    threat-intel-specific /us/threat-insight/blog/feed still 404 per
+    source-health.yaml line 451)
+  - last_successful_fetch unchanged at 2026-05-11T00:00:00-04:00
+
+Newly observed soft-failures or fresh failures this sweep:
+=====================================================================================
+
+volexity:
+  - Feed parse failure on volexity.com/blog/feed/ — XML syntax invalid token
+    at line 17 col 68. Known intermittent regression after 2026-05-30 recovery
+    (per source-health.yaml line 430). Recurred this sweep.
+  - Holding status=healthy per operator-set instruction (line 430-431 context).
+  - Optional: failure_count 0 → 1 increment on this fresh observation; current
+    schema shows last_error already populated with prior recovery note.
+    DEFERRED to operator inspection — not auto-bumping failure_count given
+    the "held healthy per operator-set instruction" pattern.
+
+wiz-research:
+  - Feed path wiz.io/blog/rss.xml returns 404 (known issue, source-health.yaml
+    line 432-437 first-entry has failure_count=1 from 2026-05-16).
+  - No fresh failure increment this sweep — same 404 as prior observations.
+
+sophos:
+  - Stale per source-health.yaml line 418 (failure_count=3 since 2026-05-17).
+  - Not retried this sweep (operator alt-path resolution pending).
+
+darkreading:
+  - feed read-timeout (no top-level source-health entry per
+    source-health.yaml line 533 "deferred to subsequent collector-driven
+    first-entry creation rather than librarian-side speculative addition"
+    precedent). Documented here for awareness, no entry creation this sweep.
+
+industrialcyber-co:
+  - Not invoked this sweep (Akamai 403 WAF pattern from 06:00 FLASH sentinel
+    documented carry-forward; not retried)
+  - last_successful_fetch unchanged at 2026-05-13T18:10:00-04:00
+
+bitdefender, symantec:
+  - Not invoked this sweep (no fresh in-window candidates triggering vendor
+    primary fetch; multi-day cadence pattern)
+  - last_successful_fetch unchanged
+
+socket:
+  - Source surfaced indirectly via SecurityWeek AM-003 consolidation
+    (ReversingLabs + Aikido + Ox Security + Socket joint coverage on
+    @redhat-cloud-services 32-package compromise). Socket's own primary
+    not directly retrieved this sweep — direct retrieval optional next pass.
+  - last_successful_fetch unchanged
+  - failure_count unchanged at 1 (per line 442-444 history)
+
+theregister:
+  - No top-level source-health entry exists yet (provisional B-grade source
+    per source-grades.yaml added 2026-05-29 for finding-2026-05-29-0002).
+    First-entry creation deferred per the source-health.yaml line 533
+    precedent — collector observation only this sweep:
+    feed status 200, 1 in-window item (Northern Ireland PSNI phone-spoof
+    scam advisory, no A&D, DISCARDED per Mode 1).
+  - Entry creation deferred to subsequent sweep.
+
+securityaffairs:
+  - No top-level source-health entry exists yet (provisional B-grade source
+    per source-grades.yaml added 2026-05-29 for finding-2026-05-29-0002).
+    First-entry creation deferred per the source-health.yaml line 533
+    precedent — collector observation only this sweep:
+    feed status 200, last_modified 2026-06-02T08:19 GMT, 2 in-window items
+    (ENISA NIS360 2026 — RAW-SIGNALED AM-004; GoDaddy WordPress Steam-C2 —
+    DISCARDED Mode 1 awareness-only).
+  - Entry creation deferred to subsequent sweep.
+
+thehackernews:
+  - No top-level source-health entry exists yet (per source-health.yaml
+    line 533 precedent). Observation only this sweep:
+    feed status 200, last_modified 2026-06-02T11:12 GMT, 3 in-window items
+    (SideCopy / Operation XENOFISCAL Seqrite C-grade — DISCARDED Mode 1
+    roster-gap; Dashlane brute-force — duplicate of SecurityWeek anti-noise;
+    EDR editorial — DISCARDED defensive content).
+  - Entry creation deferred to subsequent sweep.
+
+checkpoint-research:
+  - No top-level source-health entry exists yet. Observation only:
+    feed status 200, last_modified 2026-06-02T06:43 GMT, 0 in-window items.
+
+eset / welivesecurity:
+  - last_successful_fetch unchanged from prior carry-forward (no entry advance
+    line in current source-health.yaml). Observation: feed status 200, 100
+    items in feed, 0 in-window items after since-filter.
+
+Summary
+=====================================================================================
+
+Items raw-signaled: 4 (AM-001 through AM-004) + AM-000 sentinel = 5 total
+Items discarded per Mode 1: 9 (FlutterBridge, Dashlane, Oracle CSPU 77,
+  CVE-2026-8206 Kirki, SVG phishing diary, Stormcast podcast, Northern
+  Ireland PSNI scam, SideCopy / Operation XENOFISCAL Seqrite C-grade roster
+  gap, GoDaddy WordPress Steam-C2 + 7 NVD HIGH non-A&D-stack entries)
+Awareness items flagged: 6 (FlutterBridge IOCs for grader/actor-profiler;
+  SideCopy /new-actor candidate; GoDaddy invisible-Unicode TTP novelty;
+  Dashlane vendor-incident; Oracle monthly CSPU cadence change; ENISA NIS360
+  2026 first-corpus surface for source-grades.yaml expansion consideration)
+Source-health changes: zero stale flips, zero new soft-fails (volexity
+  parse-failure recurred but is held-healthy per operator carry-forward);
+  ~17 sources had last_successful_fetch advance to 2026-06-02T07:30:00-04:00
+Splunk first-party: 49th consecutive silent sweep on defenseclaw_local;
+  zero IOC keyword hits across 20 high-priority tokens
+
+degraded_warning_count carry-forward: 5-7 (mandiant past-threshold held
+healthy + iran-monitor + threatfox + malwarebazaar + github-advisories +
+dragos + volexity parse-failure recurrence)
+
+This diff-summary file is the canonical record of runtime-field updates this
+sweep, per the operator-established pattern (precedent files visible in
+git status: source-health.yaml.diff-summary-am-20260519, -am-20260520,
+-am-20260523, -am-20260524, -am-20260525, -am-20260527, -am-20260531,
+-am-20260601.txt). Librarian / operator may consolidate these into the
+canonical source-health.yaml on a periodic batch cadence.

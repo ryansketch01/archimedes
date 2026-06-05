@@ -1,0 +1,22 @@
+{
+  "event_type": "flash_sweep",
+  "sweep_id": "flash-2026-05-20-1200",
+  "run_id": "librarian-20260520-120000",
+  "triggered_at": "2026-05-20T12:00:00-04:00",
+  "triggers_evaluated": 6,
+  "triggers_fired": 0,
+  "items_in_window": 12,
+  "items_anti_noise_absorbed": 5,
+  "items_discarded_failed_predicates": 7,
+  "raw_signal_files_written": 4,
+  "splunk_first_party_dormancy_streak": 49,
+  "disposition": "clean_sweep_silent",
+  "quiet_hours_active": false,
+  "active_hours_window": "09:00-21:00 EDT",
+  "critical_override_applied": false,
+  "critical_override_conditions_met": "0_of_4",
+  "discord_post_attempted": false,
+  "discord_post_skip_reason": "silent_on_clean_sweep_per_flash_policy",
+  "authorized_targets_active": 0,
+  "tlp": "CLEAR"
+}

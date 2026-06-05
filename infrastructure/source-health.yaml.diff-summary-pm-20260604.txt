@@ -1,0 +1,93 @@
+source-health.yaml diff summary — PM-04 pre-brief sweep 2026-06-04T15:30:00-04:00
+================================================================================
+Run id: pre-brief-20260604-153000
+Mode: pre_brief_collection
+Window: 2026-06-04T12:00:00-04:00 → 2026-06-04T15:30:00-04:00 (3h30m since prior 12:00 FLASH clean sweep, commit c0c09a7)
+Active hours per FLASH-POLICY (post-09:00 EDT).
+
+PROPOSED RUNTIME-FIELD UPDATES (status / last_successful_fetch / failure_count / stale_since / last_error):
+None proposed for in-place rewrite this sweep. All queried A-grade and B-grade sources responded 200 with valid feed-or-page content. No fetch-error pattern, no auth failure, no rate-limit triggered, no parse-error degradation observed beyond pre-existing known-stale conditions.
+
+NO STATE CHANGES (entries below queried successfully or in known-stale state — preserve operator notes verbatim, no runtime-field rewrite needed):
+
+  Government / official (A-grade, all queried OK):
+    cisa-advisories         status=healthy (no in-window items; all.xml RSS 200; landing 403 — known WAF behavior)
+    cisa-kev                status=healthy (KEV JSON re-checked; no new adds in window; last add CVE-2026-45247 Mirasvit dated 2026-06-03 — already in AM brief)
+    nvd                     status=healthy (not invoked this sweep — no in-window CVE leads requiring lastModStartDate pivot)
+
+  Tier-1 vendor (A-grade):
+    mandiant                status=healthy, failure_count=22  (alt-endpoint mandiant.com/resources/blog/rss.xml 200, 0 in-window items; feedburner 404 streak now 33rd consecutive per long-standing operator-pending alt-endpoint canonical-swap decision)
+    crowdstrike             status=healthy (RSS 200 but per-item publication dates null; 10 items returned, all dated by content inspection as marketing/MQ class — the in-window-appearing "Disrupting Glassworm" item is the 2026-05-26 takedown post already in corpus as finding-2026-05-27-0001 — anti-noise applies)
+    unit42                  status=healthy (feedburner 200; 0 in-window items)
+    mstic                   status=healthy (Microsoft Security Blog feed 200; 0 in-window items)
+    sentinelone             status=healthy (SentinelLabs feed 200; 0 in-window items)
+    sophos                  status=stale         (since 2026-05-17 — alt path news.sophos.com/en-us/category/threat-research/feed/ 200 used this sweep, 0 in-window; primary path remains stale pending operator alt-RSS-path identification)
+    cisco-talos             status=healthy (blog.talosintelligence.com/rss/ 200; 1 in-window item — Vegas Cisco Live newsletter, product-marketing class with KongTuke C2 sub-bullet; not threat-research, not raw-signaled)
+    eset                    status=healthy (welivesecurity feed 200; 0 in-window)
+    rapid7                  status=healthy (RSS 200; 0 in-window items)
+    sans-isc                status=healthy (RSS 200; 0 in-window items)
+    sekoia                  status=healthy (sekoia.io blog RSS 200; 0 in-window)
+    securelist              status=healthy (Securelist RSS 200; 0 in-window)
+    proofpoint              status=healthy (corporate-news /us/rss.xml 200; 0 in-window; threat-intel-specific endpoint still 404 — long-standing alt-path identification pending)
+
+  First-citation A/B-provisional vendor (per source-grades.yaml provisional set):
+    bitdefender             status=healthy (NOTE: 404 observed this sweep on /blog/labs/feed/ — feed path requires alt-endpoint identification by operator; not a state change vs prior pattern; failure_count not incremented as the businessinsights.bitdefender.com primary path remains the canonical productive surface used on first surface in finding-2026-05-13-FLASH-0001)
+    symantec                status=healthy (not queried this sweep — multi-day cadence; not in-window)
+    industrialcyber-co      status=healthy (not queried this sweep — multi-day cadence)
+    wiz-research            status=healthy (NOTE: 404 observed this sweep on /feed.xml — feed path requires alt-endpoint identification by operator; not a state change vs prior pattern; failure_count not incremented)
+    socket                  status=healthy (NOTE: 404 observed this sweep on /feed — alt-endpoint required; not a state change)
+    arctic-wolf, palo-alto-psirt, push-security, permiso-security, openai-self-disclosure, github-blog-self-disclosure, litespeed-blog-self-disclosure, ox-security, upwind, safedep, aikido-security, semgrep, stepsecurity, snyk, onapsis, zdi-blog, sysdig, zellic, kernel-org-netdev, f5, darktrace, seqrite-labs, trendyol-group-albayrak, layerx, depthfirst, aonan-guan
+                            status=healthy (not queried this sweep — multi-day cadence)
+    cisco-psirt             status=healthy (used this sweep — Cisco PSIRT advisory cisco-sa-cucm-ssrf-cXPnHcW retrieved via WebFetch successfully; basis for PM-001 raw-signal; first-party authoritative grade A vendor-on-own-product retained)
+
+  Media / trade press (B-grade and provisional):
+    krebs                   status=healthy (RSS 200; 0 in-window)
+    the-record              status=healthy (RSS 200; 2 in-window items — Russia extremist designation, FCC SCOTUS ruling; neither raw-signaled; Five Eyes piece from prior 12:00 FLASH handoff is 12:00-cited but the same article was retrieved this sweep for PM-002)
+    bleepingcomputer        status=healthy (RSS 200; 3 in-window items — IronWorm anti-noise from 12:00 FLASH handoff, DentaQuest, UN WFP; none raw-signaled per Mode 1 procedure — see PM-000 sentinel for filter trail)
+    securityweek            status=healthy (RSS 200; 0 in-window items)
+    thehackernews           status=healthy (THN feedburner 200; 1 in-window item — Cisco Unified CM CVE-2026-20230, raw-signaled as PM-001)
+    theregister             status=healthy (atom 200; 1 in-window item — HTTP/2 Bomb update, raw-signaled as PM-003)
+    securityaffairs         status=healthy (RSS 200; 1 in-window item — CISA KEV Mirasvit add restate, anti-noise on AM brief)
+    darkreading             status=healthy (RSS 200; 0 substantive in-window — only contest-events item)
+    ars-security            status=stale          (since 2026-05-09 — workaround arstechnica.com/feed/ root used this sweep, 3 in-window non-security-research items including FCC router policy, NASA MAVEN mission-end, bumblebees; none raw-signaled)
+    wired-security          status=healthy (not queried this sweep — multi-hour cadence)
+    industrialcyber-co      not queried (multi-day cadence)
+
+  Technical enrichment (A/B-grade facts):
+    shodan                  status=healthy (not invoked — no IOC enrichment needed this sweep; no in-window items survived A&D/roster/vuln-index filter that carried network IOCs)
+    virustotal              status=healthy (not invoked — no IOC enrichment needed)
+    whois-rdap              status=healthy (not invoked)
+    abuseipdb               status=healthy (not invoked — no IPs to enrich)
+    github-codesearch       status=healthy (not invoked)
+
+  First-party Splunk (A-grade):
+    splunk-archimedes       status=healthy (query OK; ZERO non-archimedes-internal events over 8h; sourcetype inventory only archimedes:scheduler + archimedes:operation + archimedes:flash; 12th+ consecutive sweep with dormant non-archimedes-internal stream pattern; Trigger 3 inapplicable on dormant stream)
+    splunk-defenseclaw      status=healthy (query OK; ZERO non-archimedes-internal events; 12th+ consecutive sweep with dormant pattern)
+
+  X / Twitter (via nitter bridge):
+    x-cisagov               status=stale     (since 2026-05-10 12:00 — nitter.net bridge OSCILLATION pattern; this sweep nitter.net responded 200 with 20 items in feed total, 0 in 3h30m window; operator alt-pool / direct-X-API decision pending; preserve stale state until operator decision)
+    x-gossithedog           status=stale     (since 2026-05-09 — account delisted on nitter.net specifically; operator alt-pool decision pending; not queried this sweep)
+    x-swiftonsecurity, x-vxunderground, x-falconfeedsio
+                            status=healthy (not queried this sweep — priority-feed scope)
+
+  Standing stale (no-MCP / no-key set; not queried this sweep — preserve verbatim):
+    censys, urlscan, hibp, threatfox (browse-CAPTCHA-gated), malwarebazaar, msrc (parse-fail since 2026-05-30), dragos (404 since 2026-05-13), iran-monitor (403 WAF since 2026-05-07)
+
+NEW PARSE-ERROR OBSERVATIONS (informational, not state-change-triggering this sweep):
+  - volexity                feed parse error at line 17 col 68 ("not well-formed (invalid token)") — long-standing issue, RSS body present but malformed; collector skip continues per pre-existing pattern
+  - kudelskisecurity        feed parse error at line 2 col 1996 — NEW observation this sweep; first time tracked; informational only, not previously in source-grades.yaml or source-health.yaml; not a state change (no prior entry to flip)
+
+ADDITIONS / RATIFICATION-CLOCK NOTES:
+  No new provisional source citations this sweep that would require new source-grades.yaml entries. PM-002 (Five Eyes joint advisory) is the closest candidate to a NEW source-id ("Five Eyes joint advisory" or "MI5 lead joint counterintelligence advisory") — operator may consider this for source-grade-log expansion if joint Five Eyes advisories become a recurring class beyond this single instance. Default disposition is to cite the underlying MI5 PDF as a CISA / NSA / FBI-Flash class A-grade primary on the same procedural basis as existing government / official sources, without adding a dedicated source-id.
+
+SUMMARY:
+  Sources queried: ~22 (16 RSS + 1 Cisco PSIRT advisory + 1 CISA KEV JSON + 2 Splunk indexes + 1 nitter X bridge + 1 NVD-skip-eligible)
+  Sources successfully fetched: 19
+  Sources with known-stale skips per operator decisions: 6 (sophos, msrc, dragos, ars-security, x-cisagov, x-gossithedog) — none re-evaluated this sweep beyond eligible alt-path workarounds
+  Sources with NEW parse-error observations: 1 (kudelskisecurity) — informational
+  Sources newly degraded: 0
+  Sources recovered: 0
+  Sources rate-limited (429): 0
+  Sources auth-failure (401/403): 1 (cisa.gov/cybersecurity-advisories landing page 403, WAF behavior; all.xml RSS 200 — productive endpoint used, not a state change)
+
+Disposition: No in-place source-health.yaml runtime-field rewrites proposed. Operator-side batch edit to update last_successful_fetch timestamps may be applied as needed; the FLASH 12:00 sentinel (`raw-2026-06-04-flash-1200-000`) made the same disposition this morning. Sentinel preservation of operator notes verbatim is the binding constraint.

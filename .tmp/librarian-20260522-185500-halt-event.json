@@ -1,0 +1,22 @@
+{
+  "event_type": "policy_violation",
+  "run_id": "librarian-20260522-185500",
+  "violation_class": "briefer_output_non_compliant",
+  "subject_brief_id": "flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change",
+  "subject_brief_path": "threats/briefs/flash-2026-05-22-1800-cve-2026-9082-drupal-itw-status-change.md",
+  "subject_finding_id": "finding-2026-05-22-0004",
+  "halt_reason": "flash_brief_body_exceeds_discord_2000_char_ceiling_no_layer2_summary_provided",
+  "canonical_body_chars": 3335,
+  "canonical_body_words": 296,
+  "discord_max_chars": 2000,
+  "expected_artifact": "layer2 discord summary fitting under 2000 chars (e.g., .tmp/flash-1800-discord-summary.md for prior flashes), or briefer-produced discord-fit slice",
+  "expected_artifact_present": false,
+  "stale_tmp_artifacts_observed": [".tmp/flash-1800-discord-summary.md (2026-05-13 MuddyWater content, NOT today's drupal flash)", ".tmp/flash-1800-splunk-flash_published.json (2026-05-13 MuddyWater content)"],
+  "prior_flash_precedent": "flash-2026-05-13-1800 MuddyWater shipped a 312-word layer2 (~1621 chars) distinct from the 292-word canonical brief; today's briefer did not produce that layer2 artifact",
+  "action_taken_by_librarian": "halt_no_post_no_commit",
+  "rationale": "Librarian doctrine: do not modify content; do not edit briefer output. Posting full body would fail discord_post.py exit 5. Truncating arbitrarily would violate hard-rule 6 quote-budget discipline and the briefer's red-team-mandated caveat ordering.",
+  "remediation_requested": "Re-invoke briefer subagent with explicit requirement to author a layer2 discord-fit summary (<=1900 chars target, leaves headroom) preserving the three red-team must-appear caveats (attempts-vs-compromise, imperva-single-vendor-on-scale, sector-mix-does-not-imply-AD). Once layer2 lands, re-invoke librarian Mode 2.",
+  "tlp": "CLEAR",
+  "host": "archimedes",
+  "time": "2026-05-22T18:55:00-04:00"
+}

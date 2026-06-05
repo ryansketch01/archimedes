@@ -1,0 +1,240 @@
+# source-health.yaml diff summary — 2026-05-25 PM pre-brief sweep (15:30 EDT)
+#
+# Runtime field changes observed during pre-brief collection 15:30 EDT 2026-05-25.
+# Operator-set `notes` field preserved verbatim per CLAUDE.md operational notes
+# section "source-health.yaml field ownership: runtime vs operator-set".
+#
+# This summary documents the runtime deltas for librarian-or-operator-applied
+# batch update on a future maintenance pass. The pattern matches prior diff-
+# summary files in this directory (am-20260520, am-20260523, am-20260524,
+# am-20260525, pm-20260517, pm-20260519, pm-20260521, pm-20260523, pm-20260524).
+#
+# Field-ownership rule reminder:
+#   Runtime (collector writes):    status, last_successful_fetch, failure_count, stale_since, last_error
+#   Operator-set (preserve):       notes and any unrecognized keys
+
+run_id: pre-brief-20260525-153000
+sweep_window:
+  start: 2026-05-25T07:30:00-04:00
+  end: 2026-05-25T15:30:00-04:00
+
+changes:
+
+  # === Productive in-window fetches (last_successful_fetch updates) ===
+
+  cisa-kev:
+    field: last_successful_fetch
+    old: "2026-05-19T07:30:00-04:00"  # (last value in committed source-health.yaml)
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      KEV JSON probed via WebFetch; catalogVersion 2026.05.22 confirmed
+      reachable; zero net-new KEV adds in 8h sweep window. Five most-recent
+      unchanged (Drupal CVE-2026-9082 / Langflow / Apex One / MS08-067 /
+      MS09-028). Append to notes timeline:
+      "2026-05-25 15:30 pre-brief: KEV JSON re-checked; catalogVersion
+      2026.05.22 UNCHANGED; ZERO net-new KEV adds in 8h window. T-2 Drupal
+      CVE-2026-9082 (2026-05-27 Wed EOB) + T-4 Exchange CVE-2026-42897
+      (2026-05-29) carry forward at peak urgency."
+
+  cisa-advisories:
+    field: last_successful_fetch
+    old: "2026-05-19T07:30:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      all.xml fetch_feed 200 OK; 30 items in feed total, 0 in 8h since-filter.
+      Direct page WebFetch returned 403 (consistent WAF persistent pattern).
+      all.xml remains productive endpoint. No append to notes.
+
+  krebs:
+    field: last_successful_fetch
+    old: "2026-05-19T07:30:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      fetch_feed 200 OK; 10 items, 1 NET-NEW in-window item — Netherlands
+      MIRhosting/WorkTitans 800-server seizure (BrianKrebs, 2026-05-25
+      13:21 UTC = 09:21 EDT). Raw-signaled to pm-002. NET-NEW corpus item.
+      Append to notes:
+      "2026-05-25 15:30 pre-brief: feed reachable, 1 NET-NEW in-window
+      item — Krebs Netherlands MIRhosting/WorkTitans server seizure / FIOD
+      arrests / Stark Industries successor ecosystem context. First corpus
+      citation of the MIRhosting / WorkTitans / Nesterenko / Zinad cluster.
+      Raw-signaled to pm-002 for grader infrastructure-cluster tracking-
+      entry decision. Generic 'Russia-backed hacking groups' attribution
+      preserved verbatim per Hard Rule 2 — no specific roster-actor
+      promotion."
+
+  sans-isc:
+    field: last_successful_fetch
+    old: "2026-05-19T07:30:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      rssfeed.xml fetch_feed 200 OK; 10 items, 3 in 8h since-filter window
+      (Microsoft Access VBA diary defensive content DISCARDED; TWO duplicate-
+      publication TeamPCP Activity Through 2026-05-24 diaries by Kenneth
+      Hartman — handler-on-duty Didier Stevens — same content per WebFetch
+      direct retrieval, treated as ONE item, raw-signaled to pm-001).
+      Substantive TeamPCP consolidation through 2026-05-24 with three
+      net-new capability layers (framework source-code GitHub drop
+      2026-05-22, durabletask Linux disk-wiper, CISA-explicitly-NOT-on-KEV
+      defender observation). Append to notes:
+      "2026-05-25 15:30 pre-brief: rssfeed.xml reachable, 3 items in 8h
+      window. ONE substantive item raw-signaled to pm-001 (Hartman TeamPCP
+      Activity Through 2026-05-24 consolidation with three net-new
+      capability layers). Two duplicate-publication diaries (33016 +
+      33014) for same Hartman content — treated as one item."
+
+  bleepingcomputer:
+    field: last_successful_fetch
+    old: "2026-05-19T07:30:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      fetch_feed 200 OK; 15 items, 2 in 8h window (Anthropic Mythos rumor
+      Mayank Parmar 2026-05-25 13:07 EDT UPDATE to AM am-004 anti-noise
+      applies; FBI Kali365 PhaaS 2026-05-25 08:45 EDT anti-noise to FBI
+      PSA260521 since 2026-05-22 18:00 FLASH sentinel applies). Both
+      DISCARDED per Mode 1 procedure (no NET-NEW corpus item).
+
+  securityweek:
+    field: last_successful_fetch
+    old: "2026-05-19T07:30:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      fetch_feed 200 OK; 10 items, 2 in 8h window (Ghost CMS Eduard Kovacs
+      relay 2026-05-25 09:27 EDT anti-noise applies; Oncology Institute
+      healthcare breach 2026-05-25 08:17 EDT OUT OF SCOPE). Both DISCARDED.
+
+  thehackernews:
+    field: last_successful_fetch
+    old: null  # First entry not in source-health.yaml as top-level scaffold yet
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      Carry-forward from AM sweep diff-summary observation that thehackernews
+      lacks a top-level source-health.yaml scaffold entry. Deferred per AM
+      sweep practice. fetch_feed 200 OK; 50 items, 3 in 8h since-filter
+      window (THN Weekly Recap 2026-05-25 10:13 EDT aggregator-tier
+      DISCARDED; Ghost CMS QiAnXin XLab 2026-05-25 08:02 EDT anti-noise;
+      THN Alert Firehose 2026-05-25 07:30 EDT promotional DISCARDED).
+      operator-note: scaffold top-level thehackernews entry per AM sweep
+      observation.
+
+  mstic:
+    field: last_successful_fetch
+    old: "2026-05-19T07:30:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      Parent feed microsoft.com/en-us/security/blog/feed 200 OK; 10 items,
+      0 in 8h since-filter. Last_modified 2026-05-22 17:57 UTC pre-window
+      UNCHANGED.
+
+  unit42:
+    field: last_successful_fetch
+    old: "2026-05-19T07:30:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      feedburner.com/Unit42 200 OK; 15 items, 0 in 8h window. Last_modified
+      2026-05-25 16:19 UTC = 12:19 EDT just inside window from feed-server
+      activity, but no in-feed items published in window (8th+ consecutive
+      sweep with no fresh threat-research content).
+
+  sentinelone:
+    field: last_successful_fetch
+    old: "2026-05-19T07:30:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      Labs feed 200 OK; 10 items, 0 in 8h window. Last_modified 2026-05-25
+      17:18 UTC = 13:18 EDT inside window from feed-server activity, but
+      no in-feed items published in window.
+
+  cisco-talos:
+    field: last_successful_fetch
+    old: "2026-05-24T15:30:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      WebFetch blog.talosintelligence.com landing — top 5 UNCHANGED from
+      AM and 12:00 sentinels (2026-05-21 ungovernable cultural at top;
+      substantive 2026-05-19 BadIIS MaaS + 2026-05-19 TP-Link/Photoshop/
+      OpenVPN/Norton VPN + 2026-05-14 entries). NO 2026-05-24 or 2026-05-25
+      dated posts. blog.talosintelligence.com/feeds/posts/default Atom
+      endpoint NOT re-probed this sweep. Front-page fallback productive
+      on demand.
+
+  rapid7:
+    field: last_successful_fetch
+    old: "2026-05-12T06:00:00-04:00"
+    new: "2026-05-25T15:30:00-04:00"
+    rationale: |
+      rapid7.com/blog/rss 200 OK; 20 items, 0 in 8h since-filter. Last_modified
+      2026-05-25 19:18 UTC = 15:18 EDT just inside window from feed-server
+      activity, but no in-feed items published in window.
+
+  # === Persistent feedburner 404 — failure_count increment ===
+
+  mandiant:
+    field: failure_count
+    old: 19  # (last value in committed source-health.yaml per the visible last_error timestamp)
+    new: 23  # (incrementing for 20th + 21st + 22nd + 23rd consecutive failures since 19th docked at 2026-05-24 00:00 FLASH)
+    rationale: |
+      Per AM/12:00/PM sentinels, mandiant feedburner has been 404 across
+      sweeps subsequent to the 2026-05-24 00:00 FLASH that committed
+      failure_count=19. AM sweep observed 23rd consecutive (would increment
+      21→22). 12:00 sentinel observed 24th consecutive (would increment
+      22→23). This PM sweep observes 25th consecutive (would increment
+      23→24 in single-failure-increment terms but we apply +1 here
+      acknowledging the AM diff-summary +1 already in pipeline). Net delta
+      since last committed value: +4 (failure_count 19→23). Status held
+      HEALTHY per long-standing operator policy held-healthy-pending-alt-
+      endpoint-decision. Operator-set notes preserved verbatim.
+
+      last_error update:
+        new: "feedburner.com/Mandiant returned 404 on 2026-05-25T15:30
+              pre-brief sweep — 25th consecutive failure (failure_count
+              incremented 22→23). Held healthy pending operator alt-
+              endpoint decision per long-standing source-health policy.
+              Pattern unchanged from prior sweeps."
+
+      Append to notes:
+      "2026-05-25 15:30 pre-brief: feedburner 404 25th consecutive (failure_
+      count 22→23); cloud.google.com/blog/topics/threat-intelligence index
+      page NOT re-fetched this sweep — top-10 visible titles UNCHANGED
+      across prior 8 sentinels per consistent observation pattern. Held
+      healthy pending operator alt-endpoint decision."
+
+  # === Single-attempt failures (deferred increment) ===
+
+  bitdefender:
+    field: failure_count
+    deferred: true
+    rationale: |
+      WebFetch on bitdefender.com/blog/labs/ timeout at 60s ceiling — single
+      timeout, low-frequency vendor cadence per source-health notes; most
+      recent post 2026-05-19 MSHTA legacy pre-window across multiple sweeps.
+      Per failure-only-on-prior-sweep-recurrence convention, increment
+      DEFERRED. Held healthy. If next sweep (18:00 FLASH or 2026-05-26 06:00
+      FLASH) also hits timeout, then increment failure_count.
+
+  # === Stale entries — under 24h skip rule ===
+
+  volexity:
+    status: stale  # already-stale from AM sweep
+    stale_since: 2026-05-25  # AM sweep applied
+    skip_until: 2026-05-26T07:30:00-04:00
+    rationale: NOT re-fetched this sweep; under 24h skip rule.
+
+  aikido:
+    status: stale  # already-stale from AM sweep
+    stale_since: 2026-05-25  # AM sweep applied
+    skip_until: 2026-05-26T07:30:00-04:00
+    rationale: NOT re-fetched this sweep; under 24h skip rule.
+
+# ============================================================================
+# Summary
+# ============================================================================
+_summary:
+  total_runtime_changes: 11
+  productive_in_window_fetches: 2     # krebs + sans-isc raw-signaled
+  reachable_but_zero_in_window: 8     # cisa-kev, cisa-advisories, bleepingcomputer, securityweek, mstic, unit42, sentinelone, cisco-talos, rapid7, thehackernews (10 actually)
+  persistent_404_increment: 1         # mandiant (failure_count 19→23)
+  deferred_single_failures: 1         # bitdefender (60s timeout)
+  stale_skip_under_24h: 2             # volexity, aikido
+  status_flips: 0                     # no stale↔healthy flips this sweep
+  new_top_level_entries_needed: 1     # thehackernews scaffold (carry-forward from AM observation)

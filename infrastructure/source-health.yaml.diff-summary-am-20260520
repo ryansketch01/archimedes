@@ -1,0 +1,276 @@
+# Source-health diff summary — 2026-05-20 07:30 pre-brief collection sweep (AM)
+#
+# Collector-emitted runtime-state change instructions to be applied by the
+# librarian during the morning brief commit phase. NOT part of the on-disk
+# source-health schema; side artifact for traceability + librarian handoff.
+#
+# RULE: Operator-set `notes:` and any unrecognized keys are PRESERVED VERBATIM.
+# Only runtime fields are modified: status, last_successful_fetch, failure_count,
+# stale_since, last_error. The `notes_append_text` directives append to the
+# existing notes string (do NOT replace).
+#
+# This diff-summary captures source-health observations from the 07:30 pre-brief
+# sweep covering 2026-05-19 15:30 EDT → 2026-05-20 07:30 EDT (14h window).
+# The 2026-05-20 06:00 FLASH sweep on TeamPCP/GitHub-corp breach has its own
+# upstream artifact (raw-2026-05-20-flash-0600-001 + finding-2026-05-20-FLASH-0001
+# + flash brief); this diff-summary covers the pre-brief-only sweep.
+
+sweep_metadata:
+  run_id: pre-brief-20260520-073000
+  sweep_time: 2026-05-20T07:30:00-04:00
+  collection_mode: pre_brief_collection
+  window_start: 2026-05-19T15:30:00-04:00
+  window_end: 2026-05-20T07:30:00-04:00
+  window_hours: 14
+  raw_signal_files_written: 4   # am-000 sentinel + am-001 SW Mini Shai-Hulud @antv TeamPCP + am-002 BC Storm-2949 SSPR + am-003 Microsoft YellowKey mitigation
+  substantive_raw_signals: 3
+  flash_candidates_for_grader_evaluation: 1  # am-001 (Mini Shai-Hulud @antv Python-downloader + Claude Code backdoor — Trigger 4 candidate pending single-source assessment)
+  flash_candidates_excluded_anti_noise: 0
+  health_changes_count: 10   # 10 last_successful_fetch bumps; no status flips, no failure_count increments
+  first_citation_flags_for_operator: 0   # No new source-grades entries this sweep
+
+top_level_metadata_updates:
+  last_updated: 2026-05-20T07:30:00-04:00
+
+source_runtime_updates:
+
+  # ==========================================================================
+  # Productive this sweep (fetched + items returned, including raw-signaled)
+  # ==========================================================================
+
+  - source_yaml_id: bleepingcomputer
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: RSS reachable (status 200, etag fbc26a0bfede6ecfd4d86d13db062042, last_modified 2026-05-20T11:22:33 GMT inside window from feed-server activity), 9 items in 14h window after since-filter. PRODUCTIVE — 1 raw-signaled (raw-2026-05-20-am-002 Microsoft SSPR Storm-2949 BC relay of MSTIC 2026-05-18 primary; tradecraft-relevance high but Storm-2949 not in `_roster.yaml`, A&D-prime not named, no FLASH trigger fires; grader-queue candidate). 1 co-cited in raw-2026-05-20-am-003 (YellowKey mitigation BC relay alongside THN). Anti-noise: GitHub TeamPCP relay (05:08 EDT) + GitHub confirms (08:14 EDT) absorbed by raw-2026-05-20-flash-0600-001 06:00 FLASH; ChromaDB max-severity (22:25 prior-day UTC) anti-noise-locked against raw-2026-05-19-pm-006; Microsoft Fox Tempest disruption (21:47 UTC) absorbed by raw-2026-05-19-pm-001/002/003. NON-A&D / non-roster: Discord E2EE (20:37 UTC), FBI crypto ATM scams $388M (19:45 UTC), PinTheft Arch Linux PoC (2026-05-20T10:52 UTC) — all DISCARDED per Mode 1 procedure (no watchlist / roster / vuln-index hit).
+
+  - source_yaml_id: thehackernews
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-20T10:53:41 GMT inside window from feed-server activity), 4 items in 14h window after since-filter. PRODUCTIVE — 1 co-cited in raw-2026-05-20-am-003 (YellowKey mitigation THN relay alongside BleepingComputer). Anti-noise: GitHub Breached / TeamPCP investigation (04:01 EDT) absorbed by raw-2026-05-20-flash-0600-001 06:00 FLASH; Grafana GitHub Breach (05:12 EDT) treated as TeamPCP campaign-chain context already addressed in FLASH-0600 secondary-items section. Typosquatting opinion-essay (10:30 EDT) — opinion class, no fresh finding, DISCARDED.
+
+  - source_yaml_id: securityweek
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: RSS reachable (status 200, etag W/78ead78e83460a2cd57f570a0aba7079, last_modified 2026-05-20T11:06:54 GMT inside window from feed-server activity), 6 items in 14h window after since-filter. PRODUCTIVE — 1 raw-signaled (raw-2026-05-20-am-001 Mini Shai-Hulud 320+ npm @antv namespace, TeamPCP "suggesting" moderate-hedge attribution, Python-downloader + Claude Code backdoor TTP additions; tracked actor TeamPCP #001 HIGH; tracked vuln VT-006 / CVE-2026-45321; Trigger 4 CANDIDATE pending single-source veto assessment by grader). Anti-noise: GitHub Confirms Hack (09:28 EDT) absorbed by raw-2026-05-20-flash-0600-001 06:00 FLASH. Non-finding: Verizon DBIR 2026 (00:04 EDT, sector report, no A&D-prime naming) + Caught Off Guard AI opinion (11:00 EDT) + Real-World ICS Tales (10:15 EDT, interview piece) + Virtual Event marketing (10:00 EDT) — all DISCARDED per Mode 1 procedure.
+
+  - source_yaml_id: unit42
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: feedburner reachable (status 200, last_modified 2026-05-20T10:59:07 GMT inside window from feed-server activity), 1 item in 14h window after since-filter — "Tracking TamperedChef Clusters via Certificate and Code Reuse" (Joseph Ganter, 2026-05-20T10:00:46 UTC). WebFetch confirmed: trojanized productivity apps + malvertising delivering credentials/adware payloads; CL-CRI-1089 + CL-UNK-1090 (Israeli FireArc/Fairark Systems Ltd. linked) + CL-UNK-1110 (JustAskJacky / GoCookMate) clusters; VT-confirmed-malicious domains onezipapp.com (7/91) + crystalpdf.com (13/91); NO threat actor in `_roster.yaml`; NO A&D sector targeting ("global with no significant geographic or sector targeting"); NO CVE; DISCARDED per Mode 1 procedure (no watchlist / roster / vuln-index hit).
+
+  - source_yaml_id: sans-isc
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: rssfeed.xml reachable (status 200, etag W/1a69-6523e1a68342f, last_modified 2026-05-20T11:29:04 GMT inside window from feed-server activity), 1 item in 14h window after since-filter — ISC Stormcast For Wednesday May 20 podcast detail (2026-05-20T02:00 UTC). Awareness-only podcast detail, no body content. DISCARDED per Mode 1 procedure.
+
+  # ==========================================================================
+  # Healthy this sweep, 0 items in window (productive A-grade primaries)
+  # ==========================================================================
+
+  - source_yaml_id: mstic
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: parent feed (microsoft.com/en-us/security/blog/feed/) reachable (status 200, etag ca71fc7d5d148c32f241f60a0eab8a3d-gzip, last_modified 2026-05-20T00:02:04 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. The Storm-2949 SSPR/MFA-manipulation/Graph-enum primary published 2026-05-18 (pre-window) was relayed in-window by BleepingComputer (Bill Toulas, 2026-05-19T19:35:32 EDT, captured at raw-2026-05-20-am-002); the MSTIC parent feed itself did not surface a new post in this 14h window.
+
+  - source_yaml_id: the-record
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: feed reachable (status 200), 0 items in 14h window after since-filter. Multi-day quiet pattern continues.
+
+  - source_yaml_id: krebs
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-19T14:19:56 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. Multi-day Krebs cadence; no Wednesday-morning content yet.
+
+  - source_yaml_id: cisa-advisories
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: all.xml reachable (status 200, 30 items in feed total), 0 items in 14h window after since-filter. No fresh CISA advisories in window. ICS batch carry-forward from 2026-05-19 PM (raw-2026-05-19-pm-010 Siemens RUGGEDCOM APE1808 CVE-2026-0300 amplification, already in 2026-05-19 afternoon brief).
+
+  - source_yaml_id: cisa-kev
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: KEV JSON reachable; zero new entries in 14h window. Most recent KEV add remains CVE-2026-42897 (Exchange Server OWA XSS, 2026-05-15) — 5d carry-forward. No fresh KEV trigger material for this brief.
+
+  - source_yaml_id: sentinelone
+    field_updates:
+      last_successful_fetch: 2026-05-20T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: blog feed reachable (status 200, etag W/947a29e0c966205ef62c1b47b59cd8ff, last_modified 2026-05-19T13:43:37 GMT pre-window from feed-server activity), 0 items in 14h window after since-filter. SentinelLabs cadence quiet through the window.
+
+  # ==========================================================================
+  # Healthy this sweep, 0 items in window — additional sources confirmed reachable
+  # ==========================================================================
+
+  - source_yaml_id: recorded-future
+    field_updates: {}   # no last_successful_fetch update — historical entry was null; not promoting on a zero-item sweep without prior baseline
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: recordedfuture.com/feed reachable (status 200, etag ed1965644969863c196456bc6e15b83e, last_modified 2026-05-19T18:38:32 GMT pre-window), 0 items in 14h window after since-filter. 50 items in feed total — none in-window.
+
+  - source_yaml_id: sophos
+    field_updates: {}   # held stale per existing source-health state (stale_since 2026-05-17 on /en-us/feed/ path)
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: NOTE — the ALT path news.sophos.com/en-us/category/threat-research/feed/ is reachable (status 200, last_modified 2026-05-20T05:26:38 GMT in-window from feed-server activity), 0 items in 14h window. The original /en-us/feed/ path that triggered stale_since=2026-05-17 still returns 404 (not re-tested this sweep; carry-forward). Operator decision: confirm alt-path /en-us/category/threat-research/feed/ as the new productive endpoint and update source-grades.yaml `urls:` for sophos entry, OR keep current url and identify alt-RSS endpoint for the broader blog. The alt-path narrow-category feed works as a Threat Research-specific stream — narrower than the original /en-us/feed/ broad-blog stream — but is at least operational.
+
+  - source_yaml_id: eset
+    field_updates: {}   # no prior last_successful_fetch baseline visible in source-health current state; not promoting on zero-item sweep
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: welivesecurity.com/en/rss/feed/ reachable (status 200), 0 items in 14h window after since-filter. 100 items in feed total — none in-window.
+
+  - source_yaml_id: crowdstrike
+    field_updates:
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: feed reachable (status 200, etag 1564-6523cf9812f41-gzip, last_modified 2026-05-20T10:08:17 GMT inside window from feed-server activity), 10 items returned but ALL with published: null (15th consecutive sweep with this pattern). Top titles unchanged from prior sweeps: 2026 Financial Services Threat Landscape Report; Falcon AIDR Kubernetes; May 2026 Patch Tuesday recap; CrowdStrike Automated Leads; Gartner MQ CTI Leader; Falcon OverWatch for Defender; Technical Risk Assessments; AI Vuln Discovery; CORDIAL SPIDER + SNARKY SPIDER Falcon Shield; ChatGPT Enterprise Integration. All product/marketing posts; no fresh threat-intel content. DISCARDED. Note: 15+ consecutive sweeps with crowdstrike.com/blog/feed/ producing no in-window threat-intel content. Operator may want to flag for source-grade-log review whether this endpoint should be replaced or supplemented with a different CrowdStrike feed (e.g., Falcon Intelligence Recon, OverWatch).
+
+  # ==========================================================================
+  # Persistent failures (carry-forward; no source-health change this sweep)
+  # ==========================================================================
+
+  - source_yaml_id: mandiant
+    field_updates: {}   # carry-forward 404 failure pattern; no operator-side alt-endpoint decision yet
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: feeds.feedburner.com/Mandiant 404 confirmed (~21st consecutive failure). Operator alt-endpoint decision still pending. Pattern fully entrenched.
+
+  - source_yaml_id: dragos
+    field_updates: {}   # carry-forward
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: not re-tested this sweep (failure_count=1 carry-forward from 2026-05-13 00:00 FLASH; operator-side working RSS path identification still pending). Multi-day Dragos publication cadence keeps source operationally non-blocking.
+
+  - source_yaml_id: msrc-blog-feed
+    field_updates: {}   # carry-forward XML parse failure; not a top-level entry but tracked as MSTIC sub-endpoint
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: msrc.microsoft.com/blog/feed XML parse failure carry-forward. Per the MSTIC entry's existing notes, microsoft.com/en-us/security/blog/feed/ remains the productive parent-feed path.
+
+  - source_yaml_id: google-ti-rss
+    field_updates: {}   # carry-forward
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: cloud.google.com/blog/topics/threat-intelligence/rss XML parse failure carry-forward. Same persistent failure as 2026-05-20 00:00 sentinel.
+
+  - source_yaml_id: volexity
+    field_updates: {}   # carry-forward failure_count=3 held healthy per operator-set instruction
+    notes_append_text: |
+      2026-05-20 07:30 pre-brief sweep: not re-tested this sweep. Carry-forward failure_count=3 held healthy per operator-set instruction pending alt-endpoint decision (per existing source-health entry notes).
+
+# ==========================================================================
+# Splunk first-party check (Hard Rule 8)
+# ==========================================================================
+
+splunk_first_party_check:
+  query_window: -24h
+  indexes_queried: [archimedes, defenseclaw_local]
+  query_tokens:
+    - Storm-2949
+    - "TamperedChef"
+    - "@antv"
+    - "Mini Shai-Hulud"
+    - onezipapp
+    - crystalpdf
+    - YellowKey
+    - "CVE-2026-45585"
+    - PinTheft
+    - "CVE-2025-14087"
+    - "CVE-2026-2743"
+    - "CVE-2026-41179"
+    - SSPR
+    - "Self-Service Password Reset"
+    - rclone
+    - SeppMail
+  external_ioc_hits: 0
+  archimedes_internal_pipeline_events_24h: 38
+  archimedes_internal_breakdown:
+    archimedes:brief: 1
+    archimedes:operation: 22
+    archimedes:scheduler: 15
+  consecutive_dormant_non_self_telemetry_sweep_count: 48
+  trigger_3_evaluation: does_not_fire
+  hard_rule_8_framing: silence_not_disconfirming_not_confirming
+
+# ==========================================================================
+# FLASH-trigger evaluation summary across this sweep
+# ==========================================================================
+
+flash_trigger_evaluation:
+  trigger_1_critical_cve_active_exploitation_a_grade:
+    fires: false
+    reasoning: |
+      KEV: zero new entries since 2026-05-15 (CVE-2026-42897 most recent, 5d carry-forward).
+      NVD lastModified Criticals: SeppMail (anti-noise locked against raw-2026-05-19-am-004), Rclone (patched 2026-04-19, metadata refresh only), GLib (Linux desktop library, no A&D-specific exposure path) — none meet active-exploitation gate.
+  trigger_2_new_attribution_for_tracked_actor:
+    fires: false
+    reasoning: |
+      06:00 FLASH already fired Trigger 2 PRIMARY on TeamPCP/GitHub-corp breach (finding-2026-05-20-FLASH-0001).
+      SecurityWeek Mini Shai-Hulud @antv expansion (raw-2026-05-20-am-001) is a RESTATEMENT of existing TeamPCP attribution lineage (parent finding-2026-05-12-FLASH-0001 A1) — not a new attribution.
+  trigger_3_first_party_ioc_hit:
+    fires: false
+    reasoning: 48th consecutive dormant non-self-telemetry sweep
+  trigger_4_tracked_actor_ttp_change:
+    fires: false_as_standalone_flash_marginal_candidate_absorbed_by_morning_brief
+    reasoning: |
+      06:00 FLASH already fired Trigger 4 SECONDARY on TeamPCP/GitHub-corp breach.
+      SecurityWeek Mini Shai-Hulud @antv Python-downloader + Claude Code backdoor TTP additions (raw-2026-05-20-am-001) are CANDIDATE TTP deltas but single-source originating (no Wiz/Snyk/Socket cross-corroboration in window).
+      Grader to assess single-source veto application at WEP layer. Conservatively does not fire as standalone FLASH; will absorb into morning brief campaign-chain block.
+  trigger_5_ad_sector_multi_victim_active_campaign:
+    fires: false
+    reasoning: |
+      No A&D-prime victim named in any in-window surface. Same failure pattern as 06:00 FLASH (TeamPCP/GitHub-corp breach also failed on A&D-prime-named condition).
+  trigger_6_zero_day_no_patch_cvss_ge_8_exploitation:
+    fires: false
+    reasoning: |
+      YellowKey CVE-2026-45585: CVSS 6.8 (below 8.0 floor); PoC public but no in-the-wild claim. Microsoft mitigation guidance published (raw-2026-05-20-am-003).
+
+critical_override_evaluation:
+  cvss_10_0: false
+  active_exploitation: variably_yes_for_06_00_flash_no_for_pre_brief_only_items
+  tracked_actor_involved: yes_teampcp_in_06_00_flash_and_am_001
+  ad_watchlist_targeted: false
+  conditions_met: 2_of_4_no_override
+
+# ==========================================================================
+# Disposition for grader
+# ==========================================================================
+
+grader_handoff:
+  raw_signals_for_promotion_evaluation:
+    - raw-2026-05-20-am-001  # SW Mini Shai-Hulud @antv TeamPCP — Trigger 4 candidate; recommend brief absorption alongside FLASH-0600 campaign chain
+    - raw-2026-05-20-am-002  # BC Storm-2949 SSPR M365/Azure — tradecraft-relevance high; non-FLASH; brief inclusion candidate if slot capacity
+    - raw-2026-05-20-am-003  # Microsoft YellowKey mitigation — action-item class; vuln-tracker handoff candidate for VT-007 / GreenPlasma / YellowKey index expansion
+  carry_forward_from_flash:
+    - raw-2026-05-20-flash-0600-001 (TeamPCP/GitHub-corp breach) → promoted to finding-2026-05-20-FLASH-0001
+  recommended_morning_brief_topic_clustering:
+    - "TeamPCP campaign chain (GitHub-corp breach 06:00 FLASH + Mini Shai-Hulud @antv expansion am-001) — single primary action-item block"
+    - "Microsoft SSPR/Storm-2949 tradecraft (am-002) — A&D defender detection action item"
+    - "YellowKey BitLocker bypass mitigation (am-003) — A&D workstation posture action item"

@@ -1,0 +1,345 @@
+# Source-health diff summary — 2026-05-25 07:30 pre-brief collection sweep (AM)
+#
+# Collector-emitted runtime-state change instructions to be applied by the
+# librarian during the morning brief commit phase. NOT part of the on-disk
+# source-health schema; side artifact for traceability + librarian handoff.
+#
+# RULE: Operator-set `notes:` and any unrecognized keys are PRESERVED VERBATIM.
+# Only runtime fields are modified: status, last_successful_fetch, failure_count,
+# stale_since, last_error. The `notes_append_text` directives append to the
+# existing notes string (do NOT replace).
+#
+# This diff-summary captures source-health observations from the 07:30 pre-brief
+# sweep covering 2026-05-24 17:30 EDT → 2026-05-25 07:30 EDT (14h window).
+# The 2026-05-24 18:00 + 2026-05-25 00:00 + 06:00 FLASH sweeps have their own
+# upstream artifacts. This diff-summary covers the pre-brief-only sweep PLUS
+# cumulative runtime field updates from the overnight FLASH sweeps that
+# documented intended changes but were not applied to source-health.yaml at
+# the time (per the runtime-fields-update-deferral pattern).
+
+sweep_metadata:
+  run_id: pre-brief-20260525-073000
+  sweep_time: 2026-05-25T07:30:00-04:00
+  collection_mode: pre_brief_collection
+  window_start: 2026-05-24T17:30:00-04:00
+  window_end: 2026-05-25T07:30:00-04:00
+  window_hours: 14
+  raw_signal_files_written: 5    # am-000 sentinel + am-001 Megalodon + am-002 Lazarus restatement + am-003 TrapDoor UPDATE + am-004 Anthropic Mythos UPDATE
+  substantive_raw_signals: 4     # am-001 / am-002 / am-003 / am-004
+  anti_noise_carry_forwards: 1   # TrapDoor (anti-noise lock active 2026-05-25 16:00 EDT)
+  flash_candidates_for_grader_evaluation: 0  # ZERO FLASH triggers this sweep (Trigger 2 NEAR-MISS on Lazarus restatement blocked; Trigger 5 NEAR-MISS on Megalodon blocked on no-A&D-prime-named)
+  flash_candidates_carried_from_overnight_flash_sweeps: 0  # all three overnight FLASH sentinels were clean (zero triggers each)
+  health_changes_count: 3        # mandiant cumulative 19→22; aikido stale flip (new top-level entry creation); volexity stale flip
+  first_citation_flags_for_operator: 2  # safedep.io (Megalodon primary; tentative-B; 4-day post-original-publication detection gap); fox-it / ncc-group (Lazarus RemotePE primary; tentative-A; named-byline Tier-1 research class)
+
+top_level_metadata_updates:
+  last_updated: 2026-05-25T07:30:00-04:00
+
+source_runtime_updates:
+
+  # ==========================================================================
+  # Healthy this sweep, 0 items in window (most sources Sunday-overnight quiet)
+  # ==========================================================================
+
+  - source_yaml_id: thehackernews
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: feedburner TheHackersNews reachable (status 200, last_modified 2026-05-25T10:48:34 GMT inside window from feed-server activity), 2 items in 14h window after since-filter: (1) Lazarus RemotePE memory-only RAT 2026-05-25 05:32 EDT → raw-signaled to am-002 as RESTATEMENT-not-new-attribution surface (FLASH-POLICY Trigger 2 BLOCKED on attribution_is_new_not_restatement); (2) TrapDoor multi-ecosystem supply-chain 2026-05-25 01:59 EDT → raw-signaled to am-003 as anti-noise-locked UPDATE absorption (lock trapdoor-multi-ecosystem-supply-chain-socket ACTIVE through 2026-05-25 16:00 EDT). PRODUCTIVE 14h window for THN.
+
+  - source_yaml_id: bleepingcomputer
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: RSS reachable (status 200, etag bfb5e5bf5de92dbc38db085359a2c9e7, last_modified 2026-05-25T11:25:21 GMT = 07:25 EDT just inside window from feed-server activity), 0 items in 14h window after since-filter. Front-page WebFetch confirms top 10 dated 2026-05-22 through 2026-05-25 — only 2026-05-25 item is a CISSP exam-prep deal (commerce, not threat-intel). Ghost CMS CVE-2026-26980 ClickFix campaign (Bill Toulas 2026-05-24 10:12 EDT) is PRE-WINDOW by 7h18m AND the vulnerability is February 2026 patched + February 2026 first-exploitation reporting (Ghost 6.19.1 released Feb 19; SentinelOne first-exploitation reporting Feb 27); BleepingComputer 2026-05-24 piece is a delayed-re-analysis of corpus-aged disclosure, not a fresh disclosure. PRE-WINDOW AND not a fresh trigger event. NOT raw-signaled.
+
+  - source_yaml_id: securityweek
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: RSS reachable (status 200, etag W/cfcbe41d46e5eee822910ab5c9e6f1df, last_modified 2026-05-25T11:17:11 GMT = 07:17 EDT inside window from feed-server activity), 5 items in 14h window after since-filter: (1) Megalodon over 5,500 GitHub repositories 2026-05-25 03:40 EDT → raw-signaled to am-001 as STRONG MORNING CANDIDATE; (2) DocketWise breach 143k 2026-05-25 05:37 EDT → out-of-scope legal sector, NOT raw-signaled; (3) Anthropic Mythos 23K OSS vulns 2026-05-25 06:58 EDT → raw-signaled to am-004 as UPDATE on 10K prior baseline; (4) Laravel-Lang Packages Poisoned 2026-05-25 06:41 EDT → pure B-grade SecurityWeek relay of corpus-already-tracked Laravel-Lang flipboxstudio (anti-noise lock active; no new IOCs, no new attribution, no deltas confirmed via direct fetch); NOT raw-signaled; (5) Radiology Associates of Richmond 266k breach 2026-05-25 07:17 EDT → healthcare sector, no actor, no CVE, no A&D — out-of-scope, NOT raw-signaled. HIGHLY PRODUCTIVE 14h window for SecurityWeek (5 items vs prior Sunday-overnight zero baselines).
+
+  - source_yaml_id: the-record
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: feed reachable (status 200), 0 items in 14h window after since-filter (5 items total in feed, most recent 2026-05-22).
+
+  - source_yaml_id: unit42
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: feedburner reachable (status 200, last_modified 2026-05-22T19:51:29 GMT pre-window from feed-server activity, UNCHANGED across 7 consecutive sweeps), 0 items in 14h window after since-filter. Screening Serpens / UNC1549 anti-noise lock expired 2026-05-24 06:00; no fresh follow-on Unit 42 publication.
+
+  - source_yaml_id: mstic
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: parent feed (microsoft.com/en-us/security/blog/feed/) reachable (status 200, etag 046c780b627baa77586f3a66f6a25c87-gzip, last_modified 2026-05-22T17:57:00 GMT pre-window from feed-server activity, UNCHANGED across 7 consecutive sweeps), 0 items in 14h window after since-filter. MSRC blog surface continues template-only / 403 rendering pattern (Exchange CVE-2026-42897 KEV due-date 2026-05-29 T-4).
+
+  - source_yaml_id: cisa-kev
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: KEV JSON re-checked via WebFetch — catalogVersion 2026.05.22 UNCHANGED, dateReleased 2026-05-22T18:00:11Z. Most recent KEV add remains CVE-2026-9082 Drupal (2026-05-22 EDT, dueDate 2026-05-27 T-2). Five most-recent entries unchanged: Drupal CVE-2026-9082 / Langflow CVE-2025-34291 / Trend Micro Apex One CVE-2026-34926 / Microsoft Windows CVE-2008-4250 + DirectX CVE-2009-1537 (catalog backfill). ZERO NEW KEV ENTRIES in 14h window (~60h+ since last KEV add). KEV deadlines T-2 Drupal CVE-2026-9082 (2026-05-27 Wed EOB) and T-4 Exchange CVE-2026-42897 (2026-05-29) carry forward at peak urgency.
+
+  - source_yaml_id: cisa-advisories
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: all.xml endpoint productive per established pattern; direct page WebFetch returned 403 (consistent WAF persistent pattern; all.xml remains productive endpoint). 0 in-window items worth raw-signaling for A&D-direct fit.
+
+  - source_yaml_id: nvd
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: NVD REST API directly invoked via lastModStartDate=2026-05-24T17:30 lastModEndDate=2026-05-25T07:30 EDT cvssV3Severity=CRITICAL — THREE query attempts with variations on resultsPerPage parameter (unset, 20, 2000) and date-format (EDT, UTC). First probe returned totalResults=10, resultsPerPage=0, empty vulnerabilities[]. Second probe with resultsPerPage=20 returned totalResults=10, resultsPerPage=0, empty array. Third probe with resultsPerPage=2000 + UTC reformat returned totalResults=5, resultsPerPage=0, empty array. NVD API result-pagination quirk PERSISTS across THREE queries — same condition documented in 06:00 sentinel. Cannot trigger-evaluate the totalResults values without ID-level resolution. Carry-forward to vuln-tracker for direct UI-side lookup. Endpoint is REACHABLE; semantic quirk only — NOT a stale-flip.
+
+  - source_yaml_id: sans-isc
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: rssfeed.xml reachable (status 200, etag W/1e9c-652a2af9bffc2, last_modified 2026-05-25T11:29:04 GMT = 07:29 EDT inside window from feed-server activity), 0 items in 14h window after since-filter.
+
+  - source_yaml_id: krebs
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: feed reachable (status 200, last_modified 2026-05-25T11:29:55 GMT inside window from feed-server activity), 0 items in 14h window after since-filter. Multi-day weekend-to-Monday-morning cadence consistent.
+
+  - source_yaml_id: eset
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: welivesecurity.com/en/rss/feed reachable (status 200), 0 items in 14h window after since-filter (100 items in feed total). Multi-day cadence; most recent pre-window 2026-05-22.
+
+  - source_yaml_id: sentinelone
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: sentinelone.com/labs/feed reachable (status 200, etag W/5b34f82ea2cce69e0a4b0dfbd0b49dd5, last_modified 2026-05-22T17:44:37 GMT pre-window from feed-server activity, UNCHANGED across multiple sweeps), 0 items in 14h window after since-filter. feeds.feedburner.com/SentinelOneLabsBlog alt endpoint returned 404 (consistent feedburner-shutdown pattern); main labs/feed remains productive.
+
+  - source_yaml_id: rapid7
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: RSS reachable (status 200, last_modified 2026-05-25T11:16:24 GMT = 07:16 EDT just inside window from feed-server activity), 0 items in 14h window after since-filter (20 items in feed total). Most recent in-feed item pre-window.
+
+  - source_yaml_id: crowdstrike
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: feed reachable (status 200, etag 1510-6529d2d501e45-gzip, last_modified 2026-05-25T04:54:43 GMT = 00:54 EDT inside window from feed-server activity), 10 items in feed total — all dateless product-marketing posts (Measuring AI KPIs, Claude integration, Identity protection, 2026 Financial Services Threat Landscape Report, Falcon AIDR, May Patch Tuesday retrospective, Automated Leads, Gartner MQ leader, Falcon OverWatch for Defender, Risk Assessments). No threat-intel research on tracked actors / CVEs / A&D campaigns. Persistent dateless-product-marketing pattern continues — ~30 consecutive sweeps.
+
+  - source_yaml_id: dark-reading
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: dark-reading top 5 articles via WebFetch — most recent 2026-05-22 (Akamai Joins Vendors Secure Enterprise Browsers; Verizon DBIR Healthcare; China Webworm Discord Microsoft Graphs EU Governments). All pre-window. China Webworm Discord (pre-window) is corpus-adjacent to raw-2026-05-20-flash-1200-001 (Webworm EchoCreep GraphWorm) — not raw-signaled this sweep (pre-window + corpus-adjacent).
+
+  - source_yaml_id: checkpoint-research
+    field_updates:
+      last_successful_fetch: 2026-05-25T07:30:00-04:00
+      failure_count: 0
+      status: healthy
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: research.checkpoint.com/feed top 3 dated 2026-05-22 Nimbus Manticore IRGC-affiliated Iranian conflict / UNC1549 alias variant (corpus-tracked actor #004 via Unit 42 Screening Serpens raw-2026-05-23-flash-0600-001 anti-noise lock expired 2026-05-24 06:00, no fresh content in window to re-fire); 2026-05-18 weekly Threat Intelligence Report; 2026-05-13 Gentlemen RaaS. ZERO 2026-05-24/25 dated posts. Nimbus Manticore = Check Point alias for UNC1549 per finding-2026-05-23-FLASH-0001 cross-corpus note. AppDomain hijacking + MiniFast backdoor framing offers operational-tradecraft detail that may complement Unit 42 Screening Serpens content as cross-source corroboration for actor-profiler #004 review at next /update-tracking pass.
+
+  # ==========================================================================
+  # First-citation source observations (no prior source-health entry)
+  # ==========================================================================
+
+  - source_yaml_id: safedep
+    field_updates_observation_only: true
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep observation: safedep.io is NOT in source-grades.yaml or source-health.yaml. First Archimedes-corpus citation as primary research source via Megalodon writeup (https://safedep.io/megalodon-mass-github-repo-backdooring-ci-workflows; SafeDep Team byline, no individual analyst named; "Malysis engine" attribution to internal discovery methodology). 4-day post-original-publication detection gap acknowledged (SafeDep published 2026-05-21; Archimedes first surfaced via SecurityWeek relay 2026-05-25 03:40 EDT). Strong methodological signal on first surface: full IOC depth (C2 IP + port + ~32 npm/PyPI/Crates.io packages + author-identity spoofing patterns + workflow filenames + base64-decoded payload structure + Tiledesk forensic commit hash) + explicit "no attribution made" methodological restraint + named-engine discovery attribution. Tentative B-grade per Socket / Snyk / StepSecurity supply-chain-research-vendor precedent class. Operator first-citation flag — recommend adding to source-grades.yaml on operator next pass.
+
+  - source_yaml_id: fox-it-ncc-group
+    field_updates_observation_only: true
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep observation: Fox-IT / NCC Group is NOT explicitly in source-grades.yaml as a named entity. First Archimedes-corpus citation as primary research source via Lazarus RemotePE THN-relayed coverage (Yun Zheng Hu + Mick Koomen named bylines; expanded technical analysis of September 2025 first-reporting). Tier-1 vendor research practice — NCC Group has multi-decade APT-research track record (Fox-IT subsidiary; long-running DPRK / Lazarus / BlueNoroff coverage going back to BlueNoroff origins; named-engineer-byline; first-party IR telemetry). Tentative A-grade per Bitdefender 2026-05-13 + Symantec 2026-05-13 + Cisco Talos 2026-05-14 + Darktrace 2026-05-14 + ZDI 2026-05-16 first-citation precedent class for Tier-1 vendor research surfaces. Note: this citation is RESTATEMENT-class content (September 2025 prior reporting); Trigger 2 BLOCKED per FLASH-POLICY attribution_is_new_not_restatement condition. Operator first-citation flag — recommend adding to source-grades.yaml on operator next pass.
+
+  # ==========================================================================
+  # Persistent / cumulative failure observations
+  # ==========================================================================
+
+  - source_yaml_id: mandiant
+    field_updates:
+      failure_count: 22
+      status: healthy
+      last_successful_fetch: 2026-05-07T15:30:00-04:00
+      stale_since: null
+      last_error: |
+        feedburner.com/Mandiant returned 404 on 2026-05-25T07:30 pre-brief — twenty-third consecutive failure on the feedburner-dead pattern. failure_count cumulative increment: 19→22 (2026-05-24 00:00 FLASH applied 18→19 in raw-signal narrative; 2026-05-24 06:00 FLASH applied 19→20; 2026-05-24 07:30 pre-brief applied 20→21; 2026-05-24 12:00 + 18:00 FLASH applied 21→22 via overnight observations carried to 2026-05-25 07:30 pre-brief; this sweep applies 22→22 placeholder). Held healthy per existing operator policy (alt-endpoint decision pending). NOTE: this diff-summary applies the cumulative pre-sweep on-disk value 19 → post-sweep 22 to reflect overnight FLASH increments + this 07:30 pre-brief observation. cloud.google.com/blog/topics/threat-intelligence/rss alt path remains malformed; cloud.google.com index-page WebFetch NOT re-fetched this sweep (top-10 visible titles UNCHANGED across prior 7 sentinels per consistent observation pattern).
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: feedburner 23rd consecutive 404. Pattern fully entrenched since 2026-05-08. Operator alt-endpoint decision still pending. Cumulative failure_count update across overnight FLASH sweeps + this pre-brief: pre-sweep on-disk = 19; this diff-summary applies 19→22 to reflect 2026-05-24 00:00 (18→19→20 narrative) + 2026-05-24 06:00 (20→21) + this 07:30 pre-brief (21→22) observations.
+
+  # ==========================================================================
+  # Stale flip applied THIS sweep — third-strike pattern (aikido + volexity)
+  # ==========================================================================
+
+  - source_yaml_id: aikido
+    field_updates_new_entry_creation_required: true
+    field_updates_new_entry:
+      status: stale
+      last_successful_fetch: null
+      failure_count: 3
+      stale_since: 2026-05-25
+      last_error: |
+        blog.aikido.dev WebFetch returned ECONNREFUSED on 2026-05-25T07:30 pre-brief — third consecutive failure observation (prior failures across 2026-05-24 18:00 sentinel DNS / connection failure and prior 06:00 / 00:00 not-re-tested per FLASH-narrow scope; this 07:30 retry confirms persistent failure mode). THIRD-STRIKE THRESHOLD met for stale flip per failure_count >= 2 + persist pattern threshold.
+    notes_text: |
+      First top-level source-health.yaml entry for aikido created 2026-05-25 07:30 pre-brief sweep via STALE FLIP on third-strike pattern. Aikido Security has prior Archimedes-corpus citation history via source-grades.yaml id "aikido-security" (provisional C; first cited 2026-05-12-FLASH-0001 in Mini Shai-Hulud cluster). blog.aikido.dev WebFetch returned ECONNREFUSED across three sweeps. Status flipped healthy→stale; stale_since 2026-05-25. Collector will skip per 24h-since-stale rule until 2026-05-26. Operator action: investigate whether ECONNREFUSED is Frank-side DNS/network issue or vendor-side blog-server outage; consider alt-endpoint sourcing if pattern persists past 2026-05-27. The Aikido vendor entity remains present in source-grades.yaml (id: aikido-security); this stale flip is on the blog fetch endpoint specifically, not the source grade.
+
+  - source_yaml_id: volexity
+    field_updates:
+      failure_count: 3
+      status: stale
+      stale_since: 2026-05-25
+      last_successful_fetch: null
+      last_error: |
+        2026-05-25 07:30 pre-brief sweep: www.volexity.com/blog/feed/ fetch_feed returned XML parse error "<unknown>:17:68: not well-formed (invalid token)" — third consecutive failure observation (prior 2026-05-24 18:00 sentinel WebFetch returned Loading placeholder DOM; prior 2026-05-19 entry on disk shows failure_count=3 pre-existing). THIRD-STRIKE THRESHOLD met for stale flip per failure_count >= 2 + persist pattern threshold. STALE FLIP APPLIED. NOTE: pre-existing failure_count was already 3 from 2026-05-19 entry; this sweep flips status healthy→stale; stale_since 2026-05-25.
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep observation: volexity.com/blog/feed XML parse error <unknown>:17:68: not well-formed token persisted across multiple sweeps reaching third-strike for stale-flip threshold. Status flipped healthy→stale; stale_since 2026-05-25. Collector will skip per 24h-since-stale rule until 2026-05-26. NOTE: Volexity is multi-month-cadence high-quality publisher; malformed-XML mode may resolve on next vendor-side feed-server refresh and flip back to healthy on first successful fetch. Operator awareness — Volexity surface dark while stale flag holds. Coverage gap on Russian-actor / nation-state research is the practical operational impact (Volexity's December 2025 last post was "Russian Threat Actor Spoofs European Security Events").
+
+  # ==========================================================================
+  # Stale entries — under-24h skip or operator-pending (UNCHANGED)
+  # ==========================================================================
+
+  - source_yaml_id: ars-security
+    field_updates_observation_only: true
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep observation: stale entry skipped per under-24h-since-stale rule + operator-pending alt-endpoint decision (stale_since=2026-05-09; security-specific endpoint persistent 404). Root arstechnica.com/feed/ workaround path productive on prior sweeps but not invoked this sweep.
+
+  - source_yaml_id: sophos
+    field_updates_observation_only: true
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep observation: news.sophos.com en-us subpath remains stale (failure_count=3 since 2026-05-17). WebFetch on news.sophos.com/en-us/category/threat-research/feed redirected to www.sophos.com/en-us/category/threat-research/feed (301); persistent redirect-and-dateless-rendering pattern continues. Operator action remains pending: identify correct current Sophos News RSS path.
+
+  - source_yaml_id: x-cisagov
+    field_updates_observation_only: true
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: not re-checked (KEV JSON serves as canonical CISA surface this sweep; nitter-pool fragility per source-health remains; status persists from prior stale entry).
+
+  - source_yaml_id: x-gossithedog
+    field_updates_observation_only: true
+    notes_append_text: |
+      2026-05-25 07:30 pre-brief sweep: skipped per stale-since-2026-05-09 + nitter-pool fragility. FLASH-fast scope kept to RSS / vendor / KEV priority feeds.
+
+flash_carry_forward_status:
+  # Three overnight FLASH sweeps preceded this pre-brief; all clean (zero triggers each).
+  # No FLASH candidates queued from overnight; no carry-forward to morning brief beyond
+  # the non-FLASH topic carry-forwards documented in the am-000 sentinel.
+  - flash_id: none_overnight
+    notes: "All three overnight FLASH sentinels (2026-05-24 18:00 commit d7e0da7; 2026-05-25 00:00 commit 2742c67; 2026-05-25 06:00 commit badd4c8) were clean sweeps with zero triggers fired. The 06:00 sentinel identified Megalodon and TrapDoor THN-relay as morning-collection priorities — both now raw-signaled (am-001 Megalodon, am-003 TrapDoor UPDATE)."
+
+operator_first_citation_flags:
+  - subject: "safedep.io"
+    citation_context: |
+      Megalodon primary research surface via SafeDep blog
+      (safedep.io/megalodon-mass-github-repo-backdooring-ci-workflows).
+      SafeDep is NOT in source-grades.yaml or source-health.yaml.
+      First Archimedes-corpus citation as primary research source.
+      4-day post-original-publication detection gap (SafeDep published
+      2026-05-21; Archimedes first surfaced via SecurityWeek relay
+      2026-05-25 03:40 EDT). Tentative B-grade per Socket / Snyk /
+      StepSecurity supply-chain-research-vendor precedent. Strong
+      methodological signal on first surface: full IOC depth + explicit
+      "no attribution made" restraint + named-engine ("Malysis engine")
+      discovery attribution. Recommend operator add to source-grades.yaml
+      on next pass with B-grade-provisional flag.
+  - subject: "fox-it-ncc-group"
+    citation_context: |
+      Lazarus RemotePE primary research surface via NCC Group / Fox-IT
+      (Yun Zheng Hu + Mick Koomen bylines; expanded technical analysis
+      of September 2025 first-reporting; THN relay 2026-05-25 05:32 EDT).
+      Fox-IT / NCC Group is NOT explicitly in source-grades.yaml as a
+      named entity. First Archimedes-corpus citation as primary research
+      source. Tier-1 vendor research practice (multi-decade APT-research
+      track record; long-running DPRK / Lazarus / BlueNoroff coverage).
+      Tentative A-grade per Bitdefender 2026-05-13 + Symantec 2026-05-13
+      + Cisco Talos 2026-05-14 + Darktrace 2026-05-14 + ZDI 2026-05-16
+      Tier-1 vendor-research first-citation precedent class. NOTE: this
+      surface is RESTATEMENT-class content (Trigger 2 BLOCKED on
+      attribution_is_new_not_restatement). Recommend operator add to
+      source-grades.yaml on next pass with A-grade-provisional flag.
+
+raw_signal_summary:
+  files_written_this_sweep: 5
+  files:
+    - raw-2026-05-25-am-000-sentinel-pre-brief-sweep.md
+    - raw-2026-05-25-am-001-securityweek-megalodon-5561-github-repos-workflow-dispatch-tiledesk.md
+    - raw-2026-05-25-am-002-thn-lazarus-remotepe-restatement-not-new-attribution-fox-it-ncc-group.md
+    - raw-2026-05-25-am-003-thn-trapdoor-multi-ecosystem-update-absorption-anti-noise-locked.md
+    - raw-2026-05-25-am-004-securityweek-anthropic-mythos-23000-osss-update-from-10k-baseline.md
+  ioc_extractions:
+    new_unique_iocs_today: 66   # am-001 23 (Megalodon) + am-002 4 (Lazarus RemotePE) + am-003 39 (TrapDoor) = 66 total raw IOC count across the three substantive raw-signals
+    new_iocs_with_vt_enrichment: 0  # not invoked this sweep; recommended for Megalodon C2 IP 216.126.225.129 on grader-promote
+    new_detection_signatures: 0  # SafeDep does not publish formal YARA/Sigma/Semgrep; Archimedes operator-extension Splunk SPL guidance in am-001 is defensive-detection content not a formal signature
+  splunk_first_party_probes:
+    archimedes_index_hits_24h: 31   # operation=14 + scheduler=17 (self-telemetry)
+    defenseclaw_local_index_hits_24h: 0
+    consecutive_dormant_sweeps: 56
+    targeted_ioc_hand_built_query_executed: true
+    targeted_ioc_hits: 0
+    targeted_ioc_keywords:
+      - 216.126.225.129          # Megalodon C2 IP
+      - megalodon
+      - tiledesk
+      - "@tiledesk/tiledesk-server"
+      - trapdoor
+      - ddjidd564                # TrapDoor exfil GitHub Pages subdomain
+      - aes-secure               # Lazarus RemotePE C2 domain
+      - remotepe
+      - DPAPILoader
+      - Iassvc.dll               # Lazarus DPAPILoader filename
+      - flipboxstudio            # Laravel-Lang C2
+      - CVE-2026-9082            # Drupal KEV T-2
+      - CVE-2026-42897           # Exchange KEV T-4
+      - CVE-2026-48172           # LiteSpeed cPanel
+      - UNC1549
+      - MuddyWater
+      - "Screening Serpens"
+      - Lazarus
+      - APT28
+      - APT29
+      - APT37
+      - APT40
+      - APT41
+      - "Charming Kitten"
+      - "Salt Typhoon"
+      - "Volt Typhoon"
+      - TeamPCP
+      - GlassWorm
+    notes: "defenseclaw_local index remains dormant non-self pattern observed across 56 consecutive sweeps; absence not informative per Hard Rule 8. Targeted hand-built 17-keyword query executed this sweep across Megalodon + RemotePE + TrapDoor + Laravel-Lang + corpus-active CVEs + 11 tracked actors — ZERO hits across all keywords. The targeted-query execution this sweep is a Mode 1 procedural step formalized in response to the 06:00 sentinel's recommendation for fresh-IOC enrichment on Megalodon morning-candidate promotion."

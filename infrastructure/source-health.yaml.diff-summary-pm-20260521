@@ -1,0 +1,100 @@
+# source-health.yaml runtime field updates — 2026-05-21 PM pre-brief sweep
+# Run: pre-brief-20260521-153000
+# Author: collector subagent
+# Scope: runtime-only fields per .claude/agents/collector.md doctrine
+# Operator notes: preserved verbatim, NOT modified
+
+# All sources below remained healthy this sweep.
+# Following the convention of prior diff-summary files (pm-20260517, am-20260519, pm-20260519, am-20260520, pm-20260520),
+# this file records the runtime updates that should be applied to source-health.yaml.
+
+# Update last_successful_fetch to 2026-05-21T15:30:00-04:00 (pre-brief window end) for these sources:
+
+cisa-advisories:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 5 in-window items returned (ICSA-26-141-01 through -05 ABB B&R + Hitachi batch); all.xml endpoint productive as before
+
+cisa-kev:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 2 NEW KEV adds dated 2026-05-21 (CVE-2025-34291 Langflow + CVE-2026-34926 Trend Micro Apex One); PRODUCTIVE
+
+nvd:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 13 Critical CVEs in lastModStartDate window; 2 raw-signaled (CVE-2026-41144 NASA F´ + CVE-2026-3593 ISC BIND 9 DoH); PRODUCTIVE
+
+mstic:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 1 in-window item (Microsoft Security May 2026 marketing roundup, DISCARDED non-threat-intel)
+
+unit42:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 1 in-window item PRODUCTIVE — npm Threat Landscape May 21 update cycle (raw-signaled PM-004 as procedural-facts upgrade)
+
+crowdstrike:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 0 in-window threat-intel items (persistent dateless-marketing pattern ~18+ consecutive sweeps)
+
+rapid7:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 1 in-window item PRODUCTIVE — Q1 2026 Threat Landscape Report quarterly aggregate (raw-signaled PM-005)
+
+sentinelone:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 0 in-window items, feed reachable
+
+cisco-talos:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  failure_count: 0  # reset from 2 to 0 since blog RSS at /rss is the productive endpoint
+  # last_error: clear from prior 2026-05-19 entry (the /feeds/posts/default 404 is on a different endpoint path than the productive /rss path)
+  # 1 in-window item — Threat Source newsletter 'art of being ungovernable' with BadIIS sub-mention (DISCARDED off-window off-A&D off-roster)
+  # NOTE: operator review recommended — the productive endpoint for Cisco Talos is blog.talosintelligence.com/rss not /feeds/posts/default. Resolve which endpoint URL to canonical-document in source-grades.
+
+proofpoint:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 1 in-window item (Claude Compliance API integration press release, DISCARDED non-threat-intel)
+
+welivesecurity:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 0 items in window
+
+krebs:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 0 items in window (last_modified 2026-05-19T14:19 GMT pre-window across many sweeps)
+
+sans-isc:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 1 in-window item (Selective HTTP Proxying diary, DISCARDED defensive-tooling)
+
+the-record:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 2 in-window items both DISCARDED (UK Ofcom kids online + India call center scams, off-filter)
+
+bleepingcomputer:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 1 RSS in-window item PRODUCTIVE — Chromium Service Worker RCE (raw-signaled PM-002) + 10 headlines homepage cross-check (mostly DEDUP/DISCARD per anti-noise locks)
+
+securityweek:
+  last_successful_fetch: 2026-05-21T15:30:00-04:00
+  # 0 RSS in-window items in 3.5h since-12:00 window (last_modified 2026-05-21T12:04 GMT pre-window from 12:00 FLASH sweep); 5 total 2026-05-21 headlines all DEDUP/DISCARD per anti-noise locks
+
+# Sources that remained unchanged from prior state:
+
+mandiant:
+  # status: healthy
+  # last_error: unchanged from 2026-05-13 "feedburner 404 ~19+ consecutive failures"
+  # failure_count: hold at 18 (operator-managed; 19th failure observed this sweep but operator policy is to hold healthy pending alt-endpoint decision)
+  # No update — pattern entrenched
+
+dragos:
+  # status: healthy
+  # last_error: unchanged from 2026-05-13 "/blog/feed/ 404"
+  # No update — not retried this sweep
+
+ars-security:
+  # status: stale (since 2026-05-09)
+  # Should be retry-eligible (stale_since > 24h)
+  # Not retried this sweep — operator path-replacement decision still pending
+  # No update
+
+# Final summary
+last_updated: 2026-05-21T15:30:00-04:00     # update top-of-file timestamp

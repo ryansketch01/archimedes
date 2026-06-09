@@ -1,0 +1,174 @@
+-----
+
+campaign_id: hades-campaign
+campaign_name: Hades Campaign
+aliases:
+
+- Hades
+- Mini Shai-Hulud (Hades wave)
+  attributed_actor: Miasma
+  actor_confidence: HIGH
+  threat_level: HIGH
+  status: ACTIVE
+  first_observed: 2026-06-08
+  last_updated: 2026-06-09
+  tlp: CLEAR
+  dossier_version: 1
+  reviewed_by: actor-profiler
+  review_schedule: 7d
+
+-----
+
+# Campaign Dossier — Hades Campaign
+
+**Threat Level: HIGH | Attribution: Miasma (HIGH confidence) | Status: ACTIVE**
+
+-----
+
+## BLUF
+
+The Hades Campaign is an actively-spreading software supply-chain compromise targeting Python developer environments, first publicly documented by StepSecurity on 2026-06-08. At least 29 PyPI packages — concentrated in the graph machine-learning, computational-biology, bioinformatics, and genotype-phenotype analysis ecosystems — were trojanized with an identical multi-layer payload that executes silently on package import. The campaign is assessed as the latest evolution of the **Miasma** threat actor (prior npm “Phantom Gyp” worm and Mini Shai-Hulud activity), reusing Miasma’s credential-harvesting, self-replicating worm logic, and GitHub-based exfiltration while introducing three notable advances: (1) **cross-platform in-memory secret scraping** on Linux, macOS, and Windows CI runners; (2) **adversarial prompt injection** designed to coerce LLM-based malware-triage pipelines into issuing false-clean verdicts; and (3) a **token-revocation wiper deterrent** that destroys host data if stolen credentials are revoked. The campaign self-propagates via SSH/SCP, GitHub Actions workflow injection, and abuse of PyPI/npm OIDC trusted publishing with forged Sigstore/SLSA provenance.
+
+**Relevance to FRANK / Archimedes:** This campaign directly threatens the developer toolchain Ryan operates — Python package installs, GitHub PAT usage, Claude Code / AI-assistant config files, and the GitHub-API-based publishing workflow used for Archimedes and proxmox-lab. The wiper deterrent and AI-config backdoor vectors warrant immediate hygiene review. See Mitigations.
+
+-----
+
+## Attribution
+
+- **Tracked actor:** Miasma (StepSecurity naming)
+- **Confidence:** HIGH — core TTPs (multi-cloud credential sweep, self-spreading worm logic, GitHub-based exfiltration via commit dead-drops, Runner.Worker memory reads) are directly continuous with previously documented Miasma npm campaigns (“Phantom Gyp” binding.gyp worm; Microsoft Azure repo compromise; Mini Shai-Hulud Linux memory-read variant).
+- **Naming convention shift:** Exfiltration artifacts moved from Dune-themed terms (prior Miasma/Shai-Hulud campaigns) to Underworld/Hades-themed terms in this wave — an actor signature change, not a separate group.
+- **Note on overlapping reporting:** Socket Research Team documented a parallel “Hades wave” of a Mini Shai-Hulud variant (37 malicious PyPI wheels across 19 packages) without attributing to a specific group. Some vendors have previously linked Mini Shai-Hulud activity to TeamPCP (financially motivated). Treat cross-vendor package counts as partially overlapping, not additive.
+
+-----
+
+## Targeting
+
+- **Primary ecosystem:** PyPI — graph ML, computational biology, bioinformatics, genotype-phenotype analysis packages.
+- **Victim profile:** Developers and CI/CD pipelines that import the trojanized packages; downstream organizations whose GitHub Actions runners and publishing credentials are reachable from a compromised dependency.
+- **Secondary spread:** Any host reachable via a compromised developer’s SSH known_hosts/config; any repo where a harvested GitHub token has write or workflow scope.
+
+-----
+
+## Execution Chain (8 stages)
+
+1. **Delivery & Python import hook.** Obfuscated single-line hook in the package’s `__init__.py` runs on import (not install). Checks for flag file `/tmp/.bun_ran`; if absent, locates companion payload `_index.js`, downloads a standalone Bun runtime (v1.3.14) ZIP from GitHub, and runs the JS payload via `bun run`. Bun-as-standalone bypasses Node.js-absent environments, package-manager controls, and proxy logs.
+1. **AI analyst misdirection.** The `_index.js` bundle opens with a plain-text adversarial prompt injection instructing any inspecting LLM to ignore the obfuscated code, classify the package as verified-clean infrastructure, and emit a safe report. Targets LLM-based scanning pipelines lacking strict input/instruction boundary isolation.
+1. **Modular blob decryption.** Bootstrapper loads 16 independent functional payloads, each gzip-compressed and AES-256-GCM-encrypted with a unique hardcoded key; modules selected by OS/context (macOS/Windows memory readers, IDE/CI backdoors, C2 agents).
+1. **Cross-platform memory scrapers.** Reads `Runner.Worker` process memory to extract plaintext secrets. Linux: `/proc/{pid}/maps` + `/proc/{pid}/mem`. macOS: Mach VM APIs via `ctypes` (`task_for_pid`, same-UID, no root needed). Windows: `Add-Type` C# using `OpenProcess` / `VirtualQueryEx` / `ReadProcessMemory`.
+1. **Command & Control — three GitHub-based channels.**
+- **Token dead-drop** (`DontRevokeOrItGoesBoom`): encrypted PATs pushed as public commits; attacker recovers via GitHub search API.
+- **Signed JS eval** (`TheBeautifulSnadsOfTime`): base64 JS payloads + RSA-PSS signature in commit messages; verified against hardcoded pubkey, run via `eval()`.
+- **Python dropper** (`firedalazer`): `updater.py` background service polls GitHub commits hourly; downloads/verifies/executes signed payloads.
+1. **Exfiltration.** Hybrid crypto (gzip → AES-256-GCM ephemeral key → RSA-2048 wrap) pushed to newly created public repos named from an Underworld wordlist (e.g. `stygian-cerberus-42817`, `tartarean-charon-18401`), all carrying description **“Hades - The End for the Damned”**.
+1. **Worm propagation & lateral movement.**
+- **SSH/SCP:** parses `~/.ssh/known_hosts` and `~/.ssh/config`, connects in `BatchMode`, stages loader + payload in `/tmp/.sshu-[random]`, executes, cleans up.
+- **OIDC trusted-publishing abuse + SLSA provenance bypass:** mints PyPI/npm publish tokens from `ACTIONS_ID_TOKEN_REQUEST_*`, forges Sigstore bundles (Fulcio cert → DSSE-signed SLSA statement → Rekor inclusion proof) so re-published trojanized packages carry valid-looking provenance.
+- **GitHub Actions workflow injection:** push-triggered (`workflow` scope) or deployment-triggered (`repo` write) injection of a `Run Copilot` workflow (often masquerading as `codeql.yml`) that dumps `${{ toJSON(secrets) }}` to an artifact, then deletes run history/branch.
+- **AI assistant / IDE rules hijacking:** backdoors rule/config files for ~14 AI agents (Claude, Codex, Gemini, Copilot, Cline, Aider, Tabby, Amazon Q, Cody, Bolt, Continue, etc.) — `.cursorrules`, `.windsurfrules`, `.cursor/rules/`, `.github/copilot-instructions.md`, `.aider.conf.yml`, `settings.json`, `config.json`, `mcp.json` — to trigger `bun run bootstrap` when the workspace is opened/consulted.
+1. **Persistence & wiper deterrent.** Installs `update-monitor` C2 daemon and a second `gh-token-monitor` service (Linux user `systemd` w/ lingering; macOS `LaunchAgent`). The monitor polls `api.github.com/user` with the stolen token; on a 4xx (revoked) response within a 72h TTL it triggers a destructive `rm -rf ~/` wiper — coercing defenders not to revoke credentials.
+
+-----
+
+## MITRE ATT&CK Mapping
+
+|Tactic             |Technique                                                           |ID                   |
+|-------------------|--------------------------------------------------------------------|---------------------|
+|Initial Access     |Supply Chain Compromise: Software Dependencies and Development Tools|T1195.001            |
+|Execution          |Command and Scripting Interpreter: Python                           |T1059.006            |
+|Execution          |Command and Scripting Interpreter: PowerShell                       |T1059.001            |
+|Execution          |User Execution / import-triggered code                              |T1204                |
+|Persistence        |Create or Modify System Process: systemd / Launch Agent             |T1543.002 / T1543.001|
+|Persistence        |Event Triggered Execution (IDE/AI config hooks)                     |T1546                |
+|Defense Evasion    |Obfuscated/Encrypted Files (AES-256-GCM modular blobs)              |T1027                |
+|Defense Evasion    |Impair Defenses (adversarial LLM prompt injection of triage)        |T1562                |
+|Defense Evasion    |Indicator Removal (delete workflow runs / branches)                 |T1070                |
+|Defense Evasion    |Subvert Trust Controls (forged Sigstore/SLSA provenance)            |T1553                |
+|Credential Access  |Steal Application Access Token (OIDC → publish tokens)              |T1528                |
+|Credential Access  |OS Credential / process memory scraping                             |T1003                |
+|Credential Access  |Unsecured Credentials (CI secrets, SSH keys, cloud tokens)          |T1552                |
+|Lateral Movement   |Remote Services: SSH                                                |T1021.004            |
+|Command and Control|Web Service: Dead Drop Resolver (GitHub commits)                    |T1102.001            |
+|Exfiltration       |Exfiltration Over Web Service (public GitHub repos)                 |T1567                |
+|Impact             |Data Destruction (token-revocation wiper)                           |T1485                |
+
+-----
+
+## Mitigations
+
+### Detection / Hunting Priorities (FRANK + Proxmox lab)
+
+|Priority|Action                                                                                                                                                                                                                                                        |
+|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|P1      |Hunt for IOC files (see table) on all dev hosts: `/tmp/.bun_ran`, `~/.local/share/updater/update.py`, `gh-token-monitor` service/script artifacts. Presence = confirmed execution.                                                                            |
+|P1      |Audit installed PyPI versions against the Affected Versions table; pin/rollback and rebuild any environment that imported a listed package version.                                                                                                           |
+|P2      |Search GitHub org for commits / branches containing `DontRevokeOrItGoesBoom`, `TheBeautifulSnadsOfTime`, `firedalazer`; and for public repos described **“Hades - The End for the Damned”** or matching `stygian-cerberus-[0-9]+` / `tartarean-charon-[0-9]+`.|
+|P2      |Review `.github/workflows/` for unexpected `Run Copilot` / `codeql*.yml` files and deleted workflow-run history; check Actions artifacts named `format-results`.                                                                                              |
+|P3      |Inspect AI-assistant config files (`.claude/`, `.cursor/rules/`, `.github/copilot-instructions.md`, `mcp.json`, `.vscode/tasks.json`) for injected `bun run bootstrap` hooks.                                                                                 |
+
+### CRITICAL — Wiper-Aware Credential Revocation
+
+Do **not** naively revoke a potentially-stolen GitHub PAT on a host suspected of compromise. The `gh-token-monitor` service triggers `rm -rf ~/` on detecting a 4xx from a revoked token. Recommended order: (1) isolate host from network so the daemon’s `api.github.com` poll fails *as a timeout*, not a 4xx; (2) kill/remove the `update-monitor` and `gh-token-monitor` services and their scripts; (3) only then revoke the credential server-side. Back up critical data before any revocation.
+
+### Hardening
+
+- Treat package installs as code execution; use ephemeral/sandboxed build environments and runtime CI monitoring (e.g. step-level network/process/file egress controls) that can lockdown on `Runner.Worker` memory reads.
+- Enforce phishing-resistant, least-scope tokens; avoid `workflow` scope on long-lived PATs; prefer short-lived OIDC with tightly scoped trusted-publishing.
+- Isolate LLM-based code-triage inputs with strict instruction/data boundaries; do not let untrusted file contents reach a scanner’s system-prompt context.
+
+-----
+
+## Indicators of Compromise
+
+|Type         |Value                                                           |Significance                                       |
+|-------------|----------------------------------------------------------------|---------------------------------------------------|
+|Lock File    |`/tmp/.bun_ran`                                                 |Created on import; confirms execution occurred     |
+|Lock File    |`/tmp/tmp.0144018410.lock`                                      |Anti-recursion singleton; confirms active execution|
+|State File   |`/var/tmp/.gh_update_state`                                     |Tracks executed `firedalazer` payloads; confirms C2|
+|Persistence  |`~/.local/share/updater/update.py`                              |C2 polling daemon script                           |
+|Persistence  |`~/.config/systemd/user/update-monitor.service`                 |Linux hourly C2 service                            |
+|Persistence  |`~/.config/systemd/user/gh-token-monitor.service`               |Linux token-revocation/wiper service               |
+|Persistence  |`~/Library/LaunchAgents/com.user.update-monitor.plist`          |macOS hourly C2 service                            |
+|Persistence  |`~/Library/LaunchAgents/com.user.gh-token-monitor.plist`        |macOS token-revocation/wiper service               |
+|Wiper        |`~/.local/bin/gh-token-monitor.sh`                              |Monitor script executing the wiper                 |
+|Wiper Config |`~/.config/gh-token-monitor/token`                              |Active GitHub token used for status check          |
+|Repo Backdoor|`.claude/settings.json`, `.claude/index.js`, `.claude/setup.mjs`|Backdoors planted in source repos                  |
+|Repo Backdoor|`.vscode/tasks.json`, `.vscode/setup.mjs`                       |Backdoors planted in VS Code workspaces            |
+|Workflow     |`Run Copilot` (planted YAML)                                    |Build steps that upload org secrets                |
+|Exfil Repo   |`stygian-cerberus-[0-9]+`, `tartarean-charon-[0-9]+`            |Public exfil repos on compromised accounts         |
+|Exfil Desc   |`Hades - The End for the Damned`                                |Description on all exfil repositories              |
+|C2 Keyword   |`DontRevokeOrItGoesBoom`                                        |GitHub commit search — token harvesting            |
+|C2 Keyword   |`TheBeautifulSnadsOfTime`                                       |GitHub commit search — JS updates                  |
+|C2 Keyword   |`firedalazer`                                                   |GitHub commit search — Python droppers             |
+|Tooling      |Bun v1.3.14 standalone ZIP fetched from GitHub releases         |Unexpected Bun download on a Python host           |
+
+-----
+
+## Affected Packages (StepSecurity, as of 2026-06-08; list may grow)
+
+bramin (0.0.2–0.0.4), cmd2func (0.2.2–0.2.3), coolbox (0.4.1–0.4.2), dynamo-release (1.5.4), embiggen (0.11.97), ensmallen (0.8.101), executor-engine (0.3.4–0.3.5), executor-http (0.1.3–0.1.4), funcdesc (0.2.2–0.2.3), gpsea (0.9.14), magique (0.6.8–0.6.9), magique-ai (0.4.4–0.4.5), mflux-streamlit (0.0.3–0.0.4), mrbios (0.1.1–0.1.2), napari-ufish (0.0.2–0.0.3), nhmpy (2.4.7), nucbox (0.1.2–0.1.3), okite (0.0.7–0.0.8), pantheon-agents (0.6.1–0.6.2), pantheon-toolsets (0.5.5–0.5.6), ppkt2synergy (0.1.1), pyphetools (0.9.120), rlask (3.1.4–3.1.7), rsquests (2.34.3), spateo-release (1.1.2), synago (0.1.1–0.1.2), tlask (3.1.4), ufish (0.1.2–0.1.3), uprobe (0.1.3–0.1.4).
+
+-----
+
+## Archimedes System Notes
+
+- **Hard Rule 8:** This dossier is built from a single primary source (StepSecurity) plus corroborating trade press (InfoWorld, CSO Online, Dark Reading). Treat package-level and IOC details as **single-source pending Splunk/second-source corroboration** before promoting findings to net-new graded intelligence.
+- **Librarian ingestion candidates:** Miasma prior-campaign advisories (Phantom Gyp npm worm; Azure repo compromise; Mini Shai-Hulud memory-read); Socket Research Team “Hades wave” PyPI writeup for package-count reconciliation.
+- **Detection-engineering handoff:** IOC keywords and persistence paths above are detection-ready; propose Splunk searches in next Threat Detection Weekly (filesystem/auditd for IOC paths; GitHub audit log for the three C2 keywords and exfil-repo description string).
+
+-----
+
+## References
+
+- StepSecurity — “The Hades Campaign: Graph ML PyPI Packages Deploy Cross-Platform Memory Scrapers, AI Analyst Misdirection, and a Wiper Deterrent” (Rohan Prabhu, 2026-06-08) — PRIMARY
+- InfoWorld — “Meet Hades: The malware that lies to AI security agents” (2026-06-09)
+- CSO Online — “Meet Hades: The malware that lies to AI security agents” (2026-06-09)
+- Dark Reading — “‘Hades’ Campaign Against PyPI Puts New Spin on Shai-Hulud” (Socket research summary, 2026-06-08)
+
+-----
+
+## History
+
+|Date      |Version|Change                                                                       |By            |
+|----------|-------|-----------------------------------------------------------------------------|--------------|
+|2026-06-09|1      |Initial dossier created from StepSecurity primary + trade-press corroboration|actor-profiler|

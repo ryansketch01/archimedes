@@ -11,8 +11,8 @@
 | **Affected Product** | Apache OFBiz (all versions before 24.09.06) |
 | **Patch Status** | ✅ PATCHED — Apache OFBiz 24.09.06 fixes the full batch; update immediately |
 | **Highest CVSS** | 🔴 **CRITICAL** — Multiple CVEs rated critical by Apache and Tenable |
-| **Exploit Maturity** | ⚠️ PATCH-DAY RISK — All CVEs disclosed May 19, 2026; exploit development expected within days; Apache OFBiz has strong historical precedent for rapid weaponization |
-| **CISA KEV** | ⚠️ Not yet listed; monitor closely — Apache OFBiz CVEs have a strong KEV listing pattern |
+| **Exploit Maturity** | ⚠️ No confirmed mass exploitation as of 2026-06-10 (~3 weeks post-disclosure); Apache OFBiz has strong historical precedent for rapid weaponization, so residual risk remains for unpatched instances |
+| **CISA KEV** | ❌ Not listed as of 2026-06-10; monitor — Apache OFBiz CVEs have a strong KEV listing pattern |
 | **Disclosed** | 2026-05-19 |
 | **Threat Level** | 🔴 HIGH — Multiple authentication bypass + unauth RCE paths in a widely-deployed enterprise ERP; Apache OFBiz has a documented history of mass exploitation within days of disclosure |
 | **Admiralty Grade** | A1 — Official Apache security advisories |
@@ -73,7 +73,7 @@ Apache OFBiz has been a persistent exploitation target:
 - **2023**: CVE-2023-51467 (auth bypass) + CVE-2023-49070 (pre-auth RCE via Groovy) — mass exploitation by multiple threat actors within 72 hours
 - **2024**: CVE-2024-25065 (path traversal auth bypass) — CISA KEV within 2 weeks
 - **2025**: Multiple CVEs weaponized for ransomware deployment (DragonForce, RansomHub affiliates)
-- **May 2026**: This batch continues the pattern; weaponization expected within days
+- **May 2026**: This batch fits the pattern; rapid weaponization was anticipated but had not been confirmed as of 2026-06-10 (see Intelligence Update)
 
 ---
 
@@ -112,7 +112,7 @@ Apache OFBiz has been a persistent exploitation target:
 2. **Change the JWT signing secret** from any default or well-known value to a cryptographically random 256-bit secret
 3. **Restrict OFBiz admin interfaces** — do not expose `/webtools/control/` to the internet
 4. **Enable WAF rules** targeting OFBiz-specific exploitation patterns (JWT forgery, path traversal, Groovy execution endpoints)
-5. **Monitor for** CISA KEV listing of this batch — expected within days based on historical pattern
+5. **Monitor for** CISA KEV listing of this batch — not listed as of 2026-06-10, but watch given the historical OFBiz KEV pattern
 6. **Audit deployed OFBiz instances** — identify all internet-exposed deployments and prioritize patching
 
 ---
@@ -123,7 +123,7 @@ Apache OFBiz has been a persistent exploitation target:
 |---|---|
 | 2026-05-19 | Apache discloses full batch of critical CVEs in OFBiz; fixed in 24.09.06 |
 | 2026-05-19 | Profile created (C3PO); KEV watch initiated |
-| Days 1–7 | HISTORICAL: Apache OFBiz CVEs typically weaponized within this window |
+| 2026-06-10 | Patch confirmation pass: 24.09.06 fix unchanged; no confirmed mass exploitation; not in CISA KEV |
 
 ---
 
@@ -133,6 +133,25 @@ Apache OFBiz has been a persistent exploitation target:
 - [Vulnerability Lookup (CIRCL) — Apache OFBiz batch May 19, 2026](https://vulnerability.circl.lu/recent)
 - [Tenable CVE Database — CVE-2026-45434, CVE-2026-46586](https://www.tenable.com/cve)
 - [CISA KEV Catalog — Monitor for Apache OFBiz entries](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+
+---
+
+## Intelligence Update — 2026-06-10
+
+### Patch holds; predicted rapid weaponization has NOT materialized at ~3 weeks; still not in CISA KEV
+
+Patch-status confirmation pass. The fix is unchanged and confirmed: Apache OFBiz **24.09.06** remediates the May 19 batch (CVE-2026-31986 — hard-coded JWT signing key, CWE-321 — confirmed by the Apache advisory and downstream trackers). Patch to 24.09.06 or later.
+
+The notable update is the absence of the event this profile originally forecast. As of 2026-06-10, roughly three weeks after disclosure, there is **no confirmed mass exploitation** of the May 2026 OFBiz batch and **none of these CVEs is on the CISA KEV catalog** (CISA KEV print catalog and June 1 vulnerability summary reviewed). The "weaponization expected within days" framing from the original profile has not played out on its predicted timeline — that prediction is now stale and has been softened in the Identity table and timeline. This is not a downgrade in patch urgency: OFBiz's documented history of rapid post-disclosure weaponization means any internet-exposed unpatched instance remains high-risk, and the default-JWT-key path (CVE-2026-31986) plus default demo credentials keep the practical exploitation bar low. Treat the quiet period as a patching window, not an all-clear.
+
+No tracked actor has been publicly attributed to exploitation of this batch as of 2026-06-10.
+
+| Date | Milestone |
+|---|---|
+| 2026-05-19 | Disclosed; fixed in 24.09.06 |
+| 2026-06-10 | Patch unchanged; no confirmed mass exploitation; not in CISA KEV |
+
+*Updated: 2026-06-10 | Author: Archimedes | Admiralty Grade: A2 — Apache advisory fix durable; absence-of-exploitation corroborated across CISA KEV catalog + vendor trackers | TLP: WHITE*
 
 ---
 

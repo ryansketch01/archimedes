@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-04T16:00:00-04:00
+last_updated: 2026-06-10T01:25:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -28578,6 +28578,561 @@ entries:
       Cisco PSIRT + Palo Alto PSIRT + F5 PSIRT class). Both
       below red-team invocation floor for predictive
       substantive claims.
+
+  - id: 2026-06-10-flash-0125-001-cve-2026-50751-checkpoint-vpn-ikev1-unauth-bypass-qilin-cisa-kev-3day-federal-deadline-t-minus-1
+    covered_in: [flash-2026-06-10-0125]
+    brief_file: threats/briefs/flash-2026-06-10-0125.md
+    headline: "CVE-2026-50751 Check Point Remote Access VPN + Mobile Access IKEv1 unauthenticated authentication bypass (CVSS 9.3); patched at disclosure 2026-06-08; exploitation observed since 2026-05-07 (32 days pre-patch — true zero-day); CISA KEV add 2026-06-08 with 3-day federal deadline 2026-06-11 (T-1 at compose); Check Point IR links exploitation to Qilin ransomware affiliate (single-source vendor IR, attribution layer capped at 'likely' per single-source veto); companion CVE-2026-50752 site-to-site MITM patched but not in the wild; three independent A-tier evidence chains on cluster anchor (Check Point + CISA KEV + Rapid7 ETR); DIB perimeter exposure layer at 'likely' per red-team downgrade (B3 architectural inference); Qilin not in _roster.yaml — /new-actor Qilin recommended"
+    topic_tags:
+      - cve
+      - cve-2026-50751
+      - check-point-remote-access-vpn
+      - check-point-mobile-access
+      - ikev1-deprecated-protocol
+      - unauthenticated-authentication-bypass
+      - cvss-9-3-critical
+      - cisa-kev-add-2026-06-08
+      - 3-day-federal-deadline-cisa-shortest-bod-22-01-window
+      - federal-deadline-2026-06-11-t-minus-1-at-compose
+      - true-zero-day-32-days-pre-patch-exploitation
+      - patched-at-disclosure-2026-06-08
+      - qilin-ransomware-affiliate-attribution-single-source-check-point-ir
+      - qilin-attribution-layer-capped-likely-per-single-source-veto
+      - companion-cve-2026-50752-site-to-site-mitm-patched-not-itw
+      - three-independent-a-tier-chains-cluster-anchor
+      - check-point-research-provisional-a-first-citation
+      - rapid7-etr-independent-second-vendor-confirmation
+      - dib-perimeter-exposure-likely-per-red-team-downgrade-from-very-likely
+      - architectural-inference-b3-ikev1-default-on-prevalence-unmeasured
+      - check-point-self-interest-flagged-vendor-both-breached-and-sole-attributor
+      - qilin-not-in-roster-new-actor-recommended
+      - vuln-tracker-high-priority-dossier-scaffolding
+      - active-threats
+      - vulnerabilities
+    related_actors:
+      - actor_name: Qilin
+        actor_in_roster: false
+        attribution_per: check-point-research
+        attribution_confidence: moderate
+        attribution_layer_wep: likely
+        archimedes_treatment: recorded_as_vendor_claim_not_originated
+    related_vulns: [CVE-2026-50751, CVE-2026-50752]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-10-flash-0000-002]
+    digraph: A1
+    digraph_layered:
+      cluster_anchor: A1
+      cve_exists_facts: A1
+      patch_available_at_disclosure: A1
+      exploitation_timeline_2026_05_07_to_present: A1
+      qilin_attribution_layer: A2
+      companion_cve_50752_not_yet_itw: A2
+      dib_perimeter_exposure_architectural: B3
+    wep: very_likely
+    wep_layered:
+      cve_and_kev_listing: almost_certainly
+      patch_availability_at_disclosure: almost_certainly
+      active_exploitation_observation: very_likely
+      qilin_attribution_layer: likely
+      exploitation_will_continue_against_unpatched_dib_deployments: very_likely
+      ad_perimeter_dib_exposure_red_team_downgraded: likely
+    single_source_veto_applied: true
+    single_source_veto_layer: "Qilin attribution layer — Check Point IR sole originating source; BleepingComputer + SecurityWeek + Rapid7 + THN + Cybersecurity Dive all relay Check Point's claim"
+    hard_rule_2_framings_load_bearing:
+      - "Qilin attribution recorded as Check Point's vendor IR claim with vendor's confidence language ('linked to' / 'exploited by'), not originated or upgraded by Archimedes"
+      - "Check Point self-interest noted: breached vendor is also sole originating attribution source; brief preserves attribution as vendor claim, not Archimedes assessment"
+      - "DIB perimeter exposure is architectural inference (B3); no source names a DIB victim or quantifies IKEv1 deployment rate in cleared environments; red-team downgraded layer WEP from 'very likely' to 'likely'"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0_substantive_2_collector_operational
+      hard_rule_8_framing: silence_not_disconfirming_check_point_vpn_not_observed_in_defenseclaw_local
+    librarian_handoffs_queued:
+      - action: add_source_to_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "check-point-research provisional A; vendor-IR-and-research category; first-citation; 72h ratification clock"
+      - action: roster_addition_proposal
+        target: threats/threat-actors/_roster.yaml
+        payload: "Qilin RaaS — operator recommendation /new-actor Qilin"
+      - action: vuln_tracker_scaffold
+        target: threats/vulnerabilities/CVE-2026-50751/
+        payload: "HIGH-priority dossier"
+      - action: vuln_tracker_scaffold
+        target: threats/vulnerabilities/CVE-2026-50752/
+        payload: "LOW-priority dossier pending standalone ITW"
+    red_team_review:
+      complete: true
+      outcome: qualify
+      cluster_anchor_wep_unchanged: very_likely
+      sub_layer_adjustments:
+        ad_perimeter_dib_exposure: very_likely_to_likely_per_red_team
+      qualifying_language_applied_in_brief: true
+    resurface_if:
+      - second_independent_vendor_ir_confirms_qilin_attribution_would_lift_single_source_veto
+      - additional_named_victim_disclosed
+      - dib_prime_named_as_victim
+      - first_party_splunk_hit_check_point_vpn_or_ikev1_anomaly
+      - companion_cve_50752_first_observed_in_the_wild
+      - ikev1_vs_ikev2_default_config_check_resolved_alters_affected_estate_estimate
+      - patch_adoption_data_published_dib_or_industry_wide
+      - cisa_kev_t_minus_0_deadline_2026_06_11_compliance_check
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Highest-priority of three FLASH candidates from 00:00 EDT
+      sweep. 3-day federal deadline (T-1 at compose; T-0 tomorrow
+      2026-06-11) is shortest BOD-22-01 window CISA assigns —
+      signals top-tier urgency. Brief leads with this CVE per
+      operator orchestration guidance.
+
+      Red-team qualified: cluster anchor holds at 'very likely'
+      on three-source independence (Check Point + CISA KEV +
+      Rapid7 ETR); Qilin attribution layer correctly capped at
+      'likely' by grader; ad_perimeter_dib_exposure sub-layer
+      downgraded from 'very likely' to 'likely' (B3 architectural
+      inference should not project to vl). Briefer applied
+      qualifying language per red-team guidance.
+
+      Qilin attribution framed as "Check Point links exploitation
+      to a Qilin ransomware affiliate" per operator constraint —
+      NOT led with as fact. Single-source veto explicitly noted
+      in brief body.
+
+      Operator action /new-actor Qilin recommended in brief
+      Related section.
+
+  - id: 2026-06-10-flash-0125-002-cve-2026-11645-chromium-v8-oob-read-write-zero-day-cisa-kev-fifth-chrome-zero-day-of-2026
+    covered_in: [flash-2026-06-10-0125]
+    brief_file: threats/briefs/flash-2026-06-10-0125.md
+    headline: "CVE-2026-11645 Google Chromium V8 out-of-bounds read/write zero-day; CISA KEV add 2026-06-09 with 14-day federal deadline 2026-06-23 (T-13 at compose); Google emergency Chrome update patches the flaw + 73 additional vulns; fifth Chrome zero-day of 2026 per The Hacker News editorial framing; affects all Chromium-based browsers (Chrome, Edge, Opera); active exploitation layer dropped from 'very likely' to 'likely' per red-team (Google 'aware of exploit existing in the wild' is vendor hedge language; CISA KEV evidence basis may not be fully independent of Google advisory); no actor attribution by CISA, Google, THN, or BleepingComputer — Archimedes does not originate; A&D workstation exposure is architectural inference (Chromium ships everywhere), not A&D-specific targeting"
+    topic_tags:
+      - cve
+      - cve-2026-11645
+      - google-chromium
+      - v8-javascript-engine
+      - out-of-bounds-read-write
+      - renderer-sandbox-escape-class
+      - cisa-kev-add-2026-06-09
+      - 14-day-federal-deadline-bod-22-01-standard-window
+      - federal-deadline-2026-06-23-t-minus-13-at-compose
+      - google-emergency-chrome-update-2026-06-09
+      - 74-vulnerabilities-bundled-in-emergency-update
+      - fifth-chrome-zero-day-of-2026-thn-editorial-framing
+      - affects-chrome-edge-opera-chromium-fleet
+      - active-exploitation-layer-red-team-downgraded-very-likely-to-likely
+      - cisa-kev-vs-google-advisory-independence-question-unresolved
+      - google-vendor-hedge-language-aware-of-exploit-existing-in-the-wild
+      - no-actor-attribution-hard-rule-2-no-origination
+      - ad-workstation-exposure-architectural-not-ad-specific-targeting
+      - embedded-webview-electron-app-dependency-lag
+      - cad-viewers-contract-portals-separate-audit
+      - vuln-tracker-medium-priority-dossier-scaffolding
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-11645]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-10-flash-0000-001]
+    digraph: A1
+    digraph_layered:
+      cluster_anchor: A1
+      cve_record_and_kev_listing: A1
+      active_exploitation_observation_red_team_qualified: A2
+      ad_workstation_exposure_architectural: B3
+    wep: very_likely
+    wep_layered:
+      cve_record_and_kev_listing: almost_certainly
+      active_exploitation_observation_red_team_qualified: likely
+      exploitation_will_continue_against_unpatched_browser_fleet: very_likely
+      ad_workstation_exposure_architectural: likely
+    single_source_veto_applied: false
+    single_source_veto_layer: null
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution by CISA, Google, THN, or BleepingComputer; Archimedes does not originate"
+      - "A&D workstation-fleet exposure is architectural inference (browser is widely deployed), not attested A&D-specific targeting"
+      - "Red-team note: CISA KEV's per-CVE evidence basis may not be independent of Google's advisory; active-exploitation layer downgraded 'very likely' → 'likely' pending independence resolution"
+      - "Google vendor hedge 'aware of an exploit existing in the wild' is non-diagnostic between PoC-circulating and targeted-attack regimes"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0_substantive_2_collector_operational
+      hard_rule_8_framing: silence_not_disconfirming_chrome_workstation_telemetry_thin
+    librarian_handoffs_queued:
+      - action: vuln_tracker_scaffold
+        target: threats/vulnerabilities/CVE-2026-11645/
+        payload: "MEDIUM-priority dossier"
+    red_team_review:
+      complete: true
+      outcome: qualify
+      cluster_anchor_wep_retained: very_likely
+      sub_layer_adjustments:
+        active_exploitation_observation_layer: very_likely_to_likely_per_red_team
+      qualifying_language_applied_in_brief: true
+    resurface_if:
+      - google_tag_or_citizenlab_or_mandiant_attribution_published
+      - specific_actor_attribution_named_by_a_grade_source
+      - cisa_kev_per_cve_evidence_statement_published_resolves_independence
+      - ad_prime_or_dib_supplier_named_as_victim
+      - first_party_splunk_hit_chrome_v8_renderer_sandbox_escape_indicators
+      - patch_adoption_data_published_against_2026_06_23_federal_deadline
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Second of three FLASH candidates from 00:00 EDT sweep.
+      14-day standard BOD-22-01 federal deadline (T-13 at
+      compose) — less urgent than Check Point's 3-day window
+      but real Chrome zero-day class.
+
+      Red-team qualified: cluster anchor (CVE record + KEV
+      listing) holds at 'very likely' on multi-source A1;
+      active-exploitation observation layer downgraded from
+      'very likely' to 'likely' pending resolution of
+      CISA-KEV-evidence-vs-Google-advisory independence
+      question. Brief framing applied per red-team guidance:
+      "active exploitation is likely per vendor advisory
+      language; KEV listing does not distinguish PoC-in-wild
+      from targeted attack."
+
+      A&D exposure framed as architectural inference (browser
+      ships everywhere), NOT A&D-specific targeting — per
+      operator constraint and red-team direction.
+
+      Embedded-WebView and Electron-app dependency lag flagged
+      in Action line (CAD viewers, contract portals lag
+      standalone browser patch cycle by weeks).
+
+  - id: 2026-06-10-flash-0125-003-cve-2026-42271-berriai-litellm-command-injection-cisa-kev-horizon3-ai-starlette-chain-cvss-10-0-unauth-rce
+    covered_in: [flash-2026-06-10-0125]
+    brief_file: threats/briefs/flash-2026-06-10-0125.md
+    headline: "CVE-2026-42271 BerriAI LiteLLM authenticated command injection (CVSS 8.7 standalone); affected versions >=1.74.2 <1.83.7; patched in 1.83.7+; CISA KEV add 2026-06-08 confirms standalone in-the-wild exploitation; Horizon3.ai separately demonstrated lab chain with Starlette CVE-2026-48710 producing CVSS 10.0 unauthenticated RCE — single-source pending corroboration; real-world prevalence of chain-vulnerable configuration unmeasured; second LiteLLM KEV addition in 31 days (after CVE-2026-42208 SQLi 2026-05-08) — pattern flag for vuln-tracker; no actor attribution; A&D internal AI gateway exposure architectural at 'roughly even chance'; liberal-reading Trigger 1 disposition applied to clear FLASH eligibility (standalone CVSS 8.7 below strict 9.0 threshold; chain demonstrated 10.0)"
+    topic_tags:
+      - cve
+      - cve-2026-42271
+      - berriai-litellm
+      - authenticated-command-injection
+      - cvss-8-7-standalone-high
+      - cvss-10-0-chained-critical
+      - affected-versions-1-74-2-to-1-83-7
+      - patched-1-83-7
+      - cisa-kev-add-2026-06-08-standalone-cve-only
+      - active-exploitation-confirmed-per-kev-inclusion
+      - horizon3-ai-chain-demonstration-single-source
+      - cve-2026-48710-starlette-host-header-bypass-chain-partner
+      - chain-drops-authentication-requirement-unauth-rce
+      - single-source-veto-on-chain-layer-capped-likely
+      - chain-independent-corroboration-pending
+      - real-world-chain-config-prevalence-unmeasured
+      - second-litellm-kev-add-in-31-day-window-pattern-flag
+      - first-litellm-kev-cve-2026-42208-sqli-2026-05-08
+      - ai-infrastructure-gateway-vendor-vulnerability-cadence-trend
+      - itar-segregated-ai-assistance-gateway-deployment-pattern
+      - no-actor-attribution-hard-rule-2-no-origination
+      - ad-internal-ai-gateway-exposure-roughly-even-chance-architectural
+      - liberal-reading-trigger-1-disposition-grader-applied
+      - horizon3-ai-provisional-a-first-citation
+      - thn-provisional-b-relay-layer
+      - vuln-tracker-medium-priority-dossier-scaffolding
+      - companion-cve-48710-starlette-low-priority-pending-standalone-itw
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-42271, CVE-2026-48710, CVE-2026-42208]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-10-flash-0000-003]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      cve_record_and_kev_listing: A1
+      patch_availability_and_version_range: A1
+      active_exploitation_observation: A1
+      chain_demonstration_layer_horizon3_single_source: A2
+      ad_internal_ai_gateway_exposure_architectural: B3
+    wep: very_likely
+    wep_layered:
+      cve_record_and_kev_listing: very_likely
+      patch_availability_and_version_range: very_likely
+      active_exploitation_observation_standalone: very_likely
+      chain_demonstration_layer_cvss_10_unauth_rce: likely
+      exploitation_will_continue_against_unpatched_litellm: likely
+      ad_internal_ai_gateway_exposure: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layer: "Chain-demonstration layer (Horizon3.ai sole originating source for the CVE-2026-42271 + CVE-2026-48710 chain composition and CVSS 10.0 unauthenticated-RCE derivation; THN relays Horizon3 without independent corroboration)"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution by CISA, BerriAI, Horizon3.ai, or THN; Archimedes does not originate"
+      - "Horizon3.ai sole originating source for chain demonstration; THN relays without independent corroboration; single-source veto applies to chain layer"
+      - "Briefer constraint per red-team: DO NOT lead with 'CVSS 10.0 unauthenticated RCE'; lead with standalone CISA KEV evidence and patch imperative"
+      - "Chain claim is Horizon3.ai's single-source lab demo; real-world chain-vulnerable configuration prevalence unmeasured"
+      - "Patch imperative stands on standalone KEV evidence alone regardless of chain validity"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      indexes_queried: [archimedes, defenseclaw_local]
+      hits: 0_substantive_2_collector_operational
+      hard_rule_8_framing: silence_not_disconfirming_litellm_and_starlette_not_observed_in_defenseclaw_local
+    librarian_handoffs_queued:
+      - action: add_source_to_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "horizon3-ai provisional A; vendor-IR-and-research category; first-citation; 72h ratification clock"
+      - action: vuln_tracker_scaffold
+        target: threats/vulnerabilities/CVE-2026-42271/
+        payload: "MEDIUM-priority dossier"
+      - action: vuln_tracker_scaffold
+        target: threats/vulnerabilities/CVE-2026-48710/
+        payload: "LOW-priority dossier pending standalone ITW"
+      - action: pattern_trend_flag
+        target: threats/vulnerabilities/_index.yaml
+        payload: "Second LiteLLM KEV addition in 31-day window (CVE-2026-42208 + CVE-2026-42271); AI-infrastructure-gateway vendor-vulnerability cadence trend for weekly-synthesis surface"
+    red_team_review:
+      complete: true
+      outcome: qualify
+      cluster_anchor_wep_unchanged: very_likely
+      chain_layer_already_correctly_capped: likely
+      briefer_constraints_applied:
+        - do_not_lead_with_cvss_10_unauth_rce
+        - lead_with_standalone_cisa_kev_evidence_and_patch_imperative
+        - chain_claim_framed_as_horizon3_single_source_lab_demo
+        - second_litellm_kev_in_31_days_framed_as_pattern_flag_for_vuln_tracker_not_pattern_conclusion
+      qualifying_language_applied_in_brief: true
+    resurface_if:
+      - independent_vendor_research_corroborates_horizon3_chain_composition_lifts_single_source_veto
+      - cve_2026_48710_starlette_added_to_kev_separately
+      - first_party_splunk_hit_litellm_or_starlette_in_archimedes_or_defenseclaw_local
+      - ad_prime_or_dib_supplier_named_as_litellm_deployment_or_victim
+      - third_litellm_kev_addition_within_60_days_pattern_confirmation
+      - actor_attribution_published_a_or_b_grade
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Third of three FLASH candidates from 00:00 EDT sweep.
+      Lowest-priority of the three given (a) single-source
+      chain layer, (b) no actor attribution, (c) standalone
+      CVSS 8.7 below strict Trigger 1 reading.
+
+      FLASH eligibility rests on grader-disposition liberal
+      reading of Trigger 1 (crediting demonstrated CVSS 10.0
+      chain rather than standalone CVSS 8.7). Operator-policy
+      clarification on liberal-reading uniform application is
+      a future FLASH-POLICY review item per analyst KAC topic.
+
+      Red-team qualified: cluster anchor (CVE + KEV layer)
+      holds at 'very likely' on multi-source A1; chain layer
+      correctly capped at 'likely' by grader. Briefer
+      constraints applied verbatim per red-team direction:
+        (a) DO NOT lead with "CVSS 10.0 unauthenticated RCE"
+        (b) lead with standalone CISA KEV evidence + patch
+            imperative
+        (c) chain claim framed as Horizon3.ai's single-source
+            lab demo with unmeasured real-world prevalence
+        (d) second-LiteLLM-KEV-in-31-days framed as pattern
+            flag for vuln-tracker, NOT pattern conclusion
+
+      Pattern-flag for vuln-tracker: second LiteLLM KEV
+      addition within 31 days (CVE-2026-42208 SQLi 2026-05-08
+      + CVE-2026-42271 command-injection 2026-06-08). Surface
+      in 2026-06-14 weekly synthesis for trend treatment.
+
+  - id: 2026-06-10-flash-0125-brief-meta
+    covered_in: [flash-2026-06-10-0125]
+    brief_file: threats/briefs/flash-2026-06-10-0125.md
+    headline: "Triple bundled FLASH brief — 00:00 EDT sweep produced three independent CISA KEV CVEs with active in-the-wild exploitation: Check Point Remote Access VPN CVE-2026-50751 (T-1 federal deadline, lead), Chromium V8 CVE-2026-11645 (T-13), BerriAI LiteLLM CVE-2026-42271 (KEV-listed; chain to CVSS 10.0 unauth RCE per Horizon3.ai single-source); bundling chosen over three separate FLASHes per operator orchestration guidance; quiet hours active (00:00 outside 09:00-21:00 window) — queued for 09:00 catchup-sweep delivery; critical override not triggered (none meets all 4 conditions); red-team qualified all three (Chrome exploitation layer downgraded to 'likely'; Check Point DIB exposure downgraded to 'likely'; LiteLLM chain layer capped at 'likely'); all three briefer constraints from red-team applied verbatim; pre-flight 13-of-13 passed with word-count overage rationale documented (370 words within hard halt 450)"
+    topic_tags:
+      - brief-meta
+      - flash-brief
+      - triple-bundled-flash-three-cves-one-sweep
+      - 00-00-edt-sweep-outside-quiet-hours-queued-for-09-00-catchup
+      - check-point-vpn-cve-2026-50751-lead-t-minus-1-federal-deadline
+      - chromium-v8-cve-2026-11645-t-minus-13-federal-deadline
+      - berriai-litellm-cve-2026-42271-kev-listed-plus-horizon3-chain
+      - critical-override-not-triggered-1-of-4-conditions-met-across-all-three-findings
+      - red-team-qualified-all-three-findings
+      - red-team-chrome-active-exploitation-layer-downgraded-very-likely-to-likely
+      - red-team-check-point-dib-perimeter-exposure-downgraded-very-likely-to-likely
+      - red-team-litellm-chain-layer-correctly-capped-likely-by-grader
+      - all-three-briefer-constraints-from-red-team-applied-verbatim
+      - hard-rule-2-qilin-attribution-framed-as-check-point-vendor-ir-claim-not-archimedes-origination
+      - hard-rule-2-chrome-no-actor-attribution
+      - hard-rule-2-litellm-no-actor-attribution
+      - hard-rule-2-check-point-vendor-self-interest-flagged
+      - hard-rule-6-zero-quotes-paraphrase-throughout-quote-budget-unused
+      - hard-rule-8-splunk-first-party-clean-across-all-three-findings-silence-not-disconfirming
+      - pre-flight-13-of-13-passed-with-word-count-overage-rationale
+      - word-count-370-within-hard-halt-450-triple-bundle-precedent-not-established
+      - bundling-chosen-over-three-separate-flashes-per-operator-orchestration-guidance
+      - librarian-handoffs-queued-check-point-research-horizon3-ai-provisional-a
+      - librarian-handoffs-queued-qilin-roster-addition-new-actor-command
+      - vuln-tracker-handoffs-queued-three-high-medium-medium-plus-two-low-companion-cves
+      - pattern-flag-second-litellm-kev-in-31-days-for-weekly-synthesis
+    findings_referenced:
+      - finding-2026-06-10-flash-0000-001   # Chrome V8 CVE-2026-11645
+      - finding-2026-06-10-flash-0000-002   # Check Point VPN CVE-2026-50751 + Qilin
+      - finding-2026-06-10-flash-0000-003   # LiteLLM CVE-2026-42271 + Starlette chain
+    related_actors:
+      - actor_name: Qilin
+        actor_in_roster: false
+        operator_action_recommended: /new-actor Qilin
+    related_vulns:
+      - CVE-2026-50751
+      - CVE-2026-50752
+      - CVE-2026-11645
+      - CVE-2026-42271
+      - CVE-2026-48710
+      - CVE-2026-42208   # related precedent — first LiteLLM KEV 2026-05-08
+    related_campaigns: []
+    digraph: A1
+    digraph_distribution:
+      A1: 2   # Check Point cluster anchor; Chrome cluster anchor
+      A2: 1   # LiteLLM cluster anchor (chain layer single-source)
+    wep_layered:
+      check_point_50751_active_exploitation: very_likely
+      check_point_50751_qilin_attribution: likely
+      check_point_50751_dib_perimeter_exposure: likely
+      chrome_11645_kev_listing_and_patch: almost_certainly
+      chrome_11645_active_exploitation: likely
+      chrome_11645_ad_workstation_exposure: likely
+      litellm_42271_standalone_exploitation_per_kev: very_likely
+      litellm_42271_chain_cvss_10_unauth_rce: likely
+      litellm_42271_ad_internal_ai_gateway_exposure: roughly_even_chance
+    preflight:
+      result: passed
+      checks:
+        source_url_present: pass_every_item_has_at_least_one_source_url
+        admiralty_digraph_present: pass_per_layered_digraph_block_in_frontmatter
+        coverage_log_respected: pass_no_prior_coverage_of_any_of_three_cves_or_qilin
+        lead_with_impact: pass_lead_names_check_point_vpn_t_minus_1_federal_deadline
+        banned_phrases_zero: pass
+        standing_sections_present: not_applicable_flash_brief
+        wep_vocabulary_used_throughout: pass_likely_almost_certainly_roughly_even_chance_per_layered_split
+        word_count_in_range: pass_with_overage_rationale_370_within_hard_halt_450_triple_bundle_structural_justification
+        actor_vuln_links_to_dossiers: pass_qilin_flagged_for_roster_addition_cves_link_to_cisa_kev_no_local_dossiers_exist_yet_vuln_tracker_handoffs_queued
+        tlp_marked: pass_clear
+        single_source_veto_respected: pass_qilin_attribution_capped_likely_litellm_chain_capped_likely_chrome_exploitation_layer_capped_likely
+        quote_discipline: pass_zero_quotes_paraphrase_throughout
+        discord_summary_layer_2_compliant: not_applicable_flash_brief_exempt_per_checklist_13
+      word_count: 370
+      word_count_target_band: [150, 300]
+      word_count_hard_halt: 450
+      sections_regenerated: ["item-blocks-iteration-2-tightened-from-iteration-1-414-words-down-to-370-via-removed-redundant-clauses-and-aggressive-compression-on-sources-and-related-blocks"]
+    quiet_hours_metadata:
+      flash_path: true
+      queued: true
+      queued_at: 2026-06-10T01:25:00-04:00
+      expires_at: 2026-06-10T13:25:00-04:00
+      superseded: false
+      quiet_hours_reason: "00:00 EDT sweep — outside 09:00-21:00 active window"
+      expected_post_window: "09:00 EDT catchup sweep — librarian must check for supersession by 08:00 morning brief before posting"
+    critical_override_evaluation:
+      cvss_10_0_any_finding: false_check_point_9_3_chrome_unconfirmed_litellm_standalone_8_7_chain_10_0_liberal_only
+      active_exploitation_any_finding: true_all_three
+      tracked_actor_involved_any_finding: false_qilin_not_in_roster
+      ad_watchlist_entity_named_any_finding: false_none_of_three
+      conditions_met: 1_of_4_across_all_three_findings
+      result: override_does_not_apply
+    librarian_handoffs_summary:
+      - source_grades_yaml_addition_check_point_research_provisional_a_72h_ratification_clock_to_2026_06_13T00_40_00_minus_04_00
+      - source_grades_yaml_addition_horizon3_ai_provisional_a_72h_ratification_clock_to_2026_06_13T00_45_00_minus_04_00
+      - roster_addition_proposal_qilin_raas_operator_recommendation_new_actor_command
+      - vuln_tracker_scaffold_cve_2026_50751_high_priority_dossier
+      - vuln_tracker_scaffold_cve_2026_50752_low_priority_pending_standalone_itw
+      - vuln_tracker_scaffold_cve_2026_11645_medium_priority_dossier
+      - vuln_tracker_scaffold_cve_2026_42271_medium_priority_dossier
+      - vuln_tracker_scaffold_cve_2026_48710_low_priority_pending_standalone_itw
+      - pattern_trend_flag_second_litellm_kev_in_31_days_for_weekly_synthesis_surface
+      - quiet_hours_queue_for_09_00_catchup_sweep_check_supersession_by_morning_brief_before_post
+    resurface_if: []
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Bundled FLASH chosen over three separate FLASHes per
+      operator orchestration guidance ("default to (a) one
+      bundled brief if topics are coherent — saves operator
+      attention"). All three topics are CISA KEV CVE patching
+      imperatives with active in-the-wild exploitation; theme
+      is coherent.
+
+      Quiet-hours posture: 00:00 EDT sweep is outside the
+      09:00-21:00 active window. Critical override does NOT
+      apply (1-of-4 conditions met across all three findings:
+      active exploitation true; CVSS 10.0 only for LiteLLM
+      under liberal-reading chain; no tracked-actor attribution;
+      no A&D watchlist entity named). Brief is queued for
+      09:00 catchup-sweep delivery per FLASH-POLICY; librarian
+      must check for supersession by the 08:00 morning brief
+      before posting. expires_at: 2026-06-10T13:25:00-04:00
+      (queued + 12h staleness window).
+
+      Red-team handling per finding:
+        - Finding #001 Chrome V8: qualify. Active-exploitation
+          layer dropped 'very likely' → 'likely' pending
+          CISA-KEV-vs-Google-advisory independence resolution.
+          Briefer applied qualifying "is likely per vendor
+          advisory language" + "KEV listing does not
+          distinguish PoC-in-wild from targeted attack."
+        - Finding #002 Check Point: qualify. Cluster anchor
+          holds 'very likely'; Qilin attribution capped
+          'likely' by grader; DIB perimeter exposure
+          downgraded 'very likely' → 'likely' (B3
+          architectural inference). Briefer framed as
+          "Check Point links exploitation to a Qilin
+          ransomware affiliate" per operator constraint —
+          NOT led with as fact.
+        - Finding #003 LiteLLM: qualify. Cluster anchor
+          holds 'very likely' on CVE + KEV layer; chain
+          layer correctly capped 'likely' by grader.
+          Briefer constraints applied verbatim:
+            * DID NOT lead with "CVSS 10.0 unauthenticated RCE"
+            * Led with standalone CISA KEV evidence and patch
+              imperative
+            * Chain claim framed as Horizon3.ai's single-source
+              lab demo with unmeasured real-world prevalence
+            * Second-LiteLLM-KEV-in-31-days framed as pattern
+              flag for vuln-tracker (NOT pattern conclusion)
+
+      Hard Rule 6 discipline: zero direct quotes in brief.
+      Paraphrase throughout. No source's exact wording was
+      load-bearing — quote budget deliberately unused.
+
+      Hard Rule 8 first-party Splunk: clean at compose across
+      all three findings. Each finding's individual frontmatter
+      records 0 substantive hits at -30d (2 collector
+      operational events each, not exploitation telemetry).
+      Check Point VPN and LiteLLM not observed in
+      defenseclaw_local (product not deployed); Chrome
+      workstation telemetry thin. Silence is not disconfirming
+      per Hard Rule 8 doctrine.
+
+      Word count discipline: 370 words. Outside 150-300 FLASH
+      soft target. Inside hard halt 450 (150% of max).
+      Overage rationale documented in frontmatter:
+      triple-CVE bundled FLASH; three Action lines + three
+      Hard Rule 2 qualifications + three layered WEP caveats
+      cannot compress further without losing red-team
+      load-bearing content. Iteration 1 landed at 414 words;
+      iteration 2 tightened to 370 via removed redundant
+      clauses and compressed Sources + Related blocks. No
+      further compression is achievable without ditching
+      qualifying language the red-team explicitly required.
+
+      Librarian must post to #flash-alerts (NOT #intel-briefs)
+      at 09:00 EDT catchup sweep, AFTER verifying the brief
+      is not superseded by the 08:00 morning brief covering
+      the same three CVEs in greater depth.
+
+      Pattern signal for vuln-tracker / weekly synthesis:
+      second LiteLLM KEV addition in 31-day window
+      (CVE-2026-42208 SQLi KEV 2026-05-08 + CVE-2026-42271
+      command-injection KEV 2026-06-08). Different CVE,
+      different vulnerability class, same product surface.
+      Surface in 2026-06-14 weekly synthesis as
+      AI-infrastructure-gateway vendor-vulnerability cadence
+      pattern observation.
 
 # ============================================================================
 # Valid resurface_if conditions

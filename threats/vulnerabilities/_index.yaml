@@ -7,7 +7,7 @@
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
 version: 2
-last_updated: 2026-05-27
+last_updated: 2026-06-10
 
 vulnerabilities:
 
@@ -472,6 +472,66 @@ vulnerabilities:
       space-mission operator naming Yamcs in mission operations or
       test estates; any in-the-wild exploitation observation.
 
+  - id: VT-011
+    name: "RoguePlanet — Microsoft Defender race-condition LPE zero-day (Nightmare Eclipse series, 7th drop)"
+    type: "LPE (TOCTOU race condition in Defender remediation / file-path validation; NTFS-junction redirect of a SYSTEM-context Defender file op; originally an RCE primitive abusing Defender handling of files on remote SMB shares, released as LPE)"
+    platform: "Windows 10 + Windows 11 fully patched incl. June 2026 Patch Tuesday (KB5094126); Win11 stable + Canary. Windows Server believed vulnerable but current PoC non-functional (standard users cannot mount ISO/.vhd(x))."
+    cve: null                       # No CVE assigned at disclosure (2026-06-10) -> KEV-ineligible
+    cvss: null
+    patch_status: unpatched
+    patch_note: "June 2026 Patch Tuesday fixed GreenPlasma + YellowKey but NOT RoguePlanet. No CVE, no MSRC advisory, no Microsoft timeline. Next scheduled window: July 2026 Patch Tuesday; OOB possible."
+    kev: false                      # No CVE -> ineligible for CISA KEV
+    kev_pending: false
+    exploitation_status: not_confirmed_for_rogueplanet_specifically_series_siblings_confirmed_itw
+    exploitation_note: "No ITW confirmation for RoguePlanet specifically as of 2026-06-10. Earlier series tools (BlueHammer/RedSun/UnDefend) confirmed ITW by Huntress; Russian-geolocated infrastructure observed using the Defender zero-days."
+    public_exploit_available: true  # PoC public; GitHub/GitLab removed by Microsoft, researcher self-hosts on projectnightcrawler.dev; MSNightmare GitHub account. PoC NOT mirrored to dossier (Hard Rule 3).
+    reliability_note: "Race condition — researcher reports ~100% on some machines, unreliable on others."
+    detection_signatures_published: false   # Behavioral hunt hypotheses only; no published hashes/IOCs
+    independent_reproduction: "ThreatLocker reproduced on patched Windows 11; application allowlisting reported to block execution."
+    digraph: B2
+    digraph_basis: "Multiple credible outlets reporting consistently (BleepingComputer / The Hacker News / SecurityAffairs / CybersecurityNews) + independent reproduction (ThreatLocker); no Microsoft confirmation or CVE. Several procedural facts depend on researcher claims (silent mid-May Defender hardening, RCE->LPE origin)."
+    discovered_by: "Nightmare Eclipse / Chaotic Eclipse / Dead Eclipse / MSNightmare / deadeclipse666 (pseudonymous)"
+    series: nightmare_eclipse_chaotic_eclipse
+    series_position: 7
+    series_siblings:
+      - ZD-001    # BlueHammer (CVE-2026-33825)
+      - ZD-002    # RedSun (CVE-2026-41091)
+      - ZD-003    # UnDefend (CVE-2026-45498)
+      - YELLOWKEY # YellowKey (no CVE)
+      - GREENPLASMA # GreenPlasma (no CVE)
+      - MiniPlasma  # MiniPlasma (CVE-2020-17103)
+    related_actors: []              # Hard Rule 2 — no actor named for RoguePlanet by any source
+    related_findings: []
+    related_briefs: []
+    ad_relevance: high
+    ad_relevance_rationale: >
+      Microsoft Defender is the ubiquitous default endpoint protection across
+      the A&D industrial base (primes + Tier-1/2 suppliers + program enclaves).
+      A standard-user-to-SYSTEM LPE on FULLY PATCHED Windows 10/11 is a
+      ransomware / lateral-movement pre-cursor primitive — the bridge from a
+      low-priv foothold (phishing / stolen VPN credential) to SYSTEM. Same
+      defensive framing as BlueHammer / RedSun. Aggravated by no-CVE / no-patch:
+      KEV-ineligible, so no BOD 22-01 federal mandate and no ecosystem
+      notification mechanism (structural gap previously noted for RedSun/UnDefend).
+    dossier: threats/vulnerabilities/RoguePlanet/profile.md
+    tracking: null                  # profile.md only; tracking.yaml not scaffolded
+    tracked_since: 2026-06-10
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-06-17     # 7-day cadence for fresh unpatched A&D-relevant zero-day; recheck MSRC/CVE/KEV + ITW
+    note: >
+      7th drop in the Nightmare Eclipse / Chaotic Eclipse series — fulfills the
+      YellowKey "big surprise" threat for June Patch Tuesday, dropped hours after
+      Microsoft's June fixes shipped. No CVE -> KEV-ineligible. PoC public and
+      self-hosted after Microsoft removed GitHub/GitLab repos; PoC NOT mirrored
+      to dossier (Hard Rule 3 — mechanism described at detection-engineering
+      level only). Microsoft public posture: condemns uncoordinated disclosure
+      but states it will NOT pursue researchers (earlier Digital Crimes Unit
+      threat walked back). Watch signals: CVE assignment + Defender platform
+      update (BlueHammer delivery precedent); independent ITW confirmation for
+      RoguePlanet specifically (Huntress / Vectra AI / Mandiant); July Patch
+      Tuesday fix; researcher's claimed "batch of Defender memory-corruption
+      vulnerabilities" materializing as the 8th drop.
+
   # Notes on KEV-add finding-2026-05-27-0007 third CVE:
   # CVE-2026-8398 (Daemon Tools Lite) was the third KEV addition in
   # catalog version 2026.05.27 but is NOT tracked as a vuln dossier —
@@ -481,9 +541,9 @@ vulnerabilities:
 
 
 _meta:
-  total_tracked: 10
+  total_tracked: 11
   patched: 4                      # ZD-001 BlueHammer; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure)
-  unpatched: 2                    # ZD-002 RedSun; ZD-003 UnDefend
+  unpatched: 3                    # ZD-002 RedSun; ZD-003 UnDefend; VT-011 RoguePlanet
   patches_scheduled: 1            # ZD-004 PAN-OS CVE-2026-0300
   rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
   no_ga_patch_esu_or_mitigation_only: 1   # VT-008 Exchange CVE-2026-42897 (ESU binary patches available; non-ESU estates on EEMS / EOMT mitigation path)
@@ -491,6 +551,7 @@ _meta:
   active_exploitation: 4          # ZD-004 PAN-OS CVE-2026-0300 + VT-006 Mini Shai-Hulud worm + VT-008 Exchange CVE-2026-42897 + VT-009 Nx Console (KEV-listed 2026-05-27)
   kev_listed: 4                   # ZD-004 PAN-OS (dueDate 2026-05-27 — past) + VT-006 Mini Shai-Hulud (dueDate 2026-06-10) + VT-008 Exchange (dueDate 2026-05-29) + VT-009 Nx Console (dueDate 2026-06-10)
   kev_pending: 1                  # VT-007 FortiAuthenticator (KEV watch active)
-  public_exploit_available: 2     # ZD-004 PAN-OS + VT-006 (worm IS the in-the-wild exploitation)
+  public_exploit_available: 3     # ZD-004 PAN-OS + VT-006 (worm IS the in-the-wild exploitation) + VT-011 RoguePlanet (PoC public, self-hosted)
+  no_cve_assigned: 3              # ZD-002 RedSun has CVE now; ZD-003 UnDefend has CVE; no-CVE = YELLOWKEY + GREENPLASMA + VT-011 RoguePlanet (KEV-ineligible)
   vendor_ghsa_poc_only: 2         # VT-005 OpenC3 COSMOS cluster + VT-010 Yamcs (PoC embedded in vendor advisories only)
   dossiers_migrated: 4            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator; VT-008 Exchange CVE-2026-42897 (scaffolded 2026-05-22). ZD-001/002/003 still pending C3PO migration; VT-006 Mini Shai-Hulud + VT-009 Nx Console + VT-010 Yamcs dossiers not yet scaffolded (recommend vuln-tracker next pass).

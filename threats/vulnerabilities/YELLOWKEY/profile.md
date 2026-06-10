@@ -95,8 +95,9 @@ YellowKey is the fourth public disclosure from Nightmare-Eclipse in approximatel
 | YellowKey | May 12, 2026 | BitLocker Bypass | 🔴 Unpatched — Day 6 |
 | GreenPlasma | May 12, 2026 | EoP (partial PoC) | 🔴 Unpatched — Day 6 |
 | MiniPlasma | May 14, 2026 | LPE / `cldflt.sys` (CVE-2020-17103 patch ineffective) | 🔴 Unpatched — Day 4 |
+| RoguePlanet | Jun 9–10, 2026 | LPE → SYSTEM (Defender TOCTOU / junction; ex-RCE) | 🔴 Unpatched — no CVE (see [RoguePlanet](../RoguePlanet/profile.md)) |
 
-The researcher has shifted from Defender-targeted LPE (BlueHammer/RedSun/UnDefend) to **encryption bypass** and **memory object manipulation** (YellowKey/GreenPlasma), broadening the attack surface. The explicit threat of a "big surprise" at the next Patch Tuesday suggests at least one additional disclosure is planned.
+The researcher has shifted from Defender-targeted LPE (BlueHammer/RedSun/UnDefend) to **encryption bypass** and **memory object manipulation** (YellowKey/GreenPlasma), broadening the attack surface. The explicit threat of a "big surprise" at the next Patch Tuesday was fulfilled by **RoguePlanet**, dropped hours after June Patch Tuesday — a return to a Defender race-condition LPE.
 
 ---
 

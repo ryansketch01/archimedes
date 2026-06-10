@@ -90,8 +90,9 @@ GreenPlasma reuses `cldapi.dll` (the Cloud Files API library) as a primitive —
 | YellowKey | May 12, 2026 | BitLocker Bypass | Full | 🔴 Unpatched — Day 6 |
 | GreenPlasma | May 12, 2026 | EoP (CTFMON Section) | **Partial** | 🔴 Unpatched — Day 6 |
 | **MiniPlasma** | **May 14, 2026** | **LPE → SYSTEM (`cldflt.sys`, CVE-2020-17103 patch ineffective)** | **Full** | **🔴 Unpatched — Day 4** |
+| **RoguePlanet** | **Jun 9–10, 2026** | **LPE → SYSTEM (Defender TOCTOU / junction; ex-RCE)** | **Full** | **🔴 Unpatched — no CVE** (see [RoguePlanet](../RoguePlanet/profile.md)) |
 
-The researcher's blog post explicitly threatened: *"Next patch tuesday will have a big surprise for you Microsoft."* — suggesting more disclosures are incoming.
+The researcher's blog post explicitly threatened: *"Next patch tuesday will have a big surprise for you Microsoft."* — the **RoguePlanet** disclosure (June 9–10, 2026, hours after June Patch Tuesday) fulfilled that threat.
 
 **Operational chaining risk:** GreenPlasma, if completed, would provide an additional path to SYSTEM that doesn't touch Defender at all — bypassing detections tuned for BlueHammer/RedSun behavioral patterns. An attacker completing the GreenPlasma chain would have a clean, detection-evasive SYSTEM escalation route on any Windows 11/Server 2022/2025 endpoint.
 

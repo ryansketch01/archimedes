@@ -573,6 +573,31 @@ vendor_sources:
       - https://security.paloaltonetworks.com/
       - https://security.paloaltonetworks.com/CVE-2026-0257
 
+  - id: ivanti-psirt
+    name: "Ivanti PSIRT (Product Security Incident Response Team)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-06-10
+    provisional_reason: "First Archimedes-corpus citation as a *dedicated* source-grades.yaml id via finding-2026-06-10-0003 (CVE-2026-10520 Ivanti Sentry OS command injection CVSS 10.0 + CVE-2026-10523 auth bypass CVSS 9.9; both pre-auth RCE on enterprise mobile gateway; patched at disclosure 2026-06-09; vendor attests no customer exploitation observed verbatim 'not aware of any customers being exploited' under Hard Rule 6 quote discipline). Ivanti PSIRT is the canonical vendor authority on Ivanti-product CVE disclosure — advisory text, CVSS scoring, CWE classification, affected/fixed version matrices, and ITW attestations on own customer base are all first-party vendor-on-own-product authoritative claims. Vendor-self-disclosure on own products is procedurally A-grade per the precedent already established for F5 PSIRT (2026-05-14-0002 K000160932 NGINX Rift), Cisco PSIRT (2026-05-20-0006), kernel.org netdev maintainer disclosure (2026-05-14-0003 Fragnesia), OpenAI self-disclosure (2026-05-14-0008 TanStack), GitHub self-disclosure (2026-05-20-FLASH-0001), LiteSpeed self-disclosure (2026-05-23-FLASH-0002), Palo Alto PSIRT (2026-05-29-0004). Cross-corpus prior: Ivanti has been cited in Archimedes corpus on prior CVE-2026-6973 Ivanti EPMM KEV (2026-05-07 federal deadline) but as a relayed-source via media primaries; this is the first dedicated source-grades.yaml id for Ivanti PSIRT itself. Scope of A grade: Ivanti-product CVE-disclosure procedural facts (CVE existence, CVSS scoring, CWE mapping, affected/fixed versions, workaround availability, vendor ITW attestations on own customer base). Ivanti PSIRT does NOT originate actor attribution on this finding — Hard Rule 2 preserved. Single-source veto applies on vendor-sole no-customer-exploitation attestation layer (vendor sole source on own customer base). Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://forums.ivanti.com/s/security-advisories
+      - https://www.ivanti.com/blog
+
+  - id: arista-networks-psirt
+    name: "Arista Networks PSIRT (Product Security Incident Response Team)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-06-10
+    provisional_reason: "First Archimedes-corpus citation as a *dedicated* source-grades.yaml id via finding-2026-06-10-0004 (Arista EOS CVE-2026-7473 'Incomplete Comparison with Missing Factors' CVSS 6.9 added to CISA KEV 2026-06-09 with federal deadline 2026-06-23 — UNUSUAL DISPOSITION: vendor refuses to ship a patch and provides mitigation instructions instead — first-of-its-kind in corpus; vendor cites risk of breaking customer configurations; vendor attests ITW exploitation; CISA's required action collapses to 'apply mitigations per vendor instructions or discontinue use of the product if mitigations are unavailable'). Arista PSIRT is the canonical vendor authority on Arista-product (EOS / 7020R / 7280R-R2 / 7500R-R2 / 7800R3 / R3-series IPv6 decap) CVE disclosure — advisory text, affected platform matrices, mitigation instructions, and 'no software upgrade path is planned' vendor-policy attestation are all first-party vendor-on-own-product authoritative claims. Vendor-self-disclosure on own products is procedurally A-grade per the precedent already established for F5 PSIRT (2026-05-14-0002), Cisco PSIRT (2026-05-20-0006), kernel.org netdev (2026-05-14-0003), OpenAI / GitHub / LiteSpeed self-disclosure, Palo Alto PSIRT (2026-05-29-0004), Ivanti PSIRT (2026-06-10-0003 — paired same-day precedent). Special-precedent note: this is the FIRST corpus instance of a vendor explicitly declining to ship a patch on a KEV-listed CVE; the procedural A grade applies to the FACTS of the advisory + policy decision (vendor IS the authority on its own no-patch policy); does NOT extend to any third-party claim about whether the no-patch posture is defensible. No Tier-1 IR firm has corroborated Arista's ITW attestation at this hour — single-source veto applies on the ITW layer (vendor-attested only). Scope of A grade: Arista-product CVE-disclosure procedural facts (CVE existence, affected platforms, mitigation availability/instructions, vendor-policy attestations, vendor ITW attestations). Arista PSIRT does NOT originate actor attribution on this finding — Hard Rule 2 preserved. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://www.arista.com/en/support/advisories-notices
+
   - id: push-security
     name: "Push Security"
     category: vendor
@@ -1085,10 +1110,10 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 80        # +2 AM 2026-05-29: securityaffairs + theregister (provisional B; first corpus citation as paired independent trade-press relays of MSRC Chaotic Eclipse state-transition per finding-2026-05-29-0002 — resolved PM-28 single-source veto)
-  active_sources: 71       # +2 above
+  total_sources: 82        # +2 AM 2026-06-10: ivanti-psirt + arista-networks-psirt (provisional A; vendor-self-disclosure-on-own-product precedent class per finding-2026-06-10-0003 / 0004; 72h ratification clock to 2026-06-13T08:00:00-04:00)
+  active_sources: 73       # +2 above
   by_grade:
-    A: 35       # +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
+    A: 37       # +2 ivanti-psirt + arista-networks-psirt (provisional A 2026-06-10 AM); +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
     B: 29       # +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
     C: 10       # +1 depthfirst elevated F→C 2026-05-16 morning per "first technical write-up publication" trigger; finding-2026-05-16-0001
     D: 1
@@ -1134,6 +1159,8 @@ _meta:
     - palo-alto-psirt           # provisional A; first cited 2026-05-29-0004 (CVE-2026-0257 PAN-OS GlobalProtect auth bypass — vendor self-attestation on own product co-primary with Rapid7 + CISA KEV; resolves 2026-05-06 deferred-id source-grade-log entry; precedent class: Cisco PSIRT, F5 PSIRT, kernel.org netdev, OpenAI/GitHub/LiteSpeed self-disclosure; 72h ratification clock to 2026-06-01T16:00:00-04:00)
     - push-security             # provisional B; first cited 2026-05-29-0005 (LLMShare malvertising campaign on chatgpt.com/s/ shared-link URL abuse; co-primary with Permiso Security on paired ChatGPT platform-abuse research class; cited via BleepingComputer; awaiting direct-retrieval of pushsecurity.com/blog primary; peer class: StepSecurity, Socket, Sysdig, Zellic, Ox Security, Upwind, Arctic Wolf; 72h ratification clock to 2026-06-01T16:00:00-04:00)
     - permiso-security          # provisional B; first cited 2026-05-29-0005 (ChatGPhish vulnerability class — ChatGPT renderer trusts Markdown from summarized pages; co-primary with Push Security on paired ChatGPT platform-abuse research class; cited via The Hacker News; awaiting direct-retrieval of permiso.io primary; peer class: StepSecurity, Socket, Sysdig, Zellic, Ox Security, Upwind, Arctic Wolf, Push Security; 72h ratification clock to 2026-06-01T16:00:00-04:00)
+    - ivanti-psirt              # provisional A; first cited 2026-06-10-0003 (Ivanti Sentry CVE-2026-10520 CVSS 10.0 OS command injection + CVE-2026-10523 CVSS 9.9 auth bypass; both pre-auth RCE; patched at disclosure 2026-06-09; vendor attests no customer exploitation observed under Hard Rule 6; vendor-self-disclosure-on-own-product precedent class per F5 / Cisco / kernel.org / OpenAI / GitHub / LiteSpeed / Palo Alto PSIRT; 72h ratification clock to 2026-06-13T08:00:00-04:00)
+    - arista-networks-psirt     # provisional A; first cited 2026-06-10-0004 (Arista EOS CVE-2026-7473 CISA KEV federal deadline 2026-06-23 — UNUSUAL DISPOSITION: vendor refuses to ship patch, provides mitigation instructions instead; first-of-its-kind in corpus; vendor-attested ITW; same vendor-self-disclosure-on-own-product precedent class; 72h ratification clock to 2026-06-13T08:00:00-04:00)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

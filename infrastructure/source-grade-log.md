@@ -497,6 +497,47 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 
 ---
 
+## 2026-06-10 — Ivanti PSIRT — (none) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `ivanti-psirt`
+**Reason:** First Archimedes-corpus citation of Ivanti PSIRT as a *dedicated* source-grades.yaml id via `finding-2026-06-10-0003` (CVE-2026-10520 Ivanti Sentry OS command injection CVSS 10.0 + CVE-2026-10523 auth bypass CVSS 9.9; both pre-auth RCE on enterprise mobile gateway; patched at disclosure 2026-06-09; vendor attests no customer exploitation observed verbatim *"not aware of any customers being exploited"* — 8 words, Hard Rule 6 preserved). Proposed grade A by the briefer/grader as procedurally consistent with the established precedent class for vendor-self-disclosure-on-own-product at A grade: F5 PSIRT (2026-05-14-0002 K000160932 NGINX Rift), Cisco PSIRT (2026-05-20-0006 Cisco Secure Workload), kernel.org netdev maintainer disclosure (2026-05-14-0003 Fragnesia), OpenAI self-disclosure (2026-05-14-0008 TanStack), GitHub self-disclosure (2026-05-20-FLASH-0001), LiteSpeed self-disclosure (2026-05-23-FLASH-0002), Palo Alto PSIRT (2026-05-29-0004). Cross-corpus prior: Ivanti has been cited in prior Archimedes corpus on CVE-2026-6973 Ivanti EPMM KEV (2026-05-07 federal deadline) but as a relayed-source via media primaries; this is the first dedicated source-grades.yaml id for Ivanti PSIRT itself. Rapid7 ETR is the A-grade originating clarifier surface on finding 0003; BleepingComputer + SecurityWeek are publisher-independent B-grade relays; Ivanti PSIRT is the vendor authority on the affected/fixed version matrix, CVSS scoring, and the no-customer-exploitation attestation. Hard Rule 2 attribution boundary preserved: Ivanti PSIRT does NOT originate actor attribution on this finding; no roster-tracked actor implicated.
+**Methodological positives on first surface:**
+- Patched at disclosure (vendor coordinated disclosure pattern; no public PoC observed in the disclosure window).
+- Vendor attestation framed under Hard Rule 6 quote discipline (8-word direct quote, single-source-veto annotation preserved given vendor-sole-source position on own customer base).
+- No actor attribution propagated — Hard Rule 2 compliance preserved verbatim by all three primaries (Rapid7 ETR + BleepingComputer + SecurityWeek).
+- Patch availability + affected platform matrix are unambiguous procedural facts directly authoritative under vendor scope.
+**Supporting findings:** [finding-2026-06-10-0003]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification per established vendor-self-disclosure-on-own-product precedent (provisional A is not a downgrade requiring human review per Hard Rule 5). Ivanti Sentry CVE-2026-10520 / 10523 is summarized in the 2026-06-10 morning brief Discord Summary section posted to `#intel-briefs` per librarian Mode 1.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade ivanti-psirt A` (or operator downgrade to B / hold pending second-vendor corroboration of the no-customer-exploitation attestation).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-06-10-0003` Ivanti Sentry anchor is A2 with Rapid7 ETR as the originating A-grade clarifier and Ivanti PSIRT as the vendor authority on patch + version matrix + no-customer-exploitation attestation. Provisional A grading holds the A2 digraph. Operator downgrade to B would re-grade to B2 but would NOT change the brief disposition (patch imperative + DIB-perimeter framing stand regardless of source-grade level on the procedural anchor; single-source veto on no-customer-exploitation attestation is independent of source-grade level).
+**72h ratification clock:** 2026-06-13T08:00:00-04:00 (72h from morning brief composition).
+**Next review:** ratification target 2026-06-17 (7 days; bundled with the open cisco-psirt / aonan-guan / Symantec / Bitdefender / litespeed / github-blog / arctic-wolf / push-security / permiso-security / palo-alto-psirt / mi5-fbi-asio-csis-nzsis-joint / arista-networks-psirt ratification window — recommend operator action this week given the growing bundle).
+
+---
+
+## 2026-06-10 — Arista Networks PSIRT — (none) → A (provisional, awaiting ratification)
+
+**Type:** New source — provisional
+**Source ID:** `arista-networks-psirt`
+**Reason:** First Archimedes-corpus citation of Arista Networks PSIRT as a *dedicated* source-grades.yaml id via `finding-2026-06-10-0004` (Arista EOS CVE-2026-7473 "Incomplete Comparison with Missing Factors" CVSS 6.9 added to CISA KEV 2026-06-09 with federal deadline 2026-06-23 — UNUSUAL DISPOSITION: vendor refuses to ship a patch and provides mitigation instructions instead; first-of-its-kind in corpus; vendor cites risk of breaking customer configurations; vendor attests ITW exploitation; CISA's required action collapses to "apply mitigations per vendor instructions or discontinue use of the product if mitigations are unavailable"; vendor verbatim "no software upgrade path is planned" — 7-word paraphrase, Hard Rule 6 preserved). Proposed grade A by the briefer/grader as procedurally consistent with the established precedent class for vendor-self-disclosure-on-own-product at A grade: F5 PSIRT, Cisco PSIRT, kernel.org netdev, OpenAI / GitHub / LiteSpeed self-disclosure, Palo Alto PSIRT, Ivanti PSIRT (paired same-day precedent on 2026-06-10). **Special-precedent note:** this is the **first corpus instance** of a vendor explicitly declining to ship a patch on a KEV-listed CVE. The procedural A grade applies to the FACTS of the advisory + the policy decision (vendor IS the authority on its own no-patch policy decision); it does NOT extend to any third-party claim about whether the no-patch posture is technically defensible or operationally appropriate. SecurityWeek is the direct retriever of Arista's advisory; CISA KEV is the A-grade procedural anchor on the federal deadline. No Tier-1 IR firm has corroborated Arista's ITW attestation at this hour — single-source veto applies on the ITW layer (vendor-attested only). Hard Rule 2 attribution boundary preserved: Arista PSIRT does NOT originate actor attribution on this finding; no roster-tracked actor implicated.
+**Methodological positives on first surface:**
+- Affected platform matrix is precise and operationally actionable (7020R, 7280R/R2, 7500R/R2 fully affected; R3 series 7280R3 / 7500R3 / 7800R3 affected only when IP-in-IPv6 or GUE IPv6 decap feature paths are configured — audit configurations first).
+- Mitigation instructions provided as substitute for patch — vendor is the canonical authority on its own product's mitigation paths.
+- No actor attribution propagated — Hard Rule 2 compliance preserved verbatim by SecurityWeek relay + CISA KEV procedural anchor.
+- Vendor-attested ITW with explicit single-source-veto annotation on operational layer (no Tier-1 IR firm corroboration at this hour); standard architectural framing avoids overclaiming.
+**Special-precedent flag:** Operator review during ratification should consider whether to memorialize a separate "vendor-refuses-to-patch on KEV-listed CVE" precedent class for future no-patch dispositions — this is the first of its kind in the corpus and the grading + brief-disposition pattern (procedural A on the advisory + policy decision; single-source veto on ITW; mitigation-only DIB action framing) may be worth formalizing as a recurring class if a second instance emerges.
+**Supporting findings:** [finding-2026-06-10-0004]
+**Posted to:** Not posted to Discord `#actor-review` this run — bundled ratification per established vendor-self-disclosure-on-own-product precedent (provisional A is not a downgrade requiring human review per Hard Rule 5). Arista EOS CVE-2026-7473 KEV-no-patch disposition is summarized in the 2026-06-10 morning brief Discord Summary section posted to `#intel-briefs` per librarian Mode 1.
+**Reviewer:** Awaiting Ryan ratification via `/approve-source-grade arista-networks-psirt A` (or operator downgrade to B if no-patch disposition is judged to warrant a separate precedent class with deferred grading).
+**Provisional flag set:** `provisional: true`, `awaiting_ratification: true` in `infrastructure/source-grades.yaml`.
+**Effect on referencing finding:** `finding-2026-06-10-0004` Arista EOS KEV-no-patch anchor is A2 with CISA KEV as the procedural anchor on the federal deadline and Arista PSIRT as the vendor authority on the affected platform matrix + no-patch policy + mitigation instructions. Provisional A grading holds the A2 digraph. Operator downgrade to B would re-grade to B2 but would NOT change the brief disposition (federal deadline + mitigation imperative stand regardless of source-grade level on the procedural anchor; single-source veto on ITW is independent of source-grade level on the procedural anchor).
+**72h ratification clock:** 2026-06-13T08:00:00-04:00 (72h from morning brief composition).
+**Next review:** ratification target 2026-06-17 (7 days; bundled with the open cisco-psirt / aonan-guan / Symantec / Bitdefender / litespeed / github-blog / arctic-wolf / push-security / permiso-security / palo-alto-psirt / mi5-fbi-asio-csis-nzsis-joint / ivanti-psirt ratification window — recommend operator action this week given the growing bundle).
+
+---
+
 ## Entry template
 
 *Copy the format below when logging a grade change.*

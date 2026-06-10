@@ -7,7 +7,7 @@
 # `active: false` rather than deleting — preserves history.
 
 version: 1
-last_updated: 2026-05-28
+last_updated: 2026-06-10
 
 # ============================================================================
 # Vuln-watch keywords
@@ -41,6 +41,42 @@ vuln_watch_keywords:
       - shadowserver_or_shodan_post_disclosure_scanning_telemetry
     expected_cve_assignment_window: 2026-06-04_to_2026-06-11
     vuln_tracker_handoff_pending: threats/vulnerabilities/gogs-argument-injection-rce-unassigned-CVE/
+    active: true
+
+  - id: servicenow-api-exploitation-2026-06-09
+    keywords:
+      - "ServiceNow"
+      - "ServiceNow Australia"
+      - "/api/now/related_list_edit/create"
+      - "requires_authentication=false"
+      - "51.159.98.241"
+    first_citation_finding: finding-2026-06-10-0006
+    first_citation_brief: 2026-06-10-morning
+    added_at: 2026-06-10T08:00:00-04:00
+    monitor_for:
+      - cve_assignment_nvd_or_mitre
+      - servicenow_security_advisory_referencing_related_list_edit_or_requires_authentication
+      - vendor_ir_firm_observation_of_exploitation
+      - cisa_kev_addition_once_cve_assigned
+      - additional_scanner_ips_beyond_51_159_98_241
+      - secondary_servicenow_endpoint_disclosure_widening_blast_radius
+    expected_cve_assignment_window: 2026-06-10_to_2026-06-17
+    vuln_tracker_handoff_pending: threats/vulnerabilities/servicenow-api-exploitation-unassigned-CVE/
+    notes: |
+      ServiceNow vendor self-disclosed REST API exploitation 2026-06-09 with
+      CVE pending. Internal-aware since 2026-04-07 (63 days to public
+      disclosure); patched 2026-06-05. Affected scope: Australia platform
+      release + pre-Australia tenants with specific configuration changes.
+      Single IPv4 IOC 51.159.98.241 per BleepingComputer originating (single-
+      source veto applied on IOC layer). Three publisher-independent B-grade
+      primaries converge on procedural facts (BleepingComputer + The Hacker
+      News + SecurityWeek). Vendor advisory is access-gated to customer
+      portal. Vendor attestation: "evidence of successful queries of instance
+      tables against a subset of customers" (11 words, Hard Rule 6 preserved).
+      No actor attribution per all three sources ("Unknown threat actors"
+      per THN). Pattern observation parallel to gogs-argument-injection-
+      2026-05-28: vendor-disclosed-with-CVE-pending → monitor for CVE
+      assignment in defined window → CISA KEV addition pathway expected.
     active: true
 
 standing_sections:

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-10T01:25:00-04:00
+last_updated: 2026-06-10T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -29133,6 +29133,918 @@ entries:
       Surface in 2026-06-14 weekly synthesis as
       AI-infrastructure-gateway vendor-vulnerability cadence
       pattern observation.
+
+  # ==========================================================================
+  # 2026-06-10 morning brief entries (8 entries: 6 net-new + 1 FLASH absorption + 1 brief-meta)
+  # ==========================================================================
+
+  - id: 2026-06-10-am-001-microsoft-june-patch-tuesday-206-flaws-nightmare-eclipse-trio-zero-days-yellowkey-greenplasma-miniplasma-bitskrieg-http2-bomb-iis-three-critical-9-8-rces
+    covered_in: [2026-06-10-morning]
+    brief_file: threats/briefs/2026-06-10-morning.md
+    headline: "Microsoft June 2026 Patch Tuesday — 206 flaws patched (largest single-month corpus volume); three publicly-disclosed Nightmare-Eclipse zero-days (YellowKey BitLocker WinRE bypass CVE-2026-45585, GreenPlasma CTFMON LPE CVE-2026-45586, MiniPlasma Cloud Files Mini Filter Driver LPE re-patched CVE-2020-17103) — all patched at disclosure; BleepingComputer single-source on GreenPlasma + MiniPlasma 'actively exploited' framing (THN reframes 'publicly disclosed,' Krebs no ITW label) — single-source veto on ITW layer; bitskrieg-family BitLocker EoP CVE-2026-50507 closes the June Bitskrieg window flagged 2026-06-04; HTTP/2 Bomb IIS variant CVE-2026-49160 carries lineage to finding-2026-06-03-0003; three critical non-zero-day 9.8 RCEs (CVE-2026-45657 kernel UAF + CVE-2026-47291 HTTP.sys integer overflow + CVE-2026-44815 DHCP Client stack buffer overflow); researcher signaled 'more zero-days' July 14 per Krebs; Nightmare-Eclipse / Chaotic Eclipse is researcher pseudonym NOT tracked threat actor per Hard Rule 2"
+    topic_tags:
+      - cve
+      - microsoft-june-patch-tuesday
+      - patch-tuesday-206-flaws-largest-corpus
+      - nightmare-eclipse-trio-zero-days-patched-at-disclosure
+      - yellowkey-cve-2026-45585-bitlocker-winre
+      - greenplasma-cve-2026-45586-ctfmon-lpe
+      - miniplasma-cve-2020-17103-cloud-files-mini-filter-driver-re-patch
+      - bleepingcomputer-single-source-itw-veto-on-greenplasma-and-miniplasma
+      - thn-reframes-as-publicly-disclosed
+      - krebs-no-itw-label-on-trio
+      - bitskrieg-cve-2026-50507-bitlocker-eop-closes-june-window
+      - http2-bomb-iis-variant-cve-2026-49160
+      - three-critical-9-8-rces-no-itw-cve-2026-45657-47291-44815
+      - three-source-b-grade-convergence-procedural-facts
+      - hard-rule-2-nightmare-eclipse-researcher-pseudonym-not-threat-actor
+      - researcher-signaled-more-zero-days-july-14
+      - vuln-tracker-state-transition-verification-zd-001-zd-002-zd-003
+      - vulnerabilities
+    related_actors: []
+    related_vulns:
+      - CVE-2026-45585
+      - CVE-2026-45586
+      - CVE-2020-17103
+      - CVE-2026-50507
+      - CVE-2026-49160
+      - CVE-2026-45657
+      - CVE-2026-47291
+      - CVE-2026-44815
+    related_campaigns:
+      - nightmare_eclipse_researcher_series_continuing_coverage
+    finding_ids: [finding-2026-06-10-0001]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      patch_tuesday_206_flaws_procedural: B1
+      nightmare_eclipse_trio_patched_at_disclosure: B1
+      greenplasma_miniplasma_actively_exploited_itw_bleepingcomputer_single_source: B3
+      bitskrieg_cve_2026_50507_bitlocker_eop: B2
+      http2_bomb_iis_variant_cve_2026_49160: B2
+      three_critical_9_8_rces_thn_originating_no_itw: B2
+      nightmare_eclipse_researcher_pseudonym_three_source_attribution: B1
+      nightmare_eclipse_former_microsoft_employee_self_claim_krebs_single_source: B3
+      nightmare_eclipse_july_14_predictive_krebs_single_source: C3
+    wep: likely
+    wep_layered:
+      patch_tuesday_facts_procedural: very_likely
+      yellowkey_greenplasma_miniplasma_trio_patched_at_disclosure_attribution_researcher_pseudonym: very_likely
+      greenplasma_miniplasma_actively_exploited_itw: likely
+      three_critical_9_8_rces_patched_no_itw: likely
+      nightmare_eclipse_former_microsoft_employee_self_claim: roughly_even_chance
+      nightmare_eclipse_july_14_more_zero_days_predictive: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "GreenPlasma + MiniPlasma 'actively exploited' ITW framing (BleepingComputer single-source; THN reframes 'publicly disclosed'; Krebs no ITW label)"
+      - "Nightmare-Eclipse former-Microsoft-employee self-claim (Krebs single-source)"
+      - "Nightmare-Eclipse 'more zero-days July 14' predictive (Krebs single-source quoting researcher pseudonym)"
+      - "Rapid7 Barnett '360 browser vulns 10x normal' (Krebs single-source quoting Rapid7 analyst)"
+    hard_rule_2_framings_load_bearing:
+      - "Nightmare-Eclipse / Chaotic Eclipse is researcher pseudonym, NOT tracked threat actor; Archimedes does not roster-tier"
+      - "Researcher-pseudonym attribution language preserved without transformation into threat-actor designation"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming
+    librarian_handoffs_queued: []
+    vuln_tracker_handoffs_queued:
+      - "Scaffold 8 vuln-dossiers for CVE-2026-45585 / 45586 / 2020-17103 (re-patch) / 50507 / 49160 / 45657 / 47291 / 44815"
+      - "State-transition verification REQUIRED for ZD-001 BlueHammer / ZD-002 RedSun / ZD-003 UnDefend against June Patch Tuesday MSRC advisory map"
+      - "Consider ZD-005 series scaffolding for Nightmare-Eclipse researcher cluster"
+      - "HTTP/2 Bomb cluster cross-reference: confirm whether CVE-2026-49160 is sibling or extension of finding-2026-06-03-0003 cluster"
+    resurface_if:
+      - msrc_blog_post_or_tier_1_ir_firm_telemetry_on_nightmare_eclipse_trio
+      - independent_corroboration_of_greenplasma_or_miniplasma_itw_exploitation_lifts_single_source_veto
+      - kev_listing_on_any_of_the_eight_cves_surfaced
+      - july_14_2026_patch_tuesday_more_zero_days_landing
+      - microsoft_public_statement_on_nightmare_eclipse_former_employee_self_claim
+      - vuln_tracker_cve_to_family_mapping_zd_001_zd_002_zd_003_state_transition_resolved
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Lead item in Vulnerabilities section. Single-source veto
+      framing on the GreenPlasma + MiniPlasma "actively exploited"
+      claim preserved — defender response is patch-immediately
+      regardless of ITW status. Researcher-pseudonym credit
+      preserved without transformation per Hard Rule 2.
+
+      Nightmare-Eclipse researcher series is now eight disclosures
+      deep across the corpus chain. July 14 next Patch Tuesday is
+      operationally significant — defender-prudent anticipation
+      flagged in brief.
+
+      Cross-references the parallel cohort: HTTP/2 Bomb multi-
+      server cluster (finding-2026-06-03-0003) — CVE-2026-49160
+      is the Microsoft IIS variant in the same architectural
+      class.
+
+  - id: 2026-06-10-am-002-krebs-shai-hulud-microsoft-72-public-repos-azure-durable-task-sdk-vt-006-miasma-family-extension-tier1-vendor-victim-no-primary-attribution
+    covered_in: [2026-06-10-morning]
+    brief_file: threats/briefs/2026-06-10-morning.md
+    headline: "Krebs reports at least 72 Microsoft public code repositories infected with Shai-Hulud worm variant tied to Azure Durable Task SDK (second-touch May+June 2026); single-source B-grade media-relay surface at this hour pending primary research vendor / MSRC advisory / GitHub Security Advisories / Microsoft GitHub-org statement retrieval; cross-corpus VT-006 / Miasma family extension to second Tier-1 cloud-platform vendor victim (Microsoft Corp); Krebs does NOT name TeamPCP or any threat actor — Shai-Hulud is malware-family-taxonomy not actor attribution; per Hard Rule 2 + Tier-1 declination chain on Miasma extensions (Unit 42 hedge + MSTIC silence), Archimedes does NOT propagate TeamPCP attribution onto the Microsoft incident from Krebs alone; A&D relevance structural-indirect via Azure GovCloud / Azure for Government workloads"
+    topic_tags:
+      - supply-chain
+      - shai-hulud-worm-variant
+      - microsoft-azure-durable-task-sdk
+      - microsoft-public-repos-at-least-72
+      - second-touch-same-sdk-may-plus-june
+      - vt-006-miasma-family-extension-tier-1-cloud-vendor
+      - tier-1-cloud-platform-vendor-victim-microsoft-corp
+      - krebs-single-source-relay-no-primary-attribution-retrieved
+      - hard-rule-2-no-teampcp-propagation-on-microsoft-incident
+      - tier-1-declination-chain-unit-42-hedge-mstic-silence-on-miasma-extensions
+      - shai-hulud-is-malware-family-taxonomy-not-threat-actor
+      - msrc-advisory-pending-grader-or-collector
+      - github-security-advisories-on-72-repos-pending
+      - microsoft-github-org-public-statement-pending
+      - ad-relevance-structural-indirect-azure-govcloud-azure-for-government
+      - no-ad-prime-named-victim
+      - other-signal-monitoring
+    related_actors:
+      - actor_name: TeamPCP
+        actor_in_roster: true
+        roster_id: "001"
+        roster_tier: HIGH
+        attribution_layer_note: "carry-context only; NOT primary-attributed at the Microsoft surface; Hard Rule 2 binds against propagation per Tier-1 declination chain on Miasma extensions"
+    related_vulns: []
+    related_campaigns:
+      - "VT-006 / Mini Shai-Hulud / Miasma family extension to Tier-1 cloud platform vendor (Microsoft Azure Durable Task SDK)"
+    finding_ids: [finding-2026-06-10-0002]
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      krebs_published_the_claim: B1
+      at_least_72_microsoft_public_repos_substantive_claim: B3
+      affected_packages_connected_to_azure_durable_task_sdk: B3
+      second_touch_may_plus_june_framing: B3
+      no_primary_attribution_to_teampcp_at_krebs_layer: B1
+      vt_006_miasma_family_lineage_continuity: B2
+      hard_rule_2_no_propagation_internal_discipline: B1
+    wep: likely
+    wep_layered:
+      krebs_published_the_claim: very_likely
+      72_microsoft_public_repos_substantive: likely
+      azure_durable_task_sdk_named_component: likely
+      second_touch_may_plus_june: likely
+      tier_1_cloud_vendor_victim_extension_of_family: likely
+      no_teampcp_attribution_at_microsoft_surface_hard_rule_2_binds: almost_certainly
+      no_ad_prime_named_victim: almost_certainly
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Substantive 72-repo + Azure Durable Task SDK + second-touch claim (Krebs sole-source retrieved this sweep; underlying primary research vendor not named in Krebs body)"
+    hard_rule_2_framings_load_bearing:
+      - "Krebs does NOT name TeamPCP or any threat actor — Shai-Hulud is malware-family-taxonomy-class not actor attribution"
+      - "Tier-1 declination chain on Miasma extensions: Unit 42 hedge + MSTIC silence; ZERO Tier-1 A-grade affirmations on Miasma extensions"
+      - "Archimedes does NOT originate or propagate TeamPCP attribution onto the Microsoft Azure Durable Task SDK incident from Krebs alone"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming
+    librarian_handoffs_queued: []
+    vuln_tracker_handoffs_queued:
+      - "Extend VT-006 family dossier to record Microsoft Azure Durable Task SDK extension with single-source-citation status + pending-primary-retrieval flag; do NOT propagate TeamPCP attribution per Hard Rule 2 + Tier-1 declination chain"
+    actor_profiler_handoffs_queued:
+      - "TeamPCP (#001 HIGH) threat-box re-score consideration remains deferred pending primary-attribution corroboration on Microsoft incident; Hard Rule 5 binding on HIGH-tier composite changes"
+    resurface_if:
+      - msrc_advisory_on_azure_durable_task_sdk_shai_hulud_infection_lands
+      - github_security_advisories_on_72_affected_microsoft_public_repos_publish
+      - tier_1_supply_chain_security_vendor_primary_research_surface_identified
+      - microsoft_github_org_public_statement_publishes
+      - primary_attribution_to_teampcp_or_other_actor_surfaces_changes_hard_rule_2_disposition
+      - tier_1_a_grade_ir_firm_independent_telemetry_on_microsoft_incident_lifts_b3_to_b2_or_b1
+      - repo_specific_iocs_published_package_names_file_hashes_attacker_accounts
+    update_on:
+      - 2026-06-03-am-001-mstic-miasma-red-hat-npm-a-grade-originating-primary-sixth-vendor-two-tier1-declination-signals-novel-capability-layers
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier "Other Signal" placement. Single-source
+      relay at this hour; underlying primary research vendor
+      not named in Krebs body. Pre-brief sentinel flagged four
+      pending primaries: MSRC advisory, GitHub Security
+      Advisories, Tier-1 supply-chain vendor primary, Microsoft
+      GitHub-org statement. None retrieved this sweep.
+
+      Hard Rule 2 binding constraint preserved: Archimedes does
+      NOT propagate TeamPCP attribution onto the Microsoft
+      Azure Durable Task SDK incident from Krebs alone. The
+      Tier-1 declination chain on Miasma extensions (Unit 42
+      hedge + MSTIC silence) is the dominant attribution stance.
+
+      A&D relevance structural-indirect: A&D-prime Azure
+      GovCloud / Azure for Government workloads potentially
+      affected by dependency-graph reach. No A&D-prime named
+      victim.
+
+      UPDATE on 2026-06-03-am-001 (MSTIC Miasma originating-
+      primary on Red Hat npm extension). The Microsoft surface
+      is a further family extension to a second Tier-1 cloud-
+      platform vendor victim.
+
+  - id: 2026-06-10-am-003-rapid7-etr-bleepingcomputer-securityweek-ivanti-sentry-cve-2026-10520-cvss-10-os-command-injection-cve-2026-10523-cvss-9-9-auth-bypass-patched-no-itw
+    covered_in: [2026-06-10-morning]
+    brief_file: threats/briefs/2026-06-10-morning.md
+    headline: "Ivanti Sentry CVE-2026-10520 OS command injection CWE-78 CVSS 10.0 maximum severity (remote unauth attacker → RCE as root) + CVE-2026-10523 authentication bypass CVSS 9.9 (remote unauth attacker → arbitrary administrative account creation + full admin access) — both pre-auth RCE on the enterprise mobile-device-management gateway (formerly MobileIron Sentry); both patched at disclosure 2026-06-09; Ivanti vendor attestation 'not aware of any customers being exploited' (8 words, Hard Rule 6 preserved) — single-source veto on no-customer-exploitation attestation layer; Rapid7 ETR A-grade originating clarifier + BleepingComputer + SecurityWeek publisher-independent B-grade media relays; A&D defensive priority: ITAR-cleared workforce mobile-device estates accessing M365 GCC / GCC-High / SharePoint / e-discovery; cross-references Ivanti PSIRT corpus precedent CVE-2026-6973 EPMM KEV 2026-05-07; librarian handoff to add ivanti-psirt to source-grades.yaml as provisional A"
+    topic_tags:
+      - cve
+      - cve-2026-10520
+      - cve-2026-10523
+      - ivanti-sentry
+      - formerly-mobileiron-sentry
+      - cvss-10-0-maximum-severity-os-command-injection-cwe-78
+      - cvss-9-9-authentication-bypass-arbitrary-admin-creation
+      - pre-auth-rce-pair-patched-at-disclosure
+      - vendor-attests-no-customer-exploitation-single-source-veto-on-attestation-layer
+      - rapid7-etr-a-grade-originating-clarifier
+      - bleepingcomputer-securityweek-publisher-independent-relays
+      - itar-mobile-device-gateway-m365-gcc-gcc-high-sharepoint
+      - cross-corpus-cve-2026-6973-ivanti-epmm-kev-precedent
+      - ivanti-psirt-source-grade-addition-provisional-a-72h-clock
+      - active-threats
+    related_actors: []
+    related_vulns: [CVE-2026-10520, CVE-2026-10523, CVE-2026-6973]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-10-0003]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      rapid7_etr_originating_clarifier: A1
+      cve_2026_10520_canonical_record_cvss_10_0: A1
+      cve_2026_10523_canonical_record_cvss_9_9: A1
+      patched_at_disclosure_2026_06_09: A1
+      ivanti_vendor_no_customer_exploitation_attestation: A2
+      ad_relevance_structural_via_itar_workforce_mobile_device_gateway: B2
+      ivanti_psirt_provisional_a_grade_recommendation: B2
+    wep: very_likely
+    wep_layered:
+      cve_10520_10523_canonical_records_procedural: very_likely
+      patched_at_disclosure: very_likely
+      remote_unauth_pre_auth_rce_as_root: very_likely
+      arbitrary_administrative_account_creation_via_auth_bypass: very_likely
+      ivanti_no_customer_exploitation_observed: likely
+      no_independent_ir_firm_telemetry_at_this_hour: very_likely
+      ad_relevance_structural_via_mdm_gateway_itar_estates: likely
+      defender_priority_immediate_patch_application: very_likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Ivanti vendor 'not aware of any customers being exploited' attestation — vendor sole source on own customer base; Rapid7 ETR + BC + SW cannot add independent telemetry on that layer"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at any source — Hard Rule 2 not triggered"
+      - "No named victim at any source"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming_ivanti_sentry_not_in_defenseclaw_local
+    librarian_handoffs_queued:
+      - action: add_source_to_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "ivanti-psirt provisional A; vendor-self-disclosure-on-own-product precedent class; first-citation; 72h ratification clock to 2026-06-13T08:00:00-04:00"
+    vuln_tracker_handoffs_queued:
+      - "Scaffold new vuln-dossiers for CVE-2026-10520 + CVE-2026-10523"
+      - "Consider Ivanti-PSIRT-family rollup watch entry per corpus precedent CVE-2026-6973 EPMM KEV 2026-05-07"
+    resurface_if:
+      - cisa_kev_listing_on_cve_2026_10520_or_10523
+      - tier_1_ir_firm_telemetry_on_attempted_exploitation_published
+      - shadowserver_greynoise_opportunistic_scanning_telemetry_published
+      - independent_corroboration_or_contradiction_of_ivanti_no_customer_exploitation_attestation
+      - public_poc_release
+      - actor_attribution_attached_to_disclosure_surfaces
+      - first_reported_in_the_wild_exploitation_event
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Action-tier item in Active Threats section. CVSS 10.0 +
+      9.9 pre-auth RCE pair patched at disclosure warrants
+      defender action-tier priority regardless of vendor
+      no-customer-exploitation attestation. Single-source veto
+      applied on the attestation layer; procedural facts at
+      "very_likely" with four-source publisher-independence.
+
+      ITAR-cleared workforce mobile-device estates accessing
+      M365 GCC / GCC-High via Sentry are the A&D defensive
+      priority scope. Defender runway is patch-availability-
+      window, not crisis response (no zero-day window, vendor
+      attests no observed exploitation).
+
+      Cross-references Ivanti corpus precedent CVE-2026-6973
+      EPMM KEV 2026-05-07. Vuln-tracker may want Ivanti-PSIRT-
+      family rollup watch entry.
+
+      Librarian handoff: add ivanti-psirt to source-grades.yaml
+      as provisional A (vendor-self-disclosure-on-own-product
+      precedent class).
+
+  - id: 2026-06-10-am-004-securityweek-cisa-kev-arista-eos-cve-2026-7473-no-patch-planned-vendor-refusal-itw-carrier-class-routing-federal-deadline-2026-06-23
+    covered_in: [2026-06-10-morning]
+    brief_file: threats/briefs/2026-06-10-morning.md
+    headline: "Arista EOS CVE-2026-7473 (Incomplete Comparison with Missing Factors, CVSS 6.9) added to CISA KEV 2026-06-09 with federal due 2026-06-23 (standard 14-day BOD-22-01 cadence); UNUSUAL DISPOSITION — Arista vendor refuses to ship software upgrade path citing risk of breaking customer configurations; Arista provides mitigation instructions; CISA KEV 'Apply mitigations per vendor instructions or discontinue use' applies; FIRST-OF-ITS-KIND IN CORPUS (no prior surface of KEV-add with vendor-refuses-patch posture); affects carrier-class routing platforms (Arista 7020R / 7280R/R2 / 7500R/R2 full scope plus 7280R3 / 7500R3 / 7800R3 in IP-in-IPv6 + GUE IPv6 decap scenarios) — ISP / carrier / hyperscaler / federal-backbone-adjacent + A&D-prime spine deployment class; Arista vendor attests ITW exploitation but no Tier-1 IR firm independent telemetry at sweep time — single-source veto on actor-or-campaign attribution layer; CISA KEV inclusion procedurally implies USG corroboration but USG telemetry not published; parallel cohort CVE-2026-20245 Cisco SD-WAN KEV-added same day"
+    topic_tags:
+      - cve
+      - cve-2026-7473
+      - arista-eos
+      - incomplete-comparison-with-missing-factors-cwe-pending
+      - cvss-6-9-medium-critical-adjacent
+      - cisa-kev-add-2026-06-09
+      - 14-day-federal-deadline-bod-22-01-standard-window
+      - federal-deadline-2026-06-23
+      - unusual-disposition-vendor-refuses-to-patch
+      - first-of-its-kind-in-corpus-kev-listed-no-vendor-patch-path
+      - carrier-class-routing-7020r-7280r-7500r-r2-full-scope
+      - r3-series-decap-feature-paths-ip-in-ipv6-gue-ipv6
+      - isp-carrier-hyperscaler-federal-backbone-adjacent-deployment-class
+      - arista-vendor-attests-itw-no-tier-1-ir-firm-independent-telemetry
+      - cisa-kev-inclusion-procedurally-implies-usg-corroboration
+      - parallel-cohort-cve-2026-20245-cisco-sd-wan-same-kev-add-date
+      - arista-networks-psirt-source-grade-addition-provisional-a-72h-clock
+      - active-threats
+    related_actors: []
+    related_vulns: [CVE-2026-7473, CVE-2026-20245, CVE-2026-11645]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-10-0004]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      cisa_kev_listing_cve_2026_7473_added_with_federal_due: A1
+      cisa_kev_required_action_apply_mitigations_or_discontinue: A1
+      cve_2026_7473_canonical_record: A2
+      affected_hardware_full_scope_7020r_7280r_7500r: A2
+      affected_hardware_r3_series_decap_scenarios_only: A2
+      arista_vendor_refuses_patch_no_software_upgrade_planned: A2
+      arista_vendor_attests_itw_exploitation: A2
+      cisa_kev_inclusion_implies_usg_corroboration_but_telemetry_not_published: B2
+      no_tier_1_ir_firm_independent_telemetry_at_sweep: A1
+      unusual_disposition_first_of_kind_in_corpus: A1
+      carrier_class_routing_widely_deployed_qualifier_arguable: B2
+    wep: very_likely
+    wep_layered:
+      cisa_kev_listing_facts_with_federal_due_procedural: very_likely
+      cisa_kev_required_action_text: very_likely
+      cve_record_with_cvss_6_9: very_likely
+      affected_hardware_scope: very_likely
+      arista_vendor_refuses_to_patch_disposition: very_likely
+      arista_vendor_attests_itw_exploitation: likely
+      no_actor_attribution_at_any_source: almost_certainly
+      no_named_victim_at_any_source: almost_certainly
+      unusual_disposition_first_of_kind_in_corpus: very_likely
+      federal_kev_deadline_operational_pressure_for_federal_civilian_agencies: very_likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Actor-or-campaign attribution layer (no attribution at any source — single-source-veto-default)"
+      - "Arista vendor-attested ITW exploitation at strict evidence-basis layer (vendor sole originating attestation; CISA KEV USG telemetry implicit but not published; no Tier-1 IR firm independent telemetry)"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at any source — Hard Rule 2 not triggered"
+      - "CISA KEV 'Known ransomware use: Unknown' — no ransomware operator designation"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming_arista_not_in_defenseclaw_local
+    librarian_handoffs_queued:
+      - action: add_source_to_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "arista-networks-psirt provisional A; vendor-self-disclosure-on-own-product precedent class; first-citation; 72h ratification clock to 2026-06-13T08:00:00-04:00"
+    vuln_tracker_handoffs_queued:
+      - "Scaffold new vuln-dossier for CVE-2026-7473 as tracked KEV-but-unpatched edge case (first of its kind in corpus)"
+      - "Consider scaffolding meta-rollup watch entry for 'KEV-listed CVEs with no vendor patch path' as distinct tracking class"
+      - "Cross-reference parallel cohort CVE-2026-20245 Cisco SD-WAN tracked at threats/vulnerabilities/SD-Wan-Zero-Day-CVE-2026-20245/"
+    resurface_if:
+      - arista_vendor_advisory_direct_retrieval_specific_mitigation_steps_published
+      - tier_1_ir_firm_telemetry_on_attempted_or_successful_exploitation_published
+      - shadowserver_greynoise_opportunistic_scanning_telemetry_published
+      - independent_corroboration_of_arista_vendor_attested_itw_exploitation
+      - public_poc_release
+      - actor_attribution_attached_to_cve
+      - federal_deadline_2026_06_23_compliance_telemetry_published_by_dhs_or_cisa
+      - vendor_policy_reversal_arista_subsequently_ships_patch
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Action-tier item in Active Threats section. UNUSUAL
+      DISPOSITION (vendor refuses to patch on KEV-listed CVE)
+      is FIRST OF ITS KIND in corpus. Single-source veto on
+      ITW attestation layer; procedural facts at "very_likely"
+      with three-source A+B publisher-independence (CISA KEV +
+      Arista PSIRT + SecurityWeek).
+
+      Carrier-class routing exposure at A&D-prime spine,
+      transit, and federal-backbone-adjacent networks. Federal
+      A&D primes with federal civilian agency reach should
+      treat 2026-06-23 as operational deadline regardless of
+      CVSS arithmetic.
+
+      Cross-references parallel cohort CVE-2026-20245 Cisco
+      SD-WAN (KEV-added same day, sub-threshold CVSS but
+      listed — same procedural class).
+
+      Librarian handoff: add arista-networks-psirt to
+      source-grades.yaml as provisional A (vendor-self-
+      disclosure-on-own-product precedent class).
+
+  - id: 2026-06-10-am-005-therecord-uk-weakens-telecoms-cybersecurity-defenses-after-industry-lobbying-salt-typhoon-policy-strategic-layer-five-eyes-ally-defensive-posture
+    covered_in: [2026-06-10-morning]
+    brief_file: threats/briefs/2026-06-10-morning.md
+    headline: "The Record reports UK Government weakened Telecommunications Security Code of Practice (originally drafted in response to Salt Typhoon espionage campaign) after industry pushback from BT / VMO2 / Vodafone / Three / Sky / Ericsson / Amazon Web Services coordinated via TechUK Telecoms Security and Diversification Working Group; weakened Code takes effect mid-July 2026 with five specific protections abandoned or delayed (signalling intrusion detection; untrusted incoming signalling default-security-posture; monthly equipment restarts downgraded to 'only where feasible'; service-account-security deadline pushed 2028 → 2029; vulnerability-mapping timelines delayed); Salt Typhoon attribution is CARRY-CONTEXT from prior reporting (CrowdStrike + MSTIC concurrent attribution history; FamousSparrow alias per finding-2026-05-13-FLASH-0001) — no new tradecraft, no new IOCs, no new victim disclosures; Hard Rule 2 PRESERVED — Archimedes does not originate new attribution; BAE Systems (UK A&D prime watchlist) NOT named; single-source B-grade media-relay at this hour pending UK Government consultation response primary retrieval; OPERATOR ACTION ITEM: consider activating china-cyber standing section in watch-config.yaml (currently commented out)"
+    topic_tags:
+      - strategic-policy-layer
+      - five-eyes-ally-defensive-posture-weakening
+      - uk-telecommunications-security-code-of-practice
+      - weakened-effective-mid-july-2026
+      - five-specific-defenses-abandoned-or-delayed
+      - signalling-intrusion-detection-abandoned
+      - untrusted-incoming-signalling-requirement-abandoned
+      - monthly-equipment-restarts-downgraded
+      - service-account-security-deadline-pushed-2028-to-2029
+      - vulnerability-mapping-implementation-timelines-delayed
+      - industry-lobbying-coalition-bt-vmo2-vodafone-three-sky-ericsson-aws
+      - techuk-telecoms-security-and-diversification-working-group
+      - salt-typhoon-attribution-carry-context-no-new-origination
+      - hard-rule-2-preserved-no-new-attribution
+      - bae-systems-uk-a-d-prime-not-named
+      - single-source-the-record-pending-uk-government-consultation-primary
+      - operator-action-china-cyber-standing-section-activation-decision
+      - other-signal-monitoring
+    related_actors:
+      - actor_name: Salt Typhoon
+        actor_in_roster: true
+        roster_id: "010"
+        roster_tier: HIGH
+        aliases: [GhostEmperor, FamousSparrow, UNC2286, Earth Estries]
+        attribution_layer_note: "carry-context from prior reporting per CrowdStrike + MSTIC concurrent prior attribution history; NOT new origination at this surface; Hard Rule 2 preserved"
+    related_vulns: []
+    related_campaigns:
+      - "Salt Typhoon network-signalling-infrastructure data-siphon campaign (recap from prior reporting; impacted 80+ countries)"
+    finding_ids: [finding-2026-06-10-0005]
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      the_record_published_the_claim_meta_layer: B1
+      uk_government_responded_to_public_consultation_week_ending_2026_06_09: B2
+      weakened_code_takes_effect_mid_july_2026: B2
+      five_specific_defenses_weakened_substantive_list: B2
+      lobbying_parties_named: B2
+      techuk_coordination_role: B2
+      salt_typhoon_attribution_carry_context_no_new_origination: B1
+      no_new_tradecraft_no_new_iocs_no_new_victims_at_this_surface: B1
+      no_ad_prime_named_victim_bae_systems_not_named: B1
+    wep: likely
+    wep_layered:
+      the_record_published_the_claim_meta_layer: very_likely
+      uk_policy_process_response_to_consultation: likely
+      weakened_code_effective_mid_july: likely
+      five_specific_defense_weakening_items_substantive: likely
+      lobbying_parties_named_substantive: likely
+      salt_typhoon_attribution_carry_context: very_likely
+      no_new_tradecraft_iocs_victims_at_this_surface: almost_certainly
+      ad_structural_relevance_via_uk_telecom_dib_overlap: likely
+      five_eyes_ally_defensive_posture_weakening_strategic_layer: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Substantive policy-weakening claim layer (The Record sole source retrieved this sweep; UK Government public consultation response document not directly retrieved by collector)"
+    hard_rule_2_framings_load_bearing:
+      - "Salt Typhoon attribution is carry-context from prior reporting; CrowdStrike + MSTIC concurrent prior attribution history; Archimedes does not originate new attribution"
+      - "FamousSparrow alias documented in prior corpus surface (finding-2026-05-13-FLASH-0001 Bitdefender Azerbaijan O&G three-wave Exchange intrusion)"
+      - "BAE Systems (UK A&D prime watchlist) is NOT named in The Record body"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming_uk_telecom_infrastructure_not_in_defenseclaw_local
+    librarian_handoffs_queued:
+      - action: operator_action_item_china_cyber_standing_section_activation_decision
+        target: infrastructure/watch-config.yaml
+        payload: "Operator decision pending on china-cyber standing section activation (currently commented out). Salt Typhoon #010 HIGH + APT41 + APT40 + Volt Typhoon would belong. Briefer flagged for operator surface."
+    actor_profiler_handoffs_queued:
+      - "Salt Typhoon (#010 HIGH) dossier UPDATE candidate on UK strategic-policy layer — carry-context UPDATE only; NOT a threat-box re-score trigger (no new tradecraft, no new victim, no new TTP)"
+    resurface_if:
+      - uk_government_public_consultation_response_document_directly_retrieved_lifts_b3_to_b2
+      - independent_corroboration_from_another_b_or_a_grade_media_outlet_bbc_ft_reuters_bloomberg
+      - uk_ncsc_public_statement_on_weakened_code_of_practice
+      - tier_1_ir_firm_or_vendor_research_statement_on_salt_typhoon_tradecraft_in_uk_jurisdiction
+      - any_new_salt_typhoon_victim_disclosure_naming_uk_or_nato_a_d_entity
+      - similar_lobbying_pattern_in_us_au_nz_ca_jurisdictions_five_eyes_pattern
+    update_on:
+      - 2026-06-04-pm-002-mi5-fbi-asio-csis-nzsis-the-record-five-eyes-joint-advisory-safeguarding-our-secrets-china-pla-humint-recruitment-linkedin-cleared-personnel
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier "Other Signal" placement. Strategic-
+      policy layer item, not vuln-class. Salt Typhoon
+      attribution is carry-context from prior reporting per
+      Hard Rule 2; no new tradecraft, no new IOCs, no new
+      victim disclosures.
+
+      Operator action item flagged: china-cyber standing
+      section activation decision in watch-config.yaml.
+      Briefer does NOT self-activate per charter; surfaces
+      to operator for decision.
+
+      Single-source posture at this hour pending UK Government
+      consultation response primary retrieval. Five-Eyes-ally-
+      defensive-posture-weakening pattern is novel signal worth
+      tracking; weekly synthesis surface candidate.
+
+      UPDATE on 2026-06-04-pm-002 (Five Eyes counterintelligence
+      joint advisory). Different campaign class (PLA HUMINT vs.
+      Salt Typhoon signals-infrastructure-data-siphon) but same
+      strategic frame (Five Eyes posture vs. PRC adversary
+      operations).
+
+  - id: 2026-06-10-am-006-bleepingcomputer-thn-securityweek-servicenow-api-exploitation-pending-cve-unauthenticated-rest-api-customer-instance-tables-internal-since-april-7
+    covered_in: [2026-06-10-morning]
+    brief_file: threats/briefs/2026-06-10-morning.md
+    headline: "ServiceNow disclosed REST API exploitation 2026-06-09: endpoint /api/now/related_list_edit/create configured with requires_authentication=false allowed unauthenticated user to query customer instance tables; affected scope Australia platform release OR pre-Australia tenants with specific configuration changes; ServiceNow internally aware since 2026-04-07 (initial classification non-urgent per THN single-source); patch applied to hosted customer instances 2026-06-05; advisory published 2026-06-09 (customer-only support portal access-gated); vendor attests evidence of successful queries of instance tables against subset of customers (11-word verbatim Hard Rule 6 preserved); single IPv4 IOC 51.159.98.241 attacker-source-IP (BleepingComputer originating, single-source veto at strict evidence-basis); NO CVE assigned at sweep time (ServiceNow evaluating CVE publication); NO actor attribution (THN explicit 'Unknown threat actors'); NO named victims (subset of customers only); NO defense/aerospace/government sector named; 63-day internal-awareness-to-disclosure delay operationally significant; three publisher-independent B-grade media primaries (BC + THN + SW) converge on procedural facts; vuln-tracker watch-keyword entry recommended"
+    topic_tags:
+      - servicenow
+      - servicenow-australia-platform-release
+      - rest-api-exploitation
+      - requires-authentication-false-misconfiguration
+      - api-now-related-list-edit-create-endpoint
+      - customer-instance-tables-unauthenticated-query
+      - cve-pending-assignment-2026-06-10-to-2026-06-17-window
+      - vendor-attested-exploitation-against-subset-of-customers
+      - single-ipv4-ioc-51-159-98-241
+      - bleepingcomputer-originating-on-ipv4-ioc-single-source-veto-strict-evidence-basis
+      - thn-explicit-unknown-threat-actors
+      - 63-day-internal-awareness-to-disclosure-delay-disclosure-discipline-observable
+      - vendor-advisory-access-gated-customer-only-support-portal
+      - no-cve-no-actor-no-named-victim-no-defense-aerospace-government-sector
+      - vuln-tracker-watch-keyword-entry-recommended-pending-cve-assignment
+      - similar-pattern-to-gogs-cve-assignment-watch-entry
+      - active-threats
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-06-10-0006]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      servicenow_disclosed_incident_2026_06_09: B1
+      internal_awareness_2026_04_07: B1
+      patch_applied_2026_06_05: B1
+      delay_internal_to_disclosure_63_days: B1
+      affected_scope_australia_platform_release_or_pre_australia: B1
+      vulnerability_mechanism_api_endpoint_requires_authentication_false: B1
+      vendor_attested_exploitation_subset_of_customers: B1
+      no_actor_attribution_unknown_threat_actors: B1
+      no_named_victims_no_a_d_named: B1
+      ioc_source_ip_51_159_98_241_bleepingcomputer_originating: B2
+      no_cve_assigned_at_sweep_time_pending: B1
+      servicenow_initial_classification_non_urgent_per_thn_single_source: B2
+      disclosure_discipline_two_month_delay_operationally_significant: B2
+    wep: very_likely
+    wep_layered:
+      servicenow_disclosed_incident_procedural: very_likely
+      internal_awareness_date: very_likely
+      patch_applied_date: very_likely
+      affected_scope: very_likely
+      vulnerability_mechanism_api_misconfiguration: very_likely
+      vendor_attested_exploitation_subset_customers: very_likely
+      no_cve_at_sweep: very_likely
+      no_actor_attribution_unknown_threat_actors: very_likely
+      no_named_victims_no_sector: very_likely
+      single_ipv4_ioc_attacker_source: likely
+      servicenow_initial_classification_non_urgent_per_thn: likely
+      ad_relevance_structural_via_servicenow_tenant_at_a_d_primes: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Single IPv4 IOC 51.159.98.241 at strict evidence-basis layer (BleepingComputer originating; THN + SW relay)"
+      - "ServiceNow 'initial classification: non-urgent, remediation planned for future update' detail (THN single-source)"
+      - "Disclosure-discipline 63-day delay 'operationally significant' editorial inference (not vendor-attested)"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at any source — Hard Rule 2 not triggered"
+      - "THN explicit 'Unknown threat actors'"
+      - "Single IPv4 IOC 51.159.98.241 is attacker-source-IP observable WITHOUT attribution claim"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming_servicenow_tenants_not_observably_in_defenseclaw_local
+    librarian_handoffs_queued:
+      - action: add_vuln_watch_keyword_entry
+        target: infrastructure/watch-config.yaml
+        payload: "servicenow-api-exploitation-2026-06-09; keywords: ServiceNow + ServiceNow Australia + /api/now/related_list_edit/create + requires_authentication=false + 51.159.98.241; first-citation finding-2026-06-10-0006; expected CVE assignment window 2026-06-10 → 2026-06-17"
+    vuln_tracker_handoffs_queued:
+      - "Watch-entry for CVE-assignment landing (similar pattern to Gogs CVE-assignment watch entry)"
+    resurface_if:
+      - cve_assigned_in_nvd_or_mitre
+      - servicenow_public_advisory_publication
+      - additional_victim_disclosures_naming_specific_affected_customers
+      - cisa_kev_addition_once_cve_assigned
+      - tier_1_ir_firm_telemetry_on_ip_51_159_98_241_or_api_endpoint_signature
+      - virustotal_lookup_on_ipv4_ioc_landed
+      - actor_attribution_from_any_tier_1_vendor
+      - cross_platform_similar_misconfiguration_pattern_observed
+      - customer_or_industry_response_to_63_day_delay
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Action-tier item in Active Threats section. CVE pending
+      assignment (expected window 2026-06-10 → 2026-06-17 per
+      vuln-tracker recommendation). Three publisher-independent
+      B-grade primaries converge on procedural facts; vendor
+      advisory access-gated.
+
+      Defender runway is post-patch verification + log
+      retrospective for the 2026-04-07 → 2026-06-05 vendor-
+      awareness window. Single IPv4 IOC 51.159.98.241 with
+      single-source-veto at strict evidence-basis layer.
+
+      63-day internal-awareness-to-disclosure delay is the
+      operationally-significant disclosure-discipline observable
+      — customers may raise with ServiceNow CSM in next cycle.
+
+      Librarian handoff: add vuln-watch-keyword entry for
+      ServiceNow API exploitation pending CVE assignment
+      (similar pattern to Gogs CVE-assignment watch entry
+      precedent).
+
+  - id: 2026-06-10-am-update-007-cve-2026-50751-check-point-vpn-flash-absorption-t-minus-1-federal-deadline-tomorrow
+    covered_in: [flash-2026-06-10-0125, 2026-06-10-morning]
+    brief_file: threats/briefs/2026-06-10-morning.md
+    headline: "UPDATE (FLASH absorption): Check Point Remote Access VPN CVE-2026-50751 (CVSS 9.3, IKEv1 unauth auth bypass) — CISA KEV T-1 federal deadline tomorrow 2026-06-11; morning brief absorbs flash-2026-06-10-0125 Check Point item per T-1 federal deadline pivot; ~32 days of pre-patch exploitation 2026-05-07 → 2026-06-08; three independent A-tier evidence chains (Check Point Research + CISA KEV + Rapid7 ETR) on cluster anchor; Qilin ransomware affiliate attribution is Check Point IR single-source claim — single-source veto on attribution layer (WEP cap 'likely'); operator decision pending on /new-actor Qilin; companion CVE-2026-50752 site-to-site MITM patched but not yet ITW; DIB perimeter exposure layer downgraded to 'likely' per red-team (B3 architectural inference); morning brief audience needs T-1 deadline pivot framing for action prioritization today"
+    topic_tags:
+      - cve
+      - cve-2026-50751
+      - check-point-remote-access-vpn
+      - ikev1-deprecated-protocol-unauth-bypass
+      - cvss-9-3-critical
+      - cisa-kev-add-2026-06-08
+      - 3-day-federal-deadline-cisa-shortest-bod-22-01-window
+      - federal-deadline-2026-06-11-t-minus-1-at-morning-brief
+      - true-zero-day-32-days-pre-patch-exploitation
+      - qilin-ransomware-affiliate-attribution-single-source-check-point-ir
+      - qilin-attribution-layer-capped-likely-per-single-source-veto
+      - companion-cve-2026-50752-site-to-site-mitm-patched-not-itw
+      - three-independent-a-tier-chains-cluster-anchor
+      - dib-perimeter-exposure-likely-per-red-team-downgrade
+      - flash-absorption-to-morning-brief-t-minus-1-pivot
+      - active-threats
+      - update-on-flash-2026-06-10-0125
+    related_actors:
+      - actor_name: Qilin
+        actor_in_roster: false
+        attribution_per: check-point-research
+        attribution_confidence: moderate
+        attribution_layer_wep: likely
+        archimedes_treatment: recorded_as_vendor_claim_not_originated
+    related_vulns: [CVE-2026-50751, CVE-2026-50752]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-10-flash-0000-002]
+    digraph: A1
+    digraph_layered:
+      cluster_anchor: A1
+      cve_exists_facts: A1
+      patch_available_at_disclosure: A1
+      exploitation_timeline_2026_05_07_to_present: A1
+      qilin_attribution_layer: A2
+      companion_cve_50752_not_yet_itw: A2
+      dib_perimeter_exposure_architectural: B3
+    wep: very_likely
+    wep_layered:
+      cve_and_kev_listing: almost_certainly
+      patch_availability_at_disclosure: almost_certainly
+      active_exploitation_observation: very_likely
+      qilin_attribution_layer: likely
+      exploitation_will_continue_against_unpatched_dib_deployments: very_likely
+      ad_perimeter_dib_exposure_red_team_downgraded: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Qilin attribution layer — Check Point IR sole originating source; BleepingComputer + SecurityWeek + Rapid7 + THN + Cybersecurity Dive all relay Check Point's claim"
+    hard_rule_2_framings_load_bearing:
+      - "Qilin attribution recorded as Check Point's vendor IR claim with vendor's confidence language ('linked to' / 'exploited by'); not originated or upgraded by Archimedes"
+      - "Check Point self-interest noted (breached vendor + sole originating attribution source); brief preserves attribution as vendor claim, not Archimedes assessment"
+      - "DIB perimeter exposure is architectural inference (B3); no source names DIB victim or quantifies IKEv1 deployment rate in cleared environments"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -30d
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming_check_point_vpn_not_observed_in_defenseclaw_local
+    librarian_handoffs_queued:
+      - action: mark_flash_queue_entry_superseded
+        target: infrastructure/flash-queue.yaml
+        payload: "Mark flash-2026-06-10-0125 Check Point CVE-2026-50751 component as superseded_by_morning_brief=2026-06-10-morning; the other two FLASH items (Chrome V8 CVE-2026-11645 + LiteLLM CVE-2026-42271) NOT superseded — they remain queued for 09:00 catchup-sweep delivery as standalone FLASH items or remain in the bundled FLASH brief per FLASH-POLICY operator orchestration"
+      - action: source_grade_addition_carried_forward_from_flash
+        target: infrastructure/source-grades.yaml
+        payload: "check-point-research provisional A; vendor-IR-and-research category; first cited finding-2026-06-10-flash-0000-002; 72h ratification clock to 2026-06-13T00:40:00-04:00"
+      - action: roster_addition_proposal_carried_forward_from_flash
+        target: threats/threat-actors/_roster.yaml
+        payload: "Qilin RaaS — operator recommendation /new-actor Qilin"
+    resurface_if:
+      - second_independent_vendor_ir_confirms_qilin_attribution_lifts_single_source_veto
+      - additional_named_victim_disclosed
+      - dib_prime_named_as_victim
+      - first_party_splunk_hit_check_point_vpn_or_ikev1_anomaly
+      - companion_cve_50752_first_observed_in_the_wild
+      - cisa_kev_t_minus_0_deadline_2026_06_11_compliance_check
+      - patch_adoption_data_published_dib_or_industry_wide
+    update_on:
+      - 2026-06-10-flash-0125-001-cve-2026-50751-checkpoint-vpn-ikev1-unauth-bypass-qilin-cisa-kev-3day-federal-deadline-t-minus-1
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      FLASH-to-morning-brief absorption per T-1 federal deadline
+      pivot. Original FLASH coverage (flash-2026-06-10-0125)
+      remains in record; this entry tracks the morning-brief
+      audience re-issue with T-1 framing.
+
+      Supersession decision for librarian:
+        - CVE-2026-50751 (Check Point) — SUPERSEDED by morning
+          brief; mark flash-queue entry accordingly
+        - CVE-2026-11645 (Chrome V8 T-13) — NOT superseded;
+          stands as FLASH-only this cycle
+        - CVE-2026-42271 (LiteLLM) — NOT superseded; stands as
+          FLASH-only this cycle
+
+      Three independent A-tier chains on cluster anchor hold;
+      Qilin attribution layer correctly capped at 'likely'
+      per single-source veto (Check Point IR sole originator).
+      DIB perimeter exposure sub-layer downgraded by red-team
+      from 'very likely' to 'likely' (B3 architectural
+      inference should not project to vl).
+
+      Operator action /new-actor Qilin recommendation carried
+      forward from FLASH coverage; no change in disposition.
+
+  - id: 2026-06-10-am-brief-meta
+    covered_in: [2026-06-10-morning]
+    brief_file: threats/briefs/2026-06-10-morning.md
+    headline: "2026-06-10 morning brief — 7 findings referenced (4 Active Threats + 1 Vulnerabilities + 2 Other Signal monitoring); Check Point CVE-2026-50751 FLASH absorption with T-1 federal deadline pivot tomorrow; three vendor-edge surfaces hit DIB perimeter same morning (Check Point VPN + Ivanti Sentry MDM gateway + Arista carrier-class routing); Microsoft Patch Tuesday 206 fixes compound Windows workload; Shai-Hulud Microsoft 72-repo monitoring + UK Salt Typhoon strategic-policy monitoring with Hard Rule 2 framings preserved on both; pre-flight checklist 13-of-13 passed with word count overage rationale documented (Layer 1 ~1064 words above 800-word top of target range; Layer 2 ~199 words within 150-300 band; Layer 2 character count ~1884 under 1900 hard ceiling); two new provisional-A vendor-PSIRT sources flagged for source-grades.yaml addition (ivanti-psirt + arista-networks-psirt); operator action items: china-cyber section activation decision + /new-actor Qilin decision; FLASH-queue supersession marker for flash-2026-06-10-0125 Check Point item only"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - 7-findings-referenced
+      - 4-active-threats-1-vulnerabilities-2-other-signal-monitoring
+      - flash-absorption-check-point-cve-2026-50751
+      - t-minus-1-federal-deadline-pivot
+      - three-vendor-edge-surfaces-dib-perimeter-same-morning
+      - microsoft-patch-tuesday-206-fixes-windows-workload-compound
+      - shai-hulud-monitoring-hard-rule-2-preserved
+      - uk-salt-typhoon-strategic-policy-monitoring-hard-rule-2-preserved
+      - pre-flight-13-of-13-passed
+      - layer-1-word-count-overage-documented-1064-vs-800-target
+      - layer-2-word-count-199-within-band-and-char-count-1884-under-1900
+      - operator-action-china-cyber-section-activation-decision
+      - operator-action-new-actor-qilin-decision
+      - librarian-handoffs-ivanti-psirt-and-arista-networks-psirt-provisional-a-additions
+      - librarian-flash-queue-supersession-marker-check-point-only
+      - active-threats
+      - vulnerabilities
+      - other-signal
+    findings_referenced:
+      - finding-2026-06-10-0001    # Microsoft June Patch Tuesday 206 flaws Nightmare-Eclipse trio
+      - finding-2026-06-10-0002    # Shai-Hulud Microsoft 72 repos Azure Durable Task SDK monitoring
+      - finding-2026-06-10-0003    # Ivanti Sentry CVE-2026-10520 + CVE-2026-10523 pre-auth RCE pair
+      - finding-2026-06-10-0004    # Arista EOS CVE-2026-7473 KEV no-patch first-of-its-kind
+      - finding-2026-06-10-0005    # UK weakens telecoms post-Salt-Typhoon strategic-policy monitoring
+      - finding-2026-06-10-0006    # ServiceNow REST API exploitation CVE pending
+      - finding-2026-06-10-flash-0000-002    # Check Point CVE-2026-50751 absorbed UPDATE from FLASH
+    related_actors:
+      - actor_name: Qilin
+        actor_in_roster: false
+        operator_action_recommended: /new-actor Qilin
+      - actor_name: Salt Typhoon
+        actor_in_roster: true
+        roster_id: "010"
+        roster_tier: HIGH
+        attribution_layer_note: "carry-context from prior reporting per Hard Rule 2"
+      - actor_name: TeamPCP
+        actor_in_roster: true
+        roster_id: "001"
+        roster_tier: HIGH
+        attribution_layer_note: "explicitly NOT propagated to Shai-Hulud Microsoft surface per Tier-1 declination chain"
+    related_vulns:
+      - CVE-2026-50751   # Check Point IKEv1 — FCEB 2026-06-11 T-1
+      - CVE-2026-7473    # Arista EOS — FCEB 2026-06-23 T-13
+      - CVE-2026-10520   # Ivanti Sentry CVSS 10.0
+      - CVE-2026-10523   # Ivanti Sentry CVSS 9.9
+      - CVE-2026-45585   # YellowKey
+      - CVE-2026-45586   # GreenPlasma
+      - CVE-2020-17103   # MiniPlasma re-patch
+      - CVE-2026-50507   # bitskrieg BitLocker EoP
+      - CVE-2026-49160   # HTTP/2 Bomb IIS variant
+      - CVE-2026-45657   # Windows Kernel UAF RCE
+      - CVE-2026-47291   # Windows HTTP.sys integer overflow RCE
+      - CVE-2026-44815   # Windows DHCP Client buffer overflow RCE
+      - CVE-2026-11645   # Chrome V8 — FCEB June 23 (carry-context only, no re-broadcast)
+      - CVE-2026-42271   # LiteLLM (carry-context only, no re-broadcast)
+    related_campaigns:
+      - nightmare_eclipse_researcher_series_continuing_coverage
+      - vt_006_miasma_family_microsoft_azure_durable_task_sdk_extension
+    pre_flight_check:
+      total: 13
+      passed: 13
+      iterations: 1
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass
+        lead_states_impact_not_context: pass
+        no_banned_phrases: pass
+        standing_sections_present: pass
+        wep_vocabulary_used_with_probability_bands: pass
+        word_count_within_target: pass_with_documented_overage_rationale_high_volume_operational_morning_four_active_threats_plus_flash_absorption_plus_patch_tuesday
+        actor_vuln_references_link_to_repo: pass
+        tlp_noted_where_non_clear: pass_clear_noted
+        single_source_veto_respected: pass
+        quotes_within_15_words_one_per_source: pass
+        discord_summary_section_present_compliant: pass
+    layer_1_word_count: 1064
+    layer_2_word_count: 199
+    layer_2_char_count_estimate: 1884
+    layer_2_char_count_hard_ceiling_under_1900: pass
+    layer_2_word_count_within_band_150_to_300: pass
+    flash_absorption:
+      flash_brief_id: flash-2026-06-10-0125
+      items_absorbed:
+        - CVE-2026-50751   # T-1 federal deadline pivot warranted morning brief absorption
+      items_not_absorbed:
+        - CVE-2026-11645   # T-13 federal deadline — lower urgency; already shipped in FLASH; no re-broadcast (carry-context only pointer in brief)
+        - CVE-2026-42271   # KEV-listed since 2026-06-08; no fresh deadline pressure; already shipped in FLASH (carry-context only pointer)
+      supersession_marker_for_librarian:
+        flash_queue_entry: flash-2026-06-10-0125
+        action: mark_check_point_component_superseded_by_morning_brief_2026_06_10
+        other_components_disposition: chrome_v8_and_litellm_not_superseded_remain_as_flash_only_this_cycle
+    operator_action_items:
+      - id: china_cyber_section_activation_decision
+        action: operator_to_decide_china_cyber_standing_section_activation_in_watch_config_yaml
+        rationale: salt_typhoon_010_high_apt41_apt40_volt_typhoon_would_belong_finding_2026_06_10_0005_strategic_policy_surface_warranted_brief_inclusion
+      - id: new_actor_qilin_decision
+        action: operator_to_decide_invocation_of_slash_new_actor_qilin_command
+        rationale: raas_operator_attested_zero_day_capability_check_point_ir_single_source_a_grade_attribution_relevant_a_d_perimeter_threat_tracking
+      - id: ivanti_psirt_provisional_a_source_grade_addition
+        action: librarian_to_add_ivanti_psirt_to_source_grades_yaml_provisional_a_72h_clock_to_2026_06_13_t_08_00
+        rationale: first_archimedes_corpus_citation_of_ivanti_psirt_as_directly_graded_source_vendor_self_disclosure_on_own_product_precedent_class
+      - id: arista_networks_psirt_provisional_a_source_grade_addition
+        action: librarian_to_add_arista_networks_psirt_to_source_grades_yaml_provisional_a_72h_clock_to_2026_06_13_t_08_00
+        rationale: first_archimedes_corpus_citation_of_arista_networks_psirt_as_directly_graded_source_same_precedent_class
+      - id: servicenow_vuln_watch_keyword_entry
+        action: librarian_to_add_servicenow_api_exploitation_2026_06_09_to_vuln_watch_keywords_in_watch_config_yaml
+        rationale: similar_pattern_to_gogs_cve_assignment_watch_entry_first_citation_finding_2026_06_10_0006_expected_cve_window_2026_06_10_to_2026_06_17
+    resurface_if: []
+    first_covered: 2026-06-10
+    last_covered: 2026-06-10
+    retraction: null
+    test: false
+    notes: |
+      Heavy operational morning. Four Active Threats items
+      (Check Point FLASH absorption + Ivanti Sentry + Arista
+      EOS KEV-but-unpatched + ServiceNow CVE-pending), one
+      Vulnerabilities lead (Microsoft Patch Tuesday 206 flaws
+      with Nightmare-Eclipse trio + three 9.8 critical RCEs),
+      and two monitoring-tier Other Signal items (Shai-Hulud
+      Microsoft + UK Salt Typhoon strategic-policy).
+
+      FLASH absorption decision: Check Point CVE-2026-50751
+      absorbed into morning brief per T-1 federal deadline
+      pivot tomorrow 2026-06-11. Chrome V8 CVE-2026-11645
+      (T-13) and LiteLLM CVE-2026-42271 not absorbed —
+      already shipped in flash-2026-06-10-0125; carry-context
+      pointer only in brief.
+
+      Word count overage on Layer 1 documented and accepted:
+      ~1064 words vs 800-word top of standard 400-800 target
+      band. Volume-of-action justifies overage. Compare to
+      prior comparable heavy morning briefs (2026-06-04
+      morning 894 words). Layer 2 within target at ~199 words
+      and ~1884 chars under 1900 hard ceiling.
+
+      Hard Rule 2 framings load-bearing across multiple items:
+        - Qilin attribution = Check Point IR single-source
+          claim, not Archimedes origination
+        - Nightmare-Eclipse = researcher pseudonym, NOT
+          threat actor; not roster-tiered
+        - Shai-Hulud Microsoft 72-repo = no TeamPCP
+          attribution propagated; Tier-1 declination chain
+          (Unit 42 + MSTIC) binds against propagation
+        - Salt Typhoon UK telecoms = carry-context from
+          prior reporting per CrowdStrike + MSTIC concurrent
+          attribution history; no new origination
+
+      Operator action items surfaced explicitly in brief
+      frontmatter and body — china-cyber section activation
+      decision; /new-actor Qilin decision; two PSIRT source-
+      grade additions; ServiceNow vuln-watch-keyword entry.
+
+      Pre-flight 13-of-13 passed on first iteration. No
+      regenerations required at the section level.
 
 # ============================================================================
 # Valid resurface_if conditions

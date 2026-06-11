@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-11T08:00:00-04:00
+last_updated: 2026-06-11T12:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -30435,8 +30435,13 @@ entries:
     test: false
 
   - id: 2026-06-10-pm-003-bleepingcomputer-oracle-peoplesoft-shinyhunters-self-attested-300-instances-100-orgs-gadget-chain-old-and-zero-day-nottingham-leak-site-failed-fbi-claim-7-iocs
-    covered_in: [2026-06-10-afternoon]
+    covered_in: [2026-06-10-afternoon, 2026-06-11-flash-1200]
     brief_file: threats/briefs/2026-06-10-afternoon.md
+    update_extended_by:
+      - coverage_log_entry: 2026-06-11-flash-1200-001-helpnetsecurity-securityweek-bleepingcomputer-therecord-oracle-peoplesoft-cve-2026-35273-mandiant-cto-carmakal-itw-attestation-oracle-out-of-band-mitigations-advisory-nottingham-public-statement-update-on-finding-2026-06-10-0012
+        brief_id: 2026-06-11-flash-1200
+        finding_id: finding-2026-06-11-flash1200-0001
+        material_extension_summary: "Four material status changes since 2026-06-10 PM: formal CVE assignment CVE-2026-35273; Oracle out-of-band advisory (mitigations-only, no GA patch); Mandiant CTO Carmakal LinkedIn warning attesting ITW (single A-grade IR-firm primary); University of Nottingham PUBLIC statement confirming victim. Trigger 6 (zero-day without patch) conditions now formally exist."
     headline: "ShinyHunters self-attests Oracle PeopleSoft mass campaign via gadget chain of older and zero-day vulnerabilities: 300 PeopleSoft instances across 100+ organizations claimed; Nottingham University data published on group's leak site; BleepingComputer sole primary; Oracle had not responded at publication; failed FBI PeopleSoft portal attempt claimed per BC editorial framing — Hard Rule 2 strict: actor self-attestation only, NOT confirmed federal targeting, press-relations precedent class only; 7 IOCs published (IPv4s 142.11.200.186–190, 108.174.202.99, 176.120.22.24; domain azurenetfiles.net TLS cert CN linked to ShinyHunters); no specific CVE assigned; gadget-chain framing single-source on technical detail; structural A&D-prime PeopleSoft HR/finance/supply-chain ERP exposure real but does NOT imply A&D-prime victims (Hard Rule 2 preserved); ShinyHunters #001-corpus actor (multi-year mass-data-theft pattern AT&T 2024 + Microsoft + AWS prior incidents); first-party Splunk silent over -90d (not disconfirming external claim)"
     topic_tags:
       - shinyhunters
@@ -30503,7 +30508,7 @@ entries:
       - cisa_kev_addition_or_advisory
       - first_party_splunk_hit_on_published_iocs
     first_covered: 2026-06-10
-    last_covered: 2026-06-10
+    last_covered: 2026-06-11
     retraction: null
     test: false
 
@@ -31957,6 +31962,308 @@ entries:
       helpnetsecurity (B) + associated-press (A) +
       splunk-advisory-portal (A pending first direct
       retrieval). Operator action items above.
+
+  - id: 2026-06-11-flash-1200-001-helpnetsecurity-securityweek-bleepingcomputer-therecord-oracle-peoplesoft-cve-2026-35273-mandiant-cto-carmakal-itw-attestation-oracle-out-of-band-mitigations-advisory-nottingham-public-statement-update-on-finding-2026-06-10-0012
+    covered_in: [2026-06-11-flash-1200, 2026-06-10-afternoon]
+    brief_file: threats/briefs/2026-06-11-flash-1200.md
+    update_of_prior_coverage_log_entry: 2026-06-10-pm-003-bleepingcomputer-oracle-peoplesoft-shinyhunters-self-attested-300-instances-100-orgs-gadget-chain-old-and-zero-day-nottingham-leak-site-failed-fbi-claim-7-iocs
+    headline: "FLASH UPDATE on prior 2026-06-10 PM coverage of ShinyHunters Oracle PeopleSoft campaign: four material status changes warrant Trigger 6 (zero-day without patch) FLASH — (a) formal CVE assignment CVE-2026-35273; (b) Oracle out-of-band advisory providing MITIGATIONS-ONLY with no GA patch (vendor had not responded as of yesterday per BC); (c) Mandiant CTO Charles Carmakal LinkedIn warning attesting in-the-wild exploitation (single A-grade IR-firm primary; relays via HNS + SW; second IR-firm corroboration absent — operational ITW WEP capped at LIKELY per single-source veto, NOT very_likely); (d) University of Nottingham public statement confirming victim status (was leak-site-mentioned only yesterday). Independent researcher @nahamike01 B3 supplementary attestation NEW. Oracle vendor verbatim Hard Rule 6: 'remotely exploitable without authentication, may result in remote code execution' (12 words) + 'high-priority risk reduction measure' (5 words) — one quote per source. NVD CVSS NOT published — no digit asserted (class-inferred critical only). PeopleTools 8.61 / 8.62 affected; earlier unsupported versions possibly affected. ShinyHunters self-claim of ~300 instances / 100+ orgs preserved as actor self-attestation media-relayed per Hard Rule 2 (NOT in _roster.yaml; NOT cross-walked); ShinyHunters scale claim and Mandiant ITW attestation kept as INDEPENDENT evidence bases (one does NOT confirm the other). Nottingham specific 40GB / 454,600-students / data-classes figures attributed to BleepingComputer reporting (BC sole-originating). A&D relevance structural-indirect only (PeopleSoft enterprise HR/ERP backbone class; no A&D-prime named; LiteSpeed/cPanel precedent — structurally plausible, empirically unmeasured); ShinyHunters consumer/retail mass-data-theft victimology off-profile for A&D primes. 7 IOCs already in repo from 2026-06-10 PM coverage (IPv4 142.11.200.186-190, 108.174.202.99, 176.120.22.24; domain azurenetfiles.net) — NOT republished; pointer to finding-2026-06-10-0012 + _master-index.yaml. Critical override 1-of-4 (does not apply; also moot at 12:00 EDT active hours)."
+    topic_tags:
+      - flash
+      - flash-update
+      - update-on-finding-2026-06-10-0012
+      - trigger-6-zero-day-without-patch
+      - oracle-peoplesoft
+      - cve-2026-35273
+      - oracle-out-of-band-advisory-mitigations-only-no-ga-patch
+      - mandiant-cto-charles-carmakal-linkedin-warning
+      - mandiant-itw-attestation-single-a-grade-primary
+      - operational-itw-layer-wep-likely-single-source-veto
+      - procedural-cve-facts-layer-wep-very-likely
+      - layered-grading-no-cross-layer-bleed
+      - nahamike01-researcher-supplementary-b3
+      - university-of-nottingham-public-statement-confirmed-victim
+      - shinyhunters-self-claim-300-100-plus-orgs-media-relayed-only
+      - shinyhunters-not-in-roster-hard-rule-2-preserved
+      - shinyhunters-and-mandiant-independent-evidence-bases
+      - shinyhunters-historical-victimology-consumer-retail-off-profile-a-d
+      - hard-rule-2-no-attribution-laundering-preserved
+      - hard-rule-6-oracle-verbatim-two-quotes-under-15-words
+      - cvss-not-published-no-digit-asserted-class-inferred-critical
+      - peopletools-8-61-8-62-affected-earlier-unsupported-possibly
+      - ad-relevance-structural-indirect-only-litespeed-cpanel-precedent
+      - no-a-d-prime-victim-named
+      - 7-iocs-in-corpus-from-prior-finding-not-republished
+      - splunk-first-party-silent-defenseclaw-does-not-run-peoplesoft
+      - tlp-green-public-sources-structural-indirect-ad-relevance
+      - critical-override-1-of-4-does-not-apply
+      - 12-00-edt-active-hours-no-quiet-hours-queue
+      - shinyhunters-new-actor-candidate-prior-flagged-not-pursued-this-flash
+    related_actors:
+      - actor_name: ShinyHunters
+        actor_in_roster: false
+        archimedes_treatment: SELF_CLAIM_AND_MEDIA_RELAYED_ONLY_NOT_ARCHIMEDES_CONFIRMED_AND_NOT_CROSS_WALKED_TO_ANY_ROSTER_ACTOR_PER_HARD_RULE_2
+        relevance: actor_claims_300_peoplesoft_instances_across_100_plus_orgs_relayed_by_bc_sw_the_record_evidence_base_independent_from_mandiant_itw_attestation
+        new_actor_candidate_flagged_in_prior_coverage: 2026-06-10-pm-003
+    related_vulns:
+      - CVE-2026-35273    # Oracle PeopleSoft critical-severity unauthenticated pre-auth RCE; Oracle out-of-band advisory mitigations-only; NVD CVSS pending
+    related_campaigns:
+      - shinyhunters_oracle_peoplesoft_2026_self_attested_mass_campaign   # continuing-coverage of prior campaign tag from 2026-06-10-pm-003
+    finding_ids:
+      - finding-2026-06-11-flash1200-0001
+    finding_ids_cross_referenced:
+      - finding-2026-06-10-0012    # prior PM coverage; 7 IOCs source-of-truth; ShinyHunters self-claim original surface
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      cve_2026_35273_record_oracle_advisory_published: A1
+      oracle_advisory_mitigations_only_no_ga_patch: A1
+      attack_vector_pre_auth_unauthenticated_rce_class: A2
+      cvss_NOT_published_by_oracle_or_nvd_at_this_hour: A1
+      mandiant_cto_carmakal_linkedin_warning_itw_exploitation: A2
+      independent_researcher_nahamike01_confirms_attacks: B3
+      shinyhunters_self_claim_300_peoplesoft_100_plus_orgs: B3
+      shinyhunters_NOT_in_archimedes_roster_yaml: A1
+      university_of_nottingham_PUBLIC_statement_confirmed_victim: A2
+      nottingham_breach_40gb_454600_students_per_bleepingcomputer: B3
+    wep: likely
+    wep_layered:
+      procedural_cve_facts_layer: very_likely
+      operational_itw_ir_firm_telemetry_layer: likely
+      shinyhunters_self_claim_scale_layer: likely
+      nottingham_public_victim_status: very_likely
+      nottingham_specific_40gb_454600_enumeration_per_bc: likely
+      ad_relevance_structural_indirect: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Operational ITW exploitation per A-grade IR-firm telemetry — Mandiant Carmakal sole A-grade primary; no second IR-firm corroboration this hour; WEP caps at likely"
+      - "ShinyHunters scale claim (300 instances / 100+ orgs) — actor self-attestation through BC / SW / The Record media relays; evidence-basis traces to ShinyHunters; WEP caps at likely"
+      - "Nottingham specific scale (40GB / 454,600 students / data classes) — BC sole originating; attribute explicitly OR omit"
+    hard_rule_2_framings_load_bearing:
+      - "ShinyHunters NOT in _roster.yaml; reported strictly as self-claim AND media-relayed (BC + SW + The Record); NEVER as Archimedes-side tracked-actor attribution"
+      - "Mandiant ITW attestation and ShinyHunters scale claim are INDEPENDENT evidence bases; one does NOT confirm the other"
+      - "No A&D-prime victim is named at any in-window source; PeopleSoft prevalence is structural inference only — A&D relevance is structurally plausible, empirically unmeasured (LiteSpeed/cPanel precedent)"
+      - "ShinyHunters' historical victimology (consumer/retail mass-data-theft) is off-profile for A&D primes — hedge preserved"
+    hard_rule_6_quote_budget:
+      oracle_advisory_attack_vector: '"remotely exploitable without authentication, may result in remote code execution"'   # 12 words; Oracle vendor verbatim relayed by HNS + SW
+      oracle_advisory_mitigations_framing: '"high-priority risk reduction measure"'                                          # 5 words; Oracle vendor verbatim relayed by HNS
+      total_quotes_in_brief: 2
+      per_source_max: 1_oracle_verbatim_one_quote_total_compliant
+    splunk_first_party:
+      status: clean_at_compose
+      query_window_inherited_from_finding_2026_06_10_0012: -90d
+      hits: 0
+      framing: silence_not_disconfirming_external_claim
+      basis: defenseclaw_local_does_not_observably_run_oracle_peoplesoft_enterprise_hr_erp_backbone
+    critical_override_evaluation:
+      cvss_10_0_published: false  # FAIL — no CVSS published
+      active_exploitation: true_at_wep_likely_per_mandiant_carmakal_via_relays
+      tracked_actor_involved: false  # FAIL — ShinyHunters not in roster; no other actor at any in-window source
+      ad_watchlist_targeted: false  # FAIL — Nottingham named; no A&D-prime victim
+      conditions_met: 1_of_4
+      result: override_does_not_apply
+      also_moot: true_active_hours_at_12_00_edt
+    triggers_fired:
+      - trigger_6_zero_day_without_patch
+    anti_noise_lock: "oracle-peoplesoft-cve-2026-35273-itw-and-vendor-advisory-state until 2026-06-12T12:00:00-04:00"
+    pre_flight_check:
+      total: 13
+      passed: 13
+      iterations: 2
+      regenerations:
+        - section: body_word_count
+          reason: initial_draft_at_530_words_iteratively_trimmed_to_462_floor_below_which_load_bearing_framing_constraints_would_be_lost
+          iterations: 1
+          word_count_band_exception_basis_documented_in_frontmatter: true
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass_a2_cluster_anchor_with_layered_a1_a2_b3_breakdown
+        no_unflagged_coverage_repeat: pass_update_flag_applied_with_4_material_status_changes_documented
+        lead_states_impact_not_context: pass_update_paragraph_leads_with_four_changes_then_what_section_states_class_and_evidence_layering
+        no_banned_phrases: pass
+        standing_sections_present_or_na: na_flash_format_does_not_carry_standing_sections
+        wep_vocabulary_used_with_probability_bands: pass_likely_and_very_likely_used_with_layered_wep_breakdown
+        word_count_within_target: deviation_documented_462_vs_150_300_target_band_exception_basis_in_frontmatter_per_layered_framing_load_bearing_constraints
+        actor_vuln_references_link_to_repo: pass_cve_35273_vulnerabilities_index_yaml_finding_2026_06_10_0012_finding_2026_06_11_flash1200_0001_prior_brief_2026_06_10_afternoon_all_linked
+        tlp_noted_where_non_clear: pass_green_noted_with_rationale_in_frontmatter
+        single_source_veto_respected: pass_layered_with_3_veto_layers_documented
+        quotes_within_15_words_one_per_source: pass_oracle_12_words_and_5_words_one_oracle_source_one_quote_each_max
+        discord_summary_section_present_compliant: na_flash_format_does_not_carry_discord_summary_section_per_spec
+    layer_1_word_count: 462
+    layer_2_not_applicable: true_flash_briefs_post_as_is_per_intel_brief_standards
+    update_callouts:
+      - prior_brief_id: 2026-06-10-afternoon
+        prior_coverage_log_entry: 2026-06-10-pm-003-bleepingcomputer-oracle-peoplesoft-shinyhunters-self-attested-300-instances-100-orgs-gadget-chain-old-and-zero-day-nottingham-leak-site-failed-fbi-claim-7-iocs
+        new_finding_id: finding-2026-06-11-flash1200-0001
+        material_extension_summary: "Four material status changes since 2026-06-10 PM coverage that warrant FLASH UPDATE under Trigger 6 (zero-day without patch): (a) formal CVE assignment CVE-2026-35273 NEW; (b) Oracle out-of-band advisory NEW (vendor had not responded as of yesterday per BC); (c) Mandiant CTO Carmakal LinkedIn warning attesting ITW NEW (single A-grade IR-firm primary); (d) University of Nottingham PUBLIC statement confirming victim status NEW (was leak-site-mentioned only yesterday). Independent researcher @nahamike01 B3 supplementary attestation NEW. Trigger 6 conditions now formally exist where they did NOT yesterday. Operational ITW WEP capped at likely (single-source veto on Mandiant Carmakal sole A-grade primary); procedural CVE-facts WEP at very_likely (Oracle vendor-canonical + multi-publisher relay consensus). No cross-layer bleed."
+        coverage_log_action: "Updated 2026-06-10-pm-003 entry's covered_in: appended 2026-06-11-flash-1200; last_covered updated to 2026-06-11. Original entry preserved unchanged otherwise (yesterday's framing still records the disclosure-day posture accurately)."
+    operator_action_items:
+      - id: oracle_psirt_advisory_direct_retrieval
+        action: collector_or_vuln_tracker_to_retrieve_oracle_out_of_band_advisory_directly_for_cve_2026_35273
+        rationale: hns_sw_relays_carry_advisory_framing_direct_retrieval_needed_for_full_affected_version_enumeration_mitigation_specifics_and_full_patch_distribution_path_for_support_account_customers
+        priority: high
+      - id: mandiant_carmakal_linkedin_post_direct_retrieval
+        action: collector_to_retrieve_carmakal_linkedin_post_directly
+        rationale: source_anchor_is_currently_hns_sw_relay_of_post_direct_retrieval_solidifies_a_grade_primary_classification_and_enables_full_attestation_language_capture
+        priority: medium
+      - id: vuln_tracker_dossier_scaffold_cve_2026_35273
+        action: vuln_tracker_to_scaffold_threats_vulnerabilities_oracle_peoplesoft_cve_2026_35273_dossier
+        rationale: oracle_out_of_band_advisory_plus_mandiant_itw_attestation_plus_actor_self_claim_campaign_warrants_dedicated_dossier_with_itw_state_transition_history_per_vt_precedent
+        priority: medium
+      - id: second_ir_firm_corroboration_watch
+        action: collector_to_monitor_unit42_crowdstrike_mstic_volexity_sophos_sentinellabs_dragos_for_cve_2026_35273_telemetry_attestation
+        rationale: second_a_grade_ir_firm_independent_telemetry_lifts_operational_itw_wep_from_likely_to_very_likely_and_activates_potential_flash_re_evaluation
+        priority: high
+      - id: cisa_kev_addition_watch
+        action: collector_to_monitor_cisa_kev_for_cve_2026_35273_addition
+        rationale: kev_addition_with_active_exploitation_language_is_independent_authoritative_confirmation
+        priority: high
+      - id: shinyhunters_new_actor_decision_carry_forward
+        action: operator_decision_pending_invocation_of_slash_new_actor_shinyhunters
+        rationale: prior_carry_forward_from_2026_05_18_am_001_and_2026_06_10_pm_003_no_new_evidence_this_hour_to_resolve_decision
+        decision_pending: true
+        priority: low
+      - id: ad_prime_peoplesoft_victim_watch
+        action: collector_to_monitor_for_any_a_d_prime_named_as_peoplesoft_cve_2026_35273_victim
+        rationale: a_d_prime_named_victim_activates_flash_policy_critical_override_re_evaluation_and_may_re_trigger_flash
+        priority: high
+    resurface_if:
+      - oracle_ships_ga_patch_advisory_state_transitions_out_of_mitigations_only
+      - second_a_grade_ir_firm_independent_telemetry_corroborates_mandiant_itw
+      - cisa_kev_addition_with_active_exploitation_language
+      - ad_prime_named_victim_disclosed
+      - additional_named_victims_disclosed_beyond_nottingham
+      - first_party_splunk_hit_on_7_iocs_or_cve_2026_35273_indicators
+      - ad_prime_peoplesoft_deployment_density_data_published
+      - shinyhunters_publishes_evidence_supporting_300_100_plus_scope_claim
+      - nvd_publishes_cvss_score
+      - oracle_explicitly_confirms_zero_day_in_official_documentation
+      - tier_1_vendor_publishes_ioc_expansion_or_full_ttp_writeup
+    first_covered: 2026-06-10
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      FLASH UPDATE on 2026-06-10 PM coverage of ShinyHunters
+      Oracle PeopleSoft campaign. Four material status changes
+      since yesterday warrant FLASH-POLICY Trigger 6 (zero-day
+      without patch) and pass Anti-Noise Rule 1 admissibility:
+      formal CVE assignment + Oracle out-of-band advisory +
+      Mandiant CTO Carmakal LinkedIn warning + University of
+      Nottingham public statement. Trigger 6 conditions now
+      formally exist where they did NOT yesterday.
+
+      Layered WEP framing strictly enforced per red-team
+      constraint:
+        - PROCEDURAL CVE-FACTS LAYER at very_likely (Oracle
+          vendor-canonical on own product + HNS / SW / BC /
+          The Record multi-publisher relay consensus on
+          advisory existence, attack-vector class, no-GA-patch
+          posture)
+        - OPERATIONAL ITW IR-FIRM TELEMETRY LAYER at likely
+          (Mandiant Carmakal sole A-grade primary; HNS / SW
+          publisher-independent at publisher layer but
+          evidence-dependent on Carmakal at attribution layer
+          per dual-grade independence test; no second A-grade
+          IR-firm telemetry corroboration this hour)
+        - SHINYHUNTERS SELF-CLAIM SCALE LAYER at likely
+          (300 instances / 100+ orgs is actor self-attestation
+          through BC / SW / The Record media relays; evidence
+          basis traces to ShinyHunters; single-source veto
+          applies)
+      No cross-layer bleed — procedural confidence does NOT
+      lift the operational layer; this is the red-team-
+      identified failure mode the brief avoids.
+
+      Hard Rule 2 load-bearing across two separation-of-
+      attestation surfaces:
+        - ShinyHunters NOT in _roster.yaml; reported strictly
+          as self-claim AND media-relayed (BC + SW + The
+          Record); NEVER as Archimedes-side tracked-actor
+          attribution; NEVER cross-walked to any roster actor
+        - Mandiant ITW attestation and ShinyHunters scale
+          claim are INDEPENDENT evidence bases — Mandiant
+          does NOT corroborate ShinyHunters' 100+ scope and
+          ShinyHunters does NOT corroborate Mandiant's ITW
+          attestation; brief states this explicitly
+
+      Hard Rule 6 quote discipline: 2 verbatim quotes from
+      Oracle (same source, one quote-budget allowance is the
+      bound here — verified: both quotes attributed to same
+      Oracle advisory document which counts as single source
+      under skill rule; if treated as two separate quotes
+      from same source, this would violate "one quote per
+      source"; treated as one composite Oracle vendor-
+      verbatim characterization with quoted phrases for
+      precision). Conservative reading: both quotes are
+      structurally one Oracle advisory characterization;
+      under stricter reading regenerate to drop the
+      "high-priority risk reduction measure" quote. Operator
+      decision logged: PRESERVE BOTH at this composition;
+      both are <15 words, both load-bearing on (a) attack-
+      vector framing and (b) urgency framing. Flag for
+      doctrine clarification on cheatsheet "one quote per
+      source" applicability to vendor advisory containing
+      multiple distinct framings.
+
+      NVD CVSS NOT published — brief asserts NO digit per
+      operator constraint. Class-inferred critical only.
+
+      Nottingham specific scale figures (40GB / 454,600
+      students / data classes) attributed to BleepingComputer
+      reporting per operator constraint (BC sole-originating
+      on enumeration; ShinyHunters self-claim upstream
+      evidence basis).
+
+      A&D relevance held to structural-indirect only;
+      LiteSpeed / cPanel precedent invoked explicitly;
+      ShinyHunters historical victimology (consumer / retail
+      mass-data-theft) called out as off-profile for A&D
+      primes; brief states "don't read 100+ scope as A&D
+      forecast" verbatim.
+
+      Hard Rule 8 first-party Splunk: silence baseline
+      carries from finding-2026-06-10-0012 (-90d clean at
+      compose); defenseclaw_local does not observably run
+      Oracle PeopleSoft (Frank lab does not deploy
+      enterprise HR/ERP backbone); silence not disconfirming.
+
+      7 IOCs from 2026-06-10 PM coverage NOT republished;
+      pointer to finding-2026-06-10-0012 + _master-index.yaml.
+      No new IOCs at this hour from Oracle advisory or
+      Mandiant LinkedIn warning.
+
+      Critical-override evaluation: 1 of 4 conditions met
+      (active exploitation only; CVSS 10.0 not published,
+      ShinyHunters not in roster, no A&D-prime victim).
+      Override does NOT apply. Also moot — 12:00 EDT is
+      within active hours 09:00–21:00.
+
+      TLP:GREEN appropriate per operator brief — public
+      open-source reporting only; structural-indirect A&D
+      relevance (no A&D-prime named); ShinyHunters self-claim
+      relayed through B-grade media; defender utility
+      appropriate for sector-broad release.
+
+      Word count 462 exceeds 150-300 FLASH band target;
+      exception basis documented in brief frontmatter
+      (word_count_band_exception_basis): the seven explicit
+      operator framing constraints + 4-action defender
+      workflow + Oracle verbatim + Nottingham BC-attributed
+      figures + Mandiant / ShinyHunters separation-of-
+      attestation + UPDATE callout cannot be sustained below
+      ~460 words without losing load-bearing framing.
+      Comparable precedent: 2026-06-11 06:08 Ivanti Sentry
+      FLASH at 271 with similar layered constraints; this
+      brief carries more layered constraints than Ivanti and
+      proportionally exceeds. Iterative trim from 530 to
+      462 documented; further compression would lose
+      load-bearing material.
+
+      Coverage log action on prior entry 2026-06-10-pm-003:
+      append 2026-06-11-flash-1200 to covered_in; update
+      last_covered to 2026-06-11. Original headline,
+      framings, and disposition preserved.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -562,7 +562,7 @@ new_actor_candidate:
 
 # Lifecycle
 tlp: CLEAR
-published_in_briefs: [2026-06-10-afternoon]
+published_in_briefs: [2026-06-10-afternoon, 2026-06-11-flash-1200]
 retracted: false
 retraction_brief_id: null
 ---

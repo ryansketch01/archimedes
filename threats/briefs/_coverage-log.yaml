@@ -29349,7 +29349,7 @@ entries:
       platform vendor victim.
 
   - id: 2026-06-10-am-003-rapid7-etr-bleepingcomputer-securityweek-ivanti-sentry-cve-2026-10520-cvss-10-os-command-injection-cve-2026-10523-cvss-9-9-auth-bypass-patched-no-itw
-    covered_in: [2026-06-10-morning]
+    covered_in: [2026-06-10-morning, 2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520]
     brief_file: threats/briefs/2026-06-10-morning.md
     headline: "Ivanti Sentry CVE-2026-10520 OS command injection CWE-78 CVSS 10.0 maximum severity (remote unauth attacker → RCE as root) + CVE-2026-10523 authentication bypass CVSS 9.9 (remote unauth attacker → arbitrary administrative account creation + full admin access) — both pre-auth RCE on the enterprise mobile-device-management gateway (formerly MobileIron Sentry); both patched at disclosure 2026-06-09; Ivanti vendor attestation 'not aware of any customers being exploited' (8 words, Hard Rule 6 preserved) — single-source veto on no-customer-exploitation attestation layer; Rapid7 ETR A-grade originating clarifier + BleepingComputer + SecurityWeek publisher-independent B-grade media relays; A&D defensive priority: ITAR-cleared workforce mobile-device estates accessing M365 GCC / GCC-High / SharePoint / e-discovery; cross-references Ivanti PSIRT corpus precedent CVE-2026-6973 EPMM KEV 2026-05-07; librarian handoff to add ivanti-psirt to source-grades.yaml as provisional A"
     topic_tags:
@@ -29372,6 +29372,9 @@ entries:
     related_vulns: [CVE-2026-10520, CVE-2026-10523, CVE-2026-6973]
     related_campaigns: []
     finding_ids: [finding-2026-06-10-0003]
+    superseded_by_finding: finding-2026-06-11-0001
+    superseded_by_brief: 2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520
+    supersession_layer: itw_posture_only_cve_record_unchanged
     digraph: A2
     digraph_layered:
       cluster_anchor: A2
@@ -29419,7 +29422,7 @@ entries:
       - actor_attribution_attached_to_disclosure_surfaces
       - first_reported_in_the_wild_exploitation_event
     first_covered: 2026-06-10
-    last_covered: 2026-06-10
+    last_covered: 2026-06-11
     retraction: null
     test: false
     notes: |
@@ -29443,6 +29446,235 @@ entries:
       Librarian handoff: add ivanti-psirt to source-grades.yaml
       as provisional A (vendor-self-disclosure-on-own-product
       precedent class).
+
+      SUPERSEDED ON ITW POSTURE LAYER ONLY 2026-06-11 06:08 EDT
+      by FLASH 2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520
+      (finding-2026-06-11-0001). Shadowserver Foundation scanning
+      telemetry now contradicts the vendor "not aware of any
+      customers being exploited" attestation (which yesterday
+      was already capped at WEP likely per single-source veto).
+      19 vulnerable Internet-exposed instances scanned; 2
+      confirmed backdoored. watchTowr Labs PoC published
+      2026-06-10. CVE record (CVSS 10.0 / 9.9, patched versions,
+      mechanism class) is UNCHANGED. Defender posture changes
+      from patch-per-standard-cadence → emergency patch +
+      compromise-hunt + perimeter IOC monitoring on POST
+      /mics/api/v2/sentry/mics-config/handleMessage.
+
+  - id: 2026-06-11-flash-0608-001-shadowserver-watchtowr-bleepingcomputer-helpnetsecurity-ivanti-sentry-cve-2026-10520-itw-state-transition
+    covered_in: [2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520]
+    brief_file: threats/briefs/2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520.md
+    brief_type: flash
+    headline: "Ivanti Sentry CVE-2026-10520 (CVSS 10.0 pre-auth root RCE, OS command injection CWE-78) — UPDATE on 2026-06-10 AM brief (finding-2026-06-10-0003): vendor 'not aware of any customers being exploited' attestation (yesterday already single-source-vetoed to WEP likely) now contradicted by Shadowserver Foundation scanning telemetry attesting 'large amount of Ivanti Sentry exploitation attempts based on the public PoC' — 19 vulnerable Internet-exposed instances scanned, 2 confirmed backdoored; watchTowr Labs PoC published 2026-06-10 (lab-controlled reproduction confirms 'Pre-Authenticated Command Injection' against POST /mics/api/v2/sentry/mics-config/handleMessage); early post-patch exploitation activity observed within ~24h of PoC publication; cluster anchor WEP red-team-adjusted very_likely → likely (Shadowserver sole originating scanner this hour, watchTowr PoC publication is precondition not corroboration); mechanism-layer WEPs (CVSS, patched versions R10.5.2/R10.6.2/R10.7.1, vulnerable endpoint, PoC URL existence) hold at very_likely; CVE-2026-10523 (CVSS 9.9 auth bypass, same advisory) not named in this hour's attestation but remains exploitable; defender action — emergency patch + Sentry access-log compromise-hunt + perimeter proxy IOC on named endpoint pathway; word 'mass' deliberately excluded per red-team review constraint; Hard Rule 2 preserved (no attribution, no speculation among operational readings); CISA KEV addition expected 24-72h; queued under quiet hours, status: queued for librarian flash-queue handoff"
+    topic_tags:
+      - flash
+      - cve
+      - cve-2026-10520
+      - cve-2026-10523
+      - ivanti-sentry
+      - ivanti-psirt
+      - shadowserver
+      - watchtowr
+      - watchtowr-labs
+      - bleepingcomputer
+      - helpnetsecurity
+      - cvss-10-0-pre-auth-root-rce-os-command-injection-cwe-78
+      - cvss-9-9-auth-bypass
+      - patched-versions-r10-5-2-r10-6-2-r10-7-1
+      - public-poc-published-2026-06-10
+      - early-post-patch-exploitation-activity-within-24h-of-poc-publication
+      - vulnerable-endpoint-post-mics-api-v2-sentry-mics-config-handlemessage
+      - shadowserver-19-vulnerable-2-backdoored-single-source-on-specific-numbers
+      - vendor-no-customer-exploitation-attestation-contradicted-by-shadowserver-telemetry
+      - itw-posture-state-transition-supersession-finding-2026-06-10-0003
+      - cluster-anchor-wep-red-team-adjusted-very-likely-to-likely
+      - mechanism-layer-weps-preserved-at-very-likely
+      - mass-word-prohibited-per-red-team-constraint
+      - hard-rule-2-no-attribution-no-operational-reading-speculation
+      - hard-rule-6-quotes-15-words-one-per-source
+      - perimeter-security-device-weaponization-cluster-q1-q2-2026
+      - mdm-gateway-itar-workforce-structural-ad-exposure
+      - cisa-kev-addition-expected-24-72h
+      - watch-signal-second-scanner-corroboration-greynoise-censys-sysdig
+      - watch-signal-tier-1-ir-firm-ad-prime-sentry-victim-naming
+      - shadowserver-source-grade-addition-provisional-a-72h-clock
+      - helpnetsecurity-source-grade-addition-provisional-b-72h-clock
+      - watchtowr-labs-source-grade-provisional-b-second-corpus-surface
+      - ivanti-advisory-not-yet-updated-to-reflect-itw-status
+      - flash-trigger-1-critical-cve-exploited
+      - flash-quiet-hours-queued
+      - flash-critical-override-not-applied-2-of-4-conditions-met
+    related_actors: []
+    related_vulns: [CVE-2026-10520, CVE-2026-10523]
+    related_campaigns:
+      - q1_q2_2026_perimeter_security_device_weaponization_cluster
+      - ivanti_sentry_post_patch_poc_weaponization_to_emerging_exploitation_state_transition
+    finding_ids: [finding-2026-06-11-0001]
+    supersedes_finding: finding-2026-06-10-0003
+    supersedes_coverage_log_id: 2026-06-10-am-003-rapid7-etr-bleepingcomputer-securityweek-ivanti-sentry-cve-2026-10520-cvss-10-os-command-injection-cve-2026-10523-cvss-9-9-auth-bypass-patched-no-itw
+    supersession_layer: itw_posture_only_cve_record_unchanged
+    digraph: A2
+    digraph_layered:
+      cluster_anchor_state_transition: A2
+      cve_2026_10520_mechanism_cvss_10_pre_auth_root_rce: A2
+      cve_2026_10523_mechanism_cvss_9_9_auth_bypass: A2
+      patched_versions_R10_5_2_R10_6_2_R10_7_1: A1
+      watchtowr_poc_publication_artifact_existence: A2
+      vulnerable_endpoint_post_mics_api_v2_sentry_handleMessage: A2
+      shadowserver_exploitation_attempts_attestation: A2
+      shadowserver_specific_19_vulnerable_2_backdoored_numbers: A2
+      ivanti_advisory_not_yet_updated_to_reflect_itw: A2
+      cisa_kev_not_present_at_compose: A1
+      no_actor_attribution_at_any_source: A1
+      no_named_ad_prime_victim_in_window: A1
+      ad_relevance_structural_via_mdm_gateway_in_itar_workforce: B2
+    wep: likely
+    wep_ceiling: likely
+    wep_ceiling_pre_red_team: very_likely
+    wep_ceiling_adjustment_reason: |
+      Cluster-anchor (state-transition framing) inherits Shadowserver
+      single-source dependency on the ITW-occurrence component;
+      watchTowr PoC publication is a precondition, not corroboration.
+      Internally inconsistent to cap the 19/2 telemetry numbers at
+      likely while leaving the anchor (which IS those numbers,
+      dressed in narrative) at very_likely. Adjusted per red-team
+      review. Mechanism-layer WEPs unchanged at very_likely.
+    wep_layered:
+      cluster_anchor_state_transition_red_team_adjusted: likely
+      cve_2026_10520_mechanism_cvss_10_pre_auth_root_rce: very_likely
+      cve_2026_10523_mechanism_cvss_9_9_auth_bypass: very_likely
+      patched_versions_R10_5_2_R10_6_2_R10_7_1: very_likely
+      watchtowr_poc_publication_url_exists: very_likely
+      vulnerable_endpoint_named_by_watchtowr_lab_reproduction: very_likely
+      early_post_patch_exploitation_activity_observed_within_24h_of_poc_publication: likely
+      shadowserver_specific_19_vulnerable_2_backdoored_numbers: likely
+      ivanti_advisory_not_yet_updated_to_reflect_itw: very_likely
+      cisa_kev_addition_expected_within_24_to_72h: likely
+      no_actor_attribution_at_any_source: very_likely
+      ad_relevance_structural_via_mdm_gateway_in_itar_workforce: likely
+      defender_priority_emergency_patch_plus_compromise_hunt: very_likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Shadowserver specific telemetry numbers (19 vulnerable / 2 confirmed backdoored) — sole originating scanner this hour; BC + HNS publisher-independent but evidence-dependent relays"
+      - "Cluster anchor state-transition framing — red-team adjusted from very_likely to likely because Shadowserver is sole on the ITW-occurrence component and watchTowr PoC publication is precondition not corroboration"
+    red_team_review:
+      reviewed_at: 2026-06-11T06:35:00-04:00
+      outcome: qualify
+      cluster_anchor_wep_adjustment: very_likely_to_likely
+      load_bearing_constraints_applied_in_brief:
+        - 'Word "mass" prohibited in headline, summary, body'
+        - "Use 'early post-patch exploitation activity' phrasing"
+        - "Repair asymmetric prior treatment — finding-2026-06-10-0003 vendor attestation was already vetoed to likely"
+        - "Mechanism-layer WEPs preserved at very_likely"
+        - "Defender action unchanged — emergency patch + compromise-hunt + IOC monitoring"
+        - "Hard Rule 2 — no attribution, no speculation"
+        - "Hard Rule 6 — quotes 15 words / one per source"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at any in-window source"
+      - "No named A&D-prime victim at any in-window source"
+      - "Operational-reading hedges (opportunistic / IAB / targeted-APT) NOT propagated"
+    hard_rule_6_quote_budget:
+      shadowserver_quote: '"large amount of Ivanti Sentry exploitation attempts based on the public PoC today" (13 words)'
+      watchtowr_quote: '"Pre-Authenticated Command Injection" (3 words)'
+      ivanti_quote_carried_from_yesterday: '"not aware of any customers being exploited" (8 words)'
+      total_quotes_in_brief: 3
+      total_sources_quoted: 3
+    splunk_first_party:
+      status: silence_not_disconfirming
+      query_window: -24h
+      hits: 0_substantive
+      hard_rule_8_framing: defenseclaw_local_does_not_observably_run_ivanti_sentry_silence_expected
+    quiet_hours_at_compose: true
+    quiet_hours_queued: true
+    critical_override_applied: false
+    critical_override_evaluation:
+      cvss_10_0: true
+      active_exploitation_at_wep_likely: true
+      tracked_actor_involved: false
+      ad_watchlist_targeted: false
+      conditions_met: 2_of_4
+      result: override_does_not_apply
+    triggers_fired:
+      - trigger_1_critical_cve_exploited
+    librarian_handoffs_queued:
+      - action: queue_to_flash_queue
+        target: infrastructure/flash-queue.yaml
+        payload: "2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520 — queued under quiet hours; expected catchup at 09:00 sweep or absorbed into 2026-06-11 morning brief; expires 2026-06-11T18:08:00-04:00 (12h)"
+      - action: add_source_to_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "shadowserver provisional A — first dedicated-id surface; 72h ratification clock to 2026-06-14T06:12:00-04:00"
+      - action: add_source_to_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "helpnetsecurity provisional B — first dedicated-id surface; 72h ratification clock to 2026-06-14T06:12:00-04:00"
+      - action: confirm_source_in_yaml
+        target: infrastructure/source-grades.yaml
+        payload: "watchtowr-labs provisional B — second corpus surface (first was finding-2026-06-10-0010 Veeam CVE-2026-44963); confirms provisional B precedent class"
+    vuln_tracker_handoffs_queued:
+      - "Material update to CVE-2026-10520 / CVE-2026-10523 vuln-dossier if scaffolded — ITW status transition to early-post-patch-exploitation-activity-observed; Shadowserver originating telemetry; watchTowr originating PoC publication"
+      - "Consider VT-NNN entry for Ivanti-Sentry-CVE-2026-10520 directory given KEV-imminent + emerging-exploitation + perimeter-security-device cluster + structural-A&D-MDM-gateway-exposure profile"
+    resurface_if:
+      - cisa_kev_addition_with_cve_2026_10520_or_10523
+      - second_scanner_corroboration_greynoise_censys_sysdig_lifts_wep_likely_to_very_likely
+      - tier_1_ir_firm_mandiant_crowdstrike_unit42_mstic_naming_any_sentry_victim
+      - tier_1_ir_firm_naming_ad_prime_sentry_victim_activates_critical_override_evaluation
+      - shadowserver_dashboard_refresh_with_geographic_distribution_or_scanner_ua_or_source_ip_distribution
+      - ivanti_advisory_update_reflecting_itw_status
+      - actor_attribution_attached_at_any_source
+      - cve_2026_10523_specific_exploitation_attestation
+      - first_named_ad_prime_victim_anywhere
+      - patch_adoption_telemetry_published_internet_exposed_remaining_unpatched_count_change
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      FLASH brief queued under quiet hours (06:08 EDT < 09:00 EDT
+      active-hours start). Librarian flash-queue handoff: post at
+      09:00 sweep unless superseded by 2026-06-11 morning brief.
+      Critical-override evaluation 2 of 4 conditions met (CVSS 10.0
+      + active exploitation at WEP likely); does NOT bypass quiet
+      hours (no tracked actor, no A&D watchlist entity named).
+
+      Material update on yesterday's 2026-06-10 AM brief item:
+      Shadowserver Foundation scanning telemetry contradicts the
+      Ivanti vendor "not aware of any customers being exploited"
+      attestation (which yesterday was capped at WEP likely per
+      single-source veto, not "very_likely no-ITW canonical").
+      watchTowr Labs published public PoC 2026-06-10 with
+      lab-controlled reproduction identifying vulnerable endpoint
+      POST /mics/api/v2/sentry/mics-config/handleMessage.
+
+      Red-team review applied qualifying language: cluster anchor
+      WEP very_likely → likely; word "mass" prohibited in headline,
+      summary, body; supersession framing repaired to reflect
+      yesterday's already-vetoed prior; mechanism-layer WEPs
+      (CVSS, patched versions, watchTowr PoC URL, vulnerable
+      endpoint) preserved at very_likely; defender action
+      unchanged (emergency patch + compromise-hunt + IOC monitoring
+      — urgency set by CVSS 10.0 pre-auth root RCE on perimeter
+      MDM gateway, NOT by scale framing).
+
+      Hard Rule 2 preserved: no actor attribution at any in-window
+      source; no speculation among operational readings
+      (opportunistic / IAB / targeted-APT). Hard Rule 6: three
+      quotes (Shadowserver 13 words, watchTowr 3 words, Ivanti
+      carried 8 words), one per source. Hard Rule 8: first-party
+      Splunk silence expected (defenseclaw_local does not
+      observably run Ivanti Sentry).
+
+      Load-bearing watch-signals: GreyNoise / Censys / Sysdig
+      second-scanner corroboration (would lift cluster anchor
+      likely → very likely); CISA KEV addition (expected 24-72h);
+      Tier-1 IR firm naming any Sentry victim; A&D-prime Sentry
+      victim naming activates FLASH-POLICY critical-override
+      evaluation.
+
+      Librarian handoff: queue to infrastructure/flash-queue.yaml
+      with expiry 2026-06-11T18:08:00-04:00; add shadowserver and
+      helpnetsecurity to source-grades.yaml as provisional A and
+      provisional B respectively; confirm watchtowr-labs
+      provisional B second corpus surface entry in
+      source-grade-log.md.
 
   - id: 2026-06-10-am-004-securityweek-cisa-kev-arista-eos-cve-2026-7473-no-patch-planned-vendor-refusal-itw-carrier-class-routing-federal-deadline-2026-06-23
     covered_in: [2026-06-10-morning]

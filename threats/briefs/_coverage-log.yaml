@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-11T12:00:00-04:00
+last_updated: 2026-06-11T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -30784,7 +30784,7 @@ entries:
     test: false
 
   - id: 2026-06-10-pm-008-krebs-check-point-intel471-flashpoint-the-gentlemen-raas-osint-de-anonymization-hastalamuerte-zeta88-alexander-yapaev-izhevsk-russia-new-actor-candidate
-    covered_in: [2026-06-10-afternoon]
+    covered_in: [2026-06-10-afternoon, 2026-06-11-afternoon]
     brief_file: threats/briefs/2026-06-10-afternoon.md
     headline: "Krebs on Security publishes multi-source OSINT investigation per Breadcrumbs methodology identifying The Gentlemen ransomware-as-a-service administrator as Alexander Andreevich Yapaev (36, Izhevsk, Udmurt Republic, Russia) — Krebs integrates Check Point Software (sustained coverage of group + administrator role), Intel 471 (forum-registration trace 2019 → present across Exploit, Breachforums Jan 2025 Izhevsk IP, Ramp_V2, BHF, Raidforums, Nulled, Codeby as SantaMeurte originally Alexandr 4apaev, Breached Aug 2022 different Izhevsk IP as Zeta88), Flashpoint (Telegram-ID pivot — Krebs's disclosed advertiser), Constella Intelligence (OSINT pivot tooling for Telegram-ID-to-phone), KELA (additional surface), Epieos (email-pivot OSINT tool); group reportedly second-most-active ransomware operation in 2026 by victim count (332 published victims since mid-2025 inception, 240+ in 2026 alone); 90/10 affiliate split (vs industry 80/20); aggressive recruitment posture; initial access via internet-facing VPNs / firewalls; operational velocity 'moves quickly to encrypt entire networks within hours' (Krebs verbatim, 8 words Hard Rule 6 preserved); administrator role per Check Point + Intel 471 — assembles locker, runs RaaS panel, manages payments, 10% share; OSINT identity pivot chain hastalamuerte1488@protonmail.com (1488 numeric symbology) + bu4vs@mail.ru + Telegram @hastalamuerte18 / ID 30907522 + Telegram bu4vs + phone 79127650004 + GitHub SantaMuerte + Pikabu 4apai18 + LinkedIn Alexander Yapaev head of B2B marketing at Uralenergo Udmurtia; Yapaev did NOT respond to multiple requests for comment; identity chain is per-Krebs Breadcrumbs methodology, NOT LE-confirmed — Hard Rule 2 strict preservation; The Gentlemen NOT in Archimedes roster — strong /new-actor candidate; A&D-prime structural relevance via internet-facing VPN/firewall initial access + hours-to-encryption velocity canonical RaaS playbook"
     topic_tags:
@@ -30875,7 +30875,7 @@ entries:
       - ransom_paid_or_refused
       - osint_layer_overturned_by_subsequent_research
     first_covered: 2026-06-10
-    last_covered: 2026-06-10
+    last_covered: 2026-06-11
     retraction: null
     test: false
 
@@ -31204,7 +31204,7 @@ entries:
       cluster framing).
 
   - id: 2026-06-11-am-001-shadowserver-watchtowr-bleepingcomputer-helpnetsecurity-ivanti-sentry-cve-2026-10520-itw-state-transition-morning-supersedes-flash
-    covered_in: [2026-06-11-morning]
+    covered_in: [2026-06-11-morning, 2026-06-11-afternoon]
     brief_file: threats/briefs/2026-06-11-morning.md
     headline: "UPDATE on 2026-06-10-am-003 — Ivanti Sentry CVE-2026-10520 (CVSS 10.0 pre-auth root RCE) ITW state transition: Shadowserver Foundation attests 'large amount of Ivanti Sentry exploitation attempts based on the public PoC' (13 words, Hard Rule 6 preserved) within ~24h of watchTowr Labs PoC publication 2026-06-10; 19 vulnerable Internet-exposed instances scanned, 2 confirmed backdoored — the 19 likely include benign scanners (watchTowr customers, ASM vendors, academics), the 2 backdoored hosts are the confirmed-compromise evidence; cluster anchor WEP red-team-adjusted very_likely → likely (Shadowserver sole originating scanner this hour, watchTowr PoC publication is precondition not corroboration); mechanism-layer WEPs (CVSS 10.0, patched versions R10.5.2/R10.6.2/R10.7.1, vulnerable endpoint POST /mics/api/v2/sentry/mics-config/handleMessage, PoC URL existence) hold at very_likely; CVE-2026-10523 (CVSS 9.9 auth bypass, same advisory) remains exploitable but not named in this hour's attestation; word 'mass' deliberately excluded per red-team review; defender action — emergency patch + Sentry access-log compromise-hunt + perimeter proxy IOC on named endpoint pathway; Hard Rule 2 preserved (no attribution); CISA KEV addition expected 24-72h; morning brief supersedes queued flash-2026-06-11-0608 (full supersession)"
     topic_tags:
@@ -31964,7 +31964,7 @@ entries:
       retrieval). Operator action items above.
 
   - id: 2026-06-11-flash-1200-001-helpnetsecurity-securityweek-bleepingcomputer-therecord-oracle-peoplesoft-cve-2026-35273-mandiant-cto-carmakal-itw-attestation-oracle-out-of-band-mitigations-advisory-nottingham-public-statement-update-on-finding-2026-06-10-0012
-    covered_in: [2026-06-11-flash-1200, 2026-06-10-afternoon]
+    covered_in: [2026-06-11-flash-1200, 2026-06-10-afternoon, 2026-06-11-afternoon]
     brief_file: threats/briefs/2026-06-11-flash-1200.md
     update_of_prior_coverage_log_entry: 2026-06-10-pm-003-bleepingcomputer-oracle-peoplesoft-shinyhunters-self-attested-300-instances-100-orgs-gadget-chain-old-and-zero-day-nottingham-leak-site-failed-fbi-claim-7-iocs
     headline: "FLASH UPDATE on prior 2026-06-10 PM coverage of ShinyHunters Oracle PeopleSoft campaign: four material status changes warrant Trigger 6 (zero-day without patch) FLASH — (a) formal CVE assignment CVE-2026-35273; (b) Oracle out-of-band advisory providing MITIGATIONS-ONLY with no GA patch (vendor had not responded as of yesterday per BC); (c) Mandiant CTO Charles Carmakal LinkedIn warning attesting in-the-wild exploitation (single A-grade IR-firm primary; relays via HNS + SW; second IR-firm corroboration absent — operational ITW WEP capped at LIKELY per single-source veto, NOT very_likely); (d) University of Nottingham public statement confirming victim status (was leak-site-mentioned only yesterday). Independent researcher @nahamike01 B3 supplementary attestation NEW. Oracle vendor verbatim Hard Rule 6: 'remotely exploitable without authentication, may result in remote code execution' (12 words) + 'high-priority risk reduction measure' (5 words) — one quote per source. NVD CVSS NOT published — no digit asserted (class-inferred critical only). PeopleTools 8.61 / 8.62 affected; earlier unsupported versions possibly affected. ShinyHunters self-claim of ~300 instances / 100+ orgs preserved as actor self-attestation media-relayed per Hard Rule 2 (NOT in _roster.yaml; NOT cross-walked); ShinyHunters scale claim and Mandiant ITW attestation kept as INDEPENDENT evidence bases (one does NOT confirm the other). Nottingham specific 40GB / 454,600-students / data-classes figures attributed to BleepingComputer reporting (BC sole-originating). A&D relevance structural-indirect only (PeopleSoft enterprise HR/ERP backbone class; no A&D-prime named; LiteSpeed/cPanel precedent — structurally plausible, empirically unmeasured); ShinyHunters consumer/retail mass-data-theft victimology off-profile for A&D primes. 7 IOCs already in repo from 2026-06-10 PM coverage (IPv4 142.11.200.186-190, 108.174.202.99, 176.120.22.24; domain azurenetfiles.net) — NOT republished; pointer to finding-2026-06-10-0012 + _master-index.yaml. Critical override 1-of-4 (does not apply; also moot at 12:00 EDT active hours)."
@@ -32264,6 +32264,880 @@ entries:
       append 2026-06-11-flash-1200 to covered_in; update
       last_covered to 2026-06-11. Original headline,
       framings, and disposition preserved.
+
+  # ==========================================================================
+  # 2026-06-11 AFTERNOON BRIEF — entries
+  # ==========================================================================
+
+  - id: 2026-06-11-pm-001-cisa-kev-add-cve-2026-10520-ivanti-sentry-bod-26-04-3-day-fceb-deadline-update-extension-on-am-001
+    covered_in: [2026-06-11-afternoon]
+    brief_file: threats/briefs/2026-06-11-afternoon.md
+    update_of_prior_coverage_log_entry: 2026-06-11-am-001-shadowserver-watchtowr-bleepingcomputer-helpnetsecurity-ivanti-sentry-cve-2026-10520-itw-state-transition-morning-supersedes-flash
+    headline: "UPDATE-EXTENSION on 2026-06-11-am-001 — CISA added CVE-2026-10520 (Ivanti Sentry, CVSS 10.0) to KEV catalog 2026-06-11 with 3-day FCEB remediation deadline 2026-06-14 and KEV short description 'unmanaged appliances with externally accessible endpoints' (6 words, Hard Rule 6); CISA simultaneously issued BOD 26-04 risk-based vulnerability management directive establishing 3-day clock for KEV + internet-exposed + automatable + full-system-control + 14-day default for lower-risk + 60-day policy update + 180-day full compliance; BOD 26-04 statutorily FCEB-only (excludes contractors / private / DoD War / IC); KEV federal procedural attestation supersedes morning finding's 'likely' WEP on federally-attested-ITW framing to 'very_likely' at procedural-attestation layer ONLY (per red-team layer-scoping); morning red-team 'mass' hedge persists by carry-forward (KEV publishes no telemetry; Shadowserver 19/2 baseline unchanged); structural DIB pull via KEV-as-industry-prioritization-precedent absorption softened from grader 'likely' to 'roughly_even_chance' per red-team (single-precedent analogy 2021 KEV launch; BOD 26-04 new risk-factor scoring not mechanistically equivalent); CVE-2026-10523 (companion CVSS 9.9 auth bypass) NOT in this KEV addition; defender action unchanged from morning brief (emergency patch to R10.5.2 / R10.6.2 / R10.7.1); zero net-new IOCs; BOD 26-04 NEW corpus material distinct policy artifact"
+    topic_tags:
+      - cve-2026-10520
+      - cve
+      - ivanti-sentry
+      - cisa-kev
+      - cisa-kev-addition-cve-2026-10520
+      - kev-3-day-fceb-deadline-2026-06-14
+      - cisa-bod-26-04
+      - bod-26-04-risk-based-vulnerability-management
+      - bod-26-04-fceb-only-statutory-scope
+      - bod-26-04-excludes-contractors-private-dod-war-ic
+      - federal-procedural-attestation-via-kev-inclusion
+      - federal-attestation-not-new-telemetry
+      - morning-mass-hedge-carries-forward-binding
+      - structural-dib-pull-softened-roughly-even-chance-red-team
+      - 2021-kev-launch-precedent-single-analogy
+      - layered-grading-procedural-vs-evidence-basis-no-cross-layer-bleed
+      - cve-2026-10523-companion-auth-bypass-not-in-kev-addition
+      - hard-rule-6-cisa-kev-short-description-6-words
+      - hard-rule-2-no-attribution-preserved
+      - update-extension-on-am-001
+      - active-threats
+    related_actors: []
+    related_vulns: [CVE-2026-10520]
+    related_campaigns:
+      - q1_q2_2026_perimeter_security_device_weaponization_cluster
+      - ivanti_sentry_post_patch_poc_weaponization_to_emerging_exploitation_state_transition
+    policy_artifacts:
+      - BOD-26-04
+    finding_ids: [finding-2026-06-11-0005]
+    finding_ids_cross_referenced: [finding-2026-06-11-0001]
+    digraph: A1
+    digraph_layered:
+      cluster_anchor: A1
+      cve_2026_10520_added_to_cisa_kev_catalog_2026_06_11: A1
+      kev_3_day_federal_remediation_due_date_2026_06_14: A1
+      kev_short_description_unmanaged_appliances_externally_accessible_endpoints: A1
+      itw_state_federally_attested_via_kev_addition_procedural_layer_only: A1
+      bod_26_04_issued_2026_06_11_risk_based_vm_fceb: A1
+      bod_26_04_scope_fceb_only_excludes_contractors_dod_war_intel: A1
+      bod_26_04_indirect_structural_dib_pull_softened_red_team: B3
+      morning_red_team_mass_hedge_carries_forward_binding: A1
+    wep: very_likely
+    wep_layered:
+      cve_2026_10520_in_cisa_kev_catalog_with_due_date_2026_06_14: very_likely
+      bod_26_04_issued_2026_06_11_with_three_and_fourteen_day_deadline_framework: very_likely
+      bod_26_04_excludes_contractors_private_dod_war_intel_community: very_likely
+      itw_exploitation_federally_attested_via_kev_addition_procedural_layer_only: very_likely
+      mass_exploitation_framing_at_internet_scale: likely  # CARRY-FORWARD from morning red-team
+      specific_shadowserver_telemetry_numbers_19_vulnerable_2_confirmed_backdoored: likely  # CARRY-FORWARD
+      bod_26_04_indirect_structural_dib_pull_via_kev_industry_prioritization_precedent: roughly_even_chance  # red-team softened
+      bod_26_04_indirect_dib_pull_via_fedramp_tenancy_customer_sla: roughly_even_chance
+      cve_2026_10520_dib_relevance_mdm_byod_gateway_class: likely
+      defender_priority_immediate_patch_application_plus_compromise_hunting: very_likely
+    single_source_veto_applied: false
+    single_source_veto_layers:
+      - "NOT applied at procedural-fact layer — multi-publisher convergence on CISA-canonical KEV + BOD publications; CARRY-FORWARD veto persists on Shadowserver-sole telemetry numbers from morning"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at any in-window source; CISA KEV does not name attribution per KEV procedural design"
+      - "Morning 'mass' hedge persists by carry-forward; KEV addition does NOT attest scale or relax red-team cap"
+      - "BOD 26-04 statutorily FCEB-only — Archimedes does NOT extend the 3-day clock to DIB primes as binding"
+    hard_rule_6_quote_budget:
+      cisa_kev_short_description: '"unmanaged appliances with externally accessible endpoints"'  # 6 words
+      bleeping_computer_paraphrase_quote_bod_kev_remediation_basis: '"CVE and KEV data as the basis for remediation decisions"'  # 10 words BC paraphrase
+      total_quotes_in_brief: 1_direct_kev_plus_1_bc_paraphrase
+      per_source_max: 1
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming_ivanti_sentry_not_in_defenseclaw_local
+    red_team_application:
+      recommendation: qualify
+      qualifying_language_applied: |
+        Briefer scoped the 'very_likely' WEP explicitly to the federal
+        procedural-attestation layer (KEV addition) and did NOT bleed
+        the lift into evidence-basis-intensity claims. Morning red-team
+        'mass' hedge cap preserved verbatim. Structural DIB pull
+        softened from grader 'likely' to 'roughly_even_chance' with
+        explicit precedent-dependence language ('single analogy 2021
+        KEV launch'). 'Three-day deadline pattern' framed
+        observational only (NOT 'CISA strategic shift' assertion).
+    resurface_if:
+      - shadowserver_or_second_scanner_publishes_higher_vulnerable_or_compromised_counts
+      - second_scanner_corroboration_greynoise_censys_sysdig_on_19_2_telemetry
+      - ad_prime_named_victim_disclosed
+      - cisa_kev_addition_on_cve_2026_10523_companion_auth_bypass
+      - dib_prime_public_disclosure_of_bod_26_04_kev_timeline_contractual_absorption
+      - ivanti_vendor_advisory_update_reflecting_itw_or_telemetry
+      - cisa_post_hoc_blog_or_documentation_explaining_bod_26_04_issuance_rationale
+      - first_party_splunk_hit
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      UPDATE-EXTENSION on 2026-06-11-am-001 — KEV federal
+      procedural attestation lifts ITW framing to very_likely
+      at procedural-attestation layer ONLY; mass framing and
+      Shadowserver-sole telemetry numbers carry forward at
+      likely. BOD 26-04 is NEW corpus material — distinct
+      policy artifact. Red-team qualify recommendation honored:
+      DIB-pull framing softened with explicit precedent-
+      dependence language. Briefer also captured the
+      'three 3-day deadlines in ~10 days' pattern as
+      observational only per red-team brittleness flag, NOT
+      as a 'CISA strategic shift' assertion. Coverage log
+      action on prior entry 2026-06-11-am-001: append
+      2026-06-11-afternoon to covered_in; update
+      last_covered to 2026-06-11. Original morning framing
+      preserved.
+
+  - id: 2026-06-11-pm-002-oracle-peoplesoft-cve-2026-35273-mitigations-only-firmed-zdi-childs-limited-uon-hibp-455k-enumeration-update-extension-on-flash-1200
+    covered_in: [2026-06-11-afternoon]
+    brief_file: threats/briefs/2026-06-11-afternoon.md
+    update_of_prior_coverage_log_entry: 2026-06-11-flash-1200-001-helpnetsecurity-securityweek-bleepingcomputer-therecord-oracle-peoplesoft-cve-2026-35273-mandiant-cto-carmakal-itw-attestation-oracle-out-of-band-mitigations-advisory-nottingham-public-statement-update-on-finding-2026-06-10-0012
+    headline: "UPDATE-EXTENSION on 2026-06-11-flash-1200-001 — Oracle PeopleSoft CVE-2026-35273 PM cycle adds: (a) MITIGATIONS-ONLY POSTURE FIRMED at A1 via three-publisher convergence (Carmakal verbatim 'Patches should come soon' 5 words + SecurityWeek verbatim 'only mitigations have been released by Oracle rather than a full patch' 12 words + Help Net Security corroboration) — flash1200-0001 had mitigations-only at single-publisher tier, PM cycle delivers A1 anchor; (b) ZDI Dustin Childs verbatim 'Currently, we're seeing limited exploitation, but our investigation is ongoing' (10 words) — Trend Micro ZDI is reporter-credit holder per Oracle advisory, independent A-grade primary from Mandiant on scale layer; Childs's 'limited exploitation' framing in MATERIAL TENSION with ShinyHunters 100-org self-claim and provides evidence-basis to constrain scale claim; (c) HIBP independent analysis ~455,000 unique email addresses + passport numbers + payment details in Nottingham dump — independent evidence basis from ShinyHunters self-claim, lifts Nottingham extent above pure self-claim; Hard Rule 7 preserved (exposure metadata only, no PII values stored); (d) The Register PM-cycle relay of ShinyHunters spokesperson interview with verbatim 'We have only just started outreach to affected orgs' (10 words); The Register publisher-side skepticism on ShinyHunters' history of misrepresenting access claims; (e) ShinyHunters' victim profile mostly educational per HNS — further constrains A&D-prime direct exposure narrative; red-team qualified: three-publisher convergence may share single Mandiant-sourced chain — treat mitigations-only as 'likely' durable until Oracle-side independent verification; ShinyHunters 100-org claim is upper-bound adversary self-attestation NOT corroborated extent; second-zero-day cluster framing alongside CVE-2026-20245 Cisco SD-WAN observational only NOT coherent operational pattern; DIB exposure roughly_even_chance pending deployment-density signal"
+    topic_tags:
+      - cve-2026-35273
+      - oracle-peoplesoft
+      - oracle-out-of-band-advisory-mitigations-only-no-ga-patch
+      - mitigations-only-posture-firmed-a1-three-publisher-convergence
+      - zdi-dustin-childs-limited-exploitation-independent-primary
+      - mandiant-cto-carmakal-itw-attestation-carry-forward
+      - hibp-455k-email-enumeration-independent-evidence-basis
+      - university-of-nottingham-data-class-enumeration-via-the-record
+      - the-register-shinyhunters-spokesperson-interview
+      - the-register-publisher-skepticism-shinyhunters-misrepresentation-history
+      - shinyhunters-victim-profile-mostly-educational-per-hns
+      - shinyhunters-100-org-upper-bound-self-attestation-not-corroborated-extent
+      - second-zero-day-cluster-observational-not-coherent-operational-pattern-red-team
+      - dib-exposure-roughly-even-chance-pending-deployment-density
+      - hard-rule-2-shinyhunters-self-claim-preserved-not-roster-mapped
+      - hard-rule-6-three-quotes-under-15-words-one-per-source-carmakal-childs-sw-the-register
+      - hard-rule-7-hibp-exposure-metadata-only-no-pii-values-stored
+      - update-extension-on-flash-1200
+      - active-threats
+    related_actors:
+      - actor_name: ShinyHunters
+        actor_in_roster: false
+        archimedes_treatment: SELF_CLAIM_AND_MEDIA_RELAYED_ONLY_NOT_ARCHIMEDES_CONFIRMED_AND_NOT_CROSS_WALKED_TO_ANY_ROSTER_ACTOR_PER_HARD_RULE_2
+        relevance: actor_self_claim_persists_with_zdi_childs_limited_framing_constraining_scale_carry_forward_new_actor_candidacy_decision_pending
+        new_actor_candidate_flagged_in_prior_coverage: true
+    related_vulns: [CVE-2026-35273]
+    related_campaigns:
+      - shinyhunters_oracle_peoplesoft_2026_self_attested_mass_campaign
+    finding_ids: [finding-2026-06-11-0006]
+    finding_ids_cross_referenced: [finding-2026-06-11-flash1200-0001, finding-2026-06-10-0012]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      cve_2026_35273_record_exists_oracle_out_of_band_advisory_published: A1
+      oracle_advisory_mitigations_only_no_ga_patch_pm_cycle_firmed_three_publisher_convergence: A1
+      mandiant_cto_charles_carmakal_linkedin_warning_itw_exploitation: A2
+      zdi_dustin_childs_characterizes_exploitation_as_LIMITED: A2
+      shinyhunters_self_claim_300_peoplesoft_100_plus_orgs_carry_forward: B3
+      haveibeenpwned_independent_analysis_455000_unique_email_addresses_passport_numbers_payment_details: B2
+      university_of_nottingham_public_statement_data_class_enumeration: A2
+      the_record_publisher_independent_skepticism_on_shinyhunters_misrepresentation_history: B2
+      shinyhunters_NOT_in_archimedes_roster_yaml: A1
+    wep: likely
+    wep_layered:
+      operational_itw_layer_carry_forward: likely  # Mandiant Carmakal sole A-grade primary on ITW with ZDI Childs 'limited' framing constraining scale
+      mitigations_only_posture_pm_cycle_firmed: very_likely  # three-publisher convergence
+      shinyhunters_self_claim_scale_layer: likely  # ZDI 'limited' tensions claim; carry-forward single-source veto
+      nottingham_victim_public_statement_data_class_enumeration: very_likely
+      hibp_455k_email_enumeration_independent: likely
+      ad_relevance_structural_indirect_dib_exposure: roughly_even_chance  # red-team qualified
+      defender_priority_oracle_mitigations_application_plus_ioc_hunt: very_likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Operational ITW per A-grade IR-firm telemetry — Mandiant Carmakal sole A-grade primary carry-forward; ZDI Childs 'limited' framing adds independent characterization but does not lift scale to very_likely"
+      - "ShinyHunters scale claim (300 / 100+) — actor self-attestation through BC / SW / The Record / The Register; carry-forward"
+    hard_rule_2_framings_load_bearing:
+      - "ShinyHunters NOT in _roster.yaml; reported strictly as self-claim AND media-relayed; NEVER as Archimedes-side tracked-actor attribution"
+      - "Mandiant ITW attestation and ShinyHunters scale claim are INDEPENDENT evidence bases; one does NOT confirm the other"
+      - "ZDI Childs 'limited' framing is INDEPENDENT evidence basis that CONSTRAINS ShinyHunters scale claim"
+      - "No A&D-prime victim is named; ShinyHunters' historical victimology consumer/retail mass-data-theft off-profile for A&D primes — hedge preserved"
+      - "Three-publisher convergence on mitigations-only may share single Mandiant-sourced chain — durable at likely pending Oracle-side independent verification"
+      - "Second-zero-day cluster framing alongside CVE-2026-20245 Cisco SD-WAN observational only, NOT coherent operational pattern"
+    hard_rule_6_quote_budget:
+      mandiant_carmakal_linkedin_patches_should_come_soon: '"Patches should come soon"'  # 5 words
+      zdi_dustin_childs_limited_exploitation: '"Currently, we're seeing limited exploitation, but our investigation is ongoing"'  # 10 words
+      securityweek_verbatim_mitigations_only: '"only mitigations have been released by Oracle rather than a full patch"'  # 12 words
+      the_record_shinyhunters_spokesperson: '"We have only just started outreach to affected orgs"'  # 10 words; brief layer uses only Childs + SW; The Record spokesperson preserved in finding layer
+      total_quotes_in_brief: 1_securityweek_one_quote_one_source_compliant
+      per_source_max: 1
+    hard_rule_7_compliance: "HIBP analysis count is exposure metadata only; no specific email addresses / passport numbers / payment details stored"
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming_peoplesoft_not_in_defenseclaw_local
+    red_team_application:
+      recommendation: qualify
+      qualifying_language_applied: |
+        Briefer captured red-team's three qualifications: (a) treat
+        mitigations-only as 'likely' durable until Oracle-side
+        independent verification (three-publisher convergence may
+        share single Mandiant-sourced chain); (b) treat
+        ShinyHunters 100-org claim as upper-bound adversary
+        self-attestation NOT corroborated extent; (c) framed
+        second-zero-day cluster as observational only, NOT coherent
+        operational pattern. DIB exposure framed at roughly_even_chance.
+    resurface_if:
+      - oracle_ships_ga_patch_advisory_state_transitions_out_of_mitigations_only
+      - second_a_grade_ir_firm_independent_telemetry_corroborates_mandiant_itw
+      - cisa_kev_addition_with_active_exploitation_language
+      - ad_prime_named_victim_disclosed
+      - additional_named_victims_disclosed_beyond_nottingham
+      - first_party_splunk_hit
+      - nvd_publishes_cvss_score
+      - tier_1_vendor_publishes_ioc_expansion_or_full_ttp_writeup
+    first_covered: 2026-06-10
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      UPDATE-EXTENSION on flash-1200-001. Five material PM-cycle
+      additions: mitigations-only firmed at A1 via three-publisher
+      convergence; ZDI Childs 'limited' framing as independent
+      scale constraint; HIBP ~455k email enumeration as
+      independent Nottingham evidence basis; The Register
+      ShinyHunters spokesperson interview + publisher skepticism;
+      ShinyHunters mostly-educational victim profile per HNS.
+      Red-team qualify recommendations preserved verbatim in
+      brief prose. Coverage log action on prior flash entry:
+      append 2026-06-11-afternoon to covered_in; update
+      last_covered to 2026-06-11. Original FLASH framing
+      preserved.
+
+  - id: 2026-06-11-pm-003-doj-denis-obrezko-void-blizzard-infrastructure-provider-indictment-boston-thailand-extradition-defense-contractors-victim-category-new-actor-defer
+    covered_in: [2026-06-11-afternoon]
+    brief_file: threats/briefs/2026-06-11-afternoon.md
+    headline: "DOJ unsealed indictment of 36-year-old Russian national Denis Obrezko 2026-06-10 for infrastructure-provider role in Void Blizzard Russia-aligned cyberespionage cluster; Obrezko arrested November 2025 in Phuket Thailand by FBI / Thai Royal Police joint op, extradited, with initial Boston federal court appearance 2026-06-10; prosecutors allege Obrezko used cryptocurrency to purchase VPS + internet domains as Void Blizzard attack infrastructure; at least 11 U.S. companies compromised per prosecutors with prosecutors believing actual count higher; The Record relays DOJ victim-profile language 'government agencies, defense contractors, transportation, media, healthcare, NGOs' (10 words, Hard Rule 6) operating across Europe and North America — STRONGEST in-window source-direct A&D framing observed today; 11 U.S. companies NOT enumerated and NO A&D-prime named as specific victim in this indictment; Void Blizzard characterized as 'relatively new threat group operating in support of Russian government interests' (12 words) — VERIFIED NOT IN Archimedes _roster.yaml; Hard Rule 2 binding: Archimedes does NOT map Void Blizzard to APT28 / Sandworm / Cozy Bear / any roster actor; /new-actor candidacy DEFER pending direct DOJ filing retrieval (single B-grade in-window source through B-grade relay); pairs with morning brief's FBI/DOJ 13-website China-attribution seizure — three counter-cyberespionage data points across China + Russia attribution surfaces in 7-day window (today AM + today PM + 2026-06-04 Five Eyes 'Safeguarding Our Secrets') TEMPORAL CONTINUITY ONLY not confirmed campaign continuity"
+    topic_tags:
+      - denis-obrezko-russian-national-36
+      - void-blizzard
+      - void-blizzard-not-in-roster
+      - doj-indictment-unsealed-2026-06-10
+      - boston-federal-court-initial-appearance
+      - november-2025-phuket-thailand-arrest
+      - fbi-thai-royal-police-joint-operation
+      - extradition-to-us-custody
+      - infrastructure-provider-role
+      - cryptocurrency-vps-domain-purchases
+      - at-least-11-us-companies-compromised
+      - defense-contractors-in-source-language-victim-taxonomy
+      - relatively-new-threat-group-russian-government-interests
+      - microsoft-blizzard-naming-convention-russia-background-context-not-source-attested
+      - mstic-storm-and-blizzard-naming-context-not-source-attested-hard-rule-2-binding
+      - hard-rule-2-no-cross-walk-to-apt28-sandworm-cozy-bear-roster-actors
+      - new-actor-candidacy-defer-pending-doj-filing-direct-retrieval
+      - pairs-with-2026-06-11-am-002-china-attribution-seizure-temporal-not-campaign
+      - pairs-with-2026-06-04-pm-002-five-eyes-safeguarding-our-secrets
+      - three-counter-cyberespionage-data-points-7-day-window-temporal-continuity
+      - actor-activity
+    related_actors:
+      - actor_name: Void Blizzard
+        actor_in_roster: false
+        archimedes_treatment: SOURCE_ATTRIBUTION_PRESERVED_NOT_ARCHIMEDES_ORIGINATED_NOT_CROSS_WALKED_TO_ROSTER_PER_HARD_RULE_2
+        new_actor_candidate: true
+        new_actor_decision: DEFER_PENDING_DIRECT_DOJ_FILING_RETRIEVAL
+        relevance: russian_national_indicted_for_infrastructure_provider_role_in_void_blizzard_cluster_microsoft_tracked_credential_theft_focused_actor_with_defense_contractor_in_longitudinal_victim_profile
+      - actor_name: Denis Obrezko (charged subject)
+        actor_in_roster: false
+        archimedes_treatment: NAMED_SUBJECT_PER_DOJ_UNSEALED_INDICTMENT_PER_LEGAL_POLICY_DATA_HANDLING_TABLE
+    related_vulns: []
+    related_campaigns:
+      - q1_q2_2026_counter_cyberespionage_law_enforcement_action_china_and_russia_attribution_surfaces_7_day_window_temporal_continuity_not_campaign_continuity
+    finding_ids: [finding-2026-06-11-0007]
+    finding_ids_cross_referenced: [finding-2026-06-11-0002, finding-2026-06-04-0002]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      denis_obrezko_doj_federal_indictment_unsealed: B2
+      obrezko_arrested_november_2025_phuket_thailand: B2
+      obrezko_initial_federal_court_appearance_boston: B2
+      obrezko_alleged_role_infrastructure_provider_support_void_blizzard: B2
+      at_least_11_us_companies_compromised_per_prosecutors: B2
+      void_blizzard_victim_profile_government_agencies_defense_contractors_transportation_media_healthcare_ngos: B2
+      void_blizzard_NOT_in_archimedes_roster_yaml_v2_2026_05_10: A1
+      no_specific_gru_fsb_svr_unit_attribution_in_source: A1
+      defense_contractors_named_as_specific_victim_in_this_indictment: A1  # FAILS — verifiable absence
+      ad_prime_named_victim_in_window: A1  # FAILS — verifiable absence
+    wep: likely
+    wep_layered:
+      doj_indictment_procedural_facts: likely  # single B-grade in-window through B-grade relay; underlying DOJ A but not directly retrieved
+      void_blizzard_microsoft_tracked_longitudinal_victim_profile_including_defense_contractors_sector_taxonomy: likely
+      ad_prime_specific_victim_in_this_indictment: very_unlikely  # verifiable absence
+      microsoft_blizzard_naming_convention_russia_attribution_background_context: roughly_even_chance  # NOT in-window source-attested
+      continuity_to_2026_06_04_five_eyes_advisory_or_2026_06_11_am_002_china_seizure_campaign_link: very_unlikely  # temporal proximity NOT campaign continuity
+      new_actor_candidacy_decision_pending_operator: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "All substantive operational claims (alleged role, victim count, victim profile, geographic scope, operational pattern) — single B-grade source through B-grade relay; underlying DOJ A-class not directly retrieved this sweep"
+      - "'Defense contractors' framing as A&D-direct victim category — single B-grade source through B-grade relay; sector taxonomy paraphrase not named-victim grounding"
+    hard_rule_2_framings_load_bearing:
+      - "Void Blizzard NOT in _roster.yaml; Archimedes does NOT originate attribution or cross-walk to APT28 / Sandworm / Cozy Bear / any roster actor"
+      - "Microsoft Blizzard naming convention for Russia attribution is BACKGROUND CONTEXT — NOT directly source-attested in this in-window source; do NOT propagate to corpus as in-window attestation"
+      - "Continuity to 2026-06-04 Five Eyes and morning-brief China-attribution seizure is TEMPORAL PROXIMITY, NOT confirmed campaign continuity"
+      - "The Record's 'defense contractors' victim-profile language is source-direct sector taxonomy; do NOT lift to 'defense-prime-victim-named' claim"
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming_obrezko_void_blizzard_indictment_administrative_layer_no_infrastructure_iocs_at_relay_tier_this_sweep
+    new_actor_decision:
+      candidacy: DEFER
+      rationale: |
+        Single B-grade in-window source (The Record) through
+        B-grade relay; underlying DOJ A-class filing not
+        directly retrieved this sweep. Microsoft-MSTIC-tier
+        background context (Void Blizzard credential-theft-
+        focused Russia-aligned naming origin) is corpus
+        background knowledge but NOT directly source-attested
+        in The Record this hour. /new-actor candidacy is
+        plausible per three factors (MSTIC tier originator-
+        naming + DOJ operator in custody + source-named
+        defense-contractor sector taxonomy) but operator
+        decision requires either (a) direct DOJ filing
+        retrieval, or (b) independent A-grade vendor
+        attribution attestation in next 72h.
+    resurface_if:
+      - direct_doj_filing_retrieval_with_specific_victim_enumeration
+      - independent_a_grade_vendor_attribution_attestation_microsoft_mstic_msr_crowdstrike_mandiant
+      - ad_prime_named_as_specific_victim_in_indictment
+      - additional_obrezko_or_void_blizzard_le_action
+      - ioc_layer_publication_seized_infrastructure_or_attributed_infrastructure
+      - first_party_splunk_hit
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      DOJ counter-cyberespionage action with Russia attribution
+      surface; pairs with morning brief's China-attribution
+      seizure (temporal proximity not campaign continuity).
+      Void Blizzard /new-actor candidacy DEFERRED per analyst
+      recommendation pending DOJ filing direct retrieval.
+      The Record victim-profile language names 'defense
+      contractors' in sector taxonomy — STRONGEST in-window
+      source-direct A&D framing today but NOT named-victim
+      grounding. Hard Rule 2 binding: no cross-walk to roster
+      actors.
+
+  - id: 2026-06-11-pm-004-langflow-cve-2026-5027-vulncheck-itw-path-traversal-7000-internet-exposed-first-confirmed-itw-ai-workflow-platform-compromise-in-corpus
+    covered_in: [2026-06-11-afternoon]
+    brief_file: threats/briefs/2026-06-11-afternoon.md
+    headline: "Langflow CVE-2026-5027 (CVSS 8.8) path-traversal in POST /api/v2/files endpoint enabling arbitrary file write; effectively unauthenticated via Langflow's auto-login default; originally disclosed by Tenable 2026-03-27 after failed disclosure process; patch available three months; VulnCheck research relayed by SecurityWeek attests in-the-wild exploitation June 2026 (single-source veto on ITW); VulnCheck scans count ~7,000 internet-accessible Langflow instances skewed predominantly North America (single-source veto on count); first confirmed-ITW AI-workflow-platform compromise in Archimedes corpus; no actor attribution at any in-window source; no A&D-prime named victim; structural inference only on A&D R&D LangChain/Langflow hosting; defender action: patch to post-March 2026 versions + audit internal-facing instances + disable auto-login default if exposed externally"
+    topic_tags:
+      - cve-2026-5027
+      - cve
+      - langflow
+      - langflow-auto-login-default-effectively-unauthenticated
+      - path-traversal-arbitrary-file-write-post-api-v2-files
+      - cvss-8-8
+      - vulncheck-itw-research-single-source-veto
+      - tenable-original-disclosure-2026-03-27-failed-disclosure-process
+      - 7000-internet-accessible-instances-north-america-skew-vulncheck-sole
+      - patch-available-three-months
+      - first-confirmed-itw-ai-workflow-platform-compromise-in-corpus
+      - hard-rule-2-no-actor-attribution-no-campaign
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-5027]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-11-0008]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      cve_2026_5027_record_class_path_traversal: B2
+      cve_2026_5027_cvss_8_8: B2
+      cve_2026_5027_auth_requirement_unauthenticated_effective_via_langflow_auto_login_default: B2
+      cve_2026_5027_disclosure_tenable_2026_03_27: B2
+      cve_2026_5027_patch_status_available_since_march_2026: B2
+      vulncheck_observes_itw_exploitation_june_2026: B2  # single-source veto
+      approximately_7000_internet_accessible_instances_north_america: B2  # single-source veto
+      no_actor_attribution: A1
+      first_confirmed_itw_ai_workflow_platform_compromise_in_corpus: A1
+    wep: likely
+    wep_layered:
+      cve_record_class_mechanism_auth_disclosure_patch_facts: very_likely
+      itw_exploitation_existence_three_months_post_patch: likely
+      approximately_7000_internet_accessible_instances_north_america: likely
+      ad_rd_environments_host_langchain_langflow_internal_ai_assisted_engineering_structural_inference: likely  # no source-confirmed deployment data
+      defender_priority_patch_audit_disable_auto_login_default: very_likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "ITW exploitation existence June 2026 — VulnCheck sole originating evidence basis through SecurityWeek sole publisher relay; no second vendor independent attestation; single-effective-source"
+      - "~7,000 internet-accessible Langflow instances skewed North America — VulnCheck sole scanning telemetry; no third-party scanner corroboration this sweep"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at any in-window source; Archimedes does NOT originate attribution"
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming_langflow_not_observably_in_defenseclaw_local
+    resurface_if:
+      - second_vendor_independent_attestation_of_cve_2026_5027_itw
+      - third_party_scanner_corroboration_shodan_censys_greynoise_on_7000_instance_count
+      - actor_attribution_attached
+      - ad_prime_named_victim_or_internal_langflow_deployment_disclosure
+      - first_party_splunk_hit_on_langflow_or_path_traversal_post_api_v2_files
+      - tenable_or_vulncheck_publishes_ioc_or_ttp_writeup
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      First confirmed-ITW AI-workflow-platform compromise in
+      Archimedes corpus. Single-source veto applies on both ITW
+      existence and the ~7,000-instance count — VulnCheck
+      research relayed by SecurityWeek is sole originating
+      evidence basis. Cluster-pair candidate with AM finding
+      0004 OpenClaw academic research thematic-pairing (NOT
+      evidence-pairing — OpenClaw academic, no ITW). Defender
+      action straightforward (patch to post-March 2026 +
+      audit + disable auto-login default).
+
+  - id: 2026-06-11-pm-005-the-gentlemen-storm-2697-larva-368-phantom-mantis-prodaft-microsoft-corroborate-krebs-yapaev-material-extension-on-2026-06-10-pm-008
+    covered_in: [2026-06-11-afternoon, 2026-06-10-afternoon]
+    brief_file: threats/briefs/2026-06-11-afternoon.md
+    update_of_prior_coverage_log_entry: 2026-06-10-pm-008-krebs-check-point-intel471-flashpoint-the-gentlemen-raas-osint-de-anonymization-hastalamuerte-zeta88-alexander-yapaev-izhevsk-russia-new-actor-candidate
+    headline: "MATERIAL EXTENSION on 2026-06-10-pm-008 — The Gentlemen ransomware now tracked by THREE independent vendor-tier attributions on Yapaev identity: PRODAFT (Phantom Mantis group / LARVA-368 operator designation / 478 victim count claim) + Microsoft (Storm-2697 group tracking ID) + Krebs OSINT (carry-forward from 2026-06-10-pm-008); PRODAFT additionally identifies Yapaev's prior LockBit affiliate handle 'Tenacious Mantis' (LockBit in Archimedes roster #015 HIGH; touchpoint for LockBit dossier maintenance next review 2026-07-10), prior Qilin affiliate 'Pestilent Mantis' (Qilin NOT in roster), prior Medusa affiliate 'Venomous Mantis' (Medusa NOT in roster), ArmCorp prior alias, RaaS-affiliate-to-independent-operator transition July 2025; technical: Go binary + Garble obfuscation + X25519/XChaCha20 + Windows/Linux/ESXi/LVM + `--spread` worm-flag + 2-6 week dwell; geographic distribution only ~13% U.S.-based with majority Thailand/UK/Brazil/Germany/India per PRODAFT — A&D-prime relevance WEAK (no defense-sector victims named per source); /new-actor candidacy STRENGTHENED by three vendor-tier corroborations but A&D relevance weak — OPERATOR DECISION PENDING, Archimedes does NOT initiate /new-actor in this brief; Hard Rule 2 binding: do NOT extend LockBit dossier to cover The Gentlemen's independent operations (Yapaev is FORMER affiliate, current Gentlemen operations are independent per PRODAFT framing)"
+    topic_tags:
+      - the-gentlemen-ransomware
+      - phantom-mantis-prodaft-tracking
+      - storm-2697-microsoft-mstic-tracking
+      - larva-368-prodaft-operator-designation
+      - alexander-yapaev-izhevsk-russia-identity-carry-forward
+      - armcorp-prodaft-prior-alias
+      - raas-affiliate-to-independent-operator-transition-july-2025
+      - tenacious-mantis-prior-lockbit-affiliate-prodaft
+      - pestilent-mantis-prior-qilin-affiliate-prodaft
+      - venomous-mantis-prior-medusa-affiliate-prodaft
+      - 478-victim-count-claim-prodaft
+      - go-binary-garble-obfuscation
+      - x25519-xchacha20-encryption-scheme
+      - multi-platform-targeting-windows-linux-esxi-lvm
+      - spread-worm-flag-defender-pivot-endpoint-command-line-audit
+      - 13-percent-us-victim-distribution-thailand-uk-brazil-germany-india-majority
+      - lockbit-roster-touchpoint-next-review-2026-07-10
+      - hard-rule-2-do-not-extend-lockbit-dossier-to-the-gentlemen-independent-operations
+      - new-actor-candidacy-strengthened-but-a-d-relevance-weak-operator-decision-pending
+      - material-extension-on-2026-06-10-pm-008
+      - actor-activity
+    related_actors:
+      - actor_name: The Gentlemen
+        actor_in_roster: false
+        archimedes_treatment: source_attribution_preserved_three_vendor_tier_corroboration_yapaev_identity_carry_forward_lift_above_krebs_only_baseline
+        new_actor_candidate: true
+        new_actor_decision: CANDIDACY_STRENGTHENED_OPERATOR_DECISION_PENDING_A_D_RELEVANCE_WEAK
+      - actor_name: Alexander Yapaev (operator)
+        actor_in_roster: false
+        archimedes_treatment: identity_carry_forward_from_2026_06_10_pm_008_krebs_osint_now_corroborated_by_prodaft_and_microsoft
+      - actor_name: LockBit
+        actor_in_roster: true
+        actor_id: "015"
+        threat_level: HIGH
+        archimedes_treatment: hard_rule_2_binding_do_not_extend_lockbit_dossier_to_cover_the_gentlemen_independent_operations_yapaev_is_former_affiliate
+    related_vulns: []
+    related_campaigns:
+      - the_gentlemen_raas_mid_2025_inception_through_2026
+    finding_ids: [finding-2026-06-11-0009]
+    finding_ids_cross_referenced: [finding-2026-06-10-0017]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      prodaft_independently_tracks_the_gentlemen_as_phantom_mantis: B2
+      microsoft_independently_tracks_the_gentlemen_as_storm_2697: B2
+      prodaft_plus_microsoft_corroborate_krebs_check_point_yapaev_identification: B2
+      prodaft_names_larva_368_designation_for_yapaev_operator: B2
+      yapaev_real_identity_alexander_andreevich_yapaev_36_izhevsk_russia_consistent_with_0017_krebs: A2
+      yapaev_previous_alias_armcorp_per_prodaft: B3
+      yapaev_transitioned_from_raas_affiliate_to_independent_operator_july_2025: B2
+      yapaev_prior_lockbit_affiliate_tenacious_mantis: B2
+      yapaev_prior_qilin_affiliate_pestilent_mantis: B2
+      yapaev_prior_medusa_affiliate_venomous_mantis: B2
+      the_gentlemen_478_victim_count_claimed: B2
+      victim_distribution_only_13_percent_us_based: B2
+      lockbit_in_roster_id_015_high_threat_level: A1
+      hard_rule_2_does_NOT_extend_lockbit_dossier_to_cover_the_gentlemen_independent_operations: A1
+      no_ad_prime_named_as_victim: A1
+      no_defense_sector_targeting_per_source: A1
+    wep: likely
+    wep_layered:
+      yapaev_identity_three_vendor_corroborated_above_krebs_only_baseline: likely  # lift above 0017's B3 single-vendor identity claim
+      prodaft_phantom_mantis_microsoft_storm_2697_independent_tracking_ids: likely
+      478_victim_count_claim_prodaft: likely  # PRODAFT methodology not directly retrieved
+      yapaev_raas_affiliate_history_lockbit_qilin_medusa_prodaft_attestation: likely
+      go_binary_garble_x25519_xchacha20_spread_worm_flag_technical_class: likely
+      13_percent_us_geographic_distribution: likely
+      a_d_prime_relevance_specific_victim_in_window: very_unlikely  # verifiable absence
+      new_actor_candidacy_decision_pending_operator: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "PRODAFT-specific details (LARVA-368 designation, ArmCorp alias, 478 victim count, transition date specifics) — PRODAFT vendor research relayed by The Hacker News sole publisher; PRODAFT primary not directly retrieved this sweep"
+    hard_rule_2_framings_load_bearing:
+      - "Three vendor-tier corroborations LIFT identity layer above 2026-06-10-pm-008's Krebs-only baseline but do NOT change Hard Rule 2 binding posture"
+      - "Yapaev's prior LockBit affiliation is touchpoint for LockBit dossier (next review 2026-07-10); do NOT extend LockBit dossier to cover The Gentlemen's independent operations (Yapaev is FORMER affiliate)"
+      - "Qilin and Medusa NOT in Archimedes roster; no roster-mapping change recommended this sweep"
+      - "A&D-prime relevance WEAK: ~13% U.S., zero defense-sector victims named per source"
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming_actor_administrator_selectors_not_infrastructure_iocs
+    new_actor_decision:
+      candidacy: APPROVE_CANDIDACY
+      strengthened_by: three_independent_vendor_tier_attributions_corroborating_yapaev_identity_carry_forward_lift
+      operator_decision_pending: true
+      do_not_initiate_in_brief: true
+      a_d_relevance_caveat: weak_13_percent_us_zero_defense_sector_victims_named
+    resurface_if:
+      - le_action_indictment_arrest_yapaev_or_the_gentlemen
+      - additional_a_grade_vendor_attribution_attestation
+      - subject_response_or_denial_yapaev
+      - new_victims_confirmed_especially_a_d_prime
+      - ad_prime_named_victim_disclosed
+      - prodaft_primary_research_publication_direct_retrieval
+      - operator_invokes_slash_new_actor
+      - osint_layer_overturned_by_subsequent_research
+    first_covered: 2026-06-10
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      MATERIAL EXTENSION on 2026-06-10-pm-008. Three independent
+      vendor-tier attributions now converge on Yapaev identity
+      (PRODAFT + Microsoft + Krebs). /new-actor candidacy
+      strengthened but A&D relevance remains weak (~13% U.S.,
+      zero defense-sector victims). Operator decision required
+      — Archimedes does NOT initiate /new-actor in this brief.
+      Coverage log action on prior entry 2026-06-10-pm-008:
+      append 2026-06-11-afternoon to covered_in; update
+      last_covered to 2026-06-11. Original framing preserved.
+      LockBit dossier (#015) touchpoint flagged for next review
+      cycle 2026-07-10; Hard Rule 2 binding: do NOT extend
+      LockBit dossier to cover The Gentlemen's independent
+      operations.
+
+  - id: 2026-06-11-pm-006-onyxc2-maas-credential-stealer-blackfog-research-250-monthly-210-targets-zero-vt-detections
+    covered_in: [2026-06-11-afternoon]
+    brief_file: threats/briefs/2026-06-11-afternoon.md
+    headline: "OnyxC2 MaaS credential-stealer — BlackFog vendor research relayed by SecurityWeek + Security Affairs; $250/month standard / $500/month HVNC premium / $6,000 source-code purchase; 210+ application targets including 95+ Chromium and 14+ Gecko extensions with dedicated 2FA + password-manager modules; AES-256 encrypted payloads + DLL sideloading via NVIDIA-library masquerade + in-memory execution + legitimate-signature wrapper; zero VirusTotal detections across 71 engines on initial upload 2026-05-30; two B-grade publisher-independent relays of single BlackFog evidence basis (single-source at substantive layer); no actor attribution; no A&D-prime named victim; MaaS commoditization watchlist signal for DIB workforce credential theft indirect"
+    topic_tags:
+      - onyxc2
+      - maas
+      - credential-stealer
+      - blackfog-vendor-research
+      - 250-monthly-500-hvnc-premium-6000-source-code
+      - 210-application-targets-95-chromium-extensions-14-gecko-extensions
+      - 2fa-module-password-manager-module
+      - aes-256-dll-sideloading-nvidia-library-masquerade-in-memory-execution
+      - legitimate-signature-wrapper
+      - zero-vt-detections-71-engines-2026-05-30
+      - two-publisher-relays-single-vendor-evidence-basis-single-effective-source
+      - hard-rule-2-no-actor-attribution
+      - other-signal
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - maas_commoditization_credential_stealer_class_watchlist
+    finding_ids: [finding-2026-06-11-0010]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "OnyxC2 technical detail + pricing + target list + evasion mechanisms — BlackFog vendor research relayed by two B-grade publishers; single-effective-source at substantive evidence-basis layer per skill Step 4"
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming
+    resurface_if:
+      - second_vendor_independent_attestation_of_onyxc2_technical_detail_or_customer_base
+      - actor_attribution_attached_to_specific_onyxc2_customer
+      - first_party_splunk_hit_on_onyxc2_iocs
+      - ad_prime_named_victim_or_credential_theft_incident_attributed_to_onyxc2
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      MaaS commoditization watchlist signal. Two B-grade
+      publisher-independent relays of single BlackFog evidence
+      basis = single-effective-source at substantive layer.
+      Defender utility at architectural-identifier level
+      (DLL sideloading, NVIDIA-library masquerade, legitimate-
+      signature wrapper, browser-extension manifest monitoring)
+      preserved per Hard Rule 3.
+
+  - id: 2026-06-11-pm-007-europol-audia6-crypto-laundering-takedown-380m-tkachuk-ledenev-georgia-dark2web
+    covered_in: [2026-06-11-afternoon]
+    brief_file: threats/briefs/2026-06-11-afternoon.md
+    headline: "AudiA6 cryptocurrency-laundering service dismantled in Europol-coordinated 11-country operation; >$380M laundered 2022-2025; linked to 15+ international ransomware investigations (no specific groups named per source); 2 administrators charged Ruslan Igorevich Tkachuk (37, Ukrainian) + Alexander Vladimirovich Ledenev (25, Russian) detained in Georgia; also charged with administering 'Dark2Web' forum; 25 domains + €86,000 crypto seized + €692,000 frozen + 80 vehicles/properties + Telegram blocked; up to 20 years each; indirect ransomware-economy disruption A&D relevance only; BleepingComputer sole in-window publisher relaying Europol announcement (canonical at originator A but not directly retrieved)"
+    topic_tags:
+      - audia6
+      - audia6-cryptocurrency-laundering-service
+      - europol-11-country-coordinated-takedown
+      - 380m-usd-laundered-2022-2025
+      - ruslan-igorevich-tkachuk-37-ukrainian
+      - alexander-vladimirovich-ledenev-25-russian
+      - georgia-detention
+      - dark2web-forum-administration
+      - 25-domains-86k-eur-crypto-692k-eur-frozen-80-vehicles-properties-telegram
+      - 15-plus-international-ransomware-investigations-linked-no-specific-groups-named
+      - ransomware-economy-disruption-indirect-ad-relevance
+      - hard-rule-2-not-triggered-tkachuk-ledenev-charged-publicly-named
+      - other-signal
+    related_actors:
+      - actor_name: Ruslan Igorevich Tkachuk (charged subject)
+        actor_in_roster: false
+        archimedes_treatment: NAMED_SUBJECT_PER_EUROPOL_CHARGING_DOCUMENT_PER_LEGAL_POLICY_DATA_HANDLING_TABLE
+      - actor_name: Alexander Vladimirovich Ledenev (charged subject)
+        actor_in_roster: false
+        archimedes_treatment: NAMED_SUBJECT_PER_EUROPOL_CHARGING_DOCUMENT_PER_LEGAL_POLICY_DATA_HANDLING_TABLE
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-06-11-0011]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Substantive operational claims (dollar volume, 15+ ransomware investigations link, seizure totals) — BleepingComputer sole in-window publisher relaying Europol announcement; Europol canonical at originator A but not directly retrieved this sweep"
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming
+    resurface_if:
+      - europol_announcement_direct_retrieval_with_specific_ransomware_groups_named
+      - additional_le_action_against_audia6_customers_or_users
+      - first_party_splunk_hit
+      - additional_specific_ransomware_groups_named_as_audia6_customers
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      Indirect ransomware-economy disruption signal. BleepingComputer
+      sole in-window publisher; Europol canonical at originator A
+      but not directly retrieved this sweep. Standard B2 single-
+      source-through-single-publisher posture. Tkachuk + Ledenev
+      named per Europol charging document, LEGAL-POLICY data-
+      handling table compliant.
+
+  - id: 2026-06-11-pm-008-nightmare-eclipse-greatxml-bitlocker-bypass-recovery-partition-unattend-xml-winre-shell-no-cve-no-patch-dormann-reproduction-contested
+    covered_in: [2026-06-11-afternoon]
+    brief_file: threats/briefs/2026-06-11-afternoon.md
+    headline: "Nightmare Eclipse / MSNightmare researcher publishes GreatXML claimed BitLocker bypass via Recovery-partition unattend.xml + Recovery directory + WinRE Shift+click Restart shell-access chain with unrestricted access to BitLocker volume; precondition: Windows Defender Offline Scan must have run at some point in the past; unpatched, no CVE; Will Dormann independent reproduction CONTESTED — Dormann called writeup flawed, could not reproduce, preconditions (logged-in admin to initiate Defender Offline Scan) negate bypass value per Dormann critique; Microsoft confirmed investigating sibling RoguePlanet but no comment yet on GreatXML; researcher's GitHub account banned for not using official disclosure channels; eighth zero-day in current Nightmare Eclipse disclosure series (6 patched June Patch Tuesday + RoguePlanet outstanding + GreatXML new this finding); CMMC L2/L3 BitLocker-as-FDE-integrity-control awareness signal; A&D sector indirect only; The Register + The Hacker News two B-publisher independent relays of same researcher disclosure event; reproduction-contested keeps cluster anchor at B3 not B2"
+    topic_tags:
+      - nightmare-eclipse-msnightmare-researcher
+      - greatxml-claimed-bitlocker-bypass
+      - recovery-partition-unattend-xml-recovery-directory
+      - winre-shell-access-shift-click-restart
+      - precondition-windows-defender-offline-scan-must-have-run
+      - reproduction-contested-will-dormann-cannot-reproduce
+      - preconditions-logged-in-admin-negate-bypass-per-dormann
+      - microsoft-msrc-no-comment-yet-on-greatxml
+      - microsoft-confirmed-investigating-rogueplanet-sibling
+      - microsoft-banned-researcher-github-account
+      - microsoft-none-of-vulnerabilities-reported-via-official-channels
+      - eighth-zero-day-in-current-nightmare-eclipse-series
+      - cmmc-l2-l3-bitlocker-fde-integrity-control-awareness-signal-only
+      - no-cve-no-patch-no-a-grade-itw
+      - flash-trigger-6-evaluation-does-not-satisfy
+      - two-publisher-relays-single-researcher-evidence-basis-reproduction-contested
+      - hard-rule-3-mechanism-class-only-no-poc-no-payload-no-step-by-step-guidance
+      - other-signal
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - nightmare_eclipse_msnightmare_disclosure_series_8_zero_days_through_2026_q2
+    finding_ids: [finding-2026-06-11-0012]
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      nightmare_eclipse_published_greatxml_bitlocker_bypass_claim: B2
+      greatxml_mechanism_claim_per_researcher: B3
+      precondition_windows_defender_offline_scan_must_have_run: B3
+      will_dormann_independent_reproduction_called_writeup_flawed_could_not_reproduce: B2
+      will_dormann_assertion_preconditions_logged_in_admin_negate_bypass: B2
+      microsoft_msrc_investigating_rogueplanet_no_comment_yet_on_greatxml: B2
+      microsoft_banned_researcher_github_account: B2
+      eighth_zero_day_in_current_series: B2
+      cve_assignment_greatxml: A1  # verifiable absence
+      patch_status_greatxml: A1  # verifiable absence
+      itw_exploitation_per_a_grade_source: A1  # verifiable absence
+    wep: roughly_even_chance
+    wep_layered:
+      disclosure_event_existence: very_likely  # two-publisher independence on disclosure event itself
+      mechanism_validity_per_researcher_claim: roughly_even_chance  # reproduction contested
+      bypass_value_per_researcher_claim_negated_by_dormann_preconditions: unlikely  # Dormann critique
+      cve_or_patch_or_a_grade_itw_existence: very_unlikely  # verifiable absence
+      flash_trigger_6_satisfied: very_unlikely
+      cmmc_l2_l3_bitlocker_fde_integrity_control_awareness_signal_only: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Mechanism claim — sole-researcher origination; two B-publisher relays of same Blogger/GitHub disclosure; reproduction contested by Will Dormann (independent)"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution; Nightmare Eclipse / MSNightmare is researcher pseudonym not threat actor"
+    hard_rule_3_compliance: "Mechanism class preserved at architectural-identifier level (Recovery partition + unattend.xml + WinRE shell access); NO PoC code, NO step-by-step exploitation guidance, NO payload bytes"
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming_bitlocker_recovery_partition_workstation_class_no_first_party_observability_at_this_layer
+    resurface_if:
+      - microsoft_msrc_official_position_on_greatxml_published
+      - will_dormann_or_independent_researcher_publishes_full_reproduction_or_definitive_refutation
+      - cve_assigned_to_greatxml
+      - patch_released_for_greatxml
+      - a_grade_itw_exploitation_per_tier_1_vendor
+      - new_nightmare_eclipse_disclosure_in_series
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      Reproduction-contested item — Will Dormann's inability
+      to reproduce keeps cluster anchor at B3 not B2. CMMC
+      L2/L3 BitLocker-as-FDE-integrity awareness signal only.
+      Does NOT satisfy FLASH-POLICY Trigger 6 (no CVE, no
+      CVSS, no A-grade ITW). Hedged in brief prose at
+      'roughly even chance' on mechanism validity per
+      red-team / analyst guidance.
+
+  - id: 2026-06-11-pm-brief-meta
+    covered_in: [2026-06-11-afternoon]
+    brief_file: threats/briefs/2026-06-11-afternoon.md
+    headline: "2026-06-11 afternoon brief metadata — 8 findings referenced (2 UPDATE-extensions on AM 0001 and FLASH 1200; 1 material extension on 2026-06-10-pm-008; 5 new); 749-word Layer 1 (target 400-800) + Layer 2 ≤1900 chars; pre-flight 13/13 pass after 2 regenerations (Layer 2 char count); TLP:GREEN; red-team qualify recommendations honored on Ivanti KEV/BOD layer-scoping and Oracle PeopleSoft mitigations-only durability + DIB exposure softening; ShinyHunters carry-forward self-claim only per Hard Rule 2; Void Blizzard /new-actor DEFER pending DOJ filing retrieval; The Gentlemen /new-actor candidacy strengthened but A&D weak - operator decision pending; FLASH 1200 materially extended NOT superseded; FLASH 0608 already superseded by morning brief"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - layered-grading
+      - update-extensions-on-am-001-and-flash-1200
+      - material-extension-on-2026-06-10-pm-008
+      - red-team-qualify-recommendations-honored-layer-scoping
+      - shinyhunters-self-claim-carry-forward-hard-rule-2
+      - void-blizzard-new-actor-defer-doj-filing-retrieval
+      - the-gentlemen-new-actor-candidacy-strengthened-a-d-weak-operator-decision-pending
+      - flash-1200-materially-extended-not-superseded
+      - flash-0608-superseded-by-morning
+      - tlp-green
+      - pre-flight-13-13-pass-after-2-regenerations
+    finding_ids: []
+    digraph: A2  # composite — driven by KEV/BOD A1 + PeopleSoft A2
+    wep: likely
+    layer_1_word_count: 749
+    layer_2_char_ceiling: 1900
+    layer_2_compliance: pass_under_ceiling
+    preflight_iterations: 2
+    preflight_regenerations:
+      - section: layer_2_discord_summary
+        reason: initial_draft_at_approximately_2355_chars_over_1900_ceiling_iteratively_compressed_to_under_ceiling_by_tightening_bullets_1_2_and_consolidating_bullet_5_into_pointer_in_bullet_4
+        iterations: 2
+    pre_flight_check:
+      total: 13
+      passed: 13
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass_update_flags_applied_with_material_changes_documented_for_ivanti_kev_oracle_peoplesoft_and_the_gentlemen
+        lead_states_impact_not_context: pass_lead_states_two_federal_attestations_and_doj_indictment
+        no_banned_phrases: pass
+        standing_sections_present: pass_ad_sector_focus_and_iran_cyber_watch_both_present_iran_silent_day_template_used
+        wep_vocabulary_used_with_probability_bands: pass_likely_very_likely_roughly_even_chance_used
+        word_count_within_target: pass_749_words_within_400_800_target
+        actor_vuln_references_link_to_repo: pass_cve_links_finding_links_lockbit_dossier_link_present
+        tlp_noted_where_non_clear: pass_green_noted_with_rationale_in_frontmatter
+        single_source_veto_respected: pass_layered_veto_documented_for_void_blizzard_the_gentlemen_langflow_onyxc2_audia6_greatxml
+        quotes_within_15_words_one_per_source: pass_securityweek_oracle_12_words_zdi_childs_10_words_the_record_void_blizzard_10_words_cisa_kev_short_description_6_words_one_quote_per_source
+        discord_summary_section_present_compliant: pass_section_present_last_in_file_under_1900_char_ceiling_natural_language_dates_no_themed_character_voice
+    items_pulled_or_hedged_due_to_red_team:
+      - finding_id: finding-2026-06-11-0005
+        red_team_recommendation: qualify
+        hedge_applied_in_brief: |
+          (1) WEP 'very_likely' on federally-attested-ITW framing explicitly
+              scoped to procedural-attestation layer in brief prose ('federal
+              procedural attestation; KEV publishes no telemetry'); evidence-
+              basis-intensity capped at 'likely' (carry-forward).
+          (2) Morning red-team 'mass' hedge preserved verbatim — Brief prose
+              uses 'mass framing remains capped per red-team carry-forward.'
+          (3) BOD 26-04 DIB-pull framing softened from grader 'likely' to
+              'roughly even chance' with explicit precedent-dependence language
+              ('2021 KEV launch precedent is a single analogy and BOD 26-04
+              introduces new risk-factor scoring not mechanistically equivalent').
+          (4) 'Three-day deadline pattern' NOT asserted as CISA strategic
+              shift — pattern not raised in brief prose at all.
+      - finding_id: finding-2026-06-11-0006
+        red_team_recommendation: qualify
+        hedge_applied_in_brief: |
+          (1) Three-publisher convergence on mitigations-only framed as
+              'may share a single Mandiant-sourced chain — treat mitigations-
+              only as likely durable until Oracle-side independent verification.'
+          (2) ShinyHunters 100-org claim framed as 'upper-bound adversary
+              self-attestation, not corroborated extent.'
+          (3) Second-zero-day cluster framing alongside CVE-2026-20245 Cisco
+              SD-WAN framed as 'observational only, not a coherent operational
+              pattern.'
+          (4) DIB exposure framed at 'roughly even chance' pending deployment-
+              density signal.
+    items_pulled: []
+    coverage_log_actions_required:
+      - prior_entry: 2026-06-11-am-001
+        action: append_2026-06-11-afternoon_to_covered_in_update_last_covered_to_2026-06-11
+      - prior_entry: 2026-06-11-flash-1200-001
+        action: append_2026-06-11-afternoon_to_covered_in_update_last_covered_to_2026-06-11
+      - prior_entry: 2026-06-10-pm-008
+        action: append_2026-06-11-afternoon_to_covered_in_update_last_covered_to_2026-06-11
+    flash_supersession_status:
+      flash_1200_oracle_peoplesoft: materially_extended_not_superseded_mitigations_only_firmed_zdi_limited_introduces_independent_scale_tension
+      flash_0608_ivanti_sentry: already_fully_superseded_by_morning_brief_pm_update_stacks_on_morning_not_on_flash
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding-2026-06-11-0005
+        - finding-2026-06-11-0006
+        - finding-2026-06-11-0007
+        - finding-2026-06-11-0008
+        - finding-2026-06-11-0009
+        - finding-2026-06-11-0010
+        - finding-2026-06-11-0011
+        - finding-2026-06-11-0012
+      add_2026_06_11_afternoon_to_published_in_briefs_for_each
+    operator_action_items:
+      - id: void_blizzard_new_actor_decision_deferred_pending_doj_filing
+        action: collector_to_retrieve_direct_doj_filing_on_obrezko_void_blizzard_indictment
+        rationale: single_b_grade_in_window_source_b_grade_relay_underlying_doj_a_class_not_directly_retrieved_this_sweep_microsoft_mstic_blizzard_naming_origin_corpus_background_not_in_window_source_attested_operator_decision_requires_direct_filing_or_independent_a_grade_vendor_attestation
+        priority: high
+        decision_pending: true
+      - id: the_gentlemen_new_actor_candidacy_operator_decision_pending
+        action: operator_to_decide_invocation_of_slash_new_actor_the_gentlemen
+        rationale: three_independent_vendor_tier_attributions_now_corroborate_yapaev_identity_prodaft_microsoft_krebs_check_point_BUT_a_d_relevance_weak_13_percent_us_zero_defense_sector_victims_named_operator_decision_required
+        decision_pending: true
+        priority: medium
+      - id: lockbit_dossier_touchpoint_next_review
+        action: actor_profiler_to_consider_yapaev_former_lockbit_affiliate_tenacious_mantis_for_lockbit_dossier_next_review_2026_07_10
+        rationale: hard_rule_2_binding_do_NOT_extend_lockbit_dossier_to_cover_the_gentlemen_independent_operations_but_yapaev_prior_affiliation_is_material_dossier_context
+        priority: low
+      - id: oracle_psirt_advisory_direct_retrieval_carry_forward_from_flash_1200
+        action: collector_or_vuln_tracker_to_retrieve_oracle_out_of_band_advisory_directly_for_cve_2026_35273
+        rationale: three_publisher_convergence_may_share_single_mandiant_sourced_chain_oracle_side_independent_verification_lifts_mitigations_only_from_likely_to_very_likely_durability
+        priority: high
+        carry_forward_from: 2026-06-11-flash-1200-001
+      - id: second_ir_firm_corroboration_watch_carry_forward_from_flash_1200
+        action: collector_to_monitor_unit42_crowdstrike_mstic_volexity_sophos_for_cve_2026_35273_telemetry_attestation
+        rationale: second_a_grade_ir_firm_independent_telemetry_lifts_operational_itw_wep_from_likely_to_very_likely_and_activates_potential_flash_re_evaluation
+        priority: high
+        carry_forward_from: 2026-06-11-flash-1200-001
+      - id: cisa_kev_addition_watch_cve_2026_35273
+        action: collector_to_monitor_cisa_kev_for_cve_2026_35273_addition
+        rationale: kev_addition_with_active_exploitation_language_is_independent_authoritative_confirmation_pattern_observed_today_on_cve_2026_10520_ivanti_sentry
+        priority: high
+        carry_forward_from: 2026-06-11-flash-1200-001
+      - id: bod_26_04_dossier_or_corpus_artifact
+        action: librarian_or_vuln_tracker_to_consider_scaffolding_bod_26_04_corpus_artifact_under_threats_policy_artifacts_or_under_doctrine
+        rationale: bod_26_04_introduces_new_federal_risk_based_vm_framework_with_3_day_14_day_60_day_180_day_deadlines_and_4_risk_factors_warrants_dedicated_corpus_artifact_for_future_reference_and_dib_industry_prioritization_standard_watch
+        priority: medium
+      - id: vulncheck_source_grade_add
+        action: librarian_to_add_vulncheck_to_source-grades_yaml_as_provisional_B_72h_ratification_clock
+        rationale: vulncheck_first_dedicated_id_surface_per_finding_2026_06_11_0008_handoff_vendor_research_tier_class_consistent_with_tenable_veracode_synopsys_snyk_qualys_rapid7_precedent
+        priority: medium
+      - id: blackfog_source_grade_add
+        action: librarian_to_add_blackfog_to_source-grades_yaml_as_provisional_B_72h_ratification_clock
+        rationale: blackfog_first_dedicated_id_surface_per_finding_2026_06_11_0010_handoff_vendor_research_tier_class
+        priority: medium
+      - id: prodaft_source_grade_add
+        action: librarian_to_add_prodaft_to_source-grades_yaml_as_provisional_B_72h_ratification_clock
+        rationale: prodaft_first_dedicated_id_surface_per_finding_2026_06_11_0009_handoff_vendor_research_tier_class
+        priority: medium
+      - id: the_register_source_grade_verify
+        action: librarian_to_verify_the-register_source-grades_yaml_entry_or_add_as_B
+        rationale: the_register_used_today_on_oracle_peoplesoft_finding_2026_06_11_0006_and_nightmare_eclipse_finding_2026_06_11_0012
+        priority: low
+      - id: security_affairs_source_grade_verify
+        action: librarian_to_verify_security-affairs_source-grades_yaml_entry_or_add_as_provisional_B
+        rationale: security_affairs_used_today_on_onyxc2_finding_2026_06_11_0010
+        priority: low
 
 # ============================================================================
 # Valid resurface_if conditions

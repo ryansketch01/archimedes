@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-06-11T08:34:00-04:00
+last_updated: 2026-06-11T16:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -118,6 +118,36 @@ government_sources:
       - https://www.asio.gov.au/
       - https://www.canada.ca/en/security-intelligence-service.html
       - https://www.nzsis.govt.nz/
+
+  - id: europol-coordinated-announcement
+    name: "Europol Coordinated Announcements"
+    category: government
+    grade: A
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0011 (Operation against the AudiA6 crypto-laundering service: 11-country Europol operation, 2 administrators charged — Tkachuk and Ledenev — detained in Georgia; 25 domains + €86k crypto seized + €692k frozen + Telegram blocked; >$380M laundered linked to 15+ international ransomware investigations). Europol coordinated-action communiqués are the inter-jurisdictional law-enforcement equivalent of an FBI Flash / DOJ filing primary — official, operationally verified before publication, charged-subject names backed by indictment paperwork from contributing member states. Procedurally A-grade per same precedent as FBI Flash (corpus baseline A), DOJ filings (corpus baseline A), and CISA Advisories. This sweep cited via BleepingComputer B-grade relay; no direct Europol press-release URL retrieved. 72h ratification clock to 2026-06-14T16:00:00-04:00. Pending direct retrieval of europol.europa.eu/media-press/newsroom primary AND human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    ratification_clock: 2026-06-14T16:00:00-04:00
+    provenance: finding-2026-06-11-0011
+    active: true
+    urls:
+      - https://www.europol.europa.eu/media-press/newsroom
+
+  - id: doj-federal-court-filings
+    name: "U.S. DOJ Federal Court Filings (indictments, complaints, press releases)"
+    category: government
+    grade: A
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0007 (DOJ indictment of Denis Obrezko, 36, Russian national, for infrastructure-provider role in Void Blizzard cyberespionage cluster; arrested November 2025 in Phuket Thailand on joint FBI / Thai Royal Police operation; extradited; initial Boston federal court appearance 2026-06-10; prosecutors allege cryptocurrency-purchased VPS + domains used as Void Blizzard attack infrastructure against at least 11 U.S. companies). DOJ federal-court filings (indictments, complaints, sealed/unsealed motions, sentencing memoranda, and the press releases that accompany them) are official U.S. government law-enforcement primaries — procedurally A-grade per same precedent as FBI Flash / CISA Advisories / NSA-CNSA. This sweep cited via The Record B-grade relay only; the direct DOJ press release and the underlying Boston federal court docket were NOT directly retrieved. Provisional A pivots on first direct retrieval of justice.gov primary. 72h ratification clock to 2026-06-14T16:00:00-04:00. Pending direct retrieval AND human ratification. The /new-actor decision on Void Blizzard is explicitly DEFERRED at compose pending exactly that DOJ-primary retrieval per Hard Rule 2 attribution-origination discipline."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    ratification_clock: 2026-06-14T16:00:00-04:00
+    provenance: finding-2026-06-11-0007
+    active: true
+    urls:
+      - https://www.justice.gov/news
 
 # ============================================================================
 # Tier-1 Threat Intel Firms
@@ -654,6 +684,77 @@ vendor_sources:
     urls:
       - https://advisory.splunk.com/
 
+  - id: trendai-zdi-childs
+    name: "Trend Micro Zero Day Initiative (Dustin Childs, ZDI threat awareness)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0006 (Oracle PeopleSoft CVE-2026-35273 PM update — Dustin Childs of Trend Micro ZDI, who holds the reporter-credit on Oracle's out-of-band advisory for CVE-2026-35273, characterized exploitation as 'limited' in The Register; independent of Mandiant / ShinyHunters chain and provides the only non-Mandiant scale-bounding evidence basis this sweep). ZDI is the world's largest vendor-agnostic bug-bounty / vulnerability-research program, with a 16+ year track record on Pwn2Own, advisory publication via Trend Micro, and Childs as the named public-facing analyst on threat awareness. Procedurally A-grade per same vendor-research-tier precedent as Mandiant (corpus A), Kaspersky GReAT (corpus A), Sophos X-Ops (corpus A), Unit 42 (corpus A), and the existing zdi-blog provisional A (2026-05-16; Pwn2Own-Berlin Day 3 wrap byline). Distinguished from zdi-blog: zdi-blog is the structured ZDI advisory publication channel (zerodayinitiative.com/blog); trendai-zdi-childs is the threat-awareness commentary / quoted-analyst-byline channel (Childs as named third-party analyst across The Register, SecurityWeek, BleepingComputer). 72h ratification clock to 2026-06-14T16:00:00-04:00. Pending human ratification. Operator may decide whether to maintain two distinct IDs or consolidate under zdi-blog with disambiguating tags."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-14T16:00:00-04:00
+    provenance: finding-2026-06-11-0006
+    active: true
+    urls:
+      - https://www.zerodayinitiative.com/blog
+      - https://www.trendmicro.com/en_us/research.html
+
+  - id: vulncheck-research
+    name: "VulnCheck (vulnerability intelligence and exploitation research)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0008 (Langflow CVE-2026-5027 CVSS 8.8 path-traversal RCE in active exploitation — VulnCheck research attesting in-the-wild exploitation of POST /api/v2/files unauthenticated via Langflow's auto-login default; ~7,000 internet-accessible Langflow instances scanned and counted, skewed to North America). VulnCheck is an independent commercial vulnerability-intelligence vendor (vulncheck.com) operating in the same research-tier neighborhood as Tenable / Rapid7 / Qualys / GreyNoise / Censys but with a CVE / KEV / exploit-intelligence focus. Conservative provisional B starting grade per same precedent as the existing tenable-research / Sysdig / Zellic / Wiz / Snyk research-tier provisional grades — independent of the source-discovery question of whether VulnCheck's ITW telemetry is corroborated by a second-source scanner (Shadowserver / GreyNoise / Censys). This sweep is single-source veto bound on the ITW claim per Trigger-1 doctrine. 72h ratification clock to 2026-06-14T16:00:00-04:00. Pending human ratification."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-14T16:00:00-04:00
+    provenance: finding-2026-06-11-0008
+    active: true
+    urls:
+      - https://www.vulncheck.com/
+
+  - id: tenable-research
+    name: "Tenable Research (vulnerability research and disclosure)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0008 (Langflow CVE-2026-5027 originally disclosed by Tenable Research 2026-03-27; the Tenable advisory chain is the upstream-vendor-research basis for VulnCheck's downstream ITW exploitation report). Tenable Research is the dedicated vulnerability-research arm of Tenable Inc (tenable.com) — long-running CVE-disclosure program with named-analyst bylines, structured advisory publication via tenable.com/security/research, and a track record on RCE / path-traversal / web-app vulnerability research. Conservative provisional B starting grade per same precedent as the existing vendor-research-tier provisional grades (Sysdig / Zellic / Wiz / Snyk). 72h ratification clock to 2026-06-14T16:00:00-04:00. Pending human ratification. Tenable Research is one observation removed from a Tenable PSIRT category (analogous to Cisco Talos vs Cisco PSIRT; Talos is research, PSIRT is product-advisory) — operator may decide whether to also scaffold a tenable-psirt source ID for Tenable's own product CVEs distinct from this research-tier."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-14T16:00:00-04:00
+    provenance: finding-2026-06-11-0008
+    active: true
+    urls:
+      - https://www.tenable.com/security/research
+
+  - id: prodaft-research
+    name: "PRODAFT (threat intelligence and ransomware research)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0009 (The Gentlemen / Storm-2697 / LARVA-368 / Phantom Mantis material extension — PRODAFT research relayed by The Hacker News tracking The Gentlemen as Phantom Mantis with operator designation LARVA-368; names Alexander Andreevich Yapaev as prior LockBit affiliate Tenacious Mantis, Qilin Pestilent Mantis, and Medusa Venomous Mantis before transitioning to independent operator July 2025; claimed victim count 478; technical details Go binary + Garble obfuscation + X25519 + XChaCha20 + Windows/Linux/ESXi/LVM + --spread worm-flag + 2–6 week dwell). PRODAFT is a Swiss-headquartered independent threat-intelligence vendor (prodaft.com) with a focused ransomware-and-financial-crime research program; Mantis-suffix actor designations are PRODAFT's house naming convention (analogous to Microsoft's Storm / Typhoon / Blizzard / Sandstorm taxa). Conservative provisional B starting grade per same precedent as the existing vendor-research-tier provisional grades. Source-direct grade independent of the question of how PRODAFT's operator-identity attribution chain corroborates with Microsoft's Storm-2697 designation and the prior Krebs OSINT on Yapaev — three independent vendor-tier attributions on the same identity is what drove the briefer's /new-actor candidacy strengthening, but the source grade itself is the relay-tier B until human ratification. 72h ratification clock to 2026-06-14T16:00:00-04:00. Pending human ratification."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-14T16:00:00-04:00
+    provenance: finding-2026-06-11-0009
+    active: true
+    urls:
+      - https://www.prodaft.com/research
+
+  - id: blackfog-research
+    name: "BlackFog (anti-data-exfiltration vendor; ransomware and stealer research)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0010 (OnyxC2 MaaS credential-stealer commoditization watchlist — BlackFog research detailing OnyxC2 pricing at $250/mo standard, $500/mo HVNC premium, $6,000 source-code purchase; 210+ application targets; 95+ Chromium and 14+ Gecko extensions; dedicated 2FA and password-manager modules; zero VirusTotal detections across 71 engines on the 2026-05-30 initial upload; DLL sideloading via NVIDIA-library masquerade + in-memory execution + legitimate-signature wrapper). BlackFog is a commercial anti-data-exfiltration / EDR-adjacent vendor (blackfog.com) with a research / blog publication channel and a focus on stealer / ransomware research. Conservative provisional B starting grade per same precedent as the existing vendor-research-tier provisional grades. Two independent publisher-side relays this sweep (SecurityWeek + Security Affairs) on the same BlackFog evidence basis — no publisher independence on the underlying claims, but two-relay cross-corroboration on BlackFog's existence and the structural fact that they published research at all. 72h ratification clock to 2026-06-14T16:00:00-04:00. Pending human ratification."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-14T16:00:00-04:00
+    provenance: finding-2026-06-11-0010
+    active: true
+    urls:
+      - https://www.blackfog.com/category/blog/
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -845,6 +946,20 @@ media_sources:
     active: true
     urls:
       - https://hackerone.com/
+
+  - id: will-dormann-researcher
+    name: "Will Dormann (independent vulnerability researcher; former CERT/CC)"
+    category: researcher
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0012 (Nightmare Eclipse GreatXML claimed BitLocker bypass via Recovery-partition unattend.xml + WinRE shell access — Will Dormann publicly reported he cannot reproduce the bypass; per Dormann's critique, the preconditions (logged-in admin must have initiated Defender Offline Scan previously) negate the bypass class). Dormann is a long-standing vulnerability researcher with a CERT/CC track record (former CERT/CC vulnerability analyst, ~20-year career on coordinated vulnerability disclosure / Windows internals / sandbox-escape research); independent reproduction-attempt analysis is exactly the methodological corrective the corpus needs against single-researcher zero-day claims absent vendor confirmation. Provisional B starting grade (above the unknown-researcher C floor applied to Aonan Guan / Berk Albayrak / LayerX) on the strength of the CERT/CC pedigree + multi-year public track record + the specifically-cited reproduction-attempt methodology in this surface. Upgrade path: ratify to A on accumulated track record of independent reproduction-attempt analyses that hold up against subsequent vendor confirmations. 72h ratification clock to 2026-06-14T16:00:00-04:00. Pending human ratification."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-14T16:00:00-04:00
+    provenance: finding-2026-06-11-0012
+    active: true
+    urls:
+      - https://infosec.exchange/@wdormann
 
   - id: github-advisories
     name: "GitHub Security Advisories"
@@ -1164,11 +1279,11 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 82        # +2 AM 2026-06-10: ivanti-psirt + arista-networks-psirt (provisional A; vendor-self-disclosure-on-own-product precedent class per finding-2026-06-10-0003 / 0004; 72h ratification clock to 2026-06-13T08:00:00-04:00)
-  active_sources: 73       # +2 above
+  total_sources: 90        # +8 PM 2026-06-11: europol-coordinated-announcement + doj-federal-court-filings + trendai-zdi-childs (provisional A x3) + vulncheck-research + tenable-research + prodaft-research + blackfog-research + will-dormann-researcher (provisional B x5); 72h ratification clocks to 2026-06-14T16:00:00-04:00 per findings 0007 / 0008 / 0009 / 0010 / 0011 / 0012 (+2 AM 2026-06-10: ivanti-psirt + arista-networks-psirt)
+  active_sources: 81       # +8 above (+2 prior)
   by_grade:
-    A: 37       # +2 ivanti-psirt + arista-networks-psirt (provisional A 2026-06-10 AM); +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
-    B: 29       # +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
+    A: 40       # +3 europol-coordinated-announcement + doj-federal-court-filings + trendai-zdi-childs (provisional A 2026-06-11 PM); +2 ivanti-psirt + arista-networks-psirt (provisional A 2026-06-10 AM); +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
+    B: 34       # +5 vulncheck-research + tenable-research + prodaft-research + blackfog-research + will-dormann-researcher (provisional B 2026-06-11 PM); +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
     C: 10       # +1 depthfirst elevated F→C 2026-05-16 morning per "first technical write-up publication" trigger; finding-2026-05-16-0001
     D: 1
     E: 2
@@ -1215,6 +1330,14 @@ _meta:
     - permiso-security          # provisional B; first cited 2026-05-29-0005 (ChatGPhish vulnerability class — ChatGPT renderer trusts Markdown from summarized pages; co-primary with Push Security on paired ChatGPT platform-abuse research class; cited via The Hacker News; awaiting direct-retrieval of permiso.io primary; peer class: StepSecurity, Socket, Sysdig, Zellic, Ox Security, Upwind, Arctic Wolf, Push Security; 72h ratification clock to 2026-06-01T16:00:00-04:00)
     - ivanti-psirt              # provisional A; first cited 2026-06-10-0003 (Ivanti Sentry CVE-2026-10520 CVSS 10.0 OS command injection + CVE-2026-10523 CVSS 9.9 auth bypass; both pre-auth RCE; patched at disclosure 2026-06-09; vendor attests no customer exploitation observed under Hard Rule 6; vendor-self-disclosure-on-own-product precedent class per F5 / Cisco / kernel.org / OpenAI / GitHub / LiteSpeed / Palo Alto PSIRT; 72h ratification clock to 2026-06-13T08:00:00-04:00)
     - arista-networks-psirt     # provisional A; first cited 2026-06-10-0004 (Arista EOS CVE-2026-7473 CISA KEV federal deadline 2026-06-23 — UNUSUAL DISPOSITION: vendor refuses to ship patch, provides mitigation instructions instead; first-of-its-kind in corpus; vendor-attested ITW; same vendor-self-disclosure-on-own-product precedent class; 72h ratification clock to 2026-06-13T08:00:00-04:00)
+    - europol-coordinated-announcement  # provisional A; first cited 2026-06-11-0011 (AudiA6 crypto-laundering service takedown — 11-country Europol operation, Tkachuk + Ledenev charged + Telegram blocked + >$380M laundered linked to 15+ international ransomware investigations; awaiting direct-retrieval of europol.europa.eu/media-press/newsroom primary; 72h ratification clock to 2026-06-14T16:00:00-04:00)
+    - doj-federal-court-filings  # provisional A; first cited 2026-06-11-0007 (DOJ indictment of Denis Obrezko, Russian national, for Void Blizzard infrastructure-provider role; Boston federal court appearance 2026-06-10; awaiting direct-retrieval of justice.gov primary; 72h ratification clock to 2026-06-14T16:00:00-04:00; /new-actor Void Blizzard DEFERRED pending DOJ-primary retrieval)
+    - trendai-zdi-childs        # provisional A; first cited 2026-06-11-0006 (Oracle PeopleSoft CVE-2026-35273 — Dustin Childs of Trend Micro ZDI, reporter-credit holder on Oracle's out-of-band advisory, characterized exploitation as 'limited' in The Register; independent of Mandiant / ShinyHunters chain; distinct from existing zdi-blog entry — operator decides consolidate-or-keep-distinct; 72h ratification clock to 2026-06-14T16:00:00-04:00)
+    - vulncheck-research        # provisional B; first cited 2026-06-11-0008 (Langflow CVE-2026-5027 CVSS 8.8 path-traversal RCE in-the-wild + ~7,000 internet-exposed instances skewed to North America; single-source veto bound on the ITW claim per Trigger-1 doctrine; 72h ratification clock to 2026-06-14T16:00:00-04:00)
+    - tenable-research          # provisional B; first cited 2026-06-11-0008 (Langflow CVE-2026-5027 originally disclosed 2026-03-27 — upstream-vendor-research basis for VulnCheck's downstream ITW exploitation report; 72h ratification clock to 2026-06-14T16:00:00-04:00)
+    - prodaft-research          # provisional B; first cited 2026-06-11-0009 (The Gentlemen / Storm-2697 / LARVA-368 / Phantom Mantis — names Yapaev as prior LockBit / Qilin / Medusa affiliate before transitioning to independent operator July 2025; 478 claimed victims; Mantis-suffix actor designations are PRODAFT's house naming convention; 72h ratification clock to 2026-06-14T16:00:00-04:00)
+    - blackfog-research         # provisional B; first cited 2026-06-11-0010 (OnyxC2 MaaS credential-stealer commoditization watchlist — $250/mo / $500/mo HVNC / $6,000 source-code; 210+ application targets; zero VT detections across 71 engines on 2026-05-30 initial upload; two publisher-side relays no publisher independence on underlying claims; 72h ratification clock to 2026-06-14T16:00:00-04:00)
+    - will-dormann-researcher   # provisional B; first cited 2026-06-11-0012 (Nightmare Eclipse GreatXML claimed BitLocker bypass — Dormann publicly reported he cannot reproduce; methodological corrective against single-researcher zero-day claims absent vendor confirmation; CERT/CC pedigree + multi-year track record support starting above the unknown-researcher C floor; 72h ratification clock to 2026-06-14T16:00:00-04:00)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

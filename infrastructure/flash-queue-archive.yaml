@@ -22,9 +22,69 @@
 #   - librarian_note: free-form supersession / disposition reasoning
 
 version: 1
-last_updated: 2026-05-12T08:00:00-04:00
+last_updated: 2026-06-11T08:34:00-04:00
 
 archive:
+  - queued_at: 2026-06-11T06:08:00-04:00
+    archived_at: 2026-06-11T08:34:00-04:00
+    archived_by: librarian-20260611-0800
+    disposition: superseded_by_morning_brief
+    brief_id: flash-2026-06-11-0608
+    brief_path: threats/briefs/2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520.md
+    finding_id: finding-2026-06-11-0001
+    trigger: trigger-1-critical-cve-exploited
+    secondary_trigger: null
+    cve: CVE-2026-10520
+    related_cves: [CVE-2026-10520, CVE-2026-10523]
+    digraph: A2
+    wep:
+      cluster_anchor: likely
+    critical_override_applied: false
+    quiet_hours_at_queue: true
+    expires_at: 2026-06-11T18:08:00-04:00
+    catchup_sweep: 2026-06-11T09:00:00-04:00
+    superseded: true
+    superseded_by: 2026-06-11-morning
+    superseded_at: 2026-06-11T08:00:00-04:00
+    superseded_by_path: threats/briefs/2026-06-11-morning.md
+    red_team_adjustment_applied: true
+    tlp: CLEAR
+    notes: |
+      Quiet-hours queue (06:08 EDT, inside 21:00-09:00 EDT window).
+      Critical-override evaluated and did NOT apply (CVSS 10.0 PASS,
+      active exploitation PASS, no tracked actor in roster FAIL, no
+      A&D-prime victim named FAIL — 2 of 4). Queued for 09:00 EDT
+      catchup with predicted disposition superseded_by_morning_brief.
+    librarian_note: |
+      Disposition confirmed: morning brief 2026-06-11-morning absorbed
+      finding-2026-06-11-0001 (Ivanti Sentry CVE-2026-10520 ITW state
+      transition) as the Active Threats lead UPDATE item with full
+      coverage of:
+        - Shadowserver telemetry (19 Internet-exposed instances scanned,
+          2 confirmed backdoored)
+        - watchTowr Labs PoC published 2026-06-10 targeting POST
+          /mics/api/v2/sentry/mics-config/handleMessage
+        - Emergency patch action set (R10.5.2 / R10.6.2 / R10.7.1)
+        - CVE-2026-10523 (CVSS 9.9 auth bypass) carry-over flag
+        - Red-team WEP adjustment honored at cluster anchor "likely"
+          (mechanism layer holds at very_likely; ITW-scope question
+          "mass" deferred pending second scanner corroboration)
+      Brief frontmatter records supersession_block.flash_brief_id:
+      flash-2026-06-11-0608 with supersession_type: full and
+      flash_items_absorbed list intact. Per briefer handoff and
+      operator instruction, NO "QUEUED FROM OVERNIGHT" catchup post
+      to #flash-alerts at 09:00 — would be duplicate signal per
+      FLASH-POLICY anti-noise rule. Catchup sweep run early (08:34
+      EDT) coincident with morning brief delivery rather than waiting
+      for the 09:00 catchup window — same pattern as 2026-05-06 PAN-OS
+      and 2026-05-12 Mini Shai-Hulud supersessions.
+      Splunk events shipped: brief_published (morning), flash_superseded
+      (this entry), plus finding_published x4 + git_committed.
+      Discord posts: Layer 2 morning summary delivered to #intel-briefs
+      (message_id 1514608639971823766); #flash-alerts intentionally
+      silent on this topic per supersession_type:full.
+
+
   - queued_at: 2026-05-12T06:30:00-04:00
     archived_at: 2026-05-12T08:00:00-04:00
     archived_by: librarian-20260512-080000

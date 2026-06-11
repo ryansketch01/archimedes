@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-06-04T16:24:00-04:00
+last_updated: 2026-06-11T08:34:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -626,6 +626,34 @@ vendor_sources:
       - https://permiso.io/blog
       - https://permiso.io/research
 
+  - id: shadowserver
+    name: "The Shadowserver Foundation"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "Public scanner-telemetry feed; added via Ivanti CVE-2026-10520 ITW state transition reporting 2026-06-11. First Archimedes-corpus dedicated source ID via finding-2026-06-11-0001 (Ivanti Sentry CVE-2026-10520 ITW state transition — Shadowserver public scanner-telemetry feed surfaced 19 Internet-exposed instances and 2 confirmed backdoored hosts within ~24h of watchTowr Labs PoC publication 2026-06-10). The Shadowserver Foundation is a non-profit public-benefit organization operating one of the largest Internet-scanning and threat-data collection programs globally, with daily public-scanner-telemetry reporting feeds, named technical staff bylines, and recognized peer status across CSIRT-, government-, and vendor-IR communities. Public scanner-telemetry feed class — A-grade-procedural on the facts layer (what was observed in scanning telemetry); attribution layer NOT applicable (Shadowserver does NOT make attribution claims, only attests scanning observations). Peer class: GreyNoise, Censys, Shodan, Sysdig but with explicit non-profit / public-good operating model that elevates trust on the procedural-facts layer. 72h ratification clock to 2026-06-14T06:12:00-04:00. Pending human ratification."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-14T06:12:00-04:00
+    active: true
+    urls:
+      - https://www.shadowserver.org/
+      - https://dashboard.shadowserver.org/
+
+  - id: splunk-advisory-portal
+    name: "Splunk Security Advisory Portal"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0004 (Splunk Enterprise CVE-2026-20253 + PAN Cortex CVE-2026-0274 vendor patches, no ITW). Vendor-self-disclosure on own product (Splunk Enterprise / Splunk Cloud) is procedurally A-grade per same precedent as F5 (2026-05-14), kernel.org netdev (2026-05-14), MSRC (corpus baseline), Palo Alto PSIRT (corpus baseline), Cisco PSIRT (corpus baseline), GitHub blog (2026-05-20), and LiteSpeed (2026-05-23). Splunk publishes structured security advisories on advisory.splunk.com with named CVE IDs, CVSS v3.1 vectors, affected version matrices, fix versions, and credit lines. Note: relevant to A&D-prime SOCs on Splunk Enterprise / Cloud only — Frank's first-party stack runs Splunk Free per CLAUDE.md operational notes, so CVE-2026-20253 specifically does NOT affect Frank's archimedes + defenseclaw_local indexes. Provisional A ratification pivots on first direct retrieval of the Splunk advisory portal (this sweep cited via SecurityWeek B-grade relay only). No fixed 72h ratification clock — clock starts on first direct retrieval. Pending direct retrieval AND human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    ratification_pivots_on: first_direct_retrieval
+    active: true
+    urls:
+      - https://advisory.splunk.com/
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -762,6 +790,32 @@ media_sources:
     active: true
     urls:
       - https://thehackernews.com/
+
+  - id: helpnetsecurity
+    name: "Help Net Security"
+    category: media
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0001 (Ivanti Sentry CVE-2026-10520 ITW state transition — relay of Shadowserver Foundation telemetry on 19 Internet-exposed instances + 2 confirmed backdoored hosts post-watchTowr-PoC) and finding-2026-06-11-0002 (FBI/DOJ 13-website seizure tied to Chinese intelligence services — Markovic byline relay of DOJ enforcement action and contextualization). Long-running independent security-media outlet (helpnetsecurity.com, parent: HelpNet Security d.o.o.) with named-analyst bylines, daily cadence, and editorial track record on European + global vulnerability reporting. Category is Security Media per source-grade cheatsheet. Conservative provisional B starting grade for the media-relay tier per same precedent as SecurityWeek (2026-05-06), Industrial Cyber (2026-05-13), The Hacker News (2026-05-14), Security Affairs (2026-05-29), and The Register (2026-05-29). 72h ratification clock to 2026-06-14T06:12:00-04:00. Pending human ratification."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-14T06:12:00-04:00
+    active: true
+    urls:
+      - https://www.helpnetsecurity.com/
+
+  - id: associated-press
+    name: "The Associated Press"
+    category: media
+    grade: A
+    provisional: true
+    provisional_since: 2026-06-11
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-11-0002 (FBI/DOJ 13-website seizure tied to Chinese intelligence services recruitment of US-cleared personnel — AP byline reporting relayed by SecurityWeek). Major US wire service with global newsgathering footprint, named-byline editorial standards, and recognized credibility for breaking US federal enforcement coverage. Provisional A starting grade reflects wire-service-class authority (peer class: Reuters, AFP, Bloomberg breaking-news coverage of US enforcement actions). Category is Security Media (major US wire service). 72h ratification clock to 2026-06-14T08:18:00-04:00. Operator may downgrade to B if context-thin relay-only profile is observed on subsequent surfaces; A is the default starting grade given wire-service-class editorial backbone. Pending human ratification."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-14T08:18:00-04:00
+    active: true
+    urls:
+      - https://apnews.com/
 
   - id: depthfirst
     name: "depthfirst (independent researcher)"

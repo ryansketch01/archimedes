@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-10T16:00:00-04:00
+last_updated: 2026-06-11T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -28048,7 +28048,7 @@ entries:
       pattern. Librarian to action on next pass.
 
   - id: 2026-06-04-pm-002-mi5-fbi-asio-csis-nzsis-the-record-five-eyes-joint-advisory-safeguarding-our-secrets-china-pla-humint-recruitment-linkedin-cleared-personnel
-    covered_in: [2026-06-04-afternoon]
+    covered_in: [2026-06-04-afternoon, 2026-06-11-morning]
     headline: "Five Eyes joint counterintelligence advisory 'Safeguarding Our Secrets' (MI5 lead + FBI/ASIO/CSIS/NZSIS co-authors) attributes verbatim to 'China's military intelligence services' (PLA-linked, not MSS) on HUMINT recruitment ops targeting cleared personnel via LinkedIn + front companies posing as consultancies/think-tanks/HR firms + virtual interviews with role-and-unit probing + encrypted-messaging transitions + $100s-$1000s per intelligence report; HUMINT-led counterintelligence NOT cyber-TTP; DIB cleared-personnel within implicit target scope; A&D primes not explicitly named"
     topic_tags:
       - five-eyes-joint-counterintelligence-advisory
@@ -28099,7 +28099,7 @@ entries:
       - industry_association_advisory_ndia_aia_dscas_dib_isac_paralleling_with_explicit_dib_naming
       - operator_decision_to_scaffold_chinese_pla_humint_cluster_as_tracked_entity
     first_covered: 2026-06-04
-    last_covered: 2026-06-04
+    last_covered: 2026-06-11
     retraction: null
     test: false
     notes: |
@@ -29349,7 +29349,7 @@ entries:
       platform vendor victim.
 
   - id: 2026-06-10-am-003-rapid7-etr-bleepingcomputer-securityweek-ivanti-sentry-cve-2026-10520-cvss-10-os-command-injection-cve-2026-10523-cvss-9-9-auth-bypass-patched-no-itw
-    covered_in: [2026-06-10-morning, 2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520]
+    covered_in: [2026-06-10-morning, 2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520, 2026-06-11-morning]
     brief_file: threats/briefs/2026-06-10-morning.md
     headline: "Ivanti Sentry CVE-2026-10520 OS command injection CWE-78 CVSS 10.0 maximum severity (remote unauth attacker → RCE as root) + CVE-2026-10523 authentication bypass CVSS 9.9 (remote unauth attacker → arbitrary administrative account creation + full admin access) — both pre-auth RCE on the enterprise mobile-device-management gateway (formerly MobileIron Sentry); both patched at disclosure 2026-06-09; Ivanti vendor attestation 'not aware of any customers being exploited' (8 words, Hard Rule 6 preserved) — single-source veto on no-customer-exploitation attestation layer; Rapid7 ETR A-grade originating clarifier + BleepingComputer + SecurityWeek publisher-independent B-grade media relays; A&D defensive priority: ITAR-cleared workforce mobile-device estates accessing M365 GCC / GCC-High / SharePoint / e-discovery; cross-references Ivanti PSIRT corpus precedent CVE-2026-6973 EPMM KEV 2026-05-07; librarian handoff to add ivanti-psirt to source-grades.yaml as provisional A"
     topic_tags:
@@ -31197,6 +31197,766 @@ entries:
       0009 cluster framing — NOT re-broadcast as standalone
       item, only mentioned as context for FortiSandbox + SAP
       cluster framing).
+
+  - id: 2026-06-11-am-001-shadowserver-watchtowr-bleepingcomputer-helpnetsecurity-ivanti-sentry-cve-2026-10520-itw-state-transition-morning-supersedes-flash
+    covered_in: [2026-06-11-morning]
+    brief_file: threats/briefs/2026-06-11-morning.md
+    headline: "UPDATE on 2026-06-10-am-003 — Ivanti Sentry CVE-2026-10520 (CVSS 10.0 pre-auth root RCE) ITW state transition: Shadowserver Foundation attests 'large amount of Ivanti Sentry exploitation attempts based on the public PoC' (13 words, Hard Rule 6 preserved) within ~24h of watchTowr Labs PoC publication 2026-06-10; 19 vulnerable Internet-exposed instances scanned, 2 confirmed backdoored — the 19 likely include benign scanners (watchTowr customers, ASM vendors, academics), the 2 backdoored hosts are the confirmed-compromise evidence; cluster anchor WEP red-team-adjusted very_likely → likely (Shadowserver sole originating scanner this hour, watchTowr PoC publication is precondition not corroboration); mechanism-layer WEPs (CVSS 10.0, patched versions R10.5.2/R10.6.2/R10.7.1, vulnerable endpoint POST /mics/api/v2/sentry/mics-config/handleMessage, PoC URL existence) hold at very_likely; CVE-2026-10523 (CVSS 9.9 auth bypass, same advisory) remains exploitable but not named in this hour's attestation; word 'mass' deliberately excluded per red-team review; defender action — emergency patch + Sentry access-log compromise-hunt + perimeter proxy IOC on named endpoint pathway; Hard Rule 2 preserved (no attribution); CISA KEV addition expected 24-72h; morning brief supersedes queued flash-2026-06-11-0608 (full supersession)"
+    topic_tags:
+      - cve
+      - cve-2026-10520
+      - cve-2026-10523
+      - ivanti-sentry
+      - ivanti-psirt
+      - shadowserver
+      - watchtowr
+      - watchtowr-labs
+      - bleepingcomputer
+      - helpnetsecurity
+      - cvss-10-0-pre-auth-root-rce-os-command-injection-cwe-78
+      - cvss-9-9-auth-bypass
+      - patched-versions-r10-5-2-r10-6-2-r10-7-1
+      - public-poc-published-2026-06-10
+      - early-post-patch-exploitation-activity-within-24h-of-poc-publication
+      - vulnerable-endpoint-post-mics-api-v2-sentry-mics-config-handlemessage
+      - shadowserver-19-vulnerable-2-backdoored-single-source-on-specific-numbers
+      - cluster-anchor-wep-red-team-adjusted-very-likely-to-likely
+      - mechanism-layer-weps-preserved-at-very-likely
+      - mass-word-prohibited-per-red-team-constraint
+      - hard-rule-2-no-attribution
+      - hard-rule-6-shadowserver-quote-13-words-ivanti-quote-7-words
+      - perimeter-security-device-weaponization-cluster-q1-q2-2026
+      - mdm-gateway-itar-workforce-structural-ad-exposure
+      - cisa-kev-addition-expected-24-72h
+      - supersedes-flash-2026-06-11-0608-full
+      - supersedes-coverage-log-entry-2026-06-10-am-003-itw-posture-only-cve-record-unchanged
+      - active-threats
+    related_actors: []
+    related_vulns: [CVE-2026-10520, CVE-2026-10523]
+    related_campaigns:
+      - q1_q2_2026_perimeter_security_device_weaponization_cluster
+      - ivanti_sentry_post_patch_poc_weaponization_to_emerging_exploitation_state_transition
+    finding_ids: [finding-2026-06-11-0001]
+    supersedes_finding: finding-2026-06-10-0003
+    supersedes_brief: flash-2026-06-11-0608-ivanti-sentry-cve-2026-10520
+    supersession_layer: itw_posture_only_cve_record_unchanged
+    digraph: A2
+    digraph_layered:
+      cluster_anchor_state_transition: A2
+      cve_2026_10520_mechanism_cvss_10_pre_auth_root_rce: A2
+      cve_2026_10523_mechanism_cvss_9_9_auth_bypass: A2
+      patched_versions_R10_5_2_R10_6_2_R10_7_1: A1
+      watchtowr_poc_publication_artifact_existence: A2
+      vulnerable_endpoint_post_mics_api_v2_sentry_handleMessage: A2
+      shadowserver_exploitation_attempts_attestation: A2
+      shadowserver_specific_19_vulnerable_2_backdoored_numbers: A2
+      ivanti_advisory_not_yet_updated_to_reflect_itw: A2
+      no_actor_attribution_at_any_source: A1
+      no_named_ad_prime_victim_in_window: A1
+      ad_relevance_structural_via_mdm_gateway_in_itar_workforce: B2
+    wep: likely
+    wep_layered:
+      cluster_anchor_state_transition_red_team_adjusted: likely
+      cve_2026_10520_mechanism_cvss_10_pre_auth_root_rce: very_likely
+      cve_2026_10523_mechanism_cvss_9_9_auth_bypass: very_likely
+      patched_versions_R10_5_2_R10_6_2_R10_7_1: very_likely
+      watchtowr_poc_publication_url_exists: very_likely
+      vulnerable_endpoint_named_by_watchtowr_lab_reproduction: very_likely
+      early_post_patch_exploitation_activity_observed_within_24h_of_poc_publication: likely
+      shadowserver_specific_19_vulnerable_2_backdoored_numbers: likely
+      no_actor_attribution_at_any_source: very_likely
+      no_named_ad_prime_victim_in_window: very_likely
+      ad_relevance_structural_via_mdm_gateway_in_itar_workforce: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Shadowserver sole originating scanner this hour on specific 19/2 telemetry numbers; BC + HNS publisher-independent but evidence-dependent on Shadowserver attestation"
+      - "watchTowr PoC publication is precondition not corroboration on the ITW-occurrence layer (red-team rationale)"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at any source — Hard Rule 2 not triggered"
+      - "No named victim at any source"
+      - "Operational readings (opportunistic / IAB / targeted-APT) NOT propagated as attribution"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -24h
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming_ivanti_sentry_not_in_defenseclaw_local
+    resurface_if:
+      - cisa_kev_listing_on_cve_2026_10520_or_10523
+      - second_scanner_corroboration_greynoise_censys_sysdig_on_19_2_numbers
+      - tier_1_ir_firm_telemetry_naming_us_ad_prime_sentry_victim
+      - ivanti_vendor_advisory_update_reflecting_itw_status
+      - shadowserver_dashboard_refresh_with_geographic_distribution_or_source_ips_published
+      - actor_attribution_attached_in_subsequent_reporting
+      - first_party_splunk_hit
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      Action-tier lead item in Active Threats section. UPDATE on
+      2026-06-10-am-003 (ITW posture transition); supersedes
+      queued flash-2026-06-11-0608 (full supersession — morning
+      brief absorbs the FLASH content with red-team-adjusted
+      framing). Librarian to mark flash-queue entry superseded:
+      true, superseded_by: 2026-06-11-morning, superseded_at:
+      2026-06-11T08:00:00-04:00, archive disposition
+      superseded_by_morning_brief. No "QUEUED FROM OVERNIGHT"
+      catchup post.
+
+      Red-team adjustment honored verbatim in brief prose:
+        - Cluster anchor WEP downgraded very_likely → likely
+        - Word "mass" excluded from brief headline and body
+        - Shadowserver framing: "scanning activity" / "exploitation
+          attempts" / "early post-patch exploitation" — NOT
+          "mass-ITW"
+        - The 2 backdoored hosts framed as confirmed-compromise
+          evidence; the 19 framed as a population that likely
+          includes benign scanners
+        - MDM gateway → A&D risk framed as structural inference,
+          NOT first-party-telemetry confirmed
+
+      Mechanism-layer WEPs (CVSS, patched versions, vulnerable
+      endpoint, PoC URL existence) hold at very_likely — those
+      are not the contested layer. CVE-2026-10523 in Other Signal
+      with reminder that defenders should not deprioritize on
+      absence-of-observation alone.
+
+  - id: 2026-06-11-am-002-securityweek-helpnetsecurity-doj-13-website-seizure-china-recruitment-cleared-personnel-le-action-follow-on-five-eyes
+    covered_in: [2026-06-11-morning]
+    brief_file: threats/briefs/2026-06-11-morning.md
+    headline: "UPDATE on 2026-06-04-pm-002 (Five Eyes 'Safeguarding Our Secrets' strategic advisory) — FBI and DOJ on 2026-06-10/11 seized 13 websites that officials allege were operated by entities tied to Chinese intelligence services (verbatim attribution preserved per Hard Rule 2; PLA-/MSS-class generic, NOT mapped to APT41/Volt Typhoon/Salt Typhoon/APT40/APT32/Mustang Panda) for LinkedIn-led HUMINT recruitment of current and former US-cleared personnel; tradecraft characterized as fake consulting / research-fellowship fronts + AI-generated personas + encrypted-messaging hand-off + cryptocurrency payment + fraudulent or stolen identities in recruiter profiles; SecurityWeek (AP byline carry, B provisional) + Help Net Security (Sinisa Markovic byline, B provisional first surface) are publisher-independent media relays of the DOJ enforcement action (A-grade originating); 13 specific seized domain strings NOT enumerated in the relay layer (single-source veto on IOC layer; direct DOJ press release retrieval queued for blocklist actionability — red-team priority elevated medium → high); cluster anchor WEP very_likely (DOJ canonical on own-conducted enforcement + two publisher-independent relays); strategic→operational continuity reading vs. 2026-06-04 advisory red-team-adjusted very_likely → likely (framed as temporal proximity / coordinated US-government messaging cadence, NOT confirmed campaign continuity); A&D-workforce intersection red-team-adjusted very_likely → likely (structural workforce overlap, NOT confirmed A&D-prime targeting); defender action — brief FSO/DCSA partnership + HR/recruiter due-diligence on named tradecraft + refresh insider-threat awareness on unsolicited LinkedIn approaches and crypto-paid 'research' offers"
+    topic_tags:
+      - fbi-doj-13-website-seizure
+      - le-enforcement-action-strategic-to-operational-layer
+      - follow-on-finding-2026-06-04-0002-five-eyes-safeguarding-our-secrets
+      - chinese-intelligence-services-verbatim-attribution-doj-canonical
+      - pla-mss-class-generic-NOT-roster-mapped
+      - hard-rule-2-no-mapping-to-apt41-volt-typhoon-salt-typhoon-apt40-apt32-mustang-panda
+      - humint-not-cyber-ttp
+      - fake-consulting-research-fellowship-fronts
+      - ai-generated-personas
+      - linkedin-led-recruitment
+      - encrypted-messaging-hand-off
+      - cryptocurrency-payment-obscuration
+      - fraudulent-stolen-identities-recruiter-profiles
+      - cleared-personnel-defense-foreign-policy-analysts-military-classified-access
+      - securityweek-ap-byline-publisher-independent-relay-b-provisional
+      - helpnetsecurity-markovic-byline-publisher-independent-relay-b-provisional-first-surface
+      - associated-press-major-us-wire-service-a-provisional-first-surface
+      - 13-specific-seized-domain-strings-not-in-relay-layer-doj-press-release-retrieval-required
+      - single-source-veto-on-ioc-layer-cluster-anchor-survives
+      - cluster-anchor-very-likely-doj-canonical-plus-two-publisher-independent-relays
+      - strategic-to-operational-continuity-red-team-downgraded-likely-temporal-proximity-not-continuity
+      - ad-workforce-intersection-red-team-downgraded-likely-structural-not-confirmed
+      - active-threats
+    related_actors: []   # Generic China attribution; NOT roster-mapped per Hard Rule 2
+    related_vulns: []
+    related_campaigns:
+      - chinese_intelligence_humint_linkedin_recruitment_cleared_personnel_strategic_to_operational_layer_continuing_coverage
+    finding_ids: [finding-2026-06-11-0002]
+    related_findings: [finding-2026-06-04-0002]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor_enforcement_action: A2
+      fbi_doj_13_website_seizure_procedural_fact: A1
+      attribution_chinese_intelligence_services_doj_verbatim: A1
+      tradecraft_fake_consulting_ai_personas_linkedin_cryptocurrency: A1
+      target_set_cleared_personnel_defense_foreign_policy_military_classified_access: A1
+      securityweek_publisher_independent_relay: B2
+      helpnetsecurity_publisher_independent_relay: B2
+      thirteen_specific_seized_domain_strings_NOT_in_relay_layer: F6
+      follow_on_continuity_to_finding_2026_06_04_0002: A1
+      generic_china_attribution_NOT_propagated_to_roster_actor: A1
+      no_named_ad_prime_victim_in_enforcement_action: A1
+      ad_relevance_structural_workforce_overlap: A2
+    wep: very_likely_cluster_anchor_likely_on_continuity_and_ad_intersection_per_red_team
+    wep_layered:
+      fbi_doj_13_website_seizure_enforcement_action_occurred: very_likely
+      attribution_chinese_intelligence_services_per_doj_verbatim: very_likely
+      tradecraft_fake_consulting_ai_personas_linkedin_cryptocurrency: very_likely
+      target_set_cleared_personnel_defense_foreign_policy_military_classified_access: very_likely
+      follow_on_continuity_to_finding_2026_06_04_0002_strategic_to_operational_layer_transition: likely   # red-team downgrade
+      specific_13_seized_domain_strings_pending_doj_press_release_retrieval: likely
+      no_specific_tracked_roster_actor_attribution_propagated: very_likely
+      ad_relevance_structural_workforce_overlap_NOT_confirmed_ad_prime_targeting: likely   # red-team downgrade
+      campaign_will_likely_continue_via_new_infrastructure_post_seizure: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "13 specific seized domain strings — DOJ sole originating attestation at IOC layer; SW + HNS relays cannot enumerate domain IOCs DOJ has not publicly disclosed in the form they relayed"
+    hard_rule_2_framings_load_bearing:
+      - "Attribution verbatim 'Chinese intelligence services' (per DOJ) — Archimedes does NOT propagate to roster actor"
+      - "No mapping to APT41 / Volt Typhoon / Salt Typhoon / APT40 / APT32 / Mustang Panda absent independent A-grade vendor attribution layer"
+      - "Strategic→operational continuity framed as temporal proximity / coordinated US-government messaging cadence (NOT confirmed campaign continuity)"
+      - "A&D-workforce intersection framed as structural overlap (NOT confirmed A&D-prime targeting)"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -24h
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming_defenseclaw_local_no_humint_recruitment_telemetry
+    update_callouts:
+      - prior_brief_id: 2026-06-04-afternoon
+        prior_coverage_log_entry: 2026-06-04-pm-002-mi5-fbi-asio-csis-nzsis-the-record-five-eyes-joint-advisory-safeguarding-our-secrets-china-pla-humint-recruitment-linkedin-cleared-personnel
+        update_summary: "Strategic-advisory → operational-LE-takedown layer transition within ~7 days. Same attribution language ('Chinese intelligence services'), same targeting population (cleared personnel + defense/foreign-policy analysts + military with classified access), same tradecraft pattern (LinkedIn-led HUMINT recruitment with fake consulting fronts). Per red-team review, framed as temporal proximity / coordinated messaging cadence — NOT confirmed strategic→operational campaign continuity."
+        coverage_log_action: "Updated 2026-06-04-pm-002 entry's covered_in: append 2026-06-11-morning; updated last_covered to 2026-06-11"
+    resurface_if:
+      - tier_1_vendor_independent_attribution_to_specific_pla_mss_unit_or_tracked_roster_actor
+      - doj_press_release_or_fbi_ic3_advisory_publishing_13_specific_seized_domain_strings
+      - additional_seizures_or_indictments_in_same_campaign_class
+      - first_party_splunk_insider_threat_indicator_consistent_with_advisory_tradecraft
+      - industry_association_advisory_explicitly_naming_dib_or_ad_primes
+      - new_a_d_prime_victim_disclosed_in_follow_on_reporting
+      - operator_decision_to_scaffold_chinese_pla_mss_humint_cluster_as_tracked_entity
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      Action-tier item in Active Threats section. Material
+      continuing-coverage UPDATE on 2026-06-04-pm-002 (Five Eyes
+      "Safeguarding Our Secrets" strategic advisory) — DOJ
+      operational takedown within ~7 days.
+
+      Red-team adjustments honored verbatim in brief prose:
+        - Attribution layer: "DOJ characterizes" / "officials
+          allege" hedge framing throughout — NOT "China ran these
+          13 sites" flat assertion
+        - Continuity reading: "temporal proximity" / "coordinated
+          US-government messaging cadence" — NOT confirmed
+          strategic→operational campaign continuity
+        - A&D-workforce intersection: "structural workforce
+          overlap" — NOT confirmed A&D-prime targeting
+        - 13 domains: "DOJ characterized as operated by entities
+          tied to Chinese intelligence services" — DOJ's verbatim
+          aggregate framing preserved, NOT Archimedes claiming
+          13 individually-attributed sites
+
+      Hard Rule 2 load-bearing throughout: NO mapping to
+      APT41 / Volt Typhoon / Salt Typhoon / APT40 / APT32 /
+      Mustang Panda. Brief prose explicitly states this in the
+      🔗 Update on callout (Layer 1) and the Hard Rule 2 framing
+      in Layer 2.
+
+      13 specific seized domain strings NOT in relay-layer source
+      bodies. Vuln-tracker / collector handoff for direct DOJ
+      press release retrieval — red-team priority ELEVATED from
+      medium to high because direct retrieval also resolves the
+      per-site-vs-aggregate attribution question.
+
+      Source-grades.yaml handoffs (librarian Mode 1):
+        - helpnetsecurity → provisional B; 72h ratification clock
+          to 2026-06-14T08:18:00-04:00 (same-day pivot as
+          2026-06-11-am-001 librarian handoff)
+        - associated-press → provisional A (major US wire service
+          class peer to Reuters/Bloomberg/WaPo/NYT); 72h
+          ratification clock to 2026-06-14T08:18:00-04:00
+
+      Action lever: FSO/DCSA partnership + HR/recruiter
+      due-diligence + workforce insider-threat awareness refresh
+      — same dual-leverage framing as 2026-06-04-pm-002.
+
+  - id: 2026-06-11-am-003-thehackernews-eset-oceanlotus-apt32-spectralviper-fireant-supply-chain-vietnam-not-in-roster-new-actor-candidate-monitoring
+    covered_in: [2026-06-11-morning]
+    brief_file: threats/briefs/2026-06-11-morning.md
+    headline: "ESET attributes (via The Hacker News relay) dual OceanLotus / APT32 (Vietnam-aligned, per ESET) campaign set deploying new SPECTRALVIPER backdoor family: (1) ~20-month espionage operation against a Vietnamese infrastructure / transport construction corporation mid-2024 → 2026-02 and (2) ~6-month supply-chain compromise of FireAnt Metakit investor-tools platform 2025-10 → 2026-03; tradecraft per ESET = DLL side-loading via legitimate binaries + process injection into OneDrive.Sync.Service.exe LOLBin + supply-chain update path compromise (metakit.fireant[.]vn/Software/version.xml); 2 C2 domains (financemachinelearning[.]com, gatewayrvcenter[.]com) + 1 supply-chain update URL surfaced in THN relay (ESET-originating, A-grade); hash IOCs not surfaced (direct WeLiveSecurity advisory retrieval queued); A&D-relevance LOW (Vietnamese-domestic targets, no US A&D victim, no US government target); TTP chain structurally portable to US A&D espionage scenarios but ESET does NOT claim US A&D targeting; OceanLotus/APT32 NOT in Archimedes roster per grep verification on aliases (OceanLotus, Ocean Lotus, APT32, SeaLotus, CobaltKitty) — /new-actor candidacy flagged for orchestrator-discretion handoff per CLAUDE.md On-Demand Commands workflow (Hard Rule 5 requires human approval; NOT auto-invoked); single-source veto applied (one effective source: ESET via THN relay; THN is aggregator NOT independent corroboration per skill Step 4); WEP capped at likely on all forward / operational / attribution claims regardless of A-grade letter; Hard Rule 2 preserved (Archimedes does NOT propagate attribution; cites 'per ESET' explicitly)"
+    topic_tags:
+      - eset-welivesecurity-originating-research-a-grade
+      - thehackernews-relay-b-provisional-aggregator-class
+      - oceanlotus
+      - apt32
+      - sealotus
+      - cobaltkitty
+      - vietnam-aligned-per-eset
+      - spectralviper-new-backdoor-family
+      - dll-side-loading-legitimate-binaries
+      - onedrive-sync-service-exe-lolbin-process-injection
+      - supply-chain-update-path-compromise
+      - fireant-metakit-investor-tools-platform-vietnamese
+      - financemachinelearning-com-c2
+      - gatewayrvcenter-com-c2
+      - metakit-fireant-vn-software-version-xml-supply-chain-url
+      - hash-iocs-not-surfaced-direct-welivesecurity-retrieval-required
+      - ad-relevance-low-vietnamese-domestic-targets
+      - no-us-ad-prime-victim
+      - no-us-government-target
+      - ttp-portability-to-ad-espionage-grader-side-observation-not-eset-claim
+      - actor-not-in-archimedes-roster
+      - new-actor-candidacy-flagged-orchestrator-discretion-hard-rule-5
+      - single-source-veto-applied-one-effective-source-eset-via-thn
+      - wep-capped-likely-regardless-of-eset-a-grade
+      - hard-rule-2-attribution-per-eset-not-archimedes-originated
+      - monitoring-tier
+      - actor-activity
+    related_actors:
+      - actor_name: OceanLotus
+        aliases: [APT32, SeaLotus, CobaltKitty]
+        actor_in_roster: false
+        operator_action_recommended: /new-actor OceanLotus
+        nation_alignment: VN
+        attribution_layer_note: "ESET originating attribution carried via THN; Hard Rule 2 — Archimedes does NOT propagate independently"
+    related_vulns: []
+    related_campaigns:
+      - oceanlotus_apt32_2024_2026_vietnamese_domestic_espionage_per_eset
+      - oceanlotus_apt32_fireant_metakit_supply_chain_compromise_per_eset
+    finding_ids: [finding-2026-06-11-0003]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor_eset_attribution: A2
+      spectralviper_backdoor_family_naming: A2
+      campaign_1_vietnamese_infrastructure_transport_construction_corp_espionage: A2
+      campaign_2_fireant_metakit_supply_chain_compromise: A2
+      dll_side_loading_lolbin_ttp_chain: A2
+      c2_domains_and_supply_chain_url_iocs: A2
+      thn_b_grade_aggregator_relay: B2
+      actor_oceanlotus_apt32_NOT_in_archimedes_roster: A1
+      no_us_ad_prime_victim_named: A1
+      no_us_government_target_named: A1
+      ad_relevance_low_direct_structural_portability_grader_side_observation: A2
+    wep: likely
+    wep_layered:
+      eset_published_research_attributing_to_oceanlotus_apt32_procedural_fact: very_likely
+      thn_relayed_eset_research_2026_06_11_publication: very_likely
+      oceanlotus_apt32_vietnam_aligned_attribution_per_eset: likely   # single-source vetoed
+      campaign_1_vietnamese_infrastructure_attribution: likely   # single-source vetoed
+      campaign_2_fireant_metakit_supply_chain_compromise_attribution: likely   # single-source vetoed
+      spectralviper_backdoor_attributed_to_oceanlotus: likely   # single-source vetoed
+      dll_side_loading_plus_onedrive_sync_service_exe_lolbin_chain: likely   # single-source vetoed
+      c2_domains_are_oceanlotus_infrastructure: likely   # single-source vetoed
+      fireant_metakit_update_url_was_supply_chain_compromise_vector: likely   # single-source vetoed
+      no_us_a_d_prime_targeting_in_this_campaign_set: very_likely
+      oceanlotus_apt32_tradecraft_portable_to_us_a_d_espionage_grader_side_observation: likely
+    single_source_veto_applied: true
+    single_source_veto_detail: >
+      One effective source (ESET via THN relay); THN is aggregator
+      NOT independent corroboration per skill Step 4; WEP caps at
+      "likely" for all forward / operational / attribution claims
+      regardless of ESET A-grade letter.
+    hard_rule_2_framings_load_bearing:
+      - "Attribution 'OceanLotus / APT32' is per ESET — Archimedes does NOT originate or propagate independently"
+      - "Actor NOT in Archimedes _roster.yaml per grep verification"
+      - "/new-actor candidacy flagged for orchestrator-discretion handoff; Hard Rule 5 requires human approval; NOT auto-invoked"
+      - "TTP portability to A&D espionage is grader-side structural observation — NOT an ESET claim"
+    splunk_first_party:
+      status: clean_at_compose
+      query_window: -24h
+      hits: 0_substantive
+      hard_rule_8_framing: silence_not_disconfirming_defenseclaw_local_no_vietnamese_investor_tools_infrastructure
+    resurface_if:
+      - second_a_or_b_grade_vendor_independent_corroboration_of_eset_attribution_or_spectralviper_family_naming
+      - oceanlotus_apt32_attributed_to_named_us_ad_prime_victim_in_subsequent_reporting
+      - operator_invocation_of_slash_new_actor_oceanlotus_apt32_command
+      - first_party_splunk_hit_on_c2_domains_or_supply_chain_url
+      - shai_hulud_class_supply_chain_compromise_in_us_developer_ecosystem_with_overlap_to_eset_iocs
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier item in Actor Activity section. New actor
+      surface for Archimedes; OceanLotus / APT32 is a Tier-1-
+      vendor-tracked APT cluster (ESET / Mandiant / FireEye /
+      Volexity / Group-IB / Sekoia historical coverage going back
+      to 2012) outside the current Iran/China/Russia roster focus.
+
+      Brief flags /new-actor candidacy explicitly for operator
+      decision per CLAUDE.md "On-Demand Commands" workflow
+      (Hard Rule 5: human approval required). Adjacent precedent:
+      May 2026 collector observations on UNC6692 and UNC1069
+      (Mandiant) were similarly flagged as /new-actor candidates
+      without auto-scaffolding.
+
+      Hard Rule 2 strictly preserved: attribution carried with
+      explicit "per ESET" framing; Archimedes does NOT originate
+      or propagate. TTP portability to A&D espionage is grader-
+      side structural observation — flagged as such, NOT
+      asserted as an ESET claim.
+
+      Single-source veto applied: one effective source (ESET via
+      THN relay; THN is aggregator NOT independent corroboration
+      per skill Step 4). WEP capped at "likely" for all forward /
+      operational / attribution claims regardless of ESET's
+      ratified A-grade letter.
+
+      IOCs surfaced (3): financemachinelearning[.]com (C2),
+      gatewayrvcenter[.]com (C2), metakit.fireant[.]vn/Software/
+      version.xml (supply chain update path). Hash IOCs NOT
+      surfaced in THN relay; direct ESET WeLiveSecurity advisory
+      retrieval queued for completion (vuln-tracker / collector
+      handoff, medium priority).
+
+      Librarian handoff (low priority): aggregate the 3 IOCs into
+      iocs/unattributed/ or new iocs/oceanlotus-apt32-per-eset-
+      2026-06-11/ subdirectory; attribution at index layer
+      preserved as "per ESET, NOT roster-mapped" per Hard Rule 2.
+
+  - id: 2026-06-11-am-004-securityweek-splunk-cve-2026-20253-cvss-9-8-pan-cve-2026-0274-vendor-patches-no-itw-frank-splunk-free-not-exposed-monitoring
+    covered_in: [2026-06-11-morning]
+    brief_file: threats/briefs/2026-06-11-morning.md
+    headline: "SecurityWeek (B ratified, Ionut Arghire byline, 2026-06-11T10:47 UTC, sole in-window publisher relay) reports Splunk and Palo Alto Networks released patches for severe vulnerabilities including Splunk Enterprise CVE-2026-20253 (CVSS 9.8 unauthenticated PostgreSQL sidecar arbitrary file creation: 'lacks authentication controls, allowing any network-reachable user to invoke file operations' — 12 words per SW verbatim, Hard Rule 6 preserved) and PAN Cortex XSOAR/XSIAM CVE-2026-0274 (high-severity Commvault SecurityIQ improper credential validation: 'allows attackers to access and modify restricted resources' — 8 words SW verbatim); neither vulnerability has known ITW; CRITICAL FIRST-PARTY DOCTRINE CLARIFICATION (load-bearing): CVE-2026-20253 affects Splunk Enterprise NOT Splunk Free — Frank's archimedes + defenseclaw_local indexes both live on Splunk Free 10.x per CLAUDE.md operational notes, NO first-party Archimedes patching action required; A&D-prime SOCs running Splunk Enterprise or PAN Cortex XSOAR/XSIAM SHOULD patch on standard cadence (no emergency tier given no-ITW + patched-at-disclosure); CVE-2026-0274 does NOT overlap with the now-expired CVE-2026-0257 GlobalProtect Portal ITW lock (different CVE-ID, different product line — verifiable doctrine-clarification class); single-source veto applied (SW sole in-window publisher; underlying Splunk + PAN PSIRT advisory portals NOT directly retrieved this sweep — would lift grade B3 → A2 at next grading run on direct retrieval); Hard Rule 2 not triggered (no actor attribution; pure vendor-patch-disclosure class)"
+    topic_tags:
+      - cve
+      - cve-2026-20253
+      - splunk-enterprise-postgresql-sidecar-arbitrary-file-creation
+      - cvss-9-8-unauthenticated-network-reachable
+      - cve-2026-0274
+      - palo-alto-cortex-xsoar-xsiam-commvault-securityiq-credential-validation
+      - high-severity
+      - securityweek-sole-in-window-publisher-relay-b-ratified
+      - splunk-advisory-portal-not-directly-retrieved-this-sweep-provisional-a-class-pending
+      - pan-psirt-not-directly-retrieved-this-sweep-pre-existing-corpus-a-class
+      - splunk-enterprise-not-splunk-free-load-bearing-doctrine-clarification
+      - frank-first-party-stack-splunk-free-10-x-not-exposed
+      - ad-prime-socs-splunk-enterprise-or-pan-cortex-standard-cadence-patch
+      - cve-2026-0274-does-not-overlap-expired-cve-2026-0257-globalprotect-itw-lock
+      - no-itw-no-actor-no-named-victim
+      - single-source-veto-applied-on-vendor-advisory-technical-detail-claims
+      - hard-rule-2-not-triggered
+      - hard-rule-6-sw-quotes-12-words-and-8-words
+      - hard-rule-8-deterministic-first-party-doctrine-clarification
+      - vulnerabilities
+      - monitoring-tier
+    related_actors: []
+    related_vulns: [CVE-2026-20253, CVE-2026-0274]
+    related_campaigns:
+      - vendor_patch_cadence_continuing_coverage_june_2026
+    finding_ids: [finding-2026-06-11-0004]
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      cve_2026_20253_splunk_enterprise_postgresql_sidecar_arbitrary_file_creation_cvss_9_8: B3
+      cve_2026_20253_attack_vector_unauthenticated_network_reachable: B3
+      cve_2026_0274_palo_alto_cortex_xsoar_xsiam_commvault_credential_validation_high: B3
+      cve_2026_20253_no_known_itw_exploitation: B3
+      cve_2026_0274_no_known_itw_exploitation: B3
+      cve_2026_0274_does_NOT_overlap_with_cve_2026_0257_globalprotect_itw_lock: A1
+      splunk_enterprise_NOT_splunk_free_first_party_frank_NOT_exposed: A1
+      a_d_prime_socs_running_splunk_enterprise_or_pan_cortex_ARE_potentially_exposed_structural: B2
+      no_actor_attribution_at_any_source_pure_vendor_patch_disclosure: A1
+      no_a_d_prime_victim_named: A1
+    wep: likely
+    wep_layered:
+      securityweek_published_article_procedural_fact: very_likely
+      splunk_enterprise_cve_2026_20253_disclosed_with_patch: likely   # single-source vetoed
+      cve_2026_20253_cvss_9_8_specific_score: likely   # single-source vetoed
+      cve_2026_20253_mechanism_class_unauthenticated_postgresql_sidecar_arbitrary_file_creation: likely   # single-source vetoed
+      cve_2026_0274_pan_cortex_xsoar_xsiam_commvault_credential_validation_high: likely   # single-source vetoed
+      cve_2026_20253_no_known_itw: likely   # single-source vetoed
+      cve_2026_0274_no_known_itw: likely   # single-source vetoed
+      cve_2026_0274_does_NOT_overlap_with_cve_2026_0257_globalprotect_itw_lock: very_likely
+      splunk_enterprise_NOT_splunk_free_per_sw_article_language: very_likely
+      first_party_frank_NOT_exposed_per_claude_md_operational_notes: very_likely
+      a_d_prime_socs_running_splunk_enterprise_potentially_exposed_structural: likely
+      a_d_prime_socs_running_pan_cortex_xsoar_xsiam_potentially_exposed_structural: likely
+      no_actor_attribution_at_any_source: very_likely
+      no_a_d_prime_victim_named: very_likely
+      defender_priority_standard_patch_cadence_no_emergency: likely
+    single_source_veto_applied: true
+    single_source_veto_detail: >
+      Applied on the WEP layer for vendor-advisory technical-detail
+      claims (CVSS scores, exact affected versions, exact attack
+      vector mechanism, patch availability). SW is the sole
+      in-window publisher relay; underlying vendor advisories
+      (Splunk + PAN PSIRT) NOT directly retrieved this sweep. WEP
+      caps at "likely" for these claims. NOT applied on the
+      doctrine-clarification layer (Splunk Free not exposed →
+      first-party Frank NOT affected) — deterministic per
+      CLAUDE.md operational notes.
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at any source — Hard Rule 2 not triggered"
+      - "No named victim at any source"
+    splunk_first_party:
+      status: clean_at_compose_and_structurally_not_exposed
+      query_window: -24h
+      hits: 0_substantive
+      hard_rule_8_framing: deterministic_first_party_doctrine_clarification_splunk_free_not_affected_by_cve_2026_20253
+      doctrine_clarification: |
+        CVE-2026-20253 affects Splunk Enterprise (PostgreSQL sidecar
+        service); Frank's archimedes + defenseclaw_local indexes
+        live on Splunk Free 10.x per CLAUDE.md operational notes.
+        No first-party patching action required. defenseclaw_local
+        does not observably run PAN Cortex XSOAR or XSIAM; no
+        first-party exposure to CVE-2026-0274 either.
+    resurface_if:
+      - cve_2026_20253_or_cve_2026_0274_added_to_cisa_kev
+      - tier_1_ir_firm_telemetry_naming_ad_prime_splunk_enterprise_or_pan_cortex_victim
+      - direct_vendor_advisory_portal_retrieval_lifts_grade_b3_to_a2
+      - patch_adoption_data_published
+      - first_party_frank_migration_from_splunk_free_to_splunk_enterprise   # would change first-party exposure posture
+      - shadowserver_or_greynoise_post_disclosure_scanning_telemetry_on_either_cve
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      Monitoring-tier item in Vulnerabilities section. Pure
+      vendor-patch disclosure, no ITW, no actor, no named victim.
+
+      LOAD-BEARING FIRST-PARTY DOCTRINE CLARIFICATION made
+      explicit in brief prose per finding's briefer_handling
+      directive: CVE-2026-20253 affects Splunk Enterprise NOT
+      Splunk Free; Frank's archimedes + defenseclaw_local indexes
+      live on Splunk Free 10.x per CLAUDE.md operational notes;
+      NO first-party Archimedes patching action required. A&D-
+      prime SOCs running Splunk Enterprise or PAN Cortex
+      XSOAR/XSIAM should patch on standard cadence (no emergency
+      tier).
+
+      Anti-confusion framing: CVE-2026-0274 does NOT overlap the
+      now-expired CVE-2026-0257 GlobalProtect Portal ITW lock —
+      different CVE-ID, different product line (Cortex XSOAR/XSIAM
+      Commvault integration vs. PAN-OS GlobalProtect Portal).
+      Brief prose explicitly distinguishes; coverage log records
+      doctrine-clarification class as very_likely (verifiable).
+
+      Hard Rule 6 verbatim quotes preserved at ≤15 words: SW on
+      CVE-2026-20253 (12 words: "lacks authentication controls,
+      allowing any network-reachable user to invoke file
+      operations"); SW on CVE-2026-0274 (8 words: "allows
+      attackers to access and modify restricted resources").
+      Both quotes from SW — but they are quotes of DIFFERENT
+      vendors' advisory language (Splunk advisory + PAN PSIRT)
+      relayed through SW. Hard Rule 6 max-one-quote-per-source
+      observation: technically these are quotes of vendor language
+      via SW relay; SW is the publishing surface, not the original
+      voice. For belt-and-suspenders compliance, only the SW
+      verbatim quote of Splunk advisory language was preserved in
+      brief Layer 1 prose (the PAN advisory paraphrase was used);
+      both are recorded here in coverage log for audit.
+
+      Single-source veto applied on vendor-advisory technical-
+      detail claims; vendor advisory portals not directly
+      retrieved this sweep. Direct retrieval would lift grade
+      B3 → A2 at next grading run — vuln-tracker handoff
+      medium priority.
+
+      Source-grades.yaml handoff (librarian Mode 1): splunk-
+      advisory-portal → provisional A (vendor-self-disclosure-on-
+      own-product canonical class peer to MSRC / PAN PSIRT /
+      Cisco PSIRT / Adobe PSIRT / Ivanti PSIRT); 72h ratification
+      clock pivot on first direct retrieval.
+
+  - id: 2026-06-11-am-brief-meta
+    covered_in: [2026-06-11-morning]
+    brief_file: threats/briefs/2026-06-11-morning.md
+    headline: "2026-06-11 morning brief — 4 findings referenced (2 Active Threats + 1 Vulnerabilities + 1 Actor Activity); Ivanti Sentry CVE-2026-10520 ITW state transition leads with red-team-adjusted framing (cluster anchor very_likely → likely; 'mass' excluded; 19 likely includes benign scanners, 2 backdoored are confirmed-compromise evidence; mechanism layer holds very_likely); FBI/DOJ 13-website seizure operationalizes 2026-06-04 Five Eyes 'Safeguarding Our Secrets' advisory with red-team-adjusted continuity reading (temporal proximity NOT confirmed campaign continuity) and A&D-workforce intersection (structural overlap NOT confirmed A&D-prime targeting); Splunk Enterprise CVE-2026-20253 + PAN Cortex CVE-2026-0274 patched with load-bearing Splunk-Free-vs-Enterprise first-party doctrine clarification; OceanLotus/APT32 ESET attribution as /new-actor candidacy flag without propagation per Hard Rule 2; full supersession of queued flash-2026-06-11-0608 documented in supersession_block; two coverage-log entries updated as UPDATE callouts (2026-06-10-am-003 ITW posture; 2026-06-04-pm-002 LE-action follow-on); pre-flight 13-of-13 passed with iterative Layer 2 char-count trim cycles to land under 1900 hard ceiling; standing sections present (✈️ Sector Focus A&D content carried by lead items; 🇮🇷 Iran Cyber Watch silent-day template); operator action items: librarian source-grade additions for shadowserver/helpnetsecurity/associated-press/splunk-advisory-portal provisional grades, /new-actor OceanLotus-APT32 decision, DOJ press release retrieval for 13 specific seized domain strings (high priority per red-team elevation)"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - 4-findings-referenced
+      - 2-active-threats-1-vulnerabilities-1-actor-activity
+      - ivanti-sentry-itw-state-transition-leads-red-team-adjusted
+      - fbi-doj-13-website-seizure-update-on-five-eyes-safeguarding-our-secrets
+      - splunk-enterprise-pan-cortex-patches-load-bearing-first-party-doctrine-clarification
+      - oceanlotus-apt32-new-actor-candidacy-flag-no-propagation-hard-rule-2
+      - full-supersession-of-flash-2026-06-11-0608
+      - two-coverage-log-update-callouts
+      - pre-flight-13-of-13-passed
+      - layer-2-char-count-iterative-trim-under-1900-ceiling
+      - standing-sections-present-iran-cyber-watch-silent-day
+      - operator-action-items-source-grade-additions-new-actor-doj-retrieval
+      - red-team-adjustments-honored-on-two-of-four-findings
+      - hard-rule-2-load-bearing-on-fbi-doj-and-oceanlotus-items
+      - hard-rule-6-quote-discipline-shadowserver-ivanti-doj-sw-all-within-15-word-limit
+      - hard-rule-8-first-party-splunk-silence-not-disconfirming-deterministic-doctrine-on-splunk-free
+    findings_referenced:
+      - finding-2026-06-11-0001    # Ivanti Sentry CVE-2026-10520 ITW state transition (Active Threats)
+      - finding-2026-06-11-0002    # FBI/DOJ 13-website seizure (Active Threats)
+      - finding-2026-06-11-0003    # OceanLotus/APT32 ESET monitoring (Actor Activity)
+      - finding-2026-06-11-0004    # Splunk Enterprise + PAN Cortex patches monitoring (Vulnerabilities)
+    related_actors:
+      - actor_name: "Chinese intelligence services"
+        actor_in_roster: false
+        attribution_class: generic_pla_mss_class_NOT_roster_mapped
+        attribution_layer_note: "DOJ verbatim attribution per Hard Rule 2; NOT mapped to APT41/Volt Typhoon/Salt Typhoon/APT40/APT32/Mustang Panda"
+      - actor_name: OceanLotus
+        aliases: [APT32, SeaLotus, CobaltKitty]
+        actor_in_roster: false
+        operator_action_recommended: /new-actor OceanLotus
+        attribution_layer_note: "Per ESET via THN; Archimedes does NOT propagate independently per Hard Rule 2"
+    related_vulns:
+      - CVE-2026-10520   # Ivanti Sentry OS command injection CVSS 10.0 — ITW emerging post-patch
+      - CVE-2026-10523   # Ivanti Sentry auth bypass CVSS 9.9 — exploitable, not in this hour's ITW attestation
+      - CVE-2026-20253   # Splunk Enterprise PostgreSQL sidecar arbitrary file creation CVSS 9.8 (Enterprise NOT Splunk Free)
+      - CVE-2026-0274    # PAN Cortex XSOAR/XSIAM Commvault SecurityIQ credential validation HIGH
+    related_campaigns:
+      - q1_q2_2026_perimeter_security_device_weaponization_cluster
+      - chinese_intelligence_humint_linkedin_recruitment_cleared_personnel_strategic_to_operational_layer_continuing_coverage
+      - oceanlotus_apt32_2024_2026_vietnamese_domestic_espionage_per_eset
+      - vendor_patch_cadence_continuing_coverage_june_2026
+    pre_flight_check:
+      total: 13
+      passed: 13
+      iterations: 3
+      regenerations:
+        - section: layer_2_discord_summary
+          reason: char_count_initial_drafts_exceeded_1900_hard_ceiling_iteratively_trimmed
+          iterations: 2
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass_ivanti_and_fbi_doj_update_flags_applied_with_material_evidence
+        lead_states_impact_not_context: pass
+        no_banned_phrases: pass
+        standing_sections_present: pass
+        wep_vocabulary_used_with_probability_bands: pass
+        word_count_within_target: pass_730_words_within_400_800_band
+        actor_vuln_references_link_to_repo: pass_no_dossier_files_yet_for_these_cves_or_actors_handoffs_queued
+        tlp_noted_where_non_clear: pass_clear_noted
+        single_source_veto_respected: pass
+        quotes_within_15_words_one_per_source: pass_shadowserver_13_ivanti_7_doj_3_sw_12_one_quote_per_source_layer_1_only
+        discord_summary_section_present_compliant: pass
+    layer_1_word_count: 730
+    layer_2_word_count_estimate: 225
+    layer_2_char_count_estimate: 1890
+    layer_2_char_count_hard_ceiling_under_1900: pass
+    layer_2_word_count_within_band_150_to_300: pass
+    update_callouts:
+      - prior_brief_id: 2026-06-10-morning
+        prior_coverage_log_entry: 2026-06-10-am-003-rapid7-etr-bleepingcomputer-securityweek-ivanti-sentry-cve-2026-10520-cvss-10-os-command-injection-cve-2026-10523-cvss-9-9-auth-bypass-patched-no-itw
+        new_finding_id: finding-2026-06-11-0001
+        material_extension_summary: "ITW posture state transition from vendor 'not aware of any customers being exploited' (yesterday already single-source-vetoed to WEP likely) to Shadowserver-attested early post-patch exploitation (19 vulnerable Internet-exposed instances scanned, 2 confirmed backdoored) within ~24h of watchTowr PoC publication 2026-06-10. CVE record unchanged. Cluster anchor WEP red-team-adjusted very_likely → likely; mechanism layer holds very_likely. Word 'mass' deliberately excluded."
+        coverage_log_action: "Updated 2026-06-10-am-003 entry's covered_in: append 2026-06-11-morning; last_covered already at 2026-06-11 from earlier flash entry"
+      - prior_brief_id: 2026-06-04-afternoon
+        prior_coverage_log_entry: 2026-06-04-pm-002-mi5-fbi-asio-csis-nzsis-the-record-five-eyes-joint-advisory-safeguarding-our-secrets-china-pla-humint-recruitment-linkedin-cleared-personnel
+        new_finding_id: finding-2026-06-11-0002
+        material_extension_summary: "Strategic-advisory → operational-LE-takedown layer transition within ~7 days: FBI/DOJ seized 13 websites operationalizing the Five Eyes 'Safeguarding Our Secrets' counterintelligence advisory. Same attribution language verbatim ('Chinese intelligence services'), same targeting population (cleared personnel + defense/foreign-policy analysts + military with classified access), same tradecraft pattern (LinkedIn-led HUMINT recruitment with fake consulting fronts). Per red-team review, framed as temporal proximity / coordinated US-government messaging cadence — NOT confirmed strategic→operational campaign continuity."
+        coverage_log_action: "Updated 2026-06-04-pm-002 entry's covered_in: append 2026-06-11-morning; updated last_covered to 2026-06-11"
+    supersession_block:
+      flash_brief_id: flash-2026-06-11-0608
+      flash_brief_file: threats/briefs/2026-06-11-flash-0608-ivanti-sentry-cve-2026-10520.md
+      supersession_type: full
+      reason: queued_under_quiet_hours_at_06_08_edt_morning_brief_audience_supersedes_at_08_00
+      librarian_handoff: "Mark flash-queue entry (queued_at 2026-06-11T06:08:00-04:00, brief_id flash-2026-06-11-0608) as superseded:true, superseded_by: 2026-06-11-morning, superseded_at: 2026-06-11T08:00:00-04:00. Archive to flash-queue-archive.yaml with disposition superseded_by_morning_brief. No QUEUED FROM OVERNIGHT catchup post."
+    operator_action_items:
+      - id: shadowserver_provisional_a_source_grade_addition
+        action: librarian_to_add_shadowserver_to_source_grades_yaml_provisional_a
+        rationale: first_archimedes_corpus_dedicated_id_surface_independent_third_party_internet_scale_scanning_telemetry_authority_72h_ratification_clock_to_2026_06_14_06_12
+      - id: helpnetsecurity_provisional_b_source_grade_addition
+        action: librarian_to_add_helpnetsecurity_to_source_grades_yaml_provisional_b
+        rationale: first_archimedes_corpus_dedicated_id_surface_security_trade_media_class_peer_to_bleepingcomputer_securityweek_72h_ratification_clock_to_2026_06_14
+      - id: associated_press_provisional_a_source_grade_addition
+        action: librarian_to_add_associated_press_to_source_grades_yaml_provisional_a
+        rationale: first_archimedes_corpus_dedicated_id_surface_major_us_wire_service_class_peer_to_reuters_bloomberg_wapo_nyt_72h_ratification_clock_to_2026_06_14
+      - id: splunk_advisory_portal_provisional_a_source_grade_addition
+        action: librarian_to_add_splunk_advisory_portal_to_source_grades_yaml_provisional_a_pending_first_direct_retrieval
+        rationale: vendor_self_disclosure_on_own_product_canonical_class_peer_to_msrc_pan_psirt_cisco_psirt_adobe_psirt_ivanti_psirt
+      - id: new_actor_oceanlotus_apt32_decision
+        action: operator_to_decide_invocation_of_slash_new_actor_oceanlotus_apt32
+        rationale: tier_1_vendor_tracked_apt_cluster_vietnam_aligned_outside_iran_china_russia_roster_focus_tradecraft_portability_to_a_d_espionage_scenarios
+        decision_pending: true
+      - id: doj_press_release_retrieval_13_seized_domain_strings
+        action: vuln_tracker_or_collector_to_retrieve_doj_press_release_for_specific_13_seized_domain_strings_blocklist_actionable_iocs
+        rationale: per_red_team_priority_elevation_resolves_both_ioc_layer_and_per_site_vs_aggregate_attribution_question
+        priority: high
+      - id: oceanlotus_iocs_aggregation
+        action: librarian_to_aggregate_3_iocs_financemachinelearning_gatewayrvcenter_metakit_fireant_into_iocs_unattributed_or_new_oceanlotus_apt32_per_eset_subdir
+        rationale: ioc_index_layer_preserves_per_eset_not_roster_mapped_attribution_per_hard_rule_2
+      - id: direct_eset_welivesecurity_advisory_retrieval
+        action: collector_or_vuln_tracker_to_retrieve_eset_welivesecurity_advisory_for_full_ioc_hash_set_ip_set_ir_timeline_attribution_methodology
+        rationale: thn_article_body_does_not_surface_hashes_or_ips_completion_needed_for_actor_dossier_if_new_actor_invoked
+        priority: medium
+      - id: ivanti_sentry_vuln_tracker_handoff
+        action: vuln_tracker_to_scaffold_threats_vulnerabilities_ivanti_sentry_cve_2026_10520_and_cve_2026_10523_dossiers
+        rationale: ivanti_psirt_corpus_precedent_cve_2026_6973_epmm_kev_2026_05_07_active_threats_lead_warrants_dedicated_dossiers_with_itw_state_transition_history
+        priority: medium
+    resurface_if: []
+    first_covered: 2026-06-11
+    last_covered: 2026-06-11
+    retraction: null
+    test: false
+    notes: |
+      Compact morning brief. 4 findings (vs yesterday's 7 AM, 11
+      PM); one Active Threats lead (Ivanti Sentry ITW state
+      transition with red-team-adjusted framing) and one Active
+      Threats follow-on (FBI/DOJ 13-website seizure as material
+      continuing-coverage of 2026-06-04-pm-002 Five Eyes advisory
+      with red-team-adjusted continuity reading); one
+      Vulnerabilities monitoring item with load-bearing first-
+      party doctrine clarification (Splunk Enterprise vs. Splunk
+      Free); one Actor Activity monitoring item with /new-actor
+      candidacy flag (OceanLotus/APT32 not in roster).
+
+      Full supersession of queued flash-2026-06-11-0608 (Ivanti
+      Sentry) documented in brief supersession_block. No
+      QUEUED FROM OVERNIGHT catchup post; librarian to mark
+      flash-queue entry superseded:true, archive to
+      flash-queue-archive.yaml.
+
+      Red-team adjustments honored on two of four findings:
+        - finding-2026-06-11-0001 (Ivanti Sentry): cluster
+          anchor WEP very_likely → likely; word "mass" excluded;
+          Shadowserver framing as "scanning activity" /
+          "exploitation attempts" / "early post-patch
+          exploitation"; the 2 backdoored hosts framed as
+          confirmed-compromise evidence; the 19 framed as a
+          population that likely includes benign scanners; MDM
+          gateway → A&D risk framed as structural inference NOT
+          first-party-telemetry confirmed
+        - finding-2026-06-11-0002 (FBI/DOJ): attribution layer
+          uses "officials allege" / "DOJ characterizes" hedge
+          framing (NOT flat "China ran these 13 sites");
+          continuity reading framed as "temporal proximity" /
+          "coordinated US-government messaging cadence" (NOT
+          confirmed strategic→operational campaign continuity);
+          A&D-workforce intersection framed as "structural
+          workforce overlap" (NOT confirmed A&D-prime targeting);
+          13 domains framed as "DOJ characterized as operated
+          by entities tied to Chinese intelligence services"
+          (DOJ's verbatim aggregate framing preserved, NOT
+          Archimedes claiming 13 individually-attributed sites)
+
+      Hard Rule 2 load-bearing across two items:
+        - FBI/DOJ: "Chinese intelligence services" verbatim
+          attribution preserved; NO mapping to APT41 / Volt
+          Typhoon / Salt Typhoon / APT40 / APT32 / Mustang
+          Panda; brief prose explicitly states this in the 🔗
+          Update on callout and in Layer 2 Discord Summary
+        - OceanLotus: "per ESET" framing throughout; NOT
+          Archimedes-originated; /new-actor candidacy flagged
+          for orchestrator-discretion handoff per Hard Rule 5
+
+      Hard Rule 6 quote discipline: 4 verbatim quotes used
+      across Layer 1, all under 15 words, one quote per source:
+        - Shadowserver (13 words): "a large amount of Ivanti
+          Sentry exploitation attempts based on the public PoC"
+        - Ivanti vendor PSIRT (7 words): "not aware of any
+          customers being exploited"
+        - DOJ verbatim attribution (3 words): "Chinese
+          intelligence services"
+        - Five Eyes/MI5 advisory title (3 words):
+          "Safeguarding Our Secrets" (proper-name title
+          reference, not substantive quote)
+      Layer 2 omits all verbatim quotes per spec (digraphs/
+      WEP/quotes belong in Layer 1).
+
+      Hard Rule 8 first-party Splunk: silence across all four
+      findings, NOT disconfirming. defenseclaw_local does not
+      observably run Ivanti Sentry, PAN Cortex XSOAR/XSIAM,
+      Splunk Enterprise, or Vietnamese-domestic investor-tools
+      infrastructure. CVE-2026-20253 deterministic doctrine
+      clarification: Splunk Free not affected (load-bearing
+      first-party reading per CLAUDE.md operational notes).
+
+      Standing sections in Layer 1:
+        - ✈️ Sector Focus: Aerospace & Defense — content
+          carried by Active Threats lead items (Ivanti Sentry
+          MDM gateway in ITAR mobile-device estates + FBI/DOJ
+          cleared-personnel target population). No additional
+          watchlist-entity-named activity in last 24h.
+        - 🇮🇷 Iran Cyber Watch — silent day per watch-config.yaml
+          template. No new activity from UNC1549, Charming
+          Kitten, Handala Hack, MuddyWater in last 48h.
+
+      Layer 2 Discord Summary: ~225 words within 150-300 band;
+      ~1890 chars under 1900 hard ceiling after two trim
+      iterations. Skips standing-section boilerplate (Sector
+      Focus content carried by Active Threats bullets; Iran
+      Cyber Watch silent-day omitted from Discord per spec).
+
+      Multiple provisional source-grade additions flagged for
+      librarian Mode 1 handoff: shadowserver (A) +
+      helpnetsecurity (B) + associated-press (A) +
+      splunk-advisory-portal (A pending first direct
+      retrieval). Operator action items above.
 
 # ============================================================================
 # Valid resurface_if conditions

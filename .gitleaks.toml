@@ -45,6 +45,14 @@ regexes = [
   # an Archimedes credential. Tripped generic-api-key entropy 4.5 on the
   # 2026-05-30 0000 FLASH sweep raw-signal commit.
   '''l95HdDaz3kQx1Zsg3WxH6HvKANf51RY1''',
+
+  # Benign English noun "cryptocurrency" — 14-char English word that hit
+  # gitleaks default linkedin-client-id rule's entropy threshold (2.985)
+  # on the 2026-06-11 morning brief commit when contextualized in CTI
+  # tradecraft prose ("AI-generated personas, LinkedIn recruitment,
+  # cryptocurrency payment"). Standard English vocabulary; not a credential.
+  # Case-insensitive to also cover "Cryptocurrency" sentence-start usage.
+  '''(?i)cryptocurrency''',
 ]
 
 paths = [

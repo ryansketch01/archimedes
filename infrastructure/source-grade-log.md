@@ -552,3 +552,28 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 **Reviewer:** <human or agent>
 **Next review:** YYYY-MM-DD
 ```
+
+
+---
+
+## 2026-06-11 — Shadowserver / Help Net Security / Associated Press / Splunk Advisory Portal — (none) → A/B/A/A (provisional, awaiting ratification)
+
+**Type:** New sources — provisional (four additions)
+**Source IDs:** `shadowserver`, `helpnetsecurity`, `associated-press`, `splunk-advisory-portal`
+**Run:** librarian-20260611-0800 (Mode 1 post-scheduled morning brief)
+
+**Summary:** Four first-Archimedes-corpus dedicated source IDs added during 2026-06-11 morning brief delivery. Each is provisional pending operator ratification; three carry 72h fixed ratification clocks, one pivots on first direct retrieval.
+
+1. **`shadowserver` → provisional A.** Public scanner-telemetry feed. First citation via finding-2026-06-11-0001 (Ivanti Sentry CVE-2026-10520 ITW state transition: 19 Internet-exposed instances scanned + 2 confirmed backdoored within ~24h of watchTowr Labs PoC publication 2026-06-10). Non-profit public-benefit org running one of the largest Internet-scanning programs globally; A-grade on procedural-facts layer (scanning observations); does NOT make attribution claims. Peer class: GreyNoise, Censys, Shodan, Sysdig — elevated by non-profit / public-good operating model. **Ratification clock: 2026-06-14T06:12:00-04:00 (72h).**
+
+2. **`helpnetsecurity` → provisional B.** Security media outlet. First citation via finding-2026-06-11-0001 (Ivanti Sentry relay) AND finding-2026-06-11-0002 (FBI/DOJ 13-website seizure, Markovic byline). Long-running independent security-media outlet; daily cadence; named-analyst bylines. Conservative B per same precedent as SecurityWeek / Industrial Cyber / The Hacker News / Security Affairs / The Register. **Ratification clock: 2026-06-14T06:12:00-04:00 (72h).**
+
+3. **`associated-press` → provisional A.** Major US wire service. First citation via finding-2026-06-11-0002 (FBI/DOJ 13-website seizure tied to Chinese intelligence services — AP byline relayed by SecurityWeek). Wire-service-class authority (peer class: Reuters / AFP / Bloomberg breaking-news on US federal enforcement). A is the default starting grade given wire-service-class editorial backbone; operator may downgrade to B if context-thin relay-only profile emerges. **Ratification clock: 2026-06-14T08:18:00-04:00 (72h).**
+
+4. **`splunk-advisory-portal` → provisional A.** Vendor-self-disclosure on own product. First citation via finding-2026-06-11-0004 (Splunk Enterprise CVE-2026-20253 + PAN Cortex CVE-2026-0274 vendor patches, no ITW). Procedurally A per same precedent as F5 / kernel.org netdev / MSRC / Palo Alto PSIRT / Cisco PSIRT / GitHub blog / LiteSpeed self-disclosure. This sweep cited via SecurityWeek B-grade relay only — provisional A ratification pivots on **first direct retrieval** of advisory.splunk.com rather than a fixed 72h clock. Note: CVE-2026-20253 affects Splunk Enterprise, NOT Splunk Free — Frank's first-party indexes are not exposed; A&D-prime SOCs on Enterprise / Cloud are.
+
+**Supporting findings:** [finding-2026-06-11-0001, finding-2026-06-11-0002, finding-2026-06-11-0004]
+**Posted to:** Discord `#intel-briefs` (morning brief message_id 1514608639971823766) carries the per-finding source citations inline; no separate `#actor-review` post required per Mode 9 (none of the four is a B→D-or-worse downgrade or an unsolicited C→A upgrade — all are first-citation provisional additions handled under the precedent-class auto-add path).
+**Reviewer:** Awaiting Ryan ratification.
+**Provisional flags set:** `provisional: true`, `awaiting_ratification: true` on all four; `awaiting_direct_retrieval: true` on `splunk-advisory-portal`.
+**Next review:** ratification target 2026-06-14 for shadowserver / helpnetsecurity / associated-press; rolling pivot on first-direct-retrieval for splunk-advisory-portal.

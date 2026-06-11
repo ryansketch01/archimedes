@@ -9,7 +9,7 @@
 | **Type** | Local Privilege Escalation (LPE) |
 | **Class** | TOCTOU Race Condition + Defender Remediation Path Redirection (NTFS junction) — originally a Remote Code Execution primitive, released as LPE |
 | **Affected Platforms** | Windows 10 and Windows 11 (fully patched, incl. June 2026 Patch Tuesday / KB5094126; Win11 stable + Canary) |
-| **Patch Status** | 🔴 **UNPATCHED** — June 2026 Patch Tuesday fixed GreenPlasma + YellowKey but NOT RoguePlanet. No CVE, no Microsoft advisory, no timeline. Next scheduled window: July 2026 Patch Tuesday (OOB possible) |
+| **Patch Status** | 🔴 **UNPATCHED** — June 2026 Patch Tuesday fixed GreenPlasma (CVE-2026-45586), YellowKey (CVE-2026-45585), and MiniPlasma (CVE-2020-17103) but NOT RoguePlanet. No CVE, no Microsoft advisory, no timeline. Next scheduled window: July 2026 Patch Tuesday (OOB possible) |
 | **PoC Status** | 🔴 **PUBLIC** — released hours after Patch Tuesday; GitHub/GitLab repos removed by Microsoft, researcher self-hosting on `projectnightcrawler.dev` (and "MSNightmare" GitHub account per THN) |
 | **Discovered By** | Nightmare Eclipse / Chaotic Eclipse / Dead Eclipse / MSNightmare / deadeclipse666 (pseudonymous researcher) |
 | **Public Disclosure** | June 9–10, 2026 (uncoordinated — dropped hours after Microsoft's June Patch Tuesday) |
@@ -140,15 +140,15 @@ RoguePlanet is the 7th drop in the Nightmare Eclipse / Chaotic Eclipse series. S
 
 | Tool | Disclosed | Type | CVE | Patch | Dossier |
 |---|---|---|---|---|---|
-| BlueHammer | Apr 3, 2026 | LPE → SYSTEM (file read) | CVE-2026-33825 | ✅ Patched | [BLUEHAMMER](../BLUEHAMMER/profile.md) |
-| RedSun | Apr 16, 2026 | LPE → SYSTEM (file write) | CVE-2026-41091 | 🔴 Unpatched (claim of silent patch unconfirmed) | [REDSUN](../REDSUN/profile.md) |
-| UnDefend | Apr 16, 2026 | Defender DoS / update block | CVE-2026-45498 | 🔴 Unpatched | [UNDEFEND](../UNDEFEND/profile.md) |
-| YellowKey | May 12, 2026 | BitLocker bypass | None | 🔴 Unpatched / patched June PT* | [YELLOWKEY](../YELLOWKEY/profile.md) |
-| GreenPlasma | May 12, 2026 | EoP (CTFMON section) | None | 🔴 Unpatched / patched June PT* | [GREENPLASMA](../GREENPLASMA/profile.md) |
-| MiniPlasma | May 14, 2026 | LPE → SYSTEM (`cldflt.sys`, CVE-2020-17103 patch ineffective) | CVE-2020-17103 | 🔴 Unpatched | [MiniPlasma](../MiniPlasma/profile.md) |
+| BlueHammer | Apr 3, 2026 | LPE → SYSTEM (file read) | CVE-2026-33825 | ✅ Patched (Apr 14) | [BLUEHAMMER](../BLUEHAMMER/profile.md) |
+| RedSun | Apr 16, 2026 | LPE → SYSTEM (file write) | CVE-2026-41091 | ✅ Patched (May 20/21) | [REDSUN](../REDSUN/profile.md) |
+| UnDefend | Apr 16, 2026 | Defender DoS / update block | CVE-2026-45498 | ✅ Patched (May 20/21) | [UNDEFEND](../UNDEFEND/profile.md) |
+| YellowKey | May 12, 2026 | BitLocker bypass | CVE-2026-45585 | ✅ Patched (June PT) | [YELLOWKEY](../YELLOWKEY/profile.md) |
+| GreenPlasma | May 12, 2026 | EoP (CTFMON section) | CVE-2026-45586 | ✅ Patched (June PT) | [GREENPLASMA](../GREENPLASMA/profile.md) |
+| MiniPlasma | May 14, 2026 | LPE → SYSTEM (`cldflt.sys`, CVE-2020-17103 regression) | CVE-2020-17103 | ✅ Patched (June PT) | [MiniPlasma](../MiniPlasma/profile.md) |
 | **RoguePlanet** | **Jun 9–10, 2026** | **LPE → SYSTEM (Defender TOCTOU / junction; ex-RCE)** | **None** | **🔴 Unpatched** | *(this dossier)* |
 
-\* June 2026 Patch Tuesday is reported to address GreenPlasma and YellowKey; confirm against sibling-dossier status on next review.
+> **Sibling-status confirmation (2026-06-10):** June 2026 Patch Tuesday fixed **GreenPlasma (CVE-2026-45586)**, **YellowKey (CVE-2026-45585)**, and **MiniPlasma (CVE-2020-17103 regression)** — confirmed against BleepingComputer + The Hacker News. RedSun (CVE-2026-41091) and UnDefend (CVE-2026-45498) were patched 2026-05-20/21 and the codename↔CVE binding resolved (RedSun⇔41091, UnDefend⇔45498). **RoguePlanet is now the only unpatched tool in the series.**
 
 The researcher's published threat at YellowKey/GreenPlasma disclosure — *"Next patch tuesday will have a big surprise for you Microsoft"* — is fulfilled by RoguePlanet, dropped hours after the June fixes shipped.
 
@@ -161,7 +161,7 @@ The researcher's published threat at YellowKey/GreenPlasma disclosure — *"Next
 | Early Apr 2026 | Series begins (BlueHammer); ongoing Nightmare Eclipse vs MSRC / bug-bounty dispute | (series history) |
 | Mid-May 2026 | Microsoft silently hardens Defender internal file I/O (reported `mpengine!SysIO*`), blocking RoguePlanet's original remote/junction RCE vector | BleepingComputer (researcher claim) |
 | ~Late May 2026 | Researcher restores prototype after Microsoft updates initially broke it; reworked as LPE | SecurityAffairs (researcher claim) |
-| Jun 9–10, 2026 | **Microsoft June Patch Tuesday** — fixes GreenPlasma + YellowKey; **does NOT fix RoguePlanet** | The Hacker News / BleepingComputer |
+| Jun 9–10, 2026 | **Microsoft June Patch Tuesday** — fixes GreenPlasma (CVE-2026-45586), YellowKey (CVE-2026-45585), and MiniPlasma (CVE-2020-17103 regression); **does NOT fix RoguePlanet** | The Hacker News / BleepingComputer |
 | Jun 9–10, 2026 | **RoguePlanet PoC released publicly**, hours after Patch Tuesday ("big surprise"). GitHub/GitLab repos removed by Microsoft; researcher self-hosts on `projectnightcrawler.dev` | BleepingComputer / THN |
 | Jun 9–10, 2026 | ThreatLocker independently reproduces, confirms viability on patched Windows 11; notes application allowlisting blocks execution | BleepingComputer |
 | Jun 2026 | Microsoft public posture: condemns uncoordinated disclosures as putting customers at risk, but states it will **not** pursue researchers conducting/publishing security research; reserves action for malicious harm (earlier DCU threat walked back) | THN / SecurityAffairs |

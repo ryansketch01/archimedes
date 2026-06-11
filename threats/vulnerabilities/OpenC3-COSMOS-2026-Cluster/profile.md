@@ -71,7 +71,7 @@ affected_products:
 kev_status:
   any_cve_in_kev: false
   cves_in_kev: []
-  last_checked: 2026-05-09
+  last_checked: 2026-06-10
   watch_signal_active: true
   watch_signal_note: >
     Track KEV catalog for addition of any of the five CVEs. KEV addition
@@ -147,8 +147,8 @@ single_source_veto_basis: >
   exists yet.
 
 tracked_since: 2026-05-09
-last_updated: 2026-05-09
-tracking_version: 1
+last_updated: 2026-06-10
+tracking_version: 2
 tlp: CLEAR
 ---
 
@@ -347,3 +347,9 @@ Internal:
 
 - [finding-2026-05-09-0001](../../findings/finding-2026-05-09-0001.md) — source cluster finding
 - [raw-2026-05-09-am-001](../../raw-signal/raw-2026-05-09-am-001-openc3-cosmos-cve-cluster-spacecraft-c2.md) — collector raw signal
+
+## Patch-status re-verification — 2026-06-10
+
+Re-checked against NVD (CVE-2026-42087/42088), CISA KEV, and OpenC3 docs/security-vulnerabilities. **No change to remediation status:** the cluster remains **patched in 7.0.0-rc3 / 7.0.0** — independent reporting (SentinelOne, CIRCL Vulnerability-Lookup, TheHackerWire) confirms the fix-version boundary (versions 6.7.0 up to but excluding 7.0.0-rc3 affected for the two Critical CVEs). **None of the five CVEs is on CISA KEV** as of 2026-06-10, and no in-the-wild exploitation is reported by any source — the watch-signal tripwires (KEV addition, independent third-party technical analysis, NASA/BAE deployment statement, weaponized PoC, ITW observation) remain un-fired. CVSS unchanged (two Criticals at 9.6). First-party Splunk still carries no OpenC3 COSMOS telemetry in scope (silent ≠ disconfirming, Hard Rule 8). The operational unit-of-tracking is unchanged: estates running pre-7.0.0 should complete the major-version upgrade through change control. `tracking_version` → 2; `kev_status.last_checked` and `last_updated` advanced to 2026-06-10.
+
+*Updated: 2026-06-10 | Author: Archimedes (vuln-tracker) | Admiralty Grade: A2 — NVD/GHSA primary; single-source veto still applies | TLP: CLEAR*

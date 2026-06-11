@@ -14,7 +14,7 @@
 | **Fixed Version** | ✅ **PATCHED** — LiteLLM v1.83.7+ | **Recommended Version** | v1.83.10-stable (per BerriAI official security post, 2026-04-29) |
 | **Attack Vector** | Network — unauthenticated, no user interaction required |
 | **CVSS Score** | **9.3 Critical** (CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N) — formally scored, per Belgium CCB advisory and The Hacker News |
-| **CISA KEV** | ❌ Not in KEV catalog as of 2026-04-29 |
+| **CISA KEV** | ✅ **IN CISA KEV** — added 2026-05-08, FCEB due 2026-05-11 (status change confirmed 2026-06-10; was "Not in KEV as of 2026-04-29") |
 | **Exploit Status** | 🔴 **ACTIVELY EXPLOITED IN THE WILD** — targeted schema enumeration observed |
 | **Discovered/Disclosed By** | BerriAI maintainer team |
 | **Global Advisory Published** | April 24, 2026 (GitHub Advisory Database) |
@@ -296,3 +296,23 @@ Sysdig published their complete technical write-up on April 27. Key additions to
 ---
 
 *Profile created: 2026-04-29 | Last updated: 2026-04-30 | Author: C3PO | Admiralty Grade: A1 | TLP: WHITE*
+
+---
+
+## Intelligence Update — 2026-06-10
+
+### Now in CISA KEV (added 2026-05-08); patched status unchanged (v1.83.7+/v1.83.10-stable)
+
+Patch-status re-verification against the CISA KEV catalog and prior reporting. Patch status is unchanged and confirmed: **PATCHED in LiteLLM v1.83.7+, recommended v1.83.10-stable** (BerriAI). The material change is exploitation governance, not remediation:
+
+**CVE-2026-42208 was added to the CISA KEV catalog on 2026-05-08, with an FCEB remediation deadline of 2026-05-11.** The original profile recorded "Not in KEV as of 2026-04-29"; that is now superseded. The KEV listing formalizes the active-exploitation status this profile already documented (Sysdig TRT captured targeted exploitation 36 hours post-advisory). The short ~3-day federal deadline reflects confirmed in-the-wild exploitation of an unauthenticated pre-auth SQLi in a credential-aggregating AI gateway.
+
+Operational guidance unchanged: any LiteLLM proxy below v1.83.7 should be treated as potentially compromised — upgrade to v1.83.10-stable and rotate all stored provider credentials, virtual keys, JwtSecret, and environment secrets. No new exploitation infrastructure observed since the 2026-04-30 update; behavioral-overlap note re: TeamPCP remains LOW-MEDIUM confidence and is not originated attribution (Hard Rule 2).
+
+| Date | Milestone |
+|---|---|
+| 2026-04-26 | First targeted exploitation observed (Sysdig TRT) |
+| 2026-05-08 | Added to CISA KEV; FCEB remediation due 2026-05-11 |
+| 2026-06-10 | KEV status confirmed; patched status (v1.83.7+/v1.83.10-stable) unchanged |
+
+*Updated: 2026-06-10 | Author: Archimedes (vuln-tracker) | Admiralty Grade: A1 — CISA KEV listing + Sysdig-confirmed exploitation | TLP: WHITE*

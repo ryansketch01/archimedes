@@ -14,13 +14,13 @@
 | **Affected Distributions** | Ubuntu (all releases) · RHEL 8/9/10 · AlmaLinux 8/9/10 · Fedora 44 · openSUSE Tumbleweed · CentOS Stream 10 · Debian · Rocky Linux · CloudLinux · virtually all enterprise distributions |
 | **Not Affected** | Kernels < 4.10; systems with esp4/esp6/rxrpc modules blacklisted |
 | **CVE-2026-43284 (ESP) CVSS v3.1** | **8.8 HIGH** (kernel.org CNA assessment) |
-| **CVE-2026-43500 (RxRPC) CVSS v3.1** | **7.8 HIGH** (Canonical assessment; NVD pending) |
+| **CVE-2026-43500 (RxRPC) CVSS v3.1** | **7.8 HIGH** (Canonical assessment; NVD record now published) |
 | **Regression Introduced** | CVE-2026-43284: January 2017 — commit `cac2661c53f3` (ESP in-place decryption fast path) · CVE-2026-43500: June 2023 (same pattern applied to RxRPC) |
 | **Public Disclosure** | May 7, 2026 — embargo broken before coordinated patches; working PoC published same day |
 | **Discovered By** | Hyunwoo Kim (@v4bel) — same researcher who discovered Copy Fail (CVE-2026-31431) |
-| **CVE-2026-43284 Patch** | ✅ Upstream patched — mainline commit `f4c50a4034e6`; distro patches rolling out |
-| **CVE-2026-43500 Patch** | ⚠️ **NO PATCH** — Reserved; NVD entry pending as of May 11, 2026 |
-| **Overall Patch Status** | ⚠️ PARTIAL — ESP half patched upstream + major distros; RxRPC half unpatched |
+| **CVE-2026-43284 Patch** | ✅ Upstream patched — mainline commit `f4c50a4034e6`; distro backports shipped |
+| **CVE-2026-43500 Patch** | ✅ **PATCHED** (as of 2026-06-10) — mainline commit `aa54b1d27fe0`; distro backports shipped (Ubuntu all supported LTS, RHEL via RHSB-2026-003, AlmaLinux, CloudLinux/KernelCare) |
+| **Overall Patch Status** | ✅ PATCHED (as of 2026-06-10) — both halves (ESP + RxRPC) patched upstream and backported by major distros. The May-11 PARTIAL (RxRPC unpatched) is superseded. Remaining task is rollout + reboot. |
 | **PoC Status** | 🔴 **PUBLIC** — Working single-command root PoC published May 7, 2026; second exploit "Copy Fail 2: Electric Boogaloo" also public |
 | **Active Exploitation** | 🔴 **CONFIRMED** — Microsoft observing limited in-the-wild exploitation (SSH → ELF binary → `su` LPE chain); campaign targeting GLPI instances observed |
 | **CISA KEV** | ❌ Not listed as of May 11, 2026 |
@@ -153,28 +153,33 @@ Dirty Frag is **confirmed to create a container-to-host escape path** in contain
 
 ---
 
-## Patch Status by Distribution (as of 2026-05-11)
+## Patch Status by Distribution (as of 2026-06-10)
 
 ### CVE-2026-43284 (ESP — xfrm)
 
 | Distribution | Status | Action |
 |---|---|---|
 | Linux mainline | ✅ Patched | Commit `f4c50a4034e6` |
-| AlmaLinux 8/9/10 | ✅ Patched | Production repos as of May 8 |
+| AlmaLinux 8/9/10 | ✅ Patched | Production repos (built ahead of Red Hat) |
 | CloudLinux 7h/8/9/10 | ✅ Patched | Stable rollout; KernelCare livepatch available |
-| Debian | ✅ Patched | Advisory issued |
-| RHEL 8/9/10 | ⚠️ In progress | AlmaLinux built patch independently ahead of Red Hat |
-| Ubuntu (all LTS) | ⚠️ Patches pending | Kernel packages in progress; mitigation guidance available |
-| Fedora 44 | ⚠️ In progress | — |
-| openSUSE Tumbleweed | ⚠️ Advisory issued | — |
-| Rocky Linux | ⚠️ Advisory issued | — |
+| Debian | ✅ Patched | Advisory issued; backport shipped |
+| RHEL 8/9/10 | ✅ Patched | Kernel errata shipped under RHSB-2026-003 |
+| Ubuntu (all supported LTS) | ✅ Patched | Kernel packages released across Focal/Jammy/Noble/Questing/Resolute |
+| Fedora 44 | ✅ Patched | Backport shipped |
+| openSUSE Tumbleweed | ✅ Patched | Backport shipped |
+| Rocky Linux | ✅ Patched | Backport shipped |
 
-### CVE-2026-43500 (RxRPC)
+### CVE-2026-43500 (RxRPC) — *was the laggard; now resolved*
 
-| Distribution | Status | Notes |
+| Distribution | Status (2026-06-10) | Notes |
 |---|---|---|
-| All distributions | ❌ **UNPATCHED** | No upstream patch as of May 11; CVE assigned, NVD pending |
-| AlmaLinux 9/10 | ⚠️ Partially mitigated | Only affected if `kernel-modules-partner` from Devel repo installed |
+| Linux mainline | ✅ Patched | Commit `aa54b1d27fe0` — unshares packets carrying externally-owned paged fragments |
+| Ubuntu (all supported LTS) | ✅ Patched | Per Canonical tracker: Focal `5.4.0-231.251`, Jammy `5.15.0-181.191`, Noble `6.8.0-124.124`, Questing `6.17.0-35.35`, Resolute `7.0.0-22.22`. 18.04 and earlier not affected. |
+| RHEL 8/9/10 | ✅ Patched | Kernel errata shipped under RHSB-2026-003 (covers RxRPC half) |
+| AlmaLinux 9/10 | ✅ Patched | Kernel update published |
+| CloudLinux / KernelCare | ✅ Patched | Kernel update + no-reboot livepatch |
+
+> The May-11 "RxRPC UNPATCHED across all distributions" assessment is **superseded** — the upstream fix landed and distro backports shipped in the weeks since.
 
 ---
 
@@ -366,7 +371,10 @@ index=linux_auditd syscall=openat
 - [oss-security disclosure — Hyunwoo Kim (May 7, 2026)](https://www.openwall.com/lists/oss-security/2026/05/07/8)
 - [Upstream ESP fix — commit f4c50a4034e6](https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net.git/commit/?id=f4c50a4034e62ab75f1d5cdd191dd5f9c77fdff4)
 - [NVD — CVE-2026-43284](https://nvd.nist.gov/vuln/detail/CVE-2026-43284)
-- [NVD — CVE-2026-43500](https://nvd.nist.gov/vuln/detail/CVE-2026-43500) *(entry pending)*
+- [NVD — CVE-2026-43500](https://nvd.nist.gov/vuln/detail/CVE-2026-43500)
+- [Ubuntu Security — CVE-2026-43500 (RxRPC) — fixed across supported LTS](https://ubuntu.com/security/CVE-2026-43500)
+- [Red Hat — RHSB-2026-003 (Dirty Frag networking subsystem LPE)](https://access.redhat.com/security/vulnerabilities/RHSB-2026-003)
+- [Upstream RxRPC fix — commit aa54b1d27fe0](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=aa54b1d27fe0)
 
 ---
 
@@ -382,15 +390,39 @@ On **May 13, 2026**, researcher **William Bowling (Zelic)** disclosed **Fragnesi
 
 **Critical difference from Dirty Frag:** Fragnesia exploits a **logic bug** (not a race condition), making exploitation **deterministic and reliable**. Dirty Frag required precise timing; Fragnesia works on the first attempt regardless of system load.
 
-**Patch status:** The upstream Linux kernel patch for Fragnesia was merged **May 13, 2026**. Distribution packages for Debian, Ubuntu, RHEL, and others are still being built and are **pending**. Defenders applying the Copy Fail (ZD-014) KEV deadline patch (due **May 15 — tomorrow**) should check whether their distribution's kernel update also addresses Fragnesia.
+**Patch status:** The upstream Linux kernel patch for Fragnesia was merged **May 13, 2026**. *(Update 2026-06-10: distribution backports for Fragnesia have since shipped across AlmaLinux, Ubuntu, Debian, RHEL (RHSB-2026-003), and CloudLinux — see the FRAGNESIA/ZD-027 dossier.)* The Copy Fail (ZD-014) CISA KEV deadline (May 15, 2026) has passed; the same kernel update that closed Copy Fail also addresses Fragnesia for most distributions.
 
 **See ZD-027 (FRAGNESIA) profile** for full technical details.
 
 | Property | Dirty Frag (ZD-017) | Fragnesia (ZD-027) |
 |---|---|---|
-| CVE | CVE-2026-43284 + CVE-2026-43500 | TBD |
+| CVE | CVE-2026-43284 + CVE-2026-43500 | CVE-2026-46300 |
 | Kernel subsystem | XFRM/ESP + RxRPC | XFRM/ESP + TCP |
 | Exploitation | Race condition (timing-dependent) | Logic bug (deterministic) |
-| RxRPC unpatched | Yes | N/A (different path) |
-| Distro patches | Partial (ESP done; RxRPC pending) | Pending all distros |
+| RxRPC unpatched | No longer — patched `aa54b1d27fe0` (2026-06-10) | N/A (different path) |
+| Distro patches | ✅ Both halves shipped (2026-06-10) | ✅ Shipped (2026-06-10) |
 | Container escape | Yes | Yes |
+
+---
+
+## 📡 Intelligence Update — 2026-06-10
+
+### RxRPC Laggard Resolved — Overall Status Flipped PARTIAL → PATCHED
+
+The outstanding component that kept Dirty Frag at PARTIAL — **CVE-2026-43500 (RxRPC)**, unpatched across all distributions as of the May-11 profile — is now closed:
+
+- **Upstream:** RxRPC fix merged in mainline commit `aa54b1d27fe0` (unshares packets that carry externally-owned paged fragments, the same defect class as the ESP half).
+- **Ubuntu:** fixed across all supported LTS per Canonical's tracker (Focal `5.4.0-231.251`, Jammy `5.15.0-181.191`, Noble `6.8.0-124.124`, Questing `6.17.0-35.35`, Resolute `7.0.0-22.22`; 18.04 and earlier not affected).
+- **RHEL:** addressed under Red Hat bulletin **RHSB-2026-003** (RHEL 8/9/10 + OpenShift), which groups CVE-2026-43284, CVE-2026-43500, and CVE-2026-46300.
+- **AlmaLinux / CloudLinux / KernelCare:** kernel updates and no-reboot livepatches published.
+
+With both halves (ESP CVE-2026-43284 + RxRPC CVE-2026-43500) now patched upstream and backported, **overall patch status is PATCHED as of 2026-06-10**. Patch availability is no longer the gating factor; the remaining defender task is rollout (kernel update + reboot, or livepatch).
+
+No CISA KEV listing for either Dirty Frag CVE as of this update. The in-the-wild exploitation Microsoft reported at disclosure (SSH → ELF → `su` LPE chain against GLPI instances) remains attributed to an **unknown** threat actor — no named-actor attribution has surfaced in the reporting reviewed (Hard Rule 2).
+
+| Date | Milestone |
+|---|---|
+| 2026-05-07/08 | Disclosure; ESP half patched + distro rollout begins; limited ITW exploitation (Microsoft) |
+| 2026-06-10 | RxRPC half patched (`aa54b1d27fe0`) + distro backports shipped; overall status PATCHED; not in CISA KEV; unknown actor |
+
+*Updated: 2026-06-10 | Author: Archimedes | Admiralty Grade: A1 — multiple distro advisories (Canonical, Red Hat RHSB-2026-003, AlmaLinux, CloudLinux) confirm both halves patched | TLP: WHITE*

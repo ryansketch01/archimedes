@@ -5,19 +5,25 @@
 | Field | Details |
 |---|---|
 | **Vulnerability Name** | RedSun |
-| **CVE** | None assigned - **UNPATCHED as of 2026-04-21** |
-| **Type** | Local Privilege Escalation (LPE) |
-| **Class** | Defender Cloud-File Remediation Path Abuse - Standard User Privilege |
+| **CVE** | **CVE-2026-41091** (assigned 2026-05-20; confirmed RedSun⇔41091 — see binding note below) |
+| **Vendor Advisory** | [MSRC — CVE-2026-41091](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-41091) |
+| **Type** | Local Privilege Escalation (LPE) / Elevation of Privilege (EoP) → SYSTEM |
+| **Class** | CWE-59 — Improper Link Resolution Before File Access ("link following"); Defender Cloud-File Remediation Path Abuse — Standard User Privilege |
 | **Affected Platforms** | Windows 10, Windows 11, Windows Server 2019 and later |
-| **Patch Status** | 🔴 **UNPATCHED** - No official patch, no CVE, no Microsoft timeline (19 days as of 2026-05-05; confirmed next window: May 12 Patch Tuesday) |
+| **Affected Versions** | Microsoft Defender Malware Protection Engine < 1.1.26040.8 / Antimalware Platform < 4.18.26040.7 |
+| **Patch Status** | ✅ **PATCHED** — 2026-05-20/21 via Malware Protection Engine 1.1.26040.8 / Antimalware Platform 4.18.26040.7 (auto-updated via Windows Update). 35 days from disclosure. |
+| **CVSS** | **7.8 HIGH** |
+| **CISA KEV** | ✅ **LISTED** — Added 2026-05-20 · FCEB Action-Due 2026-06-03 (now passed) |
 | **PoC Status** | 🔴 **PUBLIC** - Full C++ source on GitHub (Nightmare-Eclipse/RedSun) |
 | **Discovered By** | Chaotic Eclipse / Nightmare-Eclipse (pseudonymous researcher) |
 | **Public Disclosure** | April 16, 2026 (released simultaneously with UnDefend) |
 | **Confirmed Working** | Will Dormann (independent validation); Huntress (in-the-wild exploitation) |
-| **Exploited in Wild** | ✅ YES - confirmed April 16, 2026 alongside BlueHammer and UnDefend |
-| **Reliability** | ~100% on fully patched Windows 10/11 and Server 2019+ |
+| **Exploited in Wild** | ✅ YES - confirmed April 16, 2026 alongside BlueHammer and UnDefend; vendor-confirmed active exploitation at 2026-05-20 patch |
+| **Reliability** | ~100% on fully patched Windows 10/11 and Server 2019+ (pre-patch) |
 | **Threat Level** | 🔴 HIGH |
-| **Admiralty Grade** | A1 |
+| **Admiralty Grade** | A1 — vendor-confirmed active exploitation + CISA KEV |
+
+> **CVE↔codename binding (resolved 2026-06-10):** Current authoritative sources (The Hacker News, Security Affairs, BleepingComputer, SecurityWeek as of June 2026) and the researcher's own confirmation bind **RedSun ⇔ CVE-2026-41091** (the link-following EoP→SYSTEM flaw, CVSS 7.8). The original SecurityWeek 2026-05-21 piece *labelled* the codenames inverted relative to the mechanism types it described (it called 41091 "UnDefend"); that label error is superseded. Binding resolved on the diagnostic mechanism type — RedSun is the LPE-to-SYSTEM tool, CVE-2026-41091 is the LPE-to-SYSTEM CVE. **No longer disputed.** This profile is the canonical RedSun dossier; the former `CVE-2026-41091/profile.md` was folded in here and removed on 2026-06-10.
 
 ---
 
@@ -100,8 +106,8 @@ The vulnerability lives in `MpSvc.dll` - the Malware Protection Engine binary th
 | Tool | Attack Path | Primitive | Patch Status |
 |---|---|---|---|
 | BlueHammer | Defender signature update path | Privileged file **read** → SAM dump → NTLM hash → SYSTEM | ✅ Patched (CVE-2026-33825, April 14) |
-| RedSun | Defender cloud-file remediation path | Privileged file **write** → System32 binary → COM execution → SYSTEM | ❌ **Unpatched** |
-| UnDefend | Defender update mechanism | Blocks signature updates; Defender runs blind | ❌ **Unpatched** |
+| RedSun | Defender cloud-file remediation path | Privileged file **write** → System32 binary → COM execution → SYSTEM | ✅ Patched (CVE-2026-41091, 2026-05-20/21) |
+| UnDefend | Defender update mechanism | Blocks signature updates; Defender runs blind | ✅ Patched (CVE-2026-45498, 2026-05-20/21) |
 
 **Chained kill chain (observed April 16):**
 ```
@@ -184,17 +190,17 @@ Severity: MEDIUM (escalate if correlated with above)
 
 ## Mitigations
 
-> ⚠️ **No patch available.** All controls below are compensating measures until Microsoft releases a fix.
+> ✅ **PATCHED — CVE-2026-41091, 2026-05-20/21.** Apply Defender Malware Protection Engine 1.1.26040.8 / Antimalware Platform 4.18.26040.7 (auto-updated via Windows Update). Verify with `Get-MpComputerStatus | Select AMEngineVersion, AMProductVersion`. Priority on offline / update-deferred / tampered hosts that do not auto-pull engine updates. Compensating controls below remain valuable as defence-in-depth.
 
 | Control | Priority | Notes |
 |---|---|---|
+| **Apply the Defender engine update** | ✅ DONE | Engine ≥ 1.1.26040.8 / Platform ≥ 4.18.26040.7. Verify across the fleet; prioritize hosts with auto-update disabled or lapsed. |
 | **Deploy behavioral detection rules above** | 🔴 IMMEDIATE | VSS enumeration + junction creation + MsMpEng write = high-confidence chain |
 | **Monitor File Integrity on System32** | 🔴 IMMEDIATE | Alert on unexpected changes to `TieringEngineService.exe` specifically |
 | **Enforce phishing-resistant MFA on VPN/remote access** | 🔴 HIGH | Observed attack entered via stolen VPN credential - this is the first gate |
 | **Restrict execution from user-writable directories** | 🔴 HIGH | AppLocker / WDAC policy blocking .exe from Downloads, Pictures, Temp |
 | **Supplement Defender with secondary EDR** | 🔴 HIGH | RedSun + UnDefend specifically target Defender; second layer maintains coverage |
 | **Least-privilege enforcement** | 🟡 HIGH | Reduces post-exploitation blast radius; RedSun starts from standard user context |
-| **Apply patch immediately when released** | ⏳ WATCH | Out-of-band Microsoft patch expected; monitor MSRC for emergency advisory |
 
 ---
 
@@ -222,6 +228,42 @@ Severity: MEDIUM (escalate if correlated with above)
 - [Black Swan Cybersecurity - Threat Advisory: RedSun Zero-Day](https://blackswan-cybersecurity.com/threat-advisory-redsun-zero-day-windows-defender-april-17-2026/)
 - [Picus Security - BlueHammer & RedSun: Windows Defender CVE-2026-33825 Explained](https://www.picussecurity.com/resource/blog/bluehammer-redsun-windows-defender-cve-2026-33825-zero-day-vulnerability-explained)
 - [ProArch - Microsoft Defender Zero-Day Vulnerabilities (BlueHammer, RedSun & UnDefend)](https://www.proarch.com/blog/threats-vulnerabilities/microsoft-defender-zero-days-bluehammer-redsun-undefend)
+- [SecurityWeek — Microsoft Patches Exploited UnDefend and RedSun Defender Zero-Days](https://www.securityweek.com/microsoft-patches-exploited-undefend-and-redsun-defender-zero-days/)
+- [Help Net Security — Microsoft Defender vulnerabilities exploited in the wild (CVE-2026-41091, CVE-2026-45498)](https://www.helpnetsecurity.com/2026/05/21/microsoft-defender-vulnerabilities-cve-2026-41091-cve-2026-45498/)
+- [The Hacker News — Microsoft Warns of Two Actively Exploited Defender Vulnerabilities](https://thehackernews.com/2026/05/microsoft-warns-of-two-actively.html)
+- [CISA KEV Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+---
+
+## Intelligence Update — 2026-06-10
+
+> **Status: PATCHED. CVE-2026-41091 assigned and fixed.** RedSun was patched on 2026-05-20/21 — superseding all prior "still unpatched" status from the May intelligence updates below, which are retained for historical record.
+
+### CVE assigned, patched, and KEV-listed — codename binding resolved
+
+RedSun is now confirmed to be **CVE-2026-41091** — a Microsoft Defender elevation-of-privilege flaw (CWE-59 improper link resolution before file access, "link following"), CVSS 7.8, that elevates a standard local user to SYSTEM. This is precisely the RedSun mechanism (privileged file write via unvalidated junction/reparse redirect of a Defender SYSTEM-context operation). Microsoft confirmed active in-the-wild exploitation at disclosure on 2026-05-20.
+
+**Patched** in Microsoft Malware Protection Engine version 1.1.26040.8 / Antimalware Platform version 4.18.26040.7, distributed automatically via Windows Update (2026-05-20/21). Total exposure window from April 16 public disclosure to patch: ~35 days. **Added to CISA KEV 2026-05-20** with FCEB remediation deadline 2026-06-03 — now passed. Because Defender engine updates auto-apply, most managed estates are already remediated; residual risk concentrates on offline / update-deferred / tampered hosts.
+
+### Codename↔CVE binding — resolved, no longer disputed
+
+The collector flagged a disputed binding: the original SecurityWeek 2026-05-21 article *labelled* CVE-2026-41091 as "UnDefend," which inverted the codenames relative to the mechanism types the same article described. Current authoritative sources (THN, Security Affairs, BleepingComputer, and SecurityWeek's own June reporting under the title "Microsoft Patches Exploited UnDefend and RedSun Defender Zero-Days") plus the researcher's own confirmation resolve it as **RedSun ⇔ CVE-2026-41091** (LPE→SYSTEM, 7.8) and **UnDefend ⇔ CVE-2026-45498** (DoS, 4.0). Resolved on the diagnostic mechanism type, not on a single source's label. No actor has been attributed (Hard Rule 2); a secondary "RedSun" exploitation-campaign tag appears in some trackers but carries no A-grade vendor attribution.
+
+First-party note: no `defenseclaw_local` / `archimedes` telemetry corroborates or contradicts the external exploitation reporting (Hard Rule 8 — silence is neither confirmation nor refutation).
+
+### Consolidation note
+
+This profile is now the single canonical RedSun dossier. The redundant CVE-keyed `threats/vulnerabilities/CVE-2026-41091/profile.md` (created 2026-05-21 by C3PO) has had its unique technical detail — CWE-59 classification, MSRC advisory link, fixed-version strings, CISA KEV dates, and ATT&CK T1562.001 mapping — folded into this dossier and was deleted on 2026-06-10.
+
+| Date | Milestone |
+|---|---|
+| 2026-04-16 | RedSun public PoC + active exploitation confirmed (Huntress) |
+| 2026-05-20 | Microsoft discloses CVE-2026-41091; active exploitation confirmed; added to CISA KEV |
+| 2026-05-20/21 | Patched — Engine 1.1.26040.8 / Platform 4.18.26040.7 |
+| 2026-06-03 | CISA KEV FCEB remediation deadline (now passed) |
+| 2026-06-10 | Codename binding resolved; CVE-keyed duplicate consolidated into this dossier |
+
+*Updated: 2026-06-10 | Author: Archimedes (vuln-tracker) | Admiralty Grade: A1 | TLP: CLEAR*
+
 ---
 
 ## Intelligence Update - 2026-04-27

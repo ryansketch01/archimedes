@@ -318,9 +318,9 @@ All major Linux distributions now have patched kernels in production repositorie
 
 ## Intelligence Update — 2026-05-11
 
-### CISA KEV Deadline in 4 Days | Active Exploitation Ongoing
+### CISA KEV Deadline May 15, 2026 (now passed) | Active Exploitation Ongoing
 
-**CISA KEV deadline: May 15, 2026** — FCEB agencies have 4 days to patch or discontinue use of affected Linux systems. No extension has been announced.
+**CISA KEV deadline: May 15, 2026** — at the time of this update FCEB agencies had four days to patch or discontinue use of affected Linux systems; the deadline has since passed (see the 2026-05-18 update below). No extension was announced.
 
 **Patch availability:** All major distributions have shipped fixes (Ubuntu, Debian, RHEL, Amazon Linux, AlmaLinux, CloudLinux, Arch). Kernel versions 7.0, 6.19.12, 6.18.22 and corresponding distro backports are all available. No excuse for unpatched exposure at this point.
 

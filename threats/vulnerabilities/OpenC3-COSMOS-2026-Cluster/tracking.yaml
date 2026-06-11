@@ -6,8 +6,8 @@
 
 dossier_id: VT-005
 cluster_name: OpenC3-COSMOS-2026-Cluster
-last_updated: 2026-05-09
-tracking_version: 1
+last_updated: 2026-06-10
+tracking_version: 2
 created_from:
   trigger: vuln_tracker_handoff_from_grader
   source_finding: finding-2026-05-09-0001
@@ -157,8 +157,11 @@ nvd:
 kev:
   any_cve_in_kev: false
   cves_in_kev: []
-  last_checked: 2026-05-09
-  last_checked_run_id: pre-brief-20260509-073000
+  last_checked: 2026-06-10
+  last_checked_run_id: vuln-tracker-20260610-patch-audit
+  prior_checks:
+    - { date: 2026-05-09, run_id: pre-brief-20260509-073000, result: none_listed }
+    - { date: 2026-06-10, run_id: vuln-tracker-20260610-patch-audit, result: none_listed }
   watch_signal_active: true
   watch_signal_note: >
     Track CISA KEV catalog for addition of any of the five CVEs. KEV

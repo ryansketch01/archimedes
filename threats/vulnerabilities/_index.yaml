@@ -6,8 +6,8 @@
 # Migrated from C3PO ZD-001/002/003 entries. Additional vulns added as
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
-version: 2
-last_updated: 2026-06-10
+version: 3
+last_updated: 2026-06-10        # patch-status audit reconciliation + 4 new rows (VT-012..015) + 6th consolidation (ssh-keysign-pwn)
 
 vulnerabilities:
 
@@ -20,35 +20,41 @@ vulnerabilities:
     patch_status: patched
     dossier: threats/vulnerabilities/BlueHammer/profile.md
     tracked_since: 2026-03
-    last_reviewed: null
-    next_review_due: 2026-04-25
-    note: "Patched as of 2026 Patch Tuesday. Monitoring for in-the-wild exploitation."
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-09-10
+    note: "Patched as of 2026 Patch Tuesday (CVE-2026-33825). Monitoring for in-the-wild exploitation."
 
   - id: ZD-002
     name: RedSun
     type: LPE
     platform: "Windows 10/11/Server 2019+"
-    cve: null
-    cvss: null
-    patch_status: unpatched
+    cve: CVE-2026-41091
+    cvss: 7.8
+    patch_status: patched
+    kev: true
+    kev_added: 2026-05-20
+    kev_due_date: 2026-06-03
     dossier: threats/vulnerabilities/RedSun/profile.md
     tracked_since: 2026-03
-    last_reviewed: null
-    next_review_due: 2026-04-25
-    note: "Zero-day. No patch available. Monitoring vendor response."
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-09-10
+    note: "Patched 2026-05-20/21 (Defender Engine 1.1.26040.8). CVE-2026-41091 = RedSun (link-following EoP->SYSTEM). KEV-listed. Codename<->CVE binding resolved 2026-06-10. CVE-keyed duplicate consolidated into REDSUN/."
 
   - id: ZD-003
     name: UnDefend
     type: "DoS / Defender Update Block"
     platform: "Windows 10/11/Server 2019+"
-    cve: null
-    cvss: null
-    patch_status: unpatched
+    cve: CVE-2026-45498
+    cvss: 4.0
+    patch_status: patched
+    kev: true
+    kev_added: 2026-05-20
+    kev_due_date: 2026-06-03
     dossier: threats/vulnerabilities/UnDefend/profile.md
     tracked_since: 2026-03
-    last_reviewed: null
-    next_review_due: 2026-04-25
-    note: "Blocks Defender updates. Facilitates follow-on exploitation."
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-09-10
+    note: "Patched 2026-05-20/21 (same Defender engine update). CVE-2026-45498 = UnDefend (DoS / Defender update block). KEV-listed. Codename<->CVE binding resolved 2026-06-10. CVE-keyed duplicate consolidated into UNDEFEND/."
 
   - id: ZD-004
     name: "PAN-OS User-ID Authentication Portal pre-auth RCE"
@@ -56,15 +62,20 @@ vulnerabilities:
     platform: "Palo Alto Networks PAN-OS — User-ID Authentication Portal (Captive Portal); PA-Series and VM-Series firewalls"
     cve: CVE-2026-0300
     cvss: 9.3
-    patch_status: patches_scheduled
-    patch_etas:
-      - eta_date: 2026-05-13
+    patch_status: patches_available
+    patch_waves:
+      - wave: 1
+        release_date: 2026-05-13
+        status: released
         branches: ["PAN-OS 10.2", "PAN-OS 11.1"]
-      - eta_date: 2026-05-28
+      - wave: 2
+        release_date: 2026-05-28
+        status: released
         branches: ["PAN-OS 11.2", "PAN-OS 12.1"]
+    min_fixed_versions: ["12.1.7", "11.2.12", "11.1.15", "10.2.18-h6"]
     kev: true
     kev_added: 2026-05-06
-    kev_due_date: 2026-05-27
+    kev_due_date: 2026-05-09        # verbatim CISA KEV catalog value (corrected 2026-06-10 from prior 2026-05-27)
     exploitation_status: in_the_wild_confirmed_kev_listed_multi_victim_signal
     public_exploit_available: true
     detection_signatures_published: true
@@ -85,9 +96,9 @@ vulnerabilities:
     dossier: threats/vulnerabilities/PAN-OS-CVE-2026-0300/profile.md
     tracking: threats/vulnerabilities/PAN-OS-CVE-2026-0300/tracking.yaml
     tracked_since: 2026-05-06
-    last_reviewed: 2026-05-06
-    next_review_due: 2026-05-13
-    note: "First Archimedes-tracked active-exploitation CVE. KEV-listed; patches staggered across May 2026; public exploit code released; no actor attribution. See tracking.yaml for state history and watch_signals."
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-09-10
+    note: "First Archimedes-tracked active-exploitation CVE. KEV-listed (kev_due_date corrected 2026-06-10 to verbatim CISA value 2026-05-09). Both patch waves now RELEASED (wave1 2026-05-13, wave2 2026-05-28); min fixed 12.1.7 / 11.2.12 / 11.1.15 / 10.2.18-h6. Public exploit code released; exploitation per Unit 42 reporting, no actor originated (Hard Rule 2). See tracking.yaml for state history and watch_signals."
 
   - id: VT-005
     name: "OpenC3 COSMOS 2026 five-CVE cluster"
@@ -127,8 +138,8 @@ vulnerabilities:
     dossier: threats/vulnerabilities/OpenC3-COSMOS-2026-Cluster/profile.md
     tracking: threats/vulnerabilities/OpenC3-COSMOS-2026-Cluster/tracking.yaml
     tracked_since: 2026-05-09
-    last_reviewed: 2026-05-09
-    next_review_due: 2026-05-16
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-07-05
     note: >
       Single cluster dossier keyed on the fix-version 7.0.0 boundary,
       not five per-CVE entries. Operational unit-of-tracking is "estate
@@ -247,21 +258,21 @@ vulnerabilities:
     type: "Pre-auth RCE (improper access control via crafted requests; CWE-284 family)"
     platform: "Fortinet FortiAuthenticator on-prem (MFA appliance: RADIUS / SAML / SCEP / OCSP / certificate authority). Cloud variant NOT affected per BleepingComputer relay."
     cve: CVE-2026-44277
-    cvss: 9.1                       # Fortinet PSIRT v3 internal; NVD record carries 9.8 — Fortinet PSIRT is canonical per vendor-primary precedence
-    cvss_source_note: "Fortinet PSIRT 9.1 (canonical); some downstream sources cite NVD 9.8."
-    psirt_id: "FG-IR (specific number not exposed in PSIRT index summary at disclosure 2026-05-12)"
-    affected_versions_note: "All pre-patched 6.5 / 6.6 / 8.0 branches; Fortinet did not exhaustively enumerate affected-version range"
+    cvss: 9.8                       # NVD/CNA authoritative (raised from 9.1 on 2026-06-10 audit); supersedes earlier Fortinet PSIRT v3 internal 9.1
+    cvss_source_note: "NVD/CNA 9.8 is authoritative (audit 2026-06-10); earlier Fortinet PSIRT v3 internal scored 9.1."
+    psirt_id: "FG-IR-26-128"
+    affected_versions_note: "All pre-patched 6.4.x / 6.5 / 6.6 / 8.0 branches; 6.4.x branch confirmed in affected scope on 2026-06-10 audit. Fortinet did not exhaustively enumerate affected-version range."
     fixed_versions:
       - "FortiAuthenticator 6.5.7"
       - "FortiAuthenticator 6.6.9"
       - "FortiAuthenticator 8.0.3"
     patch_status: patches_available_at_disclosure
     patch_release_date: 2026-05-12
-    kev: false
+    kev: false                      # verified NOT KEV-listed as of 2026-06-10
     kev_pending: true
     kev_watch_signal_active: true
     exploitation_status: not_observed_per_vendor_at_patch_time
-    public_exploit_available: false
+    public_exploit_available: true  # GitHub PoC exists (existence only — NOT mirrored, Hard Rule 3); flipped false->true on 2026-06-10 audit
     detection_signatures_published: false
     digraph: B2
     wep_ceiling: likely
@@ -283,10 +294,10 @@ vulnerabilities:
       systems. Critical defensive priority for A&D primes deploying on-prem
       FortiAuthenticator; Cloud variant lower priority for this CVE specifically.
     tracked_since: 2026-05-12
-    last_reviewed: 2026-05-19
-    next_review_due: 2026-08-19
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-06-17        # escalated from 2026-08-19 — public PoC surfaced (existence only, Hard Rule 3)
     dossier: threats/vulnerabilities/FortiAuthenticator-CVE-2026-44277/profile.md
-    note: "Patched at disclosure. Watch signals: KEV addition; Watchtowr / Horizon3.ai / Assetnote / Rapid7 n-day-research publication; third-party telemetry corroborating OR contradicting the vendor no-ITW assertion. Historical Fortinet unauthenticated-RCE pattern (CVE-2022-40684, CVE-2023-27997) shows rapid post-disclosure KEV listing once exploitation surfaces — track closely."
+    note: "Patched at disclosure (PSIRT FG-IR-26-128). 2026-06-10 audit: CVSS raised to NVD/CNA-authoritative 9.8 (was Fortinet-PSIRT 9.1); GitHub PoC now public (existence only, not mirrored per Hard Rule 3); 6.4.x branch confirmed in affected scope; verified NOT KEV-listed (kev_pending stands). Review cadence escalated to 2026-06-17. Watch signals: KEV addition; Watchtowr / Horizon3.ai / Assetnote / Rapid7 n-day-research publication; third-party telemetry corroborating OR contradicting the vendor no-ITW assertion. Historical Fortinet unauthenticated-RCE pattern (CVE-2022-40684, CVE-2023-27997) shows rapid post-disclosure KEV listing once exploitation surfaces — track closely."
 
   - id: VT-008
     name: "Microsoft Exchange Server on-prem OWA XSS spoofing zero-day"
@@ -301,9 +312,10 @@ vulnerabilities:
       - "Exchange Server 2019 (all update levels)"
       - "Exchange Server Subscription Edition (all update levels)"
     not_affected: "Exchange Online"
-    patch_status: no_ga_patch_esu_only_mitigation_path_for_non_esu_estates
+    patch_status: security_update_available_esu_gated_for_2016_2019
+    su_release: "June 2026 SU shipped 2026-06-09 (KB5094140); SE automatic; 2016 CU23 + 2019 CU14/CU15 ESU-gated"
     esu_binary_patches: ["SE RTM", "2016 CU23", "2019 CU14", "2019 CU15"]
-    mitigation: "EEMS auto URL-rewrite (recommended); EOMT manual script for air-gapped"
+    mitigation: "EEMS auto URL-rewrite + EOMT still advised for non-ESU estates; EOMT manual script for air-gapped"
     kev: true
     kev_added: 2026-05-15
     kev_due_date: 2026-05-29
@@ -345,8 +357,8 @@ vulnerabilities:
     dossier: threats/vulnerabilities/Exchange-CVE-2026-42897/profile.md
     tracking: threats/vulnerabilities/Exchange-CVE-2026-42897/tracking.yaml
     tracked_since: 2026-05-15
-    last_reviewed: 2026-05-22
-    next_review_due: 2026-05-29        # Aligned to KEV federal deadline
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-07-10
     note: >
       Originally flagged as VT-007 candidate at FLASH-0001 grading
       (finding-2026-05-15-FLASH-0001); VT-007 slot subsequently used for
@@ -358,8 +370,11 @@ vulnerabilities:
       independent A-grade IR-firm telemetry has surfaced. Veto lifts if
       any of Mandiant / Volexity / Unit 42 / MSTIC TI blog / CrowdStrike /
       ESET / Sophos / Bitdefender publishes telemetry-backed corroboration.
-      Microsoft general-availability patch release remains the operational
-      transition point for non-ESU estates.
+      2026-06-10 audit: June 2026 SU shipped 2026-06-09 (KB5094140) — SE
+      automatic; 2016 CU23 + 2019 CU14/CU15 ESU-gated. Patch-status moved
+      from no-GA-patch to security_update_available (ESU-gated for 2016/2019);
+      EEMS / EOMT mitigation still advised for non-ESU estates. That SU
+      release is the operational transition point for ESU-covered estates.
 
   - id: VT-009
     name: "Nx Console (Nx monorepo build tooling) — supply-chain maintainer-compromise pathway (CVE-2026-48027)"
@@ -479,7 +494,7 @@ vulnerabilities:
     cve: null                       # No CVE assigned at disclosure (2026-06-10) -> KEV-ineligible
     cvss: null
     patch_status: unpatched
-    patch_note: "June 2026 Patch Tuesday fixed GreenPlasma + YellowKey but NOT RoguePlanet. No CVE, no MSRC advisory, no Microsoft timeline. Next scheduled window: July 2026 Patch Tuesday; OOB possible."
+    patch_note: "RoguePlanet is now the ONLY open tool in the Nightmare Eclipse series; the rest are CLOSED as of 2026-06-10. June 2026 Patch Tuesday fixed GreenPlasma (CVE-2026-45586) + YellowKey (CVE-2026-45585) + MiniPlasma (CVE-2020-17103 regression re-patched) but NOT RoguePlanet. RedSun (CVE-2026-41091) and UnDefend (CVE-2026-45498) were patched 2026-05-20/21 (both KEV-listed). RoguePlanet still has no CVE, no MSRC advisory, no Microsoft timeline. Next scheduled window: July 2026 Patch Tuesday; OOB possible."
     kev: false                      # No CVE -> ineligible for CISA KEV
     kev_pending: false
     exploitation_status: not_confirmed_for_rogueplanet_specifically_series_siblings_confirmed_itw
@@ -493,13 +508,13 @@ vulnerabilities:
     discovered_by: "Nightmare Eclipse / Chaotic Eclipse / Dead Eclipse / MSNightmare / deadeclipse666 (pseudonymous)"
     series: nightmare_eclipse_chaotic_eclipse
     series_position: 7
-    series_siblings:
-      - ZD-001    # BlueHammer (CVE-2026-33825)
-      - ZD-002    # RedSun (CVE-2026-41091)
-      - ZD-003    # UnDefend (CVE-2026-45498)
-      - YELLOWKEY # YellowKey (no CVE)
-      - GREENPLASMA # GreenPlasma (no CVE)
-      - MiniPlasma  # MiniPlasma (CVE-2020-17103)
+    series_siblings:    # all CLOSED as of 2026-06-10; RoguePlanet is the only remaining open tool
+      - ZD-001    # BlueHammer — CVE-2026-33825 (patched)
+      - ZD-002    # RedSun — CVE-2026-41091 (patched, KEV)
+      - ZD-003    # UnDefend — CVE-2026-45498 (patched, KEV)
+      - VT-013    # YellowKey — CVE-2026-45585 (patched June PT)
+      - VT-012    # GreenPlasma — CVE-2026-45586 (patched June PT)
+      - VT-014    # MiniPlasma — CVE-2020-17103 (re-patched June PT; legacy ZD-040)
     related_actors: []              # Hard Rule 2 — no actor named for RoguePlanet by any source
     related_findings: []
     related_briefs: []
@@ -532,6 +547,116 @@ vulnerabilities:
       Tuesday fix; researcher's claimed "batch of Defender memory-corruption
       vulnerabilities" materializing as the 8th drop.
 
+  - id: VT-012
+    name: "GreenPlasma — Windows CTFMON arbitrary section-object EoP (Nightmare Eclipse series)"
+    type: "EoP -> SYSTEM (CTFMON arbitrary section-object creation / SYSTEM-writable directory abuse)"
+    platform: "Windows 11 / Windows Server 2022 / Windows Server 2025"
+    cve: CVE-2026-45586
+    cvss: null                      # not surfaced in MSRC summary at audit time
+    patch_status: patched
+    patch_release_date: 2026-06-09  # June 2026 Patch Tuesday (2026-06-09/10)
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    exploitation_status: not_observed_at_patch
+    public_exploit_available: true  # partial PoC public (section-creation primitive only; SYSTEM-shell component withheld). NOT mirrored (Hard Rule 3).
+    detection_signatures_published: false
+    digraph: A2
+    series: nightmare_eclipse_chaotic_eclipse
+    related_actors: []              # Hard Rule 2 — no actor named
+    ad_relevance: high
+    ad_relevance_rationale: "Defender/Windows-endpoint EoP class on the ubiquitous A&D endpoint estate; Nightmare Eclipse (NE) series sibling. SYSTEM-escalation primitive bridging low-priv foothold to SYSTEM."
+    dossier: threats/vulnerabilities/GREENPLASMA/profile.md
+    tracking: null
+    tracked_since: 2026-05-13
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-09-10
+    note: "Patched at June 2026 Patch Tuesday (CVE-2026-45586) — no longer no-CVE. First-class row added 2026-06-10 audit (prior tracking only as RoguePlanet series_sibling). Partial PoC public; SYSTEM-shell completion withheld by researcher; PoC NOT mirrored (Hard Rule 3)."
+
+  - id: VT-013
+    name: "YellowKey — Windows BitLocker bypass via WinRE (Nightmare Eclipse series)"
+    type: "Security Feature Bypass — BitLocker full-volume encryption (WinRE Feature-Update-Simulation VMK auto-release)"
+    platform: "Windows 11 / Windows Server 2022 / Windows Server 2025 (Windows 10 NOT affected)"
+    cve: CVE-2026-45585
+    cvss: null                      # not surfaced in MSRC summary at audit time
+    patch_status: patched
+    patch_release_date: 2026-06-09  # June 2026 Patch Tuesday (2026-06-09/10)
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    exploitation_status: not_observed_at_patch
+    public_exploit_available: true  # full PoC public (GitHub). Physical access required. NOT mirrored (Hard Rule 3).
+    detection_signatures_published: false
+    physical_access_required: true
+    digraph: A2
+    series: nightmare_eclipse_chaotic_eclipse
+    related_actors: []              # Hard Rule 2 — no actor named
+    ad_relevance: high
+    ad_relevance_rationale: "BitLocker bypass on the A&D Windows endpoint estate; data-at-rest protection on ITAR/CUI-bearing laptops and workstations. Physical-access vector relevant to lost/stolen/seized-device and insider-threat scenarios."
+    dossier: threats/vulnerabilities/YELLOWKEY/profile.md
+    tracking: null
+    tracked_since: 2026-05-13
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-09-10
+    note: "Patched at June 2026 Patch Tuesday (CVE-2026-45585). First-class row added 2026-06-10 audit. Full PoC public (physical access required); PoC NOT mirrored (Hard Rule 3)."
+
+  - id: VT-014
+    name: "MiniPlasma — Windows cldflt.sys LPE (CVE-2020-17103 regression, Nightmare Eclipse series)"
+    type: "LPE -> SYSTEM (cldflt.sys Cloud Files Mini Filter; CVE-2020-17103 patch regression re-closed)"
+    platform: "Windows 10 / Windows 11 / Windows Server 2016/2019/2022/2025"
+    cve: CVE-2020-17103              # regression re-closed June PT 2026-06-09; no new CVE assigned
+    cvss: 7.8                        # original NVD CVSS v3.1 (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H)
+    legacy_id: ZD-040               # internal dossier uses ZD-040; reconciled to VT-014 on 2026-06-10 audit
+    patch_status: patched
+    patch_release_date: 2026-06-09  # June 2026 Patch Tuesday (2026-06-09/10) — regression re-fixed under original CVE
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    exploitation_status: not_observed_at_patch
+    public_exploit_available: true  # full weaponized PoC public (GitHub); original GPZ PoC works unchanged. NOT mirrored (Hard Rule 3).
+    detection_signatures_published: false
+    digraph: A1
+    series: nightmare_eclipse_chaotic_eclipse
+    original_discoverer: "James Forshaw (Google Project Zero), Sep 2020"
+    related_actors: []              # Hard Rule 2 — no actor named
+    ad_relevance: high
+    ad_relevance_rationale: "Standard-user-to-SYSTEM LPE on the A&D Windows endpoint estate (Win10/11 + Server); ransomware / lateral-movement pre-cursor primitive. Patch-regression class (original Dec-2020 fix silently reversed) — defenders should not assume legacy CVE = closed."
+    dossier: threats/vulnerabilities/MiniPlasma/profile.md
+    tracking: null
+    tracked_since: 2026-05-14
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-09-10
+    note: "Patched at June 2026 Patch Tuesday — regression re-closed under original CVE-2020-17103 (no new CVE assigned). First-class row added 2026-06-10 audit; reconciled from legacy internal id ZD-040. Full PoC public; NOT mirrored (Hard Rule 3)."
+
+  - id: VT-015
+    name: "Cisco Catalyst SD-WAN Manager authenticated privilege-escalation / command injection (CVE-2026-20245)"
+    type: "Privilege escalation / CLI command injection (netadmin -> root via crafted file upload; CWE-116)"
+    platform: "Cisco Catalyst SD-WAN Manager (formerly SD-WAN vManage) — On-Prem, SD-WAN Cloud-Pro, Cloud (Cisco-managed), FedRAMP"
+    cve: CVE-2026-20245
+    cvss: 7.8                        # Cisco CNA (NVD awaiting enrichment)
+    cisco_bug_id: CSCwu18563
+    advisory_id: cisco-sa-sdwan-privesc-4uxFrdzx
+    patch_status: no_dedicated_patch
+    patch_note: "No dedicated fix for CVE-2026-20245 as of 2026-06-10. Cisco guidance: upgrade SD-WAN software to pick up CVE-2026-20182 fixes (released 2026-05-14) + compensating controls (restrict netadmin exposure, limit SD-WAN Manager internet reachability, preserve admin-tech forensic state). No workarounds address it."
+    kev: true
+    kev_added: 2026-06-09
+    kev_due_date: 2026-06-23
+    exploitation_status: in_the_wild_confirmed_kev_listed
+    exploitation_note: "Cisco PSIRT confirmed limited in-the-wild cases (config changes pushed to edge devices); Mandiant is the reporting entity. No actor originated (Hard Rule 2)."
+    public_exploit_available: false
+    detection_signatures_published: false   # IoC: /var/log/scripts.log vScript tenant-list upload pattern (noisy; baseline-dependent)
+    digraph: A2
+    related_actors: []              # Hard Rule 2 — Mandiant reports; no tracked-actor cross-reference, no originated attribution
+    chain_cves: ["CVE-2026-20182", "CVE-2026-20127"]   # Cisco-confirmed prerequisite chain to netadmin
+    ad_relevance: high
+    ad_relevance_rationale: "Network-infrastructure (SD-WAN control plane) at A&D estates; root on SD-WAN Manager enables malicious config push to downstream edge devices. KEV-listed + actively exploited + NO dedicated patch = highest-priority open tracking gap surfaced by the 2026-06-10 audit."
+    dossier: threats/vulnerabilities/SD-Wan-Zero-Day-CVE-2026-20245/profile.md
+    tracking: null
+    tracked_since: 2026-06-05
+    last_reviewed: 2026-06-10
+    next_review_due: 2026-07-05
+    note: "HIGHEST-PRIORITY GAP from 2026-06-10 audit. KEV-listed 2026-06-09 (FCEB due 2026-06-23), actively exploited (Cisco PSIRT limited cases; Mandiant-reported), NO dedicated patch — KEV deadline drives the remediation clock. Exploitation reflects Mandiant reporting, no actor originated (Hard Rule 2). CVSS 7.8 HIGH (Cisco CNA; NVD awaiting enrichment)."
+
   # Notes on KEV-add finding-2026-05-27-0007 third CVE:
   # CVE-2026-8398 (Daemon Tools Lite) was the third KEV addition in
   # catalog version 2026.05.27 but is NOT tracked as a vuln dossier —
@@ -541,17 +666,31 @@ vulnerabilities:
 
 
 _meta:
-  total_tracked: 11
-  patched: 4                      # ZD-001 BlueHammer; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure)
-  unpatched: 3                    # ZD-002 RedSun; ZD-003 UnDefend; VT-011 RoguePlanet
-  patches_scheduled: 1            # ZD-004 PAN-OS CVE-2026-0300
+  # Recomputed 2026-06-10 against the 15-row set after the verified patch-status
+  # audit (six parallel per-vuln passes), four new first-class rows (VT-012..VT-015),
+  # and the codename<->CVE bindings for the Nightmare Eclipse series.
+  total_tracked: 15
+
+  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 15) ---
+  patched: 9                      # ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma
+  patches_available: 1            # ZD-004 PAN-OS CVE-2026-0300 (both waves RELEASED 2026-05-13 + 2026-05-28)
   rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
-  no_ga_patch_esu_or_mitigation_only: 1   # VT-008 Exchange CVE-2026-42897 (ESU binary patches available; non-ESU estates on EEMS / EOMT mitigation path)
+  security_update_available_esu_gated: 1   # VT-008 Exchange CVE-2026-42897 (June 2026 SU / KB5094140 shipped 2026-06-09; SE automatic, 2016/2019 ESU-gated; EEMS/EOMT still advised for non-ESU)
   vendor_advisory_referenced_only: 1      # VT-009 Nx Console (vendor advisory referenced via finding-2026-05-27-0007; full patch posture pending dossier scaffold)
-  active_exploitation: 4          # ZD-004 PAN-OS CVE-2026-0300 + VT-006 Mini Shai-Hulud worm + VT-008 Exchange CVE-2026-42897 + VT-009 Nx Console (KEV-listed 2026-05-27)
-  kev_listed: 4                   # ZD-004 PAN-OS (dueDate 2026-05-27 — past) + VT-006 Mini Shai-Hulud (dueDate 2026-06-10) + VT-008 Exchange (dueDate 2026-05-29) + VT-009 Nx Console (dueDate 2026-06-10)
-  kev_pending: 1                  # VT-007 FortiAuthenticator (KEV watch active)
-  public_exploit_available: 3     # ZD-004 PAN-OS + VT-006 (worm IS the in-the-wild exploitation) + VT-011 RoguePlanet (PoC public, self-hosted)
-  no_cve_assigned: 3              # ZD-002 RedSun has CVE now; ZD-003 UnDefend has CVE; no-CVE = YELLOWKEY + GREENPLASMA + VT-011 RoguePlanet (KEV-ineligible)
+  no_dedicated_patch: 1           # VT-015 SD-WAN CVE-2026-20245 (KEV-listed, actively exploited, NO dedicated fix; mitigate via CVE-2026-20182 upgrade + compensating controls)
+  unpatched: 1                    # VT-011 RoguePlanet (no CVE -> KEV-ineligible; June PT did NOT fix it)
+  patches_scheduled: 0            # (was 1; ZD-004 PAN-OS waves now released)
+  no_ga_patch_esu_or_mitigation_only: 0   # (was 1; VT-008 Exchange moved to security_update_available_esu_gated after June SU)
+
+  # --- Exploitation / KEV ---
+  active_exploitation: 5          # ZD-004 PAN-OS + VT-006 Mini Shai-Hulud worm + VT-008 Exchange + VT-009 Nx Console + VT-015 SD-WAN (KEV-listed 2026-06-09)
+  kev_listed: 7                   # ZD-002 RedSun (due 2026-06-03, past) + ZD-003 UnDefend (due 2026-06-03, past) + ZD-004 PAN-OS (due 2026-05-09, past — value corrected to verbatim CISA) + VT-006 Mini Shai-Hulud (due 2026-06-10) + VT-008 Exchange (due 2026-05-29, past) + VT-009 Nx Console (due 2026-06-10) + VT-015 SD-WAN (due 2026-06-23)
+  kev_pending: 1                  # VT-007 FortiAuthenticator (KEV watch active; verified NOT KEV-listed as of 2026-06-10)
+  public_exploit_available: 7     # ZD-004 PAN-OS + VT-006 (worm IS the ITW exploitation) + VT-007 FortiAuthenticator (GitHub PoC, flipped true 2026-06-10) + VT-011 RoguePlanet (self-hosted PoC) + VT-012 GreenPlasma (partial PoC) + VT-013 YellowKey (full PoC, physical access) + VT-014 MiniPlasma (full PoC). NONE mirrored (Hard Rule 3).
+  no_cve_assigned: 1              # VT-011 RoguePlanet only (KEV-ineligible). RedSun/UnDefend/GreenPlasma/YellowKey/MiniPlasma all now CVE-bound per 2026-06-10 audit.
   vendor_ghsa_poc_only: 2         # VT-005 OpenC3 COSMOS cluster + VT-010 Yamcs (PoC embedded in vendor advisories only)
-  dossiers_migrated: 4            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator; VT-008 Exchange CVE-2026-42897 (scaffolded 2026-05-22). ZD-001/002/003 still pending C3PO migration; VT-006 Mini Shai-Hulud + VT-009 Nx Console + VT-010 Yamcs dossiers not yet scaffolded (recommend vuln-tracker next pass).
+
+  # --- Dossier / housekeeping ---
+  dossiers_present: 15            # every row now points at an existing per-vuln dossier directory
+  consolidations_2026_06_10: 6    # CVE-keyed duplicates folded into codename-canonical dossiers, pending librarian git rm: CVE-2026-41091->REDSUN, CVE-2026-45498->UNDEFEND, CVE-2026-0300->PAN-OS-CVE-2026-0300, CVE-2026-42897->Exchange-CVE-2026-42897, CVE-2026-44277->FortiAuthenticator-CVE-2026-44277, CVE-2026-46333->ssh-keysign-pwn
+  dossiers_migrated: 4            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator; VT-008 Exchange CVE-2026-42897. VT-006 Mini Shai-Hulud + VT-009 Nx Console + VT-010 Yamcs full dossiers still not scaffolded (recommend vuln-tracker next pass).

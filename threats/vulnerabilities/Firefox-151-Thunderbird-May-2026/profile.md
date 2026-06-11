@@ -26,7 +26,7 @@
 
 Mozilla released **Firefox 151** and **Thunderbird 140.11** on May 19, 2026, patching a batch of 30+ security vulnerabilities. The two highest-severity issues — both rated CVSS 9.8 Critical — are a **networking integer overflow** (CVE-2026-8956) and **memory safety bugs with evidence of memory corruption** (CVE-2026-8974). Additional notable issues include **four sandbox escape paths** and several privilege escalation and information disclosure vulnerabilities.
 
-There are **no confirmed in-the-wild exploits** for this batch as of the date of this profile. However, the presence of two CVSS 9.8 critical vulnerabilities, multiple sandbox escapes, and Mozilla's standard "with enough effort some could be exploited to run arbitrary code" language for the memory safety bugs warrants prompt patching across managed endpoints.
+There are **no confirmed in-the-wild exploits** for this batch as of 2026-06-10 (re-verified; status unchanged since the 2026-05-20 profile and not on CISA KEV). However, the presence of two CVSS 9.8 critical vulnerabilities, multiple sandbox escapes, and Mozilla's standard "with enough effort some could be exploited to run arbitrary code" language for the memory safety bugs warrants prompt patching across managed endpoints.
 
 **A&D relevance:** Firefox and Thunderbird are deployed across defense contractor networks, government agencies, and IC-adjacent environments. Sandbox escapes are of particular concern in classified or compartmented environments where browser isolation is a control boundary.
 

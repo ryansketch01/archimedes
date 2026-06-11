@@ -203,11 +203,11 @@ This is particularly relevant given the current threat landscape (April 2026):
 | ~April 8, 2026 | SNEK_BlueWarHammer fork published with precompiled binary and full build docs |
 | April 8–9, 2026 | Microsoft Defender signature update released: `Exploit:Win32/DfndrPEBluHmr.BB` (catches original only) |
 | April 14, 2026 | **Microsoft patches BlueHammer — CVE-2026-33825 (April Patch Tuesday).** Defender platform update 4.18.26050.3011. |
-| April 16, 2026 | Chaotic Eclipse drops RedSun + UnDefend — two further unpatched Defender zero-days. BlueHammer patch does NOT cover them. |
-| April 27, 2026 | RedSun and UnDefend remain unpatched. BlueHammer fully remediated on patched systems. |
-| May 6, 2026 | CISA KEV deadline passes — FCEB agencies required to have patched CVE-2026-33825 by this date. |
-| May 5, 2026 | Profile reviewed — BlueHammer fully patched and remediated. RedSun and UnDefend remain unpatched (19 days). Next Microsoft patch window: **May 12, 2026 Patch Tuesday**. |
-| May 6, 2026 | **CISA KEV deadline reached.** FCEB agencies required to have patched CVE-2026-33825 by today. BlueHammer remains fully remediated on patched systems. |
+| April 16, 2026 | Chaotic Eclipse drops RedSun + UnDefend — two further Defender zero-days (then unpatched). BlueHammer patch did NOT cover them. |
+| April 27, 2026 | RedSun and UnDefend still unpatched at this date. BlueHammer fully remediated on patched systems. |
+| May 5, 2026 | Profile reviewed — BlueHammer fully patched and remediated. RedSun and UnDefend still unpatched at this date. |
+| May 6, 2026 | **CISA KEV deadline reached for CVE-2026-33825.** FCEB agencies were required to have patched BlueHammer by this date. BlueHammer remained fully remediated on patched systems. |
+| May 20–21, 2026 | RedSun (CVE-2026-41091) and UnDefend (CVE-2026-45498) patched by Microsoft and added to CISA KEV — closing the companion-zero-day window the May entries below referenced as open. |
 
 ---
 
@@ -231,7 +231,19 @@ Microsoft Defender was observed on May 3 flagging legitimate DigiCert root certi
 
 ### Threat Context (May 2026)
 
-BlueHammer has been confirmed integrated into ransomware operator toolkits since at least April 22. With the CISA KEV deadline now passed, any unpatched FCEB or enterprise system still running Defender engine versions below 4.18.26050.3011 represents a direct compliance and security gap. The RedSun and UnDefend companion zero-days remain unpatched — see their respective profiles.
+BlueHammer has been confirmed integrated into ransomware operator toolkits since at least April 22. With the CISA KEV deadline now passed, any unpatched FCEB or enterprise system still running Defender engine versions below 4.18.26050.3011 represents a direct compliance and security gap. The RedSun and UnDefend companion zero-days were unpatched at the time of this May 6 update — see the 2026-06-10 note below and their respective profiles for current (patched) status.
+
+---
+
+## Intelligence Update — 2026-06-10
+
+> **Status: STILL FULLY PATCHED.** No change to BlueHammer (CVE-2026-33825) — patched April 14, 2026 via Defender platform update 4.18.26050.3011; CISA KEV deadline (May 6) long passed. No bypass, regression, or re-exploitation reported.
+
+This entry is a routine June Patch Tuesday freshness re-verification. BlueHammer's status is unchanged: patched and remediated. The stale forward-looking language in earlier sections (references to "next window May 12," companion zero-days "remain unpatched") has been corrected to past tense.
+
+**Companion-series update for context:** the two then-unpatched siblings RedSun and UnDefend received CVEs and patches on 2026-05-20/21 — RedSun = **CVE-2026-41091** (LPE→SYSTEM, CVSS 7.8), UnDefend = **CVE-2026-45498** (DoS, CVSS 4.0), both fixed in Defender Engine 1.1.26040.8 / Platform 4.18.26040.7 and CISA-KEV-listed. The series continued with YellowKey and GreenPlasma (fixed at June 2026 Patch Tuesday), MiniPlasma (CVE-2020-17103 regression), and RoguePlanet (dropped 2026-06-09/10, no CVE, unpatched). See sibling dossiers.
+
+*Updated: 2026-06-10 | Author: Archimedes (vuln-tracker) | TLP: CLEAR*
 
 ---
 

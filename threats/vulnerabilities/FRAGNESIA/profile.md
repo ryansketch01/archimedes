@@ -11,12 +11,12 @@
 | **Type** | Local Privilege Escalation (LPE) |
 | **Class** | Logic Bug — XFRM/ESP and TCP subsystem; improper page cache write primitive |
 | **Affected Systems** | All Linux kernel versions **before May 13, 2026 upstream patch** (all major distributions) |
-| **Patch Status** | ⚠️ **PARTIAL** — Upstream Linux kernel patched May 13, 2026; **distribution packages (Debian, Ubuntu, RHEL, etc.) still pending** |
+| **Patch Status** | ✅ **PATCHED** (as of 2026-06-10) — Upstream Linux kernel patched May 13, 2026; distribution backports have since SHIPPED across AlmaLinux, Ubuntu (all supported LTS), Debian, RHEL (RHSB-2026-003), and CloudLinux/KernelCare. Apply distro kernel updates + reboot. |
 | **CVSS** | **7.8 HIGH** (CVE-2026-46300, CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H) |
 | **Exploit Maturity** | 🔴 **Public PoC** — Full exploit with page cache corruption published May 13, 2026 by William Bowling (Zelic) |
 | **Disclosed** | 2026-05-13 |
 | **Discovered By** | William Bowling (Zelic Security Research) |
-| **Threat Level** | 🔴 HIGH — Public PoC achieving root shell; more reliable than Dirty Frag (no race condition); all major Linux distros still pending patches |
+| **Threat Level** | 🟠 HIGH — Public PoC achieving root shell; more reliable than Dirty Frag (no race condition). Distro backports now shipped (2026-06-10); residual risk is unpatched/unrebooted estates. |
 | **Admiralty Grade** | A2 — Researcher-confirmed full PoC; upstream kernel patched |
 | **ATT&CK** | T1068 (Exploitation for Privilege Escalation) · T1611 (Escape to Host — container breakout) |
 
@@ -37,7 +37,7 @@ Researcher William Bowling of **Zelic** disclosed the flaw alongside a full proo
 | Exploitation type | Race condition | Logic bug (deterministic) |
 | Reliability | Moderate — requires timing | **High — no race condition** |
 | Kernel subsystem | XFRM/ESP + RxRPC | XFRM/ESP + TCP |
-| Patch status | Partial — ESP patched; RxRPC pending | Upstream patched May 13 |
+| Patch status | ✅ Patched — ESP + RxRPC both shipped (RxRPC mainline `aa54b1d27fe0`) | ✅ Patched — upstream May 13; distro backports shipped |
 | Public PoC | Yes | Yes — full root shell |
 
 ---
@@ -76,12 +76,12 @@ As with Dirty Frag, Fragnesia presents a **container escape path** on Linux host
 
 ## Affected Systems
 
-| System | Status |
+| System | Status (as of 2026-06-10) |
 |---|---|
-| All major Linux distros (Debian, Ubuntu, RHEL, AlmaLinux, Rocky, Fedora) | ✅ **VULNERABLE** — Upstream fix exists; distribution packages still being built/published |
+| All major Linux distros (Debian, Ubuntu, RHEL, AlmaLinux, Rocky, Fedora) | ✅ **PATCHED** — distribution backports shipped; apply kernel update + reboot |
 | Linux kernel ≥ May 13, 2026 upstream build | ✅ Patched upstream |
-| Cloud VMs running unpatched Linux kernels | ✅ **VULNERABLE** — Treat as urgent |
-| Docker/Kubernetes environments | ✅ **VULNERABLE** + container escape risk |
+| Cloud VMs running unpatched/unrebooted Linux kernels | ⚠️ **VULNERABLE until updated** — patch is available; treat unpatched estate as urgent |
+| Docker/Kubernetes environments (host kernel unpatched) | ⚠️ **VULNERABLE until host kernel patched** + container escape risk |
 
 ---
 
@@ -89,12 +89,12 @@ As with Dirty Frag, Fragnesia presents a **container escape path** on Linux host
 
 Fragnesia and Dirty Frag are **distinct vulnerabilities** within the same kernel subsystem family:
 
-- **Dirty Frag (ZD-017)**: CVE-2026-43284 (XFRM/ESP) + CVE-2026-43500 (RxRPC); race condition; ZD-017 still has RxRPC component **unpatched**
-- **Fragnesia (ZD-027)**: New CVEs (unassigned); XFRM/ESP + TCP; **logic bug** — more reliable; upstream patched May 13 for this path
+- **Dirty Frag (ZD-017)**: CVE-2026-43284 (XFRM/ESP) + CVE-2026-43500 (RxRPC); race condition; both components now **patched** — RxRPC fixed in mainline `aa54b1d27fe0` with distro backports shipped (as of 2026-06-10)
+- **Fragnesia (ZD-027)**: CVE-2026-46300; XFRM/ESP + TCP; **logic bug** — more reliable; upstream patched May 13, distro backports shipped
 
 The Copy Fail (ZD-014) → Dirty Frag (ZD-017) → Fragnesia (ZD-027) sequence represents an **active vulnerability research campaign** targeting Linux kernel page cache primitives, each disclosure building on the previous.
 
-**Defenders still patching Copy Fail (CISA KEV deadline May 15, 2026) and Dirty Frag should now prioritize Fragnesia as well, noting that distribution packages for all three may arrive simultaneously.**
+**As of 2026-06-10 all three (Copy Fail, Dirty Frag, Fragnesia) have shipped distribution backports.** The remaining defender task is rollout: ensure every Linux kernel in the estate is updated and rebooted — patch availability is no longer the gating factor.
 
 ---
 
@@ -102,8 +102,8 @@ The Copy Fail (ZD-014) → Dirty Frag (ZD-017) → Fragnesia (ZD-027) sequence r
 
 | Priority | Action |
 |---|---|
-| 🔴 IMMEDIATE | Apply **all available Linux kernel updates** when distribution packages are released — treats all three Dirty Frag class vulnerabilities simultaneously |
-| 🔴 HIGH | **CISA KEV deadline May 15**: Copy Fail (ZD-014) patch deadline is *tomorrow* — that patch update may also address Fragnesia for some distributions |
+| 🔴 IMMEDIATE | Apply **all available Linux kernel updates** + reboot — distribution backports for all three Dirty Frag class vulnerabilities have shipped (as of 2026-06-10); rollout is the remaining task |
+| 🟠 HIGH | Copy Fail (ZD-014) CISA KEV deadline (May 15, 2026) has passed; the same kernel update that closed Copy Fail also addresses Fragnesia for most distributions |
 | 🟠 MEDIUM | **Container isolation**: Review container security contexts; ensure containers do not run with CAP_NET_RAW or IPSec-related capabilities that could be leveraged for the XFRM path |
 | 🟠 MEDIUM | **Monitor exploit activity**: Alert on `/usr/bin/su` execution from unexpected parent processes or container contexts |
 | 🟡 MEDIUM | Apply **Copy Fail mitigations** (already noted in ZD-014/ZD-017): disable CONFIG_XFRM_INTERFACE or restrict IPSec where not required |
@@ -129,6 +129,33 @@ Any Linux-based infrastructure — including:
 - William Bowling (Zelic) — vulnerability researcher; PoC disclosed May 13, 2026
 - Linux kernel upstream patch — merged May 13, 2026
 - Related: ZD-017 (DIRTYFRAG) · ZD-014 (COPYFAIL)
+- [AlmaLinux — Fragnesia (CVE-2026-46300) Patches Released](https://almalinux.org/blog/2026-05-13-fragnesia-cve-2026-46300/)
+- [Ubuntu Security — CVE-2026-46300](https://ubuntu.com/security/CVE-2026-46300)
+- [Red Hat — RHSB-2026-003 Networking subsystem Privilege Escalation (Dirty Frag / Fragnesia)](https://access.redhat.com/security/vulnerabilities/RHSB-2026-003)
+- [CloudLinux — Fragnesia Mitigation and Kernel Update](https://blog.cloudlinux.com/fragnesia-mitigation-and-kernel-update)
+
+---
+
+## Intelligence Update — 2026-06-10
+
+### Distro Backports SHIPPED — Status Flipped PARTIAL → PATCHED
+
+The mid-May "upstream patched, distro backports pending" gap has closed. As of 2026-06-10, distribution kernel backports for Fragnesia (CVE-2026-46300) have shipped across every major distribution channel:
+
+- **AlmaLinux** — patched kernels published (built ahead of Red Hat).
+- **Ubuntu** — fixed in supported releases per Canonical's security tracker; rebootless livepatches in main/ePortal feeds for Jammy/Noble.
+- **Debian** — backports available (Debian 11/12 rebootless feeds noted).
+- **RHEL** — addressed under Red Hat bulletin **RHSB-2026-003** (groups CVE-2026-43284 ESP + CVE-2026-46300 Fragnesia for RHEL 8/9/10 + OpenShift); patched kernels in the errata system.
+- **CloudLinux / KernelCare** — mitigation + kernel update plus no-reboot livepatches.
+
+Patch *availability* is no longer the gating factor; the remaining defender task is rollout (update kernel + reboot, or apply a livepatch). No CISA KEV listing for CVE-2026-46300 as of this update, and no public reporting attributes exploitation to a named threat actor. The public PoC remains operational against unpatched kernels, so unpatched/unrebooted estates stay urgent.
+
+| Date | Milestone |
+|---|---|
+| 2026-05-13 | Disclosure; upstream kernel patch merged; AlmaLinux patches released |
+| 2026-06-10 | Status confirmed PATCHED — distro backports shipped across AlmaLinux/Ubuntu/Debian/RHEL/CloudLinux; not in CISA KEV; no actor attribution |
+
+*Updated: 2026-06-10 | Author: Archimedes | Admiralty Grade: A2 — distro advisories (AlmaLinux, Canonical, Red Hat RHSB-2026-003, CloudLinux) corroborate shipped backports | TLP: WHITE*
 
 ---
 

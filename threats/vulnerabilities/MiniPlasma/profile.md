@@ -11,21 +11,21 @@
 | **Type** | Local Privilege Escalation (LPE) → SYSTEM shell |
 | **Class** | CWE-362 — Race Condition / CWE-269 — Improper Privilege Management |
 | **Affected Component** | `cldflt.sys` — Windows Cloud Files Mini Filter Driver; routine `HsmOsBlockPlaceholderAccess`; `CfAbortHydration` API |
-| **Affected Platform** | Windows 10 · Windows 11 (all versions through May 2026 Patch Tuesday KB5089549) · Windows Server 2016/2019/2022/2025 |
-| **Not Affected** | Windows 7 · 8 · 8.1 · Server 2008/2008R2/2012/2012R2 (`cldflt.sys` not present) · Windows 11 Insider Preview Canary (as of May 17, 2026 — likely contains unreleased fix) |
-| **Patch Status** | 🔴 **UNPATCHED** — Works on fully patched Windows 11 (KB5089549, OS builds 26100.8457 / 26200.8457); Microsoft issued statement on 2026-05-18: *"investigating...will take appropriate action"*; no patch or new CVE as of 2026-05-20 |
+| **Affected Platform** | Windows 10 · Windows 11 (all versions through May 2026 Patch Tuesday KB5089549; **fixed at June 2026 Patch Tuesday**) · Windows Server 2016/2019/2022/2025 |
+| **Not Affected** | Windows 7 · 8 · 8.1 · Server 2008/2008R2/2012/2012R2 (`cldflt.sys` not present) · Windows 11 carrying the June 2026 Patch Tuesday update (fix shipped; Canary had it staged early) |
+| **Patch Status** | ✅ **PATCHED** — CVE-2020-17103 (regression) fixed at **June 2026 Patch Tuesday (2026-06-09/10)**. Confirmed by BleepingComputer + The Hacker News. Was exploitable on fully patched May 2026 builds (KB5089549) until the June fix; Microsoft's 2026-05-18 "investigating" statement resolved with the June update. |
 | **CVSS v3.1 (original NVD)** | **7.8 HIGH** (`CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H`) |
-| **CVSS (regression)** | Not yet assigned — new CVE expected |
+| **CVSS (regression)** | Fix shipped under the original CVE-2020-17103 at June 2026 PT; no separate new CVE assigned |
 | **Exploit Maturity** | 🔴 **PUBLIC PoC** — Full weaponized exploit on GitHub (source + compiled binary); original Google Project Zero PoC works unchanged |
 | **PoC** | [Nightmare-Eclipse/MiniPlasma](https://github.com/Nightmare-Eclipse/MiniPlasma) |
-| **CISA KEV** | ❌ Not listed — no new CVE assigned; monitor |
+| **CISA KEV** | ❌ Not listed — no evidence of active exploitation reported; fixed at June 2026 PT |
 | **Attack Requirements** | **Local** — requires existing code execution on target as standard user |
 | **Disclosed** | May 14–17, 2026 |
 | **Disclosed By** | Chaotic Eclipse (GitHub: Nightmare-Eclipse) — **6th tool** in protest campaign against Microsoft MSRC |
 | **Original Discoverer** | James Forshaw (Google Project Zero) — first reported September 2020 |
 | **Originally "Patched"** | December 9, 2020 (Patch Tuesday) — patch now confirmed ineffective |
-| **Threat Level** | 🔴 HIGH — Public full PoC; SYSTEM shell from standard user; confirmed on fully patched Windows 11 May 2026; predecessor tools weaponized by Russia-geolocated actors within 24h |
-| **Admiralty Grade** | A1 — Confirmed independently by BleepingComputer, Will Dormann (Tharros), The Hacker News |
+| **Threat Level** | 🔴 HIGH (pre-June-PT) → reduced once June 2026 update applied; public full PoC; SYSTEM shell from standard user; was confirmed on fully patched May 2026 builds until the June fix |
+| **Admiralty Grade** | A1 — Confirmed independently by BleepingComputer, Will Dormann (Tharros), The Hacker News; June 2026 PT fix confirmed by BleepingComputer + THN |
 | **ATT&CK** | T1068 (Exploitation for Privilege Escalation) · T1106 (Native API) |
 
 ---
@@ -38,7 +38,7 @@ The key finding: a vulnerability in `cldflt.sys` originally reported by Google P
 
 The researcher stated: *"After investigating, it turns out the exact same issue that was reported to Microsoft by Google Project Zero is actually still present, unpatched. I'm unsure if Microsoft just never patched the issue or the patch was silently rolled back at some point for unknown reasons. The original PoC by Google worked without any changes."*
 
-**BleepingComputer independently confirmed** a SYSTEM shell on fully patched Windows 11 Pro (KB5089549). Will Dormann (Tharros) confirmed independently. The exploit does **not** work on Windows 11 Insider Preview Canary — suggesting Microsoft may be quietly staging a fix. No new CVE or patch as of May 20, 2026. Microsoft issued a statement via SecurityWeek on May 18: *"Microsoft is investigating this report and will take appropriate action to protect customers as soon as possible."*
+**BleepingComputer independently confirmed** a SYSTEM shell on fully patched Windows 11 Pro (KB5089549). Will Dormann (Tharros) confirmed independently. The exploit did **not** work on Windows 11 Insider Preview Canary — Microsoft was staging a fix. Microsoft issued a statement via SecurityWeek on May 18: *"Microsoft is investigating this report and will take appropriate action."* **Resolution: Microsoft fixed MiniPlasma at June 2026 Patch Tuesday (2026-06-09/10) under the original CVE-2020-17103**, confirmed by BleepingComputer and The Hacker News — the regression that had reopened the 2020 bug is now closed.
 
 **Notable context:** In December 2025, Microsoft patched a related `cldflt.sys` privilege escalation (CVE-2025-62221, CVSS 7.8) that was being actively exploited by unknown threat actors — suggesting this driver has been a persistent target.
 
@@ -90,13 +90,14 @@ Not affected: Windows 7, 8, 8.1, Server 2008–2012R2 (`cldflt.sys` introduced l
 | # | Tool | Disclosed | CVE | Patch Status |
 |---|---|---|---|---|
 | 1 | BlueHammer | Apr 3, 2026 | CVE-2026-33825 | ✅ Patched — Apr 14, 2026 |
-| 2 | RedSun | Apr 16, 2026 | None | 🔴 Unpatched — Day 32 |
-| 3 | UnDefend | Apr 16, 2026 | None | 🔴 Unpatched — Day 32 |
-| 4 | YellowKey | May 12, 2026 | None | 🔴 Unpatched — Day 6 |
-| 5 | GreenPlasma | May 12, 2026 | None | 🔴 Unpatched — Day 6 |
-| **6** | **MiniPlasma** | **May 14–17, 2026** | **CVE-2020-17103 (patch ineffective)** | **🔴 Unpatched — Day 6** |
+| 2 | RedSun | Apr 16, 2026 | CVE-2026-41091 | ✅ Patched — May 20/21, 2026 |
+| 3 | UnDefend | Apr 16, 2026 | CVE-2026-45498 | ✅ Patched — May 20/21, 2026 |
+| 4 | YellowKey | May 12, 2026 | CVE-2026-45585 | ✅ Patched — June PT |
+| 5 | GreenPlasma | May 12, 2026 | CVE-2026-45586 | ✅ Patched — June PT |
+| **6** | **MiniPlasma** | **May 14–17, 2026** | **CVE-2020-17103 (regression)** | **✅ Patched — June PT (2026-06-09/10)** |
+| 7 | RoguePlanet | Jun 9–10, 2026 | None | 🔴 Unpatched — no CVE (see [RoguePlanet](../RoguePlanet/profile.md)) |
 
-Researcher has indicated a **"big surprise"** planned for the next Patch Tuesday (~June 9, 2026).
+The researcher's **"big surprise"** for June Patch Tuesday materialized as **RoguePlanet** (7th tool, dropped hours after the June fixes shipped) — see the RoguePlanet dossier.
 
 ---
 
@@ -139,13 +140,12 @@ Key signals to monitor:
 
 ## Mitigations
 
-No official Microsoft patch available. Options:
+✅ **Patched at June 2026 Patch Tuesday (CVE-2020-17103).** Apply the June 2026 Windows updates to remediate. Compensating controls below remain useful as defence-in-depth and for any endpoints not yet on the June update:
 
-1. **EDR behavioral detection** — Elastic Defend confirmed; other major EDRs likely developing signatures
-2. **Disable Cloud Files Mini Filter Driver** on systems that do not require OneDrive Files On-Demand (reduces functionality; verify impact before broad rollout — per Startup Defense guidance re: RedSun mitigation)
-3. **Restrict local access** — exploit requires a local standard user account; reduce interactive login exposure for service accounts
-4. **Monitor Windows 11 Insider Preview Canary** for quiet patch staging
-5. **Watch MSRC** for emergency out-of-band patch or new CVE assignment
+1. **Apply the June 2026 Patch Tuesday update** — primary remediation; closes the CVE-2020-17103 regression
+2. **EDR behavioral detection** — Elastic Defend confirmed; other major EDRs likely developing signatures
+3. **Disable Cloud Files Mini Filter Driver** on systems that do not require OneDrive Files On-Demand (reduces functionality; verify impact before broad rollout — per Startup Defense guidance re: RedSun mitigation)
+4. **Restrict local access** — exploit requires a local standard user account; reduce interactive login exposure for service accounts
 
 ---
 
@@ -160,7 +160,7 @@ No official Microsoft patch available. Options:
 | May 17, 2026 | BleepingComputer confirms SYSTEM shell on Windows 11 Pro (KB5089549); Will Dormann confirms independently; THN reports |
 | May 18, 2026 | Microsoft issues statement via SecurityWeek: *"investigating...will take appropriate action to protect customers as soon as possible"*; ThreatLocker publishes registry key detection guidance; Profile created (ZD-040) |
 | May 20, 2026 | Still unpatched; no new CVE assigned; Profile updated (ZD-040) |
-| ~Jun 9, 2026 | Next Patch Tuesday — monitor for patch / new CVE assignment |
+| **Jun 9–10, 2026** | **PATCHED at June 2026 Patch Tuesday under CVE-2020-17103.** Confirmed by BleepingComputer + The Hacker News (alongside YellowKey CVE-2026-45585 and GreenPlasma CVE-2026-45586). No active exploitation reported prior to patch. |
 
 ---
 
@@ -177,4 +177,16 @@ No official Microsoft patch available. Options:
 
 ---
 
-*Profile created: 2026-05-18 | Updated: 2026-05-20 | Author: C3PO | Admiralty Grade: A1 | TLP: WHITE*
+*Profile created: 2026-05-18 | Updated: 2026-06-10 | Author: C3PO / Archimedes (vuln-tracker) | Admiralty Grade: A1 | TLP: WHITE*
+
+---
+
+## Intelligence Update — 2026-06-10
+
+> **Status: PATCHED.** Microsoft fixed MiniPlasma at June 2026 Patch Tuesday (2026-06-09/10) under the original **CVE-2020-17103** — the regression that reopened the 2020 Cloud Files bug is closed. Status flipped UNPATCHED → PATCHED.
+
+June 2026 Patch Tuesday addressed three Nightmare Eclipse tools simultaneously: MiniPlasma (CVE-2020-17103 regression), YellowKey (**CVE-2026-45585**, BitLocker/WinRE bypass), and GreenPlasma (**CVE-2026-45586**, CTFMON LPE). No new CVE was assigned to MiniPlasma — Microsoft re-fixed under the original 2020 identifier. No active in-the-wild exploitation of MiniPlasma was reported prior to the patch (it was never CISA-KEV-listed). Apply the June 2026 Windows updates; verify on any endpoints that defer updates.
+
+The 7th tool in the series, **RoguePlanet** (Defender race-condition LPE, no CVE), was dropped hours after the June fixes shipped and remains unpatched — see the [RoguePlanet](../RoguePlanet/profile.md) dossier. With the June fixes, MiniPlasma joins BlueHammer, RedSun, UnDefend, YellowKey, and GreenPlasma as patched; only RoguePlanet remains open in the Nightmare Eclipse series.
+
+*Updated: 2026-06-10 | Author: Archimedes (vuln-tracker) | TLP: WHITE*

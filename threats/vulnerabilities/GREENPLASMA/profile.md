@@ -5,17 +5,18 @@
 | Field | Details |
 |---|---|
 | **Vulnerability Name** | GreenPlasma |
-| **CVE** | None assigned — **UNPATCHED** |
-| **Type** | Elevation of Privilege (EoP) — Partial PoC |
+| **CVE** | **CVE-2026-45586** (assigned at June 2026 Patch Tuesday) |
+| **Vendor Advisory** | [MSRC — CVE-2026-45586](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45586) |
+| **Type** | Elevation of Privilege (EoP) → SYSTEM |
 | **Class** | CTFMON Arbitrary Section Object Creation / SYSTEM-Writable Directory Abuse |
 | **Affected Platforms** | Windows 11 · Windows Server 2022 · Windows Server 2025 |
-| **Patch Status** | 🔴 **UNPATCHED** — No CVE, no Microsoft acknowledgment, no timeline |
+| **Patch Status** | ✅ **PATCHED** — CVE-2026-45586, June 2026 Patch Tuesday (2026-06-09/10). Confirmed by BleepingComputer + The Hacker News. |
 | **PoC Status** | 🟡 **PARTIAL PUBLIC** — PoC released but incomplete; lacks final SYSTEM shell component |
 | **Discovered By** | Chaotic Eclipse / Nightmare-Eclipse (pseudonymous researcher) |
 | **Public Disclosure** | May 12, 2026 (published simultaneously with YellowKey, on Patch Tuesday) |
-| **Exploited in Wild** | ❌ Not confirmed |
-| **Threat Level** | 🟡 MEDIUM (standalone, partial PoC) → 🔴 HIGH (if completed; fits Nightmare-Eclipse chaining pattern) |
-| **Admiralty Grade** | A3 — Researcher-confirmed mechanism; partial PoC only; no independent full exploitation confirmation |
+| **Exploited in Wild** | ❌ Not confirmed (no evidence of active exploitation reported at patch) |
+| **Threat Level** | 🟡 MEDIUM (now patched; was MEDIUM standalone partial-PoC) |
+| **Admiralty Grade** | A2 — vendor patch (CVE-2026-45586) + multiple credible outlets confirm fix |
 | **ATT&CK** | T1068 (Exploitation for Privilege Escalation) · T1134 (Access Token Manipulation) |
 
 ---
@@ -84,12 +85,12 @@ GreenPlasma reuses `cldapi.dll` (the Cloud Files API library) as a primitive —
 
 | Tool | Disclosed | Type | PoC | Status |
 |---|---|---|---|---|
-| BlueHammer | April 3, 2026 | LPE → SYSTEM (file read) | Full | ✅ Patched — CVE-2026-33825 |
-| RedSun | April 16, 2026 | LPE → SYSTEM (file write) | Full | 🔴 Unpatched — Day 32 |
-| UnDefend | April 16, 2026 | Defender DoS/Blind | Full | 🔴 Unpatched — Day 32 |
-| YellowKey | May 12, 2026 | BitLocker Bypass | Full | 🔴 Unpatched — Day 6 |
-| GreenPlasma | May 12, 2026 | EoP (CTFMON Section) | **Partial** | 🔴 Unpatched — Day 6 |
-| **MiniPlasma** | **May 14, 2026** | **LPE → SYSTEM (`cldflt.sys`, CVE-2020-17103 patch ineffective)** | **Full** | **🔴 Unpatched — Day 4** |
+| BlueHammer | April 3, 2026 | LPE → SYSTEM (file read) | Full | ✅ Patched — CVE-2026-33825 (Apr 14) |
+| RedSun | April 16, 2026 | LPE → SYSTEM (file write) | Full | ✅ Patched — CVE-2026-41091 (May 20/21) |
+| UnDefend | April 16, 2026 | Defender DoS/Blind | Full | ✅ Patched — CVE-2026-45498 (May 20/21) |
+| YellowKey | May 12, 2026 | BitLocker Bypass | Full | ✅ Patched — CVE-2026-45585 (Jun PT) |
+| GreenPlasma | May 12, 2026 | EoP (CTFMON Section) | **Partial** | ✅ Patched — CVE-2026-45586 (Jun PT) |
+| **MiniPlasma** | **May 14, 2026** | **LPE → SYSTEM (`cldflt.sys`, CVE-2020-17103 regression)** | **Full** | **✅ Patched — CVE-2020-17103 (Jun PT)** |
 | **RoguePlanet** | **Jun 9–10, 2026** | **LPE → SYSTEM (Defender TOCTOU / junction; ex-RCE)** | **Full** | **🔴 Unpatched — no CVE** (see [RoguePlanet](../RoguePlanet/profile.md)) |
 
 The researcher's blog post explicitly threatened: *"Next patch tuesday will have a big surprise for you Microsoft."* — the **RoguePlanet** disclosure (June 9–10, 2026, hours after June Patch Tuesday) fulfilled that threat.
@@ -110,7 +111,7 @@ GreenPlasma becomes a direct complement to RedSun — a second SYSTEM escalation
 
 ## Mitigation & Remediation
 
-> ⚠️ No official patch. No CVE. All controls are compensating measures targeting the known partial PoC behavior.
+> ✅ **PATCHED — CVE-2026-45586, June 2026 Patch Tuesday (2026-06-09/10).** Apply June 2026 Windows updates. Compensating controls below remain useful as defence-in-depth and for detecting any pre-patch exploitation attempts.
 
 | Action | Priority | Notes |
 |---|---|---|
@@ -152,3 +153,4 @@ Hunt queries and behavioral indicators:
 |---|---|
 | 2026-05-13 | Profile created. Day 1. Partial PoC public. No CVE, no patch, no Microsoft acknowledgment. Full SYSTEM shell component withheld by researcher. |
 | 2026-05-18 | Day 6. No patch. Researcher released MiniPlasma (CVE-2020-17103, full PoC, SYSTEM shell — sixth tool in the series). Series table updated. |
+| **2026-06-10** | **PATCHED. Microsoft assigned CVE-2026-45586 and fixed GreenPlasma at June 2026 Patch Tuesday (2026-06-09/10).** Confirmed by BleepingComputer + The Hacker News. No active exploitation reported prior to patch. Status flipped UNPATCHED → PATCHED. RoguePlanet's relayed claim ("June PT fixed GreenPlasma + YellowKey") is independently confirmed. Series table updated; siblings RedSun/UnDefend (CVE-2026-41091/45498, patched May 20/21) and YellowKey/MiniPlasma (CVE-2026-45585 / CVE-2020-17103, patched June PT) reflected. Only RoguePlanet remains unpatched. |

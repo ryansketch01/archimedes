@@ -13,7 +13,7 @@
 | **CVSS v2 Score** | 10.0 Critical |
 | **Affected Software** | Nginx UI (nginx-ui) — open-source web management interface for Nginx |
 | **Affected Versions** | v2.3.3 and prior (CVE-2026-33032); v2.3.2 and prior (CVE-2026-27944) |
-| **Patch Status** | ✅ **PATCHED** — v2.3.4 (March 15, 2026); recommended: **v2.3.6** |
+| **Patch Status** | ✅ **PATCHED** (re-verified 2026-06-10) — v2.3.4 (2026-03-15); recommended **v2.3.6** to avoid CVE-record/finder version-range ambiguity |
 | **PoC Status** | 🔴 **PUBLIC** — PoC published alongside CVE disclosure (late March 2026) |
 | **Discovered By** | Yotam Perkal, Pluto Security — responsible disclosure March 14, 2026 |
 | **CVE Published** | March 30, 2026 |
@@ -253,6 +253,7 @@ The Atlassian MCP server flaws (MCPwnfluence) are worth noting as a companion de
 | April 15–17, 2026 | Hacker News, BleepingComputer, Rapid7, Picus Security, Security Affairs publish detailed analyses |
 | April 16, 2026 | PurpleOps confirms CVE-2026-27944 + CVE-2026-33032 chain being exploited together in the wild |
 | April 27, 2026 | ~2,689 internet-exposed instances remain unpatched. CISA has not yet added to official KEV catalog. |
+| 2026-06-10 | Patch-status re-verification: PATCHED status holds (v2.3.4 fix / v2.3.6 recommended). On VulnCheck KEV since 2026-04-13; still NOT on the official CISA KEV catalog as of 2026-06-10 (the VulnCheck-vs-CISA distinction in this profile is correct). No status change. |
 
 ---
 

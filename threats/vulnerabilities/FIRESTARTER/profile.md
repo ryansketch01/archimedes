@@ -30,7 +30,7 @@ CISA confirmed FIRESTARTER on a U.S. federal civilian agency's Cisco Firepower d
 
 FIRESTARTER is attributed to **UAT-4356** (also tracked as Storm-1849), the same China-linked state-sponsored actor behind the 2024 **ArcaneDoor** campaign that exploited Cisco ASA zero-days for network perimeter espionage. FIRESTARTER is not an evolution of ArcaneDoor — it is a refinement, demonstrating sustained investment in purpose-built, long-dwell network perimeter implants.
 
-CISA updated Emergency Directive 25-03 on April 23, 2026, requiring all FCEB agencies to audit Cisco firewall infrastructure and submit device core dumps by April 24, with hard resets mandated by April 30.
+CISA updated Emergency Directive 25-03 on April 23, 2026, requiring all FCEB agencies to audit Cisco firewall infrastructure and submit device core dumps by April 24, 2026, with hard resets mandated by April 30, 2026. Both federal deadlines have since elapsed; as of 2026-06-10 the "patched but persists post-compromise" framing remains accurate — applying Cisco's September 2025 fixes does not evict an existing implant, and full eviction requires a hard power cycle plus Cisco's April 2026 FXOS-layer update.
 
 ---
 

@@ -5,19 +5,20 @@
 | Field | Details |
 |---|---|
 | **Vulnerability Name** | YellowKey |
-| **CVE** | None assigned — **UNPATCHED** |
+| **CVE** | **CVE-2026-45585** (assigned at June 2026 Patch Tuesday) |
+| **Vendor Advisory** | [MSRC — CVE-2026-45585](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45585) |
 | **Type** | Security Feature Bypass — BitLocker Full Volume Encryption |
 | **Class** | WinRE Feature Update Simulation → VMK Auto-Release |
 | **Affected Platforms** | Windows 11 · Windows Server 2022 · Windows Server 2025 |
 | **Not Affected** | Windows 10 (confirmed unaffected) |
-| **Patch Status** | 🔴 **UNPATCHED** — No CVE, no Microsoft acknowledgment, no timeline |
+| **Patch Status** | ✅ **PATCHED** — CVE-2026-45585, June 2026 Patch Tuesday (2026-06-09/10). Confirmed by BleepingComputer + The Hacker News. |
 | **PoC Status** | 🔴 **PUBLIC** — Full PoC on GitHub (Nightmare-Eclipse/YellowKey) |
 | **Discovered By** | Chaotic Eclipse / Nightmare-Eclipse (pseudonymous researcher) |
 | **Public Disclosure** | May 12, 2026 (published simultaneously with GreenPlasma, on Patch Tuesday) |
-| **Exploited in Wild** | ❓ Not yet confirmed — PoC public since May 12 |
+| **Exploited in Wild** | ❌ Not confirmed (no evidence of active exploitation reported at patch) |
 | **Physical Access Required** | ✅ YES — attacker must be able to boot the target machine |
-| **Threat Level** | 🔴 HIGH — Public PoC, BitLocker bypass on current Windows, physical access required |
-| **Admiralty Grade** | A2 — Researcher-confirmed, independently partially verified (Dormann) |
+| **Threat Level** | 🔴 HIGH (pre-patch) → reduced once June 2026 update applied; BitLocker bypass with physical access |
+| **Admiralty Grade** | A2 — vendor patch (CVE-2026-45585) + multiple credible outlets confirm fix |
 | **ATT&CK** | T1006 (Direct Volume Access) · T1553 (Subvert Trust Controls) · T1005 (Data from Local System) |
 
 ---
@@ -89,12 +90,12 @@ YellowKey is the fourth public disclosure from Nightmare-Eclipse in approximatel
 
 | Tool | Disclosed | Type | Status |
 |---|---|---|---|
-| BlueHammer | April 3, 2026 | LPE (SYSTEM) | ✅ Patched — CVE-2026-33825 |
-| RedSun | April 16, 2026 | LPE (SYSTEM) | 🔴 Unpatched — Day 32 |
-| UnDefend | April 16, 2026 | Defender DoS/Blind | 🔴 Unpatched — Day 32 |
-| YellowKey | May 12, 2026 | BitLocker Bypass | 🔴 Unpatched — Day 6 |
-| GreenPlasma | May 12, 2026 | EoP (partial PoC) | 🔴 Unpatched — Day 6 |
-| MiniPlasma | May 14, 2026 | LPE / `cldflt.sys` (CVE-2020-17103 patch ineffective) | 🔴 Unpatched — Day 4 |
+| BlueHammer | April 3, 2026 | LPE (SYSTEM) | ✅ Patched — CVE-2026-33825 (Apr 14) |
+| RedSun | April 16, 2026 | LPE (SYSTEM) | ✅ Patched — CVE-2026-41091 (May 20/21) |
+| UnDefend | April 16, 2026 | Defender DoS/Blind | ✅ Patched — CVE-2026-45498 (May 20/21) |
+| YellowKey | May 12, 2026 | BitLocker Bypass | ✅ Patched — CVE-2026-45585 (Jun PT) |
+| GreenPlasma | May 12, 2026 | EoP (partial PoC) | ✅ Patched — CVE-2026-45586 (Jun PT) |
+| MiniPlasma | May 14, 2026 | LPE / `cldflt.sys` (CVE-2020-17103 regression) | ✅ Patched — CVE-2020-17103 (Jun PT) |
 | RoguePlanet | Jun 9–10, 2026 | LPE → SYSTEM (Defender TOCTOU / junction; ex-RCE) | 🔴 Unpatched — no CVE (see [RoguePlanet](../RoguePlanet/profile.md)) |
 
 The researcher has shifted from Defender-targeted LPE (BlueHammer/RedSun/UnDefend) to **encryption bypass** and **memory object manipulation** (YellowKey/GreenPlasma), broadening the attack surface. The explicit threat of a "big surprise" at the next Patch Tuesday was fulfilled by **RoguePlanet**, dropped hours after June Patch Tuesday — a return to a Defender race-condition LPE.
@@ -119,7 +120,7 @@ The researcher has shifted from Defender-targeted LPE (BlueHammer/RedSun/UnDefen
 
 ## Mitigation & Remediation
 
-> ⚠️ No official patch available. No CVE assigned. All controls below are compensating measures.
+> ✅ **PATCHED — CVE-2026-45585, June 2026 Patch Tuesday (2026-06-09/10).** Apply June 2026 Windows updates to remediate. Compensating controls below remain valuable as defence-in-depth (physical-access and pre-patch exposure), particularly for any endpoints not yet on the June update.
 
 | Action | Priority | Notes |
 |---|---|---|
@@ -158,3 +159,4 @@ The researcher has shifted from Defender-targeted LPE (BlueHammer/RedSun/UnDefen
 |---|---|
 | 2026-05-13 | Profile created. Day 1. Public PoC live. No CVE, no patch, no Microsoft acknowledgment. TPM+PIN bypass unconfirmed. |
 | 2026-05-18 | Day 6. No patch. MiniPlasma (CVE-2020-17103) added to researcher series table. Still unpatched. |
+| **2026-06-10** | **PATCHED. Microsoft assigned CVE-2026-45585 and fixed YellowKey at June 2026 Patch Tuesday (2026-06-09/10).** Confirmed by BleepingComputer + The Hacker News. No active exploitation reported prior to patch. Windows Central reports the June update closes the WinRE BitLocker "backdoor" behavior. Status flipped UNPATCHED → PATCHED. RoguePlanet's relayed claim ("June PT fixed GreenPlasma + YellowKey") is independently confirmed. Series table updated; only RoguePlanet remains unpatched. |

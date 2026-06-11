@@ -10,7 +10,7 @@
 | **Types** | Command Injection (Unauthenticated) · Path Traversal → Account Access (Unauthenticated) · Improper Access Control (Unauthenticated) · Command Injection (High-Priv) · Path Traversal → Info Disclosure |
 | **Affected Product** | Ubiquiti UniFi OS — all device families (UDM, UCG-Industrial, UDR, UNVR, UCKP, UCK, UNAS, etc.) |
 | **Patch Status** | ✅ PATCHED — UniFi OS 5.1.12 (most devices) / 5.1.11 (UDM-Beast) / 5.0.8 (UniFi OS Server) / 5.1.10 (UNAS) |
-| **CISA KEV** | Not listed — no active exploitation confirmed at time of writing |
+| **CISA KEV** | Not listed — verified absent from CISA KEV catalog 2026-06-10; no active exploitation confirmed as of 2026-06-10 |
 | **Disclosed** | May 21–22, 2026 (Ubiquiti Security Advisory Bulletin 064) |
 | **Threat Level** | 🔴 HIGH — Three unauthenticated CVSS 10.0 CVEs in ubiquitous enterprise networking gear; network perimeter gear; patch immediately |
 | **Admiralty Grade** | A2 — Vendor-confirmed with patch; exploit reported available |

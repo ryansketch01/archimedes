@@ -5,18 +5,24 @@
 | Field | Details |
 |---|---|
 | **Vulnerability Name** | UnDefend |
-| **CVE** | None assigned — **UNPATCHED as of 2026-04-27** |
+| **CVE** | **CVE-2026-45498** (assigned 2026-05-20; confirmed UnDefend⇔45498 — see binding note below) |
+| **Vendor Advisory** | [MSRC — CVE-2026-45498](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-45498) |
 | **Type** | Denial-of-Service (DoS) / Security Tool Degradation |
-| **Class** | Defender Update Mechanism Abuse — Standard User Privilege |
+| **Class** | DoS condition in Defender; Defender Update Mechanism Abuse — Standard User Privilege |
 | **Affected Platforms** | Windows 10, Windows 11, Windows Server 2019 and later |
-| **Patch Status** | 🔴 **UNPATCHED** — No official patch, no CVE, no Microsoft timeline (19 days as of 2026-05-05; confirmed next window: May 12 Patch Tuesday) |
+| **Affected Versions** | Microsoft Defender Malware Protection Engine < 1.1.26040.8 / Antimalware Platform < 4.18.26040.7 |
+| **Patch Status** | ✅ **PATCHED** — 2026-05-20/21 via Malware Protection Engine 1.1.26040.8 / Antimalware Platform 4.18.26040.7 (auto-updated via Windows Update). 35 days from disclosure. |
+| **CVSS** | **4.0 MEDIUM** |
+| **CISA KEV** | ✅ **LISTED** — Added 2026-05-20 · FCEB Action-Due 2026-06-03 (now passed) |
 | **PoC Status** | 🔴 **PUBLIC** — Source code on GitHub (Nightmare-Eclipse repository) |
 | **Discovered By** | Chaotic Eclipse / Nightmare Eclipse (pseudonymous researcher) |
 | **Public Disclosure** | April 16, 2026 (released simultaneously with RedSun) |
 | **Confirmed Working** | Huntress — observed active exploitation April 16, 2026 |
-| **Exploited in Wild** | ✅ YES — confirmed in live intrusion alongside BlueHammer and RedSun |
+| **Exploited in Wild** | ✅ YES — confirmed in live intrusion alongside BlueHammer and RedSun; vendor-confirmed active exploitation at 2026-05-20 patch |
 | **Threat Level** | 🟡 MEDIUM (standalone) → 🔴 HIGH (as an enabler in a chained attack) |
-| **Admiralty Grade** | A1 — active exploitation confirmed by Huntress in verified intrusion |
+| **Admiralty Grade** | A1 — vendor-confirmed active exploitation + CISA KEV |
+
+> **CVE↔codename binding (resolved 2026-06-10):** Current authoritative sources (The Hacker News, Security Affairs, BleepingComputer, SecurityWeek's June 2026 reporting) and the researcher's own confirmation bind **UnDefend ⇔ CVE-2026-45498** (the denial-of-service flaw that blocks Defender definition updates, CVSS 4.0). The original SecurityWeek 2026-05-21 piece *labelled* the codenames inverted relative to the mechanism types it described; that label error is superseded. Binding resolved on the diagnostic mechanism type — UnDefend is the Defender-blinding DoS tool, CVE-2026-45498 is the Defender DoS CVE. **No longer disputed.** This profile is the canonical UnDefend dossier; the former `CVE-2026-45498/profile.md` was folded in here and removed on 2026-06-10.
 
 ---
 
@@ -166,17 +172,17 @@ TimeWindow: 30 minutes before any Defender update failure event
 
 ## Mitigations
 
-> ⚠️ **No official patch available.** UnDefend remains unpatched as of 2026-04-27. No CVE assigned, no Microsoft timeline published. All controls below are compensating measures.
+> ✅ **PATCHED — CVE-2026-45498, 2026-05-20/21.** Apply Defender Malware Protection Engine 1.1.26040.8 / Antimalware Platform 4.18.26040.7 (auto-updated via Windows Update). Verify with `Get-MpComputerStatus | Select AMEngineVersion, AMProductVersion`. Priority on offline / update-deferred / tampered hosts. Compensating controls below remain valuable as defence-in-depth.
 
 | Control | Priority | Impact |
 |---|---|---|
+| **Apply the Defender engine update** | ✅ DONE | Engine ≥ 1.1.26040.8 / Platform ≥ 4.18.26040.7. Verify across the fleet; prioritize hosts with auto-update disabled or lapsed. |
 | **Monitor Defender signature update health centrally** | 🔴 IMMEDIATE | Detect UnDefend deployment quickly before damage compounds. Alert if definitions are >4 hours stale on any endpoint. Defender for Endpoint / MDE provides centralized signature visibility. |
 | **Supplement Defender with a second endpoint detection layer** | 🔴 IMMEDIATE | UnDefend specifically targets Defender. A second EDR agent not reliant on Defender's update mechanism provides continuity of coverage. |
 | **Restrict local interactive logon and local execution rights** | 🔴 HIGH | UnDefend only requires a local user account. Limit what accounts can log in interactively to sensitive systems. |
 | **Enforce MFA on SSLVPN / remote access** | 🔴 HIGH | The April 16 attack entered via compromised VPN credentials. Strong MFA blocks the initial access vector that enabled UnDefend deployment. |
 | **Behavioral EDR rules for Defender service manipulation** | 🟡 HIGH | Alert on Defender service state changes initiated by medium/low integrity processes. |
 | **Monitor for exploit files in user directories** | 🟡 HIGH | Unsigned executables appearing in Pictures/Downloads, especially proximate to Defender events. |
-| **Patch immediately when Microsoft releases a fix** | ⏳ PENDING | Out-of-band patch likely before next Patch Tuesday given active exploitation. Monitor Microsoft Security Update Guide. |
 
 ---
 
@@ -186,7 +192,7 @@ UnDefend represents a category of attack that security teams often underestimate
 
 In a ransomware affiliate workflow, UnDefend solves a real operational problem: modern AV/EDR is increasingly good at catching LPE exploits by behavioral signature. By freezing Defender's definitions before running the LPE, the attacker reduces the probability of detection at the most critical moment in their kill chain.
 
-The April 2026 trio — BlueHammer → patched; RedSun + UnDefend → unpatched and actively exploited — represents a rapidly maturing attack playbook against Windows Defender as an enterprise security primitive. Organizations that rely on Defender as their **sole** endpoint protection layer are at meaningful risk until patches arrive.
+The April 2026 trio — BlueHammer (CVE-2026-33825, patched April 14), RedSun (CVE-2026-41091), and UnDefend (CVE-2026-45498) — represented a rapidly maturing attack playbook against Windows Defender as an enterprise security primitive. All three were actively exploited; all three are now patched (RedSun and UnDefend on 2026-05-20/21). Organizations that relied on Defender as their **sole** endpoint protection layer were at meaningful risk during the ~35-day exposure window; the residual risk now concentrates on hosts that do not auto-pull Defender engine updates.
 
 ---
 
@@ -214,6 +220,42 @@ The April 2026 trio — BlueHammer → patched; RedSun + UnDefend → unpatched 
 - [Field Effect — Three Microsoft Defender Zero-Days Reported Exploited](https://fieldeffect.com/blog/three-microsoft-defender-zero-days-reported-exploited)
 - [Security Affairs — Microsoft Defender Under Attack as Three Zero-Days Enable Elevated Access](https://securityaffairs.com/190961/hacking/microsoft-defender-under-attack-as-three-zero-days-two-of-them-still-unpatched-enable-elevated-access.html)
 - [Picus Security — BlueHammer & RedSun: Windows Defender CVE-2026-33825 Zero-Day Explained](https://www.picussecurity.com/resource/blog/bluehammer-redsun-windows-defender-cve-2026-33825-zero-day-vulnerability-explained)
+- [SecurityWeek — Microsoft Patches Exploited UnDefend and RedSun Defender Zero-Days](https://www.securityweek.com/microsoft-patches-exploited-undefend-and-redsun-defender-zero-days/)
+- [Help Net Security — Microsoft Defender vulnerabilities exploited in the wild (CVE-2026-41091, CVE-2026-45498)](https://www.helpnetsecurity.com/2026/05/21/microsoft-defender-vulnerabilities-cve-2026-41091-cve-2026-45498/)
+- [The Hacker News — Microsoft Warns of Two Actively Exploited Defender Vulnerabilities](https://thehackernews.com/2026/05/microsoft-warns-of-two-actively.html)
+- [CISA KEV Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+---
+
+## Intelligence Update — 2026-06-10
+
+> **Status: PATCHED. CVE-2026-45498 assigned and fixed.** UnDefend was patched on 2026-05-20/21 — superseding all prior "still unpatched" status from the May intelligence updates below, which are retained for historical record.
+
+### CVE assigned, patched, and KEV-listed — codename binding resolved
+
+UnDefend is now confirmed to be **CVE-2026-45498** — a Microsoft Defender denial-of-service flaw (CVSS 4.0) that a standard user can trigger to block Defender definition updates / disrupt scanning. This matches the UnDefend mechanism (file-locking interception of the Defender update pipeline, leaving Defender running on a stale threat database). Microsoft confirmed active in-the-wild exploitation at disclosure on 2026-05-20.
+
+**Patched** in Microsoft Malware Protection Engine version 1.1.26040.8 / Antimalware Platform version 4.18.26040.7, distributed automatically via Windows Update (2026-05-20/21). Total exposure window from April 16 public disclosure to patch: ~35 days. **Added to CISA KEV 2026-05-20** with FCEB remediation deadline 2026-06-03 — now passed. UnDefend functioned as a chaining primitive paired with RedSun (CVE-2026-41091); both were fixed in the same Defender engine update. Because engine updates auto-apply, most managed estates are already remediated; residual risk concentrates on hosts where automatic Defender updates are disabled or have lapsed — precisely the environments where this DoS would be chained to blind the endpoint.
+
+### Codename↔CVE binding — resolved, no longer disputed
+
+The collector flagged a disputed binding: the original SecurityWeek 2026-05-21 article *labelled* CVE-2026-45498 as "RedSun," which inverted the codenames relative to the mechanism types the same article described. Current authoritative sources (THN, Security Affairs, BleepingComputer, SecurityWeek's June reporting) plus the researcher's own confirmation resolve it as **UnDefend ⇔ CVE-2026-45498** (DoS, 4.0) and **RedSun ⇔ CVE-2026-41091** (LPE→SYSTEM, 7.8). Resolved on the diagnostic mechanism type, not on a single source's label. No actor has been attributed (Hard Rule 2).
+
+First-party note: no `defenseclaw_local` / `archimedes` telemetry corroborates or contradicts the external exploitation reporting (Hard Rule 8 — silence is neither confirmation nor refutation).
+
+### Consolidation note
+
+This profile is now the single canonical UnDefend dossier. The redundant CVE-keyed `threats/vulnerabilities/CVE-2026-45498/profile.md` (created 2026-05-21 by C3PO) has had its unique technical detail — MSRC advisory link, fixed-version strings, CISA KEV dates, chaining-primitive framing, and ATT&CK T1562.001 mapping — folded into this dossier and was deleted on 2026-06-10.
+
+| Date | Milestone |
+|---|---|
+| 2026-04-16 | UnDefend public PoC + active exploitation confirmed (Huntress) |
+| 2026-05-20 | Microsoft discloses CVE-2026-45498; active exploitation confirmed; added to CISA KEV |
+| 2026-05-20/21 | Patched — Engine 1.1.26040.8 / Platform 4.18.26040.7 |
+| 2026-06-03 | CISA KEV FCEB remediation deadline (now passed) |
+| 2026-06-10 | Codename binding resolved; CVE-keyed duplicate consolidated into this dossier |
+
+*Updated: 2026-06-10 | Author: Archimedes (vuln-tracker) | Admiralty Grade: A1 | TLP: CLEAR*
+
 ---
 
 ## Intelligence Update — 2026-04-28

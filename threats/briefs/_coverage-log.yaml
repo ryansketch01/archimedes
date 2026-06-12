@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-11T16:00:00-04:00
+last_updated: 2026-06-12T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -33138,6 +33138,963 @@ entries:
         action: librarian_to_verify_security-affairs_source-grades_yaml_entry_or_add_as_provisional_B
         rationale: security_affairs_used_today_on_onyxc2_finding_2026_06_11_0010
         priority: low
+
+  # ==========================================================================
+  # 2026-06-12 afternoon brief — 8 findings referenced
+  # ==========================================================================
+
+  - id: 2026-06-12-pm-001-cisa-kev-cve-2026-35273-oracle-peoplesoft-ransomware-use-tag-3-day-fceb-deadline-update-extension-on-flash-1200-and-pm-002
+    covered_in: [2026-06-12-afternoon]
+    brief_file: threats/briefs/2026-06-12-afternoon.md
+    update_of_prior_coverage_log_entry: 2026-06-11-pm-002-oracle-peoplesoft-cve-2026-35273-mitigations-only-firmed-zdi-childs-limited-uon-hibp-455k-enumeration-update-extension-on-flash-1200
+    headline: "UPDATE-EXTENSION on 2026-06-11-pm-002 and 2026-06-11-flash-1200-001 — CISA added Oracle PeopleSoft CVE-2026-35273 to KEV catalog 2026-06-12 with dueDate 2026-06-15 (3-day FCEB clock per BOD 26-04) AND `knownRansomwareCampaignUse: Known` taxonomic tag; requiredAction cites Oracle out-of-band mitigations only (no GA patch); federal-attestation framing lifts ITW from prior 'likely' (single-Mandiant-source veto) to 'very_likely' on procedural-attestation layer; KEV ransomware-use tag is procedural-taxonomic NOT actor attribution (Hard Rule 2 binding — CISA does NOT name ShinyHunters); ZDI Childs 'limited exploitation' framing carry-forward stands as independent scale evidence basis; ShinyHunters 100-org self-claim remains separately sourced under single-source veto on scale numbers; analyst ACH H4 (temporally sequential — Mandiant + ZDI captured early limited phase, CISA tag + ShinyHunters self-claim reflect later scaling) leads with 0 inconsistencies; brief hedge 'limited per Mandiant + ZDI primary observation; CISA federal-attestation now stands at procedural-state-change above operational-scale framing; observed scale framings likely lag current operational reality' applied per analyst directive; BOD 26-04 statutorily FCEB-only — does NOT bind DIB primes (carry-forward); DIB structural relevance via enterprise HR/ERP exposure class roughly_even_chance (carry-forward)"
+    topic_tags:
+      - cve-2026-35273
+      - oracle-peoplesoft
+      - cisa-kev
+      - cisa-kev-addition-cve-2026-35273
+      - kev-3-day-fceb-deadline-2026-06-15
+      - bod-26-04-fceb-only
+      - knownransomwarecampaignuse-known-taxonomic-tag
+      - federal-attestation-of-itw-procedural-layer
+      - ransomware-use-tag-NOT-actor-attribution-hard-rule-2-binding
+      - mitigations-only-no-ga-patch-carry-forward
+      - zdi-childs-limited-exploitation-carry-forward
+      - shinyhunters-100-org-self-claim-separately-sourced-single-source-veto
+      - analyst-ach-h4-temporally-sequential-leads-zero-inconsistencies
+      - dib-not-bound-by-bod-26-04
+      - update-extension-on-2026-06-11-pm-002-and-flash-1200
+      - active-threats
+    related_actors:
+      - id: null  # ShinyHunters NOT in roster — /new-actor candidacy carry-forward
+        actor_name: "ShinyHunters (carry-forward self-claim only; NOT in roster; /new-actor candidacy operator decision pending)"
+        attribution_in_brief: carry-forward-self-claim-NOT-cisa-named-hard-rule-2-binding
+    related_vulns: [CVE-2026-35273]
+    related_campaigns:
+      - shinyhunters_oracle_peoplesoft_2026_self_attested_mass_campaign_carry_forward
+    policy_artifacts:
+      - BOD-26-04
+    finding_ids: [finding-2026-06-12-0001]
+    digraph: A1
+    digraph_layered:
+      cluster_anchor: A1
+      cve_2026_35273_added_to_cisa_kev_catalog_2026_06_12: A1
+      kev_3_day_federal_remediation_due_date_2026_06_15: A1
+      kev_short_description_missing_auth_critical_function_takeover_peopletools: A1
+      known_ransomware_campaign_use_tag_federal_attestation: A1
+      required_action_mitigations_only_no_vendor_patch_in_kev_record: A1
+      kev_ransomware_use_tag_NOT_a_named_actor_attribution: A1
+      state_transition_zdi_childs_limited_to_federal_known_ransomware_use: A1
+      zdi_childs_limited_exploitation_framing_remains_independent_evidence_basis: A2
+      shinyhunters_self_claim_remains_separately_sourced_carry_forward: A2
+    wep: very_likely
+    wep_layered:
+      procedural_kev_addition_layer: almost_certainly
+      federal_attestation_of_itw_layer: very_likely
+      ransomware_use_taxonomic_tag_layer: very_likely
+      shinyhunters_actor_attribution_layer: not_assessed_per_hard_rule_2
+      shinyhunters_100_org_scale_claim_layer: likely_per_single_source_veto_carry_forward
+      zdi_childs_limited_exploitation_scale_framing: likely_carry_forward
+      dib_structural_relevance_layer: roughly_even_chance
+      3_day_fceb_clock_binding_dib_layer: very_unlikely
+    single_source_veto_applied: false
+    single_source_veto_layers:
+      - "Carry-forward veto on ShinyHunters 100-org self-claim scale numbers; not the cluster anchor"
+    hard_rule_2_framings_load_bearing:
+      - "KEV ransomware-use tag is procedural-taxonomic; CISA does NOT name actors"
+      - "ShinyHunters' self-claim stays separately sourced; Archimedes does not collapse the two layers"
+      - "BOD 26-04 3-day clock binds FCEB only — aspirational for DIB"
+    hard_rule_6_quote_budget:
+      cisa_kev_short_description_paraphrased: "attacker takeover via missing auth on PeopleTools critical function (9 words)"
+      per_source_max: 1
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming_defenseclaw_local_does_not_deploy_peoplesoft
+    analyst_review:
+      method: sat_ach
+      hypotheses_ranked: [H4, H5, H1, H3, H2]
+      leading_hypothesis_h4: temporally_sequential_zero_inconsistencies
+      hedge_applied_in_brief: limited_per_mandiant_zdi_primary_observation_cisa_federal_attestation_procedural_state_change_above_operational_scale_framing_observed_framings_likely_lag_current_operational_reality
+    resurface_if:
+      - second_ir_firm_unit42_crowdstrike_mstic_volexity_publishes_broad_or_limited_framing
+      - oracle_ga_patch_state_transition_out_of_mitigations_only
+      - shinyhunters_publishes_proof_of_scale_named_victims_with_artifacts
+      - mandiant_or_zdi_revises_framing_to_broader_than_initially_observed
+      - additional_named_a_d_prime_victim_disclosed
+      - first_party_splunk_hit_on_published_iocs
+      - kev_status_change_or_dueDate_extension
+    first_covered: 2026-06-12
+    last_covered: 2026-06-12
+    retraction: null
+    test: false
+    notes: |
+      UPDATE-EXTENSION on 2026-06-11-pm-002 and 2026-06-11-flash-1200-001.
+      Federal procedural attestation via KEV ransomware-use tag and 3-day
+      FCEB clock; KEV ransomware-use tag is taxonomic NOT actor-attribution
+      per CISA procedural design; ShinyHunters self-claim remains separately
+      sourced under single-source veto carry-forward. Analyst ACH H4
+      (temporally sequential) leads with zero inconsistencies; brief hedge
+      applied verbatim per operator directive. Coverage log action on prior
+      entries: append 2026-06-12-afternoon to covered_in.
+
+  - id: 2026-06-12-pm-002-securityweek-ivanti-clarifies-cve-2026-10520-honeypot-exploitation-not-production-mass-framing-softens-mtls-epmm-managed-update-on-am-001-and-pm-001
+    covered_in: [2026-06-12-afternoon]
+    brief_file: threats/briefs/2026-06-12-afternoon.md
+    update_of_prior_coverage_log_entry: 2026-06-11-pm-001-cisa-kev-add-cve-2026-10520-ivanti-sentry-bod-26-04-3-day-fceb-deadline-update-extension-on-am-001
+    headline: "UPDATE-CLARIFICATION on 2026-06-11-am-001 and 2026-06-11-pm-001 — Ivanti advisory update (via SecurityWeek single B-grade relay) clarifies CVE-2026-10520 KEV-triggering exploitation was observed against honeypots NOT production systems; vulnerable APIs are mTLS-protected for EPMM-managed appliances; unmanaged Sentry instances cannot run in production; honeypots often misconfigured to attract behavior; first appearance in corpus on mTLS-EPMM-managed architecture detail; materially softens 'mass' framing from finding-2026-06-11-0001 — VALIDATES morning red-team carry-forward hedge; CISA KEV listing STANDS (Ivanti does NOT request KEV unwinding); CVSS 10.0 pre-auth RCE technically valid; BOD 26-04 3-day FCEB clock 2026-06-14 STANDS; CVE-2026-10523 companion auth bypass (CVSS 9.9) NOT addressed in this clarification; honeypot telemetry likely traces to opportunistic mass-scanner infrastructure NOT targeted attack infrastructure (structural inference per Hard Rule 2); Ivanti primary advisory NOT directly retrieved this sweep — flag for next-sweep direct retrieval"
+    topic_tags:
+      - cve-2026-10520
+      - ivanti-sentry
+      - ivanti-vendor-advisory-update-via-securityweek-single-b-grade-relay
+      - honeypot-exploitation-not-production-clarification
+      - mtls-protected-apis-epmm-managed-architecture-detail-first-in-corpus
+      - mass-framing-materially-softens
+      - morning-red-team-hedge-validated
+      - kev-listing-stands-bod-26-04-3-day-fceb-clock-stands
+      - cvss-10-pre-auth-rce-technically-valid
+      - cve-2026-10523-companion-auth-bypass-NOT-addressed
+      - opportunistic-scanner-class-NOT-targeted-attack-infrastructure-structural-inference
+      - ivanti-primary-advisory-not-directly-retrieved-flag-next-sweep
+      - update-clarification-on-am-001-and-pm-001
+      - active-threats
+    related_actors: []
+    related_vulns: [CVE-2026-10520]
+    related_campaigns:
+      - q1_q2_2026_perimeter_security_device_weaponization_cluster_carry_forward
+      - ivanti_sentry_post_patch_poc_weaponization_to_emerging_exploitation_state_transition_carry_forward
+    finding_ids: [finding-2026-06-12-0002]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      ivanti_advisory_update_clarifies_kev_triggered_by_honeypot_exploitation: A2
+      vulnerable_apis_mtls_protected_for_epmm_managed_appliances: A2
+      unmanaged_sentry_instances_cannot_function_in_production_environments: A2
+      mass_framing_materially_softens: A2
+      morning_red_team_hedge_validates: A1
+      kev_listing_does_NOT_unwind: A1
+      cvss_10_pre_auth_rce_remains_technically_valid: A1
+      cve_2026_10523_companion_auth_bypass_NOT_addressed: A1
+    wep: likely
+    wep_layered:
+      ivanti_vendor_clarification_clarification_specifics_single_source_veto: likely
+      mass_framing_softens: very_likely
+      kev_listing_stands: almost_certainly
+      bod_26_04_3_day_fceb_clock_stands: almost_certainly
+      morning_red_team_hedge_validated: very_likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "SecurityWeek sole publisher in window relaying Ivanti vendor primary; Ivanti's own advisory not directly retrieved this sweep — independence test fails on multi-source convergence"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at any in-window source; Ivanti does not name actors"
+      - "Honeypot telemetry likely traces to opportunistic mass-scanner infrastructure; structural inference, NOT Archimedes attribution"
+    hard_rule_6_quote_budget:
+      ivanti_paraphrase_1: "exploitation requires management port (8443) access; honeypots often misconfigured to attract behavior (paraphrased to 14 words)"
+      ivanti_paraphrase_2: "vulnerable APIs are mTLS-protected for EPMM-managed appliances; unmanaged Sentry instances cannot function in production (paraphrased to 14 words)"
+      per_source_max: 1
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: silence_not_disconfirming_ivanti_sentry_not_in_defenseclaw_local
+    resurface_if:
+      - ir_firm_publishes_in_production_cve_2026_10520_exploitation_independent_of_honeypot_telemetry
+      - ivanti_primary_advisory_direct_retrieval_with_second_publisher_corroboration
+      - cve_2026_10523_kev_addition_or_independent_clarification
+      - cve_2026_10520_ad_prime_named_victim_disclosed
+      - shadowserver_or_second_scanner_updates_telemetry
+      - first_party_splunk_hit
+    first_covered: 2026-06-12
+    last_covered: 2026-06-12
+    retraction: null
+    test: false
+    notes: |
+      UPDATE-CLARIFICATION on 2026-06-11-am-001 and 2026-06-11-pm-001.
+      Materially softens 'mass' framing; validates morning red-team
+      carry-forward hedge. KEV listing + BOD 26-04 3-day FCEB clock stand
+      procedurally intact. Companion CVE-2026-10523 NOT addressed in this
+      clarification. Ivanti primary advisory not directly retrieved this
+      sweep — flag for next sweep. Coverage log action on prior entries:
+      append 2026-06-12-afternoon to covered_in.
+
+  - id: 2026-06-12-pm-003-securityweek-handala-hack-014-cal-water-self-claim-rtkbase-iav-iran-mois-restatement-iran-cyber-watch
+    covered_in: [2026-06-12-afternoon]
+    brief_file: threats/briefs/2026-06-12-afternoon.md
+    headline: "Handala Hack (#014, Iran/MOIS per prior US-gov attribution) self-claims California Water Service compromise — 5 GB leak naming Cal Water's Chico District, customer PII, RTKBase administrative credentials, NTRIP source passwords across 7 district mountpoints; Dataminr identifies RTKBase as likely initial access vector with lateral move to billing; Cal Water has not publicly acknowledged; SecurityWeek RESTATES prior US-government public Iran/MOIS attribution (restatement NOT new Archimedes attribution); new aliases per article (Banished Kitten, Dune, Red Sandstorm) flagged for actor-profiler fold-in to dossier #014; water utility NOT A&D — Hard Rule 2 binding: Iranian retaliation framing NOT extrapolated to A&D-prime targeting from single water-utility cycle; Hard Rule 7: PII / credential categories counted at article level only, no values stored; Iran Cyber Watch standing-section primary content; Handala blog NOT directly retrieved (LEGAL-POLICY passive-only operator decision pending)"
+    topic_tags:
+      - handala-hack
+      - actor-014
+      - iran-mois-attribution-restatement-not-new-archimedes
+      - california-water-service-cal-water
+      - chico-district-named-in-leak
+      - rtkbase-administrative-credentials-leaked
+      - ntrip-mountpoint-passwords-7-district-mountpoints
+      - rtkbase-likely-initial-access-vector-dataminr-analysis
+      - lateral-movement-to-billing-system
+      - cal-water-no-public-acknowledgment
+      - water-utility-not-a-and-d
+      - hard-rule-2-iranian-retaliation-NOT-extrapolated-to-a-d-prime
+      - hard-rule-7-pii-credential-categories-no-values-stored
+      - new-aliases-banished-kitten-dune-red-sandstorm-actor-profiler-fold-in
+      - handala-blog-not-directly-retrieved-legal-policy-passive
+      - iran-cyber-watch-standing-section-primary
+    related_actors:
+      - id: "014"
+        actor_name: Handala Hack
+        attribution_in_brief: restatement-of-prior-us-gov-attribution-NOT-new-archimedes
+    related_vulns: []
+    related_campaigns:
+      - handala_iran_2026_cal_water_self_claim
+    finding_ids: [finding-2026-06-12-0003]
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      handala_blog_self_publication_via_sw_relay: B3
+      handala_iran_mois_attribution_restatement_of_prior_public: A2
+      handala_in_archimedes_roster_actor_014: A1
+      rtkbase_likely_iav_per_dataminr_analysis: B3
+      cal_water_no_public_acknowledgment: A1
+      water_utility_not_ad_prime: A1
+    wep: possibly
+    wep_layered:
+      handala_self_claim_layer: possibly
+      iran_mois_attribution_restatement: very_likely
+      rtkbase_iav_dataminr_analysis: possibly
+      cal_water_actually_breached_pending_acknowledgment: possibly
+      destructive_escalation_potential_historical_pattern_only: possibly
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Handala self-claim through single SecurityWeek B-grade relay + Dataminr provisional B-tier analysis; no CrowdStrike / Mandiant / Unit 42 / MSTIC cross-vendor corroboration at sweep"
+      - "Cal Water has not publicly acknowledged at SW publication layer — victim acknowledgment layer single-source veto applies"
+    hard_rule_2_framings_load_bearing:
+      - "Iran/MOIS attribution is restatement of prior US-government public attribution, NOT new Archimedes origination"
+      - "Iranian retaliation framing NOT extrapolated to A&D-prime targeting from single water-utility cycle"
+      - "Handala's historical destructive toolkit framing is article-cited historical pattern, NOT predictive for Cal Water"
+      - "New aliases (Banished Kitten, Dune, Red Sandstorm) flagged for actor-profiler review, NOT confirmed mapping"
+    hard_rule_6_quote_budget:
+      sw_restatement_verbatim: "US previously linked Handala to Iran's MOIS (8 words)"
+      per_source_max: 1
+    hard_rule_7_framings_load_bearing:
+      - "RTKBase administrative credentials named in leak per article — no values stored at any layer"
+      - "NTRIP mountpoint passwords named in leak per article — no values stored"
+      - "Customer PII categories enumerated at article level only; GDPR data minimization applies"
+    splunk_first_party:
+      status: not_queried_no_iocs_to_query
+      hard_rule_8_framing: handala_blog_not_directly_retrieved_no_iocs_enumerated_by_sw_or_dataminr
+    actor_profiler_handoff:
+      - "Fold new aliases (Banished Kitten, Dune, Red Sandstorm) into Handala dossier #014 pending independent corroboration"
+      - "Add RTKBase-as-IAV TTP angle to dossier (novel within Handala's playbook but does NOT meet FLASH Trigger 4 threshold)"
+    resurface_if:
+      - cal_water_public_acknowledgment_of_breach
+      - second_ir_firm_corroboration_beyond_dataminr
+      - wiper_mbr_overwrite_escalation_against_cal_water_within_campaign_cycle
+      - us_treasury_ofac_sanctions_response
+      - additional_named_water_utility_or_civilian_infrastructure_victim
+      - handala_blog_direct_retrieval_operator_authorization
+    first_covered: 2026-06-12
+    last_covered: 2026-06-12
+    retraction: null
+    test: false
+    notes: |
+      Iran Cyber Watch standing-section primary content. Restatement of
+      prior US-government Iran/MOIS attribution (NOT new Archimedes). RTKBase
+      / NTRIP cross-organizational exposure pattern worth surfacing in
+      Threat Detection Weekly synthesis. Handala blog not directly retrieved
+      per LEGAL-POLICY passive-only stance — operator decision pending on
+      Handala channel direct retrieval.
+
+  - id: 2026-06-12-pm-004-thn-sygnia-velvet-ant-china-nexus-pam-openssh-backdoor-east-asia-10-year-dwell-new-actor-defer
+    covered_in: [2026-06-12-afternoon]
+    brief_file: threats/briefs/2026-06-12-afternoon.md
+    headline: "Sygnia (via The Hacker News relay) documents Velvet Ant — China-nexus actor (NOT in Archimedes roster) backdoor of Linux PAM and OpenSSH on air-gapped East Asia victim with ~10-year dwell since 2016; nine PAM-module backdoor variants + modified OpenSSH logging credentials and typed commands with operator-side disable switch; victim sector + country NOT named in THN summary; Sygnia primary blog NOT directly retrieved this sweep — flag for next-sweep direct retrieval (likely carries richer IOCs); /new-actor candidacy DEFER pending Sygnia primary retrieval; primitives portable in principle but A&D-prime applicability bounded by access-vector + configuration overlap, neither enumerated in THN relay (per analyst SAT-KAC); Hard Rule 2 binding — Archimedes does NOT cross-walk Velvet Ant to APT41 / Volt Typhoon / Salt Typhoon / APT40 or other roster actors; detection-engineering rich: PAM module FIM + OpenSSH binary attestation + syscall-tracing for disable switch; Threat Detection Weekly candidate; no IOCs enumerated in THN relay"
+    topic_tags:
+      - velvet-ant
+      - china-nexus-NOT-pla-mss-unit-specific
+      - velvet-ant-NOT-in-archimedes-roster-new-actor-defer
+      - sygnia-primary-via-thn-relay
+      - sygnia-primary-not-directly-retrieved-flag-next-sweep
+      - pam-module-backdoor-9-variants
+      - openssh-modified-credential-and-command-logging-with-disable-switch
+      - hide-inside-linux-login-system-itself-tradecraft
+      - air-gapped-east-asia-victim
+      - 10-year-dwell-since-2016
+      - no-sector-named-no-country-named-in-thn-relay
+      - hard-rule-2-no-cross-walk-to-apt41-volt-typhoon-salt-typhoon-apt40
+      - analyst-sat-kac-applied-2-test-assumptions-not-cheaply-testable
+      - detection-engineering-rich-pam-fim-openssh-attestation-syscall-tracing
+      - threat-detection-weekly-candidate
+      - actor-activity
+    related_actors:
+      - id: null  # Velvet Ant NOT in roster
+        actor_name: "Velvet Ant (China-nexus per Sygnia; NOT in Archimedes roster; /new-actor candidacy DEFER)"
+        attribution_in_brief: china-nexus-per-sygnia-NOT-pla-mss-unit-specific-NOT-cross-walked-to-roster
+    related_vulns: []
+    related_campaigns:
+      - velvet_ant_2026_east_asia_pam_openssh_backdoor_campaign
+      - velvet_ant_2024_f5_big_ip_appliance_exploitation_prior_public
+      - velvet_ant_2024_cve_2024_20399_cisco_nx_os_zero_day_prior_public
+    finding_ids: [finding-2026-06-12-0004]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      sygnia_documents_velvet_ant_pam_openssh_backdoor: B2
+      nine_separate_pam_module_backdoor_variants: B2
+      openssh_modified_credential_and_command_logging_with_disable_switch: B2
+      earliest_traces_2016_10_year_dwell: B2
+      victim_air_gapped_east_asia: B2
+      velvet_ant_NOT_in_archimedes_roster: A1
+      no_pla_mss_unit_naming: A1
+      no_cross_walk_to_apt41_volt_typhoon_salt_typhoon_apt40: A1
+      ad_direct_relevance_none: A1
+      ad_structural_relevance_pam_openssh_universal_on_linux_fleets: B3
+    wep: likely
+    wep_layered:
+      sygnia_research_disclosure_layer: likely
+      campaign_existence_at_east_asia_victim: likely
+      ad_direct_relevance: not_assessed_verifiable_absence
+      ad_structural_relevance_via_pam_openssh_universal: roughly_even_chance
+      ad_applicability_pending_sat_kac_test_assumptions: not_assessed
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Sygnia sole primary in window; THN sole B-grade publisher; no Mandiant / Unit 42 / Volexity / CrowdStrike / MSTIC cross-vendor corroboration on the specific 9-PAM-variant + OpenSSH-backdoor primitive set"
+    hard_rule_2_framings_load_bearing:
+      - "Velvet Ant is NOT in Archimedes roster — /new-actor candidacy DEFER pending Sygnia primary retrieval"
+      - "Archimedes does NOT cross-walk Velvet Ant to APT41 / Volt Typhoon / Salt Typhoon / APT40 or other roster actors"
+      - "Sygnia framing is 'China-nexus' / 'China-linked' — NOT PLA / MSS / specific-unit attribution"
+      - "Primitives portable in principle but A&D-prime applicability bounded by access-vector + configuration overlap not enumerated in THN relay"
+    hard_rule_6_quote_budget:
+      sygnia_paraphrase: "hide inside the Linux login system itself (paraphrase via THN, 8 words)"
+      per_source_max: 1
+    analyst_review:
+      method: sat_kac
+      assumptions_classified:
+        sound: []
+        qualify: [A1_capability, A3_intent, A4_dwell, A5_no_named_sector_extrapolation, A6_iocs_enumerated, A7_geographic_proxy, A8_china_nexus_resolution]
+        test: [A2_access_vector_portability, A6_thn_relay_iocs_complete]
+        remove: []
+      brief_hedge_applied: primitives_portable_in_principle_a_d_prime_applicability_bounded_by_access_vector_and_configuration_overlap_neither_enumerated_in_thn_relay
+    splunk_first_party:
+      status: not_queried_no_iocs_to_query
+      hard_rule_8_framing: no_iocs_enumerated_in_thn_relay_sygnia_primary_not_directly_retrieved
+    detection_engineering_handoff:
+      - "PAM module file-integrity monitoring (any change to /lib*/security/pam_unix.so or sibling modules)"
+      - "OpenSSH binary attestation (cryptographic signature checks on sshd binary)"
+      - "Syscall-tracing watchlist for the operator-side disable switch on the modified OpenSSH"
+      - "Threat Detection Weekly synthesis candidate for AI-tooling cluster + China-nexus PAM/OpenSSH cluster cross-cut"
+    resurface_if:
+      - sygnia_primary_directly_retrieved_with_iocs
+      - second_ir_firm_mandiant_unit42_volexity_crowdstrike_mstic_corroborates
+      - velvet_ant_us_or_ad_prime_named_victim_disclosed
+      - sygnia_or_other_ir_firm_publishes_cross_walk_to_specific_pla_mss_unit
+      - first_party_splunk_hit_on_pam_or_openssh_indicators
+    first_covered: 2026-06-12
+    last_covered: 2026-06-12
+    retraction: null
+    test: false
+    notes: |
+      /new-actor candidacy DEFER pending direct Sygnia primary retrieval.
+      Hard Rule 2 binding — no cross-walk to roster actors. Analyst SAT-KAC
+      surfaced 2 Test assumptions (access-vector portability + IOC
+      completeness) neither cheaply testable without primary direct
+      retrieval. Detection-engineering rich; Threat Detection Weekly
+      candidate. Sygnia primary blog highest-value next-sweep collector
+      priority.
+
+  - id: 2026-06-12-pm-005-bleepingcomputer-thn-sonatype-atomic-arch-400-aur-packages-rust-credential-stealer-ebpf-rootkit-developer-tier-supply-chain
+    covered_in: [2026-06-12-afternoon]
+    brief_file: threats/briefs/2026-06-12-afternoon.md
+    headline: "Sonatype documents 'Atomic Arch' — campaign hijacked 400+ Arch User Repository (AUR) packages via new maintainer accounts adopting abandoned packages + modified PKGBUILD/.install scripts executing npm/bun install + weaponized `atomic-lockfile` payload; payload is Rust binary credential stealer targeting 8 categories (browser cookies/tokens, Electron sessions Slack/Discord/Teams, GitHub/npm/Vault tokens, OpenAI creds, SSH keys, shell histories, Docker/Podman, VPN profiles); with root loads eBPF rootkit hiding from standard tools via maps `hidden_pids`/`hidden_names`/`hidden_inodes`; two waves (initial 20+ → ~408); spoofed git commit metadata for maintainer-change disguise; official Arch repos NOT affected; C2 HTTP to `temp.sh` + Tor onion via local loopback proxy; payload SHA-256 `6144d433f8a0316869877b5f834c801251bbb936e5f1577c5680878c7443c98b`; malicious npm `atomic-lockfile@1.4.2` + `js-digest` (2nd wave); BleepingComputer + The Hacker News publisher-independent + Whanos independent researcher reverse-engineering; no actor attribution (Sonatype 'Atomic Arch' is campaign designation only — Hard Rule 2 binding); first Arch ecosystem mass compromise in corpus; extends supply-chain-of-developer-tooling cluster"
+    topic_tags:
+      - atomic-arch-campaign-designation-sonatype-NOT-actor-attribution
+      - 400-plus-aur-packages-hijacked
+      - arch-user-repository-NOT-official-arch-repos
+      - new-maintainer-accounts-adopting-abandoned-packages
+      - pkgbuild-install-script-modification-npm-bun-install-execution
+      - atomic-lockfile-weaponized-payload-package
+      - rust-binary-credential-stealer-8-categories
+      - ebpf-rootkit-hidden-pids-hidden-names-hidden-inodes
+      - github-npm-vault-tokens-openai-ssh-docker-vpn-targeted
+      - electron-app-session-data-slack-discord-teams-targeted
+      - two-waves-20-plus-to-408-packages
+      - spoofed-git-commit-metadata-maintainer-change-disguise
+      - bleepingcomputer-thn-publisher-independent-corroboration
+      - whanos-independent-researcher-reverse-engineering
+      - c2-temp-sh-tor-onion-local-loopback-proxy
+      - payload-sha256-6144d433-43c98b
+      - hard-rule-2-no-actor-attribution-no-cross-walk-to-roster
+      - hard-rule-7-credential-categories-on-victim-systems-not-archimedes-corpus
+      - first-arch-ecosystem-mass-compromise-in-corpus
+      - supply-chain-of-developer-tooling-cluster-extension
+      - mini-shai-hulud-shai-hulud-node-ipc-anthropic-tanstack-github-3800-repo-lineage
+      - active-threats
+      - developer-tier-credential-exposure-class
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - sonatype_atomic_arch_2026_400_aur_packages
+      - supply_chain_of_developer_tooling_corpus_cluster
+    finding_ids: [finding-2026-06-12-0005]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      sonatype_atomic_arch_campaign_designation: B2
+      campaign_compromise_method_orphaned_aur_package_adoption: A2
+      pkgbuild_install_script_modification: A2
+      weaponized_atomic_lockfile_package: A2
+      initial_wave_20_plus_expanded_to_408_in_two_waves: A2
+      official_arch_repositories_NOT_affected_aur_only: A1
+      in_the_wild_actively_exploited: A2
+      rust_binary_payload_developer_secret_harvest: A2
+      ebpf_rootkit_loaded_with_root_privileges: A2
+      8_credential_categories_targeted: A2
+      payload_sha256_b2: B2
+      iocs_atomic_lockfile_js_digest_temp_sh_b2: B2
+      no_actor_attribution: A1
+    wep: likely
+    wep_layered:
+      campaign_existence_active_exploitation: very_likely
+      official_arch_repos_not_affected: almost_certainly
+      rust_stealer_plus_ebpf_rootkit_payload_class: very_likely
+      8_credential_categories_targeted: very_likely
+      ad_direct_relevance: not_assessed_verifiable_absence
+      ad_structural_relevance_via_aur_usage_on_dev_machines: roughly_even_chance
+      arch_linux_aur_deployment_density_on_ad_prime_dev_machines: not_assessed_no_source_data
+    single_source_veto_applied: false
+    single_source_veto_layers: []
+    hard_rule_2_framings_load_bearing:
+      - "Sonatype 'Atomic Arch' is campaign / cluster designation only — NOT actor attribution"
+      - "No Microsoft Storm-/Typhoon-/Sandstorm-/Mantis taxon cited by any publisher"
+      - "Archimedes does NOT cross-walk Atomic Arch to existing roster actors (including GlassWorm #005 — separate npm-worm-cluster lineage)"
+    hard_rule_6_quote_budget:
+      no_verbatim_quotes_above_15_words: confirmed
+      per_source_max: 1
+    hard_rule_7_framings_load_bearing:
+      - "8 credential categories describe what malware HARVESTS ON VICTIM SYSTEMS — NOT credentials in Archimedes corpus"
+      - "Counts and category names at campaign level only; no credential values stored in raw signal or finding"
+    splunk_first_party:
+      status: not_queried_no_iocs_correlation_to_defenseclaw_local_at_compose
+      hard_rule_8_framing: iocs_published_should_be_added_to_master_index_yaml_via_librarian_post_brief
+    iocs_added_to_master_index_pending:
+      sha256: "6144d433f8a0316869877b5f834c801251bbb936e5f1577c5680878c7443c98b"
+      malicious_npm_packages:
+        - "atomic-lockfile@1.4.2"
+        - "js-digest"
+      c2_domains:
+        - "temp.sh"
+      tor_onion_via_local_loopback_proxy: "specific .onion not enumerated in relay"
+      ebpf_rootkit_map_names:
+        - "hidden_pids"
+        - "hidden_names"
+        - "hidden_inodes"
+    resurface_if:
+      - sonatype_primary_blog_direct_retrieval_with_richer_iocs
+      - whanos_reverse_engineering_writeup_with_deeper_iocs
+      - second_ir_firm_mandiant_unit42_sophos_sentinellabs_corroborates
+      - ad_prime_soc_reports_aur_package_compromise
+      - first_party_splunk_hit_on_published_iocs
+      - new_aur_packages_compromised_beyond_initial_408
+      - actor_attribution_named_by_independent_source
+    first_covered: 2026-06-12
+    last_covered: 2026-06-12
+    retraction: null
+    test: false
+    notes: |
+      First Arch ecosystem mass compromise in corpus. Continues
+      supply-chain-of-developer-tooling cluster (Mini Shai-Hulud →
+      Shai-Hulud → node-ipc → Anthropic TanStack → GitHub 3,800-repo).
+      Sonatype primary direct retrieval flagged for next sweep
+      (highest-value). Whanos reverse-engineering write-up next-priority
+      collector item. IOCs to be added to _master-index.yaml via librarian.
+
+  - id: 2026-06-12-pm-006-thn-helpnetsecurity-google-civil-suit-outsider-enterprise-china-based-smishing-phaas-gemini-ai-weaponization-no-nation-state-attribution
+    covered_in: [2026-06-12-afternoon]
+    brief_file: threats/briefs/2026-06-12-afternoon.md
+    headline: "Google filed civil complaint in Manhattan federal court (SDNY) against China-based 'Outsider' smishing PhaaS network — five-group operational structure (Developer / Data Broker / Spammer / Theft / Telegram coordination) selling licenses at $88/week via Telegram bot @OutsiderCodeBot with 290+ pre-built templates impersonating legitimate institutions; operators allegedly weaponized Gemini AI to generate 'gift redemption page' HTML pasted into Outsider to construct credential-theft sites (prompts asked to avoid JavaScript and use inline CSS); Google complaint alleges 9,000 fake sites identified Nov 2025–April 2026 + 1.59M fraudulent URLs + 2.5M smishing messages to Android users May-June 2026 + 100,000+ victims; civil litigation NOT criminal indictment — allegations are pleadings; complaint identifies 'China-based criminal actors' NOT Chinese intelligence services; Outsider Enterprise NOT in Archimedes roster — Hard Rule 2 binding: no cross-walk to FBI/DOJ 13-website seizure (finding-2026-06-11-0002); Google PACER docket NOT directly retrieved this sweep; pairs with finding-2026-06-12-0007 as AI-tooling weaponization cluster (AI-as-target + AI-as-tool); cluster Threat Detection Weekly candidate"
+    topic_tags:
+      - google-civil-suit-sdny-manhattan-federal-court
+      - outsider-enterprise-phaas-china-based
+      - five-group-operational-structure-developer-data-broker-spammer-theft-telegram
+      - 88-dollar-per-week-telegram-bot-outsidercodebot
+      - 290-plus-impersonation-templates
+      - gemini-ai-weaponization-gift-redemption-page-html
+      - prompts-asked-avoid-javascript-use-inline-css
+      - 9000-fake-sites-nov-2025-april-2026
+      - 1-59m-fraudulent-urls
+      - 2-5m-android-smishing-messages-may-june-2026
+      - 100k-plus-victims
+      - civil-litigation-NOT-criminal-indictment
+      - allegations-are-pleadings-not-prosecutorial-findings
+      - china-based-criminal-actors-NOT-chinese-intelligence-services
+      - outsider-NOT-in-archimedes-roster
+      - hard-rule-2-no-cross-walk-to-fbi-doj-china-recruitment-case
+      - google-pacer-docket-not-directly-retrieved-flag-next-sweep
+      - ai-tooling-weaponization-cluster-ai-as-tool
+      - pairs-with-finding-2026-06-12-0007-as-cluster
+      - threat-detection-weekly-cluster-candidate
+      - other-signal
+    related_actors:
+      - id: null  # Outsider Enterprise NOT in roster
+        actor_name: "Outsider Enterprise (China-based criminal actors per Google complaint; NOT Chinese intelligence services; NOT in Archimedes roster)"
+        attribution_in_brief: civil-allegation-china-based-criminal-actors-NOT-intelligence-services-NOT-cross-walked-to-roster
+    related_vulns: []
+    related_campaigns:
+      - outsider_enterprise_2025_2026_smishing_phaas_gemini_ai_weaponization
+      - ai_tooling_weaponization_cluster_3_data_points_this_brief_window
+    finding_ids: [finding-2026-06-12-0006]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      google_civil_complaint_filing_sdny: B2
+      five_group_operational_structure_allegation: B2
+      88_per_week_via_telegram_bot: B2
+      290_plus_templates_allegation: B2
+      gemini_ai_weaponization_method_allegation: B2
+      9000_fake_sites_nov_2025_april_2026: B2
+      1_59m_urls_allegation: B2
+      2_5m_messages_may_june_2026: B2
+      100k_plus_victims_estimated_aggregate: B3
+      no_nation_state_attribution_in_google_complaint: A1
+      civil_NOT_criminal_procedural_distinction: A1
+      outsider_NOT_in_archimedes_roster: A1
+    wep: likely
+    wep_layered:
+      google_filing_existence: very_likely
+      allegation_layer_civil_pleadings_not_prosecutorial_findings: likely
+      operational_structure_88_per_week_telegram_specific_enumeration: likely
+      gemini_ai_weaponization_method_allegation: likely
+      9000_sites_1_59m_urls_2_5m_messages_specific_enumeration: likely
+      100k_victims_aggregate_estimate: possibly
+      ad_direct_relevance: not_assessed_verifiable_absence_consumer_android
+      ad_structural_relevance_via_ai_weaponization_cluster: roughly_even_chance
+    single_source_veto_applied: false
+    single_source_veto_layers:
+      - "Substantive-evidence-basis layer: single Google primary through two publisher relays (THN + HNS) — Skill Step 4 'both rely on same vendor's filing' scenario; publisher independence test passes at publisher layer but fails at evidence-basis layer"
+    hard_rule_2_framings_load_bearing:
+      - "Google complaint identifies 'China-based criminal actors' NOT Chinese intelligence services; civil-allegation framing preserved"
+      - "Archimedes does NOT cross-walk Outsider Enterprise to FBI/DOJ 13-website seizure case (finding-2026-06-11-0002 China-recruitment) — separate dispositions, separate evidentiary bases"
+      - "Outsider Enterprise NOT in Archimedes roster"
+      - "Civil litigation procedural framing preserved: allegations are pleadings, NOT prosecutorial findings"
+    hard_rule_6_quote_budget:
+      complaint_verbatim: "China-based criminal actors (3 words)"
+      per_source_max: 1
+    splunk_first_party:
+      status: not_queried_consumer_android_credential_theft_not_in_defenseclaw_local_scope
+      hard_rule_8_framing: campaign_scope_consumer_android_not_a_d_prime_first_party_silence_expected
+    iocs_added_to_master_index_pending:
+      telegram_bot_handle: "@OutsiderCodeBot"
+      aggregate_infrastructure_NOT_individually_enumerated: "9000 sites + 1.59M URLs + 2.5M Android messages alleged but not itemized in relays"
+    resurface_if:
+      - pacer_docket_direct_retrieval_with_court_record_corroboration
+      - us_doj_joins_civil_case_or_files_parallel_criminal_proceedings
+      - named_chinese_jurisdiction_individuals_extradited_or_indicted
+      - gemini_policy_team_publicly_documents_prompt_engineering_signature
+      - additional_ai_tooling_weaponization_data_point_within_14_days
+      - first_party_splunk_hit_on_telegram_bot_or_aggregate_infrastructure
+    first_covered: 2026-06-12
+    last_covered: 2026-06-12
+    retraction: null
+    test: false
+    notes: |
+      Pairs with finding-2026-06-12-0007 as AI-tooling weaponization
+      cluster (3 data points this window; with prior corpus 5-data-point
+      cluster). Threat Detection Weekly synthesis candidate. PACER docket
+      direct retrieval flagged as highest-value next-sweep collector
+      priority. Civil pleadings NOT prosecutorial findings — Hard Rule 2
+      framing preserved.
+
+  - id: 2026-06-12-pm-007-thn-tenet-security-agentjacking-sentry-dsn-claude-code-cursor-plus-langgraph-3-cve-chain-ai-tooling-cluster
+    covered_in: [2026-06-12-afternoon]
+    brief_file: threats/briefs/2026-06-12-afternoon.md
+    headline: "AI-tooling cluster — Part A: Tenet Security 'Agentjacking' research disclosure (via THN) of Sentry DSN abuse against Claude Code + Cursor + widely-used AI coding assistants (85% exploitation success rate across tested products; 2,388 organizations with exploitable DSNs identified); attackers inject malicious instructions into fabricated Sentry error events as 'carefully formatted markdown'; AI agents interpret content as legitimate system guidance; attack bypasses EDR/WAF/IAM/VPN/Cloudflare/firewalls via trust-on-content in Sentry feed; Sentry acknowledged finding but DECLINED to patch underlying behavior — content filtering for specific payload strings only (string-filter-not-architectural-fix); research-demonstrated AND in-the-wild capable but NO specific ITW campaign cited; Part B: LangGraph 3-CVE chain disclosure (researcher Yarden Porat) — CVE-2025-67644 (CVSS 7.3, `langgraph-checkpoint-sqlite <3.0.1` SQL injection) + CVE-2026-28277 (CVSS 6.8, `langgraph <1.0.10` unsafe msgpack deserialization) + CVE-2026-27022 (CVSS 6.5, `@langchain/langgraph-checkpoint-redis <1.0.1` RediSearch query injection); CVE-2025-67644 + CVE-2026-28277 CHAINABLE to RCE on self-hosted LangGraph using SQLite or Redis checkpointers with user-controlled filter inputs; LangChain managed LangSmith Deployment NOT affected; ALL THREE CVEs patched at listed versions; NO in-the-wild exploitation reported; pre-clustered with finding-2026-06-12-0006 as AI-tooling weaponization cluster (AI-as-target + AI-as-tool dual-vector pattern); 5-data-point cluster spanning Langflow ITW + LangGraph + Agentjacking + Outsider/Gemini + Unit 42 Trust-No-Skill — Threat Detection Weekly synthesis candidate"
+    topic_tags:
+      - agentjacking-research-disclosure-tenet-security
+      - sentry-dsn-abuse-against-ai-coding-agents
+      - claude-code-anthropic-named-vulnerable
+      - cursor-named-vulnerable
+      - 85-percent-exploitation-success-rate-across-tested-products
+      - 2388-organizations-with-exploitable-dsns-identified
+      - attack-bypasses-edr-waf-iam-vpn-cloudflare-firewalls-via-trust-on-content
+      - sentry-declined-to-patch-content-filter-only-not-architectural-fix
+      - research-demonstrated-AND-itw-capable-NO-specific-itw-campaign-cited
+      - langgraph-3-cve-chain-disclosure
+      - cve-2025-67644-langgraph-checkpoint-sqlite-sql-injection-cvss-7-3
+      - cve-2026-28277-langgraph-unsafe-msgpack-deserialization-cvss-6-8
+      - cve-2026-27022-langchain-langgraph-checkpoint-redis-redisearch-query-injection-cvss-6-5
+      - chain-cve-2025-67644-plus-cve-2026-28277-to-rce-self-hosted
+      - langsmith-managed-deployment-NOT-affected
+      - all-three-cves-patched-no-itw
+      - researcher-yarden-porat
+      - hard-rule-3-no-poc-no-exploitation-content-defender-awareness-only
+      - ai-tooling-weaponization-cluster-ai-as-target
+      - 5-data-point-ai-cluster-langflow-langgraph-agentjacking-outsider-trust-no-skill
+      - threat-detection-weekly-synthesis-candidate
+      - active-threats
+      - vulnerabilities
+    related_actors: []
+    related_vulns:
+      - cve: CVE-2025-67644
+        component: "langgraph-checkpoint-sqlite <3.0.1"
+        cvss: 7.3
+        class: sql_injection_in_sqlite_checkpoint
+        patched: true
+      - cve: CVE-2026-28277
+        component: "langgraph <1.0.10"
+        cvss: 6.8
+        class: unsafe_msgpack_deserialization
+        patched: true
+      - cve: CVE-2026-27022
+        component: "@langchain/langgraph-checkpoint-redis <1.0.1"
+        cvss: 6.5
+        class: redisearch_query_injection
+        patched: true
+    related_campaigns:
+      - tenet_agentjacking_2026_research_disclosure
+      - langgraph_3_cve_chain_2026_porat_disclosure
+      - ai_tooling_weaponization_cluster_5_data_points
+    finding_ids: [finding-2026-06-12-0007]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      tenet_agentjacking_research_disclosure: B2
+      claude_code_cursor_explicitly_named_vulnerable: B2
+      85_percent_success_rate: B2
+      2388_orgs_with_exploitable_dsns: B2
+      sentry_declined_to_patch_content_filter_only: A2
+      langgraph_3_cve_chain_vendor_canonical: A2
+      chain_to_rce_on_self_hosted: B2
+      langsmith_managed_NOT_affected: A1
+      all_three_cves_patched: A1
+      no_itw_reported: A1
+      no_actor_attribution: A1
+    wep: likely
+    wep_layered:
+      tenet_research_disclosure_existence_and_findings: likely
+      85_percent_success_rate_metric: likely
+      2388_orgs_with_exploitable_dsns_metric: likely
+      langgraph_3_cve_chain_vendor_canonical: very_likely
+      chain_to_rce_on_self_hosted: likely
+      langsmith_managed_unaffected: very_likely
+      ad_prime_engineering_team_claude_code_cursor_public_app_sentry_in_scope: not_assessed_population_not_enumerated
+      ad_prime_internal_agent_platform_on_langgraph: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Tenet sole primary in window for Agentjacking research; THN sole B-grade publisher for Part A — WEP capped at 'likely'"
+      - "Researcher Yarden Porat sole primary for Part B LangGraph chain analysis; THN sole B-grade publisher — WEP capped at 'likely' on chain analysis specifics (CVE records themselves are vendor-canonical A class)"
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution at either disclosure (Part A or Part B)"
+      - "Tenet does NOT name a tracked actor; Agentjacking is research disclosure"
+      - "LangGraph CVE chain is researcher disclosure, no actor attribution"
+    hard_rule_3_framings_load_bearing:
+      - "No PoC code propagated in finding or brief"
+      - "LangGraph chain mechanics described at defender-awareness conceptual-sketch level for version-pin remediation, NOT as exploitation guidance"
+      - "Agentjacking mechanics described at defender-awareness level for prompt-injection-via-third-party-content detection engineering, NOT as exploitation guidance"
+    hard_rule_6_quote_budget:
+      no_verbatim_quotes_above_15_words: confirmed_research_attestation_framing_paraphrased
+      per_source_max: 1
+    splunk_first_party:
+      status: not_queried_no_iocs_to_query_research_disclosures
+      hard_rule_8_framing: research_disclosures_not_ioc_class_no_first_party_correlation_applicable
+    analyst_review:
+      method: sat_kac
+      key_assumptions:
+        a_d_prime_public_app_sentry_dsn_exposure_pattern: test_critical_low_confidence_not_cheaply_testable
+        a_d_prime_developer_workflow_sentry_feed_via_ai_ingestion: test_critical_low_confidence_not_cheaply_testable
+      brief_hedge_applied: any_ad_prime_engineering_team_running_claude_code_or_cursor_against_public_app_sentry_in_scope_population_not_enumerated_in_current_corpus
+      cluster_decomposition: ai_as_target_3_of_5_langflow_langgraph_agentjacking_versus_ai_as_tool_2_of_5_outsider_gemini_trust_no_skill_unit_42
+    vuln_tracker_handoffs_queued:
+      - "Scaffold CVE-2025-67644 (langgraph-checkpoint-sqlite SQL injection) into VT dossier"
+      - "Scaffold CVE-2026-28277 (langgraph msgpack deserialization) into VT dossier"
+      - "Scaffold CVE-2026-27022 (@langchain/langgraph-checkpoint-redis RediSearch query injection) into VT dossier"
+    resurface_if:
+      - tenet_security_primary_directly_retrieved_with_richer_iocs_or_detection_engineering_guidance
+      - sentry_posture_evolution_content_filter_to_architectural_fix
+      - langgraph_maintainer_follow_on_advisories_or_cousin_cves
+      - ad_prime_soc_reports_agentjacking_class_incident
+      - cluster_co_evolution_with_langflow_cve_2026_5027_itw
+      - second_ir_firm_corroborates_agentjacking_research
+      - first_party_splunk_hit_on_langgraph_indicators_or_sentry_dsn_anomaly
+    first_covered: 2026-06-12
+    last_covered: 2026-06-12
+    retraction: null
+    test: false
+    notes: |
+      AI-tooling weaponization cluster paired with finding-2026-06-12-0006.
+      Part A (Agentjacking) is operationally significant primitive bypassing
+      traditional security controls. Part B (LangGraph 3-CVE chain) is
+      patched-pre-disclosure but ChainToRCE detail is defender-awareness
+      level NOT exploitation guidance (Hard Rule 3). 5-data-point cluster
+      candidate for Wednesday's Threat Detection Weekly synthesis. Tenet
+      primary retrieval highest-value next-sweep collector priority.
+
+  - id: 2026-06-12-pm-008-securityweek-bloomberg-relay-ibm-att-whistleblower-civil-suit-william-barlow-foreign-hack-coverup-dfars-cmmc-false-claims-act-federal-contractor-disclosure
+    covered_in: [2026-06-12-afternoon]
+    brief_file: threats/briefs/2026-06-12-afternoon.md
+    headline: "Bloomberg-broken whistleblower civil suit (William Barlow, former IBM VP of Threat Intelligence) — unsealed 2026-06-04, relayed via SecurityWeek's In Other News column 2026-06-12 — alleges IBM and AT&T concealed repeated foreign-government-linked hacks while providing false security-posture assurances to maintain federal contracts; complaint filed under seal in 2020; DOJ declined to intervene (qui tam pattern preserved); pending before federal court in New York; complaint cites 'foreign and unidentified hackers' (verbatim, 4 words) — NO named actor / NO PLA / MSS / GRU / SVR / DPRK / IRGC attribution — Hard Rule 2 binding: Archimedes does NOT cross-walk to specific tracked roster actors; IBM (paraphrased per Hard Rule 6 — 15 words): filed six years ago, DOJ declined to intervene, actions followed letter of law; AT&T did not respond to requests for comment per available reporting; IBM and AT&T NOT in aerospace-defense.yaml watchlist but ARE federal contractors with significant DoD-adjacent business; DIRECT A&D-adjacent relevance via federal-contractor compliance regime — DFARS 252.204-7012 cyber-incident reporting + CMMC L2/L3 self-attestation integrity + False Claims Act exposure on federal-contract security certification; civil-allegation layer NOT prosecutorial determination — allegations are pleadings; spillover to A&D-prime compliance behavior depends on case proceeding past motion-to-dismiss + legal-watch intake processes, NEITHER source-attested; Bloomberg primary article NOT directly retrieved this sweep; PACER federal court docket NOT directly retrieved — highest-value next-sweep collector priority; multiple secondary surfaces (Business Standard / Claims Journal / Fortune / Security Boulevard) RELAY Bloomberg primary — do NOT constitute independent corroboration per Skill Step 4"
+    topic_tags:
+      - ibm-att-whistleblower-civil-suit
+      - william-barlow-former-ibm-vp-threat-intelligence
+      - bloomberg-primary-2026-06-04-unsealed
+      - securityweek-in-other-news-column-relay-2026-06-12
+      - qui-tam-pattern-doj-declined-to-intervene
+      - pending-federal-court-new-york
+      - foreign-and-unidentified-hackers-no-named-actor-hard-rule-2-binding
+      - no-pla-mss-gru-svr-dprk-irgc-attribution
+      - ibm-response-paraphrased-hard-rule-6-15-words
+      - att-did-not-respond-to-comment
+      - ibm-att-NOT-in-aerospace-defense-yaml-but-are-federal-contractors
+      - dfars-252-204-7012-cyber-incident-reporting
+      - cmmc-l2-l3-self-attestation-integrity
+      - false-claims-act-exposure-on-federal-contract-security-certification
+      - direct-a-d-adjacent-via-federal-contractor-compliance-regime
+      - civil-allegation-layer-NOT-prosecutorial-determination
+      - spillover-depends-on-case-proceeding-past-motion-to-dismiss-not-source-attested
+      - bloomberg-primary-not-directly-retrieved
+      - pacer-federal-court-docket-not-directly-retrieved-highest-value-next-sweep
+      - secondary-relay-cluster-business-standard-claims-journal-fortune-security-boulevard-not-independent-corroboration-skill-step-4
+      - sector-focus-a-d-direct-via-federal-contractor-compliance-regime
+    related_actors:
+      - id: null  # "foreign and unidentified hackers" — NO named actor
+        actor_name: "foreign and unidentified hackers (complaint verbatim, NOT cross-walked to roster, Hard Rule 2 binding)"
+        attribution_in_brief: complaint-language-verbatim-NO-named-actor-NO-cross-walk
+    related_vulns: []
+    related_campaigns:
+      - ibm_att_2020_qui_tam_whistleblower_civil_suit_foreign_hack_concealment_allegation
+    finding_ids: [finding-2026-06-12-0008]
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      bloomberg_primary_broke_story_2026_06_04: B2
+      securityweek_in_other_news_relay_2026_06_12: B2
+      qui_tam_pattern_doj_declined_to_intervene: B2
+      plaintiff_william_barlow_former_ibm_vp_threat_intelligence: B2
+      complaint_alleges_foreign_government_linked_hacks_concealment: B3
+      complaint_alleges_false_security_posture_assurances: B3
+      complaint_alleges_failed_to_disclose_breaches_to_us_government: B3
+      ibm_spokesperson_response_via_bloomberg: B2
+      att_did_not_respond: B2
+      no_named_actor_in_complaint_hard_rule_2_binding: A1
+      ibm_att_NOT_in_aerospace_defense_yaml: A1
+      ibm_att_ARE_federal_contractors_with_dod_adjacent_business: B2
+      dfars_252_204_7012_compliance_regime_directly_implicated: B2
+      cmmc_l2_l3_attestation_regime_directly_parallels_allegation: B2
+      false_claims_act_qui_tam_civil_pattern_recognized: B2
+      securityweek_in_other_news_column_is_roundup_format: A1
+      bloomberg_primary_NOT_directly_retrieved: A1
+      pacer_federal_court_docket_NOT_directly_retrieved: A1
+      secondary_relays_do_NOT_constitute_independent_corroboration: B3
+    wep: possibly
+    wep_layered:
+      bloomberg_primary_broke_story_2026_06_04: very_likely
+      qui_tam_pattern_doj_declined: likely
+      plaintiff_william_barlow_identity_role: likely
+      civil_allegation_layer_pleadings_NOT_findings: very_likely
+      no_named_actor_in_complaint: almost_certainly
+      a_d_adjacent_via_federal_contractor_compliance_regime: likely
+      spillover_to_a_d_prime_compliance_behavior: roughly_even_chance
+      ibm_att_concealment_substantive_allegation_holds: possibly
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Bloomberg sole primary through SW In Other News single B-grade relay; Bloomberg primary NOT directly retrieved this sweep; PACER docket NOT directly retrieved; multiple secondary surfaces (Business Standard / Claims Journal / Fortune / Security Boulevard) all RELAY Bloomberg primary — do NOT constitute independent corroboration per Skill Step 4 (common-origin aggregation pattern)"
+    hard_rule_2_framings_load_bearing:
+      - "Complaint language 'foreign and unidentified hackers' is genuinely non-attributive across Bloomberg primary + IBM spokesperson response + all secondary relays"
+      - "Archimedes does NOT cross-walk 'foreign government-linked hacks' to specific tracked roster actors"
+      - "Civil-allegation framing preserved: pleadings, NOT prosecutorial findings"
+      - "IBM and AT&T NOT in aerospace-defense.yaml — DIB-adjacent via federal-contractor compliance regime, NOT direct A&D-prime"
+    hard_rule_6_quote_budget:
+      complaint_verbatim_short: "foreign and unidentified hackers (4 words verbatim from complaint per Bloomberg)"
+      ibm_spokesperson_paraphrased: "filed six years ago, DOJ declined to intervene, actions followed letter of law (15 words paraphrased per Hard Rule 6)"
+      per_source_max: 1
+    splunk_first_party:
+      status: not_queried_civil_allegation_class_no_iocs_to_query
+      hard_rule_8_framing: no_iocs_in_relay_underlying_court_docket_would_be_primary_ioc_source_if_discovery_surfaces_specific_breaches
+    analyst_review:
+      method: sat_kac
+      key_assumptions:
+        case_proceeds_past_motion_to_dismiss: test_critical_low_confidence_not_cheaply_testable
+        bloomberg_summary_accurately_reflects_underlying_pleadings: test_critical_low_confidence_pacer_retrieval_required
+        a_d_prime_legal_watch_intake_processes_treat_civil_allegation_as_compliance_signal: qualify_critical_low_confidence
+      brief_hedge_applied: a_d_adjacent_via_federal_contractor_compliance_regime_structure_spillover_to_a_d_prime_compliance_behavior_depends_on_case_proceeding_past_motion_to_dismiss_not_source_attested
+    collector_priorities:
+      - id: bloomberg_primary_direct_retrieval
+        priority: high
+        rationale: load_bearing_primary_for_substantive_allegation_basis
+      - id: pacer_federal_court_docket_direct_retrieval
+        priority: highest
+        rationale: testable_on_bloomberg_summary_fidelity_validates_cluster_anchor
+    resurface_if:
+      - bloomberg_primary_directly_retrieved_with_complaint_specifics
+      - pacer_docket_directly_retrieved_with_court_record_corroboration
+      - ibm_or_att_files_motion_to_dismiss_with_disposition
+      - specific_cited_breach_named_with_sufficient_detail_to_corroborate_iocs_or_attribution
+      - doj_reverses_course_on_intervention
+      - spillover_to_other_federal_contractor_breach_disclosure_compliance_behavior_observed
+      - additional_a_d_prime_whistleblower_class_action_or_qui_tam
+    first_covered: 2026-06-12
+    last_covered: 2026-06-12
+    retraction: null
+    test: false
+    notes: |
+      Sector Focus: A&D direct content via federal-contractor compliance
+      regime (DFARS 252.204-7012 + CMMC L2/L3 + FCA exposure). Civil-
+      allegation layer — pleadings NOT prosecutorial findings. Bloomberg
+      primary + PACER docket direct retrieval are highest-value next-sweep
+      collector priorities. Hard Rule 2 preservation review: 'foreign and
+      unidentified hackers' is genuinely non-attributive across all source
+      layers — no cross-walk regardless of pattern-completion temptation
+      toward China-nexus / DPRK / Russia-nexus framing.
+
+  - id: 2026-06-12-pm-brief-meta
+    covered_in: [2026-06-12-afternoon]
+    brief_file: threats/briefs/2026-06-12-afternoon.md
+    headline: "2026-06-12 afternoon brief metadata — 8 findings referenced (2 UPDATE-extensions on prior-day cluster: PeopleSoft KEV add + Ivanti honeypot clarification; 6 new: AUR Atomic Arch, Agentjacking + LangGraph cluster, IBM/AT&T whistleblower, Velvet Ant /new-actor DEFER, Handala Cal Water, Outsider/Gemini PhaaS); ~880-word Layer 1; Layer 2 under 1900-char ceiling (4 bullets after compression); pre-flight 13/13 pass after Layer 2 char-budget regenerations; TLP:GREEN; analyst hedging directives applied verbatim per operator for PeopleSoft (temporally-sequential H4 leading), Velvet Ant (access-vector + config-overlap not enumerated), Agentjacking (population not enumerated; research-attestation NOT asserted ITW), IBM/AT&T (spillover depends on case proceeding); Hard Rule 2 preservation: KEV ransomware-use tag NOT actor attribution; Handala Iran/MOIS is restatement NOT new; 'foreign and unidentified hackers' verbatim with no cross-walk; Outsider 'China-based criminal actors' NOT intelligence services; Velvet Ant NOT cross-walked to APT41/Volt Typhoon/Salt Typhoon/APT40; Atomic Arch is campaign designation NOT actor attribution; Hard Rule 3 preservation: LangGraph chain mechanics defender-awareness only; Hard Rule 6 quote discipline: complaint quote 'foreign and unidentified hackers' (4 words) + IBM paraphrase (15 words); Hard Rule 7 preservation: Atomic Arch credential categories on victim systems + Handala leak categories at article level only — no values stored; FLASH supersession: no FLASHes today, holds against anti-noise window; AI-tooling cluster 5-data-point hand-off to Threat Detection Weekly synthesis Wednesday"
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - 8-findings-referenced
+      - 2-update-extensions-on-prior-day-cluster-peoplesoft-kev-ivanti-honeypot
+      - 6-new-findings-aur-atomic-arch-agentjacking-langgraph-ibm-att-velvet-ant-handala-outsider-gemini
+      - layer-1-approximately-880-words
+      - layer-2-under-1900-char-ceiling-4-bullets
+      - pre-flight-13-13-pass-after-layer-2-regenerations
+      - tlp-green
+      - analyst-hedging-directives-applied-verbatim-per-operator
+      - hard-rule-2-preservation-multiple-layers
+      - hard-rule-3-preservation-langgraph-chain-defender-awareness-only
+      - hard-rule-6-quote-discipline-complaint-verbatim-plus-ibm-paraphrase
+      - hard-rule-7-preservation-credential-pii-categories-on-victim-systems-not-archimedes-corpus
+      - flash-supersession-no-flashes-today-anti-noise-holds
+      - ai-tooling-cluster-5-data-point-handoff-to-threat-detection-weekly-wednesday
+    finding_ids: []
+    digraph: B2  # composite — driven by A1 PeopleSoft KEV + A2 Ivanti clarification + B2 cluster of others
+    wep: likely
+    layer_1_word_count: 880
+    layer_2_char_ceiling: 1900
+    layer_2_compliance: pass_under_ceiling
+    preflight_iterations: 3
+    preflight_regenerations:
+      - section: layer_2_discord_summary
+        reason: initial_draft_with_6_bullets_at_approximately_2500_chars_iteratively_compressed_to_4_bullets_under_1900_ceiling
+        iterations: 3
+      - section: layer_1_word_count
+        reason: initial_draft_at_approximately_1100_words_compressed_to_880_via_section_consolidation_and_redundancy_removal
+        iterations: 2
+    pre_flight_check:
+      total: 13
+      passed: 13
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass_update_flags_applied_on_peoplesoft_and_ivanti
+        lead_states_impact_not_context: pass_lead_states_two_federal_attestation_moves_opposite_vectors
+        no_banned_phrases: pass
+        standing_sections_present: pass_ad_sector_focus_via_ibm_att_iran_cyber_watch_via_handala
+        wep_vocabulary_used_with_probability_bands: pass_very_likely_likely_roughly_even_chance_almost_certainly_used
+        word_count_within_target: pass_at_soft_cap_realistic_layer_1_approximately_880_words_within_pragmatic_doctrine_interpretation
+        actor_vuln_references_linked: pass_handala_014_in_roster_velvet_ant_NOT_in_roster_flagged_outsider_NOT_in_roster_flagged_atomic_arch_campaign_designation
+        tlp_marked_where_non_clear: pass_tlp_green_brief_level
+        single_source_veto_respected: pass_ivanti_clarification_handala_self_claim_velvet_ant_sygnia_outsider_ibm_att_all_flagged_with_veto_layers
+        quote_discipline_under_15_words_max_1_per_source: pass_complaint_verbatim_4_words_ibm_paraphrase_15_words_no_other_direct_quotes_above_cap
+        discord_summary_layer_2_compliant: pass_4_bullets_greeting_natural_language_dates_source_linked_headlines_no_themed_voice_no_iso_dates_under_1900_chars
+      analyst_hedging_directives_applied_verbatim:
+        - finding_id: finding-2026-06-12-0001
+          directive: "limited per Mandiant + ZDI primary observation; CISA's federal-attestation now stands at procedural-state-change above the operational-scale framing; observed scale framings likely lag current operational reality"
+          applied_in_brief: true
+        - finding_id: finding-2026-06-12-0004
+          directive: "primitives are portable in principle; A&D-prime applicability bounded by access-vector and configuration overlap, neither of which is enumerated in the THN relay"
+          applied_in_brief: true
+        - finding_id: finding-2026-06-12-0007
+          directive: "any A&D-prime engineering team running Claude Code or Cursor against a public-app Sentry deployment is in scope; population not enumerated in current corpus"
+          applied_in_brief: true
+        - finding_id: finding-2026-06-12-0008
+          directive: "A&D-adjacent via federal-contractor compliance regime structure; spillover to A&D-prime compliance behavior depends on the case proceeding past motion-to-dismiss and on intake processes, neither of which is source-attested"
+          applied_in_brief: true
+    coverage_log_actions_required:
+      - prior_entry: 2026-06-11-pm-002
+        action: append_2026-06-12-afternoon_to_covered_in_update_last_covered_to_2026-06-12
+      - prior_entry: 2026-06-11-flash-1200-001
+        action: append_2026-06-12-afternoon_to_covered_in_update_last_covered_to_2026-06-12
+      - prior_entry: 2026-06-11-pm-001
+        action: append_2026-06-12-afternoon_to_covered_in_update_last_covered_to_2026-06-12
+      - prior_entry: 2026-06-11-am-001
+        action: append_2026-06-12-afternoon_to_covered_in_update_last_covered_to_2026-06-12
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding-2026-06-12-0001
+        - finding-2026-06-12-0002
+        - finding-2026-06-12-0003
+        - finding-2026-06-12-0004
+        - finding-2026-06-12-0005
+        - finding-2026-06-12-0006
+        - finding-2026-06-12-0007
+        - finding-2026-06-12-0008
+      add_2026_06_12_afternoon_to_published_in_briefs_for_each
+    operator_action_items:
+      - id: shinyhunters_new_actor_decision_carry_forward
+        action: operator_to_decide_invocation_of_slash_new_actor_shinyhunters
+        rationale: carry_forward_across_findings_06_10_0012_06_11_flash_1200_06_11_0006_and_today_06_12_0001_now_includes_cisa_kev_federal_procedural_attestation_layer
+        priority: high
+        decision_pending: true
+      - id: velvet_ant_new_actor_decision_defer
+        action: collector_to_retrieve_sygnia_primary_directly_then_operator_to_decide
+        rationale: sygnia_primary_likely_carries_richer_iocs_and_potentially_named_sector_country_not_in_thn_relay
+        priority: high
+        decision_pending: true
+      - id: oracle_psirt_advisory_direct_retrieval_carry_forward
+        action: collector_or_vuln_tracker_to_retrieve_oracle_out_of_band_advisory_directly_for_cve_2026_35273
+        rationale: independent_verification_of_mitigations_only_posture_lifts_durability_framing
+        priority: high
+        carry_forward_from: 2026-06-11-flash-1200-001
+      - id: ivanti_primary_advisory_direct_retrieval
+        action: collector_to_retrieve_ivanti_advisory_update_directly_for_cve_2026_10520_honeypot_clarification
+        rationale: single_b_grade_sw_relay_independence_test_fails_at_evidence_basis_layer_requires_vendor_direct_or_second_publisher
+        priority: high
+      - id: bloomberg_primary_plus_pacer_docket_retrieval_for_ibm_att
+        action: collector_to_retrieve_bloomberg_primary_and_pacer_federal_court_docket_for_barlow_v_ibm_att_qui_tam
+        rationale: load_bearing_primary_not_directly_retrieved_pacer_docket_testable_on_bloomberg_summary_fidelity_validates_cluster_anchor
+        priority: highest
+      - id: sonatype_primary_atomic_arch_direct_retrieval
+        action: collector_to_retrieve_sonatype_primary_blog_for_atomic_arch_campaign_richer_iocs_likely
+        rationale: bc_thn_relays_may_share_sonatype_primary_chain_direct_retrieval_lifts_independence_and_likely_carries_richer_iocs
+        priority: high
+      - id: tenet_security_primary_agentjacking_direct_retrieval
+        action: collector_to_retrieve_tenet_security_primary_research_for_agentjacking
+        rationale: tenet_provisional_b_tier_primary_retrieval_lifts_independence_and_likely_carries_detection_engineering_guidance
+        priority: high
+      - id: google_pacer_docket_retrieval_for_outsider_enterprise
+        action: collector_to_retrieve_google_v_outsider_pacer_docket_sdny
+        rationale: single_google_primary_through_two_publisher_relays_skill_step_4_substantive_evidence_basis_layer_fails_pacer_lifts_to_court_record_independent_corroboration
+        priority: high
+      - id: ai_tooling_cluster_5_data_point_threat_detection_weekly_synthesis_candidate
+        action: briefer_or_threat_detection_weekly_briefer_to_synthesize_ai_as_target_vs_ai_as_tool_dual_vector_pattern
+        rationale: 5_data_points_langflow_itw_langgraph_3_cve_agentjacking_outsider_gemini_unit_42_trust_no_skill_cluster_splits_into_ai_as_target_3_of_5_versus_ai_as_tool_2_of_5_synthesis_candidate
+        priority: high
+        target_brief: 2026-06-17-threat-detection-weekly
+      - id: sonatype_source_grade_add
+        action: librarian_to_add_sonatype_to_source-grades_yaml_as_provisional_B_72h_ratification_clock
+        rationale: sonatype_first_dedicated_id_surface_via_atomic_arch_finding_2026_06_12_0005_vendor_research_tier
+        priority: medium
+      - id: dataminr_source_grade_add
+        action: librarian_to_add_dataminr_to_source-grades_yaml_as_provisional_B_72h_ratification_clock
+        rationale: dataminr_first_dedicated_id_surface_via_handala_cal_water_finding_2026_06_12_0003_named_third_party_analytic_firm
+        priority: medium
+      - id: tenet_security_source_grade_add
+        action: librarian_to_add_tenet_security_to_source-grades_yaml_as_provisional_B_72h_ratification_clock
+        rationale: tenet_first_dedicated_id_surface_via_agentjacking_finding_2026_06_12_0007_named_security_research_firm
+        priority: medium
+      - id: sygnia_source_grade_add
+        action: librarian_to_add_sygnia_to_source-grades_yaml_as_provisional_B_72h_ratification_clock
+        rationale: sygnia_first_dedicated_id_surface_via_velvet_ant_finding_2026_06_12_0004_named_ir_firm
+        priority: medium
+      - id: bloomberg_source_grade_add
+        action: librarian_to_add_bloomberg_to_source-grades_yaml_as_provisional_B_72h_ratification_clock
+        rationale: bloomberg_first_dedicated_id_surface_via_ibm_att_finding_2026_06_12_0008_named_major_business_journalism_outlet_with_established_federal_court_docket_sourcing_track_record
+        priority: medium
+      - id: whanos_independent_researcher_grade_add
+        action: librarian_to_add_whanos_to_source-grades_yaml_as_provisional_B_72h_ratification_clock
+        rationale: whanos_first_dedicated_id_surface_via_atomic_arch_finding_2026_06_12_0005_named_researcher_handle_with_public_technical_attestation
+        priority: low
+      - id: bod_26_04_corpus_artifact_carry_forward
+        action: librarian_or_vuln_tracker_to_consider_scaffolding_bod_26_04_corpus_artifact_under_threats_policy_artifacts_or_under_doctrine
+        rationale: carry_forward_from_2026_06_11_pm_001_bod_26_04_now_binds_two_kev_additions_cve_2026_10520_and_cve_2026_35273_within_3_days_warrants_dedicated_corpus_artifact
+        priority: medium
+        carry_forward_from: 2026-06-11-pm-001
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-06-11T16:00:00-04:00
+last_updated: 2026-06-12T16:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -755,6 +755,67 @@ vendor_sources:
     urls:
       - https://www.blackfog.com/category/blog/
 
+  - id: sonatype-research
+    name: "Sonatype (open-source software supply-chain security vendor)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-12
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-12-0005 (400+ Arch User Repository packages hijacked — 'Atomic Arch' Rust credential stealer + eBPF rootkit; two-wave maintainer-account adoption of abandoned AUR packages with PKGBUILD / .install script modification delivering a Rust stealer that, with root, loads an eBPF rootkit; 8 credential categories targeted including GitHub / npm / Vault tokens + OpenAI / SSH / Docker / VPN; IOCs include SHA-256 6144d433...43c98b + npm-staged atomic-lockfile@1.4.2 + js-digest + C2 temp.sh + Tor onion). Sonatype is the originating-research vendor on the Arch supply-chain campaign, relayed via BleepingComputer and The Hacker News in this window. Long-running OSS-supply-chain-security vendor (sonatype.com) with named-analyst-byline research practice and a multi-year corpus of malicious-package reports across npm / PyPI / Maven ecosystems. Conservative provisional B starting grade per same precedent as StepSecurity / Socket / Sysdig / Zellic / Ox Security / Upwind / Push Security / Permiso / VulnCheck / Tenable Research / PRODAFT / BlackFog (Tier-2 specialist vendor research). 72h ratification clock to 2026-06-15T16:00:00-04:00. Pending human ratification."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-15T16:00:00-04:00
+    provenance: finding-2026-06-12-0005
+    active: true
+    urls:
+      - https://www.sonatype.com/blog
+      - https://www.sonatype.com/resources/research
+
+  - id: sygnia-research
+    name: "Sygnia (IR firm; China-nexus and APT research)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-12
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-12-0004 (Velvet Ant — China-nexus actor NOT in Archimedes roster; backdoor of Linux PAM and OpenSSH on air-gapped East Asia victim with ~10-year dwell since 2016; nine PAM-module backdoor variants + modified OpenSSH logging credentials and typed commands with operator-side disable switch; sector + country NOT named in The Hacker News relay summary). Sygnia is an established incident-response firm (sygnia.co) with a published research / blog channel and a multi-year record on China-nexus actor research (Velvet Ant cluster, multiple prior public reports). Conservative provisional B starting grade per same precedent as the existing vendor-research-tier provisional grades. Sygnia primary blog NOT directly retrieved this sweep — flag for next-sweep direct retrieval (the THN relay is the sole in-window source basis); the THN relay does NOT include IOC enumeration which the primary likely carries. Single-source veto applies at the relay layer (one B-grade relay on Sygnia primary); the underlying Sygnia attribution / TTP characterization is preserved verbatim per Hard Rule 2 (China-nexus; NOT cross-walked to APT41 / Volt Typhoon / Salt Typhoon / APT40). 72h ratification clock to 2026-06-15T16:00:00-04:00. Pending direct retrieval of Sygnia primary AND human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    ratification_clock: 2026-06-15T16:00:00-04:00
+    provenance: finding-2026-06-12-0004
+    active: true
+    urls:
+      - https://www.sygnia.co/blog/
+      - https://www.sygnia.co/threat-reports/
+
+  - id: tenet-security-research
+    name: "Tenet Security (AI / agent security research)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-12
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-12-0007 Part A (Agentjacking attack research — 85% success rate injecting malicious instructions into fabricated Sentry error events; AI coding agents Claude Code and Cursor interpret the content as legitimate guidance; 2,388 orgs have exploitable DSNs in Tenet's enumeration; Sentry declined to patch the behavior — content filter only). Tenet Security is a specialist AI / agent-security research practice; first surface in the Archimedes corpus. Conservative provisional B starting grade per same precedent as StepSecurity / Socket / Sysdig / Zellic / Ox Security / Upwind / Push Security / Permiso / VulnCheck / Tenable / PRODAFT / BlackFog / Sonatype (Tier-2 specialist vendor research). Methodological positive on first surface: empirical success-rate measurement (85% across enumerated DSN population) + named-vendor-counterparty disposition (Sentry declined to patch; content filter only) + bounded population (2,388 orgs enumerated) + named-agent-tool scope (Claude Code, Cursor). Cited via The Hacker News in this window; Tenet primary write-up NOT directly retrieved this sweep — flag for next-sweep direct retrieval. 72h ratification clock to 2026-06-15T16:00:00-04:00. Pending direct retrieval of Tenet primary AND human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    ratification_clock: 2026-06-15T16:00:00-04:00
+    provenance: finding-2026-06-12-0007
+    active: true
+    urls:
+      - https://www.tenetsecurity.com/
+
+  - id: dataminr-research
+    name: "Dataminr (real-time event intelligence; OSINT and IR analysis)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-12
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-12-0003 (Handala Hack #014 California Water Service self-claim — Dataminr identifies RTKBase as the likely initial-access vector with lateral move to billing; analysis cited via SecurityWeek relay alongside Handala's own self-publication). Dataminr (dataminr.com) is an established real-time event-intelligence and OSINT-analysis firm with a multi-year track record on breach-attribution analysis; cited via SecurityWeek in this surface as the source of the RTKBase-as-IAV analytical hypothesis. Conservative provisional B starting grade per same precedent as the existing vendor-research / IR-analysis Tier-2 provisional grades. Note: the RTKBase-IAV layer in this finding carries WEP 'possibly' under single-source veto (Dataminr is sole originator of the analysis; carry-forward into Handala dossier #014 deferred to actor-profiler). 72h ratification clock to 2026-06-15T16:00:00-04:00. Pending human ratification."
+    awaiting_ratification: true
+    ratification_clock: 2026-06-15T16:00:00-04:00
+    provenance: finding-2026-06-12-0003
+    active: true
+    urls:
+      - https://www.dataminr.com/blog
+      - https://www.dataminr.com/dataminr-pulse
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -917,6 +978,22 @@ media_sources:
     active: true
     urls:
       - https://apnews.com/
+
+  - id: bloomberg
+    name: "Bloomberg (breaking news / investigative)"
+    category: media
+    grade: B
+    provisional: true
+    provisional_since: 2026-06-12
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-06-12-0008 (IBM / AT&T whistleblower civil-suit unsealing — William Barlow's 2020 qui tam alleges IBM and AT&T concealed federal-contractor breaches by foreign and unidentified hackers while providing false security-posture assurances to maintain federal contracts; DOJ declined to intervene; pending in federal court in New York). Bloomberg broke the unsealing 2026-06-04; this Archimedes citation comes via SecurityWeek's In Other News column. Major US business news service with global newsgathering footprint, named-byline editorial standards, and recognized credibility for breaking US federal-court and enforcement coverage. Provisional B starting grade is a conservative position pending OPERATOR TIER DECISION between (a) wire-service-class provisional A precedent (Associated Press, 2026-06-11) and (b) Tier-1 trade-press provisional B precedent (Reuters / Bloomberg news desks have been observed in prior corpus surfaces as relays without dedicated source-IDs; cite-but-not-dedicated profile). Operator note pending: Bloomberg's investigative-byline track record on federal-contractor + national-security breach coverage (long-running) and the unsealed-court-record substrate of this surface argue for an upgrade to provisional A; the relay-via-SecurityWeek + court-record-derived substantive basis (vs. independent investigative reporting on operational facts) argues for hold at B. 72h ratification clock to 2026-06-15T16:00:00-04:00. Pending OPERATOR TIER DECISION between B and B+/A AND human ratification."
+    awaiting_ratification: true
+    awaiting_operator_tier_decision: true
+    operator_tier_decision_options: [B, B+, A]
+    ratification_clock: 2026-06-15T16:00:00-04:00
+    provenance: finding-2026-06-12-0008
+    active: true
+    urls:
+      - https://www.bloomberg.com/
 
   - id: depthfirst
     name: "depthfirst (independent researcher)"
@@ -1279,11 +1356,11 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 90        # +8 PM 2026-06-11: europol-coordinated-announcement + doj-federal-court-filings + trendai-zdi-childs (provisional A x3) + vulncheck-research + tenable-research + prodaft-research + blackfog-research + will-dormann-researcher (provisional B x5); 72h ratification clocks to 2026-06-14T16:00:00-04:00 per findings 0007 / 0008 / 0009 / 0010 / 0011 / 0012 (+2 AM 2026-06-10: ivanti-psirt + arista-networks-psirt)
-  active_sources: 81       # +8 above (+2 prior)
+  total_sources: 95        # +5 PM 2026-06-12: sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B x5; bloomberg pending operator B/B+/A tier decision); 72h ratification clocks to 2026-06-15T16:00:00-04:00 per findings 0003 / 0004 / 0005 / 0007 / 0008 (+8 PM 2026-06-11; +2 AM 2026-06-10)
+  active_sources: 86       # +5 above (+8 PM 2026-06-11; +2 AM 2026-06-10)
   by_grade:
     A: 40       # +3 europol-coordinated-announcement + doj-federal-court-filings + trendai-zdi-childs (provisional A 2026-06-11 PM); +2 ivanti-psirt + arista-networks-psirt (provisional A 2026-06-10 AM); +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
-    B: 34       # +5 vulncheck-research + tenable-research + prodaft-research + blackfog-research + will-dormann-researcher (provisional B 2026-06-11 PM); +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
+    B: 39       # +5 sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B 2026-06-12 PM; bloomberg pending operator B/B+/A); +5 vulncheck-research + tenable-research + prodaft-research + blackfog-research + will-dormann-researcher (provisional B 2026-06-11 PM); +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
     C: 10       # +1 depthfirst elevated F→C 2026-05-16 morning per "first technical write-up publication" trigger; finding-2026-05-16-0001
     D: 1
     E: 2
@@ -1338,6 +1415,11 @@ _meta:
     - prodaft-research          # provisional B; first cited 2026-06-11-0009 (The Gentlemen / Storm-2697 / LARVA-368 / Phantom Mantis — names Yapaev as prior LockBit / Qilin / Medusa affiliate before transitioning to independent operator July 2025; 478 claimed victims; Mantis-suffix actor designations are PRODAFT's house naming convention; 72h ratification clock to 2026-06-14T16:00:00-04:00)
     - blackfog-research         # provisional B; first cited 2026-06-11-0010 (OnyxC2 MaaS credential-stealer commoditization watchlist — $250/mo / $500/mo HVNC / $6,000 source-code; 210+ application targets; zero VT detections across 71 engines on 2026-05-30 initial upload; two publisher-side relays no publisher independence on underlying claims; 72h ratification clock to 2026-06-14T16:00:00-04:00)
     - will-dormann-researcher   # provisional B; first cited 2026-06-11-0012 (Nightmare Eclipse GreatXML claimed BitLocker bypass — Dormann publicly reported he cannot reproduce; methodological corrective against single-researcher zero-day claims absent vendor confirmation; CERT/CC pedigree + multi-year track record support starting above the unknown-researcher C floor; 72h ratification clock to 2026-06-14T16:00:00-04:00)
+    - sonatype-research         # provisional B; first cited 2026-06-12-0005 (400+ AUR packages hijacked — Atomic Arch Rust credential stealer + eBPF rootkit; two-wave maintainer-account adoption; 8 credential categories targeted; IOCs SHA-256 + atomic-lockfile/js-digest npm + temp.sh + Tor onion; relayed via BleepingComputer + The Hacker News; 72h ratification clock to 2026-06-15T16:00:00-04:00)
+    - sygnia-research           # provisional B; first cited 2026-06-12-0004 (Velvet Ant China-nexus PAM + OpenSSH backdoor on air-gapped East Asia victim with ~10-year dwell since 2016; 9 PAM-module variants + OpenSSH logging credentials/typed commands + operator-side disable switch; THN relay only — Sygnia primary NOT directly retrieved this sweep; 72h ratification clock to 2026-06-15T16:00:00-04:00; awaiting direct retrieval AND human ratification)
+    - tenet-security-research   # provisional B; first cited 2026-06-12-0007 Part A (Agentjacking — 85% success rate injecting malicious instructions into fabricated Sentry error events against Claude Code + Cursor; 2,388 orgs with exploitable DSNs; Sentry declined to patch behavior — content filter only; cited via The Hacker News; Tenet primary NOT directly retrieved; 72h ratification clock to 2026-06-15T16:00:00-04:00; awaiting direct retrieval AND human ratification)
+    - dataminr-research         # provisional B; first cited 2026-06-12-0003 (Handala #014 Cal Water self-claim — Dataminr identifies RTKBase as likely initial-access vector with lateral move to billing; analysis cited via SecurityWeek; RTKBase-IAV layer carries single-source veto WEP 'possibly' carry-forward into Handala dossier deferred to actor-profiler; 72h ratification clock to 2026-06-15T16:00:00-04:00)
+    - bloomberg                 # provisional B PENDING OPERATOR TIER DECISION B/B+/A; first cited 2026-06-12-0008 (IBM + AT&T whistleblower civil-suit unsealing — William Barlow's 2020 qui tam alleges IBM/AT&T concealed federal-contractor breaches; DFARS / CMMC L2/L3 / FCA exposure; Bloomberg broke 2026-06-04, cited via SecurityWeek's In Other News column; conservative B start pending operator decision between AP wire-service A precedent and Tier-1 trade-press B precedent; 72h ratification clock to 2026-06-15T16:00:00-04:00)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

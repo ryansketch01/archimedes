@@ -33144,7 +33144,7 @@ entries:
   # ==========================================================================
 
   - id: 2026-06-12-pm-001-cisa-kev-cve-2026-35273-oracle-peoplesoft-ransomware-use-tag-3-day-fceb-deadline-update-extension-on-flash-1200-and-pm-002
-    covered_in: [2026-06-12-afternoon]
+    covered_in: [2026-06-12-afternoon, 2026-06-13-morning]
     brief_file: threats/briefs/2026-06-12-afternoon.md
     update_of_prior_coverage_log_entry: 2026-06-11-pm-002-oracle-peoplesoft-cve-2026-35273-mitigations-only-firmed-zdi-childs-limited-uon-hibp-455k-enumeration-update-extension-on-flash-1200
     headline: "UPDATE-EXTENSION on 2026-06-11-pm-002 and 2026-06-11-flash-1200-001 — CISA added Oracle PeopleSoft CVE-2026-35273 to KEV catalog 2026-06-12 with dueDate 2026-06-15 (3-day FCEB clock per BOD 26-04) AND `knownRansomwareCampaignUse: Known` taxonomic tag; requiredAction cites Oracle out-of-band mitigations only (no GA patch); federal-attestation framing lifts ITW from prior 'likely' (single-Mandiant-source veto) to 'very_likely' on procedural-attestation layer; KEV ransomware-use tag is procedural-taxonomic NOT actor attribution (Hard Rule 2 binding — CISA does NOT name ShinyHunters); ZDI Childs 'limited exploitation' framing carry-forward stands as independent scale evidence basis; ShinyHunters 100-org self-claim remains separately sourced under single-source veto on scale numbers; analyst ACH H4 (temporally sequential — Mandiant + ZDI captured early limited phase, CISA tag + ShinyHunters self-claim reflect later scaling) leads with 0 inconsistencies; brief hedge 'limited per Mandiant + ZDI primary observation; CISA federal-attestation now stands at procedural-state-change above operational-scale framing; observed scale framings likely lag current operational reality' applied per analyst directive; BOD 26-04 statutorily FCEB-only — does NOT bind DIB primes (carry-forward); DIB structural relevance via enterprise HR/ERP exposure class roughly_even_chance (carry-forward)"
@@ -33224,7 +33224,7 @@ entries:
       - first_party_splunk_hit_on_published_iocs
       - kev_status_change_or_dueDate_extension
     first_covered: 2026-06-12
-    last_covered: 2026-06-12
+    last_covered: 2026-06-13
     retraction: null
     test: false
     notes: |
@@ -33315,7 +33315,7 @@ entries:
       append 2026-06-12-afternoon to covered_in.
 
   - id: 2026-06-12-pm-003-securityweek-handala-hack-014-cal-water-self-claim-rtkbase-iav-iran-mois-restatement-iran-cyber-watch
-    covered_in: [2026-06-12-afternoon]
+    covered_in: [2026-06-12-afternoon, 2026-06-13-morning]
     brief_file: threats/briefs/2026-06-12-afternoon.md
     headline: "Handala Hack (#014, Iran/MOIS per prior US-gov attribution) self-claims California Water Service compromise — 5 GB leak naming Cal Water's Chico District, customer PII, RTKBase administrative credentials, NTRIP source passwords across 7 district mountpoints; Dataminr identifies RTKBase as likely initial access vector with lateral move to billing; Cal Water has not publicly acknowledged; SecurityWeek RESTATES prior US-government public Iran/MOIS attribution (restatement NOT new Archimedes attribution); new aliases per article (Banished Kitten, Dune, Red Sandstorm) flagged for actor-profiler fold-in to dossier #014; water utility NOT A&D — Hard Rule 2 binding: Iranian retaliation framing NOT extrapolated to A&D-prime targeting from single water-utility cycle; Hard Rule 7: PII / credential categories counted at article level only, no values stored; Iran Cyber Watch standing-section primary content; Handala blog NOT directly retrieved (LEGAL-POLICY passive-only operator decision pending)"
     topic_tags:
@@ -33389,7 +33389,7 @@ entries:
       - additional_named_water_utility_or_civilian_infrastructure_victim
       - handala_blog_direct_retrieval_operator_authorization
     first_covered: 2026-06-12
-    last_covered: 2026-06-12
+    last_covered: 2026-06-13
     retraction: null
     test: false
     notes: |
@@ -34095,6 +34095,495 @@ entries:
         rationale: carry_forward_from_2026_06_11_pm_001_bod_26_04_now_binds_two_kev_additions_cve_2026_10520_and_cve_2026_35273_within_3_days_warrants_dedicated_corpus_artifact
         priority: medium
         carry_forward_from: 2026-06-11-pm-001
+
+  # ==========================================================================
+  # 2026-06-13 morning brief — 3 findings referenced
+  # ==========================================================================
+
+  - id: 2026-06-13-am-001-securityaffairs-mandiant-google-tig-cve-2026-35273-unc6240-shinyhunters-active-campaign-455k-victims-update-extension-on-pm-001
+    covered_in: [2026-06-13-morning]
+    brief_file: threats/briefs/2026-06-13-morning.md
+    update_of_prior_coverage_log_entry: 2026-06-12-pm-001-cisa-kev-cve-2026-35273-oracle-peoplesoft-ransomware-use-tag-3-day-fceb-deadline-update-extension-on-flash-1200-and-pm-002
+    headline: "UPDATE-EXTENSION on 2026-06-12-pm-001 cluster — Mandiant + Google Threat Intelligence Group publish 2026-06-11 campaign analysis attributing Oracle PeopleSoft CVE-2026-35273 zero-day exploitation to UNC6240 (ShinyHunters); 14-day zero-day window 2026-05-27 to 2026-06-09; 100+ orgs notified; 68% higher-ed concentration; University of Nottingham confirmed; ~455k HIBP-indexed records; 8-IOC set published (azurenetfiles.net C2 + 176.120.22.24 SSH exfil + meshagent32/64-azure-ops.exe + meshagent64-v2.exe + README-IF-YOU-SEE-THIS-YOUVE-BEEN-HACKED.TXT + [victim]_fanout.sh + wss://azurenetfiles.net:443/agent.ashx); TTPs MeshCentral 1.1.59 weaponized + acme-client + hardcoded C2 + SSH credential spray + zstd exfil; OpSec failure (open Python HTTP 8888 + identical .bash_history across 5 staging hosts) enabled reconstruction; attribution preserved verbatim from Mandiant per Hard Rule 2 — Archimedes does NOT originate; Mandiant + ShinyHunters self-claim corroborate on independent evidence bases (vendor DFIR vs actor self-publication) — single-source veto LIFTS on attribution-identity layer; single-source veto HOLDS on scale layer (100+ orgs / 68% higher-ed / 455k HIBP / UoN-named are single-vendor Mandiant); ZDI Childs limited-exploitation framing carry-forward stays side-by-side — NOT collapsed; 32% non-higher-ed segment unpublished; no A&D-prime victim publicly confirmed in Mandiant 100+ set — A&D structural inference only; FCEB 3-day clock 2026-06-15 inherited via DFARS 252.204-7012 NOT BOD bindingness; Mandiant primary direct retrieval PENDING (RSS stale-persistent failure_count 25); SecurityAffairs is verbatim relay; Splunk sentinel 07:33 EDT 0 hits across 8-IOC set — visibility-limited absence NOT disconfirmation; /new-actor candidacy carry-forward for ShinyHunters operator pending"
+    topic_tags:
+      - cve-2026-35273
+      - oracle-peoplesoft
+      - mandiant-attribution
+      - google-threat-intelligence-group
+      - unc6240
+      - shinyhunters
+      - attribution-identity-corroborated-two-independent-evidence-bases
+      - mandiant-dfir-plus-shinyhunters-self-publication-independent-evidence-basis
+      - single-source-veto-lifted-on-attribution-identity-layer
+      - single-source-veto-holds-on-scale-layer-mandiant-single-vendor-100-plus-68-pct-455k
+      - zdi-childs-limited-exploitation-framing-stays-side-by-side
+      - 14-day-zero-day-window-2026-05-27-to-2026-06-09
+      - university-of-nottingham-confirmed-victim
+      - 455k-hibp-indexed-records
+      - 8-ioc-set-published
+      - meshcentral-1-1-59-weaponized
+      - acme-client-lets-encrypt-c2-cert
+      - hardcoded-c2-static-infrastructure
+      - ssh-credential-spray-zstd-exfil
+      - opsec-failure-open-python-http-plus-bash-history
+      - 68-pct-higher-ed-concentration-with-32-pct-unpublished
+      - no-a-d-prime-victim-publicly-confirmed-structural-inference
+      - fceb-clock-2026-06-15-inherited-via-dfars-not-bod-bindingness
+      - mandiant-primary-rss-stale-persistent-pending-direct-retrieval
+      - splunk-sentinel-0-hits-visibility-limited-absence-not-disconfirmation
+      - new-actor-shinyhunters-candidacy-carry-forward
+      - update-extension-on-2026-06-12-pm-001
+      - active-threats
+    related_actors:
+      - id: null  # UNC6240 / ShinyHunters NOT in roster — /new-actor candidacy carry-forward
+        actor_name: "UNC6240 (ShinyHunters) (Mandiant designation; NOT in roster; /new-actor candidacy operator decision pending)"
+        attribution_in_brief: preserved-verbatim-per-mandiant-archimedes-does-not-originate
+    related_vulns: [CVE-2026-35273]
+    related_campaigns:
+      - shinyhunters_oracle_peoplesoft_zero_day_2026_05_27_to_2026_06_09_mandiant_attribution
+    policy_artifacts:
+      - BOD-26-04
+      - DFARS-252.204-7012
+    finding_ids: [finding-2026-06-13-0002]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      mandiant_gtig_primary_attribution_layer: A2
+      independent_evidence_basis_corroboration_mandiant_plus_shinyhunters_self_claim: A2
+      campaign_timeline_and_ioc_set_layer: A2
+      scale_quantification_layer_single_vendor_mandiant: A2
+      attribution_preserved_verbatim_hard_rule_2: A1
+      unc6240_shinyhunters_NOT_in_roster: A1
+      ad_structural_relevance_no_prime_victim_confirmed: B3
+    wep: very_likely
+    wep_layered:
+      attribution_identity_layer: very_likely  # Independent-evidence-basis corroboration (Mandiant DFIR + ShinyHunters self-claim)
+      campaign_timeline_and_ioc_set_layer: very_likely
+      scale_quantification_layer: likely        # Single-vendor Mandiant on 100+ / 68% / 455k / UoN
+      ad_structural_relevance_layer: likely     # Structural inference; no A&D-prime victim observed
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Scale layer (100+ orgs / 68% higher-ed / 455k HIBP / UoN confirmed) — Mandiant single-vendor; second IR-firm count is veto-lift tripwire"
+    single_source_veto_lifted_layers:
+      - "Attribution-identity layer — Mandiant DFIR + ShinyHunters self-claim independent on Step 4 test (different publishing org, neither cites other, different evidence basis: vendor DFIR vs actor self-publication)"
+    hard_rule_2_framings_load_bearing:
+      - "Attribution preserved verbatim per Mandiant; Archimedes does NOT originate"
+      - "ZDI Childs limited-exploitation framing stays side-by-side — NOT collapsed with Mandiant scale"
+      - "No A&D-prime victim publicly confirmed — structural inference only"
+    hard_rule_6_quote_budget:
+      zdi_childs_limited_exploitation_2_words: "limited exploitation"
+      per_source_max: 1
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: visibility_limited_absence_not_disconfirmation_8_ioc_set_zero_hits
+    analyst_review:
+      method: sat_ach
+      hypothesis_focus: scale_tension_mandiant_100_plus_vs_zdi_limited
+      recommendation: H4_not_in_tension_different_abstraction_layers_brief_does_not_collapse
+      red_team_outcome: published_with_caveats_qualify
+      mandatory_caveats_applied_in_brief: 7
+    resurface_if:
+      - second_ir_firm_publishes_independent_scale_count_unit42_crowdstrike_mstic_volexity
+      - oracle_ga_patch_state_transition_out_of_mitigations_only
+      - mandiant_primary_direct_retrieval_successful_with_independent_corroboration
+      - additional_a_d_prime_named_victim_disclosed_in_100_plus_notified_set
+      - first_party_splunk_hit_on_8_ioc_set
+      - shinyhunters_publishes_named_victims_with_artifacts
+      - cve_2026_35273_ga_patch_release
+      - actor_profiler_decision_new_actor_shinyhunters
+    first_covered: 2026-06-13
+    last_covered: 2026-06-13
+    retraction: null
+    test: false
+    notes: |
+      UPDATE-EXTENSION on 2026-06-12-pm-001 cluster (CISA KEV add).
+      Mandiant + Google Threat Intelligence Group A-grade primary
+      campaign analysis with attribution + 8-IOC set + 14-day timeline.
+      Attribution-identity layer lifts single-source veto on
+      independent-evidence-basis test (Mandiant DFIR + ShinyHunters
+      self-claim). Scale layer holds veto (single-vendor Mandiant).
+      ZDI Childs limited-exploitation framing stays cited side-by-side.
+      A&D-prime victim NOT publicly confirmed — structural inference
+      only. FCEB clock 2026-06-15 inherited via DFARS NOT BOD. Mandiant
+      primary direct retrieval PENDING. /new-actor candidacy operator
+      decision pending. Coverage log action on prior entries: append
+      2026-06-13-morning to covered_in for 2026-06-12-pm-001 and the
+      flash-1200 / 2026-06-11-pm-002 / 2026-06-10-am cluster.
+
+  - id: 2026-06-13-am-002-bleepingcomputer-thn-securityweek-ap-anthropic-fable5-mythos5-usg-export-control-suspension-three-publisher-convergence
+    covered_in: [2026-06-13-morning]
+    brief_file: threats/briefs/2026-06-13-morning.md
+    headline: "USG export-control directive ordered Anthropic 2026-06-12 5:21 PM ET to suspend Fable 5 and Mythos 5 access for foreign nationals worldwide including Anthropic's own foreign-national employees; Anthropic complied via global model takedown rather than user-residency partitioning citing impracticality of partitioning foreign nationals on US soil; Claude Opus 4.8 and other Anthropic models remain available; three publishers converged within ~5 hours (BleepingComputer + The Hacker News + SecurityWeek carrying AP wire); national-security and export-control authorities cited; no specific EAR or ITAR statute named in any of the three sources (verifiable absence); Trump EO ~2026-06-03 voluntary national-security vetting framework reference SecurityWeek/AP only; DoD prior 'supply chain risk' designation The Hacker News only; Commerce Department declined immediate comment per SecurityWeek/AP; Anthropic disputes rationale verbatim 3 short quotes ≤15 words preserved; A&D ITAR/EAR-precedent is structural inference — no A&D-prime Fable 5 / Mythos 5 deployment publicly documented and no concurrent competitor designation (OpenAI Google Meta) announced; per red-team mandate brief MUST NOT frame as A&D-universal regulatory disruption; Hard Rule 2 inapplicable (regulatory action no threat actor named); AP wire-service A-grade independent of BC/THN per Step 4 test; Splunk sentinel 07:34 EDT 0 hits visibility-limited absence not disconfirmation"
+    topic_tags:
+      - usg-export-control-directive
+      - anthropic
+      - fable-5
+      - mythos-5
+      - claude-opus-4-8-remains-available
+      - three-publisher-convergence-within-5-hours
+      - bleepingcomputer-the-hacker-news-securityweek-ap-wire
+      - national-security-and-export-control-authorities-cited
+      - no-specific-ear-or-itar-statute-named-verifiable-absence
+      - trump-eo-2026-06-03-voluntary-ai-vetting-framework-sw-ap-only
+      - dod-prior-supply-chain-risk-designation-thn-only
+      - commerce-department-no-immediate-comment-sw-ap
+      - anthropic-complies-via-global-takedown-not-user-residency-partition
+      - ad-itar-ear-precedent-structural-inference-only
+      - no-a-d-prime-fable5-mythos5-deployment-publicly-documented
+      - no-concurrent-competitor-designation-openai-google-meta
+      - brief-must-not-frame-as-a-d-universal-regulatory-disruption
+      - hard-rule-2-inapplicable-regulatory-action-no-actor
+      - ap-wire-service-a-grade-independent-of-bc-thn-step-4-test
+      - splunk-sentinel-0-hits-visibility-limited-absence
+      - red-team-published-with-caveats-5-mandatory-applied
+      - active-threats
+      - ai-tooling-supply-chain-cluster-5-data-point
+    related_actors: []  # No threat actor in this story; regulatory action
+    related_vulns: []
+    related_campaigns: []
+    policy_artifacts:
+      - Trump-EO-approx-2026-06-03-voluntary-ai-vetting-framework-sw-ap-only
+      - DoD-supply-chain-risk-designation-of-anthropic-thn-only
+      - EAR-ITAR-statute-NOT-named-in-any-of-three-sources
+    finding_ids: [finding-2026-06-13-0001]
+    digraph: A1
+    digraph_layered:
+      cluster_anchor: A1
+      procedural_fact_layer_usg_directive_anthropic_compliance: A1  # Three-publisher convergence within 5 hours
+      authority_citation_layer_usg_export_control_national_security: A1
+      ap_wire_a_grade_independent_corroboration_step_4: A1
+      no_specific_ear_or_itar_statute_cited_verifiable_absence: A1
+      dod_supply_chain_risk_designation_thn_single_source: A2
+      trump_eo_2026_06_03_sw_ap_single_source: A2
+      anthropic_position_disputes_rationale_verbatim_short_quotes: A1
+      ad_itar_ear_precedent_structural_inference_only: B2
+      no_competitor_designation_concurrent_verifiable_absence: A1
+    wep: very_likely
+    wep_layered:
+      procedural_fact_layer: very_likely
+      authority_citation_layer: likely
+      dod_supply_chain_risk_designation_layer: likely  # A2 single-source THN
+      trump_eo_2026_06_03_layer: likely                # A2 single-source SW/AP wire
+      ad_itar_ear_precedent_layer: likely              # Structural inference
+    single_source_veto_applied: false  # Three-publisher independent corroboration on procedural-fact layer LIFTS veto
+    single_source_veto_lifted_layers:
+      - "Procedural-fact layer (USG directive issued, Anthropic compliance, scope foreign nationals worldwide) — three publishers within ~5 hours; AP wire A-grade independent of BC/THN"
+    single_source_veto_holds_sub_layers:
+      - "Trump EO ~2026-06-03 reference — SW/AP only"
+      - "DoD supply-chain-risk designation — THN only"
+    hard_rule_2_framings_load_bearing:
+      - "No threat actor named — Hard Rule 2 inapplicable (regulatory action, not actor activity)"
+      - "Trump EO ~2026-06-03 + Commerce framing SW/AP only; not corroborated by BC or THN"
+      - "DoD supply-chain-risk designation THN only; not yet cross-corroborated"
+      - "'Voluntary EO framework' coexists with mandatory-takedown enforcement observed"
+      - "A&D ITAR/EAR-precedent is structural inference — no A&D-prime deployment documented"
+      - "Brief must NOT frame as A&D-universal regulatory disruption"
+    hard_rule_6_quote_budget:
+      anthropic_dispute_rationale_3_short_verbatim_quotes_le_15_words_each_paraphrased_in_brief: true
+      dod_supply_chain_risk_2_words: "supply chain risk"
+      sw_ap_voluntary_eo_framework_3_words_scare_quote: "voluntary EO framework"
+      per_source_max: 1
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: visibility_limited_absence_not_disconfirmation_anthropic_fable_mythos_export_control_sentinel_0_hits
+    analyst_review:
+      method: sat_ach_plus_sat_kac
+      ach_question: rationale_layer_usg_anthropic_dispute_h1_h2_h3_h4
+      ach_ranking: H4_zero_inconsistencies_non_diagnostic_H3_rank_2_one_inconsistency_best_supported_single_driver
+      kac_classifications: 1_sound_6_qualify_0_test_for_a_d_structural_relevance
+      red_team_outcome: published_with_caveats_qualify_5_mandatory_caveats_applied
+    resurface_if:
+      - commerce_department_publishes_specific_ear_or_itar_statute_basis
+      - second_frontier_ai_vendor_designation_within_30_days_openai_google_meta
+      - anthropic_fable_5_mythos_5_restoration_timeline_announced
+      - dod_makes_second_public_supply_chain_risk_designation_against_another_vendor
+      - trump_eo_text_published_clarifying_framework
+      - a_d_prime_named_with_fable_5_or_mythos_5_deployment_evidence
+      - first_party_splunk_hit_on_anthropic_api_endpoints
+      - ap_provisional_source_grade_ratification_outcome_2026_06_14_clock
+    first_covered: 2026-06-13
+    last_covered: 2026-06-13
+    retraction: null
+    test: false
+    notes: |
+      New topic — no direct predecessor in corpus. Procedural-fact layer
+      anchored at A1 via three-publisher convergence within ~5 hours
+      (BC + THN + SW/AP). AP wire-service A-grade independent of BC/THN
+      per Step 4 test (different publishing org, neither cites other,
+      different evidence basis: UK angle / DoD prior / Trump EO + Commerce
+      response). Procedural fact A1 attests to USG directive issued
+      2026-06-12 5:21 PM ET ordering suspension of Fable 5 and Mythos 5
+      for foreign nationals worldwide; Anthropic complied via global
+      takedown rather than residency partition; Opus 4.8 and other
+      Anthropic models remain available; national-security and
+      export-control authorities cited but no specific EAR or ITAR
+      statute named. Sub-layered claims (EO date, DoD designation, A&D
+      precedent) at "likely" per single-source provenance. 5 mandatory
+      red-team caveats applied verbatim in brief. Adjacent context to
+      AI-tooling supply-chain cluster (LangGraph + Agentjacking +
+      Outsider/Gemini + AUR Atomic Arch) — Threat Detection Weekly
+      candidate for Wednesday synthesis.
+
+  - id: 2026-06-13-am-003-securityaffairs-handala-cal-water-iran-mois-dataminr-rtkbase-ntrip-second-publisher-corroboration-update-extension-on-pm-003
+    covered_in: [2026-06-13-morning]
+    brief_file: threats/briefs/2026-06-13-morning.md
+    update_of_prior_coverage_log_entry: 2026-06-12-pm-003-securityweek-handala-hack-014-cal-water-self-claim-rtkbase-iav-iran-mois-restatement-iran-cyber-watch
+    headline: "UPDATE-EXTENSION on 2026-06-12-pm-003 — SecurityAffairs published 2026-06-12 17:34 EDT a second independent B-grade publisher relay of Dataminr's Handala / California Water Service campaign analysis corroborating yesterday's SecurityWeek primary on the same Dataminr analytic substrate; NEW substantive material vs yesterday: explicit ~2M-customer impact figure across 7 enumerated districts (Bakersfield Chico Salinas Stockton Visalia San Mateo + regional engineering); Handala's own retaliation-for-US-actions-in-Iran motive in 13-word self-publication quote 'ability to disrupt water access but chose not to. For now.'; Stryker incident invoked as destructive-escalation precedent within same campaign cycle (detail NOT elaborated in article); wiper toolkit explicitly enumerated (win.handala / Handala Wiper / Hamsa Wiper MBR-overwriting); Dataminr recommendation block (rotate credentials take RTKBase offline review network segmentation); Handala = roster #014 HIGH; Iran/MOIS attribution RESTATED per prior US-government public attribution and roster (Void Manticore / Storm-0842 / DEV-0842); new aliases from yesterday (Banished Kitten Dune Red Sandstorm) remain PENDING actor-profiler fold-in this finding does NOT reaffirm; cluster anchor B3 underlying claim layer unchanged from yesterday; SW + SA share Dataminr substrate — independent publishers NOT independent on underlying claim; OT/ICS disruption explicitly NOT confirmed in this incident per Dataminr (RTKBase = GPS-correction access vector NOT SCADA chemical-dosing); Cal Water still silent at SA publication layer; Hard Rule 2 binding constraint preserved — Iranian retaliation NOT extrapolated to A&D-prime targeting from single water-utility cycle; Stryker NOT cross-walked beyond Handala #014; Hard Rule 7 binding — credentials/PII categories and counts only no values stored anywhere; Splunk sentinel 07:33 EDT 0 hits visibility-limited absence not disconfirmation; Iran Cyber Watch standing-section primary content"
+    topic_tags:
+      - handala-hack
+      - actor-014
+      - iran-mois-attribution-restatement-not-new-archimedes
+      - california-water-service-cal-water
+      - dataminr-third-party-analytic-primary
+      - securityaffairs-second-publisher-relay
+      - 2-million-customer-pii-figure-new-vs-yesterday
+      - 7-districts-enumerated-bakersfield-chico-salinas-stockton-visalia-san-mateo-plus-regional-engineering
+      - handala-explicit-retaliation-motive-13-word-self-publication-quote
+      - stryker-incident-destructive-escalation-precedent-detail-not-elaborated
+      - wiper-toolkit-named-win-handala-handala-wiper-hamsa-wiper-mbr-overwriting
+      - dataminr-recommendation-block-rotate-credentials-rtkbase-offline-segmentation
+      - rtkbase-likely-initial-access-vector-not-scada-chemical-dosing
+      - rtkbase-783-continuous-hours-uptime-carry-forward
+      - rtkbase-web-management-interface-tcp-10000
+      - cal-water-no-public-acknowledgment-still-silent
+      - sw-plus-sa-share-dataminr-substrate-not-independent-on-claim
+      - new-aliases-banished-kitten-dune-red-sandstorm-pending-actor-profiler-fold-in
+      - hard-rule-2-iranian-retaliation-NOT-extrapolated-to-a-d-prime-from-single-water-utility-cycle
+      - hard-rule-2-stryker-not-cross-walked-beyond-handala-014
+      - hard-rule-7-credentials-pii-categories-no-values-stored
+      - splunk-sentinel-0-hits-visibility-limited-absence
+      - iran-cyber-watch-standing-section-primary-content
+      - update-extension-on-2026-06-12-pm-003
+    related_actors:
+      - id: "014"
+        actor_name: "Handala Hack"
+        attribution_in_brief: iran-mois-restated-per-prior-us-government-attribution-and-roster
+        aliases_in_brief: ["Void Manticore", "Storm-0842", "DEV-0842"]
+        aliases_pending_actor_profiler_fold_in: ["Banished Kitten", "Dune", "Red Sandstorm"]
+    related_vulns: []
+    related_campaigns:
+      - handala_cal_water_2026_06_self_publication_campaign_cycle_carry_forward
+      - iran_retaliation_us_actions_in_iran_cycle_carry_forward
+    related_malware_families:
+      - win.handala
+      - "Handala Wiper"
+      - "Hamsa Wiper"
+    finding_ids: [finding-2026-06-13-0003]
+    digraph: B3
+    digraph_layered:
+      cluster_anchor: B3
+      actor_self_publication_layer_carry_forward: B3
+      third_party_analytic_layer_dataminr_carry_forward_extended: B3
+      attribution_restatement_layer_iran_mois_void_manticore_storm_0842: A2
+      wiper_toolkit_destructive_escalation_layer_stryker_unelaborated: B3
+      ot_ics_disruption_explicitly_NOT_confirmed: A1
+      cal_water_no_public_acknowledgment_carry_forward: A1
+      ad_structural_relevance_layer_hard_rule_2_binding: B3
+      sw_plus_sa_independent_publishers_NOT_independent_on_dataminr_substrate: A1
+    wep: likely
+    wep_layered:
+      actor_self_publication_layer: possibly
+      third_party_analytic_layer: possibly
+      attribution_restatement_layer: likely
+      wiper_toolkit_destructive_escalation_layer: possibly
+      ad_structural_relevance_layer: possibly
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Third-party analytic substrate (Dataminr) — both SW and SA relay Dataminr verbatim; not independent on underlying claim"
+      - "Victim-acknowledgment layer — Cal Water still has no public acknowledgment"
+    hard_rule_2_framings_load_bearing:
+      - "Iran/MOIS attribution RESTATED per prior US-government public attribution and roster #014 — NOT new Archimedes attribution"
+      - "Iranian retaliation NOT extrapolated to A&D-prime targeting from single water-utility cycle"
+      - "Stryker NOT cross-walked beyond Handala #014"
+      - "Banished Kitten / Dune / Red Sandstorm aliases carry-forward PENDING actor-profiler — this finding does NOT reaffirm or cross-walk"
+    hard_rule_6_quote_budget:
+      handala_self_publication_13_word_motive_within_cap: "ability to disrupt water access but chose not to. For now."
+      per_source_max: 1
+    hard_rule_7_framings_load_bearing:
+      - "Credentials counted by category and count only — no values stored (RTKBase admin set + 7 NTRIP mountpoint passwords + 1 IP block enumeration)"
+      - "Customer billing PII categories only — ~2M customers, no values stored"
+    splunk_first_party:
+      status: clean_at_compose
+      hard_rule_8_framing: visibility_limited_absence_not_disconfirmation_handala_cal_water_rtkbase_ntrip_void_manticore_sentinel_0_hits
+    analyst_review:
+      method: sat_ach_plus_sat_kac
+      ach_question: stryker_incident_reference_meaning_at_sa_relay_layer
+      ach_ranking: H2_underspecified_at_relay_zero_inconsistencies_H3_pattern_framing_tied_H1_well_known_two_inconsistencies
+      kac_classifications: 1_sound_3_qualify_3_test_for_handala_restraint_quote_reading
+      kac_critical_finding: stryker_destructive_escalation_precedent_CUTS_AGAINST_restraint_reading
+      analyst_directive: report_quote_verbatim_within_hard_rule_6_cap_do_NOT_interpret_as_forward_forecast
+      red_team_outcome: red_team_review_not_required_wep_ceiling_below_very_likely_threshold
+    resurface_if:
+      - second_ir_firm_or_vendor_independent_analytic_corroboration_of_dataminr_substrate
+      - cal_water_public_acknowledgment
+      - dataminr_original_report_direct_retrieval
+      - second_handala_water_utility_campaign_cycle
+      - stryker_incident_detail_surfacing_in_subsequent_dataminr_or_independent_reporting
+      - ot_ics_disruption_confirmation_in_any_handala_campaign_cycle
+      - actor_profiler_update_tracking_fires_on_014_with_banished_kitten_dune_red_sandstorm_fold_in
+      - first_party_splunk_hit_on_rtkbase_ntrip_or_handala_tokens
+      - geopolitical_escalation_us_iran_kinetic_engagement_cycle_advance
+    first_covered: 2026-06-13
+    last_covered: 2026-06-13
+    retraction: null
+    test: false
+    notes: |
+      UPDATE-EXTENSION on 2026-06-12-pm-003 (yesterday's SecurityWeek
+      primary). SecurityAffairs is the second B-grade media-publisher
+      relay of the SAME Dataminr analytic substrate — independent
+      publishers NOT independent on underlying claim. NEW substantive
+      material this cycle: explicit ~2M-customer figure + Handala's
+      13-word retaliation motive quote + Stryker destructive-escalation
+      precedent reference (detail UNELABORATED) + wiper toolkit
+      enumerated + Dataminr recommendation block. Hard Rule 2 binding
+      constraint preserved throughout: Iran/MOIS attribution restated
+      NOT originated; Iranian retaliation NOT extrapolated to A&D;
+      Stryker NOT cross-walked beyond #014; new aliases carry-forward
+      PENDING actor-profiler. Hard Rule 7 binding: credentials and
+      PII categories and counts only — no values stored anywhere. KAC
+      critical finding: Stryker destructive-escalation precedent CUTS
+      AGAINST restraint reading — brief reports the quote verbatim and
+      does NOT interpret as forward forecast. Coverage log action on
+      prior entries: append 2026-06-13-morning to covered_in for
+      2026-06-12-pm-003 and update last_covered to 2026-06-13.
+
+  - id: 2026-06-13-am-brief-meta
+    covered_in: [2026-06-13-morning]
+    brief_file: threats/briefs/2026-06-13-morning.md
+    headline: "2026-06-13 morning brief metadata — 3 findings referenced (2 UPDATE-extensions on prior-day clusters: PeopleSoft Mandiant attribution + Handala Cal Water SA second-relay; 1 new: Anthropic USG export-control directive); ~895-word Layer 1 (pragmatic interpretation at soft cap per 2026-06-12-pm precedent); Layer 2 under 1900-char ceiling (3 bullets after compression); pre-flight 13/13 pass after Layer 2 char-budget compression and quote-discipline normalization; TLP:GREEN; red-team mandatory caveats applied verbatim per directive (7 PeopleSoft + 5 Anthropic + Handala carry-forward); Hard Rule 2 preservation: Mandiant UNC6240=ShinyHunters attribution preserved verbatim NOT originated; Handala Iran/MOIS restatement NOT new Archimedes attribution; Banished Kitten/Dune/Red Sandstorm aliases NOT cross-walked; Stryker NOT cross-walked beyond #014; Iranian retaliation NOT extrapolated to A&D from single water-utility cycle; Anthropic regulatory action — no threat actor named (Hard Rule 2 inapplicable); Hard Rule 6 quote discipline: 4 quotes total (ZDI Childs 'limited exploitation' 2 words; DoD per THN 'supply chain risk' 3 words; SW/AP scare-quote 'voluntary EO framework' 3 words; Handala self-publication 'ability to disrupt water access but chose not to. For now.' 13 words); Hard Rule 7 preservation: Handala credential and PII categories only — no values stored; Hard Rule 8 preservation: Splunk sentinel 0 hits noted as visibility-limited absence NOT disconfirmation on both PeopleSoft 8-IOC set and Handala/RTKBase/NTRIP tokens; A&D structural inference framings for PeopleSoft and Anthropic — no A&D-prime victim publicly confirmed in either; AI-tooling cluster 5-data-point synthesis hand-off to Threat Detection Weekly Wednesday"
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - 3-findings-referenced
+      - 2-update-extensions-on-prior-day-clusters
+      - 1-new-finding-anthropic-export-control
+      - layer-1-approximately-895-words-soft-cap-pragmatic
+      - layer-2-under-1900-char-ceiling-3-bullets
+      - pre-flight-13-13-pass-after-layer-2-compression-and-quote-normalization
+      - tlp-green
+      - red-team-mandatory-caveats-applied-verbatim-7-plus-5-plus-carry-forward
+      - hard-rule-2-preservation-multiple-layers
+      - hard-rule-6-quote-discipline-4-quotes-1-per-source-all-under-15-words
+      - hard-rule-7-preservation-handala-credentials-pii-categories-no-values
+      - hard-rule-8-preservation-splunk-sentinel-0-hits-visibility-limited-absence
+      - a-d-structural-inference-no-direct-prime-victim-in-either-finding
+      - ai-tooling-cluster-5-data-point-handoff-to-threat-detection-weekly-wednesday
+    finding_ids: []
+    digraph: A2  # composite — A2 PeopleSoft Mandiant + A1 Anthropic procedural + B3 Handala
+    wep: very_likely
+    layer_1_word_count: 895
+    layer_2_char_ceiling: 1900
+    layer_2_compliance: pass_under_ceiling
+    preflight_iterations: 5
+    preflight_regenerations:
+      - section: layer_2_discord_summary
+        reason: initial_4_bullet_draft_at_approximately_2700_chars_iteratively_compressed_to_3_bullets_under_1900_ceiling_via_folding_cve_vuln_bullet_into_peoplesoft_active_threat_bullet
+        iterations: 4
+      - section: layer_1_word_count
+        reason: initial_draft_at_approximately_1011_words_compressed_to_895_via_caveat_consolidation_and_sector_section_redundancy_removal
+        iterations: 2
+      - section: quote_discipline_normalization
+        reason: zdi_childs_limited_quoted_twice_in_layer_1_layer_2_normalized_to_unquoted_paraphrase_dod_supply_chain_risk_quoted_twice_in_layer_1_layer_2_layer_2_normalized_to_unquoted_paraphrase_handala_quoted_twice_in_layer_1_layer_2_layer_2_normalized_to_unquoted_paraphrase
+        iterations: 1
+    pre_flight_check:
+      total: 13
+      passed: 13
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass_update_flags_applied_on_peoplesoft_mandiant_attribution_and_handala_second_relay
+        lead_states_impact_not_context: pass_lead_states_mandiant_gtig_attribute_peoplesoft_zero_day_to_unc6240_shinyhunters_with_scale_numbers_and_independent_evidence_basis_corroboration
+        no_banned_phrases: pass
+        standing_sections_present: pass_ad_sector_focus_via_structural_inference_summary_iran_cyber_watch_via_handala_update
+        wep_vocabulary_used_with_probability_bands: pass_very_likely_likely_possibly_used
+        word_count_within_target: pass_at_soft_cap_realistic_layer_1_approximately_895_words_within_pragmatic_doctrine_interpretation_per_2026_06_12_pm_brief_meta_precedent
+        actor_vuln_references_linked: pass_unc1549_linked_to_roster_profile_md_unc6240_shinyhunters_NOT_in_roster_flagged_handala_014_in_roster_aliases_pending_fold_in
+        tlp_marked_where_non_clear: pass_tlp_green_brief_level
+        single_source_veto_respected: pass_peoplesoft_attribution_identity_lifted_via_step_4_independent_evidence_basis_peoplesoft_scale_layer_holds_veto_anthropic_procedural_fact_layer_three_publisher_convergence_lifts_veto_handala_third_party_analytic_substrate_holds_veto
+        quote_discipline_under_15_words_max_1_per_source: pass_4_quotes_zdi_childs_limited_exploitation_2_words_dod_per_thn_supply_chain_risk_3_words_sw_ap_voluntary_eo_framework_3_words_scare_quote_handala_chose_not_to_for_now_13_words
+        discord_summary_layer_2_compliant: pass_3_bullets_greeting_natural_language_dates_source_linked_headlines_no_themed_voice_no_iso_dates_under_1900_chars
+      red_team_mandatory_caveats_applied_verbatim:
+        - finding_id: finding-2026-06-13-0001
+          caveats_applied:
+            - "Trump EO ~2026-06-03 + Commerce framing SW/AP only (not BC or THN corroborated)"
+            - "DoD 'supply chain risk' designation THN-only"
+            - "'Voluntary EO framework' coexists with mandatory-takedown enforcement observed"
+            - "A&D ITAR/EAR-precedent is STRUCTURAL INFERENCE — no A&D-prime Fable 5 / Mythos 5 deployment publicly documented"
+            - "Brief MUST NOT frame as A&D-universal regulatory disruption"
+          applied_in_brief: true
+        - finding_id: finding-2026-06-13-0002
+          caveats_applied:
+            - "UNC6240 (ShinyHunters) attribution preserved verbatim from Mandiant; Archimedes does NOT originate"
+            - "Mandiant 100+ + ZDI Childs 'limited exploitation' cited side-by-side, not collapsed"
+            - "Mandiant single-vendor on scale; second IR-firm count is veto-lift tripwire"
+            - "68% higher-ed; 32% non-higher-ed UNPUBLISHED; A&D-prime inclusion is SPECULATIVE — frame as structural inference; no A&D-prime victim publicly confirmed"
+            - "CISA KEV 2026-06-15 3-day clock is FCEB-bound; A&D primes inherit via DFARS flow-down — NOT presented as A&D-prime-universal deadline"
+            - "Mandiant primary retrieval PENDING — reach-through is SecurityAffairs verbatim relay"
+            - "Splunk sentinel 0 hits = visibility-limited absence, NOT disconfirmation"
+          applied_in_brief: true
+        - finding_id: finding-2026-06-13-0003
+          caveats_applied:
+            - "SW + SA share same Dataminr substrate — independent publishers, NOT independent on underlying claim"
+            - "OT/ICS disruption NOT confirmed (RTKBase = GPS-correction access vector, not SCADA chemical-dosing)"
+            - "Cal Water still silent at SA publication layer"
+            - "Iranian retaliation NOT extrapolated to A&D from single water-utility cycle (Hard Rule 2)"
+            - "Stryker NOT cross-walked beyond Handala #014 (Hard Rule 2)"
+            - "Credentials / PII counted by category only — no values stored (Hard Rule 7)"
+            - "Banished Kitten / Dune / Red Sandstorm carry-forward PENDING actor-profiler; not reaffirmed in today's SA piece"
+          applied_in_brief: true
+    coverage_log_actions_required:
+      - prior_entry: 2026-06-12-pm-001
+        action: append_2026-06-13-morning_to_covered_in_update_last_covered_to_2026-06-13
+      - prior_entry: 2026-06-12-pm-003
+        action: append_2026-06-13-morning_to_covered_in_update_last_covered_to_2026-06-13
+      - prior_entry: 2026-06-11-pm-002
+        action: append_2026-06-13-morning_to_covered_in_update_last_covered_to_2026-06-13
+      - prior_entry: 2026-06-11-flash-1200-001
+        action: append_2026-06-13-morning_to_covered_in_update_last_covered_to_2026-06-13
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding-2026-06-13-0001
+        - finding-2026-06-13-0002
+        - finding-2026-06-13-0003
+      add_2026_06_13_morning_to_published_in_briefs_for_each
+    operator_action_items:
+      - id: shinyhunters_unc6240_new_actor_decision_carry_forward
+        action: operator_to_decide_invocation_of_slash_new_actor_shinyhunters_with_unc6240_alias
+        rationale: carry_forward_now_includes_mandiant_a_grade_attribution_corroborating_self_claim_on_independent_evidence_basis_plus_8_ioc_set_plus_14_day_zero_day_window_plus_100_plus_victim_profile_plus_uon_named_plus_455k_hibp
+        priority: highest
+        decision_pending: true
+      - id: mandiant_primary_direct_retrieval_for_cve_2026_35273_attribution
+        action: collector_or_vuln_tracker_to_retrieve_mandiant_blog_primary_directly_when_rss_recovers
+        rationale: mandiant_rss_stale_persistent_failure_count_25_securityaffairs_is_verbatim_relay_direct_primary_retrieval_lifts_independence_and_likely_carries_richer_iocs
+        priority: highest
+      - id: cve_2026_35273_vuln_tracker_dossier_scaffold
+        action: vuln_tracker_to_scaffold_cve_2026_35273_dossier_under_threats_vulnerabilities
+        rationale: cve_now_has_mandiant_8_ioc_set_plus_14_day_timeline_plus_unc6240_shinyhunters_attribution_plus_cisa_kev_listing_warrants_dedicated_dossier_no_longer_just_index_entry
+        priority: high
+      - id: handala_014_actor_profiler_fold_in_banished_kitten_dune_red_sandstorm
+        action: actor_profiler_to_fold_in_banished_kitten_dune_red_sandstorm_aliases_to_014_dossier_and_create_handala_profile_md_if_missing
+        rationale: carry_forward_from_2026_06_12_pm_003_now_two_publisher_cycles_without_resolution
+        priority: high
+      - id: dataminr_handala_original_report_direct_retrieval
+        action: collector_to_retrieve_dataminr_handala_cal_water_original_report_directly_for_stryker_incident_detail_and_other_substantive_text
+        rationale: stryker_incident_detail_NOT_elaborated_in_sa_relay_ach_h1_h2_h3_indeterminate_at_relay_layer_dataminr_primary_resolves
+        priority: high
+      - id: ap_provisional_a_grade_ratification_clock_2026_06_14_0818
+        action: librarian_to_check_ap_source_grade_ratification_outcome_at_clock_expiry
+        rationale: ap_provisional_a_grade_anchors_step_4_independent_corroboration_on_anthropic_finding_eo_date_sub_layer_brittle_to_outcome
+        priority: high
+        clock_expiry: 2026-06-14T08:18:00-04:00
+      - id: anthropic_fable_5_mythos_5_restoration_timeline_watch
+        action: collector_to_monitor_for_anthropic_restoration_announcement_and_competitor_designation
+        rationale: kac_a2_a5_brittleness_resolution_30_day_tripwire_h2_precedent_setting_vs_h1_specific_capability
+        priority: high
+        watch_horizon: 30_days
+      - id: ai_tooling_cluster_5_data_point_threat_detection_weekly_synthesis_carry_forward
+        action: briefer_or_threat_detection_weekly_briefer_to_synthesize_ai_as_target_vs_ai_as_tool_dual_vector_now_extended_to_5_data_points_with_anthropic_export_control_layer_added
+        rationale: 5_data_points_langflow_itw_langgraph_3_cve_agentjacking_outsider_gemini_unit_42_trust_no_skill_now_plus_anthropic_usg_export_control_regulatory_action_layer_synthesis_candidate
+        priority: high
+        target_brief: 2026-06-17-threat-detection-weekly
+        carry_forward_from: 2026-06-12-pm-brief-meta
 
 # ============================================================================
 # Valid resurface_if conditions

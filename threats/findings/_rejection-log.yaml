@@ -8683,3 +8683,97 @@ _meta:
           robotics R&D structural relevance.
   prior_run: afternoon-20260511-160000
   prior_run_rejections: 0
+
+  - rejection_id: reject-2026-06-13-0001
+    rejected_at: 2026-06-13T08:20:00-04:00
+    grading_run_id: morning-20260613-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-13-am-004-theregister-nanoclaw-jfrog-ai-agent-supply-chain-vendor-announcement-claude-md-reference
+    cluster_topic: >
+      The Register (ai-and-ml desk) coverage of a NanoCo AI announcement
+      at a JFrog event in San Francisco: NanoClaw — described as a
+      secure agent framework — will use JFrog's vetted package
+      registries when AI agents fetch external tools and libraries.
+      Paired with thought-leadership commentary from NanoClaw creator
+      and NanoCo AI co-founder Gavriel Cohen on AI agent safety
+      architecture (capability restriction over behavioral constraint;
+      Claude.md-as-instruction-file framing). Adjacent to the AI-
+      tooling supply-chain cluster (finding-2026-06-12-0007 Tenet
+      Security Agentjacking + LangGraph 3-CVE chain; finding-2026-06-
+      12-0005 Atomic Arch / AUR packages; finding-2026-06-13-0001
+      Anthropic Fable 5 / Mythos 5 USG export-control suspension).
+    rejection_reasons:
+      - vendor_announcement_not_incident_grade
+      - no_threat_actor_no_cve_no_intrusion_no_ioc
+      - single_b_grade_source_uncorroborated_would_be_b3
+      - falls_below_b2_action_tier_inclusion_threshold
+      - commentary_quality_thought_leadership_not_finding_class
+      - cluster_context_paragraph_in_brief_is_appropriate_disposition_briefer_handoff
+    sources:
+      - source_yaml_id: theregister
+        grade: B
+        provisional: true
+        provisional_since: 2026-05-29
+        role: >
+          Unsigned The Register staff byline 2026-06-12 19:07 EDT.
+          Vendor-announcement-class coverage of NanoCo AI announcement
+          at JFrog event in San Francisco. Single source; no
+          corroborating publisher this sweep.
+    would_be_digraph: B3
+    would_be_wep_per_claim:
+      vendor_announcement_factual_layer: likely      # B3 + single B-grade source + uncorroborated; vendor announcements are typically high-confidence on factual existence (JFrog integration was announced) but commentary-class
+      cohen_commentary_philosophical_framing_layer: possibly  # B3 + single-source + interpretive content
+      ad_structural_relevance_capability_restriction_philosophy_layer: possibly  # Structural inference; no operational A&D impact
+    inclusion_threshold_test:
+      flash_b2_minimum: FAILS_below_threshold
+      daily_brief_action_b2_minimum: FAILS_below_threshold
+      daily_brief_monitoring_c3_minimum: BORDERLINE_PASS_but_disposition_below
+      weekly_synthesis_c3_minimum: BORDERLINE_PASS_for_cluster_context_only
+      actor_profile_update_b2_minimum: NOT_APPLICABLE_no_actor
+      rationale: >
+        Cluster does not clear B2 action-tier threshold (single B-grade
+        source + vendor-announcement class + no incident content). On
+        the C3 monitoring threshold the cluster is technically eligible
+        as a standalone monitoring finding but the appropriate
+        disposition is cluster-context paragraph in the briefer's
+        morning brief AI-tooling supply-chain cluster framing, NOT a
+        standalone monitoring finding wrapper. Rejecting at the
+        standalone-finding level preserves grader rigor; briefer
+        retains discretion to surface the NanoClaw + JFrog vendor
+        announcement as cluster context alongside the higher-confidence
+        finding-2026-06-13-0001 (Anthropic Fable 5 / Mythos 5 USG
+        export-control suspension) and the carry-forward finding-2026-
+        06-12-0007 (Tenet Security Agentjacking) cluster members.
+    cluster_context_briefer_handoff_recommendation: >
+      Briefer: consider including a one-sentence reference to the
+      NanoClaw + JFrog vetted-registry-integration vendor announcement
+      as defensive-architecture cluster context alongside the morning
+      brief's higher-confidence AI-tooling items (finding-2026-06-13-
+      0001 Anthropic export-control + carry-forward finding-2026-06-12-
+      0007 Tenet Security Agentjacking + finding-2026-06-12-0005 AUR
+      packages). The Cohen capability-restriction-over-behavioral-
+      constraint articulation is a useful defensive frame for the
+      AI-tooling supply-chain cluster but does NOT warrant a standalone
+      finding wrapper. Alternative disposition: defer to Threat
+      Detection Weekly synthesis for the developing AI-tooling
+      defensive-architecture pattern.
+    review_notes: >
+      If a future raw-signal item surfaces (a) operational adoption
+      of NanoClaw by an A&D prime, (b) a specific defensive-pattern
+      win against the AI-tooling supply-chain offensive items already
+      in the corpus (Agentjacking / AUR packages / LangGraph), or
+      (c) a second-publisher cross-corroboration of NanoCo AI's
+      defensive architecture claims, regrade as a candidate for
+      promotion. Keep 1 year per LEGAL-POLICY retention. Watch-config
+      developer-ai-tooling-supply-chain cluster keyword set already
+      catches future NanoClaw / OpenClaw / NanoCo AI / Gavriel Cohen
+      references.
+    hard_rule_compliance:
+      hard_rule_2_no_novel_attribution: not_applicable_no_actor
+      hard_rule_6_15_word_quote: |
+        Raw signal flagged Cohen quote at 50 words for briefer trim.
+        Rejection rationale paraphrases Cohen's commentary throughout;
+        no verbatim quote above 15 words propagated into this entry.
+      hard_rule_7_credentials_radioactive: not_applicable_no_credentials_surfaced

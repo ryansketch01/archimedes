@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-12T16:00:00-04:00
+last_updated: 2026-06-13T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -33144,7 +33144,7 @@ entries:
   # ==========================================================================
 
   - id: 2026-06-12-pm-001-cisa-kev-cve-2026-35273-oracle-peoplesoft-ransomware-use-tag-3-day-fceb-deadline-update-extension-on-flash-1200-and-pm-002
-    covered_in: [2026-06-12-afternoon, 2026-06-13-morning]
+    covered_in: [2026-06-12-afternoon, 2026-06-13-morning, 2026-06-13-afternoon]
     brief_file: threats/briefs/2026-06-12-afternoon.md
     update_of_prior_coverage_log_entry: 2026-06-11-pm-002-oracle-peoplesoft-cve-2026-35273-mitigations-only-firmed-zdi-childs-limited-uon-hibp-455k-enumeration-update-extension-on-flash-1200
     headline: "UPDATE-EXTENSION on 2026-06-11-pm-002 and 2026-06-11-flash-1200-001 — CISA added Oracle PeopleSoft CVE-2026-35273 to KEV catalog 2026-06-12 with dueDate 2026-06-15 (3-day FCEB clock per BOD 26-04) AND `knownRansomwareCampaignUse: Known` taxonomic tag; requiredAction cites Oracle out-of-band mitigations only (no GA patch); federal-attestation framing lifts ITW from prior 'likely' (single-Mandiant-source veto) to 'very_likely' on procedural-attestation layer; KEV ransomware-use tag is procedural-taxonomic NOT actor attribution (Hard Rule 2 binding — CISA does NOT name ShinyHunters); ZDI Childs 'limited exploitation' framing carry-forward stands as independent scale evidence basis; ShinyHunters 100-org self-claim remains separately sourced under single-source veto on scale numbers; analyst ACH H4 (temporally sequential — Mandiant + ZDI captured early limited phase, CISA tag + ShinyHunters self-claim reflect later scaling) leads with 0 inconsistencies; brief hedge 'limited per Mandiant + ZDI primary observation; CISA federal-attestation now stands at procedural-state-change above operational-scale framing; observed scale framings likely lag current operational reality' applied per analyst directive; BOD 26-04 statutorily FCEB-only — does NOT bind DIB primes (carry-forward); DIB structural relevance via enterprise HR/ERP exposure class roughly_even_chance (carry-forward)"
@@ -33315,7 +33315,7 @@ entries:
       append 2026-06-12-afternoon to covered_in.
 
   - id: 2026-06-12-pm-003-securityweek-handala-hack-014-cal-water-self-claim-rtkbase-iav-iran-mois-restatement-iran-cyber-watch
-    covered_in: [2026-06-12-afternoon, 2026-06-13-morning]
+    covered_in: [2026-06-12-afternoon, 2026-06-13-morning, 2026-06-13-afternoon]
     brief_file: threats/briefs/2026-06-12-afternoon.md
     headline: "Handala Hack (#014, Iran/MOIS per prior US-gov attribution) self-claims California Water Service compromise — 5 GB leak naming Cal Water's Chico District, customer PII, RTKBase administrative credentials, NTRIP source passwords across 7 district mountpoints; Dataminr identifies RTKBase as likely initial access vector with lateral move to billing; Cal Water has not publicly acknowledged; SecurityWeek RESTATES prior US-government public Iran/MOIS attribution (restatement NOT new Archimedes attribution); new aliases per article (Banished Kitten, Dune, Red Sandstorm) flagged for actor-profiler fold-in to dossier #014; water utility NOT A&D — Hard Rule 2 binding: Iranian retaliation framing NOT extrapolated to A&D-prime targeting from single water-utility cycle; Hard Rule 7: PII / credential categories counted at article level only, no values stored; Iran Cyber Watch standing-section primary content; Handala blog NOT directly retrieved (LEGAL-POLICY passive-only operator decision pending)"
     topic_tags:
@@ -34101,7 +34101,7 @@ entries:
   # ==========================================================================
 
   - id: 2026-06-13-am-001-securityaffairs-mandiant-google-tig-cve-2026-35273-unc6240-shinyhunters-active-campaign-455k-victims-update-extension-on-pm-001
-    covered_in: [2026-06-13-morning]
+    covered_in: [2026-06-13-morning, 2026-06-13-afternoon]
     brief_file: threats/briefs/2026-06-13-morning.md
     update_of_prior_coverage_log_entry: 2026-06-12-pm-001-cisa-kev-cve-2026-35273-oracle-peoplesoft-ransomware-use-tag-3-day-fceb-deadline-update-extension-on-flash-1200-and-pm-002
     headline: "UPDATE-EXTENSION on 2026-06-12-pm-001 cluster — Mandiant + Google Threat Intelligence Group publish 2026-06-11 campaign analysis attributing Oracle PeopleSoft CVE-2026-35273 zero-day exploitation to UNC6240 (ShinyHunters); 14-day zero-day window 2026-05-27 to 2026-06-09; 100+ orgs notified; 68% higher-ed concentration; University of Nottingham confirmed; ~455k HIBP-indexed records; 8-IOC set published (azurenetfiles.net C2 + 176.120.22.24 SSH exfil + meshagent32/64-azure-ops.exe + meshagent64-v2.exe + README-IF-YOU-SEE-THIS-YOUVE-BEEN-HACKED.TXT + [victim]_fanout.sh + wss://azurenetfiles.net:443/agent.ashx); TTPs MeshCentral 1.1.59 weaponized + acme-client + hardcoded C2 + SSH credential spray + zstd exfil; OpSec failure (open Python HTTP 8888 + identical .bash_history across 5 staging hosts) enabled reconstruction; attribution preserved verbatim from Mandiant per Hard Rule 2 — Archimedes does NOT originate; Mandiant + ShinyHunters self-claim corroborate on independent evidence bases (vendor DFIR vs actor self-publication) — single-source veto LIFTS on attribution-identity layer; single-source veto HOLDS on scale layer (100+ orgs / 68% higher-ed / 455k HIBP / UoN-named are single-vendor Mandiant); ZDI Childs limited-exploitation framing carry-forward stays side-by-side — NOT collapsed; 32% non-higher-ed segment unpublished; no A&D-prime victim publicly confirmed in Mandiant 100+ set — A&D structural inference only; FCEB 3-day clock 2026-06-15 inherited via DFARS 252.204-7012 NOT BOD bindingness; Mandiant primary direct retrieval PENDING (RSS stale-persistent failure_count 25); SecurityAffairs is verbatim relay; Splunk sentinel 07:33 EDT 0 hits across 8-IOC set — visibility-limited absence NOT disconfirmation; /new-actor candidacy carry-forward for ShinyHunters operator pending"
@@ -34325,7 +34325,7 @@ entries:
       candidate for Wednesday synthesis.
 
   - id: 2026-06-13-am-003-securityaffairs-handala-cal-water-iran-mois-dataminr-rtkbase-ntrip-second-publisher-corroboration-update-extension-on-pm-003
-    covered_in: [2026-06-13-morning]
+    covered_in: [2026-06-13-morning, 2026-06-13-afternoon]
     brief_file: threats/briefs/2026-06-13-morning.md
     update_of_prior_coverage_log_entry: 2026-06-12-pm-003-securityweek-handala-hack-014-cal-water-self-claim-rtkbase-iav-iran-mois-restatement-iran-cyber-watch
     headline: "UPDATE-EXTENSION on 2026-06-12-pm-003 — SecurityAffairs published 2026-06-12 17:34 EDT a second independent B-grade publisher relay of Dataminr's Handala / California Water Service campaign analysis corroborating yesterday's SecurityWeek primary on the same Dataminr analytic substrate; NEW substantive material vs yesterday: explicit ~2M-customer impact figure across 7 enumerated districts (Bakersfield Chico Salinas Stockton Visalia San Mateo + regional engineering); Handala's own retaliation-for-US-actions-in-Iran motive in 13-word self-publication quote 'ability to disrupt water access but chose not to. For now.'; Stryker incident invoked as destructive-escalation precedent within same campaign cycle (detail NOT elaborated in article); wiper toolkit explicitly enumerated (win.handala / Handala Wiper / Hamsa Wiper MBR-overwriting); Dataminr recommendation block (rotate credentials take RTKBase offline review network segmentation); Handala = roster #014 HIGH; Iran/MOIS attribution RESTATED per prior US-government public attribution and roster (Void Manticore / Storm-0842 / DEV-0842); new aliases from yesterday (Banished Kitten Dune Red Sandstorm) remain PENDING actor-profiler fold-in this finding does NOT reaffirm; cluster anchor B3 underlying claim layer unchanged from yesterday; SW + SA share Dataminr substrate — independent publishers NOT independent on underlying claim; OT/ICS disruption explicitly NOT confirmed in this incident per Dataminr (RTKBase = GPS-correction access vector NOT SCADA chemical-dosing); Cal Water still silent at SA publication layer; Hard Rule 2 binding constraint preserved — Iranian retaliation NOT extrapolated to A&D-prime targeting from single water-utility cycle; Stryker NOT cross-walked beyond Handala #014; Hard Rule 7 binding — credentials/PII categories and counts only no values stored anywhere; Splunk sentinel 07:33 EDT 0 hits visibility-limited absence not disconfirmation; Iran Cyber Watch standing-section primary content"
@@ -34584,6 +34584,526 @@ entries:
         priority: high
         target_brief: 2026-06-17-threat-detection-weekly
         carry_forward_from: 2026-06-12-pm-brief-meta
+
+  # 2026-06-13 afternoon brief — 3 findings referenced
+  # ============================================================================
+
+  - id: 2026-06-13-pm-001-mandiant-gtig-primary-direct-retrieval-unc6240-shinyhunters-peoplesoft-cve-2026-35273-11-net-new-iocs-ttp-chain-enrichment-update-extension-on-am-001
+    covered_in: [2026-06-13-afternoon]
+    brief_file: threats/briefs/2026-06-13-afternoon.md
+    update_of_prior_coverage_log_entry: 2026-06-13-am-001-securityaffairs-mandiant-google-tig-cve-2026-35273-unc6240-shinyhunters-active-campaign-455k-victims-update-extension-on-pm-001
+    headline: "UPDATE-EXTENSION on 2026-06-13-am-001 — Mandiant + GTIG primary blog post retrieved directly via WebFetch landing-page resolution this sweep (Mandiant RSS still stale-persistent at failure_count 25), resolving morning carry-forward; source-fidelity upgrade from SecurityAffairs relay to Mandiant primary direct; attribution language identical to SA relay ('active compromise and extortion campaign attributed to UNC6240 (ShinyHunters)', 9 words) confirming relay fidelity for finding-2026-06-13-0002; 11 net-new IOCs unlocked: 5 staging IPs 142.11.200.186-190 inclusive (Python SimpleHTTPServer on port 8888, 2026-05-27 to 2026-06-09) + 4 SHA-256 hashes converting filename-only Windows meshagent IOCs to hash-grade (meshagent64-azure-ops, meshagent64-v2, meshagent32-azure-ops, attacker .bash_history) + 1 SHA-256 for unconfigured Linux meshagent binary (NEW indicator class, no morning equivalent); TTP-chain enrichment includes verbatim zstd exfil pipe command + exact persistence path under <docroot>/envmetadata/data/environment/ + defacement marker file placement in WebLogic + Process Scheduler directories; 100-org figure now Mandiant-primary-direct (source-fidelity upgrade from relay); 455k HIBP figure remains SA-relay-sourced in this sweep's excerpt; no second IR vendor (Unit 42 / CrowdStrike / Microsoft / ZDI / Volexity / Trend Micro) surfaced 12:00-15:30 EDT — red-team HEDGE on scale-quantification layer from finding-2026-06-13-0002 REMAINS BINDING; FCEB BOD 26-04 3-day clock closes Sunday 2026-06-15 16:00 EDT (carry-forward); CISA KEV catalogVersion 2026.06.12 unchanged; UNC6240 + ShinyHunters carry-forward operator-deferred /new-actor candidate status (Hard Rule 5 not triggered by source-fidelity upgrade alone); Splunk first-party sentinel sweep across full expanded 19-IOC set (8 morning + 11 net-new) returned 0 events over -24h on both archimedes + defenseclaw_local — visibility-limited absence per Hard Rule 8 (Frank not higher-ed); A&D-prime structural inference carry-forward (no direct A&D-prime victim publicly confirmed in either finding); ZDI Childs limited-exploitation framing remains side-by-side with Mandiant 100+ figure, not collapsed"
+    topic_tags:
+      - mandiant-gtig-primary-direct-retrieval-source-fidelity-upgrade
+      - unc6240-shinyhunters-attribution-restatement-not-new
+      - cve-2026-35273-oracle-peoplesoft-cvss-9-8
+      - 11-net-new-iocs-staging-ips-142-11-200-186-190
+      - 4-windows-meshagent-sha256-converts-filename-to-hash-rename-resistant
+      - new-linux-meshagent-indicator-class
+      - verbatim-zstd-exfil-pipe-command-pv-zstd
+      - exact-xml-persistence-path-docroot-envmetadata
+      - defacement-marker-weblogic-process-scheduler-directories
+      - 100-org-figure-now-mandiant-primary-direct
+      - 455k-hibp-figure-remains-sa-relay-sourced-this-sweep
+      - red-team-hedge-on-scale-quantification-layer-carries-forward
+      - fceb-bod-26-04-3-day-clock-sunday-2026-06-15-1600-edt
+      - cisa-kev-catalog-version-2026-06-12-unchanged
+      - unc6240-shinyhunters-new-actor-decision-operator-deferred
+      - splunk-sentinel-0-hits-across-19-ioc-set
+      - visibility-limited-absence-frank-not-higher-ed
+      - ad-prime-structural-inference-no-direct-victim
+      - zdi-childs-limited-framing-side-by-side-not-collapsed
+      - mandiant-rss-stale-persistent-failure-count-25
+      - webfetch-landing-page-resolution-working-canonical-path
+      - update-extension-on-2026-06-13-am-001
+      - active-threats
+    related_actors:
+      - id: "UNC6240-NOT-ON-ROSTER"
+        actor_name: "UNC6240 (ShinyHunters)"
+        attribution_in_brief: mandiant-primary-direct-restatement-source-fidelity-upgrade-from-sa-relay
+        roster_status: NOT_ON_ARCHIMEDES_ROSTER_operator_deferred_new_actor_carry_forward
+    related_vulns: [CVE-2026-35273]
+    related_campaigns:
+      - unc6240_shinyhunters_peoplesoft_2026_05_27_to_06_09_carry_forward
+    finding_ids: [finding-2026-06-13-0006]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      mandiant_primary_direct_retrieval_procedural_success_layer: A1
+      attribution_identity_layer_carry_forward_source_fidelity_upgrade: A1
+      11_net_new_ioc_layer: A2
+      ttp_chain_enrichment_layer: A2
+      100_org_scale_now_mandiant_primary_direct: A2
+      455k_hibp_remains_sa_relay_sourced_this_sweep: B3
+      red_team_hedge_on_scale_quantification_carry_forward_binding: A1
+      ad_structural_relevance_layer_carry_forward: B3
+    wep: very_likely
+    wep_layered:
+      attribution_identity_layer: very_likely
+      ioc_enrichment_layer: very_likely
+      ttp_chain_enrichment_layer: very_likely
+      scale_quantification_layer: likely
+      455k_hibp_layer: likely
+      ad_structural_relevance_layer: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: scale_quantification_layer_only_carry_forward_from_finding_0002
+    hard_rule_2_framings_load_bearing:
+      - "Mandiant + GTIG attribution preserved verbatim — Archimedes does NOT originate"
+      - "UNC6240 + ShinyHunters NOT on roster — operator-deferred /new-actor carry-forward"
+      - "No A&D-prime victim publicly confirmed; 32% non-higher-ed segment remains unpublished by Mandiant"
+      - "Mandiant single-vendor on scale — second IR-firm count remains veto-lift tripwire"
+      - "ZDI Childs limited-exploitation framing remains side-by-side with Mandiant 100+, not collapsed"
+    hard_rule_6_quote_budget:
+      mandiant_attribution_verbatim_9_words: "active compromise and extortion campaign attributed to UNC6240 (ShinyHunters)"
+      per_source_max: 1
+    hard_rule_8_framing: visibility_limited_absence_not_disconfirmation_19_ioc_sentinel_0_hits_frank_not_higher_ed
+    splunk_first_party:
+      status: clean_at_compose
+      ioc_set_size: 19
+      ioc_set_composition: 8_morning_original_plus_11_net_new_from_mandiant_primary_direct
+      hits_over_24h: 0
+    resurface_if:
+      - second_ir_vendor_corroborates_scale_quantification_lifts_hedge
+      - mandiant_publishes_32_percent_non_higher_ed_breakdown
+      - ad_prime_victim_publicly_named_in_unc6240_campaign
+      - first_party_splunk_hit_on_any_of_19_ioc_set
+      - 455k_hibp_figure_directly_confirmed_by_mandiant_primary_in_subsequent_sweep
+      - operator_invokes_new_actor_for_shinyhunters_unc6240
+      - cisa_kev_catalog_version_updates_with_new_relevant_entries
+      - fceb_bod_26_04_clock_closure_sunday_2026_06_15_compliance_data_emerges
+    first_covered: 2026-06-13
+    last_covered: 2026-06-13
+    retraction: null
+    test: false
+    notes: |
+      UPDATE-EXTENSION on this morning's 2026-06-13-am-001. Source-fidelity
+      upgrade from SecurityAffairs relay to Mandiant primary direct via
+      WebFetch landing-page resolution (Mandiant RSS remains stale-persistent
+      at failure_count 25 — direct-HTML retrieval is the working canonical
+      path until operator canonical-swap decision). Mandiant's attribution
+      language is IDENTICAL to SA relay (9-word verbatim quote) confirming
+      relay fidelity. 11 net-new IOCs unlocked + filename-to-hash IOC
+      conversion (rename-resistant) + NEW Linux meshagent indicator class +
+      verbatim zstd exfil command + exact .xml persistence path. 100-org
+      scale figure now Mandiant-primary-direct; 455k HIBP figure remains
+      SA-relay-sourced in this sweep's excerpt. Red-team HEDGE on scale-
+      quantification carries forward — no second IR vendor surfaced in
+      12:00-15:30 EDT sweep window. FCEB BOD 26-04 3-day clock unchanged
+      (closes Sunday 2026-06-15 16:00 EDT). Splunk sentinel 0 hits across
+      expanded 19-IOC set — visibility-limited absence (Frank not higher-ed).
+      ZDI Childs limited-framing side-by-side carry-forward.
+
+  - id: 2026-06-13-pm-002-splunk-watchtowr-thn-cve-2026-20253-postgresql-sidecar-preauth-rce-cvss-9-8-patched-not-on-kev
+    covered_in: [2026-06-13-afternoon]
+    brief_file: threats/briefs/2026-06-13-afternoon.md
+    headline: "Splunk patched CVE-2026-20253 on 2026-06-10, a critical (CVSS 9.8) unauthenticated PostgreSQL sidecar pre-auth RCE in Splunk Enterprise 10.0.0-10.0.6 and 10.2.0-10.2.3; discovered by watchTowr Labs (Piotr Bazydlo + Yordan Ganchev); vendor advisory SVD-2026-0603; mechanic = sidecar's /v1/postgres/recovery/{backup,restore} endpoints lack authentication, reachable through main Splunk web interface on port 8000 via localhost relay, unauthenticated file create/truncate primitive escalates to RCE per discoverer writeup; Splunk Cloud + 10.4 line NOT affected; fixes in 10.0.7 / 10.2.4 / 10.4.0; THN reports 'no evidence of the flaw being exploited in the wild' (13 words) as of 2026-06-13 09:23 EDT; CISA KEV catalogVersion 2026.06.12 does NOT list it (verifiable absence); red-team caveat binding on exploitation-status layer (WEP downgraded likely -> roughly_even_chance) because negative-inference window is ~48h post-disclosure AND the affected product IS the SIEM tier used to generate detection reports (adverse selection on detection); red-team caveat binding on Archimedes-self-substrate operational layer (WEP downgraded very_likely -> likely) because the Splunk Free 10.2.2 inheritance of the Enterprise PostgreSQL sidecar is structural inference (B2), not vendor-attested (A1) — vendor advisory names Splunk Enterprise, not Splunk Free, and CLAUDE.md Session 3 Operational Note documents Splunk Free diverging from Enterprise on REST API auth (port 8089); patching action UNCHANGED — Frank should upgrade 10.2.2 -> 10.2.4 regardless; A&D structural relevance via Splunk Enterprise widespread DFARS/CMMC L2+ audit-event SIEM deployments; no actor attribution (pre-discovery disclosure); 4 provisional source-grade entries (splunk-advisory provisional A; watchtowr-labs provisional B; breachnews provisional C from independence-check audit; wanaen provisional D from independence-check audit); vuln-tracker dossier creation handoff warranted for CVE-2026-20253"
+    topic_tags:
+      - cve-2026-20253-splunk-enterprise-postgresql-sidecar-preauth-rce
+      - cvss-9-8-critical-unauthenticated
+      - splunk-svd-2026-0603-vendor-advisory
+      - watchtowr-labs-discoverer-bazydlo-ganchev
+      - thn-news-tier-relay-no-itw-exploitation-framing
+      - cisa-kev-catalog-version-2026-06-12-verifiable-absence
+      - splunk-cloud-not-affected
+      - splunk-enterprise-10-4-not-affected
+      - fix-versions-10-0-7-10-2-4-10-4-0
+      - endpoint-paths-v1-postgres-recovery-backup-restore
+      - port-8000-relay-to-localhost-sidecar-mechanic
+      - exploitation-status-wep-downgraded-likely-to-roughly-even-chance-red-team-caveat
+      - archimedes-self-substrate-frank-splunk-free-10-2-2-likely-affected
+      - splunk-free-inheritance-structural-inference-not-vendor-attested
+      - claude-md-session-3-splunk-free-rest-api-auth-divergence-citation
+      - patching-action-stands-regardless-of-exploitation-status
+      - ad-structural-relevance-dfars-cmmc-l2-l3-siem-deployment
+      - no-actor-attribution-pre-discovery-disclosure
+      - provisional-source-grade-splunk-advisory-a
+      - provisional-source-grade-watchtowr-labs-b
+      - provisional-source-grade-breachnews-c-from-handala-independence-check
+      - provisional-source-grade-wanaen-d-from-handala-independence-check
+      - vuln-tracker-dossier-creation-handoff-warranted
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-20253]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-13-0004]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      technical_vulnerability_layer: A2
+      vendor_canonical_splunk_svd_2026_0603: A1
+      discoverer_canonical_watchtowr_labs: A2
+      news_tier_relay_thn_explicit_no_itw_framing: A1
+      cisa_kev_verifiable_absence_catalog_2026_06_12: A1
+      exploitation_status_layer_red_team_adjusted: B2
+      forward_actor_uptake_layer_thn_single_source: B3
+      archimedes_self_substrate_operational_layer_red_team_adjusted: B2
+      ad_structural_relevance_layer: B2
+    wep: very_likely
+    wep_layered:
+      technical_vulnerability_layer: very_likely
+      exploitation_status_layer: roughly_even_chance
+      forward_actor_uptake_layer: likely
+      archimedes_self_substrate_operational_layer: likely
+      port_8000_external_reachability_layer: likely
+      ad_structural_relevance_layer: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: exploitation_status_and_forward_uptake_layers_thn_sole_source
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution — pre-discovery vulnerability disclosure"
+    hard_rule_6_quote_budget:
+      thn_exploitation_status_verbatim_13_words: "Although there is no evidence of the flaw being exploited in the wild"
+      splunk_vendor_advisory_8_words_paraphrased_in_brief: "the PostgreSQL sidecar service endpoint lacks authentication controls"
+      per_source_max: 1
+      thn_quote_selection_load_bearing: exploitation_status_chosen_over_forward_actor_uptake_per_grader_quote_audit_red_team_recommends_forward_quote_as_counterweight_but_briefer_chose_exploitation_status_with_qualifying_uncertainty_treat_as_unknown_framing
+    hard_rule_8_framing: not_applicable_no_iocs_to_query_pre_discovery_vulnerability_disclosure
+    red_team_per_layer_adjustments_applied_in_brief: true
+    red_team_per_layer_adjustments:
+      - layer: exploitation_status
+        from: likely
+        to: roughly_even_chance
+        rationale: detection_blind_spot_affected_product_is_the_siem_generating_those_reports_adverse_selection_plus_48h_negative_inference_window_does_not_support_likely_non_exploitation
+        applied_in_brief: true
+      - layer: archimedes_self_substrate_operational
+        from: very_likely
+        to: likely
+        rationale: splunk_free_inheritance_of_postgresql_sidecar_is_structural_inference_not_vendor_attested_vendor_advisory_names_splunk_enterprise_not_splunk_free_claude_md_session_3_documents_splunk_free_rest_api_auth_divergence
+        applied_in_brief: true
+    splunk_first_party:
+      status: not_applicable
+      rationale: no_malicious_iocs_published_pre_discovery_vulnerability_disclosure_self_substrate_operational_consideration_is_separate_and_addressed_via_frank_patch_path_10_2_2_to_10_2_4_action_call
+    provisional_source_grade_additions_this_run:
+      - id: splunk-advisory
+        grade: A
+        provisional: true
+        provisional_since: 2026-06-13
+        rationale: vendor_self_disclosure_on_own_product_advisory_msrc_cpu_psirt_convention_may_fold_into_existing_splunk_advisory_portal_entry_at_line_673
+        ratification_clock: 2026-06-15T16:00:00-04:00
+      - id: watchtowr-labs
+        grade: B
+        provisional: true
+        provisional_since: 2026-06-13
+        rationale: vendor_research_org_discoverer_canonical_similar_precedent_to_sygnia_tenet_sonatype_dataminr
+        ratification_clock: 2026-06-15T16:00:00-04:00
+      - id: breachnews
+        grade: C
+        provisional: true
+        provisional_since: 2026-06-13
+        rationale: aggregator_with_self_disclaimer_pattern_from_handala_third_publisher_independence_check_audit
+        ratification_clock: 2026-06-15T16:00:00-04:00
+      - id: wanaen
+        grade: D
+        provisional: true
+        provisional_since: 2026-06-13
+        rationale: iranian_state_adjacent_should_NOT_be_treated_as_independent_corroboration_from_handala_third_publisher_independence_check_audit
+        ratification_clock: 2026-06-15T16:00:00-04:00
+    resurface_if:
+      - itw_exploitation_observed_and_publicly_reported
+      - cisa_kev_adds_cve_2026_20253
+      - second_a_grade_source_publishes_non_exploitation_or_exploitation_evidence
+      - vendor_clarifies_splunk_free_sku_inclusion_in_svd_2026_0603_scope
+      - frank_port_8000_external_reachability_check_returns_positive
+      - splunk_first_party_sentinel_hits_v1_postgres_recovery_endpoint_access_attempt
+      - a_d_prime_victim_publicly_named_for_cve_2026_20253
+    first_covered: 2026-06-13
+    last_covered: 2026-06-13
+    retraction: null
+    test: false
+    notes: |
+      First Archimedes-corpus finding on CVE-2026-20253. Splunk + watchTowr
+      coordinated disclosure 2026-06-10 (independent evidence bases —
+      vendor internal triage vs discoverer research; Step 4 test passes on
+      technical-vulnerability layer). THN news-tier relay 2026-06-13 09:23
+      EDT carries explicit no-ITW-exploitation framing (single-source veto
+      applies on exploitation-status layer; WEP capped at likely
+      mechanically, red-team substantively downgraded to roughly even
+      chance because affected product IS the SIEM tier and negative-inference
+      window is only ~48h post-disclosure). Archimedes-self-substrate
+      operational implication: Frank runs Splunk Free 10.2.2 (in affected
+      range per arithmetic against vendor advisory) — but Splunk Free is
+      NOT vendor-attested as in-scope for SVD-2026-0603 (advisory names
+      Splunk Enterprise), so inheritance is structural inference (B2), not
+      A1 arithmetic; red-team downgraded self-substrate WEP from very_likely
+      to likely. PATCHING ACTION UNCHANGED — operator should upgrade Frank
+      10.2.2 -> 10.2.4 regardless of exploitation status or Free/Enterprise
+      SKU question. Both red-team per-layer adjustments applied verbatim in
+      brief. Quote discipline: 1 THN quote (exploitation-status, 13 words)
+      preserved; forward-actor-uptake quote dropped per Hard Rule 6 cap
+      (red-team recommended forward quote as counterweight but briefer
+      chose exploitation-status with UNKNOWN framing as compromise).
+      Splunk vendor advisory quote (8 words) paraphrased in brief.
+      4 provisional source-grade additions flagged to librarian:
+      splunk-advisory provisional A; watchtowr-labs provisional B;
+      breachnews provisional C; wanaen provisional D. Vuln-tracker dossier
+      creation handoff for threats/vulnerabilities/CVE-2026-20253/.
+
+  - id: 2026-06-13-pm-003-securityweek-github-npm-12-default-script-execution-change-supply-chain-defensive-roadmap-teampcp-001-shai-hulud-roster-gap-second-this-week
+    covered_in: [2026-06-13-afternoon]
+    brief_file: threats/briefs/2026-06-13-afternoon.md
+    headline: "Per SecurityWeek's relay of GitHub's announcement (direct GitHub blog retrieval pending next sweep), NPM 12 (expected July 2026) will change default behavior so that preinstall / install / postinstall / prepare scripts from dependencies will NOT execute unless explicitly allowed; native node-gyp builds (binding.gyp without explicit install script) also affected by default; git dependencies will not resolve unless allowed; remote-URL (HTTPS tarball) dependencies require --allow-remote flag; opt-in allowlist generated via npm approve-scripts command and written to package.json; npm 11.16.0+ provides preparation upgrade path; brings npm in line with pnpm + bun pre-existing security-aware default; SecurityWeek references two motivating campaigns — TeamPCP (Archimedes roster #001 HIGH; 'exploited automatic script execution during npm install' 7-word verbatim restatement of earlier industry reporting) and Shai-Hulud (NOT on Archimedes roster — 'self-replicating worm that weaponized binding.gyp files' 7-word per SecurityWeek paraphrasing earlier industry reporting); both campaigns described by SecurityWeek as having affected developers at scale (aggregate figure NOT lifted as load-bearing per analyst caveat A2 binding); 3 mandatory briefer caveats applied verbatim per analyst review: (1) aggregate-scale claim not lifted load-bearing; (2) TeamPCP and Shai-Hulud parallel framing preserved verbatim — NOT collapsed or distinguished beyond SecurityWeek's framing (corpus baseline per finding-2026-05-12-FLASH-0001: TeamPCP = actor, Shai-Hulud = campaign family); (3) attributed as 'per SecurityWeek's relay of GitHub' NOT 'GitHub announced' (direct GitHub blog retrieval pending); Shai-Hulud is the SECOND roster-gap candidate this week after Velvet Ant (finding-2026-06-12-0004) — operator-deferred /new-actor decision; A&D structural relevance via developer-tooling and CI/CD/IaC/AI-agent-harness (LangChain / LangGraph / Claude Code / Cursor) NPM dependency-pull pathways; defensive-roadmap pattern — Hard Rule 5 not triggered; cluster-continuity: most aggressive ecosystem-level defensive response in supply-chain-of-developer-tooling cluster (now 6 data points with NPM 12 added)"
+    topic_tags:
+      - github-npm-12-default-script-execution-change
+      - expected-july-2026-vendor-product-roadmap-announcement
+      - preinstall-install-postinstall-prepare-blocked-by-default-from-dependencies
+      - native-node-gyp-binding-gyp-affected
+      - git-dependencies-gated
+      - remote-url-tarball-allow-remote-flag-required
+      - npm-approve-scripts-allowlist-mechanic
+      - npm-11-16-0-preparation-upgrade-path
+      - pnpm-bun-pre-existing-security-aware-default-parallel
+      - teampcp-001-high-ttp-restatement-not-new-attribution
+      - shai-hulud-not-on-roster-second-roster-gap-candidate-this-week
+      - shai-hulud-after-velvet-ant-2026-06-12-0004
+      - corpus-baseline-teampcp-actor-shai-hulud-campaign-family-per-flash-0001
+      - briefer-caveat-aggregate-scale-not-lifted-as-load-bearing
+      - briefer-caveat-parallel-framing-preserved-not-collapsed-or-distinguished
+      - briefer-caveat-attribution-per-securityweek-relay-of-github-not-github-announced
+      - ad-structural-relevance-developer-tooling-cicd-iac-ai-agent-harness
+      - defensive-roadmap-pattern-hard-rule-5-not-triggered
+      - cluster-continuity-supply-chain-of-developer-tooling-now-6-data-points
+      - actor-activity
+    related_actors:
+      - id: "001"
+        actor_name: "TeamPCP"
+        attribution_in_brief: securityweek_relay_restatement_of_earlier_industry_reporting_existing_roster_001_high_dossier_ttp
+        roster_status: ON_ROSTER_HIGH
+      - id: "Shai-Hulud-NOT-ON-ROSTER"
+        actor_name: "Shai-Hulud"
+        attribution_in_brief: securityweek_relay_paraphrasing_earlier_industry_reporting_NOT_originated_by_archimedes_verbatim_parallel_framing_preserved
+        roster_status: NOT_ON_ARCHIMEDES_ROSTER_second_roster_gap_candidate_this_week_after_velvet_ant_operator_deferred_new_actor
+    related_vulns: []
+    related_campaigns:
+      - teampcp_automatic_script_execution_during_npm_install_ttp_restatement
+      - shai_hulud_self_replicating_worm_weaponizing_binding_gyp_campaign_family_carry_forward_per_corpus_baseline
+    finding_ids: [finding-2026-06-13-0005]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      vendor_product_roadmap_layer_securityweek_relay_github_reference: B2
+      teampcp_ttp_restatement_existing_roster_001_dossier: A1
+      shai_hulud_campaign_reference_verbatim_preservation_hard_rule_2: B2
+      cluster_continuity_supply_chain_of_developer_tooling_6_data_points: A2
+      ad_structural_relevance_developer_tooling_ci_cd_ai_agent_harness: B2
+    wep: likely
+    wep_layered:
+      vendor_product_roadmap_layer: likely
+      teampcp_ttp_restatement_layer: very_likely
+      shai_hulud_campaign_reference_layer: likely
+      cluster_continuity_layer: very_likely
+      ad_structural_relevance_layer: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: announcement_layer_single_publisher_securityweek_plus_shai_hulud_campaign_reference_layer
+    hard_rule_2_framings_load_bearing:
+      - "Shai-Hulud attribution NOT originated by Archimedes — preserved verbatim from SecurityWeek's relay of earlier industry reporting"
+      - "Corpus baseline per finding-2026-05-12-FLASH-0001 SAT-ACH E13: TeamPCP = actor; Shai-Hulud = campaign family. Preserve parallel framing only"
+      - "Do NOT collapse TeamPCP and Shai-Hulud (cross-walk NOT attempted)"
+      - "Do NOT distinguish Shai-Hulud from TeamPCP beyond what SecurityWeek says"
+      - "Shai-Hulud /new-actor scaffold flagged for operator decision — Archimedes does NOT pre-empt"
+      - "Aggregate 'infected thousands of developers' figure NOT lifted as load-bearing — paraphrase only with SecurityWeek attribution"
+      - "Attribute as 'per SecurityWeek's relay of GitHub's announcement' NOT 'GitHub announced' (direct GitHub blog retrieval pending)"
+    hard_rule_6_quote_budget:
+      securityweek_teampcp_ttp_restatement_7_words: "exploited automatic script execution during npm install"
+      shai_hulud_paraphrased_in_brief_NOT_quoted: "self-replicating worm weaponizing the binding.gyp build descriptor"
+      per_source_max: 1
+      brief_choice_load_bearing_quote: teampcp_ttp_restatement_quote_load_bearing_shai_hulud_paraphrased_per_grader_quote_audit_resolution
+    splunk_first_party:
+      status: not_applicable
+      rationale: defensive_product_roadmap_no_iocs_to_query
+    analyst_review_3_mandatory_briefer_caveats_applied_verbatim_in_brief: true
+    analyst_review_caveats:
+      - "Do NOT lift 'infected thousands of developers' as load-bearing scale figure (KAC A2 qualify)"
+      - "Do NOT collapse OR distinguish TeamPCP and Shai-Hulud beyond SecurityWeek's parallel framing (KAC A3 qualify; ACH H1 ranking-1; corpus baseline TeamPCP = actor, Shai-Hulud = campaign family per finding-2026-05-12-FLASH-0001 SAT-ACH E13)"
+      - "Attribute as 'per SecurityWeek's relay of GitHub's announcement' NOT 'GitHub announced' (KAC A8 qualify; direct GitHub blog retrieval pending)"
+    actor_profiler_handoffs:
+      - teampcp_001_dossier_ttp_evolution_timeline_update_npm_12_defensive_response_milestone_NOT_BLOCKED
+      - shai_hulud_new_actor_scaffolding_BLOCKED_pending_operator_decision_on_KAC_A5_test_options_a_b_c_analyst_recommends_option_c_family_cluster_registry_distinct_from_actor_roster
+    resurface_if:
+      - direct_github_blog_retrieval_unlocks_canonical_npm_12_announcement
+      - multiple_publisher_pickup_within_48h_lifts_single_source_veto_on_announcement_layer
+      - shai_hulud_actor_profiler_decision_made_by_operator_a_b_or_c
+      - cross_walk_between_teampcp_and_shai_hulud_attempted_or_confirmed_by_a_grade_source
+      - npm_12_release_date_confirmed_or_shifts_from_july_2026
+      - first_a_d_prime_developer_tooling_infection_publicly_named_in_either_teampcp_or_shai_hulud_campaign
+      - npm_approve_scripts_allowlist_enumeration_telemetry_emerges
+    first_covered: 2026-06-13
+    last_covered: 2026-06-13
+    retraction: null
+    test: false
+    notes: |
+      First Archimedes-corpus finding on NPM 12 default script-execution
+      change. SecurityWeek news-tier first publisher; direct GitHub blog
+      retrieval pending next sweep. Single-publisher with vendor reach-
+      through pattern; B2 cluster anchor reflects defensive-roadmap pattern
+      stability (low information-extraction risk; multi-publisher pickup
+      expected within 48 hours). TeamPCP (#001 HIGH) TTP restatement
+      anchored in existing roster + dossier — restatement, not novel
+      attribution. Shai-Hulud is the SECOND roster-gap candidate this week
+      after Velvet Ant (finding-2026-06-12-0004) — operator-deferred
+      /new-actor decision; analyst KAC A5 test surfaced three tracking
+      options: (a) actor roster entry [Hard Rule 2 risk if Archimedes
+      originates designation MSTIC has declined to make]; (b) campaign-
+      family sidecar under TeamPCP #001 [consistent with FLASH-0001
+      corpus baseline but understates if non-TeamPCP actors also produce
+      Shai-Hulud campaigns]; (c) family/cluster registry distinct from
+      actor roster [methodologically cleanest; requires a new tracking
+      category]. Analyst recommends option (c). Operator decision required
+      BEFORE any /new-actor invocation. Cluster-continuity narrative:
+      supply-chain-of-developer-tooling cluster now at 6 data points (AUR
+      + Atomic Arch + NanoClaw + Tenet Agentjacking + Sygnia Velvet Ant
+      + NPM 12 defensive roadmap) — synthesis candidate for Wednesday's
+      Threat Detection Weekly. 3 mandatory briefer caveats applied
+      verbatim in brief. Hard Rule 5 not triggered (defensive-roadmap
+      pattern, no HIGH actor scoring proposal). Vuln-tracker not required
+      (no CVE).
+
+  - id: 2026-06-13-pm-brief-meta
+    covered_in: [2026-06-13-afternoon]
+    brief_file: threats/briefs/2026-06-13-afternoon.md
+    headline: "2026-06-13 afternoon brief — 3 findings referenced: finding-0006 (Mandiant primary direct retrieval UPDATE-EXTENSION on AM-001 with 11 net-new IOCs + filename-to-hash conversion + NEW Linux meshagent class) + finding-0004 (Splunk CVE-2026-20253 CVSS 9.8 PostgreSQL sidecar pre-auth RCE patched + red-team per-layer adjustments on exploitation-status and self-substrate layers) + finding-0005 (NPM 12 default script-execution change defensive roadmap with 3 mandatory briefer caveats applied)"
+    topic_tags:
+      - afternoon-brief
+      - 3-findings-referenced
+      - update-extension-on-am-001-via-mandiant-primary-direct-retrieval
+      - splunk-self-substrate-operational-relevance
+      - npm-12-defensive-roadmap-cluster-continuity-now-6-data-points
+      - layer-1-approximately-762-words-within-target-band-400-800
+      - layer-2-under-1900-char-ceiling-4-bullets
+      - pre-flight-13-13-pass-after-layer-2-iterative-compression
+      - tlp-green
+      - red-team-per-layer-adjustments-applied-verbatim-finding-0004
+      - red-team-hedge-carry-forward-finding-0006-on-scale-quantification-layer
+      - analyst-3-mandatory-briefer-caveats-applied-verbatim-finding-0005
+      - hard-rule-2-preservation-multiple-layers
+      - hard-rule-6-quote-discipline-2-quotes-1-per-source-all-under-15-words
+      - hard-rule-8-preservation-splunk-sentinel-0-hits-19-ioc-set-visibility-limited-absence
+      - a-d-structural-inference-no-direct-prime-victim-in-any-finding
+      - ai-tooling-cluster-now-6-data-point-threat-detection-weekly-synthesis-carry-forward
+      - 4-provisional-source-grades-added-this-run-splunk-advisory-a-watchtowr-labs-b-breachnews-c-wanaen-d
+      - independence-check-audit-handala-cal-water-third-publisher-NEGATIVE-hedge-reinforced
+    finding_ids: []
+    digraph: A2  # composite — A2 Mandiant + A2 Splunk + B2 NPM 12
+    wep: very_likely
+    layer_1_word_count: 762
+    layer_2_char_ceiling: 1900
+    layer_2_compliance: pass_under_ceiling_approximately_1895_chars
+    preflight_iterations: 3
+    preflight_regenerations:
+      - section: layer_2_discord_summary
+        reason: initial_4_bullet_draft_at_approximately_2310_chars_iteratively_compressed_via_caveat_consolidation_trim_to_under_1900_ceiling
+        iterations: 3
+      - section: layer_1_word_count
+        reason: drafted_within_target_band_no_compression_required
+        iterations: 1
+    pre_flight_check:
+      total: 13
+      passed: 13
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass_update_flags_applied_on_mandiant_peoplesoft_attribution_iocs_and_handala_independence_check
+        lead_states_impact_not_context: pass_lead_states_mandiant_primary_direct_retrieval_unlocks_11_net_new_iocs_with_specific_ioc_classes_and_ttp_chain_enrichment
+        no_banned_phrases: pass
+        standing_sections_present: pass_ad_sector_focus_via_structural_inference_summary_iran_cyber_watch_via_handala_independence_check_update
+        wep_vocabulary_used_with_probability_bands: pass_very_likely_likely_roughly_even_chance_used
+        word_count_within_target: pass_at_approximately_762_words_within_400_800_target_band
+        actor_vuln_references_linked: pass_unc1549_linked_to_roster_profile_md_unc6240_shinyhunters_NOT_in_roster_flagged_teampcp_001_in_roster_handala_014_in_roster_shai_hulud_NOT_in_roster_flagged
+        tlp_marked_where_non_clear: pass_tlp_green_brief_level
+        single_source_veto_respected: pass_mandiant_scale_layer_veto_holds_carry_forward_thn_exploitation_status_layer_veto_holds_securityweek_npm_announcement_layer_veto_holds_handala_independence_check_negative_reinforces_dataminr_substrate_single_source
+        quote_discipline_under_15_words_max_1_per_source: pass_2_quotes_thn_no_evidence_of_exploitation_13_words_securityweek_teampcp_ttp_7_words
+        discord_summary_layer_2_compliant: pass_4_bullets_greeting_natural_language_dates_source_linked_headlines_no_themed_voice_no_iso_dates_under_1900_chars
+      red_team_per_layer_adjustments_applied_verbatim:
+        - finding_id: finding-2026-06-13-0004
+          adjustments_applied:
+            - "Exploitation-status layer downgraded likely -> roughly_even_chance — affected product IS the SIEM tier; treat status UNKNOWN"
+            - "Archimedes-self-substrate operational layer downgraded very_likely -> likely — Splunk Free inheritance is structural inference (B2), not vendor-attested (A1)"
+            - "Patching action stands regardless — Frank should upgrade 10.2.2 -> 10.2.4"
+          applied_in_brief: true
+        - finding_id: finding-2026-06-13-0006
+          adjustments_applied:
+            - "Red-team HEDGE on scale-quantification (100+ orgs / ~455k records / 68% higher-ed) carries forward — no second IR-firm surfaced 12:00-15:30 EDT"
+            - "Mandiant single-vendor on scale; second IR-firm count remains veto-lift tripwire"
+            - "ZDI Childs limited-exploitation framing remains side-by-side with Mandiant 100+, not collapsed"
+            - "455k HIBP figure remains SA-relay-sourced in this sweep's excerpt — analyst attention flagged for next sweep"
+          applied_in_brief: true
+      analyst_3_mandatory_briefer_caveats_applied_verbatim:
+        - finding_id: finding-2026-06-13-0005
+          caveats_applied:
+            - "Aggregate-scale claim 'infected thousands of developers' NOT lifted as load-bearing"
+            - "TeamPCP and Shai-Hulud parallel framing preserved — NOT collapsed or distinguished beyond SecurityWeek; corpus baseline TeamPCP=actor, Shai-Hulud=campaign family"
+            - "Attribution as 'per SecurityWeek's relay of GitHub' NOT 'GitHub announced' (direct GitHub blog retrieval pending)"
+            - "Shai-Hulud /new-actor scaffold flagged for operator decision — Archimedes does NOT pre-empt"
+          applied_in_brief: true
+    coverage_log_actions_required:
+      - prior_entry: 2026-06-13-am-001
+        action: append_2026-06-13-afternoon_to_covered_in_update_last_covered_to_2026-06-13
+      - prior_entry: 2026-06-12-pm-001
+        action: append_2026-06-13-afternoon_to_covered_in_update_last_covered_to_2026-06-13
+      - prior_entry: 2026-06-12-pm-003
+        action: append_2026-06-13-afternoon_to_covered_in_update_last_covered_to_2026-06-13
+      - prior_entry: 2026-06-13-am-003
+        action: append_2026-06-13-afternoon_to_covered_in_update_last_covered_to_2026-06-13
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding-2026-06-13-0004
+        - finding-2026-06-13-0005
+        - finding-2026-06-13-0006
+      add_2026_06_13_afternoon_to_published_in_briefs_for_each
+      provisional_source_grade_additions:
+        - id: splunk-advisory
+          grade: A
+          provisional: true
+          may_fold_into: splunk-advisory-portal
+          ratification_clock: 2026-06-15T16:00:00-04:00
+        - id: watchtowr-labs
+          grade: B
+          provisional: true
+          ratification_clock: 2026-06-15T16:00:00-04:00
+        - id: breachnews
+          grade: C
+          provisional: true
+          ratification_clock: 2026-06-15T16:00:00-04:00
+        - id: wanaen
+          grade: D
+          provisional: true
+          ratification_clock: 2026-06-15T16:00:00-04:00
+    operator_action_items:
+      - id: shinyhunters_unc6240_new_actor_decision_carry_forward
+        action: operator_to_decide_invocation_of_slash_new_actor_shinyhunters_with_unc6240_alias
+        rationale: carry_forward_from_am_001_now_strengthened_by_source_fidelity_upgrade_to_mandiant_primary_direct_plus_11_net_new_iocs_plus_new_linux_indicator_class
+        priority: highest
+        decision_pending: true
+        carry_forward_from: 2026-06-13-am-brief-meta
+      - id: shai_hulud_new_actor_decision_KAC_A5_test_required
+        action: operator_to_decide_a_actor_roster_entry_or_b_campaign_family_sidecar_under_teampcp_001_or_c_family_cluster_registry_distinct_from_actor_roster_analyst_recommends_c
+        rationale: second_roster_gap_candidate_this_week_after_velvet_ant_methodologically_load_bearing_KAC_A5_test
+        priority: highest
+        decision_pending: true
+      - id: cve_2026_20253_vuln_tracker_dossier_scaffold
+        action: vuln_tracker_to_scaffold_cve_2026_20253_dossier_under_threats_vulnerabilities
+        rationale: new_cve_disclosure_with_vendor_advisory_plus_discoverer_writeup_plus_self_substrate_operational_implication_warrants_dedicated_dossier
+        priority: high
+      - id: frank_splunk_free_10_2_2_patch_path_and_port_8000_external_reachability_verification
+        action: operator_to_upgrade_frank_splunk_free_10_2_2_to_10_2_4_and_verify_port_8000_external_reachability_posture
+        rationale: operational_self_defense_patching_action_stands_regardless_of_exploitation_status_or_free_vs_enterprise_sku_question
+        priority: high
+      - id: mandiant_primary_direct_retrieval_for_455k_hibp_cross_walk_follow_up
+        action: collector_to_re_retrieve_mandiant_primary_for_455k_hibp_figure_verbatim_extraction_pending
+        rationale: 455k_figure_remains_sa_relay_sourced_in_this_sweep_excerpt_direct_mandiant_primary_confirmation_pending
+        priority: high
+      - id: second_ir_vendor_scale_corroboration_watch_unc6240
+        action: standing_watch_for_unit_42_crowdstrike_microsoft_zdi_volexity_trend_micro_coverage_with_own_dfir_telemetry_on_scale
+        rationale: red_team_hedge_binding_pending_second_vendor_corroboration_to_lift_veto
+        priority: high
+      - id: ai_tooling_cluster_6_data_point_threat_detection_weekly_synthesis_carry_forward
+        action: briefer_or_threat_detection_weekly_briefer_to_synthesize_supply_chain_of_developer_tooling_cluster_now_extended_to_6_data_points_with_npm_12_defensive_roadmap_layer_added
+        rationale: 6_data_points_aur_plus_atomic_arch_plus_nanoclaw_plus_tenet_agentjacking_plus_sygnia_velvet_ant_plus_npm_12_defensive_roadmap_synthesis_candidate
+        priority: high
+        target_brief: 2026-06-17-threat-detection-weekly
+        carry_forward_from: 2026-06-12-pm-brief-meta
+      - id: 4_provisional_source_grade_ratifications_2026_06_15_1600_clock
+        action: librarian_to_check_72h_provisional_source_grade_ratifications_at_clock_expiry
+        rationale: splunk_advisory_provisional_a_may_fold_into_splunk_advisory_portal_watchtowr_labs_provisional_b_breachnews_provisional_c_wanaen_provisional_d
+        priority: high
+        clock_expiry: 2026-06-15T16:00:00-04:00
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-13T16:00:00-04:00
+last_updated: 2026-06-14T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -33238,7 +33238,7 @@ entries:
       entries: append 2026-06-12-afternoon to covered_in.
 
   - id: 2026-06-12-pm-002-securityweek-ivanti-clarifies-cve-2026-10520-honeypot-exploitation-not-production-mass-framing-softens-mtls-epmm-managed-update-on-am-001-and-pm-001
-    covered_in: [2026-06-12-afternoon]
+    covered_in: [2026-06-12-afternoon, 2026-06-14-morning]
     brief_file: threats/briefs/2026-06-12-afternoon.md
     update_of_prior_coverage_log_entry: 2026-06-11-pm-001-cisa-kev-add-cve-2026-10520-ivanti-sentry-bod-26-04-3-day-fceb-deadline-update-extension-on-am-001
     headline: "UPDATE-CLARIFICATION on 2026-06-11-am-001 and 2026-06-11-pm-001 — Ivanti advisory update (via SecurityWeek single B-grade relay) clarifies CVE-2026-10520 KEV-triggering exploitation was observed against honeypots NOT production systems; vulnerable APIs are mTLS-protected for EPMM-managed appliances; unmanaged Sentry instances cannot run in production; honeypots often misconfigured to attract behavior; first appearance in corpus on mTLS-EPMM-managed architecture detail; materially softens 'mass' framing from finding-2026-06-11-0001 — VALIDATES morning red-team carry-forward hedge; CISA KEV listing STANDS (Ivanti does NOT request KEV unwinding); CVSS 10.0 pre-auth RCE technically valid; BOD 26-04 3-day FCEB clock 2026-06-14 STANDS; CVE-2026-10523 companion auth bypass (CVSS 9.9) NOT addressed in this clarification; honeypot telemetry likely traces to opportunistic mass-scanner infrastructure NOT targeted attack infrastructure (structural inference per Hard Rule 2); Ivanti primary advisory NOT directly retrieved this sweep — flag for next-sweep direct retrieval"
@@ -33302,7 +33302,7 @@ entries:
       - shadowserver_or_second_scanner_updates_telemetry
       - first_party_splunk_hit
     first_covered: 2026-06-12
-    last_covered: 2026-06-12
+    last_covered: 2026-06-14
     retraction: null
     test: false
     notes: |
@@ -33315,7 +33315,7 @@ entries:
       append 2026-06-12-afternoon to covered_in.
 
   - id: 2026-06-12-pm-003-securityweek-handala-hack-014-cal-water-self-claim-rtkbase-iav-iran-mois-restatement-iran-cyber-watch
-    covered_in: [2026-06-12-afternoon, 2026-06-13-morning, 2026-06-13-afternoon]
+    covered_in: [2026-06-12-afternoon, 2026-06-13-morning, 2026-06-13-afternoon, 2026-06-14-morning]
     brief_file: threats/briefs/2026-06-12-afternoon.md
     headline: "Handala Hack (#014, Iran/MOIS per prior US-gov attribution) self-claims California Water Service compromise — 5 GB leak naming Cal Water's Chico District, customer PII, RTKBase administrative credentials, NTRIP source passwords across 7 district mountpoints; Dataminr identifies RTKBase as likely initial access vector with lateral move to billing; Cal Water has not publicly acknowledged; SecurityWeek RESTATES prior US-government public Iran/MOIS attribution (restatement NOT new Archimedes attribution); new aliases per article (Banished Kitten, Dune, Red Sandstorm) flagged for actor-profiler fold-in to dossier #014; water utility NOT A&D — Hard Rule 2 binding: Iranian retaliation framing NOT extrapolated to A&D-prime targeting from single water-utility cycle; Hard Rule 7: PII / credential categories counted at article level only, no values stored; Iran Cyber Watch standing-section primary content; Handala blog NOT directly retrieved (LEGAL-POLICY passive-only operator decision pending)"
     topic_tags:
@@ -33389,7 +33389,7 @@ entries:
       - additional_named_water_utility_or_civilian_infrastructure_victim
       - handala_blog_direct_retrieval_operator_authorization
     first_covered: 2026-06-12
-    last_covered: 2026-06-13
+    last_covered: 2026-06-14
     retraction: null
     test: false
     notes: |
@@ -34589,7 +34589,7 @@ entries:
   # ============================================================================
 
   - id: 2026-06-13-pm-001-mandiant-gtig-primary-direct-retrieval-unc6240-shinyhunters-peoplesoft-cve-2026-35273-11-net-new-iocs-ttp-chain-enrichment-update-extension-on-am-001
-    covered_in: [2026-06-13-afternoon]
+    covered_in: [2026-06-13-afternoon, 2026-06-14-morning]
     brief_file: threats/briefs/2026-06-13-afternoon.md
     update_of_prior_coverage_log_entry: 2026-06-13-am-001-securityaffairs-mandiant-google-tig-cve-2026-35273-unc6240-shinyhunters-active-campaign-455k-victims-update-extension-on-pm-001
     headline: "UPDATE-EXTENSION on 2026-06-13-am-001 — Mandiant + GTIG primary blog post retrieved directly via WebFetch landing-page resolution this sweep (Mandiant RSS still stale-persistent at failure_count 25), resolving morning carry-forward; source-fidelity upgrade from SecurityAffairs relay to Mandiant primary direct; attribution language identical to SA relay ('active compromise and extortion campaign attributed to UNC6240 (ShinyHunters)', 9 words) confirming relay fidelity for finding-2026-06-13-0002; 11 net-new IOCs unlocked: 5 staging IPs 142.11.200.186-190 inclusive (Python SimpleHTTPServer on port 8888, 2026-05-27 to 2026-06-09) + 4 SHA-256 hashes converting filename-only Windows meshagent IOCs to hash-grade (meshagent64-azure-ops, meshagent64-v2, meshagent32-azure-ops, attacker .bash_history) + 1 SHA-256 for unconfigured Linux meshagent binary (NEW indicator class, no morning equivalent); TTP-chain enrichment includes verbatim zstd exfil pipe command + exact persistence path under <docroot>/envmetadata/data/environment/ + defacement marker file placement in WebLogic + Process Scheduler directories; 100-org figure now Mandiant-primary-direct (source-fidelity upgrade from relay); 455k HIBP figure remains SA-relay-sourced in this sweep's excerpt; no second IR vendor (Unit 42 / CrowdStrike / Microsoft / ZDI / Volexity / Trend Micro) surfaced 12:00-15:30 EDT — red-team HEDGE on scale-quantification layer from finding-2026-06-13-0002 REMAINS BINDING; FCEB BOD 26-04 3-day clock closes Sunday 2026-06-15 16:00 EDT (carry-forward); CISA KEV catalogVersion 2026.06.12 unchanged; UNC6240 + ShinyHunters carry-forward operator-deferred /new-actor candidate status (Hard Rule 5 not triggered by source-fidelity upgrade alone); Splunk first-party sentinel sweep across full expanded 19-IOC set (8 morning + 11 net-new) returned 0 events over -24h on both archimedes + defenseclaw_local — visibility-limited absence per Hard Rule 8 (Frank not higher-ed); A&D-prime structural inference carry-forward (no direct A&D-prime victim publicly confirmed in either finding); ZDI Childs limited-exploitation framing remains side-by-side with Mandiant 100+ figure, not collapsed"
@@ -34672,7 +34672,7 @@ entries:
       - cisa_kev_catalog_version_updates_with_new_relevant_entries
       - fceb_bod_26_04_clock_closure_sunday_2026_06_15_compliance_data_emerges
     first_covered: 2026-06-13
-    last_covered: 2026-06-13
+    last_covered: 2026-06-14
     retraction: null
     test: false
     notes: |
@@ -34694,7 +34694,7 @@ entries:
       ZDI Childs limited-framing side-by-side carry-forward.
 
   - id: 2026-06-13-pm-002-splunk-watchtowr-thn-cve-2026-20253-postgresql-sidecar-preauth-rce-cvss-9-8-patched-not-on-kev
-    covered_in: [2026-06-13-afternoon]
+    covered_in: [2026-06-13-afternoon, 2026-06-14-morning]
     brief_file: threats/briefs/2026-06-13-afternoon.md
     headline: "Splunk patched CVE-2026-20253 on 2026-06-10, a critical (CVSS 9.8) unauthenticated PostgreSQL sidecar pre-auth RCE in Splunk Enterprise 10.0.0-10.0.6 and 10.2.0-10.2.3; discovered by watchTowr Labs (Piotr Bazydlo + Yordan Ganchev); vendor advisory SVD-2026-0603; mechanic = sidecar's /v1/postgres/recovery/{backup,restore} endpoints lack authentication, reachable through main Splunk web interface on port 8000 via localhost relay, unauthenticated file create/truncate primitive escalates to RCE per discoverer writeup; Splunk Cloud + 10.4 line NOT affected; fixes in 10.0.7 / 10.2.4 / 10.4.0; THN reports 'no evidence of the flaw being exploited in the wild' (13 words) as of 2026-06-13 09:23 EDT; CISA KEV catalogVersion 2026.06.12 does NOT list it (verifiable absence); red-team caveat binding on exploitation-status layer (WEP downgraded likely -> roughly_even_chance) because negative-inference window is ~48h post-disclosure AND the affected product IS the SIEM tier used to generate detection reports (adverse selection on detection); red-team caveat binding on Archimedes-self-substrate operational layer (WEP downgraded very_likely -> likely) because the Splunk Free 10.2.2 inheritance of the Enterprise PostgreSQL sidecar is structural inference (B2), not vendor-attested (A1) — vendor advisory names Splunk Enterprise, not Splunk Free, and CLAUDE.md Session 3 Operational Note documents Splunk Free diverging from Enterprise on REST API auth (port 8089); patching action UNCHANGED — Frank should upgrade 10.2.2 -> 10.2.4 regardless; A&D structural relevance via Splunk Enterprise widespread DFARS/CMMC L2+ audit-event SIEM deployments; no actor attribution (pre-discovery disclosure); 4 provisional source-grade entries (splunk-advisory provisional A; watchtowr-labs provisional B; breachnews provisional C from independence-check audit; wanaen provisional D from independence-check audit); vuln-tracker dossier creation handoff warranted for CVE-2026-20253"
     topic_tags:
@@ -34805,7 +34805,7 @@ entries:
       - splunk_first_party_sentinel_hits_v1_postgres_recovery_endpoint_access_attempt
       - a_d_prime_victim_publicly_named_for_cve_2026_20253
     first_covered: 2026-06-13
-    last_covered: 2026-06-13
+    last_covered: 2026-06-14
     retraction: null
     test: false
     notes: |
@@ -34837,7 +34837,7 @@ entries:
       creation handoff for threats/vulnerabilities/CVE-2026-20253/.
 
   - id: 2026-06-13-pm-003-securityweek-github-npm-12-default-script-execution-change-supply-chain-defensive-roadmap-teampcp-001-shai-hulud-roster-gap-second-this-week
-    covered_in: [2026-06-13-afternoon]
+    covered_in: [2026-06-13-afternoon, 2026-06-14-morning]
     brief_file: threats/briefs/2026-06-13-afternoon.md
     headline: "Per SecurityWeek's relay of GitHub's announcement (direct GitHub blog retrieval pending next sweep), NPM 12 (expected July 2026) will change default behavior so that preinstall / install / postinstall / prepare scripts from dependencies will NOT execute unless explicitly allowed; native node-gyp builds (binding.gyp without explicit install script) also affected by default; git dependencies will not resolve unless allowed; remote-URL (HTTPS tarball) dependencies require --allow-remote flag; opt-in allowlist generated via npm approve-scripts command and written to package.json; npm 11.16.0+ provides preparation upgrade path; brings npm in line with pnpm + bun pre-existing security-aware default; SecurityWeek references two motivating campaigns — TeamPCP (Archimedes roster #001 HIGH; 'exploited automatic script execution during npm install' 7-word verbatim restatement of earlier industry reporting) and Shai-Hulud (NOT on Archimedes roster — 'self-replicating worm that weaponized binding.gyp files' 7-word per SecurityWeek paraphrasing earlier industry reporting); both campaigns described by SecurityWeek as having affected developers at scale (aggregate figure NOT lifted as load-bearing per analyst caveat A2 binding); 3 mandatory briefer caveats applied verbatim per analyst review: (1) aggregate-scale claim not lifted load-bearing; (2) TeamPCP and Shai-Hulud parallel framing preserved verbatim — NOT collapsed or distinguished beyond SecurityWeek's framing (corpus baseline per finding-2026-05-12-FLASH-0001: TeamPCP = actor, Shai-Hulud = campaign family); (3) attributed as 'per SecurityWeek's relay of GitHub' NOT 'GitHub announced' (direct GitHub blog retrieval pending); Shai-Hulud is the SECOND roster-gap candidate this week after Velvet Ant (finding-2026-06-12-0004) — operator-deferred /new-actor decision; A&D structural relevance via developer-tooling and CI/CD/IaC/AI-agent-harness (LangChain / LangGraph / Claude Code / Cursor) NPM dependency-pull pathways; defensive-roadmap pattern — Hard Rule 5 not triggered; cluster-continuity: most aggressive ecosystem-level defensive response in supply-chain-of-developer-tooling cluster (now 6 data points with NPM 12 added)"
     topic_tags:
@@ -34925,7 +34925,7 @@ entries:
       - first_a_d_prime_developer_tooling_infection_publicly_named_in_either_teampcp_or_shai_hulud_campaign
       - npm_approve_scripts_allowlist_enumeration_telemetry_emerges
     first_covered: 2026-06-13
-    last_covered: 2026-06-13
+    last_covered: 2026-06-14
     retraction: null
     test: false
     notes: |
@@ -35104,6 +35104,193 @@ entries:
         rationale: splunk_advisory_provisional_a_may_fold_into_splunk_advisory_portal_watchtowr_labs_provisional_b_breachnews_provisional_c_wanaen_provisional_d
         priority: high
         clock_expiry: 2026-06-15T16:00:00-04:00
+
+  # ==========================================================================
+  # 2026-06-14 morning brief — zero promotions, HOLD-status cycle
+  # ==========================================================================
+  #
+  # No net-new finding entries created this cycle. Per operator instruction
+  # (do not duplicate yesterday PM's verbose entries), anti-noise carry-forward
+  # holds touched in this brief should have their `covered_in` and
+  # `last_covered` updated on the existing entries by the librarian back-write,
+  # not re-litigated here. The only entries added this cycle are:
+  #   (1) the rejection bullet referenced in Other Signal
+  #   (2) the brief-meta entry for the cycle itself
+
+  - id: 2026-06-14-am-rejection-001-securityaffairs-conti-lytvynenko-doj-plea-criminal-justice-cycle-one-line-context
+    covered_in: [2026-06-14-morning]
+    brief_file: threats/briefs/2026-06-14-morning.md
+    headline: "Rejected as standalone (reject-2026-06-14-0001); surfaced as one-line criminal-justice cycle bullet in Other Signal — Ukrainian Oleksii Lytvynenko (44) pleaded guilty 2026-06-14 to wire fraud conspiracy for 2021-2022 role coding a Conti 'loader'; extradited Cork, Ireland; sentencing 2026-09-10, 20-year max; Conti NOT on roster (shuttered May 2022); no A&D victim; no IOCs; DOJ primary cited via SA relay (second corpus DOJ-primary-via-relay citation precedent — first was finding-2026-06-11-0007 Void Blizzard / Denis Obrezko); today is also the provisional-A ratification clock for doj-federal-court-filings"
+    topic_tags:
+      - rejection-surfaced-as-other-signal-context
+      - criminal-justice-cycle
+      - doj-plea-conti-ransomware
+      - lytvynenko-cork-ireland-extradition
+      - retrospective-2021-2022-attack-window
+      - conti-not-on-roster
+      - no-ad-relevance
+      - second-doj-primary-via-relay-citation-precedent
+      - provisional-a-ratification-clock-doj-federal-court-filings-today
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    rejection_id: reject-2026-06-14-0001
+    finding_ids: []
+    digraph: B2  # SA relay of DOJ primary; DOJ provisional-A; cluster digraph at SA layer
+    wep: very_likely  # procedural prosecutorial finding
+    single_source_veto_applied: false
+    hard_rule_2_framings_load_bearing:
+      - "Attribution belongs to DOJ + FBI per their procedural prosecutorial finding; Archimedes does not originate"
+      - "Lytvynenko nationality (Ukrainian) is defendant fact, NOT Conti nation-state attribution"
+    hard_rule_6_quote_budget:
+      sa_lineage_quote_NOT_used_in_brief: '"Conti emerged from the Ryuk gang and was closely linked to the TrickBot malware operation."'  # 13 words, within budget but not used — paraphrased in body
+    resurface_if:
+      - sentencing_outcome_2026_09_10
+      - additional_conti_conspirator_extradition_or_plea
+      - doj_indictment_of_higher_value_target_in_same_lineage
+      - ad_prime_victim_named_in_subsequent_doj_filing
+    first_covered: 2026-06-14
+    last_covered: 2026-06-14
+    retraction: null
+    test: false
+    notes: |
+      Surfaced as one-line context in Other Signal per operator format
+      guidance for zero-promotion HOLD cycle. Otherwise would have been
+      deferred to Sunday Weekly Synthesis. Rejection rationale per
+      reject-2026-06-14-0001: NOT brief-eligible as standalone finding
+      (no A&D relevance; no FLASH trigger; defunct ransomware actor;
+      retrospective 2021-2022 window). DOJ primary URL also surfaced
+      in brief alongside the SA relay URL.
+
+  - id: 2026-06-14-am-brief-meta
+    covered_in: [2026-06-14-morning]
+    brief_file: threats/briefs/2026-06-14-morning.md
+    headline: "2026-06-14 morning brief — zero promotions, HOLD-status cycle; lead on closing-today Ivanti Sentry CVE-2026-10520 KEV clock (~T-12h EOB) and Sunday PeopleSoft CVE-2026-35273 KEV clock (~T-32h EOB); 7 anti-noise carry-forward holds summarized in one line each; Conti / Lytvynenko DOJ plea surfaced as one-line criminal-justice context in Other Signal; 4 sentinel sweeps in 14h window returned 0 IOC hits on 19-IOC set"
+    topic_tags:
+      - morning-brief
+      - zero-promotions
+      - hold-status-cycle
+      - cycle-class-hold-status-zero-promotion
+      - lead-on-closing-today-ivanti-sentry-kev-clock
+      - lead-on-sunday-peoplesoft-kev-clock
+      - 7-anti-noise-carry-forward-holds-one-line-each
+      - conti-lytvynenko-doj-plea-one-line-other-signal-context
+      - 4-sentinel-sweeps-0-ioc-hits-19-ioc-set
+      - source-health-mandiant-rss-27-consecutive-404s-direct-html-works
+      - source-health-proofpoint-4th-consecutive-404
+      - source-health-cisco-talos-sans-isc-recovered
+      - tlp-green
+      - layer-1-approximately-760-words-within-target-band-400-800
+      - layer-2-under-1900-char-ceiling-approximately-1683-code-units
+      - pre-flight-13-13-pass-first-iteration
+    finding_ids: []
+    rejections_referenced: [reject-2026-06-14-0001]
+    digraph: composite_carry_forward  # all coverage is HOLD-status pulling forward yesterday PM digraphs
+    wep: very_likely  # KEV clock procedural attestation layer
+    layer_1_word_count: 760
+    layer_2_char_ceiling: 1900
+    layer_2_compliance: pass_under_ceiling_approximately_1683_code_units
+    preflight_iterations: 1
+    preflight_regenerations: []
+    pre_flight_check:
+      total: 13
+      passed: 13
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass_all_items_explicitly_hold_status_or_kev_clock_action_context_not_re_litigation
+        lead_states_impact_not_context: pass_lead_names_two_kev_clocks_cves_cvss_actor_t_minus_hours
+        no_banned_phrases: pass
+        standing_sections_present: pass_ad_sector_focus_via_silent_day_variant_iran_cyber_watch_via_handala_hold
+        wep_vocabulary_used_with_probability_bands: pass_very_likely_likely_roughly_even_chance_used
+        word_count_within_target: pass_at_approximately_760_words_within_400_800_target_band
+        actor_vuln_references_linked: pass_unc1549_linked_to_roster_profile_md_teampcp_001_in_roster_no_profile_md_yet_handala_014_in_roster_no_profile_md_yet
+        tlp_marked_where_non_clear: pass_tlp_green_brief_level
+        single_source_veto_respected: pass_kev_canonical_a1_mandiant_primary_direct_carry_forward_from_yesterday_pm
+        quote_discipline_under_15_words_max_1_per_source: pass_zero_direct_quotes_all_paraphrased
+        discord_summary_layer_2_compliant: pass_5_bullets_greeting_natural_language_dates_3_source_linked_headlines_2_hold_status_bullets_following_yesterday_pm_precedent_no_themed_voice_no_iso_dates_under_1900_chars
+    sentinel_sweeps_in_window:
+      - flash-2026-06-13-1800
+      - flash-2026-06-14-0000
+      - flash-2026-06-14-0600
+      - pre-brief-2026-06-14-0730
+    sentinel_ioc_hits: 0
+    sentinel_ioc_set_size: 19
+    anti_noise_carry_forward_holds_touched:
+      - peoplesoft-unc6240-cve-2026-35273-fceb-clock-t-minus-32h-sunday-eob
+      - splunk-enterprise-cve-2026-20253-postgres-sidecar-rce-self-substrate-pending-vendor-confirmation
+      - npm-12-default-script-execution-change-defensive-roadmap-github-blog-primary-pending
+      - fable-5-mythos-5-anthropic-usg-export-control-3-publisher-status-quo  # mentioned in frontmatter only; no body bullet this cycle
+      - handala-014-cal-water-iran-cyber-watch-third-source-negative-confirmed-hedge-binding
+      - velvet-ant-operation-highland-sygnia-primary-pending
+      - ivanti-sentry-cve-2026-10520-fceb-kev-clock-closes-today-t-minus-12h
+      - check-point-vpn-cve-2026-50751-qilin
+    coverage_log_actions_required:
+      - prior_entry: 2026-06-11-pm-001-cisa-kev-add-cve-2026-10520-ivanti-sentry-bod-26-04-3-day-fceb-deadline-update-extension-on-am-001
+        action: append_2026-06-14-morning_to_covered_in_update_last_covered_to_2026-06-14_kev_clock_closes_today
+      - prior_entry: 2026-06-13-pm-001-mandiant-gtig-primary-direct-retrieval-unc6240-shinyhunters-peoplesoft-cve-2026-35273-11-net-new-iocs-ttp-chain-enrichment-update-extension-on-am-001
+        action: append_2026-06-14-morning_to_covered_in_update_last_covered_to_2026-06-14_kev_clock_closes_sunday
+      - prior_entry: 2026-06-13-pm-002-splunk-watchtowr-thn-cve-2026-20253-postgresql-sidecar-preauth-rce-cvss-9-8-patched-not-on-kev
+        action: append_2026-06-14-morning_to_covered_in_update_last_covered_to_2026-06-14_hold_status
+      - prior_entry: 2026-06-13-pm-003-securityweek-github-npm-12-default-script-execution-change-supply-chain-defensive-roadmap-teampcp-001-shai-hulud-roster-gap-second-this-week
+        action: append_2026-06-14-morning_to_covered_in_update_last_covered_to_2026-06-14_hold_status
+      - prior_entry: 2026-06-12-pm-003-securityweek-handala-hack-014-cal-water-self-claim-rtkbase-iav-iran-mois-restatement-iran-cyber-watch
+        action: append_2026-06-14-morning_to_covered_in_update_last_covered_to_2026-06-14_hold_status
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings: []  # zero promotions this cycle; nothing to back-write
+      provisional_source_grade_actions:
+        - id: doj-federal-court-filings
+          action: today_is_the_72h_ratification_clock_2026_06_14_1600_edt_second_corpus_citation_via_sa_relay_today_provides_precedent_for_operator_decision
+          ratification_clock: 2026-06-14T16:00:00-04:00
+          priority: highest
+    operator_action_items:
+      - id: ivanti_sentry_cve_2026_10520_kev_clock_closes_eob_today
+        action: dib_owners_verify_ivanti_sentry_patched_to_r10_5_2_or_r10_6_2_or_r10_7_1_today
+        rationale: fceb_bod_26_04_clock_closes_eob_2026_06_14_t_minus_12h_at_publication_dib_inheritance_via_dfars
+        priority: highest
+      - id: peoplesoft_cve_2026_35273_kev_clock_closes_eob_sunday_2026_06_15
+        action: dib_owners_hunt_19_ioc_set_today_and_apply_oracle_out_of_band_mitigations
+        rationale: fceb_bod_26_04_clock_closes_eob_2026_06_15_t_minus_32h_at_publication_no_ga_patch_dib_inheritance_via_dfars
+        priority: highest
+      - id: doj_federal_court_filings_provisional_a_ratification_clock_today
+        action: operator_to_decide_ratification_of_doj_federal_court_filings_provisional_a_grade
+        rationale: 72h_clock_expires_today_2026_06_14_1600_edt_second_corpus_citation_via_sa_relay_today_provides_decision_input
+        priority: high
+        clock_expiry: 2026-06-14T16:00:00-04:00
+      - id: source_health_mandiant_rss_canonical_swap_decision
+        action: operator_to_decide_swap_mandiant_rss_path_to_direct_html_canonical_after_27_consecutive_404s_direct_html_working
+        rationale: rss_path_at_27_consecutive_404s_was_25_yesterday_pm_direct_html_retrieval_consistently_succeeds
+        priority: medium
+      - id: source_health_proofpoint_feed_404_pattern_entrenched
+        action: operator_to_review_proofpoint_us_threat_insight_blog_feed_4th_consecutive_404_decide_skip_or_retry_strategy
+        rationale: 4th_consecutive_observation_soft_pattern_fully_entrenched
+        priority: medium
+      - id: ai_tooling_cluster_6_data_point_threat_detection_weekly_synthesis_carry_forward
+        action: briefer_or_threat_detection_weekly_briefer_to_synthesize_supply_chain_of_developer_tooling_cluster
+        rationale: 6_data_points_carry_forward_from_yesterday_pm_synthesis_candidate
+        priority: high
+        target_brief: 2026-06-17-threat-detection-weekly
+        carry_forward_from: 2026-06-13-pm-brief-meta
+    notes: |
+      Zero-promotion HOLD-status cycle. Lead written on the operationally
+      actionable items for an A&D reader: the two FCEB BOD 26-04 KEV clocks
+      closing in this brief's lifetime — Ivanti Sentry CVE-2026-10520
+      (~T-12h tonight EOB) and Oracle PeopleSoft CVE-2026-35273 (~T-32h
+      Sunday EOB). All other coverage is HOLD-status one-liners per
+      operator format guidance — no re-litigation of yesterday PM substrate.
+
+      Conti / Lytvynenko DOJ plea surfaced as one-line criminal-justice
+      cycle context in Other Signal rather than deferred to Sunday Weekly
+      Synthesis — DOJ primary cited (second corpus DOJ-primary-via-relay
+      citation precedent) and today is the provisional-A ratification clock
+      for doj-federal-court-filings, making the bullet timely.
+
+      Source-health observations folded into Other Signal one-liner:
+      Mandiant RSS at 27 consecutive 404s (direct-HTML works), Proofpoint
+      feed at 4th consecutive 404 (pattern entrenched), Cisco Talos /rss/
+      and SANS ISC recovered.
+
+      Pre-flight 13/13 pass first iteration. No regenerations required.
 
 # ============================================================================
 # Valid resurface_if conditions

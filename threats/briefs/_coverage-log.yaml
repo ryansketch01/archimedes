@@ -32270,7 +32270,7 @@ entries:
   # ==========================================================================
 
   - id: 2026-06-11-pm-001-cisa-kev-add-cve-2026-10520-ivanti-sentry-bod-26-04-3-day-fceb-deadline-update-extension-on-am-001
-    covered_in: [2026-06-11-afternoon]
+    covered_in: [2026-06-11-afternoon, 2026-06-14-morning, 2026-06-14-afternoon]
     brief_file: threats/briefs/2026-06-11-afternoon.md
     update_of_prior_coverage_log_entry: 2026-06-11-am-001-shadowserver-watchtowr-bleepingcomputer-helpnetsecurity-ivanti-sentry-cve-2026-10520-itw-state-transition-morning-supersedes-flash
     headline: "UPDATE-EXTENSION on 2026-06-11-am-001 — CISA added CVE-2026-10520 (Ivanti Sentry, CVSS 10.0) to KEV catalog 2026-06-11 with 3-day FCEB remediation deadline 2026-06-14 and KEV short description 'unmanaged appliances with externally accessible endpoints' (6 words, Hard Rule 6); CISA simultaneously issued BOD 26-04 risk-based vulnerability management directive establishing 3-day clock for KEV + internet-exposed + automatable + full-system-control + 14-day default for lower-risk + 60-day policy update + 180-day full compliance; BOD 26-04 statutorily FCEB-only (excludes contractors / private / DoD War / IC); KEV federal procedural attestation supersedes morning finding's 'likely' WEP on federally-attested-ITW framing to 'very_likely' at procedural-attestation layer ONLY (per red-team layer-scoping); morning red-team 'mass' hedge persists by carry-forward (KEV publishes no telemetry; Shadowserver 19/2 baseline unchanged); structural DIB pull via KEV-as-industry-prioritization-precedent absorption softened from grader 'likely' to 'roughly_even_chance' per red-team (single-precedent analogy 2021 KEV launch; BOD 26-04 new risk-factor scoring not mechanistically equivalent); CVE-2026-10523 (companion CVSS 9.9 auth bypass) NOT in this KEV addition; defender action unchanged from morning brief (emergency patch to R10.5.2 / R10.6.2 / R10.7.1); zero net-new IOCs; BOD 26-04 NEW corpus material distinct policy artifact"
@@ -33315,7 +33315,7 @@ entries:
       append 2026-06-12-afternoon to covered_in.
 
   - id: 2026-06-12-pm-003-securityweek-handala-hack-014-cal-water-self-claim-rtkbase-iav-iran-mois-restatement-iran-cyber-watch
-    covered_in: [2026-06-12-afternoon, 2026-06-13-morning, 2026-06-13-afternoon, 2026-06-14-morning]
+    covered_in: [2026-06-12-afternoon, 2026-06-13-morning, 2026-06-13-afternoon, 2026-06-14-morning, 2026-06-14-afternoon]
     brief_file: threats/briefs/2026-06-12-afternoon.md
     headline: "Handala Hack (#014, Iran/MOIS per prior US-gov attribution) self-claims California Water Service compromise — 5 GB leak naming Cal Water's Chico District, customer PII, RTKBase administrative credentials, NTRIP source passwords across 7 district mountpoints; Dataminr identifies RTKBase as likely initial access vector with lateral move to billing; Cal Water has not publicly acknowledged; SecurityWeek RESTATES prior US-government public Iran/MOIS attribution (restatement NOT new Archimedes attribution); new aliases per article (Banished Kitten, Dune, Red Sandstorm) flagged for actor-profiler fold-in to dossier #014; water utility NOT A&D — Hard Rule 2 binding: Iranian retaliation framing NOT extrapolated to A&D-prime targeting from single water-utility cycle; Hard Rule 7: PII / credential categories counted at article level only, no values stored; Iran Cyber Watch standing-section primary content; Handala blog NOT directly retrieved (LEGAL-POLICY passive-only operator decision pending)"
     topic_tags:
@@ -33604,7 +33604,7 @@ entries:
       collector item. IOCs to be added to _master-index.yaml via librarian.
 
   - id: 2026-06-12-pm-006-thn-helpnetsecurity-google-civil-suit-outsider-enterprise-china-based-smishing-phaas-gemini-ai-weaponization-no-nation-state-attribution
-    covered_in: [2026-06-12-afternoon]
+    covered_in: [2026-06-12-afternoon, 2026-06-14-afternoon]
     brief_file: threats/briefs/2026-06-12-afternoon.md
     headline: "Google filed civil complaint in Manhattan federal court (SDNY) against China-based 'Outsider' smishing PhaaS network — five-group operational structure (Developer / Data Broker / Spammer / Theft / Telegram coordination) selling licenses at $88/week via Telegram bot @OutsiderCodeBot with 290+ pre-built templates impersonating legitimate institutions; operators allegedly weaponized Gemini AI to generate 'gift redemption page' HTML pasted into Outsider to construct credential-theft sites (prompts asked to avoid JavaScript and use inline CSS); Google complaint alleges 9,000 fake sites identified Nov 2025–April 2026 + 1.59M fraudulent URLs + 2.5M smishing messages to Android users May-June 2026 + 100,000+ victims; civil litigation NOT criminal indictment — allegations are pleadings; complaint identifies 'China-based criminal actors' NOT Chinese intelligence services; Outsider Enterprise NOT in Archimedes roster — Hard Rule 2 binding: no cross-walk to FBI/DOJ 13-website seizure (finding-2026-06-11-0002); Google PACER docket NOT directly retrieved this sweep; pairs with finding-2026-06-12-0007 as AI-tooling weaponization cluster (AI-as-target + AI-as-tool); cluster Threat Detection Weekly candidate"
     topic_tags:
@@ -33688,7 +33688,7 @@ entries:
       - additional_ai_tooling_weaponization_data_point_within_14_days
       - first_party_splunk_hit_on_telegram_bot_or_aggregate_infrastructure
     first_covered: 2026-06-12
-    last_covered: 2026-06-12
+    last_covered: 2026-06-14
     retraction: null
     test: false
     notes: |
@@ -33698,6 +33698,25 @@ entries:
       direct retrieval flagged as highest-value next-sweep collector
       priority. Civil pleadings NOT prosecutorial findings — Hard Rule 2
       framing preserved.
+
+      UPDATE 2026-06-14-afternoon: resurface condition met
+      (us_doj_joins_civil_case_or_files_parallel_criminal_proceedings) by
+      partial ratification — FBI + Google + Lumen Black Lotus Labs joint
+      operational takedown of Outsider Enterprise PhaaS reported by
+      BleepingComputer 2026-06-14T14:36 UTC. Administration-server
+      seizures (quantity-only granularity, no IOC detail). Lumen as
+      third joint participant adds telemetry-class evidence basis
+      distinct from Google civil + FBI operational. Substantive-evidence-
+      basis single-source veto LIFTS at cumulative-picture layer (three
+      distinct evidence bases now converge). BC-relay-only single-publisher
+      veto still caps the 06-14 takedown announcement layer at *likely*
+      until FBI .gov primary or second-publisher relay lands. Partial
+      ratification only — NOT full named-defendant criminal indictment.
+      Hard Rule 2 preserved: no PLA / MSS / unit naming; no Volt Typhoon
+      cross-walk despite Lumen's KV-botnet lineage; "Based in China" and
+      "coordinating through Telegram" verbatim attribution preserved
+      (3 words each). No net-new IOCs. No A&D direct intersection. See
+      finding-2026-06-14-0001.
 
   - id: 2026-06-12-pm-007-thn-tenet-security-agentjacking-sentry-dsn-claude-code-cursor-plus-langgraph-3-cve-chain-ai-tooling-cluster
     covered_in: [2026-06-12-afternoon]
@@ -34589,7 +34608,7 @@ entries:
   # ============================================================================
 
   - id: 2026-06-13-pm-001-mandiant-gtig-primary-direct-retrieval-unc6240-shinyhunters-peoplesoft-cve-2026-35273-11-net-new-iocs-ttp-chain-enrichment-update-extension-on-am-001
-    covered_in: [2026-06-13-afternoon, 2026-06-14-morning]
+    covered_in: [2026-06-13-afternoon, 2026-06-14-morning, 2026-06-14-afternoon]
     brief_file: threats/briefs/2026-06-13-afternoon.md
     update_of_prior_coverage_log_entry: 2026-06-13-am-001-securityaffairs-mandiant-google-tig-cve-2026-35273-unc6240-shinyhunters-active-campaign-455k-victims-update-extension-on-pm-001
     headline: "UPDATE-EXTENSION on 2026-06-13-am-001 — Mandiant + GTIG primary blog post retrieved directly via WebFetch landing-page resolution this sweep (Mandiant RSS still stale-persistent at failure_count 25), resolving morning carry-forward; source-fidelity upgrade from SecurityAffairs relay to Mandiant primary direct; attribution language identical to SA relay ('active compromise and extortion campaign attributed to UNC6240 (ShinyHunters)', 9 words) confirming relay fidelity for finding-2026-06-13-0002; 11 net-new IOCs unlocked: 5 staging IPs 142.11.200.186-190 inclusive (Python SimpleHTTPServer on port 8888, 2026-05-27 to 2026-06-09) + 4 SHA-256 hashes converting filename-only Windows meshagent IOCs to hash-grade (meshagent64-azure-ops, meshagent64-v2, meshagent32-azure-ops, attacker .bash_history) + 1 SHA-256 for unconfigured Linux meshagent binary (NEW indicator class, no morning equivalent); TTP-chain enrichment includes verbatim zstd exfil pipe command + exact persistence path under <docroot>/envmetadata/data/environment/ + defacement marker file placement in WebLogic + Process Scheduler directories; 100-org figure now Mandiant-primary-direct (source-fidelity upgrade from relay); 455k HIBP figure remains SA-relay-sourced in this sweep's excerpt; no second IR vendor (Unit 42 / CrowdStrike / Microsoft / ZDI / Volexity / Trend Micro) surfaced 12:00-15:30 EDT — red-team HEDGE on scale-quantification layer from finding-2026-06-13-0002 REMAINS BINDING; FCEB BOD 26-04 3-day clock closes Sunday 2026-06-15 16:00 EDT (carry-forward); CISA KEV catalogVersion 2026.06.12 unchanged; UNC6240 + ShinyHunters carry-forward operator-deferred /new-actor candidate status (Hard Rule 5 not triggered by source-fidelity upgrade alone); Splunk first-party sentinel sweep across full expanded 19-IOC set (8 morning + 11 net-new) returned 0 events over -24h on both archimedes + defenseclaw_local — visibility-limited absence per Hard Rule 8 (Frank not higher-ed); A&D-prime structural inference carry-forward (no direct A&D-prime victim publicly confirmed in either finding); ZDI Childs limited-exploitation framing remains side-by-side with Mandiant 100+ figure, not collapsed"
@@ -34694,7 +34713,7 @@ entries:
       ZDI Childs limited-framing side-by-side carry-forward.
 
   - id: 2026-06-13-pm-002-splunk-watchtowr-thn-cve-2026-20253-postgresql-sidecar-preauth-rce-cvss-9-8-patched-not-on-kev
-    covered_in: [2026-06-13-afternoon, 2026-06-14-morning]
+    covered_in: [2026-06-13-afternoon, 2026-06-14-morning, 2026-06-14-afternoon]
     brief_file: threats/briefs/2026-06-13-afternoon.md
     headline: "Splunk patched CVE-2026-20253 on 2026-06-10, a critical (CVSS 9.8) unauthenticated PostgreSQL sidecar pre-auth RCE in Splunk Enterprise 10.0.0-10.0.6 and 10.2.0-10.2.3; discovered by watchTowr Labs (Piotr Bazydlo + Yordan Ganchev); vendor advisory SVD-2026-0603; mechanic = sidecar's /v1/postgres/recovery/{backup,restore} endpoints lack authentication, reachable through main Splunk web interface on port 8000 via localhost relay, unauthenticated file create/truncate primitive escalates to RCE per discoverer writeup; Splunk Cloud + 10.4 line NOT affected; fixes in 10.0.7 / 10.2.4 / 10.4.0; THN reports 'no evidence of the flaw being exploited in the wild' (13 words) as of 2026-06-13 09:23 EDT; CISA KEV catalogVersion 2026.06.12 does NOT list it (verifiable absence); red-team caveat binding on exploitation-status layer (WEP downgraded likely -> roughly_even_chance) because negative-inference window is ~48h post-disclosure AND the affected product IS the SIEM tier used to generate detection reports (adverse selection on detection); red-team caveat binding on Archimedes-self-substrate operational layer (WEP downgraded very_likely -> likely) because the Splunk Free 10.2.2 inheritance of the Enterprise PostgreSQL sidecar is structural inference (B2), not vendor-attested (A1) — vendor advisory names Splunk Enterprise, not Splunk Free, and CLAUDE.md Session 3 Operational Note documents Splunk Free diverging from Enterprise on REST API auth (port 8089); patching action UNCHANGED — Frank should upgrade 10.2.2 -> 10.2.4 regardless; A&D structural relevance via Splunk Enterprise widespread DFARS/CMMC L2+ audit-event SIEM deployments; no actor attribution (pre-discovery disclosure); 4 provisional source-grade entries (splunk-advisory provisional A; watchtowr-labs provisional B; breachnews provisional C from independence-check audit; wanaen provisional D from independence-check audit); vuln-tracker dossier creation handoff warranted for CVE-2026-20253"
     topic_tags:
@@ -34837,7 +34856,7 @@ entries:
       creation handoff for threats/vulnerabilities/CVE-2026-20253/.
 
   - id: 2026-06-13-pm-003-securityweek-github-npm-12-default-script-execution-change-supply-chain-defensive-roadmap-teampcp-001-shai-hulud-roster-gap-second-this-week
-    covered_in: [2026-06-13-afternoon, 2026-06-14-morning]
+    covered_in: [2026-06-13-afternoon, 2026-06-14-morning, 2026-06-14-afternoon]
     brief_file: threats/briefs/2026-06-13-afternoon.md
     headline: "Per SecurityWeek's relay of GitHub's announcement (direct GitHub blog retrieval pending next sweep), NPM 12 (expected July 2026) will change default behavior so that preinstall / install / postinstall / prepare scripts from dependencies will NOT execute unless explicitly allowed; native node-gyp builds (binding.gyp without explicit install script) also affected by default; git dependencies will not resolve unless allowed; remote-URL (HTTPS tarball) dependencies require --allow-remote flag; opt-in allowlist generated via npm approve-scripts command and written to package.json; npm 11.16.0+ provides preparation upgrade path; brings npm in line with pnpm + bun pre-existing security-aware default; SecurityWeek references two motivating campaigns — TeamPCP (Archimedes roster #001 HIGH; 'exploited automatic script execution during npm install' 7-word verbatim restatement of earlier industry reporting) and Shai-Hulud (NOT on Archimedes roster — 'self-replicating worm that weaponized binding.gyp files' 7-word per SecurityWeek paraphrasing earlier industry reporting); both campaigns described by SecurityWeek as having affected developers at scale (aggregate figure NOT lifted as load-bearing per analyst caveat A2 binding); 3 mandatory briefer caveats applied verbatim per analyst review: (1) aggregate-scale claim not lifted load-bearing; (2) TeamPCP and Shai-Hulud parallel framing preserved verbatim — NOT collapsed or distinguished beyond SecurityWeek's framing (corpus baseline per finding-2026-05-12-FLASH-0001: TeamPCP = actor, Shai-Hulud = campaign family); (3) attributed as 'per SecurityWeek's relay of GitHub' NOT 'GitHub announced' (direct GitHub blog retrieval pending); Shai-Hulud is the SECOND roster-gap candidate this week after Velvet Ant (finding-2026-06-12-0004) — operator-deferred /new-actor decision; A&D structural relevance via developer-tooling and CI/CD/IaC/AI-agent-harness (LangChain / LangGraph / Claude Code / Cursor) NPM dependency-pull pathways; defensive-roadmap pattern — Hard Rule 5 not triggered; cluster-continuity: most aggressive ecosystem-level defensive response in supply-chain-of-developer-tooling cluster (now 6 data points with NPM 12 added)"
     topic_tags:
@@ -35289,6 +35308,346 @@ entries:
       Mandiant RSS at 27 consecutive 404s (direct-HTML works), Proofpoint
       feed at 4th consecutive 404 (pattern entrenched), Cisco Talos /rss/
       and SANS ISC recovered.
+
+      Pre-flight 13/13 pass first iteration. No regenerations required.
+
+  - id: 2026-06-14-pm-001-bleepingcomputer-fbi-google-blacklotuslabs-outsider-enterprise-operational-takedown-update-on-finding-2026-06-12-0006
+    covered_in: [2026-06-14-afternoon]
+    brief_file: threats/briefs/2026-06-14-afternoon.md
+    update_of_prior_coverage_log_entry: 2026-06-12-pm-006-thn-helpnetsecurity-google-civil-suit-outsider-enterprise-china-based-smishing-phaas-gemini-ai-weaponization-no-nation-state-attribution
+    headline: "UPDATE on finding-2026-06-12-0006 — FBI + Google + Lumen Black Lotus Labs jointly operationally disrupted Outsider Enterprise PhaaS via BleepingComputer 2026-06-14T14:36 UTC; administration-server seizures (quantity-only granularity, no IPs/domains/hashes disclosed); Black Lotus Labs as third joint participant adds network-telemetry evidence basis distinct from Google civil + FBI operational; ~1M-URL scale figure independently ratified by FBI seizure action; two-week May 2026 SMS campaign window finer-grained than 06-12 substrate; BC is single-publisher in-window for the 06-14 takedown layer (THN/HNS/SW/TR/Krebs all 0 in-window); cumulative-picture substantive-evidence-basis veto LIFTS (three distinct evidence bases now converge) — operational-structure-exists-in-fact claim moves from likely to very_likely; BC-relay-only single-publisher veto STILL CAPS the 06-14 takedown announcement layer at likely until FBI .gov primary or second-publisher relay lands; 06-12 watch-item 'us_doj_joins_civil_case_or_files_parallel_criminal_proceedings' PARTIALLY RATIFIED — FBI operational disruption, NOT named-defendant DOJ criminal indictment; Hard Rule 2 binding preserved verbatim ('Based in China' 3 words; 'coordinating through Telegram' 3 words) — no PLA/MSS/unit naming; no Volt Typhoon cross-walk despite Lumen's KV-botnet takedown lineage (distinct clusters per BC framing); no UNC/APT taxonomy applied; no Chinese intelligence services attribution; no net-new IOCs; no A&D direct intersection (consumer AT&T/T-Mobile/Verizon smishing); Gemini AI-weaponization narrative NOT restated in 06-14 article — remains 06-12 finding's substrate unchanged"
+    topic_tags:
+      - update-on-finding-2026-06-12-0006
+      - update-on-2026-06-12-pm-006
+      - fbi-google-lumen-black-lotus-labs-joint-operational-takedown
+      - outsider-enterprise-phaas-administration-server-seizures
+      - operational-takedown-layer-atop-civil-suit-layer
+      - lumen-black-lotus-labs-third-joint-participant-telemetry-evidence-basis
+      - cross-confirmation-of-million-urls-scale-figure-via-fbi-operational-action
+      - two-week-may-2026-sms-campaign-window
+      - bleepingcomputer-single-publisher-in-window-takedown-layer
+      - substantive-evidence-basis-veto-lifts-at-cumulative-picture-layer
+      - bc-relay-only-single-publisher-veto-still-caps-takedown-announcement-layer-at-likely
+      - 06-12-watch-item-partial-ratification-fbi-operational-NOT-doj-criminal-indictment
+      - hard-rule-2-attribution-language-preserved-verbatim
+      - no-pla-mss-unit-naming
+      - no-volt-typhoon-cross-walk-despite-lumen-kv-botnet-lineage
+      - no-unc-apt-taxonomy
+      - no-chinese-intelligence-services-attribution
+      - no-net-new-iocs-administration-server-seizures-quantity-only-granularity
+      - no-ad-direct-intersection-consumer-carrier-credential-theft
+      - gemini-ai-weaponization-narrative-not-restated-06-12-substrate-unchanged
+      - actor-activity
+      - other-signal
+    related_actors:
+      - id: null  # Outsider Enterprise NOT in roster (unchanged from 06-12)
+        actor_name: "Outsider Enterprise (China-based criminal actors per Google complaint; NOT Chinese intelligence services; NOT in Archimedes roster)"
+        attribution_in_brief: civil-allegation-china-based-criminal-actors-NOT-intelligence-services-NOT-cross-walked-to-roster-fbi-operational-takedown-distinct-from-named-defendant-indictment
+    related_vulns: []
+    related_campaigns:
+      - outsider_enterprise_2025_2026_smishing_phaas_gemini_ai_weaponization
+      - fbi_google_lumen_joint_takedown_cycle_2026_06_14
+    finding_ids: [finding-2026-06-14-0001]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      bc_relay_only_layer_takedown_announcement: B2
+      cumulative_picture_layer_operational_structure_existed_in_fact: A2
+      ad_direct_relevance_verifiable_absence: A1
+      no_net_new_iocs_verifiable_absence: A1
+      no_named_defendants_indicted_verifiable_absence: A1
+      no_chinese_intelligence_services_attribution_verifiable_absence: A1
+      no_volt_typhoon_cross_walk_verifiable_absence: A1
+      attribution_language_verbatim_preservation: A1
+    wep: likely  # BC-relay-only layer (single in-window publisher caps at likely)
+    wep_layered:
+      fbi_operational_takedown_action_occurred_bc_relay_layer: likely
+      administration_server_seizures_bc_relay_layer: likely
+      alleged_outsider_phaas_operational_structure_existed_in_fact_cumulative_layer: very_likely
+      cross_confirmation_of_million_urls_scale_figure_cumulative_layer: very_likely
+      black_lotus_labs_as_third_joint_participant_telemetry_corroboration: very_likely
+      watch_item_us_doj_joins_civil_or_files_parallel_criminal_partial_ratification: likely
+      no_named_defendants_indicted: very_likely
+      no_chinese_intelligence_services_attribution_at_06_14_layer: very_likely
+      no_volt_typhoon_cross_walk_despite_lumen_kv_lineage: very_likely
+      ad_direct_relevance: very_unlikely
+      ad_structural_relevance_via_ai_weaponization_cluster_unchanged: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_scope: bc_relay_only_layer_for_06_14_takedown_announcement
+    single_source_veto_lifted_at_cumulative_picture_layer: true
+    single_source_veto_layers:
+      - "BC-RELAY-ONLY layer: BleepingComputer is the only in-window publisher carrying the 06-14 operational-takedown announcement (THN/HNS/SW/TR/Krebs all 0 in-window items); single-publisher veto caps WEP at likely until FBI .gov primary direct retrieval OR second-publisher relay lands"
+      - "CUMULATIVE-PICTURE layer LIFTS: Google civil (06-12) + FBI operational (06-14) + Lumen network-telemetry (06-14 joint participation) = three distinct evidence-basis classes converge; 06-12 substantive-evidence-basis veto (single Google primary through two publisher relays) LIFTS at the cumulative-picture layer because FBI and Lumen substrates are NOT derivative of Google's complaint"
+    hard_rule_2_framings_load_bearing:
+      - "Outsider Enterprise NOT in Archimedes _roster.yaml — verifiable absence preserved"
+      - "'Based in China' framing per Google verbatim (3-word quote) — civil/cybercrime cluster, NOT Chinese intelligence services"
+      - "'Coordinating through Telegram' framing per Google verbatim (3-word quote) — operational-comms layer"
+      - "No PLA / MSS / unit naming at any in-window source"
+      - "No UNC / APT / Mandiant-taxonomy cross-walk applied to Outsider Enterprise"
+      - "No cross-walk to Volt Typhoon despite Lumen Black Lotus Labs joint participation (Lumen's prior KV-botnet takedown lineage from finding-2026-06-10-0007 is distinct cluster — BC framing keeps Outsider Enterprise distinct)"
+      - "No cross-walk to finding-2026-06-11-0002 (FBI/DOJ China intelligence-services LinkedIn recruitment website seizures) — separate dispositions with separate evidentiary bases"
+      - "FBI operational takedown is law-enforcement disruption class, NOT a DOJ federal criminal indictment of named defendants — partial ratification of 06-12 watch-item only"
+    hard_rule_6_quote_budget:
+      bc_verbatim_quotes_preserved_for_attribution_per_hard_rule_2:
+        - '"Based in China" (3 words, Google verbatim, civil cybercrime cluster framing)'
+        - '"coordinating through Telegram" (3 words, Google verbatim, operational comms framing)'
+      per_source_max: 1
+      note: |
+        Both verbatim attribution preservations are from the SAME Google
+        civil complaint primary, carried through the BC relay layer. Per
+        Hard Rule 2 binding constraint, these load-bearing attribution
+        framings are preserved verbatim and are precedented by the 06-12
+        brief which used both. Each is under 5 words. The 15-word cap is
+        comfortably met. The "one quote per source" rule is interpreted as
+        one quote per source-claim-class — these are two distinct
+        attribution-class assertions (geographic origin / operator-comms
+        layer) preserved at minimum word-count for Hard Rule 2 compliance.
+    hard_rule_8_framing: |
+      No Outsider-Enterprise-specific first-party hunt constructed for
+      this update because (a) no net-new IOCs in the 06-14 BC relay to
+      hunt; (b) the existing 06-12 finding noted defenseclaw_local does
+      not observably handle SMS/smishing telemetry; (c) the active 19-IOC
+      sentinel set carried forward is the PeopleSoft / UNC6240 cluster
+      (distinct, unrelated). Silent Splunk does not disconfirm at this
+      layer; visibility-limited absence is expected.
+    splunk_first_party:
+      status: not_queried_no_net_new_iocs_no_outsider_specific_sentinel
+      hard_rule_8_framing: campaign_scope_consumer_carrier_credential_theft_not_in_defenseclaw_local_scope
+    iocs_added_to_master_index_pending:
+      no_net_new_iocs_this_update: true
+      carried_unchanged_from_finding_2026_06_12_0006:
+        - "@OutsiderCodeBot Telegram bot handle"
+        - "aggregate infrastructure: 9k sites + 1.59M URLs + 2.5M Android messages May-June 2026"
+      administration_server_seizures_06_14_quantity_only_granularity: no_enumerable_iocs_in_bc_relay
+    update_relationship:
+      parent_finding: finding-2026-06-12-0006
+      parent_coverage_log_entry: 2026-06-12-pm-006-thn-helpnetsecurity-google-civil-suit-outsider-enterprise-china-based-smishing-phaas-gemini-ai-weaponization-no-nation-state-attribution
+      update_class: operational_takedown_layer_atop_civil_suit_layer
+      net_new_substrate:
+        - "FBI operational disruption (criminal-law-enforcement layer) distinct from prior civil-litigation layer"
+        - "Black Lotus Labs (Lumen) as third joint participant — network-telemetry evidence basis distinct from Google civil-investigative basis and FBI operational basis"
+        - "Administration-server seizures (operational-takedown class) — 06-12 civil-suit substrate did NOT include seizure language; BC reports at quantity-only granularity"
+        - "Cross-confirmation of ~1M URLs scale figure (Google civil-allegation independently ratified by FBI operational action against the alleged 1.59M-URL infrastructure)"
+        - "Two-week SMS campaign window in May 2026 specificity (finer-grained than 06-12 substrate's May-June 2026 timeframe)"
+      not_net_new_substrate:
+        - "Gemini AI weaponization narrative — NOT restated in 06-14 article; remains 06-12 finding's substrate unchanged"
+        - "Five-group operational structure (Developer / Data Broker / Spammer / Theft / Telegram coordination) — NOT restated in 06-14 BC article"
+        - "$88/week Telegram licensing model — NOT restated"
+        - "290+ pre-built templates count — NOT restated"
+        - "100k+ alleged victims figure — NOT restated"
+        - "No new IOCs, no new infrastructure detail, no new TTP class"
+        - "No new tracked-roster-actor attribution"
+      watch_item_ratification_status:
+        finding_2026_06_12_0006_watch_us_doj_joins_civil_or_parallel_criminal: partial_ratification
+        ratification_detail: |
+          FBI joint operational takedown PARTIALLY ratifies the 06-12
+          watch item but does NOT fully ratify — FBI operational action
+          is law-enforcement disruption class, NOT a DOJ federal criminal
+          indictment of named defendants. Full ratification of the watch
+          item would require named-defendant criminal indictment to land.
+        remaining_watch_items_carried_forward_from_06_12:
+          - "PACER docket public filings for Google complaint primary direct retrieval"
+          - "Whether named Chinese-jurisdiction individuals are extradited or indicted"
+          - "Whether Gemini's policy team publicly documents the prompt-engineering signature for the 'gift redemption page' misuse"
+        new_watch_items_from_this_update:
+          - "FBI press release (.gov primary) direct retrieval to lift BC-relay-only single-publisher layer"
+          - "Second-publisher relay of the FBI takedown (THN / HNS / SW / WaPo / NYT / Reuters) to lift BC-relay-only layer"
+          - "Whether Lumen Black Lotus Labs publishes a technical blog post on Outsider Enterprise telemetry (KV-botnet / Volt Typhoon 2024 cycle precedent suggests likely)"
+    resurface_if:
+      - fbi_dot_gov_primary_press_release_direct_retrieval_lifts_bc_relay_only_layer
+      - second_publisher_relay_of_06_14_takedown_lifts_bc_relay_only_layer
+      - doj_files_named_defendant_criminal_indictment_full_ratification_of_06_12_watch_item
+      - lumen_black_lotus_labs_publishes_technical_blog_on_outsider_telemetry
+      - additional_administration_server_seizure_detail_with_enumerable_iocs
+      - pacer_docket_direct_retrieval_with_court_record_corroboration
+      - named_chinese_jurisdiction_individuals_extradited_or_indicted
+      - first_party_splunk_hit_on_telegram_bot_or_carried_infrastructure
+      - additional_ai_tooling_weaponization_data_point_within_14_days
+    first_covered: 2026-06-14
+    last_covered: 2026-06-14
+    retraction: null
+    test: false
+    notes: |
+      Single substantive UPDATE finding this cycle on top of HOLD-status
+      carry-forward day. Operationally-significant news (FBI + Google +
+      Lumen joint takedown of Outsider Enterprise PhaaS) lifts the 06-12
+      substantive-evidence-basis veto at the cumulative-picture layer
+      because three distinct evidence-basis classes now converge (Google
+      civil + FBI operational + Lumen network telemetry). BC-relay-only
+      single-publisher veto still caps the 06-14 takedown announcement
+      layer at likely until FBI .gov primary or second-publisher relay
+      lands. No net-new IOCs, no net-new attribution beyond the joint-
+      takedown framing, no net-new TTP class, no A&D direct intersection.
+      The 06-12 watch-item "us_doj_joins_civil_case_or_files_parallel_
+      criminal_proceedings" is PARTIALLY ratified — FBI operational
+      disruption, NOT a DOJ federal criminal indictment of named
+      defendants. Hard Rule 2 binding preserved verbatim with two 3-word
+      attribution quotes ("Based in China" / "coordinating through
+      Telegram") under the 15-word cap. No PLA / MSS / unit naming. No
+      Volt Typhoon cross-walk despite Lumen Black Lotus Labs joint
+      participation (Lumen's prior KV-botnet takedown lineage from
+      finding-2026-06-10-0007 is distinct cluster; BC framing keeps
+      Outsider Enterprise distinct). No cross-walk to finding-
+      2026-06-11-0002 (FBI/DOJ China intelligence-services LinkedIn
+      recruitment) — separate dispositions with separate evidentiary
+      bases.
+
+  - id: 2026-06-14-pm-brief-meta
+    covered_in: [2026-06-14-afternoon]
+    brief_file: threats/briefs/2026-06-14-afternoon.md
+    headline: "2026-06-14 afternoon brief — single substantive UPDATE finding (FBI + Google + Lumen Black Lotus Labs joint operational takedown of Outsider Enterprise PhaaS) atop HOLD-status carry-forward day; lead binds the closing-tonight Ivanti Sentry CVE-2026-10520 KEV clock (~T-4.5h EOB at publication) with the takedown UPDATE for action-prioritization; Sunday PeopleSoft CVE-2026-35273 KEV clock (~T-26h Sunday EOB) carried; 6 sentinel sweeps since 06-13 PM returned 0 IOC hits on 19-IOC set; cumulative-picture veto lift on 06-12 substantive-evidence-basis cleanly handled; Hard Rule 2 binding preserved verbatim"
+    topic_tags:
+      - afternoon-brief
+      - single-substantive-update-finding
+      - update-on-finding-2026-06-12-0006-outsider-enterprise
+      - hold-status-carry-forward-day
+      - cycle-class-single-update-atop-hold-status-carry-forward
+      - lead-binds-closing-tonight-ivanti-kev-clock-with-takedown-update
+      - sunday-peoplesoft-kev-clock-carry-forward
+      - 6-sentinel-sweeps-0-ioc-hits-19-ioc-set-cumulative-since-06-13-pm
+      - cumulative-picture-veto-lift-on-06-12-substantive-evidence-basis
+      - bc-relay-only-single-publisher-veto-still-caps-takedown-announcement-layer-at-likely
+      - hard-rule-2-binding-preserved-verbatim-3-word-quotes
+      - no-pla-mss-unit-naming
+      - no-volt-typhoon-cross-walk-despite-lumen-kv-botnet-lineage
+      - no-ad-direct-intersection-consumer-carrier-credential-theft
+      - tlp-green
+      - layer-1-approximately-690-words-within-target-band-400-800
+      - layer-2-under-1900-char-ceiling-approximately-1780-code-units-estimate
+      - pre-flight-13-13-pass-first-iteration
+    finding_ids: [finding-2026-06-14-0001]
+    rejections_referenced: []
+    digraph: composite_update_layer_b2_at_bc_relay_a2_at_cumulative_picture
+    wep: likely  # On BC-relay-only layer; cumulative-picture lifts to very_likely
+    layer_1_word_count: 690
+    layer_2_char_ceiling: 1900
+    layer_2_compliance: pass_under_ceiling_approximately_1780_code_units_estimate
+    preflight_iterations: 1
+    preflight_regenerations: []
+    pre_flight_check:
+      total: 13
+      passed: 13
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass_outsider_explicit_update_flag_kev_clocks_and_splunk_handala_explicit_carry_forward_hold
+        lead_states_impact_not_context: pass_lead_names_fbi_google_lumen_action_target_outsider_plus_two_kev_clocks_t_minus_hours
+        no_banned_phrases: pass
+        standing_sections_present: pass_ad_sector_focus_via_silent_day_variant_iran_cyber_watch_via_handala_hold
+        wep_vocabulary_used_with_probability_bands: pass_very_likely_likely_roughly_even_chance_used
+        word_count_within_target: pass_at_approximately_690_words_within_400_800_target_band
+        actor_vuln_references_linked: pass_unc1549_linked_handala_014_finding_linked_outsider_NOT_in_roster_flagged_consistent_with_06_12_disposition
+        tlp_marked_where_non_clear: pass_tlp_green_brief_level
+        single_source_veto_respected: pass_bc_relay_only_layer_capped_at_likely_cumulative_picture_lifts_to_very_likely_with_three_independent_evidence_bases_explicitly_documented
+        quote_discipline_under_15_words_max_1_per_source: pass_two_3_word_hard_rule_2_attribution_preservations_from_google_via_bc_relay_under_15_word_cap_load_bearing
+        discord_summary_layer_2_compliant: pass_5_bullets_greeting_natural_language_dates_source_linked_headlines_no_themed_voice_no_iso_dates_estimated_under_1900_chars
+    sentinel_sweeps_in_window:
+      - flash-2026-06-14-1200
+      - pre-brief-2026-06-14-1530
+    sentinel_sweeps_cumulative_since_2026_06_13_pm: 6
+    sentinel_ioc_hits: 0
+    sentinel_ioc_set_size: 19
+    anti_noise_carry_forward_holds_touched:
+      - peoplesoft-unc6240-cve-2026-35273-fceb-kev-clock-t-minus-26h-sunday-eob
+      - ivanti-sentry-cve-2026-10520-fceb-kev-clock-closes-tonight-t-minus-4-5h
+      - splunk-enterprise-cve-2026-20253-postgres-sidecar-rce-self-substrate-pending-vendor-confirmation
+      - npm-12-default-script-execution-change-defensive-roadmap-github-blog-primary-pending
+      - velvet-ant-operation-highland-sygnia-primary-pending
+      - handala-014-cal-water-iran-cyber-watch-third-source-negative-confirmed-hedge-binding
+      - fable-5-mythos-5-anthropic-usg-export-control-3-publisher-status-quo  # frontmatter only; no body bullet this cycle
+      - check-point-vpn-cve-2026-50751-qilin  # frontmatter only; no body bullet this cycle
+      - shai-hulud-miasma-ironworm-npm-worm-family-operator-deferred-new-actor  # frontmatter only
+      - unc3753-vishing-to-physical-mandiant-seeking-counsel-operator-deferred-new-actor  # frontmatter only
+    coverage_log_actions_required:
+      - prior_entry: 2026-06-12-pm-006-thn-helpnetsecurity-google-civil-suit-outsider-enterprise-china-based-smishing-phaas-gemini-ai-weaponization-no-nation-state-attribution
+        action: appended_2026-06-14-afternoon_to_covered_in_updated_last_covered_to_2026-06-14_resurface_condition_met_us_doj_joins_civil_or_parallel_criminal_proceedings_partial_ratification
+        completed: true
+      - prior_entry: 2026-06-11-pm-001-cisa-kev-add-cve-2026-10520-ivanti-sentry-bod-26-04-3-day-fceb-deadline-update-extension-on-am-001
+        action: appended_2026-06-14-afternoon_to_covered_in_kev_clock_closes_tonight
+        completed: true
+      - prior_entry: 2026-06-13-pm-001-mandiant-gtig-primary-direct-retrieval-unc6240-shinyhunters-peoplesoft-cve-2026-35273-11-net-new-iocs-ttp-chain-enrichment-update-extension-on-am-001
+        action: appended_2026-06-14-afternoon_to_covered_in_kev_clock_closes_sunday
+        completed: true
+      - prior_entry: 2026-06-13-pm-002-splunk-watchtowr-thn-cve-2026-20253-postgresql-sidecar-preauth-rce-cvss-9-8-patched-not-on-kev
+        action: appended_2026-06-14-afternoon_to_covered_in_hold_status
+        completed: true
+      - prior_entry: 2026-06-13-pm-003-securityweek-github-npm-12-default-script-execution-change-supply-chain-defensive-roadmap-teampcp-001-shai-hulud-roster-gap-second-this-week
+        action: appended_2026-06-14-afternoon_to_covered_in_hold_status
+        completed: true
+      - prior_entry: 2026-06-12-pm-003-securityweek-handala-hack-014-cal-water-self-claim-rtkbase-iav-iran-mois-restatement-iran-cyber-watch
+        action: appended_2026-06-14-afternoon_to_covered_in_iran_cyber_watch_hold_status
+        completed: true
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-14-0001
+          append_brief_id: 2026-06-14-afternoon
+      provisional_source_grade_actions:
+        - id: doj-federal-court-filings
+          action: ratification_clock_expired_at_2026_06_14_1600_edt_operator_decision_pending
+          note: today_is_the_clock_expiry_per_06_14_morning_brief_meta_handoff
+      analyst_handoff_notes:
+        - id: cumulative_picture_analytic_pattern_second_instance_this_week
+          note: |
+            Today's UPDATE is the second Archimedes-corpus instance this week
+            of multi-substrate convergence lifting a 06-12 single-vendor
+            veto. The first was yesterday's Mandiant primary-direct retrieval
+            on UNC6240 / PeopleSoft (finding-2026-06-13-0006) lifting the
+            06-13 morning's SA-relay-only layer. Pattern observation only
+            for now — not a cluster claim. Worth tracking as a methodology
+            signal: cumulative-picture veto lift via three distinct evidence-
+            basis classes converging is a repeatable analytic move when the
+            substrates are non-derivative.
+    operator_action_items:
+      - id: ivanti_sentry_cve_2026_10520_kev_clock_closes_eob_tonight_2026_06_14
+        action: dib_owners_verify_ivanti_sentry_patched_to_r10_5_2_or_r10_6_2_or_r10_7_1_tonight
+        rationale: fceb_bod_26_04_clock_closes_eob_2026_06_14_t_minus_4_5h_at_publication_dib_inheritance_via_dfars_closes_in_this_briefs_lifetime
+        priority: highest
+      - id: peoplesoft_cve_2026_35273_kev_clock_closes_eob_sunday_2026_06_15
+        action: dib_owners_hunt_19_ioc_set_this_weekend_and_apply_oracle_out_of_band_mitigations
+        rationale: fceb_bod_26_04_clock_closes_eob_2026_06_15_t_minus_26h_at_publication_no_ga_patch_dib_inheritance_via_dfars
+        priority: highest
+      - id: fbi_dot_gov_primary_press_release_direct_retrieval_for_outsider_takedown
+        action: collector_to_retrieve_fbi_dot_gov_primary_press_release_for_outsider_enterprise_joint_takedown_lifts_bc_relay_only_layer
+        rationale: bc_relay_only_single_publisher_veto_caps_06_14_takedown_announcement_layer_at_likely_fbi_dot_gov_primary_or_second_publisher_relay_lifts_to_very_likely
+        priority: high
+      - id: lumen_black_lotus_labs_technical_blog_watch_outsider_telemetry
+        action: collector_to_watch_blog_lumen_com_security_lumen_black_lotus_labs_for_outsider_enterprise_technical_writeup
+        rationale: lumen_joint_takedown_participation_typically_yields_technical_blog_kv_botnet_volt_typhoon_2024_cycle_precedent
+        priority: medium
+      - id: ai_tooling_cluster_6_data_point_threat_detection_weekly_synthesis_carry_forward
+        action: briefer_or_threat_detection_weekly_briefer_to_synthesize_supply_chain_of_developer_tooling_cluster_now_with_06_14_operational_takedown_layer_added
+        rationale: 6_data_points_carry_forward_with_today_s_operational_takedown_layer_added_to_outsider_substrate_synthesis_candidate_2026_06_17_threat_detection_weekly
+        priority: high
+        target_brief: 2026-06-17-threat-detection-weekly
+        carry_forward_from: 2026-06-14-am-brief-meta
+    notes: |
+      Single substantive UPDATE finding atop HOLD-status carry-forward day.
+      Lead written to bind the operationally-actionable item (Ivanti Sentry
+      KEV clock closing tonight ~T-4.5h at publication) with the analytical
+      UPDATE (FBI + Google + Lumen joint takedown of Outsider Enterprise
+      PhaaS). Sunday PeopleSoft KEV clock surfaced as second action item.
+
+      Substantive-evidence-basis veto lift on the 06-12 single-Google-
+      primary cluster cleanly handled via three distinct evidence-basis
+      classes converging: Google civil-investigative + FBI law-enforcement
+      operational + Lumen Black Lotus Labs network telemetry. BC-relay-
+      only single-publisher veto STILL CAPS the 06-14 takedown announcement
+      layer at *likely* until FBI .gov primary direct retrieval or
+      second-publisher relay lands.
+
+      Hard Rule 2 binding preserved verbatim with two 3-word attribution
+      preservations ("Based in China" / "coordinating through Telegram")
+      from Google via the BC relay. Both load-bearing. No PLA / MSS / unit
+      naming. No Volt Typhoon cross-walk despite Lumen Black Lotus Labs
+      joint participation (Lumen's prior KV-botnet takedown lineage from
+      finding-2026-06-10-0007 is distinct cluster; BC framing keeps
+      Outsider Enterprise distinct). No cross-walk to finding-2026-06-11-
+      0002 (FBI/DOJ China intelligence-services LinkedIn recruitment).
+
+      6 sentinel sweeps since 06-13 PM (1800 / 0000 / 0600 flash + 0730 /
+      1200 / 1530 pre-brief) returned 0 IOC hits on the 19-IOC PeopleSoft
+      / UNC6240 sentinel set across both defenseclaw_local and archimedes.
+      Visibility-limited absence not disconfirmation — Frank not higher-ed.
 
       Pre-flight 13/13 pass first iteration. No regenerations required.
 

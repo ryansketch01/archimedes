@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-15T08:00:00-04:00
+last_updated: 2026-06-15T12:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -35920,6 +35920,224 @@ entries:
             propose roster addition. Surface for awareness only per Hard
             Rule 5. Operator decision point: when does the substrate cross
             the threshold for /new-actor invocation?
+
+  - id: 2026-06-15-flash-1200-001-gtig-mandiant-primary-unc6508-prc-nexus-26-month-medical-military-ai-uas-research-north-america-infinitered-redcap-13-iocs-net-new-substrate-since-morning
+    covered_in: [2026-06-15-flash-1200]
+    brief_file: threats/briefs/2026-06-15-flash-1200.md
+    headline: "GTIG (Mandiant + FLARE + Workspace Security) primary direct retrieval discloses UNC6508 PRC-nexus 26-month espionage campaign (Sept 2023 - Nov 2025+) against North American medical research / military health / defense intelligence / AI research / uncrewed vehicle systems / Indo-Pacific command operations / cyber offensive programs via INFINITERED modular backdoor on exposed legacy REDCap servers; 13 indicators (1 IPv4 23.169.65.49 ASUS-router OBF + 1 email BebitaBarefoot774@gmail.com + 1 filename help.php + 7 SHA-256 + 1 GUID + 2 host artifacts); YARA G_Backdoor_INFINITERED_1 published; over 1 year undetected dwell in primary victim; UNC6508 NOT on 24-actor Archimedes roster - operator-deferred /new-actor candidate; Hard Rule 2 BINDING - GTIG did NOT cross-walk to APT41/APT40/APT10/Salt Typhoon/Volt Typhoon, Archimedes does NOT originate cross-walk; SecurityWeek + BleepingComputer same-day relays credit GTIG with no independent telemetry - single-source veto applies; WEP capped at likely; Trigger 5 POSITIVE - sector-level A&D adjacency per A1 primary verbatim satisfies trigger; critical override does NOT apply (0 of 4 conditions met); active-hours posting 12:00 EDT direct to #flash-alerts no queue; first net-new substrate since morning brief publication; precedent class only (NOT cross-walk) to finding-2026-06-12-0004 Velvet Ant / Operation Highland Sygnia primary PRC-nexus multi-year-dwell pattern; 10th consecutive clean Splunk sentinel sweep since 2026-06-13 18:00 EDT - 9-IOC UNC6508 sub-set 0 hits at -30d - silent Splunk does NOT disconfirm per Hard Rule 8 Frank not a North American medical / military health institution running REDCap visibility-limited absence flagged"
+    topic_tags:
+      - unc6508
+      - unc6508-not-in-roster
+      - operator-deferred-new-actor-candidate
+      - prc-nexus
+      - hard-rule-2-no-cross-walk-to-apt41-apt40-apt10-salt-typhoon-volt-typhoon
+      - gtig-mandiant-flare-workspace-security-primary-direct-retrieval
+      - cloud-google-com-direct-html-7th-consecutive-success
+      - mandiant-rss-feedburner-stale-persistent-28-failures-under-24h-skip-rule
+      - 26-month-campaign-sept-2023-through-nov-2025-plus
+      - over-1-year-undetected-dwell-primary-victim
+      - north-american-medical-research-institutions
+      - north-american-military-health-institutions
+      - defense-intelligence-research-priority
+      - ai-research-priority
+      - uncrewed-vehicle-systems-research-priority-uas-counter-uas
+      - indo-pacific-command-operations-research-priority-indopacom-aor
+      - cyber-offensive-programs-research-priority
+      - military-readiness-research-priority
+      - national-defense-intelligence-research-priority
+      - no-named-a-and-d-prime-victim-diverse-set-framing-only
+      - redcap-research-electronic-data-capture-vanderbilt-consortium-5000-plus-institutions
+      - no-cve-assigned-configuration-patch-hygiene-pattern
+      - help-php-web-shell-early-persistence
+      - infinitered-modular-backdoor-three-modules-dropper-credential-harvester-c2-backdoor
+      - infinitered-deployed-3-months-post-initial-compromise
+      - yara-rule-g-backdoor-infinitered-1-flare-team-published
+      - hard-rule-3-yara-rule-referenced-by-name-not-reproduced
+      - patroit-typo-of-patriot-google-workspace-content-compliance-rule-exfiltration
+      - bebitabarefoot774-gmail-exfiltration-destination-now-disabled
+      - 23-169-65-49-compromised-asus-router-us-obf-administrative-access-source
+      - shodan-internetdb-23-169-65-49-found-false-residential-consumer-device-relay-pattern
+      - chikungunya-keyword-correlating-july-2025-guangdong-outbreak
+      - 13-indicators-1-ipv4-1-email-1-filename-7-sha256-1-guid-2-host-artifacts
+      - 9-high-fidelity-iocs-recommended-sentinel-set-expansion-candidates
+      - sentinel-set-expansion-recommendation-19-to-28-unified-or-parallel-19-plus-9-operator-deferred
+      - single-source-veto-applied-wep-capped-at-likely
+      - independence-test-fails-securityweek-bleepingcomputer-relays-credit-gtig-no-independent-telemetry
+      - trigger-5-positive-sector-level-ad-adjacency-per-a1-primary-satisfies-trigger
+      - critical-override-does-not-apply-zero-of-four-conditions-met
+      - active-hours-posting-12-00-edt-inside-09-00-21-00-direct-to-flash-alerts-no-queue
+      - first-net-new-substrate-since-morning-brief-publication
+      - adjacent-precedent-not-cross-walk-finding-2026-06-12-0004-velvet-ant-operation-highland-sygnia-prc-multi-year-dwell
+      - 10th-consecutive-clean-splunk-sentinel-since-2026-06-13-18-00-edt
+      - 9-ioc-unc6508-sub-set-0-hits-at-minus-30d-defenseclaw-local-archimedes
+      - silent-splunk-does-not-disconfirm-hard-rule-8-visibility-limited-absence
+      - hard-rule-6-15-word-quote-limit-prc-nexus-threat-actor-12-words-gtig-only
+      - red-team-review-not-required-wep-likely-cap-anti-noise-rule-3
+      - flash
+      - actor-activity
+    related_actors:
+      - actor_name: UNC6508
+        actor_in_roster: false
+        archimedes_treatment: SOURCE_ATTRIBUTION_PRESERVED_VERBATIM_NOT_ARCHIMEDES_ORIGINATED_NOT_CROSS_WALKED_TO_APT41_APT40_APT10_SALT_TYPHOON_VOLT_TYPHOON_PER_HARD_RULE_2
+        new_actor_candidate: true
+        new_actor_decision: OPERATOR_DEFERRED_SURFACE_ONLY
+        relevance: prc_nexus_espionage_cluster_26_month_campaign_against_north_american_medical_military_health_defense_intelligence_ai_research_uncrewed_vehicle_systems_indo_pacific_command_cyber_offensive_programs_custom_infinitered_backdoor_redcap_initial_access_workspace_compliance_rule_exfil
+    related_vulns: []
+    related_campaigns:
+      - unc6508_26_month_north_american_medical_military_ai_uas_research_espionage_campaign_via_infinitered_on_redcap_sept_2023_through_nov_2025_plus
+    finding_ids: [finding-2026-06-15-flash1200-0006]
+    finding_ids_cross_referenced: [finding-2026-06-12-0004]   # adjacent precedent ONLY — Velvet Ant / Operation Highland Sygnia primary PRC multi-year-dwell pattern; NO attributional link asserted
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      gtig_mandiant_primary_blog_published_2026_06_15_canonical: A1
+      gtig_attribution_unc6508_prc_nexus_high_confidence: A2
+      unc6508_distinct_cluster_not_cross_walked_per_gtig_explicit: A1
+      unc6508_not_on_24_actor_roster_operator_deferred: A1
+      campaign_active_status_through_publication_date: A2
+      26_month_dwell_sept_2023_through_nov_2025: A2
+      north_american_medical_military_defense_intelligence_ai_uas_indo_pacific_cyber_offensive_targeting: A2
+      no_named_ad_prime_victim_diverse_set_framing: A1   # verifiable absence
+      redcap_initial_access_no_cve_configuration_patch_hygiene: A2
+      help_php_web_shell: A2
+      infinitered_three_module_architecture: A2
+      patroit_workspace_compliance_rule_exfiltration_bebitabarefoot774_destination: A2
+      asus_router_obf_23_169_65_49: A2
+      yara_rule_g_backdoor_infinitered_1_published_by_flare: A1
+      13_ioc_set_facts_per_dual_grade_rule: A1
+      securityweek_relay_no_independent_telemetry: B3
+      bleepingcomputer_relay_no_independent_telemetry: B3
+      splunk_sentinel_9_ioc_unc6508_sub_set_30d_zero_hits_visibility_limited: A1
+      trigger_5_positive_sector_level_ad_adjacency_satisfies_trigger: A2
+      critical_override_zero_of_four_conditions_met: A1
+    wep: likely
+    wep_layered:
+      unc6508_attribution_to_prc_nexus: likely  # single-source veto cap
+      campaign_existence_sept_2023_through_nov_2025: likely
+      26_month_dwell_in_primary_victim_undetected: likely
+      infinitered_modular_backdoor_three_module_architecture: likely
+      13_ioc_set_accuracy_and_forensic_observation: likely  # A1 on facts but cluster anchor capped
+      workspace_compliance_rule_patroit_exfiltration: likely
+      ad_sector_adjacency_at_targeting_priority_level_per_gtig_verbatim: likely
+      named_ad_prime_victim_implicated: NOT_ASSERTED
+      cross_walk_to_apt41_apt40_apt10_salt_volt_typhoon: NOT_ASSERTED
+      future_campaign_continuation_post_publication: likely
+      detection_efficacy_of_yara_g_backdoor_infinitered_1: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - "Cluster anchor in entirety (UNC6508 attribution + campaign timeline + victim profile + INFINITERED architecture + 13-IOC set + Workspace abuse tradecraft) — GTIG primary sole originating evidence basis; SecurityWeek + BleepingComputer are same-day relays crediting GTIG with no independent telemetry; effective source count = 1"
+    single_source_veto_lift_conditions:
+      - independent_a_or_b_grade_vendor_ir_or_government_attestation_on_unc6508_designation_or_infinitered_tradecraft_or_any_of_9_high_fidelity_iocs
+      - microsoft_mstic_parallel_observation_under_different_cluster_name_or_confirming_unc6508_via_separate_telemetry
+      - crowdstrike_unit_42_recorded_future_or_microsoft_dart_publishing_parallel_coverage_on_independent_evidence_basis
+      - cisa_csa_referencing_unc6508
+      - first_party_splunk_hit_on_any_of_9_high_fidelity_iocs_in_defenseclaw_local_or_archimedes
+    hard_rule_2_framings_load_bearing:
+      - "UNC6508 NOT in _roster.yaml v2 2026-05-10 (24-actor roster); Archimedes does NOT originate roster addition (operator-deferred /new-actor candidate)"
+      - "GTIG explicitly did NOT cross-walk UNC6508 to APT41 / APT40 / APT10 / Salt Typhoon / Volt Typhoon or any other named PRC cluster — cluster is presented as distinct"
+      - "Archimedes preserves GTIG vendor high-confidence attribution language verbatim ('UNC6508, a People's Republic of China (PRC)-nexus threat actor' - 12 words, GTIG only, one occurrence per Hard Rule 6)"
+      - "Adjacent precedent linkage to finding-2026-06-12-0004 Velvet Ant / Operation Highland is PRECEDENT CLASS ONLY (PRC-nexus persistence-focused multi-year-dwell pattern) — NO attributional link between Velvet Ant and UNC6508 is asserted; Archimedes does NOT cross-walk"
+    hard_rule_6_quote_discipline:
+      total_quoted_text: "UNC6508, a People's Republic of China (PRC)-nexus threat actor"
+      word_count: 12
+      source: gtig_only
+      occurrences: 1
+      pass: true
+    hard_rule_8_splunk_first_party:
+      status: clean_at_compose_10th_consecutive
+      query_summary: "9-IOC UNC6508 sentinel sub-set (IP 23.169.65.49 + BebitaBarefoot774@gmail.com + 7 INFINITERED SHA-256 hashes) across defenseclaw_local + archimedes at -30d"
+      hits: 0
+      framing: silence_does_NOT_disconfirm_per_hard_rule_8_frank_is_not_north_american_medical_research_or_military_health_institution_running_redcap_visibility_limited_absence_expected_outcome_given_target_profile_mismatch_no_credibility_adjustment_no_source_grade_revision
+      cumulative_clean_sweeps_since_2026_06_13_18_00_edt: 10
+    trigger_5_calibration:
+      policy_text: "Campaign explicitly targeting aerospace, defense, or watchlist companies AND active (not retrospective) AND multi-victim (not single-incident)"
+      active_element: SATISFIED  # Sept 2023 through Nov 2025+ per A1 primary
+      multi_victim_element: SATISFIED  # diverse set of national, state, and private medical entities per A1 primary
+      ad_sector_element: SATISFIED_AT_SECTOR_CATEGORY_LEVEL  # military health + defense intelligence + uncrewed vehicle systems + Indo-Pacific command + cyber offensive programs + military readiness per A1 primary verbatim
+      ad_sector_calibration_ruling: SECTOR_LEVEL_AD_ADJACENCY_PER_A1_PRIMARY_VERBATIM_SATISFIES_TRIGGER_OR_CONSTRUCTION_DEFENSE_CATEGORY_TARGETING_SUFFICIENT_DOES_NOT_REQUIRE_NAMED_PRIME_VICTIM_BINDING_CRITICAL_OVERRIDE_RESERVED_FOR_NAMED_BINDING
+      trigger_5_overall: POSITIVE
+    critical_override_eval:
+      cvss_10_0: false
+      active_exploitation_confirmed: true  # campaign IS active per GTIG but override is CVE-gated paired with CVSS 10.0
+      tracked_actor_involved: false  # UNC6508 NOT on 24-actor roster
+      ad_watchlist_entity_named: false  # no named A&D-prime victim - diverse-set framing only
+      override_qualifies: false
+      conditions_met: 0_of_4
+    operator_deferred_handoffs:
+      - new_actor_candidacy: UNC6508 — high-quality candidate; A1 primary disclosure with vendor high-confidence attribution; PRC-nexus espionage-motivated; A&D-adjacent targeting categories; custom modular backdoor with public YARA rule; 26-month documented dwell. Grader surfaces; operator scaffolds (Hard Rule 2 + Hard Rule 5 sign-off if scoring HIGH)
+      - ioc_sentinel_expansion: 19-IOC PeopleSoft/UNC6240 set → 28-IOC unified (or parallel 19 + 9 sets); grader-recommended unified 28-IOC for operational simplicity
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - attribution_changes
+      - patch_released_for_associated_cve
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - independent_a_or_b_grade_vendor_ir_attestation_lifting_single_source_veto
+      - ad_prime_named_as_specific_victim_in_subsequent_disclosure
+      - cve_assigned_retrospectively_to_redcap_initial_access_vector
+      - operator_invokes_new_actor_unc6508
+      - operator_decides_ioc_sentinel_expansion_path
+      - second_independent_vendor_corroboration_lifting_wep_to_very_likely_or_higher
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+    test: false
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-15-flash1200-0006
+          append_brief_id: 2026-06-15-flash-1200
+      ioc_sentinel_expansion_recommendation:
+        from_set_size: 19
+        to_set_size_unified: 28
+        to_set_size_parallel: [19, 9]
+        operator_decision_required: true
+        grader_recommendation: unified_28_ioc_set_for_operational_simplicity
+        apply_at: next_ioc_index_regeneration_cycle_gitignored_build_artifact
+        new_iocs_high_fidelity_9:
+          - ip: 23.169.65.49
+          - email: BebitaBarefoot774@gmail.com
+          - sha256: ba6b73b0ca0dc7f86b3b397893ac32d729fd53f9df20643288f141f29d020af7
+          - sha256: db65c1b9f9e4cb4d729f45ad4b6fcf3e277caf9eb4c875425dec93fd883f9136
+          - sha256: c1ac43d23f89d41eb4ff131678ab562ab2cfed9aa334b13767ef141d303b0e5b
+          - sha256: 8f0158855a656b629ca76ebca565f18bc25563ded34b65d6771632c20edb68ec
+          - sha256: 51a57bfc9ed3eb6451c1c289607814d59e1698c666fb97ac5f694c398f23d045
+          - sha256: 4efbef69eb3b09bacff892d6a55778d07c418e7f15eba3cf1245e8cdfd8dda0b
+          - sha256: 58bb25777e0aa86bcd2125101e0bca4e8732b03d91bd8d2f205b446a2a8d5c86
+      new_actor_candidacy_surface:
+        candidate: UNC6508
+        substrate_strength: A1_primary_with_vendor_high_confidence_attribution_a_and_d_adjacent_targeting_custom_modular_backdoor_public_yara_26_month_documented_dwell
+        operator_decision_path: hard_rule_2_archimedes_does_not_originate_roster_addition_hard_rule_5_sign_off_if_scoring_lands_high
+        scaffold_substrate_in_finding: finding-2026-06-15-flash1200-0006
+    notes: |
+      First net-new substrate since 2026-06-15 morning brief publication.
+      UNC6508 has zero prior coverage in the corpus (first appearance).
+      Single-topic FLASH per INTEL-BRIEF-STANDARDS.md FLASH format,
+      active-hours direct post to #flash-alerts (12:00 EDT inside
+      09:00-21:00, no queue, no override-bypass). Trigger 5 POSITIVE
+      on sector-level A&D adjacency per A1 primary verbatim; named-
+      prime-victim binding is reserved for the stricter critical
+      override path (which fails 0 of 4). Single-source veto applied
+      on the cluster anchor in entirety; WEP capped at likely on all
+      layers. Hard Rule 2 binding load-bearing - GTIG did NOT cross-
+      walk UNC6508 to APT41/APT40/APT10/Salt Typhoon/Volt Typhoon and
+      Archimedes does NOT originate any cross-walk. Adjacent precedent
+      linkage to finding-2026-06-12-0004 Velvet Ant / Operation
+      Highland is precedent class only (PRC-nexus multi-year-dwell
+      pattern), NOT an attributional link. Splunk sentinel 10th
+      consecutive clean sweep since 2026-06-13 18:00 EDT; 9-IOC
+      UNC6508 sub-set 0 hits at -30d; silent Splunk does NOT
+      disconfirm per Hard Rule 8 - Frank is not a North American
+      medical / military health institution running REDCap;
+      visibility-limited absence flagged. Two operator-deferred
+      decisions surfaced: (1) /new-actor UNC6508 candidacy
+      (Archimedes does NOT originate roster additions per Hard
+      Rule 2); (2) IOC sentinel expansion 19 → 28 unified
+      (grader-recommended) or parallel 19 + 9 (operator decides).
+      Red-team review NOT required at WEP likely per FLASH-POLICY
+      anti-noise rule 3. Critical override does NOT apply (0 of 4
+      conditions met).
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-15T12:00:00-04:00
+last_updated: 2026-06-15T16:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -36138,6 +36138,579 @@ entries:
       Red-team review NOT required at WEP likely per FLASH-POLICY
       anti-noise rule 3. Critical override does NOT apply (0 of 4
       conditions met).
+
+  - id: 2026-06-15-pm-001-bc-cisco-psirt-cve-2026-20262-catalyst-sd-wan-manager-vmanage-file-upload-rce-root-vendor-confirmed-itw-patch-released-fedramp-variant-affected
+    covered_in: [2026-06-15-afternoon]
+    headline: "Cisco PSIRT advisory cisco-sa-sdwan-arbfw-c2rZvQ + BleepingComputer (Sergiu Gatlan) relay disclose CVE-2026-20262 in Cisco Catalyst SD-WAN Manager (formerly SD-WAN vManage) — authenticated low-privilege attacker writes/overwrites arbitrary files via crafted HTTP file-upload API request, executes arbitrary commands as root; Cisco PSIRT vendor-confirms active in-the-wild exploitation 'earlier this month'; patch released 2026-06-15 across six release lines (20.9 / 20.12 / 20.15.4 / 20.15.5 / 20.18 / 26.1); FedRAMP-certified 'Cisco SD-WAN for Government' variant explicitly in affected scope; CVSS pending direct retrieval; KEV listing watch 1-7 days (five prior Catalyst SD-WAN Manager KEV listings since 2023); behavioral IOCs index.jsp + .war file uploads on vManage API; NO actor attribution (Hard Rule 2 preserved); single-source veto applied at vendor-canonical layer pending independent IR-firm corroboration; A&D relevance MEDIUM-HIGH via FedRAMP variant"
+    topic_tags:
+      - cve-2026-20262
+      - cisco-catalyst-sd-wan-manager-vmanage
+      - cisco-psirt-vendor-on-own-product-canonical
+      - bleepingcomputer-sergiu-gatlan-relay
+      - vendor-confirmed-itw-exploitation
+      - patch-released-same-day-six-release-lines
+      - fedramp-variant-explicitly-affected
+      - cvss-pending-direct-retrieval
+      - kev-listing-watch-1-to-7-days
+      - five-prior-catalyst-sd-wan-manager-kev-listings-since-2023-cohort-pattern
+      - behavioral-iocs-index-jsp-and-war-uploads-vmanage-api
+      - log-sources-sd-wan-vmanage-server-vmanage-appserver-serviceproxy-access
+      - no-actor-attribution-hard-rule-2-preserved
+      - single-source-veto-applied-wep-capped-at-likely
+      - ad-relevance-medium-high-via-fedramp-variant
+      - dib-federal-civilian-fedramp-sd-wan-defender-action-now
+      - hard-rule-6-cisco-verbatim-9-words-exploited-in-attacks-to-escalate-to-root-privileges
+      - distinct-from-vt-015-cve-2026-20245-different-mechanism-different-patch-state
+      - vuln-tracker-handoff-pending-vt-id-assignment
+      - frank-does-not-operate-cisco-catalyst-sd-wan-manager-hard-rule-8-visibility-bounded-absence
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20262
+    related_campaigns: []
+    finding_ids: [finding-2026-06-15-0006]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - cisa_kev_listing_lands
+      - fceb_bod_26_04_clock_starts
+      - cvss_direct_retrieval_confirms_9_0_or_higher
+      - independent_ir_firm_corroboration_lifts_single_source_veto
+      - first_party_ioc_hit
+      - ad_prime_named_as_specific_victim
+      - new_iocs_at_ip_or_domain_or_hash_granularity_published
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+    test: false
+
+  - id: 2026-06-15-pm-002-helpnetsecurity-sygnia-velvet-ant-operation-highland-direct-retrieval-9-pam-variants-ssspl-socks5-gs-netcat-update-on-finding-2026-06-12-0004
+    covered_in: [2026-06-15-afternoon]
+    update_lineage: finding-2026-06-12-0004
+    headline: "UPDATE on finding-2026-06-12-0004 — HelpNet Security (Zeljka Zorz) B-grade relay of Sygnia 'Operation Highland' primary (2026-06-08, 21-min deep dive) — Sygnia primary now directly retrievable resolving prior awaiting_direct_retrieval flag; net-new TTP detail: 9 distinct _pam_unix.so_ variants compiled per environment + custom ssspl SOCKS5 proxy + modified GS-Netcat reverse shell + modified Nginx configs + custom SSH-triggering binary; nearly-decade dwell carry-forward; attribution stays Sygnia 'China-Nexus Actor' verbatim; Hard Rule 2 binding — NO cross-walk to APT41 / Volt Typhoon / Salt Typhoon / APT40 / UNC6508 originated by Archimedes; Velvet Ant remains NOT on 24-actor roster (operator-deferred /new-actor candidacy substrate-strengthening); no US A&D-prime victim named; configuration-pattern campaign not CVE-tracked"
+    topic_tags:
+      - velvet-ant-operation-highland-update
+      - sygnia-primary-direct-retrieval-resolves-awaiting-retrieval-flag
+      - helpnetsecurity-zorz-second-publisher-relay
+      - thn-06-12-first-publisher-relay-carry-forward
+      - 9-pam-unix-so-variants-per-environment-compiled
+      - custom-ssspl-socks5-proxy-net-new-tool-name
+      - modified-gs-netcat-reverse-shell-net-new-tool-name
+      - modified-nginx-configurations-net-new-infrastructure-detail
+      - custom-ssh-triggering-binary-net-new-infrastructure-detail
+      - nearly-decade-undetected-dwell-carry-forward
+      - china-nexus-actor-sygnia-attribution-verbatim
+      - hard-rule-2-no-cross-walk-to-apt41-volt-typhoon-salt-typhoon-apt40-unc6508
+      - velvet-ant-not-on-24-actor-roster-operator-deferred-new-actor-candidacy-substrate-strengthening
+      - no-us-ad-prime-victim-named
+      - configuration-pattern-campaign-not-cve-tracked
+      - sygnia-provisional-b-flag-for-source-grade-ratification
+      - anti-noise-hold-lifted-velvet-ant-operation-highland-sygnia-primary-pending
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - velvet-ant-operation-highland-china-nexus-pam-openssh-backdoor
+    finding_ids: [finding-2026-06-15-0007]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - operator_invokes_new_actor_velvet_ant
+      - independent_ir_firm_publishes_on_same_primitive_set_mandiant_unit42_volexity_crowdstrike_mstic
+      - subsequent_a_grade_publication_cross_walks_velvet_ant_to_roster_actor
+      - victim_sector_or_country_disclosed
+      - ad_prime_named_as_specific_victim
+      - first_party_ioc_hit
+      - sygnia_primary_methodology_questioned_or_downgraded
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+    test: false
+
+  - id: 2026-06-15-pm-003-theregister-bc-council-of-europe-shinyhunters-peoplesoft-victim-acknowledgement-update-on-finding-2026-06-15-0001
+    covered_in: [2026-06-15-afternoon]
+    update_lineage: finding-2026-06-15-0001
+    headline: "UPDATE on finding-2026-06-15-0001 — The Register (cyber-crime desk customary Iain Thomson byline) + BleepingComputer (Sergiu Gatlan) dual-publisher relays surface (1) Council of Europe direct spokesperson statement 'currently investigating the matter and assessing the situation' (11-word verbatim) + 'declined to comment further'; (2) ShinyHunters spokesperson EXPLICITLY claims CoE compromise was via Oracle PeopleSoft CVE-2026-35273 zero-day (supersedes finding-0001 framing of CoE + PeopleSoft as separate campaigns); THREE-LAYER WEP per analyst ACH + red-team sign-off — procedural-fact layer very_likely (CoE investigating + ShinyHunters has claimed vector); substantive-vector layer roughly_even_chance (four hypotheses tie at zero inconsistencies; CoE has not confirmed vector; CoE 46-state intergovernmental profile sits outside GTIG 68%-higher-ed/most-US pattern); scope-claims layer likely (297 GB / 429K files remains ShinyHunters self-claim per inherited single-source veto); GTIG carry-forward primary re-cited not new substrate; UNC6240↔ShinyHunters chain Mandiant-attributed Hard Rule 2 preserved; lands T-7h before FCEB BOD 26-04 KEV deadline closure EOD tonight 2026-06-15; 11th consecutive clean Splunk sentinel sweep on 19-IOC set"
+    topic_tags:
+      - council-of-europe-direct-spokesperson-ack-investigation-layer
+      - shinyhunters-spokesperson-explicit-cve-2026-35273-vector-self-claim-for-coe
+      - the-register-cyber-crime-desk-iain-thomson-byline
+      - bleepingcomputer-sergiu-gatlan-same-day-relay
+      - dual-publisher-independent-relay-net-new-vs-finding-0001-single-sw
+      - three-layer-wep-procedural-very-likely-substantive-roughly-even-scope-likely
+      - briefer-must-not-collapse-three-layer-wep-red-team-sign-off-conditional
+      - coe-46-state-intergovernmental-profile-outside-gtig-68-pct-higher-ed-most-us
+      - 297gb-429k-scope-remains-actor-self-claim-c3-carry-forward
+      - dual-campaign-actor-visibility-partially-collapses-to-single-campaign-at-shinyhunters-brand
+      - gtig-mandiant-carry-forward-primary-re-cited-no-new-substrate
+      - unc6240-shinyhunters-chain-mandiant-attributed-hard-rule-2-preserved
+      - neither-actor-on-archimedes-roster-operator-deferred-new-actor-substrate-continuing
+      - fceb-bod-26-04-kev-deadline-eod-tonight-2026-06-15-t-minus-7h-final-pre-deadline-window
+      - 11th-consecutive-clean-splunk-sentinel-sweep-19-ioc-set
+      - hard-rule-8-frank-not-higher-ed-visibility-bounded-absence
+      - ed-tech-cluster-canvas-infinite-campus-nottingham-all-carry-forward-anti-noise
+    related_actors: []  # ShinyHunters / UNC6240 still off _roster.yaml
+    related_vulns:
+      - CVE-2026-35273
+    related_campaigns:
+      - shinyhunters-peoplesoft-unc6240-cluster
+      - shinyhunters-coe-data-theft-cluster
+    finding_ids: [finding-2026-06-15-0008]
+    digraph: B2
+    wep: very_likely  # procedural-fact layer only; substantive-vector capped roughly_even per ACH; scope capped likely per inherited single-source veto
+    wep_layered:
+      procedural_fact_layer: very_likely
+      substantive_vector_layer: roughly_even_chance
+      scope_claims_layer: likely
+    resurface_if:
+      - coe_confirms_or_denies_peoplesoft_vector_specifically
+      - independent_ir_firm_corroborates_vector_for_coe
+      - shinyhunters_publishes_data_sample_inconsistent_with_coe_actual_systems
+      - first_party_ioc_hit_on_19_ioc_set_or_partner_shared_environment
+      - operator_invokes_new_actor_shinyhunters_or_unc6240
+      - new_victims_confirmed
+      - data_actually_released_2026_06_16_or_after
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+    test: false
+
+  - id: 2026-06-15-pm-004-sa-sw-mackay-sugar-the-gentlemen-australia-484th-victim-update-on-finding-2026-06-15-0005
+    covered_in: [2026-06-15-afternoon]
+    update_lineage: finding-2026-06-15-0005
+    headline: "UPDATE on finding-2026-06-15-0005 — Security Affairs (Pierluigi Paganini) + SecurityWeek (Eduard Kovacs) dual-publisher relays surface NET-NEW VICTIM Mackay Sugar (Australia's 2nd-largest sugar producer; ~700K tonnes/year; three Queensland mills Farleigh/Marian/Racecourse) added to The Gentlemen Tor leak site 2026-06-15 — 484th cumulative victim per KELA carry-forward 483-count baseline 2 days prior (sustained-cadence confirmation likely); operational-disruption substrate cyberattack 2026-06-10 during crushing season, two of three mills appear offline, limited manual crushing restarted Farleigh 2026-06-12, steam trials 2026-06-15; OT/ICS exposure question OPEN as analyst-framing per Security Affairs primary — Mackay's statements do not address whether attackers reached ICS directly or whether OT was downstream of an IT outage, AND no source has attributed an OT compromise to the actor (Hard Rule 2 preserved); The Gentlemen / Storm-2697 / LARVA-368 / Phantom Mantis cross-vendor naming chain carry-forward NONE on roster operator-deferred /new-actor; A&D LOW (agricultural-food-processing not A&D-prime / not DIB / not ITAR — operational-template relevance only)"
+    topic_tags:
+      - the-gentlemen-ransomware-484th-victim-mackay-sugar
+      - mackay-sugar-australia-2nd-largest-sugar-producer
+      - three-queensland-mills-farleigh-marian-racecourse
+      - cyberattack-2026-06-10-during-crushing-season
+      - two-of-three-mills-appear-offline-it-or-ot-impact
+      - ot-ics-exposure-question-open-analyst-framing-not-actor-attributed
+      - hard-rule-2-preserved-no-actor-attributed-ot-compromise-claim
+      - security-affairs-paganini-plus-securityweek-kovacs-dual-publisher
+      - sustained-cadence-confirmation-484th-after-kela-483-baseline-two-days-prior
+      - the-gentlemen-storm-2697-larva-368-phantom-mantis-cross-vendor-naming-chain
+      - microsoft-storm-2697-via-sa-relay-not-directly-retrieved-this-sweep
+      - not-on-archimedes-roster-operator-deferred-new-actor-substrate-continuing
+      - ad-relevance-low-agricultural-food-processing-not-a-and-d-prime
+      - operational-template-relevance-process-industry-ransomware-crushing-season-timing
+      - mackay-verbatim-12-words-cyber-security-incident-affecting-some-of-our-operations
+      - hard-rule-6-preserved-one-mackay-quote-under-15-word-cap
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - the-gentlemen-ransomware-2025-2026
+    finding_ids: [finding-2026-06-15-0009]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - operator_invokes_new_actor_the_gentlemen
+      - independent_ir_firm_or_law_enforcement_corroborates_mackay_attribution
+      - mackay_sugar_publishes_post_incident_disclosure_with_ot_vs_it_clarification
+      - actor_attributed_ot_compromise_claim_emerges
+      - microsoft_publishes_first_party_storm_2697_attribution_for_mackay
+      - us_ad_prime_named_as_victim_of_the_gentlemen
+      - leak_site_count_crosses_500
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+    test: false
+
+  - id: 2026-06-15-pm-005-tr-dr-anthropic-fable5-mythos5-export-control-public-dispute-update-on-finding-2026-06-13-0001
+    covered_in: [2026-06-15-afternoon]
+    update_lineage: finding-2026-06-13-0001
+    headline: "UPDATE on finding-2026-06-13-0001 — The Record + Dark Reading (Robert Lemos byline) dual-publisher independent same-day relays (within 15-minute window) surface Anthropic's PUBLIC DISPUTE of the 2026-06-12 17:21 ET USG export-control directive on Fable 5 + Mythos 5; Anthropic public statement: USG basis was 'verbal evidence' of a jailbreaking method for Fable 5, and Anthropic review found the vulnerabilities were minor, previously documented, and reproducible using competing models like OpenAI's GPT-5.5; Anthropic verbatim 'essentially halt all new model deployments for all frontier model providers' (12 words) + 'transparent, fair, clear' (3 words); first-of-its-kind classification framing for AI model export control vs hardware/chip controls (red-team qualified — framing has not been audited against possible BIS Entity List priors); RED-TEAM QUALIFY: phrase as 'Anthropic statement reported by TR and DR' NOT 'independently corroborated by TR and DR' (publisher relays trace to same Anthropic press distribution; vendor-on-own-product is the canonical evidence basis); USG side not visible to Archimedes (Archimedes endorses neither side); Hegseth February 2026 supply-chain-risk designation context carry-forward; NO actor / NO CVE / NO IOC; A&D MEDIUM via DIB AI-tool procurement precedent + Hegseth-designation continuity"
+    topic_tags:
+      - anthropic-public-dispute-usg-fable-5-mythos-5-export-control-directive
+      - the-record-recorded-future-news-plus-dark-reading-robert-lemos-dual-publisher
+      - published-within-15-minute-window-tr-12-31-utc-dr-12-17-utc
+      - anthropic-verbatim-12-words-essentially-halt-all-new-model-deployments-for-all-frontier-model-providers
+      - anthropic-verbatim-3-words-transparent-fair-clear
+      - anthropic-attested-usg-basis-verbal-evidence-only-methodological-critique
+      - anthropic-attested-vulnerabilities-minor-previously-documented-reproducible-on-gpt-5-5
+      - first-of-its-kind-ai-model-export-control-vs-hardware-or-chips-classification-framing
+      - red-team-qualify-phrase-as-anthropic-statement-reported-by-tr-and-dr-not-independently-corroborated
+      - red-team-qualify-bis-prior-art-uncertainty-on-first-of-its-kind
+      - hegseth-february-2026-supply-chain-risk-designation-context-carry-forward
+      - failed-military-claude-negotiations-context-carry-forward
+      - trump-administration-tensions-with-anthropic-context-carry-forward
+      - no-actor-no-cve-no-ioc-policy-plus-commercial-dispute-substrate
+      - usg-side-not-visible-to-archimedes-archimedes-endorses-neither-side
+      - hard-rule-2-preserved-no-actor-attribution-no-extrapolation-from-jailbreak-to-actor
+      - hard-rule-6-preserved-two-anthropic-quotes-within-source-budget-12-words-plus-3-words
+      - hard-rule-8-not-operationally-applicable-no-splunk-visibility-into-policy-dispute
+      - ad-relevance-medium-dib-ai-tool-procurement-precedent-plus-hegseth-designation-continuity
+      - dark-reading-provisional-b-cheatsheet-flag-for-librarian-source-grade-ratification
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - anthropic-fable-5-mythos-5-usg-export-control-directive-2026-06-12
+    finding_ids: [finding-2026-06-15-0010]
+    digraph: A2
+    wep: very_likely  # procedural-fact layer; substantive-merit layer caps at likely per single-vendor-attestation
+    wep_layered:
+      procedural_fact_layer: very_likely
+      substantive_merit_layer: likely
+    resurface_if:
+      - usg_publishes_responsive_statement_to_anthropic_transparent_fair_clear_demand
+      - third_party_research_firm_publishes_independent_jailbreak_assessment_fable_5
+      - bis_or_commerce_publishes_prior_art_audit
+      - anthropic_publishes_underlying_technical_report
+      - directive_rescinded_modified_or_ratified
+      - new_anthropic_or_usg_public_statement
+      - dib_ai_tool_procurement_impact_disclosed
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+    test: false
+
+  - id: 2026-06-15-pm-006-bc-thn-varonis-searchleak-cve-2026-42824-m365-copilot-enterprise-three-vuln-chain-patched-no-itw
+    covered_in: [2026-06-15-afternoon]
+    headline: "Varonis Threat Labs (provisional B first-surface) primary research relayed by BleepingComputer (Bill Toulas) + The Hacker News dual-publisher independent same-day relays — 'SearchLeak' three-vulnerability chain CVE-2026-42824 in Microsoft 365 Copilot Enterprise Search: (1) parameter-to-prompt injection via q URL parameter; (2) HTML rendering race condition during response streaming; (3) Bing SSRF bypass via Search-by-Image; one-click data-theft chain exfiltrates Outlook / Calendar / OneDrive / SharePoint / per-email MFA codes via image-URL Bing-proxy delivery; Microsoft patched early June 2026 backend fix with NO USER ACTION REQUIRED; CVSS pending Varonis primary direct retrieval; NO ITW exploitation attestation (pre-patch research-disclosure class); NO actor attribution (Hard Rule 2 preserved); A&D relevance MEDIUM (M365 Copilot Enterprise Search deployed in DIB / CMMC partner-flow tenants; CUI / ITAR / DFARS-controlled data layers in scope; patch-at-disclosure materially reduces residual risk)"
+    topic_tags:
+      - searchleak-cve-2026-42824-m365-copilot-enterprise-search
+      - varonis-threat-labs-provisional-b-first-surface-flag-for-librarian
+      - bleepingcomputer-bill-toulas-plus-thn-dual-publisher-relay
+      - three-vulnerability-chain-prompt-injection-html-race-bing-ssrf
+      - one-click-data-theft-via-image-url-bing-proxy-delivery
+      - data-scope-outlook-calendar-onedrive-sharepoint-per-email-mfa-codes
+      - microsoft-patched-early-june-2026-backend-fix-no-user-action-required
+      - no-itw-attestation-pre-patch-research-disclosure-class
+      - no-actor-attribution-hard-rule-2-preserved
+      - ad-relevance-medium-cui-itar-dfars-data-layers-in-scope
+      - cvss-pending-direct-retrieval-varonis-primary
+      - frank-splunk-zero-hits-frank-does-not-run-m365-copilot-enterprise-search-hard-rule-8
+      - novel-substrate-ai-prompt-injection-plus-browser-race-plus-bing-ssrf-chain
+    related_actors: []
+    related_vulns:
+      - CVE-2026-42824
+    related_campaigns: []
+    finding_ids: [finding-2026-06-15-0011]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - itw_exploitation_attestation_emerges
+      - independent_ir_firm_telemetry
+      - ad_prime_named_as_specific_victim
+      - cvss_direct_retrieval_lands_high_severity
+      - first_party_ioc_hit
+      - microsoft_msrc_advisory_direct_retrieval
+      - varonis_primary_direct_retrieval_resolves_pending_substrate
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+    test: false
+
+  - id: 2026-06-15-pm-007-thn-obsidian-security-litellm-3-vuln-chain-low-priv-to-admin-to-rce-ai-gateway-substrate-pending-primary-direct-retrieval
+    covered_in: [2026-06-15-afternoon]
+    headline: "The Hacker News single-publisher ~220-word snippet substrate of Obsidian Security (provisional B first-surface) research on LiteLLM AI gateway three-vulnerability chain — default low-privilege account climbs to full admin and executes arbitrary code on LiteLLM proxy server; server takeover exposes every model-provider API key the gateway holds (downstream secondary-victim cascade); LiteLLM is widely deployed OSS AI gateway brokering calls to >100 model providers; CVE IDs / CVSS / version range / patch status NOT disclosed in retrievable substrate; no ITW attestation visible (pre-disclosure research class likely); NO actor attribution (Hard Rule 2 preserved); distinct chain class from finding-2026-06-10-flash CVE-2026-42271 (command-injection vs auth-bypass); A&D MEDIUM structural (CMMC-flow tenants air-gapping commercial LLM access behind internal proxy); substrate is monitoring-tier C3 pending Obsidian primary direct retrieval"
+    topic_tags:
+      - litellm-ai-gateway-three-vulnerability-chain
+      - obsidian-security-provisional-b-first-surface-flag-for-librarian
+      - the-hacker-news-single-publisher-snippet-substrate-220-words
+      - obsidian-primary-not-directly-retrieved-this-sweep
+      - no-second-publisher-relay-in-window
+      - default-low-priv-to-full-admin-to-rce
+      - server-takeover-exposes-every-model-provider-api-key
+      - downstream-secondary-victim-cascade-pattern
+      - litellm-widely-deployed-oss-ai-gateway-100-plus-providers
+      - no-cve-ids-no-cvss-no-version-range-no-patch-status-in-substrate
+      - no-itw-attestation-pre-disclosure-research-class-likely
+      - no-actor-attribution-hard-rule-2-preserved
+      - distinct-from-finding-2026-06-10-flash-cve-2026-42271-different-chain-class
+      - litellm-substrate-now-multi-chain-class-in-corpus
+      - ad-relevance-medium-cmmc-flow-tenants-air-gapping-commercial-llm
+      - monitoring-tier-c3-pending-obsidian-primary-direct-retrieval
+      - frank-does-not-run-litellm-gateway-at-relevant-scale-hard-rule-8
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-06-15-0012]
+    digraph: C3
+    wep: possibly
+    resurface_if:
+      - obsidian_primary_direct_retrieval_resolves_substrate
+      - cve_ids_assigned_and_disclosed
+      - cvss_disclosed
+      - second_publisher_relay_lands
+      - active_exploitation_attestation_emerges
+      - patch_availability_disclosed
+      - first_party_ioc_hit
+      - ad_prime_named_as_victim
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+    test: false
+
+  - id: 2026-06-15-pm-008-theregister-arch-linux-aur-malicious-commits-1500-package-scale-escalation-account-freeze-operational-response-update-on-finding-2026-06-12-0005
+    covered_in: [2026-06-15-afternoon]
+    update_lineage: finding-2026-06-12-0005
+    headline: "UPDATE on finding-2026-06-12-0005 — The Register (security desk) single-publisher relay surfaces operational-response substrate update on Atomic Arch / AUR campaign: NET-NEW scale escalation 400 → 1,500+ malicious packages over the weekend (~3.75x growth Friday-Sunday), NET-NEW Arch Linux team operational action (new account registration DISABLED Monday 2026-06-15 morning), NET-NEW capability-evolution observation (more sophisticated wave detected Sunday 2026-06-14); core Arch distribution UNAFFECTED (AUR-only scope); malicious packages continue to pull hostile JavaScript dependencies including the Sonatype-attested npm-staged atomic-lockfile@1.4.2 / js-digest pattern from finding-0005; AUR contains 107K+ packages; NO actor attribution (Hard Rule 2 preserved across both surfaces); RED-TEAM QUALIFY — WEP downgraded *very likely* → *likely* on operational-response layer per single-B-publisher relay of AUR-team-self-reported claims (1,500+ figure and capability-evolution framing attributed to 'AUR team via The Register'); A&D relevance LOW (AUR community-maintained user-submitted not production-class supply-chain at A&D primes); carry-forward Sonatype IOC substrate unaffected"
+    topic_tags:
+      - atomic-arch-aur-malicious-commits-update
+      - scale-escalation-400-to-1500-plus-malicious-packages-weekend-3-75x-growth
+      - aur-team-disabled-new-account-registration-monday-2026-06-15-morning
+      - more-sophisticated-wave-detected-sunday-2026-06-14-capability-evolution
+      - aur-team-public-acknowledgement-friday-2026-06-12
+      - core-arch-distribution-unaffected-aur-only-scope-carry-forward
+      - npm-dependency-pull-in-pattern-continuation-sonatype-attested-atomic-lockfile-js-digest
+      - the-register-security-desk-single-publisher-relay
+      - red-team-qualify-wep-downgrade-very-likely-to-likely-single-publisher-aur-self-reported
+      - red-team-qualify-attribute-1500-plus-figure-and-sophistication-wave-to-aur-team-via-the-register
+      - no-actor-attribution-hard-rule-2-preserved-across-both-surfaces
+      - ad-relevance-low-aur-community-maintained-not-production-class-supply-chain-at-ad-primes
+      - some-individual-ad-prime-developers-may-use-arch-on-personal-sandbox-workstations
+      - carry-forward-sonatype-substrate-iocs-unchanged
+      - aur-team-cleanup-in-progress-at-time-of-publication
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - atomic-arch-aur-malicious-commits-rust-credential-stealer-ebpf-rootkit
+    finding_ids: [finding-2026-06-15-0013]
+    digraph: B2
+    wep: likely  # red-team downgrade from very_likely
+    resurface_if:
+      - second_publisher_independent_relay_on_operational_response_substrate
+      - aur_team_publishes_formal_post_mortem_with_audited_cleanup_metrics
+      - actor_attribution_emerges
+      - scale_escalation_continues_beyond_1500_packages
+      - new_iocs_or_capability_evolution_substrate
+      - core_arch_distribution_compromise_observed
+      - ad_prime_developer_environment_compromise_reported
+      - first_party_ioc_hit
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+    test: false
+
+  - id: 2026-06-15-pm-brief-meta
+    covered_in: [2026-06-15-afternoon]
+    brief_file: threats/briefs/2026-06-15-afternoon.md
+    headline: "2026-06-15 afternoon brief — 8 net-new graded findings (1 net-new vendor-confirmed zero-day B2 Cisco SD-WAN Manager CVE-2026-20262 + 4 UPDATE-layer findings on prior substrates Velvet Ant 0007 / CoE 0008 / Mackay Sugar 0009 / Anthropic 0010 / Arch AUR 0013 + 2 net-new vuln-class disclosures B2 M365 Copilot SearchLeak 0011 + C3 LiteLLM 0012 monitoring-tier); 11 cumulative sentinel sweeps since 2026-06-13 PM returned 0 IOC hits on standing 19-IOC set; KEV-compliance cohort presented for second consecutive cycle — one closing tonight EOD T-7h (PeopleSoft), two retrospective (Ivanti Sentry T+24h past, PAN-OS 14d past), one incoming-likely (Cisco SD-WAN Manager 1-7 days); Hard Rule 2 binding preserved across all findings (no cross-walk Velvet Ant ↛ APT41/Volt Typhoon/Salt Typhoon/APT40/UNC6508; no Archimedes-originated attribution Anthropic / Cisco / SearchLeak / LiteLLM / Mackay; UNC6240↔ShinyHunters chain stays Mandiant-attributed); Hard Rule 6 binding preserved (Cisco PSIRT 9-word + CoE spokesperson 11-word + Mackay 12-word + Anthropic 12-word + Anthropic 3-word quotes, all under 15-word cap, one quote per source); Hard Rule 8 binding preserved (Frank does not operate Cisco vManage, is not higher-ed, does not run M365 Copilot Enterprise Search at scale, does not run LiteLLM at scale, is not A&D-prime developer Arch estate — visibility-limited absences flagged across all); Three red-team flags load-bearing (finding-0008 three-layer WEP MUST NOT collapse; finding-0010 Anthropic 'statement reported by' framing + BIS prior-art uncertainty; finding-0013 WEP downgrade with attribution); UNC6508 / INFINITERED FLASH 12:00 substrate under 72h anti-noise lock through 2026-06-18 12:00 EDT (no resurface this cycle)"
+    topic_tags:
+      - afternoon-brief
+      - 8-net-new-findings
+      - 1-vendor-confirmed-zero-day-cisco-sd-wan-manager-cve-2026-20262
+      - 4-update-layer-findings-velvet-ant-coe-mackay-sugar-anthropic-arch-aur
+      - 2-net-new-vuln-class-disclosures-searchleak-litellm
+      - kev-compliance-cohort-one-closing-two-retrospective-one-incoming-likely
+      - peoplesoft-fceb-deadline-eod-tonight-t-minus-7h-final-pre-deadline-window
+      - 11-sentinel-sweeps-0-ioc-hits-since-2026-06-13-pm
+      - hard-rule-2-binding-preserved-no-cross-walks
+      - hard-rule-6-binding-preserved-five-quotes-under-15-word-cap-one-per-source
+      - hard-rule-8-binding-preserved-visibility-limited-absences-flagged-across-all
+      - three-red-team-flags-load-bearing-finding-0008-0010-0013
+      - finding-0008-three-layer-wep-procedural-very-likely-substantive-roughly-even-scope-likely-must-not-collapse
+      - finding-0010-anthropic-statement-reported-by-tr-dr-not-independently-corroborated-bis-prior-art
+      - finding-0013-wep-downgrade-very-likely-to-likely-on-operational-response-layer-single-publisher
+      - unc6508-infinitered-flash-1200-72h-anti-noise-lock-through-2026-06-18-1200
+      - tlp-clear
+      - layer-1-1067-words-over-target-band-under-1200-hard-cap
+      - layer-1-word-count-note-eight-findings-three-red-team-flags-doctrinal-preservation-load
+      - layer-2-discord-summary-under-1900-char-ceiling
+      - pre-flight-13-of-13-pass
+    finding_ids:
+      - finding-2026-06-15-0006
+      - finding-2026-06-15-0007
+      - finding-2026-06-15-0008
+      - finding-2026-06-15-0009
+      - finding-2026-06-15-0010
+      - finding-2026-06-15-0011
+      - finding-2026-06-15-0012
+      - finding-2026-06-15-0013
+    rejections_referenced: []
+    digraph: composite_a2_b2_c3_per_finding_layered_in_brief
+    wep: likely
+    layer_1_word_count: 1067
+    layer_1_word_count_band: over_target_400_to_800_under_hard_cap_1200
+    layer_1_word_count_note: |
+      Above the 400-800 target band but under the 150%-of-max (1200) hard cap.
+      Eight distinct findings this cycle, three of which carry explicit
+      red-team sign-off / qualify language that must be preserved in brief
+      body verbatim (finding-0008 three-layer WEP separation;
+      finding-0010 Anthropic statement-reported-by framing + BIS prior-art
+      uncertainty; finding-0013 WEP downgrade attribution to AUR team via
+      The Register). Additional load: Cisco SD-WAN behavioral-IOC enumeration
+      is operationally action-relevant for DIB defenders.
+    layer_2_char_ceiling: 1900
+    layer_2_compliance: pass_under_ceiling_estimated_approximately_1870_chars
+    preflight_iterations: 1
+    preflight_regenerations:
+      - layer_2_initial_draft_approximately_3000_chars_compressed_iteratively_to_under_1900_via_bullet_consolidation_url_text_compression_and_dropping_velvet_ant_arch_to_footnote
+    pre_flight_check:
+      total: 13
+      passed: 13
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass_all_updates_carry_update_flag_carry_forward_holds_explicit
+        lead_states_impact_not_context: pass_lead_names_cisco_cve_vendor_confirmed_itw_fedramp_plus_peoplesoft_clock_plus_coe_ack
+        no_banned_phrases: pass
+        standing_sections_present: pass_ad_sector_focus_kev_cohort_iran_cyber_watch_silent_day
+        wep_vocabulary_used_with_probability_bands: pass_very_likely_likely_roughly_even_used_no_bare_hedges
+        word_count_within_target: over_target_under_hard_cap_acknowledged_with_note_per_word_count_note_above
+        actor_vuln_references_linked: pass_unc1549_charming_kitten_linked_velvet_ant_flagged_not_on_roster_shinyhunters_unc6240_flagged_not_on_roster
+        tlp_marked_where_non_clear: pass_tlp_clear_brief_level
+        single_source_veto_respected: pass_cisco_capped_likely_velvet_ant_capped_likely_searchleak_capped_likely_litellm_capped_possibly_arch_red_team_downgraded_to_likely_coe_three_layer_separation_preserved_anthropic_layered_procedural_very_likely_substantive_likely
+        quote_discipline_under_15_words_max_1_per_source: pass_five_quotes_total_cisco_9_coe_11_mackay_12_anthropic_12_anthropic_3_all_under_cap_one_per_source
+        discord_summary_layer_2_compliant: pass_5_bullets_plus_footnote_greeting_natural_language_dates_source_linked_headlines_no_themed_voice_no_iso_dates_estimated_approximately_1870_chars_under_1900_ceiling
+    sentinel_sweeps_in_window:
+      - flash-2026-06-15-1200
+      - pre-brief-2026-06-15-1530
+    sentinel_sweeps_cumulative_since_2026_06_13_pm: 11
+    sentinel_ioc_hits: 0
+    sentinel_ioc_set_size: 19
+    anti_noise_carry_forward_holds_touched:
+      - peoplesoft-unc6240-cve-2026-35273-fceb-kev-deadline-eod-tonight-t-minus-7h-final-pre-deadline-window
+      - ivanti-sentry-cve-2026-10520-fceb-kev-deadline-past-retrospective-compliance-metrics
+      - pan-os-cve-2026-0257-fceb-kev-deadline-past-retrospective-compliance-metrics
+      - unc6508-prc-nexus-redcap-infinitered-72h-anti-noise-lock-through-2026-06-18-1200
+      - splunk-enterprise-cve-2026-20253-hold-pending-vendor-confirmation
+      - npm-12-default-script-execution-change-defensive-roadmap
+      - fable-5-mythos-5-anthropic-usg-export-control-finding-0010-update-net-new-substrate
+      - handala-014-cal-water-iran-cyber-watch-third-source-negative-binding
+      - velvet-ant-operation-highland-sygnia-primary-pending-NOW-LIFTED-finding-0007-update-net-new-substrate
+      - check-point-vpn-cve-2026-50751-qilin
+      - the-gentlemen-substrate-strengthening-now-484th-victim-mackay-sugar-finding-0009-update-net-new-substrate
+      - atomic-arch-aur-now-scale-escalation-finding-0013-update-net-new-substrate
+    coverage_log_actions_required:
+      - prior_entry: 2026-06-15-am-001-securityweek-shinyhunters-council-of-europe-leak-site-claim-297gb-dual-campaign-actor-visibility
+        action: append_2026_06_15_afternoon_to_covered_in_per_finding_0008_update_pathway
+        completed: pending_librarian_lookup
+      - prior_entry: 2026-06-15-am-005-sa-kela-the-gentlemen-ransomware-deep-dive-483-victims-2nd-most-prolific-2026-ai-assisted-black-basta-derived-new-actor-substrate-strengthening
+        action: append_2026_06_15_afternoon_to_covered_in_per_finding_0009_update_pathway
+        completed: pending_librarian_lookup
+      - prior_entry: 2026-06-13-am-002-bleepingcomputer-thn-securityweek-ap-anthropic-fable5-mythos5-usg-export-control-suspension-three-publisher-convergence
+        action: append_2026_06_15_afternoon_to_covered_in_per_finding_0010_update_pathway
+        completed: pending_librarian_lookup
+      - prior_entry: 2026-06-12-pm-velvet-ant-operation-highland-finding-2026-06-12-0004
+        action: append_2026_06_15_afternoon_to_covered_in_per_finding_0007_update_pathway
+        completed: pending_librarian_lookup
+      - prior_entry: 2026-06-12-atomic-arch-aur-finding-2026-06-12-0005
+        action: append_2026_06_15_afternoon_to_covered_in_per_finding_0013_update_pathway
+        completed: pending_librarian_lookup
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-15-0006
+          append_brief_id: 2026-06-15-afternoon
+        - finding_id: finding-2026-06-15-0007
+          append_brief_id: 2026-06-15-afternoon
+        - finding_id: finding-2026-06-15-0008
+          append_brief_id: 2026-06-15-afternoon
+        - finding_id: finding-2026-06-15-0009
+          append_brief_id: 2026-06-15-afternoon
+        - finding_id: finding-2026-06-15-0010
+          append_brief_id: 2026-06-15-afternoon
+        - finding_id: finding-2026-06-15-0011
+          append_brief_id: 2026-06-15-afternoon
+        - finding_id: finding-2026-06-15-0012
+          append_brief_id: 2026-06-15-afternoon
+        - finding_id: finding-2026-06-15-0013
+          append_brief_id: 2026-06-15-afternoon
+      source_grade_additions_pending:
+        - source: darkreading
+          tier: B (provisional)
+          rationale: "Industry-standard security trade publication; Robert Lemos named byline; first Archimedes-corpus citation via finding-2026-06-15-0010. Operator ratification recommended via source-grades.yaml direct edit."
+        - source: varonis-threat-labs
+          tier: B (provisional)
+          rationale: "Named vendor with structured public technical research (StepSecurity / Socket / Sysdig / Zellic / Push Security tier-2 precedent class); first Archimedes-corpus citation via finding-2026-06-15-0011. Operator ratification recommended."
+        - source: obsidian-security
+          tier: B (provisional)
+          rationale: "Identity/SaaS security vendor with prior threat-research output; first Archimedes-corpus citation via finding-2026-06-15-0012. Substrate is snippet-only this sweep; full primary direct retrieval recommended before ratification."
+      vuln_tracker_handoffs:
+        - cve: CVE-2026-20262
+          product: "Cisco Catalyst SD-WAN Manager (formerly SD-WAN vManage)"
+          vendor: Cisco
+          status: kev_listing_watch_1_to_7_days
+          fceb_bod_26_04_status: not_yet_applicable_pending_kev_listing
+          ad_relevance: medium_high
+          notes: "FedRAMP variant explicitly affected; behavioral IOCs index.jsp + .war uploads on vManage API; substrate from finding-2026-06-15-0006"
+        - cve: CVE-2026-42824
+          product: "Microsoft 365 Copilot Enterprise Search (SearchLeak)"
+          vendor: Microsoft
+          status: patched_at_disclosure_no_itw
+          fceb_bod_26_04_status: not_applicable_no_itw_no_kev_listing
+          ad_relevance: medium
+          notes: "Backend patch in early June 2026; no user action required; substrate from finding-2026-06-15-0011"
+      operator_deferred_handoffs:
+        - new_actor_candidacy: "Velvet Ant — substrate-strengthening via Sygnia primary direct retrieval + HelpNet second publisher relay (finding-0007 builds on -0004). Hard Rule 2 binding: NO cross-walk to APT41/Volt Typhoon/Salt Typhoon/APT40/UNC6508. Archimedes does NOT originate roster addition."
+        - new_actor_candidacy: "The Gentlemen — substrate-strengthening via 484th victim Mackay Sugar disclosure (finding-0009 builds on -0005). Storm-2697 / LARVA-368 / Phantom Mantis cross-vendor naming chain. NOT on roster. Operator decision point: when does substrate cross /new-actor threshold?"
+        - new_actor_candidacy: "ShinyHunters / UNC6240 — substrate continues strengthening with CoE direct ACK + explicit CVE-2026-35273 vector self-claim (finding-0008 builds on -0001 + -0006). Mandiant-primary UNC6240↔ShinyHunters chain preserved verbatim. NOT on roster."
+        - ioc_sentinel_expansion: "Pending operator decision on FLASH-1200 grader recommendation: 19-IOC PeopleSoft/UNC6240 set → 28-IOC unified or parallel 19 + 9 UNC6508. No further mutation this cycle; standing 19-IOC set continues 11th consecutive clean sweep."
+      analyst_handoff_notes:
+        - id: kev_compliance_cohort_pattern_second_cycle_appearance
+          note: |
+            KEV-compliance cohort framing now appears for second consecutive
+            cycle (morning brief introduced; afternoon continues). Tomorrow's
+            morning brief is the FIRST post-deadline cycle for PeopleSoft
+            CVE-2026-35273 — opens retrospective compliance metric phase.
+            Cisco SD-WAN Manager CVE-2026-20262 is likely (1-7 days) to add
+            a fourth clock once KEV-listed. Weekly Synthesis (Sunday
+            2026-06-21 10:00 EDT) should evaluate whether KEV-compliance
+            cohort becomes a standing brief section per AM brief
+            analyst_handoff_notes.
+        - id: three_red_team_flags_load_bearing_doctrinal_preservation_drives_word_count
+          note: |
+            This cycle carries three load-bearing red-team flags simultaneously:
+            (1) finding-0008 three-layer WEP MUST NOT collapse (red-team
+            sign-off conditional); (2) finding-0010 Anthropic statement-
+            reported-by framing + BIS prior-art uncertainty (red-team
+            qualify); (3) finding-0013 WEP downgrade very_likely → likely
+            with explicit attribution to AUR team via The Register
+            (red-team qualify). All three required preservation in brief
+            body verbatim, driving Layer 1 above 800-word target band but
+            under 1200 hard cap. Cisco SD-WAN behavioral IOC enumeration
+            adds further legitimate load. Word count note preserved in
+            frontmatter for librarian audit trail.
+        - id: anti_noise_holds_lifted_three_finding_0007_0009_0010_substrates_now_net_new
+          note: |
+            Three prior anti-noise carry-forward holds LIFTED this cycle
+            via net-new substrate: (a) Velvet Ant Operation Highland Sygnia
+            primary pending (finding-0007 resolves with Sygnia direct
+            retrieval + HelpNet second publisher); (b) The Gentlemen
+            substrate-strengthening (finding-0009 adds 484th victim with
+            operational-disruption substrate); (c) Anthropic Fable 5 /
+            Mythos 5 USG export-control (finding-0010 adds Anthropic public
+            dispute statement). UNC6508 / INFINITERED FLASH 12:00 substrate
+            REMAINS under 72h anti-noise lock through 2026-06-18 12:00 EDT.
+        - id: yaml_defect_in_coverage_log_line_approximately_32457_apostrophe_in_zdi_dustin_childs_quote
+          note: |
+            Pre-existing YAML defect in _coverage-log.yaml line ~32457
+            (unescaped apostrophe in zdi_dustin_childs quote scalar) carried
+            from d6d9048 through current commit — still present, still
+            flagged for briefer follow-up, out-of-scope for this cycle's
+            commit. Not introduced this cycle; remediation deferred.
+    notes: |
+      Afternoon brief publishes T-minus ~7h before FCEB BOD 26-04 KEV
+      deadline closure on CVE-2026-35273 (Oracle PeopleSoft). This is the
+      FINAL pre-deadline coverage window for that vulnerability;
+      tomorrow's morning brief lands in the retrospective compliance
+      metric phase. Cisco SD-WAN Manager CVE-2026-20262 is the operative
+      net-new vendor-confirmed zero-day this cycle — FedRAMP variant
+      inclusion makes it directly relevant to DIB / federal-civilian
+      estates running FedRAMP-authorized SD-WAN. Velvet Ant Operation
+      Highland anti-noise hold LIFTED via Sygnia primary direct
+      retrieval + HelpNet second publisher (finding-0007); operator-
+      deferred /new-actor candidacy substrate-strengthening. CoE direct
+      ACK + ShinyHunters explicit vector self-claim (finding-0008)
+      surfaces three-layer WEP separation that the briefer body
+      preserves verbatim per red-team sign-off conditional. Anthropic
+      public dispute (finding-0010) is the highest-graded substrate
+      this cycle at A2 — vendor-on-own-product canonical evidence on
+      the dispute layer + dual-publisher independent same-day relays
+      within 15-minute window; red-team qualify language preserved.
+      Arch Linux AUR scale escalation (finding-0013) red-team WEP
+      downgrade from very_likely to likely on the operational-response
+      layer preserved with explicit attribution to AUR team via The
+      Register. Mackay Sugar OT/ICS exposure question preserved as
+      analyst-framing-level open question per Hard Rule 2 binding —
+      no actor has attributed an OT compromise to The Gentlemen.
+      LiteLLM monitoring-tier C3 surfaces second AI-gateway chain class
+      in corpus (distinct from finding-2026-06-10-flash CVE-2026-42271
+      command-injection chain). M365 Copilot SearchLeak surfaces novel
+      AI prompt-injection + browser race + SSRF chain class — patched
+      at disclosure. Three source-grade additions pending operator
+      ratification (darkreading + varonis-threat-labs +
+      obsidian-security all provisional B per cheatsheet). Two
+      vuln-tracker handoffs (CVE-2026-20262 + CVE-2026-42824).
 
 # ============================================================================
 # Valid resurface_if conditions

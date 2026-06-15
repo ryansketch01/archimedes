@@ -13,6 +13,231 @@ last_updated: 2026-05-20  # afternoon-20260520-160000 produced 3 rejections (rej
 # Prior summary preserved: morning-20260517-080000 produced 0 rejections and 1 promotion (finding-2026-05-17-0001 The Hacker News Grafana Labs GitHub-token-enabled codebase-download + extortion-attempt-refused disclosure, attributed by THN to CoinbaseCartel — a September-2025-emergence data-extortion group framed by Halcyon + Fortinet FortiGuard Labs as an ecosystem-offshoot of ShinyHunters, Scattered Spider, and LAPSUS$; CoinbaseCartel NOT on _roster.yaml; Scattered Spider (#013 HIGH) ecosystem-lineage framing reported strictly as actor-profile heritage attached to CoinbaseCartel and NOT propagated as direct attribution of the Grafana incident to Scattered Spider operators per Hard Rule 2 + LEGAL-POLICY no-attribution-laundering rule; B2/likely cluster anchor with single-source veto on both incident-facts layer and CoinbaseCartel attribution layer — THN is sole directly-retrieved B-grade primary, Grafana's own statement summarized but not directly retrieved by collector (flagged for next-sweep follow-up as second-corpus-citation candidate analogous to openai-self-disclosure on finding-2026-05-14-0008), Halcyon + Fortinet + Hackmanac + Ransomware.live all THN-cited but not directly retrieved; no CVE / no IOCs / no first-party Splunk telemetry match — 35th consecutive dormant non-self-telemetry sweep; no A&D-prime victim named; monitoring-grade only, NOT FLASH-eligible (collector evaluation 0 of 6 triggers fired confirmed by grader), NOT daily-brief-action (no defensive-posture-action to take), NOT actor-profile-update (Hard Rule 2 binds), eligible for daily-brief-monitoring + weekly-synthesis only; analyst_review_required=true for two load-bearing items: (1) Scattered Spider dossier-hygiene question on whether Halcyon + Fortinet ecosystem-lineage framing warrants a corpus-tracked relationship entry in Scattered-Spider/ dossier on next /update-tracking cycle (defer to analyst, do NOT auto-update), (2) A&D-estate-exposure inference layer ACH/KAC candidate on whether Grafana's deployment pattern in defense-prime engineering / DoD-agency / MSSP environments translates to material A&D-adjacent exposure given Grafana's confirmed no-customer-data/no-customer-systems scope-limitation; red_team_review_required=false (WEP capped at "likely" by single-source veto, below "very likely" red-team-review floor); related-clusters lineage flagged to OpenAI/TanStack finding-2026-05-14-0008 + SailPoint raw-2026-05-11-am-001 + Checkmarx Jenkins AST plugin raw-2026-05-11-flash-0600-001 as sibling instances of the May-2026 software-vendor supply-chain credential-exposure pattern (different actors, different mechanisms, same incident shape — pattern flagged for situational-awareness coverage only, NOT framed as single-actor campaign per Hard Rule 2). Two in-window raw-signal sentinel-sweep members reference the Grafana cluster (raw-2026-05-17-flash-0600-000 + raw-2026-05-17-am-000 inline evaluations) but the sentinels themselves remain non-promotable tombstones per established precedent. Five other in-window raw-signal members are all sentinel sweeps with zero substantive content (raw-2026-05-16-flash-1130-000 + raw-2026-05-16-pm-000 + raw-2026-05-16-flash-1730-000 + raw-2026-05-17-flash-0000-000 + raw-2026-05-17-flash-0600-000 + raw-2026-05-17-am-000 — all sentinel tombstones, no rejection-log entries needed). raw-2026-05-16-pm-001 Symantec Fast16 already promoted to finding-2026-05-16-0003 in prior afternoon-20260516-160000 run, NOT re-graded. Turla/Kazuar D+2 relay layer duplicate-locked against finding-2026-05-14-0006 / reject-2026-05-16-0001 per anti-noise rule 1 — BleepingComputer 2026-05-16T10:15 EDT item in BleepingComputer top-feed-position is the SAME surface already rejected, NOT re-graded. Dark Reading 2026-05-17 thought-leadership opinion piece ("The Boring Stuff is Dangerous Now") evaluated and discarded by collector at the filter-trail layer for failing A&D / roster / vuln-index filter; this is a collector-side discard NOT a grader-rejection-log-entry candidate. No new source-grades.yaml additions proposed this run (Hackmanac + Ransomware.live + Halcyon + Fortinet FortiGuard Labs are flagged as non-tracked CTI relay surfaces in finding-2026-05-17-0001 source_reliability.librarian_handoff in case a future sweep directly retrieves their underlying publications, but no provisional-grade additions proposed at this sweep). Splunk first-party sweep across "Grafana" + "CoinbaseCartel" tokens against archimedes + defenseclaw_local indexes over 7d window returned ZERO non-pipeline-internal events — 35th consecutive sweep with dormant non-archimedes-internal stream pattern. Audit-trail block updated below; no new rejection entries this run. Earlier afternoon-20260516-160000 produced 0 rejections and 1 promotion (finding-2026-05-16-0003 Symantec Fast16 / SentinelLABS lineage extension — pre-Stuxnet 2005-era simulation-sabotage framework targeting nuclear-weapons-simulation toolchains via LS-DYNA / AUTODYN; Symantec Threat Hunter Team + Carbon Black A-grade primary at provisional-A second-corpus-citation within ratification window T-2h15m; A2/likely with single-source-veto on framework-discovery line — Symantec explicitly cites SentinelLABS April 2026 as origin so independence test FAILS; novel Symantec additions AUTODYN target + Intel Fortran compiler constraint; no IOCs / no CVEs / no active exploitation / no modern variant known / no attribution; Security Boulevard "Linked to US-Iran Cyber Tensions" relay-layer editorial framing flagged by collector and NOT propagated per Hard Rule 2; Antiy Labs Chinese-AV counter-narrative flagged as third-party commentary not independent corroboration). Two in-window PM raw-signal members processed: (1) raw-2026-05-16-pm-000 sentinel sweep → non-promotable tombstone per established precedent (no rejection-log entry needed); (2) raw-2026-05-16-pm-001 Symantec Fast16 → promoted to finding-2026-05-16-0003. Zero rejection-log entries this run. 33rd consecutive dormant non-self-telemetry Splunk sweep verified via grader's 30d sweep across 7 fast16 IOC tokens (fast16, Fast16, LS-DYNA, AUTODYN, "Intel Fortran", svcmgmt, "fast16.sys") returning zero non-pipeline-internal events. No new source-grades.yaml additions proposed (Symantec already at provisional-A; SentinelLABS already at provisional-A; both within respective ratification windows). Earlier morning-20260516-080000 produced 1 rejection (MSTIC Turla/Kazuar THN-relay-day-2 duplicate of finding-2026-05-14-0006 — see reject-2026-05-16-0001 below) and 2 promotions (finding-2026-05-16-0001 NGINX Rift depthfirst PoC GitHub publication carry-forward extension on finding-2026-05-14-0002 / VT-007; SecurityWeek Ionut Arghire B-grade primary; B2/likely with single-source-veto on new operational-delta layer; Hard Rule 3 prevents direct PoC URL verification; depthfirst elevation candidate provisional-F → provisional-C per "first technical write-up publication" trigger. finding-2026-05-16-0002 Pwn2Own Berlin 2026 Day 3 final results carry-forward continuation on finding-2026-05-15-0004 — ZDI/Dustin Childs sole originating primary at provisional-A starting grade per Bitdefender/Symantec/Cisco-Talos/Darktrace precedent; A2/likely with single-source-veto on contest-event layer but WEP not capped per vendor-authority-on-own-contest treatment analogous to F5/finding-2026-05-14-0002; Day 3 = 3 exploits / $34,500; event total $943,250 / 42 zero-days; Day 2 Orange Tsai/DEVCORE Exchange chain embargo still active to ~2026-08-13; OpenAI Codex external-control-abuse result is second 2026 OpenAI-as-target surface but one data point is NOT yet a pattern). Three in-window AM raw-signal members graded (excluding sentinel): (1) raw-2026-05-15-flash-1800-001 MSTIC Turla/Kazuar THN-relay → REJECTED as duplicate of finding-2026-05-14-0006; (2) raw-2026-05-16-flash-0600-001 NGINX Rift PoC → promoted to finding-2026-05-16-0001; (3) raw-2026-05-16-am-001 Pwn2Own Day 3 → promoted to finding-2026-05-16-0002. Sentinel raw-2026-05-16-am-000 non-promotable per established precedent. One provisional source-grades.yaml addition proposed for librarian pickup: zdi-blog at provisional-A (first corpus citation as Pwn2Own contest organizer / contest-coordination vendor-research publication). One source-grade elevation proposed: depthfirst provisional-F → provisional-C per "first technical write-up publication" trigger (GitHub PoC repository constitutes technical-output publication even though Archimedes did not fetch contents per Hard Rule 3). Splunk first-party sweep across all IOC tokens (CVE-2026-42945, NGINX Rift, depthfirst, ngx_http_rewrite_module, Pwn2Own, Orange Tsai, DEVCORE, Kazuar, Secret Blizzard, Turla, Kazuar SHA-256 hashes) returned ZERO non-archimedes-internal events over 30-day window — 30th consecutive sweep with dormant non-archimedes-internal stream pattern. Audit-trail block updated below with new rejection entry reject-2026-05-16-0001. (finding-2026-05-15-0003 CISA adds CVE-2026-42897 Microsoft Exchange OWA XSS zero-day to KEV catalog dueDate 2026-05-29 federal deadline A2/likely with single-source-veto on active-exploitation claim layer carry-forward from FLASH-0001 — KEV listing is procedural concurrence under BOD 22-01 not independent IR telemetry; finding-2026-05-15-0004 Pwn2Own Berlin 2026 Day 2 DEVCORE Orange Tsai 3-bug RCE-to-SYSTEM chain demonstrated against Microsoft Exchange $200K payout no CVE assigned 90-day ZDI responsible-disclosure clock running B3/roughly-even-chance with single-source-veto applied — BleepingComputer is sole directly-retrieved primary, ZDI and DEVCORE cited-only not retrieved; finding-2026-05-15-0005 node-ipc npm compromise four-firm research consensus on UNATTRIBUTED status Socket+StepSecurity+Ox Security+Upwind decline TeamPCP/Shai-Hulud/Mini Shai-Hulud lineage corroboration-strengthening update to finding-2026-05-14-0009 plus new operational-discipline detail layer 29400-DNS-queries-per-500KB exfil-overhead metric and file-size ceiling and path exclusions and no-persistence-cleanup-behavior B2/likely on compromise-mechanism layer very-likely on UNATTRIBUTED-disposition layer). Four in-window PM raw-signal members graded: (1) raw-2026-05-15-pm-000 sentinel sweep → non-promotable tombstone per established precedent; (2) raw-2026-05-15-pm-001 → finding-0003; (3) raw-2026-05-15-pm-002 → finding-0004; (4) raw-2026-05-15-pm-003 → finding-0005. Two provisional source-grades.yaml additions proposed for librarian pickup: ox-security at B (first corpus surface as cited firm), upwind at B (second corpus surface; first was finding-2026-05-12-FLASH-0001). Splunk first-party sweep across all IOC tokens (CVE-2026-42897, Exchange, OWA, sh.azurestaticprovider, node-ipc, atiertant, Pwn2Own, Orange Tsai, DEVCORE) returned ZERO non-archimedes-internal events over 7-day window — 26th consecutive sweep with dormant non-archimedes-internal stream pattern. Earlier morning-20260515-080000 run produced 0 rejections and 2 promotions; earlier flash-grade-20260515-060000 run produced 0 rejections and 2 promotions. Audit-trail block updated below; no new rejection entries this run.
 
 entries:
+  - rejection_id: reject-2026-06-15-0001
+    rejected_at: 2026-06-15T08:36:00-04:00
+    grading_run_id: morning-20260615-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-15-am-002-securityweek-novo-nordisk-pharma-breach-self-disclosure-no-attribution
+    raw_signal_file: raw-2026-06-15-am-002-securityweek-novo-nordisk-pharma-breach-self-disclosure-no-attribution.md
+    cluster_topic: >
+      SecurityWeek (Eduard Kovacs byline) relay 2026-06-15 07:17 EDT of Novo
+      Nordisk self-disclosure: hackers breached a limited number of internal
+      IT systems containing personal data; scope per company disclosure is
+      patient clinical trial data (randomly-assigned IDs, trial details, sex,
+      birth year, biomarkers, health and immunogenicity data, lifestyle
+      factors) and healthcare-provider info (names, registration numbers,
+      email addresses, phone numbers, WhatsApp details, office locations);
+      Novo Nordisk framing: not directly linked to any patients by name or
+      other direct identifiers; limited scope. NO threat-actor attribution;
+      NO CVE references; NO IOCs (no domains, IPs, hashes, malware family);
+      NO ransomware claim; NO leak-site post mentioned; NO incident-timeline
+      disclosure beyond "recently."
+    rejection_reasons:
+      - intel_grading_inclusion_threshold_fails_thin_substrate_vendor_self_disclosure_with_no_attribution_no_cve_no_iocs
+      - no_us_ad_dib_intersection_pharma_sector_not_aerospace_or_defense_novo_nordisk_is_danish_pharma
+      - single_publisher_securityweek_no_second_relay_no_third_party_ir_firm_corroboration
+      - all_six_flash_triggers_negative_per_collector_evaluation
+      - not_roster_relevant_no_tracked_actor_named_or_implied_no_iranian_pharma_cluster_active_in_current_substrate
+      - other_signal_one_liner_only_disposition_for_briefer_sector_focus_healthcare_slot_if_used
+    digraph_assessed: C4
+    digraph_assessed_rationale: >
+      Source SecurityWeek B-grade (provisional). Credibility floor at 4
+      (Doubtful) because: (a) single-publisher vendor-self-disclosure
+      with NO third-party IR-firm corroboration, NO CVE, NO IOCs, NO
+      attribution; (b) substrate is too thin to meet "Possibly True"
+      grade-3 conditions which require either single-source-with-source-
+      B-or-better-and-claim-substantive OR partially-consistent-with-
+      known-TTPs OR technical-claims-plausible-but-not-verifiable —
+      vendor self-disclosure with bare incident acknowledgment and no
+      operational substance does not meet any of these. The disclosure
+      itself is FACTUALLY likely (Novo Nordisk publicly stating a
+      breach is high-credibility procedural fact at B2 layer for the
+      disclosure-existed claim) but the CLUSTER-as-finding payload
+      (substantive threat-intelligence value for an A&D-prime target)
+      does not clear monitoring-tier inclusion-discipline.
+    wep_assessed_ceiling: roughly_even_chance
+    wep_layered:
+      novo_nordisk_publicly_disclosed_a_breach_today_procedural_fact: likely  # B2 procedural — vendor public statement
+      breach_actually_occurred_at_some_scope: likely  # Vendor self-disclosure has high prior on actually-occurred
+      scope_per_vendor_clinical_trial_and_healthcare_provider_info: roughly_even_chance  # Vendor-attested but no third-party verification
+      identifying_info_not_compromised_per_vendor_framing: roughly_even_chance  # Vendor claim; not independently verified
+      no_us_ad_dib_intersection: very_likely  # Verifiable structural absence
+      no_iocs_no_cve_no_attribution: very_likely  # Verifiable absence
+    rejection_detail: >
+      Cluster fails the inclusion-discipline gate for monitoring-tier
+      promotion despite the disclosure being a verifiable procedural
+      fact. The disposition rationale rests on three converging gates:
+
+      (1) NO A&D-PRIME / DIB INTERSECTION. Novo Nordisk is a Danish
+      pharmaceutical company (world's largest GLP-1 manufacturer —
+      Ozempic, Wegovy). NOT a US A&D-prime, NOT a DIB supplier, NOT
+      on aerospace-defense.yaml, NOT in CMMC / ITAR / DFARS supply
+      chain. Pharma sector is not A&D-prime sector.
+
+      (2) NO OPERATIONAL THREAT-INTELLIGENCE PAYLOAD. No CVE, no
+      IOCs, no actor attribution, no TTP exposure, no ransomware
+      leak-site claim. The disclosure tells A&D-prime defenders
+      effectively nothing about defensive posture, IOC hunting,
+      patch prioritization, actor tracking, or sector-targeting
+      intelligence.
+
+      (3) SINGLE-PUBLISHER WITH NO INDEPENDENT CORROBORATION.
+      SecurityWeek is the sole in-window publisher. Vendor self-
+      disclosure is its own evidence basis; no third-party IR firm,
+      no leak-site post, no government advisory, no industry-CERT
+      coverage in current window.
+
+      INCLUSION-DISCIPLINE DECISION: Cluster does not clear C3
+      monitoring threshold despite verifiable procedural-fact layer
+      because the substrate is operationally vacuous for A&D-prime
+      targets. Possible briefer disposition is Other Signal one-
+      liner if morning brief has a Sector Focus / Healthcare-Pharma
+      adjacent slot, otherwise discardable.
+
+      RE-GRADE TRIGGER: If a third-party IR firm publishes telemetry
+      on the Novo Nordisk intrusion attributing to a tracked-roster
+      actor OR a ransomware brand claims the breach via leak-site
+      post, regrade. Also regrade if vendor follow-up disclosure
+      includes CVE attribution or IOC release. Currently no substrate
+      to support either pathway in this morning's collection window.
+
+      HARD RULE 2 binding constraint: PRESERVED. No Archimedes-
+      originated attribution. Vendor "limited scope" framing
+      preserved verbatim within Hard Rule 6 ≤15-word constraint.
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+        provisional: true
+        provisional_since: 2026-05-06
+    review_notes: >
+      If third-party IR-firm coverage or actor claim surfaces in
+      next 7-14 days, regrade. Pharma-sector targeting cadence
+      worth substrate-tracking awareness (alongside DentaQuest
+      2.6M ShinyHunters-attributed cluster) but does not constitute
+      promotable finding substrate at the current credibility floor.
+
+  - rejection_id: reject-2026-06-15-0002
+    rejected_at: 2026-06-15T08:38:00-04:00
+    grading_run_id: morning-20260615-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-15-am-007-helpnet-military-ai-verification-lockheed-martin-anduril-palantir-watchlist-hit
+    raw_signal_file: raw-2026-06-15-am-007-helpnet-military-ai-verification-lockheed-martin-anduril-palantir-watchlist-hit.md
+    cluster_topic: >
+      Help Net Security (Sinisa Markovic byline) 2026-06-15 04:30 EDT opinion
+      / sector analysis piece on the verification challenge in military AI
+      systems. Discusses how defense contractors are building AI systems
+      that task drones automatically and propose kill-chains; the security
+      problem of confirming what an AI model will do sitting outside arms-
+      control diplomacy methods; verification built for traditional kinetic
+      systems doesn't translate to AI-driven kill-chain systems. Names
+      three frontier-AI / defense-prime partnerships: Lockheed Martin +
+      Meta, Anduril Industries + OpenAI, Palantir Technologies + Microsoft.
+      LOCKHEED MARTIN is on infrastructure/watchlists/aerospace-defense.yaml
+      (tier prime, LMT ticker) — the article's sole watchlist tie-in is
+      the Lockheed Martin name reference in sector-context-discussion
+      framing. NO incident, NO breach, NO IOC, NO CVE, NO actor
+      attribution, NO vulnerability disclosed. Opinion-class sector-
+      analysis piece.
+    rejection_reasons:
+      - intel_grading_inclusion_threshold_fails_no_incident_substrate_opinion_class_sector_analysis_piece
+      - no_threat_intelligence_payload_no_ioc_no_cve_no_actor_attribution_no_breach_no_vulnerability_disclosed
+      - watchlist_hit_is_name_mention_only_no_threat_to_lockheed_martin_disclosed
+      - single_publisher_helpnet_security_no_corroboration
+      - all_six_flash_triggers_negative_per_collector_evaluation
+      - other_signal_one_liner_only_disposition_for_briefer_ad_sector_focus_slot_if_used_useful_sector_framing_no_operational_urgency
+      - hard_rule_2_binding_article_makes_no_attribution_claims_about_threat_actors_archimedes_does_not_originate_sector_context_attributions
+    digraph_assessed: C4
+    digraph_assessed_rationale: >
+      Source Help Net Security B-grade (provisional). Credibility
+      floor at 4 (Doubtful) for cluster-as-finding payload purposes
+      because: (a) opinion / analysis piece with NO incident substrate
+      and NO threat-intelligence payload; (b) does not meet "Possibly
+      True" grade-3 conditions which require either single-source-
+      with-substantive-claim OR consistent-with-known-TTPs OR
+      technical-claims-plausible-but-not-verifiable — there is no
+      substantive THREAT claim in the source, only a structural-
+      verification-gap argument. The piece's analytical content is
+      reportable opinion (the verification gap is real) but the
+      cluster-as-finding promotion test requires threat-intelligence
+      payload absent here.
+    wep_assessed_ceiling: roughly_even_chance
+    wep_layered:
+      lockheed_martin_meta_partnership_exists_for_military_ai_development: likely  # B2 sector-context attribution to single B-grade publisher
+      anduril_openai_and_palantir_microsoft_partnerships_exist: likely  # B2 sector-context
+      verification_gap_in_military_ai_is_real_structural_observation: likely  # B2 publisher-attested research-analyst observation
+      no_specific_threat_to_lockheed_martin_disclosed: very_likely  # Verifiable absence in source
+      no_ioc_no_cve_no_actor_no_breach: very_likely  # Verifiable absence
+    rejection_detail: >
+      Cluster fails the inclusion-discipline gate for monitoring-tier
+      promotion despite the explicit Lockheed Martin watchlist name-
+      mention triggering raw-signal capture. The disposition rationale
+      rests on three converging gates:
+
+      (1) NO INCIDENT SUBSTRATE. The piece is opinion / sector
+      analysis on a structural-verification-gap argument in military
+      AI development. No breach, no IOC, no CVE, no actor attribution,
+      no vulnerability disclosed, no incident timeline, no specific
+      threat to any named entity. Reportable sector-context opinion
+      content, NOT threat-intelligence content.
+
+      (2) WATCHLIST-HIT IS NAME-MENTION ONLY. Lockheed Martin appears
+      in the article as one of three defense contractors named as
+      participating in frontier-AI partnerships (LMT + Meta). Anduril
+      Industries and Palantir Technologies are NOT on Archimedes
+      A&D-prime watchlist as of last_updated 2026-04-18. The watchlist
+      match triggers raw-signal capture under match-reason logic but
+      the substantive grader value is opinion-class sector commentary,
+      not threat substrate against Lockheed Martin.
+
+      (3) HARD RULE 2 BINDING. The article makes no attribution
+      claims about threat actors. Archimedes does not originate
+      sector-context attributions from this opinion substrate. Any
+      promotion would risk creating Archimedes-originated framing
+      (e.g., "Lockheed Martin face military-AI verification risk")
+      not present in source.
+
+      INCLUSION-DISCIPLINE DECISION: Cluster does not clear C3
+      monitoring threshold. The verification-gap argument has
+      sector-context value (frontier-AI / defense-prime
+      partnerships continue accelerating; verification gap
+      acknowledged by HelpNet research analyst) but is not
+      promotable as a finding. Possible briefer disposition is
+      Other Signal one-liner under Sector Focus: A&D slot if
+      morning brief has space, otherwise discardable.
+
+      PRECEDENT NOTE: This is a recurring pattern — opinion-class
+      sector-analysis pieces mentioning watchlist primes trigger
+      raw-signal capture under watchlist match-reason logic but
+      lack the threat-intelligence substrate required for finding
+      promotion. Reject-and-route-to-Other-Signal is the standard
+      disposition.
+
+      RE-GRADE TRIGGER: If subsequent reporting documents a
+      specific incident at Lockheed Martin / Anduril / Palantir
+      related to AI-system verification failure, regrade. If
+      a threat actor attributes a campaign to military-AI-
+      verification-exploitation pattern, regrade.
+
+      HARD RULE 2 binding constraint: PRESERVED. No Archimedes-
+      originated attribution; opinion-piece sector-context
+      framing only.
+    sources:
+      - source_yaml_id: helpnetsecurity
+        grade: B
+        provisional: true
+        provisional_since: 2026-06-11
+    review_notes: >
+      Recurring opinion-class sector-analysis pattern from Help Net
+      Security — watchlist-hit name-mention triggering raw-signal
+      capture without operational threat substrate. Briefer Other
+      Signal Sector Focus slot is appropriate downstream disposition
+      if brief has space. Lockheed Martin watchlist tier prime status
+      unchanged; no incident-specific watch escalation triggered.
+
   - rejection_id: reject-2026-06-14-0001
     rejected_at: 2026-06-14T07:55:00-04:00
     grading_run_id: morning-20260614-080000

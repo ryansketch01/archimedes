@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-14T08:00:00-04:00
+last_updated: 2026-06-15T08:00:00-04:00
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -35650,6 +35650,276 @@ entries:
       Visibility-limited absence not disconfirmation — Frank not higher-ed.
 
       Pre-flight 13/13 pass first iteration. No regenerations required.
+
+  - id: 2026-06-15-am-001-securityweek-shinyhunters-council-of-europe-leak-site-claim-297gb-dual-campaign-actor-visibility
+    covered_in: [2026-06-15-morning]
+    headline: "SecurityWeek single-publisher relay of ShinyHunters Tor leak-site self-claim against Council of Europe (~297 GB / 429K files / payroll-HR-medical on 10K+ employees / threatened release 2026-06-16); CoE has NOT acknowledged; dual-campaign actor visibility — ShinyHunters concurrently active on PeopleSoft / UNC6240 KEV cluster + CoE data-theft; no A&D intersection (intergovernmental human-rights body); no IOCs; no nation-state attribution"
+    topic_tags:
+      - shinyhunters-claims-coe-data-theft-297gb
+      - sw-single-publisher-relay-c3
+      - dual-campaign-actor-visibility-shinyhunters-peoplesoft-plus-coe
+      - leak-site-self-claim-not-coe-acknowledged
+      - no-ad-intersection-intergovernmental-body
+      - no-iocs-no-cve-no-nation-state-attribution
+      - operator-deferred-new-actor-substrate-continuing
+    related_actors: []  # ShinyHunters / UNC6240 still off _roster.yaml pending operator /new-actor decision
+    related_vulns: []
+    related_campaigns:
+      - shinyhunters-peoplesoft-unc6240-cluster
+      - shinyhunters-coe-data-theft-cluster
+      - dentaquest-2-6m-shinyhunters
+    finding_ids: [finding-2026-06-15-0001]
+    digraph: C3
+    wep: roughly_even_chance
+    resurface_if:
+      - coe_publicly_acknowledges_incident
+      - data_actually_released_2026_06_16_or_after
+      - second_publisher_independent_corroboration
+      - new_victims_confirmed
+      - operator_invokes_new_actor_shinyhunters_or_unc6240
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+
+  - id: 2026-06-15-am-002-securityweek-french-tchap-misere-update-73k-accounts-13_5gb-actor-name-net-new-burner-identity
+    covered_in: [2026-06-15-morning]
+    headline: "UPDATE on finding-2026-06-10-0013 — DINUM confirms Tchap breach 2026-06-07 affecting 73K of 825K accounts (~9%); self-claimed actor 'Misère' posted via leak-site (Kolochenko per SW reads name as likely burner identity); actor-claimed 13.5 GB / 640K plaintext messages unverified by DINUM; across-ministries scope, not defense-specific; no US A&D direct intersection"
+    topic_tags:
+      - tchap-misere-breach-update
+      - dinum-confirms-73k-of-825k-accounts
+      - actor-self-claim-misere-likely-burner-kolochenko
+      - 13_5gb-640k-plaintext-messages-unverified-at-dinum
+      - across-ministries-not-defense-specific
+      - update-on-finding-2026-06-10-0013
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - tchap-misere-french-government-messaging-breach
+    finding_ids: [finding-2026-06-15-0002]
+    digraph: C3
+    wep: roughly_even_chance
+    resurface_if:
+      - dinum_confirms_message_volume_claim
+      - misere_actor_identity_unmasked
+      - data_released_or_dropped_publicly
+      - french_ad_prime_named_as_downstream_target
+      - second_publisher_independent_corroboration
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+
+  - id: 2026-06-15-am-003-thn-sa-sansec-awesome-motive-wordpress-cdn-supply-chain-net-new-ioc-yandex-cloud-ip-consumer-plugin-not-ad
+    covered_in: [2026-06-15-morning]
+    headline: "Awesome Motive WordPress CDN supply-chain compromise — Sansec primary (2026-06-13) + SA + THN multi-publisher independent relays converge on OptinMonster, TrustPulse, PushEngage compromise via clientcdn.pushengage.com (June 12-14); C2 typosquat tidio.cc (registered 2026-04-28); net-new attacker IP 84.201.6.54 (Yandex Cloud ASN per THN — method-pattern, not state-actor attribution); Sansec 'Polyfill-pattern' framing is method comparison, NOT actor-cluster identity; consumer marketing plugins, NOT A&D-prime production stack — supply-chain-awareness substrate only"
+    topic_tags:
+      - awesome-motive-wordpress-cdn-supply-chain
+      - sansec-primary-plus-sa-thn-multi-publisher-corroboration-b2
+      - net-new-ioc-84-201-6-54-yandex-cloud-method-pattern
+      - c2-typosquat-tidio-cc
+      - polyfill-pattern-method-comparison-not-actor-cluster
+      - consumer-marketing-plugins-not-ad-prime-stack
+      - supply-chain-awareness-substrate-only
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - awesome-motive-cdn-supply-chain-compromise
+    finding_ids: [finding-2026-06-15-0003]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - independent_ir_firm_telemetry_corroborates
+      - ad_prime_named_as_downstream_victim
+      - actor_attribution_emerges
+      - cve_assigned_to_initial_entry_vector
+      - new_iocs_or_c2_infrastructure_discovered
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+
+  - id: 2026-06-15-am-004-sa-thn-rapid7-palo-alto-pan-os-cve-2026-0257-vendor-confirmation-active-exploitation-kev-deadline-past
+    covered_in: [2026-06-15-morning]
+    headline: "Palo Alto Networks publicly CONFIRMS active exploitation of PAN-OS GlobalProtect CVE-2026-0257 (CVSS 7.8) — SA + THN publisher relays of Rapid7 IR primary + PA vendor-of-record confirmation; Rapid7 single-actor MAC assessment across Wave 1 (2026-05-18 Vultr) + Wave 2 (2026-05-21 Dromatics); 8/10 forged-cookie cases NO full VPN session, 2/10 VPN IP assigned; NO successful lateral movement observed; FCEB KEV deadline 2026-06-01 = ~14d PAST (retrospective coverage phase); patch landed 2026-05-13; no actor attribution; PAN-OS GlobalProtect broadly A&D-deployed"
+    topic_tags:
+      - pan-os-cve-2026-0257-vendor-confirmation-active-exploitation
+      - rapid7-ir-primary-single-actor-mac-two-waves
+      - kev-deadline-2026-06-01-14d-past-retrospective-coverage
+      - patched-2026-05-13
+      - no-actor-attribution-no-nation-state
+      - no-ad-prime-direct-victim-named-broadly-deployed-structural
+      - cvss-7-8-below-flash-thresholds
+      - hard-rule-3-binding-no-poc-link-replication
+      - kev-compliance-metric-phase-cohort
+    related_actors: []
+    related_vulns:
+      - CVE-2026-0257
+    related_campaigns: []
+    finding_ids: [finding-2026-06-15-0004]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - ad_prime_named_as_direct_victim
+      - actor_attribution_emerges
+      - independent_ir_firm_parallel_telemetry_published
+      - new_waves_or_infrastructure_observed
+      - first_party_ioc_hit
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+
+  - id: 2026-06-15-am-005-sa-kela-the-gentlemen-ransomware-deep-dive-483-victims-2nd-most-prolific-2026-ai-assisted-black-basta-derived-new-actor-substrate-strengthening
+    covered_in: [2026-06-15-morning]
+    headline: "KELA RansomNews via Security Affairs deep-dive on The Gentlemen ransomware — surfaced 2025-09; 483 leak-site victims by 2026-06-13 (380 in 2026 alone; 2nd-most-prolific 2026 brand behind Qilin only); atypically 15% US victims; manufacturing top-sector; 9 core members + 90/10 affiliate revenue split; admin handle zeta88; multi-vector initial access (FortiOS CVE-2024-55591 + ZeroLogon + PetitPotam + OWA + infostealer logs primary); AI-assisted ops via stripped-down Qwen variant; Feb 2025 Black Basta chat-leak studied as training material (derivative, NOT cluster overlap); Microsoft attributes Go-based encryptor; NOT on 24-actor roster — operator-deferred /new-actor substrate STRENGTHENING (research-firm primary tier now achieved); awareness-only surface per Hard Rule 5"
+    topic_tags:
+      - the-gentlemen-ransomware-substrate-strengthening
+      - kela-ransomnews-primary-a2
+      - 483-victims-since-2025-09-2nd-most-prolific-2026
+      - atypically-15-percent-us-victims
+      - manufacturing-top-sector
+      - 9-core-members-zeta88-admin-handle
+      - multi-vector-initial-access-fortios-zerologon-petitpotam-owa-infostealer
+      - ai-assisted-ops-qwen-variant-vibe-coded-negotiation-panel
+      - black-basta-chat-leak-training-material-derivative-not-overlap
+      - microsoft-go-based-encryptor-attribution-via-kela-reference
+      - operator-deferred-new-actor-substrate-strengthening
+      - awareness-only-hard-rule-5-binding
+      - not-on-24-actor-roster
+    related_actors: []  # NOT on roster; operator-deferred /new-actor pending
+    related_vulns:
+      - CVE-2024-55591  # FortiOS, re-used 2024 vuln in initial-access toolkit
+    related_campaigns:
+      - the-gentlemen-ransomware-2025-2026
+    finding_ids: [finding-2026-06-15-0005]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - operator_invokes_new_actor_the_gentlemen
+      - independent_ir_firm_parallel_publication
+      - us_ad_prime_named_as_victim
+      - microsoft_publishes_first_party_attribution
+      - new_iocs_or_infrastructure_or_ttp_evolution
+      - leak_site_count_crosses_500_or_qilin_position
+    first_covered: 2026-06-15
+    last_covered: 2026-06-15
+    retraction: null
+
+  - id: 2026-06-15-am-brief-meta
+    covered_in: [2026-06-15-morning]
+    brief_file: threats/briefs/2026-06-15-morning.md
+    headline: "2026-06-15 morning brief — 5 net-new graded findings (4 monitoring-tier B2/C3 + 1 vendor-confirmation B2 PAN-OS) + final-pre-deadline PeopleSoft KEV cohort (T-16h Sunday EOB closing) + KEV-compliance retrospective cohort (Ivanti Sentry past +21h, PAN-OS past 14d) + dual-campaign actor visibility (ShinyHunters concurrently active on PeopleSoft + Council of Europe); 9 cumulative sentinel sweeps since 2026-06-13 PM returned 0 IOC hits on 19-IOC set; Weekly Synthesis (10:00 EDT) cadence note carried; Hard Rule 2 binding preserved (ShinyHunters self-claim framing + no nation-state attribution); Hard Rule 3 binding preserved (no PoC link/replication); Hard Rule 5 binding preserved (The Gentlemen substrate awareness-only, no roster proposal)"
+    topic_tags:
+      - morning-brief
+      - 5-net-new-findings
+      - final-pre-deadline-peoplesoft-kev-cohort-t-minus-16h
+      - kev-compliance-retrospective-cohort-three-deadlines
+      - dual-campaign-actor-visibility-shinyhunters
+      - vendor-confirmation-pan-os-cve-2026-0257
+      - tchap-misere-update-finding-2026-06-10-0013-lineage
+      - wordpress-cdn-supply-chain-awareness-only
+      - the-gentlemen-ransomware-substrate-strengthening-awareness-only
+      - 9-sentinel-sweeps-0-ioc-hits-since-2026-06-13-pm
+      - weekly-synthesis-cadence-deferred-to-10-00-edt
+      - hard-rule-2-3-5-bindings-preserved
+      - tlp-clear
+      - layer-1-approximately-758-words-within-target-band
+      - layer-2-under-1900-char-ceiling-approximately-1880-code-units-estimate
+      - pre-flight-13-13-pass
+    finding_ids:
+      - finding-2026-06-15-0001
+      - finding-2026-06-15-0002
+      - finding-2026-06-15-0003
+      - finding-2026-06-15-0004
+      - finding-2026-06-15-0005
+    rejections_referenced:
+      - reject-2026-06-15-0001  # Novo Nordisk pharma self-disclosure — surfaced as Other Signal one-liner
+      - reject-2026-06-15-0002  # HelpNet military-AI verification opinion — surfaced as Other Signal one-liner
+    digraph: composite_b2_c3_per_finding_layered_in_brief
+    wep: likely
+    layer_1_word_count: 758
+    layer_2_char_ceiling: 1900
+    layer_2_compliance: pass_under_ceiling_approximately_1880_code_units_estimate
+    preflight_iterations: 1
+    preflight_regenerations:
+      - layer_2_initial_draft_over_2000_chars_regenerated_to_under_1900_via_url_text_compression_and_bullet_tightening
+    pre_flight_check:
+      total: 13
+      passed: 13
+      checks:
+        every_item_has_source_url: pass
+        every_item_has_admiralty_digraph: pass
+        no_unflagged_coverage_repeat: pass_tchap_explicit_update_flag_kev_clocks_explicit_carry_forward_no_unauthorized_repeats
+        lead_states_impact_not_context: pass_lead_names_peoplesoft_cve_actor_t_minus_16h_plus_shinyhunters_dual_campaign
+        no_banned_phrases: pass
+        standing_sections_present: pass_ad_sector_focus_via_silent_day_plus_kev_retrospective_cohort_iran_cyber_watch_via_handala_hold
+        wep_vocabulary_used_with_probability_bands: pass_likely_used_in_sector_focus_no_bare_hedges
+        word_count_within_target: pass_at_approximately_758_words_within_400_800_target_band
+        actor_vuln_references_linked: pass_unc1549_charming_kitten_linked_shinyhunters_unc6240_not_on_roster_flagged_consistent_with_prior_disposition_the_gentlemen_not_on_roster_flagged
+        tlp_marked_where_non_clear: pass_tlp_clear_brief_level
+        single_source_veto_respected: pass_coe_claim_capped_at_c3_at_quantified_volume_layer_misere_capped_at_c3_at_message_volume_layer_pan_os_b2_with_two_publisher_relays_plus_vendor_confirmation
+        quote_discipline_under_15_words_max_1_per_source: pass_zero_direct_quotes_in_body_all_paraphrased
+        discord_summary_layer_2_compliant: pass_5_bullets_greeting_natural_language_dates_source_linked_headlines_no_themed_voice_no_iso_dates_estimated_under_1900_chars_after_one_compression_regen
+    sentinel_sweeps_in_window:
+      - flash-2026-06-14-1800
+      - flash-2026-06-15-0000
+      - flash-2026-06-15-0600
+      - pre-brief-2026-06-15-0730
+    sentinel_sweeps_cumulative_since_2026_06_13_pm: 9
+    sentinel_ioc_hits: 0
+    sentinel_ioc_set_size: 19
+    anti_noise_carry_forward_holds_touched:
+      - peoplesoft-unc6240-cve-2026-35273-fceb-kev-clock-final-pre-deadline-window-t-minus-16h
+      - ivanti-sentry-cve-2026-10520-fceb-kev-deadline-past-retrospective-compliance-metrics-cohort
+      - pan-os-cve-2026-0257-fceb-kev-deadline-past-vendor-confirmation-net-new-substrate
+      - splunk-enterprise-cve-2026-20253-postgres-sidecar-rce-self-substrate-hold
+      - npm-12-default-script-execution-change-defensive-roadmap-hold
+      - fable-5-mythos-5-anthropic-usg-export-control-frontmatter-only
+      - handala-014-cal-water-iran-cyber-watch-third-source-negative-confirmed-hedge-binding
+      - velvet-ant-operation-highland-sygnia-primary-pending-frontmatter-only
+      - check-point-vpn-cve-2026-50751-qilin-frontmatter-only
+    coverage_log_actions_required:
+      - prior_entry: 2026-06-13-pm-001-mandiant-gtig-primary-direct-retrieval-unc6240-shinyhunters-peoplesoft-cve-2026-35273-11-net-new-iocs-ttp-chain-enrichment-update-extension-on-am-001
+        action: appended_2026-06-15-morning_to_covered_in_kev_clock_closes_tonight_final_pre_deadline_window
+        completed: true
+      - prior_entry: 2026-06-10-pm-013-tchap-misere-french-government-messaging-breach-initial-disclosure
+        action: appended_2026-06-15-morning_to_covered_in_update_with_dinum_quantification_plus_actor_self_claim_misere
+        completed: pending  # lookup of exact entry id required by librarian during commit; treated as update-lineage handoff
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-15-0001
+          append_brief_id: 2026-06-15-morning
+        - finding_id: finding-2026-06-15-0002
+          append_brief_id: 2026-06-15-morning
+        - finding_id: finding-2026-06-15-0003
+          append_brief_id: 2026-06-15-morning
+        - finding_id: finding-2026-06-15-0004
+          append_brief_id: 2026-06-15-morning
+        - finding_id: finding-2026-06-15-0005
+          append_brief_id: 2026-06-15-morning
+      analyst_handoff_notes:
+        - id: kev_compliance_retrospective_cohort_pattern_first_instance
+          note: |
+            Three-deadline KEV-compliance cohort presented in one snapshot for
+            the first time this corpus: PeopleSoft (closes tonight T-16h),
+            Ivanti Sentry (T+21h past), PAN-OS (14d past). This pattern is
+            likely repeatable as multiple BOD 26-04 clocks stack — Weekly
+            Synthesis (10:00 EDT today) is appropriate cadence to evaluate
+            whether this becomes a standing cohort-table section.
+        - id: dual_campaign_actor_visibility_shinyhunters_three_clusters_visible_this_week
+          note: |
+            ShinyHunters portfolio visibility this week: (1) PeopleSoft /
+            UNC6240 cluster (KEV-listed, closing tonight); (2) Council of
+            Europe data-theft claim (today's am-001); (3) DentaQuest 2.6M
+            (prior week). Operator-deferred /new-actor decision substrate
+            continues building. Hard Rule 5 binding preserved — Archimedes
+            does NOT auto-scaffold; only operator can invoke /new-actor.
+        - id: the_gentlemen_research_firm_primary_tier_now_achieved
+          note: |
+            The Gentlemen ransomware substrate has graduated from sentinel-
+            observation to research-firm primary tier this sweep (KELA
+            RansomNews deep-dive 2026-06-13). Operator-deferred /new-actor
+            candidacy substrate is STRENGTHENING but Archimedes does NOT
+            propose roster addition. Surface for awareness only per Hard
+            Rule 5. Operator decision point: when does the substrate cross
+            the threshold for /new-actor invocation?
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-06-12T16:00:00-04:00
+last_updated: 2026-06-16T08:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -1356,11 +1356,11 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 95        # +5 PM 2026-06-12: sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B x5; bloomberg pending operator B/B+/A tier decision); 72h ratification clocks to 2026-06-15T16:00:00-04:00 per findings 0003 / 0004 / 0005 / 0007 / 0008 (+8 PM 2026-06-11; +2 AM 2026-06-10)
-  active_sources: 86       # +5 above (+8 PM 2026-06-11; +2 AM 2026-06-10)
+  total_sources: 97        # +2 AM 2026-06-16: defused-cyber (provisional B; research-firm IR vendor — Fortinet FortiSandbox active-exploitation observation channel) + genians-security-center (provisional A; regional-IR-vendor — Korean-headquartered with deep DPRK visibility; APT37 NarwhalRAT primary); 72h ratification clocks to 2026-06-19T08:00:00-04:00 per findings 0002 / 0003. +5 PM 2026-06-12: sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B x5; bloomberg pending operator B/B+/A tier decision); 72h ratification clocks to 2026-06-15T16:00:00-04:00 per findings 0003 / 0004 / 0005 / 0007 / 0008 (+8 PM 2026-06-11; +2 AM 2026-06-10)
+  active_sources: 88       # +2 above (+5 PM 2026-06-12; +8 PM 2026-06-11; +2 AM 2026-06-10)
   by_grade:
-    A: 40       # +3 europol-coordinated-announcement + doj-federal-court-filings + trendai-zdi-childs (provisional A 2026-06-11 PM); +2 ivanti-psirt + arista-networks-psirt (provisional A 2026-06-10 AM); +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
-    B: 39       # +5 sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B 2026-06-12 PM; bloomberg pending operator B/B+/A); +5 vulncheck-research + tenable-research + prodaft-research + blackfog-research + will-dormann-researcher (provisional B 2026-06-11 PM); +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
+    A: 41       # +1 genians-security-center (provisional A 2026-06-16 morning; regional-IR-vendor cheatsheet pattern peer-class to Mandiant/Unit42/CrowdStrike for DPRK/Korea-Asia); +3 europol-coordinated-announcement + doj-federal-court-filings + trendai-zdi-childs (provisional A 2026-06-11 PM); +2 ivanti-psirt + arista-networks-psirt (provisional A 2026-06-10 AM); +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
+    B: 40       # +1 defused-cyber (provisional B 2026-06-16 morning; research-firm cheatsheet pattern — IR vendor observation channel); +5 sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B 2026-06-12 PM; bloomberg pending operator B/B+/A); +5 vulncheck-research + tenable-research + prodaft-research + blackfog-research + will-dormann-researcher (provisional B 2026-06-11 PM); +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
     C: 10       # +1 depthfirst elevated F→C 2026-05-16 morning per "first technical write-up publication" trigger; finding-2026-05-16-0001
     D: 1
     E: 2
@@ -1420,6 +1420,8 @@ _meta:
     - tenet-security-research   # provisional B; first cited 2026-06-12-0007 Part A (Agentjacking — 85% success rate injecting malicious instructions into fabricated Sentry error events against Claude Code + Cursor; 2,388 orgs with exploitable DSNs; Sentry declined to patch behavior — content filter only; cited via The Hacker News; Tenet primary NOT directly retrieved; 72h ratification clock to 2026-06-15T16:00:00-04:00; awaiting direct retrieval AND human ratification)
     - dataminr-research         # provisional B; first cited 2026-06-12-0003 (Handala #014 Cal Water self-claim — Dataminr identifies RTKBase as likely initial-access vector with lateral move to billing; analysis cited via SecurityWeek; RTKBase-IAV layer carries single-source veto WEP 'possibly' carry-forward into Handala dossier deferred to actor-profiler; 72h ratification clock to 2026-06-15T16:00:00-04:00)
     - bloomberg                 # provisional B PENDING OPERATOR TIER DECISION B/B+/A; first cited 2026-06-12-0008 (IBM + AT&T whistleblower civil-suit unsealing — William Barlow's 2020 qui tam alleges IBM/AT&T concealed federal-contractor breaches; DFARS / CMMC L2/L3 / FCA exposure; Bloomberg broke 2026-06-04, cited via SecurityWeek's In Other News column; conservative B start pending operator decision between AP wire-service A precedent and Tier-1 trade-press B precedent; 72h ratification clock to 2026-06-15T16:00:00-04:00)
+    - defused-cyber             # provisional B; first cited 2026-06-16-0002 (Fortinet FortiSandbox three-CVE active-exploitation cluster — CVE-2026-25089 + CVE-2026-39813 + CVE-2026-39808 all CVSS 9.1; Defused Cyber observation channel cited via BleepingComputer + The Hacker News publisher-independent relays; research-firm cheatsheet pattern — IR vendor providing exploitation observation distinct from vendor PSIRT advisory layer; Defused is sole IR-vendor source on active-exploitation claim layer triggering single-source veto on ITW assertion per INTEL-GRADING; 72h ratification clock to 2026-06-19T08:00:00-04:00; awaiting human ratification AND independent corroboration from second IR vendor — Mandiant / Unit 42 / CrowdStrike / Recorded Future — or first-party Splunk hit for ITW veto release)
+    - genians-security-center   # provisional A; first cited 2026-06-16-0003 (APT37 / ScarCruft net-new NarwhalRAT tooling deployment via Microsoft-account-themed phishing → ZIP → LNK → in-memory CAT-file → pCloud dead-drop C2 → Naver Whale browser masquerade; Genians Security Center is Korean-headquartered regional IR vendor with deep DPRK-cluster visibility; regional-IR-vendor cheatsheet pattern — peer class to Mandiant / Unit 42 / CrowdStrike for DPRK/Korea-Asia threat intel; provisional A starting grade is consistent with peer regional IR vendors despite first-corpus citation; 72h ratification clock to 2026-06-19T08:00:00-04:00; awaiting human ratification AND direct retrieval of genians.co.kr primary write-up — substrate reached this sweep via The Hacker News (Ravie Lakshmanan) publisher relay only)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

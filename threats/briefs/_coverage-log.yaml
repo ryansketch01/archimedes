@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-15T16:00:00-04:00
+last_updated: 2026-06-16T08:00:00-04:00  # briefer 2026-06-16 morning composition complete; entries 2026-06-16-am-001 through am-005 + am-update-001 + am-brief-meta populated (replaced grader placeholder)
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -36711,6 +36711,383 @@ entries:
       ratification (darkreading + varonis-threat-labs +
       obsidian-security all provisional B per cheatsheet). Two
       vuln-tracker handoffs (CVE-2026-20262 + CVE-2026-42824).
+
+  - id: 2026-06-16-am-001-fortinet-fortisandbox-three-cve-active-exploitation-cluster-defused-cyber-no-actor-no-iocs-kev-pending
+    covered_in: [2026-06-16-morning]
+    headline: "Fortinet FortiSandbox three-CVE active exploitation cluster (CVE-2026-25089 + CVE-2026-39813 + CVE-2026-39808, all CVSS 9.1) per Defused Cyber IR observation; AI-generated non-functional payload for 25089; CISA KEV listing expected within 24-72h"
+    topic_tags:
+      - fortinet
+      - fortisandbox
+      - cve-2026-25089
+      - cve-2026-39813
+      - cve-2026-39808
+      - active-exploitation
+      - defused-cyber-provisional
+      - kev-pending
+      - no-actor-attribution
+      - ai-generated-payload
+      - fedramp-paas-variant
+      - dib-detonation-infrastructure
+      - single-ir-vendor-veto
+      - no-itw-to-itw-pivot-finding-2026-06-10-0009
+    related_actors: []
+    related_vulns:
+      - CVE-2026-25089
+      - CVE-2026-39813
+      - CVE-2026-39808
+    related_campaigns: []
+    finding_ids: [finding-2026-06-16-0002]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - cisa_kev_listing
+      - independent_ir_vendor_corroboration
+      - working_public_poc_appears
+      - actor_attribution_emerges
+      - vendor_psirt_acknowledges_exploitation
+      - first_party_ioc_hit
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+
+  - id: 2026-06-16-am-002-bc-symantec-dragonforce-backdoor-turn-microsoft-teams-turn-relay-abuse-byovd-palo-alto-masquerade
+    covered_in: [2026-06-16-morning]
+    headline: "DragonForce ransomware deploys novel Backdoor.Turn Go RAT abusing Microsoft Teams TURN relay infrastructure for C2 obfuscation; BYOVD with custom Palo Alto Networks driver masquerader pre-deployment; Symantec-asserted Scattered Spider linkage (Hard Rule 2 BINDING — Archimedes records claim, does NOT collapse clusters)"
+    topic_tags:
+      - dragonforce
+      - backdoor-turn
+      - novel-ttp
+      - microsoft-teams-turn-relay-abuse
+      - c2-obfuscation
+      - byovd
+      - huawei-driver
+      - topaz-antifraud-driver
+      - k7-security-driver
+      - custom-palo-alto-networks-driver-masquerader
+      - symantec-asserted-scattered-spider-linkage
+      - hard-rule-2-binding-preserved
+      - dragonforce-not-on-roster
+      - single-ir-vendor-veto
+      - unnamed-major-us-services-company-december-2025
+    related_actors:
+      - "013"   # Scattered Spider (Symantec-asserted linkage; Hard Rule 2 binding — recorded only)
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-06-16-0004]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - independent_ir_vendor_corroboration
+      - dragonforce_added_to_roster_or_scattered_spider_dossier_mutation
+      - additional_victims_disclosed
+      - backdoor_turn_samples_surface_in_non_dragonforce_operation
+      - first_party_ioc_hit
+      - actor_ttps_evolve
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+
+  - id: 2026-06-16-am-003-eset-fishmonger-sprysocks-windows-win-drv-rootkit-win-plus-print-spooler-prc-nexus-isoon-contractor-not-on-roster-operator-deferred-new-actor
+    covered_in: [2026-06-16-morning]
+    headline: "ESET WeLiveSecurity discloses two previously-undocumented Windows variants of SprySOCKS (WIN_DRV kernel-driver rootkit + WIN_PLUS Print Spooler-abusing backdoor) attributed to FishMonger cluster (Winnti umbrella per ESET; i-Soon contractor); victims Honduras / Taiwan / Thailand / Pakistan in govt foreign-affairs / tech / telecom; N-day Fortinet / GitLab / Exchange / Telerik / Zimbra initial access; possible CVE-2023-24932 BlackLotus UEFI bootkit involvement with 'limited evidence' qualifier; operator-deferred /new-actor candidacy"
+    topic_tags:
+      - eset-welivesecurity-primary
+      - fishmonger
+      - sprysocks-windows-variants
+      - win-drv-kernel-driver-rootkit
+      - win-plus-print-spooler-backdoor
+      - rawwnpf
+      - driverloader
+      - prc-nexus
+      - isoon-contractor
+      - winnti-umbrella
+      - earth-lusca-aquatic-panda-bronze-university-charcoal-typhoon-redhotel
+      - hard-rule-2-no-cross-walk-to-apt41
+      - n-day-edge-appliance-initial-access
+      - fortinet-gitlab-exchange-telerik-zimbra
+      - possible-uefi-bootkit-involvement-limited-evidence
+      - operator-deferred-new-actor-candidacy
+      - single-ir-vendor-veto
+    related_actors: []
+    related_vulns:
+      - CVE-2023-24932   # Windows Boot Manager BlackLotus (limited-evidence qualifier)
+    related_campaigns: []
+    finding_ids: [finding-2026-06-16-0001]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - independent_ir_vendor_corroboration
+      - fishmonger_added_to_roster
+      - win_drv_or_win_plus_samples_surface_in_different_cluster_victim
+      - uefi_bootkit_involvement_confirmed
+      - first_party_ioc_hit
+      - actor_ttps_evolve
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+
+  - id: 2026-06-16-am-004-genians-thn-apt37-scarcruft-narwhalrat-ms-themed-phishing-pcloud-dead-drop-c2-naver-whale-masquerade
+    covered_in: [2026-06-16-morning]
+    headline: "APT37 / ScarCruft (roster #024 MEDIUM) deploys net-new NarwhalRAT via MS-themed phishing — ZIP/LNK staging → in-memory CAT file → primary C2 via compromised Korean sites daehoat.com + novel21.co.kr → secondary pCloud-API dead-drop with folderid+auth parameters; persistence via scheduled task MicrosoftUserInterfacePicturesUpdateTackMachine; staging dir %APPDATA%\\naverwhale masquerading as Naver Whale browser; Korean victim profile per dossier baseline; /update-tracking APT37 dossier mutation candidacy operator-deferred"
+    topic_tags:
+      - apt37
+      - scarcruft
+      - narwhalrat
+      - net-new-tooling
+      - ms-account-security-alert-phishing-lure
+      - zip-lnk-staging
+      - cat-file-in-memory-payload-delivery
+      - pcloud-dead-drop-c2
+      - compromised-korean-websites-daehoat-novel21
+      - naver-whale-browser-masquerading
+      - microsoftuserinterfacepicturesupdatetackmachine-scheduled-task
+      - genians-security-center-provisional-a
+      - korean-victim-profile
+      - dprk-mss-attribution-per-dossier-baseline
+      - hard-rule-2-no-cross-walk-to-other-dprk-clusters
+      - single-ir-vendor-veto
+      - update-tracking-apt37-dossier-mutation-candidacy-operator-deferred
+    related_actors:
+      - "024"   # APT37 (ScarCruft) — dossier mutation candidacy
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-06-16-0003]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - independent_ir_vendor_corroboration
+      - narwhalrat_samples_surface_in_different_dprk_cluster_victim
+      - apt37_dossier_mutation_via_update_tracking
+      - additional_victims_disclosed_in_non_korean_environment
+      - first_party_ioc_hit
+      - actor_ttps_evolve
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+
+  - id: 2026-06-16-am-update-001-cisco-sd-wan-cve-2026-20262-kev-listed-status-pivot
+    covered_in: [2026-06-16-morning]
+    update_lineage: finding-2026-06-15-0006
+    headline: "UPDATE on 2026-06-15 afternoon brief: CVE-2026-20262 (Cisco Catalyst SD-WAN Manager file-upload-to-root) added to CISA KEV catalog 2026-06-15 with BOD 22-01 deadline 2026-06-29 — eighth Cisco SD-WAN KEV listing of 2026 per The Register framing; CVSS pivots to 6.5 (SecurityWeek + Help Net Security + Security Affairs; The Register cites 6.8); FedRAMP 'Cisco SD-WAN for Government' variant in scope; Help Net Security (Zeljka Zorz) flags internal-security-testing vs active-exploitation tension worth analyst attention; quadruple independent publisher relay confirming KEV addition"
+    topic_tags:
+      - update-pivot
+      - cisco-sd-wan
+      - cve-2026-20262
+      - kev-listing-watch-closed
+      - kev-listed-2026-06-15
+      - bod-22-01-deadline-2026-06-29
+      - eighth-cisco-sd-wan-kev-of-2026
+      - cvss-6-5-vs-6-8-minor-discrepancy
+      - fedramp-variant-in-scope
+      - internal-security-testing-vs-active-exploitation-question
+      - quadruple-independent-publisher-relay
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20262
+    related_campaigns: []
+    finding_ids: [finding-2026-06-15-0006]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - bod_22_01_deadline_passes_2026_06_29
+      - independent_ir_vendor_corroborates_exploitation
+      - patch_adoption_metrics_disclosed
+      - additional_victims_disclosed
+      - actor_attribution_emerges
+      - first_party_ioc_hit
+    first_covered: 2026-06-15
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+
+  - id: 2026-06-16-am-005-other-signal-litespeed-cpanel-cve-2026-54420-kev-cohort-one-liner
+    covered_in: [2026-06-16-morning]
+    headline: "Other Signal one-liner: CVE-2026-54420 (LiteSpeed cPanel Plugin Symlink Following) KEV-listed 2026-06-15 with BOD 22-01 deadline 2026-06-18 (~T+58h from brief); A&D relevance LOW (shared-hosting/consumer surface); KEV-compliance cohort tracking surface only"
+    topic_tags:
+      - other-signal-one-liner
+      - cve-2026-54420
+      - litespeed-cpanel-plugin-symlink-following
+      - kev-listed-2026-06-15
+      - bod-22-01-deadline-2026-06-18
+      - kev-compliance-cohort-tracking
+      - ad-relevance-low
+    related_actors: []
+    related_vulns:
+      - CVE-2026-54420
+    related_campaigns: []
+    finding_ids: []
+    digraph: A1   # CISA KEV is government primary
+    wep: not_applicable_procedural_fact
+    resurface_if:
+      - bod_22_01_deadline_passes_2026_06_18
+      - active_exploitation_against_ad_prime_emerges
+      - first_party_ioc_hit
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+
+  - id: 2026-06-16-am-brief-meta
+    covered_in: [2026-06-16-morning]
+    brief_file: threats/briefs/2026-06-16-morning.md
+    headline: "2026-06-16 morning brief — 4 net-new graded findings + 1 UPDATE pivot + 1 Other Signal KEV-cohort one-liner; pre-flight 13-of-13 PASS; Layer 1 ~815 words within doctrine band (target 400-800, dense substrate cycle); Layer 2 Discord Summary chunked into 2 parts (Part 1 ~1710 chars; Part 2 ~1180 chars) under 1900-char hard ceiling"
+    topic_tags:
+      - morning-brief
+      - meta-tracking
+      - 4-net-new-findings
+      - 1-update-pivot
+      - 1-other-signal-one-liner
+      - preflight-13-of-13-pass
+      - layer-2-chunked-2-parts-under-1900-char-ceiling
+      - hard-rule-2-binding-preserved-on-dragonforce-scattered-spider-fishmonger-apt41-apt37-other-dprk-clusters
+      - hard-rule-6-quote-discipline-preserved
+      - hard-rule-8-binding-preserved-splunk-first-party-zero-hits-across-all-four-findings
+    related_actors:
+      - "024"   # APT37 (finding-0003)
+      - "013"   # Scattered Spider (finding-0004 Symantec-asserted linkage; Hard Rule 2 binding)
+    related_vulns:
+      - CVE-2026-25089
+      - CVE-2026-39813
+      - CVE-2026-39808
+      - CVE-2026-20262
+      - CVE-2026-54420
+      - CVE-2023-24932
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-06-16-0001
+      - finding-2026-06-16-0002
+      - finding-2026-06-16-0003
+      - finding-2026-06-16-0004
+      - finding-2026-06-15-0006   # UPDATE pivot
+    update_pivots:
+      - finding_id: finding-2026-06-15-0006
+        update_id: update-2026-06-16-am-001
+        pivot_type: kev_listing_watch_closed_to_kev_listed_with_bod_22_01_deadline
+    rejections:
+      - rejection_id: reject-2026-06-16-0001
+        cluster_topic: "LiteSpeed cPanel CVE-2026-54420 — A&D-relevance LOW, surfaced as Other Signal one-liner in KEV-cohort lane (2026-06-16-am-005)"
+      - rejection_id: reject-2026-06-16-0002
+        cluster_topic: "SA UNC6508 pure relay — anti-noise 72h FLASH dedup binding through 2026-06-18 12:00 EDT"
+      - rejection_id: reject-2026-06-16-0003
+        cluster_topic: "iRhythm healthcare breach — out of A&D scope, situational awareness only"
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - patch_released_for_associated_cve
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+    word_count_layer_1: 815
+    layer_2_discord_summary:
+      parts: 2
+      part_1_chars_estimate: 1710
+      part_2_chars_estimate: 1180
+      under_1900_buffer: true
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1   # passed on first composition after one banned-phrase scrub ("Print Spooler-leveraged" → "Print Spooler-abusing")
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-16-0001
+          append_brief_id: 2026-06-16-morning
+        - finding_id: finding-2026-06-16-0002
+          append_brief_id: 2026-06-16-morning
+        - finding_id: finding-2026-06-16-0003
+          append_brief_id: 2026-06-16-morning
+        - finding_id: finding-2026-06-16-0004
+          append_brief_id: 2026-06-16-morning
+        - finding_id: finding-2026-06-15-0006
+          append_brief_id: 2026-06-16-morning   # UPDATE pivot inclusion
+      operator_deferred_handoffs_surfaced:
+        - "/new-actor FishMonger (or Earth-Lusca) — finding-2026-06-16-0001 substrate ready"
+        - "/update-tracking APT37 — finding-2026-06-16-0003 NarwhalRAT dossier mutation candidacy"
+        - "Scattered Spider dossier mutation (Symantec-asserted DragonForce linkage; Hard Rule 2 binding requires operator approval) — finding-2026-06-16-0004"
+        - "source-grades.yaml additions: defused-cyber provisional-B (from finding-0002); genians-security-center provisional-A (from finding-0003)"
+        - "vuln-tracker handoffs: CVE-2026-25089 + CVE-2026-39813 + CVE-2026-39808 FortiSandbox cluster (finding-0002); CVE-2026-20262 Cisco SD-WAN UPDATE pivot priority on BOD-22-01-deadline-2026-06-29 compliance window"
+      kev_compliance_cohort_state:
+        total_cves_tracked: 5
+        incoming_active:
+          - cve: CVE-2026-20262
+            deadline: 2026-06-29
+            days_remaining_from_brief: 13
+            ad_relevance: medium_high
+          - cve: CVE-2026-54420
+            deadline: 2026-06-18
+            hours_remaining_from_brief: 58
+            ad_relevance: low
+        retrospective_phase:
+          - cve: CVE-2026-35273
+            deadline: 2026-06-15
+            status: closed_eod_2026_06_15
+          - cve: CVE-2026-10520
+            deadline: 2026-06-14
+            status: closed_36h_past
+          - cve: CVE-2026-0257
+            deadline: 2026-06-01
+            status: closed_15d_plus_past
+      hard_rules_audit:
+        hard_rule_2_no_cross_walk_originated:
+          - finding-0001-fishmonger-not-cross-walked-to-apt41
+          - finding-0003-apt37-not-cross-walked-to-lazarus-kimsuky-andariel-stardust-chollima
+          - finding-0004-dragonforce-not-collapsed-into-scattered-spider-symantec-asserted-linkage-recorded-only
+        hard_rule_6_quote_discipline:
+          - one_quote_per_source_observed
+          - no_quote_exceeds_15_words
+          - symantec_15_word_first_known_malware_quote_in_finding_paraphrase_used_in_brief
+          - eset_no_direct_quotes_used_in_brief_body
+          - genians_high_confidence_quoted_in_finding_paraphrased_in_brief
+        hard_rule_8_first_party_splunk:
+          all_four_findings: zero_hits_30d_lookback_across_defenseclaw_local_and_archimedes
+          visibility_bounded_absence_flagged_for_each: true
+          frank_not_running_fortisandbox_or_cisco_sd_wan_manager_or_litespeed_cpanel_or_redcap_or_korean_language_environment_or_naver_whale_or_fishmonger_target_country_victim_profile: true
+    notes: |
+      2026-06-16 morning brief composed by briefer subagent after
+      grader, analyst (SAT-ACH + SAT-KAC on all 4 net-new findings),
+      and red-team check (no escalations — all 4 findings WEP-capped
+      at "likely" via single-source veto; red-team threshold is
+      "very_likely"). Layer 1 word count 815 — slightly above 800
+      doctrine maximum but well within hard cap (1200) for a dense-
+      substrate cycle covering 4 distinct net-new findings + 1
+      UPDATE pivot + KEV compliance cohort + standing carry-forward
+      holds. Smart-brevity discipline applied through three trim
+      iterations; further compression would lose technical detail
+      (e.g., FortiSandbox affected-version table, NarwhalRAT kill
+      chain, BYOVD driver list, FishMonger cluster alias preservation
+      per Hard Rule 2) that the operator needs at action-tier.
+
+      Layer 2 Discord Summary chunked into 2 parts due to substrate
+      volume (5 distinct bullet items + 1 procedural Other Signal
+      bullet across 4 sections — total Layer 2 ~2890 chars cumulative
+      would exceed 1900 single-message ceiling). Part 1: greeting +
+      Active Threats (2 bullets) + Vulnerabilities (Cisco UPDATE
+      pivot bullet). Part 2: Actor Activity (FishMonger + APT37) +
+      Other Signal (KEV cohort). Part markers: `--- part 2/2 ---`
+      between bullets at line 87 of brief file. Librarian to verify
+      both parts post under 2000-char Discord per-message limit.
+
+      Sentinel sweep streak: 13th cumulative clean sentinel cycle
+      since 2026-06-13 18:00 EDT (per pre-brief commit history;
+      ~60h continuous clean window across defenseclaw_local +
+      archimedes on 19-IOC PeopleSoft/UNC6240 standing set). This
+      morning brief implicit 14th confirmation. Hard Rule 8 binding:
+      silent-Splunk-does-NOT-disconfirm; Frank's environment profile
+      does NOT intersect any of the four findings' named victim
+      patterns.
+
+      Pre-existing YAML defect in this file (line ~32457, unescaped
+      apostrophe in zdi_dustin_childs quote scalar) carried forward
+      from prior commits — still present, still flagged for
+      operator follow-up, out-of-scope for this briefer cycle.
 
 # ============================================================================
 # Valid resurface_if conditions

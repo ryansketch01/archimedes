@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-16T08:00:00-04:00  # briefer 2026-06-16 morning composition complete; entries 2026-06-16-am-001 through am-005 + am-update-001 + am-brief-meta populated (replaced grader placeholder)
+last_updated: 2026-06-16T16:00:00-04:00  # briefer 2026-06-16 afternoon composition complete; pm-001 (Rockwell ICS cluster) + pm-update-001 (FishMonger third-publisher relay) + pm-002 (Cal Water status pivot) + pm-brief-meta populated; am-003 FishMonger covered_in list extended to include 2026-06-16-afternoon (UPDATE pivot)
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -36790,7 +36790,7 @@ entries:
     test: false
 
   - id: 2026-06-16-am-003-eset-fishmonger-sprysocks-windows-win-drv-rootkit-win-plus-print-spooler-prc-nexus-isoon-contractor-not-on-roster-operator-deferred-new-actor
-    covered_in: [2026-06-16-morning]
+    covered_in: [2026-06-16-morning, 2026-06-16-afternoon]   # PM brief carries UPDATE pivot (Dark Reading Rob Wright third-publisher relay); see pm-update-001
     headline: "ESET WeLiveSecurity discloses two previously-undocumented Windows variants of SprySOCKS (WIN_DRV kernel-driver rootkit + WIN_PLUS Print Spooler-abusing backdoor) attributed to FishMonger cluster (Winnti umbrella per ESET; i-Soon contractor); victims Honduras / Taiwan / Thailand / Pakistan in govt foreign-affairs / tech / telecom; N-day Fortinet / GitLab / Exchange / Telerik / Zimbra initial access; possible CVE-2023-24932 BlackLotus UEFI bootkit involvement with 'limited evidence' qualifier; operator-deferred /new-actor candidacy"
     topic_tags:
       - eset-welivesecurity-primary
@@ -37083,6 +37083,302 @@ entries:
       silent-Splunk-does-NOT-disconfirm; Frank's environment profile
       does NOT intersect any of the four findings' named victim
       patterns.
+
+      Pre-existing YAML defect in this file (line ~32457, unescaped
+      apostrophe in zdi_dustin_childs quote scalar) carried forward
+      from prior commits — still present, still flagged for
+      operator follow-up, out-of-scope for this briefer cycle.
+
+  - id: 2026-06-16-pm-001-cisa-rockwell-automation-ics-five-advisory-cluster-flex-io-aentr-cvss-9-4-unauthenticated-critical-manufacturing
+    covered_in: [2026-06-16-afternoon]
+    headline: "CISA ICS-CERT five-advisory Rockwell Automation cluster (ICSA-26-167-01 through -05) — six CVEs across five product families; CVE-2026-0646 + CVE-2026-0647 paired FLEX I/O EtherNet/IP adapters (1794-AENTR / 1794-AENTRXT V2.012) CVSS 9.4 unauthenticated is cluster headline; FactoryTalk PavilionX (CVE-2025-14272 CVSS 7.0), RSLinx Classic vintage (CVE-2020-13573 CVSS 7.5), Logix 5370/5570 (CVE-2026-11317 CVSS 7.5), CompactLogix 5370 L1/L2/L3 (CVE-2025-11694 CVSS 7.5) complete the cluster; no active exploitation cited; no actor attribution; no CISA KEV listing for any of the six CVEs at sweep time; Critical Manufacturing deployment baseline worldwide; A&D operational-template inheritance HIGH on FLEX I/O paired 9.4 unauthenticated entry"
+    topic_tags:
+      - cisa-ics-cert
+      - rockwell-automation
+      - icsa-26-167-01-02-03-04-05
+      - flex-io-1794-aentr-aentrxt
+      - cve-2026-0646
+      - cve-2026-0647
+      - paired-cvss-9-4-unauthenticated
+      - factorytalk-analytics-pavilionx
+      - cve-2025-14272
+      - rslinx-classic-vintage
+      - cve-2020-13573
+      - logix-5370-5570
+      - cve-2026-11317
+      - compactlogix-5370-l1-l2-l3
+      - cve-2025-11694
+      - critical-manufacturing-sector
+      - no-active-exploitation
+      - no-actor-attribution
+      - not-kev-listed
+      - dib-tier-1-2-supplier-manufacturing-floor-operational-template-inheritance
+      - vuln-tracker-handoff-operator-deferred
+      - single-source-veto-cisa-sole-publisher
+    related_actors: []
+    related_vulns:
+      - CVE-2026-0646
+      - CVE-2026-0647
+      - CVE-2026-11317
+      - CVE-2025-11694
+      - CVE-2025-14272
+      - CVE-2020-13573
+    related_campaigns: []
+    finding_ids: [finding-2026-06-16-0005]
+    digraph: A2
+    wep: likely   # operational-template inheritance layer; procedural-fact layer very_likely (vendor-on-own-product through A-grade gov channel)
+    resurface_if:
+      - cisa_kev_listing_for_any_of_the_six_cves
+      - active_exploitation_emerges
+      - actor_attribution_emerges
+      - independent_ir_vendor_corroboration_or_customer_deployment_data
+      - additional_rockwell_advisories_in_extending_cluster
+      - first_party_ioc_hit
+      - patch_adoption_data_available_for_dib_tier_1_2_supplier_cohort
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+
+  - id: 2026-06-16-pm-update-001-eset-fishmonger-sprysocks-windows-third-publisher-relay-dark-reading-rob-wright
+    covered_in: [2026-06-16-afternoon]
+    headline: "UPDATE on AM brief finding-2026-06-16-0001 (ESET FishMonger SprySOCKS Windows variants): Dark Reading (Rob Wright editorial byline) publishes B-grade relay of ESET WeLiveSecurity primary ~28h post-primary; substrate moves dual-publisher (THN + BC) → triple-publisher journalistic relay; WEP UNCHANGED at 'likely' — triple-publisher journalistic relay is publisher-independence NOT independent IR-vendor corroboration; single-vendor-on-cluster-identity veto persists; no new IOCs / TTPs / attribution detail"
+    topic_tags:
+      - update-pivot
+      - finding-2026-06-16-0001
+      - eset-fishmonger-sprysocks-windows
+      - dark-reading-rob-wright-editorial-byline
+      - third-publisher-journalistic-relay
+      - publisher-cardinality-strengthening
+      - wep-unchanged-at-likely
+      - single-vendor-on-cluster-identity-veto-persists
+      - mandiant-crowdstrike-unit-42-mstic-corroboration-would-lift-veto
+      - hard-rule-2-binding-preserved
+      - no-cross-walk-to-apt41
+    related_actors: []
+    related_vulns:
+      - CVE-2023-24932   # carried forward from AM finding-0001
+    related_campaigns: []
+    finding_ids: [finding-2026-06-16-0001]
+    update_id: update-2026-06-16-pm-001
+    digraph: B2   # unchanged
+    wep: likely   # unchanged
+    resurface_if:
+      - independent_ir_vendor_corroboration_mandiant_crowdstrike_unit_42_mstic
+      - fishmonger_added_to_roster
+      - win_drv_or_win_plus_samples_surface_in_different_cluster_victim
+      - uefi_bootkit_involvement_confirmed
+      - first_party_ioc_hit
+      - actor_ttps_evolve
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+
+  - id: 2026-06-16-pm-002-cal-water-handala-014-iran-cyber-watch-status-pivot-victim-response-statement-no-operational-disruption-negative-binding-reinforced
+    covered_in: [2026-06-16-afternoon]
+    headline: "Cal Water status pivot (carry-forward from 2026-06-13 PM Handala #014 third-source NEGATIVE binding): California Water Service Group response statement 2026-06-16T11:53Z per SecurityWeek (Kovacs) — preliminary findings indicate no operational disruption to water / wastewater systems including billing platform; third-source NEGATIVE binding REINFORCED not lifted (victim publicly investigating and denies operational impact); Handala #014 dossier handoff (last_reviewed null, next_review_due 2026-04-25 ~52d past) remains operator-deferred"
+    topic_tags:
+      - iran-cyber-watch-status-pivot
+      - cal-water-california-water-service-group
+      - handala-hack-roster-014
+      - third-source-negative-binding-reinforced
+      - victim-response-statement
+      - no-operational-disruption
+      - billing-platform-no-disruption
+      - water-utility-not-ad-not-dib
+      - actor-claim-vs-victim-response
+      - dossier-handoff-operator-deferred
+      - last-reviewed-null-next-review-due-2026-04-25-52d-past
+    related_actors:
+      - "014"   # Handala Hack
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: []   # carry-forward only; no PM-cycle finding-id (Handala #014 finding substrate pre-existing from 2026-06-13 PM)
+    digraph: A2   # SecurityWeek-Kovacs primary on victim response statement (procedural-fact OBSERVED-EVENT layer)
+    wep: not_applicable_procedural_fact_observed_event_victim_statement
+    resurface_if:
+      - victim_reverses_position_or_acknowledges_disruption
+      - additional_evidence_supporting_handala_claim_emerges
+      - independent_ir_vendor_corroborates_handala_claim
+      - operator_invokes_dossier_handoff_for_handala_014
+      - first_party_ioc_hit
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+
+  - id: 2026-06-16-pm-brief-meta
+    covered_in: [2026-06-16-afternoon]
+    brief_file: threats/briefs/2026-06-16-afternoon.md
+    headline: "2026-06-16 afternoon brief — 1 net-new graded finding (Rockwell ICS five-advisory cluster) + 1 UPDATE pivot (FishMonger third-publisher relay) + 1 Iran Cyber Watch status pivot (Cal Water NEGATIVE binding reinforced) + KEV cohort + carry-forward substrate-strengthening notes (FortiSandbox + DragonForce — single-source vetoes persist); pre-flight 13-of-13 PASS; Layer 1 734 words within 400-800 doctrine band; Layer 2 Discord Summary chunked into 2 parts (Part 1 ~1458 chars / Part 2 ~893 chars) well under 1900-char hard ceiling"
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - 1-net-new-finding-rockwell-ics-cluster
+      - 1-update-pivot-fishmonger-third-publisher-relay
+      - 1-iran-status-pivot-cal-water-negative-binding-reinforced
+      - kev-cohort-unchanged-from-am
+      - carry-forward-substrate-strengthening-notes
+      - preflight-13-of-13-pass
+      - layer-2-chunked-2-parts-under-1900-char-ceiling
+      - hard-rule-2-binding-preserved-on-fishmonger-not-cross-walked-to-apt41
+      - hard-rule-6-quote-discipline-preserved-zero-direct-quotes-in-brief-body
+      - hard-rule-8-binding-preserved-splunk-first-party-zero-hits-rockwell-product-indicators
+    related_actors:
+      - "014"   # Handala Hack (Iran Cyber Watch status pivot)
+    related_vulns:
+      - CVE-2026-0646
+      - CVE-2026-0647
+      - CVE-2026-11317
+      - CVE-2025-11694
+      - CVE-2025-14272
+      - CVE-2020-13573
+      - CVE-2023-24932   # FishMonger UPDATE carry-forward
+      - CVE-2026-20262   # KEV cohort
+      - CVE-2026-54420   # KEV cohort
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-06-16-0005
+      - finding-2026-06-16-0001   # UPDATE pivot
+    update_pivots:
+      - finding_id: finding-2026-06-16-0001
+        update_id: update-2026-06-16-pm-001
+        pivot_type: substrate_strengthening_third_independent_publisher_journalistic_relay_dark_reading_rob_wright
+    carry_forward_callouts:
+      - finding-2026-06-16-0002   # FortiSandbox 3-CVE cluster — SA + HNS substrate-strengthening on Defused observation; single-source veto persists
+      - finding-2026-06-16-0004   # DragonForce Backdoor.Turn — HNS second publisher of Symantec; single-vendor-on-novel-TTP veto persists
+      - finding-2026-06-15-0006   # Cisco SD-WAN CVE-2026-20262 — KEV cohort callout only, no restatement
+      - finding-2026-06-15-0007   # Velvet Ant / Operation Highland — standing carry-forward hold
+      - finding-2026-06-15-0010   # Anthropic Fable 5 / Mythos 5 USG export-control — standing carry-forward hold
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - patch_released_for_associated_cve
+      - cisa_kev_listing_for_rockwell_cluster_cves
+      - independent_ir_vendor_corroboration_of_fishmonger_cluster
+    first_covered: 2026-06-16
+    last_covered: 2026-06-16
+    retraction: null
+    test: false
+    word_count_layer_1: 734
+    layer_2_discord_summary:
+      parts: 2
+      part_1_chars_estimate: 1458
+      part_2_chars_estimate: 893
+      under_1900_buffer: true
+      word_count_total: 298
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1   # passed on first composition with two compression trims (Vulns bullet remaining-CVE detail tightened; "expected" → "likely" WEP normalization on KEV-pathway carry-forward bullet)
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-16-0005
+          append_brief_id: 2026-06-16-afternoon
+        - finding_id: finding-2026-06-16-0001
+          append_brief_id: 2026-06-16-afternoon   # UPDATE pivot inclusion (already has 2026-06-16-morning)
+      operator_deferred_handoffs_surfaced:
+        - "vuln-tracker handoff: CVE-2026-0646 + CVE-2026-0647 paired FLEX I/O 9.4 unauthenticated (priority CVE within cluster); plus four secondary CVE dossiers OR one cluster-dossier decision (finding-0005)"
+        - "/new-actor FishMonger (or Earth-Lusca) — substrate now triple-publisher-relayed but single-IR-vendor-on-attribution-layer veto persists; operator decision unchanged from AM"
+        - "/new-actor Vice Society — BlueVoyant ClickFix Lorem Ipsum attribution (rejected this cycle as out-of-A&D-scope; operator-deferred candidacy stands)"
+        - "source-grades.yaml provisional-B additions: BlueVoyant + Morphisec + Huntress (surfaced not actioned)"
+        - "Handala #014 dossier handoff carry-forward (last_reviewed null, next_review_due 2026-04-25 ~52d past) — Cal Water status pivot does not change handoff status"
+      kev_compliance_cohort_state:
+        total_cves_tracked: 5
+        unchanged_from_am: true
+        incoming_active:
+          - cve: CVE-2026-20262
+            deadline: 2026-06-29
+            days_remaining_from_brief: 13
+            ad_relevance: medium_high
+          - cve: CVE-2026-54420
+            deadline: 2026-06-18
+            hours_remaining_from_brief: 44
+            ad_relevance: low
+        retrospective_phase:
+          - cve: CVE-2026-35273
+            deadline: 2026-06-15
+            status: closed_eod_2026_06_15
+          - cve: CVE-2026-10520
+            deadline: 2026-06-14
+            status: closed_48h_past
+          - cve: CVE-2026-0257
+            deadline: 2026-06-01
+            status: closed_15d_plus_past
+      hard_rules_audit:
+        hard_rule_2_no_cross_walk_originated:
+          - finding-0005-no-actor-attribution-claims-to-preserve
+          - update-pm-001-fishmonger-not-cross-walked-to-apt41-cluster-identity-preserved-per-eset
+        hard_rule_5_no_high_threat_box_scorings_in_flight: true
+        hard_rule_6_quote_discipline:
+          - zero_direct_quotes_in_brief_body_layer_1_and_layer_2
+          - cal_water_response_paraphrased_not_quoted_under_15_word_safe_handling
+          - rockwell_cisa_advisory_impact_summaries_paraphrased_not_quoted
+        hard_rule_8_first_party_splunk:
+          finding_0005_rockwell_cluster: zero_hits_30d_lookback_across_defenseclaw_local_and_archimedes
+          visibility_bounded_absence_flagged: true
+          frank_not_critical_manufacturing_rockwell_ics_deployment: true
+    notes: |
+      2026-06-16 afternoon brief composed by briefer subagent after
+      grader pass produced 1 net-new finding (Rockwell ICS cluster,
+      A2 / likely), 1 in-place UPDATE on finding-2026-06-16-0001
+      (FishMonger third-publisher relay), and surfaced one Iran Cyber
+      Watch status pivot candidate (Cal Water response statement).
+      Three carry-forward substrate-strengthening notes preserved
+      verbatim from AM brief baseline: FortiSandbox 3-CVE cluster
+      (SA + HNS publisher relays of Defused Cyber observation; single-
+      IR-vendor veto on Defused persists; CISA KEV pathway still
+      likely within 24-72h); DragonForce Backdoor.Turn (HNS second
+      publisher of Symantec; single-vendor-on-novel-TTP veto persists);
+      Cisco SD-WAN CVE-2026-20262 KEV cohort tracking (already shipped
+      as UPDATE pivot in AM brief, not restated PM).
+
+      Cal Water status pivot is the third-source NEGATIVE binding
+      reinforcement from 2026-06-13 PM — victim publicly denies
+      operational disruption per SecurityWeek (Kovacs) 2026-06-16T11:53Z.
+      The Handala Hack roster #014 claim against Cal Water billing
+      platform remains UNCORROBORATED with NEGATIVE binding now
+      strengthened by victim attestation. Dossier handoff stays
+      operator-deferred.
+
+      Layer 1 word count 734 — comfortably within 400-800 doctrine
+      band. Layer 2 Discord Summary chunked into 2 parts: Part 1
+      (greeting + Vulnerabilities + Actor Activity, ~1458 chars,
+      ~442 char headroom below 1900 ceiling); Part 2 (Iran Cyber
+      Watch + Other Signal two bullets, ~893 chars, ~1007 char
+      headroom). Part separator `--- part 2/2 ---` between Actor
+      Activity bullet and Iran Cyber Watch header (line 82). Layer
+      2 total word count 298 (within 150-300 doctrine band; right
+      at ceiling).
+
+      Pre-flight 13-of-13 PASS on first composition with two
+      compression trims pre-final: (1) Vulnerabilities bullet
+      remaining-CVE detail tightened from full per-CVE enumeration
+      to "all CVSS 7.0-7.5" rollup; (2) Other Signal carry-forward
+      bullet "KEV pathway still expected within 24-72h" normalized
+      to WEP vocabulary "still likely within 24-72h" per checklist
+      Rule 7. Banned-phrase scan clean. Quote-discipline clean
+      (zero direct quotes in brief body; Cal Water response statement
+      handled as paraphrase). Standing sections present (Sector
+      Focus: A&D with carry-forward of Rockwell HIGH structural
+      relevance; Iran Cyber Watch with Cal Water status pivot).
+
+      Hard Rule 2 binding preserved on FishMonger UPDATE — Archimedes
+      does NOT cross-walk to APT41 even after triple-publisher relay.
+      Hard Rule 5 not triggered (no HIGH threat-box scorings in
+      flight, no /approve-scoring pending). Hard Rule 6 preserved
+      (zero direct quotes in body). Hard Rule 8 preserved (Splunk
+      first-party check finding-0005: 30-day lookback, ZERO hits
+      across defenseclaw_local + archimedes on Rockwell / RSLinx /
+      FactoryTalk / CompactLogix / ControlLogix / GuardLogix / FLEX /
+      1794-AENTR / PavilionX or any of the six CVE identifiers;
+      Frank NOT a Critical Manufacturing Rockwell ICS deployment;
+      visibility-bounded absence flagged not negative evidence).
 
       Pre-existing YAML defect in this file (line ~32457, unescaped
       apostrophe in zdi_dustin_childs quote scalar) carried forward

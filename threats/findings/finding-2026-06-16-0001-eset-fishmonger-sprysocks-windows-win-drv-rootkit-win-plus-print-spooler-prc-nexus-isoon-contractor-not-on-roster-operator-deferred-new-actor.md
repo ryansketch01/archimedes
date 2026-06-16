@@ -469,8 +469,85 @@ new_actor_candidacy_handoff:
 tlp: CLEAR
 published_in_briefs:
   - 2026-06-16-morning
+  - 2026-06-16-afternoon   # appended for substrate-strengthening UPDATE pivot per update-2026-06-16-pm-001 (Dark Reading Rob Wright third-publisher journalistic relay)
 retracted: false
 retraction_brief_id: null
+
+# ============================================================================
+# UPDATE LOG — Substrate-strengthening pivots
+# ============================================================================
+updates:
+  - update_id: update-2026-06-16-pm-001
+    update_date: 2026-06-16
+    update_at: 2026-06-16T16:00:00-04:00
+    update_by: grader
+    update_run_id: afternoon-20260616-160000
+    update_type: substrate_strengthening_third_independent_publisher_journalistic_relay
+    update_eligible_for: 2026-06-16-afternoon
+    raw_signal_members:
+      - raw-2026-06-16-pm-001-dr-rob-wright-sprysocks-fishmonger-windows-third-independent-journalistic-relay
+    sources:
+      - source_yaml_id: darkreading
+        grade: B
+        byline: "Rob Wright"
+        url: "https://www.darkreading.com/threat-intelligence/sprysocks-windows-variant-kernel-drivers"
+        published_at: "2026-06-16T20:11:48+00:00"
+        note: "Editorial-byline-independent third trade-press relay of ESET-WeLiveSecurity primary; direct article body 403 site-side blocking, RSS-summary headline preserved; ESET-originated cluster identity (FishMonger / China-nexus / Honduras-Taiwan-Thailand-Pakistan government victims) preserved verbatim per Hard Rule 2."
+    pivot_summary: >
+      Substrate moves from dual-publisher-independent journalistic relay
+      (THN-Lakshmanan + BC-Toulas, both AM) to triple-publisher-independent
+      journalistic relay (THN + BC + DR Rob Wright PM, ~28h post primary).
+      Editorial-byline-independence layer on the AM finding-0001 substrate
+      now well-corroborated across three independent B-grade publisher
+      surfaces. NO new IOCs / NO new TTPs / NO new attribution detail
+      introduced by this relay — pure editorial substrate-strengthening on
+      publisher cardinality.
+    layer_changes:
+      publisher_cardinality: dual_publisher_thn_bc_to_triple_publisher_thn_bc_dr  # journalistic relay layer only
+      no_new_iocs: true
+      no_new_ttps: true
+      no_new_attribution: true
+    independence_test: >
+      Dark Reading publisher-independent of THN and BC; all three
+      independently credit ESET-WeLiveSecurity Martin Smolar primary.
+      Three B-grade publisher relays of one A-grade vendor IR primary —
+      this is publisher-independence, NOT independent evidence basis.
+      The single-vendor-IR-firm-on-cluster-identity-layer single-source
+      veto persists. WEP ceiling unchanged at "likely".
+    wep_unchanged_from_prior_cycle: >
+      WEP "likely" UNCHANGED from AM cycle. Triple-publisher journalistic
+      relay does NOT constitute independent IR-vendor corroboration of
+      the FishMonger cluster identity, i-Soon contractor attribution, or
+      the WIN_DRV/WIN_PLUS variant existence claims. Independent
+      corroboration test per INTEL-GRADING — different publishing org +
+      different evidence basis — fails on the evidence-basis axis.
+      Mandiant / CrowdStrike / Unit 42 / MSTIC independent IR-firm
+      corroboration is the substrate that would lift the veto.
+    direct_article_retrieval_status: >
+      Dark Reading WebFetch returned 403 (site-side blocking). RSS summary
+      + headline preserved at raw-signal pm-001. Operator-deferred direct
+      retrieval recommended if grader corroboration depth required.
+    hard_rule_2_binding: >
+      PRESERVED. ESET-originated cluster identity (FishMonger / Winnti
+      umbrella / Earth Lusca / Aquatic Panda / Bronze University /
+      Charcoal Typhoon / RedHotel cross-references / i-Soon contractor)
+      preserved verbatim. Archimedes does NOT cross-walk to APT41 or any
+      other roster actor; the cluster identity stands as ESET asserts it.
+    hard_rule_5_operator_deferred:
+      pathway: /new-actor FishMonger
+      substrate_increment: marginal_third_publisher_acknowledgment_only
+      decision_unchanged: operator_invocation_required
+    hard_rule_6_binding: >
+      PRESERVED. Dark Reading RSS-summary quote is single-sentence
+      editorial paraphrase under 15-word cap.
+    hard_rule_8_binding: >
+      Splunk first-party check 30-day lookback rerun this sweep on the
+      AM finding-0001 query set (FishMonger / SprySOCKS / RawWNPF /
+      KW1B5206BDC1743FP / KX1B5206BDC1743DD / i-Soon / Earth Lusca):
+      ZERO external-indicator hits across defenseclaw_local + archimedes.
+      Visibility-bounded absence flagged per Hard Rule 8 — Frank is NOT
+      a Korean-language environment, NOT in ESET-named victim country
+      set (Honduras / Taiwan / Thailand / Pakistan).
 ---
 
 # ESET WeLiveSecurity: FishMonger cluster Windows-variant SprySOCKS arsenal (WIN_DRV kernel-driver rootkit + WIN_PLUS Print Spooler backdoor) — i-Soon contractor attribution, government foreign-affairs/tech/telecom victims, N-day edge-appliance initial access

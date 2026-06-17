@@ -13,8 +13,8 @@ status: graded
 # ============================================================================
 # Core grading
 # ============================================================================
-digraph: B3
-admiralty_grade: B3
+digraph: B2  # PM UPDATE: lifted from B3 on campaign-scale layer per Hudson Rock dual-IR-vendor + scale revision; A&D-VPN-endpoint hedge layer unchanged
+admiralty_grade: B2
 digraph_layered:
   # ---- SOCRADAR IR-VENDOR PRIMARY LAYER ----
   socradar_observed_30000_compromised_fortinet_firewalls: B2  # SocRadar provisional B; IR-vendor channel
@@ -157,11 +157,177 @@ inclusion:
     - actor_profile_update  # broad-attribution-language insufficient
 
 analyst_review_required: true
-red_team_review_required: false  # WEP ceiling capped at "likely" per single-source veto
-red_team_review: null
+red_team_review_required: true  # PM UPDATE: campaign-scale WEP lifted to very_likely per dual-IR-vendor (Hudson Rock + SocRadar)
+red_team_review:
+  reviewed_at: 2026-06-17T16:05:00-04:00
+  reviewed_by: red-team-analyst
+  run_id: red-team-20260617-160500
+  recommendation: qualify
+  outcome: flag_for_downgrade
+  wep_before_campaign_scale: very_likely
+  wep_after_campaign_scale_recommended: likely
+  wep_adjusted: true
+  wep_adjustment_rationale: >
+    Hudson Rock dual-IR-vendor framing rests on parallel analysis of the
+    Diachenko-discovered exposed-server dataset, not independent primary
+    telemetry. Same KEVIntel-independence challenge applied to AM finding-
+    0001 applies here — shared-substrate independence illusion. Single
+    discovery chain (Diachenko spotted exposed server -> Hudson Rock
+    analyzed -> SocRadar may also be downstream of same leak) does not
+    clear corroboration test for very_likely.
+
+  strongest_counter_hypothesis:
+    hypothesis_id: H2
+    hypothesis: >
+      Hudson Rock is conducting parallel dataset analysis on the same
+      Diachenko-spotted exposed server, not independent IR-vendor primary
+      observation; SocRadar's AM 30K figure may itself be an earlier
+      sampling of the same underlying dataset rather than a separate
+      telemetry stream. If true, dual-IR-vendor framing collapses to
+      single-discovery-chain and WEP reverts to likely.
+    evidence_for_counter:
+      - "raw-pm-001 explicitly states Diachenko 'first spotted the exposed-server intrusion' — single discovery event"
+      - "Hudson Rock 'analyzed and published the dataset analysis' (paraphrase) — analytical role, not independent collection"
+      - "Scale revision 30K -> 73,932 is consistent with fuller dataset sampling, not independent observation of larger campaign"
+      - "SocRadar AM and Hudson Rock PM did not cite each other; both could be downstream of Diachenko leak surface"
+    evidence_against_counter:
+      - "SocRadar AM substrate predates Hudson Rock PM publication by hours — temporal separation suggests independent surfacing"
+      - "Beaumont independent verification against orgs he has worked with adds non-Diachenko-chain confirmation on credential authenticity"
+
+  weaknesses_in_primary_assessment:
+    - "PM UPDATE frames Hudson Rock as 'independent of SocRadar (NOT publisher-relay)' but does not test independence-from-Diachenko-discovery-chain. Independence-from-publisher is not the same as independence-of-observation-source."
+    - "Turkish NATO defense contractor 'alleged full compromise + classified-document theft' (H2-adjacent layer) is Hudson Rock allegation on top of dataset analysis, NOT independently substantiated victim claim. The finding correctly flags single-IR-vendor on this layer but the PM body language ('Of particular concern') reads as upgrading allegation toward substantiated. Recommend briefer paraphrase the allegation as 'Hudson Rock alleges' verbatim, not as confirmed compromise."
+    - "Beaumont's 5-word verification ('the data is legit') confirms credential authenticity (real strings that map to real accounts) — NOT active VPN compromise. The finding's PM body conflates these: real-credentials in dataset != active-logged-in-VPN-session against A&D-prime. (H3-adjacent: scale claim ambiguity between credentials-in-dataset and successfully-compromised-firewalls.)"
+    - "Scale framing '73,932 compromised firewalls' is itself imprecise — raw-pm-001 documents '73,932 unique Fortinet firewall URLs' and '1.16B credential attempts against 320,777 FortiGate targets.' Credential-attempts != successful-compromise. The dataset is consistent with a large credential-stuffing INPUT corpus, not necessarily 73,932 successful outcomes. (H3 partial support — aggregated-corpus not coherent-active-compromise count.)"
+    - "Absence of any US A&D prime in surfaced victim list despite ~half of all internet-facing Fortinet firewalls represented is mild contrary evidence to 'broad campaign against A&D' framing (H5 from prompt matrix)."
+    - "Diachenko 'Russian-speaking multi-operator threat group' attribution rests on operator-language analysis (forum/file-naming patterns implicit in tradecraft description), not TTP-fingerprint matching to known actor. Finding correctly preserves verbatim per Hard Rule 2; no implicit cross-walk detected in finding text."
+
+  ach_contrarian_matrix:
+    H1_campaign_scale_very_likely_current_stance:
+      consistent_with: [hudson_rock_dataset_analysis, beaumont_verification, named_corporate_victims_surfaced, scale_documented_in_raw_pm_001]
+      inconsistent_with: [single_discovery_chain_diachenko_origination, no_us_ad_prime_named_despite_half_of_internet_fortinet_volume, beaumont_verifies_credentials_not_active_compromise]
+      survives: partially
+    H2_campaign_scale_likely_hudson_rock_parallel_analysis:
+      consistent_with: [diachenko_single_discovery_event, hudson_rock_analytical_role, socradar_and_hudson_rock_did_not_cite_each_other_but_may_share_dataset_root, scale_revision_pattern_consistent_with_fuller_sampling]
+      inconsistent_with: [socradar_am_timestamp_predates_hudson_rock_pm_independent_temporal_emergence, beaumont_org_specific_verification_partial_non_diachenko_chain]
+      survives: yes_with_evidence
+    H3_scale_revision_aggregated_historical_drop_to_possibly:
+      consistent_with: [73932_is_urls_not_compromised_devices, 1_16B_credential_attempts_is_input_not_output, credential_stuffing_corpus_can_aggregate_across_campaigns]
+      inconsistent_with: [hudson_rock_characterizes_as_active_campaign_not_archive, beaumont_confirmed_devices_on_recent_patches_implying_currency, most_compromised_devices_remain_online_per_raw_pm_001]
+      survives: partially_on_scale_precision_layer_not_on_currency_layer
+    H4_russian_speakers_attribution_doesnt_survive_contrary_evidence:
+      consistent_with: [language_analysis_substrate_only, no_ttp_fingerprint_match_to_named_roster_actor]
+      inconsistent_with: [finding_already_preserves_verbatim_no_cross_walk_attempted_no_contrary_evidence_required]
+      survives: no_irrelevant_finding_already_disciplined_on_this_layer
+
+  ach_winner_contrarian: H2_partially_with_H3_qualification
+
+  symmetry_with_am_red_team_cap: >
+    The AM red-team capped finding-0001 (FortiSandbox three-CVE cluster) at
+    "likely" rather than "very_likely" pending KEVIntel direct retrieval —
+    the same independence-from-shared-source challenge applies here.
+    KEVIntel-independence-from-Defused parallels Hudson-Rock-independence-
+    from-Diachenko-leak-surface. Consistency principle: apply the same
+    cap. Recommend WEP campaign-scale drop from very_likely to likely
+    until either (a) a third IR-vendor independent of Diachenko's leak
+    surface corroborates, or (b) Hudson Rock explicitly clarifies whether
+    its observation pathway is independent of the Diachenko-spotted
+    exposed server.
+
+  qualifying_language_suggested: >
+    "Hudson Rock dataset analysis substrate-strengthens SocRadar AM
+    observation on campaign-scale layer (publisher-relay independent via
+    BC + TR; observation-pathway independence from Diachenko's originating
+    discovery NOT yet established). WEP capped at 'likely' on campaign-
+    scale pending observation-pathway independence verification. Hudson
+    Rock allegation of Turkish NATO defense contractor full compromise +
+    classified-document theft preserved verbatim as Hudson Rock claim, NOT
+    upgraded to substantiated. Beaumont verification confirms credential
+    authenticity (real strings mapping to real accounts), NOT active VPN
+    session compromise; the 73,932-firewall-URL figure is dataset corpus
+    scope, NOT count of successfully-compromised devices."
+
+  specific_tests_that_would_resolve:
+    - "Direct retrieval of Hudson Rock primary publication to confirm whether their analysis is based on the Diachenko-discovered exposed server or an independent collection pathway (e.g., infostealer log aggregation, separate leak surface)."
+    - "Third IR-vendor (Mandiant, Unit 42, CrowdStrike, MSTIC, Recorded Future) corroboration independent of Diachenko-discovery-chain."
+    - "Fortinet primary statement confirming or contesting campaign scale."
+    - "Any named victim's first-party IR confirmation (Lenovo 'looking into it' is closest current substrate but not yet first-party confirmation)."
+    - "Splunk first-party on Frank's Fortinet footprint (if any) — operator-deferred confirmation of Frank's deployment status would either bound or reinforce visibility-limited absence."
+
+  hard_rule_2_audit: >
+    PRESERVED. No implicit cross-walk detected in finding text. Diachenko's
+    "Russian-speaking multi-operator threat group" is preserved verbatim.
+    Finding explicitly enumerates non-cross-walked roster actors (APT28,
+    Sandworm, Gamaredon, Forest Blizzard) for clarity. PM body framing
+    'Of particular concern, Hudson Rock alleges full compromise' should
+    keep the 'alleges' verb in any brief paraphrase — recommend briefer
+    NOT drop 'alleges' to declarative voice.
+
+  publication_blocked: false
+  block_reason: null
+
+  notes: >
+    Not blocking — the finding's core observation (a large Fortinet
+    credential-stuffing-related dataset surfaced via Diachenko with
+    Hudson Rock analysis + Beaumont credential-authenticity verification)
+    is defensible. But the PM UPDATE's WEP lift to very_likely overshoots:
+    (a) Hudson-Rock-independence-from-Diachenko-discovery-chain not
+    established, (b) Beaumont verification is credential-authenticity not
+    active-compromise, (c) 73,932 is URL/dataset scope not successful-
+    compromise count, (d) symmetry with AM finding-0001 KEVIntel cap
+    argues for parallel discipline. Recommend campaign-scale WEP revert
+    to "likely" with qualifying language and Turkish NATO contractor
+    allegation preserved as Hudson Rock claim. Briefer should also avoid
+    "compromised firewalls" framing where "firewall URLs in dataset" is
+    more precise.
+
+
+# ============================================================================
+# PM UPDATE — substrate-pivot scale revision + dual IR-vendor
+# ============================================================================
+pm_update:
+  update_id: pm-update-2026-06-17-0002
+  updated_at: 2026-06-17T16:00:00-04:00
+  grading_run_id: afternoon-20260617-160000
+  update_type: substrate_pivot_scale_revision_plus_dual_ir_vendor_corroboration
+  raw_signal_members_pm:
+    - raw-2026-06-17-pm-001-fortibleed-hudson-rock-substrate-strengthening
+    - raw-2026-06-17-pm-002-fortibleed-register-relay-confirmation
+  substrate_changes:
+    scale_revision: "30,000 firewalls (SocRadar AM) -> 73,932 unique Fortinet firewall URLs, 21,632 unique domains, 194 countries, ~1.16B credential attempts against 320,777 FortiGate targets + ~2.1B against 163,650 MSSQL servers (Hudson Rock PM)"
+    ir_vendor_cardinality: "SocRadar single (AM) -> SocRadar + Hudson Rock dual independent IR-vendor (PM); Hudson Rock dataset analysis is independent of SocRadar (NOT publisher-relay)"
+    publisher_cardinality: "SW (AM) -> SW + BC (Abrams) + TR (Connor Jones) triple-publisher journalistic relay"
+    third_party_verification: "Kevin Beaumont independent researcher verified the data ('the data is legit', 5 words at-cap-under per Hard Rule 6); noted many compromised devices remain on recent patches"
+    named_victims_surfaced:
+      - "Turkish NATO defense contractor (alleged full compromise + classified-document theft per Hudson Rock/Diachenko)"
+      - "Siemens"
+      - "Lenovo (confirmed 'looking into it')"
+      - "Mercedes-Benz"
+      - "Foxconn"
+      - "Samsung"
+      - "PwC"
+      - "Accenture"
+      - "Oracle"
+      - "Toyota"
+      - "Comcast, AT&T, FedEx, Sinopec, State Grid (additional named corporates)"
+    attribution_layer_per_diachenko: "Russian-speaking multi-operator threat group; SSL VPN auth interception -> hash cracking on 45-GPU Hashtopolis cluster -> AD pivot; Hard Rule 2 BINDING preserved — Archimedes does NOT cross-walk to APT28/Sandworm/Gamaredon/Forest Blizzard"
+    veto_layer_status:
+      campaign_scale_veto: "PARTIALLY LIFTED — Hudson Rock dual-IR-vendor on campaign-scale + named-corporate-victims layer"
+      ad_vpn_endpoint_claim_veto: "UNCHANGED — single-IR-vendor (SocRadar AM) on hedge claim; Hudson Rock named 'Turkish NATO defense contractor' is NATO-defense-contractor not US-A&D-prime; US-A&D-prime named-victim layer still UNMET"
+    wep_revision:
+      campaign_scale_30000_firewalls: "AM: likely -> PM: very_likely (dual-IR-vendor + named-corporate-victims + Beaumont independent verification)"
+      named_us_ad_prime_victim_layer: "AM: possibly -> PM: possibly UNCHANGED (no US A&D prime named)"
+      nato_defense_contractor_layer: "PM NEW: likely (Diachenko named Turkish NATO defense contractor allegedly fully compromised with classified-document theft; single-IR-vendor Hudson Rock/Diachenko on this specific named-victim claim)"
+      russian_speakers_attribution: "AM: possibly -> PM: possibly UNCHANGED (broad-attribution-language preserved verbatim per Hard Rule 2)"
+  hard_rules_audit:
+    rule_1: "PRESERVED — credential metadata only, no values stored"
+    rule_2: "PRESERVED — Diachenko 'Russian-speaking group' preserved verbatim; NOT cross-walked to roster Russia-nexus actor"
+    rule_6: "Beaumont 5-word quote at-cap-under; Diachenko 17-word quote in raw-signal substrate flagged for briefer paraphrase-only handling"
+    rule_7: "PRESERVED — no credential values"
+    rule_8: "Splunk first-party check carried from AM; visibility-bounded absence stands"
 
 tlp: CLEAR
-published_in_briefs: [2026-06-17-morning]
+published_in_briefs: [2026-06-17-morning, 2026-06-17-afternoon]
 retracted: false
 retraction_brief_id: null
 ---
@@ -204,3 +370,13 @@ None. SocRadar has not published exploit signatures, attacker IPs, harvested cre
 - SocRadar source-grade ratification — operator-deferred addition to source-grades.yaml with 72h ratification clock.
 - Hard Rule 2 analyst follow-up: if independent corroboration of "likely Russian speakers" emerges with named tracked-actor, re-grade attribution layer. Until then, broad-language single-IR-vendor preserved verbatim.
 - Splunk first-party visibility-bounded absence: confirm Frank's Fortinet VPN deployment status separately; if Frank operates Fortinet VPN, run focused credential-stuffing-pattern hunt (auth-failure-rate spike, distributed source IPs, success-after-N-failures patterns).
+
+## PM UPDATE 2026-06-17 16:00 — Substrate-pivot scale revision + dual IR-vendor corroboration
+
+BleepingComputer (Lawrence Abrams) primary + The Register (uncredited byline) relay surface a dataset analysis by Hudson Rock IR-vendor independent of SocRadar's AM substrate. Scale revises upward from SocRadar's 30,000-firewall morning figure to Hudson Rock's documented 73,932 unique Fortinet firewall URLs across 21,632 unique domains in 194 countries, with approximately 1.16 billion credential attempts against 320,777 FortiGate targets plus an additional 2.1 billion attempts against 163,650 Microsoft SQL Server systems. Per Shodan, the volume comprises about half of all internet-facing Fortinet firewalls; most compromised devices remain online at publication. Independent researcher Kevin Beaumont verified the dataset ("the data is legit", 5 words at-cap-under per Hard Rule 6), confirmed login/password authenticity against organizations he has worked with, and noted many sampled devices are on fairly recent patches.
+
+Named corporate victims surfaced by Hudson Rock per BC + TR relay include Foxconn, Samsung, Lenovo (confirmed "looking into it"), Mercedes-Benz, Toyota, Comcast, AT&T, FedEx, PwC, Accenture, Oracle, Siemens, Sinopec, and State Grid. Of particular concern, Hudson Rock alleges full compromise of at least four organizations including a Turkish NATO defense contractor with theft of classified defense documents. No U.S. defense primes (Lockheed Martin, Northrop Grumman, Raytheon, Boeing) are named at publication.
+
+Attribution per Bob Diachenko (independent threat researcher who originally spotted the exposed-server intrusion): "Russian-speaking multi-operator threat group" with tradecraft characterized as SSL VPN authentication interception, hash cracking on a 45-GPU Hashtopolis cluster, and pivot into internal Active Directory environments. **Archimedes preserves Diachenko's broad-attribution-language verbatim per Hard Rule 2 BINDING — does NOT cross-walk to APT28, Sandworm, Gamaredon, Forest Blizzard, or any roster-tracked Russia-nexus actor.**
+
+Single-IR-vendor-on-A&D-VPN-endpoint-claim veto is PARTIALLY LIFTED on the campaign-scale layer (Hudson Rock now dual-IR-vendor with SocRadar on broad campaign claim), but the US A&D-prime named-victim layer remains UNMET. The Turkish NATO defense contractor named-victim layer is single-IR-vendor (Hudson Rock/Diachenko) and warrants substrate-strengthening watch for independent IR-vendor corroboration. WEP on campaign-scale lifts from "likely" to "very_likely" given dual-IR-vendor + named-corporate-victims + Beaumont independent verification. WEP on US A&D-prime named-victim layer unchanged at "possibly". Red-team review now required given campaign-scale WEP lift.

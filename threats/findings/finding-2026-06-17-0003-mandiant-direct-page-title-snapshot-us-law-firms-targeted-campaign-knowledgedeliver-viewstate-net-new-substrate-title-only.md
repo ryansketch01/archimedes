@@ -13,8 +13,8 @@ status: graded
 # ============================================================================
 # Core grading
 # ============================================================================
-digraph: A3
-admiralty_grade: A3
+digraph: A2  # PM UPDATE: lifted from A3 per Mandiant full-body retrieval (5-author byline) substantiating UNC3753 cluster identity + TTPs + IOCs
+admiralty_grade: A2
 digraph_layered:
   # ---- MANDIANT DIRECT-PAGE TITLE-SNAPSHOT LAYER ----
   mandiant_direct_page_webfetch_successful_this_sweep: A1  # Mandiant A-grade per source-grades.yaml
@@ -185,12 +185,71 @@ inclusion:
     - actor_profile_update # title-only substrate insufficient for dossier mutation
     - vuln_tracker_update  # KnowledgeDeliver CVE not yet identified from title alone
 
-analyst_review_required: true
-red_team_review_required: false  # WEP ceiling capped at "likely" pending body retrieval
+analyst_review_required: false  # analyst SAT-KAC + SAT-ACH applied 2026-06-17 PM; sections appended to body
+analyst_review_complete: true
+analyst_review_run_id: analyst-20260617-pm-0003
+red_team_review_required: false  # WEP ceiling remains at "likely" — single-IR-vendor on UNC3753 cluster identity
 red_team_review: null
 
+# ============================================================================
+# PM UPDATE — Mandiant full-body retrieval substantiates UNC3753 cluster
+# ============================================================================
+pm_update:
+  update_id: pm-update-2026-06-17-0003
+  updated_at: 2026-06-17T16:00:00-04:00
+  grading_run_id: afternoon-20260617-160000
+  update_type: title_snapshot_to_full_body_substantiation_unc3753_cluster_identity_plus_ttps_plus_iocs
+  raw_signal_members_pm:
+    - raw-2026-06-17-pm-003-mandiant-unc3753-law-firms-full-body
+    - raw-2026-06-17-pm-016-mandiant-blog-index-additional-titles
+  substrate_changes:
+    body_substantiation: "Mandiant 5-author byline (Chad Reams, Tufail Ahmed, Keith Knapp, Ashley Frazer, Tyler McLellan); 3200-word full-body article published 2026-06-05; cluster characterization substantiated"
+    actor_cluster_identity: "UNC3753 aka Luna Moth / Chatty Spider / Silent Ransom Group (SRG); financially motivated; active since at least March 2022; TTP overlap with UNC2686 (Bazarcall-style ~early 2021); deployed LOCKBIT.BLACK in 2022; shifted from subscription billing email lures to IT helpdesk impersonation ~March 2025; now data-theft-extortion-only with LEAKEDDATA DLS"
+    ttp_full_body:
+      - "Initial access: non-malicious invoice-themed email lures + targeted voice phishing (vishing) posing as internal IT helpdesk / security"
+      - "Remote access screen-sharing: Zoom, Microsoft Terminal Services, Microsoft Teams, Quick Assist"
+      - "Commercial RMM deployment: AnyDesk, Bomgar, Zoho Assist, SuperOps RMM (via cURL + msiexec /quiet)"
+      - "Privnote (privnote[.]com) for self-destructing payload-link transmission"
+      - "BYOD exploitation + VDI pivot (Windows 365, Citrix clients)"
+      - "iManage / SharePoint / OneDrive keyword search (W-2/W-9/1099, audit files, client agreements, SSNs)"
+      - "Cloud staging into actor-controlled consumer file-sharing accounts; folders renamed to mimic victim org branding"
+      - "FTP/SFTP exfil via Portable WinSCP + Rclone (observed 1.7GB via OneDrive->Google Drive + 14.4GB via VDI->WinSCP)"
+      - "Email forwarding from compromised iManage repositories"
+      - "Physical office intrusions posing as IT technicians attempting USB exfil (GTIG hedges 'likely associated with UNC3753 based on structural, timeline, targeting overlaps' due to limited forensic evidence)"
+      - "Same-day attack-to-extortion timeline; 3-day extortion response window; LEAKEDDATA DLS publication threat"
+    iocs_surfaced:
+      ipv4:
+        - 192.236.147.131
+        - 192.236.147.138
+        - 193.141.60.212
+        - 192.236.154.158
+        - 192.236.146.173
+        - 174.169.162.62
+        - 64.94.84.97
+      sha256:
+        - 598281d2c6de83adf1505ee6077608d0c043623d477e2884d36d65e90686d67a
+      domains:
+        - "business-data-leaks.com (LEAKEDDATA DLS)"
+        - "<organization>-itdesk.com (template)"
+        - "<organization>-it.com (template)"
+        - "<organization>-helpdesk.com (template)"
+    roster_status: "UNC3753 / Luna Moth / Chatty Spider / Silent Ransom Group NOT on _roster.yaml; operator-deferred /new-actor candidacy flagged per Hard Rule 5"
+    a_d_relevance: "A&D-supply-chain-adjacent via ITAR/export-control/IP-litigation outside counsel pathway; Mandiant does NOT name A&D-prime victims (legal/professional/financial services structural targeting only); BYOD/VDI + RMM-control + physical-visitor-verification defensive recommendations are A&D-prime-applicable"
+    veto_layer_status:
+      single_ir_vendor_on_unc3753_cluster_identity: "PERSISTS — Mandiant sole IR-vendor; second IR-vendor (CrowdStrike / Unit 42 / MSTIC / Symantec) on UNC3753 cluster identity would lift veto"
+    wep_revision:
+      unc3753_cluster_identity: "AM: likely (title-asserted) -> PM: likely UNCHANGED (single-IR-vendor on cluster identity despite body substantiation)"
+      ttp_substrate: "AM: likely -> PM: likely (Mandiant primary; internally coherent; technical detail fully substantiated)"
+      a_d_supply_chain_adjacency: "AM: possibly -> PM: possibly UNCHANGED (no A&D-prime named victim; structural inference)"
+  hard_rules_audit:
+    rule_1: "PRESERVED — no credentials, no PII, no ITAR-questionable content"
+    rule_2: "PRESERVED — UNC3753 cluster identity preserved verbatim; operator-deferred /new-actor candidacy NOT originated by Archimedes"
+    rule_5: "ZERO HIGH threat-box scoring in flight; UNC3753 is /new-actor candidacy ONLY"
+    rule_6: "No quotes >15 words; paraphrase-only for Mandiant body content"
+    rule_8: "Splunk first-party check carried from AM; visibility-bounded absence stands"
+
 tlp: CLEAR
-published_in_briefs: [2026-06-17-morning]
+published_in_briefs: [2026-06-17-morning, 2026-06-17-afternoon]
 retracted: false
 retraction_brief_id: null
 ---
@@ -234,3 +293,100 @@ None. Title-only substrate; no article bodies retrieved.
 - **A&D-supply-chain-adjacency on Law Firms** — if body reveals specific A&D-prime legal counsel firms named as victims, A&D-relevance lifts from structural-inference (B3) to direct (A1/A2 depending on attribution layer); promote in next brief cycle.
 - **Mandiant feedburner RSS canonical-swap** — 28th consecutive failure, direct HTML success pattern entrenched, operator-deferred swap decision still pending.
 - **ShinyHunters cluster expansion** — three independent surface points this morning (Mandiant PeopleSoft Education + BC Kodak + SA EdTech surge) plus Resecurity vendor analysis per SA — substrate strengthening for operator-deferred /new-actor-ShinyHunters candidacy. Hard Rule 5 BINDING — Archimedes does NOT originate roster mutation.
+
+## PM UPDATE 2026-06-17 16:00 — Mandiant full-body retrieval substantiates UNC3753 cluster + TTPs + IOCs
+
+The Mandiant title-snapshot from the AM brief is now fully substantiated by direct WebFetch of the article body at `https://cloud.google.com/blog/topics/threat-intelligence/targeted-campaign-us-law-firms` (3200-word article, 2026-06-05 publication, 5-author byline). Cluster anchor lifts from A3 (title-asserted) to A2 (body-substantiated).
+
+**UNC3753 cluster identity:** aliases Luna Moth / Chatty Spider / Silent Ransom Group (SRG); financially motivated; active since at least March 2022; TTP overlap with UNC2686 (Bazarcall-style ~early 2021); deployed LOCKBIT.BLACK in 2022; shifted from subscription billing email lures to IT helpdesk impersonation around March 2025; now operates data-theft-extortion-only with LEAKEDDATA DLS publication threat. UNC3753 is NOT on the 24-actor `_roster.yaml` — operator-deferred /new-actor candidacy per Hard Rule 5.
+
+**Full TTPs:** vishing-as-initial-access posing as internal IT helpdesk; RMM agent deployment (AnyDesk, Bomgar, Zoho Assist, SuperOps RMM via cURL + msiexec /quiet); Privnote (privnote[.]com) for self-destructing payload-link transmission; BYOD/VDI pivot pattern (Zoom + Windows 365 + Citrix); iManage / SharePoint / OneDrive keyword search exfil targeting tax docs (W-2/W-9/1099), audit files, client agreements, SSNs; FTP/SFTP exfil via Portable WinSCP + Rclone; physical office intrusions posing as IT technicians attempting USB exfil (Mandiant hedges "likely associated with UNC3753 based on structural, timeline, targeting overlaps" — limited forensic evidence); same-day attack-to-extortion timeline; 3-day extortion response window; LEAKEDDATA DLS at `business-data-leaks[.]com`.
+
+**IOCs (7 IPv4, 1 SHA-256, phishing-domain template):** IPv4: 192.236.147.131, 192.236.147.138, 193.141.60.212, 192.236.154.158, 192.236.146.173, 174.169.162.62, 64.94.84.97. SHA-256: `598281d2c6de83adf1505ee6077608d0c043623d477e2884d36d65e90686d67a`. Phishing-domain template: `<organization>-itdesk.com`, `<organization>-it.com`, `<organization>-helpdesk.com`. DLS: `business-data-leaks.com`.
+
+**A&D-supply-chain-adjacency:** Mandiant characterizes targeting as professional, legal, and financial services — does NOT name A&D-prime victims. A&D-relevance is structural via ITAR/export-control/IP-litigation outside counsel pathway: A&D primes' outside counsel relationships represent the attack surface. Defensive recommendations (BYOD/VDI conditional access, RMM-control via Defender Application Control, physical-visitor-verification, USB hardening via GPO/MDM, iManage/SharePoint real-time-alerting on rapid file-search) are directly A&D-prime-applicable. WEP on UNC3753 cluster identity remains "likely" — single-IR-vendor (Mandiant) on cluster identity; CrowdStrike / Unit 42 / MSTIC / Symantec independent IR-vendor corroboration would lift veto.
+
+**Mandiant's KnowledgeDeliver ViewState writeup (the second title from AM snapshot) is broken out as separate finding** finding-2026-06-17-0006 (CVE-2026-5426) — not collapsed into this UNC3753 cluster.
+
+## Key Assumptions Check (SAT-KAC)
+
+Assessment under review: *"UNC3753 = Luna Moth / Chatty Spider / Silent Ransom Group, a coherent financially-motivated cluster targeting US law firms whose A&D-adjacency via ITAR/export-control/IP-litigation outside counsel pathway warrants A&D-prime defensive applicability at WEP 'likely'."*
+
+| ID | Assumption | Stated | Confidence | Centrality | Classification |
+|---|---|---|---|---|---|
+| A1 | UNC3753 is a coherent actor cluster, not Mandiant convenience-clustering over multiple affiliates sharing TTPs | No | Low (single-IR-vendor on cluster identity; no CrowdStrike/Unit42/MSTIC/Symantec corroboration on UNC3753 designator specifically) | Critical | **Qualify** — already capped at WEP "likely" by single-IR-vendor veto; caveat preserved |
+| A2 | Mandiant's UNC3753 = Luna Moth = Chatty Spider = SRG alias-equivalence is correct (vs. partial overlap mis-fused into single cluster) | Yes (asserted in Mandiant body) | Medium (Mandiant asserts; Luna Moth/SRG are publicly-known aliases used by other vendors but UNC3753 designator is Mandiant-specific) | Material | **Qualify** — frame as "Mandiant asserts" not "Archimedes assesses" per Hard Rule 2 |
+| A3 | US-law-firms-as-A&D-supply-chain-adjacent is load-bearing for A&D-relevance | No (Archimedes structural inference) | Low (Mandiant does NOT name A&D-prime client firms; "professional, legal, financial services" framing is sector-broad) | Critical | **Qualify** — A&D-adjacency is operational-template inference, not Mandiant-asserted; flagged in PM update |
+| A4 | The targeted firms hold A&D-prime client material (ITAR/export-control/IP-litigation outside counsel) | No (Archimedes-inferred from "law firm" + A&D operating profile) | Unknown (Mandiant does not substantiate; victim-firm client portfolios not disclosed) | Material | **Qualify** — defensive-applicability narrative survives even if specific A&D-client material not confirmed; structural BYOD/VDI/RMM/iManage controls are generically A&D-applicable |
+| A5 | Same-day attack-to-extortion + LEAKEDDATA DLS represents recent operational shift from Luna Moth's historical slower-moving callback-phishing baseline | Yes (Mandiant body documents ~March 2025 shift) | Medium (Mandiant primary; internally coherent timeline) | Material | **Qualify** — predictive WEP forward-projection should note operational tempo has accelerated |
+| A6 | Archimedes Splunk visibility would surface UNC3753 activity if Frank were targeted | No | Medium (30d lookback returned zero external hits; Frank not a law firm) | Peripheral | **Sound** — Frank's operating profile mismatches victimology; visibility-bounded absence flagged per Rule 8 |
+| A7 | Mandiant's hedge on physical-office-intrusion attribution ("likely associated with UNC3753 based on structural, timeline, targeting overlaps") indicates partial confidence inside Mandiant's own framing | Yes | High (Mandiant explicitly hedges in body) | Material | **Qualify** — physical-intrusion claim weaker than vishing/RMM substrate; preserve hedge |
+| A8 | UNC3753 remains operationally active in next 30-90d (forward-projection) | No | Medium (last documented activity through Mandiant publication 2026-06-05) | Material | **Qualify** — no LE-takedown or disruption signal observed; standing-assumption caveat |
+
+**Summary:** Sound=1, Qualify=7, Test=0, Reject=0.
+
+**Remediation:** **Proceed** with qualifying caveats. No assumption requires a blocking Test. The cluster-identity assumption (A1) and A&D-adjacency assumption (A3) are the highest-priority Qualify items — both already captured in the finding's existing veto-layer language and structural-inference framing. Forward-projection (A8) and physical-intrusion (A7) deserve explicit hedge-preservation in any downstream brief. WEP "likely" remains appropriate.
+
+## Analysis of Competing Hypotheses (SAT-ACH)
+
+Question: *"What is the correct characterization of the activity Mandiant attributes to UNC3753, and does it warrant the finding's current A&D-adjacency framing?"*
+
+**Hypotheses:**
+
+- **H1:** UNC3753 = Luna Moth = Chatty Spider = Silent Ransom Group is a single coherent financially-motivated cluster targeting US law firms; A&D-supply-chain adjacency via outside-counsel pathway is operationally meaningful for A&D-prime defenders (finding's stance).
+- **H2:** UNC3753 is a Mandiant-clustering convenience over multiple loosely-affiliated affiliates sharing vishing/RMM TTPs; "cluster" is overstated and the alias-equivalence is partial overlap mis-fused.
+- **H3:** Law-firm targeting is opportunistic (any law firm with valuable IP/M&A/litigation material); A&D-adjacency framing is Archimedes-introduced inference, not Mandiant-asserted.
+- **H4:** Same-day attack-to-extortion + LEAKEDDATA DLS represents a recent (Mar 2025+) operational shift from Luna Moth's historical slower callback-phishing model; forward-projection assumptions from the older baseline are stale.
+- **H5 (null/composite):** Multiple of H1-H4 are simultaneously true at different layers (e.g., H1 cluster-identity AND H3 opportunism AND H4 tempo-shift); no single hypothesis fully captures the activity.
+
+**Evidence:**
+
+- **E1:** Mandiant 5-author body attributes UNC3753 cluster identity with aliases (A2, weight 3)
+- **E2:** Mandiant documents ~March 2025 TTP-shift from subscription billing lures to IT helpdesk impersonation (A2, weight 3)
+- **E3:** Mandiant characterizes victimology as "professional, legal, financial services" — does NOT name A&D-prime client firms (A2, weight 3)
+- **E4:** No independent IR-vendor corroboration (CrowdStrike/Unit42/MSTIC/Symantec) on UNC3753 designator specifically (single-source-veto layer, weight 3)
+- **E5:** Mandiant hedges physical-office-intrusion attribution ("likely associated...based on structural, timeline, targeting overlaps") (A2, weight 2)
+- **E6:** Mandiant documents LEAKEDDATA DLS at business-data-leaks[.]com + same-day attack-to-extortion + 3-day response window (A2, weight 3)
+- **E7:** TTP overlap with UNC2686 (Bazarcall-style ~early 2021) + LOCKBIT.BLACK deployment in 2022 documented in body (A2, weight 2)
+- **E8:** First-party Splunk 30d lookback ZERO external-indicator hits; Frank not a law firm (A1, weight 3 — non-diagnostic on attribution layer)
+
+**Matrix:**
+
+| Evidence | H1 | H2 | H3 | H4 | H5 |
+|---|---|---|---|---|---|
+| E1 (Mandiant cluster attribution) | C | C | N | N | C |
+| E2 (Mar 2025 TTP shift) | C | C | N | **C** | C |
+| E3 (no A&D-prime named) | C | C | **C** | N | C |
+| E4 (single-IR-vendor) | **I** | C | N | N | C |
+| E5 (physical-intrusion hedge) | N | **C** | N | N | C |
+| E6 (LEAKEDDATA + same-day) | C | C | C | **C** | C |
+| E7 (UNC2686 overlap + LOCKBIT) | C | **C** | N | C | C |
+| E8 (Splunk null) | N | N | N | N | N |
+
+**Inconsistency counts:** H1=1, H2=0, H3=0, H4=0, H5=0.
+
+**Diagnostic evidence:** E3 distinguishes H3 (opportunistic, no A&D-targeting) from H1 (A&D-adjacency-meaningful) — Mandiant's sector-broad framing is consistent with H3 and only weakly consistent with H1. E4 (single-IR-vendor) is the key inconsistency for H1's strong cluster-identity reading. E5 (Mandiant's own hedge) is consistent with H2's clustering-convenience reading.
+
+**Ranking:**
+
+1. **H5 (composite)** — zero inconsistencies; H1 cluster-identity layer + H3 opportunism layer + H4 tempo-shift layer can simultaneously be true. WEP: **likely**.
+2. **H3** (opportunistic, A&D-adjacency overstated) — zero inconsistencies; E3 diagnostic; would imply A&D-relevance is structural/defensive-applicability only, not targeted-victim-pool. WEP: **likely**.
+3. **H4** (recent operational shift) — zero inconsistencies; E2/E6 diagnostic; not mutually exclusive with H1/H3. WEP: **likely**.
+4. **H2** (Mandiant-clustering convenience) — zero inconsistencies but requires multiple unverified counter-assumptions against Mandiant's explicit framing. WEP: **roughly even chance**.
+5. **H1** (finding's stance as strongly-stated) — one inconsistency via E4 (single-IR-vendor); the cluster-identity strong reading is brittle to source downgrade. WEP: **likely** when softened to structural-applicability framing (which the finding's PM update already does).
+
+**Sensitivity:** High brittleness on H1's strong reading. Load-bearing evidence is E1 (Mandiant attribution) and E4 (single-source-veto). If a second IR-vendor (CrowdStrike/Unit42/MSTIC/Symantec) publishes corroborating UNC3753 attribution, H1 lifts and H2 falls. If Mandiant retracts or qualifies the alias-equivalence, H2 rises.
+
+**Tripwires:**
+- Second IR-vendor publishes on UNC3753 alias-equivalence → rerun ACH; H1 lifts, veto layer resolves.
+- A&D-prime named as outside-counsel victim by Mandiant/second source → H3 falls, H1 strengthens on A&D-targeting layer.
+- LEAKEDDATA DLS posts A&D-prime client material → H1+H3 both shift; A&D-targeting becomes substantiated post-hoc.
+- Splunk first-party detection of UNC3753 IOCs (7 IPv4, 1 SHA-256, phishing-domain template) → rerun with capability-weighted observation.
+
+**Conclusion:** Leading hypothesis is **H5 (composite — H1+H3+H4 simultaneously at different layers)**, WEP **likely**. The finding's PM-update framing already captures this implicitly via the "structural via ITAR/export-control/IP-litigation outside counsel pathway" language and the persistent single-IR-vendor veto on cluster identity. Mandiant asserts the UNC3753 cluster; Archimedes preserves verbatim and does NOT cross-walk or originate attribution per Hard Rule 2. UNC3753 remains /new-actor scaffold candidate only — no threat-box scoring proposed.
+
+## Analytic notes (from analyst review)
+
+KAC and ACH together confirm the finding's existing WEP "likely" is appropriately calibrated. The PM update's structural-inference framing on A&D-adjacency and persistent single-IR-vendor veto on UNC3753 cluster identity are the right hedges — KAC flagged seven Qualify-class assumptions but no Test-class blockers, and ACH found no single hypothesis fully captures the activity (the composite H5 leads, with H3's opportunistic-targeting reading scoring identically to H1's cluster-coherent reading on inconsistency count).
+
+The most important analytic move is preserving Mandiant's framing verbatim while resisting Archimedes-originated strengthening: A&D-adjacency is defensive-applicability inference (BYOD/VDI/RMM/iManage controls generically apply to A&D primes), not Mandiant-asserted targeting (no A&D-prime client firms named). The same-day attack-to-extortion + LEAKEDDATA DLS pattern is genuinely novel relative to Luna Moth's historical baseline and should be noted in any forward-projection. Second IR-vendor corroboration on UNC3753 is the single tripwire that would lift WEP — until then, "likely" caps cluster-wide.

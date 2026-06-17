@@ -386,6 +386,318 @@ entries:
       The-Gentlemen candidacy. Operator-deferred per Hard Rule 5. If
       actor pivots to A&D/DIB victim, regrade.
 
+  - rejection_id: reject-2026-06-17-0009
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-006-cisa-kev-joomla-jce-relay
+    cluster_topic: "Security Affairs (Pierluigi Paganini) relay of CISA KEV catalog addition of CVE-2026-48907 Widget Factory Joomla Content Editor (JCE) flaw with BOD-22-01 dueDate 2026-06-19"
+    rejection_reasons:
+      - anti_noise_dedup_carry_forward_kev_compliance_cohort
+      - a_d_relevance_low_widget_factory_jce_joomla_cms_not_a_d_prime_infrastructure
+      - t2_t4_fail_no_tracked_actor
+      - t5_fail_no_a_d_prime_named_victim
+      - other_signal_carry_forward_deadline_approaching_cohort
+    rejection_detail: >
+      CVE-2026-48907 Joomla Content Editor active exploitation CISA KEV
+      BOD-22-01 dueDate 2026-06-19 ~T+2d-from-this-sweep. Widget Factory
+      JCE / Joomla CMS = consumer/SMB website platform NOT A&D-prime
+      infrastructure pattern. Anti-noise rule 1 BINDING — same trigger-
+      topic already evaluated multiple sweeps (2026-06-16 18:00 + 2026-06-17
+      00:00 + 06:00 + 12:00) and carried as Other-Signal candidate. No
+      tracked-actor attribution; no A&D-prime named victim; critical-
+      override 0-of-4 conditions met. Other Signal one-liner candidate
+      for PM brief KEV-compliance-cohort-tracking-surface.
+    sources:
+      - source_yaml_id: security-affairs
+        grade: B
+      - source_yaml_id: cisa-kev
+        grade: A
+    would_be_digraph: B3
+    review_notes: >
+      Out-of-A&D-scope CMS-vendor KEV cohort tracking. Carry-forward
+      Other Signal candidate. Regrade if A&D-prime Joomla deployment
+      named or actor attribution emerges.
+
+  - rejection_id: reject-2026-06-17-0010
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-007-microsoft-rogueplanet-cve-confirmation
+    cluster_topic: "Microsoft confirmation / additional substrate on RoguePlanet Windows Defender zero-day CVE-2026-50656 (Nightmare-Eclipse PoC LPE)"
+    rejection_reasons:
+      - t1_fail_cvss_7_8_below_9_0_critical_override_threshold
+      - t6_fail_cvss_below_8_0_and_no_active_exploitation_observed
+      - t2_t4_fail_no_tracked_actor_nightmare_eclipse_pseudonym_not_roster
+      - t5_fail_no_a_d_prime_named_victim
+      - carry_forward_monitoring_watch_from_reject_2026_06_17_0001
+    rejection_detail: >
+      CVE-2026-50656 Windows Defender RoguePlanet LPE race-condition.
+      CVSS 7.8 — T1 FAIL (<9.0) + T6 FAIL (<8.0 AND no confirmed active
+      exploitation). Microsoft confirms working-on-patch one-week-after
+      Nightmare-Eclipse/Chaotic-Eclipse public PoC disclosure 2026-06-10;
+      theoretical-only at this sweep. Nightmare-Eclipse pseudonym NOT on
+      24-actor _roster.yaml. T2/T4 FAIL no tracked-actor. T5 FAIL no
+      A&D-prime named victim. Critical-override 0-of-4. Anti-noise rule 1
+      BINDING — same trigger-topic already rejected as reject-2026-06-17-
+      0001 in AM cycle with carry-forward monitoring watch IF active
+      exploitation surfaces within 24-72h pivot to CVE dossier scaffold.
+    sources:
+      - source_yaml_id: microsoft-msrc
+        grade: A
+    would_be_digraph: A3
+    review_notes: >
+      Carry-forward monitoring watch. Defender-tenant operational-
+      template watch-pattern + PoC-published-without-patch monitoring.
+      Operator-deferred CVE dossier scaffold candidate IF active
+      exploitation surfaces within 24-72h.
+
+  - rejection_id: reject-2026-06-17-0011
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-008-thn-crypto-clipper-checkpoint
+    cluster_topic: "The Hacker News (Ravie Lakshmanan) relay of Check Point Research crypto-clipper malware research"
+    rejection_reasons:
+      - out_of_a_d_scope_consumer_cryptocurrency_clipboard_hijacking
+      - t1_t6_fail_no_cve
+      - t2_t4_fail_no_tracked_actor_commodity_cybercrime
+      - t5_fail_no_a_d_prime_named_victim
+    rejection_detail: >
+      Check Point Research crypto-clipper malware (clipboard-hijacking
+      to substitute attacker cryptocurrency wallet addresses). All T-gates
+      FAIL: no CVE; no tracked-actor (commodity cybercrime); no A&D-prime
+      named victim; out-of-scope consumer cryptocurrency theft. Critical-
+      override 0-of-4. Not in A&D/DIB/CMMC/ITAR scope.
+    sources:
+      - source_yaml_id: thehackernews
+        grade: B
+      - source_yaml_id: check-point
+        grade: B
+    would_be_digraph: B3
+    review_notes: >
+      Out-of-A&D-scope consumer cybercrime. Keep for 1 year per LEGAL-
+      POLICY retention. If A&D-prime victim or insider-trading-pivot
+      surfaces, regrade.
+
+  - rejection_id: reject-2026-06-17-0012
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-009-thn-junior-hacker-tailscale-opensh
+    cluster_topic: "The Hacker News relay on French junior hacker abusing Tailscale + OpenSSH for SMB intrusions"
+    rejection_reasons:
+      - out_of_a_d_scope_smb_commodity_intrusion
+      - t1_t6_fail_no_cve_dual_use_software_abuse
+      - t2_t4_fail_no_tracked_actor_individual_junior_actor
+      - t5_fail_no_a_d_prime_named_victim
+    rejection_detail: >
+      French junior hacker abusing legitimate Tailscale + OpenSSH dual-use
+      tooling for SMB intrusions. All T-gates FAIL: no CVE; no tracked-
+      actor (individual junior-actor uncategorized); no A&D-prime named
+      victim; SMB commodity intrusion out-of-A&D-scope. Critical-override
+      0-of-4. Tailscale/OpenSSH abuse is dual-use-software tradecraft
+      not vendor-vulnerability.
+    sources:
+      - source_yaml_id: thehackernews
+        grade: B
+    would_be_digraph: B3
+    review_notes: >
+      Out-of-A&D-scope SMB intrusion. Dual-use Tailscale/OpenSSH
+      tradecraft watch-pattern but not promoted absent A&D-prime
+      named victim or tracked-actor.
+
+  - rejection_id: reject-2026-06-17-0013
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-010-hns-irhythm-healthcare-extension
+    cluster_topic: "Help Net Security extension of iRhythm 12M healthcare patient breach"
+    rejection_reasons:
+      - anti_noise_dedup_carry_forward_reject_2026_06_16_0003
+      - out_of_a_d_scope_healthcare_phi_breach
+      - t5_fail_healthcare_not_a_d_dib_cmmc_itar
+    rejection_detail: >
+      iRhythm 12M healthcare patient breach extension. Anti-noise rule 1
+      BINDING — same trigger-topic already rejected as reject-2026-06-16-
+      0003 in 2026-06-16 AM cycle as out-of-A&D-scope healthcare PHI
+      breach. T5 FAIL healthcare NOT A&D/DIB/CMMC/ITAR. HNS-Markovic
+      extension is non-substrate-shifting.
+    sources:
+      - source_yaml_id: helpnetsecurity
+        grade: B
+    would_be_digraph: B3
+    review_notes: >
+      Carry-forward out-of-A&D-scope healthcare. Keep for 1 year per
+      LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-17-0014
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-011-hns-rokarolla-android-banking
+    cluster_topic: "Help Net Security / Security Affairs Rokarolla Android banking trojan (Zimperium zLabs research on 217 apps)"
+    rejection_reasons:
+      - out_of_a_d_scope_consumer_android_banking
+      - t1_t6_fail_no_cve
+      - t2_t4_fail_no_tracked_actor
+      - t5_fail_consumer_mobile_banking_not_a_d_dib_cmmc_itar
+    rejection_detail: >
+      Rokarolla Android banking trojan 217 apps Zimperium zLabs research.
+      T5 FAIL consumer Android banking NOT A&D/DIB/CMMC/ITAR. T1/T6 FAIL
+      no CVE. T2/T4 FAIL no tracked-actor. Critical-override 0-of-4.
+      Out-of-scope consumer mobile banking.
+    sources:
+      - source_yaml_id: helpnetsecurity
+        grade: B
+      - source_yaml_id: security-affairs
+        grade: B
+    would_be_digraph: B3
+    review_notes: >
+      Out-of-A&D-scope consumer mobile. Keep for 1 year per LEGAL-POLICY
+      retention.
+
+  - rejection_id: reject-2026-06-17-0015
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-012-hns-oalabs-claude-codex-ai-offensive
+    cluster_topic: "Help Net Security relay of OALABS research on Claude/Codex AI-agent offensive operations — low-skilled attacker breached 14 companies recovered 1000+ agent sessions"
+    rejection_reasons:
+      - t1_t6_fail_no_cve
+      - t2_t4_fail_no_tracked_actor_low_skill_uncategorized
+      - t5_fail_no_a_d_prime_named_victim
+      - strong_other_signal_one_liner_candidate_ai_agent_offensive_tradecraft_watch
+    rejection_detail: >
+      OALABS research net-new piece on AI-agent-assisted offensive
+      operations. Low-skilled attacker recovered 1000+ agent sessions
+      breached 14 companies using Claude / Codex tooling. T1/T6 FAIL
+      no CVE; T2/T4 FAIL no tracked-actor (low-skill uncategorized);
+      T5 FAIL no A&D-prime named victim. Critical-override 0-of-4.
+      STRONG Other Signal one-liner candidate AI-agent-offensive-
+      tradecraft watch-pattern surface distinct from defensive AI-agent-
+      supply-chain Mastra/JetBrains lane (carry-forward reject-2026-06-
+      17-0003 + reject-2026-06-17-0004).
+    sources:
+      - source_yaml_id: helpnetsecurity
+        grade: B
+      - source_yaml_id: oalabs
+        grade: provisional-B
+    would_be_digraph: B3
+    review_notes: >
+      Other Signal one-liner candidate. AI-agent-offensive tradecraft
+      watch-pattern. Operator-deferred AI-agent-defensive posture
+      review if substrate strengthens or specific A&D-prime victim
+      surfaces.
+
+  - rejection_id: reject-2026-06-17-0016
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-013-record-uk-ncsc-nation-state-critical-infra
+    cluster_topic: "Recorded Future / The Record relay of UK NCSC Horne RUSI speech — three-fourths of UK critical infrastructure nation-state targeting"
+    rejection_reasons:
+      - policy_signaling_not_specific_incident
+      - t1_t6_fail_no_cve
+      - t2_t4_fail_no_specific_tracked_actor_named
+      - t5_fail_no_a_d_prime_named_victim
+      - high_a_d_relevance_other_signal_one_liner_candidate_ci_prepositioning
+    rejection_detail: >
+      UK NCSC Horne RUSI speech characterizes three-fourths of UK critical
+      infrastructure as nation-state-targeted. Policy-signaling not
+      specific incident. All T-gates FAIL: no CVE; no specific named
+      tracked-actor; no A&D-prime named victim. HIGH A&D-relevance
+      strategically via CI-prepositioning narrative parallel to US Volt-
+      Typhoon-class CI-prepositioning concerns. Other Signal one-liner
+      candidate for PM brief CI-prepositioning strategic-context surface.
+    sources:
+      - source_yaml_id: the-record
+        grade: B
+      - source_yaml_id: uk-ncsc
+        grade: A
+    would_be_digraph: A3
+    review_notes: >
+      HIGH A&D-relevance strategic policy signal. Other Signal one-liner
+      candidate for PM brief. Operator-deferred IF specific incidents
+      / named victims / named tracked-actors surface in follow-up
+      reporting.
+
+  - rejection_id: reject-2026-06-17-0017
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-014-record-eu-ukraine-cybersecurity-reserve
+    cluster_topic: "Recorded Future / The Record relay of EU Ukraine cybersecurity reserve accession"
+    rejection_reasons:
+      - policy_signaling_not_specific_incident
+      - t1_t6_fail_no_cve
+      - t2_t4_fail_no_tracked_actor
+      - t5_fail_no_a_d_prime_named_victim
+      - a_d_relevance_low_other_signal_one_liner_candidate
+    rejection_detail: >
+      EU Ukraine cybersecurity reserve accession policy-signaling not
+      specific incident. All T-gates FAIL. A&D-relevance LOW. Possible
+      Other Signal one-liner for PM brief on EU cyber-defense
+      institutional development context.
+    sources:
+      - source_yaml_id: the-record
+        grade: B
+    would_be_digraph: B3
+    review_notes: >
+      Low A&D-relevance policy signal. Other Signal candidate. Keep
+      for 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-17-0018
+    rejected_at: 2026-06-17T16:00:00-04:00
+    grading_run_id: afternoon-20260617-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-17-pm-015-eset-fishmonger-sprysocks-direct-url
+    cluster_topic: "ESET WeLiveSecurity direct-URL substantiation of FishMonger SprySOCKS Windows primary (Martin Smolar)"
+    rejection_reasons:
+      - anti_noise_dedup_already_absorbed_via_finding_2026_06_17_0004
+      - no_net_new_substrate_beyond_sa_paganini_quintuple_publisher_relay
+      - eset_primary_substrate_already_in_finding_2026_06_16_0001_carry_forward
+    rejection_detail: >
+      ESET WeLiveSecurity direct-URL substantiation of FishMonger SprySOCKS
+      Windows primary. Anti-noise rule 1 BINDING — already absorbed via
+      finding-2026-06-17-0004 SA-Paganini quintuple-publisher relay
+      (AM brief 56cf187). No net-new substrate beyond what Smolar/ESET
+      primary already documents in finding-2026-06-16-0001 + finding-
+      2026-06-17-0004 carry-forward. Direct-URL retrieval confirms ESET
+      authoritative primary source but does not change publisher/IR-
+      vendor cardinality on cluster-identity layer. Single-vendor-on-
+      cluster-identity veto persists per finding-2026-06-17-0004.
+    sources:
+      - source_yaml_id: eset
+        grade: A
+    would_be_digraph: A2
+    review_notes: >
+      Anti-noise dedup. ESET primary substrate already captured in
+      finding-2026-06-17-0004 quintuple-publisher journalistic relay.
+      Direct-URL retrieval is publisher-confirmation not substrate-
+      shifting. Mandiant / CrowdStrike / Unit 42 / MSTIC independent
+      IR-vendor corroboration remains substrate-that-would-lift-veto.
+
   - rejection_id: reject-2026-06-16-0004
     rejected_at: 2026-06-16T16:00:00-04:00
     grading_run_id: afternoon-20260616-160000

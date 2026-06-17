@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-17T08:00:00-04:00  # briefer 2026-06-17 morning composition complete; am-update-001 (FortiSandbox KEVIntel substrate-pivot RED-TEAM-CAPPED at likely cluster-wide) + am-002 (FortiBleed SocRadar monitoring-tier) + am-003 (Mandiant direct-page title-snapshot net-new) + am-update-002 (FishMonger quintuple-publisher + UEFI-bootkit hint) + am-update-003 (DragonForce triple-publisher) + am-brief-meta populated
+last_updated: 2026-06-17T16:00:00-04:00  # briefer 2026-06-17 afternoon composition complete; pm-update-001 (FortiBleed PM substrate-pivot scale-revision dual-IR-vendor RED-TEAM-CAPPED at likely on campaign-scale) + pm-update-002 (US Law Firms title-snapshot -> UNC3753 / Luna Moth / Chatty Spider / Silent Ransom Group full-body substantiation cluster-anchor lifted A3->A2) + pm-001 (net-new CVE-2026-5426 KnowledgeDeliver ViewState shared-machineKey vuln-tracker handoff candidate Mandiant unknown-actor preserved) + pm-update-003 (DragonForce quadruple-publisher anti-noise status-check one-liner) + pm-brief-meta populated; AM brief-meta and per-finding AM entries preserved upstream unchanged
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -37813,6 +37813,476 @@ entries:
       Rule 8 binding: silent-Splunk-does-NOT-disconfirm; Frank's
       environment profile does NOT intersect any of the five
       findings' named victim or sector patterns.
+
+      Pre-existing YAML defect in this file (line ~32457,
+      unescaped apostrophe in zdi_dustin_childs quote scalar)
+      carried forward from prior commits — still present, still
+      flagged for operator follow-up, out-of-scope for this
+      briefer cycle.
+
+  - id: 2026-06-17-pm-update-001-fortibleed-pm-substrate-pivot-scale-revision-dual-ir-vendor-hudson-rock-red-team-capped-at-likely-on-campaign-scale
+    covered_in: [2026-06-17-afternoon]
+    headline: "PM UPDATE on finding-2026-06-17-0002: FortiBleed substrate-pivot — Hudson Rock published parallel dataset analysis (relayed by BC-Abrams + TR-Jones) of the Diachenko-discovered leak with scale revision (30K -> 73,932 firewall URLs / 21,632 domains / 194 countries / ~1.16B credential attempts); Beaumont independent credential-authenticity verification 'the data is legit' (5 words); Hudson Rock alleges Turkish NATO defense contractor full compromise + classified-document theft preserved verbatim as allegation; named corporates Siemens / Lenovo (publicly 'looking into it') / Mercedes-Benz / Foxconn / Samsung / PwC / Accenture / Oracle / Toyota; red-team CAPPED campaign-scale WEP at likely (NOT very_likely) per symmetry with AM KEVIntel cap — Hudson Rock independence-from-Diachenko-discovery-chain unverified; 73,932 is dataset corpus scope NOT compromised-device count; no US A&D prime named; Diachenko's 'Russian-speaking multi-operator threat group' attribution recorded per source NOT cross-walked to APT28/Sandworm/Gamaredon"
+    topic_tags:
+      - fortinet
+      - fortinet-vpn
+      - fortibleed
+      - credential-stuffing
+      - scale-revision-30k-to-73932-firewall-urls
+      - dual-ir-vendor-hudson-rock-socradar
+      - hudson-rock-independence-from-diachenko-discovery-chain-unverified
+      - red-team-wep-cap-from-very-likely-to-likely-symmetry-with-am-kevintel-cap
+      - beaumont-independent-credential-authenticity-verification-five-words-at-cap
+      - turkish-nato-defense-contractor-allegation-preserved-as-allegation
+      - named-corporate-victims-siemens-lenovo-mercedes-foxconn-samsung-pwc-accenture-oracle-toyota
+      - no-us-ad-prime-named
+      - hard-rule-2-russian-speakers-recorded-not-cross-walked
+      - hard-rule-6-beaumont-five-word-quote-at-cap-lenovo-three-word-quote
+      - hard-rule-8-splunk-first-party-zero-hits
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - fortibleed-2026-06
+    finding_ids:
+      - finding-2026-06-17-0002
+    update_pivots:
+      - finding_id: finding-2026-06-17-0002
+        update_id: finding-2026-06-17-0002
+        pivot_type: pm_substrate_pivot_scale_revision_plus_dual_ir_vendor_red_team_capped_at_likely
+    resurface_if:
+      - third_ir_vendor_independent_of_diachenko_discovery_chain_corroborates
+      - hudson_rock_clarifies_observation_pathway_independence
+      - us_ad_prime_named_victim_emerges
+      - fortinet_primary_statement_confirming_or_contesting_scale
+      - first_party_ioc_hit
+      - new_attribution
+      - turkish_nato_defense_contractor_first_party_ir_confirmation
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+
+  - id: 2026-06-17-pm-update-002-unc3753-luna-moth-chatty-spider-silent-ransom-group-us-law-firms-mandiant-body-substantiation-title-snapshot-to-full-body
+    covered_in: [2026-06-17-afternoon]
+    headline: "PM UPDATE on finding-2026-06-17-0003: Mandiant 5-author byline (Reams/Ahmed/Knapp/Frazer/McLellan, published 2026-06-05) full-body retrieval substantiates UNC3753 cluster identity (aka Luna Moth / Chatty Spider / Silent Ransom Group) for the US Law Firms campaign; financially motivated; non-malicious invoice-themed email lures + IT-helpdesk vishing; commercial RMM abuse AnyDesk/Bomgar/Zoho Assist/SuperOps via cURL + msiexec /quiet; BYOD/VDI pivots Windows 365 + Citrix; iManage/SharePoint/OneDrive keyword search W-2/1099/audit-files/SSNs; same-day attack-to-extortion + LEAKEDDATA DLS; physical office intrusions posing as IT technicians attempting USB exfil (Mandiant hedges per structural/timeline overlaps); cluster-anchor lifted A3 -> A2; WEP unchanged at likely (Mandiant sole IR-vendor on UNC3753 cluster identity); IOCs: 7 IPv4 + SHA-256 598281d2... + business-data-leaks[.]com + <org>-itdesk.com/-it.com/-helpdesk.com phishing template; UNC3753 NOT on 24-actor _roster.yaml; operator-deferred /new-actor candidacy per Hard Rule 5; A&D-supply-chain-adjacent via ITAR/export-control/IP-litigation outside counsel structural pathway — Mandiant does NOT name A&D-prime victims"
+    topic_tags:
+      - unc3753-luna-moth-chatty-spider-silent-ransom-group
+      - us-law-firms-targeted-campaign
+      - ad-supply-chain-adjacency-via-itar-export-control-ip-litigation-outside-counsel
+      - vishing-as-it-helpdesk
+      - rmm-abuse-anydesk-bomgar-zoho-superops
+      - byod-vdi-pivot-windows-365-citrix
+      - imanage-sharepoint-onedrive-keyword-exfil
+      - same-day-attack-to-extortion
+      - leakeddata-dls-business-data-leaks-com
+      - physical-office-intrusion-usb-exfil-hedged
+      - cluster-anchor-lifted-a3-to-a2-body-substantiation
+      - mandiant-sole-ir-vendor-on-unc3753-cluster-identity-veto-persists
+      - operator-deferred-new-actor-unc3753-candidacy-hard-rule-5
+      - hard-rule-2-unc3753-cluster-identity-preserved-verbatim
+      - hard-rule-6-mandiant-one-quote-unknown-threat-actor-three-words
+      - hard-rule-8-splunk-first-party-zero-hits
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - mandiant-us-law-firms-2026-06
+      - unc3753-luna-moth-silent-ransom-group-data-theft-extortion
+    finding_ids:
+      - finding-2026-06-17-0003
+    update_pivots:
+      - finding_id: finding-2026-06-17-0003
+        update_id: finding-2026-06-17-0003
+        pivot_type: pm_substrate_pivot_title_snapshot_to_full_body_unc3753_cluster_substantiated_plus_ttps_plus_iocs
+    resurface_if:
+      - independent_ir_vendor_corroboration_crowdstrike_unit_42_mstic_symantec
+      - ad_prime_outside_counsel_named_victim
+      - new_iocs_or_ttp_shift
+      - first_party_ioc_hit
+      - operator_approval_unc3753_new_actor_scaffold
+      - cve_assignment_to_an_observed_ttp
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+
+  - id: 2026-06-17-pm-001-cve-2026-5426-knowledgedeliver-viewstate-deserialization-shared-machinekey-mandiant-unknown-actor-attribution-preserved
+    covered_in: [2026-06-17-afternoon]
+    headline: "Net-new PM finding-2026-06-17-0006: Mandiant 3-author byline (Sugiyama/Revelant/Potaczek) surfaces CVE-2026-5426 — unauthenticated RCE via ASP.NET ViewState deserialization in Digital Knowledge Co. KnowledgeDeliver LMS; root cause shared hardcoded machineKey baked into vendor-template web.config across independent customer deployments enabling cross-tenant __VIEWSTATE forgery; patched 2026-02-24; Mandiant IR-vendor primary observed late-2025 ITW exploitation by 'unknown threat actor' — attribution UNKNOWN preserved verbatim per Hard Rule 2 BINDING; post-exploit chain BLUEBEAM/Godzilla in-memory .NET web shell within IIS w3wp.exe + icacls Everyone full-access on web app directory + fake security-authentication-plugin JavaScript lure + Cobalt Strike BEACON keyed by victim organization's name (Mandiant analytic claim 'indicates targeted preparation'); A&D-direct relevance LOW (Japanese LMS Education sector) but MEDIUM structurally via ASP.NET ViewState systemic-vulnerability pattern (Sitecore ViewState 0-day + Microsoft Feb 2025 publicly-disclosed-machineKey advisory lineage); IOC SHA-256 7c1f99dca8e5a7897892f9d224a6495023a2cfd2671697d229d355978c415ed2; vuln-tracker handoff candidate (priority medium); CVE-2026-5426 not yet on CISA KEV at brief time"
+    topic_tags:
+      - cve-2026-5426
+      - knowledgedeliver-lms
+      - aspnet-viewstate-deserialization
+      - shared-hardcoded-machinekey-vendor-template
+      - unauthenticated-rce
+      - bluebeam-godzilla-in-memory-dotnet-web-shell
+      - cobalt-strike-beacon-organization-name-key-targeted-preparation
+      - patched-2026-02-24
+      - late-2025-itw-exploitation
+      - mandiant-unknown-attribution-preserved-hard-rule-2-binding
+      - sitecore-viewstate-zero-day-methodology-shared-not-cluster-shared
+      - microsoft-feb-2025-publicly-disclosed-machinekey-advisory-lineage
+      - ad-structural-medium-aspnet-viewstate-systemic-pattern
+      - vuln-tracker-handoff-candidate-priority-medium
+      - cisa-kev-listing-watch-pending
+      - hard-rule-2-no-cross-walk-on-unknown-attribution-substrate
+      - hard-rule-6-mandiant-one-quote-unknown-threat-actor-three-words
+      - hard-rule-8-splunk-first-party-zero-hits-frank-not-knowledgedeliver-tenant
+    related_actors: []
+    related_vulns:
+      - CVE-2026-5426
+    related_campaigns:
+      - mandiant-knowledgedeliver-viewstate-2026-06
+    finding_ids:
+      - finding-2026-06-17-0006
+    resurface_if:
+      - independent_ir_vendor_corroboration_of_late_2025_itw_exploitation
+      - cisa_kev_listing
+      - cve_2026_5426_nvd_canonical_published_with_cvss
+      - additional_hardcoded_secret_disclosed_in_digital_knowledge_co_product_family
+      - shared_template_machinekey_pattern_recurs_in_another_vendor_product
+      - first_party_ioc_hit
+      - ad_prime_aspnet_viewstate_exploitation_observed
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+
+  - id: 2026-06-17-pm-update-003-dragonforce-backdoor-turn-microsoft-teams-turn-relay-quadruple-publisher-relay-veto-persists
+    covered_in: [2026-06-17-afternoon]
+    headline: "PM status check on finding-2026-06-17-0005 / finding-2026-06-16-0004: Security Affairs (Paganini) adds fourth independent B-grade publisher relay extending DragonForce Backdoor.Turn / Microsoft Teams TURN-relay abuse substrate from BC+HNS+SW (AM) to BC+HNS+SW+SA (PM) quadruple-publisher journalistic relay; no net-new technical detail beyond Symantec primary; WEP unchanged at likely; single-vendor-on-novel-TTP veto persists (Symantec sole IR-vendor); Scattered-Spider dossier mutation REMAINS PAUSED per Hard Rule 2 pending independent second-IR-vendor corroboration; anti-noise discipline applied — included as one-liner status check only (no new substrate beyond publisher cardinality)"
+    topic_tags:
+      - dragonforce-ransomware
+      - backdoor-turn-microsoft-teams-turn-relay-abuse-novel-ttp
+      - quadruple-publisher-journalistic-relay-publisher-independence
+      - single-vendor-on-novel-ttp-veto-persists
+      - scattered-spider-dossier-mutation-paused-hard-rule-2
+      - anti-noise-discipline-status-check-one-liner-only
+    related_actors:
+      - "013"   # Scattered Spider (Symantec-asserted linkage; Hard Rule 2 binding)
+    related_vulns: []
+    related_campaigns:
+      - dragonforce-backdoor-turn-teams-relay-2025-12
+    finding_ids:
+      - finding-2026-06-17-0005
+    update_pivots:
+      - finding_id: finding-2026-06-17-0005
+        update_id: finding-2026-06-17-0005
+        pivot_type: pm_substrate_strengthening_quadruple_publisher_relay_veto_persists
+    resurface_if:
+      - independent_ir_vendor_corroboration_mandiant_crowdstrike_unit_42_mstic
+      - scattered_spider_linkage_substrate_strengthens_with_second_ir_vendor
+      - ad_prime_named_victim
+      - first_party_ioc_hit
+      - new_iocs_or_ttps
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+
+  - id: 2026-06-17-pm-brief-meta
+    covered_in: [2026-06-17-afternoon]
+    brief_file: threats/briefs/2026-06-17-afternoon.md
+    headline: "2026-06-17 afternoon brief — 1 net-new graded finding (CVE-2026-5426 KnowledgeDeliver vuln-tracker handoff candidate) + 2 substrate-pivot UPDATEs (FortiBleed PM red-team-capped at likely on campaign-scale per Hudson-Rock-independence-from-Diachenko-unverified, US Law Firms title-snapshot -> UNC3753/Luna-Moth/Chatty-Spider/SRG full-body substantiation cluster-anchor lifted A3->A2) + 1 substrate-strengthening status check (DragonForce quadruple-publisher anti-noise one-liner) + standing carry-forward (FortiSandbox/KEVIntel AM cap no PM motion, FishMonger AM quintuple-publisher anti-noise) + 2 Other Signal one-liners (OALABS Claude/Codex AI-agent offensive 14-companies, NCSC Horne RUSI three-quarters CNI nation-state) + KEV-compliance cohort; pre-flight 13-of-13 PASS; Layer 1 ~770 words within 400-800 doctrine band; Layer 2 Discord Summary expected chunked into 2 parts both under 1900-char hard ceiling per librarian"
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - 1-net-new-finding-cve-2026-5426-knowledgedeliver-viewstate-vuln-tracker-handoff
+      - 2-substrate-pivot-updates-fortibleed-scale-revision-plus-us-law-firms-unc3753-body-substantiation
+      - 1-status-check-dragonforce-quadruple-publisher-anti-noise-one-liner
+      - 2-other-signal-oalabs-ai-agent-offensive-ncsc-horne-rusi-cni-pre-positioning
+      - red-team-wep-cap-fortibleed-very-likely-to-likely-symmetry-with-am-kevintel-cap
+      - preflight-13-of-13-pass
+      - hard-rule-2-binding-preserved-unc3753-cluster-identity-mandiant-unknown-attribution-diachenko-russian-speakers-recorded-not-cross-walked-scattered-spider-dossier-mutation-paused
+      - hard-rule-6-quote-discipline-preserved-beaumont-5-words-lenovo-3-words-mandiant-unknown-threat-actor-3-words-diachenko-russian-speakers-6-words-one-quote-per-source
+      - hard-rule-8-binding-preserved-splunk-first-party-zero-hits-frank-not-fortinet-vpn-tenant-not-us-law-firm-not-knowledgedeliver-tenant
+    related_actors:
+      - "013"   # Scattered Spider (DragonForce status check; Hard Rule 2 binding)
+      - "014"   # Handala Hack (Iran Cyber Watch carry-forward)
+    related_vulns:
+      - CVE-2026-5426
+      - CVE-2026-54420   # KEV cohort
+      - CVE-2026-48907   # KEV cohort
+      - CVE-2026-20262   # KEV cohort
+      - CVE-2026-20127   # 12:00 sweep operator-deferred
+    related_campaigns:
+      - fortibleed-2026-06
+      - mandiant-us-law-firms-2026-06
+      - unc3753-luna-moth-silent-ransom-group-data-theft-extortion
+      - mandiant-knowledgedeliver-viewstate-2026-06
+      - dragonforce-backdoor-turn-teams-relay-2025-12
+    finding_ids:
+      - finding-2026-06-17-0002
+      - finding-2026-06-17-0003
+      - finding-2026-06-17-0005
+      - finding-2026-06-17-0006
+    update_pivots:
+      - finding_id: finding-2026-06-17-0002
+        update_id: finding-2026-06-17-0002
+        pivot_type: pm_substrate_pivot_scale_revision_plus_dual_ir_vendor_red_team_capped_at_likely
+      - finding_id: finding-2026-06-17-0003
+        update_id: finding-2026-06-17-0003
+        pivot_type: pm_substrate_pivot_title_snapshot_to_full_body_unc3753_cluster_substantiated
+      - finding_id: finding-2026-06-17-0005
+        update_id: finding-2026-06-17-0005
+        pivot_type: pm_substrate_strengthening_quadruple_publisher_relay_veto_persists
+    carry_forward_callouts:
+      - finding-2026-06-17-0001   # FortiSandbox / KEVIntel AM cap, no PM motion
+      - finding-2026-06-17-0004   # FishMonger SprySOCKS Windows AM quintuple-publisher
+      - finding-2026-06-15-0006   # Cisco SD-WAN CVE-2026-20262 KEV cohort
+      - finding-2026-06-15-0010   # Anthropic Fable 5 / Mythos 5 export-control
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - patch_released_for_associated_cve
+      - cisa_kev_listing_for_cve_2026_5426
+      - third_ir_vendor_corroboration_of_fortibleed_independent_of_diachenko_chain
+      - independent_ir_vendor_corroboration_of_unc3753_cluster_identity
+      - operator_approval_unc3753_new_actor_scaffold
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+    word_count_layer_1: 770
+    layer_2_discord_summary:
+      parts_expected: 2
+      part_1_chars_estimate: 1700
+      part_2_chars_estimate: 1100
+      under_1900_buffer: true
+      word_count_total: 330
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 2   # passed on second composition after one trim: (1) Mandiant double-quoted in Layer 1 ("likely associated" + "security authentication plugin" + "unknown threat actor") consolidated to single Mandiant quote "unknown threat actor" (3 words) preserved verbatim per Hard Rule 2 BINDING; "likely associated" paraphrased to structural-and-timeline-overlap framing; "security authentication plugin" paraphrased to "JavaScript-injected fake security-authentication-plugin lure" (no quotation marks)
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-17-0002
+          append_brief_id: 2026-06-17-afternoon
+        - finding_id: finding-2026-06-17-0003
+          append_brief_id: 2026-06-17-afternoon
+        - finding_id: finding-2026-06-17-0005
+          append_brief_id: 2026-06-17-afternoon
+        - finding_id: finding-2026-06-17-0006
+          append_brief_id: 2026-06-17-afternoon
+      operator_deferred_handoffs_surfaced:
+        - "/new-actor UNC3753 / Luna Moth / Chatty Spider / Silent Ransom Group candidacy (cluster identity now Mandiant body-substantiated, single-IR-vendor on cluster identity — second IR-vendor would unblock scaffold under Hard Rule 5)"
+        - "vuln-tracker handoff: CVE-2026-5426 KnowledgeDeliver ViewState shared-machineKey priority medium (A2 Mandiant primary; ITW exploited late-2025; patched 2026-02-24; ASP.NET ViewState systemic pattern with structural extensibility beyond KnowledgeDeliver specifically)"
+        - "Hudson Rock observation-pathway independence-from-Diachenko-discovery-chain verification (red-team challenge; would resolve FortiBleed campaign-scale WEP cap)"
+        - "third IR-vendor independent of Diachenko-discovery-chain corroboration watch (Mandiant/Unit 42/CrowdStrike/MSTIC/Recorded Future)"
+        - "/investigate-FortiBleed candidacy: substrate-strengthening watch continues if a US A&D-prime named-victim emerges or third-IR-vendor independent of Diachenko-discovery-chain surfaces"
+        - "operator-deferred handoffs from AM brief carried forward unchanged: KEVIntel direct-retrieval (FortiSandbox cap resolution), FishMonger /new-actor candidacy substrate not yet IR-vendor-substantiated, UNC6692 Snow Flurries /new-actor candidacy, ShinyHunters /new-actor candidacy"
+        - "Mandiant feedburner RSS canonical-swap decision pending (now 29+ consecutive failures, direct HTML success entrenched, operator decision pending)"
+        - "Handala #014 dossier handoff carry-forward (last_reviewed null, next_review_due 2026-04-25 ~53d past) — Cal Water NEGATIVE binding reinforced per PM brief 8fc1987 stands"
+        - "CVE-2026-20127 Cisco SD-WAN Validator/vBond + UAT-8616 attribution surfaced by 2026-06-17 12:00 FLASH sweep — operator-deferred /new-actor-UAT-8616 candidacy; not promoted to finding this cycle"
+      kev_compliance_cohort_state:
+        total_cves_tracked: 7
+        incoming_active:
+          - cve: CVE-2026-54420
+            deadline: 2026-06-18
+            hours_remaining_from_brief: 22
+            ad_relevance: low
+          - cve: CVE-2026-48907
+            deadline: 2026-06-19
+            days_remaining_from_brief: 2
+            ad_relevance: low
+          - cve: CVE-2026-20262
+            deadline: 2026-06-29
+            days_remaining_from_brief: 12
+            ad_relevance: medium_high
+        retrospective_phase:
+          - cve: CVE-2026-35273
+            deadline: 2026-06-15
+            status: closed_eod_2026_06_15
+          - cve: CVE-2026-10520
+            deadline: 2026-06-14
+            status: closed_72h_past
+          - cve: CVE-2026-0257
+            deadline: 2026-06-01
+            status: closed_16d_plus_past
+        watch_pending_kev_listing:
+          - cve: CVE-2026-5426
+            status: ITW_exploited_per_mandiant_a_grade_kev_listing_possible_within_7_30d_window
+      hard_rules_audit:
+        hard_rule_2_no_cross_walk_originated:
+          - finding-0002-hudson-rock-independence-from-diachenko-discovery-chain-red-team-cap-applied-russian-speakers-recorded-not-cross-walked-to-apt28-sandworm-gamaredon-turkish-nato-defense-contractor-allegation-preserved-as-allegation
+          - finding-0003-unc3753-luna-moth-chatty-spider-silent-ransom-group-mandiant-cluster-identity-preserved-verbatim-no-cross-walk-to-roster-actors-operator-deferred-new-actor-candidacy
+          - finding-0005-dragonforce-scattered-spider-symantec-asserted-linkage-recorded-only-dossier-mutation-paused
+          - finding-0006-mandiant-unknown-threat-actor-attribution-preserved-verbatim-no-cross-walk-on-unknown-substrate-sitecore-viewstate-methodology-shared-not-cluster-shared
+        hard_rule_5_no_high_threat_box_scorings_in_flight: true
+        hard_rule_5_operator_deferred_new_actor_unc3753_candidacy_flagged_not_originated_by_archimedes: true
+        hard_rule_6_quote_discipline:
+          - beaumont_5_word_quote_the_data_is_legit_one_per_source_layer_1_and_layer_2
+          - lenovo_3_word_quote_looking_into_it_one_per_source_layer_1_only
+          - mandiant_3_word_quote_unknown_threat_actor_one_per_source_layer_1_quoted_layer_2_italicized
+          - diachenko_6_word_quote_russian_speaking_multi_operator_threat_group_one_per_source_layer_1_only
+          - mandiant_double_quote_collision_first_composition_likely_associated_and_security_authentication_plugin_paraphrased_in_final_to_preserve_one_quote_per_source
+        hard_rule_8_first_party_splunk:
+          all_four_findings_referenced_plus_two_carry_forward: zero_hits_30d_lookback_across_defenseclaw_local_and_archimedes
+          visibility_bounded_absence_flagged_for_each: true
+          frank_not_fortinet_vpn_tenant_not_us_law_firm_not_knowledgedeliver_tenant_not_microsoft_teams_turn_relay_targeted_not_redcap_medical_research_not_higher_ed_peoplesoft_not_litespeed_cpanel_not_cisco_sd_wan_manager_not_joomla_jce_publicly_catalogued: true
+    notes: |
+      2026-06-17 afternoon brief composed by briefer subagent after
+      grader pass produced 1 net-new finding (CVE-2026-5426
+      KnowledgeDeliver vuln-tracker handoff candidate) + 3 PM update
+      pivots on AM-promoted findings:
+
+      (1) finding-2026-06-17-0002 FortiBleed substrate-pivot —
+          Hudson Rock published parallel dataset analysis (relayed
+          by BC-Abrams + TR-Jones) of the Diachenko-discovered leak
+          with scale revision 30K -> 73,932 firewall URLs + named
+          corporate victims (Siemens, Lenovo "looking into it",
+          Mercedes-Benz, Foxconn, Samsung, PwC, Accenture, Oracle,
+          Toyota) + Beaumont independent credential-authenticity
+          verification "the data is legit" (5 words at-cap per
+          Hard Rule 6). Grader proposed WEP lift to very_likely on
+          campaign-scale layer per dual-IR-vendor reading. Red-team
+          CAPPED WEP at "likely" cluster-wide based on:
+            (a) Hudson Rock's analysis is parallel work on the same
+                Diachenko-discovered dataset — independence-from-
+                Diachenko-discovery-chain is unverified; symmetric
+                with AM finding-0001 KEVIntel-independence-from-
+                Defused cap (consistency principle applied);
+            (b) Beaumont verified credential authenticity (real
+                strings mapping to real accounts), NOT active VPN
+                session compromise — the dataset is consistent with
+                a large credential-stuffing INPUT corpus, not
+                necessarily 73,932 successful outcomes;
+            (c) 73,932 is firewall-URL dataset corpus scope NOT
+                compromised-device count;
+            (d) Hudson Rock allegation of Turkish NATO defense
+                contractor full compromise + classified-document
+                theft preserved verbatim as ALLEGATION per Hard Rule
+                2 — NOT upgraded to substantiated; named only as
+                NATO defense contractor, NOT US A&D prime.
+          Red-team recommendation CONFIRM-WITH-CAVEATS — brief
+          ships with explicit qualifying language: "preserved as
+          allegation," "dataset corpus scope NOT compromised-device
+          count," "Hudson Rock's analysis sits on the same dataset,
+          not independent telemetry."
+
+      (2) finding-2026-06-17-0003 title-snapshot -> full-body
+          substantiation — Mandiant 5-author byline (Reams, Ahmed,
+          Knapp, Frazer, McLellan, published 2026-06-05) full-body
+          retrieval of "Seeking Counsel: Ongoing Targeted Campaign
+          Against US Law Firms" substantiates UNC3753 cluster
+          identity (aka Luna Moth / Chatty Spider / Silent Ransom
+          Group). Cluster anchor lifted A3 -> A2. WEP unchanged at
+          likely (single-IR-vendor on UNC3753 cluster identity
+          veto persists — independent IR-vendor corroboration from
+          CrowdStrike/Unit 42/MSTIC/Symantec would lift veto).
+          UNC3753 NOT on 24-actor _roster.yaml — operator-deferred
+          /new-actor candidacy flagged per Hard Rule 5.
+          A&D-supply-chain-adjacency via ITAR/export-control/IP-
+          litigation outside counsel structural pathway — Mandiant
+          explicitly does NOT name A&D-prime victims (legal /
+          professional / financial services structural targeting
+          only). Detection-ready IOCs surface today: 7 IPv4s, SHA-
+          256 598281d2..., business-data-leaks[.]com, phishing
+          template <org>-itdesk.com / -it.com / -helpdesk.com.
+
+      (3) finding-2026-06-17-0005 PM publisher-relay extension
+          DragonForce Backdoor.Turn / Microsoft Teams TURN-relay
+          abuse to BC+HNS+SW+SA quadruple-publisher relay (SA-
+          Paganini added). No net-new technical detail. WEP
+          unchanged at likely. Single-vendor-on-novel-TTP veto
+          persists (Symantec sole IR-vendor). Scattered-Spider
+          dossier mutation REMAINS PAUSED per Hard Rule 2. Anti-
+          noise discipline applied — included as one-liner status
+          check only (no new substrate beyond publisher cardinality).
+
+      Net-new finding-2026-06-17-0006 CVE-2026-5426 KnowledgeDeliver
+      ViewState deserialization shared-machineKey — Mandiant 3-
+      author byline (Sugiyama, Revelant, Potaczek) IR-vendor primary
+      observation of late-2025 ITW exploitation by "unknown threat
+      actor" — attribution UNKNOWN preserved verbatim per Hard Rule
+      2 BINDING. Post-exploit chain BLUEBEAM/Godzilla in-memory
+      .NET web shell + Cobalt Strike BEACON keyed by organization
+      name. A&D-direct LOW (Japanese LMS Education sector); A&D-
+      structural MEDIUM via ASP.NET ViewState systemic pattern
+      (Sitecore + Microsoft Feb 2025 advisory lineage). IOC SHA-256
+      7c1f99dc... vuln-tracker handoff candidate priority medium.
+      CISA KEV listing possible within 7-30d window pending.
+
+      Other Signal one-liners: OALABS Claude/Codex AI-agent offensive
+      operations 14 companies breached by low-skilled attacker
+      (1000+ recovered agent sessions) — AI-agent-offensive
+      tradecraft watch-pattern distinct from defensive AI-developer-
+      supply-chain Mastra/JetBrains lane noted in AM brief;
+      UK NCSC's Richard Horne RUSI speech three-quarters of CNI
+      incidents involve nation-state actors — policy-signal on CNI
+      pre-positioning posture aligns with Volt Typhoon/pre-
+      positioning narrative US has been publishing for 18+ months.
+
+      Layer 1 word count ~770 — within 400-800 doctrine band.
+      Layer 2 Discord Summary expected chunked into 2 parts due
+      to dense substrate cycle exceeding 1900-char single-message
+      ceiling. Per AM brief precedent (Layer 2 ~2880 chars chunked
+      to 2 parts each under 1900), librarian will chunk; both
+      parts expected under 1900-char hard ceiling.
+
+      Pre-flight 13-of-13 PASS on second composition. First
+      composition had a quote-discipline collision: Mandiant
+      double-quoted in Layer 1 ("likely associated" + "security
+      authentication plugin" + "unknown threat actor" across two
+      different Mandiant publications counted as one source per
+      Hard Rule 6). Fixed by paraphrasing "likely associated" to
+      "hedged with structural and timeline overlaps rather than
+      direct forensic attribution" and "security authentication
+      plugin" to "JavaScript-injected fake security-authentication-
+      plugin lure" (no quotation marks); retained "unknown threat
+      actor" (3 words) as the single Mandiant quote per Hard Rule
+      2 BINDING preservation requirement.
+
+      Hard Rule 2 binding preserved on all four findings + AM
+      carry-forward — no attribution-origination by Archimedes:
+        - Hudson Rock allegation of Turkish NATO defense
+          contractor full compromise preserved verbatim AS
+          ALLEGATION; red-team cap captures the independence-
+          from-Diachenko-discovery-chain unverified status
+        - Diachenko "Russian-speaking multi-operator threat
+          group" recorded per source NOT cross-walked to APT28 /
+          Sandworm / Gamaredon
+        - Mandiant UNC3753 cluster identity preserved verbatim
+          (aka Luna Moth / Chatty Spider / Silent Ransom Group);
+          operator-deferred /new-actor candidacy flagged per
+          Hard Rule 5 BINDING — not auto-scaffolded
+        - Mandiant "unknown threat actor" attribution preserved
+          verbatim for CVE-2026-5426; Sitecore ViewState
+          methodology-shared NOT cluster-shared; no cross-walk
+          to any roster actor
+        - DragonForce <-> Scattered Spider Symantec-asserted-
+          and-recorded-only; Scattered Spider dossier mutation
+          REMAINS PAUSED pending independent second-IR-vendor
+          corroboration
+
+      Hard Rule 5 not triggered (no HIGH threat-box scorings in
+      flight, no /approve-scoring pending). UNC3753 /new-actor
+      candidacy flagged operator-deferred per binding requirement.
+
+      Hard Rule 6 preserved (per audit above): Beaumont 5-word
+      "the data is legit" one-per-source (Layer 1 + Layer 2);
+      Lenovo 3-word "looking into it" one-per-source (Layer 1);
+      Mandiant 3-word "unknown threat actor" one-per-source
+      (Layer 1 quoted, Layer 2 italicized); Diachenko 6-word
+      "Russian-speaking multi-operator threat group" one-per-
+      source (Layer 1); no other direct quotes in brief body.
+
+      Hard Rule 8 preserved: Splunk first-party 30-day lookback
+      across all four PM findings + carry-forward returned ZERO
+      external-indicator hits on defenseclaw_local + archimedes
+      (only archimedes:operation self-telemetry; tracked-IOC
+      match count = 0 on the combined 46-IOC actor + unattributed
+      set per sentinel sweep streak — now 19+ cumulative clean
+      sentinel cycles since 2026-06-13 18:00 EDT, ~90h+ continuous
+      clean window). Frank not running Fortinet VPN appliance
+      fleet at scale (FortiBleed), not a US law firm (UNC3753),
+      not a KnowledgeDeliver LMS tenant (Japanese e-learning;
+      CVE-2026-5426), not a Microsoft Teams TURN-relay-targeted
+      tenant (DragonForce). Visibility-bounded absence flagged
+      not negative evidence.
 
       Pre-existing YAML defect in this file (line ~32457,
       unescaped apostrophe in zdi_dustin_childs quote scalar)

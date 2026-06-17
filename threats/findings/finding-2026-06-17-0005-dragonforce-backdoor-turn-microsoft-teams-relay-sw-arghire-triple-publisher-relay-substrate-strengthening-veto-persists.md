@@ -153,8 +153,34 @@ analyst_review_required: true
 red_team_review_required: false  # WEP ceiling unchanged at "likely"
 red_team_review: null
 
+# ============================================================================
+# PM UPDATE — SA-Paganini publisher-relay extends to quadruple-publisher
+# ============================================================================
+pm_update:
+  update_id: pm-update-2026-06-17-0005
+  updated_at: 2026-06-17T16:00:00-04:00
+  grading_run_id: afternoon-20260617-160000
+  update_type: substrate_strengthening_publisher_relay_only_non_substrate_shifting_veto_persists
+  raw_signal_members_pm:
+    - raw-2026-06-17-pm-005-dragonforce-sa-paganini-fullbody
+  substrate_changes:
+    publisher_cardinality: "BC+HNS+SW triple-publisher (AM) -> BC+HNS+SW+SA quadruple-publisher journalistic relay (PM)"
+    net_new_technical_detail: "NONE beyond Symantec primary already documented in finding-2026-06-16-0004 / finding-2026-06-17-0005"
+    veto_layer_status:
+      single_vendor_on_novel_ttp_veto: "PERSISTS — Symantec sole IR-vendor on Microsoft Teams TURN-relay novel TTP; Mandiant / CrowdStrike / Unit 42 / MSTIC corroboration remains substrate-that-would-lift-veto"
+      scattered_spider_dossier_mutation: "REMAINS-PAUSED per Hard Rule 2 BINDING; Symantec-asserted DragonForce <-> Scattered-Spider linkage preserved verbatim; Archimedes does NOT cross-walk on Symantec alone"
+    wep_revision:
+      backdoor_turn_family_existence_per_symantec: "UNCHANGED at likely"
+      microsoft_teams_turn_relay_abuse_novel_ttp: "UNCHANGED at likely (publisher-independence is NOT IR-vendor-corroboration)"
+      dragonforce_scattered_spider_linkage: "UNCHANGED at possibly (single-IR-vendor contested-attribution)"
+  hard_rules_audit:
+    rule_1: "PRESERVED — no credentials, no PII, no ITAR-questionable content"
+    rule_2: "PRESERVED — Symantec-asserted Scattered-Spider linkage preserved verbatim; Scattered-Spider dossier mutation PAUSED"
+    rule_6: "Symantec block 11-word excerpt at-cap in raw-signal substrate flagged for briefer paraphrase-only handling"
+    rule_8: "Splunk first-party check carried from AM; visibility-bounded absence stands"
+
 tlp: CLEAR
-published_in_briefs: [2026-06-17-morning]
+published_in_briefs: [2026-06-17-morning, 2026-06-17-afternoon]
 retracted: false
 retraction_brief_id: null
 ---
@@ -193,3 +219,9 @@ None new in SW relay. IOCs at Symantec primary documented in finding-2026-06-16-
 
 - **IR-vendor corroboration watch** — Mandiant / CrowdStrike / Unit 42 / MSTIC independent telemetry on Symantec Backdoor.Turn / Microsoft Teams TURN-relay abuse novel TTP remains substrate-that-would-lift-veto. Any such corroboration would also unblock Scattered-Spider dossier mutation evaluation (currently PAUSED per Hard Rule 2 BINDING).
 - **Scattered-Spider linkage** — Symantec sole-source on the linkage claim; Hard Rule 2 prohibits Archimedes from originating cross-walk. Watch for independent IR-vendor confirmation.
+
+## PM UPDATE 2026-06-17 16:00 — SA-Paganini publisher-relay extends to quadruple-publisher
+
+Security Affairs (Pierluigi Paganini) full-body relay published 2026-06-17 15:55 UTC extends the journalistic-relay chain from BC+HNS+SW triple-publisher (AM) to BC+HNS+SW+SA quadruple-publisher. **No net-new technical detail** beyond what Symantec primary documents in finding-2026-06-16-0004 — Backdoor.Turn (Go-based, injected into legitimate DbgView64.exe; Teams TURN-relay anonymous-visitor-token + QUIC C2; BYOVD against Huawei HWAuidoOs2Ec.sys + Palo Alto-impersonating custom driver; Ghost Calls Black Hat 2025 inspiration). SA-Paganini is editorial relay only; substrate-strengthening on publisher-independence layer.
+
+Single-vendor-on-novel-TTP veto **PERSISTS** — Symantec sole IR-vendor on Microsoft Teams TURN-relay abuse novel TTP. Mandiant / CrowdStrike / Unit 42 / MSTIC independent telemetry remains substrate-that-would-lift-veto. Symantec-asserted DragonForce <-> Scattered-Spider linkage preserved verbatim per Hard Rule 2 BINDING — Scattered-Spider dossier mutation **REMAINS-PAUSED** pending independent second-IR-vendor corroboration. WEP unchanged at "likely" on novel-TTP layer.

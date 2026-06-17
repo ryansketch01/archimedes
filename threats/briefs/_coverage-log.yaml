@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-16T16:00:00-04:00  # briefer 2026-06-16 afternoon composition complete; pm-001 (Rockwell ICS cluster) + pm-update-001 (FishMonger third-publisher relay) + pm-002 (Cal Water status pivot) + pm-brief-meta populated; am-003 FishMonger covered_in list extended to include 2026-06-16-afternoon (UPDATE pivot)
+last_updated: 2026-06-17T08:00:00-04:00  # briefer 2026-06-17 morning composition complete; am-update-001 (FortiSandbox KEVIntel substrate-pivot RED-TEAM-CAPPED at likely cluster-wide) + am-002 (FortiBleed SocRadar monitoring-tier) + am-003 (Mandiant direct-page title-snapshot net-new) + am-update-002 (FishMonger quintuple-publisher + UEFI-bootkit hint) + am-update-003 (DragonForce triple-publisher) + am-brief-meta populated
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -37384,6 +37384,441 @@ entries:
       apostrophe in zdi_dustin_childs quote scalar) carried forward
       from prior commits — still present, still flagged for
       operator follow-up, out-of-scope for this briefer cycle.
+
+  - id: 2026-06-17-am-update-001-fortisandbox-three-cve-kevintel-second-ir-vendor-substrate-pivot-defused-dual-corroboration-wep-capped-at-likely-cluster-wide-per-red-team
+    covered_in: [2026-06-17-morning]
+    headline: "UPDATE on finding-2026-06-16-0002: SW (Kovacs) surfaces KEVIntel as second IR-vendor observation channel for CVE-2026-39808 (June 12) + CVE-2026-39813 (June 15) FortiSandbox active exploitation; red-team CAPPED WEP at likely cluster-wide pending KEVIntel direct-retrieval (independence-from-Defused linchpin is collector-synthesized not source-quoted; KEVIntel not in source-grades.yaml; name semantically signals KEV-feed aggregation; CISA KEV silence T+46h mild contrary evidence); CVE-2026-25089 remains Defused-only"
+    topic_tags:
+      - fortinet
+      - fortisandbox
+      - active-exploitation
+      - ir-vendor-corroboration-substrate-pivot
+      - kevintel-provisional-b-pending-direct-retrieval
+      - red-team-wep-cap-from-very-likely-to-likely
+      - cisa-kev-listing-pending
+      - single-source-veto-persists-on-cve-25089
+      - hard-rule-2-no-attribution-origination
+      - hard-rule-8-splunk-first-party-zero-hits
+    related_actors: []
+    related_vulns:
+      - CVE-2026-25089
+      - CVE-2026-39813
+      - CVE-2026-39808
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-06-17-0001
+      - finding-2026-06-16-0002   # UPDATE pivot target
+    update_pivots:
+      - finding_id: finding-2026-06-16-0002
+        update_id: finding-2026-06-17-0001
+        pivot_type: substrate_pivot_dual_ir_vendor_corroboration_provisional_pending_kevintel_direct_retrieval
+    resurface_if:
+      - kevintel_direct_retrieval_resolves_independence_question
+      - cisa_kev_listing_for_one_or_more_of_three_cves
+      - first_party_ioc_hit
+      - new_victims_confirmed
+      - escalation_to_exploitation
+      - patch_adoption_telemetry_published
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+
+  - id: 2026-06-17-am-002-socradar-fortibleed-30000-compromised-fortinet-firewalls-credential-stuffing-defense-industry-vpn-endpoint-hedge-single-source-veto-monitoring-tier
+    covered_in: [2026-06-17-morning]
+    headline: "FortiBleed: SocRadar IR-vendor primary observation (via SW Kovacs relay) of ~30K compromised Fortinet firewalls in separate credential-stuffing campaign — A&D-VPN-endpoint claim is vendor-hedged 'appears to be' single-weak-indicator (11-word at-cap quote preserved); broad-attribution-language Russian-speaking-actors recorded per SocRadar NOT cross-walked per Hard Rule 2; WEP capped at likely on campaign-scale, possibly on A&D-VPN-endpoint targeting; single-IR-vendor (SocRadar) on both claims"
+    topic_tags:
+      - fortinet
+      - fortinet-vpn
+      - fortibleed
+      - credential-stuffing
+      - ir-vendor-single-source-veto-socradar
+      - ad-relevance-vendor-hedged-single-weak-indicator
+      - hard-rule-2-attribution-recorded-not-cross-walked
+      - hard-rule-6-eleven-word-quote-at-cap
+      - hard-rule-8-splunk-first-party-zero-hits
+      - operator-deferred-investigate-fortibleed-candidacy
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - fortibleed-2026-06
+    finding_ids:
+      - finding-2026-06-17-0002
+    resurface_if:
+      - ad_prime_named_victim_emerges
+      - independent_ir_vendor_corroboration
+      - socradar_publishes_harvested_credential_dump_source_attribution
+      - first_party_ioc_hit
+      - new_attribution
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+
+  - id: 2026-06-17-am-003-mandiant-direct-page-title-snapshot-net-new-us-law-firms-targeted-campaign-knowledgedeliver-viewstate-deserialization-body-retrieval-deferred
+    covered_in: [2026-06-17-morning]
+    headline: "Mandiant / Google Threat Intel direct-page index WebFetch snapshot surfaces two net-new title substrates: 'Seeking Counsel: Ongoing Targeted Campaign Against US Law Firms' (~19-min, A&D-supply-chain-adjacent via ITAR/export-control counsel) and 'Exploitation of KnowledgeDeliver via ViewState Deserialization' (~7-min, Japanese e-learning ASP.NET product); title-only substrate, no IOCs, no publication dates (Mandiant page design); WEP likely on title-asserted claims; body retrieval operator-deferred"
+    topic_tags:
+      - mandiant-direct-page-title-snapshot
+      - mandiant-feedburner-rss-canonical-swap-pending-28-failures
+      - us-law-firms-targeted-campaign-net-new
+      - knowledgedeliver-viewstate-deserialization-net-new
+      - title-only-substrate-body-retrieval-deferred
+      - ad-supply-chain-adjacency-via-itar-export-control-counsel
+      - unc6508-infinitered-carry-forward-non-substrate-shifting
+      - shinyhunters-peoplesoft-education-cross-walk
+      - unc6692-snow-flurries-new-actor-candidacy-carry-forward
+      - hard-rule-2-mandiant-cluster-identifiers-verbatim
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - mandiant-us-law-firms-2026-06
+      - mandiant-knowledgedeliver-viewstate-2026-06
+    finding_ids:
+      - finding-2026-06-17-0003
+    resurface_if:
+      - article_body_retrieved_substrate_promotion_to_credibility_2
+      - ad_prime_legal_counsel_named_victim_in_law_firms_body
+      - cve_assignment_for_knowledgedeliver_viewstate
+      - independent_corroboration
+      - shinyhunters_new_actor_candidacy_advancement
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+
+  - id: 2026-06-17-am-update-002-fishmonger-sprysocks-windows-quintuple-publisher-relay-uefi-bootkit-hint-cve-2023-24932-substrate-strengthening-veto-persists
+    covered_in: [2026-06-17-morning]
+    headline: "UPDATE on finding-2026-06-16-0001: Security Affairs (Paganini) full-body retrieval extends ESET FishMonger SprySOCKS Windows substrate to BC+THN+DR+SA+ESET quintuple-publisher relay; net-new surface UEFI bootkit hint via CVE-2023-24932 BlackLotus per ESET hedge 'limited indications suggesting the possible use' preserved verbatim (7-word at-cap quote); WIN_DRV kernel driver RawWNPF+DriverLoader; WIN_PLUS Print Spooler injection via svchost.exe; TCP traffic diversion; SprySOCKS-Trochilus-RedLeaves lineage Webworm+SixLittleMonkeys overlap; WEP unchanged at likely; single-vendor-on-cluster-identity veto persists (ESET sole IR-vendor on FishMonger==i-Soon-contractor); Mandiant/CrowdStrike/Unit-42/MSTIC corroboration would lift veto"
+    topic_tags:
+      - fishmonger-sprysocks-windows
+      - quintuple-publisher-journalistic-relay-publisher-independence
+      - uefi-bootkit-hint-cve-2023-24932-blacklotus-novel-substrate
+      - persistence-survives-os-reinstall-threat-model-escalation
+      - firmware-attestation-secure-boot-revocation-defender-alignment
+      - win-drv-kernel-driver-rawwnpf-driverloader
+      - win-plus-print-spooler-injection-svchost
+      - sprysocks-trochilus-redleaves-codebase-lineage
+      - single-vendor-on-cluster-identity-veto-persists
+      - hard-rule-2-eset-i-soon-contractor-preserved-no-apt41-cross-walk
+      - hard-rule-6-eset-hedge-7-word-quote-at-cap
+    related_actors: []
+    related_vulns:
+      - CVE-2023-24932
+    related_campaigns: []
+    finding_ids:
+      - finding-2026-06-17-0004
+      - finding-2026-06-16-0001   # UPDATE pivot target
+    update_pivots:
+      - finding_id: finding-2026-06-16-0001
+        update_id: finding-2026-06-17-0004
+        pivot_type: substrate_strengthening_quintuple_publisher_relay_plus_uefi_bootkit_hint
+    resurface_if:
+      - independent_ir_vendor_corroboration_mandiant_crowdstrike_unit_42_mstic
+      - uefi_bootkit_confirmed_with_iocs
+      - ad_prime_named_victim
+      - first_party_ioc_hit
+      - new_attribution
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+
+  - id: 2026-06-17-am-update-003-dragonforce-backdoor-turn-microsoft-teams-turn-relay-triple-publisher-relay-veto-persists
+    covered_in: [2026-06-17-morning]
+    headline: "UPDATE on finding-2026-06-16-0004: SecurityWeek (Arghire) third independent B-grade publisher relay extends Symantec DragonForce Backdoor.Turn / Microsoft Teams TURN-relay abuse substrate from BC+HNS to BC+HNS+SW triple-publisher journalistic relay; no net-new technical detail beyond Symantec primary; WEP unchanged at likely; single-vendor-on-novel-TTP veto persists (Symantec sole IR-vendor); Scattered-Spider dossier mutation PAUSED per Hard Rule 2 pending independent second-IR-vendor corroboration"
+    topic_tags:
+      - dragonforce-ransomware
+      - backdoor-turn-microsoft-teams-turn-relay-abuse-novel-ttp
+      - triple-publisher-journalistic-relay-publisher-independence
+      - single-vendor-on-novel-ttp-veto-persists
+      - scattered-spider-dossier-mutation-paused-hard-rule-2
+      - hard-rule-2-no-cross-walk-on-symantec-alone
+    related_actors:
+      - "013"   # Scattered Spider (Symantec-asserted linkage; Hard Rule 2 binding)
+    related_vulns: []
+    related_campaigns:
+      - dragonforce-backdoor-turn-teams-relay-2025-12
+    finding_ids:
+      - finding-2026-06-17-0005
+      - finding-2026-06-16-0004   # UPDATE pivot target
+    update_pivots:
+      - finding_id: finding-2026-06-16-0004
+        update_id: finding-2026-06-17-0005
+        pivot_type: substrate_strengthening_triple_publisher_relay_veto_persists
+    resurface_if:
+      - independent_ir_vendor_corroboration_mandiant_crowdstrike_unit_42_mstic
+      - scattered_spider_linkage_substrate_strengthens_with_second_ir_vendor
+      - ad_prime_named_victim
+      - first_party_ioc_hit
+      - new_iocs_or_ttps
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+
+  - id: 2026-06-17-am-brief-meta
+    covered_in: [2026-06-17-morning]
+    brief_file: threats/briefs/2026-06-17-morning.md
+    headline: "2026-06-17 morning brief — 1 net-new graded finding (FortiBleed monitoring-tier) + 3 UPDATE pivots (FortiSandbox KEVIntel substrate-pivot RED-TEAM-CAPPED at likely cluster-wide, FishMonger quintuple-publisher + UEFI-bootkit hint, DragonForce triple-publisher) + 1 net-new Other Signal A3 monitoring (Mandiant title-snapshot) + KEV-compliance cohort + standing carry-forward; pre-flight 13-of-13 PASS; Layer 1 ~820 words slightly over 800 doctrine band (dense substrate cycle 3 UPDATEs + 2 net-new); Layer 2 Discord Summary chunked into 2 parts (Part 1 ~1450 chars / Part 2 ~1430 chars) both under 1900-char hard ceiling"
+    topic_tags:
+      - morning-brief
+      - meta-tracking
+      - 1-net-new-finding-fortibleed-monitoring
+      - 3-update-pivots-fortisandbox-fishmonger-dragonforce
+      - 1-net-new-monitoring-mandiant-title-snapshot
+      - red-team-wep-cap-fortisandbox-very-likely-to-likely
+      - preflight-13-of-13-pass
+      - layer-2-chunked-2-parts-under-1900-char-ceiling
+      - hard-rule-2-binding-preserved-no-attribution-origination-kevintel-socradar-russian-speakers-fishmonger-apt41-dragonforce-scattered-spider
+      - hard-rule-6-quote-discipline-preserved-socradar-11-word-at-cap-eset-7-word-at-cap-one-quote-per-source
+      - hard-rule-8-binding-preserved-splunk-first-party-zero-hits-across-all-five-findings
+    related_actors:
+      - "013"   # Scattered Spider (DragonForce UPDATE; Hard Rule 2 binding)
+      - "014"   # Handala Hack (Iran Cyber Watch carry-forward)
+    related_vulns:
+      - CVE-2026-25089
+      - CVE-2026-39813
+      - CVE-2026-39808
+      - CVE-2023-24932   # FishMonger UEFI bootkit hint
+      - CVE-2026-54420   # KEV cohort
+      - CVE-2026-48907   # KEV cohort
+      - CVE-2026-20262   # KEV cohort
+      - CVE-2026-50656   # RoguePlanet Defender LPE monitoring watch
+    related_campaigns:
+      - fortibleed-2026-06
+      - mandiant-us-law-firms-2026-06
+      - mandiant-knowledgedeliver-viewstate-2026-06
+      - dragonforce-backdoor-turn-teams-relay-2025-12
+    finding_ids:
+      - finding-2026-06-17-0001
+      - finding-2026-06-17-0002
+      - finding-2026-06-17-0003
+      - finding-2026-06-17-0004
+      - finding-2026-06-17-0005
+    update_pivots:
+      - finding_id: finding-2026-06-16-0002
+        update_id: finding-2026-06-17-0001
+        pivot_type: substrate_pivot_dual_ir_vendor_corroboration_provisional_pending_kevintel_direct_retrieval
+      - finding_id: finding-2026-06-16-0001
+        update_id: finding-2026-06-17-0004
+        pivot_type: substrate_strengthening_quintuple_publisher_relay_plus_uefi_bootkit_hint
+      - finding_id: finding-2026-06-16-0004
+        update_id: finding-2026-06-17-0005
+        pivot_type: substrate_strengthening_triple_publisher_relay_veto_persists
+    carry_forward_callouts:
+      - finding-2026-06-15-0006   # Cisco SD-WAN CVE-2026-20262 KEV cohort
+      - finding-2026-06-15-0007   # Velvet Ant / Operation Highland
+      - finding-2026-06-15-0010   # Anthropic Fable 5 / Mythos 5 export-control
+      - finding-2026-06-15-0011   # CVE-2026-42824 SearchLeak M365 Copilot
+      - finding-2026-06-16-0005   # Rockwell PSIRT ICS cluster
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - patch_released_for_associated_cve
+      - cisa_kev_listing_for_fortisandbox_or_knowledgedeliver
+      - kevintel_direct_retrieval_resolves_independence_question
+      - independent_ir_vendor_corroboration_of_fishmonger_or_dragonforce_clusters
+    first_covered: 2026-06-17
+    last_covered: 2026-06-17
+    retraction: null
+    test: false
+    word_count_layer_1: 820
+    layer_2_discord_summary:
+      parts: 2
+      part_1_chars_estimate: 1450
+      part_2_chars_estimate: 1430
+      under_1900_buffer: true
+      word_count_total: 295
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 2   # passed on second composition after two trims: (1) SocRadar second-quote ("likely Russian speakers") replaced with paraphrase in Layer 1 + Layer 2 to preserve one-quote-per-source; (2) Layer 2 over 2000-char single-message ceiling required chunking
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-17-0001
+          append_brief_id: 2026-06-17-morning
+        - finding_id: finding-2026-06-17-0002
+          append_brief_id: 2026-06-17-morning
+        - finding_id: finding-2026-06-17-0003
+          append_brief_id: 2026-06-17-morning
+        - finding_id: finding-2026-06-17-0004
+          append_brief_id: 2026-06-17-morning
+        - finding_id: finding-2026-06-17-0005
+          append_brief_id: 2026-06-17-morning
+      operator_deferred_handoffs_surfaced:
+        - "source-grades.yaml addition: KEVIntel provisional-B per cheatsheet IR-vendor pattern (red-team cap blocks promotion as corroboration substrate until direct retrieval; not in source-grades even as provisional-addition awaiting-ratification)"
+        - "source-grades.yaml addition: SocRadar provisional-B per cheatsheet IR-vendor pattern (FortiBleed single-IR-vendor; first cited via SW relay)"
+        - "/investigate-FortiBleed candidacy (substrate-strengthening watch if A&D-prime named victim emerges or independent IR-vendor corroborates)"
+        - "Mandiant direct-WebFetch body-retrieval for #4 US Law Firms (A&D-supply-chain-adjacent) and #5 KnowledgeDeliver ViewState (potential new CVE)"
+        - "vuln-tracker handoffs: all carried forward unchanged from PM brief 8fc1987 (CVE-2026-20262 Cisco SD-WAN + CVE-2026-42824 SearchLeak M365 Copilot + FortiSandbox 3-CVE cluster CVE-2026-25089 + CVE-2026-39813 + CVE-2026-39808 + Rockwell PSIRT 5-CVE cluster CVE-2026-0646 paired CVE-2026-0647 FLEX I/O priority)"
+        - "Mandiant feedburner RSS canonical-swap decision: 28th consecutive failure, direct HTML success pattern entrenched, operator decision pending"
+        - "Scattered-Spider dossier mutation remains PAUSED per Hard Rule 2 (DragonForce UPDATE substrate-strengthening triple-publisher publisher-independence but not IR-vendor-independent corroboration)"
+        - "/new-actor FishMonger / Earth-Lusca / ShinyHunters / UNC6692 Snow Flurries candidacies all carry-forward operator-deferred (substrate not yet IR-vendor-substantiated)"
+        - "Handala #014 dossier handoff carry-forward (last_reviewed null, next_review_due 2026-04-25 ~53d past) — Cal Water NEGATIVE binding reinforced per PM brief 8fc1987 stands"
+      kev_compliance_cohort_state:
+        total_cves_tracked: 6
+        incoming_active:
+          - cve: CVE-2026-54420
+            deadline: 2026-06-18
+            hours_remaining_from_brief: 10
+            ad_relevance: low
+          - cve: CVE-2026-48907
+            deadline: 2026-06-19
+            days_remaining_from_brief: 2
+            ad_relevance: low
+          - cve: CVE-2026-20262
+            deadline: 2026-06-29
+            days_remaining_from_brief: 12
+            ad_relevance: medium_high
+        retrospective_phase:
+          - cve: CVE-2026-35273
+            deadline: 2026-06-15
+            status: closed_eod_2026_06_15
+          - cve: CVE-2026-10520
+            deadline: 2026-06-14
+            status: closed_72h_past
+          - cve: CVE-2026-0257
+            deadline: 2026-06-01
+            status: closed_16d_plus_past
+      hard_rules_audit:
+        hard_rule_2_no_cross_walk_originated:
+          - finding-0001-kevintel-independence-collector-synthesized-not-source-quoted-red-team-cap-applied
+          - finding-0002-socradar-likely-russian-speakers-recorded-not-cross-walked-to-apt28-sandworm-gamaredon
+          - finding-0003-mandiant-cluster-identifiers-unc6508-shinyhunters-unc6692-china-nexus-preserved-verbatim
+          - finding-0004-fishmonger-not-cross-walked-to-apt41-eset-i-soon-contractor-preserved
+          - finding-0005-dragonforce-scattered-spider-symantec-asserted-linkage-recorded-only-dossier-mutation-paused
+        hard_rule_5_no_high_threat_box_scorings_in_flight: true
+        hard_rule_6_quote_discipline:
+          - socradar_11_word_quote_at_cap_in_layer_1_paraphrased_in_layer_2_to_preserve_one_quote_per_source
+          - eset_7_word_hedge_quote_at_cap_in_layer_1_and_layer_2_paraphrase_only_in_layer_2_bullet
+          - no_other_direct_quotes_in_brief_body
+        hard_rule_8_first_party_splunk:
+          all_five_findings: zero_hits_30d_lookback_across_defenseclaw_local_and_archimedes
+          visibility_bounded_absence_flagged_for_each: true
+          frank_not_running_fortisandbox_or_fortinet_vpn_publicly_catalogued_or_redcap_or_korean_or_japanese_e_learning_or_us_law_firm_or_microsoft_teams_tenant_publicly_catalogued_for_dragonforce_turn_relay_targeting: true
+    notes: |
+      2026-06-17 morning brief composed by briefer subagent after
+      grader pass produced 5 net-new finding records (1 monitoring-
+      tier + 1 net-new A3 + 3 UPDATE pivots on prior findings). Red-
+      team review was triggered for finding-0001 (KEVIntel substrate-
+      pivot to dual-IR-vendor corroboration on CVE-2026-39808 +
+      CVE-2026-39813 active-exploitation layers — grader-proposed
+      WEP lift to very_likely). Red-team CAPPED WEP at "likely"
+      cluster-wide based on:
+        (a) KEVIntel-independence-from-Defused linchpin is collector-
+            synthesized, not source-quoted from SW article body;
+        (b) KEVIntel not in source-grades.yaml even as provisional
+            addition awaiting ratification (defused-cyber IS listed,
+            so the omission is structurally telling);
+        (c) "KEVIntel" name semantically signals KEV-feed aggregation
+            (consumer/downstream pattern) rather than primary
+            telemetry;
+        (d) CISA KEV silence at T+46h is mild contrary evidence on
+            the dual-corroboration story (KEV typically requires
+            at-least-two-independent-observation-channels for listing
+            and would have produced one by now if the story held).
+      Red-team recommendation CONFIRM-WITH-CAVEATS — brief ships
+      with explicit qualifying language and "do not treat as
+      confirmed dual-corroboration" framing in Active Threats lead.
+
+      Other four findings shipped at grader-assigned WEP "likely"
+      with no red-team escalation. Single-source vetoes persist on
+      all five findings (different layers per finding).
+
+      Layer 1 word count ~820 — slightly above 800 doctrine band,
+      consistent with prior dense-substrate cycles (2026-06-16
+      morning landed at 815). Three UPDATE pivots + one net-new
+      Active-Threats-tier finding + one Other Signal monitoring +
+      standing carry-forward exceeds doctrine 400-800 target band
+      but well within 1200 hard cap. Smart-brevity discipline
+      applied through three trim iterations (Sector Focus
+      compressed, FishMonger bullet tightened, Other Signal
+      collapsed to two combined paragraphs + carry-forward one-
+      liner). Further compression would lose technical detail
+      (e.g., FortiSandbox red-team cap framing, FishMonger UEFI-
+      bootkit-hint novel substrate, KEV-cohort deadline-approaching
+      tracking surface) that the operator needs at action-tier.
+
+      Layer 2 Discord Summary required chunking into 2 parts due
+      to total ~2880 chars exceeding 1900-char single-message
+      ceiling. Part 1 (greeting + Active Threats + Vulnerabilities
+      + first Actor Activity bullet, ~1450 chars). Part 2 (second
+      Actor Activity bullet + Other Signal two bullets, ~1430
+      chars). Both parts well under 1900-char hard ceiling.
+      Layer 2 total word count ~295 (within 150-300 doctrine
+      band, right at ceiling for dense substrate cycle).
+
+      Pre-flight 13-of-13 PASS on second composition. First
+      composition had two issues: (1) SocRadar quoted twice in
+      Layer 1 + Layer 2 ("appears to be" hedge + "likely Russian
+      speakers" attribution = 2 quote fragments per source per
+      brief; Hard Rule 6 violation); fixed by paraphrasing
+      "likely Russian speakers" to "Russian-speaking-actor
+      attribution per SocRadar" in both layers, retaining the
+      11-word at-cap quote of the VPN-endpoint hedge as the single
+      SocRadar quote. (2) Layer 2 over single-message 2000-char
+      ceiling required chunking; both parts confirmed under 1900.
+
+      Hard Rule 2 binding preserved on all five findings — no
+      attribution-origination by Archimedes:
+        - KEVIntel-independence framing is collector-synthesized
+          (red-team cap captures this — brief explicitly states
+          "rests on collector synthesis, not source-quoted text")
+        - SocRadar "likely Russian speakers" recorded NOT cross-
+          walked to APT28 / Sandworm / Gamaredon
+        - Mandiant cluster identifiers (UNC6508 INFINITERED,
+          ShinyHunters, UNC6692 Snow Flurries, "China-Nexus")
+          preserved verbatim, no cross-walk on title-only
+          substrate
+        - FishMonger == i-Soon-contractor preserved per ESET, no
+          cross-walk to APT41 / Winnti umbrella
+        - DragonForce ↔ Scattered Spider linkage Symantec-asserted-
+          and-recorded-only; Scattered Spider dossier mutation
+          remains PAUSED pending independent second-IR-vendor
+          corroboration
+
+      Hard Rule 5 not triggered (no HIGH threat-box scorings in
+      flight, no /approve-scoring pending).
+
+      Hard Rule 6 preserved (per audit above): SocRadar 11-word at-
+      cap quote one-per-source in Layer 1, paraphrased in Layer 2;
+      ESET 7-word at-cap quote one-per-source in Layer 1 ("limited
+      indications suggesting the possible use"), paraphrased in
+      Layer 2 ("hedged BlackLotus reference"); no other direct
+      quotes in brief body.
+
+      Hard Rule 8 preserved: Splunk first-party 30-day lookback
+      across all five findings returned ZERO external-indicator
+      hits on defenseclaw_local + archimedes (only archimedes:
+      operation self-telemetry; tracked-IOC match count = 0 on
+      the combined 46-IOC actor + unattributed set per recent
+      sentinel sweep streak). Frank not known to operate Fortinet
+      VPN appliance fleet at scale, FortiSandbox sandboxing
+      platform, REDCap medical research institution stack,
+      Korean/Japanese e-learning environment, US law firm
+      practice, Microsoft Teams TURN-relay-targeted tenant, or
+      any of the named victim profile patterns across the five
+      findings. Visibility-bounded absence flagged not negative
+      evidence.
+
+      Sentinel sweep streak: 18+ cumulative clean sentinel cycles
+      since 2026-06-13 18:00 EDT (~84h+ continuous clean window
+      across defenseclaw_local + archimedes on combined 46-IOC
+      tracked set per latest pre-brief sentinel sweep). Hard
+      Rule 8 binding: silent-Splunk-does-NOT-disconfirm; Frank's
+      environment profile does NOT intersect any of the five
+      findings' named victim or sector patterns.
+
+      Pre-existing YAML defect in this file (line ~32457,
+      unescaped apostrophe in zdi_dustin_childs quote scalar)
+      carried forward from prior commits — still present, still
+      flagged for operator follow-up, out-of-scope for this
+      briefer cycle.
 
 # ============================================================================
 # Valid resurface_if conditions

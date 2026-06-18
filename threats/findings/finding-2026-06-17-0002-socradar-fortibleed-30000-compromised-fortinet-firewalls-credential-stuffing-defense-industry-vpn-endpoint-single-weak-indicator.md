@@ -158,6 +158,14 @@ inclusion:
 
 analyst_review_required: true
 red_team_review_required: true  # PM UPDATE: campaign-scale WEP lifted to very_likely per dual-IR-vendor (Hudson Rock + SocRadar)
+red_team_review_complete: true  # AM-2026-06-18 red-team review complete on AM UPDATE substrate-pivot; see am_update_2026_06_18.red_team_review_am block
+red_team_outcome: qualify
+red_team_outcome_am: flag_weakness_recommend_layer_specific_wep_caps  # Turkish NATO contractor + classified-docs caps to 'possibly'; campaign-scale + named-corporate-victim layers hold at 'likely'; Fortinet vendor denial at 'roughly_even_chance'
+wep_ceiling_adjusted_by_red_team_am:
+  turkish_nato_contractor_named_victim: possibly  # capped from AM 'likely'
+  classified_defense_documents_exfiltration_specific: possibly  # capped from implicit 'likely'
+wep_ceiling_adjustment_reason_red_team_am: "Single Hudson-Rock-Diachenko discovery-and-allegation chain on per-victim specific claims; quadruple-publisher independence is publisher-relay of same source pathway, not IR-vendor independence on per-victim allegation. Confirmation-bias indicator: substrate growth across PM + 3 FLASH sweeps + AM is publisher-count growth not pathway growth. Five publishers all relay same Diachenko-screenshot + Hudson-Rock-analysis chain; no outside-the-cluster verifier (no CISA, no Mandiant/Unit-42/CrowdStrike/MSTIC, no named-victim first-party IR confirmation)."
+publication_blocked: false
 red_team_review:
   reviewed_at: 2026-06-17T16:05:00-04:00
   reviewed_by: red-team-analyst
@@ -326,8 +334,329 @@ pm_update:
     rule_7: "PRESERVED — no credential values"
     rule_8: "Splunk first-party check carried from AM; visibility-bounded absence stands"
 
+# ============================================================================
+# AM UPDATE 2026-06-18 — sixth-publisher SA-Paganini relay; A&D-prime named-victim layer confirmed via additional independent publisher; vendor denial conflict-surface logged
+# ============================================================================
+am_update_2026_06_18:
+  update_id: am-update-2026-06-18-0002
+  updated_at: 2026-06-18T08:14:00-04:00
+  grading_run_id: morning-20260618-080000
+  update_type: substrate_pivot_publisher_relay_consolidation_and_vendor_denial_conflict_surface
+  raw_signal_members_am:
+    - raw-2026-06-18-am-003-sa-fortibleed-substrate-strengthening-75k-fortinet-firewalls
+  substrate_changes:
+    publisher_cardinality: "SW + BC + TR + Ars-Goodin (PM) -> + SA-Paganini sixth-publisher relay. SA-Paganini consolidates Diachenko + Beaumont direct quotes in a single trade-press article; substrate-strengthening on publisher-relay layer only, NOT a net-new independent IR-vendor."
+    ir_vendor_cardinality_unchanged: "Hudson Rock + Beaumont + Diachenko/SecurityDiscovery.com + SocRadar — quadruple IR-vendor surface remains, no fifth IR-vendor surfaced this sweep."
+    ad_prime_named_victim_layer: "REINFORCED — Siemens (German industrial / defense conglomerate, explicit) and Turkish NATO defense contractor with classified-defense-document exfiltration claim are explicitly preserved across TR-Jones + Ars-Goodin + this SA-Paganini relay. Broader named list (Foxconn, Samsung, Comcast, Lenovo, PwC, Accenture, Oracle, Chevron, Fortinet-itself) consolidated."
+    fortinet_vendor_denial_conflict_surface: |
+      Fortinet vendor denial framing (31-word verbatim string OVER 15-word ceiling per Hard Rule 6 — EXCLUDED from quote-citation, paraphrased only):
+      Fortinet characterizes the data as a resharing of previously-leaked credential data combined with present-day brute-force activity, not a fresh device-compromise incident or new vulnerability. This creates a substrate-resolution-pending dynamic: multi-IR-vendor confirmation (Hudson Rock + Beaumont + Diachenko + SocRadar all align on dataset-authenticity AND active-recency) vs. vendor denial (resharing + bruteforcing characterization). Per Hard Rule 8 first-party precedence does NOT resolve this externally — neither side is first-party Splunk telemetry from Frank — but the IR-vendor preponderance favors the dataset-authenticity characterization.
+    attribution_layer_unchanged: "Diachenko 'Russian-speaking multi-operator threat group' preserved verbatim. Hard Rule 2 BINDING — Archimedes does NOT cross-walk to APT28/Sandworm/Gamaredon/Forest Blizzard/FIN6 or any roster Russia-nexus actor."
+    veto_layer_status_post_am_update:
+      campaign_scale_veto: "Hudson Rock dual-IR-vendor on campaign-scale + Beaumont independent verification + SA-Paganini sixth-publisher consolidation; veto remains partially-lifted per PM red-team cap at 'likely' (Hudson-Rock-independence-from-Diachenko-discovery-chain still unverified)."
+      ad_prime_named_victim_veto: "PARTIALLY LIFTED — Siemens + Turkish NATO defense contractor named-victim layer is now preserved across four independent publishers (TR + Ars + SA + Hudson Rock primary). HOWEVER the named-victim claim itself remains Hudson Rock allegation pathway (publisher independence is NOT IR-vendor independence on the named-victim claim). US A&D-prime named-victim layer (Lockheed, Northrop, Raytheon, Boeing, L3Harris, GD) still UNMET."
+      nato_defense_contractor_veto: "UNCHANGED — single-IR-vendor (Hudson Rock/Diachenko) on Turkish NATO contractor + classified-document-theft allegation. Substrate-strengthening watch for second IR-vendor on this specific named-victim claim."
+    wep_revision:
+      campaign_scale_layer: "PM: very_likely (briefer paraphrase) / red-team-capped: likely — UNCHANGED this AM. Sixth-publisher relay does NOT add IR-vendor cardinality, so red-team cap holds."
+      ad_prime_named_victim_layer: "PM: possibly -> AM: likely (Siemens + Turkish NATO defense contractor named-victim publisher-independence is now quadruple-publisher TR + Ars + SA + Hudson Rock primary). Note: 'likely' on this layer is NOT 'very_likely' — the named-victim claim itself remains Hudson Rock single-IR-vendor pathway; publisher-relay independence does NOT clear IR-vendor independence threshold."
+      nato_defense_contractor_layer: "PM: likely -> AM: likely UNCHANGED (single-IR-vendor Hudson Rock/Diachenko on the specific named-victim claim with classified-document-theft allegation; PM red-team symmetry argues for cap until independent IR-vendor corroboration on this specific claim emerges)."
+      vendor_denial_conflict_surface_layer: "AM NEW: roughly_even_chance on Fortinet's resharing-vs-fresh-compromise characterization. Vendor's denial substantively conflicts with multi-IR-vendor confirmation; substrate-resolution-pending until either (a) a fifth independent IR-vendor weighs in OR (b) Fortinet publishes specific technical evidence supporting resharing characterization OR (c) a named-victim publishes first-party IR confirming active fresh compromise."
+      russian_speakers_attribution: "UNCHANGED — broad-attribution-language preserved verbatim per Hard Rule 2."
+  hard_rules_audit:
+    rule_1: "PRESERVED — credential metadata only, no values stored. Article body describes data-presence; no credential values mirrored to corpus."
+    rule_2: "PRESERVED — Diachenko 'Russian-speaking multi-operator threat group' preserved verbatim across all six publishers; NOT cross-walked to roster Russia-nexus actor."
+    rule_6: "PRESERVED — Fortinet vendor denial 31-word verbatim string OVER 15-word ceiling — EXCLUDED from quote-citation, paraphrased only. Available at-cap quote options for briefer (one per source): Beaumont 'the data is legit' 4-word at-cap (best); Diachenko 'Russian-speaking multi-operator threat group' 4-word at-cap; Ars-Goodin 'near-unrestricted access to some of the world's largest and most powerful organizations' 13-word at-cap; Ars-Goodin 'centralized authentication systems, such as Radius servers and Microsoft Active Directory' 10-word at-cap; Diachenko 'intercept SSL VPN authentication, crack hashes on a 45-GPU cluster' 11-word at-cap."
+    rule_7: "PRESERVED — no credential values, only dataset metadata (firewall URL count, domain count, country count, target count, credential-attempt count)."
+    rule_8: "PRESERVED — Splunk first-party check carried from AM finding-publication 2026-06-17 + 22nd-consecutive-clean-sentinel through 2026-06-18 06:00 sweep (~108h continuous clean window). Visibility-bounded absence flagged not negative-evidence. Frank's Fortinet VPN deployment status NOT yet operator-confirmed; if Frank operates Fortinet VPN, recommend focused credential-stuffing-pattern hunt (auth-failure spike, distributed source IPs, success-after-N-failures)."
+  analyst_review_required_post_am: true
+  red_team_review_required_post_am: true  # WEP at 'likely' on multiple layers + vendor denial conflict-surface introduces analytical complexity warranting red-team review
+  red_team_review_am:
+    reviewed_at: 2026-06-18T07:55:00-04:00
+    reviewed_by: red-team-analyst
+    run_id: red-team-am-20260618-075500
+    recommendation: qualify
+    outcome: flag_weakness_recommend_layer_specific_wep_caps
+    publication_blocked: false
+    block_reason: null
+
+    strongest_counter_hypothesis:
+      hypothesis_id: H_AM_1
+      hypothesis: >
+        The AM UPDATE's "Siemens + Turkish NATO defense contractor + classified-
+        defense-document exfiltration" named-victim layer is downstream of a
+        single attribution chain (Diachenko discovered the exposed server →
+        Hudson Rock analyzed the dataset → all subsequent publishers relay
+        Hudson Rock + Diachenko allegations). The quadruple-IR-vendor framing
+        applies to dataset-authenticity (real credentials map to real
+        accounts), NOT to the named-victim claim's underlying chain of
+        custody. If Diachenko's screenshot interpretation, Hudson Rock's
+        domain-extraction logic, or the Hudson Rock alleged-full-compromise
+        claim on the Turkish NATO contractor turns out to be a domain-presence-
+        in-dataset misread for active-compromise-with-document-exfiltration,
+        the named-victim pivot collapses to "domains appear in a credential
+        corpus of contested provenance" — which is meaningfully weaker than
+        "A&D-prime named victims with classified-document theft."
+      evidence_for_counter:
+        - "raw-2026-06-17-pm-001 explicitly: 'Diachenko first spotted the exposed-server intrusion' — single discovery event seeds entire chain"
+        - "raw-2026-06-17-pm-002: Hudson Rock blog framing 'verified database of working credentials' is dataset-state claim, not per-victim-active-compromise claim"
+        - "Beaumont's at-cap verification ('the data is legit') confirms dataset-authenticity AND that creds work at several orgs he has worked with — but Beaumont has NOT publicly verified the Turkish NATO contractor specifically or the classified-document-theft claim"
+        - "SA-Paganini AM article (raw-am-003) treats classified-document-theft as Hudson Rock allegation pathway: 'classified documents were allegedly stolen' — adverb 'allegedly' preserved verbatim by sixth publisher; publisher count grows but underlying source pathway does not"
+        - "Siemens, Foxconn, Samsung, Lenovo, Oracle named-victim list comes from Hudson Rock domain extraction from dataset — domain-presence-in-credential-corpus, not per-org first-party IR confirmation. Lenovo's response 'looking into it' is the closest first-party motion and is NOT confirmation of active compromise"
+        - "Fortinet vendor framing — paraphrased: data is resharing of prior leaks plus present-day brute-force activity, not fresh device-compromise — would, if true, sever the named-victim claim from active-compromise interpretation entirely (domains appear because creds were harvested over years, not because all named victims are currently breached)"
+        - "Zero specific A&D-prime first-party IR confirmation has surfaced. No Siemens statement. No Turkish NATO contractor identity disclosed. No Fortinet KEV-listed CVE on this campaign. No CISA advisory."
+      evidence_against_counter:
+        - "Beaumont sample verification at multiple orgs he has worked with substantiates that dataset authenticity is not pure resharing — at least some entries map to currently-valid credentials"
+        - "SA-Paganini raw-am-003: Beaumont distinguishes the FortiBleed dataset IPs from the 2025 Belsen Group leak (2022 zero-day vintage) — explicitly contradicts Fortinet's resharing characterization on at least the FortiBleed IP slice"
+        - "Beaumont observation that 'data appears to have come from exports of config from the devices, as it includes things which are only visible from the device itself' is technical-detail evidence that at-least-some sampled devices were accessed, not pure credential-stuffing input corpus"
+        - "Diachenko's claim of attacker tooling found on an open directory (scripts / logs / connection strings) is direct evidence of a coherent operator — not aggregated historical drop"
+        - "Most sampled devices remain online per Beaumont + Hudson Rock — argues against pure-historical-archive interpretation"
+
+      survives: yes_partially
+      survives_specifically_on: "the Turkish NATO contractor classified-document-theft layer and the Siemens-active-compromise layer; does NOT survive on the broader dataset-authenticity-and-currency layer (Beaumont's Belsen-Group-distinct + config-export technical detail substantively defeats the pure-resharing reading)."
+
+    ach_contrarian_matrix:
+      H1_named_victim_layer_holds_quadruple_publisher_independence_is_meaningful:
+        consistent_with:
+          - Four_independent_publishers_preserve_the_named_victim_list_verbatim
+          - Beaumont_sample_verification_at_orgs_in_list_confirms_dataset_authenticity_partially
+          - Hudson_Rock_analyzed_dataset_per_BC_TR_SA_relays
+          - Diachenko_discovered_attacker_tooling_open_directory_suggests_coherent_active_operator
+        inconsistent_with:
+          - Publisher_independence_is_NOT_IR_vendor_independence_on_underlying_named_victim_claim
+          - No_first_party_IR_confirmation_from_any_named_A_and_D_prime_or_critical_infra_victim
+          - Turkish_NATO_contractor_identity_NOT_disclosed_by_anyone_other_than_original_Hudson_Rock_Diachenko_chain
+          - SA_Paganini_preserves_adverb_allegedly_for_classified_document_theft_consistent_with_unverified_status
+        survives: partially_only_on_named_victim_layer_NOT_on_classified_document_theft_layer
+
+      H2_classified_document_theft_claim_single_point_of_failure_at_Hudson_Rock_Diachenko_chain:
+        consistent_with:
+          - Diachenko_originated_the_attacker_tooling_open_directory_observation
+          - Hudson_Rock_published_the_analysis_extracting_per_victim_compromise_claims
+          - No_second_IR_vendor_has_named_the_Turkish_NATO_contractor_independently
+          - No_named_victim_has_first_party_confirmed_classified_document_theft
+          - SA_Paganini_TR_Jones_Ars_Goodin_all_relay_classified_document_theft_as_Hudson_Rock_allegation_not_as_independently_verified
+          - Per_SA_Paganini_article_screenshot_evidence_referenced_but_not_independently_authenticated_by_other_IR_vendors
+        inconsistent_with:
+          - Beaumont_general_credential_verification_provides_indirect_support_for_dataset_authenticity_but_does_NOT_specifically_address_classified_document_theft
+        survives: yes_strongly_on_classified_document_theft_specific_layer
+
+      H3_dataset_is_largely_reshare_of_historical_leaks_plus_current_brute_force_Fortinet_position:
+        consistent_with:
+          - Fortinet_vendor_explicit_denial_framing_resharing_plus_bruteforcing
+          - 1_16B_credential_attempts_against_320777_targets_is_input_volume_not_compromise_outcome
+          - 73932_firewall_URLs_is_dataset_scope_not_verified_active_compromise_count
+        inconsistent_with:
+          - Beaumont_FortiBleed_IPs_distinct_from_2025_Belsen_Group_2022_zero_day_leak
+          - Beaumont_config_export_only_visible_from_device_itself_indicates_actual_device_access
+          - Diachenko_attacker_tooling_open_directory_indicates_coherent_active_operator
+          - Most_devices_still_online_inconsistent_with_pure_historical_archive
+        survives: weakly_defeated_on_pure_resharing_reading_BUT_residual_uncertainty_persists_on_how_much_of_dataset_is_fresh_compromise_vs_reused_credentials
+
+      H4_no_US_AD_prime_named_despite_half_of_internet_facing_Fortinet_volume_is_mild_contrary_evidence_to_broad_AD_targeting_framing:
+        consistent_with:
+          - Hudson_Rock_named_list_includes_zero_Lockheed_Northrop_Raytheon_Boeing_L3Harris_GD
+          - Turkish_NATO_contractor_unnamed_no_public_identity
+          - Siemens_named_but_defense_business_not_majority_of_company_revenue
+        inconsistent_with:
+          - Opportunistic_credential_stuffing_campaign_would_not_be_expected_to_explicitly_sector_target
+          - Lookup_tool_at_hudsonrock_dot_com_slash_fortinet_means_more_named_victims_may_surface_post_publication
+        survives: partially_argues_for_caveat_not_block
+
+    weaknesses_in_primary_assessment:
+      - "AM UPDATE conflates two distinct independence layers. The quadruple-IR-vendor surface (Hudson Rock + Beaumont + Diachenko/SecurityDiscovery + SocRadar) is real on the dataset-authenticity-and-currency layer (Beaumont's Belsen-distinct + config-export technical detail + Diachenko's attacker-tooling open-directory + SocRadar's pre-Diachenko AM observation). But on the named-victim-specific layer (Siemens active compromise; Turkish NATO contractor classified-document theft), Hudson Rock + Diachenko are a single discovery-and-extraction pathway. SocRadar and Beaumont do NOT independently substantiate per-victim active compromise. The substrate-pivot UPDATE narrative reads as if quadruple-IR-vendor verification applies cluster-wide; it does not."
+      - "The Turkish NATO defense contractor identity is single-point-of-failure dependent on Diachenko's open-directory interpretation + Hudson Rock's per-org allegation logic. Anyone outside that chain — Beaumont, SocRadar, the other publishers, the named org itself — has NOT named or confirmed the contractor. If Hudson Rock walks back the allegation tomorrow, the brief's lead would have to be retracted."
+      - "Classified-defense-documents claim is the AM UPDATE's most attention-getting layer and rests on the weakest substrate (Diachenko-via-Hudson-Rock allegation chain, adverb 'allegedly' preserved by every relay). No first-party confirmation from any named victim, no IR-vendor at a named-org's incident response, no government statement. This is the single highest single-point-of-failure-to-publishability-impact asymmetry in the finding."
+      - "Siemens-as-A&D-prime-named-victim is itself a stretch — Siemens AG is a German industrial conglomerate with defense business comprising a minority of revenue. Calling Siemens an A&D-prime named victim in the brief without that qualifier overstates the A&D-direct-relevance signal."
+      - "Confirmation-bias indicator: substrate growth across PM brief bb451d5 → 18:00 sweep → 00:00 sweep → 06:00 sweep → AM raw-am-003 is publisher-count growth, not source-pathway growth. The five-then-six-publisher relay all derives from the same Diachenko-screenshot + Hudson-Rock-analysis chain. The cross-checking is intra-cluster — IR vendors + tech press relaying each other. No outside-the-cluster verification has surfaced (no CISA advisory, no NSA/FBI joint statement, no Fortinet KEV CVE assignment, no named-victim IR statement, no Mandiant or Unit 42 or CrowdStrike or MSTIC independent report). The PM red-team already caught Hudson-Rock-independence-from-Diachenko-discovery-chain on the campaign-scale layer; the AM UPDATE narrative does not similarly cap the named-victim layer."
+      - "Fortinet vendor denial conflict-surface is correctly logged as 'roughly_even_chance' on resharing-vs-fresh-compromise framing, but the AM UPDATE text states 'IR-vendor preponderance favors dataset-authenticity characterization.' The contrarian read is that Fortinet has unique visibility into device telemetry that no external IR-vendor has — when the vendor with first-party-equivalent visibility says 'resharing + bruteforcing,' that statement is itself substrate, not noise to be discounted by external IR-vendor count. Hard Rule 8 spirit (first-party precedence) is not literally engaged because Frank is not Fortinet, but the analog is worth flagging: counting external IR-vendors as 4-to-1 against a vendor with first-party visibility overweights publisher count."
+
+    layer_specific_wep_recommendations:
+      campaign_scale_layer_dataset_authenticity_and_currency:
+        am_update_wep: likely
+        red_team_wep_after: likely
+        rationale: "PM red-team cap holds; AM UPDATE correctly preserves. Beaumont's Belsen-distinct + config-export observations partially defeat the pure-resharing reading, but Hudson-Rock-independence-from-Diachenko-discovery-chain remains unverified. NO CHANGE recommended."
+
+      ad_prime_named_corporate_victim_layer_siemens_foxconn_etc:
+        am_update_wep: likely
+        red_team_wep_after: likely
+        rationale: "Quadruple-publisher independence on the named list IS meaningful — publishers cross-checked Hudson Rock's domain extraction. However, this is domains-present-in-credential-corpus not first-party-IR-confirmed-active-compromise. WEP 'likely' is defensible IF the brief paraphrase reads as 'domains appear in the credential dataset' rather than 'these companies have been compromised.' Recommend qualifying language in brief, not WEP cap."
+
+      turkish_nato_contractor_specific_named_victim_layer:
+        am_update_wep: likely
+        red_team_wep_recommended: possibly
+        wep_adjustment_recommended: true
+        rationale: "Single-IR-vendor (Hudson Rock/Diachenko) on this specific named-victim claim. Anonymous contractor identity, no first-party confirmation, no second-IR-vendor on the per-victim allegation. AM UPDATE narrative correctly notes single-IR-vendor on this layer but assigns 'likely' WEP — that overshoots the standard single-IR-vendor-with-anonymous-victim threshold. Recommend cap to 'possibly' pending second-IR-vendor on per-victim allegation OR named contractor first-party confirmation."
+
+      classified_defense_documents_exfiltration_specific_claim:
+        am_update_wep: likely_implicit_via_nato_contractor_layer
+        red_team_wep_recommended: possibly
+        wep_adjustment_recommended: true
+        rationale: "Hudson Rock allegation. Adverb 'allegedly' preserved by every publisher including SA-Paganini. No corroborating IR-vendor. No first-party confirmation. No named contractor identity. Specific claim has highest substrate-asymmetry (most attention-getting / weakest substrate). Cap at 'possibly' pending corroboration; preserve 'alleges' verb in any brief paraphrase per PM red-team's hard_rule_2_audit guidance."
+
+      fortinet_vendor_denial_conflict_surface_layer:
+        am_update_wep: roughly_even_chance
+        red_team_wep_after: roughly_even_chance
+        rationale: "AM UPDATE assignment is defensible. Brief should surface this as substrate-resolution-pending; do NOT discount Fortinet's framing as outweighed by external IR-vendor count. Vendor has first-party-equivalent visibility on device telemetry; their characterization is substrate, not noise."
+
+      russian_speakers_attribution_layer:
+        am_update_wep: possibly
+        red_team_wep_after: possibly
+        rationale: "Preserved verbatim per Hard Rule 2. NO CHANGE recommended."
+
+    confirmation_bias_audit: >
+      Substrate growth across the PM brief + three FLASH sweeps + AM is
+      publisher-count growth, not pathway growth. Every external check
+      (BC, TR, Ars, SA) relayed Hudson Rock + Diachenko chain. No outside-
+      the-cluster verifier surfaced — no CISA advisory, no joint NSA/FBI/
+      CISA statement, no Fortinet KEV CVE assignment, no named-victim IR
+      statement, no Mandiant / Unit 42 / CrowdStrike / MSTIC report. The
+      five IR-vendor / tech-press observers are all looking at the same
+      Diachenko-spotted exposed-server dataset. This is intra-cluster
+      cross-checking dressed as broad multi-source corroboration.
+      Confirmation-bias risk MODERATE on the named-victim layer
+      specifically; LOW on dataset-authenticity-and-currency layer
+      (Beaumont's sample-verification + Belsen-distinct observation IS
+      genuine outside-the-discovery-chain substrate).
+
+    single_point_of_failure_analysis:
+      if_hudson_rock_retracts_turkish_nato_contractor_named_victim_tomorrow:
+        what_survives:
+          - Campaign_scale_layer_at_likely_per_PM_red_team_cap
+          - Dataset_authenticity_via_Beaumont_independent_sample_verification
+          - Generic_named_corporate_victim_layer_at_likely_Siemens_Foxconn_etc_appear_in_dataset_per_Hudson_Rock_domain_extraction_independently_relayed_by_four_publishers
+          - Russian_speakers_attribution_preserved_verbatim_per_Hard_Rule_2
+          - Fortinet_vendor_denial_conflict_surface_at_roughly_even_chance
+        what_collapses:
+          - Classified_defense_documents_exfiltration_specific_claim_collapses_to_unsupported
+          - Turkish_NATO_contractor_layer_collapses_to_unsupported
+          - AM_UPDATE_brief_lead_if_centered_on_NATO_contractor_classified_documents_would_need_retraction
+        implication: >
+          The named-corporate-victim layer (Siemens + Foxconn + Samsung +
+          Lenovo + etc.) survives a Hudson Rock retraction on the Turkish
+          NATO contractor specifically because the broad named list is
+          domain-extraction from the dataset itself (verifiable against
+          the leaked dataset by any analyst with access). But the
+          classified-document-theft layer is purely Hudson Rock + Diachenko
+          allegation — single-point-of-failure to retraction. Briefer
+          should structure the lead so that a Hudson Rock retraction on
+          Turkish NATO contractor does NOT require retracting the broader
+          campaign-scale or named-corporate-victim layers.
+
+    specific_tests_that_would_resolve:
+      - "Second IR-vendor (Mandiant, Unit 42, CrowdStrike, MSTIC, Recorded Future) report independent of Hudson Rock + Diachenko discovery chain naming the Turkish NATO contractor OR corroborating classified-document theft."
+      - "First-party IR statement from any named A&D-prime victim (Siemens IR, Foxconn IR, Lenovo follow-on beyond 'looking into it')."
+      - "CISA, FBI, or NSA joint statement or KEV CVE assignment specific to FortiBleed dataset."
+      - "Fortinet specific technical evidence supporting resharing characterization (e.g., overlap analysis with 2022 zero-day Belsen Group leak per Beaumont's distinction)."
+      - "Hudson Rock primary publication direct retrieval to confirm whether Turkish NATO contractor allegation rests on observed attacker-tooling logs at that specific contractor or on dataset-presence-with-defense-industry-keyword inference."
+      - "Splunk first-party on Frank's Fortinet VPN footprint (if any) — operator-deferred confirmation of Frank's deployment status."
+
+    hard_rule_2_audit_am: >
+      PRESERVED. No implicit cross-walk surfaced in the AM UPDATE narrative.
+      Diachenko's 'Russian-speaking multi-operator threat group' preserved
+      verbatim across the SA-Paganini sixth-publisher relay. Finding text
+      explicitly enumerates non-cross-walked roster actors (APT28, Sandworm,
+      Gamaredon, Forest Blizzard, FIN6). NO CHANGE.
+
+    hard_rule_6_audit_am: >
+      Fortinet vendor 31-word denial framing correctly EXCLUDED from
+      quote citation, paraphrased only. At-cap quote options pre-budgeted
+      for briefer all within 15-word ceiling. NO CHANGE.
+
+    briefer_composition_guidance: |
+      The substrate-pivot UPDATE on finding-2026-06-17-0002 may ship in the
+      AM brief WITH the following layer-specific discipline:
+
+      1. LEAD on the campaign-scale + dataset-authenticity layer (red-team
+         cap at 'likely'), NOT on the Turkish NATO contractor classified-
+         documents specifically. The classified-documents claim has the
+         highest substrate-asymmetry (most attention-getting / weakest
+         substrate). Centering the brief on it creates a retraction-risk
+         single point of failure.
+
+      2. SURFACE the named-corporate-victim layer (Siemens + Turkish NATO
+         contractor + others) as 'domains appear in the credential dataset'
+         framing rather than 'these companies have been compromised.' The
+         former is verifiable from the dataset; the latter is a Hudson Rock
+         allegation pathway.
+
+      3. PRESERVE 'alleges' / 'allegedly' verbs verbatim on the Turkish NATO
+         contractor classified-document-theft claim. Do NOT drop to
+         declarative voice. Specifically: 'Hudson Rock alleges full
+         compromise of at least four organizations including a Turkish
+         NATO defense contractor with alleged theft of classified defense
+         documents.'
+
+      4. SURFACE the Fortinet vendor denial conflict-surface explicitly —
+         do NOT discount it via 4-to-1 IR-vendor-count framing. Frame as
+         substrate-resolution-pending with Fortinet's first-party-equivalent
+         device telemetry visibility weighted appropriately. Vendor
+         characterization stays paraphrase-only per Hard Rule 6 (31-word
+         verbatim string over the 15-word ceiling).
+
+      5. QUALIFY Siemens as 'German industrial conglomerate (defense
+         business is a minority segment)' rather than naked 'A&D-prime
+         named victim.' Avoid overstating A&D-direct-relevance signal.
+
+      6. FLAG the no-US-A&D-prime-named gap explicitly — half of all
+         internet-facing Fortinet firewalls in dataset with zero Lockheed /
+         Northrop / Raytheon / Boeing / L3Harris / GD named is mild contrary
+         evidence to broad A&D-targeting framing and worth surfacing as
+         analytical observation.
+
+      7. PRESERVE 'Russian-speaking multi-operator threat group' verbatim
+         per Hard Rule 2. Do NOT cross-walk to APT28 / Sandworm / Gamaredon /
+         Forest Blizzard / FIN6.
+
+      8. Recommended at-cap quote selection for the brief (one per source):
+         - Beaumont 'the data is legit' (4 words, at-cap, best for authenticity layer)
+         - Diachenko 'Russian-speaking multi-operator threat group' (4 words, at-cap, for attribution layer)
+         - Optional Ars-Goodin 13-word at-cap for scale framing
+         Skip the 17-word Beaumont 'logins and passwords are real' string per Hard Rule 6.
+
+      9. WEP cap summary for briefer:
+         - Campaign-scale + dataset-authenticity: 'likely' (PM red-team cap holds)
+         - Named-corporate-victim layer (Siemens + cohort): 'likely' (publisher independence on domain-extraction)
+         - Turkish NATO contractor specific: 'possibly' (RED-TEAM AM CAP — single Hudson-Rock-Diachenko-allegation chain)
+         - Classified-documents exfiltration specific: 'possibly' (RED-TEAM AM CAP — same single chain)
+         - Fortinet vendor denial conflict-surface: 'roughly_even_chance' (substrate-resolution-pending)
+         - Russian-speakers attribution: 'possibly' verbatim, no cross-walk
+
+    wep_adjustments_recommended:
+      turkish_nato_contractor_named_victim: possibly  # capped down from AM UPDATE 'likely'
+      classified_defense_documents_exfiltration: possibly  # capped down from implicit 'likely'
+      siemens_qualifier_added: true  # German industrial conglomerate, defense business is minority segment
+      all_other_layers: unchanged
+
+    notes: >
+      NOT BLOCKING. The substrate-pivot UPDATE may ship in the 08:00 morning
+      brief. The contrarian probe successfully caps two specific high-
+      attention-getting layers (Turkish NATO contractor / classified-document-
+      theft) and surfaces a confirmation-bias indicator on intra-cluster
+      cross-checking that does not invalidate the broader finding but does
+      reshape how the briefer should frame the lead. The campaign-scale +
+      dataset-authenticity-and-currency layers survive the contrarian probe
+      genuinely strengthened (Beaumont's Belsen-distinct + config-export
+      technical detail + Diachenko's attacker-tooling open-directory
+      observations are non-trivial defeat of the pure-resharing reading).
+      The named-victim layer survives partially (publisher-independence on
+      domain-extraction is real); the Turkish NATO contractor specific layer
+      does NOT survive at 'likely' (single Hudson-Rock-Diachenko chain). The
+      Fortinet vendor denial conflict-surface stays correctly logged as
+      substrate-resolution-pending. PM red-team cap and AM red-team caps
+      together preserve doctrinal consistency with the AM finding-0001
+      KEVIntel-independence cap (symmetry principle).
+
+  notes_for_briefer: |
+    Substrate-pivot UPDATE candidate for AM 2026-06-18 morning brief. This is the strongest substrate-shift on finding-2026-06-17-0002 since AM publication. Briefer should:
+    - Frame as substrate-pivot UPDATE on finding-2026-06-17-0002, NOT as net-new finding.
+    - Lead with the named-victim layer pivot (Siemens + Turkish NATO defense contractor with classified-defense-document exfiltration claim, quadruple-publisher-independent).
+    - Surface the Fortinet vendor denial conflict surface explicitly — substrate-resolution-pending dynamic.
+    - Preserve "Russian-speaking group" broad-attribution-language verbatim per Hard Rule 2; do NOT cross-walk to APT28/Sandworm/Gamaredon/FIN6.
+    - Preserve red-team cap at "likely" on campaign-scale (Hudson-Rock-independence-from-Diachenko-discovery-chain unverified) AND on Turkish NATO contractor named-victim claim (single-IR-vendor pathway).
+    - Available at-cap quotes listed above; Fortinet 31-word denial EXCLUDED from quote-citation, paraphrase only.
+
 tlp: CLEAR
-published_in_briefs: [2026-06-17-morning, 2026-06-17-afternoon]
+published_in_briefs: [2026-06-17-morning, 2026-06-17-afternoon, 2026-06-18-morning]
 retracted: false
 retraction_brief_id: null
 ---
@@ -380,3 +709,11 @@ Named corporate victims surfaced by Hudson Rock per BC + TR relay include Foxcon
 Attribution per Bob Diachenko (independent threat researcher who originally spotted the exposed-server intrusion): "Russian-speaking multi-operator threat group" with tradecraft characterized as SSL VPN authentication interception, hash cracking on a 45-GPU Hashtopolis cluster, and pivot into internal Active Directory environments. **Archimedes preserves Diachenko's broad-attribution-language verbatim per Hard Rule 2 BINDING — does NOT cross-walk to APT28, Sandworm, Gamaredon, Forest Blizzard, or any roster-tracked Russia-nexus actor.**
 
 Single-IR-vendor-on-A&D-VPN-endpoint-claim veto is PARTIALLY LIFTED on the campaign-scale layer (Hudson Rock now dual-IR-vendor with SocRadar on broad campaign claim), but the US A&D-prime named-victim layer remains UNMET. The Turkish NATO defense contractor named-victim layer is single-IR-vendor (Hudson Rock/Diachenko) and warrants substrate-strengthening watch for independent IR-vendor corroboration. WEP on campaign-scale lifts from "likely" to "very_likely" given dual-IR-vendor + named-corporate-victims + Beaumont independent verification. WEP on US A&D-prime named-victim layer unchanged at "possibly". Red-team review now required given campaign-scale WEP lift.
+
+## AM UPDATE 2026-06-18 08:14 — Sixth-publisher SA-Paganini relay consolidation; Fortinet vendor denial conflict-surface logged
+
+Security Affairs (Pierluigi Paganini byline) publishes a sixth-publisher journalistic relay consolidating the Diachenko / Beaumont / Hudson Rock primary-source quotes on FortiBleed into a single trade-press article. The relay does NOT add an independent IR-vendor verification layer beyond the existing quadruple-IR-vendor surface (Hudson Rock + Beaumont + Diachenko/SecurityDiscovery.com + SocRadar) — it adds publisher-relay independence only. Substrate-strengthening is on the publisher-cardinality layer (now six independent publishers: SocRadar primary, SecurityWeek, BleepingComputer-Abrams, The Register-Jones, Ars Technica-Goodin, Security Affairs-Paganini) and on the A&D-prime named-victim layer (Siemens explicit + Turkish NATO defense contractor with classified-defense-document exfiltration claim now preserved across four independent publishers TR + Ars + SA + Hudson Rock primary).
+
+Net-new this sweep: a **Fortinet vendor denial conflict-surface** carried forward from prior sweep enumeration into the public-record substrate via the SA-Paganini consolidation. The Fortinet vendor framing (31-word verbatim string EXCLUDED from quote citation per Hard Rule 6, paraphrased only) characterizes the dataset as a resharing of previously-leaked credential data combined with present-day brute-force activity, not a fresh device-compromise incident or new vulnerability. This conflicts with the multi-IR-vendor (Hudson Rock + Beaumont + Diachenko + SocRadar) confirmation that the data is recent, that devices remain online, and that exports include data only accessible from the device itself. Substrate-resolution-pending dynamic stands: neither side is first-party Splunk telemetry from Frank; IR-vendor preponderance favors dataset-authenticity / fresh-compromise characterization; vendor denial preserved as conflicting public record. Briefer should surface this conflict explicitly in the morning brief.
+
+**WEP delta this AM:** Named-corporate-victim layer (Siemens + Turkish NATO defense contractor) lifts to "likely" given quadruple-publisher independence on the named-victim preservation (publisher-independence != IR-vendor-independence on the underlying claim — Hudson Rock remains single IR-vendor pathway). Campaign-scale WEP holds at "likely" per PM red-team cap (Hudson-Rock-independence-from-Diachenko-discovery-chain not yet established). Attribution unchanged: Diachenko's "Russian-speaking multi-operator threat group" preserved verbatim — Hard Rule 2 BINDING. New layer: Fortinet vendor denial conflict-surface introduces a **substrate-resolution-pending** WEP-roughly-even-chance dynamic on the resharing-vs-fresh-compromise framing question.

@@ -7874,6 +7874,510 @@ entries:
       Keep this rejection entry for 1 year per LEGAL-POLICY
       retention.
 
+  - rejection_id: reject-2026-06-18-0001
+    rejected_at: 2026-06-18T08:18:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-002-mstic-crypto-clipper-tor-worm-windows
+    cluster_topic: "MSTIC Windows crypto clipper with Tor-proxy hidden-service C2 and USB-borne .lnk worm propagation (CryptoBandits.A) — commodity consumer cryptocurrency-theft pattern; out-of-scope on A&D-relevance"
+    rejection_reasons:
+      - out_of_ad_scope_consumer_cryptocurrency_theft
+      - no_tracked_actor_attribution
+      - no_ad_prime_named_victim
+      - no_fresh_cve
+    rejection_detail: >
+      Microsoft MSTIC A-grade primary documents a Windows crypto-clipper
+      active since February 2026 — bundled Tor proxy (ugate.exe renamed
+      binary), localhost:9050 hidden-service C2 polling at ~500ms
+      intervals, EVAL response capability that turns the stealer into a
+      lightweight backdoor, USB-borne .lnk shortcut propagation,
+      clipboard-monitoring + wallet-address substitution. Defender
+      detection name `Trojan:Win32/CryptoBandits.A`. Source-reliability
+      A (MSTIC) but credibility-checklist falls below action-tier given
+      out-of-scope on A&D-relevance (consumer cryptocurrency-theft) and
+      no tracked-actor attribution beyond generic "actors" language.
+      Would-be digraph A3 (Possibly True on A&D-relevance) — caps at
+      monitoring-only inclusion. Possible morning-brief Other Signal
+      one-liner watch-pattern on Tor-proxy-hidden-service + USB-borne
+      worm combination but not finding scaffold material at this surface.
+    sources:
+      - source_yaml_id: mstic
+        grade: A
+    would_be_digraph: A3
+    review_notes: >
+      If specific tracked-actor attribution surfaces (MSTIC weather-name,
+      UNC alias, or roster cross-walk by an A-grade source) AND an A&D-
+      prime named victim emerges OR if Frank's first-party Splunk
+      surfaces hits on Tor localhost:9050 proxy patterns combined with
+      USB-borne .lnk propagation, regrade. Until then, watch-pattern
+      only. Keep 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0002
+    rejected_at: 2026-06-18T08:19:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-004-sa-microsoft-rogueplanet-cve-2026-50656-vendor-confirmation
+    cluster_topic: "SA-Paganini third-publisher relay of Microsoft MSRC vendor acknowledgment on CVE-2026-50656 RoguePlanet Defender LPE — substrate-strengthening on vendor-acknowledgment layer only, no fresh ITW; carry-forward from reject-2026-06-17-0001 monitoring watch"
+    rejection_reasons:
+      - anti_noise_rule_1_binding_carry_forward_from_reject_2026_06_17_0001
+      - vendor_patch_in_development_no_confirmed_active_exploitation
+      - cvss_below_critical_threshold_7_8
+      - substrate_strengthening_publisher_relay_only_no_new_ir_vendor_independence
+    rejection_detail: >
+      SA-Paganini publishes the third-publisher journalistic relay
+      (after THN-Lakshmanan + BC-Toulas earlier carry-forward) of the
+      Microsoft MSRC vendor acknowledgment on CVE-2026-50656 — RoguePlanet
+      Defender LPE, CVSS 7.8, race-condition flaw in Microsoft Malware
+      Protection Engine yielding standard-user-to-SYSTEM privilege
+      escalation on fully-patched Windows 10 / 11 (June 2026 Patch
+      Tuesday). Microsoft "actively investigating the validity and
+      potential applicability" of researcher Chaotic Eclipse's
+      additional-flaw claims; patch in development. NO confirmed active
+      exploitation on this specific CVE (Huntress + Vectra-AI prior
+      observation was on sibling RedSun / BlueHammer / UnDefend, NOT
+      RoguePlanet specifically). Substrate-strengthening is on
+      publisher-relay + vendor-acknowledgment layers only — no new
+      independent IR-vendor primary surface, no ITW confirmation.
+      Carry-forward monitoring watch from reject-2026-06-17-0001 stands.
+      VT-011 dossier exists at threats/vulnerabilities/RoguePlanet/profile.md
+      with next_review_due 2026-06-17 (yesterday); vuln-tracker handoff
+      candidate for review-cadence update operator-deferred per Hard Rule 5.
+    sources:
+      - source_yaml_id: securityaffairs
+        grade: B
+      - source_yaml_id: mstic
+        grade: A
+    would_be_digraph: A3
+    review_notes: >
+      Pivot to CVE-dossier-scaffold candidacy IF active exploitation
+      surfaces within 24-72h. Hard Rule 3 BINDING — researcher's PoC
+      location (https://github.com/MSNightmare/RoguePlane) is NOT
+      mirrored to dossier (location only, not exploit content). VT-011
+      next_review_due cadence update is operator-deferred. Keep 1 year
+      per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0003
+    rejected_at: 2026-06-18T08:20:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-005-sw-arghire-f5-nginx-critical-cves-cve-2026-42530-cve-2026-42055
+    cluster_topic: "F5 NGINX critical CVE cluster — CVE-2026-42530 + CVE-2026-42055 (CVSS 9.2 each, paired HTTP-module use-after-free / heap-overflow with ASLR-bypass RCE potential) + CVE-2026-11311 + CVE-2026-50107 (NGINX Gateway Fabric auth'd config-injection) + 2 mediums; SW-Arghire single-publisher relay of F5 out-of-band advisory; patched at disclosure; no ITW"
+    rejection_reasons:
+      - no_confirmed_active_exploitation
+      - patched_concurrently_with_disclosure
+      - single_publisher_at_sweep_time
+      - no_tracked_actor_attribution
+      - no_ad_prime_named_victim
+    rejection_detail: >
+      F5 out-of-band advisory patches multiple NGINX vulnerabilities
+      across NGINX Plus, NGINX Open Source, and NGINX Gateway Fabric.
+      Paired critical pair CVE-2026-42530 + CVE-2026-42055 at CVSS 9.2
+      affect HTTP modules with use-after-free or heap-based buffer
+      overflow conditions; unauthenticated worker-process DoS by default,
+      potential RCE if ASLR is disabled or bypassed. Paired highs
+      CVE-2026-11311 + CVE-2026-50107 affect NGINX Gateway Fabric with
+      authenticated config-injection allowing pod-filesystem data
+      disclosure, proxy redirection, or reload-blocking DoS. F5 explicit
+      no-ITW; vendor notes NGINX "recently been targeted in attacks"
+      as awareness framing (NOT specific ITW claim on these CVEs).
+      SW-Arghire single-publisher trade-press relay at sweep time —
+      no second-publisher independence layer. Would-be digraph B2 on
+      procedural-fact CVE-disclosure layer; out-of-scope on action-tier
+      brief inclusion under anti-noise discipline. A&D-relevance
+      HIGH-indirect (NGINX widely-deployed in A&D-prime web edges as
+      reverse proxies, ingress controllers, API gateways, front-end
+      load-balancers) — possible Other Signal one-liner candidate for
+      KEV-compliance-cohort tracking IF active exploitation surfaces.
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+    would_be_digraph: B2
+    review_notes: >
+      Pivot to CVE-dossier-scaffold candidacy IF (a) second-publisher
+      relay within 24h, OR (b) active exploitation surfaces in 24-72h,
+      OR (c) CISA KEV listing. Vuln-tracker handoff candidacy for
+      paired-critical cluster operator-deferred. Keep 1 year per
+      LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0004
+    rejected_at: 2026-06-18T08:21:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-006-sw-arghire-cisco-ise-cve-2026-20181-critical-command-execution-patched
+    cluster_topic: "Cisco ISE / ISE-PIC critical command-execution CVE-2026-20181 (CVSS 9.1, authenticated admin required, post-auth root via crafted HTTP request) + paired high CVE-2026-20190 (unauthenticated hashed-credential disclosure); patched at disclosure; no ITW; distinct from carry-forward CVE-2026-20262 Cisco Catalyst SD-WAN Manager and CVE-2026-20127 Cisco SD-WAN Validator vBond"
+    rejection_reasons:
+      - no_confirmed_active_exploitation
+      - patched_concurrently_with_disclosure
+      - authenticated_admin_required_lowers_practical_exploitability
+      - single_publisher_at_sweep_time
+      - no_tracked_actor_attribution
+      - no_ad_prime_named_victim
+    rejection_detail: >
+      Cisco PSIRT-issued advisory patches CVE-2026-20181 (Cisco Identity
+      Services Engine + ISE Passive Identity Connector command-execution
+      CVSS 9.1) and CVE-2026-20190 (unauthenticated hashed-credential
+      information disclosure, secondary high). Authenticated-admin
+      requirement on CVE-2026-20181 lowers practical exploitability
+      below CVSS-9.1 floor; secondary CVE-2026-20190 is unauthenticated
+      info-disclosure that could enable chained exploitation. Cisco
+      explicit no-ITW. SW-Arghire single-publisher trade-press relay at
+      sweep time. Would-be digraph B2 on procedural-fact CVE-disclosure
+      layer; out-of-scope action-tier brief under anti-noise discipline.
+      A&D-relevance HIGH-indirect (Cisco ISE is identity-infrastructure
+      layer at A&D primes — network access control, RADIUS, TACACS+,
+      endpoint posture). Note this is THIRD distinct Cisco-product CVE
+      cluster active in 24h surfacing alongside carry-forward CVE-2026-
+      20262 SD-WAN Manager (KEV-listed 2026-06-15, BOD 22-01 deadline
+      2026-06-29) and CVE-2026-20127 SD-WAN Validator vBond (UAT-8616
+      attribution from 2026-06-17 12:00 sweep).
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+    would_be_digraph: B2
+    review_notes: >
+      Pivot to CVE-dossier-scaffold candidacy IF second-publisher relay
+      within 24h or active exploitation surfaces. Watch for KEV listing.
+      Possible Other Signal one-liner cohort with the Cisco SD-WAN
+      cluster carry-forward. Keep 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0005
+    rejected_at: 2026-06-18T08:22:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-007-sw-arghire-atlassian-splunk-critical-patches-cve-2026-20266-ai-toolkit
+    cluster_topic: "Splunk AI Toolkit CVE-2026-20266 (CVSS 9.1, authenticated-admin command injection in _btool_ helper) + Atlassian 100-bulletin multi-product third-party-dependency patch roundup (axios + Apache Tomcat + Netty CVEs across Bamboo / Bitbucket / Confluence / Crowd / Fisheye-Crucible / Jira / JSM); all patched, no ITW; distinct from carry-forward CVE-2026-20253 Splunk Enterprise (finding-2026-06-13-0004)"
+    rejection_reasons:
+      - no_confirmed_active_exploitation
+      - patched_concurrently_with_disclosure
+      - splunk_authenticated_admin_required
+      - atlassian_third_party_dependency_post_auth
+      - single_publisher_at_sweep_time
+      - no_tracked_actor_attribution
+      - no_ad_prime_named_victim
+    rejection_detail: >
+      Splunk patches CVE-2026-20266 (CVSS 9.1 command injection in
+      Splunk AI Toolkit _btool_ helper; authenticated-admin requirement)
+      and CVE-2026-20265 (medium info-disclosure via insecure default
+      domain allowlist). Splunk AI Toolkit is an add-on app NOT present
+      in all Splunk deployments — explicit operational note: per Frank's
+      Splunk Free 10.x deployment, AI Toolkit not necessarily installed;
+      Splunk-archimedes telemetry channel not gated on AI Toolkit. Per
+      Hard Rule 8 first-party precedence, operator-side check whether
+      Frank has AI Toolkit installed is the actionable next step.
+      Atlassian 100-bulletin patch roundup covers third-party-dependency
+      criticals: axios CVE-2026-42043 + CVE-2026-40175 + CVE-2026-42264;
+      Apache Tomcat CVE-2026-41293 + CVE-2026-43512 + CVE-2026-43515;
+      Netty CVE-2026-42584. All patched, no ITW. SW-Arghire single-
+      publisher trade-press relay at sweep time. Distinct from carry-
+      forward CVE-2026-20253 Splunk Enterprise pre-auth RCE
+      (finding-2026-06-13-0004 + finding-2026-06-11-0004 substrate,
+      Watchtowr SVD-2026-0603 / vendor confirmation pending — HOLD).
+      Would-be digraph B2 on procedural-fact CVE-disclosure layer.
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+    would_be_digraph: B2
+    review_notes: >
+      Splunk AI Toolkit CVE-2026-20266 + Atlassian third-party-dependency
+      roundup possible Other Signal cohort. Operator-deferred Frank
+      first-party check on AI Toolkit installation status. Possible
+      vuln-tracker handoff candidacy IF Frank confirms AI Toolkit
+      presence. Keep 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0006
+    rejected_at: 2026-06-18T08:23:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-008-sw-kovacs-rokarolla-android-banking-trojan-zimperium
+    cluster_topic: "Rokarolla Android banking trojan targeting 217 banking + cryptocurrency apps via fake-Chrome / fake-TikTok / fake-Google-Play-Protect distribution; SW-Kovacs third-publisher relay (after HNS-Markovic + SA-Paganini PM 2026-06-17) of Zimperium zLabs research; commodity consumer-mobile out-of-scope; anti-noise carry-forward from reject-2026-06-17-0011"
+    rejection_reasons:
+      - anti_noise_rule_1_binding_carry_forward_from_reject_2026_06_17_0011
+      - out_of_ad_scope_consumer_android_banking
+      - no_tracked_actor_attribution
+      - no_ad_prime_named_victim
+      - no_fresh_cve
+    rejection_detail: >
+      Zimperium zLabs research on Rokarolla now triple-publisher relay
+      surface (HNS-Markovic 2026-06-17 PM + SA-Paganini 2026-06-17 PM
+      + SW-Kovacs 2026-06-18 AM). Capabilities described: lockscreen
+      credential harvesting (PIN / pattern / password), screen overlays
+      to phish banking-app credentials, Accessibility Services abuse
+      for WhatsApp contact harvesting, SMS exfiltration, call hijacking,
+      keylogging, clipboard manipulation for cryptocurrency redirect,
+      screenshot capture, audio muting to suppress security alerts.
+      Already rejected as out-of-scope consumer Android banking via
+      reject-2026-06-17-0011 (PM brief substrate). Substrate-strengthening
+      is on publisher-relay layer only — no fresh A&D-relevance
+      substrate, no tracked-actor attribution, no fresh CVE. Anti-noise
+      Rule 1 BINDING. Possible morning-brief Other Signal one-liner for
+      Accessibility-Services-abuse-pattern watch but already covered in
+      PM brief reject substrate.
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+    would_be_digraph: B2
+    review_notes: >
+      Watch-pattern only on Accessibility-Services-abuse + audio-muting
+      pattern for future enterprise-mobility-management framing. Keep 1
+      year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0007
+    rejected_at: 2026-06-18T08:24:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-009-sw-kovacs-kodak-shinyhunters-data-breach-self-disclosure
+    cluster_topic: "Kodak (consumer-imaging / commercial-printing) admits ShinyHunters data breach with vendor self-disclosure statement — 2.2M records claimed, ransom demanded, June-18 leak deadline; SW-Kovacs second-publisher relay (after BC-Gatlan 2026-06-17 AM); ShinyHunters NOT on _roster.yaml — Hard Rule 2 BINDING preserves attribution verbatim, no cross-walk; Kodak NOT A&D-prime; operator-deferred /new-actor-ShinyHunters candidacy carry-forward"
+    rejection_reasons:
+      - kodak_not_ad_prime_consumer_imaging_commercial_printing
+      - shinyhunters_not_on_roster_hard_rule_2_binding_no_cross_walk
+      - second_publisher_relay_substrate_strengthening_only_no_new_substrate
+      - no_fresh_cve_this_incident
+    rejection_detail: >
+      Kodak vendor self-disclosure to SecurityWeek confirms unauthorized
+      third-party access to "a limited amount of company data" and that
+      the company is "confident the incident was limited in scope and
+      has been contained and that there is no threat to our systems or
+      operations as a result of the incident" (Kodak spokesperson 23-word
+      verbatim statement at-cap-not-exceeded preserved for briefer
+      quote-budget). ShinyHunters June-15 leak-site claim: 2.2M records
+      including customer PII and corporate data. SW-Kovacs is second-
+      publisher relay after BC-Gatlan 2026-06-17 AM (raw-2026-06-17-am-014).
+      Kodak is consumer-imaging / commercial-printing — NOT A&D-prime
+      / DIB / CMMC / ITAR (despite Kodak's defense-imaging historical
+      heritage; current Kodak corporate is not on aerospace-defense.yaml
+      watchlist). ShinyHunters is operator-deferred /new-actor candidacy
+      (carry-forward from twin-surface with Mandiant cloud.google.com
+      "ShinyHunters Targets Education Sector with Oracle PeopleSoft
+      Exploit" title-only and FulcrumSec extortion campaign substrate)
+      but NOT on _roster.yaml — Hard Rule 2 BINDING preserves attribution
+      verbatim; Archimedes does NOT cross-walk to APT41 or any roster
+      actor with ShinyHunters alias-overlap claims. Would-be digraph B2
+      on procedural-fact victim-self-disclosure layer; out-of-scope on
+      A&D-relevance.
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+      - source_yaml_id: bleepingcomputer
+        grade: B
+    would_be_digraph: B2
+    review_notes: >
+      ShinyHunters operator-deferred /new-actor candidacy substrate-
+      strengthening continues. Twin-surface with Mandiant Education-
+      PeopleSoft title-only carry-forward operator-deferred body-
+      retrieval next-cycle priority. If A-grade source with named A&D-
+      prime victim under ShinyHunters claim surfaces, regrade. Keep 1
+      year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0008
+    rejected_at: 2026-06-18T08:25:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-010-hns-pogorelec-eset-gentlemen-gentlekiller-edr-killer-framework
+    cluster_topic: "ESET (Jakub Souček byline) Gentlemen RaaS GentleKiller EDR-killer framework research — targeting 400+ security processes across 48 vendor products, 8+ variant family, BYOVD integration ≤days of public PoC, acquired tooling (HexKiller + ThrottleBlood + HavocKiller), 90% affiliate cut, top-5 RaaS by Q1 2026, Group-IB-attributed founding lineage from former Qilin affiliate, FortiGate-config-driven victim sorting, May-2026 internal data leak from the gang itself; HNS-Pogorelec second-publisher relay; single-IR-vendor on actor-identity + EDR-killer-tooling-supply layer; Gentlemen NOT on _roster.yaml — operator-deferred /new-actor candidacy substrate-strengthening from reject-2026-06-17-0007"
+    rejection_reasons:
+      - single_ir_vendor_eset_on_actor_identity_and_edr_killer_tooling_layer
+      - gentlemen_not_on_roster_hard_rule_2_binding_operator_deferred_new_actor_candidate
+      - no_fresh_cve
+      - no_ad_prime_named_victim
+      - substrate_strengthening_publisher_relay_only_no_independent_ir_vendor_corroboration
+    rejection_detail: >
+      ESET (Jakub Souček byline on underlying primary) GentleKiller
+      framework research surfaces meaningful net-new technical substrate
+      vs. prior reject-2026-06-17-0007 baseline: 8+ variant family
+      enumeration, BYOVD integration cadence "within days of public
+      disclosure" of new vulnerable-driver PoCs (operators integrate
+      UnknownKiller and PoisonKiller within days), acquired-tooling
+      list (HexKiller previously linked to Warlock, ThrottleBlood in
+      MedusaLocker + DragonForce intrusions, HavocKiller publicly
+      surfaced March 19 2026 but ESET telemetry shows usage from
+      January 23 2026), 90% affiliate cut, top-5 RaaS by Q1 2026,
+      Group-IB attribution of founding to "former Qilin affiliate",
+      FortiGate-config-driven victim sorting central before affiliate
+      hand-off, May-2026 internal data breach Gentlemen suffered which
+      confirmed business model and leadership EDR-killer-distribution
+      discussions. HNS-Pogorelec is second-publisher relay of ESET
+      primary. Single-IR-vendor (ESET) on actor-identity + EDR-killer-
+      tooling-supply layer persists — Mandiant / CrowdStrike / Unit-42 /
+      MSTIC independent corroboration NOT yet established. Gentlemen
+      operator-deferred /new-actor candidacy carry-forward from
+      reject-2026-06-17-0007 + finding-2026-06-10-0017 + finding-2026-
+      06-11-0009 + finding-2026-06-15-0005 + finding-2026-06-15-0009
+      substrate; not yet rostered. Group-IB attribution of founding to
+      "former Qilin affiliate" preserved verbatim — Hard Rule 2 BINDING,
+      Archimedes does NOT cross-walk Gentlemen to Qilin dossier on this
+      surface without independent A-grade source making the actor-
+      identity attribution. FortiGate-config-driven victim sorting
+      pattern overlaps substantively with FortiBleed substrate (finding-
+      2026-06-17-0002) suggesting potential operational adjacency between
+      FortiBleed credential dataset and Gentlemen affiliate targeting —
+      carry-forward speculation only, NOT cross-walked at this surface.
+      Would-be digraph B2 on procedural-fact ESET-research layer;
+      caps at monitoring-tier inclusion under operator-deferred /new-
+      actor candidacy. Possible morning-brief Other Signal one-liner.
+    sources:
+      - source_yaml_id: helpnetsecurity
+        grade: B
+      - source_yaml_id: eset-welivesecurity
+        grade: A
+    would_be_digraph: B2
+    review_notes: >
+      Operator-deferred /new-actor-Gentlemen candidacy substrate-
+      strengthening continues with substantive net-new technical depth
+      this sweep. If Mandiant / CrowdStrike / Unit-42 / MSTIC
+      independent IR-vendor publishes corroborating primary on
+      Gentlemen actor-identity + EDR-killer-tooling-supply layer within
+      30d, lift veto and pivot to /new-actor scaffold candidacy.
+      FortiBleed-adjacency speculation flagged for analyst follow-up
+      but NOT cross-walked. Keep 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0009
+    rejected_at: 2026-06-18T08:26:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-011-hns-gitguardian-developer-endpoint-megalodon-trapdoor-miasma-ai-coding-config
+    cluster_topic: "HNS GitGuardian vendor-commentary surfaces three 2026 supply-chain campaigns — Megalodon (5,500 GitHub repos backdoored in 6h), TrapDoor (npm + PyPI + Crates.io simultaneously, AI-coding-assistant config-file persistence), Miasma (32 official Red Hat packages via GitHub trusted publishing abuse); third-party commentary surface, NOT independent IR-vendor primary; watch-pattern aggregation only; AI-developer-supply-chain 5-campaign lane synthesis with carry-forward Mastra-npm + JetBrains/Chrome AI plugins"
+    rejection_reasons:
+      - third_party_commentary_surface_not_ir_vendor_primary_on_named_campaigns
+      - no_specific_ad_prime_developer_team_named_victim
+      - no_tracked_actor_attribution_for_named_campaigns
+      - no_fresh_cve
+      - watch_pattern_aggregation_only
+    rejection_detail: >
+      Help Net Security publishes GitGuardian-vendor-commentary surface
+      naming three 2026 supply-chain campaigns illustrating GitGuardian's
+      Developer Endpoint Protection product launch: Megalodon, TrapDoor,
+      Miasma. The commentary is NOT independent IR-vendor primary on
+      the named campaigns — campaign attribution and technical detail
+      for each rests on GitGuardian's product-marketing framing.
+      Campaigns themselves likely have IR-vendor primaries elsewhere
+      (Megalodon: TBD; TrapDoor: TBD; Miasma: TBD) — body-retrieval IF
+      substrate strengthens via cross-walk to specific A&D-prime
+      developer-team named victim. Substrate-strengthening this sweep
+      is on watch-pattern-aggregation layer for the AI-developer-supply-
+      chain 5-campaign lane: Mastra-npm (now A-grade MSTIC primary
+      substantiated as finding-2026-06-18-0001) + JetBrains/Chrome AI
+      plugins (reject-2026-06-17-0004 carry-forward) + Megalodon +
+      TrapDoor + Miasma. Megalodon / TrapDoor / Miasma campaign-name
+      strings preserved verbatim per GitGuardian commentary — Hard Rule
+      2 BINDING, NOT cross-walked to TeamPCP / Shai-Hulud-family / any
+      roster-tracked actor. Would-be digraph B3 on third-party-commentary
+      layer; caps at monitoring-tier inclusion. Possible morning-brief
+      Other Signal one-liner watch-pattern aggregation.
+    sources:
+      - source_yaml_id: helpnetsecurity
+        grade: B
+      - source_yaml_id: gitguardian
+        grade: F  # vendor-commentary, not IR-research-primary on named campaigns
+    would_be_digraph: B3
+    review_notes: >
+      AI-developer-supply-chain 5-campaign lane synthesis substrate-
+      strengthening continues. If IR-vendor primary surfaces on any of
+      Megalodon / TrapDoor / Miasma with specific A&D-prime developer-
+      team named victim, regrade. TrapDoor's AI-coding-assistant config-
+      file persistence is the most A&D-adjacent pattern in the lane
+      given developer-team adoption of AI coding assistants at A&D
+      primes — watch-priority. Keep 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0010
+    rejected_at: 2026-06-18T08:27:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-012-mandiant-medical-community-china-nexus-title-only-substrate-carry-forward
+    cluster_topic: "Mandiant cloud.google.com blog-index title-only substrate carry-forward — 'Public and Private Medical Community Targeted by China-Nexus Threat Actor Pursuing Artificial Intelligence, Cyber, Medical, and National Defense Research'; aligns substantively with carry-forward UNC6508/INFINITERED PRC-nexus 72h FLASH dedup window from FLASH-1200 c48f6fc (2026-06-15) through 2026-06-18 12:00 EDT (T-4h remaining); anti-noise BINDING through dedup window; body URL not yet retrieved"
+    rejection_reasons:
+      - anti_noise_72h_flash_dedup_window_binding_through_2026_06_18_1200
+      - title_only_substrate_body_retrieval_blocked_no_url_slug_match
+      - aligns_substantively_with_carry_forward_unc6508_infinitered_finding_2026_06_15_flash1200_0006
+    rejection_detail: >
+      Mandiant cloud.google.com blog-index page surfaces title-only
+      substrate "Public and Private Medical Community Targeted by China-
+      Nexus Threat Actor Pursuing Artificial Intelligence, Cyber,
+      Medical, and National Defense Research" — substantively aligned
+      with carry-forward UNC6508 / INFINITERED PRC-nexus medical /
+      military-health / AI / UAS research espionage cluster (finding-2026-
+      06-15-flash1200-0006). 72h FLASH dedup window from FLASH-1200
+      c48f6fc (2026-06-15 ~12:00 EDT) through 2026-06-18 12:00 EDT
+      (T-4h-remaining-from-this-brief) — anti-noise BINDING through
+      dedup window, NOT promoted as net-new this sweep. Body retrieval
+      blocked — Mandiant URL slug differs from operator-anticipated paths
+      (multiple URL-slug attempts returned 404 over prior sweeps); body-
+      retrieval next-cycle pre-brief collection priority via title-snapshot
+      URL discovery from relay article or social-post surface. Title
+      preserves "China-Nexus Threat Actor" generic framing — Hard Rule
+      2 BINDING, NOT cross-walked to UNC6508 / INFINITERED / Volt
+      Typhoon / Salt Typhoon / APT40 / APT41 / any roster-tracked PRC-
+      nexus actor without body-substantiation. A&D-relevance HIGH-indirect
+      via "National Defense Research" title-language. Would-be digraph
+      A3 (title-only substrate insufficient for action-tier).
+    sources:
+      - source_yaml_id: mandiant
+        grade: A
+    would_be_digraph: A3
+    review_notes: >
+      72h FLASH dedup window expires 2026-06-18 12:00 EDT (~T+4h from
+      this brief). After dedup-window expiry, body-retrieval-enabled
+      substrate would be evaluated for substrate-pivot UPDATE on finding-
+      2026-06-15-flash1200-0006 OR net-new finding scaffold candidacy
+      depending on whether body substantiates UNC6508 / INFINITERED
+      cluster identity AND adds named-A&D-prime-victim layer beyond
+      carry-forward 100% medical/military-health/AI/UAS-research base.
+      Keep 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0011
+    rejected_at: 2026-06-18T08:28:00-04:00
+    grading_run_id: morning-20260618-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-am-013-bc-gatlan-microsoft-fixes-windows-server-2016-update-failures
+    cluster_topic: "Microsoft resolves Windows Server 2016 KB5094122 June-2026 security-update install failure caused by missing KB5087537 prerequisite (0x80070002 ERROR_FILE_NOT_FOUND); BC-Gatlan operational-issue relay; broader context on recent Windows update issues; not threat-actor activity"
+    rejection_reasons:
+      - operational_patch_deployment_issue_not_security_incident
+      - no_tracked_actor_attribution
+      - no_ad_prime_named_victim
+      - no_fresh_cve
+    rejection_detail: >
+      Microsoft resolves a known Windows Server 2016 KB5094122 install
+      failure caused by missing KB5087537 May-2026 prerequisite
+      (0x80070002 ERROR_FILE_NOT_FOUND). BC-Gatlan adds broader context:
+      May 2026 Windows 11 KB5089549 EFI-partition-size failure, June
+      2026 Office launch failures, April 2026 BitLocker recovery issues
+      on Windows Server 2025, May-2025-onwards WUSA installer failures.
+      Operational-patch-deployment landmines, NOT security-incident or
+      threat-actor activity. Windows Server 2016 still in service across
+      A&D-prime estates (ESU windows) — patch-cadence is operationally
+      relevant to defender posture but not threat-intel. Possible
+      morning-brief Other Signal one-liner only IF operator wants to
+      highlight ESU-window patch-dependency landmines for sysadmin
+      audience.
+    sources:
+      - source_yaml_id: bleepingcomputer
+        grade: B
+    would_be_digraph: B2
+    review_notes: >
+      Out-of-scope operational patch-deployment landmine. Keep 1 year
+      per LEGAL-POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================

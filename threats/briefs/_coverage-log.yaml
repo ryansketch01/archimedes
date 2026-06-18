@@ -38290,6 +38290,317 @@ entries:
       flagged for operator follow-up, out-of-scope for this
       briefer cycle.
 
+  - id: 2026-06-18-am-update-001-fortibleed-am-substrate-pivot-sixth-publisher-sa-paganini-relay-fortinet-vendor-denial-conflict-surface-red-team-am-layer-specific-wep-caps
+    covered_in: [2026-06-18-morning]
+    headline: "AM UPDATE on finding-2026-06-17-0002: FortiBleed substrate-pivot — SA-Paganini sixth-publisher relay consolidates Diachenko/Beaumont/Hudson Rock primary quotes (publisher-relay independence only, NOT a fifth IR-vendor); named-corporate-victim layer reinforced via quadruple-publisher preservation (Siemens qualified as German industrial conglomerate / defense business minority segment, Foxconn, Samsung, Lenovo, Oracle, Chevron in dataset); Hudson Rock alleges Turkish NATO defense contractor full compromise with alleged classified-defense-document theft preserved verbatim as single-IR-vendor allegation pathway; Fortinet vendor denial conflict-surface logged (31-word verbatim string EXCLUDED per Hard Rule 6, paraphrased only — resharing of prior leaks plus present-day brute-force activity characterization); red-team AM CAPPED Turkish NATO contractor + classified-document-exfiltration layers at possibly (single Hudson-Rock-Diachenko allegation chain); campaign-scale + dataset-authenticity hold at likely (PM red-team cap unchanged); vendor-denial resolution roughly_even_chance; Diachenko 'Russian-speaking multi-operator threat group' attribution preserved verbatim per Hard Rule 2 — NO cross-walk to APT28/Sandworm/Gamaredon/Forest Blizzard/FIN6; zero US A&D primes named flagged as mild contrary evidence to broad A&D-targeting framing"
+    topic_tags:
+      - fortinet
+      - fortinet-vpn
+      - fortibleed
+      - credential-stuffing
+      - sixth-publisher-sa-paganini-relay-publisher-independence-not-ir-vendor-independence
+      - fortinet-vendor-denial-conflict-surface-substrate-resolution-pending
+      - hudson-rock-diachenko-single-allegation-chain-on-turkish-nato-contractor
+      - named-corporate-victim-layer-reinforced-quadruple-publisher-domain-extraction
+      - siemens-qualified-german-industrial-conglomerate-defense-minority-segment
+      - zero-us-ad-primes-named-mild-contrary-evidence
+      - red-team-am-layer-specific-wep-cap-turkish-nato-contractor-possibly
+      - red-team-am-layer-specific-wep-cap-classified-document-exfiltration-possibly
+      - vendor-denial-roughly-even-chance
+      - hard-rule-2-russian-speakers-recorded-not-cross-walked-verbatim
+      - hard-rule-6-fortinet-31-word-denial-excluded-paraphrase-only-beaumont-4-word-diachenko-4-word-quote-budget
+      - hard-rule-8-splunk-first-party-zero-hits-22nd-consecutive-clean-sentinel
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - fortibleed-2026-06
+    finding_ids:
+      - finding-2026-06-17-0002
+    update_pivots:
+      - finding_id: finding-2026-06-17-0002
+        update_id: am-update-2026-06-18-0002
+        pivot_type: am_substrate_pivot_sixth_publisher_consolidation_plus_fortinet_vendor_denial_conflict_surface_red_team_am_layer_specific_wep_caps
+    resurface_if:
+      - third_ir_vendor_independent_of_diachenko_discovery_chain_corroborates
+      - hudson_rock_clarifies_observation_pathway_independence
+      - us_ad_prime_named_victim_emerges
+      - turkish_nato_defense_contractor_first_party_ir_confirmation
+      - fortinet_publishes_specific_technical_evidence_supporting_resharing_characterization
+      - first_party_ioc_hit
+      - new_attribution
+      - cisa_or_fbi_or_nsa_joint_statement_or_kev_cve_assignment
+    first_covered: 2026-06-17
+    last_covered: 2026-06-18
+    retraction: null
+    test: false
+
+  - id: 2026-06-18-am-001-mstic-mastra-npm-supply-chain-compromise-easy-day-js-typosquat-postinstall-payload-140-packages-ai-agent-framework
+    covered_in: [2026-06-18-morning]
+    headline: "Microsoft MSTIC primary research documents large-scale npm supply-chain compromise targeting Mastra AI-agent-orchestration framework via ehindero maintainer account takeover and easy-day-js typosquat of dayjs (57M+ weekly downloads); 140+ packages across @mastra scope poisoned with staged-delivery postinstall payload (clean v1.11.21 published 2026-06-16, weaponized v1.11.22 published 01:01 UTC 2026-06-17); 4572-byte obfuscated setup.cjs dropper fetches ~41 KB second-stage cross-platform implant with Windows registry Run keys / macOS LaunchAgent / Linux systemd user units persistence via misspelled protocal.cjs artifact, Windows reflective .NET assembly injection, and 166-browser-extension cryptocurrency wallet targeting; MSTIC attribution framing 'organized threat actor activity' preserved verbatim per Hard Rule 2 BINDING — NO cross-walk to TeamPCP / vt-006 Shai-Hulud family / Lazarus / DPRK npm cluster; single-A-IR-vendor primary caps WEP at likely on campaign identity; A&D-indirect via SDLC/CI-CD pipeline exposure for any DIB org running npm install on @mastra after 01:01 UTC 2026-06-17 regardless of application-code import; 9 concrete IOCs in finding frontmatter (2 IPs, 1 URL, 3 SHA-256, 1 filename, 2 account names); pivots carry-forward reject-2026-06-17-0003 (Aikido-Security/BC-Toulas/THN-Lakshmanan pre-MSTIC trade-press surface) into finding-eligibility tier"
+    topic_tags:
+      - npm-supply-chain-compromise
+      - mastra-ai-agent-orchestration-framework
+      - ehindero-maintainer-account-takeover
+      - easy-day-js-typosquat-of-dayjs
+      - staged-delivery-postinstall-payload-clean-v1-11-21-weaponized-v1-11-22
+      - cross-platform-persistence-windows-macos-linux
+      - windows-reflective-net-assembly-injection
+      - 166-cryptocurrency-wallet-extension-targeting
+      - protocal-cjs-misspelled-persistence-artifact
+      - mstic-primary-a-grade-ir-vendor-single-source-veto-on-campaign-identity
+      - ad-indirect-via-sdlc-ci-cd-pipeline-exposure
+      - ai-developer-supply-chain-5-campaign-watch-lane-mastra-now-substantiated
+      - hard-rule-2-organized-threat-actor-activity-preserved-verbatim-no-cross-walk-to-teampcp-shai-hulud-lazarus-dprk
+      - hard-rule-6-mstic-4-word-quote-at-cap-organized-threat-actor-activity-one-per-source
+      - hard-rule-8-splunk-first-party-zero-hits-30d-lookback-frank-node-js-cicd-status-not-operator-confirmed
+      - substrate-pivot-from-reject-2026-06-17-0003-aikido-bc-thn-pre-mstic-surface
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - mastra-npm-supply-chain-2026-06
+    finding_ids:
+      - finding-2026-06-18-0001
+    resurface_if:
+      - independent_ir_vendor_corroboration_wiz_socket_snyk_sansec_aikido_ir_mandiant_unit42_crowdstrike_recorded_future
+      - ad_prime_developer_team_named_victim_emerges
+      - mstic_post_updated_with_named_actor_storm_n_tide_n_unc_alias
+      - first_party_ioc_hit_on_protocal_cjs_tutamail_com_23_254_164_subnet
+      - cve_assigned_to_compromise
+      - npm_registry_takedown_extends_to_additional_@mastra_dependency_chain_packages
+    first_covered: 2026-06-18
+    last_covered: 2026-06-18
+    retraction: null
+    test: false
+
+  - id: 2026-06-18-am-brief-meta
+    covered_in: [2026-06-18-morning]
+    brief_file: threats/briefs/2026-06-18-morning.md
+    headline: "2026-06-18 morning brief — 1 net-new graded finding (MSTIC Mastra npm supply-chain compromise A2 substrate-pivot from carry-forward reject) + 1 substrate-pivot AM UPDATE on AM-published finding (FortiBleed sixth-publisher SA-Paganini consolidation + Fortinet vendor denial conflict-surface + red-team AM layer-specific WEP caps on Turkish NATO contractor + classified-document-exfiltration to possibly) + KEV-compliance cohort (CVE-2026-54420 closes today, CVE-2026-48907 tomorrow, CVE-2026-20262 BOD-22-01 T-11d) + three retrospective-compliance-phase CVEs + three distinct Cisco CVE clusters do-not-conflate (CVE-2026-20262 vManage KEV-listed + CVE-2026-20127 vBond CVSS 10.0 UAT-8616 attributed retrospective per Talos NOT roster NO cross-walk + CVE-2026-20181 ISE/ISE-PIC no-ITW patched) + FortiSandbox KEV listing watch + 3 operator-deferred /new-actor candidacies substrate-strengthening Hard Rule 2 BINDING (Gentlemen RaaS Group-IB Qilin-affiliate-lineage preserved, ShinyHunters Kodak victim + Mandiant title-only PeopleSoft twin-surface, UAT-8616 Cisco Talos on CVE-2026-20127) + 2 Other Signal aggregation watch-lanes (AI-developer-supply-chain 5-campaign Mastra-now-substantiated synthesis-eligible Sunday, legitimate-protocol persistence/access TTP-pattern four-observation 48h aggregation) + Splunk first-party 22nd-consecutive-clean-sentinel ~108h continuous clean window Hard Rule 8 visibility-bounded absence flagged; pre-flight 13-of-13 PASS; Layer 1 ~1098 words within 150% hard-cap doctrine band (over 800 target due to dual action-tier item complexity + red-team layer-specific WEP cap matrix + Hard Rule 2 verbatim preservation requirement); Layer 2 Discord Summary under 1900-char hard ceiling"
+    topic_tags:
+      - morning-brief
+      - meta-tracking
+      - 1-net-new-finding-mstic-mastra-npm-supply-chain-compromise
+      - 1-substrate-pivot-am-update-fortibleed-sixth-publisher-vendor-denial-conflict-surface
+      - red-team-am-layer-specific-wep-caps-turkish-nato-contractor-classified-document-exfiltration-possibly
+      - kev-compliance-cohort-cve-2026-54420-closes-today
+      - three-distinct-cisco-cve-clusters-do-not-conflate
+      - fortisandbox-kev-listing-watch-status-pivot-pending
+      - three-operator-deferred-new-actor-candidacies-hard-rule-2-binding
+      - ai-developer-supply-chain-5-campaign-watch-lane-mastra-substantiated-synthesis-eligible
+      - legitimate-protocol-persistence-access-ttp-pattern-four-observation-48h-aggregation
+      - splunk-first-party-22nd-consecutive-clean-sentinel-108h-window
+      - hard-rule-2-binding-preserved-fortibleed-russian-speakers-verbatim-mstic-organized-threat-actor-verbatim-uat-8616-no-cross-walk-gentlemen-qilin-lineage-verbatim
+      - hard-rule-6-quote-discipline-preserved-beaumont-4-words-diachenko-4-words-mstic-4-words-one-quote-per-source-fortinet-31-word-denial-excluded
+      - hard-rule-7-credential-content-fortibleed-dataset-metadata-only-no-values
+      - hard-rule-8-binding-preserved-splunk-first-party-zero-hits-frank-not-fortinet-vpn-not-mastra-npm-installer-status-unknown
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns:
+      - CVE-2026-54420   # KEV cohort closes today
+      - CVE-2026-48907   # KEV cohort closes tomorrow
+      - CVE-2026-20262   # KEV cohort T-11d
+      - CVE-2026-20127   # vBond Talos UAT-8616 attribution preserved
+      - CVE-2026-20181   # ISE/ISE-PIC no-ITW
+      - CVE-2026-35273   # retrospective compliance
+      - CVE-2026-10520   # retrospective compliance
+      - CVE-2026-0257    # retrospective compliance
+    related_campaigns:
+      - fortibleed-2026-06
+      - mastra-npm-supply-chain-2026-06
+    finding_ids:
+      - finding-2026-06-17-0002
+      - finding-2026-06-18-0001
+    update_pivots:
+      - finding_id: finding-2026-06-17-0002
+        update_id: am-update-2026-06-18-0002
+        pivot_type: am_substrate_pivot_sixth_publisher_consolidation_plus_fortinet_vendor_denial_conflict_surface_red_team_am_layer_specific_wep_caps
+    carry_forward_callouts:
+      - finding-2026-06-15-0006   # Cisco SD-WAN CVE-2026-20262 KEV cohort
+      - finding-2026-06-16-0002   # FortiSandbox three-CVE cluster KEV listing watch
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - patch_released_for_associated_cve
+      - third_ir_vendor_corroboration_of_fortibleed_independent_of_diachenko_chain
+      - second_ir_vendor_corroboration_of_mstic_mastra_compromise
+      - cisa_kev_listing_for_fortisandbox_three_cve_cluster
+    first_covered: 2026-06-18
+    last_covered: 2026-06-18
+    retraction: null
+    test: false
+    word_count_layer_1: 1098
+    layer_2_discord_summary:
+      char_count_estimate: 1880
+      under_1900_buffer: true
+      word_count_total: 270
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 3   # Layer 2 char-count trimmed twice to fit under 1900 ceiling; Layer 1 trimmed once to fit under 150% hard-cap
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-17-0002
+          append_brief_id: 2026-06-18-morning
+        - finding_id: finding-2026-06-18-0001
+          append_brief_id: 2026-06-18-morning
+      operator_deferred_handoffs_surfaced:
+        - "/investigate-FortiBleed candidacy: third IR-vendor independent of Diachenko-discovery-chain corroboration watch (Mandiant/Unit 42/CrowdStrike/MSTIC/Recorded Future)"
+        - "Hudson Rock observation-pathway independence-from-Diachenko-discovery-chain verification"
+        - "/new-actor candidacy Gentlemen RaaS (substrate-strengthening this cycle via Group-IB Qilin-affiliate-lineage attribution preserved; ESET single-IR-vendor on GentleKiller tooling)"
+        - "/new-actor candidacy ShinyHunters (substrate-strengthening this cycle via Kodak named victim + Mandiant title-only PeopleSoft surface twin-surface)"
+        - "/new-actor candidacy UAT-8616 (Cisco Talos attribution on CVE-2026-20127 vBond exploitation; not on roster)"
+        - "Frank Fortinet VPN deployment status operator-confirmation pending"
+        - "Frank Node.js/npm CI-CD pipeline status operator-confirmation pending (Mastra-npm @-scope install workflow hunt)"
+        - "Mandiant Medical Community China-Nexus title-only substrate (72h FLASH dedup BINDING through 2026-06-18 12:00 EDT — afternoon-brief consideration post-dedup-window)"
+        - "AI-developer-supply-chain 5-campaign watch-lane synthesis-eligible Sunday Weekly Synthesis"
+        - "Legitimate-protocol persistence/access TTP-pattern four-observation aggregation watch synthesis-eligible if pattern firms up"
+      kev_compliance_cohort_state:
+        total_cves_tracked: 6
+        incoming_active:
+          - cve: CVE-2026-54420
+            deadline: 2026-06-18
+            hours_remaining_from_brief: 16
+            ad_relevance: low
+          - cve: CVE-2026-48907
+            deadline: 2026-06-19
+            hours_remaining_from_brief: 40
+            ad_relevance: low
+          - cve: CVE-2026-20262
+            deadline: 2026-06-29
+            days_remaining_from_brief: 11
+            ad_relevance: medium_high
+        retrospective_phase_closed:
+          - cve: CVE-2026-35273
+            deadline: 2026-06-15
+            status: closed_72h_past
+          - cve: CVE-2026-10520
+            deadline: 2026-06-14
+            status: closed_96h_past
+          - cve: CVE-2026-0257
+            deadline: 2026-06-01
+            status: closed_17d_past
+      hard_rules_audit:
+        hard_rule_2_no_cross_walk_originated:
+          - finding-0002-am-update-fortibleed-russian-speakers-multi-operator-threat-group-preserved-verbatim-no-cross-walk-to-apt28-sandworm-gamaredon-forest-blizzard-fin6-turkish-nato-contractor-allegation-preserved-as-allegation-red-team-am-cap-to-possibly
+          - finding-2026-06-18-0001-mstic-organized-threat-actor-activity-preserved-verbatim-no-cross-walk-to-teampcp-shai-hulud-lazarus-dprk-npm-cluster
+          - uat-8616-cisco-talos-attribution-preserved-verbatim-no-cross-walk-not-on-roster
+          - gentlemen-raas-group-ib-qilin-affiliate-lineage-attribution-preserved-verbatim-not-promoted
+          - shinyhunters-kodak-victim-mandiant-title-only-peoplesoft-attribution-preserved-verbatim-not-promoted
+        hard_rule_5_no_high_threat_box_scorings_in_flight: true
+        hard_rule_6_quote_discipline:
+          - beaumont_4_word_quote_the_data_is_legit_one_per_source_layer_1_and_layer_2
+          - diachenko_4_word_quote_russian_speaking_multi_operator_threat_group_one_per_source_layer_1_and_layer_2
+          - mstic_4_word_quote_organized_threat_actor_activity_one_per_source_layer_1_and_layer_2
+          - fortinet_31_word_denial_OVER_15_WORD_CEILING_EXCLUDED_FROM_QUOTE_CITATION_PARAPHRASED_ONLY_PER_HARD_RULE_6_BINDING
+        hard_rule_7_no_credential_content:
+          fortibleed_credential_dataset_metadata_only_no_values: true
+          mstic_mastra_no_credential_values_account_names_publication_handle_metadata_only: true
+        hard_rule_8_first_party_splunk:
+          both_findings_referenced_plus_22nd_consecutive_clean_sentinel: zero_hits_30d_lookback_across_defenseclaw_local_and_archimedes
+          visibility_bounded_absence_flagged: true
+          frank_not_fortinet_vpn_tenant_not_mastra_npm_installer_status_unknown_not_redcap_medical_research_not_higher_ed_peoplesoft_not_litespeed_cpanel_not_cisco_sd_wan_manager_not_joomla_jce: true
+    notes: |
+      2026-06-18 morning brief composed by briefer subagent after
+      grader produced 1 net-new finding (Microsoft MSTIC Mastra npm
+      supply-chain compromise A2 — substrate-pivot from carry-forward
+      reject-2026-06-17-0003 Aikido-Security/BC-Toulas/THN-Lakshmanan
+      pre-MSTIC trade-press surface lifted into finding-eligibility
+      tier by MSTIC A-grade vendor IR research primary) and red-team
+      AM review on the FortiBleed AM substrate-pivot UPDATE.
+
+      Lead chosen per red-team-am briefer_composition_guidance:
+      campaign-scale + dataset-authenticity layer (Beaumont
+      independent verification + Hudson Rock four-IR-vendor
+      preponderance) NOT classified-defense-document specifically.
+      Centering on classified-documents would create retraction-risk
+      single-point-of-failure dependent on the Hudson-Rock-Diachenko
+      single allegation pathway.
+
+      Named-victim layer surfaced as "domains appear in the
+      credential dataset" framing per red-team-am guidance, NOT
+      "these companies have been compromised." Siemens qualified
+      explicitly as "German industrial conglomerate; defense business
+      is a minority segment" rather than naked A&D-prime named-victim
+      framing. Turkish NATO contractor + classified-defense-document
+      claim preserved with "alleges" / "alleged" verbs verbatim;
+      adverb preservation across all six publisher relays is the
+      red-team-am-doctrinal anchor.
+
+      Fortinet vendor denial conflict-surface surfaced explicitly per
+      red-team-am guidance — first-party-equivalent device telemetry
+      visibility weighted alongside the four external IR vendors,
+      NOT discounted by publisher count. 31-word verbatim denial
+      string EXCLUDED from quote citation per Hard Rule 6;
+      paraphrased only.
+
+      Mild contrary evidence (zero US A&D primes named despite
+      dataset covering ~half of internet-facing Fortinet firewalls)
+      surfaced explicitly per red-team-am guidance.
+
+      At-cap quote selection per red-team-am briefer_composition_
+      guidance #8: Beaumont "the data is legit" (4 words),
+      Diachenko "Russian-speaking multi-operator threat group"
+      (4 words), MSTIC "organized threat actor activity" (4 words).
+      One quote per source. Beaumont 17-word string SKIPPED per
+      Hard Rule 6 ceiling. Ars-Goodin 13-word at-cap optional
+      omitted to keep Layer 2 under 1900-char ceiling.
+
+      WEP cap matrix per red-team-am:
+        - Campaign-scale + dataset-authenticity: likely (PM cap holds)
+        - Named-corporate-victim layer: likely (publisher independence
+          on domain-extraction is meaningful)
+        - Turkish NATO contractor specific: possibly (RED-TEAM AM CAP
+          applied — single Hudson-Rock-Diachenko allegation chain)
+        - Classified-defense-documents specific: possibly (RED-TEAM
+          AM CAP applied — same single chain)
+        - Fortinet vendor denial resolution: roughly_even_chance
+          (substrate-resolution-pending; vendor first-party-equivalent
+          weighting preserved)
+        - Russian-speakers attribution: possibly verbatim, no cross-walk
+        - MSTIC Mastra campaign identity: likely (single-A-IR-vendor)
+        - MSTIC Mastra CI/CD exposure: very_likely (objective
+          registry-fact + first-party Splunk visibility-bounded absence)
+
+      Hard Rule 2 BINDING preserved across cycle:
+        - FortiBleed: "Russian-speaking multi-operator threat group"
+          per Diachenko verbatim; NO cross-walk to APT28/Sandworm/
+          Gamaredon/Forest Blizzard/FIN6.
+        - MSTIC Mastra: "organized threat actor activity" per MSTIC
+          verbatim; NO cross-walk to TeamPCP/Shai-Hulud/Lazarus/
+          any DPRK npm cluster.
+        - UAT-8616: Cisco Talos attribution preserved verbatim; NOT
+          on 24-actor _roster.yaml; NO cross-walk.
+        - Gentlemen RaaS: Group-IB Qilin-affiliate-lineage preserved
+          verbatim; ESET single-IR-vendor on GentleKiller tooling.
+        - ShinyHunters: NOT on roster; preserved verbatim.
+
+      Hard Rule 6 quote discipline: 3 quotes total, 3 distinct
+      sources, max 4 words per quote (all at-cap-under). Fortinet
+      31-word denial OVER ceiling — EXCLUDED from quote citation,
+      paraphrased only.
+
+      Hard Rule 7 credential discipline: FortiBleed credential
+      dataset metadata only (firewall URL count 73932, domain count
+      21632, target counts 320777 + 163650, credential-attempt
+      counts 1.16B + 2.1B) — NO credential values. MSTIC Mastra
+      account names (ehindero, sergey2016) are publication-handle
+      metadata, not credentials.
+
+      Hard Rule 8 first-party Splunk: 22nd-consecutive-clean-sentinel
+      across 46-IOC combined set, ~108h continuous clean window.
+      Frank's Fortinet VPN deployment + Node.js/npm CI-CD pipeline
+      deployment statuses NOT operator-confirmed. Visibility-bounded
+      absence flagged, not negative evidence.
+
+      Pre-existing YAML defect in this file (line ~32457,
+      unescaped apostrophe in zdi_dustin_childs quote scalar)
+      carried forward — still present, still flagged for operator
+      follow-up, out-of-scope for this briefer cycle.
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

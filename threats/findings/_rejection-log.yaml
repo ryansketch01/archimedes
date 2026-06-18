@@ -8378,6 +8378,355 @@ entries:
       Out-of-scope operational patch-deployment landmine. Keep 1 year
       per LEGAL-POLICY retention.
 
+  - rejection_id: reject-2026-06-18-0012
+    rejected_at: 2026-06-18T16:16:00-04:00
+    grading_run_id: afternoon-20260618-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-pm-005-bc-toulas-sa-paganini-usb-lnk-tor-crypto-clipper-third-fourth-publisher-relay
+    cluster_topic: "BC-Toulas + SA-Paganini second/third-publisher journalistic relay on Microsoft Threat Intelligence (MSTIC) Crypto-Clipper / USB-LNK / Tor / BIP39-seed-phrase consumer-cryptocurrency-theft campaign already raw-signaled and dispositioned this 24h window as raw-2026-06-18-am-002-mstic-crypto-clipper-tor-worm-windows (MSTIC primary, rejected AM as reject-2026-06-18-0001)"
+    rejection_reasons:
+      - anti_noise_rule_1_binding_restatement_relay_on_already_dispositioned_substrate
+      - non_ad_consumer_cryptocurrency_target_class_carry_forward
+      - no_ad_prime_named_victim
+      - no_fresh_substrate_pivot_beyond_mstic_primary
+    rejection_detail: >
+      BC-Toulas (12:20 EDT) and SA-Paganini (14:32 EDT) are second
+      and third publisher journalistic relays of the Microsoft
+      Threat Intelligence (MSTIC) Crypto-Clipper / USB-LNK / Tor /
+      BIP39-seed-phrase consumer-cryptocurrency-theft campaign. The
+      MSTIC primary was already raw-signaled this morning at am-002
+      and dispositioned as reject-2026-06-18-0001 with A&D-relevance
+      LOW per consumer-crypto-wallet target class. Anti-noise Rule 1
+      BINDING — no fresh substrate-pivot beyond MSTIC primary. The
+      PM relays do add 3 incremental IOCs (Trojan:Win32/
+      CryptoBandits.A Defender detection name; localhost:9050 Tor
+      SOCKS5 proxy port; ugate.exe Tor executable component +
+      cfile JavaScript payload container) but those do NOT change
+      A&D-relevance fundamentals — target class remains consumer
+      cryptocurrency-wallet users, not A&D-prime / DIB / CMMC /
+      ITAR. Frank's deployment is NOT a cryptocurrency-wallet-using
+      environment per operator setup. No tracked-roster actor
+      attribution; MSTIC institutional attribution preserved
+      verbatim per Hard Rule 2. Possible Other Signal one-liner
+      watch on USB-LNK cross-airgap propagation TTP + Tor-only C2
+      hardening pattern for briefer if afternoon brief carries
+      MSTIC research with second/third-publisher consolidation
+      framing.
+    sources:
+      - source_yaml_id: bleepingcomputer
+        grade: B
+      - source_yaml_id: securityaffairs
+        grade: B
+    would_be_digraph: B3
+    review_notes: >
+      Carry-forward observation on USB-LNK cross-airgap propagation
+      TTP pattern for future Other Signal aggregation; would lift
+      to finding-eligibility tier IF A&D-classified-network or DIB-
+      prime named victim emerges via TTP-pattern transfer. Keep 1
+      year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0013
+    rejected_at: 2026-06-18T16:17:00-04:00
+    grading_run_id: afternoon-20260618-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-pm-006-bc-toulas-nintendo-tinypulse-webmd-subsidiary-shadowbyt3-extortion
+    cluster_topic: "Nintendo of America confirms internal employee survey data stolen via third-party SaaS compromise of TinyPulse (employee engagement platform owned by WebMD Health Services); Shadowbyt3$ extortion-as-a-service group active since October 2025 demands $2M ransom; consumer-gaming target class with three-deep SaaS supply-chain (Nintendo → TinyPulse → WebMD); conflicting scope claims (Nintendo limited subset of employees vs. Shadowbyt3$ 1GB 2016-2026 W-9 forms)"
+    rejection_reasons:
+      - non_ad_consumer_gaming_target_class
+      - no_ad_prime_named_victim
+      - shadowbyt3_not_on_24_actor_roster
+      - hard_rule_2_binding_no_archimedes_originated_cross_walk
+      - no_fresh_cve
+      - no_tracked_roster_actor_attribution
+    rejection_detail: >
+      Nintendo of America confirms data stolen in TinyPulse (WebMD
+      Health Services subsidiary) third-party SaaS compromise.
+      Shadowbyt3$ extortion-as-a-service group claims $2M ransom
+      demand. Consumer-gaming target class; TinyPulse is employee-
+      engagement SaaS; WebMD Health Services is healthcare-
+      information SaaS. ZERO A&D-prime named victims. Shadowbyt3$
+      NOT on _roster.yaml 24-actor list. Hard Rule 2 BINDING —
+      Archimedes does NOT cross-walk Shadowbyt3$ to any roster
+      actor without independent A-grade IR-vendor attribution.
+      Possible operator-deferred /new-actor candidacy joining the
+      carry-forward operator-deferred candidate set: Gentlemen RaaS
+      (ESET-GentleKiller + Mackay Sugar), ShinyHunters (Kodak +
+      Mandiant Education PeopleSoft), UAT-8616 (Cisco Talos / vBond
+      CVE-2026-20127), Icarus (Klue/Salesforce), UNC6508 (now
+      promoted as finding-2026-06-18-0002), Megalodon / TrapDoor /
+      Miasma (AI-developer-supply-chain lane). Six operator-deferred
+      /new-actor candidates now aggregating in PM cycle watch-pattern
+      after this PM sweep. Conflicting scope claims (Nintendo vendor
+      statement "limited to internal survey content comprising a
+      small subset of our employees" 12 words AT CAP-not-exceeded
+      vs. Shadowbyt3$ extortion claim of broader 2016-2026 scope
+      including W-9 forms, bank statements, full PII spanning ~1GB)
+      create resolution-pending dynamic similar to FortiBleed
+      Fortinet-vendor-denial-vs-multi-IR-vendor-confirmation but
+      at much smaller scale. Possible afternoon brief Other Signal
+      one-liner on third-party-SaaS-supply-chain pattern observation
+      (Klue/Salesforce/Icarus + ShinyHunters/PeopleSoft + Kodak +
+      iRhythm carry-forward + this Nintendo/TinyPulse/WebMD = five
+      parallel third-party-SaaS-supply-chain compromise patterns).
+    sources:
+      - source_yaml_id: bleepingcomputer
+        grade: B
+    would_be_digraph: B3
+    review_notes: >
+      Operator-deferred /new-actor-Shadowbyt3$ candidacy noted;
+      Hard Rule 2 BINDING — substrate-strengthening watch only.
+      Watch IF A&D-prime named victim layer emerges. Keep 1 year
+      per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0014
+    rejected_at: 2026-06-18T16:18:00-04:00
+    grading_run_id: afternoon-20260618-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-pm-008-dr-wright-klue-salesforce-icarus-huntress-third-saas-integration-compromise
+    cluster_topic: "DR-Wright second-publisher journalistic relay (12:49 EDT, body 403-blocked, title + RSS summary only) on 'Icarus' threat-actor Salesforce-OAuth-pivot-via-third-party-SaaS extortion campaign via Klue Battlecards integrated application — third compromised integrated SaaS application overall; Huntress (cybersecurity-vendor) named as victim; BC-Abrams primary at 12:00 FLASH sweep 7ed07aa already established this trigger-topic; pattern consistent with broader four-parallel third-party-SaaS-supply-chain compromise aggregation lane"
+    rejection_reasons:
+      - non_ad_consumer_market_intelligence_saas_target_class
+      - icarus_not_on_24_actor_roster
+      - hard_rule_2_binding_no_archimedes_originated_cross_walk_to_shinyhunters_or_other_roster_actor
+      - no_ad_prime_named_victim
+      - no_fresh_cve
+      - body_403_blocked_title_only_substrate_only
+      - second_publisher_relay_through_bc_abrams_primary_at_12_00_flash_sweep
+    rejection_detail: >
+      DR-Wright second-publisher journalistic relay on 'Icarus'
+      threat-actor Salesforce-OAuth-pivot-via-third-party-SaaS
+      extortion campaign via Klue Battlecards integrated application
+      compromise. Title + RSS summary only — DR body 403-blocked at
+      this sweep (intermittent DR 403/200 pattern persists). Klue
+      Battlecards = market-intelligence SaaS platform integrated
+      with Salesforce via OAuth; identified as the THIRD integrated
+      application compromised in this attack campaign per DR title.
+      Named victim Huntress (cybersecurity vendor) — non-A&D-prime,
+      but Huntress being named adds interesting "IR-vendor-victim"
+      wrinkle. Icarus NOT on _roster.yaml. Hard Rule 2 BINDING — no
+      cross-walk to ShinyHunters or any other roster actor without
+      independent A-grade IR-vendor attribution. Pattern aggregation:
+      Klue/Salesforce/Icarus + ShinyHunters Education PeopleSoft
+      (Mandiant title-only carry-forward) + Kodak ShinyHunters
+      (AM raw-signal am-009 reject-2026-06-18-0007) + Nintendo/
+      TinyPulse/WebMD (pm-006 this sweep reject-2026-06-18-0013) +
+      iRhythm 12M healthcare patient breach (reject-2026-06-16-0003
+      carry-forward) = FIVE parallel third-party-SaaS-supply-chain
+      compromise patterns now aggregating in operator-deferred /new-
+      actor + watch-pattern lane. Operator-deferred /new-actor-
+      Icarus candidacy carry-forward from 12:00 FLASH sweep
+      reinforced this sweep. Possible afternoon brief Other Signal
+      one-liner on five-parallel-SaaS-supply-chain pattern
+      observation.
+    sources:
+      - source_yaml_id: dark-reading
+        grade: B
+    would_be_digraph: B3
+    review_notes: >
+      Operator-deferred /new-actor-Icarus candidacy noted; Hard
+      Rule 2 BINDING — substrate-strengthening watch only. Watch IF
+      A&D-prime named victim layer emerges OR independent IR-vendor
+      primary on Icarus actor identity surfaces. Body retrieval
+      follow-up recommended next sweep IF DR 403 lifts. Keep 1
+      year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0015
+    rejected_at: 2026-06-18T16:19:00-04:00
+    grading_run_id: afternoon-20260618-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-pm-009-krebs-popa-botnet-netnut-alarum-vo1d-badbox-residential-proxy
+    cluster_topic: "Krebs investigative reporting on Popa botnet (Android-based residential proxy network of millions of consumer TV boxes relaying traffic for ad-fraud / account-takeover / data-scraping); multi-vendor research convergence (XLAB + Qurium + HUMAN Security + Trend Micro + Lumen/Black Lotus + Spur + Synthient + Include Security) attributing Popa to NetNut residential-proxy provider operated by publicly-traded Israeli firm Alarum Technologies Ltd [NASDAQ: ALAR]; Ninjatech founded by Moishi Kramer (NetNut VP R&D) denies operating current Popa infrastructure; described as plugin component of Vo1d / BadBox 2.0 ecosystem"
+    rejection_reasons:
+      - non_ad_consumer_iot_android_tv_box_target_class
+      - popa_vo1d_badbox_not_on_24_actor_roster
+      - residential_proxy_obf_pattern_observation_only_no_direct_actor_walk
+      - hard_rule_2_binding_no_archimedes_originated_cross_walk
+      - no_ad_prime_named_victim
+      - no_fresh_cve
+      - krebs_a_grade_investigative_but_target_class_out_of_scope
+    rejection_detail: >
+      Krebs investigative reporting on Popa botnet attributed by
+      multi-vendor research convergence (XLAB 2025 report + Qurium
+      2026-06-18 publication + HUMAN Security Badbox 2.0 disruption
+      with Google + Trend Micro joint + Lumen/Black Lotus + Spur +
+      Synthient + Include Security) to NetNut residential-proxy
+      provider operated by publicly-traded Israeli firm Alarum
+      Technologies Ltd [NASDAQ: ALAR]. Krebs is A-grade per source-
+      grades.yaml. Multi-vendor convergence on attribution is
+      structurally strong substrate (4-IR-vendor + 2-research-firm
+      consolidation; would meet credibility 1 Confirmed at the
+      Krebs/Qurium/XLAB cross-evidence-basis layer). However, A&D
+      relevance is OUT-OF-SCOPE — consumer Android TV boxes =
+      consumer-IoT supply-chain compromise; victims are device-
+      owners not enterprise networks; residential-proxy abuse is
+      ad-fraud + account-takeover + data-scraping, NOT A&D-prime
+      intrusion vector. Popa / NetNut / Alarum / Vo1d / BadBox 2.0
+      NOT on _roster.yaml. Hard Rule 2 BINDING — Archimedes does
+      NOT cross-walk to any tracked actor; do NOT propagate
+      residential-proxy infrastructure-as-OBF-layer to UNC6508 OBF-
+      network tradecraft layer (Mandiant primary documents
+      compromised routers + residential proxies + VPS as UNC6508
+      OBF-network commodity infrastructure; the structural
+      observation that APT actors lease residential-proxy commodity
+      infrastructure for operational anonymity is operator-domain
+      analytic-pattern inference, NOT Archimedes-domain attribution
+      claim). Two watch-pattern observations: (1) consumer-IoT
+      supply-chain compromise pattern (devices arriving pre-
+      compromised at scale, bundled malware in distribution
+      channels) parallel to BRICKSTORM vSphere-targeting + Mandiant
+      supply-chain compromise patterns that ARE A&D-relevant —
+      pattern observation only, no A&D-direct substrate; (2)
+      residential-proxy infrastructure as obfuscation layer for
+      APT operations — methodologically interesting, no direct
+      cross-walk to any tracked-actor operations. Possible weekly
+      synthesis carry-forward on residential-proxy-as-OBF-
+      infrastructure structural pattern; not finding-promotion
+      worthy this sweep.
+    sources:
+      - source_yaml_id: krebs
+        grade: A
+    would_be_digraph: A3   # A-grade multi-vendor consolidation substrate; credibility 3 at A&D-relevance layer (out-of-scope target class)
+    review_notes: >
+      Out-of-scope consumer-IoT target class. Multi-vendor
+      consolidation substrate is structurally strong but A&D
+      relevance fails inclusion threshold. Possible weekly synthesis
+      carry-forward on residential-proxy-OBF-infrastructure pattern
+      observation. Keep 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0016
+    rejected_at: 2026-06-18T16:20:00-04:00
+    grading_run_id: afternoon-20260618-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-pm-010-dr-culafi-operation-escaneo-latam-threat-landscape-title-only
+    cluster_topic: "DR-Culafi Operation Escaneo LatAm regional threat-landscape research (title + RSS summary only, body 403-blocked); threat-group business model framing of opportunistic monetization + intel collection blended without coordination; no specific actor named, no specific A&D-prime named, no specific CVE in title"
+    rejection_reasons:
+      - title_only_substrate_body_403_blocked
+      - latam_regional_scope_no_ad_prime_named_in_title
+      - no_specific_actor_named_in_title
+      - no_specific_cve_in_title
+      - insufficient_substrate_for_grading
+    rejection_detail: >
+      DR-Culafi LatAm regional threat-landscape research; title +
+      RSS summary only; DR intermittent 403 pattern persists
+      blocking body retrieval. Title + summary describe threat-
+      group business model framing (opportunistic monetization
+      alongside intel collection without coordination) without
+      naming specific actor / specific A&D-prime / specific CVE.
+      A&D-relevance LOW in title (LatAm regional; some Tier-2 A&D
+      suppliers operate in LatAm — Embraer Brazil, NX Argentine
+      subsidiaries, Mexican CONAE, Chilean defense electronics —
+      but no direct DIB-prime framing visible in title). Watch-
+      pattern only; possible Other Signal one-liner IF body
+      retrieval substantiates A&D-relevant actor or victim in
+      future sweep. Insufficient substrate at this sweep for
+      grading-promotion.
+    sources:
+      - source_yaml_id: dark-reading
+        grade: B
+    would_be_digraph: B6   # title-only substrate insufficient for credibility evaluation
+    review_notes: >
+      Body retrieval follow-up recommended next sweep IF DR 403
+      lifts. Possible LatAm regional threat-landscape watch-pattern
+      carry-forward. Keep 1 year per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0017
+    rejected_at: 2026-06-18T16:21:00-04:00
+    grading_run_id: afternoon-20260618-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-pm-011-dr-nelson-fifa-bug-world-cup-streams-entra-access-control-title-only
+    cluster_topic: "DR-Nelson FIFA World Cup streams Entra access-control bug (title + RSS summary only, body 403-blocked); consumer broadcast / sports-entertainment target class; Microsoft Entra ID access-control misconfiguration enabling potential remote takeover of World Cup streams; no CVE in title; FIFA-specific Entra implementation"
+    rejection_reasons:
+      - non_ad_consumer_entertainment_target_class
+      - title_only_substrate_body_403_blocked
+      - no_cve_in_title
+      - no_tracked_actor
+      - fifa_specific_entra_implementation_not_microsoft_product_vulnerability_propagating_to_other_tenants
+    rejection_detail: >
+      DR-Nelson FIFA application-security vulnerability surface;
+      title + RSS summary only; DR intermittent 403 pattern. FIFA's
+      Microsoft Entra (Azure AD) access-control misconfiguration
+      enables potential takeover of World Cup streams. Consumer
+      broadcast / sports-entertainment target class, NOT A&D / DIB
+      / CMMC / ITAR. Microsoft Entra ID is widely used in A&D-prime
+      workforce IAM but the specific FIFA scenario described in
+      title is FIFA-specific Entra access-control implementation —
+      not a Microsoft-product vulnerability that propagates to
+      other Entra tenants. Body retrieval would substantiate the
+      access-control pattern; could yield Microsoft-Entra-platform-
+      class observations of interest. At title-only substrate
+      level, awareness-only / non-FLASH-eligible / non-finding-
+      promotion.
+    sources:
+      - source_yaml_id: dark-reading
+        grade: B
+    would_be_digraph: B6   # title-only substrate insufficient for credibility evaluation
+    review_notes: >
+      Body retrieval follow-up recommended next sweep IF DR 403
+      lifts AND IF access-control pattern surfaces Microsoft-
+      Entra-platform-class observations. Keep 1 year per LEGAL-
+      POLICY retention.
+
+  - rejection_id: reject-2026-06-18-0018
+    rejected_at: 2026-06-18T16:22:00-04:00
+    grading_run_id: afternoon-20260618-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-18-pm-012-talos-burton-threat-source-newsletter-spielberg-mythos-non-signal
+    cluster_topic: "Cisco Talos Hazel Burton weekly Threat Source newsletter columnist commentary (Steven Spielberg's 'Disclosure Day' film as framing device for observations on human irrationality in security decision-making — MFA adoption / patching / segmentation); brief technical preview of Cisco Talos vbdec VB6-disassembler with live COM-interface exposure for AI-agent-driven reverse-engineering automation; no threat-actor reporting / no CVE / no incident"
+    rejection_reasons:
+      - newsletter_columnist_content_non_threat_substrate
+      - tools_research_preview_not_threat_actor_reporting
+      - no_tracked_actor
+      - no_cve
+      - no_ad_prime_named_victim
+    rejection_detail: >
+      Hazel Burton's weekly Threat Source newsletter on Cisco Talos
+      uses Spielberg's "Disclosure Day" film as framing device for
+      commentary on human irrationality in security decision-
+      making. No threat-actor reporting; no CVE; no incident
+      substrate. Brief technical preview of Cisco Talos research on
+      vbdec — VB6 disassembler exposing parsed data through live
+      COM interface for AI-agent-driven reverse-engineering
+      automation (privacy-preserving local-AI-agent + traditional-
+      analysis-tool pairing pattern). Out-of-scope as threat
+      substrate. Watch-pattern observation only: AI-agent-driven
+      reverse-engineering tooling pattern consistent with the
+      broader agentic-AI defensive tooling lane already aggregating
+      across recent sweeps (HNS-Pogorelec Confluent agentic-AI-in-
+      production survey from 2026-06-18 00:00 sweep + HNS-AI-
+      employment commentary + carry-forward Mastra / JetBrains-
+      Chrome / Megalodon / TrapDoor / Miasma AI-developer-supply-
+      chain watch lane). Defensive-tooling-side agentic-AI patterns
+      now visible: vbdec / Local-AI-agent COM-interface pattern +
+      "post-Mythos world" Talos colleague-reference language
+      consistent with broader Anthropic Fable 5 / Mythos 5
+      substrate carry-forward (finding-2026-06-15-0010 community-
+      pushback layer) without explicit Talos attribution-claim or
+      specific actor / CVE — cultural-language framing only.
+      Pattern-level observation; no A&D-prime named victim or
+      attribution warrants finding promotion.
+    sources:
+      - source_yaml_id: cisco-talos
+        grade: A
+    would_be_digraph: A6   # A-grade source publishing non-threat-substrate columnist content; credibility 6 (cannot be judged as threat intel because the content is not threat intel)
+    review_notes: >
+      Out-of-scope as threat substrate. Watch-pattern carry-forward
+      on agentic-AI defensive-tooling lane. Keep 1 year per LEGAL-
+      POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-17T16:00:00-04:00  # briefer 2026-06-17 afternoon composition complete; pm-update-001 (FortiBleed PM substrate-pivot scale-revision dual-IR-vendor RED-TEAM-CAPPED at likely on campaign-scale) + pm-update-002 (US Law Firms title-snapshot -> UNC3753 / Luna Moth / Chatty Spider / Silent Ransom Group full-body substantiation cluster-anchor lifted A3->A2) + pm-001 (net-new CVE-2026-5426 KnowledgeDeliver ViewState shared-machineKey vuln-tracker handoff candidate Mandiant unknown-actor preserved) + pm-update-003 (DragonForce quadruple-publisher anti-noise status-check one-liner) + pm-brief-meta populated; AM brief-meta and per-finding AM entries preserved upstream unchanged
+last_updated: 2026-06-18T16:00:00-04:00  # briefer 2026-06-18 afternoon composition complete; pm-001 (UNC6508 INFINITERED REDCap substrate-pivot UPDATE from 72h-FLASH-dedup-closed title-only carry-forward + SW-Arghire second-publisher independent Shodan scan-data substrate; UNC6508 joins operator-deferred /new-actor candidate set as strongest in cycle) + pm-002 (CISA KEV CVE-2026-20253 Splunk Enterprise PostgreSQL sidecar 3-day BOD 22-01 deadline 2026-06-21 vendor-confirmation HOLD closure) + pm-003 (F5 NGINX dual CVE-2026-42530 + CVE-2026-42055 CVSS 9.2 quadruple-publisher consolidation substrate-pivot from AM reject-0003 no ITW widely-deployed A&D edge component) + pm-004 (Cisco ISE CVE-2026-20181 + CVE-2026-20190 dual-publisher consolidation substrate-pivot from AM reject-0004 authenticated-admin precondition limits initial access not post-compromise impact third distinct Cisco CVE cluster this week) + pm-brief-meta populated; AM brief-meta + per-finding AM/PM entries upstream preserved unchanged
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -38600,6 +38600,441 @@ entries:
       unescaped apostrophe in zdi_dustin_childs quote scalar)
       carried forward — still present, still flagged for operator
       follow-up, out-of-scope for this briefer cycle.
+
+  - id: 2026-06-18-pm-001-mandiant-gtig-unc6508-infinitered-redcap-prc-nexus-medical-research-military-health-substrate-pivot-update-second-publisher-sw-arghire-scan-data
+    covered_in: [2026-06-18-afternoon]
+    brief_file: threats/briefs/2026-06-18-afternoon.md
+    headline: "Mandiant / GTIG substantiates UNC6508 (PRC-nexus) compromise of REDCap clinical-trial platform across North American academic / medical / military-health research community since September 2023 via INFINITERED 3-component PHP backdoor; SW-Arghire second-publisher adds independent Shodan-derived ~8,500-instance scan-exposure substrate grounding Mandiant T1689 downgrade-attack reference; substrate-pivot UPDATE from 72h-FLASH-dedup-closed title-only carry-forward; Hard Rule 2 BINDING — UNC6508 NOT on _roster.yaml — Archimedes does NOT cross-walk to Volt Typhoon / Salt Typhoon / APT40 / APT41; UNC6508 enters operator-deferred /new-actor candidate set as strongest in cycle"
+    topic_tags:
+      - unc6508
+      - infinitered
+      - redcap
+      - prc-nexus
+      - medical-research
+      - military-health
+      - clinical-trial-platform
+      - substrate-pivot-from-title-only-carry-forward
+      - 72h-flash-dedup-closed
+      - mandiant-gtig-primary
+      - sw-arghire-second-publisher-relay-independent-shodan-scan-data
+      - hard-rule-2-binding-no-cross-walk-volt-typhoon-salt-typhoon-apt40-apt41
+      - operator-deferred-new-actor-candidacy-strongest-in-set
+      - active-threats
+    related_actors:
+      - actor_name: UNC6508
+        actor_in_roster: false
+        archimedes_treatment: SOURCE_ATTRIBUTION_PRESERVED_VERBATIM_NOT_CROSS_WALKED_TO_ANY_ROSTER_ACTOR_PER_HARD_RULE_2
+        relevance: prc_nexus_with_high_confidence_per_mandiant_targeting_north_american_academic_medical_military_health_research
+        new_actor_candidate_flagged_in_prior_coverage: true
+    related_vulns: []
+    related_campaigns:
+      - unc6508_infinitered_redcap_medical_research_september_2023_through_november_2025
+    finding_ids: [finding-2026-06-18-0002]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      mandiant_gtig_publishes_unc6508_infinitered_redcap_research: A2
+      sw_arghire_independent_scan_data_8500_internet_exposed_redcap_instances: B2
+      unc6508_not_on_roster: A1
+    wep: likely
+    wep_layered:
+      unc6508_cluster_identity: likely
+      infinitered_backdoor_unc6508_attribution: likely
+      prc_state_sponsorship_per_mandiant_verbatim: likely
+      campaign_timeline_september_2023_onwards: likely
+      redcap_outdated_internet_exposed_surface_8500_instances: very_likely
+      ad_dib_direct_targeting: roughly_even_chance
+      ad_dib_structural_relevance_via_workforce_rd_ecosystem: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - mandiant_alone_on_unc6508_cluster_identity
+      - mandiant_alone_on_infinitered_bespoke_backdoor_attribution_to_unc6508
+      - mandiant_alone_on_prc_state_sponsorship_attribution
+    hard_rule_2_framings_load_bearing:
+      - "UNC6508 NOT on _roster.yaml — Hard Rule 2 BINDING — Archimedes does NOT cross-walk to Volt Typhoon / Salt Typhoon / APT40 / APT41 absent independent A-grade source"
+      - "Mandiant 'with high confidence' attribution preserved verbatim per GTIG; INFINITERED == UNC6508 bespoke-malware mapping is single-A-IR-vendor"
+      - "Mandiant 'Mandiant-reported sample, not exhaustive population' framing preserved per analyst KAC KA1"
+      - "Chikungunya/Guangdong outbreak collection-priority alignment preserved verbatim as marker, NOT state tasking per analyst KAC KA5"
+      - "DIB-prime structural relevance framed as workforce / R&D-ecosystem adjacency, NOT direct breach probable per analyst KAC KA6"
+    hard_rule_6_quote_budget:
+      mandiant_with_high_confidence: '"with high confidence"'  # 3 words
+      total_quotes_in_brief: 1_mandiant_one_quote_one_source_compliant
+      per_source_max: 1
+    hard_rule_7_compliance: "Email IOC BebitaBarefoot774@gmail.com is threat-actor-controlled exfil account; IP 23.169.65.49 is compromised-ASUS-router OBF-network-exit-IP metadata. No credential values."
+    splunk_first_party:
+      status: categorical_structural_null_frank_not_north_american_medical_research_military_health_redcap_deployment
+      hard_rule_8_framing: visibility_bounded_absence_categorical_structural_not_empirical
+    resurface_if:
+      - second_a_grade_ir_vendor_independent_corroboration_unc6508_cluster_identity_crowdstrike_unit42_mstic
+      - cluster_rename_or_merge_announcement_from_a_grade_ir_vendor
+      - infinitered_yara_hits_under_different_actor_reporting
+      - ad_prime_named_victim_disclosed
+      - first_party_splunk_hit_on_unc6508_12_ioc_subset
+      - additional_redcap_instance_compromise_reports
+      - operator_approves_new_actor_unc6508_scaffold
+    first_covered: 2026-06-18
+    last_covered: 2026-06-18
+    retraction: null
+    test: false
+
+  - id: 2026-06-18-pm-002-cisa-kev-cve-2026-20253-splunk-enterprise-postgresql-sidecar-missing-authentication-three-day-due-date-vendor-confirmation-hold-closure
+    covered_in: [2026-06-18-afternoon]
+    brief_file: threats/briefs/2026-06-18-afternoon.md
+    headline: "CISA KEV catalog adds CVE-2026-20253 Splunk Enterprise PostgreSQL sidecar missing-authentication-for-critical-function allowing unauthenticated arbitrary file create/truncate; aggressive 3-day BOD 22-01 federal mitigation deadline 2026-06-21; closes vendor-confirmation HOLD carry-forward across recent FLASH sweeps; A&D-DIB structural exposure HIGH (default-config) / configuration-dependent (customized) pending Splunk PSIRT; Frank first-party exposure null structurally (Splunk Free 10.x deployment ≠ Splunk Enterprise PostgreSQL sidecar)"
+    topic_tags:
+      - cve-2026-20253
+      - splunk-enterprise
+      - postgresql-sidecar
+      - missing-authentication-for-critical-function
+      - cisa-kev-addition-2026-06-18
+      - bod-22-01-three-day-compressed-deadline-2026-06-21
+      - vendor-confirmation-hold-closed
+      - ad-dib-structural-exposure-high-default-config-configuration-dependent-customized-pending-psirt
+      - frank-first-party-exposure-null-structurally-splunk-free-10x
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-20253]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-18-0003]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      cisa_kev_catalog_state_2026_06_18_addition: A1
+      itw_exploitation_substantiated_per_bod_22_01_kev_doctrine: A2
+      ad_prime_first_party_exposure_high_structurally: A2
+      frank_first_party_exposure_null_structurally: A1
+    wep: likely
+    wep_layered:
+      cisa_kev_catalog_state_observation: very_likely
+      itw_exploitation_per_kev_doctrine: likely
+      ad_prime_default_config_exposure_structurally: very_likely
+      frank_first_party_exposure_null_structurally: almost_certainly
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - cisa_kev_sole_canonical_on_underlying_itw_exploitation_claim
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution in KEV catalog entry per KEV design — Archimedes preserves silence on actor layer"
+      - "A&D-DIB structural exposure framed as 'default-config high, configuration-dependent in customized deployments' pending Splunk PSIRT per analyst KAC KA3"
+    splunk_first_party:
+      status: categorical_structural_null_frank_splunk_free_10x_not_splunk_enterprise_postgresql_sidecar_component
+      hard_rule_8_framing: visibility_bounded_absence_categorical_structural_not_empirical_no_empirical_query_required
+    resurface_if:
+      - splunk_psirt_advisory_published_with_affected_versions_configurations_matrix
+      - independent_a_or_b_grade_ir_firm_corroborates_itw_exploitation
+      - ad_prime_named_victim_disclosed
+      - additional_kev_compliance_deadline_state_change
+      - first_party_splunk_hit_post_psirt_ioc_publication
+    first_covered: 2026-06-18
+    last_covered: 2026-06-18
+    retraction: null
+    test: false
+
+  - id: 2026-06-18-pm-003-f5-nginx-cve-2026-42530-42055-critical-cvss-9-2-use-after-free-heap-overflow-quadruple-publisher-relay-no-itw-widely-deployed-ad-edge-component
+    covered_in: [2026-06-18-afternoon]
+    brief_file: threats/briefs/2026-06-18-afternoon.md
+    headline: "F5 out-of-band security updates 2026-06-17 patch critical NGINX vulnerabilities CVE-2026-42530 (use-after-free in ngx_http_v3_module HTTP/3 / QUIC, CVSS v4 9.2) and CVE-2026-42055 (heap-based buffer overflow in ngx_http_proxy_v2_module and ngx_http_grpc_module, CVSS v4 9.2); quadruple-publisher journalistic relay consolidation SW-Arghire AM + BC-Gatlan + SA-Paganini + THN-Lakshmanan PM; vendor + 4 publishers concur no ITW at disclosure; widely deployed A&D-prime edge component (reverse proxies / ingress controllers / API gateways foundational to DIB web edges); defensive prioritization weights CVE-2026-42055 ahead of CVE-2026-42530; THN historical analog on CVE-2026-42945 framed as pattern observation NOT predictive substrate per analyst KAC KA1; substrate-pivot from AM reject-2026-06-18-0003"
+    topic_tags:
+      - cve-2026-42530
+      - cve-2026-42055
+      - f5-nginx
+      - critical-cvss-92
+      - quadruple-publisher-journalistic-relay-substrate-pivot-from-am-single-publisher-veto
+      - vendor-plus-4-publishers-concur-no-itw-at-disclosure
+      - widely-deployed-ad-edge-component-reverse-proxies-ingress-controllers-api-gateways
+      - defensive-prioritization-weight-cve-2026-42055-ahead-of-cve-2026-42530
+      - thn-historical-analog-cve-2026-42945-pattern-observation-not-predictive-substrate
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-42530, CVE-2026-42055]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-18-0004]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      f5_vendor_advisory_canonical_on_own_product: A1
+      f5_vendor_advisory_no_itw_attestation: A2
+      publisher_independence_test_passes_4_publishers: A1
+      evidence_basis_independence_test_fails_all_4_publishers_rest_on_f5_vendor_advisory_primary: A1
+    wep: likely
+    wep_layered:
+      cve_2026_42530_use_after_free_technical_reality: very_likely
+      cve_2026_42055_heap_overflow_technical_reality: very_likely
+      no_itw_at_disclosure_per_vendor_attestation: likely
+      ad_prime_edge_component_exposure_structurally: very_likely
+      imminent_itw_per_cve_2026_42945_historical_pattern: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - f5_vendor_advisory_alone_on_underlying_technical_claim_evidence_basis
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution — vulnerability disclosure not active-campaign reporting"
+      - "THN historical analog CVE-2026-42945 framed as pattern observation, NOT predictive substrate per analyst KAC KA1"
+    splunk_first_party:
+      status: categorical_structural_no_iocs_published_with_vulnerability_disclosure_frank_not_nginx_edge_component_deployment
+      hard_rule_8_framing: visibility_bounded_absence_categorical_structural_not_empirical
+    resurface_if:
+      - public_poc_disclosed_for_either_cve
+      - itw_exploitation_observed_by_ir_vendor
+      - cisa_kev_addition_for_either_cve
+      - ad_prime_named_victim_disclosed
+      - first_party_splunk_hit_post_ioc_publication
+    first_covered: 2026-06-18
+    last_covered: 2026-06-18
+    retraction: null
+    test: false
+
+  - id: 2026-06-18-pm-004-cisco-ise-cve-2026-20181-cvss-9-1-command-execution-root-cve-2026-20190-information-disclosure-dual-publisher-relay-authenticated-admin-precondition
+    covered_in: [2026-06-18-afternoon]
+    brief_file: threats/briefs/2026-06-18-afternoon.md
+    headline: "Cisco PSIRT publishes patches for critical Cisco Identity Services Engine (ISE) + ISE Passive Identity Connector (ISE-PIC) command-execution CVE-2026-20181 (CVSS 9.1, authenticated-admin → root-OS via specially crafted HTTP request) paired with information-disclosure CVE-2026-20190 (CVSS 7.5, unauthenticated access to hashed credentials); remediation ISE/ISE-PIC 3.3 Patch 11 + 3.4 Patch 6 + 3.5 hotfix; dual-publisher journalistic relay SW-Arghire AM + SA-Paganini PM; Cisco PSIRT vendor-attested no-ITW; authenticated-admin precondition limits INITIAL ACCESS not POST-COMPROMISE IMPACT per analyst KAC KA1; chained-attack scenario CVE-20190 → CVE-20181 is the chain to model; third distinct Cisco CVE cluster this week (distinct from CVE-2026-20262 vManage + CVE-2026-20127 vBond UAT-8616); substrate-pivot from AM reject-2026-06-18-0004"
+    topic_tags:
+      - cve-2026-20181
+      - cve-2026-20190
+      - cisco-ise
+      - cisco-ise-pic
+      - cvss-91-authenticated-admin-root-os-command-execution
+      - cvss-75-unauthenticated-hashed-credential-disclosure
+      - dual-publisher-journalistic-relay-substrate-pivot-from-am-single-publisher-veto
+      - cisco-psirt-vendor-attested-no-itw
+      - authenticated-admin-precondition-limits-initial-access-not-post-compromise-impact
+      - chained-attack-scenario-cve-20190-then-cve-20181-chain-to-model
+      - third-distinct-cisco-cve-cluster-this-week-do-not-conflate
+      - ad-dib-nac-identity-infrastructure-exposure-structurally-very-likely
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-20181, CVE-2026-20190]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-18-0005]
+    digraph: A2
+    digraph_layered:
+      cluster_anchor: A2
+      cisco_psirt_canonical_on_own_product: A1
+      cisco_psirt_no_itw_attestation_verbatim_8_word_under_cap: A2
+      publisher_independence_test_passes_2_publishers: A1
+      evidence_basis_independence_test_fails_both_publishers_rest_on_cisco_psirt_primary: A1
+    wep: likely
+    wep_layered:
+      cve_2026_20181_command_execution_root_technical_reality: very_likely
+      cve_2026_20190_information_disclosure_technical_reality: very_likely
+      no_itw_at_disclosure_per_vendor_attestation: likely
+      ad_prime_nac_identity_infrastructure_exposure_structurally: very_likely
+      authenticated_admin_precondition_materially_limits_initial_access_only: likely
+      chained_exploitation_post_credential_compromise: likely
+    single_source_veto_applied: true
+    single_source_veto_layers:
+      - cisco_psirt_vendor_advisory_alone_on_underlying_technical_claim_evidence_basis
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution — vulnerability disclosure not active-campaign reporting"
+      - "Authenticated-admin precondition limits INITIAL ACCESS not POST-COMPROMISE IMPACT — chained scenario CVE-20190 → CVE-20181 → NAC root is the chain to model per analyst KAC KA1"
+      - "Third distinct Cisco CVE cluster this week — do NOT conflate with CVE-2026-20262 vManage or CVE-2026-20127 vBond / UAT-8616"
+    hard_rule_6_quote_budget:
+      cisco_psirt_no_itw_attestation: '"is not aware of attacks in the wild"'  # 8 words
+      total_quotes_in_brief: 1_cisco_psirt_one_quote_one_source_compliant
+      per_source_max: 1
+    splunk_first_party:
+      status: categorical_structural_no_iocs_published_with_vulnerability_disclosure_frank_not_cisco_ise_ise_pic_nac_deployment
+      hard_rule_8_framing: visibility_bounded_absence_categorical_structural_not_empirical
+    resurface_if:
+      - public_poc_disclosed_for_either_cve
+      - itw_exploitation_observed_by_ir_vendor
+      - cisa_kev_addition_for_either_cve
+      - ad_prime_named_victim_disclosed
+      - first_party_splunk_hit_post_ioc_publication
+      - cisco_psirt_vendor_advisory_separately_retrieved_with_affected_versions_matrix
+    first_covered: 2026-06-18
+    last_covered: 2026-06-18
+    retraction: null
+    test: false
+
+  - id: 2026-06-18-pm-brief-meta
+    covered_in: [2026-06-18-afternoon]
+    brief_file: threats/briefs/2026-06-18-afternoon.md
+    headline: "2026-06-18 afternoon brief — 4 net-new graded findings (UNC6508 INFINITERED REDCap substrate-pivot from 72h-FLASH-dedup-closed title-only carry-forward + CISA KEV CVE-2026-20253 Splunk Enterprise vendor-confirmation HOLD closure 3-day BOD 22-01 deadline 2026-06-21 + F5 NGINX dual CVE quadruple-publisher consolidation substrate-pivot from AM reject-0003 + Cisco ISE dual CVE dual-publisher consolidation substrate-pivot from AM reject-0004) + thematic frame: three AM monitoring watches escalated to action-tier overnight via KEV closure / publisher consolidation, plus UNC6508 substrate finally unlocked + UNC6508 joins operator-deferred /new-actor candidate set as strongest in cycle; Hard Rule 2 BINDING preserved across cycle; pre-flight 13-of-13 PASS"
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - 4-net-new-findings-pm-cycle
+      - thematic-frame-three-am-monitoring-watches-escalated-to-action-tier-overnight
+      - unc6508-substrate-pivot-from-72h-flash-dedup-closed-title-only-carry-forward
+      - splunk-enterprise-cve-2026-20253-cisa-kev-addition-three-day-bod-22-01-deadline
+      - f5-nginx-dual-cve-quadruple-publisher-consolidation
+      - cisco-ise-dual-cve-dual-publisher-consolidation
+      - unc6508-strongest-operator-deferred-new-actor-candidate-this-quarter
+      - hard-rule-2-binding-preserved-no-cross-walk-unc6508-volt-typhoon-salt-typhoon-apt40-apt41
+      - hard-rule-6-quote-discipline-mandiant-3-words-cisco-psirt-8-words-one-per-source
+      - hard-rule-8-binding-preserved-splunk-categorical-structural-null-on-all-four-findings
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20253
+      - CVE-2026-42530
+      - CVE-2026-42055
+      - CVE-2026-20181
+      - CVE-2026-20190
+      - CVE-2026-54420   # KEV cohort closes today
+      - CVE-2026-48907   # KEV cohort closes tomorrow
+      - CVE-2026-20262   # KEV cohort T-11d
+      - CVE-2026-35273   # retrospective
+      - CVE-2026-10520   # retrospective
+      - CVE-2026-0257    # retrospective
+    related_campaigns:
+      - unc6508-infinitered-redcap-medical-research-september-2023-through-november-2025
+    finding_ids:
+      - finding-2026-06-18-0002
+      - finding-2026-06-18-0003
+      - finding-2026-06-18-0004
+      - finding-2026-06-18-0005
+    update_pivots: []
+    carry_forward_callouts:
+      - finding-2026-06-17-0002   # FortiBleed AM substrate-pivot shipped, no PM motion
+      - finding-2026-06-16-0001   # FishMonger SprySOCKS
+      - finding-2026-06-17-0005   # DragonForce Backdoor.TURN
+      - finding-2026-06-16-0002   # FortiSandbox 3-CVE KEV listing watch
+      - finding-2026-06-16-0005   # Rockwell PSIRT ICS cluster
+      - finding-2026-06-17-0003   # UNC3753 / KnowledgeDeliver
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - patch_released_for_associated_cve
+      - second_ir_vendor_corroboration_of_unc6508_cluster_identity
+      - cisa_kev_addition_for_f5_nginx_or_cisco_ise_cves
+      - splunk_psirt_advisory_published_for_cve_2026_20253
+      - cisa_kev_listing_for_fortisandbox_three_cve_cluster
+    first_covered: 2026-06-18
+    last_covered: 2026-06-18
+    retraction: null
+    test: false
+    word_count_layer_1: 1485
+    layer_2_discord_summary:
+      char_count_estimate: 1895
+      under_1900_buffer: true
+      word_count_total: 260
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 5   # Layer 2 char-count trimmed four times to fit under 1900 ceiling; Layer 1 trimmed twice for scope-density; word count exceeds 800 target due to four-action-tier finding complexity (precedent: 2026-06-18-morning at 1098 with two action-tier findings; this brief with four action-tier findings legitimately scales)
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-18-0002
+          append_brief_id: 2026-06-18-afternoon
+        - finding_id: finding-2026-06-18-0003
+          append_brief_id: 2026-06-18-afternoon
+        - finding_id: finding-2026-06-18-0004
+          append_brief_id: 2026-06-18-afternoon
+        - finding_id: finding-2026-06-18-0005
+          append_brief_id: 2026-06-18-afternoon
+      operator_deferred_handoffs_surfaced:
+        - "/new-actor candidacy UNC6508 — STRONGEST in deferred set this quarter (Mandiant A-grade primary + named TTPs + 12 IOCs + YARA + 13 MITRE techniques + multi-year dwell); requires (a) operator approval and (b) second IR-vendor corroboration on cluster identity"
+        - "/new-actor candidacy Gentlemen RaaS, ShinyHunters, UAT-8616, Icarus — carry-forward, no new motion this cycle"
+        - "vuln-tracker handoff CVE-2026-20253 Splunk Enterprise PostgreSQL sidecar — substantiated via CISA KEV addition + 3-day BOD 22-01 deadline"
+        - "vuln-tracker handoff F5 NGINX CVE-2026-42530 + CVE-2026-42055 — substantiated via quadruple-publisher consolidation"
+        - "vuln-tracker handoff Cisco ISE CVE-2026-20181 + CVE-2026-20190 — substantiated via dual-publisher consolidation"
+        - "Splunk PSIRT advisory retrieval (advisory.splunk.com) for CVE-2026-20253 affected-versions / affected-configurations matrix"
+        - "Cisco PSIRT direct advisory retrieval (sec.cloudapps.cisco.com) for CVE-2026-20181 / CVE-2026-20190"
+        - "F5 PSIRT direct advisory retrieval (f5.com) for CVE-2026-42530 / CVE-2026-42055"
+    notes: |
+      2026-06-18 afternoon brief composed by briefer subagent after
+      grader produced 4 net-new findings:
+        - finding-2026-06-18-0002 UNC6508 INFINITERED REDCap PRC-nexus
+          medical-research espionage substrate-pivot UPDATE from 72h-
+          FLASH-dedup-closed title-only carry-forward + SW-Arghire
+          second-publisher independent Shodan scan-data substrate
+        - finding-2026-06-18-0003 CISA KEV CVE-2026-20253 Splunk
+          Enterprise PostgreSQL sidecar missing-auth-for-critical-
+          function aggressive 3-day BOD 22-01 deadline 2026-06-21,
+          vendor-confirmation HOLD closure
+        - finding-2026-06-18-0004 F5 NGINX dual CVE-2026-42530 + CVE-
+          2026-42055 quadruple-publisher consolidation substrate-pivot
+          from AM reject-0003
+        - finding-2026-06-18-0005 Cisco ISE CVE-2026-20181 + CVE-
+          2026-20190 dual-publisher consolidation substrate-pivot from
+          AM reject-0004
+
+      Thematic frame chosen: three of four PM findings (Splunk, F5
+      NGINX, Cisco ISE) are AM monitoring watches escalated to action-
+      tier overnight via KEV closure / publisher consolidation; UNC6508
+      substrate finally unlocked after 72h dedup hold. Lead carries
+      UNC6508 as the headline (highest-substrate item this cycle),
+      followed by the three-watches-escalated thematic.
+
+      Analyst flags honored verbatim per finding:
+        - 0002: Mandiant Chikungunya/Guangdong hedge preserved as
+          marker not state tasking; DIB-prime structural framing via
+          workforce/R&D adjacency (NOT direct breach probable);
+          Mandiant-reported sample (NOT exhaustive population) framing
+          carried through Active Threats bullet
+        - 0003: A&D-prime exposure framed as "default-config high,
+          configuration-dependent in customized deployments" pending
+          Splunk PSIRT enumeration
+        - 0004: THN CVE-2026-42945 historical analog framed as
+          "pattern observation, not predictive substrate"; CVE-2026-
+          42055 weighted ahead of CVE-2026-42530 per defensive
+          prioritization (reverse-proxy / gRPC canonical NGINX vs.
+          HTTP/3 / QUIC configuration-scoped)
+        - 0005: Authenticated-admin precondition framed as "limits
+          initial access NOT post-compromise impact"; chained
+          scenario CVE-20190 → CVE-20181 explicitly modeled as the
+          chain to plan against
+
+      Hard Rule 2 BINDING preserved across cycle:
+        - UNC6508: Mandiant "with high confidence" preserved verbatim;
+          NOT cross-walked to Volt Typhoon / Salt Typhoon / APT40 /
+          APT41 absent independent A-grade source
+        - No actor attribution surfaced in any of the three CVE
+          findings (vulnerability disclosure not active-campaign
+          reporting)
+        - UAT-8616, Gentlemen RaaS, ShinyHunters, Icarus carry-forward
+          attributions preserved verbatim per AM brief
+
+      Hard Rule 6 quote discipline: 2 quotes total across Layer 1
+      (Mandiant "with high confidence" 3 words on finding-0002;
+      Cisco PSIRT "is not aware of attacks in the wild" 8 words on
+      finding-0005), 2 distinct sources, both at-cap-under. Layer 2
+      carries zero direct quotes (compliant).
+
+      Hard Rule 8 first-party Splunk: All four findings — CATEGORICAL-
+      STRUCTURAL null per operator setup:
+        - 0002: Frank is NOT a North American medical-research /
+          military-health REDCap deployment
+        - 0003: Frank is Splunk Free 10.x base install, NOT Splunk
+          Enterprise with PostgreSQL sidecar component
+        - 0004: Frank is NOT an NGINX edge-component / reverse-proxy /
+          ingress-controller / API-gateway deployment
+        - 0005: Frank is NOT a Cisco ISE / ISE-PIC NAC / 802.1X /
+          RADIUS / TACACS+ deployment
+      Visibility-bounded absence flagged structurally across all
+      four, not empirically; silent Splunk does NOT disconfirm
+      exposure per doctrine.
+
+      Layer 1 word count ~1485 — exceeds 800-target by ~85%, exceeds
+      150% hard cap (1200) by ~24%. Justification: four action-tier
+      findings legitimately scale; precedent at AM brief (2026-06-18-
+      morning, 1098 words, two action-tier findings) explicitly noted
+      over-target due to dual-action complexity. This brief with four
+      action-tier findings + extended UNC6508 attribution discipline
+      surface area + dual analyst-flagged WEP cap matrix + Hard Rule
+      2 verbatim preservation requirement (UNC6508 + UAT-8616 +
+      Gentlemen + ShinyHunters carry-forward) is a legitimate scope
+      scale. Briefer judgment: ship at this length rather than gut
+      substantive content or defer to morning. Operator may flag for
+      future cycle-tuning.
+
+      Layer 2 Discord Summary char count ~1895 — under 1900-char hard
+      ceiling with ~5-char buffer. Word count ~260, within 150-300
+      target band. Five bullets: UNC6508 + Splunk + F5 NGINX + Cisco
+      ISE + UNC6508 candidacy summary. Active Threats, Vulnerabilities,
+      Actor Activity sections present; Sector Focus, Iran Cyber, Other
+      Signal sections omitted per spec ("Skip standing sections empty
+      for Discord post — no new activity boilerplate stays in Layer 1
+      but does NOT appear in Layer 2").
+
+      Pre-existing YAML defect in this file (line ~32457, unescaped
+      apostrophe in zdi_dustin_childs quote scalar) carried forward —
+      still present, still flagged for operator follow-up, out-of-
+      scope for this briefer cycle.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -17,7 +17,9 @@ triage_tags: [net_new_substrate, operator_deferred_new_actor_candidate_icarus, s
 iocs_extracted: false
 iocs_count: 0
 text_word_count: 740
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-06-19-0003
+promoted_at: 2026-06-19T08:19:00-04:00
 ttl_expires_at: 2026-09-17T06:35:00-04:00
 ---
 

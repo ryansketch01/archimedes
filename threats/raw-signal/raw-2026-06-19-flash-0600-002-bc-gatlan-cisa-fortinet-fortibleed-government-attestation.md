@@ -17,7 +17,9 @@ triage_tags: [substrate_pivot_candidate_for_am_brief, finding_2026_06_17_0002_su
 iocs_extracted: false
 iocs_count: 0
 text_word_count: 540
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-06-19-0001
+promoted_at: 2026-06-19T08:14:00-04:00
 ttl_expires_at: 2026-09-17T06:25:00-04:00
 ---
 

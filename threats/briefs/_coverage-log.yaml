@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-18T16:00:00-04:00  # briefer 2026-06-18 afternoon composition complete; pm-001 (UNC6508 INFINITERED REDCap substrate-pivot UPDATE from 72h-FLASH-dedup-closed title-only carry-forward + SW-Arghire second-publisher independent Shodan scan-data substrate; UNC6508 joins operator-deferred /new-actor candidate set as strongest in cycle) + pm-002 (CISA KEV CVE-2026-20253 Splunk Enterprise PostgreSQL sidecar 3-day BOD 22-01 deadline 2026-06-21 vendor-confirmation HOLD closure) + pm-003 (F5 NGINX dual CVE-2026-42530 + CVE-2026-42055 CVSS 9.2 quadruple-publisher consolidation substrate-pivot from AM reject-0003 no ITW widely-deployed A&D edge component) + pm-004 (Cisco ISE CVE-2026-20181 + CVE-2026-20190 dual-publisher consolidation substrate-pivot from AM reject-0004 authenticated-admin precondition limits initial access not post-compromise impact third distinct Cisco CVE cluster this week) + pm-brief-meta populated; AM brief-meta + per-finding AM/PM entries upstream preserved unchanged
+last_updated: 2026-06-19T08:00:00-04:00  # briefer 2026-06-19 morning composition complete; am-update-001 (FortiBleed CISA government-attestation substrate-pivot UPDATE on finding-2026-06-17-0002 — RED-TEAM BLOCKED at very_likely framing, layered WEP published with very_likely on advisory-publication procedural fact only and likely on operational-claim layers per analyst KAC halt_pending_test + sensitivity_analysis single_point_of_failure on E5 + H1/H3 ACH tie indicating aggregation-artifact framing; Hard Rule 2 BINDING preserved "Russian-speaking" verbatim no cross-walk to APT28/Sandworm/APT29) + am-update-002 (Splunk Enterprise CVE-2026-20253 vendor-PSIRT ITW confirmation substrate-pivot UPDATE on finding-2026-06-18-0003 — A1 very_likely on ITW exploitation existence with red-team-qualifications: A&D-prime DIB structural exposure layer dropped from very_likely to likely priors-only not empirically anchored + "limited" semantic-scope caveat not vendor-anchored quantitatively + Shadowserver 1,400 framed as internet-accessible-Splunk-Enterprise-instances-overall not vulnerable-A&D-prime-instances + Frank-relevance NULL per Splunk-Free-not-Enterprise; CISA KEV 3-day federal deadline 2026-06-21 T-2d countdown; Hard Rule 2 BINDING preserved "limited exploitation" unattributed per Splunk PSIRT) + am-001 (Klue/Salesforce supply-chain compromise Icarus extortion group net-new finding scaffold B2 — Icarus preserved as net-new actor identity per THN explicit-distinction framing "mirrors" not attribution overlap Hard Rule 2 BINDING NO cross-walk to ShinyHunters/UNC6395/Scattered-Spider/UNC3944; WEP likely on Icarus actor identity layer single-IR-vendor Huntress + very_likely on compromise-existence layer multi-vendor self-statement convergent; Huntress + Recorded Future named cybersecurity-firm victims no A&D-prime named victims; A&D-DIB structural exposure HIGH via Salesforce-ecosystem; operator-deferred /new-actor Icarus candidacy noted third in queue after Gentlemen + UAT-8616) + am-brief-meta populated; PM brief-meta + per-finding AM/PM entries upstream preserved unchanged
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -39030,6 +39030,381 @@ entries:
       Signal sections omitted per spec ("Skip standing sections empty
       for Discord post — no new activity boilerplate stays in Layer 1
       but does NOT appear in Layer 2").
+
+      Pre-existing YAML defect in this file (line ~32457, unescaped
+      apostrophe in zdi_dustin_childs quote scalar) carried forward —
+      still present, still flagged for operator follow-up, out-of-
+      scope for this briefer cycle.
+
+  - id: 2026-06-19-am-update-001-fortibleed-cisa-government-attestation-substrate-pivot-update-on-finding-2026-06-17-0002-red-team-blocked-layered-wep
+    covered_in: [2026-06-19-morning]
+    headline: "[UPDATE] FortiBleed — CISA government-attestation layer joins multi-IR-vendor cluster (86,644 working credentials revised scale per SocRadar + 845 partner organizations identified per Huntress + named-victim expansion Samsung + Mercedes-Benz + Foxconn + Chevron + Comcast + AT&T + Toyota none A&D-prime); RED-TEAM BLOCKED at very_likely framing; published with layered WEP (very_likely on advisory-publication procedural fact only; likely on operational-claim layers per analyst KAC halt_pending_test on A1 CISA observation-pathway-independence-from-Diachenko-discovery-chain); Hard Rule 2 BINDING preserves 'Russian-speaking' verbatim NO cross-walk to APT28/Sandworm/APT29; CISA primary URL not retrieved this sweep, operator-deferred to next collector pass"
+    topic_tags:
+      - fortibleed
+      - cisa-government-attestation
+      - fortinet-vpn-credential-exposure
+      - socradar-scale-revision-86644-working-credentials
+      - huntress-845-partner-organizations-affected
+      - named-victim-expansion-samsung-mercedes-benz-foxconn-chevron-comcast-att-toyota-none-ad-prime
+      - russian-speaking-threat-group-hard-rule-2-binding-preserved
+      - red-team-blocked-very-likely-layered-wep-published
+      - cisa-primary-url-not-retrieved-this-sweep-procedural-publication-independence-not-government-source-observation-independence
+      - substrate-pivot-update-pattern
+      - parent-finding-2026-06-17-0002
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - fortibleed-credential-corpus-credential-stuffing-campaign
+    finding_ids: [finding-2026-06-19-0001]
+    parent_finding_ids: [finding-2026-06-17-0002]
+    update_type: substrate_pivot_cisa_government_attestation_red_team_layered_wep
+    digraph: A2
+    wep_layered:
+      advisory_publication_procedural_fact: very_likely
+      cisa_independent_observation_of_active_exploitation: likely
+      campaign_scale_86644_devices: likely
+      named_victim_layer_verification: likely
+      ad_prime_direct_targeting: likely
+    resurface_if:
+      - cisa_advisory_primary_url_retrieved_and_confirmed_to_cite_or_not_cite_diachenko_socradar
+      - independent_ir_vendor_surfaces_actor_specific_attribution_beyond_russian_speaking
+      - named_victim_self_attests_to_fortibleed_specific_compromise
+      - shodan_or_censys_publishes_cross_verification_of_socradar_86644_figure
+      - fortinet_publishes_technical_analysis_substantiating_or_withdrawing_recycled_credentials_position
+      - ad_prime_named_victim_first_party_disclosure
+      - first_party_ioc_hit
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    notes: |
+      Red-team blocked grader's very_likely lift on campaign-scale-existence,
+      CISA-active-exploitation-attestation, and named-victim layers because
+      analyst's own KAC remediation_status was halt_pending_test on A1
+      (CISA observation-pathway-independence from Diachenko discovery chain)
+      with A1 classification=test, centrality=critical, confidence=low.
+      Sensitivity_analysis identified E5 as single_point_of_failure. H1/H3
+      ACH tie with H3 meaning aggregation-artifact framing. Briefer
+      published layered WEP per red-team qualifying_language_suggested:
+      very_likely on advisory-publication procedural fact only; likely on
+      all operational-claim layers (CISA-independent observation, 86,644
+      scale, named-victim verification, A&D-prime direct targeting).
+      Explicit caveat in Active Threats bullet: "CISA primary URL was not
+      retrieved this sweep. CISA may be relaying Diachenko/SocRadar
+      findings; treat the government-attestation lift as procedural-
+      publication independence, not necessarily government-source
+      observation." Hard Rule 2 BINDING preserved throughout.
+
+  - id: 2026-06-19-am-update-002-splunk-cve-2026-20253-vendor-psirt-itw-confirmation-substrate-pivot-update-on-finding-2026-06-18-0003-red-team-qualified
+    covered_in: [2026-06-19-morning]
+    headline: "[UPDATE] CVE-2026-20253 Splunk Enterprise — vendor PSIRT confirms in-the-wild exploitation 2026-06-18 (8 days post-patch 2026-06-10, 6 days post-WatchTowr PoC 2026-06-12); Resecurity third-IR-vendor independently corroborated ITW per HelpNetSecurity-Zorz; Shadowserver scan-telemetry 1,400+ internet-accessible Splunk Enterprise instances overall (952 N. America, 223 Europe — NOT vulnerable-A&D-prime-instance count); CVSS 9.8 NVD-confirmed; CISA KEV 3-day federal deadline 2026-06-21 T-2d countdown; A&D-prime DIB structural exposure HIGH but direct targeting evidence NOT empirically anchored capped at likely; 'limited exploitation' semantic-scope NOT vendor-anchored quantitatively; Frank-relevance NULL per Splunk-Free-not-Enterprise PostgreSQL sidecar Enterprise-specific; Hard Rule 2 BINDING preserves 'limited exploitation' unattributed per Splunk PSIRT"
+    topic_tags:
+      - cve-2026-20253
+      - splunk-enterprise-postgresql-sidecar-missing-authentication
+      - splunk-psirt-vendor-on-own-product-attestation
+      - watchtowr-poc-2026-06-12-post-patch-t-plus-2d
+      - resecurity-third-ir-vendor-itw-corroboration
+      - shadowserver-scan-telemetry-1400-internet-accessible-splunk-enterprise-instances
+      - cisa-kev-three-day-federal-deadline-2026-06-21
+      - cvss-9-8-unauthenticated-arbitrary-file-create-truncate
+      - ad-prime-dib-structural-exposure-soc-siem
+      - limited-exploitation-semantic-scope-not-vendor-anchored-quantitatively-red-team-qualification
+      - frank-relevance-null-splunk-free-not-enterprise-postgresql-sidecar-enterprise-specific
+      - substrate-pivot-update-pattern
+      - parent-finding-2026-06-18-0003
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20253
+    related_campaigns: []
+    finding_ids: [finding-2026-06-19-0002]
+    parent_finding_ids: [finding-2026-06-18-0003]
+    update_type: substrate_pivot_vendor_psirt_itw_confirmation_red_team_qualified
+    digraph: A1
+    wep_layered:
+      itw_exploitation_existence: very_likely
+      ad_prime_dib_structural_exposure: likely      # DROPPED from very_likely per red-team priors-only-not-empirically-anchored qualification
+      quantitative_scope_of_limited_small: roughly_even_chance
+    resurface_if:
+      - cisa_kev_deadline_compliance_metrics_observable
+      - splunk_psirt_quantifies_limited_exploitation
+      - ad_prime_first_party_victim_disclosure
+      - independent_ir_vendor_publishes_named_victim
+      - first_party_ioc_hit_on_postgresql_sidecar_pattern
+      - second_ir_vendor_corroboration_of_resecurity_itw_claim
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    notes: |
+      Substrate-pivot UPDATE on finding-2026-06-18-0003 (CISA KEV addition
+      vendor-confirmation HOLD). HOLD now closed via Splunk PSIRT vendor-
+      on-own-product attestation 2026-06-18 confirming "limited
+      exploitation". Triple-channel ITW substantiation: (a) Splunk PSIRT
+      first-party telemetry, (b) WatchTowr independent technical analysis
+      + PoC, (c) Resecurity third-IR-vendor corroboration. Red-team
+      qualified the WEP layered: ITW exploitation existence very_likely
+      (red-team confirmed); A&D-prime DIB structural exposure dropped
+      from very_likely to likely (priors-only not empirically anchored);
+      "limited" semantic-scope caveat added (not vendor-anchored
+      quantitatively); Shadowserver 1,400 framed as internet-accessible-
+      Splunk-Enterprise-instances-overall not vulnerable-A&D-prime-
+      instance count. Frank-relevance NULL per Splunk-Free-not-Enterprise
+      noted in body. Hard Rule 2 BINDING preserves "limited exploitation"
+      unattributed per Splunk PSIRT (no cross-walk to any tracked-roster
+      actor).
+
+  - id: 2026-06-19-am-001-klue-salesforce-supply-chain-compromise-icarus-extortion-group-huntress-recorded-future-named-victims-net-new-actor-candidate
+    covered_in: [2026-06-19-morning]
+    headline: "NEW: Klue Battlecards / Salesforce supply-chain compromise — Icarus extortion group (net-new finding scaffold + operator-deferred /new-actor candidacy); Klue Inc. compromised 2026-06-11 via legacy integration credential, OAuth tokens for downstream customer Salesforce instances harvested; Salesforce disabled Klue Battlecards app integration 2026-06-17; Huntress + Recorded Future named cybersecurity-firm victims (NEITHER A&D-prime); Icarus actor identity per Huntress single-IR-vendor 'high confidence' attestation, 'Mr Brean' persona for extortion comms; THN explicit-distinction framing 'mirrors' ShinyHunters/UNC6395 (methodological similarity NOT attribution overlap); Hard Rule 2 BINDING — Icarus preserved as distinct net-new actor identity, NO cross-walk to ShinyHunters/UNC6395/Scattered-Spider/UNC3944/tracked-roster; A&D-DIB structural exposure HIGH via Salesforce-ecosystem-tenants on same OAuth-governance pattern"
+    topic_tags:
+      - klue-battlecards-competitive-intelligence-platform-compromise
+      - salesforce-supply-chain-oauth-token-abuse
+      - icarus-extortion-group-net-new-actor-identity
+      - mr-brean-extortion-persona
+      - huntress-recorded-future-named-cybersecurity-firm-victims-none-ad-prime
+      - thn-explicit-distinction-framing-mirrors-shinyhunters-unc6395-not-attribution-overlap
+      - hard-rule-2-binding-icarus-preserved-distinct-no-cross-walk-to-tracked-roster
+      - operator-deferred-new-actor-candidacy-icarus-third-in-queue-after-gentlemen-uat-8616
+      - ad-dib-structural-exposure-salesforce-ecosystem-tenants-crm-industries-market-intelligence
+      - oauth-governance-pattern-shared-platform-layer
+      - legacy-credential-associated-with-integration-service-initial-vector
+      - python-urllib-user-agent-pattern-sustained-extraction-windows
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - icarus-extortion-group-salesforce-supply-chain-april-2026-emergence-two-victims-to-date
+    finding_ids: [finding-2026-06-19-0003]
+    update_type: net_new_finding_scaffold
+    digraph: B2
+    wep_layered:
+      klue_compromise_existence: very_likely
+      icarus_actor_identity_single_ir_vendor_huntress: likely
+      ad_dib_structural_exposure_salesforce_ecosystem: high
+    resurface_if:
+      - second_ir_vendor_corroboration_of_icarus_actor_identity
+      - ad_prime_named_victim_first_party_disclosure
+      - new_victims_confirmed
+      - icarus_dossier_scaffold_per_operator_new_actor_approval
+      - additional_compromised_salesforce_appexchange_integrations_disclosed
+      - third_icarus_victim_beyond_klue_and_first_two_per_thn
+      - first_party_ioc_hit_oauth_token_abuse_pattern
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    notes: |
+      Net-new finding scaffold. Operator-deferred /new-actor Icarus
+      candidacy noted (third in queue after Gentlemen RaaS + UAT-8616 —
+      UNC6508 from 2026-06-18 PM is the strongest deferred candidate
+      overall). Hard Rule 2 BINDING preserves Icarus as distinct net-new
+      actor identity per THN explicit-distinction framing ("mirrors" =
+      methodological similarity, NOT attribution overlap). NO cross-walk
+      to ShinyHunters, UNC6395, Scattered Spider, UNC3944, or any tracked-
+      roster actor despite TTP-pattern mirroring. Named victims (Huntress
+      + Recorded Future) are cybersecurity firms — neither A&D-prime per
+      Archimedes watchlist. A&D-DIB structural exposure HIGH via
+      Salesforce-ecosystem tenants running CRM / Salesforce Industries /
+      market-intelligence integrations on the same OAuth-governance
+      pattern (Klue Battlecards is exactly the integration class A&D-
+      prime business-development teams use). Single-IR-vendor (Huntress)
+      on Icarus actor identity caps WEP at "likely" pending second IR-
+      vendor corroboration. Compromise-existence layer at very_likely
+      via three vendor self-statements (Klue CEO + Salesforce + Huntress)
+      + quadruple-publisher independent journalistic relay.
+
+  - id: 2026-06-19-am-brief-meta
+    covered_in: [2026-06-19-morning]
+    brief_file: threats/briefs/2026-06-19-morning.md
+    headline: "2026-06-19 morning brief — 3 net-new graded findings (FortiBleed CISA government-attestation substrate-pivot UPDATE on finding-2026-06-17-0002 red-team BLOCKED at very_likely framing layered WEP published + Splunk CVE-2026-20253 vendor-PSIRT ITW confirmation substrate-pivot UPDATE on finding-2026-06-18-0003 red-team qualified A&D-prime structural exposure dropped from very_likely to likely + Klue Salesforce supply-chain compromise Icarus extortion group net-new finding scaffold B2 single-IR-vendor on actor-identity layer); thematic frame: three substrate pivots, two of three lifts traveled through red-team review with hedges, one came back clean; A&D-prime SOC + perimeter + CRM stacks all carry structural exposure this cycle; Hard Rule 2 BINDING preserved across all three findings (Russian-speaking FortiBleed + unattributed Splunk PSIRT + Icarus net-new distinct); pre-flight 13-of-13 PASS"
+    topic_tags:
+      - morning-brief
+      - meta-tracking
+      - 3-net-new-findings-am-cycle
+      - thematic-frame-three-substrate-pivots-two-red-team-hedged-one-clean
+      - fortibleed-cisa-government-attestation-substrate-pivot-red-team-blocked-layered-wep
+      - splunk-cve-2026-20253-vendor-psirt-itw-confirmation-substrate-pivot-red-team-qualified
+      - klue-salesforce-icarus-net-new-finding-scaffold
+      - icarus-operator-deferred-new-actor-candidacy-third-in-queue
+      - hard-rule-2-binding-preserved-russian-speaking-fortibleed-unattributed-splunk-psirt-icarus-distinct
+      - hard-rule-6-quote-discipline-cisa-13-words-at-cap-splunk-psirt-2-words-quoted
+      - hard-rule-8-binding-preserved-splunk-categorical-structural-null-on-all-three-findings
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20253
+      - CVE-2026-48907   # KEV cohort closes today
+      - CVE-2026-20262   # KEV cohort T-10d
+      - CVE-2026-35273   # retrospective
+      - CVE-2026-10520   # retrospective
+      - CVE-2026-0257    # retrospective
+      - CVE-2026-54420   # retrospective
+    related_campaigns:
+      - fortibleed-credential-corpus-credential-stuffing-campaign
+      - icarus-extortion-group-salesforce-supply-chain-april-2026-emergence
+    finding_ids:
+      - finding-2026-06-19-0001
+      - finding-2026-06-19-0002
+      - finding-2026-06-19-0003
+    update_pivots:
+      - finding-2026-06-19-0001    # substrate-pivot UPDATE on finding-2026-06-17-0002
+      - finding-2026-06-19-0002    # substrate-pivot UPDATE on finding-2026-06-18-0003
+    carry_forward_callouts:
+      - finding-2026-06-18-0002   # UNC6508 INFINITERED REDCap — 72h FLASH dedup closes 12:00 EDT
+      - finding-2026-06-18-0004   # F5 NGINX dual CVE
+      - finding-2026-06-18-0005   # Cisco ISE dual CVE
+      - finding-2026-06-16-0001   # FishMonger SprySOCKS
+      - finding-2026-06-17-0005   # DragonForce Backdoor.TURN
+      - finding-2026-06-16-0002   # FortiSandbox 3-CVE KEV listing watch
+      - finding-2026-06-16-0005   # Rockwell PSIRT ICS cluster
+      - finding-2026-06-17-0003   # UNC3753 / KnowledgeDeliver
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - patch_released_for_associated_cve
+      - cisa_advisory_primary_url_retrieval_for_fortibleed
+      - second_ir_vendor_corroboration_of_icarus_actor_identity
+      - splunk_psirt_quantifies_limited_exploitation_scope
+      - ad_prime_named_victim_disclosure_on_any_of_three_substrate_pivots
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    word_count_layer_1: 1030
+    layer_2_discord_summary:
+      char_count_estimate: 1891
+      under_1900_buffer: true
+      word_count_total: 250
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 3   # Layer 2 char-count trimmed twice to fit under 1900 ceiling; Layer 1 trimmed once for scope-density; word count exceeds 800 target due to three-substrate-pivot complexity + layered-WEP-and-red-team-caveat surface area (precedent: 2026-06-18-morning at 1098 with two action-tier findings, 2026-06-18-afternoon at 1485 with four action-tier findings)
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-19-0001
+          append_brief_id: 2026-06-19-morning
+        - finding_id: finding-2026-06-19-0002
+          append_brief_id: 2026-06-19-morning
+        - finding_id: finding-2026-06-19-0003
+          append_brief_id: 2026-06-19-morning
+      operator_deferred_handoffs_surfaced:
+        - "/new-actor candidacy Icarus — NEW this cycle, third in queue after Gentlemen RaaS + UAT-8616 (UNC6508 from 2026-06-18 PM is strongest deferred candidate overall); requires (a) operator approval and (b) second IR-vendor corroboration on Icarus actor identity beyond Huntress single-IR-vendor primary"
+        - "/new-actor candidacy UNC6508 — STRONGEST deferred candidate carry-forward from 2026-06-18 PM; 72h FLASH dedup window closes 2026-06-19 12:00 EDT (~4h after AM publication)"
+        - "/new-actor candidacy Gentlemen RaaS, UAT-8616 — carry-forward, no new motion this cycle"
+        - "collector handoff: retrieve CISA advisory primary URL for FortiBleed 2026-06-18 advisory (currently deferred to next collector pass; red-team block escalation contingent on whether CISA cites Diachenko/SocRadar or relies on independent federal-civilian-agency telemetry)"
+        - "vuln-tracker handoff CVE-2026-20253 Splunk Enterprise PostgreSQL sidecar — substantiated via vendor-PSIRT + WatchTowr PoC + Resecurity ITW + Shadowserver scan-telemetry quadruple-channel substrate"
+        - "Splunk PSIRT advisory retrieval (advisory.splunk.com) for CVE-2026-20253 affected-versions / affected-configurations matrix + quantitative scope of 'limited exploitation'"
+        - "Huntress IR-vendor primary research retrieval for Icarus actor identity / IOCs / Mr Brean persona details (currently single-IR-vendor on actor identity layer)"
+    notes: |
+      2026-06-19 morning brief composed by briefer subagent after
+      grader produced 3 net-new findings:
+        - finding-2026-06-19-0001 FortiBleed CISA government-attestation
+          layer substrate-pivot UPDATE on finding-2026-06-17-0002 —
+          RED-TEAM BLOCKED at very_likely framing per analyst KAC
+          halt_pending_test on A1 (CISA observation-pathway-independence
+          from Diachenko discovery chain) + sensitivity_analysis
+          single_point_of_failure on E5 + H1/H3 ACH tie meaning
+          aggregation-artifact framing
+        - finding-2026-06-19-0002 Splunk Enterprise CVE-2026-20253
+          vendor-PSIRT ITW confirmation substrate-pivot UPDATE on
+          finding-2026-06-18-0003 — red-team qualified A&D-prime DIB
+          structural exposure dropped from very_likely to likely
+          (priors-only not empirically anchored) + "limited" semantic-
+          scope caveat added + Shadowserver 1,400 framed as internet-
+          accessible-overall not vulnerable-A&D-prime-instance count
+        - finding-2026-06-19-0003 Klue Battlecards / Salesforce supply-
+          chain compromise Icarus extortion group net-new finding
+          scaffold B2 single-IR-vendor on actor-identity layer (Huntress);
+          THN explicit-distinction framing "mirrors" preserved; Icarus
+          preserved as distinct net-new actor identity per Hard Rule 2
+
+      Thematic frame chosen: three substrate pivots landed overnight;
+      two of three lifts traveled through red-team review with hedges,
+      one came back clean. Lead carries all three substrate pivots
+      (FortiBleed CISA attestation + Splunk PSIRT ITW + Klue/Icarus net-
+      new). "Why it matters" frames A&D-prime SOC + perimeter + CRM
+      stacks all carrying structural exposure this cycle. Zero A&D-prime
+      named victims across all three pivots — structural-exposure
+      language does the work.
+
+      Red-team flags honored verbatim per finding:
+        - 0001: BLOCKED at very_likely framing — published layered WEP
+          per red-team qualifying_language_suggested: very_likely on
+          advisory-publication procedural fact only; likely on
+          operational-claim layers (CISA-independent observation, 86,644
+          scale, named-victim verification, A&D-prime direct targeting).
+          Explicit caveat in Active Threats bullet: "CISA primary URL
+          was not retrieved this sweep. CISA may be relaying Diachenko/
+          SocRadar findings; treat the government-attestation lift as
+          procedural-publication independence, not necessarily
+          government-source-observation independence."
+        - 0002: A1 confirmed on ITW exploitation existence (vendor-PSIRT
+          + WatchTowr PoC + Resecurity + Shadowserver triple+ pathway
+          substantiation); A&D-prime DIB structural exposure dropped
+          from very_likely to likely per red-team priors-only-not-
+          empirically-anchored qualification; "limited exploitation"
+          semantic-scope caveat added; Shadowserver 1,400 framed as
+          internet-accessible-Splunk-Enterprise-instances-overall not
+          vulnerable-A&D-prime-instance count; Frank-relevance NULL per
+          Splunk-Free-not-Enterprise PostgreSQL sidecar Enterprise-
+          specific noted in body
+        - 0003: B2 cluster anchor; WEP layered (compromise existence
+          very_likely; Icarus actor identity likely single-IR-vendor
+          Huntress); Icarus preserved as distinct net-new actor identity
+          per THN explicit-distinction framing per Hard Rule 2 BINDING;
+          no cross-walk to ShinyHunters / UNC6395 / Scattered Spider /
+          UNC3944 / tracked-roster actor
+
+      Hard Rule 2 BINDING preserved across cycle:
+        - FortiBleed: "Russian-speaking" verbatim per Diachenko/CISA;
+          NOT cross-walked to APT28 / Sandworm / APT29 / Forest Blizzard /
+          Gamaredon / FIN6
+        - Splunk PSIRT: "limited exploitation" preserved unattributed;
+          no actor cross-walk
+        - Icarus: preserved as net-new distinct actor identity per
+          THN explicit-distinction framing "mirrors" (methodological
+          similarity NOT attribution overlap)
+        - UNC6508, Gentlemen RaaS, UAT-8616 carry-forward attributions
+          preserved verbatim per PM brief
+
+      Hard Rule 6 quote discipline: 2 quotes total across Layer 1 + 0
+      in Layer 2 (compliant). CISA "malicious cyber actors have targeted
+      internet-accessible Fortinet devices" was paraphrased to "malicious
+      cyber actors targeted internet-accessible Fortinet devices" (8
+      words paraphrased, no quotation marks). Splunk PSIRT "limited
+      exploitation" 2 words direct quote (under 15-word ceiling). 2
+      distinct sources, both at-cap-under. Layer 2 carries zero direct
+      quotes.
+
+      Hard Rule 8 first-party Splunk: All three findings — CATEGORICAL-
+      VISIBILITY-BOUNDED null per operator setup:
+        - 0001: Frank is NOT a Fortinet VPN endpoint deployment
+        - 0002: Frank is Splunk Free 10.x base install, NOT Splunk
+          Enterprise with PostgreSQL sidecar component
+        - 0003: Frank is NOT a Salesforce-Klue-integration tenant
+      Visibility-bounded absence flagged structurally across all three,
+      not empirically; silent Splunk does NOT disconfirm exposure per
+      doctrine. 27th-consecutive-clean-sentinel cumulative since 2026-
+      06-13 18:00 EDT (~138h continuous clean window).
+
+      Layer 1 word count ~1030 — exceeds 800 target by ~29%, under
+      150% hard cap (1200). Justification: three substrate-pivot
+      findings with layered-WEP-and-red-team-caveat surface area
+      legitimately scale; precedent at 2026-06-18-morning (1098 words,
+      two action-tier findings) and 2026-06-18-afternoon (1485 words,
+      four action-tier findings) explicitly noted over-target due to
+      multi-action complexity. Briefer judgment: ship at this length
+      rather than gut substantive red-team-mandated caveat content.
+
+      Layer 2 Discord Summary char count ~1891 — under 1900-char hard
+      ceiling with ~9-char buffer. Word count ~250, within 150-300
+      target band. Four bullets (one per Active-Threats, two
+      Vulnerabilities, one Actor-Activity); Sector Focus, Iran Cyber,
+      Other Signal sections omitted per spec (no new activity / standing
+      boilerplate stays in Layer 1 but does NOT appear in Layer 2).
 
       Pre-existing YAML defect in this file (line ~32457, unescaped
       apostrophe in zdi_dustin_childs quote scalar) carried forward —

@@ -8727,6 +8727,234 @@ entries:
       on agentic-AI defensive-tooling lane. Keep 1 year per LEGAL-
       POLICY retention.
 
+  - rejection_id: reject-2026-06-19-0001
+    rejected_at: 2026-06-19T08:21:00-04:00
+    grading_run_id: morning-20260619-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-19-flash-0000-001-bc-toulas-gentlemen-edr-killers-second-publisher-relay
+    cluster_topic: >
+      Gentlemen RaaS / GentleKiller EDR-killer-tooling substrate-
+      strengthening — BC-Toulas second-publisher relay of ESET-primary
+      research (Jakub Souček byline). Widens publisher-independence
+      on EDR-killer-tooling-supply layer (BC joins HNS-Pogorelec from
+      AM raw-2026-06-18-am-010 / reject-2026-06-18-0008). Named victim
+      Romanian energy provider Oltenia (NOT A&D-prime per watch-
+      config sector_tags). Detailed EDR-killer-toolkit enumeration:
+      GentleKiller (8 variants, BYOVD/malicious-driver, impersonates
+      Kaspersky/Valorant/Javelin/WatchDog) + HexKiller (formerly
+      Warlock) + ThrottleBlood (MedusaLocker/DragonForce linkage) +
+      HavocKiller (broad RaaS use) + OxideHarvest (Rust credential
+      stealer, externally developed adjacent). Targets 400+ security
+      processes across approximately 48 vendor products (Microsoft
+      Defender, CrowdStrike Falcon, SentinelOne, Palo Alto Cortex,
+      Sophos, Trend Micro, ESET, Bitdefender, McAfee/Trellix,
+      Kaspersky). Named adjacent infrastructure SystemBC proxy
+      botnet with 1,570+ compromised corporate hosts (referenced as
+      affiliate-distribution channel, not Gentlemen victim per se).
+      Operator-deferred /new-actor Gentlemen candidacy carry-forward
+      from reject-2026-06-17-0007 + reject-2026-06-18-0008.
+    rejection_reasons:
+      - single_ir_vendor_on_actor_identity_layer_veto_persists
+      - operator_deferred_new_actor_candidacy_carry_forward
+      - substrate_strengthening_not_yet_promotion_threshold
+      - no_ad_prime_named_victim
+      - oltenia_energy_sector_not_ad_prime_per_watch_config
+      - no_cve_no_tracked_actor_no_first_party_hit
+    rejection_detail: >
+      Single-IR-vendor (ESET) on the Gentlemen actor-identity and
+      EDR-killer-tooling-supply layer persists. BC-Toulas second-
+      publisher relay widens publisher-independence (BC + HNS now
+      both on ESET primary) but does NOT lift the single-IR-vendor-
+      on-actor-identity veto — Mandiant / CrowdStrike / Unit-42 /
+      MSTIC corroboration on Gentlemen actor identity + EDR-killer-
+      tooling-supply layer remains the substrate-that-would-lift-
+      veto. Oltenia Romanian energy provider is named victim but
+      NOT A&D-prime per watch-config sector_tags (energy-sector does
+      not shift T5 ad_sector_campaign gate). T-gates all FAIL on
+      this sweep: T1 no CVE; T2 Gentlemen NOT on _roster.yaml; T3
+      no Splunk first-party hit; T4 attribution layer prerequisite
+      missing; T5 single-victim energy sector NOT A&D-prime multi-
+      victim; T6 no zero-day no-patch. Critical-override 0-of-4
+      conditions met. Substrate-strengthening is real and worth
+      tracking (third-publisher tier reached this cycle counting
+      ESET primary + HNS-Pogorelec AM relay + BC-Toulas this
+      relay) but the load-bearing absent layer is Tier-1 IR-vendor-
+      on-actor-identity corroboration. Possible morning brief
+      Other Signal one-liner candidate IF AM brief composition
+      lifts on EDR-killer-tooling-supply-pattern layer. Operator-
+      deferred /new-actor Gentlemen candidacy carry-forward stands
+      as second in queue (after UAT-8616, before Icarus from
+      finding-2026-06-19-0003).
+    sources:
+      - source_yaml_id: bleepingcomputer
+        grade: B
+      # Underlying ESET primary research not in source-grades.yaml
+      # as dedicated entry but ESET is ratified A per source-grades.yaml
+      - source_yaml_id: eset
+        grade: A
+    would_be_digraph: B3   # Substrate-strengthening B+ via second-publisher relay; cluster anchor B3 reflects single-IR-vendor-veto on attribution layer + no A&D-prime named victim
+    review_notes: >
+      Carry-forward substrate-strengthening pattern. Possible AM
+      brief Other Signal one-liner candidate IF EDR-killer-tooling-
+      supply-pattern layer lift is absorbed. Operator-deferred /new-
+      actor Gentlemen candidacy carry-forward stands. Keep 1 year
+      per LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-19-0002
+    rejected_at: 2026-06-19T08:22:00-04:00
+    grading_run_id: morning-20260619-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-19-am-005-sw-arghire-socgholish-operation-endgame-takedown
+    cluster_topic: >
+      Law-enforcement coordinated takedown event — Operation Endgame
+      multinational tranche 2026-06-19 against SocGholish botnet
+      infrastructure. Netherlands + Canada + US + Germany (Europol-
+      supported) disrupted SocGholish: ~14,971 compromised WordPress
+      websites cleaned + 106 C&C servers and domains taken down. SW-
+      Arghire single-publisher in-window at sweep time on this
+      Operation Endgame tranche. Threat-actor cluster (multi-vendor
+      alias matrix): TA569 (Proofpoint) + DEV-0206 (MSTIC) + Gold
+      Prelude (CrowdStrike) + Mustard Tempest (MSTIC current) +
+      UNC1543 (Mandiant) — characterized as "Russian-speaking group
+      associated with Evil Corp." Affiliate ransomware groups:
+      LockBit (on _roster.yaml ID 015) + RansomHub (NOT on _roster).
+      Malware payloads observed: Gholoader, MintsLoader, GhostWeaver
+      PowerShell backdoor, AsyncRAT, NetSupport RAT.
+    rejection_reasons:
+      - law_enforcement_event_not_threat_actor_activity_class
+      - no_ad_prime_named_victim
+      - no_cve_no_first_party_hit
+      - single_publisher_at_sweep_time
+      - operator_deferred_new_actor_unc1543_ta569_evil_corp_candidacy_noted
+      - tracked_actor_lockbit_indirect_via_affiliate_pipeline_disruption_secondary_signal
+    rejection_detail: >
+      Operation Endgame coordinated takedown is law-enforcement
+      event class — distinct from threat-actor activity. While the
+      event has A&D-DIB structural relevance via LockBit (tracked
+      actor ID 015 on _roster.yaml) affiliate-distribution pipeline
+      disruption, the primary subject is multinational LE
+      coordination not a fresh threat-actor campaign warranting
+      finding promotion. SW-Arghire is single-publisher in-window
+      at sweep time; additional publishers (BC, THN, SA, HNS) and
+      Europol primary not yet collected at grading-run start. T-
+      gates: T1 no CVE; T2 LockBit IS on _roster but Operation
+      Endgame is takedown event not active LockBit campaign; T3
+      no Splunk first-party hit; T4 LockBit TTP-change layer NOT
+      surfaced (takedown is upstream-distribution-disruption not
+      LockBit-direct TTP change); T5 no A&D-prime named victim;
+      T6 no zero-day. Critical-override 0-of-4. Possible morning
+      brief Other Signal one-liner candidate via LockBit affiliate-
+      pipeline-disruption framing (strongest A&D-prime-relevance
+      hook is LockBit on _roster.yaml). Operator-deferred /new-actor
+      UNC1543 / TA569 / DEV-0206 / Gold Prelude / Mustard Tempest /
+      Evil Corp candidacy noted — multi-vendor alias cluster surface
+      with substantial pre-Archimedes-corpus tracking lineage. Hard
+      Rule 2 BINDING — preserve all aliases as published; do NOT
+      cross-walk Evil Corp linkage to _roster.yaml without
+      independent A/B-grade IR-vendor corroboration on the linkage
+      layer. Possible vuln-tracker / actor-profiler awareness for
+      LockBit affiliate-distribution-pipeline disruption impact
+      assessment.
+    sources:
+      - source_yaml_id: securityweek
+        grade: B
+    would_be_digraph: B3   # SW-Arghire single-publisher on multinational LE event; multi-vendor alias cluster is pre-Archimedes-corpus historical tracking, Operation Endgame primary not retrieved
+    review_notes: >
+      Operation Endgame multinational LE takedown event. Possible
+      morning brief Other Signal one-liner candidate via LockBit
+      affiliate-pipeline-disruption framing. Operator-deferred /new-
+      actor UNC1543 / TA569 / Evil Corp candidacy carry-forward.
+      Watch for additional publisher relays (BC / THN / SA / HNS)
+      and Europol primary retrieval on next sweep. Keep 1 year per
+      LEGAL-POLICY retention.
+
+  - rejection_id: reject-2026-06-19-0003
+    rejected_at: 2026-06-19T08:23:00-04:00
+    grading_run_id: morning-20260619-080000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-19-am-006-sa-paganini-wired-thiel-dialog-club-leak-national-security-figure-exposure
+    cluster_topic: >
+      Peter Thiel Dialog Club private-invitation-network 2026 retreat
+      registration list exposed via open directory in source code of
+      dialog.org. Swiss hacktivist maia arson crimew discovered
+      exposure; WIRED independently verified contents (Dell Cameron
+      + Dhruv Mehrotra + Yulia Almazova bylines). 222 registrants
+      named in 2026 retreat including: Scott Bessent (Treasury
+      Secretary), Dan Driscoll (Army Secretary), Ted Cruz (Senator),
+      Jim Himes (Rep, ranking member HPSCI), General Alexus
+      Grynkewich (NATO SACEUR / US European Command head),
+      Joe Lonsdale (Palantir co-founder), Marc Andreessen, Jim
+      Breyer, "six members of the PayPal Mafia," former Middle
+      East chief of intelligence, sitting ambassador to US.
+      Configuration / open-directory exposure mechanism: Airtable
+      backend with per-participant data including private access
+      token functioning as login credential. SA-Paganini primary
+      relay + WIRED original investigation (WAF-blocked for
+      Archimedes collector this sweep).
+    rejection_reasons:
+      - not_threat_actor_activity_class
+      - data_exposure_event_configuration_misconfiguration_not_active_campaign
+      - no_tracked_actor
+      - no_cve
+      - hacktivist_disclosure_not_adversary_exfiltration
+      - hard_rule_7_credential_class_data_exposure_noted_no_token_values_stored
+      - ad_prime_relevance_indirect_via_palantir_pentagon_nato_saceur_attendance_history
+      - counterintelligence_concern_signaling_class_not_threat_intelligence_class
+    rejection_detail: >
+      This is a data-exposure event with significant national-security-
+      figure exposure surface but NOT a threat-actor-activity-class
+      event meeting threat intelligence finding promotion threshold.
+      Disclosure attribution: Swiss hacktivist maia arson crimew per
+      WIRED + SA-Paganini. WIRED conducted independent verification.
+      Hard Rule 2 BINDING — preserve disclosure attribution as
+      published; no attribution origination by Archimedes. A&D-prime
+      relevance is INDIRECT via (a) Palantir Pentagon data-fusion
+      contracting through Joe Lonsdale named attendee, (b) Google /
+      Google DeepMind frontier-AI executives including Tom Lue,
+      (c) NATO SACEUR General Alexus Grynkewich sustained attendance
+      history since 2021, (d) HPSCI ranking member Jim Himes
+      attendance, (e) Army Secretary Dan Driscoll, (f) Treasury
+      Secretary Scott Bessent. Counterintelligence concern signaling
+      class — represents an espionage / influence-operations /
+      blackmail target list assembled at zero original-collection
+      cost — but NO evidence of adversary exfiltration of the
+      exposed surface at sweep time (the disclosure pathway is
+      hacktivist + journalistic, not nation-state adversary
+      collection). Hard Rule 7 BINDING — per-participant private
+      access token functioning as login credential is credential-
+      class data; exposure metadata only recorded (222 registrants ×
+      1 token each + biographic + private-leaning + matchmaking
+      data); NO token values stored. Possible morning brief Other
+      Signal one-liner candidate under counterintelligence-concern-
+      signaling framing — A&D-prime relevance via Palantir-Pentagon-
+      contractor-exposure + NATO SACEUR attendance layer. Operator-
+      deferred /investigate-Dialog-org-counterintelligence-watch
+      candidacy possible IF nation-state adversary exfiltration
+      pattern surfaces in subsequent reporting. WIRED article
+      primary retrieval failed this sweep (WAF block on Claude);
+      substantive content substantiated via SA-Paganini relay of
+      WIRED.
+    sources:
+      - source_yaml_id: securityaffairs
+        grade: B
+      # WIRED B-grade per source-grades.yaml; WAF-blocked this sweep
+    would_be_digraph: B3   # SA-Paganini single-publisher in-window; WIRED primary not retrieved this sweep; data-exposure event not threat-actor activity class
+    review_notes: >
+      Counterintelligence concern signaling class. Possible morning
+      brief Other Signal one-liner candidate via Palantir-Pentagon-
+      contractor-exposure + NATO SACEUR attendance layer framing.
+      Operator-deferred /investigate-Dialog-org-counterintelligence-
+      watch candidacy possible IF nation-state adversary exfiltration
+      pattern surfaces. Watch for WIRED primary retrieval on next
+      sweep + additional publisher coverage. Keep 1 year per LEGAL-
+      POLICY retention.
+
 # ============================================================================
 # Run summary log (regenerated each grading run)
 # ============================================================================

@@ -39411,6 +39411,358 @@ entries:
       still present, still flagged for operator follow-up, out-of-
       scope for this briefer cycle.
 
+  - id: 2026-06-19-pm-update-001-splunk-cve-2026-20253-status-pivot-watch-last-brief-before-sunday-kev-deadline
+    covered_in: [2026-06-19-morning, 2026-06-19-afternoon]
+    headline: "STATUS-PIVOT WATCH: CVE-2026-20253 Splunk Enterprise — T-2d to Sunday 2026-06-21 federal KEV deadline; last scheduled brief before deadline closes; no net-new substrate this cycle (HNS-Zorz Resecurity-relay rejected per under-24h dedup); AM coverage stands; DIB Splunk Enterprise operators patch to 10.2.4 / 10.0.7 by EOD Saturday 2026-06-20"
+    topic_tags:
+      - cve-2026-20253
+      - splunk-enterprise-postgresql-sidecar-missing-authentication
+      - kev-deadline-2026-06-21-t-minus-2d
+      - status-pivot-watch
+      - last-brief-before-deadline
+      - dib-soc-siem-structural-exposure
+      - frank-relevance-null-splunk-free-not-enterprise
+      - no-net-new-substrate-this-cycle
+      - under-24h-dedup-reject-2026-06-19-0006
+    related_actors: []
+    related_vulns: [CVE-2026-20253]
+    related_campaigns: []
+    finding_ids: [finding-2026-06-19-0002]
+    update_type: status_pivot_watch_carry_forward_no_new_substrate
+    digraph: A1
+    wep_layered:
+      itw_exploitation_existence: very_likely
+      ad_prime_dib_structural_exposure: likely
+    resurface_if:
+      - splunk_psirt_quantifies_limited_exploitation_scope
+      - kev_deadline_closes_2026_06_21_compliance_metrics_phase
+      - ad_prime_named_victim_disclosed
+      - second_ir_vendor_corroboration_beyond_resecurity
+      - first_party_ioc_hit
+      - patch_deployment_metrics_data_available
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    notes: |
+      Status-pivot watch — last scheduled brief before Sunday 2026-06-21
+      federal KEV deadline closes. No net-new substrate this cycle.
+      HNS-Zorz Resecurity-relay was the only PM grading-run candidate
+      and was rejected as under-24h dedup on the AM finding-2026-06-19-
+      0002 (per reject-2026-06-19-0006). Lead carries the deadline
+      window + DIB Splunk Enterprise patch action. Next brief lands
+      Sunday morning AFTER the deadline closes — pivot to compliance-
+      metrics-cohort tracking expected.
+
+  - id: 2026-06-19-pm-carry-001-fortibleed-cisa-government-attestation-carry-forward-no-new-substrate
+    covered_in: [2026-06-19-morning, 2026-06-19-afternoon]
+    headline: "CARRY-FORWARD: FortiBleed CISA government-attestation layer — no net-new substrate this cycle; no second IR-vendor corroboration of CISA-specific operational claim since AM publication ~8h ago; CISA primary URL still not retrieved; red-team hedge holds — government-attestation lift remains procedural-publication independence not government-source-observation independence; 'Russian-speaking' preserved verbatim per Hard Rule 2 BINDING"
+    topic_tags:
+      - fortibleed
+      - cisa-government-attestation
+      - carry-forward
+      - no-net-new-substrate
+      - cisa-primary-url-still-not-retrieved
+      - red-team-hedge-holds
+      - russian-speaking-hard-rule-2-binding-preserved
+      - tripwires-unchanged-from-am
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - fortibleed-credential-corpus-credential-stuffing-campaign
+    finding_ids: [finding-2026-06-19-0001]
+    update_type: carry_forward_no_new_substrate
+    digraph: A2
+    wep_layered:
+      cisa_advisory_publication_procedural_fact: very_likely
+      cisa_independent_observation: likely
+      campaign_scale_864k_vs_74k_vs_30k_vs_86644: likely
+      named_victim_verification: likely
+      ad_prime_direct_targeting: likely
+    resurface_if:
+      - cisa_advisory_primary_url_retrieved
+      - second_ir_vendor_corroboration_of_cisa_specific_claim
+      - named_victim_self_attestation
+      - ad_prime_named_victim_disclosed
+      - ab_grade_ir_vendor_actor_specific_attribution_beyond_russian_speaking
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    notes: |
+      Carry-forward only; no net-new substrate since AM publication.
+      Red-team hedge from AM cycle preserved verbatim in PM brief.
+      Watch tripwires unchanged.
+
+  - id: 2026-06-19-pm-carry-002-klue-salesforce-icarus-carry-forward-no-new-substrate
+    covered_in: [2026-06-19-morning, 2026-06-19-afternoon]
+    headline: "CARRY-FORWARD: Klue / Salesforce / Icarus extortion group — no net-new substrate this cycle; Huntress remains sole IR-vendor primary on Icarus actor identity; single-IR-vendor veto holds; Salesforce-tenant operators should still inventory third-party AppExchange integrations and audit OAuth-token scope"
+    topic_tags:
+      - klue-battlecards-competitive-intelligence-platform-compromise
+      - salesforce-supply-chain-oauth-token-abuse
+      - icarus-extortion-group-net-new-actor-identity
+      - carry-forward
+      - no-net-new-substrate
+      - single-ir-vendor-huntress-veto-persists
+      - operator-deferred-new-actor-candidacy-icarus-third-in-queue
+      - hard-rule-2-binding-icarus-preserved-distinct
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - icarus-extortion-group-salesforce-supply-chain-april-2026-emergence-two-victims-to-date
+    finding_ids: [finding-2026-06-19-0003]
+    update_type: carry_forward_no_new_substrate
+    digraph: B2
+    wep_layered:
+      klue_compromise_existence: very_likely
+      icarus_actor_identity_single_ir_vendor_huntress: likely
+    resurface_if:
+      - second_ir_vendor_corroboration_of_icarus_actor_identity
+      - ad_prime_named_victim_first_party_disclosure
+      - new_victims_confirmed
+      - icarus_dossier_scaffold_per_operator_new_actor_approval
+      - additional_compromised_salesforce_appexchange_integrations_disclosed
+      - third_icarus_victim_beyond_klue_and_first_two_per_thn
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    notes: |
+      Carry-forward only; no net-new substrate since AM publication.
+      Huntress sole IR-vendor on Icarus identity persists.
+
+  - id: 2026-06-19-pm-other-001-gentlemen-raas-gentlekiller-fourth-rejection-three-publisher-relay-veto-persists
+    covered_in: [2026-06-19-afternoon]
+    headline: "OTHER SIGNAL: Gentlemen RaaS / GentleKiller fourth rejection across four sweeps — THN-Lakshmanan third-publisher relay rejected per reject-2026-06-19-0004; three-publisher journalistic relay reached (ESET + BleepingComputer + The Hacker News); single-IR-vendor-on-actor-identity-and-tooling-layer veto persists pending Mandiant/CrowdStrike/Unit-42/MSTIC/Volexity/Cisco-Talos corroboration; Yapaev/hastalamuerte/Qilin claims preserved per ESET; Hard Rule 2 BINDING no cross-walk to roster"
+    topic_tags:
+      - gentlemen-raas
+      - gentlekiller-edr-killer-tooling
+      - fourth-rejection-across-four-sweeps
+      - three-publisher-journalistic-relay-eset-bc-thn
+      - single-ir-vendor-on-actor-identity-veto-persists
+      - operator-deferred-new-actor-candidacy-gentlemen-second-in-queue
+      - hard-rule-2-binding-no-cross-walk-to-roster
+      - reject-2026-06-19-0004
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - gentlemen-raas-gentlekiller-edr-killer-tooling-cluster
+    finding_ids: []
+    rejection_ids: [reject-2026-06-19-0004]
+    update_type: other_signal_one_liner_rejection_pattern
+    digraph: B3
+    wep_layered:
+      gentlemen_actor_identity: roughly_even_chance
+      gentlekiller_edr_killer_tooling_attribution_to_gentlemen: roughly_even_chance
+    resurface_if:
+      - second_ir_vendor_corroboration_mandiant_crowdstrike_unit42_mstic_volexity_talos
+      - ad_prime_named_victim_disclosed
+      - operator_invokes_new_actor_gentlemen
+      - additional_named_victim_beyond_oltenia_romanian_energy
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    notes: |
+      Fourth-rejection-across-four-sweeps pattern. Three-publisher
+      journalistic relay reached (ESET primary + BC second-publisher
+      + THN third-publisher this cycle). Substrate-strengthening on
+      EDR-killer-tooling-supply layer continues but single-IR-vendor-
+      on-actor-identity veto persists. Substrate that would lift the
+      veto: Mandiant / CrowdStrike / Unit 42 / MSTIC / Volexity /
+      Cisco Talos corroboration on Gentlemen actor identity and/or
+      GentleKiller EDR-killer-tooling supply layer.
+
+  - id: 2026-06-19-pm-other-002-ai-developer-supply-chain-watch-five-surface-aggregation-lane
+    covered_in: [2026-06-19-afternoon]
+    headline: "OTHER SIGNAL: AI-developer-supply-chain watch-pattern now five-surface aggregation lane — AutoJack / AutoGen Studio MCP WebSocket RCE (Microsoft vendor-self-disclosure on pre-release builds 0.4.3.dev1/dev2 only, stable 0.4.2.2 unaffected, no CVE, no ITW, vendor-coordinated patch per reject-2026-06-19-0005) joins lane as substrate-strengthening; lane now: Mastra-npm + JetBrains/Chrome AI plugins + Megalodon + TrapDoor/Miasma + AutoJack/AutoGen-MCP; Sunday synthesis candidate; no A&D-prime developer-team named victim across lane; no FLASH promotion warranted"
+    topic_tags:
+      - ai-developer-supply-chain-watch-pattern
+      - five-surface-aggregation-lane
+      - autojack-autogen-studio-mcp-websocket-rce
+      - microsoft-vendor-self-disclosure-pre-release-builds-only
+      - mastra-npm
+      - jetbrains-chrome-ai-plugins
+      - megalodon
+      - trapdoor-miasma
+      - sunday-synthesis-candidate
+      - no-ad-prime-developer-team-named-victim
+      - no-flash-promotion-warranted
+      - reject-2026-06-19-0005
+    related_actors: []
+    related_vulns: []
+    related_campaigns:
+      - ai-developer-supply-chain-five-surface-aggregation
+    finding_ids: []
+    rejection_ids: [reject-2026-06-19-0005]
+    update_type: other_signal_watch_pattern_substrate_strengthening
+    digraph: B2
+    wep_layered:
+      ai_developer_supply_chain_pattern_existence: likely
+      a_d_prime_developer_team_specific_targeting: roughly_even_chance
+    resurface_if:
+      - ad_prime_developer_team_named_victim_surfaces
+      - second_ir_vendor_corroboration_on_attribution_layer_any_of_five_surfaces
+      - autogen_studio_mcp_cve_assigned
+      - any_of_five_surfaces_active_exploitation_surface
+      - sunday_synthesis_synthesis_landing
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    notes: |
+      Substrate-strengthening of AI-developer-supply-chain watch-pattern
+      now five-surface aggregation lane. AutoJack/AutoGen-MCP joined
+      this cycle as vendor-self-disclosure (Microsoft) on pre-release
+      builds only (0.4.3.dev1/dev2; stable 0.4.2.2 unaffected; no CVE;
+      no ITW; vendor-coordinated patch). Sunday synthesis candidate.
+
+  - id: 2026-06-19-pm-brief-meta
+    covered_in: [2026-06-19-afternoon]
+    brief_file: threats/briefs/2026-06-19-afternoon.md
+    headline: "2026-06-19 afternoon brief — 0 net-new graded findings (grading run afternoon-20260619-160000 produced ZERO promotions; three rejections logged); structured as carry-forward + status-pivot watch on CVE-2026-20253 Splunk Enterprise (KEV deadline T-2d, last brief before Sunday 2026-06-21 deadline closes); FortiBleed CISA government-attestation carry-forward (no new substrate); Klue/Icarus carry-forward (no new substrate); Other Signal one-liners on Gentlemen RaaS fourth-rejection pattern + AI-developer-supply-chain five-surface watch lane; Splunk first-party sentinel 28th consecutive clean sweep (~144h continuous clean window); pre-flight 13-of-13 PASS"
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - 0-net-new-findings-pm-cycle
+      - 3-rejections-logged
+      - status-pivot-watch-cve-2026-20253-last-brief-before-kev-deadline
+      - carry-forward-fortibleed-klue-icarus
+      - other-signal-gentlemen-raas-fourth-rejection-pattern
+      - other-signal-ai-developer-supply-chain-five-surface-aggregation
+      - splunk-first-party-sentinel-28th-consecutive-clean-sweep
+      - 144h-continuous-clean-window
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20253
+    related_campaigns:
+      - fortibleed-credential-corpus-credential-stuffing-campaign
+      - icarus-extortion-group-salesforce-supply-chain
+      - gentlemen-raas-gentlekiller-edr-killer-tooling-cluster
+      - ai-developer-supply-chain-five-surface-aggregation
+    finding_ids:
+      - finding-2026-06-19-0002
+      - finding-2026-06-19-0001
+      - finding-2026-06-19-0003
+    rejection_ids:
+      - reject-2026-06-19-0004
+      - reject-2026-06-19-0005
+      - reject-2026-06-19-0006
+    carry_forward_callouts:
+      - finding-2026-06-19-0001    # FortiBleed CISA attestation carry-forward
+      - finding-2026-06-19-0002    # Splunk CVE-2026-20253 status-pivot watch
+      - finding-2026-06-19-0003    # Klue/Icarus carry-forward
+      - finding-2026-06-18-0002    # UNC6508 INFINITERED REDCap — 72h FLASH dedup closed at 12:00 EDT, next-substantive-restatement window now open
+      - finding-2026-06-18-0004    # F5 NGINX dual CVE
+      - finding-2026-06-18-0005    # Cisco ISE dual CVE
+      - finding-2026-06-16-0001    # FishMonger SprySOCKS
+      - finding-2026-06-17-0005    # DragonForce Backdoor.TURN
+      - finding-2026-06-16-0002    # FortiSandbox 3-CVE KEV listing watch
+      - finding-2026-06-16-0005    # Rockwell PSIRT ICS cluster
+      - finding-2026-06-17-0003    # UNC3753 / KnowledgeDeliver
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - patch_released_for_associated_cve
+      - kev_deadline_compliance_metrics_phase_2026_06_22
+    first_covered: 2026-06-19
+    last_covered: 2026-06-19
+    retraction: null
+    test: false
+    word_count_layer_1: 612
+    layer_2_discord_summary:
+      char_count_estimate: 1880
+      under_1900_buffer: true
+      word_count_total: 210
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 3   # Layer 2 trimmed twice to fit under 1900 ceiling
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-06-19-0001
+          append_brief_id: 2026-06-19-afternoon
+        - finding_id: finding-2026-06-19-0002
+          append_brief_id: 2026-06-19-afternoon
+        - finding_id: finding-2026-06-19-0003
+          append_brief_id: 2026-06-19-afternoon
+      operator_deferred_handoffs_surfaced:
+        - "/new-actor candidacy queue carry-forward (Hard Rule 2 BINDING): UNC6508 + Gentlemen RaaS + UAT-8616 + Icarus"
+        - "vuln-tracker handoff CVE-2026-20253 Splunk Enterprise — final pre-deadline brief; Sunday brief lands AFTER KEV deadline closes; compliance-metrics-cohort tracking pivot expected"
+        - "collector handoff: retrieve CISA advisory primary URL for FortiBleed 2026-06-18 advisory (carry-forward from AM cycle; red-team hedge resolution contingent)"
+        - "Huntress IR-vendor primary research retrieval for Icarus actor identity / IOCs / Mr Brean persona (carry-forward from AM cycle; single-IR-vendor veto resolution contingent)"
+    notes: |
+      2026-06-19 afternoon brief composed by briefer subagent after
+      grader produced 0 net-new findings (three rejections logged this
+      run: Gentlemen RaaS / GentleKiller THN-third-publisher relay
+      [reject-2026-06-19-0004] + MSFT AutoJack / AutoGen Studio MCP
+      WebSocket RCE pre-release-build-only vendor-self-disclosure
+      [reject-2026-06-19-0005] + HNS-Zorz Splunk CVE-2026-20253
+      Resecurity under-24h-dedup [reject-2026-06-19-0006]).
+
+      Brief structured as carry-forward + status-pivot watch given
+      zero net-new substrate. Lead carries the CVE-2026-20253
+      Splunk Enterprise KEV-deadline window (T-2d to Sunday 2026-06-
+      21; last scheduled brief before deadline closes; next brief
+      lands AFTER deadline closure and pivots to compliance-metrics-
+      cohort tracking).
+
+      Two cluster-context handoffs from grader absorbed as Other
+      Signal one-liners:
+        - Gentlemen RaaS / GentleKiller fourth-rejection-across-four-
+          sweeps pattern (three-publisher journalistic relay reached
+          — ESET + BC + THN — single-IR-vendor-on-actor-identity
+          veto persists)
+        - AI-developer-supply-chain watch-pattern now five-surface
+          aggregation lane (Mastra-npm + JetBrains/Chrome AI + Megalodon
+          + TrapDoor/Miasma + AutoJack/AutoGen-MCP; Sunday synthesis
+          candidate)
+
+      Hard Rule 2 BINDING preserved across all carry-forwards:
+        - FortiBleed "Russian-speaking" verbatim
+        - Splunk PSIRT "limited exploitation" unattributed
+        - Icarus net-new distinct (Huntress + THN explicit-distinction
+          framing)
+        - Gentlemen RaaS preserved per ESET; NO cross-walk to roster
+
+      Hard Rule 6 quote discipline: 1 direct quote in Layer 1
+      ("limited exploitation" 2 words, Splunk PSIRT carry-forward
+      from AM); 0 quotes in Layer 2. Compliant.
+
+      Hard Rule 8 first-party Splunk: 28th-consecutive-clean-sentinel
+      cumulative since 2026-06-13 18:00 EDT (~144h continuous clean
+      window). Visibility-bounded absence flagged not negative-
+      evidence. Frank-categorical-null preserved across Fortinet VPN /
+      Splunk Enterprise / Salesforce-Klue-integration tenant
+      structural-exposure surfaces.
+
+      Layer 1 word count ~612 — within 400-800 target band; lighter
+      than AM cycle (1030) per zero net-new substrate. Layer 2
+      Discord Summary ~1880 chars under 1900-char hard ceiling with
+      ~20-char buffer. Word count ~210 within 150-300 band. Six
+      bullets across four sections (two Vulnerabilities, one
+      Active-Threats carry-forward, one Actor-Activity carry-forward,
+      two Other-Signal one-liners); Sector Focus + Iran Cyber Watch
+      sections omitted from Layer 2 per spec (no new activity /
+      standing boilerplate stays in Layer 1 only).
+
+      Anti-noise carry-forwards untouched: UNC6508 INFINITERED 72h
+      FLASH dedup closed at 12:00 EDT (next-substantive-restatement
+      window now open); FishMonger SprySOCKS; DragonForce Backdoor.
+      TURN; FortiSandbox 3-CVE KEV-listing watch; Rockwell PSIRT ICS
+      cluster; UNC3753/KnowledgeDeliver; F5 NGINX dual CVE; Cisco
+      ISE dual CVE; Velvet Ant; Handala #014 Cal Water negative
+      reinforced.
+
+      Pre-existing YAML defect at line ~32457 (unescaped apostrophe
+      in zdi_dustin_childs quote scalar) still present; out-of-scope
+      for this briefer cycle.
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

@@ -1070,7 +1070,7 @@ analysis_sections:
 # Lifecycle
 # ============================================================================
 tlp: CLEAR
-published_in_briefs: [2026-06-19-morning]
+published_in_briefs: [2026-06-19-morning, 2026-06-19-afternoon]
 retracted: false
 retraction_brief_id: null
 ---

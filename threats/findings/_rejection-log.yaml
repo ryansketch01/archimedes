@@ -11544,3 +11544,555 @@ _meta:
         Rejection rationale paraphrases Cohen's commentary throughout;
         no verbatim quote above 15 words propagated into this entry.
       hard_rule_7_credentials_radioactive: not_applicable_no_credentials_surfaced
+
+  - rejection_id: reject-2026-06-19-0004
+    rejected_at: 2026-06-19T16:14:00-04:00
+    grading_run_id: afternoon-20260619-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-19-pm-001-thn-lakshmanan-gentlemen-raas-gentlekiller-third-publisher-relay
+    cluster_topic: >
+      Gentlemen RaaS / GentleKiller EDR-killer-tooling substrate-
+      strengthening — THN-Lakshmanan THIRD-publisher relay of ESET-
+      Souček primary research (2026-06-18 publication). Widens
+      publisher-independence on EDR-killer-tooling-supply layer from
+      (ESET-primary + BC-Toulas FLASH-0000-001 + HNS-Pogorelec AM
+      2026-06-18) to (ESET-primary + BC-Toulas + THN-Lakshmanan +
+      HNS-Pogorelec) — now THREE journalistic relay publishers on
+      single ESET-primary IR-vendor research surface. Net-new
+      substrate this sweep beyond reject-2026-06-19-0001 (BC-Toulas
+      same-content relay rejected morning grading): (a) explicit
+      Yapaev / hastalamuerte alleged-leadership-figure attribution
+      preserved per ESET research, (b) Qilin ransomware prior-
+      affiliation claim preserved per ESET research, (c) PoisonX.sys
+      named BYOVD driver, (d) UEFI Secure Boot bypass vendor cluster
+      (Acer, AMD, ASUS, ECS, Getac, GIGABYTE, Toshiba, Uniwill), (e)
+      504 claimed victims geographic distribution (Southeast Asia,
+      South America, Western Europe). Operator-deferred /new-actor
+      Gentlemen candidacy carry-forward from reject-2026-06-17-0007
+      + reject-2026-06-18-0008 + reject-2026-06-19-0001 continues —
+      now fourth rejection on same actor-identity-and-tooling layer
+      across four sweeps. Hard Rule 2 BINDING: Yapaev /
+      hastalamuerte / Qilin-affiliation claims preserved as published
+      per ESET; Archimedes does NOT originate Gentlemen → tracked-
+      roster attribution, does NOT originate Yapaev → tracked-actor
+      cross-walk, does NOT originate Qilin → tracked-roster cross-
+      walk.
+    rejection_reasons:
+      - single_ir_vendor_on_actor_identity_layer_veto_persists
+      - operator_deferred_new_actor_candidacy_carry_forward
+      - substrate_strengthening_not_yet_promotion_threshold
+      - no_ad_prime_named_victim
+      - geographic_distribution_sector_agnostic_no_ad_prime_named
+      - no_cve_no_tracked_actor_no_first_party_hit
+      - third_publisher_relay_does_not_lift_single_ir_vendor_veto_on_actor_identity
+      - hard_rule_2_binding_no_novel_attribution_yapaev_qilin_cross_walk
+    rejection_detail: >
+      Third-publisher journalistic relay (THN-Lakshmanan joins BC-
+      Toulas + HNS-Pogorelec all on ESET-Souček primary) widens
+      publisher-independence on the JOURNALISTIC RELAY tier but does
+      NOT lift the single-IR-vendor-on-actor-identity-and-tooling-
+      layer veto. ESET remains the single Tier-1 IR-vendor on
+      Gentlemen actor identity, Yapaev / hastalamuerte alleged-
+      leadership-figure attribution, GentleKiller toolkit ownership,
+      and PoisonX.sys BYOVD driver attribution. Mandiant / CrowdStrike
+      / Unit-42 / MSTIC second-IR-vendor-on-actor-identity
+      corroboration remains the substrate-that-would-lift-veto.
+      Journalistic relay count (now 3) is publisher-tier independence,
+      not IR-vendor-tier independence — the load-bearing absent layer
+      is Tier-1 IR-vendor corroboration on attribution claims, not
+      additional second-/third-hand news coverage of the ESET
+      research. T-gates this sweep all FAIL: T1 no specific CVE
+      (UEFI Secure Boot CVEs are pre-existing vendor-disclosed,
+      PoisonX.sys is BYOVD pattern not CVE-specific); T2 Gentlemen
+      NOT on _roster.yaml, Yapaev NOT on _roster.yaml, Qilin NOT a
+      tracked-roster actor (watch-pattern only); T3 Splunk sentinel
+      clean 28th consecutive (no IOC hits); T4 attribution layer
+      prerequisite missing for tracked-actor-TTP-change; T5 504
+      claimed victims geographic distribution is sector-agnostic
+      (Southeast Asia / South America / Western Europe broad) — no
+      A&D-prime named victim, no defense-contractor, no DIB-supplier,
+      no government-agency; T6 no zero-day-no-patch (BYOVD pattern
+      uses already-disclosed drivers; UEFI cluster has multi-vendor
+      patches). Critical-override 0-of-4 conditions met. Substrate-
+      strengthening signal is real and worth tracking on the
+      operator-deferred /new-actor Gentlemen candidacy lane (now
+      fourth rejection across four sweeps; possible PM brief Other
+      Signal one-liner candidate at briefer discretion). Operator-
+      deferred /new-actor queue position: Gentlemen carry-forward
+      stands as second-in-queue (after UNC6508 from finding-2026-06-
+      17-0004 substrate, before UAT-8616 from finding-2026-06-17-
+      0006 substrate, before Icarus from finding-2026-06-19-0003).
+    sources:
+      - source_yaml_id: thehackernews
+        grade: B
+        role: >
+          THN-Lakshmanan third-publisher journalistic relay on ESET-
+          Souček primary research. THN is ratified B per source-
+          grades.yaml.
+      # Underlying ESET primary research (WeLiveSecurity / Jakub Souček
+      # byline) — ESET ratified A per source-grades.yaml vendor IR-blog
+      # tier; not separately retrieved this sweep but underlies the
+      # journalistic relay chain.
+      - source_yaml_id: eset
+        grade: A
+        role: >
+          Original IR-vendor primary research. NOT independently
+          retrieved this sweep (relay-tier-only this cluster).
+    would_be_digraph: B3
+    would_be_wep_per_claim:
+      gentlemen_actor_identity_layer: possibly  # B3 + single Tier-1 IR-vendor + journalistic third-publisher relay; cluster anchor B3 reflects single-IR-vendor-veto on attribution layer
+      yapaev_leadership_attribution_layer: possibly  # ESET single-vendor claim; Hard Rule 2 BINDING preserves as published, does not cross-walk
+      gentlekiller_toolkit_ownership_layer: possibly  # ESET single-vendor claim on in-house tool development; possible likely if second IR-vendor surfaces
+      qilin_prior_affiliation_layer: possibly  # ESET single-vendor claim; Hard Rule 2 BINDING preserves as published, does not cross-walk to Qilin roster watch-pattern
+      edr_killer_tooling_target_scope_layer: likely  # 400+ processes / 48 vendor products is procedural-fact-paraphrase verifiable in tool binaries; less attribution-dependent
+      uefi_secure_boot_vendor_cluster_layer: likely  # multi-vendor UEFI bypass disclosure is procedural-fact across 8 named vendors; not attribution-class
+    inclusion_threshold_test:
+      flash_b2_minimum: FAILS_below_threshold
+      daily_brief_action_b2_minimum: FAILS_below_threshold
+      daily_brief_monitoring_c3_minimum: BORDERLINE_PASS_but_disposition_below
+      weekly_synthesis_c3_minimum: BORDERLINE_PASS_for_cluster_context_only
+      actor_profile_update_b2_minimum: NOT_APPLICABLE_actor_not_on_roster
+      rationale: >
+        Same disposition class as reject-2026-06-19-0001 (BC-Toulas
+        FLASH-0000 second-publisher relay this morning) — substrate-
+        strengthening on operator-deferred /new-actor candidacy
+        without reaching standalone-finding promotion threshold.
+        Third-publisher journalistic relay widens publisher-
+        independence but the load-bearing single-IR-vendor-on-actor-
+        identity veto persists. Appropriate disposition: PM brief
+        Other Signal one-liner cluster-context paragraph at briefer
+        discretion. Standalone-finding promotion premature pending
+        Mandiant/CrowdStrike/Unit-42/MSTIC second-IR-vendor surfacing
+        on Gentlemen actor identity / GentleKiller tooling /
+        Yapaev leadership attribution.
+    cluster_context_briefer_handoff_recommendation: >
+      Briefer: consider Other Signal one-liner consolidation
+      surfacing Gentlemen / GentleKiller as the fourth-rejection-
+      across-four-sweeps substrate-strengthening pattern with three-
+      publisher journalistic relay reached (ESET-primary + BC-Toulas
+      + THN-Lakshmanan) and explicit Yapaev / hastalamuerte alleged-
+      leadership-figure naming + Qilin prior-affiliation claim
+      preserved per Hard Rule 2 BINDING. Single-IR-vendor-on-actor-
+      identity veto status disclosure recommended in any cluster-
+      context paragraph. Operator-deferred /new-actor queue position
+      restated.
+    review_notes: >
+      If Mandiant / CrowdStrike / Unit-42 / MSTIC surfaces second-
+      IR-vendor-on-actor-identity corroboration on Gentlemen-actor-
+      identity / GentleKiller-tooling-layer / Yapaev-leadership-
+      attribution / Qilin-prior-affiliation-claim, regrade as
+      candidate for promotion. If A&D-prime named victim surfaces
+      in any future ESET-Souček follow-up or independent IR-vendor
+      writeup, regrade — sector-tag pivot would shift T5 evaluation.
+      Carry-forward operator-deferred /new-actor Gentlemen candidacy
+      stands. Keep 1 year per LEGAL-POLICY retention.
+    hard_rule_compliance:
+      hard_rule_1_legal_policy_content_safety_scan: passed
+      hard_rule_2_no_novel_attribution: |
+        BINDING. Yapaev / hastalamuerte alleged-leadership-figure
+        attribution preserved verbatim per ESET research as published.
+        Qilin prior-affiliation claim preserved per ESET research as
+        published. Gentlemen actor identity preserved as standalone
+        not-on-_roster.yaml. Archimedes originates ZERO attribution
+        claims this cluster — does NOT cross-walk Yapaev to any
+        tracked actor, does NOT cross-walk Qilin watch-pattern to
+        any tracked actor, does NOT cross-walk Gentlemen to any
+        tracked actor. Operator-deferred /new-actor pathway
+        preserved as the only legitimate route for Gentlemen actor-
+        identity roster mutation.
+      hard_rule_6_15_word_quote: |
+        Raw signal carries one at-cap candidate quote (ESET via THN:
+        "looks for 400 processes associated with 48 distinct security
+        programs" — 13 words at-cap). Rejection rationale paraphrases
+        throughout; no verbatim quote above 15 words propagated into
+        this entry.
+      hard_rule_7_credentials_radioactive: |
+        not_applicable. EDR-killer-tooling research surfaces process-
+        target lists + tooling names + BYOVD driver names + UEFI
+        bypass CVE numbers — none of which are credential-class data.
+      hard_rule_8_first_party_splunk_check: |
+        Performed. Splunk sentinel 0 hits across combined 46-IOC set
+        and Gentlemen/GentleKiller/Yapaev/Qilin/PoisonX.sys/UEFI-
+        bypass-CVE keyword search — 28th consecutive clean sentinel
+        cumulative since 2026-06-13 18:00 EDT (~144h continuous
+        clean window). Silent-Splunk does NOT disconfirm per Hard
+        Rule 8 — visibility-bounded absence flagged, not negative
+        evidence. Frank is NOT a known Gentlemen victim; A&D-prime
+        sector relevance unchanged.
+
+  - rejection_id: reject-2026-06-19-0005
+    rejected_at: 2026-06-19T16:16:00-04:00
+    grading_run_id: afternoon-20260619-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-19-pm-002-thn-khandelwal-msft-autojack-autogen-studio-ai-developer-supply-chain-mcp
+    cluster_topic: >
+      AutoJack attack chain in pre-release AutoGen Studio (0.4.3.dev1
+      / 0.4.3.dev2 PyPI builds) — three chained vulnerabilities in
+      Microsoft AutoGen Studio Model Context Protocol (MCP)
+      WebSocket implementation: (1) localhost trust abuse via socket
+      trusting localhost connections; (2) MCP authentication-
+      middleware bypass on MCP routes; (3) command execution
+      endpoint accepting commands without executable allowlist.
+      Result per MSTIC via THN-Khandelwal: attacker-controlled web
+      page rendered by a browsing agent running locally could run
+      attacker-chosen command under AutoGen Studio process account.
+      Stable release 0.4.2.2 unaffected (lacks MCP route). Patched
+      in GitHub main branch at commit b047730 (PR #7362); no patched
+      PyPI build available yet. NO ITW exploitation reported (PoC-
+      only, calc.exe execution via Web Content Summarizer agent).
+      No CVE assigned this sweep. Vendor-self-disclosure pattern
+      (Microsoft researchers + MSTIC + Microsoft Research AutoGen
+      framework team coordinated). Substrate-strengthening on AI-
+      developer-supply-chain watch-pattern carried forward from
+      reject-2026-06-17-0003 + reject-2026-06-17-0004 + finding-
+      2026-06-18-0001 (MSTIC Mastra-npm AM brief dac22e4) + 00:00
+      FLASH sweep 1e36110 substrate (BC-Toulas GitGuardian
+      Megalodon-5500-GitHub-repos + TrapDoor-npm/PyPI/Crates.io-AI-
+      coding-assistant + Miasma-32-Red-Hat-trusted-publishing five-
+      campaign aggregation). New pattern layer: vendor-self-
+      disclosure of pre-release-build vulnerability in vendor-
+      published AI-agent-orchestration framework via authentication-
+      bypass in AI-agent-protocol (MCP) implementation.
+    rejection_reasons:
+      - vendor_self_disclosure_pre_release_build_only_no_itw
+      - no_cve_assigned_this_sweep
+      - patched_in_vendor_main_branch_coordinated_disclosure
+      - no_ad_prime_named_victim
+      - no_threat_actor_attribution_research_only_finding
+      - single_publisher_relay_on_single_vendor_primary_source
+      - watch_pattern_substrate_strengthening_not_finding_threshold
+      - ai_developer_supply_chain_watch_pattern_consolidation_briefer_handoff
+    rejection_detail: >
+      Vendor-self-disclosure of pre-release-build vulnerability
+      (AutoGen Studio 0.4.3.dev1 / 0.4.3.dev2 PyPI builds) with
+      vendor-coordinated patch in GitHub main branch (commit
+      b047730 / PR #7362). Stable release 0.4.2.2 unaffected (lacks
+      MCP route). NO ITW exploitation reported — research-only
+      finding with calc.exe PoC. NO CVE assigned this sweep
+      (possible vuln-watch-keywords addition candidate per watch-
+      config.yaml gogs-argument-injection-2026-05-28 + servicenow-
+      api-exploitation-2026-06-09 precedents IF CVE assignment
+      lands within standard 7-14d window — operator-deferred to
+      briefer / vuln-tracker handoff). T-gates this sweep all FAIL:
+      T1 no CVE + no active exploitation + pre-release builds only
+      (T1 strictly requires confirmed active exploitation per
+      FLASH-POLICY); T2 no threat-actor attribution claimed; T3
+      Splunk sentinel clean 28th consecutive (no IOCs in article
+      body — research-only finding); T4 no tracked actor; T5 no
+      A&D-prime named victim, no defense-contractor, no DIB-
+      supplier, no government-agency — research-only finding on
+      developer-tooling pre-release; T6 vendor-coordinated patch
+      available in GitHub main (only PyPI distribution lagging),
+      no zero-day-no-patch condition met. Critical-override 0-of-4
+      conditions met. AI-developer-supply-chain watch-pattern
+      substrate-strengthening is real — MSTIC primary research
+      extends pattern from third-party-package vulnerabilities
+      (Mastra-npm + JetBrains/Chrome AI plugins + Megalodon /
+      TrapDoor / Miasma five-campaign aggregation) to vendor-self-
+      disclosure of pre-release-build vulnerability in vendor-
+      published AI-agent-orchestration framework with new layer:
+      AI-agent-protocol (MCP) authentication/authorization
+      weaknesses in pre-release distribution channels. Pattern
+      worth tracking but does NOT pass standalone-finding
+      promotion threshold absent (a) CVE assignment, (b) ITW
+      exploitation, (c) A&D-prime named victim, (d) operational
+      impact warranting standalone finding. Single-source-veto
+      consideration: MSTIC is single primary source (vendor-self-
+      disclosure); THN-Khandelwal is journalistic relay not
+      independent technical research — single-source veto would
+      cap WEP at "likely" even if promoted. A&D-prime structural
+      relevance LOW-to-MEDIUM (AutoGen Studio pre-release-build
+      adoption in A&D-prime production environments unlikely per
+      CMMC compliance posture; A&D-prime developer-team research/
+      sandbox use plausible but unconfirmed). Frank-relevance
+      NONE per Splunk-Free-not-Enterprise (AutoGen Studio not in
+      Frank stack).
+    sources:
+      - source_yaml_id: thehackernews
+        grade: B
+        role: >
+          THN-Khandelwal single-publisher journalistic relay on
+          MSTIC + Microsoft Research AutoGen team primary research.
+          THN is ratified B per source-grades.yaml.
+      # Underlying MSTIC + Microsoft Research AutoGen team primary
+      # research — Microsoft vendor on own product (vendor-self-
+      # disclosure of pre-release-build vulnerability). Microsoft
+      # MSRC / MSTIC ratified A per source-grades.yaml category
+      # vendor-PSIRT / vendor-on-own-product attestation tier. Not
+      # separately retrieved this sweep beyond THN relay.
+      - source_yaml_id: mstic
+        grade: A
+        role: >
+          Original vendor-self-disclosure primary research on own
+          AI-agent-orchestration framework. NOT independently
+          retrieved this sweep (relay-tier-only this cluster).
+    would_be_digraph: B2
+    would_be_wep_per_claim:
+      autojack_attack_chain_technical_layer: likely  # B2 + vendor-self-disclosure of own pre-release-build vulnerability + PoC demonstrated; technical claim confidence high but single-source veto applies caps at "likely"
+      authentication_middleware_bypass_layer: likely  # vendor-confirmed via patch in main branch + PoC; B2 vendor attestation on own product
+      pre_release_build_scope_layer: likely  # vendor-explicit scoping to 0.4.3.dev1/dev2 with stable 0.4.2.2 unaffected; high confidence on scope
+      itw_exploitation_layer: not_applicable  # explicitly NOT reported; research-only finding
+      cve_assignment_pending_layer: possibly  # absent this sweep; standard CVE assignment cycle 7-14d post-disclosure
+      ad_prime_adoption_layer: possibly  # structural inference; CMMC compliance posture suggests low pre-release adoption in production
+    single_source_veto_consideration: |
+      MSTIC + Microsoft Research AutoGen team is single primary
+      source (vendor-self-disclosure). THN-Khandelwal is
+      journalistic relay not independent IR-vendor research. Per
+      admiralty-grading skill single-source-veto rule: if promoted
+      as a finding, wep_ceiling would cap at "likely" regardless of
+      A-grade vendor-on-own-product attestation. Vendor-self-
+      disclosure on own product is procedurally A-tier credibility
+      but the absence of second independent IR-vendor on the
+      vulnerability layer keeps WEP under "very likely" / "almost
+      certainly" ceilings.
+    inclusion_threshold_test:
+      flash_b2_minimum: FAILS_no_itw_no_cve_no_active_exploitation
+      daily_brief_action_b2_minimum: TECHNICALLY_PASSES_B2_grade_but_DISPOSITION_BELOW_finding_threshold_due_to_no_itw_no_cve_no_ad_named_victim
+      daily_brief_monitoring_c3_minimum: PASSES_for_watch_pattern_continuation
+      weekly_synthesis_c3_minimum: PASSES_for_ai_developer_supply_chain_cluster_consolidation
+      actor_profile_update_b2_minimum: NOT_APPLICABLE_no_actor
+      rationale: >
+        Would-be digraph B2 (THN B-grade relay + vendor-self-
+        disclosure A-grade primary = cluster anchor B2 on technical
+        layer with single-source veto capping WEP at "likely") is
+        technically at action-tier threshold but DISPOSITION BELOW
+        standalone-finding promotion absent (a) CVE assignment,
+        (b) ITW exploitation, (c) A&D-prime named victim, (d)
+        operational impact. Watch-pattern continuation is the
+        appropriate disposition; PM brief Other Signal one-liner
+        consolidation paragraph alongside AI-developer-supply-chain
+        cluster framing (covering Mastra-npm + JetBrains/Chrome AI
+        plugins + Megalodon/TrapDoor/Miasma five-campaign + this
+        AutoJack/AutoGen-MCP surface) is the briefer-discretion
+        recommendation.
+    cluster_context_briefer_handoff_recommendation: >
+      Briefer: consider AI-developer-supply-chain watch-pattern lift
+      consolidation surfacing AutoJack/AutoGen-MCP as net-new layer
+      (vendor-self-disclosure of pre-release-build vulnerability in
+      vendor-published AI-agent-orchestration framework via MCP
+      authentication bypass) alongside carry-forward Mastra-npm
+      finding-2026-06-18-0001 + Megalodon/TrapDoor/Miasma five-
+      campaign aggregation watch-pattern (BC-Toulas GitGuardian
+      relay from 00:00 FLASH sweep 1e36110). Pattern continuity
+      worth surfacing as cluster-context for situational awareness
+      of A&D-prime developer-team exposure to AI-tooling supply-
+      chain risk surface. Possible vuln-watch-keywords addition
+      candidate IF CVE assignment lands within standard 7-14d
+      window — operator-deferred to vuln-tracker handoff.
+    review_notes: >
+      Regrade as candidate for promotion if any of: (a) CVE
+      assignment for AutoJack/AutoGen-MCP chain published, (b)
+      ITW exploitation reported by Microsoft MSTIC or independent
+      IR-vendor, (c) A&D-prime developer-team named victim
+      surfaces in any future writeup, (d) second IR-vendor
+      independent technical analysis surfaces. Watch-pattern carry-
+      forward across AI-developer-supply-chain lane stands. Keep
+      1 year per LEGAL-POLICY retention.
+    hard_rule_compliance:
+      hard_rule_1_legal_policy_content_safety_scan: passed
+      hard_rule_2_no_novel_attribution: |
+        not_applicable_no_actor_attribution_in_substrate. Research-
+        only vendor-self-disclosure finding; no threat-actor
+        attribution claimed; Archimedes originates ZERO attribution
+        claims this cluster.
+      hard_rule_3_no_exploitation_assistance: |
+        PoC demonstration (calc.exe via Web Content Summarizer
+        agent) referenced as procedural-fact per MSTIC research;
+        Archimedes does NOT reproduce, transcribe, or describe
+        exploitation technique beyond high-level chain mechanism
+        (localhost trust + auth bypass + command execution) which
+        is necessary procedural-detail for defender-facing
+        understanding of patch urgency. No exploitation code,
+        payload, or instructional content propagated.
+      hard_rule_6_15_word_quote: |
+        Raw signal carries one at-cap candidate quote (MSTIC via
+        THN: "a page on the open internet, rendered by a local
+        agent, could run an attacker-chosen command under the
+        account running AutoGen Studio" — 15 words at-cap exactly).
+        Rejection rationale paraphrases throughout; no verbatim
+        quote at or above 15 words propagated into this entry.
+      hard_rule_7_credentials_radioactive: |
+        not_applicable. Research-only finding; no credential values
+        surfaced.
+      hard_rule_8_first_party_splunk_check: |
+        Performed. Splunk sentinel clean this sweep (28th
+        consecutive). AutoGen Studio + AutoJack + PoisonX.sys
+        keyword sweep returned 0 events. Frank is NOT an AutoGen
+        Studio deployment per Splunk-Free-not-Enterprise scope.
+        Silent-Splunk does NOT disconfirm per Hard Rule 8 —
+        visibility-bounded absence flagged, not negative evidence.
+
+  - rejection_id: reject-2026-06-19-0006
+    rejected_at: 2026-06-19T16:18:00-04:00
+    grading_run_id: afternoon-20260619-160000
+    grading_mode: scheduled_brief
+    rejected_by: grader
+    raw_signal_members:
+      - raw-2026-06-19-flash-1200-001-hns-zorz-splunk-cve-2026-20253-resecurity-corroboration
+    cluster_topic: >
+      HNS-Zorz CVE-2026-20253 Splunk Enterprise Resecurity IR-vendor
+      ITW-corroboration relay — same HelpNetSecurity-Zorz article
+      content (URL https://www.helpnetsecurity.com/2026/06/19/splunk-
+      vulnerability-cve-2026-20253-exploited/, published 2026-06-19
+      10:50:33 UTC) that the morning grader ALREADY absorbed into
+      finding-2026-06-19-0002 (A1) via the triple-publisher relay
+      substrate of raw-2026-06-19-am-004 (BC-Gatlan primary + HNS-
+      Zorz secondary + SA-Paganini tertiary). Independent in-window
+      flash-1200 sweep at 12:00 EDT re-collected the same HNS-Zorz
+      article ~75 minutes after the morning grader created finding-
+      2026-06-19-0002 at 08:16 EDT. Net-new substrate vs. already-
+      promoted finding-2026-06-19-0002: ZERO. The Resecurity
+      attribution layer ("In-the-wild exploitation has also been
+      confirmed by the vendor and Resecurity"), the path-traversal
+      + PostgreSQL-connection-parameter exploitation-indicator
+      guidance, the CISA KEV 3-day deadline 2026-06-21 countdown,
+      and the Shadowserver 1,400+ exposed-instances scan-telemetry
+      layer are all already substrate of finding-2026-06-19-0002
+      per its digraph_layered block lines 26-27 (resecurity_itw_
+      confirmation_via_hns_zorz_relay: B2 + resecurity_assessment_
+      potential_full_system_compromise_organizations_should_prioritize_
+      patching: B2) and lines 29-30 (shadowserver_telemetry_1400_
+      exposed_splunk_enterprise_instances_internet_accessible: A2).
+    rejection_reasons:
+      - under_24h_dedup_on_already_promoted_substrate
+      - same_publisher_same_article_already_absorbed_in_finding_2026_06_19_0002
+      - zero_net_new_substrate_vs_morning_brief_promotion
+      - flash_anti_noise_rule_1_already_published_within_24h
+      - resecurity_attribution_layer_already_in_finding_digraph_layered_block
+      - shadowserver_telemetry_layer_already_in_finding_digraph_layered_block
+      - cisa_kev_deadline_layer_already_in_finding_digraph_layered_block
+    rejection_detail: >
+      Under-24h dedup BINDING per FLASH-POLICY Anti-Noise Rule 1 on
+      already-promoted finding-2026-06-19-0002 within 24h. The HNS-
+      Zorz article at the flash-1200 sweep URL is the SAME
+      publication (same publisher, same byline, same URL, same
+      publication timestamp 2026-06-19 10:50:33 UTC) that was
+      already absorbed into finding-2026-06-19-0002 by the morning
+      grader via the triple-publisher relay cluster of raw-2026-06-
+      19-am-004 (BC-Gatlan primary + HNS-Zorz secondary + SA-
+      Paganini tertiary). Finding-2026-06-19-0002 created 2026-06-
+      19T08:16:00-04:00; HNS-Zorz article published 2026-06-19
+      10:50:33 UTC (06:50:33 EDT); flash-1200 sweep at 12:00 EDT
+      re-collected the same article ~5h after publication and ~5.7h
+      after finding-2026-06-19-0002 creation. The Resecurity IR-
+      vendor attribution + Shadowserver scan-telemetry + CISA KEV
+      3-day deadline countdown + path-traversal/PostgreSQL-
+      connection-parameter exploitation-indicator guidance are all
+      already substrate layers in finding-2026-06-19-0002's
+      digraph_layered block (cluster anchored A1 on triple-channel
+      ITW substantiation: Splunk PSIRT vendor-PSIRT vendor-on-own-
+      product attestation + WatchTowr independent IR-vendor
+      technical-analysis-and-PoC + Resecurity third-IR-vendor ITW
+      corroboration). Net-new substrate this sweep: ZERO. T-gate
+      evaluation per FLASH-POLICY: T1 critical-CVE-exploited
+      criteria-met (CVE listed YES + CVSS 9.8 YES + active
+      exploitation YES + A-grade source YES) BUT already-promoted
+      finding-2026-06-19-0002 within 24h triggers under-24h dedup
+      BINDING per FLASH-POLICY Anti-Noise Rule 1 — finding-already-
+      shipped pathway preempts FLASH re-promotion. T2 unattributed
+      preserved per Hard Rule 2 BINDING (no "Russian-speaking" or
+      named-APT framing in HNS-Zorz body, attribution preserved as
+      "limited exploitation" per Splunk PSIRT verbatim). T3 Splunk
+      sentinel clean 28th consecutive (no first-party hit on Splunk
+      Enterprise CVE — Frank-Splunk-Free not Enterprise per
+      structural PostgreSQL-sidecar Enterprise-specific component
+      scoping). T4 N/A no tracked actor. T5 no A&D-prime named
+      victim, no multi-victim quantification. T6 patches concurrent
+      (Splunk PSIRT advisory accompanied vendor-confirmation 2026-
+      06-10). Critical-override 0-of-4 conditions met. Frank-
+      relevance NONE per Splunk-Free-not-Enterprise. A&D-prime
+      relevance HIGH per Splunk Enterprise widespread in DIB SOC/
+      SIEM/security-operations stacks (already documented in
+      finding-2026-06-19-0002). Appropriate disposition: silent
+      rejection per under-24h dedup; no PM brief mention needed
+      because finding-2026-06-19-0002 has already shipped at A1
+      with full Resecurity + Shadowserver substrate absorbed.
+    sources:
+      - source_yaml_id: helpnetsecurity
+        grade: B
+        role: >
+          HNS-Zorz secondary-publisher journalistic relay on Splunk
+          PSIRT + Resecurity + CISA KEV substrate. Same article
+          already absorbed into finding-2026-06-19-0002 morning
+          grading run. HNS ratified B per source-grades.yaml.
+      # Resecurity IR-vendor primary attribution and Shadowserver
+      # scan-telemetry are absorbed into finding-2026-06-19-0002's
+      # digraph_layered block; this rejection does not duplicate
+      # source attribution beyond the HNS-Zorz relay tier.
+    would_be_digraph: B2
+    would_be_wep_per_claim:
+      itw_exploitation_layer_resecurity_corroboration: likely_already_promoted_to_a1_in_finding_2026_06_19_0002
+      cisa_kev_deadline_layer: confirmed_already_promoted_to_a1_in_finding_2026_06_19_0002
+      shadowserver_telemetry_layer: likely_already_promoted_to_a2_in_finding_2026_06_19_0002
+      net_new_substrate_layer: not_applicable_zero_net_new_substrate
+    inclusion_threshold_test:
+      flash_b2_minimum: REJECTED_under_24h_dedup_on_already_promoted_substrate
+      daily_brief_action_b2_minimum: REJECTED_already_promoted_in_finding_2026_06_19_0002
+      daily_brief_monitoring_c3_minimum: NOT_APPLICABLE_already_promoted
+      weekly_synthesis_c3_minimum: NOT_APPLICABLE_already_in_finding_corpus
+      actor_profile_update_b2_minimum: NOT_APPLICABLE_no_actor
+      rationale: >
+        Pure under-24h dedup rejection on already-promoted substrate.
+        Same publisher, same article, same content, same Resecurity
+        + Shadowserver + CISA KEV layers all already absorbed into
+        finding-2026-06-19-0002 (A1) at morning grading run. No net-
+        new substrate to grade. This rejection is procedural audit-
+        trail-completeness only — content is not lost or
+        suppressed, it is already shipped at A1 in the finding
+        corpus.
+    cluster_context_briefer_handoff_recommendation: >
+      Briefer: NO action required. Finding-2026-06-19-0002 already
+      shipped in morning brief 514a44a with full A1 substrate
+      including Resecurity IR-vendor corroboration + Shadowserver
+      scan-telemetry + CISA KEV 2026-06-21 T-2d deadline. PM brief
+      should reference finding-2026-06-19-0002 in carry-forward /
+      anti-repetition lane only — no net-new substrate-pivot
+      UPDATE candidacy from this rejection.
+    review_notes: >
+      Pure under-24h dedup rejection — procedural audit-trail
+      completeness. Content is already at A1 in finding-2026-06-
+      19-0002. If any future net-new substrate surfaces on CVE-
+      2026-20253 ITW exploitation beyond what finding-2026-06-19-
+      0002 already documents (e.g., A&D-prime named victim,
+      Russian-speaking or named-APT attribution from a
+      Mandiant/CrowdStrike/Unit-42/MSTIC second-IR-vendor channel,
+      KEV-deadline-compliance metrics post 2026-06-21), regrade
+      as substrate-pivot UPDATE candidate for finding-2026-06-19-
+      0002. Keep 1 year per LEGAL-POLICY retention.
+    hard_rule_compliance:
+      hard_rule_1_legal_policy_content_safety_scan: passed
+      hard_rule_2_no_novel_attribution: |
+        BINDING. Resecurity attribution to "active exploitation"
+        preserved verbatim. Splunk PSIRT "limited exploitation"
+        preserved verbatim. No Archimedes-originated attribution.
+        No "Russian-speaking" or named-APT cross-walk in HNS-Zorz
+        body or this rejection entry.
+      hard_rule_6_15_word_quote: |
+        Raw signal carries one at-cap candidate quote (Resecurity
+        via HNS-Zorz: "its potential for full system compromise
+        should push organizations to prioritize patching" — 13
+        words at-cap). Quote already absorbed into finding-2026-
+        06-19-0002 substrate. Rejection rationale paraphrases
+        throughout; no verbatim quote at or above 15 words
+        propagated into this entry.
+      hard_rule_7_credentials_radioactive: |
+        not_applicable. Exploitation-indicator guidance (path
+        traversal + PostgreSQL connection parameters) is procedural
+        mechanism only, no credential values surfaced.
+      hard_rule_8_first_party_splunk_check: |
+        Performed. Splunk sentinel clean this sweep (28th
+        consecutive). CVE-2026-20253 keyword sweep returned 0
+        events. Frank-Splunk-Free-not-Enterprise per structural
+        PostgreSQL-sidecar Enterprise-specific component scoping —
+        first-party precedence yields categorical-structural-NULL
+        result (Frank is NOT a Splunk Enterprise deployment, so
+        CVE-2026-20253 is structurally non-applicable to Frank's
+        first-party stack). Silent-Splunk does NOT disconfirm per
+        Hard Rule 8 — visibility-bounded absence flagged, not
+        negative evidence; per finding-2026-06-19-0002
+        characterization first-party check is categorical-structural
+        rather than telemetry-empirical.

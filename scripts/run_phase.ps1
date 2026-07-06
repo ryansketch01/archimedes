@@ -175,6 +175,51 @@ function Invoke-DeliveryCatchup {
     return $result
 }
 
+# Helper: pre-flight health check of the claude CLI's OAuth credential.
+# The wrapper authenticates via the Max-subscription login token in
+# ~/.claude/.credentials.json, NOT an API key. When that access token expires
+# AND the stored refresh token is empty, the CLI cannot self-refresh and every
+# `claude -p` returns 401 - silently, for days, across all 8 phases. That is
+# exactly the 2026-06-20 outage: token expired 00:00 EDT, refreshToken blank,
+# ~58h of dead phases before a human noticed. This detects that unrecoverable
+# state so we page the operator with an actionable "/login" alert instead of
+# letting the phase die with a generic "pipeline died" message.
+#
+# Returns a hashtable: @{ ok = <bool>; reason = '<string>' }
+#   ok=$true  -> proceed (token valid, still refreshable, or state unreadable)
+#   ok=$false -> abort: token expired with no refresh token. reason is
+#                operator-facing text for the Discord page.
+# Fails OPEN on any read/parse error and on non-OAuth (API-key) setups - a
+# working-but-unusual credential must never block a run; only a definitively
+# dead OAuth token aborts.
+function Test-ClaudeAuth {
+    $credPath = Join-Path $env:USERPROFILE '.claude\.credentials.json'
+    if (-not (Test-Path $credPath)) {
+        return @{ ok = $false; reason = 'No credential file at ~/.claude/.credentials.json - the claude CLI is not logged in.' }
+    }
+    try {
+        $cred = Get-Content -Raw -Path $credPath | ConvertFrom-Json
+    } catch {
+        # Unreadable / malformed cred file - fail open, do not block the run.
+        return @{ ok = $true; reason = 'cred-file-unparseable-failopen' }
+    }
+    $oauth = $cred.claudeAiOauth
+    if ($null -eq $oauth) {
+        # Not an OAuth login (e.g. ANTHROPIC_API_KEY mode) - nothing to check.
+        return @{ ok = $true; reason = 'no-oauth-block-failopen' }
+    }
+    $nowMs = [DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()
+    $expiresAt = 0
+    if ($oauth.expiresAt) { $expiresAt = [int64]$oauth.expiresAt }
+    $noRefresh = [string]::IsNullOrEmpty([string]$oauth.refreshToken)
+    $expired = ($expiresAt -gt 0) -and ($expiresAt -lt $nowMs)
+    if ($expired -and $noRefresh) {
+        $expUtc = ([DateTimeOffset]::FromUnixTimeMilliseconds($expiresAt)).UtcDateTime.ToString('yyyy-MM-dd HH:mm') + ' UTC'
+        return @{ ok = $false; reason = "OAuth access token expired $expUtc and the stored refresh token is empty - the CLI cannot self-refresh. Run /login on Frank to restore." }
+    }
+    return @{ ok = $true; reason = 'ok' }
+}
+
 # --- Pre-flight: log "started" event ---
 $startEvent = @{
     run_id     = $RunId
@@ -205,6 +250,35 @@ if ($DryRun) {
     }
     [void](Send-SplunkEvent -EventData $endEvent)
     exit 0
+}
+
+# --- Pre-flight: claude CLI auth health ---
+# Catch the expired-token / empty-refresh-token state BEFORE the doomed
+# claude -p call, so the operator gets one actionable page per phase instead of
+# a generic "pipeline died" (or, for sweeps, total silence). Per-phase paging is
+# intentional: it mirrors the existing failure-alert cadence and the whole point
+# is to make a multi-day 401 outage visible immediately. Fails open on any
+# ambiguity (see Test-ClaudeAuth) so it can never block an otherwise-healthy run.
+$auth = Test-ClaudeAuth
+if (-not $auth.ok) {
+    $authMsg = "Archimedes AUTH FAILURE - phase '$Phase' (run $RunId) skipped. " +
+        "The claude CLI credential is dead: $($auth.reason) " +
+        "Every scheduled phase will keep failing with 401 until you re-login. Log: $LogFile"
+    [void](Send-DiscordAlert -Message $authMsg -Channel 'commands')
+    [Console]::Error.WriteLine("[run_phase.ps1] auth pre-flight FAILED: $($auth.reason)")
+    $utf8NoBomAuth = New-Object System.Text.UTF8Encoding $false
+    [System.IO.File]::AppendAllText($LogFile, "[run_phase.ps1] auth pre-flight FAILED: $($auth.reason)`r`n", $utf8NoBomAuth)
+    $endEvent = @{
+        run_id         = $RunId
+        phase          = $Phase
+        status         = 'failed'
+        exit_code      = 2
+        duration_sec   = 0
+        failure_reason = 'auth_expired'
+        auth_detail    = $auth.reason
+    }
+    [void](Send-SplunkEvent -EventData $endEvent)
+    exit 2
 }
 
 # --- Invoke claude -p ---

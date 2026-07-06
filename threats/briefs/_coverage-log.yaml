@@ -39763,6 +39763,160 @@ entries:
       in zdi_dustin_childs quote scalar) still present; out-of-scope
       for this briefer cycle.
 
+  - id: 2026-07-06-flash-1629-001-bleepingcomputer-adobe-coldfusion-cve-2026-48282-max-severity-unauth-rce-active-exploitation-kevintel-cccs-dual-confirm-relay-attenuated
+    covered_in: [flash-2026-07-06-1629]
+    brief_file: threats/briefs/flash-2026-07-06-1629.md
+    headline: "FLASH — Adobe ColdFusion CVE-2026-48282, a critical-severity unauthenticated RCE (low attack complexity, no user interaction), reported under active in-the-wild exploitation within hours of disclosure; n-day (Adobe patched 2026-07-01, NOT a zero-day); exploitation dual-attested by two genuinely independent primaries — KEVIntel honeypot network (attacks observed under two hours after disclosure) + Canadian Centre for Cyber Security (CCCS national CERT) — but BOTH reach Archimedes only through a single B-grade relay (BleepingComputer/Gatlan) and NEITHER primary was directly retrieved (relay-attenuated corroboration); CVSS numeric UNVERIFIED ('max severity' per publisher only, NVD/Adobe PSIRT confirmation pending — NOT asserted as 10.0/9.8); ~800 internet-exposed instances per Shodan/Shadowserver, unpatched share unknown; affected ColdFusion 2025.9, 2023.20, and earlier; NO actor attributed (Hard Rule 2 — none to report); NO A&D-prime victim or sector targeting named (A&D relevance MEDIUM-structural only via ColdFusion DIB/government footprint); Trigger 1 (critical CVE + active exploitation + A-grade source at primary level); critical-override 1-of-4 (does NOT apply, moot — compose within active hours); first-party Splunk 0 sentinel hits, Frank not known to run ColdFusion (Hard Rule 8 silence-not-disconfirming)"
+    topic_tags:
+      - cve-2026-48282
+      - adobe-coldfusion
+      - unauthenticated-remote-code-execution
+      - max-severity-cvss-unverified-nvd-adobe-psirt-pending
+      - active-in-the-wild-exploitation-within-hours-of-disclosure
+      - n-day-patch-available-2026-07-01-not-zero-day
+      - kevintel-honeypot-telemetry-primary-relay-conveyed-unretrieved
+      - canadian-centre-cyber-security-cccs-national-cert-primary-relay-conveyed-unretrieved
+      - dual-independent-primary-corroboration-relay-attenuated-single-b-grade-channel
+      - bleepingcomputer-gatlan-b-grade-relay
+      - shadowserver-800-internet-exposed-instances
+      - no-actor-attributed-hard-rule-2
+      - ad-relevance-structural-only-dib-government-footprint-no-victim-named
+      - trigger-1-critical-cve-exploited
+      - critical-override-1-of-4-does-not-apply
+      - first-party-splunk-0-hits-silence-not-disconfirming-hard-rule-8
+      - vuln-tracker-dossier-scaffold-proposed-net-new-cve
+      - cisa-kev-not-yet-listed-watch
+      - flash
+      - active-threats
+    related_actors: []
+    related_vulns: [CVE-2026-48282]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-06-flash-1629-0001]
+    digraph: B2
+    digraph_layered:
+      cluster_anchor: B2
+      cve_2026_48282_record_exists_adobe_advisory_patch_2026_07_01: A1
+      active_exploitation_fact_dual_independent_primary_kevintel_cccs: B2   # A-class-supported at primary level, held B at finding-level for relay-conveyance
+      cvss_max_severity_publisher_framed_numeric_unverified: C3            # publisher framing only, no NVD/Adobe number retrieved
+      shadowserver_800_internet_exposed_instances_magnitude: B2
+    wep: likely
+    wep_ceiling_rationale: >
+      B2-with-corroboration would permit very_likely, but held one step lower at
+      likely on two separate evidentiary gaps: (1) CVSS numeric UNVERIFIED
+      ('max severity' per publisher only), and (2) relay-attenuated corroboration
+      (both independent primaries single-channel via BleepingComputer, neither
+      directly retrieved). Lifts to very_likely on direct retrieval of KEVIntel
+      or CCCS primary, CISA KEV listing, or NVD/Adobe PSIRT CVSS >= 9.0 paired
+      with a second independently-retrieved exploitation source.
+    single_source_veto_applied: false
+    single_source_veto_note: >
+      Veto NOT applied — two genuinely independent underlying primaries exist
+      (KEVIntel honeypot facts + CCCS national CERT). WEP nonetheless capped at
+      likely on the separate bases of unverified CVSS + relay-attenuation; an
+      evidentiary-gap hold, not a formal single-source veto.
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution from any in-window source; none originated by Archimedes"
+      - "Active-exploitation corroboration genuine at primary level (KEVIntel + CCCS independent) but relay-attenuated — single B-grade channel (BleepingComputer), neither primary directly retrieved"
+      - "A&D relevance structural (ColdFusion DIB/government footprint) only; no A&D-prime victim or sector targeting named"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0   # all source material paraphrased
+      per_source_max: 1
+    hard_rule_7_compliance: "No credentials/PII surfaced; ~800 internet-exposed instance count is exposure metadata only"
+    splunk_first_party:
+      applied: false
+      sentinel_hits: 0
+      hard_rule_8_framing: silence_not_disconfirming_frank_not_known_to_run_coldfusion_no_network_iocs_published_to_query
+    critical_override_evaluation:
+      cvss_10_0: false
+      confirmed_active_exploitation: true
+      tracked_actor_involved: false
+      watchlist_sector_targeted: false
+      conditions_met: 1_of_4
+      result: override_does_not_apply
+    quiet_hours_at_compose: false
+    quiet_hours_queued: false
+    anti_noise_lock: "cve-2026-48282-coldfusion-itw until 2026-07-07T16:29:00-04:00"
+    vuln_tracker_handoff:
+      cve: CVE-2026-48282
+      proposed: true
+      note: "Net-new CVE, not in vulnerabilities/_index.yaml. Scaffold: Adobe ColdFusion unauth RCE, max-severity (CVSS pending NVD/Adobe PSIRT), patched 2026-07-01, active ITW dual-attested, ~800 internet-exposed instances, CISA KEV listing pending — watch."
+    resurface_if:
+      - escalation_to_exploitation                # attempts -> confirmed successful compromise at scale
+      - new_victims_confirmed                     # any named victim, esp. A&D-prime
+      - new_attribution                           # any actor attribution surfaces
+      - cisa_kev_addition_with_active_exploitation_language
+      - nvd_or_adobe_psirt_publishes_cvss_score   # numeric confirmation (esp. >= 9.0 / 10.0 — critical-override math)
+      - direct_retrieval_of_kevintel_or_cccs_primary   # lifts WEP likely -> very_likely
+      - first_party_ioc_hit
+      - tier_1_vendor_publishes_ioc_expansion_or_full_ttp_writeup
+    first_covered: 2026-07-06
+    last_covered: 2026-07-06
+    retraction: null
+    test: false
+    word_count_layer_1: 275
+    layer_2_discord_summary:
+      present: true                               # included per task instruction (FLASH normally posts as-is; Layer 2 authored for delivery)
+      char_count_estimate: 1180
+      under_2000_cap: true
+      word_count_total: 138
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-06-flash-1629-0001
+          append_brief_id: flash-2026-07-06-1629
+      operator_deferred_handoffs_surfaced:
+        - "vuln-tracker handoff CVE-2026-48282 Adobe ColdFusion — net-new; scaffold dossier (max-severity CVSS pending, patched 2026-07-01, active ITW, ~800 exposed, KEV watch)"
+        - "source-grade additions proposed by grader: kevintel (provisional B, dual A/F on-facts) + canadian-centre-cyber-security (provisional B, Five Eyes national cyber authority) — both awaiting direct retrieval"
+        - "collector handoff: retrieve KEVIntel post + CCCS advisory primaries directly (relay-attenuation resolution; would lift WEP likely -> very_likely) and NVD/Adobe PSIRT CVSS record"
+    notes: |
+      Async FLASH composed by briefer subagent from single FLASH-eligible
+      finding-2026-07-06-flash-1629-0001 (grader flash-fast-path,
+      grading run flash-sweep-20260706-162900). Trigger 1 (critical CVE +
+      active exploitation + A-grade source at primary level). Compose time
+      16:29 EDT WITHIN active hours (09:00-21:00) — posts to #flash-alerts
+      normally; no quiet-hours queuing. Critical-override 1-of-4
+      (confirmed_active_exploitation only) — does NOT apply; moot regardless
+      since within active hours.
+
+      WEP held at likely (not very_likely) on TWO evidentiary gaps preserved
+      verbatim in brief prose: (1) CVSS numeric UNVERIFIED — 'max severity'
+      is publisher framing only, no NVD/Adobe PSIRT number retrieved, NOT
+      asserted as 10.0/9.8; (2) relay-attenuated corroboration — KEVIntel
+      honeypot telemetry + CCCS national CERT are genuinely independent
+      primaries (pass the doctrine independence test) but BOTH reach
+      Archimedes only through a single B-grade relay (BleepingComputer/Gatlan)
+      and neither primary was directly retrieved.
+
+      N-day framing load-bearing: Adobe patched 2026-07-01; action leads with
+      'patch now' since the fix has shipped. A&D relevance MEDIUM-structural
+      only via ColdFusion DIB/government footprint — NO A&D-prime victim or
+      sector targeting named (Hard Rule 2: no attribution originated, none
+      exists to report).
+
+      Hard Rule 6: 0 direct quotes in Layer 1 and Layer 2 (all source material
+      paraphrased) — compliant. Hard Rule 8: first-party Splunk 0 sentinel
+      hits; no network IOCs published to query; Frank not known to run an
+      internet-exposed Adobe ColdFusion instance — silence not disconfirming,
+      visibility-bounded absence not negative evidence.
+
+      Layer 2 Discord Summary authored for delivery per task instruction
+      (FLASH briefs normally post Layer 1 as-is and are exempt from the
+      Layer 2 requirement; a summary section was requested here). Single
+      ⚡ bullet, ~138 words / ~1180 chars — well under the 2000-char Discord
+      cap. Natural-language dates (July 6, July 1); no digraph/WEP/finding-id
+      in Layer 2; no themed-character voice.
+
+      Pre-flight 13-of-13 PASS on first iteration.
+
+      vuln-tracker handoff proposed: CVE-2026-48282 net-new, not in
+      vulnerabilities/_index.yaml — scaffold dossier, CISA KEV listing
+      pending (watch). Grader proposed two provisional source-grade
+      additions (kevintel B dual-A/F, CCCS B) awaiting direct retrieval.
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

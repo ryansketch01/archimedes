@@ -1,0 +1,97 @@
+# threats/threat-actors/Icarus/iocs.yaml
+#
+# Agent-queryable sidecar to iocs.md. The actor-profiler writes both files
+# in sync. iocs.md is human-readable source-of-record; this file is the
+# machine-readable mirror used for _master-index.yaml regeneration and
+# /ioc-hunt queries.
+#
+# NOTE: Indicators list is intentionally empty. No IOC values (hashes,
+# domains, IPs, attacker infrastructure) were published in any source at
+# time of tracking (finding-2026-06-19-0003). The only defender-pattern
+# hints are Python-urllib user-agent strings and Salesforce REST API
+# endpoint patterns — these are NOT extractable IOC values and are
+# recorded as hunt guidance only (see hunt_queries below and iocs.md).
+
+actor_id: "025"
+actor_name: Icarus
+last_updated: 2026-07-06
+admiralty_grade: B2
+tlp: CLEAR
+source_of_record: iocs.md
+
+ttl:
+  network_infrastructure: 90    # days
+  file_hashes: 730
+  registry: never
+  scheduled_task: never
+  cloud_service: never
+  vulnerabilities: never
+
+# ============================================================================
+# Indicators — NONE at time of tracking
+# ============================================================================
+# No file hashes, domains, IPs, registry keys, or attacker infrastructure
+# published in finding-2026-06-19-0003 source articles. Huntress IR-vendor
+# primary research may include an IOC table but was not retrieved. No CVE
+# assigned (OAuth-integration-abuse pattern, not a CVE-trackable class).
+indicators: []
+
+# ============================================================================
+# Hunt Guidance — TTP/behavioral, NOT indicator-value-based
+# ============================================================================
+# These queries target the Icarus tradecraft PATTERN (third-party OAuth-
+# integration abuse against Salesforce tenants), written generically. They
+# reference NO fabricated indicator values. Expect false positives from
+# legitimate automation; tune to your environment before operationalizing.
+hunt_queries:
+
+  - id: icarus-hunt-oauth-token-usage-anomaly
+    platform: m365
+    title: "Anomalous Salesforce connected-app OAuth token usage volume"
+    query_type: pseudo
+    query: |
+      # Salesforce Event Monitoring / connected-app OAuth usage
+      # Baseline normal per-integration API call volume per connected app,
+      # then alert on volume spikes consistent with bulk extraction.
+      source=salesforce_event_monitoring event=API OR event=RestApi
+      | stats count AS api_calls by connected_app_name, client_ip, window="15m"
+      | where api_calls > baseline_p99(connected_app_name)
+      # FALSE POSITIVES: legitimate bulk sync, data-loader jobs, backup
+      # integrations. Whitelist known high-volume integrations before alerting.
+    related_ttp: [T1528, T1567]
+    references: [finding-2026-06-19-0003]
+
+  - id: icarus-hunt-python-urllib-user-agent-salesforce
+    platform: m365
+    title: "Non-browser (Python-urllib) user agents against Salesforce REST API"
+    query_type: pseudo
+    query: |
+      # Salesforce API access logs — surface scripting user agents hitting
+      # the REST API from an integration/app context.
+      source=salesforce_api_logs
+      | search user_agent="*python*" OR user_agent="*urllib*"
+               OR user_agent="*curl*" OR user_agent="*Go-http-client*"
+      | stats count by user_agent, connected_app_name, client_ip
+      # PATTERN HINT ONLY — Python-urllib was referenced in Icarus reporting
+      # as a defender-pattern hint, NOT a signature. FALSE POSITIVES: any
+      # legitimate script-based integration. Correlate with volume anomaly
+      # (icarus-hunt-oauth-token-usage-anomaly) before escalating.
+    related_ttp: [T1528, T1567]
+    references: [finding-2026-06-19-0003]
+
+  - id: icarus-hunt-legacy-integration-credential-review
+    platform: m365
+    title: "Legacy / over-scoped connected-app inventory review"
+    query_type: pseudo
+    query: |
+      # Enumerate connected apps and OAuth scopes; flag apps that are
+      # unused, legacy, or over-scoped — the Icarus initial vector was a
+      # compromised legacy integration-service credential.
+      source=salesforce_connected_apps
+      | eval stale = if(last_used_days > 90, "stale", "active")
+      | table connected_app_name, oauth_scopes, last_used_days, stale, owner
+      | where stale="stale" OR oauth_scopes="full" OR oauth_scopes="api refresh_token"
+      # This is an AUDIT query, not a detection. Review output for apps to
+      # revoke or re-scope; rotate legacy integration-service credentials.
+    related_ttp: [T1078.004, T1199]
+    references: [finding-2026-06-19-0003]

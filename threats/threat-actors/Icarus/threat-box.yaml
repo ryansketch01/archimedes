@@ -1,0 +1,306 @@
+# threats/threat-actors/Icarus/threat-box.yaml
+#
+# Threat Box scoring for Icarus (#025) against ad-prime-v1.
+# Computed via .claude/skills/threat-box-scoring/scripts/compute-threat-box.py
+# (exit 0 — LOW overall, auto-committed; Hard Rule 5 did NOT fire).
+# Evidence narratives enrich the computed numeric scaffold.
+
+actor_id: "025"
+actor_name: "Icarus"
+target_profile: "ad-prime-v1"
+scored_at: "2026-07-06"
+scored_by: "actor-profiler"
+reviewed_by: auto-committed
+scoring_version: 1
+
+scores:
+
+  espionage:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Icarus is a financially-motivated extortion actor, not an
+        intelligence collector. Data stolen (CRM records, business
+        contacts, price quotes, sales messaging, client names) was
+        harvested to enable extortion, not for strategic-intelligence
+        value with no immediate monetization. Per the IP-theft
+        disambiguation in THREAT-BOX-METHODOLOGY, immediate-monetization
+        theft is Cyber-Crime, not Espionage. No A-grade source documents
+        A&D-prime-directed collection; both named victims are cybersecurity
+        firms. Intent=1 (Target of Opportunity) — hits whoever is exposed
+        via a compromised SaaS integration.
+      sources: [finding-2026-06-19-0003]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Criminal group, no state nexus documented; criminal-actor baseline applies (no constraints)."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 2
+      evidence: |
+        Feasibility of data theft is demonstrated (the Klue/Salesforce
+        campaign did exfiltrate CRM/business data), but this is
+        extortion-driven theft with no evidence of espionage-grade
+        collection tradecraft (no long-dwell operations, no targeted
+        IP/R&D theft, no custom collection tooling). Single campaign,
+        ~2 victims, ~7-week track record. Capability=2 (Possible).
+      sources: [finding-2026-06-19-0003]
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "Commodity tradecraft — legacy-credential abuse, OAuth-token harvesting, Salesforce REST API queries via Python-urllib. No custom tooling; defenders have signatures for this class."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "Splunk first-party check over -90d returned zero hits (categorical, visibility-bounded — Frank is not a Salesforce-Klue tenant). No bonus applied."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  supply_chain:
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        The Icarus campaign IS a supply-chain compromise — it reached
+        victims by compromising a trusted third-party SaaS integration
+        (Klue) and abusing OAuth tokens for downstream Salesforce tenants.
+        But the targeting is opportunistic/regional, not A&D-directed: the
+        entry point was whichever organizations happened to use the
+        compromised Klue integration, and the named victims are
+        cybersecurity firms, not A&D primes. No A-grade source documents
+        A&D-prime-directed supply-chain targeting. Intent=2 (Regional
+        Association) — targets Western/US SaaS-ecosystem tenants broadly,
+        not our profile specifically. This is the highest-substance
+        category: the vector is genuinely supply-chain, which is why
+        Intent sits at 2 rather than 1.
+      sources: [finding-2026-06-19-0003]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Criminal group, no state nexus; no constraints."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 2
+      evidence: |
+        Real, documented supply-chain substance: Icarus compromised a
+        third-party SaaS vendor (Klue) via a legacy integration credential,
+        harvested OAuth tokens, and used them against downstream customer
+        Salesforce instances — a working, demonstrated supply-chain-to-
+        SaaS-tenant capability. But it is a SINGLE documented campaign
+        against ONE integration vendor with ~2 disclosed victims; no
+        evidence of repeatable multi-vendor supply-chain operations or of
+        implanting into shared software (as a nation-state supply-chain
+        actor would). Capability=3 (Limited) — some evidence across one
+        incident, financially-motivated extortion actor rather than a
+        supply-chain implanter.
+      sources: [finding-2026-06-19-0003]
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "Legacy-credential + OAuth-token abuse against a SaaS integration is a well-documented, commodity supply-chain-abuse pattern; defenders have detection approaches (connected-app auditing, OAuth-scope governance)."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring (categorical Splunk null)."
+    final_intent: 2
+    final_capability: 1
+    composite: 3
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  destructive:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        No evidence of intent to corrupt, wipe, or damage systems. The
+        Klue campaign was data-theft-plus-extortion; no destructive
+        component reported. Intent=1.
+      sources: [finding-2026-06-19-0003]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Criminal group; no constraints."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 2
+      evidence: |
+        No evidence Icarus has performed any destructive attack (no wipers,
+        no data corruption, no system damage). Per methodology red-flag
+        guidance, score Capability=1 where there is genuinely no evidence
+        rather than hedging to a higher number. Capability=1 (Not Capable).
+      sources: [finding-2026-06-19-0003]
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "N/A — no destructive tooling documented; commodity default."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  disruptive:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        No evidence of intent to take systems offline / degrade
+        availability. The campaign was covert data theft for extortion,
+        not a disruption operation. Intent=1.
+      sources: [finding-2026-06-19-0003]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Criminal group; no constraints."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 2
+      evidence: |
+        No evidence of availability attacks (no DDoS, no encryption-for-
+        disruption, no service takedown). Capability=1 (Not Capable).
+      sources: [finding-2026-06-19-0003]
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "N/A — no disruptive tooling documented; commodity default."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  cyber_crime:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Extortion is Icarus's PRIMARY vector — this is the category that
+        defines the actor. But intent against the A&D-prime profile
+        specifically is Target-of-Opportunity: Icarus extorted whoever was
+        reachable through the compromised Klue integration, and the two
+        named victims are cybersecurity firms, not A&D primes. No A-grade
+        (indeed no) source documents A&D-prime-directed extortion. Per the
+        evidence-minimum table, without documented targeting of our profile,
+        Intent cannot rise above Target-of-Opportunity here. Intent=1.
+        (Note: this is the actor's defining behavior; the LOW score
+        reflects lack of A&D-DIRECTED targeting, not absence of extortion
+        capability — which is captured in Capability.)
+      sources: [finding-2026-06-19-0003]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Criminal extortion group, no state nexus; no constraints."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 2
+      evidence: |
+        Extortion capability is demonstrated in the single documented
+        campaign — extortion communications ("Mr Brean" persona) reached
+        victim employees following data theft. But the track record is
+        thin: ~2 victims, emerged 2026-04-28 (~7 weeks at first tracking),
+        single IR-vendor (Huntress) attribution, no evidence of a
+        repeatable large-scale extortion operation. Capability=3 (Limited)
+        — some evidence across a single incident, grade B2. Not the
+        multiple-confirmed-campaigns bar for Capability=5.
+      sources: [finding-2026-06-19-0003]
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "Commodity extortion tradecraft (steal-then-extort via SaaS OAuth abuse); no custom tooling; defensible with connected-app governance."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring (categorical Splunk null)."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+overall:
+  weighted_score: 2.2
+  weights_used:
+    espionage: 0.35
+    supply_chain: 0.20
+    destructive: 0.15
+    disruptive: 0.15
+    cyber_crime: 0.15
+  threat_level: LOW
+  authority_level: actor-profiler-autonomous
+  primary_threat_vector: supply_chain
+  note: |
+    Weighted overall 2.2 → LOW; auto-committed (Hard Rule 5 did NOT fire).
+    The highest per-category composite is Supply Chain (3, still LOW) — the
+    OAuth-integration-abuse vector has genuine substance, but every category
+    is capped by: (1) commodity novelty (-2 everywhere — defenders have
+    signatures), (2) no A&D-DIRECTED targeting (Intent floored at 1-2; no
+    A-grade source documents A&D-prime targeting per the evidence-minimum
+    table), and (3) a thin capability base (single campaign, ~2 victims,
+    ~7-week track record, single-IR-vendor B2 attribution). A LOW outcome is
+    the doctrine working as designed for a newly-emerged, financially-
+    motivated, commodity-tradecraft extortion actor with no A&D nexus.
+    Defensive prioritization should read the Supply Chain per-category and
+    the structural OAuth-integration exposure pattern alongside — not
+    instead of — the LOW weighted overall.
+
+confidence:
+  admiralty: B2
+  wep_actor_identity_layer: likely
+  notes: |
+    Single-IR-vendor (Huntress) attribution on the Icarus actor-identity
+    layer; publisher independence holds but evidence-basis independence
+    fails. Admiralty B2, WEP 'likely' on actor identity per single-source
+    veto. Per the finding's SAT-KAC, assumption A1 (whether Huntress's
+    actual language asserts Icarus-is-distinct vs. tracking-unattributed-
+    activity-under-a-label) is UNRESOLVED — Huntress primary not retrieved.
+    Per the finding's SAT-ACH, H1 (genuinely-distinct actor) and H3
+    (UNC6395 affiliate/splinter) are NOT operationally distinguishable on
+    current evidence. This uncertainty is a standing tripwire, not a
+    scoring input — the scores above reflect observed behavior regardless
+    of which attribution hypothesis holds.
+
+review_policy:
+  interval_days: 90
+  last_reviewed: "2026-07-06"
+  next_review_due: "2026-10-04"
+  review_triggers:
+    - new_attribution_from_a_source
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation
+  early_review_tripwires:
+    - "Second IR vendor (Mandiant/Unit 42/MSTIC/Recorded Future/CrowdStrike/Cisco Talos/Volexity) publishes independent Icarus assessment — lifts single-IR-vendor veto"
+    - "Huntress primary publication retrieved and actual attribution language reviewed — resolves KAC A1 (H1 vs H3)"
+    - "Independent IR vendor cross-walks Icarus to an established cluster (ShinyHunters/UNC6395/UNC3944) with positive evidence — Hard Rule 2 re-evaluation"
+    - "Icarus claims additional victims or an A&D-prime named victim emerges — capability/intent re-score"
+
+status: scored
+
+history:
+  - scored_at: "2026-07-06"
+    scorer: actor-profiler
+    change: "initial — LOW (weighted 2.2), auto-committed; from finding-2026-06-19-0003 via /new-actor Icarus (operator Ryan)"

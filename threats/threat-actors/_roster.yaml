@@ -15,7 +15,7 @@
 #   5. Threat-box scoring within 14 days (human sign-off for HIGH)
 
 version: 2
-last_updated: 2026-05-10        # /update-tracking APT37 (#024) — MEDIUM (auto-commit, weighted 4.9); follows /update-tracking MuddyWater (#022) 2026-05-09 — LOW (auto-commit, weighted 4.15)
+last_updated: 2026-07-06        # /new-actor Icarus (#025) — LOW (auto-commit, weighted 2.2); single-IR-vendor (Huntress) B2 attribution. Follows /update-tracking APT37 (#024) 2026-05-10 — MEDIUM (auto-commit, weighted 4.9)
 source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
 
 actors:
@@ -384,23 +384,39 @@ actors:
     mitre_attack_id: G0067
     note: "First-pass profile created 2026-05-09 from finding-2026-05-07-0004 (ESET via The Record — BirdCall / Sqgame Android supply-chain compromise targeting ethnic Koreans in Yanbian, China). Threat-box scoring 2026-05-10 via /update-tracking (Mode 2): weighted 4.9 → MEDIUM → auto-commit. Espionage composite 8 (category HIGH) but weighted overall MEDIUM because Intent=3 (Sector Association) — bound by evidence-minimum table — keeps Espionage from ceiling 10, and three floor categories (destructive 2, disruptive 2, cyber-crime 2) plus supply-chain MEDIUM (composite 6) dilute via doctrine weighting. Hard Rule 5 gate did NOT fire. Operator-anticipated HIGH did NOT materialize. A&D-prime relevance remains INDIRECT/STRUCTURAL (mobile capability + civil-society partner exposure + DPRK roster gap closure); A&D-direct targeting is undocumented in public reporting. Splunk first-party zero hits over -30d on 2026-05-10 sweep across primary search set. Closes structural gap in roster — prior DPRK coverage was RGB-only (Lazarus, Stardust Chollima); APT37 is MSS-attributed per recent reporting."
 
+  - id: "025"
+    primary_name: "Icarus"
+    aliases: []
+    attribution:
+      nation: unknown
+      service: null
+      persona: "Mr Brean"
+    type: "Cybercriminal (Extortion)"
+    threat_level: LOW            # weighted overall 2.2 (LOW) per /new-actor 2026-07-06; highest per-category is Supply Chain (composite 3, still LOW). Commodity novelty (-2 everywhere), no A&D-DIRECTED targeting (Intent floored 1-2 per evidence-minimum table — both named victims are cybersecurity firms, not A&D primes), thin capability base (single campaign, ~2 victims, ~7-week track record). Hard Rule 5 gate did NOT fire.
+    tracked_since: 2026-07-06
+    dossier: threats/threat-actors/Icarus/
+    last_reviewed: 2026-07-06
+    next_review_due: 2026-10-04
+    mitre_attack_id: null
+    note: "First-pass profile + initial scoring created 2026-07-06 via /new-actor Icarus (operator Ryan) from finding-2026-06-19-0003 (Klue/Salesforce supply-chain compromise; OAuth-token abuse via legacy integration credential). Single-IR-vendor (Huntress) attribution on actor-identity layer — admiralty B2, WEP 'likely'; publisher independence holds but evidence-basis independence fails. Hard Rule 2 BINDING: Icarus preserved as distinct net-new identity; NO cross-walk to ShinyHunters / UNC6395 / Scattered Spider (#013) / UNC3944 despite TTP-mirror pattern (THN 'mirrors' framing is methodological-similarity, not attribution overlap). SAT-KAC assumption A1 UNRESOLVED (Huntress primary not retrieved — whether 'Icarus is distinct' vs 'Huntress tracking unattributed activity under label'); SAT-ACH H1 (distinct actor) and H3 (UNC6395 affiliate/splinter) NOT operationally distinguishable on current evidence — standing tripwire. Threat-box weighted 2.2 → LOW → auto-commit. No IOCs published (indicator-empty iocs.yaml; OAuth/Salesforce hunt guidance only). Splunk first-party categorical zero over -90d (Frank not a Salesforce-Klue tenant — visibility-bounded null, no bonus)."
+
 # ============================================================================
 # Quick-lookup indices (regenerated when roster changes)
 # ============================================================================
 _meta:
-  total_actors: 24
+  total_actors: 25
   by_threat_level:
     HIGH: 18
     MEDIUM: 4          # REvil, APT34, UNC1549, APT37 (per /update-tracking 2026-05-10; espionage composite 8 HIGH at category tier but weighted overall MEDIUM)
-    LOW: 2             # Charming Kitten, MuddyWater (per /update-tracking 2026-05-09; both espionage category MEDIUM/HIGH but weighted overall LOW)
+    LOW: 3             # Charming Kitten, MuddyWater (per /update-tracking 2026-05-09; both espionage category MEDIUM/HIGH but weighted overall LOW), Icarus (per /new-actor 2026-07-06; extortion actor, weighted 2.2, single-IR-vendor B2)
   by_nation:
     RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
     CN: 4          # Volt Typhoon, Salt Typhoon, APT40, APT41
     IR: 5          # UNC1549, Charming Kitten, Handala, MuddyWater, APT34
     KP: 3          # Stardust Chollima, Lazarus, APT37
-    unknown: 7     # TeamPCP, GlassWorm, Miyako, Scattered Spider, BlackCat, Payouts King, (LockBit/Cl0p attributed RU)
+    unknown: 8     # TeamPCP, GlassWorm, Miyako, Scattered Spider, BlackCat, Payouts King, Icarus, (LockBit/Cl0p attributed RU)
   profiles_migrated: 1         # APT28 only at v1
   profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King
-  profiles_first_pass: 5       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09)
-  scoring_complete: 5          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — red-team qualify Intent=4 → weighted LOW despite category HIGH); MuddyWater (2026-05-09 /update-tracking, initial LOW — fourth workflow validation pass; red-team qualify Intent=3 Sector Association bound, 72h clock fired with no corroboration, weighted LOW despite category MEDIUM on espionage); APT37 (2026-05-10 /update-tracking, initial MEDIUM — fifth workflow validation pass; evidence-minimum-table-bound Intent=3 Sector Association, espionage category HIGH composite 8 but weighted overall MEDIUM because Intent=3 keeps espionage from ceiling 10 and three floor categories plus supply-chain MEDIUM dilute via doctrine weighting; Hard Rule 5 gate did NOT fire). APT28 awaits methodology rerun.
+  profiles_first_pass: 6       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09) + Icarus (2026-07-06 /new-actor)
+  scoring_complete: 6          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — red-team qualify Intent=4 → weighted LOW despite category HIGH); MuddyWater (2026-05-09 /update-tracking, initial LOW — fourth workflow validation pass; red-team qualify Intent=3 Sector Association bound, 72h clock fired with no corroboration, weighted LOW despite category MEDIUM on espionage); APT37 (2026-05-10 /update-tracking, initial MEDIUM — fifth workflow validation pass; evidence-minimum-table-bound Intent=3 Sector Association, espionage category HIGH composite 8 but weighted overall MEDIUM because Intent=3 keeps espionage from ceiling 10 and three floor categories plus supply-chain MEDIUM dilute via doctrine weighting; Hard Rule 5 gate did NOT fire); Icarus (2026-07-06 /new-actor, initial LOW — weighted 2.2, single-IR-vendor B2 extortion actor, commodity novelty + no A&D-directed targeting + thin capability base, Hard Rule 5 gate did NOT fire). APT28 awaits methodology rerun.
   scoring_template_only: 0     # APT37 scored 2026-05-10; no remaining TEMPLATE-only dossiers.

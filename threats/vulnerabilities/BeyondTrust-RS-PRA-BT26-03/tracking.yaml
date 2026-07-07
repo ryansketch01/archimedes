@@ -1,0 +1,376 @@
+# threats/vulnerabilities/BeyondTrust-RS-PRA-BT26-03/tracking.yaml
+#
+# Structured tracking data for BeyondTrust advisory BT26-03 — a four-CVE
+# cluster in Remote Support (RS) and Privileged Remote Access (PRA).
+# Single cluster dossier keyed on the advisory + shared fix boundary
+# (25.3.3 / 26.2.1), following the VT-005 OpenC3 COSMOS cluster precedent.
+# Maintained by vuln-tracker subagent. Prose is in profile.md.
+
+dossier_id: VT-016
+advisory_id: BT26-03
+cve_cluster: [CVE-2026-40138, CVE-2026-40139, CVE-2026-40140, CVE-2026-40141]
+title: "BeyondTrust RS/PRA BT26-03 four-CVE cluster (2 critical pre-auth auth-bypass + high DoS + high authz-scope bypass)"
+last_updated: 2026-07-07
+tracking_version: 1
+created_from:
+  trigger: new_cve_from_finding          # vuln-tracker Trigger 1
+  source_finding: finding-2026-07-07-0001
+  finding_digraph: A2
+  finding_wep_ceiling: likely
+  grading_run_id: morning-20260707-080000
+
+# ============================================================================
+# CVE roster — all four enriched in NVD (published 2026-07-06); CVSS v4.0
+# authoritative. NOT pending_nvd. Numerics sourced from NVD, not asserted.
+# ============================================================================
+
+cves:
+  - cve_id: CVE-2026-40138
+    severity_label: critical              # publisher label
+    cvss_status: nvd_enriched
+    cvss_scoring_version: "4.0"
+    cvss_v4_base: 9.2
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    cvss_v3_base: null                    # NVD provided v4.0 only
+    cwe: [CWE-287]                        # Improper Authentication
+    class: "Pre-authentication authentication bypass"
+    products: [BeyondTrust Remote Support, BeyondTrust Privileged Remote Access]
+    precondition_note: "Exploitation requires a specific authentication configuration to be enabled (per vendor; consistent with AC:H / AT:P)."
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2026-40138
+    published: 2026-07-06
+    in_kev: false
+    exploitation_status: disclosed
+
+  - cve_id: CVE-2026-40139
+    severity_label: critical
+    cvss_status: nvd_enriched
+    cvss_scoring_version: "4.0"
+    cvss_v4_base: 9.2
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    cvss_v3_base: null
+    cwe: [CWE-287]
+    class: "Pre-authentication authentication bypass via improper processing of authentication requests"
+    products: [BeyondTrust Remote Support, BeyondTrust Privileged Remote Access]
+    scope_note: >
+      NVD scopes to BOTH RS and PRA. Source finding described this as RS-only;
+      NVD (authoritative) recorded here as RS + PRA.
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2026-40139
+    published: 2026-07-06
+    in_kev: false
+    exploitation_status: disclosed
+
+  - cve_id: CVE-2026-40140
+    severity_label: high
+    cvss_status: nvd_enriched
+    cvss_scoring_version: "4.0"
+    cvss_v4_base: 8.7
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+    cvss_v3_base: null
+    cwe: [CWE-400]                        # Uncontrolled Resource Consumption
+    class: "Pre-authentication denial-of-service (network communication subsystem; availability-only)"
+    products: [BeyondTrust Remote Support, BeyondTrust Privileged Remote Access]
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2026-40140
+    published: 2026-07-06
+    in_kev: false
+    exploitation_status: disclosed
+
+  - cve_id: CVE-2026-40141
+    severity_label: high
+    cvss_status: nvd_enriched
+    cvss_scoring_version: "4.0"
+    cvss_v4_base: 8.5
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:H/VI:N/VA:N/SC:H/SI:H/SA:H"
+    cvss_v3_base: null
+    cwe: [CWE-943]                        # Improper Neutralization in Data/Query Logic
+    class: "Authenticated low-privilege authorization-scope bypass (access to unintended resources/data)"
+    auth_required: true                   # PR:L — NOT pre-auth
+    products: [BeyondTrust Remote Support, BeyondTrust Privileged Remote Access]
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2026-40141
+    published: 2026-07-06
+    in_kev: false
+    exploitation_status: disclosed
+
+cvss_max:
+  base_score: 9.2
+  scoring_version: "4.0"
+  cves: [CVE-2026-40138, CVE-2026-40139]
+
+# ============================================================================
+# Authoritative records
+# ============================================================================
+
+vendor_advisory:
+  source: beyondtrust-psirt
+  source_grade_yaml_id: beyondtrust-psirt
+  source_grade_letter: A
+  source_grade_provisional: true
+  source_grade_note: >
+    BeyondTrust PSIRT / security-advisory channel — provisional A per
+    vendor-self-disclosure precedent (Cisco PSIRT, F5, Ivanti PSIRT, Palo
+    Alto, Fortinet PSIRT). NOT yet in source-grades.yaml — flagged for
+    librarian addition per finding-2026-07-07-0001 source_grade_additions_proposed.
+  advisory_id: BT26-03
+  advisory_url: https://www.beyondtrust.com/trust-center/security-advisories/bt26-03
+  first_published: 2026-07-06_or_2026-07-07
+  cloud_patched: 2026-04-21
+  collection_note: >
+    Direct WebFetch on the BT26-03 advisory page returned HTTP 403 (bot
+    protection) 2026-07-07. Authoritative CVE facts obtained from NVD (CNA
+    downstream of BeyondTrust) and cross-checked against BleepingComputer /
+    The Hacker News relays. Retry direct advisory retrieval on next refresh.
+
+nvd:
+  last_pulled: 2026-07-07
+  records_published: 2026-07-06
+  cvss_scoring_version_observed: "4.0"
+  all_four_enriched: true
+  source_grade_yaml_id: nvd
+  source_grade_letter: A
+  independence_caveat: >
+    NVD records are downstream of the BeyondTrust CNA advisory (BT26-03) —
+    same technical evidence basis, common origin. For CVE-record existence
+    and CVSS/CWE these are A-grade canonical; they are NOT an independent
+    second evidence basis for the vendor's severity/scope claims. Single-
+    source veto in the source finding carries forward (WEP capped "likely").
+
+media_relays:
+  - source: bleepingcomputer
+    grade: B
+    author: Sergiu Gatlan
+    url: https://www.bleepingcomputer.com/news/security/beyondtrust-warns-of-critical-flaws-in-remote-access-software/
+    role: relay_of_vendor_advisory
+  - source: thehackernews
+    grade: B
+    url: https://thehackernews.com/2026/07/beyondtrust-patches-critical-auth.html
+    role: relay_of_vendor_advisory
+
+# ============================================================================
+# KEV
+# ============================================================================
+
+kev:
+  in_kev: false
+  last_checked: 2026-07-07
+  kev_catalog_version_checked: 2026.07.01
+  kev_catalog_date: 2026-07-01
+  watch_signal_active: true
+  watch_signal_note: >
+    None of the four CVEs KEV-listed as of catalog 2026.07.01. A KEV
+    addition (or any confirmed active exploitation) is a state-change
+    tripwire; given the two pre-auth criticals on privileged-remote-access
+    infrastructure it would also raise FLASH consideration. Historical
+    BeyondTrust RS/PRA pre-auth flaws (2024-2025) were exploited in the wild
+    and KEV-listed — track closely.
+
+# ============================================================================
+# Affected products / patch state
+# ============================================================================
+
+affected_products:
+  - vendor: BeyondTrust
+    product: Remote Support (RS)
+    role: "Remote desktop / remote assistance platform (privileged remote access broker)"
+    variants_affected: [self-hosted / on-prem]
+    versions_affected: ["< 25.3.3 (25.3.x branch)", "< 26.2.1 (26.2.x branch)"]
+    fixed_versions: ["25.3.3", "26.2.1"]
+  - vendor: BeyondTrust
+    product: Privileged Remote Access (PRA)
+    role: "Enterprise privileged-remote-access / vendor-access management"
+    variants_affected: [self-hosted / on-prem]
+    versions_affected: ["< 25.3.3 (25.3.x branch)", "< 26.2.1 (26.2.x branch)"]
+    fixed_versions: ["25.3.3", "26.2.1"]
+
+patch_status: patched
+patches:
+  - release_date: 2026-04-21
+    vendor: BeyondTrust
+    scope: "All RS/PRA cloud customers — patched automatically, no customer action"
+    covers_cves: [CVE-2026-40138, CVE-2026-40139, CVE-2026-40140, CVE-2026-40141]
+  - release_date: 2026-04-21
+    vendor: BeyondTrust
+    scope: "Self-hosted — April security rollup per branch; or upgrade to fixed versions"
+    fixed_versions: ["RS/PRA 25.3.3", "RS/PRA 26.2.1"]
+    covers_cves: [CVE-2026-40138, CVE-2026-40139, CVE-2026-40140, CVE-2026-40141]
+    onprem_action_note: "Self-hosted customers not on automatic updates must apply the rollup or upgrade."
+
+mitigation_available: true
+mitigation_workarounds:
+  - id: m-1
+    description: "Restrict RS/PRA appliance management/network reachability to trusted segments (primary mitigant for the pre-auth network-vector criticals)"
+    type: network_segmentation
+  - id: m-2
+    description: "Confirm RS/PRA appliance is not needlessly internet-exposed (~2,000 exposed instances per Shadowserver)"
+    type: exposure_audit
+  - id: m-3
+    description: "Audit CVE-2026-40138 precondition — the specific authentication configuration required for exploitation — as a triage lever (not a patch substitute)"
+    type: config_audit
+  - id: m-4
+    description: "Review appliance authentication / session / authorization logs for anomalies prior to patching"
+    type: audit_log_review
+
+detection_signatures_published: false
+
+# ============================================================================
+# Exploitation state
+# ============================================================================
+
+exploitation_status: disclosed
+exploitation_first_observed: null
+public_exploit_available: false
+in_the_wild: false
+exploitation_note: >
+  No in-the-wild exploitation reported by BeyondTrust or any source. No public
+  PoC observed. CVE-2026-40138 additionally requires a specific authentication
+  configuration to be enabled.
+internet_exposure:
+  source: shadowserver
+  approx_exposed_instances: 2000
+  unpatched_proportion: unknown
+  note: "Blast-radius context only; measures exposure, not exploitation."
+
+first_party_precedence:
+  splunk_checked: true
+  splunk_result: zero_events
+  splunk_note: >
+    finding-2026-07-07-0001 queried index=defenseclaw_local OR index=archimedes
+    for the four CVEs / BeyondTrust / RS / PRA over -30d -> 0 events. Silent
+    Splunk is visibility-bounded, not disconfirming (Hard Rule 8).
+
+# ============================================================================
+# Attribution (Hard Rule 2)
+# ============================================================================
+
+attribution:
+  source_attributed: false
+  archimedes_originated: false
+  related_actors: []
+  product_line_historical_context:
+    note: >
+      Reporting references Chinese state-linked "Silk Typhoon" ONLY as
+      historical context for PRIOR, DIFFERENT BeyondTrust RS/PRA zero-days
+      (e.g., CVE-2024-12356 / CVE-2024-12686 in the 2024-2025 US Treasury /
+      OFAC incident). This is product-line attack-surface context, NOT an
+      attribution of the BT26-03 CVEs. No actor is attributed to
+      CVE-2026-40138..40141 by any source; none originated here (Hard Rule 2).
+      Silk Typhoon is not on the Archimedes roster.
+
+# ============================================================================
+# Grading state (inherited)
+# ============================================================================
+
+grading:
+  current_digraph: A2
+  current_wep: likely
+  current_wep_basis: >
+    Inherited from finding-2026-07-07-0001. A2 (BeyondTrust vendor self-
+    disclosure, provisional A; credibility 2). Single-source veto applied
+    (vendor advisory via single B relay; NVD is downstream mirror) caps WEP
+    at "likely."
+  single_source_veto_applied: true
+
+# ============================================================================
+# Watch signals
+# ============================================================================
+
+watch_signals:
+  - id: ws-1
+    name: kev_addition
+    description: "CISA KEV catalog adds any of CVE-2026-40138..40141"
+    significance: "Independent CISA exploitation determination; lifts exploitation-status leg, raises priority + FLASH consideration for the pre-auth criticals."
+    last_checked: 2026-07-07
+    triggered: false
+  - id: ws-2
+    name: in_the_wild_exploitation
+    description: "First A/B-grade in-the-wild exploitation observation (vendor IR, government bulletin, security-firm telemetry, named-victim reporting)"
+    significance: "Converts disclosure-tracking to exploitation-tracking; state_change update."
+    last_checked: 2026-07-07
+    triggered: false
+  - id: ws-3
+    name: public_exploit_released
+    description: "Public PoC / weaponized exploit (exploit-DB, GitHub, Metasploit, researcher writeup)"
+    significance: "Broadens actor population; existence recorded only, NOT mirrored (Hard Rule 3)."
+    last_checked: 2026-07-07
+    triggered: false
+  - id: ws-4
+    name: tracked_actor_attribution
+    description: "First A/B-grade attribution to a tracked actor (Hard Rule 2 — Archimedes does not originate)"
+    significance: "Actor cross-reference + brief inclusion. Note the BeyondTrust RS/PRA prior-exploitation history (Silk Typhoon, different CVEs)."
+    last_checked: 2026-07-07
+    triggered: false
+  - id: ws-5
+    name: vendor_advisory_update
+    description: "BeyondTrust revises BT26-03 (new affected versions, revised severity, IOCs, or ITW acknowledgement)"
+    significance: "Vendor-side state change."
+    last_checked: 2026-07-07
+    triggered: false
+  - id: ws-6
+    name: direct_advisory_retrieval
+    description: "Direct retrieval of BT26-03 (WebFetch returned 403 at creation)"
+    significance: "Confirms vendor-primary detail beyond NVD mirror; lifts single-channel caveat on vendor-specific text."
+    last_checked: 2026-07-07
+    triggered: false
+
+# ============================================================================
+# Cross-references
+# ============================================================================
+
+related_findings:
+  - finding-2026-07-07-0001
+related_briefs: []
+related_raw_signal:
+  - raw-2026-07-07-am-001
+
+# ============================================================================
+# A&D relevance
+# ============================================================================
+
+ad_relevance: high
+ad_relevance_rationale: >
+  BeyondTrust RS and PRA are privileged-remote-access / vendor-access-broker
+  infrastructure widely deployed across the defense industrial base to mediate
+  administrator and third-party access into sensitive estates. Unauthenticated
+  network-vector compromise of that broker (CVE-2026-40138 / -40139, CVSS 9.2)
+  sits at a high-value chokepoint gating access to ITAR-regulated R&D and
+  government-contract systems — same defensive framing as VT-007
+  FortiAuthenticator (identity/access infrastructure). CAVEAT: the A&D nexus
+  here is STRUCTURAL (product-class DIB deployment + ~2,000 internet-exposed
+  instances per Shadowserver), NOT anchored to any named A&D-watchlist victim
+  in this reporting. CVE-2026-40138's specific-auth-config precondition narrows
+  universal applicability. No ITW and no actor attribution today; priority
+  rests on patch-hygiene for exposed on-prem estates.
+
+# ============================================================================
+# Data gaps
+# ============================================================================
+
+data_gaps:
+  - id: gap-1
+    description: "BT26-03 advisory page not directly retrieved (HTTP 403 bot protection 2026-07-07)"
+    severity: low
+    resolution_path: "Retry direct WebFetch on next refresh; NVD carries authoritative CVSS/CWE/scope in the interim"
+  - id: gap-2
+    description: "Exact BT26-03 first-publication date (2026-07-06 vs 2026-07-07) not pinned"
+    severity: low
+    resolution_path: "Confirm on direct advisory retrieval"
+  - id: gap-3
+    description: "Unpatched proportion of the ~2,000 Shadowserver-exposed instances unknown"
+    severity: low
+    resolution_path: "Watch Shadowserver dashboards / follow-up reporting"
+
+# ============================================================================
+# Refresh schedule
+# ============================================================================
+
+refresh_schedule:
+  last_refreshed: 2026-07-07
+  next_periodic_refresh_due: 2026-07-14      # 7-day cadence for fresh A&D-relevant disclosure
+  refresh_cadence: weekly
+  refresh_actions:
+    - "Re-check CISA KEV catalog for any of the four CVEs (ws-1)"
+    - "Check for in-the-wild exploitation reporting (ws-2)"
+    - "Check exploit-DB / GitHub / Metasploit for public PoC (ws-3, existence-only per Hard Rule 3)"
+    - "Check for tracked-actor attribution (ws-4, Hard Rule 2)"
+    - "Retry direct BT26-03 advisory retrieval (gap-1, ws-6)"
+    - "Re-query Splunk for BeyondTrust product strings / CVE keywords (Hard Rule 8)"
+
+tlp: CLEAR

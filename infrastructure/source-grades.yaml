@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-06-16T08:00:00-04:00
+last_updated: 2026-07-07T08:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -816,6 +816,21 @@ vendor_sources:
       - https://www.dataminr.com/blog
       - https://www.dataminr.com/dataminr-pulse
 
+  - id: beyondtrust-psirt
+    name: "BeyondTrust security advisories (RS / PRA / PAM product line)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-07-07
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-07-07-0001 (BeyondTrust Remote Support / Privileged Remote Access four-CVE disclosure — CVE-2026-40138 + CVE-2026-40139 critical CVSS 9.2 pre-auth authentication bypasses, CVE-2026-40140 high pre-auth DoS, CVE-2026-40141 high authenticated authorization-scope bypass; fixed in 25.3.3 / 26.2.1; cloud patched 2026-04-21; self-hosted must upgrade; NOT in CISA KEV, no active exploitation reported, no actor attributed). Vendor PSIRT / security-advisory channel for BeyondTrust's own products (Remote Support, Privileged Remote Access, broader PAM line). Vendor-self-disclosure on own products is procedurally A-grade — authoritative for its own product's CVE existence, affected/fixed version matrices, and patch timeline — per the established precedent class for Cisco PSIRT, F5, Ivanti PSIRT, Palo Alto PSIRT, Arista Networks PSIRT (all provisional A). NOT authoritative for attribution or ITW exploitation of third-party activity — Hard Rule 2 preserved on finding 0001 (the Silk Typhoon reference in reporting is HISTORICAL context re: PRIOR DIFFERENT BeyondTrust zero-days in the 2024-25 Treasury breach, NOT these CVEs; no actor attributed to CVE-2026-40138..40141 by any source, none originated here). This surface: relay-only via BleepingComputer (B relay, ratified); the BeyondTrust advisory primary was NOT directly retrieved this sweep — the vendor advisory page returned HTTP 403 to WebFetch on 2026-07-07, so NVD was the enrichment anchor (awaiting_direct_retrieval). Single-source veto applied at grader (one effective source, CVSS numerics publisher-labeled only) — WEP capped at 'likely'. Pending direct retrieval of the BeyondTrust advisory primary AND human ratification."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-07-0001
+    active: true
+    urls:
+      - https://www.beyondtrust.com/trust-center/security-advisories
+      - https://www.beyondtrust.com/docs/
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -1422,6 +1437,7 @@ _meta:
     - bloomberg                 # provisional B PENDING OPERATOR TIER DECISION B/B+/A; first cited 2026-06-12-0008 (IBM + AT&T whistleblower civil-suit unsealing — William Barlow's 2020 qui tam alleges IBM/AT&T concealed federal-contractor breaches; DFARS / CMMC L2/L3 / FCA exposure; Bloomberg broke 2026-06-04, cited via SecurityWeek's In Other News column; conservative B start pending operator decision between AP wire-service A precedent and Tier-1 trade-press B precedent; 72h ratification clock to 2026-06-15T16:00:00-04:00)
     - defused-cyber             # provisional B; first cited 2026-06-16-0002 (Fortinet FortiSandbox three-CVE active-exploitation cluster — CVE-2026-25089 + CVE-2026-39813 + CVE-2026-39808 all CVSS 9.1; Defused Cyber observation channel cited via BleepingComputer + The Hacker News publisher-independent relays; research-firm cheatsheet pattern — IR vendor providing exploitation observation distinct from vendor PSIRT advisory layer; Defused is sole IR-vendor source on active-exploitation claim layer triggering single-source veto on ITW assertion per INTEL-GRADING; 72h ratification clock to 2026-06-19T08:00:00-04:00; awaiting human ratification AND independent corroboration from second IR vendor — Mandiant / Unit 42 / CrowdStrike / Recorded Future — or first-party Splunk hit for ITW veto release)
     - genians-security-center   # provisional A; first cited 2026-06-16-0003 (APT37 / ScarCruft net-new NarwhalRAT tooling deployment via Microsoft-account-themed phishing → ZIP → LNK → in-memory CAT-file → pCloud dead-drop C2 → Naver Whale browser masquerade; Genians Security Center is Korean-headquartered regional IR vendor with deep DPRK-cluster visibility; regional-IR-vendor cheatsheet pattern — peer class to Mandiant / Unit 42 / CrowdStrike for DPRK/Korea-Asia threat intel; provisional A starting grade is consistent with peer regional IR vendors despite first-corpus citation; 72h ratification clock to 2026-06-19T08:00:00-04:00; awaiting human ratification AND direct retrieval of genians.co.kr primary write-up — substrate reached this sweep via The Hacker News (Ravie Lakshmanan) publisher relay only)
+    - beyondtrust-psirt         # provisional A; first cited 2026-07-07-0001 (BeyondTrust RS/PRA four-CVE disclosure — CVE-2026-40138/40139 critical CVSS 9.2 pre-auth auth bypasses + CVE-2026-40140 DoS + CVE-2026-40141 authz-scope bypass; fixed 25.3.3/26.2.1; no ITW, no attribution; vendor-self-disclosure-on-own-product precedent class per Cisco/F5/Ivanti/Palo Alto/Arista PSIRT; relay-only via BleepingComputer, advisory page returned HTTP 403 to WebFetch — NVD enrichment anchor; awaiting human ratification AND direct retrieval of beyondtrust.com/trust-center/security-advisories primary)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

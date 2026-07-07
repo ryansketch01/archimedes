@@ -577,3 +577,24 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 **Reviewer:** Awaiting Ryan ratification.
 **Provisional flags set:** `provisional: true`, `awaiting_ratification: true` on all four; `awaiting_direct_retrieval: true` on `splunk-advisory-portal`.
 **Next review:** ratification target 2026-06-14 for shadowserver / helpnetsecurity / associated-press; rolling pivot on first-direct-retrieval for splunk-advisory-portal.
+
+
+---
+
+## 2026-07-07 — BeyondTrust PSIRT — (none) → A (provisional, awaiting ratification + direct retrieval)
+
+**Type:** New source — provisional (single addition)
+**Source ID:** `beyondtrust-psirt`
+**Run:** librarian-20260707-0800 (Mode 1 post-scheduled morning brief)
+
+**Summary:** First Archimedes-corpus citation of BeyondTrust's PSIRT / security-advisory channel, added during 2026-07-07 morning brief delivery. First cited via finding-2026-07-07-0001 (BeyondTrust Remote Support / Privileged Remote Access four-CVE disclosure — CVE-2026-40138 + CVE-2026-40139 critical CVSS 9.2 pre-auth authentication bypasses, CVE-2026-40140 high pre-auth DoS, CVE-2026-40141 high authenticated authorization-scope bypass; fixed in 25.3.3 / 26.2.1; cloud patched 2026-04-21; self-hosted must upgrade; NOT in CISA KEV, no active exploitation reported, no actor attributed).
+
+**Grade rationale:** Vendor-self-disclosure on own products is procedurally A-grade — authoritative for its own product's CVE existence, affected/fixed version matrices, and patch timeline — per the established precedent class for Cisco PSIRT, F5, Ivanti PSIRT, Palo Alto PSIRT, Arista Networks PSIRT (all provisional A). NOT authoritative for attribution or ITW exploitation of third-party activity — Hard Rule 2 preserved on finding 0001 (the Silk Typhoon reference in reporting is HISTORICAL context re: PRIOR DIFFERENT BeyondTrust zero-days in the 2024-25 Treasury breach, NOT these CVEs).
+
+**Retrieval status:** Relay-only via BleepingComputer (B relay, ratified) this sweep. The BeyondTrust advisory primary was NOT directly retrieved — the vendor advisory page returned **HTTP 403 to WebFetch on 2026-07-07**, so NVD was the enrichment anchor. Single-source veto applied at grader (one effective source, CVSS numerics publisher-labeled only) — WEP capped at 'likely'.
+
+**Supporting findings:** [finding-2026-07-07-0001]
+**Posted to:** Discord `#intel-briefs` (morning brief message_id 1524027192797827184) carries the finding source citation inline; no separate `#actor-review` post required per Mode 9 (first-citation provisional addition under the precedent-class auto-add path, not a B->D-or-worse downgrade or an unsolicited C->A upgrade).
+**Reviewer:** Awaiting Ryan ratification.
+**Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`.
+**Next review:** rolling pivot on first-direct-retrieval of beyondtrust.com/trust-center/security-advisories primary AND human ratification.

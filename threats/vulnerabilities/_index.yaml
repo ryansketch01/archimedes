@@ -6,8 +6,8 @@
 # Migrated from C3PO ZD-001/002/003 entries. Additional vulns added as
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
-version: 3
-last_updated: 2026-06-10        # patch-status audit reconciliation + 4 new rows (VT-012..015) + 6th consolidation (ssh-keysign-pwn)
+version: 4
+last_updated: 2026-07-07        # +1 row VT-016 (BeyondTrust RS/PRA BT26-03 four-CVE cluster) via finding-2026-07-07-0001; prior: 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation
 
 vulnerabilities:
 
@@ -657,6 +657,67 @@ vulnerabilities:
     next_review_due: 2026-07-05
     note: "HIGHEST-PRIORITY GAP from 2026-06-10 audit. KEV-listed 2026-06-09 (FCEB due 2026-06-23), actively exploited (Cisco PSIRT limited cases; Mandiant-reported), NO dedicated patch — KEV deadline drives the remediation clock. Exploitation reflects Mandiant reporting, no actor originated (Hard Rule 2). CVSS 7.8 HIGH (Cisco CNA; NVD awaiting enrichment)."
 
+  - id: VT-016
+    name: "BeyondTrust Remote Support / Privileged Remote Access — BT26-03 four-CVE cluster (2 critical pre-auth auth-bypass)"
+    type: "Cluster — pre-auth authentication bypass (Critical 9.2, CVE-2026-40138) + pre-auth authentication bypass (Critical 9.2, CVE-2026-40139) + pre-auth DoS (High 8.7, CVE-2026-40140) + authenticated authorization-scope bypass (High 8.5, CVE-2026-40141)"
+    platform: "BeyondTrust Remote Support (RS) + Privileged Remote Access (PRA) — self-hosted / on-prem appliances (cloud already patched)"
+    advisory_id: BT26-03
+    cve_cluster:
+      - CVE-2026-40138    # Critical 9.2 v4.0 pre-auth auth bypass (CWE-287); RS+PRA; requires specific auth config
+      - CVE-2026-40139    # Critical 9.2 v4.0 pre-auth auth bypass (CWE-287); RS+PRA
+      - CVE-2026-40140    # High 8.7 v4.0 pre-auth DoS (CWE-400); RS+PRA; availability-only
+      - CVE-2026-40141    # High 8.5 v4.0 authenticated authz-scope bypass (CWE-943, PR:L); RS+PRA
+    cvss_max: 9.2                    # CVSS v4.0 (NVD-enriched, published 2026-07-06) — CVE-2026-40138 / -40139
+    cvss_scoring_version: "4.0"
+    cvss_status: nvd_enriched        # all four enriched in NVD; NOT pending
+    affected_versions: "RS/PRA < 25.3.3 (25.3.x branch) and < 26.2.1 (26.2.x branch)"
+    fixed_in: ["RS/PRA 25.3.3", "RS/PRA 26.2.1"]
+    patch_status: patched
+    cloud_patched: 2026-04-21
+    patch_release_date: 2026-04-21
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    kev_last_checked: 2026-07-07     # catalog 2026.07.01 — none of the four listed
+    exploitation_status: disclosed   # no PoC, no ITW
+    public_exploit_available: false
+    detection_signatures_published: false
+    digraph: A2
+    wep_ceiling: likely
+    single_source_veto_applied: true
+    related_actors: []               # Hard Rule 2 — NONE. Silk Typhoon = historical context on PRIOR different BeyondTrust CVEs only.
+    related_findings:
+      - finding-2026-07-07-0001
+    related_briefs: []
+    internet_exposure: "~2,000 internet-exposed RS/PRA instances (Shadowserver); unpatched proportion unknown"
+    ad_relevance: high
+    ad_relevance_rationale: >
+      Privileged-remote-access / vendor-access-broker infrastructure widely
+      deployed across the DIB; unauthenticated network-vector compromise of the
+      broker (CVE-2026-40138/-40139, CVSS 9.2) gates access to ITAR-regulated
+      R&D and government-contract systems — same framing as VT-007
+      FortiAuthenticator. CAVEAT: A&D nexus is STRUCTURAL (product-class DIB
+      deployment), NOT victim-anchored to any named A&D-watchlist prime in this
+      reporting. CVE-2026-40138 requires a specific auth config enabled.
+    dossier: threats/vulnerabilities/BeyondTrust-RS-PRA-BT26-03/profile.md
+    tracking: threats/vulnerabilities/BeyondTrust-RS-PRA-BT26-03/tracking.yaml
+    tracked_since: 2026-07-07
+    last_reviewed: 2026-07-07
+    next_review_due: 2026-07-14      # 7-day cadence for fresh A&D-relevant disclosure
+    note: >
+      Single cluster dossier keyed on advisory BT26-03 + shared fix boundary
+      (25.3.3 / 26.2.1), following VT-005 OpenC3 COSMOS cluster precedent
+      rather than four thin per-CVE dirs. All four CVEs NVD-enriched with
+      CVSS v4.0 (published 2026-07-06) — numerics sourced from NVD, NOT
+      pending. Cloud patched 2026-04-21; self-hosted must apply April rollup
+      or upgrade to 25.3.3 / 26.2.1. No ITW, no PoC, no actor attribution
+      (Hard Rule 2). BeyondTrust PSIRT proposed provisional A — flagged for
+      librarian addition to source-grades.yaml per finding-2026-07-07-0001.
+      BT26-03 advisory page returned HTTP 403 to WebFetch 2026-07-07; NVD
+      carried authoritative detail. Watch signals: KEV addition; first ITW
+      exploitation; public PoC; tracked-actor attribution (note prior
+      BeyondTrust RS/PRA exploitation history — Silk Typhoon, different CVEs).
+
   # Notes on KEV-add finding-2026-05-27-0007 third CVE:
   # CVE-2026-8398 (Daemon Tools Lite) was the third KEV addition in
   # catalog version 2026.05.27 but is NOT tracked as a vuln dossier —
@@ -666,13 +727,15 @@ vulnerabilities:
 
 
 _meta:
-  # Recomputed 2026-06-10 against the 15-row set after the verified patch-status
-  # audit (six parallel per-vuln passes), four new first-class rows (VT-012..VT-015),
-  # and the codename<->CVE bindings for the Nightmare Eclipse series.
-  total_tracked: 15
+  # Recomputed 2026-07-07: +1 row VT-016 (BeyondTrust RS/PRA BT26-03 four-CVE
+  # cluster, patched, non-KEV, disclosed-only) added via finding-2026-07-07-0001.
+  # Prior recompute 2026-06-10 against the 15-row set after the verified patch-
+  # status audit (six parallel per-vuln passes), four new first-class rows
+  # (VT-012..VT-015), and the codename<->CVE bindings for Nightmare Eclipse.
+  total_tracked: 16
 
-  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 15) ---
-  patched: 9                      # ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma
+  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 16) ---
+  patched: 10                     # ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma; VT-016 BeyondTrust RS/PRA BT26-03 cluster (cloud patched 2026-04-21, on-prem fixed versions available)
   patches_available: 1            # ZD-004 PAN-OS CVE-2026-0300 (both waves RELEASED 2026-05-13 + 2026-05-28)
   rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
   security_update_available_esu_gated: 1   # VT-008 Exchange CVE-2026-42897 (June 2026 SU / KB5094140 shipped 2026-06-09; SE automatic, 2016/2019 ESU-gated; EEMS/EOMT still advised for non-ESU)
@@ -691,6 +754,6 @@ _meta:
   vendor_ghsa_poc_only: 2         # VT-005 OpenC3 COSMOS cluster + VT-010 Yamcs (PoC embedded in vendor advisories only)
 
   # --- Dossier / housekeeping ---
-  dossiers_present: 15            # every row now points at an existing per-vuln dossier directory
+  dossiers_present: 16            # every row now points at an existing per-vuln dossier directory (VT-016 scaffolded 2026-07-07: profile.md + tracking.yaml)
   consolidations_2026_06_10: 6    # CVE-keyed duplicates folded into codename-canonical dossiers, pending librarian git rm: CVE-2026-41091->REDSUN, CVE-2026-45498->UNDEFEND, CVE-2026-0300->PAN-OS-CVE-2026-0300, CVE-2026-42897->Exchange-CVE-2026-42897, CVE-2026-44277->FortiAuthenticator-CVE-2026-44277, CVE-2026-46333->ssh-keysign-pwn
   dossiers_migrated: 4            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator; VT-008 Exchange CVE-2026-42897. VT-006 Mini Shai-Hulud + VT-009 Nx Console + VT-010 Yamcs full dossiers still not scaffolded (recommend vuln-tracker next pass).

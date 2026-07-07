@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-06-19T08:00:00-04:00  # briefer 2026-06-19 morning composition complete; am-update-001 (FortiBleed CISA government-attestation substrate-pivot UPDATE on finding-2026-06-17-0002 — RED-TEAM BLOCKED at very_likely framing, layered WEP published with very_likely on advisory-publication procedural fact only and likely on operational-claim layers per analyst KAC halt_pending_test + sensitivity_analysis single_point_of_failure on E5 + H1/H3 ACH tie indicating aggregation-artifact framing; Hard Rule 2 BINDING preserved "Russian-speaking" verbatim no cross-walk to APT28/Sandworm/APT29) + am-update-002 (Splunk Enterprise CVE-2026-20253 vendor-PSIRT ITW confirmation substrate-pivot UPDATE on finding-2026-06-18-0003 — A1 very_likely on ITW exploitation existence with red-team-qualifications: A&D-prime DIB structural exposure layer dropped from very_likely to likely priors-only not empirically anchored + "limited" semantic-scope caveat not vendor-anchored quantitatively + Shadowserver 1,400 framed as internet-accessible-Splunk-Enterprise-instances-overall not vulnerable-A&D-prime-instances + Frank-relevance NULL per Splunk-Free-not-Enterprise; CISA KEV 3-day federal deadline 2026-06-21 T-2d countdown; Hard Rule 2 BINDING preserved "limited exploitation" unattributed per Splunk PSIRT) + am-001 (Klue/Salesforce supply-chain compromise Icarus extortion group net-new finding scaffold B2 — Icarus preserved as net-new actor identity per THN explicit-distinction framing "mirrors" not attribution overlap Hard Rule 2 BINDING NO cross-walk to ShinyHunters/UNC6395/Scattered-Spider/UNC3944; WEP likely on Icarus actor identity layer single-IR-vendor Huntress + very_likely on compromise-existence layer multi-vendor self-statement convergent; Huntress + Recorded Future named cybersecurity-firm victims no A&D-prime named victims; A&D-DIB structural exposure HIGH via Salesforce-ecosystem; operator-deferred /new-actor Icarus candidacy noted third in queue after Gentlemen + UAT-8616) + am-brief-meta populated; PM brief-meta + per-finding AM/PM entries upstream preserved unchanged
+last_updated: 2026-07-07T08:00:00-04:00  # briefer 2026-07-07 morning composition complete; am-001 (BeyondTrust RS/PRA 4-CVE cluster A2/likely Vulnerabilities net-new; NVD-confirmed CVSS v4.0 9.2/9.2/8.7/8.5 supersedes finding-body pre-NVD detail; Hard Rule 2 Silk-Typhoon PRIOR-different-CVE historical-context-only no-cross-walk; A&D nexus STRUCTURAL/INDIRECT no-named-victim; patch-now hygiene not active-threat; single-source veto WEP-capped-likely) + am-brief-meta; two 2026-07-06 FLASH items (ColdFusion CVE-2026-48282 + Cavern Manticore) OMITTED no-net-new not-resurfaced; first-party sentinel CLEAN 0-hits; 18-day cadence gap since 2026-06-19 no-manufactured-continuity; pre-flight 13-of-13 PASS. PRIOR ENTRY: briefer 2026-06-19 morning composition complete; am-update-001 (FortiBleed CISA government-attestation substrate-pivot UPDATE on finding-2026-06-17-0002 — RED-TEAM BLOCKED at very_likely framing, layered WEP published with very_likely on advisory-publication procedural fact only and likely on operational-claim layers per analyst KAC halt_pending_test + sensitivity_analysis single_point_of_failure on E5 + H1/H3 ACH tie indicating aggregation-artifact framing; Hard Rule 2 BINDING preserved "Russian-speaking" verbatim no cross-walk to APT28/Sandworm/APT29) + am-update-002 (Splunk Enterprise CVE-2026-20253 vendor-PSIRT ITW confirmation substrate-pivot UPDATE on finding-2026-06-18-0003 — A1 very_likely on ITW exploitation existence with red-team-qualifications: A&D-prime DIB structural exposure layer dropped from very_likely to likely priors-only not empirically anchored + "limited" semantic-scope caveat not vendor-anchored quantitatively + Shadowserver 1,400 framed as internet-accessible-Splunk-Enterprise-instances-overall not vulnerable-A&D-prime-instances + Frank-relevance NULL per Splunk-Free-not-Enterprise; CISA KEV 3-day federal deadline 2026-06-21 T-2d countdown; Hard Rule 2 BINDING preserved "limited exploitation" unattributed per Splunk PSIRT) + am-001 (Klue/Salesforce supply-chain compromise Icarus extortion group net-new finding scaffold B2 — Icarus preserved as net-new actor identity per THN explicit-distinction framing "mirrors" not attribution overlap Hard Rule 2 BINDING NO cross-walk to ShinyHunters/UNC6395/Scattered-Spider/UNC3944; WEP likely on Icarus actor identity layer single-IR-vendor Huntress + very_likely on compromise-existence layer multi-vendor self-statement convergent; Huntress + Recorded Future named cybersecurity-firm victims no A&D-prime named victims; A&D-DIB structural exposure HIGH via Salesforce-ecosystem; operator-deferred /new-actor Icarus candidacy noted third in queue after Gentlemen + UAT-8616) + am-brief-meta populated; PM brief-meta + per-finding AM/PM entries upstream preserved unchanged
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -39916,6 +39916,191 @@ entries:
       vulnerabilities/_index.yaml — scaffold dossier, CISA KEV listing
       pending (watch). Grader proposed two provisional source-grade
       additions (kevintel B dual-A/F, CCCS B) awaiting direct retrieval.
+
+  - id: 2026-07-07-am-001-beyondtrust-rs-pra-cve-2026-40138-40141-critical-pre-auth-auth-bypass-vendor-disclosure-nvd-confirmed-no-itw-no-attribution
+    covered_in: [2026-07-07-morning]
+    brief_file: threats/briefs/2026-07-07-morning.md
+    headline: "BeyondTrust patched four RS/PRA CVEs — two critical (CVSS v4.0 9.2) pre-authentication authentication bypasses (CVE-2026-40138 RS+PRA ≤25.3.2 with a specific auth config enabled; CVE-2026-40139 improper-auth, both RS+PRA), plus CVE-2026-40140 (8.7 high, pre-auth DoS) and CVE-2026-40141 (8.5 high, AUTHENTICATED low-priv authorization-scope bypass); NVD confirmed the ratings 2026-07-06 (supersedes finding-body pre-NVD detail — 40139 is BOTH products not RS-only, 40141 is authenticated); fixed 25.3.3 (25.3.x) AND 26.2.1 (26.2.x); cloud patched 2026-04-21, self-hosted/on-prem must upgrade; ~2,000 internet-exposed instances (Shadowserver); NOT in CISA KEV, NO active exploitation reported, NO actor attributed (Hard Rule 2 — Silk Typhoon reference is PRIOR/DIFFERENT-CVE 2024-25 Treasury-breach product-line history ONLY, no cross-walk to roster Salt/Volt Typhoon); A&D relevance STRUCTURAL/INDIRECT (PAM/identity-infra class common in DIB, analogy-not-empirical to VT-007 FortiAuthenticator), NO named A&D victim; patch-now hygiene not active-threat urgency; epistemic caveat 'absence of ITW report is not proof of safety' preserved both ways"
+    topic_tags:
+      - cve-2026-40138
+      - cve-2026-40139
+      - cve-2026-40140
+      - cve-2026-40141
+      - beyondtrust-remote-support
+      - beyondtrust-privileged-remote-access
+      - pre-auth-authentication-bypass
+      - critical-cvss-v4-9-2-nvd-confirmed
+      - fixed-25-3-3-and-26-2-1-cloud-patched-2026-04-21-onprem-must-upgrade
+      - shadowserver-2000-internet-exposed-instances
+      - not-in-cisa-kev
+      - no-active-exploitation-reported
+      - no-actor-attributed-hard-rule-2
+      - silk-typhoon-prior-different-cve-historical-context-only-no-cross-walk
+      - ad-relevance-structural-indirect-pam-identity-infra-no-named-victim
+      - vt-007-fortiauthenticator-reference-class-analogy-not-empirical-anchor
+      - patch-now-hygiene-not-active-threat
+      - vuln-tracker-vt-016-dossier-nvd-confirmed
+      - first-party-sentinel-clean-0-hits
+      - vulnerabilities
+    related_actors: []
+    related_vulns:
+      - CVE-2026-40138
+      - CVE-2026-40139
+      - CVE-2026-40140
+      - CVE-2026-40141
+    related_campaigns: []
+    finding_ids: [finding-2026-07-07-0001]
+    digraph: A2
+    wep: likely
+    wep_ceiling_rationale: >
+      Capped at "likely" by the single-source veto (one effective source — the
+      BeyondTrust vendor advisory, relay-conveyed via BleepingComputer, advisory
+      not directly retrieved). NVD confirmation of the CVSS numerics (2026-07-06)
+      is used for factual accuracy in the brief but the finding grade handed to
+      the briefer remained A2 / likely for this cycle; briefer cites, does not
+      re-grade. No forward predictive claim is made — no ITW, no attribution.
+      Lifts to very_likely on direct advisory retrieval, confirmed active
+      exploitation, or a CISA KEV listing.
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      One effective source (BeyondTrust advisory via single B-grade relay). WEP
+      "likely" respects the veto; brief makes no very_likely+ claim.
+    hard_rule_2_framings_load_bearing:
+      - "No actor attributed to CVE-2026-40138–40141; none originated by Archimedes"
+      - "Silk Typhoon reference is PRIOR/DIFFERENT-CVE 2024-25 Treasury-breach product-line history ONLY — NOT attributed to the new CVEs; Silk Typhoon not on roster; no cross-walk to Salt/Volt Typhoon"
+      - "A&D relevance STRUCTURAL/INDIRECT (PAM/identity-infra class common in DIB); NO named A&D victim, NO A&D targeting reported"
+      - "VT-007 FortiAuthenticator cited as reference-class analogy for ad_relevance, NOT as empirical/victim anchor on RS/PRA"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0   # all source material paraphrased, Layer 1 and Layer 2
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_frank_single_user_splunk_free_rs_pra_deployment_unknown_visibility_bounded_absence
+    vuln_tracker_handoff:
+      cves: [CVE-2026-40138, CVE-2026-40139, CVE-2026-40140, CVE-2026-40141]
+      dossier: threats/vulnerabilities/BeyondTrust-RS-PRA-BT26-03/profile.md
+      status: vt-016-scaffolded-nvd-confirmed-2026-07-06
+      note: "NVD-authoritative CVSS v4.0 numerics confirmed 9.2/9.2/8.7/8.5; fixed branches 25.3.3 + 26.2.1; not in CISA KEV — watch for KEV listing / active exploitation (either lifts WEP)."
+    resurface_if:
+      - escalation_to_exploitation             # any confirmed active exploitation of 40138..40141
+      - new_victims_confirmed                  # any named victim, esp. A&D-prime
+      - new_attribution                        # any actor attribution surfaces
+      - cisa_kev_addition                      # KEV listing lifts WEP likely -> very_likely
+      - direct_retrieval_of_beyondtrust_advisory_or_independent_second_source   # lifts single-source veto
+      - first_party_ioc_hit
+      - patch_adoption_or_exposure_scope_change   # Shadowserver exposed-count movement / unpatched share data
+    first_covered: 2026-07-07
+    last_covered: 2026-07-07
+    retraction: null
+    test: false
+
+  - id: 2026-07-07-am-brief-meta
+    covered_in: [2026-07-07-morning]
+    brief_file: threats/briefs/2026-07-07-morning.md
+    headline: "2026-07-07 morning brief — 1 net-new graded finding (BeyondTrust RS/PRA 4-CVE cluster, A2/likely, Vulnerabilities); first scheduled brief after an 18-day cadence gap (last scheduled 2026-06-19), no manufactured continuity; two 2026-07-06 FLASH items (ColdFusion CVE-2026-48282 + Cavern Manticore) OMITTED — already FLASHed, no net-new since, correctly not resurfaced; Sector Focus + Iran Cyber Watch standing sections silent-template; first-party Splunk sentinel CLEAN (0 hits defenseclaw_local + archimedes, collector + grader concurred); pre-flight 13-of-13 PASS"
+    topic_tags:
+      - morning-brief
+      - meta-tracking
+      - 1-net-new-finding-am-cycle
+      - beyondtrust-rs-pra-vulnerabilities-section
+      - 18-day-cadence-gap-last-scheduled-2026-06-19-no-manufactured-continuity
+      - coldfusion-cavern-manticore-flash-items-omitted-no-net-new-not-resurfaced
+      - standing-sections-silent-template-sector-focus-iran-cyber-watch
+      - first-party-splunk-sentinel-clean-0-hits
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns:
+      - CVE-2026-40138
+      - CVE-2026-40139
+      - CVE-2026-40140
+      - CVE-2026-40141
+    related_campaigns: []
+    finding_ids: [finding-2026-07-07-0001]
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-07
+    last_covered: 2026-07-07
+    retraction: null
+    test: false
+    word_count_layer_1: 505
+    layer_2_discord_summary:
+      present: true
+      char_count_estimate: 1240
+      under_1900_buffer: true
+      word_count_total: 175
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-07-0001
+          append_brief_id: 2026-07-07-morning
+      source_grade_additions_proposed_by_grader:
+        - "beyondtrust-psirt — provisional A (vendor-self-disclosure precedent: Cisco/F5/Ivanti PSIRT), awaiting ratification + direct advisory retrieval"
+      operator_deferred_handoffs_surfaced:
+        - "collector handoff: directly retrieve the BeyondTrust RS/PRA advisory primary (relay-only via BleepingComputer this sweep; direct retrieval or independent second source lifts single-source veto)"
+        - "vuln-tracker VT-016 BeyondTrust-RS-PRA-BT26-03 dossier NVD-confirmed 2026-07-06 (CVSS v4.0 9.2/9.2/8.7/8.5, fixed 25.3.3 + 26.2.1); CISA KEV watch — a KEV listing or confirmed active exploitation is a substrate-pivot UPDATE that lifts WEP"
+    notes: |
+      2026-07-07 morning brief composed by briefer subagent. Grader promoted a
+      single net-new finding this cycle (finding-2026-07-07-0001, grading run
+      morning-20260707-080000): BeyondTrust Remote Support / Privileged Remote
+      Access four-CVE cluster, digraph A2 / WEP "likely", placed in the
+      Vulnerabilities section as a patch-now hygiene item.
+
+      NVD-authoritative facts (VT-016 confirmed via NVD 2026-07-06) used in the
+      brief SUPERSEDE the finding body where they differ (finding predates NVD
+      enrichment): CVE-2026-40138 CVSS v4.0 9.2 (RS+PRA ≤25.3.2, requires a
+      specific auth config enabled); CVE-2026-40139 CVSS v4.0 9.2 improper-auth,
+      BOTH RS+PRA (finding body said RS-only); CVE-2026-40140 8.7 pre-auth DoS;
+      CVE-2026-40141 8.5 AUTHENTICATED (PR:L) authorization-scope bypass; fixed
+      25.3.3 (25.3.x) AND 26.2.1 (26.2.x); cloud patched 2026-04-21, self-hosted/
+      on-prem must upgrade; ~2,000 internet-exposed (Shadowserver); NOT in CISA
+      KEV; NO active exploitation; NO attribution. Briefer cites the A2/likely
+      grade — does not re-grade.
+
+      Analyst KAC calibration honored: A&D nexus framed STRUCTURAL/INDIRECT
+      (PAM/identity-infra class common in the DIB, analogy to VT-007
+      FortiAuthenticator as reference class NOT empirical anchor); stated plainly
+      no named A&D victim and no reported exploitation; epistemic caveat
+      "absence of an ITW report is not proof of safety" preserved WITHOUT
+      implying active exploitation. NOT framed as a targeted-A&D threat.
+
+      Hard Rule 2 BINDING: Silk Typhoon appears ONLY as historical product-line
+      context re: PRIOR, DIFFERENT BeyondTrust zero-days (2024-25 Treasury
+      breach) — explicitly NOT attributed to CVE-2026-40138–40141; Silk Typhoon
+      not on roster; brief states do-not-cross-walk to Salt/Volt Typhoon.
+
+      Anti-repetition: first scheduled brief after an 18-day cadence gap (last
+      scheduled 2026-06-19). No manufactured continuity — stale carry-forwards
+      NOT resurfaced. Two 2026-07-06 FLASH items OMITTED from this brief per
+      orchestrator directive: Adobe ColdFusion CVE-2026-48282 (flash-2026-07-06-
+      1629) and Cavern Manticore (finding-2026-07-06-0001) — both already
+      delivered async, no net-new since, correctly not re-treated as fresh
+      (their coverage-log entries stand; not resurfaced here).
+
+      Standing sections: Sector Focus: A&D and Iran Cyber Watch both rendered
+      with silent-day templates (no new activity). Sector Focus carries a 🔗
+      structural cross-reference to the BeyondTrust item (reference-class, not
+      victim-anchored).
+
+      Hard Rule 6 quote discipline: 0 direct quotes in Layer 1 and Layer 2 (all
+      source material paraphrased) — compliant.
+
+      Hard Rule 8 first-party Splunk: sentinel CLEAN this cycle — 0 IOC hits
+      across defenseclaw_local + archimedes (collector + grader concurred).
+      Silence not disconfirming; Frank single-user Splunk-Free, RS/PRA
+      deployment unknown, visibility-bounded absence.
+
+      Layer 1 ~505 words (400-800 band). Layer 2 Discord Summary ~175 words /
+      ~1240 chars (150-300 word band; under 1900-char hard ceiling). One
+      Vulnerabilities bullet; Sector Focus + Iran Cyber Watch standing
+      boilerplate omitted from Layer 2 per spec (Layer 1 carries them).
+      Natural-language dates (Monday July 6, April 21, 2024-25). No digraph/WEP/
+      finding-id in Layer 2; no themed-character voice. Pre-flight 13-of-13 PASS
+      on first iteration.
 
 # ============================================================================
 # Valid resurface_if conditions

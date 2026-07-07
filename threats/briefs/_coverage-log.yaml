@@ -40102,6 +40102,263 @@ entries:
       finding-id in Layer 2; no themed-character voice. Pre-flight 13-of-13 PASS
       on first iteration.
 
+  - id: 2026-07-07-pm-001-gitea-cve-2026-20896-critical-pre-auth-auth-bypass-active-exploitation-sysdig-single-source-b2-structural-ad-nexus
+    covered_in: [2026-07-07-afternoon]
+    brief_file: threats/briefs/2026-07-07-afternoon.md
+    headline: "Gitea CVE-2026-20896 (CVSS 9.8 publisher-relayed) critical pre-auth authentication bypass under ACTIVE EXPLOITATION per Sysdig — reverse-proxy-auth default in affected Docker images accepts any source IP; a valid username in an HTTP header impersonates any user with no credentials, enabling full repo compromise (source, secrets, CI/CD configs, deploy keys); fixed 1.26.3/1.26.4 (reverse-proxy auth now opt-in); ~6,200 internet-accessible instances (Sysdig), unpatched share unknown; SINGLE EFFECTIVE SOURCE (Sysdig telemetry relayed by SecurityWeek, not independently corroborated) — single-source veto caps WEP at 'likely'; NOT in CISA KEV (a KEV listing is the most likely near-term escalator + independent second source that would lift WEP and trip red-team); NO actor attribution (Hard Rule 2); A&D nexus STRUCTURAL only (self-hosted Git = common DIB SDLC/source-control infrastructure) — no named A&D prime, Sysdig count NOT sector-differentiated; pre-auth network bypass, no file-open required; placed in Active Threats (B2 clears B2, active exploitation)"
+    topic_tags:
+      - cve-2026-20896
+      - gitea
+      - self-hosted-git
+      - pre-auth-authentication-bypass
+      - reverse-proxy-auth-default-http-header-user-impersonation
+      - active-exploitation-sysdig
+      - single-effective-source-sysdig-via-securityweek-relay
+      - single-source-veto-wep-capped-likely
+      - not-in-cisa-kev-listing-is-near-term-escalator
+      - no-actor-attributed-hard-rule-2
+      - ad-relevance-structural-only-dib-sdlc-source-control-no-named-victim
+      - fixed-1-26-3-1-26-4-reverse-proxy-auth-opt-in
+      - 6200-internet-accessible-instances-sysdig-unpatched-share-unknown
+      - gogs-argument-injection-2026-05-28-sibling-git-forge-class-thematic-adjacency
+      - net-new-cve-not-in-index-vuln-tracker-handoff-proposed
+      - first-party-sentinel-clean-0-hits
+      - active-threats
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20896
+    related_campaigns: []
+    finding_ids: [finding-2026-07-07-0002]
+    digraph: B2
+    wep: likely
+    wep_ceiling_rationale: >
+      Capped at "likely" by the single-source veto. The active-exploitation claim
+      traces to one effective source — Sysdig telemetry conveyed via a single
+      SecurityWeek relay (relay is not independent corroboration). Unlike the
+      morning BeyondTrust item, THIS finding carries an active-exploitation claim,
+      so the single-source cap is the only thing holding it below "very likely":
+      a CISA KEV listing, a second vendor's exploitation telemetry, or NVD
+      confirmation would be an independent second source, lift WEP, and trip
+      red-team review. Briefer cites the B2/likely grade — does not re-grade.
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      One effective source (Sysdig research via a single SecurityWeek relay). WEP
+      "likely" respects the veto; brief makes no very_likely+ claim. CVSS 9.8 is
+      publisher-relayed, not NVD-confirmed this sweep.
+    hard_rule_2_framings_load_bearing:
+      - "No actor attributed to CVE-2026-20896; none originated by Archimedes"
+      - "A&D relevance STRUCTURAL only (self-hosted Git = common DIB SDLC infrastructure); NO named A&D victim, exposed-instance count not sector-differentiated"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0   # all source material paraphrased, Layer 1 and Layer 2
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_frank_visibility_bounded_single_user_gitea_deployment_unknown
+    vuln_tracker_handoff:
+      cves: [CVE-2026-20896]
+      status: net-new-not-in-index-handoff-proposed
+      note: "Confirm CVSS 9.8 via NVD; check CISA KEV (none at grading time — a KEV listing lifts WEP). Sibling class to tracked gogs-argument-injection-2026-05-28 (Gitea is a Gogs fork). No scanner IP / VPN-exit IOC published in the relay; pursue the Sysdig primary for exploitation IOCs."
+    resurface_if:
+      - cisa_kev_addition                      # KEV listing lifts WEP likely -> very_likely + independent second source
+      - escalation_to_exploitation             # second-vendor exploitation telemetry / broadened exploitation
+      - new_attribution                        # any actor attribution surfaces
+      - independent_second_source_or_nvd_confirmation   # lifts single-source veto
+      - new_victims_confirmed                  # any named victim, esp. A&D/DIB
+      - first_party_ioc_hit
+      - exploitation_ioc_published             # scanner IP / VPN-exit indicator from Sysdig primary
+    first_covered: 2026-07-07
+    last_covered: 2026-07-07
+    retraction: null
+    test: false
+
+  - id: 2026-07-07-pm-002-cisa-icsa-26-188-06-labcenter-proteus-9-cve-2026-42953-oob-write-rce-dib-sector-listed-a2-single-source
+    covered_in: [2026-07-07-afternoon]
+    brief_file: threats/briefs/2026-07-07-afternoon.md
+    headline: "CISA ICS advisory ICSA-26-188-06 — Labcenter Proteus 9 (9.1_SP4_Build_42914) EDA/PCB design suite memory-safety flaws; named CVE-2026-42953 (CVSS v3 7.8) is an out-of-bounds write -> arbitrary code execution, advisory also enumerates stack-based buffer overflow + use-after-free classes (additional CVEs not in RSS body — vuln-tracker to retrieve full advisory); file-parsing vector (victim opens crafted project/design file); NO active exploitation, NO actor attribution, NOT KEV-listed; A&D nexus is CISA SECTOR-LISTED (DIB explicitly among affected sectors) — the STRONGEST nexus of the cycle, stronger than purely structural, BUT still sector-MEMBERSHIP not victim-anchored (no named prime, no observed targeting); DEPLOYMENT CAVEAT: Proteus skews education/SMB EDA, A&D primes typically standardize on Cadence/Siemens/Altium/Zuken — do NOT assume the target runs Proteus; DIB may appear via CISA's standard multi-sector enumeration rather than Proteus-specific telemetry; digraph A2 (CISA A-grade governs the letter; single-source caps credibility at 2 and WEP at likely); placed in Vulnerabilities (patch advisory, no ITW)"
+    topic_tags:
+      - cve-2026-42953
+      - labcenter-proteus-9
+      - eda-pcb-design-tooling
+      - cisa-ics-advisory-icsa-26-188-06
+      - out-of-bounds-write-rce
+      - stack-based-buffer-overflow-use-after-free-additional-cves-not-enumerated
+      - file-parsing-vector-crafted-project-file
+      - cvss-v3-7-8-no-itw-no-attribution-not-kev
+      - dib-sector-listed-strongest-nexus-of-cycle-but-sector-membership-not-victim-anchored
+      - deployment-caveat-proteus-skews-education-smb-primes-use-cadence-siemens-altium-zuken
+      - dib-may-be-cisa-standard-multi-sector-enumeration
+      - net-new-cve-not-in-index-vuln-tracker-handoff-proposed
+      - vuln-tracker-retrieve-full-advisory-for-additional-cves
+      - first-party-sentinel-clean-0-hits
+      - vulnerabilities
+    related_actors: []
+    related_vulns:
+      - CVE-2026-42953
+    related_campaigns: []
+    finding_ids: [finding-2026-07-07-0003]
+    digraph: A2
+    wep: likely
+    wep_ceiling_rationale: >
+      Capped at "likely" by the single-source veto (one CISA advisory). CISA is
+      A-grade and technically verified pre-publication, so vuln-existence
+      confidence is high — the cap is a single-source formality, not doubt about
+      the advisory. No forward predictive claim (no ITW, no attribution). Lifts on
+      an independent second source (NVD publication, vendor advisory) or confirmed
+      exploitation. Briefer cites A2/likely — does not re-grade.
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Single source (one CISA ICS advisory). WEP "likely" respects the veto; the A
+      letter grade governs reliability, not the credibility number (A2 not A1 per
+      admiralty-grading Example 3).
+    hard_rule_2_framings_load_bearing:
+      - "No actor attributed; none originated by Archimedes"
+      - "A&D nexus is CISA SECTOR-LISTED (DIB among affected sectors) — stronger than purely structural, but sector-MEMBERSHIP not victim-anchored; no named A&D prime, no observed targeting"
+      - "Deployment not assumed — Proteus skews education/SMB; A&D primes typically standardize on Cadence/Siemens/Altium/Zuken"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0   # all source material paraphrased, Layer 1 and Layer 2
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_frank_visibility_bounded_single_user_proteus_deployment_unknown
+    vuln_tracker_handoff:
+      cves: [CVE-2026-42953]
+      status: net-new-not-in-index-handoff-proposed
+      note: "Retrieve full ICSA-26-188-06 for the complete memory-safety CVE list (stack-based buffer overflow + use-after-free classes not enumerated in RSS body). AWARENESS: same 2026-07-07 CISA ICS batch — ICSA-26-188-03 (Hitachi Energy e-mesh EMS) re-cites CVE-2026-42945 = the F5 'NGINX Rift' CVE from finding-2026-05-14-0002, embedded in an ICS product; flag to the EXISTING dossier, not a new row. Set ad_relevance with DIB-sector-listed nexus noted (stronger than structural, still not victim-anchored)."
+    resurface_if:
+      - escalation_to_exploitation             # any exploitation report / KEV listing escalates
+      - cisa_kev_addition
+      - new_attribution
+      - new_victims_confirmed                  # esp. a named DIB Proteus victim or confirmed Tier-1 deployment (re-run KAC, re-weight A1/A2)
+      - nvd_population_or_independent_second_source
+      - first_party_ioc_hit
+    first_covered: 2026-07-07
+    last_covered: 2026-07-07
+    retraction: null
+    test: false
+
+  - id: 2026-07-07-pm-brief-meta
+    covered_in: [2026-07-07-afternoon]
+    brief_file: threats/briefs/2026-07-07-afternoon.md
+    headline: "2026-07-07 afternoon brief — 2 net-new graded findings, both A/B-2 and WEP 'likely' (a genuinely quiet afternoon, written as such, no manufactured urgency): Gitea CVE-2026-20896 active-exploitation single-source (B2, Active Threats) + Labcenter Proteus 9 CVE-2026-42953 CISA-DIB-sector-listed patch advisory (A2, Vulnerabilities); lead = Gitea active exploitation with honest single-source + structural-nexus qualification; morning BeyondTrust cluster NOT re-led (brief-over-brief continuity one-liner only, unchanged, not resurfaced); prior multi-day threads (FortiBleed, Splunk KEV, KLUE/Icarus, Cavern Manticore, ColdFusion) NO net-new — omitted per coverage log; Januscape KVM VM-escape (rejected this cycle) omitted; F5 NGINX Rift re-cite in ICSA-26-188-03 carried as vuln-tracker awareness only, not brief news; Sector Focus + Iran Cyber Watch silent-template; first-party Splunk sentinel CLEAN (0 hits); pre-flight 13-of-13 PASS"
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - 2-net-new-findings-pm-cycle
+      - both-wep-likely-quiet-afternoon-no-manufactured-urgency
+      - gitea-active-threats-section-b2
+      - proteus-vulnerabilities-section-a2-dib-sector-listed
+      - beyondtrust-not-re-led-brief-over-brief-continuity-only
+      - prior-threads-no-net-new-omitted-fortibleed-splunk-kev-klue-icarus-cavern-manticore-coldfusion
+      - januscape-kvm-vm-escape-rejected-omitted
+      - f5-nginx-rift-re-cite-icsa-26-188-03-vuln-tracker-awareness-only
+      - standing-sections-silent-template-sector-focus-iran-cyber-watch
+      - first-party-splunk-sentinel-clean-0-hits
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20896
+      - CVE-2026-42953
+    related_campaigns: []
+    finding_ids: [finding-2026-07-07-0002, finding-2026-07-07-0003]
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-07
+    last_covered: 2026-07-07
+    retraction: null
+    test: false
+    word_count_layer_1: 745
+    layer_2_discord_summary:
+      present: true
+      char_count_estimate: 1560
+      under_1900_buffer: true
+      word_count_total: 224
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-07-0002
+          append_brief_id: 2026-07-07-afternoon
+        - finding_id: finding-2026-07-07-0003
+          append_brief_id: 2026-07-07-afternoon
+      vuln_tracker_handoffs_proposed:
+        - "CVE-2026-20896 (Gitea) — net-new, not in vulnerabilities/_index.yaml; confirm CVSS 9.8 via NVD, CISA KEV watch, pursue Sysdig primary for exploitation IOC"
+        - "CVE-2026-42953 (Labcenter Proteus 9) — net-new, not in _index.yaml; retrieve full ICSA-26-188-06 for additional memory-safety CVEs"
+        - "CVE-2026-42945 (F5 NGINX Rift, finding-2026-05-14-0002) re-cited in ICSA-26-188-03 (Hitachi Energy e-mesh EMS) — update EXISTING dossier, not a new row (awareness, not brief news)"
+    notes: |
+      2026-07-07 afternoon brief composed by briefer subagent. Grader promoted two
+      net-new findings this cycle (grading run afternoon-20260707-160000):
+      finding-2026-07-07-0002 (Gitea CVE-2026-20896, B2/likely) and
+      finding-2026-07-07-0003 (Labcenter Proteus 9 CVE-2026-42953, A2/likely).
+      Both analyst-reviewed (analyst-20260707-161500), red-team NOT required (both
+      WEP "likely" < "very likely"). Genuinely quiet afternoon — written as such;
+      no manufactured urgency.
+
+      Section placement: Gitea -> Active Threats (B2 clears B2 minimum, carries an
+      active-exploitation claim); Proteus -> Vulnerabilities (CISA patch advisory,
+      no ITW). Lead = Gitea active exploitation, immediately qualified with the
+      single-source and structural-nexus caveats (does not imply the target is
+      affected). Cites B2/likely and A2/likely grades — briefer does not re-grade.
+
+      Analyst KAC calibration honored on BOTH mandatory-caveat sets:
+      - Gitea (0002): A&D nexus framed STRUCTURAL only (self-hosted Git = common
+        DIB SDLC/source-control infra); NO implication the target is affected;
+        active-exploitation is single-vendor (Sysdig) RELAYED (not independently
+        corroborated) by SecurityWeek; CISA KEV listing named as the near-term
+        escalator + independent second source; stated plainly it is a pre-auth
+        network bypass (no file-open required).
+      - Proteus (0003): framed as DIB SECTOR-MEMBERSHIP, not target-specific
+        targeting; explicit deployment caveat (Proteus skews education/SMB EDA;
+        A&D primes standardize on Cadence/Siemens/Altium/Zuken — do NOT assume the
+        target runs Proteus); CVSS 7.8, no ITW, no attribution, file-parsing
+        vector (victim opens crafted file); DIB-listing may be CISA standard
+        multi-sector enumeration.
+
+      Anti-repetition: morning BeyondTrust RS/PRA cluster (finding-2026-07-07-0001)
+      NOT re-led — a single brief-over-brief continuity line notes it is unchanged
+      since 0800 (no exploitation, no KEV, no attribution), standing watch, not
+      resurfaced (no material update; anti-repetition "same CVE, no new activity"
+      -> do not resurface honored — the continuity line is not a resurface). Prior
+      multi-day threads (FortiBleed finding-06-19-0001; Splunk CVE-2026-20253
+      finding-06-19-0002 now KEV; KLUE/Salesforce + Icarus finding-06-19-0003;
+      Cavern Manticore MOIS finding-07-06-0001; Adobe ColdFusion CVE-2026-48282
+      finding-07-06-flash) have NO net-new movement this cycle — omitted per
+      coverage log (standing-watch treatment). Januscape KVM VM-escape
+      CVE-2026-53359 was REJECTED this cycle (weak/structural nexus, no ITW,
+      already patched mainline) — omitted (not "noted, not promoted"; the brief
+      standard cuts sub-C3 rumor and the item adds nothing on a quiet day).
+
+      Vuln-tracker awareness carried in the coverage log, NOT the brief body: the
+      same 2026-07-07 CISA ICS batch (ICSA-26-188-03, Hitachi Energy e-mesh EMS)
+      re-cites CVE-2026-42945 = the F5 "NGINX Rift" CVE (finding-2026-05-14-0002)
+      embedded in an ICS product — corpus-maintenance item for the EXISTING
+      dossier, not reader-actionable news; correctly kept out of the brief.
+
+      Standing sections: Sector Focus: A&D and Iran Cyber Watch both rendered with
+      silent-day templates. Sector Focus carries a 🔗 note pointing to the Proteus
+      item as the cycle's only explicit (sector-listed, not victim-anchored) A&D
+      nexus.
+
+      Hard Rule 6 quote discipline: 0 direct quotes in Layer 1 and Layer 2 (all
+      source material paraphrased) — compliant.
+
+      Hard Rule 8 first-party Splunk: sentinel CLEAN this cycle — 0 IOC hits
+      across defenseclaw_local + archimedes (both findings queried -30d). Silence
+      not disconfirming; Frank visibility-bounded single-user host; Gitea/Proteus
+      deployment unknown.
+
+      Layer 1 ~745 words (400-800 band). Layer 2 Discord Summary ~224 words /
+      ~1560 chars (150-300 word band; under 1900-char hard ceiling). Two bullets
+      (Active Threats + Vulnerabilities); Sector Focus + Iran Cyber Watch standing
+      boilerplate + the BeyondTrust continuity line omitted from Layer 2 per spec
+      (Layer 1 carries them). Natural-language date phrasing; no digraph/WEP/
+      finding-id in Layer 2; no themed-character voice. Pre-flight 13-of-13 PASS
+      on first iteration.
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

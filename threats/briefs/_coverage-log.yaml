@@ -39849,8 +39849,44 @@ entries:
       - direct_retrieval_of_kevintel_or_cccs_primary   # lifts WEP likely -> very_likely
       - first_party_ioc_hit
       - tier_1_vendor_publishes_ioc_expansion_or_full_ttp_writeup
+    recalibration_2026_07_07_flash_1800:
+      recalibrated_at: 2026-07-07T18:15:00-04:00
+      run_id: flash-sweep-20260707-180000
+      digraph: B2 -> A2
+      wep: likely -> very_likely
+      merge_mode: recalibration_merge   # NO new finding created — directly-retrieved A-grade corroborators merged into finding-2026-07-06-flash-1629-0001
+      raw_signal: raw-2026-07-07-flash-1800-001
+      resurface_conditions_fired:
+        - cisa_kev_addition_with_active_exploitation_language   # CISA KEV-listed 2026-07-07, BOD 22-01 remediation due 2026-07-10
+        - nvd_or_adobe_psirt_publishes_cvss_score               # NVD CVSS 10.0 confirmed (was 'max severity unverified')
+      resurface_conditions_still_open:
+        - direct_retrieval_of_kevintel_or_cccs_primary
+        - new_victims_confirmed
+        - new_attribution
+      reflash_decision: NO_RE_FLASH   # red-team QUALIFY: only 1 of 3 re-FLASH resurface conditions fired; topic FLASHed <30h ago; federal deadline 2026-07-10 leaves runway. Absorb, do not re-FLASH.
+      disposition: absorb_into_2026-07-08_morning_brief_update_flag
+    morning_brief_update_queued:
+      target_brief: 2026-07-08-morning
+      update_flag: true
+      finding_id: finding-2026-07-06-flash-1629-0001
+      cve: CVE-2026-48282
+      digraph: A2
+      wep_exploitation: very_likely
+      posture: UPDATE_on_prior_flash_not_net_new   # substrate-pivot UPDATE on the 2026-07-06 FLASH, NOT a fresh finding — anti-repetition applies
+      headline_facts:
+        - "CISA KEV-listed 2026-07-07 (BOD 22-01 remediation due 2026-07-10)"
+        - "NVD CVSS 10.0 confirmed (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H) — supersedes prior 'max severity unverified' framing"
+        - "Adobe ColdFusion 2025.9, 2023.20 and earlier; Adobe patched 2026-07-01 (n-day, not a zero-day)"
+      red_team_qualifying_language: >
+        Frame as ONE directly-retrieved A-grade USG active-exploitation
+        determination (CISA KEV) PLUS a B-grade relay (BleepingComputer)
+        conveying two not-independently-verified primaries (KEVIntel honeypot +
+        CCCS) — NOT "three independent confirmations". A&D nexus is STRUCTURAL
+        only (ColdFusion DIB/government footprint); NO named A&D-prime victim, NO
+        actor attribution (Hard Rule 2). Federal BOD 22-01 deadline 2026-07-10 is
+        the actionable hook.
     first_covered: 2026-07-06
-    last_covered: 2026-07-06
+    last_covered: 2026-07-06           # last covered in a BRIEF on 2026-07-06; recalibrated in-place 2026-07-07, UPDATE queued for 2026-07-08 morning (see morning_brief_update_queued)
     retraction: null
     test: false
     word_count_layer_1: 275

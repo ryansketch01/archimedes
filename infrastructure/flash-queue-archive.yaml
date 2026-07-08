@@ -22,9 +22,193 @@
 #   - librarian_note: free-form supersession / disposition reasoning
 
 version: 1
-last_updated: 2026-06-11T08:34:00-04:00
+last_updated: 2026-07-07T23:29:49-04:00
 
 archive:
+  # ==========================================================================
+  # 2026-07-07 post-outage catchup: stale-archive of the entire live queue.
+  # Ops were paused ~2026-06-20 -> 07-06 (credential outage); the 09:00 EDT
+  # catchup sweep did not run during that window, so every queued FLASH aged
+  # well past its 12h staleness threshold (all expires_at in May/June 2026).
+  # Per flash-queue.yaml header procedure: stale (>12h past expires_at) -> log
+  # + archive. All 8 entries moved here with disposition: stale; live queue
+  # emptied to []. No entry dropped.
+  # ==========================================================================
+  - queued_at: 2026-05-23T06:00:00-04:00
+    archived_at: 2026-07-07T23:29:49-04:00
+    archived_by: librarian-20260707-2329
+    disposition: stale
+    brief_id: flash-2026-05-23-0600-001-unc1549-screening-serpens-tradecraft-evolution
+    brief_path: threats/briefs/2026-05-23-flash-0600-001-unc1549-screening-serpens-tradecraft-evolution.md
+    finding_id: finding-2026-05-23-FLASH-0001
+    trigger: trigger-4-tracked-actor-ttp-change
+    cve: null
+    related_actor: "004"
+    digraph: A2
+    expires_at: 2026-05-23T18:00:00-04:00
+    catchup_sweep: 2026-05-23T09:00:00-04:00
+    superseded: false
+    superseded_by: null
+    librarian_note: |
+      archived 2026-07-07 during post-outage catchup; 09:00 catchup did not run
+      during the 2026-06-20->07-06 credential outage. Entry aged ~6.5 weeks past
+      its 2026-05-23T18:00 expiry — far beyond the 12h staleness window. Not
+      posted to #flash-alerts (stale disposition). UNC1549 (#004) tradecraft
+      substrate remains available in the finding + brief on disk for any future
+      actor-profiler /update-tracking pickup; this is a queue-hygiene archive
+      only, not a content retraction.
+
+  - queued_at: 2026-05-23T06:00:00-04:00
+    archived_at: 2026-07-07T23:29:49-04:00
+    archived_by: librarian-20260707-2329
+    disposition: stale
+    brief_id: flash-2026-05-23-0600-002-litespeed-cpanel-cve-2026-48172
+    brief_path: threats/briefs/2026-05-23-flash-0600-002-litespeed-cpanel-cve-2026-48172.md
+    finding_id: finding-2026-05-23-FLASH-0002
+    trigger: trigger-1-critical-cve-exploited
+    cve: CVE-2026-48172
+    related_actor: null
+    digraph: A2
+    expires_at: 2026-05-23T18:00:00-04:00
+    catchup_sweep: 2026-05-23T09:00:00-04:00
+    superseded: false
+    superseded_by: null
+    librarian_note: |
+      archived 2026-07-07 during post-outage catchup; 09:00 catchup did not run
+      during the 2026-06-20->07-06 credential outage. Entry aged ~6.5 weeks past
+      its 2026-05-23T18:00 expiry. Not posted (stale). CVE-2026-48172 LiteSpeed
+      cPanel content preserved in finding + brief on disk.
+
+  - queued_at: 2026-05-20T06:08:00-04:00
+    archived_at: 2026-07-07T23:29:49-04:00
+    archived_by: librarian-20260707-2329
+    disposition: stale
+    brief_id: flash-2026-05-20-0608-teampcp-github-internal-repos
+    brief_path: threats/briefs/2026-05-20-flash-teampcp-github-internal-repos.md
+    finding_id: finding-2026-05-20-FLASH-0001
+    trigger: trigger-2-new-attribution
+    secondary_trigger: trigger-4-tracked-actor-ttp-change
+    cve: null
+    related_vuln: CVE-2026-45321
+    digraph: B2
+    expires_at: 2026-05-20T18:08:00-04:00
+    catchup_sweep: 2026-05-20T09:00:00-04:00
+    superseded: false
+    superseded_by: null
+    librarian_note: |
+      archived 2026-07-07 during post-outage catchup; 09:00 catchup did not run
+      during the 2026-06-20->07-06 credential outage. Entry aged ~7 weeks past
+      its 2026-05-20T18:08 expiry. Not posted (stale). TeamPCP GitHub-corp breach
+      content preserved in finding + brief on disk.
+
+  - queued_at: 2026-05-15T06:55:00-04:00
+    archived_at: 2026-07-07T23:29:49-04:00
+    archived_by: librarian-20260707-2329
+    disposition: stale
+    brief_id: flash-2026-05-15-0600-exchange-cve-2026-42897
+    brief_path: threats/briefs/flash-2026-05-15-0600-exchange-cve-2026-42897.md
+    finding_id: finding-2026-05-15-FLASH-0001
+    trigger: trigger-6-zero-day-no-patch
+    secondary_trigger: trigger-1-critical-cve-exploited
+    cve: CVE-2026-42897
+    digraph: A2
+    expires_at: 2026-05-15T18:55:00-04:00
+    catchup_sweep: 2026-05-15T09:00:00-04:00
+    superseded: true
+    superseded_by: 2026-05-15-morning
+    superseded_at: 2026-05-15T08:00:00-04:00
+    librarian_note: |
+      archived 2026-07-07 during post-outage catchup; 09:00 catchup did not run
+      during the 2026-06-20->07-06 credential outage. NOTE: this entry was
+      already marked superseded:true by 2026-05-15-morning on 2026-05-15 but was
+      never physically moved to the archive. Disposition recorded as stale for
+      the queue-hygiene sweep; the pre-existing superseded_by / superseded_at
+      fields are preserved for audit. Not posted.
+
+  - queued_at: 2026-05-15T06:55:00-04:00
+    archived_at: 2026-07-07T23:29:49-04:00
+    archived_by: librarian-20260707-2329
+    disposition: stale
+    brief_id: flash-2026-05-15-0600-teampcp-shai-hulud-release
+    brief_path: threats/briefs/flash-2026-05-15-0600-teampcp-shai-hulud-release.md
+    finding_id: finding-2026-05-15-FLASH-0002
+    trigger: trigger-4-tracked-actor-ttp-change
+    secondary_trigger: trigger-2-new-attribution
+    cve: null
+    related_vuln: CVE-2026-45321
+    digraph: B2
+    expires_at: 2026-05-15T18:55:00-04:00
+    catchup_sweep: 2026-05-15T09:00:00-04:00
+    superseded: true
+    superseded_by: 2026-05-15-morning
+    superseded_at: 2026-05-15T08:00:00-04:00
+    librarian_note: |
+      archived 2026-07-07 during post-outage catchup; 09:00 catchup did not run
+      during the 2026-06-20->07-06 credential outage. NOTE: already marked
+      superseded:true by 2026-05-15-morning on 2026-05-15 but never physically
+      archived. Disposition recorded as stale; pre-existing superseded fields
+      preserved. Not posted.
+
+  - queued_at: 2026-05-07T00:50:00-04:00
+    archived_at: 2026-07-07T23:29:49-04:00
+    archived_by: librarian-20260707-2329
+    disposition: stale
+    brief_id: flash-2026-05-07-0000
+    brief_path: threats/briefs/2026-05-07-flash-0000-pan-os-cl-sta-1132.md
+    finding_id: finding-2026-05-07-FLASH-0001
+    trigger: trigger-1-critical-cve-exploited
+    cve: CVE-2026-0300
+    digraph: A2
+    expires_at: 2026-05-07T12:50:00-04:00
+    catchup_sweep: 2026-05-07T09:00:00-04:00
+    superseded: true
+    superseded_by: 2026-05-07-morning
+    superseded_at: 2026-05-07T08:00:45-04:00
+    librarian_note: |
+      archived 2026-07-07 during post-outage catchup; 09:00 catchup did not run
+      during the 2026-06-20->07-06 credential outage. NOTE: already marked
+      superseded:true by 2026-05-07-morning on 2026-05-07 but never physically
+      archived. Disposition recorded as stale; pre-existing superseded fields
+      preserved. Not posted.
+
+  - queued_at: 2026-06-10T01:25:00-04:00
+    archived_at: 2026-07-07T23:29:49-04:00
+    archived_by: librarian-20260707-2329
+    disposition: stale
+    brief_id: flash-2026-06-10-0125
+    brief_path: threats/briefs/flash-2026-06-10-0125.md
+    finding_id: finding-2026-06-10-flash-0000-002
+    bundled_findings:
+      - finding-2026-06-10-flash-0000-001
+      - finding-2026-06-10-flash-0000-002
+      - finding-2026-06-10-flash-0000-003
+    trigger: trigger-1-critical-cve-exploited
+    secondary_trigger: trigger-6-zero-day-no-patch
+    cve: CVE-2026-50751
+    related_cves: [CVE-2026-50751, CVE-2026-50752, CVE-2026-11645, CVE-2026-42271, CVE-2026-48710]
+    digraph: A1
+    expires_at: 2026-06-10T13:25:00-04:00
+    catchup_sweep: 2026-06-10T09:00:00-04:00
+    superseded: partial
+    superseded_by: 2026-06-10-morning
+    superseded_at: 2026-06-10T08:00:00-04:00
+    librarian_note: |
+      archived 2026-07-07 during post-outage catchup; 09:00 catchup did not run
+      during the 2026-06-20->07-06 credential outage. This bundled triple-KEV
+      entry carried do_not_archive:true pending its 2026-06-10 09:00 catchup for
+      the un-absorbed Chrome V8 (CVE-2026-11645) + LiteLLM (CVE-2026-42271)
+      components (the Check Point CVE-2026-50751 line was absorbed by the
+      2026-06-10-morning brief). That catchup never ran and the entry aged ~4
+      weeks past its 2026-06-10T13:25 expiry. Resolving do_not_archive -> stale:
+      the remaining Chrome + LiteLLM components are far past freshness and both
+      CVEs were already shipped in the original 2026-06-10 FLASH — re-posting now
+      would be stale duplicate signal. Not posted. superseded:partial preserved
+      for audit.
+
+  # (The flash-2026-06-11-0608 entry referenced in the flash-queue.yaml trailing
+  #  comment was already archived 2026-06-11 as superseded_by_morning_brief — it
+  #  appears in the pre-outage archive section immediately below, not re-archived.)
+
   - queued_at: 2026-06-11T06:08:00-04:00
     archived_at: 2026-06-11T08:34:00-04:00
     archived_by: librarian-20260611-0800

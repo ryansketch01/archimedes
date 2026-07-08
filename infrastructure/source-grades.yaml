@@ -149,6 +149,22 @@ government_sources:
     urls:
       - https://www.justice.gov/news
 
+  - id: canadian-centre-cyber-security
+    name: "Canadian Centre for Cyber Security (CCCS / Cyber Centre, CSE)"
+    category: government
+    grade: B
+    provisional: true
+    provisional_since: 2026-07-06
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-07-06-flash-1629-0001 (Adobe ColdFusion CVE-2026-48282 max-severity unauth RCE active-exploitation observation; CCCS co-attests exploitation independently of KEVIntel honeypot telemetry — different organizations, different evidence bases, neither cites the other). CCCS is the Canadian national cyber authority (Five Eyes; unified Canadian CISA/NCSC analog under the Communications Security Establishment). Foreign-government national-cyber-authority / government-CERT category. Provisional B follows the established ABW (2026-05-08) and CCB (2026-06-01) precedent for first-surface foreign national cyber/CERT bodies making a procedural active-exploitation observation (CISA-analog claim type). Operator may upgrade toward A given CCCS is a Five Eyes national cyber authority making a CISA-analog procedural observation (A-graded class), but conservative starting grade is B. This surface: relay-only via BleepingComputer; CCCS advisory primary NOT directly retrieved (awaiting_direct_retrieval preserved as a separate collection todo, not a grade blocker)."
+    awaiting_ratification: false
+    ratified_by: ryan
+    ratified_at: 2026-07-07
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-06-flash-1629-0001
+    active: true
+    urls:
+      - https://www.cyber.gc.ca/en/
+
 # ============================================================================
 # Tier-1 Threat Intel Firms
 # ============================================================================
@@ -831,6 +847,39 @@ vendor_sources:
       - https://www.beyondtrust.com/trust-center/security-advisories
       - https://www.beyondtrust.com/docs/
 
+  - id: checkpoint-research
+    name: "Check Point Research (CPR)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-07-06
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-07-06-0001 (Cavern / Cav3rn modular .NET C2 framework; CPR attributes activity to a new MOIS-affiliated cluster it designates Cavern Manticore, with tactical overlaps to MuddyWater and Lyceum/OilRig-subgroup but designated a distinct new cluster). Tier-1 vendor research practice — provisional A per the first-surface precedent applied to Bitdefender / Symantec / Darktrace / Cisco Talos / SentinelOne. This surface: relayed via The Hacker News; CPR primary NOT directly retrieved (awaiting_direct_retrieval preserved as a separate collection todo, not a grade blocker)."
+    awaiting_ratification: false
+    ratified_by: ryan
+    ratified_at: 2026-07-07
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-06-0001
+    active: true
+    urls:
+      - https://research.checkpoint.com/
+
+  - id: kevintel
+    name: "KEVIntel (Ryan Dewhurst honeypot / exploitation-telemetry)"
+    category: vendor
+    grade: B
+    dual_grade: "A/F"
+    provisional: true
+    provisional_since: 2026-07-06
+    provisional_reason: "First Archimedes-corpus dedicated source ID via finding-2026-07-06-flash-1629-0001 (Adobe ColdFusion CVE-2026-48282 active-exploitation observation; KEVIntel honeypot telemetry co-attests exploitation independently of CCCS). Technical exploitation-observation source with a dual grade: A-on-facts for 'exploitation attempts observed against honeypot network' (like GreyNoise / Shodan observation-of-fact); F-on-attribution (cannot attribute actor). Conservative provisional B overall on first surface pending track-record. Scaffold candidate previously noted in corpus (finding-2026-06-17-0001 FortiSandbox second-IR-vendor channel). This surface: relay-only via BleepingComputer; the KEVIntel post was NOT directly retrieved (awaiting_direct_retrieval preserved as a separate collection todo, not a grade blocker)."
+    awaiting_ratification: false
+    ratified_by: ryan
+    ratified_at: 2026-07-07
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-06-flash-1629-0001
+    active: true
+    urls:
+      - https://kevintel.com/
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================
@@ -1371,11 +1420,12 @@ osint_sources:
 # Summary counts (agent-queryable)
 # ============================================================================
 _meta:
-  total_sources: 97        # +2 AM 2026-06-16: defused-cyber (provisional B; research-firm IR vendor — Fortinet FortiSandbox active-exploitation observation channel) + genians-security-center (provisional A; regional-IR-vendor — Korean-headquartered with deep DPRK visibility; APT37 NarwhalRAT primary); 72h ratification clocks to 2026-06-19T08:00:00-04:00 per findings 0002 / 0003. +5 PM 2026-06-12: sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B x5; bloomberg pending operator B/B+/A tier decision); 72h ratification clocks to 2026-06-15T16:00:00-04:00 per findings 0003 / 0004 / 0005 / 0007 / 0008 (+8 PM 2026-06-11; +2 AM 2026-06-10)
-  active_sources: 88       # +2 above (+5 PM 2026-06-12; +8 PM 2026-06-11; +2 AM 2026-06-10)
+  # NOTE: raw counts below have been drifting (beyondtrust-psirt landed 2026-07-07 without a count bump); treat as approximate. 2026-07-07 "process all" handoff batch added +3 sources, all operator-ratified in the same pass per Ryan approval: checkpoint-research (A) + kevintel (B) + canadian-centre-cyber-security (B); first_cited finding-2026-07-06-0001 / finding-2026-07-06-flash-1629-0001.
+  total_sources: 100       # +3 2026-07-07 batch above (checkpoint-research + kevintel + canadian-centre-cyber-security). +2 AM 2026-06-16: defused-cyber (provisional B; research-firm IR vendor — Fortinet FortiSandbox active-exploitation observation channel) + genians-security-center (provisional A; regional-IR-vendor — Korean-headquartered with deep DPRK visibility; APT37 NarwhalRAT primary); 72h ratification clocks to 2026-06-19T08:00:00-04:00 per findings 0002 / 0003. +5 PM 2026-06-12: sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B x5; bloomberg pending operator B/B+/A tier decision); 72h ratification clocks to 2026-06-15T16:00:00-04:00 per findings 0003 / 0004 / 0005 / 0007 / 0008 (+8 PM 2026-06-11; +2 AM 2026-06-10)
+  active_sources: 91       # +3 2026-07-07 batch (checkpoint-research + kevintel + canadian-centre-cyber-security); +2 above (+5 PM 2026-06-12; +8 PM 2026-06-11; +2 AM 2026-06-10)
   by_grade:
-    A: 41       # +1 genians-security-center (provisional A 2026-06-16 morning; regional-IR-vendor cheatsheet pattern peer-class to Mandiant/Unit42/CrowdStrike for DPRK/Korea-Asia); +3 europol-coordinated-announcement + doj-federal-court-filings + trendai-zdi-childs (provisional A 2026-06-11 PM); +2 ivanti-psirt + arista-networks-psirt (provisional A 2026-06-10 AM); +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
-    B: 40       # +1 defused-cyber (provisional B 2026-06-16 morning; research-firm cheatsheet pattern — IR vendor observation channel); +5 sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B 2026-06-12 PM; bloomberg pending operator B/B+/A); +5 vulncheck-research + tenable-research + prodaft-research + blackfog-research + will-dormann-researcher (provisional B 2026-06-11 PM); +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
+    A: 42       # +1 checkpoint-research (A, ratified 2026-07-07); +1 genians-security-center (provisional A 2026-06-16 morning; regional-IR-vendor cheatsheet pattern peer-class to Mandiant/Unit42/CrowdStrike for DPRK/Korea-Asia); +3 europol-coordinated-announcement + doj-federal-court-filings + trendai-zdi-childs (provisional A 2026-06-11 PM); +2 ivanti-psirt + arista-networks-psirt (provisional A 2026-06-10 AM); +1 litespeed-blog-self-disclosure (provisional A 2026-05-23 FLASH)
+    B: 42       # +2 2026-07-07 batch (kevintel dual-grade A/F overall-B, ratified; canadian-centre-cyber-security B, ratified); +1 defused-cyber (provisional B 2026-06-16 morning; research-firm cheatsheet pattern — IR vendor observation channel); +5 sonatype-research + sygnia-research + tenet-security-research + dataminr-research + bloomberg (provisional B 2026-06-12 PM; bloomberg pending operator B/B+/A); +5 vulncheck-research + tenable-research + prodaft-research + blackfog-research + will-dormann-researcher (provisional B 2026-06-11 PM); +2 securityaffairs + theregister (provisional B 2026-05-29 morning)
     C: 10       # +1 depthfirst elevated F→C 2026-05-16 morning per "first technical write-up publication" trigger; finding-2026-05-16-0001
     D: 1
     E: 2
@@ -1438,6 +1488,13 @@ _meta:
     - defused-cyber             # provisional B; first cited 2026-06-16-0002 (Fortinet FortiSandbox three-CVE active-exploitation cluster — CVE-2026-25089 + CVE-2026-39813 + CVE-2026-39808 all CVSS 9.1; Defused Cyber observation channel cited via BleepingComputer + The Hacker News publisher-independent relays; research-firm cheatsheet pattern — IR vendor providing exploitation observation distinct from vendor PSIRT advisory layer; Defused is sole IR-vendor source on active-exploitation claim layer triggering single-source veto on ITW assertion per INTEL-GRADING; 72h ratification clock to 2026-06-19T08:00:00-04:00; awaiting human ratification AND independent corroboration from second IR vendor — Mandiant / Unit 42 / CrowdStrike / Recorded Future — or first-party Splunk hit for ITW veto release)
     - genians-security-center   # provisional A; first cited 2026-06-16-0003 (APT37 / ScarCruft net-new NarwhalRAT tooling deployment via Microsoft-account-themed phishing → ZIP → LNK → in-memory CAT-file → pCloud dead-drop C2 → Naver Whale browser masquerade; Genians Security Center is Korean-headquartered regional IR vendor with deep DPRK-cluster visibility; regional-IR-vendor cheatsheet pattern — peer class to Mandiant / Unit 42 / CrowdStrike for DPRK/Korea-Asia threat intel; provisional A starting grade is consistent with peer regional IR vendors despite first-corpus citation; 72h ratification clock to 2026-06-19T08:00:00-04:00; awaiting human ratification AND direct retrieval of genians.co.kr primary write-up — substrate reached this sweep via The Hacker News (Ravie Lakshmanan) publisher relay only)
     - beyondtrust-psirt         # provisional A; first cited 2026-07-07-0001 (BeyondTrust RS/PRA four-CVE disclosure — CVE-2026-40138/40139 critical CVSS 9.2 pre-auth auth bypasses + CVE-2026-40140 DoS + CVE-2026-40141 authz-scope bypass; fixed 25.3.3/26.2.1; no ITW, no attribution; vendor-self-disclosure-on-own-product precedent class per Cisco/F5/Ivanti/Palo Alto/Arista PSIRT; relay-only via BleepingComputer, advisory page returned HTTP 403 to WebFetch — NVD enrichment anchor; awaiting human ratification AND direct retrieval of beyondtrust.com/trust-center/security-advisories primary)
+  ratified_from_provisional:
+    # Provisional entries operator-ratified without full conversion to the Sophos/ESET/Dragos ratified form
+    # (provisional_reason rationale retained; awaiting_ratification flipped to false + ratified_by/ratified_at stamped).
+    # awaiting_direct_retrieval left intact where set — that is a collection todo, not a grade blocker.
+    - source_id: checkpoint-research           # A; ratified_by ryan 2026-07-07; first cited finding-2026-07-06-0001
+    - source_id: kevintel                      # B (dual A/F); ratified_by ryan 2026-07-07; first cited finding-2026-07-06-flash-1629-0001
+    - source_id: canadian-centre-cyber-security # B; ratified_by ryan 2026-07-07; first cited finding-2026-07-06-flash-1629-0001 (BeyondTrust RS/PRA four-CVE disclosure — CVE-2026-40138/40139 critical CVSS 9.2 pre-auth auth bypasses + CVE-2026-40140 DoS + CVE-2026-40141 authz-scope bypass; fixed 25.3.3/26.2.1; no ITW, no attribution; vendor-self-disclosure-on-own-product precedent class per Cisco/F5/Ivanti/Palo Alto/Arista PSIRT; relay-only via BleepingComputer, advisory page returned HTTP 403 to WebFetch — NVD enrichment anchor; awaiting human ratification AND direct retrieval of beyondtrust.com/trust-center/security-advisories primary)
   review_schedule:
     next_review: 2026-07-18
     review_interval_days: 90

@@ -1,0 +1,165 @@
+actor_id: "026"
+actor_name: Cavern Manticore
+last_updated: 2026-07-07
+admiralty_grade: A2
+tlp: CLEAR
+source_of_record: iocs.md
+
+ttl:
+  network_infrastructure: 90    # days
+  file_hashes: 730
+  registry: never
+  vulnerabilities: never
+
+indicators:
+  # --- C2 domain ---
+  - id: cavern-manticore-domain-hospitalinstallation
+    type: domain
+    value: hospitalinstallation.com
+    defanged_original: "hospitalinstallation[.]com"
+    role: c2
+    first_seen: 2026-07-06
+    related_framework: [Cavern]
+    source_brief: finding-2026-07-06-0001
+
+  # --- Sideloaded / malicious DLL filenames (artifact/hunt indicators, NOT hashes) ---
+  - id: cavern-manticore-dll-uxtheme
+    type: filename
+    value: uxtheme.dll
+    role: sideloaded_or_malicious_dll
+    fidelity: low                 # matches legitimate Windows component — hunt on non-System32 path
+    attack_technique: T1574.002
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-dll-n-htcommp
+    type: filename
+    value: n-HTCommp.dll
+    role: sideloaded_or_malicious_dll
+    fidelity: high
+    attack_technique: T1574.002
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-dll-mhm
+    type: filename
+    value: mhm.dll
+    role: sideloaded_or_malicious_dll
+    fidelity: medium
+    attack_technique: T1574.002
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-dll-db
+    type: filename
+    value: db.dll
+    role: sideloaded_or_malicious_dll
+    fidelity: low                 # common short name — low fidelity alone
+    attack_technique: T1574.002
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-dll-ode
+    type: filename
+    value: ode.dll
+    role: sideloaded_or_malicious_dll
+    fidelity: medium
+    attack_technique: T1574.002
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-dll-n-ten
+    type: filename
+    value: n-ten.dll
+    role: sideloaded_or_malicious_dll
+    fidelity: high
+    attack_technique: T1574.002
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-dll-n-sws
+    type: filename
+    value: n-sws.dll
+    role: sideloaded_or_malicious_dll
+    fidelity: high
+    attack_technique: T1574.002
+    source_brief: finding-2026-07-06-0001
+
+  # --- Exploited CVEs (by ID only per Hard Rule 3 — no exploitation detail) ---
+  - id: cavern-manticore-cve-2025-52691
+    type: cve
+    value: CVE-2025-52691
+    role: exploited_by_actor
+    status: exploited
+    attack_technique: T1190
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-cve-2025-68613
+    type: cve
+    value: CVE-2025-68613
+    role: exploited_by_actor
+    status: exploited
+    attack_technique: T1190
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-cve-2025-9316
+    type: cve
+    value: CVE-2025-9316
+    role: exploited_by_actor
+    status: exploited
+    attack_technique: T1190
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-cve-2025-34291
+    type: cve
+    value: CVE-2025-34291
+    role: exploited_by_actor
+    status: exploited
+    attack_technique: T1190
+    source_brief: finding-2026-07-06-0001
+  - id: cavern-manticore-cve-2025-54068
+    type: cve
+    value: CVE-2025-54068
+    role: exploited_by_actor
+    status: exploited
+    attack_technique: T1190
+    source_brief: finding-2026-07-06-0001
+
+hunt_queries:
+  - id: cavern-manticore-hunt-c2-domain
+    platform: splunk
+    title: "Cavern C2 domain in DNS / proxy / web logs"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=dns OR sourcetype=proxy OR sourcetype=stream:http)
+        hospitalinstallation.com
+      | stats count min(_time) as first_seen max(_time) as last_seen
+              values(query) as queries values(url) as urls by src_ip, host
+    false_positive_note: >
+      Domain is distinctive; any hit warrants investigation. Confirm resolution to
+      attacker infrastructure before acting.
+    references_indicators: [cavern-manticore-domain-hospitalinstallation]
+
+  - id: cavern-manticore-hunt-dll-sideload
+    platform: edr
+    title: "Cavern DLL side-load artifacts (Sysmon Image Loaded)"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=Sysmon EventCode=7)
+        (ImageLoaded="*\\n-HTCommp.dll" OR ImageLoaded="*\\n-ten.dll"
+         OR ImageLoaded="*\\n-sws.dll" OR ImageLoaded="*\\mhm.dll"
+         OR ImageLoaded="*\\ode.dll" OR ImageLoaded="*\\db.dll"
+         OR (ImageLoaded="*\\uxtheme.dll"
+             AND NOT ImageLoaded="C:\\Windows\\System32\\uxtheme.dll"
+             AND NOT ImageLoaded="C:\\Windows\\SysWOW64\\uxtheme.dll"))
+      | stats count values(ImageLoaded) as dll_paths values(Image) as loading_process
+              min(_time) as first_seen by host, User
+    false_positive_note: >
+      uxtheme.dll and db.dll are common names; query excludes legitimate System32/
+      SysWOW64 uxtheme.dll load paths and relies on non-standard load locations.
+      Tune db.dll against environment baseline. n-*.dll / mhm.dll / ode.dll are
+      higher-fidelity. Maps to T1574.002 and T1036.005.
+    references_indicators:
+      - cavern-manticore-dll-uxtheme
+      - cavern-manticore-dll-n-htcommp
+      - cavern-manticore-dll-mhm
+      - cavern-manticore-dll-db
+      - cavern-manticore-dll-ode
+      - cavern-manticore-dll-n-ten
+      - cavern-manticore-dll-n-sws
+
+first_party_observation:
+  observed: false
+  last_checked: 2026-07-07
+  lookback_days: 90
+  indices: [defenseclaw_local, archimedes]
+  note: >
+    0 hits over -90d on C2 domain + distinctive DLL filenames. Per Hard Rule 8,
+    silent Splunk does NOT disconfirm — Frank is not an Israeli/Egyptian/UAE
+    IT-provider or government org matching the victim profile. Visibility-bounded
+    null, not negative evidence.

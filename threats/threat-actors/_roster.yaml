@@ -15,7 +15,7 @@
 #   5. Threat-box scoring within 14 days (human sign-off for HIGH)
 
 version: 2
-last_updated: 2026-07-06        # /new-actor Icarus (#025) — LOW (auto-commit, weighted 2.2); single-IR-vendor (Huntress) B2 attribution. Follows /update-tracking APT37 (#024) 2026-05-10 — MEDIUM (auto-commit, weighted 4.9)
+last_updated: 2026-07-07        # /new-actor Cavern Manticore (#026) — LOW (auto-commit, weighted 3.25); single-IR-vendor (Check Point Research) A2 attribution, WEP likely, CPR primary not directly retrieved; espionage category MEDIUM (composite 5). Follows /new-actor Icarus (#025) 2026-07-06 — LOW (auto-commit, weighted 2.2)
 source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
 
 actors:
@@ -400,23 +400,39 @@ actors:
     mitre_attack_id: null
     note: "First-pass profile + initial scoring created 2026-07-06 via /new-actor Icarus (operator Ryan) from finding-2026-06-19-0003 (Klue/Salesforce supply-chain compromise; OAuth-token abuse via legacy integration credential). Single-IR-vendor (Huntress) attribution on actor-identity layer — admiralty B2, WEP 'likely'; publisher independence holds but evidence-basis independence fails. Hard Rule 2 BINDING: Icarus preserved as distinct net-new identity; NO cross-walk to ShinyHunters / UNC6395 / Scattered Spider (#013) / UNC3944 despite TTP-mirror pattern (THN 'mirrors' framing is methodological-similarity, not attribution overlap). SAT-KAC assumption A1 UNRESOLVED (Huntress primary not retrieved — whether 'Icarus is distinct' vs 'Huntress tracking unattributed activity under label'); SAT-ACH H1 (distinct actor) and H3 (UNC6395 affiliate/splinter) NOT operationally distinguishable on current evidence — standing tripwire. Threat-box weighted 2.2 → LOW → auto-commit. No IOCs published (indicator-empty iocs.yaml; OAuth/Salesforce hunt guidance only). Splunk first-party categorical zero over -90d (Frank not a Salesforce-Klue tenant — visibility-bounded null, no bonus)."
 
+  - id: "026"
+    primary_name: "Cavern Manticore"
+    aliases: []                  # "Cavern" / "Cav3rn" are the C2 FRAMEWORK/toolset names, NOT actor aliases
+    attribution:
+      nation: IR
+      service: "MOIS (Ministry of Intelligence and Security) — per Check Point Research"
+    type: "Nation-State APT"
+    threat_level: LOW            # weighted overall 3.25 (LOW) per /new-actor 2026-07-07; espionage category MEDIUM (composite 5). Intent=3 Sector Association (evidence-minimum-table-bound — no A-grade source documents A&D-prime-DIRECT targeting; aviation named among sectors but victims are Israeli/Egyptian/UAE IT-provider/gov). Capability=3 Limited (single-source CPR, one report, CPR primary NOT directly retrieved) reduced by semi-custom novelty. Single-source veto applied; WEP likely.
+    tracked_since: 2026-07-07
+    dossier: threats/threat-actors/Cavern-Manticore/
+    last_reviewed: 2026-07-07
+    next_review_due: 2026-10-05
+    mitre_attack_id: null
+    note: "First-pass profile + initial scoring created 2026-07-07 via /new-actor Cavern Manticore (operator Ryan) from finding-2026-07-06-0001 (Check Point Research relayed by The Hacker News — new MOIS-affiliated cluster operating the 'Cavern'/'Cav3rn' modular .NET C2 framework against Israeli IT-provider/gov orgs; Israel primary + Egypt + UAE). SINGLE-SOURCE: CPR sole originating primary, The Hacker News pure relay (NOT independent corroboration); CPR primary NOT directly retrieved. Admiralty A2, WEP 'likely,' single-source veto applied. checkpoint-research provisional-A (72h ratification clock, pending direct retrieval + human ratification). Hard Rule 2 BINDING: CPR-noted tactical overlaps with MuddyWater (#022) and Lyceum/OilRig (#023, Lyceum = OilRig subgroup per CPR) recorded as CPR's assessment ONLY — NO roster cross-walk asserted; related_actors [022,023] reflects CPR-noted overlap, not an Archimedes attribution merge. finding-2026-07-06-0001 analyst_review_required=true — standing SAT-ACH open question (distinct cluster vs. MuddyWater/OilRig sub-cluster) NOT resolved by actor-profiler. 13 IOCs published (1 C2 domain hospitalinstallation[.]com + 7 sideloaded DLL filenames + 5 exploited CVEs by ID only per Hard Rule 3). Threat-box weighted 3.25 → LOW → auto-commit; Hard Rule 5 gate did NOT fire. Espionage category MEDIUM (composite 5) is the primary_threat_vector despite LOW overall. Splunk first-party sentinel 0 hits over -90d on C2 domain + distinctive DLL filenames (Frank not an Israeli/Egyptian/UAE IT-provider/gov org — visibility-bounded null, no bonus). Calibrates below Iran-MOIS peers UNC1549 (5.4 MEDIUM) / APT34 (4.9 MEDIUM), near MuddyWater (4.15 LOW) / Charming Kitten (4.45 LOW)."
+    related_actors: ["022", "023"]   # CPR-noted tactical overlap only — NOT an Archimedes attribution merge (Hard Rule 2)
+
 # ============================================================================
 # Quick-lookup indices (regenerated when roster changes)
 # ============================================================================
 _meta:
-  total_actors: 25
+  total_actors: 26
   by_threat_level:
     HIGH: 18
     MEDIUM: 4          # REvil, APT34, UNC1549, APT37 (per /update-tracking 2026-05-10; espionage composite 8 HIGH at category tier but weighted overall MEDIUM)
-    LOW: 3             # Charming Kitten, MuddyWater (per /update-tracking 2026-05-09; both espionage category MEDIUM/HIGH but weighted overall LOW), Icarus (per /new-actor 2026-07-06; extortion actor, weighted 2.2, single-IR-vendor B2)
+    LOW: 4             # Charming Kitten, MuddyWater (per /update-tracking 2026-05-09; both espionage category MEDIUM/HIGH but weighted overall LOW), Icarus (per /new-actor 2026-07-06; extortion actor, weighted 2.2, single-IR-vendor B2), Cavern Manticore (per /new-actor 2026-07-07; Iran-MOIS espionage cluster, weighted 3.25, single-source CPR A2, espionage category MEDIUM composite 5)
   by_nation:
     RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
     CN: 4          # Volt Typhoon, Salt Typhoon, APT40, APT41
-    IR: 5          # UNC1549, Charming Kitten, Handala, MuddyWater, APT34
+    IR: 6          # UNC1549, Charming Kitten, Handala, MuddyWater, APT34, Cavern Manticore
     KP: 3          # Stardust Chollima, Lazarus, APT37
     unknown: 8     # TeamPCP, GlassWorm, Miyako, Scattered Spider, BlackCat, Payouts King, Icarus, (LockBit/Cl0p attributed RU)
   profiles_migrated: 1         # APT28 only at v1
   profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King
-  profiles_first_pass: 6       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09) + Icarus (2026-07-06 /new-actor)
-  scoring_complete: 6          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — red-team qualify Intent=4 → weighted LOW despite category HIGH); MuddyWater (2026-05-09 /update-tracking, initial LOW — fourth workflow validation pass; red-team qualify Intent=3 Sector Association bound, 72h clock fired with no corroboration, weighted LOW despite category MEDIUM on espionage); APT37 (2026-05-10 /update-tracking, initial MEDIUM — fifth workflow validation pass; evidence-minimum-table-bound Intent=3 Sector Association, espionage category HIGH composite 8 but weighted overall MEDIUM because Intent=3 keeps espionage from ceiling 10 and three floor categories plus supply-chain MEDIUM dilute via doctrine weighting; Hard Rule 5 gate did NOT fire); Icarus (2026-07-06 /new-actor, initial LOW — weighted 2.2, single-IR-vendor B2 extortion actor, commodity novelty + no A&D-directed targeting + thin capability base, Hard Rule 5 gate did NOT fire). APT28 awaits methodology rerun.
+  profiles_first_pass: 7       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09) + Icarus (2026-07-06 /new-actor) + Cavern Manticore (2026-07-07 /new-actor)
+  scoring_complete: 7          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — red-team qualify Intent=4 → weighted LOW despite category HIGH); MuddyWater (2026-05-09 /update-tracking, initial LOW — fourth workflow validation pass; red-team qualify Intent=3 Sector Association bound, 72h clock fired with no corroboration, weighted LOW despite category MEDIUM on espionage); APT37 (2026-05-10 /update-tracking, initial MEDIUM — fifth workflow validation pass; evidence-minimum-table-bound Intent=3 Sector Association, espionage category HIGH composite 8 but weighted overall MEDIUM because Intent=3 keeps espionage from ceiling 10 and three floor categories plus supply-chain MEDIUM dilute via doctrine weighting; Hard Rule 5 gate did NOT fire); Icarus (2026-07-06 /new-actor, initial LOW — weighted 2.2, single-IR-vendor B2 extortion actor, commodity novelty + no A&D-directed targeting + thin capability base, Hard Rule 5 gate did NOT fire); Cavern Manticore (2026-07-07 /new-actor, initial LOW — weighted 3.25, single-source CPR A2 Iran-MOIS espionage cluster, evidence-minimum-table-bound Intent=3 Sector Association + Capability=3 Limited on one-report base, espionage category MEDIUM composite 5, Hard Rule 5 gate did NOT fire). APT28 awaits methodology rerun.
   scoring_template_only: 0     # APT37 scored 2026-05-10; no remaining TEMPLATE-only dossiers.

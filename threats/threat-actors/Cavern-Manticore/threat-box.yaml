@@ -1,0 +1,257 @@
+actor_id: "026"
+actor_name: "Cavern Manticore"
+target_profile: "ad-prime-v1"
+scored_at: "2026-07-07"
+scored_by: "actor-profiler"
+reviewed_by: auto-committed          # LOW overall (weighted 3.25) — auto-commit; Hard Rule 5 gate did NOT fire
+scoring_version: 1
+
+scores:
+  espionage:
+    intent:
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        CPR names aviation, energy, IT providers, government, and public sector
+        among Cavern Manticore's targets, geographically anchored to Israel
+        (primary), Egypt, and the UAE. This is broad-sector Iranian MOIS
+        collection, NOT documented targeting of A&D primes. Per the
+        evidence-minimum table, Intent=5 (Target-Specific) requires at least one
+        A-grade source documenting targeting of the ad-prime-v1 profile — no such
+        source exists (no A&D-prime victim named; aviation appears only as one
+        sector among several). Intent capped at 3 (Sector Association): aviation
+        sits within the named sector set but targeting is not A&D-prime-directed.
+        Single-source (CPR) even for this sector claim.
+      sources: [finding-2026-07-06-0001]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — sanctions regime, no diplomatic constraints on cyber operations against Western-aligned targets."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 1
+      evidence: |
+        CPR documents genuine tooling substance — a mature, modular .NET C2
+        framework (Cavern/Cav3rn), DLL side-loading, and exploitation of five
+        2025-vintage CVEs. However the evidence base is a SINGLE report from a
+        SINGLE IR vendor (CPR), relayed via The Hacker News (a pure relay, not
+        independent corroboration), and the CPR primary was NOT directly
+        retrieved. There is one documented campaign/cluster designation, no
+        multi-campaign body of work, and no independent second-vendor
+        corroboration. Per the capability table this is Cap=3 (Limited — some
+        evidence across a single documented incident from one source), NOT Cap=4
+        (which requires one A-grade source with multiple campaigns or one
+        extensively documented) and NOT Cap=5 (multiple A-grade sources +
+        multiple 24-month campaigns). Single-source veto and non-retrieval hold
+        capability down despite real tooling substance.
+      sources: [finding-2026-07-06-0001]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Newly-documented custom modular .NET C2 framework (Cavern) now identified/named by CPR — identified nation-state tooling scores -1 (semi-custom), not -0 (fully novel/unsignatured) now that it is publicly characterized, nor -2 (commodity)."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "First-party Splunk sentinel 2026-07-07: 0 hits over -90d on C2 domain + distinctive DLL filenames. Hard Rule 8 — silent Splunk does not disconfirm; Frank not an Israeli/Egyptian/UAE IT-provider or gov org. Visibility-bounded null. No bonus applied."
+    final_intent: 3
+    final_capability: 2
+    composite: 5
+    threat_level: MEDIUM
+    ioc_bonus_applied: 0
+
+  supply_chain:
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        IT-provider targeting is a supply-chain-relevant pattern, but CPR
+        documents no A&D-prime-directed supply-chain campaign and names no
+        downstream A&D victim reached via IT-provider compromise. Intent=2
+        (Regional Association): the actor targets Western-aligned regional
+        entities generally, with supply-chain exposure implied but not
+        A&D-prime-anchored.
+      sources: [finding-2026-07-06-0001]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — no diplomatic constraints."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        IT-provider compromise implies a pivot/relay capability, but the single
+        CPR report does not document a completed supply-chain pivot into a
+        downstream victim. Feasibility is indicated; demonstrated supply-chain
+        capability is not. Cap=2 (Possible), further reduced by semi-custom
+        novelty.
+      sources: [finding-2026-07-06-0001]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Same identified modular .NET tooling ecosystem as espionage — -1 semi-custom."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 2
+    final_capability: 1
+    composite: 3
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  destructive:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: "No destructive intent documented. Cavern Manticore is characterized by CPR as an espionage cluster; no wiper, no destructive tasking reported."
+      sources: [finding-2026-07-06-0001]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — no diplomatic constraints (immaterial at Intent=1)."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: "No evidence of destructive capability in the single available report."
+      sources: [finding-2026-07-06-0001]
+    novelty:
+      modifier: 0
+      label: not-applicable
+      evidence: "No destructive tooling documented."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  disruptive:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: "No disruptive intent documented. No DDoS, defacement, or service-disruption tasking reported by CPR."
+      sources: [finding-2026-07-06-0001]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — no diplomatic constraints (immaterial at Intent=1)."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: "No evidence of disruptive capability in the single available report."
+      sources: [finding-2026-07-06-0001]
+    novelty:
+      modifier: 0
+      label: not-applicable
+      evidence: "No disruptive tooling documented."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  cyber_crime:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: "No financially-motivated / criminal intent documented. CPR characterizes Cavern Manticore as MOIS-affiliated state espionage, not criminal."
+      sources: [finding-2026-07-06-0001]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — no diplomatic constraints (immaterial at Intent=1)."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: "No evidence of cyber-crime capability (ransomware, extortion, financial theft) in the single available report."
+      sources: [finding-2026-07-06-0001]
+    novelty:
+      modifier: 0
+      label: not-applicable
+      evidence: "No criminal tooling documented."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+overall:
+  weighted_score: 3.25
+  weights_used:
+    espionage: 0.35
+    supply_chain: 0.20
+    destructive: 0.15
+    disruptive: 0.15
+    cyber_crime: 0.15
+  threat_level: LOW
+  authority_level: actor-profiler-autonomous
+  primary_threat_vector: espionage      # category MEDIUM (composite 5); the driver despite LOW overall
+
+confidence:
+  admiralty: A2
+  notes: >
+    Single-source (Check Point Research; The Hacker News is a pure relay). CPR
+    primary NOT directly retrieved. WEP capped at "likely" by single-source veto.
+    Provisional-A source pending direct retrieval + human ratification (72h clock).
+    Scoring is deliberately conservative: real tooling substance (modular .NET C2,
+    DLL side-loading, 5-CVE exploitation) but capped on a one-report, one-vendor
+    evidence base. Espionage category MEDIUM (composite 5); overall dilutes to LOW
+    via doctrine weighting across four floor categories. Calibrates below Iran
+    MOIS peers UNC1549 (5.4 MEDIUM) and APT34 (4.9 MEDIUM), near MuddyWater (4.15
+    LOW) and Charming Kitten (4.45 LOW), slightly lower given the thinner
+    single-report base. LIFT PATH: independent second-IR-vendor corroboration
+    (Mandiant / CrowdStrike / Unit 42 / MSTIC / Microsoft) or direct CPR retrieval
+    would raise Capability and could shift the assessment. A&D-prime-DIRECT
+    targeting evidence would raise Espionage Intent above Sector Association.
+
+hard_rule_notes:
+  rule_2: >
+    NO Archimedes-originated attribution. MOIS affiliation and the cluster
+    designation inherit from CPR. CPR-noted tactical overlaps with MuddyWater
+    (#022) and Lyceum/OilRig (#023) recorded as CPR's assessment ONLY — NO roster
+    cross-walk asserted. SAT-ACH (distinct cluster vs. MuddyWater/OilRig
+    sub-cluster) is a standing open question for the analyst.
+  rule_3: "Exploited CVEs referenced by ID only. No exploitation detail in this file."
+  rule_5: "Did NOT fire — overall LOW (weighted 3.25). No /approve-scoring required."
+  rule_8: "Splunk first-party sentinel run 2026-07-07: 0 hits over -90d, visibility-bounded null, no IOC bonus."
+
+review_policy:
+  interval_days: 90
+  last_reviewed: "2026-07-07"
+  next_review_due: "2026-10-05"
+  review_triggers:
+    - new_attribution_from_a_source
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation
+    - independent_second_ir_vendor_corroboration    # would resolve single-source veto / lift WEP
+    - cpr_primary_direct_retrieval
+
+status: scored
+
+history:
+  - scored_at: "2026-07-07"
+    scorer: archimedes-actor-profiler
+    change: "initial — /new-actor Cavern Manticore (operator Ryan) from finding-2026-07-06-0001; weighted 3.25 LOW; espionage category MEDIUM (composite 5); single-source (CPR) A2 WEP likely; Splunk sentinel 0 hits -90d; auto-committed"

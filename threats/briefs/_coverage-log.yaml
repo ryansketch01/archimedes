@@ -39764,7 +39764,7 @@ entries:
       for this briefer cycle.
 
   - id: 2026-07-06-flash-1629-001-bleepingcomputer-adobe-coldfusion-cve-2026-48282-max-severity-unauth-rce-active-exploitation-kevintel-cccs-dual-confirm-relay-attenuated
-    covered_in: [flash-2026-07-06-1629]
+    covered_in: [flash-2026-07-06-1629, 2026-07-08-morning]   # 2026-07-08-morning: UPDATE resurface — CISA KEV-listed (BOD due 2026-07-10) + NVD CVSS 10.0; A2/very_likely; red-team qualifying language carried
     brief_file: threats/briefs/flash-2026-07-06-1629.md
     headline: "FLASH — Adobe ColdFusion CVE-2026-48282, a critical-severity unauthenticated RCE (low attack complexity, no user interaction), reported under active in-the-wild exploitation within hours of disclosure; n-day (Adobe patched 2026-07-01, NOT a zero-day); exploitation dual-attested by two genuinely independent primaries — KEVIntel honeypot network (attacks observed under two hours after disclosure) + Canadian Centre for Cyber Security (CCCS national CERT) — but BOTH reach Archimedes only through a single B-grade relay (BleepingComputer/Gatlan) and NEITHER primary was directly retrieved (relay-attenuated corroboration); CVSS numeric UNVERIFIED ('max severity' per publisher only, NVD/Adobe PSIRT confirmation pending — NOT asserted as 10.0/9.8); ~800 internet-exposed instances per Shodan/Shadowserver, unpatched share unknown; affected ColdFusion 2025.9, 2023.20, and earlier; NO actor attributed (Hard Rule 2 — none to report); NO A&D-prime victim or sector targeting named (A&D relevance MEDIUM-structural only via ColdFusion DIB/government footprint); Trigger 1 (critical CVE + active exploitation + A-grade source at primary level); critical-override 1-of-4 (does NOT apply, moot — compose within active hours); first-party Splunk 0 sentinel hits, Frank not known to run ColdFusion (Hard Rule 8 silence-not-disconfirming)"
     topic_tags:
@@ -39886,7 +39886,7 @@ entries:
         actor attribution (Hard Rule 2). Federal BOD 22-01 deadline 2026-07-10 is
         the actionable hook.
     first_covered: 2026-07-06
-    last_covered: 2026-07-06           # last covered in a BRIEF on 2026-07-06; recalibrated in-place 2026-07-07, UPDATE queued for 2026-07-08 morning (see morning_brief_update_queued)
+    last_covered: 2026-07-08           # UPDATE-flag resurface in 2026-07-08 morning brief (Active Threats lead): CISA KEV listing + NVD CVSS 10.0 + BOD 2026-07-10 deadline. Digraph B2->A2, WEP likely->very_likely. Red-team QUALIFY language carried (one directly-retrieved A-grade CISA KEV determination + relay-conveyed KEVIntel/CCCS via BleepingComputer + SecurityWeek — NOT robustly triangulated multi-source). Structural-only A&D nexus preserved.
     retraction: null
     test: false
     word_count_layer_1: 275
@@ -40394,6 +40394,134 @@ entries:
       (Layer 1 carries them). Natural-language date phrasing; no digraph/WEP/
       finding-id in Layer 2; no themed-character voice. Pre-flight 13-of-13 PASS
       on first iteration.
+
+  - id: 2026-07-08-am-001-joomla-page-builder-rce-cluster-cve-2026-48908-cve-2026-56290-cisa-kev-active-exploitation-single-source-veto
+    covered_in: [2026-07-08-morning]
+    brief_file: threats/briefs/2026-07-08-morning.md
+    headline: "CISA KEV-listed two actively-exploited unauthenticated file-upload-to-RCE flaws (CWE-434) in Joomla page-builder extensions on 2026-07-07 — CVE-2026-48908 (JoomShaper SP Page Builder <=6.6.1, fixed 6.6.2) and CVE-2026-56290 (Joomlack Page Builder CK <=3.6.0, fixed 3.6.0), both CVSS 9.8 v3.1 / 10.0 v4.0, PR:N unauthenticated; TTP color (SecurityWeek relay): hidden admin accounts + PHP backdoors (48908), web shells within hours of the 2026-06-27 patch (56290); exploitation rests solely on CISA KEV (NVD confirms CVE facts not exploitation) — single-source veto applied, capped A2/likely; NO actor attributed (Hard Rule 2); A&D relevance NEGLIGIBLE (website-CMS plugins, no material industrial-base deployment path) — monitoring/KEV-roundup line, not a lead; same 2026-07-07 KEV batch as ColdFusion CVE-2026-48282 and Langflow CVE-2026-55255; BOD remediation due 2026-07-10"
+    topic_tags:
+      - cve-2026-48908
+      - cve-2026-56290
+      - joomla-sp-page-builder-joomshaper
+      - joomla-page-builder-ck-joomlack
+      - cwe-434-unauth-file-upload-to-rce
+      - cisa-kev-2026-07-07-bod-due-2026-07-10
+      - active-exploitation-single-source-cisa-kev-only
+      - single-source-veto-applied-capped-likely
+      - ttp-hidden-admin-accounts-php-backdoors-web-shells-securityweek-relay
+      - no-actor-attributed-hard-rule-2
+      - ad-relevance-negligible-website-cms-plugins
+      - monitoring-kev-roundup-line-not-lead
+      - net-new-cve-not-in-index-vuln-tracker-handoff
+      - vulnerabilities-section
+    related_actors: []
+    related_vulns: [CVE-2026-48908, CVE-2026-56290]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-08-flash-0600-0001]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Exploitation claim rests solely on CISA KEV; NVD corroborates the CVE facts
+      but is silent on exploitation. SecurityWeek (B-grade relay) conveys the same
+      KEV batch + TTP color, not an independent exploitation evidence basis. Veto
+      holds; WEP capped at likely.
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution from any source; none originated by Archimedes"
+      - "A&D relevance negligible (website-CMS plugins); no sector targeting, no named victim"
+    resurface_if:
+      - independent_exploitation_witness_distinct_from_cisa_kev   # vendor/telemetry -> lift toward A2/very_likely (ColdFusion CCCS+KEVIntel precedent)
+      - new_actor_attribution
+      - dib_deployment_pathway_materializes                       # would elevate from negligible A&D relevance
+      - first_party_ioc_hit
+    first_covered: 2026-07-08
+    last_covered: 2026-07-08
+    retraction: null
+    test: false
+
+  - id: 2026-07-08-am-002-langflow-cve-2026-55255-authenticated-idor-cwe-639-cisa-kev-active-exploitation-single-source-veto
+    covered_in: [2026-07-08-morning]
+    brief_file: threats/briefs/2026-07-08-morning.md
+    headline: "CISA KEV-listed CVE-2026-55255 on 2026-07-07 — an AUTHENTICATED IDOR / authorization-bypass (CWE-639, PR:L, AC:H) in the Langflow AI-agent-builder framework's /api/v1/responses endpoint; an authenticated attacker executes any flow belonging to another user; NVD CVSS v3.1 8.4 is AUTHORITATIVE for the CVE record (SecurityWeek's 9.9 relay figure most plausibly the CVSS v4.0 base score, NOT a contradiction); active exploitation since ~2026-06-25/26; chain reference CVE-2026-33017 (prior Langflow RCE patched March 2026) — related, NOT cross-walked; patch Langflow >=1.9.1/1.9.2; exploitation rests solely on CISA KEV (BleepingComputer relays, NVD silent) — single-source veto applied, A2/likely; NOT a FLASH (8.4 < 9.0 Trigger-1 floor, authenticated); NO actor attributed (JadePuffer ransomware firewalled to the unrelated CVE-2025-3248, Hard Rule 2); A&D relevance LOW (no DIB pathway today; Threat Detection Weekly candidate if AI-agent-framework exposure grows); same 2026-07-07 KEV batch as ColdFusion + Joomla; BOD remediation due 2026-07-10"
+    topic_tags:
+      - cve-2026-55255
+      - langflow-ai-agent-builder-framework
+      - cwe-639-idor-authorization-bypass
+      - authenticated-pr-l-ac-h-below-flash-floor
+      - cvss-v3-1-8-4-nvd-authoritative-vs-9-9-v4-0-relay-reconciled
+      - cisa-kev-2026-07-07-bod-due-2026-07-10
+      - active-exploitation-since-2026-06-25
+      - chain-reference-cve-2026-33017-not-cross-walked
+      - single-source-veto-applied-capped-likely
+      - no-actor-attributed-jadepuffer-firewalled-hard-rule-2
+      - ad-relevance-low-threat-detection-weekly-candidate
+      - net-new-cve-not-in-index-vuln-tracker-handoff
+      - vulnerabilities-section
+    related_actors: []
+    related_vulns: [CVE-2026-55255]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-08-flash-0600-0002]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Exploitation claim rests solely on CISA KEV; NVD silent on exploitation;
+      BleepingComputer relays the same KEV event (not independent). Veto holds;
+      WEP capped at likely. NVD v3.1 8.4 authoritative; 9.9 relay = plausibly
+      CVSS v4.0, no contradiction.
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution; JadePuffer ransomware association pertains to the unrelated CVE-2025-3248, NOT cross-walked to CVE-2026-55255"
+      - "A&D relevance low; no DIB deployment pathway today"
+    resurface_if:
+      - independent_exploitation_witness_distinct_from_cisa_kev
+      - new_actor_attribution
+      - ai_agent_framework_exposure_grows_in_target_estate       # Threat Detection Weekly / A&D-relevance elevation
+      - first_party_ioc_hit
+    first_covered: 2026-07-08
+    last_covered: 2026-07-08
+    retraction: null
+    test: false
+    brief_run_notes: |
+      2026-07-08 MORNING BRIEF (morning-20260708-080000). No net-new findings
+      this cycle — morning material is the 2026-07-07 CISA KEV batch reaching its
+      brief-delivery point. Three findings covered:
+      - LEAD (Active Threats): CVE-2026-48282 Adobe ColdFusion, A2/very_likely,
+        UPDATE-flag resurface of flash-2026-07-06-1629 (CISA KEV listing + NVD
+        CVSS 10.0 + BOD 2026-07-10). Red-team QUALIFY language carried verbatim in
+        posture: one directly-retrieved A-grade CISA KEV determination + relay-
+        conveyed KEVIntel/CCCS via BleepingComputer + SecurityWeek — NOT presented
+        as robustly triangulated multi-source. Structural-only A&D nexus. 🔗 Update-
+        on callout to the 07-06 FLASH. Coverage-log entry
+        2026-07-06-flash-1629-001 updated in place (covered_in += 2026-07-08-
+        morning; last_covered -> 2026-07-08) — NOT a new entry.
+      - Vulnerabilities: CVE-2026-48908/56290 Joomla page-builder cluster
+        (A2/likely, single-source veto, negligible A&D) + CVE-2026-55255 Langflow
+        authenticated IDOR (A2/likely, single-source veto, low A&D). Both first
+        brief delivery (flash-0600 findings absorbed to morning per operator/red-
+        team disposition). Framed as morning KEV-roundup monitoring items with
+        explicitly lower/negligible A&D relevance vs. the ColdFusion lead.
+      Anti-repetition: ColdFusion resurfaced ONLY on the material KEV/CVSS/deadline
+      update with UPDATE flag. BeyondTrust (07-07 morning), Gitea + Proteus (07-07
+      afternoon) NOT re-led — no valid resurface_if condition met; omitted.
+      Standing sections: Sector Focus: A&D (structural ColdFusion nexus note +
+      silent-day tracked-actor line) and Iran Cyber Watch (silent-day template +
+      Cavern Manticore #026 background-monitoring continuity line, not resurfaced
+      as news) both rendered in Layer 1.
+      Directive-label discrepancy (BOD 26-04 in morning relays vs BOD 22-01 in the
+      ColdFusion finding body) noted non-material — deadline 2026-07-10 consistent
+      across all sources; vuln-tracker to normalize the directive label.
+      Hard Rule 6: 0 direct quotes in Layer 1 and Layer 2. Layer 1 ~612 words
+      (400-800 band). Layer 2 Discord Summary ~175 words / ~1500 chars (150-300
+      word band; under 1900-char hard ceiling). Three bullets (Active Threats +
+      two Vulnerabilities); standing-section boilerplate omitted from Layer 2 per
+      spec. Natural-language dates; no digraph/WEP/finding-id in Layer 2; no
+      themed-character voice. Pre-flight 13-of-13 PASS on first iteration.
+      Librarian handoff — back-write published_in_briefs 2026-07-08-morning to:
+      finding-2026-07-06-flash-1629-0001, finding-2026-07-08-flash-0600-0001,
+      finding-2026-07-08-flash-0600-0002. Vuln-tracker handoffs (net-new CVEs not
+      in _index.yaml): CVE-2026-48908, CVE-2026-56290 (Joomla page-builder cluster,
+      CWE-434 unauth RCE, KEV 2026-07-07) and CVE-2026-55255 (Langflow authenticated
+      IDOR CWE-639, KEV 2026-07-07; record both v3.1 8.4 and v4.0 9.9).
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-07-07T08:00:00-04:00  # briefer 2026-07-07 morning composition complete; am-001 (BeyondTrust RS/PRA 4-CVE cluster A2/likely Vulnerabilities net-new; NVD-confirmed CVSS v4.0 9.2/9.2/8.7/8.5 supersedes finding-body pre-NVD detail; Hard Rule 2 Silk-Typhoon PRIOR-different-CVE historical-context-only no-cross-walk; A&D nexus STRUCTURAL/INDIRECT no-named-victim; patch-now hygiene not active-threat; single-source veto WEP-capped-likely) + am-brief-meta; two 2026-07-06 FLASH items (ColdFusion CVE-2026-48282 + Cavern Manticore) OMITTED no-net-new not-resurfaced; first-party sentinel CLEAN 0-hits; 18-day cadence gap since 2026-06-19 no-manufactured-continuity; pre-flight 13-of-13 PASS. PRIOR ENTRY: briefer 2026-06-19 morning composition complete; am-update-001 (FortiBleed CISA government-attestation substrate-pivot UPDATE on finding-2026-06-17-0002 — RED-TEAM BLOCKED at very_likely framing, layered WEP published with very_likely on advisory-publication procedural fact only and likely on operational-claim layers per analyst KAC halt_pending_test + sensitivity_analysis single_point_of_failure on E5 + H1/H3 ACH tie indicating aggregation-artifact framing; Hard Rule 2 BINDING preserved "Russian-speaking" verbatim no cross-walk to APT28/Sandworm/APT29) + am-update-002 (Splunk Enterprise CVE-2026-20253 vendor-PSIRT ITW confirmation substrate-pivot UPDATE on finding-2026-06-18-0003 — A1 very_likely on ITW exploitation existence with red-team-qualifications: A&D-prime DIB structural exposure layer dropped from very_likely to likely priors-only not empirically anchored + "limited" semantic-scope caveat not vendor-anchored quantitatively + Shadowserver 1,400 framed as internet-accessible-Splunk-Enterprise-instances-overall not vulnerable-A&D-prime-instances + Frank-relevance NULL per Splunk-Free-not-Enterprise; CISA KEV 3-day federal deadline 2026-06-21 T-2d countdown; Hard Rule 2 BINDING preserved "limited exploitation" unattributed per Splunk PSIRT) + am-001 (Klue/Salesforce supply-chain compromise Icarus extortion group net-new finding scaffold B2 — Icarus preserved as net-new actor identity per THN explicit-distinction framing "mirrors" not attribution overlap Hard Rule 2 BINDING NO cross-walk to ShinyHunters/UNC6395/Scattered-Spider/UNC3944; WEP likely on Icarus actor identity layer single-IR-vendor Huntress + very_likely on compromise-existence layer multi-vendor self-statement convergent; Huntress + Recorded Future named cybersecurity-firm victims no A&D-prime named victims; A&D-DIB structural exposure HIGH via Salesforce-ecosystem; operator-deferred /new-actor Icarus candidacy noted third in queue after Gentlemen + UAT-8616) + am-brief-meta populated; PM brief-meta + per-finding AM/PM entries upstream preserved unchanged
+last_updated: 2026-07-08T16:00:00-04:00  # briefer 2026-07-08 afternoon composition complete; pm-001 (UNK_MassTraction/Roundcube espionage, Proofpoint via BleepingComputer, A3/likely, MONITORING tier Actor Activity — Hard Rule 2 China-aligned recorded-at-LOW-confidence-not-amplified no roster cross-walk; single-source veto WEP-capped-likely; ACH espionage-motive-robust attribution-underdetermined H1/H4/H5 tie; A&D nexus INDIRECT-only no-named-prime; correlation callout to finding-2026-05-14-0001 shared commodity CVE-2024-42009 NOT attribution link) + pm-brief-meta; ColdFusion/Joomla/Langflow 08:00 KEV items NOT re-led — deadline-tracker continuity only (BOD 2026-07-10 T-2d); BeyondTrust/Gitea/Proteus/Cavern-Manticore NOT resurfaced no-net-new; standing sections silent-template; Hard Rule 6 zero-quotes; pre-flight 13-of-13 PASS. PRIOR ENTRY: briefer 2026-07-07 morning composition complete; am-001 (BeyondTrust RS/PRA 4-CVE cluster A2/likely Vulnerabilities net-new; NVD-confirmed CVSS v4.0 9.2/9.2/8.7/8.5 supersedes finding-body pre-NVD detail; Hard Rule 2 Silk-Typhoon PRIOR-different-CVE historical-context-only no-cross-walk; A&D nexus STRUCTURAL/INDIRECT no-named-victim; patch-now hygiene not active-threat; single-source veto WEP-capped-likely) + am-brief-meta; two 2026-07-06 FLASH items (ColdFusion CVE-2026-48282 + Cavern Manticore) OMITTED no-net-new not-resurfaced; first-party sentinel CLEAN 0-hits; 18-day cadence gap since 2026-06-19 no-manufactured-continuity; pre-flight 13-of-13 PASS. PRIOR ENTRY: briefer 2026-06-19 morning composition complete; am-update-001 (FortiBleed CISA government-attestation substrate-pivot UPDATE on finding-2026-06-17-0002 — RED-TEAM BLOCKED at very_likely framing, layered WEP published with very_likely on advisory-publication procedural fact only and likely on operational-claim layers per analyst KAC halt_pending_test + sensitivity_analysis single_point_of_failure on E5 + H1/H3 ACH tie indicating aggregation-artifact framing; Hard Rule 2 BINDING preserved "Russian-speaking" verbatim no cross-walk to APT28/Sandworm/APT29) + am-update-002 (Splunk Enterprise CVE-2026-20253 vendor-PSIRT ITW confirmation substrate-pivot UPDATE on finding-2026-06-18-0003 — A1 very_likely on ITW exploitation existence with red-team-qualifications: A&D-prime DIB structural exposure layer dropped from very_likely to likely priors-only not empirically anchored + "limited" semantic-scope caveat not vendor-anchored quantitatively + Shadowserver 1,400 framed as internet-accessible-Splunk-Enterprise-instances-overall not vulnerable-A&D-prime-instances + Frank-relevance NULL per Splunk-Free-not-Enterprise; CISA KEV 3-day federal deadline 2026-06-21 T-2d countdown; Hard Rule 2 BINDING preserved "limited exploitation" unattributed per Splunk PSIRT) + am-001 (Klue/Salesforce supply-chain compromise Icarus extortion group net-new finding scaffold B2 — Icarus preserved as net-new actor identity per THN explicit-distinction framing "mirrors" not attribution overlap Hard Rule 2 BINDING NO cross-walk to ShinyHunters/UNC6395/Scattered-Spider/UNC3944; WEP likely on Icarus actor identity layer single-IR-vendor Huntress + very_likely on compromise-existence layer multi-vendor self-statement convergent; Huntress + Recorded Future named cybersecurity-firm victims no A&D-prime named victims; A&D-DIB structural exposure HIGH via Salesforce-ecosystem; operator-deferred /new-actor Icarus candidacy noted third in queue after Gentlemen + UAT-8616) + am-brief-meta populated; PM brief-meta + per-finding AM/PM entries upstream preserved unchanged
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -40522,6 +40522,134 @@ entries:
       in _index.yaml): CVE-2026-48908, CVE-2026-56290 (Joomla page-builder cluster,
       CWE-434 unauth RCE, KEV 2026-07-07) and CVE-2026-55255 (Langflow authenticated
       IDOR CWE-639, KEV 2026-07-07; record both v3.1 8.4 and v4.0 9.9).
+
+  - id: 2026-07-08-pm-001-proofpoint-unk-masstraction-roundcube-webmail-exploitation-academic-national-security-research-espionage-a3-likely-monitoring-china-low-confidence
+    covered_in: [2026-07-08-afternoon]
+    brief_file: threats/briefs/2026-07-08-afternoon.md
+    headline: "UNK_MassTraction (Proofpoint, China-aligned LOW confidence) exploits Roundcube webmail flaws (CVE-2024-42009, CVE-2025-49113) to steal credentials + deploy backdoors against U.S./Canadian academic + national-security researchers"
+    topic_tags:
+      - unk-masstraction
+      - proofpoint-threat-research
+      - via-bleepingcomputer-relay-bill-toulas
+      - roundcube-webmail-exploitation
+      - cve-2024-42009-xss
+      - cve-2025-49113-deserialization
+      - credential-theft-plus-backdoor-deployment
+      - academic-national-security-research-victimology
+      - physics-astrophysics-particle-physics-engineering-departments
+      - china-aligned-proofpoint-own-low-confidence-hard-rule-2
+      - no-cross-walk-to-roster-china-cluster-volt-salt-apt40-apt41
+      - net-new-cluster-designation-not-on-roster
+      - single-effective-source-proofpoint-via-bleepingcomputer
+      - single-source-veto-applied-capped-likely
+      - a3-monitoring-tier-awareness-not-action
+      - ad-nexus-indirect-adjacent-academic-personal-webmail-university-research-partnerships-no-named-prime
+      - ach-espionage-motive-robust-attribution-underdetermined-h1-h4-h5-tie
+      - kac-single-relayed-source-plus-china-alignment-load-bearing-qualifiers
+      - actor-activity
+    related_actors: []
+    related_vulns:
+      - CVE-2024-42009
+      - CVE-2025-49113
+    related_campaigns: []
+    finding_ids: [finding-2026-07-08-0001]
+    digraph: A3
+    wep: likely
+    single_source_veto_applied: true
+    resurface_if:
+      - second_independent_a_or_b_source_corroborates_campaign_or_china_attribution
+      - proofpoint_primary_directly_retrieved_publishes_network_or_file_iocs
+      - any_source_cross_walks_unk_masstraction_to_tracked_roster_actor
+      - china_nexus_artifacts_shown_planted_false_flag
+      - first_party_ioc_hit
+      - named_ad_prime_dib_or_itar_victim_disclosed
+    first_covered: 2026-07-08
+    last_covered: 2026-07-08
+    retraction: null
+    test: false
+    notes: |
+      Net-new monitoring-tier finding, only net-new promotion of the 2026-07-08
+      afternoon cycle. Placed in Actor Activity (not Active Threats — below B2
+      action floor; A3/likely). Hard Rule 2 BINDING: Proofpoint's China-aligned
+      attribution is the vendor's OWN explicitly-LOW-confidence judgment, RECORDED
+      not amplified; NO cross-walk to any roster China cluster (Volt Typhoon /
+      Salt Typhoon / APT40 / APT41). Single-source veto applied (Proofpoint via
+      BleepingComputer/Toulas relay = one effective source; Proofpoint primary NOT
+      directly retrieved) -> WEP capped at likely. Analyst SATs (no red-team; WEP
+      ceiling < very_likely): ACH resolves espionage MOTIVE robustly (research
+      victimology E2 + persistent backdoor E5 refute commodity criminal H3, both
+      independent of attribution) but leaves attribution underdetermined — H1
+      (China) / H4 (emerging-undetermined) / H5 (false-flag) tie at zero
+      inconsistencies, separated only by E1 (A3, single-source, LOW-confidence,
+      not-directly-retrieved). KAC: A1 single-relayed-source + A2 china-alignment
+      qualified; A5 relay-fidelity flagged test (non-blocking, awaiting direct
+      retrieval); A7 A&D read-through INDIRECT/ADJACENT only (cleared-researcher
+      academic/personal webmail + university research partnerships; NO named A&D
+      prime, DIB entity, or ITAR program) — not inflated. Correlation callout to
+      finding-2026-05-14-0001 (FrostyNeighbor/ESET) — shared CVE-2024-42009 is a
+      public commodity exploit reused by a DIFFERENT actor, NOT an attribution
+      link (Hard Rule 2). Both CVEs untracked (not in _index.yaml) — vuln-tracker
+      awareness monitor_only. UNK_MassTraction net-new cluster, not on roster —
+      /new-actor awareness candidate at operator discretion only, flagged not
+      actioned. Source-grade: Proofpoint provisional-A addition proposed (librarian
+      to action; awaiting_ratification + awaiting_direct_retrieval).
+
+  - id: 2026-07-08-pm-brief-meta
+    covered_in: [2026-07-08-afternoon]
+    brief_file: threats/briefs/2026-07-08-afternoon.md
+    headline: "Afternoon brief meta — 1 net-new monitoring finding (UNK_MassTraction/Roundcube), light honest cycle, no manufactured urgency"
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - 1-net-new-finding-pm-cycle-monitoring-tier
+      - unk-masstraction-actor-activity-a3-likely
+      - lead-with-net-new-monitoring-item-honestly-scoped-indirect-ad
+      - coldfusion-joomla-langflow-kev-deadline-tracker-t-2-days-continuity-only-not-re-report
+      - beyondtrust-gitea-proteus-cavern-manticore-not-resurfaced-no-net-new
+      - standing-sections-silent-template-sector-focus-iran-cyber-watch
+      - hard-rule-2-proofpoint-china-low-confidence-preserved-both-layers
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-07-08-0001]
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-08
+    last_covered: 2026-07-08
+    retraction: null
+    test: false
+    brief_run_notes: |
+      2026-07-08 AFTERNOON BRIEF (briefer phase, afternoon-20260708-160000). One
+      net-new finding this cycle — finding-2026-07-08-0001 (UNK_MassTraction /
+      Roundcube espionage), monitoring tier A3/likely. LEAD is that finding,
+      honestly scoped: Proofpoint's China attribution is the vendor's OWN LOW-
+      confidence call (Hard Rule 2 — recorded, not amplified, no roster cross-walk);
+      A&D nexus INDIRECT only (no named prime); awareness not action. Placed in
+      Actor Activity (below B2 Active-Threats floor). Anti-repetition: ColdFusion
+      CVE-2026-48282 + Joomla CVE-2026-48908/56290 + Langflow CVE-2026-55255 (all
+      08:00 morning items) NOT re-led — no status change; carried ONLY as a brief
+      Vulnerabilities deadline-tracker line (CISA KEV BOD 2026-07-10 now T-2 days,
+      continuity not re-report, KEV catalog cited). BeyondTrust (07-07 AM), Gitea +
+      Proteus (07-07 PM), Cavern Manticore #026 NOT resurfaced — no resurface_if
+      met. Standing sections rendered in Layer 1: Sector Focus: A&D (silent-day
+      template + indirect-nexus note pointing to the Roundcube item, not inflated)
+      and Iran Cyber Watch (silent-day template). Hard Rule 6: 0 direct quotes in
+      Layer 1 and Layer 2. Layer 1 ~505 words (400-800 band). Layer 2 Discord
+      Summary ~168 words / under 1900-char ceiling (150-300 word band); two bullets
+      (Actor Activity source-linked headline + Vulnerabilities KEV-deadline
+      tracker); standing-section boilerplate omitted from Layer 2; natural-language
+      dates ("this Friday, July 10"); no digraph/WEP/finding-id in Layer 2; no
+      themed-character voice. Pre-flight 13-of-13 PASS on first iteration.
+      Librarian handoffs: (1) back-write published_in_briefs 2026-07-08-afternoon
+      to finding-2026-07-08-0001 [DONE by briefer]; (2) source-grades.yaml add
+      Proofpoint provisional-A (awaiting_ratification + awaiting_direct_retrieval),
+      log to source-grade-log.md; (3) vuln-tracker awareness (monitor_only, not
+      index-add): CVE-2024-42009 (Roundcube XSS, also finding-2026-05-14-0001) and
+      CVE-2025-49113 (Roundcube deserialization); (4) UNK_MassTraction net-new
+      cluster /new-actor awareness candidate at operator discretion only —
+      flagged, not actioned.
 
 # ============================================================================
 # Valid resurface_if conditions

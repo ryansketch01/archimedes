@@ -598,3 +598,23 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 **Reviewer:** Awaiting Ryan ratification.
 **Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`.
 **Next review:** rolling pivot on first-direct-retrieval of beyondtrust.com/trust-center/security-advisories primary AND human ratification.
+
+---
+
+## 2026-07-08 — Proofpoint (Threat Research) — (none) → A (provisional, awaiting ratification + direct retrieval)
+
+**Type:** New source — provisional (single addition)
+**Source ID:** `proofpoint`
+**Run:** librarian-20260708-1600 (Mode 1 post-scheduled afternoon brief)
+
+**Summary:** First Archimedes-corpus citation of Proofpoint Threat Research, added during 2026-07-08 afternoon brief delivery. First cited via finding-2026-07-08-0001 (UNK_MassTraction — a Proofpoint-tracked cluster exploiting two Roundcube webmail flaws, CVE-2024-42009 XSS + CVE-2025-49113 deserialization, to steal credentials and deploy backdoors against U.S./Canadian physics, astrophysics, particle-physics, and national-security research groups; Proofpoint assesses the cluster likely China-aligned but explicitly rates that judgment LOW confidence).
+
+**Grade rationale:** Provisional A per the SentinelLabs precedent (2026-05-08) for Tier-1 vendor-research first surfaces. Proofpoint Threat Research is a Tier-1 email-security / threat-intel vendor with a long-running, well-regarded actor-tracking practice (UNK_/TA# designation convention) — peer to Mandiant / CrowdStrike / Unit 42 / MSTIC / SentinelLabs. The LOW-confidence China-alignment is Proofpoint's OWN judgment; it is RECORDED, not amplified, and NOT cross-walked to any roster China cluster (Hard Rule 2 preserved). Proofpoint's grade does not lift the finding above its cap — single-source veto already pins WEP at 'likely'.
+
+**Retrieval status:** Relay-only via BleepingComputer (B relay, Bill Toulas byline, ratified) this sweep. The Proofpoint Threat Research primary was NOT directly retrieved. Single-source veto applied at grader (one effective source — BleepingComputer is a relay of Proofpoint, fails the independence test) — WEP capped at 'likely'; finding graded A3, carried at monitoring tier as an awareness signal.
+
+**Supporting findings:** [finding-2026-07-08-0001]
+**Posted to:** Discord `#intel-briefs` (afternoon brief message_id 1524509696428478596) carries the finding source citation inline; no separate `#actor-review` post required per Mode 9 (first-citation provisional addition under the precedent-class auto-add path, not a B->D-or-worse downgrade or an unsolicited C->A upgrade).
+**Reviewer:** Awaiting Ryan ratification.
+**Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`.
+**Next review:** rolling pivot on first-direct-retrieval of proofpoint.com/us/blog/threat-insight primary (which would also enable a first-party Splunk IOC hunt) AND human ratification.

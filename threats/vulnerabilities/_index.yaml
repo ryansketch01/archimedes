@@ -6,8 +6,8 @@
 # Migrated from C3PO ZD-001/002/003 entries. Additional vulns added as
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
-version: 6
-last_updated: 2026-07-09        # v6: VT-011 RoguePlanet STATE CHANGE (unpatched->patched; cve null->CVE-2026-50656; OOB Defender engine 1.1.26060.3008; CVSS 7.0/7.8; CWE-59; KEV-eligible-not-listed; Nightmare Eclipse series fully closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel rtmutex UAF CVE-2026-43499, CVSS 7.8, root LPE + container escape, n-day patched, no ITW, non-KEV) via finding-2026-07-09-0001. Prior v5: +1 row VT-017 (Adobe ColdFusion CVE-2026-48282) via finding-2026-07-06-flash-1629-0001; v4: +1 row VT-016 (BeyondTrust RS/PRA BT26-03); 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation
+version: 7
+last_updated: 2026-07-09        # v7: +1 row VT-019 (PAN-OS User-ID Terminal Server Agent (TSA) multiple buffer overflows CVE-2026-0288, CVSS v4.0 7.2 HIGH / vendor High+highest-urgency, CWE-787, n-day patched at disclosure, vendor no-ITW, non-KEV; awareness tier) via finding-2026-07-09-0003 — DISTINCT from ZD-004 CVE-2026-0300 (User-ID Auth Portal) and CVE-2026-0257 (GlobalProtect). Prior v6: VT-011 RoguePlanet STATE CHANGE (unpatched->patched; cve null->CVE-2026-50656; OOB Defender engine 1.1.26060.3008; CVSS 7.0/7.8; CWE-59; KEV-eligible-not-listed; Nightmare Eclipse series fully closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel rtmutex UAF CVE-2026-43499, CVSS 7.8, root LPE + container escape, n-day patched, no ITW, non-KEV) via finding-2026-07-09-0001. Prior v5: +1 row VT-017 (Adobe ColdFusion CVE-2026-48282) via finding-2026-07-06-flash-1629-0001; v4: +1 row VT-016 (BeyondTrust RS/PRA BT26-03); 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation
 
 vulnerabilities:
 
@@ -869,6 +869,74 @@ vulnerabilities:
       Hard Rule 3); any in-the-wild exploitation observation; A&D-prime named-victim reporting
       (would shift ad_relevance up from structural).
 
+  - id: VT-019
+    name: "PAN-OS User-ID Terminal Server Agent (TSA) multiple buffer overflows (CVE-2026-0288)"
+    type: "Unauthenticated network-vector buffer overflow (out-of-bounds write) -> DoS, potential RCE (CWE-787)"
+    platform: "Palo Alto Networks PAN-OS — User-ID Terminal Server Agent (TSA) component; PA-Series / VM-Series firewalls + Prisma Access. Cloud NGFW (AWS/Azure) NOT affected."
+    cve: CVE-2026-0288
+    cvss: 7.2                        # NVD/CNA CVSS v4.0 base HIGH (no CVSS v3.1 in NVD record); vendor rates High severity + highest urgency
+    cvss_scoring_version: "4.0"
+    cvss_vector: "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H/SC:L/SI:L/SA:L/E:U/AU:N/R:U/V:D/RE:M"
+    cvss_source_note: "NVD/CNA CVSS v4.0 7.2 HIGH (directly retrieved 2026-07-09); NVD record carries no CVSS v3.1. Vendor PSIRT: High severity, highest suggested urgency."
+    cwe: CWE-787                     # Out-of-bounds Write; CAPEC-100
+    nvd_published: 2026-07-08
+    batch: "July 2026 PAN-OS quarterly advisory — 13 CVEs total (this + 7 medium + 5 low); other 12 CVE IDs not disclosed in relay"
+    affected_versions_note: "PAN-OS 10.2.0 through 12.1.7 (NVD range); Prisma Access specific versions. Verify exact branch/hotfix matrix against live PSIRT advisory."
+    fixed_versions:
+      - "PAN-OS 12.1.4-h8+ / 12.1.8+ (per branch)"
+      - "PAN-OS 11.2.13+"
+      - "PAN-OS 11.1.16+"
+      - "PAN-OS 10.2.7-h36+"
+    patch_status: patched            # patched at disclosure (n-day)
+    patch_release_date: 2026-07-08
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    kev_last_checked: 2026-07-09     # not in latest known catalog 2026.07.07; disclosure postdates it — KEV watch active
+    kev_pending: true                # watch signal active per standing escalation watch
+    exploitation_status: patched_no_itw     # vendor "not aware of any malicious exploitation"
+    public_exploit_available: false
+    detection_signatures_published: false   # only indicator is the CVE itself; detection behavioral
+    digraph: B2
+    wep_ceiling: likely
+    single_source_veto_applied: true
+    related_actors: []               # Hard Rule 2 — no actor named by any source
+    related_findings:
+      - finding-2026-07-09-0003
+    related_briefs: []
+    distinct_from:
+      - "ZD-004 / CVE-2026-0300 (PAN-OS User-ID AUTHENTICATION PORTAL pre-auth RCE — tracked, KEV, active exploitation; DIFFERENT component)"
+      - "CVE-2026-0257 (PAN-OS GlobalProtect auth-bypass — corpus retrospective, finding-2026-05-29-0004 lineage; DIFFERENT component)"
+    ad_relevance: medium
+    ad_relevance_rationale: >
+      STRUCTURAL / INDIRECT only. PAN-OS is a ubiquitous network-edge / VPN-
+      termination appliance across the DIB; an unauthenticated network-vector
+      buffer overflow with DoS and potential RCE is a foothold-class primitive
+      against any exposed PAN-OS estate — same exposure class Archimedes already
+      tracks via ZD-004 (CVE-2026-0300) and CVE-2026-0257. NOT A&D-specific
+      targeting: no named A&D victim, no sector targeting, no actor, vendor
+      attests no ITW, patched at disclosure. Do not overstate.
+    dossier: threats/vulnerabilities/PAN-OS-CVE-2026-0288/profile.md
+    tracking: threats/vulnerabilities/PAN-OS-CVE-2026-0288/tracking.yaml
+    tracked_since: 2026-07-09
+    last_reviewed: 2026-07-09
+    next_review_due: 2026-08-09      # 30-day awareness cadence (matches VT-018 GhostLock): recheck KEV listing + any ITW / public-exploit emergence
+    note: >
+      Awareness-tier entry scaffolded 2026-07-09 from finding-2026-07-09-0003
+      (B2, single-source veto — SecurityWeek/Kovacs relaying the Palo Alto PSIRT
+      quarterly batch). CVSS v4.0 7.2 HIGH, CWE-787, affected/fixed matrix, and
+      the User-ID Terminal Server Agent (TSA) component were directly retrieved
+      from NVD + Palo Alto PSIRT 2026-07-09 (NOT left pending). DISTINCT from the
+      two PAN-OS entries already tracked — different component (TSA vs. User-ID
+      Authentication Portal / GlobalProtect); DO NOT MERGE. n-day patched at
+      disclosure; vendor no-ITW; not KEV-listed (catalog 2026.07.07 predates
+      disclosure). Batch total 13 CVEs (7 medium incl. root command-exec /
+      auth-bypass / SSRF, 5 low) — other 12 CVE IDs not disclosed in relay;
+      enrich from PSIRT if any warrants its own row. Standing escalation watch:
+      CISA KEV listing OR independent exploitation signal (GreyNoise / Unit 42 /
+      Mandiant / CISA) on CVE-2026-0288 -> FLASH-eligible reassessment given the
+      unauthenticated-network-vector RCE potential.
+
   # Notes on KEV-add finding-2026-05-27-0007 third CVE:
   # CVE-2026-8398 (Daemon Tools Lite) was the third KEV addition in
   # catalog version 2026.05.27 but is NOT tracked as a vuln dossier —
@@ -890,10 +958,14 @@ _meta:
   # assigned + OOB Defender engine 1.1.26060.3008; Nightmare Eclipse series fully
   # closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel
   # rtmutex UAF CVE-2026-43499, patched n-day, no ITW, non-KEV) via finding-2026-07-09-0001.
-  total_tracked: 18
+  # v7 recompute 2026-07-09: +1 row VT-019 PAN-OS User-ID Terminal Server Agent (TSA)
+  # multiple buffer overflows (CVE-2026-0288, CVSS v4.0 7.2 HIGH, CWE-787, n-day
+  # patched at disclosure, vendor no-ITW, non-KEV; awareness tier) via
+  # finding-2026-07-09-0003 — DISTINCT from ZD-004 CVE-2026-0300 and CVE-2026-0257.
+  total_tracked: 19
 
-  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 18) ---
-  patched: 13                     # ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-011 RoguePlanet (OOB Defender engine 1.1.26060.3008, 2026-07-09 — moved from unpatched); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma; VT-016 BeyondTrust RS/PRA BT26-03 cluster (cloud patched 2026-04-21, on-prem fixed versions available); VT-017 Adobe ColdFusion CVE-2026-48282 (Adobe APSB26-68 shipped 2026-07-01; n-day); VT-018 GhostLock CVE-2026-43499 (Linux kernel n-day, fixes since April 2026)
+  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 19) ---
+  patched: 14                     # (+VT-019 PAN-OS CVE-2026-0288 TSA buffer overflows — n-day patched at disclosure 2026-07-08) ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-011 RoguePlanet (OOB Defender engine 1.1.26060.3008, 2026-07-09 — moved from unpatched); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma; VT-016 BeyondTrust RS/PRA BT26-03 cluster (cloud patched 2026-04-21, on-prem fixed versions available); VT-017 Adobe ColdFusion CVE-2026-48282 (Adobe APSB26-68 shipped 2026-07-01; n-day); VT-018 GhostLock CVE-2026-43499 (Linux kernel n-day, fixes since April 2026)
   patches_available: 1            # ZD-004 PAN-OS CVE-2026-0300 (both waves RELEASED 2026-05-13 + 2026-05-28)
   rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
   security_update_available_esu_gated: 1   # VT-008 Exchange CVE-2026-42897 (June 2026 SU / KB5094140 shipped 2026-06-09; SE automatic, 2016/2019 ESU-gated; EEMS/EOMT still advised for non-ESU)
@@ -906,12 +978,12 @@ _meta:
   # --- Exploitation / KEV ---
   active_exploitation: 6          # ZD-004 PAN-OS + VT-006 Mini Shai-Hulud worm + VT-008 Exchange + VT-009 Nx Console + VT-015 SD-WAN (KEV-listed 2026-06-09) + VT-017 Adobe ColdFusion CVE-2026-48282 (KEV-listed 2026-07-07)
   kev_listed: 8                   # ZD-002 RedSun (due 2026-06-03, past) + ZD-003 UnDefend (due 2026-06-03, past) + ZD-004 PAN-OS (due 2026-05-09, past — value corrected to verbatim CISA) + VT-006 Mini Shai-Hulud (due 2026-06-10) + VT-008 Exchange (due 2026-05-29, past) + VT-009 Nx Console (due 2026-06-10) + VT-015 SD-WAN (due 2026-06-23) + VT-017 Adobe ColdFusion CVE-2026-48282 (due 2026-07-10)
-  kev_pending: 2                  # VT-007 FortiAuthenticator (KEV watch active; verified NOT KEV-listed as of 2026-06-10) + VT-011 RoguePlanet (CVE-2026-50656 now assigned -> KEV-eligible; NOT listed as of CISA KEV catalog 2026.07.07, checked 2026-07-09)
+  kev_pending: 3                  # VT-007 FortiAuthenticator (KEV watch active; verified NOT KEV-listed as of 2026-06-10) + VT-011 RoguePlanet (CVE-2026-50656 now assigned -> KEV-eligible; NOT listed as of CISA KEV catalog 2026.07.07, checked 2026-07-09) + VT-019 PAN-OS CVE-2026-0288 (CVE published 2026-07-08, postdates catalog 2026.07.07 — KEV watch active per standing escalation watch)
   public_exploit_available: 7     # ZD-004 PAN-OS + VT-006 (worm IS the ITW exploitation) + VT-007 FortiAuthenticator (GitHub PoC, flipped true 2026-06-10) + VT-011 RoguePlanet (self-hosted PoC) + VT-012 GreenPlasma (partial PoC) + VT-013 YellowKey (full PoC, physical access) + VT-014 MiniPlasma (full PoC). NONE mirrored (Hard Rule 3). NOTE: VT-018 GhostLock has NO public weaponized PoC (kernelCTF research demonstration only).
   no_cve_assigned: 0              # (was 1; VT-011 RoguePlanet assigned CVE-2026-50656 on 2026-07-09). Every tracked vuln is now CVE-bound.
   vendor_ghsa_poc_only: 2         # VT-005 OpenC3 COSMOS cluster + VT-010 Yamcs (PoC embedded in vendor advisories only)
 
   # --- Dossier / housekeeping ---
-  dossiers_present: 18            # every row now points at an existing per-vuln dossier directory (VT-018 GhostLock scaffolded 2026-07-09: profile.md; tracking.yaml awareness-tier deferred)
+  dossiers_present: 19            # every row now points at an existing per-vuln dossier directory (VT-019 PAN-OS-CVE-2026-0288 scaffolded 2026-07-09: profile.md + tracking.yaml)
   consolidations_2026_06_10: 6    # CVE-keyed duplicates folded into codename-canonical dossiers, pending librarian git rm: CVE-2026-41091->REDSUN, CVE-2026-45498->UNDEFEND, CVE-2026-0300->PAN-OS-CVE-2026-0300, CVE-2026-42897->Exchange-CVE-2026-42897, CVE-2026-44277->FortiAuthenticator-CVE-2026-44277, CVE-2026-46333->ssh-keysign-pwn
   dossiers_migrated: 4            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator; VT-008 Exchange CVE-2026-42897. VT-006 Mini Shai-Hulud + VT-009 Nx Console + VT-010 Yamcs full dossiers still not scaffolded (recommend vuln-tracker next pass).

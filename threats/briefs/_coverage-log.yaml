@@ -40855,6 +40855,156 @@ entries:
       WEP/finding-id in Layer 2; no themed-character voice. Pre-flight 13-of-13
       PASS on first iteration.
 
+  - id: 2026-07-09-pm-001-palo-alto-pan-os-quarterly-batch-13-cves-cve-2026-0288-unauth-buffer-overflow-dos-potential-rce-n-day-patched-no-itw-structural-awareness
+    covered_in: [2026-07-09-afternoon]
+    brief_file: threats/briefs/2026-07-09-afternoon.md
+    headline: "Palo Alto Networks quarterly PAN-OS advisory batch patches 13 vulnerabilities; headline CVE-2026-0288 is a multiple-buffer-overflow letting an unauthenticated network-access attacker cause DoS and (per vendor) potentially RCE via crafted traffic; vendor rates High/highest urgency, attests NO in-the-wild exploitation, all patched at disclosure (n-day); other 12 CVE IDs (7 medium incl. root command-exec/auth-bypass/SSRF, 5 low) NOT disclosed in relay; B2 on single SecurityWeek (Kovacs) relay of the Palo Alto PSIRT advisory (CVE record + PSIRT advisory corroboratable upstream but no independent second evidence basis this window) — single-source veto WEP-capped-likely; no actor (Hard Rule 2 not engaged, vuln disclosure); A&D relevance STRUCTURAL/INDIRECT only (PAN-OS is a ubiquitous DIB network-edge/VPN-termination appliance; foothold-class attack-surface exposure, NO named A&D victim, no sector targeting, no actor); first-party Splunk silent (0 defenseclaw_local sensor hits on CVE-2026-0288; only IOC is the CVE identifier, no huntable network/file indicator — Rule 8 silence-not-disconfirmation); distinct CVE set from tracked ZD-004/CVE-2026-0300 (PAN-OS User-ID pre-auth RCE, CISA KEV, active exploitation) and CVE-2026-0257 (GlobalProtect auth-bypass retrospective); net-new CVE not in _index.yaml — vuln-tracker create_vt_entry-or-vuln-watch awareness tier; CVSS numeric + version matrix + remaining 12 CVE IDs NOT in relay (enrich from Palo Alto PSIRT/NVD)"
+    topic_tags:
+      - palo-alto-networks-pan-os
+      - cve-2026-0288
+      - quarterly-psirt-advisory-batch-13-cves
+      - multiple-buffer-overflow-unauthenticated-network-access
+      - dos-plus-potential-rce-via-crafted-traffic
+      - vendor-high-severity-highest-urgency
+      - n-day-patched-at-disclosure-no-itw
+      - other-12-cve-ids-not-disclosed-in-relay
+      - single-source-veto-applied-capped-likely-securityweek-kovacs-relay
+      - b2-single-b-grade-relay-of-vendor-psirt
+      - no-actor-hard-rule-2-not-engaged-vuln-disclosure
+      - ad-relevance-medium-structural-indirect-only-do-not-overstate
+      - ubiquitous-dib-network-edge-vpn-termination-appliance
+      - foothold-class-attack-surface-no-named-ad-victim-no-targeting
+      - first-party-splunk-silent-cve-only-ioc-rule-8-not-disconfirming
+      - distinct-from-zd-004-cve-2026-0300-user-id-preauth-rce-kev-active
+      - distinct-from-cve-2026-0257-globalprotect-auth-bypass-retrospective
+      - net-new-cve-not-in-index-vuln-tracker-create-vt-entry-or-vuln-watch-awareness
+      - cvss-version-matrix-remaining-12-cve-ids-not-in-relay-enrich-nvd-psirt
+      - vulnerabilities-section
+      - patch-priority-edge-appliance-not-active-threat
+    related_actors: []
+    related_vulns: [CVE-2026-0288]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-09-0003]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      One effective in-window source — SecurityWeek (Kovacs) relaying the Palo
+      Alto Networks PSIRT quarterly advisory. The CVE record and the vendor PSIRT
+      advisory are corroboratable upstream facts, but no independent second
+      evidence basis (separate telemetry / IR / vendor writeup) was retrieved this
+      window. Veto holds; WEP capped at likely.
+    hard_rule_2_framings_load_bearing:
+      - "No actor — vulnerability disclosure, Hard Rule 2 not engaged"
+      - "A&D relevance STRUCTURAL/INDIRECT only; no named A&D victim, no sector targeting, no actor — deployment-footprint attack-surface exposure, do not overstate (n-day patched at disclosure, vendor no-ITW)"
+    correlation_callouts:
+      - "Connects-to ZD-004 / CVE-2026-0300 (tracked PAN-OS User-ID pre-auth RCE, CISA KEV, active exploitation) as distinctness anchor — this batch is a DIFFERENT CVE set, not a re-report; also distinct from CVE-2026-0257 GlobalProtect auth-bypass retrospective"
+    resurface_if:
+      - cisa_kev_listing
+      - escalation_to_exploitation
+      - public_exploit_or_weaponization_observed
+      - greynoise_or_unit42_or_cisa_exploitation_signal_on_cve_2026_0288
+      - first_party_ioc_hit
+      - named_dib_or_ad_victim_disclosed
+      - cve_2026_0288_nvd_canonical_published_with_cvss_and_fixed_version_matrix
+      - remaining_12_batch_cve_ids_disclosed_with_independent_ad_edge_severity
+    first_covered: 2026-07-09
+    last_covered: 2026-07-09
+    retraction: null
+    test: false
+
+  - id: 2026-07-09-pm-brief-meta
+    covered_in: [2026-07-09-afternoon]
+    brief_file: threats/briefs/2026-07-09-afternoon.md
+    headline: "2026-07-09 afternoon brief — quiet monitoring-tier cycle; 1 new graded finding (PAN-OS quarterly batch 13 CVEs, headline CVE-2026-0288 unauth buffer overflow, B2/likely, n-day patched no-ITW no-actor, structural DIB relevance only); lead honestly with structural edge-appliance patch-priority (NOT inflated to active threat); AM items (RoguePlanet VT-011 + GhostLock CVE-2026-43499) NOT resurfaced; ColdFusion/Joomla/Langflow/Roundcube NOT resurfaced; standing sections silent-template; correlation callout to ZD-004/CVE-2026-0300 as distinctness anchor (not resurfacing); Hard Rule 6 zero direct quotes; Hard Rule 8 first-party Splunk silent (0 hits CVE-2026-0288, CVE-only IOC); pre-flight 13-of-13 PASS"
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - quiet-monitoring-tier-cycle-boring-by-design
+      - 1-graded-finding-single-vulnerability-patch-batch-item
+      - pan-os-cve-2026-0288-b2-likely-single-source-veto
+      - lead-with-structural-patch-priority-honestly-not-inflated-to-active-threat
+      - n-day-patched-no-itw-no-actor-vendor-self-disclosure
+      - am-rogueplanet-ghostlock-not-resurfaced-no-net-new
+      - coldfusion-joomla-langflow-roundcube-not-resurfaced-no-net-new
+      - correlation-callout-zd-004-cve-2026-0300-distinctness-anchor-not-resurfacing
+      - standing-sections-silent-template-sector-focus-iran-cyber-watch
+      - hard-rule-2-no-actor-no-attribution-origination
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-8-first-party-splunk-silent-cve-only-ioc-not-disconfirming
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: [CVE-2026-0288]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-09-0003]
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-09
+    last_covered: 2026-07-09
+    retraction: null
+    test: false
+    word_count_layer_1: 490
+    layer_2_discord_summary:
+      parts: 1
+      chars_estimate: 1260
+      under_1900_buffer: true
+      word_count_total: 167
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-09-0003
+          append_brief_id: 2026-07-09-afternoon
+      vuln_tracker_handoffs:
+        - "CVE-2026-0288 PAN-OS quarterly-batch headline: create_vt_entry (or vuln-watch keyword) awareness tier (net-new, not in _index.yaml); enrich CVSS numeric + affected/fixed PAN-OS version matrix + the remaining 12 batch CVE IDs (7 medium incl. root command-exec/auth-bypass/SSRF, 5 low) from Palo Alto PSIRT/NVD; confirm whether any of the 12 unnamed CVEs carry independent A&D-edge severity; no KEV/FLASH status at creation (vendor no-ITW, no KEV listing at sweep); distinct from ZD-004/CVE-2026-0300 and CVE-2026-0257 — do NOT fold into either; escalation watch: KEV listing or GreyNoise/Unit 42/CISA exploitation signal on CVE-2026-0288 flips awareness->active FLASH-eligible reassessment given unauth-network-vector-RCE potential"
+    notes: |
+      2026-07-09 AFTERNOON BRIEF (briefer phase, afternoon-20260709-160000).
+      Quiet, monitoring-tier cycle — one new graded finding, no manufactured
+      urgency. finding-2026-07-09-0003: Palo Alto Networks quarterly PAN-OS
+      advisory batch (13 CVEs), headline CVE-2026-0288 — multiple buffer
+      overflows, unauthenticated network-access attacker can cause DoS and (per
+      vendor) potentially RCE via crafted traffic. Vendor rates High/highest
+      urgency, attests NO in-the-wild exploitation, all patched at disclosure
+      (n-day). B2/likely; single SecurityWeek (Kovacs) relay of the Palo Alto
+      PSIRT advisory — single-source veto applied, WEP capped at likely. NO actor
+      (Hard Rule 2 not engaged). A&D relevance STRUCTURAL/INDIRECT only: PAN-OS
+      is a ubiquitous DIB network-edge/VPN-termination appliance, so an unauth
+      network-vector overflow is foothold-class attack surface — but NO named A&D
+      victim, no sector targeting, no actor. Lead calibrated HONESTLY per the
+      quiet-afternoon direction: structural patch-priority for internet-facing
+      edge appliances, explicitly NOT an active threat, not a FLASH. Active
+      Threats section carries the honest posture (first-party Splunk 0
+      defenseclaw_local sensor hits on CVE-2026-0288; only IOC is the CVE
+      identifier, no huntable network/file indicator, so Rule 8 silence is NOT
+      disconfirmation) rather than a manufactured threat. Anti-repetition: AM
+      items RoguePlanet (VT-011/CVE-2026-50656) + GhostLock (CVE-2026-43499) from
+      today's morning brief NOT resurfaced (no net-new status change); ColdFusion
+      CVE-2026-48282 + Joomla + Langflow (2026-07-08 morning) and UNK_MassTraction/
+      Roundcube (2026-07-08 afternoon) NOT resurfaced (no resurface_if met).
+      Correlation callout (🔗 Connects-to) to ZD-004/CVE-2026-0300 (tracked PAN-OS
+      User-ID pre-auth RCE, CISA KEV, active exploitation) used as a DISTINCTNESS
+      anchor — new batch is a different CVE set, not a re-report of the tracked
+      entry; ZD-004 is NOT being resurfaced as news, per the sanctioned
+      correlation-callout exception. Standing sections rendered in Layer 1: Sector
+      Focus: A&D (structural-nexus note, no inflation) and Iran Cyber Watch
+      (silent-day template). Hard Rule 2: no actor, no attribution originated.
+      Hard Rule 6: 0 direct quotes in Layer 1 and Layer 2. Hard Rule 8: first-
+      party Splunk silent this window (0 external hits on CVE-2026-0288; the 9
+      operational-telemetry hits reference DISTINCT tracked entries CVE-2026-0257
+      + CVE-2026-0300/ZD-004, not this CVE); silence-does-NOT-disconfirm.
+      Layer 1 ~490 words (400-800 band). Layer 2 Discord Summary ~167 words /
+      ~1260 chars (150-300 word band; under 1900-char hard ceiling); single
+      message, no chunking; one bullet under Vulnerabilities; standing-section
+      boilerplate omitted from Layer 2 per spec; natural-language framing; ISO
+      date only in greeting anchor; no digraph/WEP/finding-id in Layer 2; no
+      themed-character voice. Vuln-tracker handoff: create awareness-tier VT-
+      entry or vuln-watch keyword for CVE-2026-0288 + enrich CVSS/version-matrix/
+      remaining-12-CVE-IDs from Palo Alto PSIRT/NVD (distinct from ZD-004 and
+      CVE-2026-0257). Pre-flight 13-of-13 PASS on first iteration.
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

@@ -6,8 +6,8 @@
 # Migrated from C3PO ZD-001/002/003 entries. Additional vulns added as
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
-version: 5
-last_updated: 2026-07-07        # +1 row VT-017 (Adobe ColdFusion CVE-2026-48282 — CVSS 10.0 unauth pre-auth RCE, KEV-listed 2026-07-07, active exploitation) via finding-2026-07-06-flash-1629-0001; prior v4: +1 row VT-016 (BeyondTrust RS/PRA BT26-03 four-CVE cluster) via finding-2026-07-07-0001; 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation
+version: 6
+last_updated: 2026-07-09        # v6: VT-011 RoguePlanet STATE CHANGE (unpatched->patched; cve null->CVE-2026-50656; OOB Defender engine 1.1.26060.3008; CVSS 7.0/7.8; CWE-59; KEV-eligible-not-listed; Nightmare Eclipse series fully closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel rtmutex UAF CVE-2026-43499, CVSS 7.8, root LPE + container escape, n-day patched, no ITW, non-KEV) via finding-2026-07-09-0001. Prior v5: +1 row VT-017 (Adobe ColdFusion CVE-2026-48282) via finding-2026-07-06-flash-1629-0001; v4: +1 row VT-016 (BeyondTrust RS/PRA BT26-03); 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation
 
 vulnerabilities:
 
@@ -491,12 +491,19 @@ vulnerabilities:
     name: "RoguePlanet — Microsoft Defender race-condition LPE zero-day (Nightmare Eclipse series, 7th drop)"
     type: "LPE (TOCTOU race condition in Defender remediation / file-path validation; NTFS-junction redirect of a SYSTEM-context Defender file op; originally an RCE primitive abusing Defender handling of files on remote SMB shares, released as LPE)"
     platform: "Windows 10 + Windows 11 fully patched incl. June 2026 Patch Tuesday (KB5094126); Win11 stable + Canary. Windows Server believed vulnerable but current PoC non-functional (standard users cannot mount ISO/.vhd(x))."
-    cve: null                       # No CVE assigned at disclosure (2026-06-10) -> KEV-ineligible
-    cvss: null
-    patch_status: unpatched
-    patch_note: "RoguePlanet is now the ONLY open tool in the Nightmare Eclipse series; the rest are CLOSED as of 2026-06-10. June 2026 Patch Tuesday fixed GreenPlasma (CVE-2026-45586) + YellowKey (CVE-2026-45585) + MiniPlasma (CVE-2020-17103 regression re-patched) but NOT RoguePlanet. RedSun (CVE-2026-41091) and UnDefend (CVE-2026-45498) were patched 2026-05-20/21 (both KEV-listed). RoguePlanet still has no CVE, no MSRC advisory, no Microsoft timeline. Next scheduled window: July 2026 Patch Tuesday; OOB possible."
-    kev: false                      # No CVE -> ineligible for CISA KEV
-    kev_pending: false
+    cve: CVE-2026-50656             # assigned by MSRC; NVD-published 2026-06-16 (was null at 2026-06-10 disclosure -> previously KEV-ineligible)
+    cvss: 7.0                       # NVD primary CVSS v3.1 (CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H); AC:H reflects the timing race
+    cvss_secondary: 7.8             # Microsoft secondary CVSS v3.1 (AC:L variant)
+    cvss_source_note: "NVD primary 7.0 HIGH is authoritative; Microsoft secondary scores 7.8 HIGH (AC:L). Directly retrieved from NVD 2026-07-09."
+    cwe: CWE-59                     # Link Following — consistent with NTFS-junction redirect mechanism
+    nvd_published: 2026-06-16
+    patch_status: patched
+    fixed_in: "Microsoft Malware Protection Engine >= 1.1.26060.3008"
+    patch_release_date: 2026-07-09  # out-of-band Defender engine update (reporting date); NVD record published 2026-06-16
+    patch_note: "PATCHED out-of-band 2026-07-09 via Microsoft Malware Protection Engine update 1.1.26060.3008 (auto-deploys with Defender definitions, same channel as the BlueHammer precedent; engine builds carry NO Windows KB number). CVE-2026-50656 assigned. With RoguePlanet patched, the Nightmare Eclipse series is FULLY CLOSED — all seven tools now carry a CVE and a fix. Prior state (2026-06-10): unpatched, no CVE, KEV-ineligible."
+    kev: false                      # CVE now assigned -> KEV-ELIGIBLE, but NOT listed as of CISA KEV catalog 2026.07.07 (directly retrieved 2026-07-09)
+    kev_pending: true               # flipped false->true: was ineligible for lack of a CVE; now eligible-but-not-listed, watch signal active
+    kev_last_checked: 2026-07-09    # CISA KEV catalog version 2026.07.07 — CVE-2026-50656 NOT present
     exploitation_status: not_confirmed_for_rogueplanet_specifically_series_siblings_confirmed_itw
     exploitation_note: "No ITW confirmation for RoguePlanet specifically as of 2026-06-10. Earlier series tools (BlueHammer/RedSun/UnDefend) confirmed ITW by Huntress; Russian-geolocated infrastructure observed using the Defender zero-days."
     public_exploit_available: true  # PoC public; GitHub/GitLab removed by Microsoft, researcher self-hosts on projectnightcrawler.dev; MSNightmare GitHub account. PoC NOT mirrored to dossier (Hard Rule 3).
@@ -516,7 +523,8 @@ vulnerabilities:
       - VT-012    # GreenPlasma — CVE-2026-45586 (patched June PT)
       - VT-014    # MiniPlasma — CVE-2020-17103 (re-patched June PT; legacy ZD-040)
     related_actors: []              # Hard Rule 2 — no actor named for RoguePlanet by any source
-    related_findings: []
+    related_findings:
+      - finding-2026-07-09-0002   # VT-011 state change: CVE-2026-50656 assigned + OOB patch (A2, single-source veto)
     related_briefs: []
     ad_relevance: high
     ad_relevance_rationale: >
@@ -531,21 +539,30 @@ vulnerabilities:
     dossier: threats/vulnerabilities/RoguePlanet/profile.md
     tracking: null                  # profile.md only; tracking.yaml not scaffolded
     tracked_since: 2026-06-10
-    last_reviewed: 2026-06-10
-    next_review_due: 2026-06-17     # 7-day cadence for fresh unpatched A&D-relevant zero-day; recheck MSRC/CVE/KEV + ITW
+    last_reviewed: 2026-07-09
+    next_review_due: 2026-08-09     # de-escalated from weekly to 30-day cadence: patched + series closed; only open watch signal is a possible KEV listing
+    state_change_2026_07_09: >
+      PATCHED. Microsoft assigned CVE-2026-50656 and shipped an out-of-band Defender Malware Protection
+      Engine update (1.1.26060.3008) closing RoguePlanet — the last open Nightmare Eclipse tool. Series now
+      FULLY CLOSED. CVSS 7.0 HIGH (NVD primary) / 7.8 (Microsoft secondary), CWE-59; directly retrieved from
+      NVD 2026-07-09. KEV re-evaluated: CVE assignment restores KEV-eligibility, but CVE-2026-50656 is NOT
+      listed as of CISA KEV catalog 2026.07.07 (directly checked) -> kev:false / kev_pending:true. No KB
+      number (engine build, not a Windows KB). No ITW for RoguePlanet specifically. Source: finding-2026-07-09-0002
+      (A2, Microsoft self-disclosure relay-conveyed via BleepingComputer + SecurityWeek; single-source veto).
     note: >
-      7th drop in the Nightmare Eclipse / Chaotic Eclipse series — fulfills the
+      7th drop in the Nightmare Eclipse / Chaotic Eclipse series — fulfilled the
       YellowKey "big surprise" threat for June Patch Tuesday, dropped hours after
-      Microsoft's June fixes shipped. No CVE -> KEV-ineligible. PoC public and
-      self-hosted after Microsoft removed GitHub/GitLab repos; PoC NOT mirrored
-      to dossier (Hard Rule 3 — mechanism described at detection-engineering
-      level only). Microsoft public posture: condemns uncoordinated disclosure
-      but states it will NOT pursue researchers (earlier Digital Crimes Unit
-      threat walked back). Watch signals: CVE assignment + Defender platform
-      update (BlueHammer delivery precedent); independent ITW confirmation for
-      RoguePlanet specifically (Huntress / Vectra AI / Mandiant); July Patch
-      Tuesday fix; researcher's claimed "batch of Defender memory-corruption
-      vulnerabilities" materializing as the 8th drop.
+      Microsoft's June fixes shipped. RESOLVED 2026-07-09 (see state_change_2026_07_09):
+      CVE-2026-50656 assigned + out-of-band Defender engine fix (1.1.26060.3008); series
+      now fully closed. Two prior watch signals (CVE assignment + Defender platform update,
+      BlueHammer delivery precedent) both fired together. PoC was public and self-hosted
+      after Microsoft removed GitHub/GitLab repos; PoC NOT mirrored to dossier (Hard Rule 3
+      — mechanism described at detection-engineering level only). Microsoft public posture:
+      condemns uncoordinated disclosure but states it will NOT pursue researchers (earlier
+      Digital Crimes Unit threat walked back). Remaining watch signals: CISA KEV addition for
+      CVE-2026-50656 (now eligible, not yet listed); independent ITW confirmation for
+      RoguePlanet specifically (Huntress / Vectra AI / Mandiant); researcher's claimed "batch
+      of Defender memory-corruption vulnerabilities" materializing as the 8th drop.
 
   - id: VT-012
     name: "GreenPlasma — Windows CTFMON arbitrary section-object EoP (Nightmare Eclipse series)"
@@ -789,6 +806,69 @@ vulnerabilities:
       (existence-tracking only, Hard Rule 3); A&D-prime named victim (shifts
       ad_relevance up from structural).
 
+  - id: VT-018
+    name: "GhostLock — Linux kernel rtmutex use-after-free (root LPE + container escape, CVE-2026-43499)"
+    type: "LPE-to-root + container escape (use-after-free in rtmutex remove_waiter proxy-lock rollback / futex path; CWE-416)"
+    platform: "Linux kernel 2.6.39 (2011) through 7.0.3 — all major distributions since 2011; DIB Linux workstation / build-farm / CI-CD container estates"
+    cve: CVE-2026-43499
+    cvss: 7.8                        # NVD CVSS v3.1 (CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H); directly retrieved 2026-07-09
+    cvss_vector: "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    cwe: CWE-416
+    nvd_published: 2026-05-21
+    affected_versions_note: "2.6.39 to <6.1.175; 6.2 to <6.6.140; 6.7 to <6.12.86; 6.13 to <6.18.27; 6.19 to <7.0.4 (per NVD affected-configuration ranges)"
+    fixed_versions:
+      - "6.1.175"
+      - "6.6.140"
+      - "6.12.86"
+      - "6.18.27"
+      - "7.0.4"
+      - "7.1+"
+    patch_status: patched
+    patch_release_date: 2026-04       # relay reports distro availability since April 2026 (n-day); NVD record published 2026-05-21
+    patch_note: "n-day. Upstream/distro fixes available (relay: since April 2026). Mainline fixed boundaries per NVD: 6.1.175 / 6.6.140 / 6.12.86 / 6.18.27 / 7.0.4 / 7.1+. Distro/LTS kernels backport onto their own version strings — verify against the distro CVE-2026-43499 advisory, not the mainline number."
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    kev_last_checked: 2026-07-09      # CISA KEV catalog version 2026.07.07 — CVE-2026-43499 NOT present (directly checked)
+    exploitation_status: not_observed_n_day_demonstrated_in_google_kernelctf_only
+    exploitation_note: "No in-the-wild exploitation. Demonstrated inside Google kernelCTF by Nebula Security (USD 92,337 bounty). No actor named (Hard Rule 2)."
+    public_exploit_available: false   # kernelCTF research demonstration; no public weaponized PoC surfaced in reporting (NOT mirrored regardless, Hard Rule 3)
+    detection_signatures_published: false   # no network/file IOCs; only indicator is the CVE itself; detection behavioral
+    digraph: B2
+    wep_ceiling: likely
+    single_source_veto_applied: true
+    related_actors: []                # Hard Rule 2 — vulnerability disclosure, no actor
+    related_findings:
+      - finding-2026-07-09-0001
+    related_briefs: []
+    structural_analog: ["ZD-001", "ZD-002", "ZD-003", "VT-011", "VT-012", "VT-013", "VT-014"]   # Windows Nightmare Eclipse "ubiquitous-endpoint LPE" class; GhostLock is the Linux counterpart
+    ad_relevance: medium
+    ad_relevance_rationale: >
+      STRUCTURAL / INDIRECT only. Ubiquitous Linux-kernel root-LPE + container-escape maps to DIB
+      Linux workstation, build-farm, and CI/CD container estates — same "ubiquitous-endpoint LPE"
+      tracking class as the Nightmare Eclipse Windows series. A standard-user or container-confined
+      foothold escalating to root / breaking container isolation is a lateral-movement and
+      privilege-escalation primitive on any Linux estate. NOT A&D-specific targeting: no named
+      A&D-prime victim, no sector targeting, no actor; patched n-day demonstrated only inside Google
+      kernelCTF. Do not overstate. 15-year introduction window (2011) = wide install base incl.
+      slow-patching LTS servers/appliances — legacy-CVE long-tail caution (cf. VT-014 MiniPlasma).
+    dossier: threats/vulnerabilities/GhostLock-CVE-2026-43499/profile.md
+    tracking: null                    # profile.md only; tracking.yaml not scaffolded (awareness tier)
+    tracked_since: 2026-07-09
+    last_reviewed: 2026-07-09
+    next_review_due: 2026-08-09        # 30-day awareness cadence: patched n-day, no ITW, non-KEV; recheck KEV listing + any ITW/public-exploit emergence
+    note: >
+      Awareness-tier entry scaffolded 2026-07-09 from finding-2026-07-09-0001 (B2, single-source
+      veto — SecurityWeek relaying Nebula Security / Google kernelCTF). CVSS 7.8 HIGH and the
+      fixed-version boundary were directly retrieved from NVD 2026-07-09 (NOT left pending). NVD
+      also disambiguates the mechanism: rtmutex remove_waiter() UAF (CWE-416) in the futex
+      proxy-lock rollback path — consistent with the relay's "task-prioritization cleanup path."
+      n-day patched (April 2026 per relay); no ITW; not KEV-listed (catalog 2026.07.07 checked).
+      Linux structural analog of the Windows Nightmare Eclipse ubiquitous-endpoint LPE series.
+      Watch signals: CISA KEV addition; public weaponized PoC emergence (existence-tracking only,
+      Hard Rule 3); any in-the-wild exploitation observation; A&D-prime named-victim reporting
+      (would shift ad_relevance up from structural).
+
   # Notes on KEV-add finding-2026-05-27-0007 third CVE:
   # CVE-2026-8398 (Daemon Tools Lite) was the third KEV addition in
   # catalog version 2026.05.27 but is NOT tracked as a vuln dossier —
@@ -806,28 +886,32 @@ _meta:
   # Prior recompute 2026-06-10 against the 15-row set after the verified patch-
   # status audit (six parallel per-vuln passes), four new first-class rows
   # (VT-012..VT-015), and the codename<->CVE bindings for Nightmare Eclipse.
-  total_tracked: 17
+  # v6 recompute 2026-07-09: VT-011 RoguePlanet unpatched->patched (CVE-2026-50656
+  # assigned + OOB Defender engine 1.1.26060.3008; Nightmare Eclipse series fully
+  # closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel
+  # rtmutex UAF CVE-2026-43499, patched n-day, no ITW, non-KEV) via finding-2026-07-09-0001.
+  total_tracked: 18
 
-  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 17) ---
-  patched: 11                     # ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma; VT-016 BeyondTrust RS/PRA BT26-03 cluster (cloud patched 2026-04-21, on-prem fixed versions available); VT-017 Adobe ColdFusion CVE-2026-48282 (Adobe APSB26-68 shipped 2026-07-01; n-day)
+  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 18) ---
+  patched: 13                     # ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-011 RoguePlanet (OOB Defender engine 1.1.26060.3008, 2026-07-09 — moved from unpatched); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma; VT-016 BeyondTrust RS/PRA BT26-03 cluster (cloud patched 2026-04-21, on-prem fixed versions available); VT-017 Adobe ColdFusion CVE-2026-48282 (Adobe APSB26-68 shipped 2026-07-01; n-day); VT-018 GhostLock CVE-2026-43499 (Linux kernel n-day, fixes since April 2026)
   patches_available: 1            # ZD-004 PAN-OS CVE-2026-0300 (both waves RELEASED 2026-05-13 + 2026-05-28)
   rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
   security_update_available_esu_gated: 1   # VT-008 Exchange CVE-2026-42897 (June 2026 SU / KB5094140 shipped 2026-06-09; SE automatic, 2016/2019 ESU-gated; EEMS/EOMT still advised for non-ESU)
   vendor_advisory_referenced_only: 1      # VT-009 Nx Console (vendor advisory referenced via finding-2026-05-27-0007; full patch posture pending dossier scaffold)
   no_dedicated_patch: 1           # VT-015 SD-WAN CVE-2026-20245 (KEV-listed, actively exploited, NO dedicated fix; mitigate via CVE-2026-20182 upgrade + compensating controls)
-  unpatched: 1                    # VT-011 RoguePlanet (no CVE -> KEV-ineligible; June PT did NOT fix it)
+  unpatched: 0                    # (was 1; VT-011 RoguePlanet patched OOB 2026-07-09 via Defender engine 1.1.26060.3008 — no tracked vuln currently unpatched)
   patches_scheduled: 0            # (was 1; ZD-004 PAN-OS waves now released)
   no_ga_patch_esu_or_mitigation_only: 0   # (was 1; VT-008 Exchange moved to security_update_available_esu_gated after June SU)
 
   # --- Exploitation / KEV ---
   active_exploitation: 6          # ZD-004 PAN-OS + VT-006 Mini Shai-Hulud worm + VT-008 Exchange + VT-009 Nx Console + VT-015 SD-WAN (KEV-listed 2026-06-09) + VT-017 Adobe ColdFusion CVE-2026-48282 (KEV-listed 2026-07-07)
   kev_listed: 8                   # ZD-002 RedSun (due 2026-06-03, past) + ZD-003 UnDefend (due 2026-06-03, past) + ZD-004 PAN-OS (due 2026-05-09, past — value corrected to verbatim CISA) + VT-006 Mini Shai-Hulud (due 2026-06-10) + VT-008 Exchange (due 2026-05-29, past) + VT-009 Nx Console (due 2026-06-10) + VT-015 SD-WAN (due 2026-06-23) + VT-017 Adobe ColdFusion CVE-2026-48282 (due 2026-07-10)
-  kev_pending: 1                  # VT-007 FortiAuthenticator (KEV watch active; verified NOT KEV-listed as of 2026-06-10)
-  public_exploit_available: 7     # ZD-004 PAN-OS + VT-006 (worm IS the ITW exploitation) + VT-007 FortiAuthenticator (GitHub PoC, flipped true 2026-06-10) + VT-011 RoguePlanet (self-hosted PoC) + VT-012 GreenPlasma (partial PoC) + VT-013 YellowKey (full PoC, physical access) + VT-014 MiniPlasma (full PoC). NONE mirrored (Hard Rule 3).
-  no_cve_assigned: 1              # VT-011 RoguePlanet only (KEV-ineligible). RedSun/UnDefend/GreenPlasma/YellowKey/MiniPlasma all now CVE-bound per 2026-06-10 audit.
+  kev_pending: 2                  # VT-007 FortiAuthenticator (KEV watch active; verified NOT KEV-listed as of 2026-06-10) + VT-011 RoguePlanet (CVE-2026-50656 now assigned -> KEV-eligible; NOT listed as of CISA KEV catalog 2026.07.07, checked 2026-07-09)
+  public_exploit_available: 7     # ZD-004 PAN-OS + VT-006 (worm IS the ITW exploitation) + VT-007 FortiAuthenticator (GitHub PoC, flipped true 2026-06-10) + VT-011 RoguePlanet (self-hosted PoC) + VT-012 GreenPlasma (partial PoC) + VT-013 YellowKey (full PoC, physical access) + VT-014 MiniPlasma (full PoC). NONE mirrored (Hard Rule 3). NOTE: VT-018 GhostLock has NO public weaponized PoC (kernelCTF research demonstration only).
+  no_cve_assigned: 0              # (was 1; VT-011 RoguePlanet assigned CVE-2026-50656 on 2026-07-09). Every tracked vuln is now CVE-bound.
   vendor_ghsa_poc_only: 2         # VT-005 OpenC3 COSMOS cluster + VT-010 Yamcs (PoC embedded in vendor advisories only)
 
   # --- Dossier / housekeeping ---
-  dossiers_present: 17            # every row now points at an existing per-vuln dossier directory (VT-017 scaffolded 2026-07-07: profile.md + tracking.yaml)
+  dossiers_present: 18            # every row now points at an existing per-vuln dossier directory (VT-018 GhostLock scaffolded 2026-07-09: profile.md; tracking.yaml awareness-tier deferred)
   consolidations_2026_06_10: 6    # CVE-keyed duplicates folded into codename-canonical dossiers, pending librarian git rm: CVE-2026-41091->REDSUN, CVE-2026-45498->UNDEFEND, CVE-2026-0300->PAN-OS-CVE-2026-0300, CVE-2026-42897->Exchange-CVE-2026-42897, CVE-2026-44277->FortiAuthenticator-CVE-2026-44277, CVE-2026-46333->ssh-keysign-pwn
   dossiers_migrated: 4            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator; VT-008 Exchange CVE-2026-42897. VT-006 Mini Shai-Hulud + VT-009 Nx Console + VT-010 Yamcs full dossiers still not scaffolded (recommend vuln-tracker next pass).

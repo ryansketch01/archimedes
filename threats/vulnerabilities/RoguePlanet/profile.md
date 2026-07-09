@@ -5,19 +5,21 @@
 | Field | Details |
 |---|---|
 | **Vulnerability Name** | RoguePlanet |
-| **CVE** | **None assigned** — no CVE at disclosure (2026-06-10) |
-| **Type** | Local Privilege Escalation (LPE) |
-| **Class** | TOCTOU Race Condition + Defender Remediation Path Redirection (NTFS junction) — originally a Remote Code Execution primitive, released as LPE |
-| **Affected Platforms** | Windows 10 and Windows 11 (fully patched, incl. June 2026 Patch Tuesday / KB5094126; Win11 stable + Canary) |
-| **Patch Status** | 🔴 **UNPATCHED** — June 2026 Patch Tuesday fixed GreenPlasma (CVE-2026-45586), YellowKey (CVE-2026-45585), and MiniPlasma (CVE-2020-17103) but NOT RoguePlanet. No CVE, no Microsoft advisory, no timeline. Next scheduled window: July 2026 Patch Tuesday (OOB possible) |
+| **CVE** | **CVE-2026-50656** — assigned by Microsoft (MSRC); NVD-published 2026-06-16 |
+| **CVSS** | **7.0 HIGH** (NVD primary, `CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H`) · 7.8 HIGH (Microsoft secondary, `AC:L`). CWE-59 (Link Following) |
+| **Type** | Local Privilege Escalation (LPE) — Elevation of Privilege in the Microsoft Malware Protection Engine |
+| **Class** | TOCTOU Race Condition + Defender Remediation Path Redirection (NTFS junction / link-following, CWE-59) — originally a Remote Code Execution primitive, released as LPE |
+| **Affected Platforms** | Windows 10 and Windows 11 (fully patched, incl. June 2026 Patch Tuesday / KB5094126; Win11 stable + Canary). Fixed in Malware Protection Engine ≥ 1.1.26060.3008 |
+| **Patch Status** | ✅ **PATCHED** — Microsoft shipped an out-of-band Defender Malware Protection Engine update (**1.1.26060.3008**) and assigned **CVE-2026-50656** (reported 2026-07-09; NVD record published 2026-06-16). Engine update auto-deploys (same channel as the BlueHammer precedent). Engine builds do not carry a Windows KB number. This closes the last open tool in the Nightmare Eclipse series — the series is now fully closed |
 | **PoC Status** | 🔴 **PUBLIC** — released hours after Patch Tuesday; GitHub/GitLab repos removed by Microsoft, researcher self-hosting on `projectnightcrawler.dev` (and "MSNightmare" GitHub account per THN) |
 | **Discovered By** | Nightmare Eclipse / Chaotic Eclipse / Dead Eclipse / MSNightmare / deadeclipse666 (pseudonymous researcher) |
 | **Public Disclosure** | June 9–10, 2026 (uncoordinated — dropped hours after Microsoft's June Patch Tuesday) |
 | **Confirmed Working** | ThreatLocker (independently reproduced on patched Windows 11) |
 | **Exploited in Wild** | ⚪ Not confirmed for RoguePlanet specifically as of 2026-06-10. Earlier tools in the series (BlueHammer / RedSun / UnDefend) confirmed in-the-wild by Huntress |
 | **Reliability** | Race condition — researcher reports ~100% on some machines, unreliable on others |
-| **Series Position** | 7th drop in the Nightmare Eclipse series — fulfills the YellowKey "big surprise" threat for June Patch Tuesday |
-| **Admiralty Grade** | B2 — multiple credible outlets (BleepingComputer, The Hacker News, SecurityAffairs, CybersecurityNews) reporting consistently; independent reproduction by ThreatLocker; no Microsoft confirmation/CVE yet |
+| **Series Position** | 7th drop in the Nightmare Eclipse series — fulfilled the YellowKey "big surprise" threat for June Patch Tuesday; now the series-closing patch |
+| **KEV Status** | ⚪ Not listed (CISA KEV catalog 2026.07.07). CVE assignment restores KEV-*eligibility* (previously ineligible for lack of a CVE); KEV-eligible-but-not-yet-listed — watch signal active |
+| **Admiralty Grade** | State-change (patch) fact: **A2** — Microsoft vendor self-disclosure of a fix on its own product, relay-conveyed via BleepingComputer + SecurityWeek (single-source veto: two bylines relay one Microsoft action). Prior pre-patch disclosure profile: B2 |
 
 ---
 
@@ -29,7 +31,9 @@ RoguePlanet is a **race-condition Local Privilege Escalation** in Microsoft Defe
 
 Notably, RoguePlanet did not start as an LPE. The researcher describes the underlying bug as originally a **Remote Code Execution** primitive that abused Defender's handling of files staged on remote SMB shares (a victim coerced into opening a malicious `.vhd(x)` on an attacker-controlled SMB server, after which Defender would overwrite its own files). Per the researcher, Microsoft *silently* hardened the relevant Defender internals (reported as `mpengine!SysIO*` handling) in mid-May 2026, blocking the junction-based remote vector — so the bug was reworked and released as a local privilege escalation instead.
 
-For an A&D contractor, the operational shape is familiar and dangerous: Windows Defender is the default endpoint protection across essentially the entire defense industrial base, and an unpatched standard-user-to-SYSTEM escalation on fully patched endpoints is a textbook ransomware / lateral-movement pre-cursor primitive.
+For an A&D contractor, the operational shape is familiar and dangerous: Windows Defender is the default endpoint protection across essentially the entire defense industrial base, and a standard-user-to-SYSTEM escalation on fully patched endpoints is a textbook ransomware / lateral-movement pre-cursor primitive.
+
+> **STATE CHANGE — 2026-07-09 (patched; CVE assigned).** Microsoft shipped an **out-of-band Malware Protection Engine update (1.1.26060.3008)** and assigned **CVE-2026-50656** (NVD-published 2026-06-16; the OOB engine push and CVE surfaced in reporting 2026-07-09). The engine update auto-deploys through the same Defender channel used for the BlueHammer fix, so estates on current Defender definitions receive it without administrator action. NVD scores it **7.0 HIGH** (primary; `AV:L/AC:H/PR:L`, the `AC:H` reflecting the timing race) with a **7.8 HIGH** Microsoft secondary score, CWE-59 (Link Following — consistent with the NTFS-junction redirect mechanism). **With RoguePlanet patched, the Nightmare Eclipse / Chaotic Eclipse series is fully closed** — every one of the seven tools now carries a CVE and a fix. The CVE assignment also restores CISA-KEV *eligibility* (RoguePlanet was previously ineligible only for lack of a CVE); as of KEV catalog 2026.07.07 it is **not yet listed** — a live watch signal. This finding is a defensive-positive de-escalation, graded A2 on the procedural vendor-patch fact.
 
 ---
 
@@ -68,6 +72,8 @@ Because RoguePlanet abuses legitimate Defender behavior and a standard-user NTFS
 | Windows Server (all) | ⚠️ Believed vulnerable, PoC non-functional | Underlying bug believed present; current PoC does not run because standard users cannot mount ISO/`.vhd(x)` images on Server |
 
 **Requires:** Local user account + Microsoft Defender active. No admin rights, no kernel exploit, no memory corruption required for the LPE.
+
+**Fix boundary:** Microsoft Malware Protection Engine **≥ 1.1.26060.3008** (per NVD affected-configuration: engine versions *prior to* 1.1.26060.3008 are vulnerable). The engine update auto-deploys with Defender definition updates; no Windows KB / OS-level patch is involved.
 
 ---
 
@@ -109,7 +115,7 @@ No file hashes or network IOCs have been published for RoguePlanet as of 2026-06
 
 ## Mitigations
 
-> ⚠️ **No patch available.** No CVE. All controls below are compensating measures until Microsoft ships a fix (next scheduled window: July 2026 Patch Tuesday; out-of-band possible).
+> ✅ **PATCHED (2026-07-09).** The primary control is now the vendor fix: ensure Microsoft Defender is running **Malware Protection Engine ≥ 1.1.26060.3008** — this auto-deploys with definition updates but should be *verified* on managed/air-gapped estates where definition delivery may lag. The compensating controls below remain valuable defense-in-depth for the series' behavioral class and for any estate that cannot immediately confirm engine currency.
 
 | Control | Priority | Notes |
 |---|---|---|
@@ -118,7 +124,8 @@ No file hashes or network IOCs have been published for RoguePlanet as of 2026-06
 | **Restrict / monitor disk-image mounting by standard users** | 🔴 HIGH | The PoC depends on standard-user ISO/`.vhd(x)` mounting (which is why it fails on Server). Group Policy can restrict mounting; removable-storage / disk-image mount events make a useful tripwire. |
 | **Supplement Defender with independent EDR / network visibility** | 🔴 HIGH | This series specifically targets Defender. A second detection layer and network-layer telemetry maintain coverage when the endpoint AV is the thing under attack. |
 | **Least-privilege enforcement** | 🟡 HIGH | RoguePlanet starts from a standard-user context; reducing standing local accounts reduces blast radius. |
-| **Monitor MSRC / Windows Security Update Guide** | 🟠 WATCH | Watch for CVE assignment + Defender platform update — the delivery path Microsoft used for BlueHammer (CVE-2026-33825). |
+| **Verify Defender engine ≥ 1.1.26060.3008** | 🔴 IMMEDIATE | The fix ships as a Defender Malware Protection Engine update (CVE-2026-50656). Confirm engine currency across managed/air-gapped estates rather than assuming auto-deploy landed. |
+| **Monitor CISA KEV** | 🟠 WATCH | CVE now assigned → KEV-eligible; not listed as of catalog 2026.07.07. A future KEV addition would impose a BOD 22-01 federal deadline. |
 
 ---
 
@@ -126,7 +133,7 @@ No file hashes or network IOCs have been published for RoguePlanet as of 2026-06
 
 **A&D target-profile relevance: HIGH (defensive).** Microsoft Defender is the default, ubiquitous endpoint protection across the aerospace & defense industrial base — primes, Tier-1/2 suppliers, and program enclaves alike. A standard-user-to-SYSTEM escalation that works on **fully patched** Windows 10/11 is a **ransomware and lateral-movement pre-cursor primitive**: it bridges "attacker has a low-privileged foothold (phishing, stolen VPN credential)" to "attacker has SYSTEM," which is the on-ramp to credential harvesting, lateral movement, and domain compromise. This is the same framing applied to BlueHammer and RedSun, and it holds here.
 
-The aggravating factor is the **no-CVE / no-patch** posture. Without a CVE, RoguePlanet is ineligible for CISA KEV listing — meaning no BOD 22-01 federal remediation mandate and no ecosystem-wide notification mechanism, exactly the structural gap previously noted for RedSun and UnDefend. Defenders inherit the burden of compensating controls with no vendor deadline forcing the fleet to converge.
+The previously-aggravating **no-CVE / no-patch** posture is now **resolved.** As of 2026-07-09 Microsoft has assigned **CVE-2026-50656** and shipped the fix out-of-band via Defender engine update 1.1.26060.3008. The structural gap noted at disclosure (KEV-ineligibility for lack of a CVE, hence no BOD 22-01 mandate) is closed on the eligibility axis: RoguePlanet is now KEV-*eligible*, though CISA had not listed it as of catalog 2026.07.07. Because the fix rides Defender's auto-deploying engine channel rather than a Windows KB, most estates converge automatically — but managed/air-gapped enclaves where definition delivery is throttled should verify engine currency explicitly.
 
 In-the-wild exploitation of RoguePlanet **specifically** is not confirmed as of 2026-06-10. However, the same researcher's earlier tools (BlueHammer, RedSun, UnDefend) were confirmed exploited in live attack chains by Huntress, with Russian-geolocated infrastructure observed using the Defender zero-days. The series' historical pattern — public PoC, followed by threat-actor pickup within days — makes RoguePlanet a credible near-term escalation primitive for the A&D defender to plan against now, not after exploitation is confirmed.
 
@@ -146,9 +153,9 @@ RoguePlanet is the 7th drop in the Nightmare Eclipse / Chaotic Eclipse series. S
 | YellowKey | May 12, 2026 | BitLocker bypass | CVE-2026-45585 | ✅ Patched (June PT) | [YELLOWKEY](../YELLOWKEY/profile.md) |
 | GreenPlasma | May 12, 2026 | EoP (CTFMON section) | CVE-2026-45586 | ✅ Patched (June PT) | [GREENPLASMA](../GREENPLASMA/profile.md) |
 | MiniPlasma | May 14, 2026 | LPE → SYSTEM (`cldflt.sys`, CVE-2020-17103 regression) | CVE-2020-17103 | ✅ Patched (June PT) | [MiniPlasma](../MiniPlasma/profile.md) |
-| **RoguePlanet** | **Jun 9–10, 2026** | **LPE → SYSTEM (Defender TOCTOU / junction; ex-RCE)** | **None** | **🔴 Unpatched** | *(this dossier)* |
+| **RoguePlanet** | **Jun 9–10, 2026** | **LPE → SYSTEM (Defender TOCTOU / junction; ex-RCE)** | **CVE-2026-50656** | **✅ Patched (OOB engine 1.1.26060.3008, 2026-07-09)** | *(this dossier)* |
 
-> **Sibling-status confirmation (2026-06-10):** June 2026 Patch Tuesday fixed **GreenPlasma (CVE-2026-45586)**, **YellowKey (CVE-2026-45585)**, and **MiniPlasma (CVE-2020-17103 regression)** — confirmed against BleepingComputer + The Hacker News. RedSun (CVE-2026-41091) and UnDefend (CVE-2026-45498) were patched 2026-05-20/21 and the codename↔CVE binding resolved (RedSun⇔41091, UnDefend⇔45498). **RoguePlanet is now the only unpatched tool in the series.**
+> **Series-closed confirmation (2026-07-09):** With RoguePlanet patched out-of-band (CVE-2026-50656, Defender engine 1.1.26060.3008), **the Nightmare Eclipse / Chaotic Eclipse series is fully closed** — all seven tools now carry a CVE and a fix. Prior state (2026-06-10): June 2026 Patch Tuesday had fixed GreenPlasma (CVE-2026-45586), YellowKey (CVE-2026-45585), and MiniPlasma (CVE-2020-17103 regression); RedSun (CVE-2026-41091) and UnDefend (CVE-2026-45498) were patched 2026-05-20/21. RoguePlanet was the last open tool; it is now closed.
 
 The researcher's published threat at YellowKey/GreenPlasma disclosure — *"Next patch tuesday will have a big surprise for you Microsoft"* — is fulfilled by RoguePlanet, dropped hours after the June fixes shipped.
 
@@ -165,17 +172,24 @@ The researcher's published threat at YellowKey/GreenPlasma disclosure — *"Next
 | Jun 9–10, 2026 | **RoguePlanet PoC released publicly**, hours after Patch Tuesday ("big surprise"). GitHub/GitLab repos removed by Microsoft; researcher self-hosts on `projectnightcrawler.dev` | BleepingComputer / THN |
 | Jun 9–10, 2026 | ThreatLocker independently reproduces, confirms viability on patched Windows 11; notes application allowlisting blocks execution | BleepingComputer |
 | Jun 2026 | Microsoft public posture: condemns uncoordinated disclosures as putting customers at risk, but states it will **not** pursue researchers conducting/publishing security research; reserves action for malicious harm (earlier DCU threat walked back) | THN / SecurityAffairs |
-| **Jun 10, 2026** | **Profile created. UNPATCHED. No CVE. PoC public. ITW not confirmed for RoguePlanet specifically.** Next patch window: July 2026 Patch Tuesday (OOB possible) | — |
+| Jun 10, 2026 | Profile created. UNPATCHED. No CVE. PoC public. ITW not confirmed for RoguePlanet specifically | — |
+| Jun 16, 2026 | **CVE-2026-50656 record published in NVD** (MSRC-assigned); CVSS 7.0 HIGH primary / 7.8 secondary, CWE-59 | [NVD](https://nvd.nist.gov/vuln/detail/CVE-2026-50656) / [MSRC](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50656) |
+| **Jul 9, 2026** | **PATCHED out-of-band.** Microsoft ships Defender Malware Protection Engine update **1.1.26060.3008** and the CVE-2026-50656 assignment surfaces in reporting. **Nightmare Eclipse series fully closed.** KEV-eligible (CVE now exists) but not listed (CISA KEV 2026.07.07) | BleepingComputer (Sergiu Gatlan) / SecurityWeek (Eduard Kovacs) — relaying Microsoft |
 
 ---
 
 ## References
 
+- [NVD — CVE-2026-50656](https://nvd.nist.gov/vuln/detail/CVE-2026-50656) — canonical record; CVSS 7.0 HIGH (primary) / 7.8 HIGH (Microsoft secondary), CWE-59, engine fix ≥ 1.1.26060.3008
+- [MSRC — CVE-2026-50656 (Microsoft Malware Protection Engine EoP "RoguePlanet")](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50656)
+- [BleepingComputer — Microsoft patches RoguePlanet Defender zero-day (CVE-2026-50656)](https://www.bleepingcomputer.com/news/microsoft/microsoft-patches-rogueplanet-defender-zero-day-vulnerability/) — Sergiu Gatlan, 2026-07-09 (state-change relay)
 - [BleepingComputer — Microsoft Defender "RoguePlanet" zero-day grants SYSTEM privileges](https://www.bleepingcomputer.com/news/microsoft/microsoft-defender-rogueplanet-zero-day-grants-system-privileges/)
 - [The Hacker News — Microsoft Defender RoguePlanet zero-day](https://thehackernews.com/2026/06/microsoft-defender-rogueplanet-zero-day.html)
 - [SecurityAffairs — Chaotic Eclipse unveils RoguePlanet exploit targeting fully patched Windows](https://securityaffairs.com/193436/security/chaotic-eclipse-unveils-rogueplanet-exploit-targeting-fully-patched-windows.html)
 - [CybersecurityNews — Windows Defender 0-day exploit "RoguePlanet"](https://cybersecuritynews.com/windows-defender-0-day-exploit-rogueplanet/)
 
+> The NVD record for CVE-2026-50656 references a public PoC repository. Per Hard Rule 3 that link is intentionally **not** reproduced here; PoC existence is tracked in the *Public PoC Status* section, not mirrored.
+
 ---
 
-*Profile created: 2026-06-10 | TLP: CLEAR | Tracking: factual curation only — no threat-box scoring (vuln-tracker scope).*
+*Profile created: 2026-06-10 | Updated: 2026-07-09 (state change — CVE-2026-50656 assigned, patched OOB via Defender engine 1.1.26060.3008, series closed) | TLP: CLEAR | Tracking: factual curation only — no threat-box scoring (vuln-tracker scope).*

@@ -1,0 +1,21 @@
+{
+  "event_type": "flash_sweep",
+  "run_id": "librarian-20260710-060000",
+  "sweep_run_id": "flash-sweep-20260710-060000",
+  "sweep": "flash-0600",
+  "sweep_type": "FLASH",
+  "swept_at": "2026-07-10T06:00:00-04:00",
+  "window_start": "2026-07-10T00:00:00-04:00",
+  "window_end": "2026-07-10T06:00:00-04:00",
+  "within_active_hours": false,
+  "quiet_hours": true,
+  "candidates": 0,
+  "candidate_count": 0,
+  "triggers_fired": 0,
+  "disposition": "clean-exit-silent",
+  "critical_override_evaluated": true,
+  "critical_override_applied": false,
+  "discord_posted": false,
+  "flash_queue_entry": false,
+  "source_health_changes": 0
+}

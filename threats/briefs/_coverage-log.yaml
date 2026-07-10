@@ -40139,7 +40139,7 @@ entries:
       on first iteration.
 
   - id: 2026-07-07-pm-001-gitea-cve-2026-20896-critical-pre-auth-auth-bypass-active-exploitation-sysdig-single-source-b2-structural-ad-nexus
-    covered_in: [2026-07-07-afternoon]
+    covered_in: [2026-07-07-afternoon, 2026-07-10-afternoon]
     brief_file: threats/briefs/2026-07-07-afternoon.md
     headline: "Gitea CVE-2026-20896 (CVSS 9.8 publisher-relayed) critical pre-auth authentication bypass under ACTIVE EXPLOITATION per Sysdig — reverse-proxy-auth default in affected Docker images accepts any source IP; a valid username in an HTTP header impersonates any user with no credentials, enabling full repo compromise (source, secrets, CI/CD configs, deploy keys); fixed 1.26.3/1.26.4 (reverse-proxy auth now opt-in); ~6,200 internet-accessible instances (Sysdig), unpatched share unknown; SINGLE EFFECTIVE SOURCE (Sysdig telemetry relayed by SecurityWeek, not independently corroborated) — single-source veto caps WEP at 'likely'; NOT in CISA KEV (a KEV listing is the most likely near-term escalator + independent second source that would lift WEP and trip red-team); NO actor attribution (Hard Rule 2); A&D nexus STRUCTURAL only (self-hosted Git = common DIB SDLC/source-control infrastructure) — no named A&D prime, Sysdig count NOT sector-differentiated; pre-auth network bypass, no file-open required; placed in Active Threats (B2 clears B2, active exploitation)"
     topic_tags:
@@ -40164,9 +40164,25 @@ entries:
     related_vulns:
       - CVE-2026-20896
     related_campaigns: []
-    finding_ids: [finding-2026-07-07-0002]
+    finding_ids: [finding-2026-07-07-0002, finding-2026-07-10-0003]
     digraph: B2
     wep: likely
+    resurface_2026_07_10:
+      brief_id: 2026-07-10-afternoon
+      finding_id: finding-2026-07-10-0003
+      resurface_condition_met: escalation_to_exploitation
+      flag: "UPDATE: + 🔗 correlation callout to 2026-07-07 afternoon brief"
+      section_placement: vulnerabilities
+      net_new_increments:
+        - "Singapore CSA national-CERT active-exploitation warning — a SECOND INSTITUTIONAL attestation; independence-of-Sysdig UNCONFIRMED from the BleepingComputer relay, so NOT framed as independent two-source confirmation (analyst caveat honored)"
+        - "Docker-image default-config root cause named: REVERSE_PROXY_TRUSTED_PROXIES=* trusts X-WEBAUTH-USER from any source IP -> pre-auth impersonation of any user incl. admin, no credentials"
+        - "Patched versions confirmed 1.26.3/1.26.4; affected <=1.26.2"
+        - "~6,200 internet-exposed instances framed as an EXPOSURE count, NOT a vulnerable-population count (analyst caveat honored); VPN-exit scanner = reconnaissance, distinguished from confirmed mass-compromise"
+      wep_unchanged: likely
+      wep_note: "Held at TOP of 'likely' band; single-source veto RETAINED (CSA independence unconfirmed). Escalators to very_likely: (a) CSA independent-national-telemetry confirmation, (b) CISA KEV listing. Digraph B2 unchanged. Briefer cites grade; does not re-grade."
+      hard_rule_6_quote_budget:
+        gitea_direct_quotes_this_brief: 1   # "active exploitation" (Sysdig characterization, 2 words), Layer 1 only; 0 in Layer 2
+      last_covered_updated_to: 2026-07-10
     wep_ceiling_rationale: >
       Capped at "likely" by the single-source veto. The active-exploitation claim
       traces to one effective source — Sysdig telemetry conveyed via a single
@@ -40203,8 +40219,9 @@ entries:
       - new_victims_confirmed                  # any named victim, esp. A&D/DIB
       - first_party_ioc_hit
       - exploitation_ioc_published             # scanner IP / VPN-exit indicator from Sysdig primary
+      - csa_independence_confirmed             # would lift WEP likely -> very_likely + trip red-team
     first_covered: 2026-07-07
-    last_covered: 2026-07-07
+    last_covered: 2026-07-10
     retraction: null
     test: false
 
@@ -41153,6 +41170,200 @@ entries:
       boilerplate omitted from Layer 2 per spec; natural-language framing; ISO
       date only in the greeting anchor; no digraph/WEP/finding-id in Layer 2; no
       themed-character voice. Pre-flight 13-of-13 PASS on first iteration.
+
+  - id: 2026-07-10-pm-001-progress-sharefile-storage-zone-controllers-credible-external-threat-emergency-shutdown-no-cve-no-exploitation-b2-likely-structural-ad-nexus
+    covered_in: [2026-07-10-afternoon]
+    brief_file: threats/briefs/2026-07-10-afternoon.md
+    headline: "Progress issued a rare emergency advisory instructing ShareFile customers to immediately POWER OFF on-premises Storage Zone Controllers over a vendor-declared 'credible external security threat'; cloud access to affected accounts temporarily disabled out of caution; NO CVE assigned, NO confirmed exploitation, NO IOCs published, NO actor attributed; Progress reports NO indication of unauthorized access + promised ~24h follow-up; A&D nexus STRUCTURAL only (ShareFile SZC = DIB-typical secure-file-sharing/MFT infrastructure for CUI/ITAR-adjacent document exchange) — NO named A&D/DIB prime, target/supplier exposure unknown from telemetry; MOVEit/Cl0p 2023 invoked by both outlets as HISTORICAL ANALOGY only (why MFT platforms are high-value), NOT an attribution and NOT a forecast of this event's trajectory; single effective source (Progress advisory via 2 B relays: BleepingComputer + The Hacker News, THN direct-confirmed with Progress) — single-source veto caps WEP at 'likely'; core claim = GENUINE SEVERE EXPOSURE (do NOT imply active exploitation); placed in Active Threats (rare vendor emergency action requiring immediate defensive step)"
+    topic_tags:
+      - progress-sharefile
+      - storage-zone-controllers-on-prem
+      - vendor-emergency-shutdown-advisory-power-off-production-servers
+      - credible-external-security-threat-vendor-language
+      - no-cve-no-confirmed-exploitation-no-ioc-no-actor
+      - progress-no-indication-of-unauthorized-access-24h-followup-tripwire
+      - secure-file-sharing-managed-file-transfer-mft-platform-class
+      - single-effective-source-progress-advisory-via-two-b-relays-bleepingcomputer-thehackernews
+      - single-source-veto-wep-capped-likely
+      - core-claim-genuine-severe-exposure-do-not-imply-active-exploitation
+      - ad-relevance-structural-only-dib-file-exchange-no-named-victim
+      - moveit-clop-2023-historical-analogy-only-not-attribution-not-forecast-hard-rule-2
+      - no-ioc-nothing-to-sweep-first-party-sentinel-clean
+      - active-threats
+    related_actors: []              # NONE attributed. Cl0p #018 referenced only as the sources' historical MOVEit analogy — NOT an attribution of this event (Hard Rule 2)
+    related_vulns: []               # no CVE assigned; only trackable anchor is the product/component (ShareFile Storage Zone Controllers, on-prem)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-10-0002]
+    digraph: B2
+    wep: likely
+    wep_ceiling_rationale: >
+      Capped at "likely" by the single-source veto — one effective evidence basis
+      (Progress's emergency advisory conveyed via two B relays; THN's direct
+      confirmation is a second verification of the same singular fact, not a second
+      independent evidence basis). Core forward claim = a genuine, severe exposure
+      (a vendor does not order production file infrastructure powered off absent a
+      serious basis; ACH refutes the over-caution reading with 2 inconsistencies).
+      NOT "very likely": Progress explicitly reports no indication of unauthorized
+      access, and no CVE/IOC/independent evidence basis exists. The active-exploitation
+      SUBCLAIM is roughly_even_chance (precautionary vs. active is underdetermined) and
+      MUST NOT be asserted downstream. Briefer cites B2/likely — does not re-grade.
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      One effective source (Progress advisory via BleepingComputer + The Hacker News).
+      WEP "likely" respects the veto; brief makes no very_likely+ claim and does NOT
+      imply active exploitation. Lifts on ANY of: CVE assignment + independent
+      exploitation telemetry; a second independent evidence basis (threat-intel vendor
+      observing exploitation); tracked-actor attribution from an A/B source; or a named
+      A&D-prime victim disclosure.
+    hard_rule_2_framings_load_bearing:
+      - "No actor attributed to the ShareFile threat; none originated by Archimedes"
+      - "MOVEit/Cl0p 2023 (roster #018) invoked by both outlets as HISTORICAL ANALOGY for why MFT/secure-file-sharing platforms are high-value — NOT an attribution of this event and NOT a forecast of a Cl0p-style mass-exploitation trajectory (analyst caveat honored)"
+      - "A&D relevance STRUCTURAL only (ShareFile SZC = DIB-typical secure-file-exchange infra); NO named A&D/DIB victim, target/supplier exposure unknown from telemetry"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 1   # "credible external security threat" (Progress via BleepingComputer, 4 words), Layer 1 only; 0 in Layer 2 (paraphrased "credible external threat")
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_frank_visibility_bounded_single_user_no_ioc_to_sweep_sharefile_szc_deployment_unknown
+    vuln_tracker_handoff:
+      cves: []
+      status: no-cve-assigned-monitoring-tripwires-only
+      note: "No CVE at grading time. Next-sweep tripwires (any re-opens FLASH eligibility): (a) CVE assignment for the ShareFile SZC threat; (b) confirmed exploitation / published IOCs; (c) Cl0p or any tracked-actor attribution from an A/B source; (d) a named A&D-prime/DIB victim; (e) Progress's promised ~24h follow-up advisory. If Progress publishes a formal bulletin/CVE and Archimedes retrieves it directly, consider a progress-self-disclosure vendor-on-own-product source id (provisional A)."
+    resurface_if:
+      - cve_assignment                         # CVE assigned for the ShareFile SZC threat
+      - escalation_to_exploitation             # confirmed exploitation / published IOCs
+      - new_attribution                        # any actor attribution (incl. Cl0p) from an A/B source
+      - new_victims_confirmed                  # named victim, esp. A&D/DIB prime
+      - progress_24h_followup_material_change  # vendor follow-up discloses access/exfil OR rescinds/downgrades advisory
+      - independent_second_evidence_basis      # threat-intel vendor observing exploitation — lifts single-source veto
+      - first_party_ioc_hit
+    first_covered: 2026-07-10
+    last_covered: 2026-07-10
+    retraction: null
+    test: false
+
+  - id: 2026-07-10-pm-brief-meta
+    covered_in: [2026-07-10-afternoon]
+    brief_file: threats/briefs/2026-07-10-afternoon.md
+    headline: "2026-07-10 afternoon brief — light, quiet, monitoring-tier cycle; 2 findings both B2/likely, neither victim-anchored (calibrated prominence, no inflation): Progress ShareFile Storage Zone Controllers emergency power-off advisory (finding-0002, NET-NEW, Active Threats, lead) + Gitea CVE-2026-20896 ESCALATION with Singapore CSA national-CERT corroboration (finding-0003, resurface of 2026-07-07-pm-001 with UPDATE: flag + 🔗 correlation callout, Vulnerabilities); lead = ShareFile rare vendor emergency action (structural DIB file-exchange nexus, severe-exposure-not-confirmed-compromise honestly qualified); Gitea framed as escalation with ONLY net-new increments (CSA warning as second institutional attestation NOT independent two-source confirmation; Docker default-config root cause; distinguish recon from mass-compromise; exposure!=vulnerable-population); standing sections silent-template; Hard Rule 2 preserved (no attribution originated; MOVEit analogy not forecast); Hard Rule 6 quote budget 2 total (1 Progress 'credible external security threat', 1 Sysdig 'active exploitation', each <=4 words, 1/source, 0 in Layer 2); Hard Rule 8 first-party sentinel CLEAN (0 hits, no IOC to sweep on either item); pre-flight 13-of-13 PASS"
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - 2-findings-pm-cycle-both-b2-likely-light-quiet-monitoring-tier-no-inflation
+      - sharefile-emergency-shutdown-net-new-active-threats-lead
+      - gitea-cve-2026-20896-escalation-resurface-update-flag-correlation-callout-vulnerabilities
+      - anti-repetition-gitea-resurfaced-only-net-new-increments-not-re-reported
+      - csa-national-cert-second-institutional-attestation-not-independent-two-source-confirmation
+      - severe-exposure-not-confirmed-compromise-do-not-imply-active-exploitation
+      - moveit-clop-historical-analogy-not-forecast-not-attribution-hard-rule-2
+      - exposure-count-not-vulnerable-population-count
+      - standing-sections-silent-template-sector-focus-iran-cyber-watch
+      - hard-rule-6-two-quotes-total-one-per-source-under-15-words-zero-layer-2
+      - hard-rule-8-first-party-splunk-clean-no-ioc-to-sweep-silence-not-disconfirming
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns:
+      - CVE-2026-20896
+    related_campaigns: []
+    finding_ids: [finding-2026-07-10-0002, finding-2026-07-10-0003]
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-10
+    last_covered: 2026-07-10
+    retraction: null
+    test: false
+    word_count_layer_1: 786
+    layer_2_discord_summary:
+      parts: 1
+      chars_estimate: 1690
+      under_1900_buffer: true
+      word_count_total: 224
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-10-0002
+          append_brief_id: 2026-07-10-afternoon
+        - finding_id: finding-2026-07-10-0003
+          append_brief_id: 2026-07-10-afternoon
+      coverage_log_resurface_update:
+        - "2026-07-07-pm-001 (Gitea CVE-2026-20896): covered_in appended 2026-07-10-afternoon; last_covered -> 2026-07-10; finding_ids appended finding-2026-07-10-0003; resurface_2026_07_10 block added. NO duplicate entry created (resurface, not net-new item)."
+      vuln_tracker_handoffs_proposed:
+        - "CVE-2026-20896 (Gitea) — ESCALATION of the 2026-07-07 handoff; still net-new / not in vulnerabilities/_index.yaml. Given confirmed exploitation + a national-CERT (Singapore CSA) warning, open/confirm the formal VT row now. Adds: Docker default-config root cause (REVERSE_PROXY_TRUSTED_PROXIES=* trusting X-WEBAUTH-USER), patched 1.26.3/1.26.4, ~6,200 exposure. Still NO scanner IP / VPN-exit IOC to track. Check CISA KEV (a listing lifts WEP -> very_likely + independent second source). Confirm CVSS 9.8 via NVD (publisher-relayed only)."
+        - "Progress ShareFile Storage Zone Controllers (finding-2026-07-10-0002) — NO CVE assigned; no VT row. Monitoring tripwires only (CVE assignment / confirmed exploitation / IOC / tracked-actor attribution / named A&D victim / Progress ~24h follow-up). Consider a progress-self-disclosure source id (provisional A, vendor-on-own-product) IF Progress publishes a formal bulletin retrieved directly."
+      source_grade_note:
+        - "singapore-csa (Singapore Cyber Security Agency): NEW source proposed by grader — provisional B, government category, per ABW(2026-05-08)/CCB(2026-06-01)/CCCS(2026-07-06) first-surface-foreign-national-CERT precedent. Relay-only via BleepingComputer; CSA advisory primary NOT directly retrieved (awaiting_direct_retrieval). Add to source-grades.yaml."
+        - "thehackernews remains provisional B (awaiting ratification). Progress Software has no dedicated source-grades.yaml id — ShareFile advisory relayed via BleepingComputer + THN, not directly retrieved."
+    notes: |
+      2026-07-10 AFTERNOON BRIEF (briefer phase, afternoon-20260710-160000).
+      Light, quiet, monitoring-tier cycle — two graded findings, both B2/likely,
+      neither victim-anchored. Prominence calibrated to the material; no manufactured
+      urgency. Both analyst-reviewed (analyst-20260710-164500); red-team NOT required
+      (both WEP "likely" < "very likely").
+
+      Section placement:
+      - LEAD + Active Threats: finding-2026-07-10-0002 — Progress ShareFile Storage
+        Zone Controllers emergency power-off advisory. NET-NEW (no prior corpus
+        coverage of a ShareFile SZC threat). Rare vendor "power off production
+        servers now" action -> Active Threats (carries an immediate defensive step),
+        even though there is no confirmed exploitation. Core claim framed as a
+        GENUINE SEVERE EXPOSURE; analyst caveats honored verbatim: (1) do NOT imply
+        active exploitation (vendor language spans precautionary + active; Progress
+        reports no unauthorized access; ACH H1/H2 tie, subclaim roughly_even_chance);
+        (2) MOVEit/Cl0p 2023 is HISTORICAL ANALOGY only, NOT a forecast of this
+        event and NOT an attribution (Hard Rule 2); (3) A&D nexus STRUCTURAL (DIB-
+        typical secure-file-exchange infra), no named prime; (4) Progress ~24h
+        follow-up = next-state tripwire.
+      - Vulnerabilities (UPDATE:): finding-2026-07-10-0003 — Gitea CVE-2026-20896
+        ESCALATION of finding-2026-07-07-0002 (2026-07-07 afternoon, coverage entry
+        2026-07-07-pm-001). Resurface condition escalation_to_exploitation met;
+        flagged UPDATE: + 🔗 correlation callout to the 2026-07-07 afternoon brief.
+        ANTI-REPETITION: only the NET-NEW increments carried, NOT a fresh disclosure
+        — (a) Singapore CSA national-CERT active-exploitation warning; (b) Docker-
+        image default-config root cause (REVERSE_PROXY_TRUSTED_PROXIES=* trusting
+        X-WEBAUTH-USER from any source IP); (c) patched versions 1.26.3/1.26.4;
+        (d) ~6,200 exposure. Analyst caveats honored: CSA is a SECOND INSTITUTIONAL
+        attestation, independence-of-Sysdig UNCONFIRMED from the relay -> NOT framed
+        as independent two-source confirmation; distinguish recon (VPN-exit scanner)
+        from confirmed mass-compromise; ~6,200 is an EXPOSURE count, not a vulnerable-
+        population count; structural A&D nexus. WEP unchanged (likely, top of band);
+        escalators to very_likely = CSA independent-telemetry confirmation OR CISA
+        KEV listing. Cites B2/likely — briefer does not re-grade. Coverage log:
+        2026-07-07-pm-001 UPDATED in place (covered_in + last_covered + finding_ids
+        + resurface_2026_07_10 block); NO duplicate item entry created.
+
+      Anti-repetition (other): the 2026-07-07 Labcenter Proteus 9 item
+      (2026-07-07-pm-002, CVE-2026-42953) has NO net-new movement — omitted (standing-
+      watch treatment). 2026-07-10 MORNING BlackCat/ALPHV sentencing item
+      (2026-07-10-am-001) is a retrospective LE outcome, not resurfaced.
+
+      Standing sections rendered in Layer 1: Sector Focus: A&D (silent-day template +
+      🔗 note that BOTH items carry a structural, not victim-anchored, A&D nexus) and
+      Iran Cyber Watch (silent-day template). Both omitted from Layer 2 per spec.
+
+      Hard Rule 6 quote discipline: 2 direct quotes total, 1 per source, each <=4
+      words, both Layer 1 only (0 in Layer 2): "credible external security threat"
+      (Progress via BleepingComputer) and "active exploitation" (Sysdig
+      characterization). The ShareFile headline scare-quotes around "power off your
+      servers" were REMOVED on pre-flight check-12 review (paraphrase-in-quotes /
+      would have been a 2nd quote from the same source) -> rewritten "rare power-off
+      emergency advisory".
+
+      Hard Rule 8 first-party Splunk: sentinel CLEAN — 0 IOC hits across
+      defenseclaw_local + archimedes (both findings queried -30d); neither item
+      published an IOC to sweep. Silence not disconfirming; Frank visibility-bounded;
+      ShareFile SZC / Gitea deployment in the target estate unknown.
+
+      Layer 1 786 words (400-800 band; strict \S+ token count incl. markup). Layer 2
+      Discord Summary ~224 words / ~1690 chars (150-300 word band; under the 1900-char
+      hard ceiling — trimmed on first pass given two long BleepingComputer URLs). Two
+      bullets (Active Threats + Vulnerabilities); standing-section boilerplate omitted
+      from Layer 2; natural-language dates ("Friday", "July 7"); no digraph/WEP/
+      finding-id in Layer 2; no themed-character voice. Pre-flight 13-of-13 PASS.
 
 # ============================================================================
 # Valid resurface_if conditions

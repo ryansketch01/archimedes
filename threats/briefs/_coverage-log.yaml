@@ -39764,7 +39764,7 @@ entries:
       for this briefer cycle.
 
   - id: 2026-07-06-flash-1629-001-bleepingcomputer-adobe-coldfusion-cve-2026-48282-max-severity-unauth-rce-active-exploitation-kevintel-cccs-dual-confirm-relay-attenuated
-    covered_in: [flash-2026-07-06-1629, 2026-07-08-morning]   # 2026-07-08-morning: UPDATE resurface — CISA KEV-listed (BOD due 2026-07-10) + NVD CVSS 10.0; A2/very_likely; red-team qualifying language carried
+    covered_in: [flash-2026-07-06-1629, 2026-07-08-morning, 2026-07-11-morning]   # 2026-07-08-morning: UPDATE resurface — CISA KEV-listed (BOD due 2026-07-10) + NVD CVSS 10.0; A2/very_likely; red-team qualifying language carried. 2026-07-11-morning: UPDATE resurface — BOD 22-01 deadline LAPSED end-of-day 2026-07-10 (material change = calendar; no new victim/CVE-state/telemetry); Vulnerabilities lead, A2/very_likely exploitation, structural A&D nexus preserved
     brief_file: threats/briefs/flash-2026-07-06-1629.md
     headline: "FLASH — Adobe ColdFusion CVE-2026-48282, a critical-severity unauthenticated RCE (low attack complexity, no user interaction), reported under active in-the-wild exploitation within hours of disclosure; n-day (Adobe patched 2026-07-01, NOT a zero-day); exploitation dual-attested by two genuinely independent primaries — KEVIntel honeypot network (attacks observed under two hours after disclosure) + Canadian Centre for Cyber Security (CCCS national CERT) — but BOTH reach Archimedes only through a single B-grade relay (BleepingComputer/Gatlan) and NEITHER primary was directly retrieved (relay-attenuated corroboration); CVSS numeric UNVERIFIED ('max severity' per publisher only, NVD/Adobe PSIRT confirmation pending — NOT asserted as 10.0/9.8); ~800 internet-exposed instances per Shodan/Shadowserver, unpatched share unknown; affected ColdFusion 2025.9, 2023.20, and earlier; NO actor attributed (Hard Rule 2 — none to report); NO A&D-prime victim or sector targeting named (A&D relevance MEDIUM-structural only via ColdFusion DIB/government footprint); Trigger 1 (critical CVE + active exploitation + A-grade source at primary level); critical-override 1-of-4 (does NOT apply, moot — compose within active hours); first-party Splunk 0 sentinel hits, Frank not known to run ColdFusion (Hard Rule 8 silence-not-disconfirming)"
     topic_tags:
@@ -39886,7 +39886,7 @@ entries:
         actor attribution (Hard Rule 2). Federal BOD 22-01 deadline 2026-07-10 is
         the actionable hook.
     first_covered: 2026-07-06
-    last_covered: 2026-07-08           # UPDATE-flag resurface in 2026-07-08 morning brief (Active Threats lead): CISA KEV listing + NVD CVSS 10.0 + BOD 2026-07-10 deadline. Digraph B2->A2, WEP likely->very_likely. Red-team QUALIFY language carried (one directly-retrieved A-grade CISA KEV determination + relay-conveyed KEVIntel/CCCS via BleepingComputer + SecurityWeek — NOT robustly triangulated multi-source). Structural-only A&D nexus preserved.
+    last_covered: 2026-07-11           # UPDATE-flag resurface in 2026-07-08 morning brief (Active Threats lead): CISA KEV listing + NVD CVSS 10.0 + BOD 2026-07-10 deadline. Digraph B2->A2, WEP likely->very_likely. Red-team QUALIFY language carried (one directly-retrieved A-grade CISA KEV determination + relay-conveyed KEVIntel/CCCS via BleepingComputer + SecurityWeek — NOT robustly triangulated multi-source). Structural-only A&D nexus preserved. 2026-07-11-morning: UPDATE resurface — BOD 22-01 remediation deadline LAPSED end-of-day 2026-07-10 (material state change is the calendar; unpatched fleet now non-compliant + standing exploitation risk, no new victim/CVE-state/telemetry overnight).
     retraction: null
     test: false
     word_count_layer_1: 275
@@ -40139,7 +40139,7 @@ entries:
       on first iteration.
 
   - id: 2026-07-07-pm-001-gitea-cve-2026-20896-critical-pre-auth-auth-bypass-active-exploitation-sysdig-single-source-b2-structural-ad-nexus
-    covered_in: [2026-07-07-afternoon, 2026-07-10-afternoon]
+    covered_in: [2026-07-07-afternoon, 2026-07-10-afternoon, 2026-07-11-morning]   # 2026-07-11-morning: watch-only continuing-coverage line (NO material change overnight; tripwire = CISA KEV listing or independent CSA telemetry lifts WEP -> very_likely). Not re-reported; 🔗 correlation callout to 2026-07-10 afternoon. Action unchanged.
     brief_file: threats/briefs/2026-07-07-afternoon.md
     headline: "Gitea CVE-2026-20896 (CVSS 9.8 publisher-relayed) critical pre-auth authentication bypass under ACTIVE EXPLOITATION per Sysdig — reverse-proxy-auth default in affected Docker images accepts any source IP; a valid username in an HTTP header impersonates any user with no credentials, enabling full repo compromise (source, secrets, CI/CD configs, deploy keys); fixed 1.26.3/1.26.4 (reverse-proxy auth now opt-in); ~6,200 internet-accessible instances (Sysdig), unpatched share unknown; SINGLE EFFECTIVE SOURCE (Sysdig telemetry relayed by SecurityWeek, not independently corroborated) — single-source veto caps WEP at 'likely'; NOT in CISA KEV (a KEV listing is the most likely near-term escalator + independent second source that would lift WEP and trip red-team); NO actor attribution (Hard Rule 2); A&D nexus STRUCTURAL only (self-hosted Git = common DIB SDLC/source-control infrastructure) — no named A&D prime, Sysdig count NOT sector-differentiated; pre-auth network bypass, no file-open required; placed in Active Threats (B2 clears B2, active exploitation)"
     topic_tags:
@@ -40221,7 +40221,7 @@ entries:
       - exploitation_ioc_published             # scanner IP / VPN-exit indicator from Sysdig primary
       - csa_independence_confirmed             # would lift WEP likely -> very_likely + trip red-team
     first_covered: 2026-07-07
-    last_covered: 2026-07-10
+    last_covered: 2026-07-11           # 2026-07-11-morning: watch-only continuing-coverage line, no material change overnight (see covered_in note)
     retraction: null
     test: false
 
@@ -41172,7 +41172,7 @@ entries:
       themed-character voice. Pre-flight 13-of-13 PASS on first iteration.
 
   - id: 2026-07-10-pm-001-progress-sharefile-storage-zone-controllers-credible-external-threat-emergency-shutdown-no-cve-no-exploitation-b2-likely-structural-ad-nexus
-    covered_in: [2026-07-10-afternoon]
+    covered_in: [2026-07-10-afternoon, 2026-07-11-morning]   # 2026-07-11-morning: watch-only continuing-coverage line (Active Threats). Development = Progress's promised ~24h follow-up now OVERDUE (a lapsed vendor commitment, not new threat data); no CVE/IOC/victim/attribution overnight. 🔗 correlation callout to 2026-07-10 afternoon; action unchanged.
     brief_file: threats/briefs/2026-07-10-afternoon.md
     headline: "Progress issued a rare emergency advisory instructing ShareFile customers to immediately POWER OFF on-premises Storage Zone Controllers over a vendor-declared 'credible external security threat'; cloud access to affected accounts temporarily disabled out of caution; NO CVE assigned, NO confirmed exploitation, NO IOCs published, NO actor attributed; Progress reports NO indication of unauthorized access + promised ~24h follow-up; A&D nexus STRUCTURAL only (ShareFile SZC = DIB-typical secure-file-sharing/MFT infrastructure for CUI/ITAR-adjacent document exchange) — NO named A&D/DIB prime, target/supplier exposure unknown from telemetry; MOVEit/Cl0p 2023 invoked by both outlets as HISTORICAL ANALOGY only (why MFT platforms are high-value), NOT an attribution and NOT a forecast of this event's trajectory; single effective source (Progress advisory via 2 B relays: BleepingComputer + The Hacker News, THN direct-confirmed with Progress) — single-source veto caps WEP at 'likely'; core claim = GENUINE SEVERE EXPOSURE (do NOT imply active exploitation); placed in Active Threats (rare vendor emergency action requiring immediate defensive step)"
     topic_tags:
@@ -41239,7 +41239,7 @@ entries:
       - independent_second_evidence_basis      # threat-intel vendor observing exploitation — lifts single-source veto
       - first_party_ioc_hit
     first_covered: 2026-07-10
-    last_covered: 2026-07-10
+    last_covered: 2026-07-11           # 2026-07-11-morning: watch-only continuing-coverage line — Progress's promised ~24h follow-up now overdue; no material threat data change (see covered_in note)
     retraction: null
     test: false
 
@@ -41364,6 +41364,112 @@ entries:
       bullets (Active Threats + Vulnerabilities); standing-section boilerplate omitted
       from Layer 2; natural-language dates ("Friday", "July 7"); no digraph/WEP/
       finding-id in Layer 2; no themed-character voice. Pre-flight 13-of-13 PASS.
+
+  - id: 2026-07-11-am-brief-meta
+    covered_in: [2026-07-11-morning]
+    brief_file: threats/briefs/2026-07-11-morning.md
+    headline: "2026-07-11 morning brief — thin, quiet, clean cycle; ZERO net-new promoted findings (grader rejected the sole in-window item, reject-2026-07-11-0001: two commodity Joomla-extension CISA KEV adds CVE-2026-56291 Balbooa Forms + CVE-2026-48939 iCagenda, out of A&D scope, dueDate 2026-07-13, same catalogued-for-completeness class as 2026-07-08 Joomla PageBuilder cohort); three overnight FLASH sweeps (2026-07-10 18:00, 2026-07-11 00:00 + 06:00) all clean (0 candidates, CISA KEV 0 A&D-relevant adds, Splunk 0 IOC hits); lead honestly with the single material change — ColdFusion CVE-2026-48282 BOD 22-01 remediation deadline LAPSED end-of-day 2026-07-10 (UPDATE resurface, A2/very_likely, Vulnerabilities); two watch-only continuing-coverage lines (Gitea CVE-2026-20896 no change, ShareFile SZC vendor ~24h follow-up now overdue) framed as what-to-watch tripwires with 🔗 callouts, NOT re-reported; boring-by-design, no manufactured urgency; standing sections silent-template; Hard Rule 6 zero direct quotes both layers; Hard Rule 8 first-party sentinel clean; pre-flight 13-of-13 PASS"
+    topic_tags:
+      - morning-brief
+      - meta-tracking
+      - thin-quiet-clean-cycle-boring-by-design
+      - zero-net-new-promoted-findings-honest-quiet-morning-is-the-report
+      - grader-rejected-sole-in-window-item-joomla-extension-kev-adds-out-of-ad-scope
+      - joomla-kev-completeness-cohort-note-cve-2026-56291-balbooa-cve-2026-48939-icagenda-duedate-0713
+      - three-overnight-flash-sweeps-clean-cisa-kev-0-ad-adds-splunk-0-hits
+      - coldfusion-cve-2026-48282-bod-deadline-lapsed-update-resurface-lead-material-change-is-calendar
+      - gitea-cve-2026-20896-watch-only-continuing-coverage-no-change-tripwire-cisa-kev
+      - sharefile-szc-watch-only-continuing-coverage-vendor-24h-followup-overdue
+      - standing-sections-silent-template-sector-focus-iran-cyber-watch
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-8-first-party-splunk-clean-silence-not-disconfirming
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns:
+      - CVE-2026-48282
+      - CVE-2026-20896
+    related_campaigns: []
+    finding_ids: [finding-2026-07-06-flash-1629-0001, finding-2026-07-10-0003, finding-2026-07-10-0002]
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-11
+    last_covered: 2026-07-11
+    retraction: null
+    test: false
+    word_count_layer_1: 618
+    layer_2_discord_summary:
+      parts: 1
+      chars_estimate: 1660
+      under_1900_buffer: true
+      word_count_total: 205
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-06-flash-1629-0001
+          append_brief_id: 2026-07-11-morning     # UPDATE resurface (deadline lapsed)
+        # Gitea/ShareFile carried as watch-only continuing-coverage lines (no material change);
+        # back-write optional — briefer references them but they are not the cycle's primary coverage.
+      coverage_log_resurface_update:
+        - "ColdFusion 2026-07-06-flash-1629-001 (CVE-2026-48282): covered_in appended 2026-07-11-morning; last_covered -> 2026-07-11. Genuine UPDATE resurface (BOD 22-01 deadline lapsed end-of-day 2026-07-10). No duplicate entry."
+        - "Gitea 2026-07-07-pm-001 (CVE-2026-20896): covered_in appended 2026-07-11-morning; last_covered -> 2026-07-11. Watch-only continuing-coverage line, NO material change overnight. No duplicate entry."
+        - "ShareFile 2026-07-10-pm-001: covered_in appended 2026-07-11-morning; last_covered -> 2026-07-11. Watch-only continuing-coverage line, development = vendor ~24h follow-up now overdue (lapsed commitment, not new threat data). No duplicate entry."
+      vuln_tracker_handoffs_proposed:
+        - "CVE-2026-20896 (Gitea) — still net-new / not in vulnerabilities/_index.yaml; VT-row open request restated (carried from 2026-07-10 afternoon). Tripwire: CISA KEV listing lifts WEP -> very_likely + adds independent second source."
+    notes: |
+      2026-07-11 MORNING BRIEF (briefer phase, morning-20260711-080000). Thin,
+      quiet, clean cycle — "boring by design," no manufactured urgency. A clean,
+      low-noise morning IS the report.
+
+      ZERO net-new promoted findings. The grader processed the sole in-window
+      un-promoted raw-signal item (two commodity Joomla-ecosystem CISA KEV adds:
+      CVE-2026-56291 Balbooa Forms, CVE-2026-48939 iCagenda) and REJECTED it
+      (reject-2026-07-11-0001) on A&D scope — commodity Joomla CMS extensions,
+      no DIB/aerospace deployment pathway, no actor, neither in the vuln index.
+      Same catalogued-for-completeness class as the 2026-07-08 Joomla PageBuilder
+      cohort. Carried into Layer 1 Vulnerabilities as a one-line KEV-completeness
+      note (CISA KEV source, A2, explicitly out-of-A&D-scope) so the board is
+      complete — NOT because it is actionable for the target.
+
+      Three overnight FLASH sweeps (2026-07-10 18:00, 2026-07-11 00:00 + 06:00
+      EDT) all clean — 0 candidates, CISA KEV 0 A&D-relevant new adds, Splunk 0
+      IOC hits (only archimedes self-references). Hard Rule 8: silent first-party
+      is NOT disconfirmation (Frank visibility-bounded; no huntable indicator on
+      any tracked item).
+
+      LEAD (single material change of the cycle): ColdFusion CVE-2026-48282
+      (2026-07-06-flash-1629-001 / VT-017) BOD 22-01 remediation deadline LAPSED
+      end-of-day 2026-07-10. UPDATE resurface — the material change is the
+      calendar (unpatched fleet now non-compliant + standing exploitation risk),
+      not new victim/CVE-state/telemetry. A2/very_likely (exploitation),
+      structural A&D nexus preserved. Placed as Vulnerabilities lead; brief lead
+      sentence leads with it honestly, then states the quiet posture.
+
+      Two WATCH-ONLY continuing-coverage lines, operator-authorized, framed as
+      "what changed / what to watch" tripwires with 🔗 correlation callouts to
+      prior briefs — NOT re-reported:
+      - ShareFile SZC (2026-07-10-pm-001, finding-0002, Active Threats): Progress's
+        promised ~24h follow-up to Friday's power-off order is now overdue; action
+        unchanged (keep SZC down, await bulletin). Development = lapsed vendor
+        commitment, not new threat data.
+      - Gitea CVE-2026-20896 (2026-07-07-pm-001, finding-0003, Vulnerabilities):
+        no change overnight; tripwire = CISA KEV listing or independent CSA
+        telemetry lifts WEP -> very_likely. Action unchanged (upgrade 1.26.3/1.26.4).
+
+      Anti-repetition: no re-lead on the 2026-07-10 morning/afternoon findings
+      (BlackCat sentencing 2026-07-10-am-001 not resurfaced). Standing sections
+      rendered in Layer 1: Sector Focus: A&D (silent-day template) and Iran Cyber
+      Watch (silent-day template); both omitted from Layer 2 per spec. Hard Rule 6:
+      0 direct quotes in Layer 1 and Layer 2. Layer 1 618 words (400-800 band).
+      Layer 2 Discord Summary ~205 words / ~1660 chars (150-300 word band; under
+      1900-char hard ceiling); single message, no chunking; two sections (Active
+      Threats + Vulnerabilities) with three watch bullets; standing-section
+      boilerplate omitted from Layer 2; natural-language dates ("Friday", "July 10",
+      "July 1"); ISO date only in the greeting anchor; no digraph/WEP/finding-id in
+      Layer 2; no themed-character voice. Pre-flight 13-of-13 PASS on first iteration.
 
 # ============================================================================
 # Valid resurface_if conditions

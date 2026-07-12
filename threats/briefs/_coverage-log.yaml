@@ -41592,6 +41592,138 @@ entries:
       anchor; no digraph/WEP/finding-id in Layer 2; no themed-character voice.
       Pre-flight 13-of-13 PASS on first iteration.
 
+  - id: 2026-07-12-am-brief-meta
+    covered_in: [2026-07-12-morning]
+    brief_file: threats/briefs/2026-07-12-morning.md
+    headline: "2026-07-12 morning brief (Sunday cadence) — quiet cycle; ZERO net-new promoted findings AND zero grader rejections (sentinel-only pre-brief sweep, all in-window items discarded at collection: CrowdStrike dateless marketing rotation, no other feed returned in-window items); three overnight FLASH sweeps clean (2026-07-11 18:00, 2026-07-12 00:00 + 06:00 EDT, 0 candidates); CISA KEV 0 new adds since 2026-07-10 (most recent dateAdded remains the 07-10 commodity Joomla-ecosystem cohort, already captured + rejected out-of-A&D-scope at the 07-11 morning brief); first-party Splunk sweep clean (0 non-Archimedes events, both indexes); NO FLASH triggers, NO watchlist prime named; lead honestly with quiet-cycle posture (boring by design, no manufactured urgency), then the one standing live-risk carry-over — ColdFusion CVE-2026-48282 (A2/exploitation very_likely) whose federal remediation deadline lapsed 07-10 with NO new development this window; Vulnerabilities section carries a compact 'Standing KEV watch — no additions this window' block listing four tracked tripwire items as watch-state pointers (NOT resurfaced, NO UPDATE flags): ColdFusion CVE-2026-48282 (VT-017), FortiAuthenticator CVE-2026-44277 (VT-007, KEV-eligible not listed), RoguePlanet CVE-2026-50656 (VT-011, patched/KEV-eligible not listed), PAN-OS CVE-2026-0288 (VT-019, patched n-day, postdates catalog); Other Signal carries first-party sentinel-clean note (Hard Rule 8) + roster/watch-maintenance line (The Gentlemen ransomware standing /new-actor candidate, prior Unit 42 A-grade reporting, not roster, no A&D nexus, monitoring only; AI-tooling/dev-supply-chain theme no fresh surface); standing sections silent-template; Hard Rule 6 zero direct quotes both layers; Hard Rule 2 no attribution originated; pre-flight 13-of-13 PASS"
+    topic_tags:
+      - morning-brief
+      - sunday-cadence
+      - meta-tracking
+      - quiet-cycle-boring-by-design-no-manufactured-urgency
+      - zero-net-new-promoted-findings-and-zero-grader-rejections
+      - sentinel-only-pre-brief-sweep-all-in-window-discarded-at-collection
+      - three-overnight-flash-sweeps-clean-cisa-kev-0-adds-since-0710-splunk-0-hits
+      - clean-sweep-no-flash-triggers-no-watchlist-prime-named
+      - lead-quiet-posture-then-one-standing-live-risk-carryover-coldfusion
+      - standing-kev-watch-no-additions-this-window-four-tripwire-items-watch-state-pointers
+      - coldfusion-cve-2026-48282-vt-017-deadline-lapsed-0710-no-new-development-not-resurfaced
+      - fortiauthenticator-cve-2026-44277-vt-007-kev-eligible-not-listed-unchanged
+      - rogueplanet-cve-2026-50656-vt-011-patched-kev-eligible-not-listed-unchanged
+      - panos-cve-2026-0288-vt-019-patched-nday-postdates-catalog-unchanged
+      - no-update-flags-watch-state-pointers-not-resurface-covered-in-not-appended-last-covered-not-bumped
+      - the-gentlemen-ransomware-standing-new-actor-candidate-unit42-a-grade-not-roster-no-ad-nexus-monitoring-only
+      - ai-tooling-dev-supply-chain-theme-ghostcommit-mini-shai-hulud-nx-console-no-fresh-surface
+      - standing-sections-silent-template-sector-focus-iran-cyber-watch
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-8-first-party-splunk-clean-silence-not-disconfirming
+      - hard-rule-2-no-attribution-originated
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns:
+      - CVE-2026-48282
+      - CVE-2026-44277
+      - CVE-2026-50656
+      - CVE-2026-0288
+    related_campaigns: []
+    finding_ids: []                # 0 net-new promoted findings; the four KEV-watch items are watch-state pointers only, not resurfaced items
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-12
+    last_covered: 2026-07-12
+    retraction: null
+    test: false
+    word_count_layer_1: 523
+    layer_2_discord_summary:
+      parts: 1
+      chars_estimate: 1370
+      under_1900_buffer: true
+      word_count_total: 190
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings: []   # none — findings_referenced empty; the four KEV-watch items (ColdFusion finding-2026-07-06-flash-1629-0001 + VT-007/VT-011/VT-019 dossiers) are watch-state board pointers with NO material change this cycle, already back-written for prior briefs; no back-write this cycle
+      coverage_log_resurface_update:
+        - "ColdFusion 2026-07-06-flash-1629-001 (CVE-2026-48282): NOT resurfaced — no material change today (deadline lapse was the 07-11 morning lead, pointered 07-11 afternoon). Compact watch-state pointer only; covered_in NOT appended, last_covered NOT bumped. No duplicate entry."
+        - "FortiAuthenticator CVE-2026-44277 (VT-007), RoguePlanet CVE-2026-50656 (VT-011), PAN-OS CVE-2026-0288 (VT-019): NOT resurfaced — standing KEV-watch tripwire items, none added to CISA KEV this window, unchanged. Compact watch-state pointers only; no covered_in append, no last_covered bump on their own entries. No duplicate entries."
+      vuln_tracker_handoffs_proposed: []   # no net-new CVE this cycle; all four tripwire items already dossiered (VT-007/011/017/019)
+    notes: |
+      2026-07-12 MORNING BRIEF (briefer phase, morning-20260712-080000), Sunday
+      cadence (08:00 daily brief; the 10:00 Weekly Synthesis is a separate later
+      run, not this file). Quiet cycle — "boring by design," no manufactured
+      urgency, no manufactured signal. A clean, low-noise Sunday morning IS the
+      report.
+
+      ZERO net-new promoted findings AND zero grader rejections. The 07:30 pre-brief
+      collection was a sentinel-only clean sweep (raw-2026-07-12-am-000): all
+      in-window feeds returned 0 substantive items except CrowdStrike's dateless
+      marketing rotation (10 items, all published:null, no roster/vuln/A&D match),
+      discarded at collection per the established pattern — so the grader had nothing
+      to promote OR reject (contrast the 07-11 morning, which had 1 rejection).
+
+      Three overnight FLASH sweeps (2026-07-11 18:00, 2026-07-12 00:00 + 06:00 EDT)
+      all clean — 0 candidates. CISA KEV: 0 new adds since 2026-07-10; most recent
+      dateAdded remains the 07-10 commodity Joomla-ecosystem cohort (already captured
+      raw-2026-07-11-am-001 + rejected out-of-A&D-scope at the 07-11 morning brief).
+      First-party Splunk clean: 0 non-Archimedes events across both indexes in-window
+      (only archimedes:* internal sourcetypes). Hard Rule 8: silent first-party is
+      NOT disconfirmation (Frank visibility-bounded; no huntable indicator on any
+      tracked item).
+
+      LEAD: honest quiet-posture lead (0 net-new findings, overnight sweeps clean,
+      no KEV adds, first-party clean), then the single standing live-risk carry-over
+      for concreteness — ColdFusion CVE-2026-48282 (VT-017, A2 / exploitation
+      very_likely), federal remediation deadline lapsed 07-10 with NO new development
+      this window. This does NOT re-lead ColdFusion as news (it led 07-11 morning);
+      it names it as the one persistent A&D-relevant exposure so the lead carries
+      impact without manufacturing signal. NOTE (corpus discrepancy sidestepped):
+      raw-2026-07-12-am-000 calls the ColdFusion deadline "BOD 26-04" while the
+      07-11 briefs / ColdFusion coverage entry say "BOD 22-01"; the brief cites the
+      neutral "federal remediation deadline" (no BOD number) to avoid propagating
+      the mismatch — flag for operator reconciliation of the ColdFusion dossier /
+      sentinel wording.
+
+      STANDING KEV WATCH (Vulnerabilities section): compact "no additions this
+      window" block listing four tracked tripwire items as WATCH-STATE POINTERS,
+      NOT resurfaced items and NOT UPDATE-flagged (mirrors the accepted 07-11
+      afternoon compact-pointer pattern; light A2 digraph annotations kept inline
+      for reader clarity, dossier links per item, CISA KEV catalog as the shared
+      KEV-state source anchor):
+      - ColdFusion CVE-2026-48282 (VT-017) — deadline lapsed 07-10, unchanged;
+        patch (Adobe 2026-07-01) is the only control.
+      - FortiAuthenticator CVE-2026-44277 (VT-007) — KEV-eligible, not yet listed;
+        on-prem 6.4/6.5/6.6/8.0 affected; unchanged.
+      - RoguePlanet CVE-2026-50656 (VT-011) — patched (Defender engine
+        1.1.26060.3008, auto-deploy); KEV-eligible, not listed; unchanged.
+      - PAN-OS CVE-2026-0288 (VT-019) — patched n-day; CVE postdates current KEV
+        catalog; unchanged.
+      Their own coverage-log entries are NOT modified (covered_in not appended,
+      last_covered not bumped) — a watch-state pointer is not a resurface. Satisfies
+      pre-flight check 3 in spirit (brief does not re-cover them as standalone news).
+
+      OTHER SIGNAL: first-party sentinel-clean note (Hard Rule 8) + roster/watch-
+      maintenance line — The Gentlemen ransomware carried as a standing /new-actor
+      evaluation candidate (prior Unit 42 A-grade reporting; NOT on the Archimedes
+      roster; no established A&D nexus; monitoring only; Hard Rule 2 — relayed, not
+      originated), plus the recurring AI-tooling / dev-supply-chain theme (Ghostcommit
+      code-review bypass; Mini Shai-Hulud / Nx Console lineage) with no fresh surface
+      this window. Framed as process-transparency watch-state, not graded items.
+
+      Standing sections rendered in Layer 1: Sector Focus: A&D (silent-day template)
+      and Iran Cyber Watch (silent-day template); both omitted from Layer 2 per spec.
+      Hard Rule 6: 0 direct quotes in Layer 1 and Layer 2 (quiet cycle -> prefer
+      zero). Hard Rule 2: no attribution originated. Layer 1 ~523 words (400-800
+      band). Layer 2 Discord Summary ~190 words / ~1370 chars (150-300 word band;
+      under the 1900-char hard ceiling); single message, no chunking; one
+      Vulnerabilities section (the standing KEV-watch block) + a quiet-posture
+      opener and a first-party/no-other-items closer; standing-section boilerplate
+      omitted from Layer 2; natural-language dates ("July 10", "July 1"); ISO date
+      only in the greeting anchor; no digraph/WEP/finding-id in Layer 2; no themed-
+      character voice. Pre-flight 13-of-13 PASS on first iteration.
+
       Librarian handoff: findings_referenced empty; no published_in_briefs back-write
       this cycle (three carry-over items are watch-only pointers with no material change,
       already back-written for prior briefs). Do NOT commit / Do NOT post to Discord were

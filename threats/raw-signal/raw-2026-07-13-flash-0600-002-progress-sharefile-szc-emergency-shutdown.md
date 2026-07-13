@@ -19,7 +19,10 @@ match_reason:
 triage_tags: [non_flash, developing, zero_day_watch, vuln_tracker_handoff, grader_queue_morning]
 iocs_extracted: true
 iocs_count: 2
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-07-13-0003
+promoted_at: 2026-07-13T08:20:00-04:00
+grading_run_id: morning-20260713-080000
 ttl_expires_at: 2026-10-11T06:12:00-04:00
 ---
 

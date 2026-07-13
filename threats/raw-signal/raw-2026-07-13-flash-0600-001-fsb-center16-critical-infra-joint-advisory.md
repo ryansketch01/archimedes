@@ -19,7 +19,10 @@ match_reason:
 triage_tags: [non_flash, ad_sector_marginal, restatement, actor_not_in_roster, grader_queue_morning]
 iocs_extracted: true
 iocs_count: 1
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-07-13-0002
+promoted_at: 2026-07-13T08:16:00-04:00
+grading_run_id: morning-20260713-080000
 ttl_expires_at: 2026-10-11T06:08:00-04:00
 ---
 

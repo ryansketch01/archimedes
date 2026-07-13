@@ -63,6 +63,7 @@ You operate under five doctrine files. **Always consult the relevant doctrine be
 | `doctrine/THREAT-BOX-METHODOLOGY.md` | Every actor scoring |
 | `doctrine/ACTOR-PROFILE-STANDARD.md` | Every actor profile edit |
 | `doctrine/LEGAL-POLICY.md` | **Before every tool call** |
+| `doctrine/DARK-WEB-COLLECTION.md` | Any dark-web / breach-market / paste-site / breach-index collection |
 | `doctrine/FLASH-POLICY.md` | Every FLASH trigger evaluation |
 | `doctrine/RETRACTION-POLICY.md` | When any finding is later disputed |
 
@@ -510,9 +511,21 @@ Net effect: a usage-limit morning now self-heals — the brief lands in `#intel-
 
 **Subtlety to remember:** the briefer's `status: published` frontmatter is set optimistically and is NOT proof of delivery — the authoritative "this reached Discord" signal is the `discord_delivery` marker (catch-up) or a librarian `Publish ...` commit (normal path). Discovered + built Session 16.
 
+### Creating a Splunk index is not enough — the HEC token's allowed-index list must include it too
+
+When adding a new index as an HEC write target, creating the index (Settings → Indexes) is only half the setup. The HEC token carries its own allowed-indexes ACL; if the target index isn't on it (and isn't the token's default), HEC rejects **every** event with HTTP 400 `{"text":"Incorrect index","code":7}` — even though the index exists and the token is otherwise valid. The failure is per-event and total, so it's easy to misread as a token/URL problem.
+
+Hit 2026-07-08 standing up a `network_inventory` index for the home-network discovery tooling: the index existed (`| rest /services/data/indexes` confirmed it), but the `archimedes-librarian` HEC token was scoped to `indexes=archimedes` only. Fix: Settings → Data Inputs → HTTP Event Collector → *token* → **Selected Allowed Indexes** → add the new index (additive; doesn't drop the existing one). Inspect a token's current allow-list with `| rest /services/data/inputs/http | table title index indexes`. Discovered Session 17.
+
+### nmap runs unprivileged on Frank (Npcap unprivileged mode); scheduled nmap tasks don't need elevation
+
+nmap `-sn` ARP host discovery on the local `192.168.1.0/24` returns MAC addresses + vendors WITHOUT an elevated process on Frank — Npcap is installed in unprivileged / WinPcap-compatible mode, so raw sockets are available to non-admin. Consequence for Task Scheduler: an nmap task can use `RunLevel: LeastPrivilege` and installs via `schtasks /Create` from a NON-elevated session. A first attempt used `RunLevel: HighestAvailable` (for raw-socket reliability) and `schtasks /Create` failed with "Access is denied" — registering an elevated-run task requires an elevated install session. Dropped to LeastPrivilege: installs clean, sweeps still resolve MACs. If a future host can't do raw scans unprivileged, nmap degrades to a TCP connect scan rather than failing outright. Discovered Session 17.
+
+**Provenance note:** both findings surfaced while building a home-network coverage dashboard, which was then split into its own standalone private repo (`C:\Users\rtske\Projects\home-network`) rather than living in Archimedes. The `network_inventory` index coexists with `defenseclaw_local` / `archimedes` on Frank's Splunk. The `192.168.1.0/24` entry Ryan added to `authorized-targets.yaml` remains (a real owner authorization) even though active scanning now runs from the home-network repo, not Archimedes.
+
 ---
 
-*Last updated: Session 16 (delivery catch-up — `deliver_catchup.py` + `run_phase.ps1` hook auto-delivers `[DEGRADED-RECOVERY]` briefs to #intel-briefs with zero model tokens, after the 05-26/05-27 back-to-back usage-limit morning misfires; Layer 2 chunking under the 2000-char cap; `discord_delivery` frontmatter marker for idempotency)*
+*Last updated: Session 17 (home-network coverage tooling built here, then split to its own private repo `C:\Users\rtske\Projects\home-network`; two operational findings retained above — HEC-token allowed-index ACL, and nmap-unprivileged / LeastPrivilege scheduled tasks on Frank)*
 
 ## Session logging to Obsidian
 

@@ -15,7 +15,7 @@
 #   5. Threat-box scoring within 14 days (human sign-off for HIGH)
 
 version: 2
-last_updated: 2026-07-07        # /new-actor Cavern Manticore (#026) — LOW (auto-commit, weighted 3.25); single-IR-vendor (Check Point Research) A2 attribution, WEP likely, CPR primary not directly retrieved; espionage category MEDIUM (composite 5). Follows /new-actor Icarus (#025) 2026-07-06 — LOW (auto-commit, weighted 2.2)
+last_updated: 2026-07-12        # /new-actor Peach Sandstorm (#027) — MEDIUM (auto-commit, weighted 5.5); multi-A-grade (FireEye/Microsoft/Symantec/Kaspersky/Unit 42), espionage category HIGH (composite 9) on Intent=5 Target-Specific (prime-direct US defense/satellite/aerospace targeting); Hard Rule 5 gate did NOT fire. Follows /new-actor Cavern Manticore (#026) 2026-07-07 — LOW (weighted 3.25)
 source_target_profile: ad-prime-v1        # per THREAT-BOX-METHODOLOGY.md
 
 actors:
@@ -351,13 +351,13 @@ actors:
       service: MOIS
       unit: "ITSecTeam (per third-party reporting; not officially confirmed)"
     type: "Nation-State APT"
-    threat_level: MEDIUM         # overall weighted 4.9 → MEDIUM; per-category espionage HIGH (composite 8)
+    threat_level: MEDIUM         # overall weighted 4.9 → MEDIUM (re-affirmed 2026-07-12 /update-tracking); per-category espionage HIGH (composite 8)
     tracked_since: 2026-05-01
     dossier: threats/threat-actors/APT34/
-    last_reviewed: 2026-05-01
-    next_review_due: 2026-07-30
+    last_reviewed: 2026-07-12
+    next_review_due: 2026-10-10
     mitre_attack_id: G0049
-    note: "Session 9 pre-work intake. First-pass profile + initial scoring complete; auto-committed (MEDIUM)."
+    note: "Session 9 pre-work intake (initial MEDIUM 2026-05-01). 90-day /update-tracking refresh 2026-07-12 (dossier_version 2, scoring_version 2): threat box RE-AFFIRMED weighted 4.9 → MEDIUM, no category composite moved, Hard Rule 5 gate did NOT fire, auto-committed. Recorded the Oct-2024 Earth Simnavaz campaign (Trend Micro: StealHook Exchange-credential-theft backdoor + malicious password-filter DLL T1556.002 + CVE-2024-30088 privesc) — reinforces already-ceiling espionage Capability=5, no numeric change — and the Check Point Research Cavern Manticore (#026) tactical-overlap-to-Lyceum/OilRig note (CPR's assessment ONLY; NO attribution merge originated, Hard Rule 2). Splunk first-party categorical zero over -90d in defenseclaw_local (visibility-bounded null, no bonus). related_actors extended to include #026 (CPR overlap, non-merge) and #027 Peach Sandstorm (Iranian-nexus peer). RATIFICATION FOLD-IN 2026-07-12 (dossier_version 3, raw-2026-07-12-ratify-003): collector direct-retrieval pass LIVE-RATIFIED the Earth Simnavaz campaign + StealHook backdoor + CVE-2024-30088 linkage + psgfilter.dll password-filter DLL (T1556.002) against the Trend Micro primary — pending_direct_retrieval CLEARED on those campaign/tooling/technique claims. SINGLE-SOURCE DISCIPLINE: Trend Micro sole A-grade originator, all relays (cybersecuritynews/Dark Reading/SOC Prime/Industrial Cyber) NOT independent corroboration; recorded single-source provisional-A2-confirmed, NOT multi-A A1. NOT a rescore — espionage Capability already ceiling 5; score STAYS MEDIUM 4.9; Hard Rule 5 gate did NOT fire. +1 net-new atomic IOC (psgfilter.dll filename). STILL PENDING: Trend Micro StealHook IOC appendix (hashes/C2/emails, 403-blocked) + 2025-2026 OilRig/Crambus A-grade primary. Splunk re-run over -90d incl. new indicators = categorical zero (no bonus)."
 
   - id: "024"
     primary_name: "APT37"
@@ -416,23 +416,46 @@ actors:
     note: "First-pass profile + initial scoring created 2026-07-07 via /new-actor Cavern Manticore (operator Ryan) from finding-2026-07-06-0001 (Check Point Research relayed by The Hacker News — new MOIS-affiliated cluster operating the 'Cavern'/'Cav3rn' modular .NET C2 framework against Israeli IT-provider/gov orgs; Israel primary + Egypt + UAE). SINGLE-SOURCE: CPR sole originating primary, The Hacker News pure relay (NOT independent corroboration); CPR primary NOT directly retrieved. Admiralty A2, WEP 'likely,' single-source veto applied. checkpoint-research provisional-A (72h ratification clock, pending direct retrieval + human ratification). Hard Rule 2 BINDING: CPR-noted tactical overlaps with MuddyWater (#022) and Lyceum/OilRig (#023, Lyceum = OilRig subgroup per CPR) recorded as CPR's assessment ONLY — NO roster cross-walk asserted; related_actors [022,023] reflects CPR-noted overlap, not an Archimedes attribution merge. finding-2026-07-06-0001 analyst_review_required=true — standing SAT-ACH open question (distinct cluster vs. MuddyWater/OilRig sub-cluster) NOT resolved by actor-profiler. 13 IOCs published (1 C2 domain hospitalinstallation[.]com + 7 sideloaded DLL filenames + 5 exploited CVEs by ID only per Hard Rule 3). Threat-box weighted 3.25 → LOW → auto-commit; Hard Rule 5 gate did NOT fire. Espionage category MEDIUM (composite 5) is the primary_threat_vector despite LOW overall. Splunk first-party sentinel 0 hits over -90d on C2 domain + distinctive DLL filenames (Frank not an Israeli/Egyptian/UAE IT-provider/gov org — visibility-bounded null, no bonus). Calibrates below Iran-MOIS peers UNC1549 (5.4 MEDIUM) / APT34 (4.9 MEDIUM), near MuddyWater (4.15 LOW) / Charming Kitten (4.45 LOW)."
     related_actors: ["022", "023"]   # CPR-noted tactical overlap only — NOT an Archimedes attribution merge (Hard Rule 2)
 
+  - id: "027"
+    primary_name: "Peach Sandstorm"
+    aliases:
+      - APT33            # FireEye / Mandiant
+      - Refined Kitten   # CrowdStrike
+      - HOLMIUM          # Microsoft (pre-Sandstorm element taxonomy)
+      - Elfin            # Symantec
+      - Curious Serpens  # Palo Alto Unit 42
+      - MAGNALLIUM       # Dragos (ICS/OT)
+    attribution:
+      nation: IR
+      service: "IRGC (per Microsoft; FireEye/Mandiant assess Iranian-government-directed)"
+      unit: null
+    type: "Nation-State APT"
+    threat_level: MEDIUM         # weighted overall 5.5 (MEDIUM) per /new-actor 2026-07-12; espionage category HIGH (composite 9). Intent=5 Target-Specific — multi-A-grade documentation of prime-direct US defense/satellite/aerospace targeting (FireEye 2017 + Microsoft 2023-2024) clears the evidence-minimum bar, in parity with UNC1549. Only Iranian roster actor with a documented destructive dimension (destructive composite 4, non-floor).
+    tracked_since: 2026-07-12
+    dossier: threats/threat-actors/Peach-Sandstorm/
+    last_reviewed: 2026-07-12
+    next_review_due: 2026-10-10
+    mitre_attack_id: G0064
+    note: "First-pass profile + initial scoring created 2026-07-12 via /new-actor Peach Sandstorm (operator Ryan). Seed reference finding-2026-05-22-0002 (Unit 42 'Paved With Intent' — Curious Serpens = Peach Sandstorm = APT33, ROADtools post-password-spray 2023); dossier body built from established public A-grade reporting (FireEye 2017, Microsoft 2023-2024, Symantec 2019, Kaspersky, CrowdStrike, Dragos, Unit 42). Threat-box weighted 5.5 → MEDIUM → auto-commit; Hard Rule 5 gate did NOT fire. Espionage category HIGH (composite 9) on Intent=5 Target-Specific — the ONLY Iranian roster actor besides UNC1549 (#004) to reach A&D-prime-direct targeting: multiple A-grade sources document US defense/satellite/aerospace targeting including the Defense Industrial Base (FalseFont Dec 2023, Tickler Aug 2024) and a named US aerospace victim (FireEye 2017). Calibrates ABOVE Iran peers — UNC1549 5.4, APT34 4.9, Charming Kitten 4.45, MuddyWater 4.15, Cavern Manticore 3.25. Also uniquely carries a documented destructive dimension (SHAPESHIFT/DROPSHOT + StoneDrill wiper ties per FireEye/Kaspersky), scored regional (destructive composite 4). Multi-A-grade — NO single-source veto; confidence A1. Hard Rule 2: all attribution inherits from cited sources, related_actors [004,011,023,022] are Iranian-nexus PEERS not merges. Hard Rule 3: CVEs by ID only. Splunk first-party sentinel 0 hits over -90d (visibility-bounded null — Frank not a US A&D prime, no bonus). 6 aliases confirmed each against its originating vendor; dropped none. FOLD-IN 2026-07-12 (dossier v2, sourcing correction — NOT a rescore, score/level unchanged): collector direct-retrieval ratified FalseFont (Microsoft Dec 2023 + Unit 42 Mar 2024 + Nextron Jan 2024) and Tickler (Microsoft Aug 2024) campaigns; Tickler corrected to Microsoft-only (no retrievable Mandiant Tickler advisory — co-reporting pending_direct_retrieval); 32 atomic IOCs added to iocs.yaml/iocs.md; Intent=5 re-verified on corrected sources; Splunk re-run 0 hits -90d."
+    related_actors: ["004", "011", "023", "022"]   # Iranian-nexus PEERS for analytic context — NOT attribution merges (Hard Rule 2)
+
 # ============================================================================
 # Quick-lookup indices (regenerated when roster changes)
 # ============================================================================
 _meta:
-  total_actors: 26
+  total_actors: 27
   by_threat_level:
     HIGH: 18
-    MEDIUM: 4          # REvil, APT34, UNC1549, APT37 (per /update-tracking 2026-05-10; espionage composite 8 HIGH at category tier but weighted overall MEDIUM)
+    MEDIUM: 5          # REvil, APT34, UNC1549, APT37, Peach Sandstorm (per /new-actor 2026-07-12; espionage category HIGH composite 9 on Intent=5 Target-Specific, weighted overall 5.5 MEDIUM)
     LOW: 4             # Charming Kitten, MuddyWater (per /update-tracking 2026-05-09; both espionage category MEDIUM/HIGH but weighted overall LOW), Icarus (per /new-actor 2026-07-06; extortion actor, weighted 2.2, single-IR-vendor B2), Cavern Manticore (per /new-actor 2026-07-07; Iran-MOIS espionage cluster, weighted 3.25, single-source CPR A2, espionage category MEDIUM composite 5)
   by_nation:
     RU: 5          # APT28, Sandworm, APT29, LockBit (RU-linked), Cl0p (RU-linked), REvil
     CN: 4          # Volt Typhoon, Salt Typhoon, APT40, APT41
-    IR: 6          # UNC1549, Charming Kitten, Handala, MuddyWater, APT34, Cavern Manticore
+    IR: 7          # UNC1549, Charming Kitten, Handala, MuddyWater, APT34, Cavern Manticore, Peach Sandstorm
     KP: 3          # Stardust Chollima, Lazarus, APT37
     unknown: 8     # TeamPCP, GlassWorm, Miyako, Scattered Spider, BlackCat, Payouts King, Icarus, (LockBit/Cl0p attributed RU)
   profiles_migrated: 1         # APT28 only at v1
   profiles_pending: 4          # Handala, APT40, BlackCat, Payouts King
-  profiles_first_pass: 7       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09) + Icarus (2026-07-06 /new-actor) + Cavern Manticore (2026-07-07 /new-actor)
-  scoring_complete: 7          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — red-team qualify Intent=4 → weighted LOW despite category HIGH); MuddyWater (2026-05-09 /update-tracking, initial LOW — fourth workflow validation pass; red-team qualify Intent=3 Sector Association bound, 72h clock fired with no corroboration, weighted LOW despite category MEDIUM on espionage); APT37 (2026-05-10 /update-tracking, initial MEDIUM — fifth workflow validation pass; evidence-minimum-table-bound Intent=3 Sector Association, espionage category HIGH composite 8 but weighted overall MEDIUM because Intent=3 keeps espionage from ceiling 10 and three floor categories plus supply-chain MEDIUM dilute via doctrine weighting; Hard Rule 5 gate did NOT fire); Icarus (2026-07-06 /new-actor, initial LOW — weighted 2.2, single-IR-vendor B2 extortion actor, commodity novelty + no A&D-directed targeting + thin capability base, Hard Rule 5 gate did NOT fire); Cavern Manticore (2026-07-07 /new-actor, initial LOW — weighted 3.25, single-source CPR A2 Iran-MOIS espionage cluster, evidence-minimum-table-bound Intent=3 Sector Association + Capability=3 Limited on one-report base, espionage category MEDIUM composite 5, Hard Rule 5 gate did NOT fire). APT28 awaits methodology rerun.
+  profiles_first_pass: 8       # APT34 (Session 9 pre-work) + UNC1549 + Charming Kitten + MuddyWater (2026-05-06 batch) + APT37 (2026-05-09) + Icarus (2026-07-06 /new-actor) + Cavern Manticore (2026-07-07 /new-actor) + Peach Sandstorm (2026-07-12 /new-actor)
+  scoring_complete: 8          # APT34 (Session 9 pre-work, initial MEDIUM); UNC1549 (2026-05-09 /update-tracking, initial MEDIUM); Charming Kitten (2026-05-09 /update-tracking, initial LOW — red-team qualify Intent=4 → weighted LOW despite category HIGH); MuddyWater (2026-05-09 /update-tracking, initial LOW — fourth workflow validation pass; red-team qualify Intent=3 Sector Association bound, 72h clock fired with no corroboration, weighted LOW despite category MEDIUM on espionage); APT37 (2026-05-10 /update-tracking, initial MEDIUM — fifth workflow validation pass; evidence-minimum-table-bound Intent=3 Sector Association, espionage category HIGH composite 8 but weighted overall MEDIUM because Intent=3 keeps espionage from ceiling 10 and three floor categories plus supply-chain MEDIUM dilute via doctrine weighting; Hard Rule 5 gate did NOT fire); Icarus (2026-07-06 /new-actor, initial LOW — weighted 2.2, single-IR-vendor B2 extortion actor, commodity novelty + no A&D-directed targeting + thin capability base, Hard Rule 5 gate did NOT fire); Cavern Manticore (2026-07-07 /new-actor, initial LOW — weighted 3.25, single-source CPR A2 Iran-MOIS espionage cluster, evidence-minimum-table-bound Intent=3 Sector Association + Capability=3 Limited on one-report base, espionage category MEDIUM composite 5, Hard Rule 5 gate did NOT fire); Peach Sandstorm (2026-07-12 /new-actor, initial MEDIUM — weighted 5.5; the FIRST Iranian /new-actor to reach Intent=5 Target-Specific on the evidence-minimum table via multi-A-grade prime-direct US defense/satellite/aerospace documentation (FireEye 2017 + Microsoft 2023-2024), espionage category HIGH composite 9, in parity with UNC1549; only Iranian roster actor with a non-floor destructive category (composite 4, documented wiper ties); multi-A-grade so NO single-source veto, confidence A1; Hard Rule 5 gate did NOT fire). APT28 awaits methodology rerun.
   scoring_template_only: 0     # APT37 scored 2026-05-10; no remaining TEMPLATE-only dossiers.

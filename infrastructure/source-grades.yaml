@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-07-07T08:00:00-04:00
+last_updated: 2026-07-10T16:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -164,6 +164,20 @@ government_sources:
     active: true
     urls:
       - https://www.cyber.gc.ca/en/
+
+  - id: singapore-csa
+    name: "Singapore Cyber Security Agency (CSA)"
+    category: government
+    grade: B
+    provisional: true
+    provisional_since: 2026-07-10
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-07-10-0003 (Gitea CVE-2026-20896 Docker-image pre-auth auth-bypass active-exploitation escalation; Singapore CSA issued a national-CERT active-exploitation warning corroborating the originating Sysdig research). CSA is Singapore's national cyber authority / government-CERT. Foreign-government national-cyber-authority / CERT category. Provisional B follows the established ABW (2026-05-08), CCB (2026-06-01), and CCCS (2026-07-06) precedent for first-surface foreign national cyber/CERT bodies making a procedural active-exploitation observation (CISA-analog claim type) — conservative starting grade B. This surface: relay-only via BleepingComputer (Bill Toulas); CSA advisory primary NOT directly retrieved (awaiting_direct_retrieval preserved as a separate collection todo, not a grade blocker). Note per finding-2026-07-10-0003 grading: CSA's evidence basis independent of Sysdig is UNCONFIRMED from the relay — treated as a second institutional attestation strengthening the exploitation claim within 'likely', NOT a confirmed-independent second evidence basis; direct retrieval of the CSA advisory establishing its own national telemetry would be a WEP-moving development. Operator may ratify at B, upgrade toward A on subsequent surfaces showing verifiable independent technical content, or downgrade if advisories prove low-fidelity. Pending human ratification per source-grade-log.md."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-10-0003
+    active: true
+    urls:
+      - https://www.csa.gov.sg/
 
 # ============================================================================
 # Tier-1 Threat Intel Firms

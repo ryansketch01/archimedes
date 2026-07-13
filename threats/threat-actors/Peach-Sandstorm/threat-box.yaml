@@ -1,0 +1,419 @@
+# threats/threat-actors/Peach-Sandstorm/threat-box.yaml
+#
+# Threat Box scoring per doctrine/THREAT-BOX-METHODOLOGY.md
+# Target profile: ad-prime-v1 (mid-to-large US A&D contractor)
+#
+# Computed via .claude/skills/threat-box-scoring/scripts/compute-threat-box.py
+# (exit code 0). Authority: actor-profiler-autonomous-with-notification
+# (overall weighted 5.5 → MEDIUM). Hard Rule 5 /approve-scoring gate did NOT
+# fire. Espionage per-category composite = 9 (HIGH category-level) — the
+# operationally relevant number for an A&D-prime defender.
+
+actor_id: "027"
+actor_name: "Peach Sandstorm"
+target_profile: "ad-prime-v1"
+scored_at: "2026-07-12"
+scored_by: "actor-profiler"
+reviewed_by: auto-committed          # MEDIUM overall (weighted 5.5) — auto-commit with notification; Hard Rule 5 gate did NOT fire
+scoring_version: 1                    # unchanged — 2026-07-12 fold-in was a SOURCING CORRECTION (Tickler = Microsoft alone, not Microsoft/Mandiant), not a rescore. Numbers unchanged; Intent=5 re-verified on the corrected source set. See history.
+last_corrected: "2026-07-12"
+
+# ============================================================================
+# Espionage — weighted 35%
+# ============================================================================
+scores:
+  espionage:
+    intent:
+      score: 5
+      label: target-specific
+      willingness_modifier: 0
+      evidence: |
+        Peach Sandstorm (APT33) is the Iranian actor with the clearest,
+        most recent, multi-A-grade-source record of targeting the exact
+        ad-prime-v1 profile — US aerospace, defense, and satellite orgs.
+        The evidence-minimum table requires at least one A-grade source
+        documenting targeting of our specific profile for Intent=5; here
+        there are several:
+          - FireEye/Mandiant 2017 titled its disclosure "APT33 Targets
+            Aerospace and Energy Sectors" and named a US aerospace
+            organization among the victims.
+          - Microsoft Sept 2023 documented a large password-spray campaign
+            with follow-on intrusions concentrated in the DEFENSE, SATELLITE,
+            and pharmaceutical sectors.
+          - Microsoft Dec 2023 documented the FalseFont backdoor used against
+            the US Defense Industrial Base (DIB).
+          - Microsoft Aug 2024 documented the custom Tickler backdoor
+            against DEFENSE, SATELLITE, and oil-and-gas orgs in the US and UAE
+            (Microsoft-originated; no standalone Mandiant Tickler advisory located
+            in the 2026-07-12 direct-retrieval pass — Mandiant co-reporting is
+            pending_direct_retrieval and NOT relied upon for this Intent call).
+        This is prime-DIRECT, US-defense-sector targeting by A-grade sources —
+        materially different from the sector-shaped Iranian peers (MuddyWater,
+        Charming Kitten, APT37, Cavern Manticore) where NO A-grade source named
+        A&D primes / US defense-sector victims, and Intent was correctly bounded.
+        Scored Intent=5 in parity with UNC1549 (#004), the other Iranian roster
+        actor with direct A&D-prime targeting. Willingness -0 (Iran).
+      sources:
+        - fireeye-apt33-2017
+        - microsoft-peach-sandstorm-2023
+        - microsoft-falsefont-2023
+        - microsoft-mstic-tickler-2024
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC — sustained sanctions regime, no diplomatic constraints, active cyber confrontation with the US and Gulf/Israel."
+    capability:
+      score: 5
+      label: significant
+      novelty_modifier: 1
+      evidence: |
+        Multiple A-grade sources document active espionage tradecraft within
+        the last 24 months: Microsoft Aug 2024 (Tickler backdoor + Azure
+        abuse vs US/UAE defense/satellite/oil-and-gas), Microsoft Dec 2023
+        (FalseFont vs DIB), Microsoft Sept 2023 (password-spray vs
+        defense/satellite/pharma). A decade of continuous custom-tooling
+        development (TURNEDUP, POWERTON, FalseFont, Tickler) plus documented
+        cloud-identity tradecraft (ROADtools/Entra ID enumeration per Unit 42
+        2026). Capability=5 (Significant) is well-supported: multiple A-grade
+        sources AND documented active use within 24 months. Reduced by -1
+        novelty (see below) to final_capability 4.
+      sources:
+        - microsoft-mstic-tickler-2024
+        - microsoft-falsefont-2023
+        - microsoft-peach-sandstorm-2023
+        - fireeye-apt33-2017
+        - unit42-curious-serpens-2026
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: |
+        Semi-custom (-1). Peach Sandstorm's access engine is high-volume
+        PASSWORD SPRAY — a commodity, well-detectable technique generating
+        rich identity-plane telemetry — and it abuses open-source (ROADtools)
+        and legitimate cloud (Azure) tooling. Its custom backdoors (Tickler,
+        FalseFont, TURNEDUP) are genuine nation-state implants but are now
+        publicly characterized and signatured by Microsoft/Mandiant. This is
+        NOT the fully-novel/unsignatured LotL profile that scores -0 (contrast
+        APT34's novel Exchange-transport-agent C2), nor pure commodity (-2).
+        Identified nation-state tooling across multiple campaigns = -1.
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "First-party Splunk sentinel 2026-07-12 (re-run at fold-in against the newly-ratified atomic IOCs): 0 hits over -90d across defenseclaw_local + archimedes on Peach Sandstorm / APT33 alias and tooling terms AND on the ratified FalseFont/Tickler SHA256 set, digitalcodecrafters[.]com, 64.52.80[.]30, and the Tickler azurewebsites.net C2 subdomains (defenseclaw_local categorical zero confirmed). Hard Rule 8 — silent Splunk does not disconfirm; Frank is a home/test environment, not a US A&D prime. Visibility-bounded null. No bonus applied."
+    final_intent: 5
+    final_capability: 4
+    composite: 9
+    threat_level: HIGH
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Supply Chain — weighted 20%
+# ============================================================================
+  supply_chain:
+    intent:
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        Peach Sandstorm targets the defense sector broadly (the DIB is the
+        supply chain of A&D primes), and its 2023 password-spray hit thousands
+        of orgs with selective follow-on. However, no A-grade source documents
+        an end-to-end supply-chain compromise pivoting INTO a downstream A&D
+        prime, and no specific supplier-to-prime relay is named. Intent=3
+        (Sector Association): the actor targets the broader A&D/defense sector
+        including suppliers, but supply-chain-into-ad-prime-v1 is not
+        specifically documented (Intent=5 unsupported).
+      sources:
+        - microsoft-peach-sandstorm-2023
+        - microsoft-mstic-tickler-2024
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC — no diplomatic constraints."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 1
+      evidence: |
+        Broad password-spray + cloud-identity abuse gives feasible relay/pivot
+        capability, and the DIB targeting implies proximity to prime supply
+        chains, but the single-hop supply-chain compromise into a downstream
+        A&D victim is not documented end-to-end. Cap=3 (Limited): some evidence,
+        feasibility indicated, but demonstrated supply-chain-into-prime capability
+        is absent. Reduced by -1 novelty to final_capability 2.
+      sources:
+        - microsoft-peach-sandstorm-2023
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Same identified tooling ecosystem (custom backdoors + commodity password spray + open-source ROADtools) — -1 semi-custom."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 3
+    final_capability: 2
+    composite: 5
+    threat_level: MEDIUM
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Destructive — weighted 15%
+# ============================================================================
+  destructive:
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        Peach Sandstorm is the one Iranian roster actor with documented ties
+        to DESTRUCTIVE malware — FireEye 2017 linked APT33 to the SHAPESHIFT /
+        DROPSHOT wiper (used in testing), and Kaspersky linked the StoneDrill
+        wiper to APT33-adjacent (NewsBeef) activity. But the demonstrated
+        destructive operations were REGIONALLY focused (Gulf/Saudi energy,
+        Shamoon-adjacent), NOT directed at US A&D primes. Destructive intent
+        against ad-prime-v1 is therefore Regional Association (2), not
+        Sector (3) or Target-Specific (5): the actor targets Western/regional
+        entities generally with a latent destructive capability, but no
+        A-grade source documents destructive tasking against a US A&D prime.
+      sources:
+        - fireeye-apt33-2017
+        - kaspersky-stonedrill-2017
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC — no diplomatic constraints; Shamoon-era destructive precedent against Gulf targets."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 1
+      evidence: |
+        Real, differentiated destructive capability relative to Iranian
+        espionage-only peers: FireEye (A1) tied APT33 to SHAPESHIFT/DROPSHOT
+        wiper tooling; Kaspersky (A2) linked StoneDrill to APT33-adjacent
+        activity. Cap=3 (Limited): destructive TOOLING is documented across a
+        few sources, but attribution of the destructive ATTACKS themselves
+        carries the softer "ties to" / "potential" confidence language of the
+        cited sources (preserved per Hard Rule 2, no upgrade). Reduced by -1
+        novelty (now-signatured wiper families) to final_capability 2.
+      sources:
+        - fireeye-apt33-2017
+        - kaspersky-stonedrill-2017
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Wiper families (SHAPESHIFT/DROPSHOT, StoneDrill) are custom destructive tooling but now well-characterized/signatured — -1 semi-custom."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 2
+    final_capability: 2
+    composite: 4
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Disruptive — weighted 15%
+# ============================================================================
+  disruptive:
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        Availability-disruption (DDoS, service disruption) is not a documented
+        Peach Sandstorm hallmark. Wiper activity has a disruptive side-effect
+        but is categorized as Destructive (integrity). For ad-prime-v1,
+        disruptive intent is Regional Association (2): latent capability via
+        existing access / destructive tooling, but no documented
+        availability-attack tasking against US A&D primes.
+      sources:
+        - fireeye-apt33-2017
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC — no diplomatic constraints."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        Feasibility-only. Existing access + wiper tooling could enable
+        disruptive action, but the group has no documented dedicated
+        availability-disruption tradecraft. Cap=2 (Possible), reduced by -1
+        novelty to final_capability 1.
+      sources:
+        - fireeye-apt33-2017
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Hypothetical disruption would piggyback on existing access / destructive tooling, not novel disruptive tooling — -1 semi-custom."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 2
+    final_capability: 1
+    composite: 3
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Cyber-Crime — weighted 15%
+# ============================================================================
+  cyber_crime:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Peach Sandstorm is a state-sponsored espionage/strategic-collection
+        actor with no documented financial motivation. No ransomware,
+        extortion, or monetization operations attributable to the group in
+        public reporting. Intent=1 (Target of Opportunity).
+      sources:
+        - fireeye-apt33-2017
+        - mitre-attack-g0064
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC — no diplomatic constraints (immaterial at Intent=1)."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 2
+      evidence: "No documented criminal tradecraft, ransomware deployment, or monetization infrastructure."
+      sources:
+        - fireeye-apt33-2017
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "Hypothetical criminal pivot would presumably use commodity tooling (no evidence of even this)."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+# ============================================================================
+# Overall
+# ============================================================================
+overall:
+  weighted_score: 5.5
+  weights_used:
+    espionage: 0.35
+    supply_chain: 0.20
+    destructive: 0.15
+    disruptive: 0.15
+    cyber_crime: 0.15
+  threat_level: MEDIUM
+  authority_level: actor-profiler-autonomous-with-notification
+  primary_threat_vector: espionage      # category HIGH (composite 9) — the driver
+  primary_threat_level: HIGH
+
+# Note: An A&D prime should care most about the espionage composite (9 = HIGH
+# category-level). The weighted 5.5 (MEDIUM) reflects breadth: Peach Sandstorm
+# is a top-tier espionage threat to US A&D/defense/satellite with real (if
+# regionally-demonstrated) destructive ties, but disruptive and cyber-crime are
+# low, which dilutes the overall when averaged across all five categories. Peach
+# Sandstorm calibrates ABOVE its Iranian peers — UNC1549 (5.4 MEDIUM), APT34
+# (4.9 MEDIUM), Charming Kitten (4.45 LOW), MuddyWater (4.15 LOW), Cavern
+# Manticore (3.25 LOW) — which is honest: it is the most A&D-directly-relevant
+# Iranian actor tracked, and the only one with a documented destructive dimension.
+
+confidence:
+  admiralty: A1
+  notes: |
+    Attribution and tooling are well-documented across MULTIPLE independent
+    A-grade sources (FireEye/Mandiant, Microsoft, Symantec, CrowdStrike,
+    Kaspersky, Dragos, Unit 42) over 2017-2024 — no single-source dependence,
+    so no single-source veto. Confidence A1. The load-bearing Intent=5 call
+    rests on multiple A-grade sources documenting US defense/satellite/aerospace
+    targeting (FireEye 2017 named a US aerospace victim; Microsoft 2023-2024
+    documented US DIB/defense/satellite targeting) — this clears the
+    evidence-minimum bar for Target-Specific and is the deliberate difference
+    from the sector-bounded Iranian peers. Robustness: even at Intent=4 the
+    espionage composite would be 8 (still HIGH category) and the weighted
+    overall would round to 5 (still MEDIUM) — the assessment is stable across
+    the Intent 4-vs-5 judgment at the overall level.
+
+    Sourcing-correction re-verification (2026-07-12 fold-in): the Tickler co-credit
+    to Mandiant was removed (Tickler is Microsoft-originated; no retrievable Mandiant
+    Tickler advisory). Intent=5 STILL HOLDS on the corrected source set: (a) FalseFont
+    vs the DIB [Microsoft A1, independently corroborated by Unit 42 A1 + Nextron A2],
+    (b) Tickler vs defense/satellite/oil-and-gas [Microsoft A1 alone, which by itself
+    meets the >=1 A-grade-source evidence minimum], and (c) FireEye 2017 naming a US
+    aerospace victim. Removing the Mandiant-Tickler co-credit disturbs no load-bearing
+    element. Score unchanged.
+
+hard_rule_notes:
+  rule_2: >
+    NO Archimedes-originated attribution. Iranian / IRGC attribution inherits
+    from Microsoft (IRGC) and FireEye (Iranian government). Aliases each carry
+    their originating vendor. Destructive-attack attribution preserves the
+    cited sources' softer "ties to" / "potential" language — not upgraded.
+    Related_actors (004/011/023/022) are Iranian-nexus PEER relationships for
+    analytic context, NOT attribution merges.
+  rule_3: "Exploited CVEs referenced by ID only across all files; no exploitation mechanism, PoC, or payload."
+  rule_5: "Did NOT fire — overall MEDIUM (weighted 5.5). No /approve-scoring required. Auto-committed with #actor-review notification per MEDIUM authority."
+  rule_8: "Splunk first-party sentinel run 2026-07-12 (re-run at fold-in against the ratified atomic IOCs): 0 hits over -90d on alias/tooling terms AND on the FalseFont/Tickler SHA256 set + digitalcodecrafters[.]com + 64.52.80[.]30 + Tickler azurewebsites.net C2 (defenseclaw_local categorical zero). Visibility-bounded null, no IOC bonus."
+
+# ============================================================================
+# Review policy
+# ============================================================================
+review_policy:
+  interval_days: 90
+  last_reviewed: "2026-07-12"
+  next_review_due: "2026-10-10"
+  review_triggers:
+    - new_attribution_from_a_source
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation
+    - new_a_grade_us_ad_prime_victim_named    # would firm/raise espionage Intent basis
+    - destructive_tooling_staging_observed    # escalation tripwire per destructive category
+
+status: scored
+
+# ============================================================================
+# History
+# ============================================================================
+history:
+  - scored_at: "2026-07-12"
+    scorer: archimedes-actor-profiler
+    change: "initial"
+    note: |
+      First-pass scoring at dossier creation via /new-actor Peach Sandstorm
+      (operator Ryan). Weighted 5.5 = MEDIUM, authority = actor-profiler-
+      autonomous-with-notification. Espionage per-category composite = 9
+      (HIGH) on Intent=5 Target-Specific (prime-direct US defense/satellite/
+      aerospace targeting, multi-A-grade) + Cap=4 (5 base, -1 semi-custom).
+      Destructive composite = 4 (non-floor) reflecting documented wiper ties
+      (SHAPESHIFT/DROPSHOT, StoneDrill) — differentiates from Iranian
+      espionage-only peers. Hard Rule 5 gate did NOT fire. Multi-A-grade
+      (no single-source veto), confidence A1. Splunk sentinel 0 hits -90d.
+      Auto-committed.
+  - scored_at: "2026-07-12"
+    scorer: archimedes-actor-profiler
+    change: "sourcing-correction (no rescore)"
+    note: |
+      Collector direct-retrieval fold-in. SOURCING CORRECTION, not a rescore:
+      the Tickler campaign was corrected to cite Microsoft alone (MSTIC,
+      2024-08-28, A1) — the earlier build draft co-credited Mandiant, but the
+      collector could not retrieve any standalone Mandiant Tickler advisory.
+      Source id microsoft-mandiant-tickler-2024 renamed to
+      microsoft-mstic-tickler-2024 across all files; any Mandiant Tickler
+      co-reporting flagged pending_direct_retrieval. Intent=5 re-verified and
+      HOLDS on the corrected source set (FalseFont vs DIB [Microsoft A1 +
+      Unit 42 A1 + Nextron A2] + Tickler vs defense/satellite/oil-and-gas
+      [Microsoft A1] + FireEye 2017 US aerospace victim). All category scores
+      and the weighted 5.5 MEDIUM are UNCHANGED. Atomic FalseFont/Tickler IOCs
+      ratified into iocs.yaml/iocs.md (2 + 26 = 32 new indicators). Splunk
+      sentinel re-run against the new hashes/domains: 0 hits -90d
+      (defenseclaw_local categorical zero), visibility-bounded null, no bonus.

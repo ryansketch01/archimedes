@@ -11,7 +11,7 @@
 #   4. If included as resurface, flag with UPDATE: prefix
 
 version: 1
-last_updated: 2026-07-12T23:55:00-04:00  # briefer 2026-07-12 ON-DEMAND scoped thematic brief "Iranian Cyber Threat Activity — Trailing 72 Hours" (window 07-09→07-12) composition complete — GENUINELY QUIET window reported plainly (no new named-tracked-actor campaign/tooling/A-grade attribution in-window; a real finding, not a gap); ONE in-window promoted item GigaWiper (finding-2026-07-12-iran-ondemand-0001, A2/likely, monitoring) — Microsoft MSTIC teardown names no country, Binary Defense/GTIG likely-Iran-nexus vs Israeli orgs, CyberAv3ngers code-lineage-only (watch-list not roster), single-source veto capped-likely, A&D relevance INDIRECT/STRUCTURAL, first-party Splunk CLEAN both C2 IPs -90d; Hard Rule 2 attribution recorded-not-originated (3 layers kept separate), Hard Rule 6 zero direct quotes; Cavern Manticore #026 + Peach Sandstorm #027 NOT resurfaced (recent + out-of-window, named as active-coverage context only); NOT posted to Discord (ad-hoc); pre-flight 12-of-12 applicable PASS (check 13 Discord-Summary exempt); PRIOR ENTRY: briefer 2026-07-12 afternoon composition complete (Sunday cadence; quiet cycle, quietest phase of the day — 0 net-new findings, 0 grader rejections, board unchanged since the 0800 brief, 12:00 FLASH sweep 0-candidates + RedHook Android trojan discarded, 15:30 collection clean sweep, CISA KEV 0 adds since 07-10, first-party Splunk clean, four KEV-watch tripwire items carried as tight same-day watch-state pointers NOT resurfaced/NOT UPDATE-flagged, standing sections silent-template, Hard Rule 6 zero quotes, Hard Rule 2 no attribution, pre-flight 13-of-13 PASS); PRIOR ENTRY: briefer 2026-07-12 morning composition complete (Sunday quiet cycle — 0 net-new findings, 0 grader rejections, three overnight FLASH sweeps clean, ColdFusion CVE-2026-48282 named as one live-risk carry-over, pre-flight 13-of-13 PASS); PRIOR ENTRY: briefer 2026-07-11 afternoon composition complete (quiet cycle — 0 net-new findings, 0 net-new brief items, standing board unchanged since the 0800 brief, all in-window open-source items discarded at collection, pre-flight 13-of-13 PASS); PRIOR ENTRY: briefer 2026-07-10 morning composition complete; am-001 (BlackCat/ALPHV affiliate-negotiator federal sentencing — Martino 70mo + two co-conspirators 4yr each May 2026, DigitalMint IR-firm insiders, 20% split Apr2023-Apr2025, B2/likely Other-Signal MONITORING-tier, NO A&D victim NO IOCs, single-BleepingComputer-relay DOJ-primary-not-retrieved veto-capped-likely, Hard Rule 2 court/DOJ-adjudicated-characterization-relayed-not-originated, LOW/structural-A&D-relevance-via-insider-threat-at-retained-IR-vendor-lesson, BlackCat #020 dossier-pending actor-profiler-landscape-note) + am-brief-meta; three overnight FLASH sweeps (07-09 18:00 + 07-10 00:00 + 06:00) clean 0-candidates CISA-KEV-0-adds Splunk-0-hits first-party-clean-in-window; prior-day RoguePlanet VT-011/GhostLock CVE-2026-43499/PAN-OS CVE-2026-0288 NOT resurfaced no-material-change (all dossier-linked for check-9); standing sections silent-template; Hard Rule 6 zero-quotes; pre-flight 13-of-13 PASS. PRIOR ENTRY (2026-07-09 morning): am-001 (RoguePlanet VT-011 defensive de-escalation UPDATE — Microsoft assigned CVE-2026-50656 + OOB Defender engine patch 1.1.26060.3008, last open Nightmare Eclipse tool closed, A2/likely, single-source veto two-relays-one-Microsoft-action, 🔗 VT-011 update-on callout, NO ITW for RoguePlanet specifically series-distinction-preserved Hard Rule 2) + am-002 (GhostLock CVE-2026-43499 15-yr Linux kernel UAF root-LPE + container escape n-day patched-April-2026 no-ITW Google-kernelCTF-demo-only B2/likely single-SecurityWeek-relay veto, A&D STRUCTURAL/INDIRECT DIB-Linux/build-farm/CI-CD same-ubiquitous-endpoint-LPE-class-as-Windows-Nightmare-Eclipse, net-new-CVE vuln-tracker create_vt_entry awareness) + am-brief-meta; quiet monitoring-tier cycle boring-by-design lead-with-defensive-news-honestly; overnight FLASH sweeps 00:00 + 06:00 clean 0-candidates CISA-KEV-0-adds Splunk-0-hits first-party-clean-in-window; ColdFusion/Joomla/Langflow/Roundcube NOT resurfaced no-net-new; standing sections silent-template; Hard Rule 6 zero-quotes; pre-flight 13-of-13 PASS. PRIOR ENTRY: pm-001 (UNK_MassTraction/Roundcube espionage, Proofpoint via BleepingComputer, A3/likely, MONITORING tier Actor Activity — Hard Rule 2 China-aligned recorded-at-LOW-confidence-not-amplified no roster cross-walk; single-source veto WEP-capped-likely; ACH espionage-motive-robust attribution-underdetermined H1/H4/H5 tie; A&D nexus INDIRECT-only no-named-prime; correlation callout to finding-2026-05-14-0001 shared commodity CVE-2024-42009 NOT attribution link) + pm-brief-meta; ColdFusion/Joomla/Langflow 08:00 KEV items NOT re-led — deadline-tracker continuity only (BOD 2026-07-10 T-2d); BeyondTrust/Gitea/Proteus/Cavern-Manticore NOT resurfaced no-net-new; standing sections silent-template; Hard Rule 6 zero-quotes; pre-flight 13-of-13 PASS. PRIOR ENTRY: briefer 2026-07-07 morning composition complete; am-001 (BeyondTrust RS/PRA 4-CVE cluster A2/likely Vulnerabilities net-new; NVD-confirmed CVSS v4.0 9.2/9.2/8.7/8.5 supersedes finding-body pre-NVD detail; Hard Rule 2 Silk-Typhoon PRIOR-different-CVE historical-context-only no-cross-walk; A&D nexus STRUCTURAL/INDIRECT no-named-victim; patch-now hygiene not active-threat; single-source veto WEP-capped-likely) + am-brief-meta; two 2026-07-06 FLASH items (ColdFusion CVE-2026-48282 + Cavern Manticore) OMITTED no-net-new not-resurfaced; first-party sentinel CLEAN 0-hits; 18-day cadence gap since 2026-06-19 no-manufactured-continuity; pre-flight 13-of-13 PASS. PRIOR ENTRY: briefer 2026-06-19 morning composition complete; am-update-001 (FortiBleed CISA government-attestation substrate-pivot UPDATE on finding-2026-06-17-0002 — RED-TEAM BLOCKED at very_likely framing, layered WEP published with very_likely on advisory-publication procedural fact only and likely on operational-claim layers per analyst KAC halt_pending_test + sensitivity_analysis single_point_of_failure on E5 + H1/H3 ACH tie indicating aggregation-artifact framing; Hard Rule 2 BINDING preserved "Russian-speaking" verbatim no cross-walk to APT28/Sandworm/APT29) + am-update-002 (Splunk Enterprise CVE-2026-20253 vendor-PSIRT ITW confirmation substrate-pivot UPDATE on finding-2026-06-18-0003 — A1 very_likely on ITW exploitation existence with red-team-qualifications: A&D-prime DIB structural exposure layer dropped from very_likely to likely priors-only not empirically anchored + "limited" semantic-scope caveat not vendor-anchored quantitatively + Shadowserver 1,400 framed as internet-accessible-Splunk-Enterprise-instances-overall not vulnerable-A&D-prime-instances + Frank-relevance NULL per Splunk-Free-not-Enterprise; CISA KEV 3-day federal deadline 2026-06-21 T-2d countdown; Hard Rule 2 BINDING preserved "limited exploitation" unattributed per Splunk PSIRT) + am-001 (Klue/Salesforce supply-chain compromise Icarus extortion group net-new finding scaffold B2 — Icarus preserved as net-new actor identity per THN explicit-distinction framing "mirrors" not attribution overlap Hard Rule 2 BINDING NO cross-walk to ShinyHunters/UNC6395/Scattered-Spider/UNC3944; WEP likely on Icarus actor identity layer single-IR-vendor Huntress + very_likely on compromise-existence layer multi-vendor self-statement convergent; Huntress + Recorded Future named cybersecurity-firm victims no A&D-prime named victims; A&D-DIB structural exposure HIGH via Salesforce-ecosystem; operator-deferred /new-actor Icarus candidacy noted third in queue after Gentlemen + UAT-8616) + am-brief-meta populated; PM brief-meta + per-finding AM/PM entries upstream preserved unchanged
+last_updated: 2026-07-13T16:00:00-04:00  # briefer 2026-07-13 AFTERNOON composition complete (quiet cycle — ONE net-new finding: RabbitMQ CVE-2026-57219 (finding-2026-07-13-0004), NVD CVSS v4.0 8.7 HIGH CWE-200 unauth OAuth-client-secret disclosure, LAYERED grade procedural-facts-A1-very_likely-NVD-confirmed vs takeover-chain-B2-likely-Miggo-single-source-veto-retained, headline B2/likely MONITORING tier Vulnerabilities, A&D relevance STRUCTURAL/INDIRECT-only no-named-prime patch-hygiene-not-emergency, CVE-ID press-typo-2026-5721->NVD-2026-57219 + severity press-critical->NVD-HIGH corrected, correctly NON-FLASH; Other Signal 2 watch-state pointers no-net-new-finding — Joomla iCagenda CVE-2026-48939 VT-020 + Balbooa Forms CVE-2026-56291 VT-021 paired unauth-file-upload-RCE zero-days KEV-listed-07-10 FCEB-deadline-TODAY both-patched already-tracked net-new-BRIEF-coverage, + legacy CVE-2008-4128 Cisco-IOS-12.4-CSRF-EOL KEV-add housekeeping-low-modern-criticality-not-tracked; morning items FSB-Center16/EU-UK-sanctions/ShareFile NOT resurfaced no-afternoon-update; standing sections silent-template both; Hard Rule 6 zero-direct-quotes both layers; Hard Rule 8 first-party-Splunk no-target-RabbitMQ-telemetry silence-not-disconfirming; pre-flight 13-of-13 PASS iteration-1; NOT posted to Discord librarian-owns-delivery/commit); PRIOR ENTRY: briefer 2026-07-12 ON-DEMAND scoped thematic brief "Iranian Cyber Threat Activity — Trailing 72 Hours" (window 07-09→07-12) composition complete — GENUINELY QUIET window reported plainly (no new named-tracked-actor campaign/tooling/A-grade attribution in-window; a real finding, not a gap); ONE in-window promoted item GigaWiper (finding-2026-07-12-iran-ondemand-0001, A2/likely, monitoring) — Microsoft MSTIC teardown names no country, Binary Defense/GTIG likely-Iran-nexus vs Israeli orgs, CyberAv3ngers code-lineage-only (watch-list not roster), single-source veto capped-likely, A&D relevance INDIRECT/STRUCTURAL, first-party Splunk CLEAN both C2 IPs -90d; Hard Rule 2 attribution recorded-not-originated (3 layers kept separate), Hard Rule 6 zero direct quotes; Cavern Manticore #026 + Peach Sandstorm #027 NOT resurfaced (recent + out-of-window, named as active-coverage context only); NOT posted to Discord (ad-hoc); pre-flight 12-of-12 applicable PASS (check 13 Discord-Summary exempt); PRIOR ENTRY: briefer 2026-07-12 afternoon composition complete (Sunday cadence; quiet cycle, quietest phase of the day — 0 net-new findings, 0 grader rejections, board unchanged since the 0800 brief, 12:00 FLASH sweep 0-candidates + RedHook Android trojan discarded, 15:30 collection clean sweep, CISA KEV 0 adds since 07-10, first-party Splunk clean, four KEV-watch tripwire items carried as tight same-day watch-state pointers NOT resurfaced/NOT UPDATE-flagged, standing sections silent-template, Hard Rule 6 zero quotes, Hard Rule 2 no attribution, pre-flight 13-of-13 PASS); PRIOR ENTRY: briefer 2026-07-12 morning composition complete (Sunday quiet cycle — 0 net-new findings, 0 grader rejections, three overnight FLASH sweeps clean, ColdFusion CVE-2026-48282 named as one live-risk carry-over, pre-flight 13-of-13 PASS); PRIOR ENTRY: briefer 2026-07-11 afternoon composition complete (quiet cycle — 0 net-new findings, 0 net-new brief items, standing board unchanged since the 0800 brief, all in-window open-source items discarded at collection, pre-flight 13-of-13 PASS); PRIOR ENTRY: briefer 2026-07-10 morning composition complete; am-001 (BlackCat/ALPHV affiliate-negotiator federal sentencing — Martino 70mo + two co-conspirators 4yr each May 2026, DigitalMint IR-firm insiders, 20% split Apr2023-Apr2025, B2/likely Other-Signal MONITORING-tier, NO A&D victim NO IOCs, single-BleepingComputer-relay DOJ-primary-not-retrieved veto-capped-likely, Hard Rule 2 court/DOJ-adjudicated-characterization-relayed-not-originated, LOW/structural-A&D-relevance-via-insider-threat-at-retained-IR-vendor-lesson, BlackCat #020 dossier-pending actor-profiler-landscape-note) + am-brief-meta; three overnight FLASH sweeps (07-09 18:00 + 07-10 00:00 + 06:00) clean 0-candidates CISA-KEV-0-adds Splunk-0-hits first-party-clean-in-window; prior-day RoguePlanet VT-011/GhostLock CVE-2026-43499/PAN-OS CVE-2026-0288 NOT resurfaced no-material-change (all dossier-linked for check-9); standing sections silent-template; Hard Rule 6 zero-quotes; pre-flight 13-of-13 PASS. PRIOR ENTRY (2026-07-09 morning): am-001 (RoguePlanet VT-011 defensive de-escalation UPDATE — Microsoft assigned CVE-2026-50656 + OOB Defender engine patch 1.1.26060.3008, last open Nightmare Eclipse tool closed, A2/likely, single-source veto two-relays-one-Microsoft-action, 🔗 VT-011 update-on callout, NO ITW for RoguePlanet specifically series-distinction-preserved Hard Rule 2) + am-002 (GhostLock CVE-2026-43499 15-yr Linux kernel UAF root-LPE + container escape n-day patched-April-2026 no-ITW Google-kernelCTF-demo-only B2/likely single-SecurityWeek-relay veto, A&D STRUCTURAL/INDIRECT DIB-Linux/build-farm/CI-CD same-ubiquitous-endpoint-LPE-class-as-Windows-Nightmare-Eclipse, net-new-CVE vuln-tracker create_vt_entry awareness) + am-brief-meta; quiet monitoring-tier cycle boring-by-design lead-with-defensive-news-honestly; overnight FLASH sweeps 00:00 + 06:00 clean 0-candidates CISA-KEV-0-adds Splunk-0-hits first-party-clean-in-window; ColdFusion/Joomla/Langflow/Roundcube NOT resurfaced no-net-new; standing sections silent-template; Hard Rule 6 zero-quotes; pre-flight 13-of-13 PASS. PRIOR ENTRY: pm-001 (UNK_MassTraction/Roundcube espionage, Proofpoint via BleepingComputer, A3/likely, MONITORING tier Actor Activity — Hard Rule 2 China-aligned recorded-at-LOW-confidence-not-amplified no roster cross-walk; single-source veto WEP-capped-likely; ACH espionage-motive-robust attribution-underdetermined H1/H4/H5 tie; A&D nexus INDIRECT-only no-named-prime; correlation callout to finding-2026-05-14-0001 shared commodity CVE-2024-42009 NOT attribution link) + pm-brief-meta; ColdFusion/Joomla/Langflow 08:00 KEV items NOT re-led — deadline-tracker continuity only (BOD 2026-07-10 T-2d); BeyondTrust/Gitea/Proteus/Cavern-Manticore NOT resurfaced no-net-new; standing sections silent-template; Hard Rule 6 zero-quotes; pre-flight 13-of-13 PASS. PRIOR ENTRY: briefer 2026-07-07 morning composition complete; am-001 (BeyondTrust RS/PRA 4-CVE cluster A2/likely Vulnerabilities net-new; NVD-confirmed CVSS v4.0 9.2/9.2/8.7/8.5 supersedes finding-body pre-NVD detail; Hard Rule 2 Silk-Typhoon PRIOR-different-CVE historical-context-only no-cross-walk; A&D nexus STRUCTURAL/INDIRECT no-named-victim; patch-now hygiene not active-threat; single-source veto WEP-capped-likely) + am-brief-meta; two 2026-07-06 FLASH items (ColdFusion CVE-2026-48282 + Cavern Manticore) OMITTED no-net-new not-resurfaced; first-party sentinel CLEAN 0-hits; 18-day cadence gap since 2026-06-19 no-manufactured-continuity; pre-flight 13-of-13 PASS. PRIOR ENTRY: briefer 2026-06-19 morning composition complete; am-update-001 (FortiBleed CISA government-attestation substrate-pivot UPDATE on finding-2026-06-17-0002 — RED-TEAM BLOCKED at very_likely framing, layered WEP published with very_likely on advisory-publication procedural fact only and likely on operational-claim layers per analyst KAC halt_pending_test + sensitivity_analysis single_point_of_failure on E5 + H1/H3 ACH tie indicating aggregation-artifact framing; Hard Rule 2 BINDING preserved "Russian-speaking" verbatim no cross-walk to APT28/Sandworm/APT29) + am-update-002 (Splunk Enterprise CVE-2026-20253 vendor-PSIRT ITW confirmation substrate-pivot UPDATE on finding-2026-06-18-0003 — A1 very_likely on ITW exploitation existence with red-team-qualifications: A&D-prime DIB structural exposure layer dropped from very_likely to likely priors-only not empirically anchored + "limited" semantic-scope caveat not vendor-anchored quantitatively + Shadowserver 1,400 framed as internet-accessible-Splunk-Enterprise-instances-overall not vulnerable-A&D-prime-instances + Frank-relevance NULL per Splunk-Free-not-Enterprise; CISA KEV 3-day federal deadline 2026-06-21 T-2d countdown; Hard Rule 2 BINDING preserved "limited exploitation" unattributed per Splunk PSIRT) + am-001 (Klue/Salesforce supply-chain compromise Icarus extortion group net-new finding scaffold B2 — Icarus preserved as net-new actor identity per THN explicit-distinction framing "mirrors" not attribution overlap Hard Rule 2 BINDING NO cross-walk to ShinyHunters/UNC6395/Scattered-Spider/UNC3944; WEP likely on Icarus actor identity layer single-IR-vendor Huntress + very_likely on compromise-existence layer multi-vendor self-statement convergent; Huntress + Recorded Future named cybersecurity-firm victims no A&D-prime named victims; A&D-DIB structural exposure HIGH via Salesforce-ecosystem; operator-deferred /new-actor Icarus candidacy noted third in queue after Gentlemen + UAT-8616) + am-brief-meta populated; PM brief-meta + per-finding AM/PM entries upstream preserved unchanged
 
 # ============================================================================
 # Entry schema (for reference — no actual entries yet at scaffold time)
@@ -42214,6 +42214,200 @@ entries:
       needed). Pre-flight 13-of-13 PASS. Anti-repetition: only the ShareFile item is a resurface
       (UPDATE-flagged, monitoring); the two A2 items are net-new. Not posted to Discord by
       briefer — librarian owns delivery/commit.
+
+  - id: 2026-07-13-pm-001-rabbitmq-cve-2026-57219-unauth-oauth-client-secret-disclosure-broker-takeover-miggo-nvd-confirmed-facts-b2-likely-monitoring-patch-hygiene
+    covered_in: [2026-07-13-afternoon]
+    brief_file: threats/briefs/2026-07-13-afternoon.md
+    headline: "RabbitMQ CVE-2026-57219 (NVD CVSS v4.0 8.7 HIGH, CWE-200): an unauthenticated management-interface endpoint returns the broker's OAuth client secret; per Miggo's research that enables broker impersonation to the IdP -> admin-token mint -> full broker takeover. Secondary CVE-2026-57221 (NVD CVSS v4.0 5.3 MEDIUM, CWE-862) = authenticated queue/exchange enumeration. Affected >=3.13.0 <3.13.15 / >=4.0.0 <4.0.21 / >=4.1.0 <4.1.11 / >=4.2.0 <4.2.6; first-fixed 3.13.15/4.0.21/4.1.11/4.2.6. NO in-the-wild exploitation at disclosure; patched at release. NO actor; NO atomic IOCs. LAYERED grade: procedural CVE facts A1/very_likely (NVD independently confirms record + CVSS + CWE + version matrix — veto LIFTED); takeover chain B2/likely (single Miggo primary via SecurityWeek + CSO Online relays — single-source veto RETAINED). Headline B2/likely. A&D relevance STRUCTURAL/INDIRECT only (common enterprise/mission back-end middleware; NO named A&D prime, NO sector targeting) — elevated subset = cloud/multi-tenant OAuth-integrated brokers. Monitoring tier / patch-hygiene, NOT an active emergency. CVE ID corrected from press typo CVE-2026-5721 -> NVD CVE-2026-57219; severity corrected press 'critical' -> NVD HIGH."
+    topic_tags:
+      - rabbitmq-cve-2026-57219-unauth-oauth-client-secret-disclosure-cwe-200
+      - nvd-cvss-v4-0-8-7-high-no-v3-1-published-severity-corrected-from-press-critical
+      - broker-impersonation-idp-admin-token-mint-full-takeover-chain-miggo-sourced
+      - secondary-cve-2026-57221-cvss-5-3-medium-cwe-862-authenticated-enumeration
+      - affected-3-13-0-to-3-13-15-4-0-0-to-4-0-21-4-1-0-to-4-1-11-4-2-0-to-4-2-6
+      - first-fixed-3-13-15-4-0-21-4-1-11-4-2-6-patched-at-release
+      - no-in-the-wild-exploitation-at-disclosure-point-in-time-not-proof-of-absence
+      - layered-grade-procedural-facts-a1-very-likely-nvd-vs-takeover-chain-b2-likely-miggo
+      - single-source-veto-lifted-on-nvd-procedural-layer-retained-on-miggo-takeover-chain
+      - ad-relevance-structural-indirect-only-no-named-prime-no-sector-targeting
+      - elevated-subset-cloud-multi-tenant-oauth-integrated-brokers-deployment-conditional
+      - monitoring-tier-patch-hygiene-not-active-emergency-non-flash
+      - cve-id-corrected-press-typo-2026-5721-to-nvd-2026-57219
+      - vt-022-cve-2026-57219-vt-023-cve-2026-57221-vuln-tracker-keyed-this-pass
+      - first-party-splunk-no-target-rabbitmq-telemetry-silence-not-disconfirming-hard-rule-8
+      - vulnerabilities
+    related_actors: []              # NONE attributed (Miggo/SecurityWeek/CSO Online name no actor). Hard Rule 2: no attribution originated.
+    related_vulns: [CVE-2026-57219, CVE-2026-57221]   # VT-022 (primary) + VT-023 (secondary); dossiers threats/vulnerabilities/CVE-2026-57219/profile.md + CVE-2026-57221/profile.md
+    related_campaigns: []
+    finding_ids: [finding-2026-07-13-0004]
+    digraph: B2                     # headline (takeover-chain layer); procedural CVE facts recorded separately at A1
+    wep: likely                     # headline (chain layer); procedural CVE facts very_likely (wep_split)
+    single_source_veto_applied: partial
+    single_source_veto_note: >
+      PARTIAL. LIFTED on the procedural CVE-facts layer — NVD is an independent, authoritative second
+      basis for the CVE record + CVSS v4.0 8.7 HIGH + CWE-200 class + version matrix (that layer reaches
+      A1 / very_likely). RETAINED on the material impersonation-to-takeover chain — SecurityWeek + CSO
+      Online are both relays of the single Miggo primary (not independent), and NVD's CWE-200 rating does
+      not confirm the full chain. Chain WEP stays capped at "likely." Lifts on ANY of: direct retrieval
+      of the Miggo advisory or a RabbitMQ vendor security advisory (vendor-on-own-product A); independent
+      second-vendor research/reproduction of the takeover chain; confirmed in-the-wild exploitation
+      telemetry; or first-party observation.
+    hard_rule_2_framings_load_bearing:
+      - "No threat actor attributed by any source — Archimedes originates none"
+      - "Takeover chain attributed to Miggo's research (single primary via two B relays), NOT stated as independently confirmed fact; NVD confirms only the procedural CVE facts, not the full chain"
+      - "A&D relevance STRUCTURAL/INDIRECT: common enterprise/mission back-end middleware, no named A&D prime, no sector targeting — briefed as patch-hygiene, NOT an A&D-specific emergency"
+      - "'No in-the-wild exploitation' = none reported at disclosure (point-in-time), and 'patched at release' = fixes available, not deployed — live risk is unpatched 3.13.x estates"
+      - "Severity is HIGH (NVD CVSS v4.0 8.7), NOT 'critical' (press label corrected); CVE ID is CVE-2026-57219 (press typo CVE-2026-5721 corrected)"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0   # zero direct quotes both layers
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_no_target_rabbitmq_telemetry_frank_visibility_bounded_no_atomic_ioc_to_sweep
+    vuln_tracker_handoff:
+      cves: [CVE-2026-57219, CVE-2026-57221]
+      status: rows-already-keyed-this-pass-vt-022-vt-023-confirmation-only
+      note: "VT-022 (CVE-2026-57219 primary, HIGH, CVSS v4.0 8.7, CWE-200) + VT-023 (CVE-2026-57221 secondary, MEDIUM, CVSS v4.0 5.3, CWE-862) already keyed on NVD-authoritative IDs this pass; dossier profile.md present for each (tracking.yaml not scaffolded). Watch signals: NVD status -> Analyzed; independent second-vendor reproduction of the takeover chain; direct Miggo or RabbitMQ vendor advisory (lifts chain-layer veto); public PoC (existence-tracking only, Hard Rule 3); any ITW observation; CISA KEV add; A&D-prime named victim (would shift ad_relevance up)."
+    resurface_if:
+      - confirmed_in_the_wild_exploitation
+      - public_poc_emergence
+      - cisa_kev_addition
+      - independent_second_vendor_reproduction_of_takeover_chain   # lifts chain-layer single-source veto
+      - direct_miggo_or_rabbitmq_vendor_advisory_retrieved          # lifts chain-layer single-source veto
+      - named_ad_or_dib_prime_victim_disclosed
+      - first_party_splunk_hit_rabbitmq_or_cve_2026_57219
+    first_covered: 2026-07-13
+    last_covered: 2026-07-13
+    retraction: null
+    test: false
+
+  - id: 2026-07-13-pm-002-other-signal-joomla-icagenda-balbooa-forms-kev-fceb-deadline-today-vt-020-vt-021-plus-legacy-cve-2008-4128-kev-housekeeping
+    covered_in: [2026-07-13-afternoon]
+    brief_file: threats/briefs/2026-07-13-afternoon.md
+    headline: "Other Signal watch-state pointers (monitoring tier, no net-new finding). (1) Joomla iCagenda CVE-2026-48939 (VT-020) + Balbooa Forms CVE-2026-56291 (VT-021) — paired unauthenticated file-upload RCE zero-days (CWE-434, CVSS 9.8 v3.1 / 10.0 v4.0), both KEV-listed 2026-07-10 with FCEB patch deadline TODAY (2026-07-13); both patched; same discoverer (mySites.guru); A&D relevance low-medium (internet-facing web properties, no named victim, no sector targeting); already fully tracked as VT-020/VT-021 (dossiers present) — surfaced as a KEV-deadline awareness pointer, NOT a net-new increment. (2) CISA also added legacy CVE-2008-4128 (Cisco IOS 12.4 CSRF, EOL) to KEV — housekeeping, low modern criticality, NOT tracked in the repo. Source: CISA KEV catalog (procedural A1 listing fact)."
+    topic_tags:
+      - other-signal-monitoring-tier-watch-state-pointer-not-net-new-finding
+      - joomla-icagenda-cve-2026-48939-vt-020-balbooa-forms-cve-2026-56291-vt-021
+      - paired-unauth-file-upload-rce-zero-days-cwe-434-cvss-9-8-v3-1-10-0-v4-0
+      - cisa-kev-listed-2026-07-10-fceb-patch-deadline-today-2026-07-13
+      - both-patched-same-discoverer-mysites-guru
+      - ad-relevance-low-medium-internet-facing-web-no-named-victim-no-sector-targeting
+      - already-tracked-vt-020-vt-021-dossiers-present-no-net-new-increment
+      - legacy-cve-2008-4128-cisco-ios-12-4-csrf-eol-kev-add-housekeeping-low-modern-criticality
+      - cve-2008-4128-not-tracked-in-repo-flagged-not-linked
+      - cisa-kev-catalog-procedural-a1-listing-fact
+    related_actors: []
+    related_vulns: [CVE-2026-48939, CVE-2026-56291]   # VT-020 + VT-021; dossiers present. CVE-2008-4128 NOT tracked (flagged, no dossier).
+    related_campaigns: []
+    finding_ids: []                 # no net-new finding promoted for these — grader-deferred as no net-new increment; carried as watch-state pointers only
+    digraph: A1                     # procedural KEV listing fact
+    wep: n/a                        # status/housekeeping note, no forward assessment
+    single_source_veto_applied: false
+    single_source_veto_note: "Procedural KEV-catalog listing facts (CISA A-grade authoritative); no forward assessment, no attribution."
+    hard_rule_2_framings_load_bearing:
+      - "Joomla items A&D relevance low-medium and structural (internet-facing web properties); no named victim, no sector targeting — not overstated"
+      - "CVE-2008-4128 dispositioned as low modern criticality / EOL housekeeping, not tracked in repo — anti-noise transparency, not amplification"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0
+      per_source_max: 1
+    anti_repetition_note: >
+      Joomla CVE-2026-48939 / CVE-2026-56291 (VT-020/VT-021) have related_briefs: [] in the vuln
+      index — NEVER previously briefed, so this is net-new coverage (no UPDATE flag required). Grader
+      deferred them as findings (already tracked, no net-new increment); briefer carried them as a
+      tight KEV-deadline watch-state pointer in Other Signal per anti-noise judgment. The FCEB deadline
+      today (2026-07-13) is the fresh, actionable hook.
+    resurface_if:
+      - joomla_extensions_named_ad_or_dib_victim_disclosed
+      - active_exploitation_scope_expansion_beyond_kev_listing
+      - first_party_splunk_hit_cve_2026_48939_or_cve_2026_56291
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-13
+    last_covered: 2026-07-13
+    retraction: null
+    test: false
+
+  - id: 2026-07-13-pm-brief-meta
+    covered_in: [2026-07-13-afternoon]
+    brief_file: threats/briefs/2026-07-13-afternoon.md
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - one-net-new-finding-rabbitmq-cve-2026-57219-monitoring-tier-vulnerabilities
+      - quiet-afternoon-patch-hygiene-lead-honest-not-overstated
+      - other-signal-joomla-kev-fceb-deadline-today-plus-legacy-cve-2008-4128-housekeeping
+      - morning-items-fsb-center16-eu-uk-sanctions-sharefile-not-resurfaced-no-afternoon-update
+      - standing-sections-sector-focus-silent-template-iran-cyber-watch-silent-template
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-8-first-party-splunk-no-target-rabbitmq-telemetry-silence-not-disconfirming
+    related_actors: []
+    related_vulns: [CVE-2026-57219, CVE-2026-57221, CVE-2026-48939, CVE-2026-56291]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-13-0004]
+    digraph: B2                     # cycle high-water (RabbitMQ headline chain layer); procedural CVE facts A1
+    wep: likely
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      layer_1_word_count: 558       # \S+ token count incl. markup; 400-800 band
+      layer_2_discord_summary: "~177 words / est. ~1350 chars (150-300 word band; under the 1900-char hard ceiling — single Discord message)"
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-13-0004
+          append_brief_id: 2026-07-13-afternoon   # DONE by briefer
+      vuln_tracker_handoffs_proposed:
+        - "CVE-2026-57219 (VT-022) + CVE-2026-57221 (VT-023) — already keyed this pass; dossier profile.md present each. Related_briefs update: append 2026-07-13-afternoon to both VT-022/VT-023 rows if the index tracks brief linkage."
+        - "CVE-2026-48939 (VT-020) + CVE-2026-56291 (VT-021) — first brief appearance; recommend appending 2026-07-13-afternoon to their related_briefs (currently [])."
+        - "CVE-2008-4128 (Cisco IOS 12.4 CSRF, EOL) — legacy KEV add, NOT tracked in repo; low modern criticality, no dossier requested."
+      source_grade_notes:
+        - "securityweek remains provisional B (anchor relay for the RabbitMQ finding). CSO Online no dedicated source-grades id — recommend provisional cso-online media id (B, The Record / BleepingComputer class). Miggo no id — research relayed not directly retrieved; consider provisional miggo vendor-research id (conservative C first-surface) if it recurs. nvd A-grade authoritative for the procedural CVE facts."
+    notes: |
+      2026-07-13 AFTERNOON BRIEF (briefer phase, afternoon-20260713-160000). Quiet afternoon:
+      ONE net-new graded finding promoted (finding-2026-07-13-0004, RabbitMQ CVE-2026-57219,
+      B2/likely headline, monitoring tier). Red-team NOT required — headline capped at WEP
+      "likely" (< very likely).
+
+      Section placement:
+      - LEAD + Vulnerabilities: finding-2026-07-13-0004 — RabbitMQ CVE-2026-57219 (NVD CVSS v4.0
+        8.7 HIGH, CWE-200) unauthenticated OAuth-client-secret disclosure. LAYERED framing honored:
+        procedural CVE facts stated as SETTLED (NVD independently confirms record + CVSS + CWE +
+        version matrix, A1/very_likely, veto lifted); the full impersonation->admin-token->takeover
+        chain attributed to Miggo's research (B2/likely, single-source veto RETAINED — SecurityWeek
+        + CSO Online both relay the one Miggo primary), NOT stated as independently confirmed. A&D
+        relevance framed STRUCTURAL/INDIRECT only (common enterprise/mission middleware, no named
+        prime, no sector targeting); elevated subset = cloud/multi-tenant OAuth-integrated brokers.
+        Monitoring tier / patch-hygiene, NOT an A&D-specific emergency. "No ITW" framed as
+        point-in-time (not proof of absence); "patched at release" = available not deployed (live
+        risk unpatched 3.13.x estates). CVE ID (press typo 2026-5721 -> NVD 2026-57219) + severity
+        (press "critical" -> NVD HIGH) corrections reflected. Correctly NON-FLASH.
+      - Other Signal: TWO watch-state pointers (no net-new finding). (1) Joomla iCagenda
+        CVE-2026-48939 (VT-020) + Balbooa Forms CVE-2026-56291 (VT-021) — paired unauth file-upload
+        RCE zero-days, KEV-listed 2026-07-10, FCEB deadline TODAY; both patched; already tracked
+        (dossiers present); low-medium A&D relevance; net-new BRIEF coverage (related_briefs was []),
+        no UPDATE flag needed; grader-deferred as findings (no net-new increment), briefer carried
+        as a KEV-deadline awareness pointer per anti-noise judgment. (2) Legacy CVE-2008-4128 (Cisco
+        IOS 12.4 CSRF, EOL) KEV add — housekeeping, low modern criticality, not tracked in repo.
+
+      Anti-repetition: morning items (FSB Center 16 / CVE-2018-0171, EU+UK first joint
+      cyber-sanctions / Sandworm-DynoWiper-Poland, ShareFile SZC day-3) NOT resurfaced — no genuine
+      afternoon update; standing-section discipline applied (Sector Focus A&D silent-template, no
+      overstatement pointer needed since RabbitMQ A&D relevance is carried in its own item).
+
+      Standing sections: Sector Focus A&D — silent template (no watchlist company named; RabbitMQ
+      relevance structural/indirect, carried in its own item). Iran Cyber Watch — silent template
+      (no in-window Iranian tracked-actor activity).
+
+      Hard Rule 6: 0 direct quotes both layers (Miggo/SecurityWeek/NVD all paraphrased; scare-quotes
+      on "no in-the-wild exploitation" removed on second pass to keep quote discipline unambiguous).
+      Hard Rule 8: first-party Splunk holds NO target RabbitMQ telemetry — silence not disconfirming,
+      Frank visibility-bounded, no atomic IOC to sweep (none published).
+
+      Layer 1 558 \S+ tokens (400-800 band). Layer 2 Discord Summary ~177 words / est. ~1350 chars
+      (150-300 word band; under the 1900-char hard ceiling — single Discord message, no chunk
+      needed). Pre-flight 13-of-13 PASS (iteration 1). Not posted to Discord by briefer — librarian
+      owns delivery/commit.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -6,8 +6,8 @@
 # Migrated from C3PO ZD-001/002/003 entries. Additional vulns added as
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
-version: 8
-last_updated: 2026-07-13        # v8: +2 rows VT-020 (iCagenda for Joomla CVE-2026-48939) + VT-021 (Balbooa Forms for Joomla CVE-2026-56291) — paired Joomla-extension unauthenticated file-upload RCE zero-days (CWE-434, CVSS 9.8 v3.1 / 10.0 v4.0), both KEV-listed 2026-07-10 (due 2026-07-13), both patched, same discoverer (mySites.guru), A1; A&D relevance low_medium (peripheral public-web CMS, structural attack-surface only). Scaffolded on operator request. Prior v7: +1 row VT-019 (PAN-OS User-ID Terminal Server Agent (TSA) multiple buffer overflows CVE-2026-0288, CVSS v4.0 7.2 HIGH / vendor High+highest-urgency, CWE-787, n-day patched at disclosure, vendor no-ITW, non-KEV; awareness tier) via finding-2026-07-09-0003 — DISTINCT from ZD-004 CVE-2026-0300 (User-ID Auth Portal) and CVE-2026-0257 (GlobalProtect). Prior v6: VT-011 RoguePlanet STATE CHANGE (unpatched->patched; cve null->CVE-2026-50656; OOB Defender engine 1.1.26060.3008; CVSS 7.0/7.8; CWE-59; KEV-eligible-not-listed; Nightmare Eclipse series fully closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel rtmutex UAF CVE-2026-43499, CVSS 7.8, root LPE + container escape, n-day patched, no ITW, non-KEV) via finding-2026-07-09-0001. Prior v5: +1 row VT-017 (Adobe ColdFusion CVE-2026-48282) via finding-2026-07-06-flash-1629-0001; v4: +1 row VT-016 (BeyondTrust RS/PRA BT26-03); 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation
+version: 9
+last_updated: 2026-07-13        # v9: +2 rows VT-022 (RabbitMQ CVE-2026-57219 unauth OAuth client-secret disclosure -> broker takeover, CVSS v4.0 8.7 HIGH, CWE-200, patched, no ITW, non-KEV) + VT-023 (RabbitMQ CVE-2026-57221 authenticated passive-declaration authz bypass / enumeration, CVSS v4.0 5.3 MEDIUM, CWE-862, patched) via finding-2026-07-13-0004 (Miggo disclosure via SecurityWeek, B2). CVE-ID CORRECTION: finding + SecurityWeek mis-cited the primary as CVE-2026-5721 (a transcription error; NVD CVE-2026-5721 = unrelated wpDataTables WordPress XSS) — NVD-authoritative primary is CVE-2026-57219. Both matrices directly retrieved from NVD 2026-07-13. A&D relevance structural_indirect / low. Prior v8: +2 rows VT-020 (iCagenda for Joomla CVE-2026-48939) + VT-021 (Balbooa Forms for Joomla CVE-2026-56291) — paired Joomla-extension unauthenticated file-upload RCE zero-days (CWE-434, CVSS 9.8 v3.1 / 10.0 v4.0), both KEV-listed 2026-07-10 (due 2026-07-13), both patched, same discoverer (mySites.guru), A1; A&D relevance low_medium (peripheral public-web CMS, structural attack-surface only). Scaffolded on operator request. Prior v7: +1 row VT-019 (PAN-OS User-ID Terminal Server Agent (TSA) multiple buffer overflows CVE-2026-0288, CVSS v4.0 7.2 HIGH / vendor High+highest-urgency, CWE-787, n-day patched at disclosure, vendor no-ITW, non-KEV; awareness tier) via finding-2026-07-09-0003 — DISTINCT from ZD-004 CVE-2026-0300 (User-ID Auth Portal) and CVE-2026-0257 (GlobalProtect). Prior v6: VT-011 RoguePlanet STATE CHANGE (unpatched->patched; cve null->CVE-2026-50656; OOB Defender engine 1.1.26060.3008; CVSS 7.0/7.8; CWE-59; KEV-eligible-not-listed; Nightmare Eclipse series fully closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel rtmutex UAF CVE-2026-43499, CVSS 7.8, root LPE + container escape, n-day patched, no ITW, non-KEV) via finding-2026-07-09-0001. Prior v5: +1 row VT-017 (Adobe ColdFusion CVE-2026-48282) via finding-2026-07-06-flash-1629-0001; v4: +1 row VT-016 (BeyondTrust RS/PRA BT26-03); 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation
 
 vulnerabilities:
 
@@ -1074,6 +1074,145 @@ vulnerabilities:
       Hard Rule 3); A&D-prime named victim (would shift ad_relevance up from
       peripheral).
 
+  - id: VT-022
+    name: "RabbitMQ unauthenticated OAuth client-secret disclosure -> broker takeover (CVE-2026-57219)"
+    type: "Unauthenticated sensitive-information disclosure (obsolete /api/auth management endpoint leaks OAuth client secret) -> OAuth admin-token mint -> full broker takeover (CWE-200)"
+    platform: "RabbitMQ Server (open-source enterprise message broker) with management plugin AND OAuth 2 / OIDC (confidential client) enabled"
+    cve: CVE-2026-57219              # CORRECTED: finding-2026-07-13-0004 + SecurityWeek mis-cited this as CVE-2026-5721 (a transcription error). NVD CVE-2026-5721 = unrelated wpDataTables WordPress stored XSS (CWE-79). NVD-authoritative primary ID is CVE-2026-57219.
+    finding_cited_cve: CVE-2026-5721 # the incorrect ID carried by the finding/SecurityWeek relay; retained for traceability
+    cvss: null                       # NO CVSS v3.1 published in NVD (directly retrieved 2026-07-13)
+    cvss_v4: 8.7                     # NVD CVSS v4.0 base (HIGH) — the "8.7" cited in press is v4.0, not v3.1
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:H/VA:N/SC:H/SI:H/SA:N"
+    cvss_source_note: "NVD CVSS v4.0 8.7 HIGH (directly retrieved 2026-07-13); no v3.1 published. SecurityWeek/Miggo relay called it 'critical' — NVD v4.0 rates HIGH; NVD authoritative."
+    severity_label: HIGH             # per NVD v4.0 8.7 (not 'critical' as the relay stated)
+    cwe: CWE-200                     # Exposure of Sensitive Information to an Unauthorized Actor (NVD)
+    nvd_published: 2026-07-10
+    nvd_last_modified: 2026-07-13
+    nvd_status: "Undergoing Analysis"
+    affected_versions: ">=3.13.0 <3.13.15; >=4.0.0 <4.0.21; >=4.1.0 <4.1.11; >=4.2.0 <4.2.6 (per NVD). Introduced 3.13.0 (early 2024)."
+    fixed_versions:
+      - "3.13.15"
+      - "4.1.11"
+      - "4.2.6"
+      - "4.0.20 (vendor/Miggo) / 4.0.21 (NVD range implies) — one-patch discrepancy, unconfirmed"
+      - "4.3.0 (forward release, vendor/Miggo-stated)"
+    patch_status: patched            # fixes available at 2026-07-10 disclosure (endpoint removed; OAuth config now via authenticated bootstrap)
+    patch_release_date: 2026-07-10
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    kev_last_checked: null           # KEV feed not directly polled this pass; no exploitation reported, listing not expected
+    exploitation_status: not_observed_at_disclosure
+    exploitation_note: "No in-the-wild exploitation reported at disclosure (Miggo / SecurityWeek / CSO Online). No actor named (Hard Rule 2)."
+    public_exploit_available: false  # no public weaponized PoC surfaced in reporting (NOT mirrored regardless, Hard Rule 3)
+    detection_signatures_published: false   # observables: unauth GET /api/auth reads pre-patch; IdP admin-token issuance to broker client ID; no atomic IOC (indicator is the CVE ID)
+    digraph: B2                      # per finding-2026-07-13-0004 (SecurityWeek B relay of single Miggo primary, single-source veto). NVD direct-retrieval adds A-grade procedural basis for CVE facts.
+    wep_split:
+      procedural_cve_facts: very_likely     # NVD-confirmed (ID, CVSS v4.0, CWE, version matrix)
+      operational_takeover_claim: likely     # single-source veto (Miggo via one B relay); no ITW, no independent reproduction retrieved
+    single_source_veto_applied: true
+    single_source_veto_note: "One effective evidence basis for the operational claim (Miggo via SecurityWeek B relay). NVD direct-retrieval confirms procedural CVE facts but is downstream of the same RabbitMQ GHSA. Veto lifts on independent second-vendor research/reproduction or ITW telemetry."
+    related_actors: []               # Hard Rule 2 — no actor named
+    related_findings:
+      - finding-2026-07-13-0004
+    related_briefs: []
+    sibling_cves:
+      - CVE-2026-57221               # VT-023 — paired authenticated enumeration secondary, same disclosure batch
+    ad_relevance: structural_indirect
+    ad_relevance_rationale: >
+      STRUCTURAL / INDIRECT only. RabbitMQ is widely-deployed enterprise / mission back-end middleware
+      (microservices message bus, telemetry pipelines, event-driven integration), NOT an ITAR/CUI
+      system-of-record. Not zero: where an A&D or supplier deployment runs an affected version WITH the
+      management plugin and a confidential OAuth client (Entra ID / Keycloak / Auth0) and a reachable
+      management interface, secret disclosure -> admin token -> broker takeover compromises the
+      messaging layer back-end services depend on. Risk elevated for cloud / multi-tenant OAuth-
+      integrated brokers at a tenant/service trust boundary. No named A&D victim, no sector targeting.
+      Do not overstate — attack-surface / patch-hygiene item, not a program-enclave emergency. Same
+      broad class as VT-007 FortiAuthenticator / ZD-004 PAN-OS (structural, no named victim), distinct product.
+    dossier: threats/vulnerabilities/CVE-2026-57219/profile.md
+    tracking: null                   # profile.md only; tracking.yaml not scaffolded
+    tracked_since: 2026-07-13
+    last_reviewed: 2026-07-13
+    next_review_due: 2026-08-13      # 30-day cadence: patched, no ITW, structural A&D relevance
+    note: >
+      Scaffolded 2026-07-13 via finding-2026-07-13-0004 (RabbitMQ Miggo disclosure). IMPORTANT CVE-ID
+      CORRECTION: the finding + SecurityWeek relay labelled this primary CVE-2026-5721 — a transcription
+      error. NVD CVE-2026-5721 is an UNRELATED wpDataTables WordPress stored XSS (CWE-79, published
+      2026-04-20). NVD-authoritative primary ID for the RabbitMQ OAuth-secret disclosure is
+      CVE-2026-57219 (directly retrieved from NVD 2026-07-13, corroborated by CSO Online). This row and
+      the dossier are keyed on CVE-2026-57219; recommend grader/librarian annotate finding-2026-07-13-0004
+      with the correction. CONFIRMED via NVD: CVSS v4.0 8.7 HIGH + vector, CWE-200, affected version
+      ranges, dates, status. UNCONFIRMED/flagged: 'critical' label (NVD v4.0 = HIGH); 4.0.x fixed build
+      (4.0.20 vs 4.0.21); no CVSS v3.1 published; KEV not directly polled (no ITW, not expected). Watch
+      signals: NVD re-analysis (v3.1 score, 4.0.x fix resolution); independent second-vendor research /
+      reproduction (lifts single-source veto); public PoC emergence (existence-tracking only, Hard Rule 3);
+      any ITW exploitation; CISA KEV add; A&D-prime named victim (would shift ad_relevance up).
+
+  - id: VT-023
+    name: "RabbitMQ authenticated passive-declaration authorization bypass / resource enumeration (CVE-2026-57221)"
+    type: "Authenticated authorization bypass -> queue/exchange existence + metadata (message/consumer counts) enumeration; no message contents exposed (CWE-862)"
+    platform: "RabbitMQ Server (open-source enterprise message broker)"
+    cve: CVE-2026-57221
+    cvss: null                       # NO CVSS v3.1 published in NVD
+    cvss_v4: 5.3                     # NVD CVSS v4.0 base (MEDIUM)
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:L/UI:N/VC:L/VI:N/VA:N/SC:L/SI:N/SA:N"
+    cvss_source_note: "NVD CVSS v4.0 5.3 MEDIUM (directly retrieved 2026-07-13); no v3.1 published."
+    severity_label: MEDIUM
+    cwe: CWE-862                     # Missing Authorization (NVD)
+    ghsa: GHSA-9q2j-2hq8-22r2
+    nvd_published: 2026-07-10
+    nvd_last_modified: 2026-07-13
+    nvd_status: "Undergoing Analysis"
+    affected_versions: ">=3.13.0 <3.13.15; >=4.0.0 <4.0.21; >=4.1.0 <4.1.11; >=4.2.0 <4.2.6 (per NVD). Same matrix as VT-022."
+    fixed_versions:
+      - "3.13.15"
+      - "4.1.11"
+      - "4.2.6"
+      - "4.0.20 (vendor) / 4.0.21 (NVD range implies)"
+      - "4.3.0 (forward release)"
+    patch_status: patched
+    patch_release_date: 2026-07-10
+    kev: false
+    kev_added: null
+    kev_due_date: null
+    kev_last_checked: null
+    exploitation_status: not_observed_at_disclosure
+    exploitation_note: "No ITW reported. Requires an authenticated (low-privilege) account. No actor named (Hard Rule 2)."
+    public_exploit_available: false  # no public PoC surfaced (NOT mirrored regardless, Hard Rule 3)
+    detection_signatures_published: false   # observable: high-volume passive queue/exchange declarations from a single low-priv principal; cross-tenant name probing; no atomic IOC
+    digraph: B2                      # per finding-2026-07-13-0004; NVD direct-retrieval confirms procedural facts
+    wep_split:
+      procedural_cve_facts: very_likely
+    single_source_veto_applied: true
+    single_source_veto_note: "Same evidence posture as VT-022 (Miggo via SecurityWeek B relay; NVD confirms procedural facts, downstream of same GHSA)."
+    related_actors: []               # Hard Rule 2 — no actor named
+    related_findings:
+      - finding-2026-07-13-0004
+    related_briefs: []
+    sibling_cves:
+      - CVE-2026-57219               # VT-022 — paired primary (the material flaw)
+    ad_relevance: low                # metadata-enumeration, auth required; companion to VT-022 only
+    ad_relevance_rationale: >
+      LOW / structural. Authenticated metadata-enumeration flaw on back-end messaging middleware — not a
+      program-enclave risk on its own. Value is as a companion to VT-022: any estate patching the
+      OAuth-secret disclosure closes this in the same upgrade; shared/multi-tenant brokers should treat
+      the two together (cross-tenant operational-metadata leakage). No named A&D victim, no sector
+      targeting. Do not overstate. Track jointly with VT-022.
+    dossier: threats/vulnerabilities/CVE-2026-57221/profile.md
+    tracking: null                   # profile.md only; tracking.yaml not scaffolded
+    tracked_since: 2026-07-13
+    last_reviewed: 2026-07-13
+    next_review_due: 2026-08-13      # 30-day cadence: patched, no ITW, low A&D relevance; tracked as VT-022 paired secondary
+    note: >
+      Scaffolded 2026-07-13 via finding-2026-07-13-0004 as the paired SECONDARY to VT-022
+      (CVE-2026-57219). CONFIRMED via NVD (directly retrieved 2026-07-13): CVE ID, CWE-862 (Missing
+      Authorization), CVSS v4.0 5.3 MEDIUM + vector, affected version ranges, GHSA-9q2j-2hq8-22r2,
+      dates, status; description matches the Miggo disclosure (authenticated passive-declaration
+      enumeration, no message contents exposed). UNCONFIRMED/flagged: no CVSS v3.1 published; 4.0.x fixed
+      build (4.0.20 vs 4.0.21); KEV not directly polled (no ITW, not expected). Lower priority than
+      VT-022 — remediate together in a single RabbitMQ upgrade. Watch signals: NVD re-analysis; any ITW
+      exploitation; independent reproduction.
+
   # Notes on KEV-add finding-2026-05-27-0007 third CVE:
   # CVE-2026-8398 (Daemon Tools Lite) was the third KEV addition in
   # catalog version 2026.05.27 but is NOT tracked as a vuln dossier —
@@ -1105,10 +1244,20 @@ _meta:
   # 2026-07-13), both patched, same discoverer (mySites.guru), A1, A&D relevance
   # low_medium (peripheral public-web CMS). Scaffolded on operator request; profile.md
   # each, tracking.yaml not scaffolded.
-  total_tracked: 21
+  # v9 recompute 2026-07-13: +2 rows VT-022 RabbitMQ CVE-2026-57219 (unauth OAuth
+  # client-secret disclosure -> broker takeover, CVSS v4.0 8.7 HIGH, CWE-200) + VT-023
+  # RabbitMQ CVE-2026-57221 (authenticated passive-declaration authz bypass / enumeration,
+  # CVSS v4.0 5.3 MEDIUM, CWE-862) via finding-2026-07-13-0004 (Miggo disclosure relayed by
+  # SecurityWeek, B2). CVE-ID CORRECTION: finding/SecurityWeek mis-cited primary as
+  # CVE-2026-5721 (transcription error; NVD CVE-2026-5721 = unrelated wpDataTables WordPress
+  # stored XSS) — NVD-authoritative primary is CVE-2026-57219. Both matrices directly
+  # retrieved from NVD 2026-07-13 (status Undergoing Analysis, CVSS v4.0 only, no v3.1).
+  # Both patched (fixes at 2026-07-10 disclosure), no ITW, non-KEV. A&D relevance
+  # structural_indirect (VT-022) / low (VT-023). profile.md each, tracking.yaml not scaffolded.
+  total_tracked: 23
 
-  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 21) ---
-  patched: 16                     # (+VT-020 iCagenda CVE-2026-48939 + VT-021 Balbooa Forms CVE-2026-56291 — both patched Joomla-extension zero-days) (+VT-019 PAN-OS CVE-2026-0288 TSA buffer overflows — n-day patched at disclosure 2026-07-08) ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-011 RoguePlanet (OOB Defender engine 1.1.26060.3008, 2026-07-09 — moved from unpatched); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma; VT-016 BeyondTrust RS/PRA BT26-03 cluster (cloud patched 2026-04-21, on-prem fixed versions available); VT-017 Adobe ColdFusion CVE-2026-48282 (Adobe APSB26-68 shipped 2026-07-01; n-day); VT-018 GhostLock CVE-2026-43499 (Linux kernel n-day, fixes since April 2026)
+  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 23) ---
+  patched: 18                     # (+VT-022 RabbitMQ CVE-2026-57219 + VT-023 RabbitMQ CVE-2026-57221 — both patched at 2026-07-10 disclosure, no ITW) (+VT-020 iCagenda CVE-2026-48939 + VT-021 Balbooa Forms CVE-2026-56291 — both patched Joomla-extension zero-days) (+VT-019 PAN-OS CVE-2026-0288 TSA buffer overflows — n-day patched at disclosure 2026-07-08) ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-011 RoguePlanet (OOB Defender engine 1.1.26060.3008, 2026-07-09 — moved from unpatched); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma; VT-016 BeyondTrust RS/PRA BT26-03 cluster (cloud patched 2026-04-21, on-prem fixed versions available); VT-017 Adobe ColdFusion CVE-2026-48282 (Adobe APSB26-68 shipped 2026-07-01; n-day); VT-018 GhostLock CVE-2026-43499 (Linux kernel n-day, fixes since April 2026)
   patches_available: 1            # ZD-004 PAN-OS CVE-2026-0300 (both waves RELEASED 2026-05-13 + 2026-05-28)
   rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
   security_update_available_esu_gated: 1   # VT-008 Exchange CVE-2026-42897 (June 2026 SU / KB5094140 shipped 2026-06-09; SE automatic, 2016/2019 ESU-gated; EEMS/EOMT still advised for non-ESU)
@@ -1127,6 +1276,6 @@ _meta:
   vendor_ghsa_poc_only: 2         # VT-005 OpenC3 COSMOS cluster + VT-010 Yamcs (PoC embedded in vendor advisories only)
 
   # --- Dossier / housekeeping ---
-  dossiers_present: 21            # every row now points at an existing per-vuln dossier directory (VT-020 CVE-2026-48939 + VT-021 CVE-2026-56291 scaffolded 2026-07-13: profile.md each, tracking.yaml not scaffolded; VT-019 PAN-OS-CVE-2026-0288 scaffolded 2026-07-09: profile.md + tracking.yaml)
+  dossiers_present: 23            # every row now points at an existing per-vuln dossier directory (VT-022 CVE-2026-57219 + VT-023 CVE-2026-57221 scaffolded 2026-07-13: profile.md each, tracking.yaml not scaffolded; VT-020 CVE-2026-48939 + VT-021 CVE-2026-56291 scaffolded 2026-07-13: profile.md each, tracking.yaml not scaffolded; VT-019 PAN-OS-CVE-2026-0288 scaffolded 2026-07-09: profile.md + tracking.yaml)
   consolidations_2026_06_10: 6    # CVE-keyed duplicates folded into codename-canonical dossiers, pending librarian git rm: CVE-2026-41091->REDSUN, CVE-2026-45498->UNDEFEND, CVE-2026-0300->PAN-OS-CVE-2026-0300, CVE-2026-42897->Exchange-CVE-2026-42897, CVE-2026-44277->FortiAuthenticator-CVE-2026-44277, CVE-2026-46333->ssh-keysign-pwn
   dossiers_migrated: 4            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator; VT-008 Exchange CVE-2026-42897. VT-006 Mini Shai-Hulud + VT-009 Nx Console + VT-010 Yamcs full dossiers still not scaffolded (recommend vuln-tracker next pass).

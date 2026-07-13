@@ -1,0 +1,250 @@
+actor_id: "014"
+actor_name: Handala Hack
+last_updated: 2026-07-12
+admiralty_grade: A2
+tlp: CLEAR
+source_of_record: iocs.md
+
+ttl:
+  network_infrastructure: 90    # days
+  file_hashes: 730
+  registry: never
+  vulnerabilities: never
+
+# ---------------------------------------------------------------------------
+# NOTE ON CONFIDENCE: 2 IPs are VirusTotal-confirmed (higher confidence); the
+# other 7 are reported in the CPR IOC sets but were NOT individually VT-checked
+# this pass (lower confidence — carried with source note). Wiper HASH VALUES are
+# held pending_direct_retrieval (garbled on WebFetch retrieval; VT spot-checks
+# found:false) and are deliberately NOT represented as indicators here.
+# ---------------------------------------------------------------------------
+
+indicators:
+  # --- Higher-confidence, VirusTotal-confirmed operator IPs ---
+  - id: handala-ip-64-176-169-22
+    type: ipv4
+    value: "64.176.169.22"
+    confidence: high
+    role: c2
+    campaign: "Void Manticore Israel destructive ops (Karma persona)"
+    related_malware: [BiBi Wiper, Cl Wiper]
+    first_seen: 2024
+    asn: 20473
+    as_owner: "The Constant Company, LLC (Vultr)"
+    network: "64.176.160.0/19"
+    virustotal: {found: true, malicious: 10, suspicious: 0, country: IL, last_analysis_date: "2026-06-26"}
+    source_brief: checkpoint-void-manticore-2024-05
+    note: "VT-confirmed malicious (10 engines) as of 2026-06-26 — genuine IOC, not a WebFetch artifact."
+
+  - id: handala-ip-82-25-35-25
+    type: ipv4
+    value: "82.25.35.25"
+    defanged_original: "82.25.35[.]25"
+    confidence: high
+    role: c2
+    campaign: "Handala 2024-2026 operations"
+    related_malware: [Handala Wiper, NetBird]
+    first_seen: 2026
+    last_seen: 2026-07-09
+    asn: 21859
+    as_owner: "Zenlayer Inc"
+    network: "82.25.35.0/24"
+    virustotal: {found: true, malicious: 9, suspicious: 0, country: GB, last_analysis_date: "2026-07-09"}
+    source_brief: checkpoint-handala-modus-operandi-2026
+    note: "VT-confirmed malicious (9 engines) as of 2026-07-09 — genuine IOC, recent activity."
+
+  # --- Lower-confidence, reported-but-not-individually-VT-checked IPs (2024 set, Vultr /19 cluster) ---
+  - id: handala-ip-64-176-172-235
+    type: ipv4
+    value: "64.176.172.235"
+    confidence: low
+    role: c2
+    campaign: "Void Manticore Israel destructive ops (Karma persona)"
+    asn: 20473
+    as_owner: "The Constant Company, LLC (Vultr)"
+    network: "64.176.160.0/19"
+    source_brief: checkpoint-void-manticore-2024-05
+    note: "Same-ASN cluster (Constant/Vultr AS20473) as VT-confirmed .169.22 — not independently VT-checked this pass."
+
+  - id: handala-ip-64-176-172-165
+    type: ipv4
+    value: "64.176.172.165"
+    confidence: low
+    role: c2
+    campaign: "Void Manticore Israel destructive ops (Karma persona)"
+    asn: 20473
+    as_owner: "The Constant Company, LLC (Vultr)"
+    network: "64.176.160.0/19"
+    source_brief: checkpoint-void-manticore-2024-05
+    note: "Same Vultr /19 cluster; not independently VT-checked this pass."
+
+  - id: handala-ip-64-176-173-77
+    type: ipv4
+    value: "64.176.173.77"
+    confidence: low
+    role: c2
+    campaign: "Void Manticore Israel destructive ops (Karma persona)"
+    asn: 20473
+    as_owner: "The Constant Company, LLC (Vultr)"
+    network: "64.176.160.0/19"
+    source_brief: checkpoint-void-manticore-2024-05
+    note: "Same Vultr /19 cluster; not independently VT-checked this pass."
+
+  - id: handala-ip-64-176-172-101
+    type: ipv4
+    value: "64.176.172.101"
+    confidence: low
+    role: c2
+    campaign: "Void Manticore Israel destructive ops (Karma persona)"
+    asn: 20473
+    as_owner: "The Constant Company, LLC (Vultr)"
+    network: "64.176.160.0/19"
+    source_brief: checkpoint-void-manticore-2024-05
+    note: "Same Vultr /19 cluster; not independently VT-checked this pass."
+
+  # --- Lower-confidence, reported-but-not-individually-VT-checked IPs (2026 set) ---
+  - id: handala-ip-31-57-35-223
+    type: ipv4
+    value: "31.57.35.223"
+    defanged_original: "31.57.35[.]223"
+    confidence: low
+    role: c2
+    campaign: "Handala 2024-2026 operations"
+    first_seen: 2026
+    source_brief: checkpoint-handala-modus-operandi-2026
+    note: "Reported by CPR relay; not independently VT-checked this pass."
+
+  - id: handala-ip-107-189-19-52
+    type: ipv4
+    value: "107.189.19.52"
+    defanged_original: "107.189.19[.]52"
+    confidence: low
+    role: c2
+    campaign: "Handala 2024-2026 operations"
+    first_seen: 2026
+    network: "107.189.0.0/16"
+    source_brief: checkpoint-handala-modus-operandi-2026
+    note: "Reported by CPR relay; not independently VT-checked this pass. 107.189.0.0/16 is frequently-abused hosting."
+
+  - id: handala-ip-146-185-219-235
+    type: ipv4
+    value: "146.185.219.235"
+    defanged_original: "146.185.219[.]235"
+    confidence: low
+    role: c2
+    campaign: "Handala 2024-2026 operations"
+    first_seen: 2026
+    source_brief: checkpoint-handala-modus-operandi-2026
+    note: "Reported by CPR relay; not independently VT-checked this pass."
+
+# ---------------------------------------------------------------------------
+# HELD PENDING (NOT indicators) — recorded for traceability, deliberately not
+# represented as atomic IOCs above.
+# ---------------------------------------------------------------------------
+pending_retrieval:
+  wiper_hashes:
+    status: pending_direct_retrieval
+    detail: >
+      CPR's 2024 report lists ~6 SHA-256 wiper hashes (BiBi / Cl Wiper /
+      partition wipers) and the 2026 report lists MD5 hashes (Handala Wiper,
+      PowerShell wiper, VeraCrypt, NetBird). Values surfaced via WebFetch
+      summarization were garbled — the two spot-checked returned found:false on
+      VirusTotal. Hash VALUES are held pending direct retrieval of the CPR IOC
+      appendix (anti-bot). Malware FAMILIES are recorded in profile.md (Malware
+      Arsenal); hash strings are NOT folded here. NetBird and VeraCrypt are
+      legitimate dual-use tools — their hashes are low-value even if confirmed.
+  low_value_host_artifacts:
+    status: context_only
+    detail: >
+      Attacker machine names DESKTOP-FK1NPHF and WIN-P1B7V100IIS and
+      Starlink/commercial-VPN source ranges (188.92.255.x, 209.198.131.x,
+      149.88.26.x, 169.150.227.x) were surfaced but are default-Windows-naming /
+      shared-egress artifacts of LOW standalone value — recorded as context, not
+      as high-confidence atomic IOCs.
+
+hunt_queries:
+  - id: handala-hunt-operator-ips
+    platform: splunk
+    title: "Handala / Void Manticore operator IPs in network logs"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=dns OR sourcetype=proxy
+        OR sourcetype=firewall OR sourcetype=stream:* OR sourcetype=netflow)
+        (dest_ip IN ("64.176.169.22","82.25.35.25","64.176.172.235",
+          "64.176.172.165","64.176.173.77","64.176.172.101","31.57.35.223",
+          "107.189.19.52","146.185.219.235")
+         OR src_ip IN ("64.176.169.22","82.25.35.25","64.176.172.235",
+          "64.176.172.165","64.176.173.77","64.176.172.101","31.57.35.223",
+          "107.189.19.52","146.185.219.235"))
+      | stats count min(_time) as first_seen max(_time) as last_seen
+              values(dest_ip) as dest_ips values(dest_port) as ports by src_ip, host
+    false_positive_note: >
+      Prioritize the two VT-confirmed IPs (64.176.169.22, 82.25.35.25). The other
+      seven are lower-confidence (reported, not individually VT-checked) and sit
+      on shared commercial hosting (Vultr /19, 107.189.0.0/16) — confirm the peer
+      before acting. Network-infrastructure TTL 90 days; re-validate.
+    references_indicators:
+      - handala-ip-64-176-169-22
+      - handala-ip-82-25-35-25
+      - handala-ip-64-176-172-235
+      - handala-ip-64-176-172-165
+      - handala-ip-64-176-173-77
+      - handala-ip-64-176-172-101
+      - handala-ip-31-57-35-223
+      - handala-ip-107-189-19-52
+      - handala-ip-146-185-219-235
+
+  - id: handala-hunt-intune-mass-wipe
+    platform: m365
+    title: "Anomalous bulk MDM remote-wipe / retire (Intune) — behavioral"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=intune OR sourcetype=azure:audit OR sourcetype=m365:audit)
+        (Operation="*Wipe*" OR Operation="*Retire*" OR Operation="*FreshStart*"
+         OR Operation="*RemoteWipe*" OR Operation="*deleteManagedDevice*")
+      | bucket _time span=1h
+      | stats count values(Operation) as ops dc(target_device) as devices_actioned
+              by _time, initiator_user, initiator_ip
+      | where devices_actioned >= 10
+      | sort - devices_actioned
+    false_positive_note: >
+      Behavioral hunt for the Stryker-style Intune mass-wipe TTP (T1485 via a
+      compromised MDM tenant) — this is NOT tied to a specific hash/IP but to the
+      documented technique. Tune the devices_actioned threshold to your fleet's
+      legitimate bulk-action baseline (device refreshes, offboarding waves).
+      Legitimate mass retirements exist — correlate initiator_user / initiator_ip
+      against known admin activity and change tickets. Any unrecognized initiator
+      issuing bulk wipe/retire is high-severity.
+    references_indicators: []      # behavioral (tied to documented TTP), no atomic-IOC dependency
+
+  - id: handala-hunt-tunnelers-webshell
+    platform: edr
+    title: "Off-the-shelf tunnelers / overlay + web-shell context"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=Sysmon OR sourcetype=edr)
+        (process_name IN ("netbird.exe","netbird-*") OR CommandLine="*reGeorge*"
+         OR CommandLine="*tunnel.jsp*" OR CommandLine="*tunnel.aspx*")
+      | stats count values(process_name) as procs values(CommandLine) as cmds
+              min(_time) as first_seen by host, User
+    false_positive_note: >
+      NetBird is a legitimate overlay tool — alert only where it is not a
+      sanctioned product. reGeorge/web-shell tunnel filenames are heuristics, not
+      confirmed hashes (no verified hashes available — hashes pending direct
+      retrieval). Correlate with the operator-IP hunt and with anomalous
+      internet-facing-server child processes (web-shell context, T1505.003).
+    references_indicators: []      # behavioral; no confirmed hash indicators to reference
+
+first_party_observation:
+  observed: false
+  last_checked: 2026-07-12
+  lookback_days: 90
+  indices: [defenseclaw_local, archimedes]
+  ips_checked: 9
+  note: >
+    0 hits over -90d on all 9 operator IPs across defenseclaw_local and
+    archimedes (collector ran the sweep at the seed pass; re-affirmed at scoring).
+    Per Hard Rule 8, silent Splunk does NOT disconfirm — Frank is not an
+    Israeli/Albanian/US-medical-tech victim matching the target profile.
+    Visibility-bounded null, not negative evidence. No IOC corroboration bonus
+    applied to any category.

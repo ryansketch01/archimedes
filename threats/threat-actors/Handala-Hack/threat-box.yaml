@@ -1,0 +1,338 @@
+actor_id: "014"
+actor_name: "Handala Hack"
+target_profile: "ad-prime-v1"
+scored_at: "2026-07-12"
+scored_by: "actor-profiler"
+reviewed_by: auto-committed          # overall MEDIUM (weighted 5.45) — auto-commit with #actor-review notification; Hard Rule 5 gate did NOT fire
+scoring_version: 1
+
+scores:
+  espionage:
+    intent:
+      score: 4
+      label: ideology-association
+      willingness_modifier: 0
+      evidence: |
+        Handala/Void Manticore is an explicitly ideological, MOIS-directed
+        "faketivist" front (the Handala persona is named for the Palestinian
+        cartoon figure; the earlier Homeland Justice persona was anti-MEK). Its
+        hack-and-leak operations steal data to embarrass/leak against Israel and,
+        in 2026, US enterprises (Stryker) — a confidentiality compromise driven by
+        anti-Israel/anti-Western ideology rather than sector or opportunity. Per
+        the evidence-minimum table, Intent=5 (Target-Specific) requires an A-grade
+        source documenting targeting of the ad-prime-v1 profile — none exists (no
+        A&D prime named; A&D relevance is portability/extrapolation, which the
+        directive explicitly bars from lifting Intent). Intent=4 (Ideology
+        Association) is met by one A-grade source (CPR) documenting the ideological
+        targeting posture, and parallels the Charming Kitten (#011) precedent.
+      sources: [checkpoint-void-manticore-2024-05, checkpoint-handala-modus-operandi-2026]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — sanctions regime, active hostilities with Israel, no diplomatic constraints on cyber operations against Western-aligned targets."
+    capability:
+      score: 4
+      label: credible
+      novelty_modifier: 1
+      evidence: |
+        Data theft is real and demonstrated — hack-and-leak ops against 40+
+        claimed Israeli orgs (2024-2026) plus the Handala leak persona
+        (Telegram/leak site). But the actor's own collection tradecraft is largely
+        off-the-shelf/manual (reGeorge tunneler, NetBird overlay, manual RDP), and
+        much of the stealthy exfiltration in the documented model is performed by
+        the COLLABORATING actor Scarred Manticore (Storm-0861), which hands access
+        to Void Manticore for the destructive phase (CPR — recorded as hand-off,
+        NOT merge). Capability=4 (Credible — one A-grade source, documented active
+        use <24 months), NOT Cap=5: multiple-A is shaky (CPR is the sole
+        originator; MITRE G1055's independence-vs-CPR-derivation is unadjudicated),
+        and Void's independent collection role is partly outsourced. Semi-custom
+        novelty (-1) then reduces final Capability to 3.
+      sources: [checkpoint-void-manticore-2024-05, checkpoint-handala-modus-operandi-2026]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Collection/exfil relies on off-the-shelf tunnelers (reGeorge, NetBird) + manual RDP, layered with a custom Karma Shell web shell. Mixed toolset with commodity access tooling = -1 semi-custom, not -0 (fully custom/advanced) nor -2 (pure commodity)."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "First-party Splunk 0 hits over -90d on all 9 operator IPs. Hard Rule 8 — visibility-bounded null (Frank not a matching victim). No bonus."
+    final_intent: 4
+    final_capability: 3
+    composite: 7
+    threat_level: MEDIUM
+    ioc_bonus_applied: 0
+
+  supply_chain:
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        The Stryker attack compromised Stryker's OWN Intune tenant (direct-tenant
+        compromise), and the resulting propagation to 200k+ devices is scored as
+        the destructive blast radius, NOT as a supplier-compromise-to-reach-target
+        chain. No A&D-supplier-directed supply-chain campaign is documented and no
+        downstream A&D victim reached via a supplier is named. Per the directive,
+        the MDM-abuse TTP's portability is a structural observation that must NOT
+        inflate Intent. Intent=2 (Regional Association): the actor targets
+        Western-aligned regional entities generally, with supply-chain exposure
+        implied but not A&D-prime-anchored.
+      sources: [checkpoint-void-manticore-2024-05, checkpoint-handala-modus-operandi-2026]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — no diplomatic constraints."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        The Intune/MDM mass-propagation demonstrates a real trust-relationship /
+        management-plane abuse at scale (one tenant -> 200k devices, 79
+        countries), which shows FEASIBILITY of supply-chain-shaped propagation.
+        But no COMPLETED supplier-compromise-to-reach-a-further-target chain is
+        documented. Cap=2 (Possible — feasibility confirmed, limited evidence),
+        reduced to 1 by semi-custom novelty.
+      sources: [checkpoint-handala-modus-operandi-2026]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Management-plane abuse via legitimate MDM tooling — LOTL/emerging but, framed as a supply-chain capability, semi-custom (-1)."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 2
+    final_capability: 1
+    composite: 3
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  destructive:
+    intent:
+      score: 4
+      label: ideology-association
+      willingness_modifier: 0
+      evidence: |
+        Destruction is the actor's defining behavior and is explicitly
+        ideologically driven — anti-Israel destructive wiper campaigns post-Oct
+        2023 (Karma/BiBi) and anti-MEK destructive campaigns against Albania
+        (Homeland Justice). The 2026 Stryker Intune mass-wipe (200k+ devices, 79
+        countries) demonstrates willingness to destroy at scale against a US
+        enterprise. Per the evidence-minimum table, Intent=5 (Target-Specific) is
+        barred — no A&D prime is named. Intent=4 (Ideology Association) is
+        strongly supported: CPR (A-grade) documents ideologically-framed
+        destruction, and the Stryker case proves the ideology extends to Western
+        industry. This is the actor's marquee vector.
+      sources: [checkpoint-void-manticore-2024-05, checkpoint-handala-modus-operandi-2026]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — active hostilities, no diplomatic constraints; destruction is the state tasking."
+    capability:
+      score: 5
+      label: significant
+      novelty_modifier: 0
+      evidence: |
+        This is the best-corroborated dimension. A custom wiper arsenal spanning
+        Windows + Linux (BiBi), raw-disk (Cl Wiper via ElRawDisk), partition/MBR
+        (partition-wiper family, Handala Wiper), a PowerShell wiper, plus a
+        DEMONSTRATED enterprise-scale mass-wipe (Stryker Intune, ~2026-03-11:
+        200k+ devices across 79 countries). Multiple trusted sources and active
+        use within 24 months: BiBi is widely documented (THN ties it to the Karma
+        persona); MITRE G1055 independently lists the destructive cluster tooling
+        (ROADSWEEP S1150, ZeroCleare S1151, RawDisk S0364); the Stryker incident
+        drew Krebs on Security plus multiple relays. Capability=5 (Significant).
+        NOTE: the CPR single-origin caveat applies to the persona ATTRIBUTION, not
+        to the destructive CAPABILITY (that these wipers exist and were used at
+        scale), which is broadly corroborated.
+      sources: [checkpoint-void-manticore-2024-05, checkpoint-handala-modus-operandi-2026, mitre-attack-g1055]
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: |
+        Custom, per-campaign wipers (BiBi/Cl Wiper/partition/Handala) combined
+        with genuine living-off-the-land destruction — the Intune MDM legitimate-
+        remote-wipe abuse turns the victim's own management plane into the weapon,
+        needs no attacker infrastructure for the wipe, and is hard to detect/defend
+        (looks like sanctioned administration). This is -0 (Custom/Advanced):
+        hardest-to-defend destructive tradecraft.
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 4
+    final_capability: 5
+    composite: 9
+    threat_level: HIGH
+    ioc_bonus_applied: 0
+
+  disruptive:
+    intent:
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        Operational/reputational disruption is an aim of the hack-and-leak
+        posture (embarrass/disable Israeli and Western targets), and the Stryker
+        wipe caused a massive multi-country availability outage. Intent=3 held
+        (not 4): to avoid inflating a vector that is largely a byproduct of the
+        destructive activity, disruption intent is scored at sector/ideological-
+        adjacent rather than at the full ideology tier the destructive and
+        espionage vectors carry.
+      sources: [checkpoint-void-manticore-2024-05, checkpoint-handala-modus-operandi-2026]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — no diplomatic constraints."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 1
+      evidence: |
+        Large-scale operational disruption is demonstrated (the Stryker outage;
+        hack-and-leak ops disrupting 40+ orgs) — but per doctrine a wiper-induced
+        outage is scored under Destructive to avoid double-counting, so the
+        STANDALONE disruptive capability (DDoS, defacement without destruction) is
+        thinner and not separately documented. Cap=3 (Limited): real disruptive
+        effect, but mostly as an adjunct to destruction. Reduced to 2 by
+        semi-custom novelty.
+      sources: [checkpoint-handala-modus-operandi-2026]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Disruption leverages the same custom + LOTL toolset but, as a distinct availability-denial capability, is semi-custom (-1)."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 3
+    final_capability: 2
+    composite: 5
+    threat_level: MEDIUM
+    ioc_bonus_applied: 0
+
+  cyber_crime:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        No financially-motivated / criminal intent documented. Handala/Void
+        Manticore is MOIS-directed state destruction under a hacktivist veneer.
+        Where an encryptor appears (ROADSWEEP in the G1055 cluster), it is used
+        destructively as cover, not for genuine extortion profit — per doctrine,
+        wiper-disguised-as-ransomware = Destructive, NOT Cyber-Crime. Intent=1.
+      sources: [checkpoint-void-manticore-2024-05]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / MOIS — no diplomatic constraints (immaterial at Intent=1)."
+    capability:
+      score: 1
+      label: not-capable
+      novelty_modifier: 0
+      evidence: "No genuine extortion/financial-theft capability documented; ROADSWEEP encryptor is destructive-cover, not profit extortion."
+      sources: [checkpoint-void-manticore-2024-05]
+    novelty:
+      modifier: 0
+      label: not-applicable
+      evidence: "No criminal/financial tooling documented for profit."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+overall:
+  weighted_score: 5.45
+  weights_used:
+    espionage: 0.35
+    supply_chain: 0.20
+    destructive: 0.15
+    disruptive: 0.15
+    cyber_crime: 0.15
+  threat_level: MEDIUM
+  authority_level: actor-profiler-autonomous-with-notification
+  primary_threat_vector: destructive     # category HIGH (composite 9) — the operative number despite MEDIUM overall
+
+confidence:
+  admiralty: A2
+  notes: >
+    Single ORIGINATING primary (Check Point Research) for the persona attribution
+    and MOIS affiliation; The Hacker News is a pure relay; MITRE G1055 gives a
+    structured second MOIS statement whose independence-vs-CPR-derivation is
+    unadjudicated; Microsoft's own Storm-0842/DEV-0842 primary is
+    pending_direct_retrieval. A2 reflects that single-origin on the persona
+    attribution, tempered by broad corroboration of the destructive CAPABILITY
+    (BiBi widely documented; MITRE cluster tooling; Stryker drew Krebs + multiple
+    relays). The overall lands MEDIUM (5.45) but the Destructive category is HIGH
+    (composite 9) — a genuine top-tier destructive actor whose weighted overall is
+    diluted by floor/low non-destructive categories via doctrine weighting (this
+    is the same pattern as UNC1549's espionage composite 10 / overall MEDIUM). Do
+    NOT read MEDIUM overall as "not dangerous": the Destructive composite 9 is the
+    operative number for defensive prioritization. Calibrates ABOVE the
+    espionage-only Iran-MOIS peers on the destructive axis specifically (it is the
+    only roster Iran-MOIS actor with a HIGH destructive category), while its
+    weighted overall 5.45 sits just above UNC1549 (5.4) and Peach Sandstorm (5.5
+    neighborhood). LIFT PATH: A&D-prime-DIRECT targeting evidence would raise
+    Intent above Ideology across categories and could move overall to HIGH;
+    first-party IOC observation would add a Capability bonus.
+
+hard_rule_notes:
+  rule_2: >
+    NO Archimedes-originated attribution. Void Manticore = MOIS and the
+    Handala-persona-operated-by-Void-Manticore linkage inherit from Check Point
+    Research; the Storm-0842/DEV-0842 crosswalk from Microsoft (via THN relay) +
+    MITRE G1055; the "assessed to operate on behalf of MOIS" wording from MITRE.
+    Void Manticore <-> Scarred Manticore (Storm-0861) recorded as a CPR-stated
+    target HAND-OFF / collaboration, explicitly NOT a merge. related_actors
+    (#022/#023/#026) are Iranian-MOIS analytic PEERS, not merges. No A&D-direct
+    targeting claim originated — A&D relevance is portability/structural only.
+  rule_3: "No CVE attributed in reporting; any that surfaces on direct retrieval will be recorded by ID only. No exploit/PoC content."
+  rule_5: "Did NOT fire — overall MEDIUM (weighted 5.45). Auto-committed with #actor-review notification per authority table. The roster's prior placeholder threat_level HIGH was never a scored value; this computed MEDIUM governs."
+  rule_7: "No credentials stored. The Stryker incident involves a compromised MDM tenant; no credential values surfaced in any retrieved source, and none would be stored if they had (query/count/discard). Credential exposure observed: 0 instances."
+  rule_8: "Splunk first-party sentinel run 2026-07-12: 0 hits over -90d on all 9 operator IPs across defenseclaw_local + archimedes. Visibility-bounded null, no IOC bonus."
+
+standing_caveats:
+  single_source_origin: >
+    CPR is the sole originating A-grade primary on the Handala-persona attribution
+    and MOIS affiliation. This is the big standing caveat: the persona attribution
+    should firm up (or be revised) on independent second-IR-vendor confirmation
+    (Mandiant / CrowdStrike / Unit 42 / MSTIC) or direct retrieval of Microsoft's
+    Storm-0842 primary. The destructive-capability facts are more broadly
+    corroborated and less exposed to this caveat.
+  hash_pending: >
+    Wiper hash VALUES held pending_direct_retrieval (garbled on WebFetch; VT
+    spot-checks found:false). Families recorded as tooling; hash strings NOT
+    folded. Direct CPR appendix retrieval is a standing collection task.
+  stryker_intune_verification: >
+    The Intune-mass-wipe mechanism is reported consistently across CPR + Krebs +
+    Deepwatch / CSA Labs / Push Security / 7AI but they may share a common
+    upstream — treat as reported-consistent, not independently confirmed.
+
+review_policy:
+  interval_days: 90
+  last_reviewed: "2026-07-12"
+  next_review_due: "2026-10-10"
+  review_triggers:
+    - new_attribution_from_a_source
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation
+    - independent_second_ir_vendor_corroboration    # would resolve single-origin caveat
+    - microsoft_storm0842_primary_retrieval
+    - cpr_ioc_appendix_direct_retrieval              # would recover verified wiper hashes
+    - ad_prime_direct_targeting_disclosure           # would lift Intent above Ideology
+
+status: scored
+
+history:
+  - scored_at: "2026-07-12"
+    scorer: archimedes-actor-profiler
+    change: "initial — first-pass /new-actor-style build for pre-existing roster #014 stub, from raw-2026-07-12-handala-newactor-001/-002 (CPR 2024 + CPR 2026). Weighted 5.45 MEDIUM; Destructive category HIGH (composite 9) is the primary_threat_vector; Espionage MEDIUM (7), Disruptive MEDIUM (5), Supply Chain LOW (3), Cyber-Crime LOW (2). Single-origin CPR (A2) on persona attribution; destructive capability broadly corroborated. Splunk 0 hits -90d on 9 IPs (no bonus). Hard Rule 5 gate did NOT fire — auto-committed. Replaces the roster's never-scored placeholder HIGH."

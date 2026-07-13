@@ -20,18 +20,18 @@ attribution:
   unit: "ITSecTeam (per third-party reporting; not officially confirmed)"
 active_since: 2014
 status: active
-status_note: "Active in 2024–2025 against Middle East government, telecom, and energy; documented A&D-adjacent targeting via supply chain and ministry compromise."
+status_note: "Active 2024–2026 against Middle East government, telecom, and energy; Trend Micro's Oct-2024 Earth Simnavaz campaign (UAE/Gulf gov + energy, StealHook Exchange credential theft) is the most recent documented operation. A&D-adjacent targeting remains supply-chain- and ministry-compromise-mediated."
 motivation:
   - espionage
   - long-term-access
   - regional-strategic-collection
-threat_level: MEDIUM                 # overall weighted 4.9 → MEDIUM; per-category espionage = HIGH (composite 8). See threat-box.yaml.
+threat_level: MEDIUM                 # overall weighted 4.9 → MEDIUM (re-affirmed 2026-07-12); per-category espionage = HIGH (composite 8). See threat-box.yaml.
 admiralty_grade: A2
 tlp: CLEAR
-dossier_version: 1
-last_updated: 2026-05-01
-last_reviewed: 2026-05-01
-next_review_due: 2026-07-30
+dossier_version: 3
+last_updated: 2026-07-12
+last_reviewed: 2026-07-12
+next_review_due: 2026-10-10
 profile_path: threats/threat-actors/APT34/
 iocs_path: threats/threat-actors/APT34/iocs.md
 threat_box_path: threats/threat-actors/APT34/threat-box.yaml
@@ -39,10 +39,38 @@ related_actors:
   - "004"      # UNC1549 — parallel Iranian A&D-targeted playbook
   - "011"      # Charming Kitten — IRGC-IO equivalent, overlapping infrastructure
   - "022"      # MuddyWater — fellow MOIS actor
+  - "026"      # Cavern Manticore — CPR-noted tactical overlap w/ Lyceum/OilRig (CPR's assessment only; NOT an Archimedes merge — Hard Rule 2)
+  - "027"      # Peach Sandstorm — Iranian-nexus peer (analytic context, not a merge)
 notes_for_session_9: |
   Initial dossier created Session 9 pre-work (2026-05-01). Profile is first-pass
   from public reporting through 2024-2025. All attribution inherits from cited
   sources per Hard Rule 2 — no Archimedes-originated attribution.
+refresh_2026_07_12: |
+  90-day /update-tracking refresh (2026-07-12). Recorded the Oct-2024 Earth
+  Simnavaz campaign (Trend Micro: StealHook Exchange-credential-theft backdoor,
+  malicious password-filter DLL, CVE-2024-30088) and the Check Point Research
+  Cavern Manticore (#026) tactical-overlap note. Threat box re-affirmed MEDIUM
+  (weighted 4.9). The Cavern Manticore overlap is CPR's assessment ONLY — no
+  attribution merge originated (Hard Rule 2).
+foldin_2026_07_12: |
+  RATIFICATION FOLD-IN (2026-07-12, dossier_version 3, raw-2026-07-12-ratify-003).
+  A collector direct-retrieval pass LIVE-RATIFIED the Earth Simnavaz campaign,
+  StealHook backdoor, CVE-2024-30088 privesc linkage, and psgfilter.dll password-
+  filter DLL (T1556.002) against the Trend Micro primary — the earlier
+  "training-knowledge-derived / pending direct-retrieval" flag on these
+  CAMPAIGN/TOOLING/TECHNIQUE claims is CLEARED. SINGLE-SOURCE DISCIPLINE: Trend
+  Micro is the sole originating A-grade primary; cybersecuritynews / Dark Reading
+  / SOC Prime / Industrial Cyber are pure relay, NOT independent corroboration —
+  recorded single-source provisional-A2-confirmed, NOT multi-A A1. NOT A RESCORE:
+  espionage Capability was already at ceiling 5, so the score stays MEDIUM 4.9;
+  Hard Rule 5 gate did NOT fire. Added 1 net-new atomic IOC (psgfilter.dll
+  filename). STILL PENDING (genuine gaps, kept flagged): Trend Micro's full
+  StealHook IOC appendix (SHA256 hashes / C2 domains / exfil emails, 403-blocked)
+  and a 2025-2026 OilRig/Crambus A-grade primary + fresh IOCs. Splunk first-party
+  re-run over -90d incl. psgfilter.dll + CVE-2024-30088 = categorical zero
+  (visibility-bounded null, no bonus). Hard Rule 2/3/7 honored: no attribution
+  originated (CPR Lyceum/OilRig overlap stays CPR's), CVE by ID only, no
+  credential values in source to discard.
 ---
 
 # APT34 — Threat Actor Profile
@@ -57,7 +85,9 @@ APT34 is an Iran-aligned cyber espionage group that has operated continuously si
 
 For the Archimedes target profile (mid-to-large US A&D contractor), APT34's relevance is **second-order but real**. The group's primary geographic focus is the Middle East — Saudi Arabia, the UAE, Israel, Iraq, Jordan, and the GCC more broadly — and its primary sectors are government, telecommunications, energy/oil-and-gas, and financial services. However, three patterns make it a tracked threat for an A&D prime: (1) documented supply-chain pivoting via compromised ministries and telecoms used as a relay into Western partners; (2) sustained interest in defense ministries and aerospace research organizations across the region, including Israeli targets per Mandiant 2023 reporting on the "Crambus" intrusion; and (3) operational tempo continuity across years of public exposure, including a 2023 eight-month dwell-time intrusion in a Middle Eastern government network that Symantec attributed to Crambus.
 
-APT34's tradecraft has matured visibly across the last decade. Early operations leaned heavily on commodity-adjacent loaders (Helminth, ISMAgent, ISMDoor) and document-borne macros. Current-generation tooling — MENORAH, MARLIN, SideTwist, PowerExchange — reflects custom development tailored to specific intrusions, increased use of compromised Exchange servers as covert C2, and DNS-tunneling C2 patterns that are harder to detect at perimeter. The 2024 MENORAH disclosures by Trend Micro and Unit 42 demonstrate the group continues to ship new C# tooling against Saudi government targets.
+APT34's tradecraft has matured visibly across the last decade. Early operations leaned heavily on commodity-adjacent loaders (Helminth, ISMAgent, ISMDoor) and document-borne macros. Current-generation tooling — MENORAH, MARLIN, SideTwist, PowerExchange, StealHook — reflects custom development tailored to specific intrusions, increased use of compromised Exchange servers as covert C2 and credential-theft relays, and DNS-tunneling C2 patterns that are harder to detect at perimeter. The 2024 MENORAH disclosures by Trend Micro and Unit 42 demonstrate the group continues to ship new C# tooling against Saudi government targets.
+
+The most recent documented operation is Trend Micro's **Earth Simnavaz** campaign (disclosed October 2024), which Trend Micro associates with APT34/OilRig. It targeted UAE and wider Gulf government and energy / critical-infrastructure organizations, deploying a backdoor Trend Micro tracked as **StealHook** that abused on-premises Microsoft Exchange to relay and steal domain credentials, dropping a malicious **password-filter DLL** (ATT&CK T1556.002) to capture plaintext credentials, and exploiting a Windows privilege-escalation vulnerability (**CVE-2024-30088**, reported) for local escalation. Earth Simnavaz continues APT34's established pattern of living-off-Exchange tradecraft and long-dwell credential-centric espionage against regional government/energy — not US A&D primes. *Provenance (updated 2026-07-12 fold-in): the Earth Simnavaz campaign, StealHook backdoor, CVE-2024-30088 linkage, and `psgfilter.dll` password-filter DLL were live-ratified against the Trend Micro primary by a collector direct-retrieval pass. This is **single-source** — Trend Micro is the sole originating A-grade primary; other outlets are pure relay, not independent corroboration — so the detail is provisional-A2-confirmed, not multi-A A1. Trend Micro's full StealHook IOC appendix (hashes/C2/emails) remains a standing collection gap (403-blocked this pass).*
 
 The April 2019 "Lab Dookhtegan" leaks of OilRig source code, victim lists, and operator chat logs on Telegram represent the most consequential operational disclosure in APT34's history. The leak validated Mandiant/Unit 42 attribution and exposed several years of victim relationships, but did not visibly slow the group's operational tempo — APT34 simply rotated tooling and continued.
 
@@ -90,6 +120,7 @@ The April 2019 "Lab Dookhtegan" leaks of OilRig source code, victim lists, and o
 | PowerExchange / Crambus intrusion | 2023 | Symantec documents an eight-month intrusion in a Middle East government network using the PowerExchange backdoor pivoting via compromised Exchange |
 | MENORAH deployment | 2023–2024 | Trend Micro and Unit 42 disclose MENORAH C# backdoor against Saudi government, delivered via macro-laden Word documents |
 | MARLIN and SideTwist updates | 2023–2024 | Updated SideTwist variant and MARLIN backdoor documented in continued GCC government targeting |
+| Earth Simnavaz | 2024 | Trend Micro documents UAE/Gulf government + energy targeting; StealHook backdoor exfiltrating stolen credentials as email attachments via compromised Exchange, malicious password-filter DLL (`psgfilter.dll`) for plaintext credential capture, and CVE-2024-30088 privilege escalation. *Live-ratified 2026-07-12 (single-source Trend Micro; provisional-A2-confirmed, not multi-A A1). Full IOC appendix still pending (403-blocked).* |
 
 ---
 
@@ -134,6 +165,12 @@ The April 2019 "Lab Dookhtegan" leaks of OilRig source code, victim lists, and o
 | T1070.004 | File Deletion (post-collection cleanup) |
 | T1036.005 | Masquerading: Match Legitimate Name (e.g., backdoor named after legitimate services) |
 
+### Privilege Escalation
+
+| ID | Technique |
+|---|---|
+| T1068 | Exploitation for Privilege Escalation (CVE-2024-30088 Windows Kernel EoP per Earth Simnavaz 2024 reporting — by ID only, Hard Rule 3; live-ratified 2026-07-12, single-source Trend Micro) |
+
 ### Credential Access
 
 | ID | Technique |
@@ -142,6 +179,8 @@ The April 2019 "Lab Dookhtegan" leaks of OilRig source code, victim lists, and o
 | T1003.003 | OS Credential Dumping: NTDS |
 | T1555 | Credentials from Password Stores |
 | T1110 | Brute Force (credential stuffing where harvested creds available) |
+| T1556.002 | Modify Authentication Process: Password Filter DLL (Earth Simnavaz 2024 — `psgfilter.dll` registered with LSA for plaintext credential capture; live-ratified 2026-07-12, single-source Trend Micro) |
+| T1114 | Email Collection (StealHook relays/steals credentials via compromised on-prem Exchange) |
 
 ### Discovery
 
@@ -187,6 +226,7 @@ The April 2019 "Lab Dookhtegan" leaks of OilRig source code, victim lists, and o
 | Saitama | .NET backdoor | Unit 42 "Out to Sea" (2022); DNS-based C2, anti-analysis-heavy |
 | PowerExchange | Backdoor | Symantec (2023); C2 via compromised Exchange transport agent — covert email-based C2 |
 | MENORAH | C# backdoor | Trend Micro / Unit 42 (2023–2024); modular, anti-sandbox checks, used against Saudi government |
+| StealHook | Backdoor / credential thief | Trend Micro Earth Simnavaz (2024); exfiltrates stolen credentials as email attachments through compromised Exchange; paired with a malicious password-filter DLL (`psgfilter.dll`). *Family name live-ratified 2026-07-12 (single-source Trend Micro); IOC appendix (hashes/C2/emails) still pending — 403-blocked.* |
 | MARLIN | Backdoor | Recent custom C# tooling against GCC government targets |
 | SideTwist | Backdoor | C-language backdoor with multiple variants since 2021 |
 | Drovorub-adjacent rootkit | (disputed) | Some early reporting linked OilRig to rootkit activity; later attribution clarification associates Drovorub primarily with APT28/GRU per NSA/FBI 2020 advisory — kept here for historical clarity, NOT counted toward APT34 capability |
@@ -218,7 +258,7 @@ This profile is a first-pass scaffold; current IOCs are limited. See `iocs.md` a
 
 The IOC sidecar starts sparse and grows as collector / grader feed APT34-attributed findings into the dossier.
 
-**No first-party Splunk observations of APT34 infrastructure as of 2026-05-01.**
+**No first-party Splunk observations of APT34 infrastructure as of the 2026-07-12 refresh, re-confirmed on the same-day ratification fold-in.** A sentinel sweep over `defenseclaw_local` for the -90d window (malware family names incl. StealHook/MENORAH/Saitama/PowerExchange, plus the newly-ratified `psgfilter.dll` + CVE-2024-30088, legacy CVEs, and actor aliases) returned a categorical zero. This is a visibility-bounded null — Frank is not an Iranian-espionage target-profile org — not evidence of absence, and confers no IOC-corroboration bonus.
 
 ---
 
@@ -247,6 +287,8 @@ The group is not a primary US-soil threat, but it is a credible second-order con
 - ⛓️ **[Actor #022 MuddyWater](../MuddyWater/profile.md)** — Fellow MOIS-aligned cluster; documented overlapping tooling and infrastructure in some Mandiant and Unit 42 reporting. Treat as separate group with periodic operational adjacency.
 - ⛓️ **[Actor #011 Charming Kitten](../Charming-Kitten/profile.md)** — IRGC-IO counterpart with different operational tasking but occasional shared infrastructure or tooling per Microsoft Threat Intelligence reporting.
 - ⛓️ **[Actor #004 UNC1549](../UNC1549/profile.md)** — Iranian-aligned (IRGC) actor with the most direct A&D playbook overlap; UNC1549 directly targets aerospace and defense, while APT34's A&D relevance is supply-chain-mediated.
+- ⛓️ **[Actor #026 Cavern Manticore](../Cavern-Manticore/profile.md)** — Check Point Research designates Cavern Manticore a *distinct* new MOIS-affiliated cluster and notes tactical overlap with Lyceum (which CPR assesses as an OilRig subgroup). **Recorded as CPR's assessment ONLY** — Archimedes originates no attribution merge between APT34 and Cavern Manticore (Hard Rule 2). See `finding-2026-07-06-0001`; SAT-ACH question (distinct cluster vs. OilRig sub-cluster) remains open for the analyst.
+- ⛓️ **[Actor #027 Peach Sandstorm](../Peach-Sandstorm/profile.md)** — Iranian-nexus peer (IRGC-attributed) tracked for analytic context. Unlike APT34, Peach Sandstorm has documented prime-direct US A&D targeting (Intent=5) and a non-floor destructive dimension. Peer for calibration, not a merge.
 - ⛓️ **Greenbug (Symantec taxonomy)** — Earlier Symantec reporting clustered some APT34 activity under "Greenbug"; treated as overlapping cluster rather than distinct actor.
 
 ---
@@ -260,7 +302,9 @@ The group is not a primary US-soil threat, but it is a credible second-order con
 5. **Credential hygiene for regional partner accounts** — Treat credentials shared with Middle East joint-venture partners as elevated risk; enforce phishing-resistant MFA and review account access quarterly.
 6. **Egress monitoring for compromised Exchange C2 patterns** — Email-based C2 (PowerExchange) blends into legitimate Exchange traffic; monitor for unusual internal-to-external email volume from privileged service accounts.
 7. **Partner compromise notifications** — Establish notification protocols with regional partner SOCs; APT34 dwell time means a partner-side detection is often the earliest signal for a downstream prime.
-8. **Hunt for SideTwist / MENORAH / MARLIN file artifacts** — Pull current YARA rules from Trend Micro and Unit 42 publications; deploy to EDR.
+8. **Hunt for SideTwist / MENORAH / MARLIN / StealHook file artifacts** — Pull current YARA rules from Trend Micro and Unit 42 publications; deploy to EDR.
+9. **Audit registered Windows password-filter DLLs** — Earth Simnavaz (2024) deployed a malicious password-filter DLL to capture plaintext credentials (T1556.002). Enumerate DLLs listed under `HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Notification Packages` on domain controllers and privileged hosts; alert on any package not on the approved baseline — specifically flag `psgfilter.dll` registered as a notification package. *(Detection tied to Earth Simnavaz reporting; live-ratified 2026-07-12, single-source Trend Micro.)*
+10. **Watch on-prem Exchange for credential-relay behavior** — StealHook (2024) abuses on-prem Exchange to relay/steal domain credentials, extending APT34's prior PowerExchange transport-agent tradecraft. Monitor Exchange for anomalous service-account authentications and unusual mailbox/transport access from application identities.
 
 ---
 
@@ -272,10 +316,13 @@ The group is not a primary US-soil threat, but it is a credible second-order con
 - [Cisco Talos: DNSpionage Brings Out the Karkoff (2019)](https://blog.talosintelligence.com/dnspionage-brings-out-the-karkoff/)
 - [Symantec: Crambus — New campaign in Middle East (2023)](https://symantec-enterprise-blogs.security.com/threat-intelligence/crambus-middle-east-government) — eight-month intrusion, PowerExchange disclosure
 - [Trend Micro: APT34 deploys new MENORAH malware (2023)](https://www.trendmicro.com/en_us/research/23/i/apt34-deploys-phishing-attack-with-new-malware.html)
+- [Trend Micro: Earth Simnavaz (APT34/OilRig) leverages Windows Kernel flaw + StealHook against UAE/Gulf gov & energy (October 2024)](https://www.trendmicro.com/en_us/research/24/j/earth-simnavaz-cyberattacks.html) — A2 *(live-ratified 2026-07-12; SINGLE-SOURCE primary — relays not independent corroboration; provisional-A2-confirmed, not multi-A A1. Full IOC appendix 403-blocked, not retrieved.)*
+- [Cyber Security News: OilRig hackers exploit Microsoft Exchange (relay of Trend Micro Earth Simnavaz)](https://cybersecuritynews.com/oilrig-hackers-microsoft-exchange-breach/) — C3 *(pure relay; provided `psgfilter.dll` + RunPE-In-Memory detail; NOT independent corroboration)*
+- [Check Point Research: "Cavern Manticore" MOIS cluster / Cavern .NET C2 framework (2026, relayed via The Hacker News)](https://thehackernews.com/2026/07/iran-linked-hackers-use-new-cavern-c2.html) — CPR notes Lyceum/OilRig tactical overlap; recorded as CPR's assessment only (see `finding-2026-07-06-0001`)
 - [Palo Alto Unit 42: Out to Sea — Saitama Backdoor (2022)](https://unit42.paloaltonetworks.com/saitama-backdoor/)
 - [Microsoft Threat Intelligence: Hazel Sandstorm (formerly EUROPIUM) profile](https://www.microsoft.com/en-us/security/blog/) — Microsoft's tracking of overlapping cluster
 - Lab Dookhtegan Telegram leak (April 2019) — referenced via Mandiant/Unit 42 confirmation reporting; original leak channel not linked here per LEGAL-POLICY guidance on directly hosting / linking leaked operational material
 
 ---
 
-*Profile authored 2026-05-01 (Session 9 pre-work) by `actor-profiler`. All attribution claims herein are inherited from cited sources per Hard Rule 2.*
+*Profile authored 2026-05-01 (Session 9 pre-work) by `actor-profiler`; refreshed 2026-07-12 (90-day /update-tracking); ratification fold-in 2026-07-12 (dossier_version 3, raw-2026-07-12-ratify-003). All attribution claims herein are inherited from cited sources per Hard Rule 2. The 2026-07-12 fold-in live-ratified the Earth Simnavaz 2024 campaign/tooling (Trend Micro) — clearing the earlier pending flag on the campaign/tooling/technique claims under SINGLE-SOURCE discipline (provisional-A2-confirmed, not multi-A A1) — and added `psgfilter.dll` as a net-new IOC. Trend Micro's StealHook IOC appendix and a 2025-2026 OilRig/Crambus A-grade primary remain standing collection gaps. The CPR Cavern Manticore overlap stays CPR's assessment only (no merge). Score unchanged: MEDIUM (weighted 4.9).*

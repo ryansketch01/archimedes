@@ -2,10 +2,23 @@
 
 **Actor ID:** 023
 **Target profile:** ad-prime-v1 (mid-to-large US A&D contractor, ITAR-regulated)
-**Scored:** 2026-05-01 by `actor-profiler`
+**Scored:** 2026-07-12 by `actor-profiler` (scoring_version 2 — 90-day refresh; initial 2026-05-01)
 **Approval:** auto-committed (overall weighted = MEDIUM; authority = actor-profiler-autonomous-with-notification)
-**Overall Threat Level:** 🟡 MEDIUM (weighted 4.9/10)
+**Overall Threat Level:** 🟡 MEDIUM (weighted 4.9/10) — re-affirmed, unchanged from initial scoring
 **Primary threat vector:** Espionage — per-category composite **8/10 = 🔴 HIGH**
+
+---
+
+## What changed at the 2026-07-12 refresh (and 2026-07-12 ratification fold-in)
+
+**Nothing in the arithmetic.** The 90-day /update-tracking re-score re-affirmed the weighted overall at **4.9 → MEDIUM**; no category composite moved. A same-day collector ratification fold-in then live-verified the sourcing without moving any number. Hard Rule 5 did NOT fire.
+
+New evidence recorded this cycle, none of which shifts a score:
+
+- **Earth Simnavaz (Trend Micro, Oct 2024)** — StealHook backdoor exfiltrating stolen credentials as email attachments through compromised Exchange, a malicious password-filter DLL (`psgfilter.dll`, T1556.002), and CVE-2024-30088 privilege escalation. This **reinforces espionage Capability=5**, which was already at the ceiling, so the number is unchanged. It targeted UAE/Gulf government and energy — regional, not US A&D primes — so espionage Intent stays 3 (sector-association).
+- **Ratification fold-in (2026-07-12):** a collector direct-retrieval pass **live-ratified** the campaign, StealHook family name, CVE-2024-30088 linkage, and psgfilter.dll against the Trend Micro primary — the earlier "pending direct-retrieval" flag on these campaign/tooling/technique claims is **cleared**. **SINGLE-SOURCE discipline applies:** Trend Micro is the sole originating A-grade primary; cybersecuritynews / Dark Reading / SOC Prime / Industrial Cyber are pure relay, **not** independent corroboration — recorded single-source **provisional-A2-confirmed, not multi-A A1**. Because Capability was already at ceiling, the score is unaffected. **Still pending (genuine gaps):** Trend Micro's full StealHook IOC appendix (hashes/C2/emails, 403-blocked) and a 2025-2026 OilRig/Crambus A-grade primary.
+- **Check Point Research "Cavern Manticore" (#026)** — CPR notes tactical overlap between its distinct new MOIS cluster and Lyceum/OilRig. Recorded as **CPR's assessment only** — no APT34 ↔ Cavern Manticore attribution merge originated (Hard Rule 2).
+- **Splunk first-party** — categorical zero over -90d in `defenseclaw_local` (re-run on the fold-in incl. psgfilter.dll + CVE-2024-30088; visibility-bounded null, no IOC-corroboration bonus).
 
 ---
 
@@ -39,9 +52,9 @@ APT34 is documented by Mandiant, Palo Alto Unit 42, Trend Micro, and Symantec as
 
 ### Why this Capability score
 
-Multiple A-grade sources document active espionage tradecraft within the last 24 months: Trend Micro and Unit 42 disclosed MENORAH C# backdoor against Saudi government targets in 2023-2024; Symantec documented an eight-month dwell-time intrusion (PowerExchange, compromised Exchange transport agent C2) in a Middle East government network in 2023. A decade of continuous tooling evolution (Helminth, ISMAgent, OopsIE, BONDUPDATER, RGDoor, DNSpionage/Karkoff, Saitama, SideTwist, MARLIN, MENORAH, PowerExchange). Capability against ad-prime-v1's technology stack (Windows, Exchange, IIS, Office) is significant in the abstract — what's lower is targeting interest, not capability.
+Multiple A-grade sources document active espionage tradecraft within the last 24 months, now extended by the October 2024 **Earth Simnavaz** campaign (Trend Micro): StealHook backdoor exfiltrating stolen credentials via compromised Exchange, a malicious password-filter DLL (`psgfilter.dll`, T1556.002), and CVE-2024-30088 privilege escalation (reported by ID only per Hard Rule 3). These items were **live-ratified against the Trend Micro primary 2026-07-12** — single-source (Trend Micro sole A-grade originator; relays not independent corroboration), provisional-A2-confirmed, not multi-A A1. This sits atop Trend Micro / Unit 42 MENORAH C# backdoor against Saudi government (2023-2024) and Symantec's eight-month PowerExchange dwell in a Middle East government network (2023). A decade of continuous tooling evolution (Helminth, ISMAgent, OopsIE, BONDUPDATER, RGDoor, DNSpionage/Karkoff, Saitama, SideTwist, MARLIN, MENORAH, PowerExchange, StealHook). Capability against ad-prime-v1's technology stack (Windows, Exchange, IIS, Office, on-prem AD) is significant in the abstract — what's lower is targeting interest, not capability. The 2024 evidence reinforces an already-ceiling Capability=5; it does not change the number.
 
-**Sources:** trendmicro-menorah-2023, symantec-crambus-2023, unit-42-saitama-2022, cisco-talos-dnspionage-2019, mandiant-2017-apt34
+**Sources:** trendmicro-earth-simnavaz-2024, trendmicro-menorah-2023, symantec-crambus-2023, unit-42-saitama-2022, cisco-talos-dnspionage-2019, mandiant-2017-apt34
 
 ### Modifiers
 
@@ -50,7 +63,7 @@ Multiple A-grade sources document active espionage tradecraft within the last 24
 
 ### First-party Splunk
 
-No first-party APT34 infrastructure observations in `defenseclaw_local` at time of initial scoring 2026-05-01.
+No first-party APT34 infrastructure observations in `defenseclaw_local` over the -90d window at the 2026-07-12 refresh, re-confirmed on the same-day ratification fold-in (sweep re-run to include the newly-ratified `psgfilter.dll` + CVE-2024-30088 alongside StealHook/MENORAH/Saitama/PowerExchange/SideTwist/OilRig + actor aliases) — categorical zero. Visibility-bounded null — no IOC-corroboration bonus.
 
 ---
 
@@ -159,8 +172,8 @@ No first-party APT34 observations.
 ## Review policy
 
 - **Interval:** 90 days
-- **Last reviewed:** 2026-05-01
-- **Next review due:** 2026-07-30
+- **Last reviewed:** 2026-07-12
+- **Next review due:** 2026-10-10
 - **Early review triggers:**
   - New attribution from A-grade source
   - New tooling documented
@@ -178,6 +191,8 @@ Target profile: `ad-prime-v1` (mid-to-large US A&D contractor, ITAR-regulated, D
 **Confidence: A2.** Attribution and tooling are well-documented across multiple A-grade sources. Targeting-of-ad-prime-v1-specifically evidence is sparse, which is why Intent on espionage is 3 rather than 5. Confidence in the scoring calibration against ad-prime-v1 is one notch below A1.
 
 **Authority gate:** overall weighted 4.9 rounds to 5 → MEDIUM threat level → `actor-profiler-autonomous-with-notification`. No `/approve-scoring` required. Per-category HIGH on espionage is preserved in the structured scoring but does not trigger the Hard Rule 5 gate.
+
+**Refresh + fold-in caveat (2026-07-12):** the Earth Simnavaz 2024 additions (StealHook, CVE-2024-30088, `psgfilter.dll` password-filter DLL) were **live-ratified** against the Trend Micro primary by a collector direct-retrieval pass — the earlier "pending direct-retrieval" flag on these campaign/tooling/technique claims is cleared. **Single-source discipline:** Trend Micro is the sole originating A-grade primary; all other outlets are pure relay, not independent corroboration — recorded provisional-A2-confirmed, not multi-A A1. Because they corroborate an already-ceiling espionage Capability, the scoring does not hinge on them. **Still pending:** Trend Micro's StealHook IOC appendix (hashes/C2/emails, 403-blocked) and a 2025-2026 OilRig/Crambus A-grade primary.
 
 ---
 

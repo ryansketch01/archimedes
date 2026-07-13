@@ -1,0 +1,682 @@
+# threats/threat-actors/Peach-Sandstorm/iocs.yaml
+#
+# Agent-queryable sidecar to iocs.md. Created for /new-actor Peach Sandstorm
+# (#027), 2026-07-12. Fold-in 2026-07-12: collector direct-retrieval pass
+# ratified the FalseFont (Microsoft Dec 2023 + Unit 42 Mar 2024 + Nextron Jan
+# 2024) and Tickler (Microsoft Aug 2024) campaigns and their atomic IOCs — now
+# populated in the "Atomic indicators" block below.
+#
+# Hard Rule 2: every indicator carries a source reference back to its originating
+# public reporting; nothing here is Archimedes-originated.
+# Hard Rule 3: CVEs referenced by ID only; no exploitation detail, no PoC.
+# Hard Rule 7: Unit 42's FalseFont page published malware-embedded C2 auth creds;
+#   the collector counted+discarded them. No credential values are stored here.
+
+actor_id: "027"
+actor_name: Peach Sandstorm
+last_updated: 2026-07-12
+dossier_version: 2
+admiralty_grade: A1
+tlp: CLEAR
+source_of_record: iocs.md
+
+ttl:
+  network_infrastructure: 90    # days — domains/IPs expire from "active"
+  file_hashes: 730              # hashes don't expire, may lose relevance
+  registry: never               # TTP-level, persistent value
+  scheduled_task: never
+  cloud_service: never
+  vulnerabilities: never        # CVEs are forever
+
+# ============================================================================
+# Malware families (representative; specific hashes to be ingested next pass)
+# ============================================================================
+indicators:
+
+  - id: peach-tickler-family
+    type: malware_family
+    value: Tickler
+    description: "Custom multi-stage backdoor; DLL sideloading + fraudulent Azure (*.azurewebsites.net) C2; used against US/UAE defense, satellite, oil-and-gas Apr-Jul 2024. Atomic hashes + C2 subdomains ratified below."
+    first_seen: 2024
+    related_campaign: "Tickler backdoor campaign"
+    source_brief: microsoft-mstic-tickler-2024
+
+  - id: peach-falsefont-family
+    type: malware_family
+    value: FalseFont
+    description: "Custom backdoor targeting the Defense Industrial Base; impersonates Maxar Technologies (Maxar.dll). Microsoft Dec 2023, corroborated Unit 42 Mar 2024 + Nextron Jan 2024. Atomic hashes + C2 ratified below."
+    first_seen: 2023-11
+    related_campaign: "FalseFont / DIB targeting"
+    source_brief: microsoft-falsefont-2023
+
+  - id: peach-turnedup-family
+    type: malware_family
+    value: TURNEDUP
+    description: "Custom APT33 backdoor documented by FireEye 2017; signature implant"
+    first_seen: 2017
+    related_campaign: "FireEye 2017 disclosure"
+    source_brief: fireeye-apt33-2017
+
+  - id: peach-powerton-family
+    type: malware_family
+    value: POWERTON
+    description: "Custom PowerShell backdoor used in APT33 operations"
+    first_seen: 2018
+    source_brief: fireeye-apt33-2017
+
+  - id: peach-dropshot-shapeshift-family
+    type: malware_family
+    value: DROPSHOT / SHAPESHIFT
+    description: "Dropper (DROPSHOT) + wiper (SHAPESHIFT); FireEye 2017 'ties to destructive malware' framing; wiper used in testing"
+    first_seen: 2017
+    related_campaign: "Destructive-malware ties"
+    source_brief: fireeye-apt33-2017
+
+  - id: peach-stonedrill-family
+    type: malware_family
+    value: StoneDrill
+    description: "Wiper linked to APT33-adjacent activity (NewsBeef) per Kaspersky; regionally focused (Saudi/Gulf)"
+    first_seen: 2017
+    source_brief: kaspersky-stonedrill-2017
+
+# ============================================================================
+# Atomic indicators — ratified 2026-07-12 (collector direct-retrieval pass)
+# ----------------------------------------------------------------------------
+# FalseFont (Microsoft Dec 2023 A1 + Unit 42 Mar 2024 A1 + Nextron Jan 2024 A2)
+# ============================================================================
+
+  - id: peach-falsefont-hash-364275326bbf
+    type: hash_sha256
+    value: 364275326bbfc4a3b89233dabdaf3230a3d149ab774678342a40644ad9f8d614
+    role: delivery
+    first_seen: 2023-11
+    last_seen: 2024-01
+    campaign: "FalseFont / DIB targeting"
+    related_malware: [FalseFont]
+    source_brief: unit42-curious-serpens-falsefont-2024
+    context_excerpt: "Packed FalseFont executable impersonating Maxar Technologies (filename Maxar.dll); VT 41/71 malicious."
+    attribution_in_text: "APT33 / Peach Sandstorm / Curious Serpens"
+    notes: "MD5 6fd5d31d607a212c6f7651c79e7655a3; SHA1 ddd18e208aff7b00a46e06f8d9485f81ff4221ea"
+
+  - id: peach-falsefont-hash-4145e792c9e9
+    type: hash_sha256
+    value: 4145e792c9e9f3c4e80ca0e290bd7568ebcef678affd68d9b505f02c6acaab12
+    role: delivery
+    first_seen: 2023-11
+    last_seen: 2024-03
+    campaign: "FalseFont / DIB targeting"
+    related_malware: [FalseFont]
+    source_brief: unit42-curious-serpens-falsefont-2024
+    context_excerpt: "Unpacked FalseFont executable (per Unit 42)."
+    attribution_in_text: "Curious Serpens / APT33"
+
+  - id: peach-falsefont-domain-digitalcodecrafters
+    type: domain
+    value: digitalcodecrafters.com
+    defanged_original: "digitalcodecrafters[.]com"
+    resolved_ip: 64.52.80.30
+    role: c2
+    first_seen: 2023-11
+    last_seen: 2024-03
+    campaign: "FalseFont / DIB targeting"
+    related_malware: [FalseFont]
+    source_brief: unit42-curious-serpens-falsefont-2024
+    context_excerpt: "FalseFont C2 domain resolving to 64.52.80[.]30 on TCP/8080."
+    attribution_in_text: "Curious Serpens / APT33"
+
+  - id: peach-falsefont-ip-64-52-80-30
+    type: ipv4
+    value: 64.52.80.30
+    defanged_original: "64.52.80[.]30"
+    role: c2
+    first_seen: 2023-11
+    last_seen: 2024-03
+    campaign: "FalseFont / DIB targeting"
+    related_malware: [FalseFont]
+    source_brief: unit42-curious-serpens-falsefont-2024
+    context_excerpt: "FalseFont C2 IP (TCP/8080)."
+    attribution_in_text: "Curious Serpens / APT33"
+
+  - id: peach-falsefont-filename-maxar-dll
+    type: other
+    type_detail: filename
+    value: Maxar.dll
+    role: delivery
+    first_seen: 2023-11
+    last_seen: 2024-01
+    campaign: "FalseFont / DIB targeting"
+    related_malware: [FalseFont]
+    source_brief: unit42-curious-serpens-falsefont-2024
+    context_excerpt: "FalseFont impersonates a Maxar Technologies (aerospace/defense contractor) application; sample named Maxar.dll."
+    attribution_in_text: "APT33 / Peach Sandstorm"
+
+  - id: peach-falsefont-detname-a-dha
+    type: yara_rule
+    value: "Backdoor:MSIL/FalseFont.A!dha"
+    role: ambiguous
+    first_seen: 2023-12
+    last_seen: 2023-12
+    campaign: "FalseFont / DIB targeting"
+    related_malware: [FalseFont]
+    source_brief: microsoft-falsefont-2023
+    context_excerpt: "Microsoft Defender detection name for FalseFont."
+    attribution_in_text: "Peach Sandstorm"
+    notes: "Vendor detection signature name, not a filesystem IOC."
+
+# ============================================================================
+# Tickler (Microsoft Aug 2024, A1) — 9 SHA256 + 16 Azure C2 subdomains + UA
+#   2 Tickler samples + 3 payloads + 4 sideloading-chain binaries.
+#   Abused-legitimate-binary hashes (msvcp140.dll, vcruntime140.dll) are the
+#   specific abused copies used as sideloading hosts, not the payload itself.
+# ============================================================================
+
+  - id: peach-tickler-hash-7eb2e9e8cd45
+    type: hash_sha256
+    value: 7eb2e9e8cd450fc353323fd2e8b84fbbdfe061a8441fd71750250752c577d198
+    role: delivery
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Tickler sample; VT name YAHSAT NETWORK_INFRASTRUCTURE_SECURITY_GUIDE_20240421.pdf.exe (Yahsat = UAE satellite operator lure); VT 49/69 — independently corroborates satellite-sector targeting."
+    attribution_in_text: "Peach Sandstorm / APT33"
+    notes: "MD5 ea79d9e044c7daff1de15f95f49a0265; SHA1 fb4b1b9244a924015eb82296dbecf5fa2a861ba9"
+
+  - id: peach-tickler-hash-ccb617cc7418
+    type: hash_sha256
+    value: ccb617cc7418a3b22179e00d21db26754666979b4c4f34c7fda8c0082d08cec4
+    role: delivery
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Tickler malware sample (Microsoft IOC appendix)."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-hash-fb70ff49411c
+    type: hash_sha256
+    value: fb70ff49411ce04951895977acfc06fa468e4aa504676dedeb40ba5cea76f37f
+    role: staging
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Associated Tickler payload."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-hash-711d3deccc22
+    type: hash_sha256
+    value: 711d3deccc22f5acfd3a41b8c8defb111db0f2b474febdc7f20a468f67db0350
+    role: staging
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Associated Tickler payload."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-hash-5df4269998ed
+    type: hash_sha256
+    value: 5df4269998ed79fbc997766303759768ce89ff1412550b35ff32e85db3c1f57b
+    role: staging
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Associated Tickler payload."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-hash-dad53a786627
+    type: hash_sha256
+    value: dad53a78662707d182cdb230e999ef6effc0b259def31c196c51cc3e8c42a9b8
+    role: staging
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Legitimate msvcp140.dll abused as a DLL-sideloading host (not the malicious payload itself)."
+    attribution_in_text: "Peach Sandstorm / APT33"
+    notes: "Abused legitimate Microsoft binary (msvcp140.dll)."
+
+  - id: peach-tickler-hash-56ac00856b19
+    type: hash_sha256
+    value: 56ac00856b19b41bc388ecf749eb4651369e7ced0529e9bf422284070de457b6
+    role: staging
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "LoggingPlatform.dll used in the DLL-sideloading chain (backdoor DLL)."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-hash-22017c9b022e
+    type: hash_sha256
+    value: 22017c9b022e6f2560fee7d544a83ea9e3d85abee367f2f20b3b0448691fe2d4
+    role: staging
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Legitimate vcruntime140.dll abused as a DLL-sideloading host."
+    attribution_in_text: "Peach Sandstorm / APT33"
+    notes: "Abused legitimate Microsoft binary (vcruntime140.dll)."
+
+  - id: peach-tickler-hash-e984d9085ae1
+    type: hash_sha256
+    value: e984d9085ae1b1b0849199d883d05efbccc92242b1546aeca8afd4b1868c54f5
+    role: staging
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Microsoft.SharePoint.NativeMessaging.exe used in the DLL-sideloading chain."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  # --- Tickler fraudulent Azure C2 subdomains (16, all *.azurewebsites.net) ---
+  - id: peach-tickler-c2-subreviews
+    type: domain
+    value: subreviews.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Fraudulent attacker-controlled Azure C2."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-satellite2
+    type: domain
+    value: satellite2.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Fraudulent Azure C2 (satellite-themed subdomain)."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-nodetestservers
+    type: domain
+    value: nodetestservers.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-satellitegardens
+    type: domain
+    value: satellitegardens.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Fraudulent Azure C2 (satellite-themed)."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-softwareservicesupport
+    type: domain
+    value: softwareservicesupport.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-getservicessuports
+    type: domain
+    value: getservicessuports.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-getservicessupports
+    type: domain
+    value: getservicessupports.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-getsupportsservices
+    type: domain
+    value: getsupportsservices.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-satellitespecialists
+    type: domain
+    value: satellitespecialists.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    context_excerpt: "Fraudulent Azure C2 (satellite-themed)."
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-satservicesdev
+    type: domain
+    value: satservicesdev.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-servicessupports
+    type: domain
+    value: servicessupports.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-websupportprotection
+    type: domain
+    value: websupportprotection.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-supportsoftwarecenter
+    type: domain
+    value: supportsoftwarecenter.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-centersoftwaresupports
+    type: domain
+    value: centersoftwaresupports.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+
+  - id: peach-tickler-c2-softwareservicesupports
+    type: domain
+    value: softwareservicesupports.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+    notes: "Distinct from softwareservicesupport (no trailing s) — both are in the appendix."
+
+  - id: peach-tickler-c2-getsdervicessupoortss
+    type: domain
+    value: getsdervicessupoortss.azurewebsites.net
+    role: c2
+    first_seen: 2024-04
+    last_seen: 2024-07
+    campaign: "Tickler"
+    related_malware: [Tickler]
+    source_brief: microsoft-mstic-tickler-2024
+    attribution_in_text: "Peach Sandstorm / APT33"
+    notes: "Typosquat-style spelling preserved verbatim from Microsoft appendix."
+
+  - id: peach-tickler-ua-go-http-client
+    type: user_agent
+    value: "go-http-client"
+    role: spray
+    first_seen: 2023-02
+    last_seen: 2024-07
+    campaign: "Peach Sandstorm password spray"
+    related_malware: []
+    source_brief: microsoft-mstic-tickler-2024
+    fidelity: low
+    context_excerpt: "User agent observed in Peach Sandstorm password-spray traffic."
+    attribution_in_text: "Peach Sandstorm / APT33"
+    notes: "LOW fidelity / contextual only — commodity Go HTTP client UA, high false-positive risk if used standalone. Do NOT alert on this in isolation."
+
+# ============================================================================
+# CVEs — referenced by ID only per Hard Rule 3 (no exploitation detail)
+# ============================================================================
+# NOTE: Peach Sandstorm exploits public-facing applications (T1190) for access
+# and historically weaponized N-day Office/RCE vulnerabilities. Specific
+# CVE-to-campaign mappings are deferred to the next collector pass against
+# authoritative advisories. No CVE list is asserted here beyond the by-ID-only
+# discipline; do not invent CVE claims without a cited source.
+
+# ============================================================================
+# Behavioral / TTP-level detection patterns
+# ============================================================================
+
+  - id: peach-password-spray-pattern
+    type: detection_pattern
+    value: password_spray_entra_m365
+    description: |
+      Primary current-generation access vector (T1110.003). Hunt indicator:
+      distributed low-and-slow authentication failures across many accounts
+      from few source ASNs / cloud IP ranges against Entra ID / M365. Not a
+      static IOC; an identity-plane behavioral hunt.
+    source_brief: microsoft-peach-sandstorm-2023
+
+  - id: peach-roadtools-entra-enum-pattern
+    type: detection_pattern
+    value: roadtools_entra_enumeration
+    description: |
+      Post-access Entra ID enumeration + rogue device registration via
+      ROADtools (roadrecon/roadtx) (T1087, T1098.005, T1550). Hunt: Microsoft
+      Graph API calls with 'roadtools' or 'python-requests/<ver>' user-agent
+      strings; anomalous device registrations (default OS-version artifacts);
+      anomalous PRT/token issuance. See seed finding-2026-05-22-0002.
+    source_brief: unit42-curious-serpens-2026
+
+  - id: peach-azure-abuse-pattern
+    type: detection_pattern
+    value: azure_infrastructure_abuse_c2
+    description: |
+      Tickler backdoor abused legitimate Azure infrastructure for C2/staging
+      (T1102). Hunt: anomalous Azure subscription/resource creation tied to
+      service accounts; unexpected outbound to attacker-controlled Azure
+      resources.
+    source_brief: microsoft-mstic-tickler-2024
+
+  - id: peach-aviation-defense-lure-pattern
+    type: detection_pattern
+    value: aviation_defense_recruitment_lure
+    description: |
+      Job-lure / recruitment-themed spear-phishing aligned to aerospace/defense
+      (T1566.001/002); lookalike domains impersonating aviation/defense brands.
+      Hunt: newly-registered lookalike domains of aviation/defense companies;
+      recruitment-themed attachments to HR/engineering staff.
+    source_brief: fireeye-apt33-2017
+
+# ============================================================================
+# Hunt queries
+# ============================================================================
+hunt_queries:
+
+  - id: peach-hunt-password-spray
+    platform: splunk
+    title: "Hunt for Peach Sandstorm-style password spray against Entra ID / M365"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=azure:signin OR sourcetype=m365:signin)
+      (ResultType=50126 OR status="failure")
+      | bucket _time span=1h
+      | stats dc(user) as distinct_users_failed count as fail_count
+          values(src_ip) as src_ips by _time, src_asn
+      | where distinct_users_failed >= 10
+      | sort - distinct_users_failed
+      # FP consideration: legitimate bulk auth failures (misconfigured app,
+      # expired service-account cred, VPN egress) — tune distinct_users
+      # threshold + allowlist known corporate egress ASNs.
+
+  - id: peach-hunt-roadtools-graph-enum
+    platform: m365
+    title: "Hunt for ROADtools Entra ID enumeration user-agent strings"
+    query_type: kql
+    query: |
+      // Microsoft Graph / Entra ID sign-in + audit logs
+      // Detect roadrecon/roadtx default user-agent strings
+      SigninLogs
+      | where UserAgent has_any ("roadtools", "python-requests")
+      | project TimeGenerated, UserPrincipalName, IPAddress, UserAgent, AppDisplayName
+      // FP consideration: legitimate python-requests automation may exist;
+      // correlate with anomalous device registration + Graph enumeration volume.
+
+  - id: peach-hunt-rogue-device-registration
+    platform: m365
+    title: "Hunt for rogue Entra ID device registrations (T1098.005)"
+    query_type: kql
+    query: |
+      AuditLogs
+      | where OperationName has "Add registered device"
+      | project TimeGenerated, InitiatedBy, TargetResources, ResultDescription
+      // FP consideration: legitimate BYOD/onboarding waves — correlate with
+      // password-spray precursor + default OS-version artifacts + off-hours.
+
+  - id: peach-hunt-tickler-falsefont-artifacts
+    platform: edr
+    title: "Hunt for Tickler / FalseFont backdoor artifacts"
+    query_type: pseudo
+    query: |
+      DEPLOY current Microsoft-published YARA/EDR signatures for Tickler and
+      FalseFont across Defense-Industrial-Base-tier hosts.
+      ALERT on signature match OR anomalous Azure-C2 outbound from implant host.
+      # FP consideration: signature-based; keep rules current from Microsoft
+      # publications. Pair with Azure-abuse hunt for corroboration.
+
+  - id: peach-hunt-atomic-ioc-match
+    platform: splunk
+    title: "Match ratified FalseFont/Tickler hashes + C2 (atomic IOC sweep)"
+    query_type: spl
+    references_indicators:
+      - peach-falsefont-hash-364275326bbf
+      - peach-falsefont-hash-4145e792c9e9
+      - peach-falsefont-domain-digitalcodecrafters
+      - peach-falsefont-ip-64-52-80-30
+      - peach-tickler-hash-7eb2e9e8cd45
+      - peach-tickler-hash-ccb617cc7418
+      - peach-tickler-c2-subreviews
+    query: |
+      index=defenseclaw_local
+      (
+        file_hash IN (
+          "364275326bbfc4a3b89233dabdaf3230a3d149ab774678342a40644ad9f8d614",
+          "4145e792c9e9f3c4e80ca0e290bd7568ebcef678affd68d9b505f02c6acaab12",
+          "7eb2e9e8cd450fc353323fd2e8b84fbbdfe061a8441fd71750250752c577d198",
+          "ccb617cc7418a3b22179e00d21db26754666979b4c4f34c7fda8c0082d08cec4",
+          "fb70ff49411ce04951895977acfc06fa468e4aa504676dedeb40ba5cea76f37f",
+          "711d3deccc22f5acfd3a41b8c8defb111db0f2b474febdc7f20a468f67db0350",
+          "5df4269998ed79fbc997766303759768ce89ff1412550b35ff32e85db3c1f57b",
+          "56ac00856b19b41bc388ecf749eb4651369e7ced0529e9bf422284070de457b6",
+          "e984d9085ae1b1b0849199d883d05efbccc92242b1546aeca8afd4b1868c54f5"
+        )
+        OR dest IN ("digitalcodecrafters.com", "64.52.80.30")
+        OR dest="*.azurewebsites.net"
+      )
+      | stats count values(dest) as dest values(file_hash) as hashes by host, _time
+      # FP consideration: *.azurewebsites.net is a legitimate shared Azure service
+      # domain — match ONLY the specific 16 Tickler subdomains in the indicators
+      # list, never the bare parent. The abused msvcp140.dll / vcruntime140.dll
+      # hashes are legitimate-binary copies used for sideloading; a bare filename
+      # match will false-positive, so key on the exact hashes only.
+
+# ============================================================================
+# Sources
+# ============================================================================
+sources:
+  - id: fireeye-apt33-2017
+    title: "Insights into Iranian Cyber Espionage: APT33 Targets Aerospace and Energy Sectors (FireEye/Mandiant, 2017)"
+    url: "https://www.mandiant.com/resources/blog/apt33-insights-into-iranian-cyber-espionage"
+    grade: A1
+
+  - id: microsoft-peach-sandstorm-2023
+    title: "Peach Sandstorm password spray campaigns enable intelligence collection at high-value targets (Microsoft, Sept 2023)"
+    url: "https://www.microsoft.com/en-us/security/blog/2023/09/14/peach-sandstorm-password-spray-campaigns-enable-intelligence-collection-at-high-value-targets/"
+    grade: A1
+
+  - id: microsoft-falsefont-2023
+    title: "Peach Sandstorm FalseFont backdoor targeting the Defense Industrial Base (Microsoft, Dec 2023)"
+    url: "https://www.microsoft.com/en-us/security/blog/"
+    grade: A1
+
+  - id: microsoft-mstic-tickler-2024
+    title: "Peach Sandstorm deploys new custom Tickler malware in long-running intelligence gathering operations (Microsoft, Aug 2024)"
+    url: "https://www.microsoft.com/en-us/security/blog/2024/08/28/peach-sandstorm-deploys-new-custom-tickler-malware-in-long-running-intelligence-gathering-operations/"
+    grade: A1
+    note: "Tickler is Microsoft-originated (MSTIC, 2024-08-28). No standalone Mandiant Tickler advisory located in collector direct-retrieval pass 2026-07-12; any Mandiant co-reporting is pending_direct_retrieval and not asserted here (Hard Rule 2). Ratified with full IOC appendix 2026-07-12."
+
+  - id: unit42-curious-serpens-falsefont-2024
+    title: "Curious Serpens' FalseFont Backdoor: Technical Analysis (Palo Alto Unit 42, 2024-03-25)"
+    url: "https://unit42.paloaltonetworks.com/curious-serpens-falsefont-backdoor/"
+    grade: A1
+    note: "Full FalseFont technical analysis; tracks actor as Curious Serpens = APT33/Peach Sandstorm. Impersonates Maxar Technologies. Page contained malware-embedded C2 auth creds — counted and discarded per Hard Rule 7, values NOT stored."
+
+  - id: nextron-falsefont-2024
+    title: "Analysis of FalseFont Backdoor used by Peach Sandstorm (Nextron Systems / Florian Roth, 2024-01-29)"
+    url: "https://www.nextron-systems.com/2024/01/29/analysis-of-falsefont-backdoor-used-by-peach-sandstorm-threat-actor/"
+    grade: A2
+
+  - id: symantec-elfin-2019
+    title: "Elfin: Relentless Espionage Group Targets Multiple Organizations in Saudi Arabia and US (Symantec, 2019)"
+    url: "https://symantec-enterprise-blogs.security.com/threat-intelligence/elfin-apt33-espionage"
+    grade: A1
+
+  - id: kaspersky-stonedrill-2017
+    title: "From Shamoon to StoneDrill (Kaspersky, 2017)"
+    url: "https://securelist.com/from-shamoon-to-stonedrill/77725/"
+    grade: A2
+
+  - id: unit42-curious-serpens-2026
+    title: "Paved With Intent: ROADtools and Nation-State Tactics in the Cloud (Palo Alto Unit 42, 2026) — Curious Serpens = Peach Sandstorm = APT33"
+    url: "https://unit42.paloaltonetworks.com/roadtools-cloud-attacks/"
+    grade: A2
+    note: "Seed source; relayed via finding-2026-05-22-0002. Single-source veto applied at that finding's cluster anchor."
+
+  - id: mitre-attack-g0064
+    title: "MITRE ATT&CK G0064 — APT33"
+    url: "https://attack.mitre.org/groups/G0064/"
+    grade: A1

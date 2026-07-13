@@ -9,10 +9,29 @@
 
 actor_id: "023"
 actor_name: APT34
-last_updated: 2026-05-01
+last_updated: 2026-07-12
 admiralty_grade: A2
 tlp: CLEAR
 source_of_record: iocs.md
+
+# 2026-07-12 refresh (90-day /update-tracking): added the Earth Simnavaz 2024
+# tooling/CVE (StealHook, CVE-2024-30088, password-filter DLL detection pattern).
+#
+# 2026-07-12 RATIFICATION FOLD-IN (raw-2026-07-12-ratify-003): a collector
+# direct-retrieval pass LIVE-RATIFIED the Earth Simnavaz campaign, StealHook
+# backdoor (family name), CVE-2024-30088 linkage, and psgfilter.dll password-
+# filter DLL against the Trend Micro primary — pending_direct_retrieval CLEARED
+# on those items. SINGLE-SOURCE DISCIPLINE: Trend Micro is the sole originating
+# A-grade primary; cybersecuritynews / Dark Reading / SOC Prime / Industrial
+# Cyber are pure relay, NOT independent corroboration. These are single-source,
+# provisional-A2-confirmed, NOT multi-A A1 (grade held at A2). Net-new atomic
+# IOC added: psgfilter.dll filename (T1556.002).
+# STILL PENDING (genuine collection gap, NOT cleared): Trend Micro's full
+# StealHook IOC appendix (SHA256 hashes, C2 domains, exfil email addresses) —
+# collector hit HTTP 403 and could not pull it. Do NOT fabricate or transcribe-
+# from-memory any StealHook hashes/domains/emails; follow-up manual/OTX pull of
+# the Trend Micro appendix recommended. Still no file hashes, IPs, or domains
+# fabricated in this file.
 
 ttl:
   network_infrastructure: 90    # days — domains/IPs expire from "active"
@@ -48,6 +67,60 @@ indicators:
     first_seen: 2017
     source_brief: mandiant-2017-apt34
 
+  - id: apt34-cve-2024-30088
+    type: cve
+    value: CVE-2024-30088
+    cvss: 7.0
+    product: "Microsoft Windows Kernel"
+    description: >
+      Windows Kernel elevation-of-privilege flaw; reported exploited by APT34/
+      OilRig for local privilege escalation in the Earth Simnavaz 2024 campaign
+      (Trend Micro). Recorded by ID only per Hard Rule 3 — no exploit content.
+    status: reported
+    provisional: true            # single-source (Trend Micro), live-ratified 2026-07-12
+    ratified_single_source: true
+    ratified_at: 2026-07-12
+    first_seen: 2024-10
+    related_campaign: "Earth Simnavaz"
+    related_malware: [StealHook]
+    related_technique: T1068
+    source_brief: trendmicro-earth-simnavaz-2024
+    source_note: >
+      Linkage LIVE-RATIFIED against the Trend Micro primary 2026-07-12
+      (raw-2026-07-12-ratify-003). Single-source: Trend Micro sole A-grade
+      originator; all other outlets pure relay. Provisional-A2-confirmed, not
+      multi-A A1. ID only per Hard Rule 3.
+
+  # --------------------------------------------------------------------------
+  # File / host artifacts (Earth Simnavaz 2024)
+  # --------------------------------------------------------------------------
+  - id: apt34-filename-psgfilter-dll
+    type: filename
+    value: psgfilter.dll
+    description: >
+      Malicious Windows password-filter DLL deployed in the Earth Simnavaz 2024
+      campaign (Trend Micro), registered with the Local Security Authority (LSA)
+      to intercept plaintext credentials during authentication validation
+      (MITRE T1556.002 — Modify Authentication Process: Password Filter DLL).
+      Filename-only artifact; NO hash retrieved (Trend Micro IOC appendix
+      403-blocked this pass — see pending gap note).
+    role: persistence
+    related_technique: T1556.002
+    related_malware: [StealHook]
+    related_campaign: "Earth Simnavaz"
+    first_seen: 2024-10
+    last_seen: 2024-10
+    provisional: true            # single-source (Trend Micro), live-ratified 2026-07-12
+    ratified_single_source: true
+    ratified_at: 2026-07-12
+    source_brief: trendmicro-earth-simnavaz-2024
+    source_note: >
+      LIVE-RATIFIED against the Trend Micro primary 2026-07-12
+      (raw-2026-07-12-ratify-003) + cybersecuritynews relay. Single-source
+      (Trend Micro sole A-grade originator, relays not independent corroboration);
+      provisional-A2-confirmed, not multi-A A1. Confirm against Trend Micro
+      appendix for a hash on follow-up retrieval.
+
 # ============================================================================
 # Backdoor file hashes (representative, per public reporting)
 # ============================================================================
@@ -62,6 +135,32 @@ indicators:
     first_seen: 2023-09
     related_campaign: "MENORAH deployment"
     source_brief: trendmicro-menorah-2023
+
+  - id: apt34-stealhook-family
+    type: malware_family
+    value: StealHook
+    description: >
+      Backdoor / credential thief documented in the Earth Simnavaz 2024 campaign
+      (Trend Micro). Exfiltrates stolen credentials as email attachments through
+      compromised (government) Microsoft Exchange servers; paired with a malicious
+      password-filter DLL (psgfilter.dll, T1556.002) for plaintext credential
+      capture. Extends APT34's prior living-off-Exchange tradecraft (cf.
+      PowerExchange transport-agent C2, 2023).
+    provisional: true            # family name single-source-ratified; IOC appendix still pending
+    ratified_single_source: true
+    ratified_at: 2026-07-12
+    pending_ioc_appendix: true   # SHA256 hashes / C2 domains / exfil emails NOT retrieved (403) — do NOT fabricate
+    first_seen: 2024-10
+    related_campaign: "Earth Simnavaz"
+    source_brief: trendmicro-earth-simnavaz-2024
+    source_note: >
+      Family name + Exchange-credential-exfil behavior LIVE-RATIFIED against the
+      Trend Micro primary 2026-07-12 (raw-2026-07-12-ratify-003). Single-source
+      (Trend Micro sole A-grade originator; relays not independent corroboration);
+      provisional-A2-confirmed, not multi-A A1. STANDING GAP: Trend Micro's full
+      StealHook IOC appendix (SHA256 hashes, C2 domains, exfil email addresses)
+      was 403-blocked and NOT retrieved — no hashes/domains/emails recorded here;
+      follow-up manual/OTX pull recommended.
 
   - id: apt34-saitama-family
     type: malware_family
@@ -122,6 +221,22 @@ indicators:
       unsigned or unfamiliar agents.
     source_brief: symantec-crambus-2023
 
+  - id: apt34-password-filter-dll
+    type: detection_pattern
+    value: malicious_password_filter_dll
+    description: |
+      Earth Simnavaz (2024) deployed a malicious Windows password-filter DLL to
+      capture plaintext credentials (T1556.002). Hunt: enumerate DLLs registered
+      under HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Notification Packages on
+      domain controllers and privileged hosts; alert on any package not on the
+      approved baseline. Behavioral pattern, not a static hash IOC. Concrete
+      artifact ratified this pass: psgfilter.dll (see apt34-filename-psgfilter-dll).
+    provisional: true            # single-source (Trend Micro), live-ratified 2026-07-12
+    ratified_single_source: true
+    ratified_at: 2026-07-12
+    related_filename: psgfilter.dll
+    source_brief: trendmicro-earth-simnavaz-2024
+
 # ============================================================================
 # Hunt queries
 # ============================================================================
@@ -163,6 +278,20 @@ hunt_queries:
         ALERT IF module is unsigned
       # FP consideration: legitimate patching/upgrades. Baseline must be
       # refreshed during scheduled change windows.
+
+  - id: apt34-hunt-password-filter-dll
+    platform: edr
+    title: "Hunt for unapproved Windows password-filter DLLs (Earth Simnavaz T1556.002)"
+    query_type: pseudo
+    query: |
+      ON HOSTS WHERE role IN (domain_controller, privileged_server):
+        READ HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Notification Packages
+        FOR EACH package DLL:
+          ALERT IF dll NOT IN approved_baseline
+          ALERT IF dll IS unsigned OR dll path NOT IN %SystemRoot%\System32
+      # FP consideration: legitimate password-complexity / PAM products register
+      # notification packages. Allowlist enterprise-approved filter DLLs.
+      # Provenance: tied to Earth Simnavaz 2024 reporting; pending direct-retrieval verification.
 
 # ============================================================================
 # Sources
@@ -207,3 +336,43 @@ sources:
     title: "Mandiant ongoing APT34 / SideTwist tracking"
     url: "https://www.mandiant.com/"
     grade: A2
+
+  - id: trendmicro-earth-simnavaz-2024
+    title: "Earth Simnavaz (APT34/OilRig) — Windows Kernel flaw + StealHook vs. UAE/Gulf gov & energy (Trend Micro, Oct 2024)"
+    url: "https://www.trendmicro.com/en_us/research/24/j/earth-simnavaz-cyberattacks.html"
+    published_at: 2024-10-11
+    grade: A2
+    provisional: true                        # single-source; live-ratified 2026-07-12
+    ratified_single_source: true
+    ratified_at: 2026-07-12
+    note: >
+      LIVE-RATIFIED 2026-07-12 (raw-2026-07-12-ratify-003). Direct WebFetch
+      403'd (Trend Micro blocks automated fetch); content confirmed via WebSearch
+      extraction of the Trend Micro page itself + independent relays. SINGLE-
+      SOURCE: Trend Micro is the sole originating A-grade primary; cybersecuritynews
+      / Dark Reading / SOC Prime / Industrial Cyber are pure relay, NOT independent
+      corroboration. Entry is single-source provisional-A2-confirmed, NOT multi-A
+      A1 — grade held at A2. Corroborative of an already-ceiling espionage
+      Capability; scoring does not hinge on it. GAP: full StealHook IOC appendix
+      (hashes/C2/emails) 403-blocked, NOT retrieved.
+
+  - id: cybersecuritynews-oilrig-exchange-2024
+    title: "OilRig hackers exploit Microsoft Exchange (relay of Trend Micro Earth Simnavaz)"
+    url: "https://cybersecuritynews.com/oilrig-hackers-microsoft-exchange-breach/"
+    published_at: 2024-10-14
+    grade: C3
+    note: >
+      Secondary relay of the Trend Micro Earth Simnavaz primary; retrieved
+      cleanly 2026-07-12. Provided the psgfilter.dll password-filter DLL detail
+      + RunPE-In-Memory technique reference. PURE RELAY — NOT independent
+      corroboration of Trend Micro; does not lift single-source discipline.
+
+  - id: checkpoint-research-cavern-manticore-2026
+    title: "Cavern Manticore MOIS cluster / Cavern .NET C2 framework — CPR notes Lyceum/OilRig tactical overlap (2026)"
+    url: "https://thehackernews.com/2026/07/iran-linked-hackers-use-new-cavern-c2.html"
+    grade: A2
+    note: >
+      In-corpus via finding-2026-07-06-0001. CPR-noted tactical overlap between
+      Cavern Manticore and Lyceum/OilRig is recorded as CPR's assessment ONLY —
+      Archimedes originates no APT34 <-> Cavern Manticore attribution merge
+      (Hard Rule 2). Relayed via The Hacker News; CPR primary not directly retrieved.

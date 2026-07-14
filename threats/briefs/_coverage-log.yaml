@@ -41201,7 +41201,7 @@ entries:
       themed-character voice. Pre-flight 13-of-13 PASS on first iteration.
 
   - id: 2026-07-10-pm-001-progress-sharefile-storage-zone-controllers-credible-external-threat-emergency-shutdown-no-cve-no-exploitation-b2-likely-structural-ad-nexus
-    covered_in: [2026-07-10-afternoon, 2026-07-11-morning, 2026-07-13-morning]   # 2026-07-11-morning: watch-only continuing-coverage line (Active Threats), vendor ~24h follow-up overdue. 2026-07-13-morning: UPDATE resurface (Vulnerabilities, monitoring tier) via new continuation finding-2026-07-13-0003 — day-3 persistence of the shutdown + a NEW user-SPECULATED (not vendor-confirmed) CVE vector (CVE-2026-2699/-2701, C3). Mandatory speculation caveat carried; exploitation still unconfirmed; 🔗 callout to 2026-07-11 morning. Not a resurface_if trigger match (the speculated CVEs are pre-existing March CVEs, not a cve_assignment for THIS threat) — included at monitoring tier on briefer judgment to tamp down the unconfirmed vector, per analyst instruction.
+    covered_in: [2026-07-10-afternoon, 2026-07-11-morning, 2026-07-13-morning, 2026-07-14-afternoon]   # 2026-07-14-afternoon: RESOLUTION resurface (Vulnerabilities, UPDATE flag + 🔗 callout) via finding-2026-07-14-0005 — Progress confirmed the cause was a high-severity path-traversal zero-day and shipped patches (SZC 5.12.5/6.0.2); retires the speculated CVE-2026-2699/2701 vector. 2026-07-11-morning: watch-only continuing-coverage line (Active Threats), vendor ~24h follow-up overdue. 2026-07-13-morning: UPDATE resurface (Vulnerabilities, monitoring tier) via new continuation finding-2026-07-13-0003 — day-3 persistence of the shutdown + a NEW user-SPECULATED (not vendor-confirmed) CVE vector (CVE-2026-2699/-2701, C3). Mandatory speculation caveat carried; exploitation still unconfirmed; 🔗 callout to 2026-07-11 morning. Not a resurface_if trigger match (the speculated CVEs are pre-existing March CVEs, not a cve_assignment for THIS threat) — included at monitoring tier on briefer judgment to tamp down the unconfirmed vector, per analyst instruction.
     brief_file: threats/briefs/2026-07-10-afternoon.md
     headline: "Progress issued a rare emergency advisory instructing ShareFile customers to immediately POWER OFF on-premises Storage Zone Controllers over a vendor-declared 'credible external security threat'; cloud access to affected accounts temporarily disabled out of caution; NO CVE assigned, NO confirmed exploitation, NO IOCs published, NO actor attributed; Progress reports NO indication of unauthorized access + promised ~24h follow-up; A&D nexus STRUCTURAL only (ShareFile SZC = DIB-typical secure-file-sharing/MFT infrastructure for CUI/ITAR-adjacent document exchange) — NO named A&D/DIB prime, target/supplier exposure unknown from telemetry; MOVEit/Cl0p 2023 invoked by both outlets as HISTORICAL ANALOGY only (why MFT platforms are high-value), NOT an attribution and NOT a forecast of this event's trajectory; single effective source (Progress advisory via 2 B relays: BleepingComputer + The Hacker News, THN direct-confirmed with Progress) — single-source veto caps WEP at 'likely'; core claim = GENUINE SEVERE EXPOSURE (do NOT imply active exploitation); placed in Active Threats (rare vendor emergency action requiring immediate defensive step)"
     topic_tags:
@@ -41222,7 +41222,7 @@ entries:
     related_actors: []              # NONE attributed. Cl0p #018 referenced only as the sources' historical MOVEit analogy — NOT an attribution of this event (Hard Rule 2)
     related_vulns: []               # no CVE assigned; only trackable anchor is the product/component (ShareFile Storage Zone Controllers, on-prem)
     related_campaigns: []
-    finding_ids: [finding-2026-07-10-0002, finding-2026-07-13-0003]   # finding-2026-07-13-0003 = day-3 continuation; core exposure B2/likely unchanged, adds speculated CVE vector layer (C3/roughly_even_chance)
+    finding_ids: [finding-2026-07-10-0002, finding-2026-07-13-0003, finding-2026-07-14-0005]   # finding-2026-07-14-0005 = RESOLUTION/state-change (vendor-confirmed path-traversal zero-day, patched 5.12.5/6.0.2, speculated CVE-2026-2699/2701 retired). finding-2026-07-13-0003 = day-3 continuation; core exposure B2/likely unchanged, adds speculated CVE vector layer (C3/roughly_even_chance)
     digraph: B2
     wep: likely
     wep_ceiling_rationale: >
@@ -41268,7 +41268,7 @@ entries:
       - independent_second_evidence_basis      # threat-intel vendor observing exploitation — lifts single-source veto
       - first_party_ioc_hit
     first_covered: 2026-07-10
-    last_covered: 2026-07-13           # 2026-07-13-morning: UPDATE resurface — day-3 shutdown persists + user-speculated CVE vector (C3, not vendor-confirmed); monitoring tier (see covered_in note)
+    last_covered: 2026-07-14           # 2026-07-14-afternoon: RESOLUTION resurface — Progress vendor-confirmed the cause (path-traversal zero-day) + shipped patches; speculated CVE-2026-2699/2701 vector retired (see resurface_2026_07_14). Prior 2026-07-13-morning: day-3 shutdown + user-speculated CVE vector (C3, not vendor-confirmed)
     resurface_2026_07_13:
       brief_id: 2026-07-13-morning
       section: Vulnerabilities
@@ -41276,6 +41276,14 @@ entries:
       update_flag: true
       new_increment: "Day-3 persistence of the SZC power-off posture + a NEW user-SPECULATED (not vendor-confirmed) exploitation vector: CVE-2026-2699 (9.8) + CVE-2026-2701 (9.1), March-patched, chainable to pre-auth RCE. Graded C3 / roughly_even_chance as a separate weaker claim; MUST NOT be propagated as the confirmed vector."
       unchanged: "Core severe-exposure claim B2/likely; exploitation still unconfirmed (Progress reports no unauthorized access); no actor; no atomic IOCs; A&D nexus structural only. Parent ACH's precautionary-vs-active question stays open."
+    resurface_2026_07_14:
+      brief_id: 2026-07-14-afternoon
+      section: Vulnerabilities
+      tier: monitoring
+      update_flag: true
+      resurface_condition_matched: [progress_24h_followup_material_change, cve_assignment]
+      new_increment: "RESOLUTION / state-change. Progress CONFIRMED the emergency cause was a high-severity path-traversal zero-day and shipped fixes (SZC 5.12.5 / 6.0.2). The flaw allows an authenticated administrator to read/write/enumerate arbitrary files. CVE reserved, unpublished (~2 weeks out). RETIRES the user-speculated CVE-2026-2699/2701 vector from 2026-07-13-morning — vendor attributes the emergency to a NEW reserved-CVE flaw, not the March-patched CVEs. Framed as closure of the prior emergency-shutdown tracking. 🔗 Update-on callout to 2026-07-10 afternoon + 2026-07-11 morning briefs."
+      unchanged: "Exploitation still UNCONFIRMED (Progress reports no unauthorized access — a vendor detection-limited statement, not proof no compromise occurred). Evidentiary architecture unchanged (one Progress upstream via one BleepingComputer B relay); single-source veto retained, WEP stays likely. A&D nexus structural only; no named prime; no actor."
     retraction: null
     test: false
 
@@ -42660,6 +42668,441 @@ entries:
       vendor labels on one incident, not a confirmed same actor"); no themed-character voice.
       Pre-flight 13-of-13 PASS on first iteration. Not posted to Discord by briefer — librarian
       owns delivery/commit.
+
+  - id: 2026-07-14-pm-001-microsoft-july-patch-tuesday-two-exploited-kev-zero-days-adfs-cve-2026-56155-sharepoint-cve-2026-56164-bitlocker-cve-2026-50661-disclosed-a2-lead-active-threats
+    covered_in: [2026-07-14-afternoon]
+    brief_file: threats/briefs/2026-07-14-afternoon.md
+    headline: "Microsoft July 2026 Patch Tuesday ships TWO actively-exploited KEV-listed zero-days — CVE-2026-56155 (ADFS elevation of privilege, local) + CVE-2026-56164 (SharePoint Server EoP, network) — added to CISA KEV v2026.07.14 the same day (BOD 22-01 deadlines). PLUS CVE-2026-50661 (BitLocker Security Feature Bypass, physical access) publicly disclosed but NOT reported exploited — distinct from June's VT-013 YELLOWKEY WinRE bypass. LEAD of the 07-14 afternoon cycle (co-lead with SonicWall KEV). Layered grade A2: procedural CVE/KEV/patch facts A1/almost-certain (CISA KEV directly retrieved + vendor authoritative); active-exploitation layer banded LIKELY per red-team (CISA KEV load-bearing attestation + Microsoft self-disclosure; media RELAY not independent confirmation — NOT triangulated multi-source; single-source veto on the exploitation ACT, DART-shared-upstream for -56155). A&D relevance STRUCTURAL only (ADFS/SharePoint/BitLocker ubiquitous DIB identity/collaboration/data-at-rest) — NO A&D targeting, NO actor attributed (Hard Rule 2; DART/Mandiant/Google Cloud named as discoverers only). Flaw-count conflict 570 (BleepingComputer) vs 622 (SecurityWeek) recorded, unreconciled."
+    topic_tags:
+      - cve
+      - microsoft-july-2026-patch-tuesday
+      - patch-tuesday
+      - cve-2026-56155-adfs-eop-local-exploited-kev
+      - cve-2026-56164-sharepoint-server-eop-network-exploited-kev
+      - cve-2026-50661-bitlocker-security-feature-bypass-disclosed-not-exploited
+      - cisa-kev-v2026-07-14-directly-retrieved-both-zero-days-dateadded-same-day
+      - bod-22-01-remediation-deadline-two-exploited-flaws
+      - exploitation-layer-banded-likely-per-red-team-not-very-likely
+      - single-source-veto-exploitation-act-cisa-kev-plus-microsoft-media-relay-not-independent
+      - not-triangulated-multi-source-media-relay-microsoft-disclosure
+      - bitlocker-distinct-from-june-vt-013-yellowkey-winre-bypass-cve-2026-45585
+      - ad-relevance-structural-ubiquitous-dib-identity-collaboration-data-at-rest-no-named-victim
+      - hard-rule-2-no-attribution-dart-mandiant-google-cloud-discoverers-only
+      - flaw-count-conflict-570-vs-622-unreconciled-hard-rule-8
+      - lead-active-threats-patch-now-co-lead-with-sonicwall-kev
+      - vulnerabilities
+    related_actors: []              # NONE. Hard Rule 2 — no attribution originated.
+    related_vulns: [CVE-2026-56155, CVE-2026-56164, CVE-2026-50661]   # net-new; NOT in vulnerabilities/_index.yaml — vuln-tracker handoff pending (NVD CVSS + VT rows). BitLocker distinct from VT-013 YELLOWKEY.
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0004]
+    digraph: A2                     # layered: procedural facts A1; exploitation act likely (red-team qualified)
+    wep: likely                     # exploitation-layer band after red-team (procedural facts almost_certain)
+    red_team_review: qualify        # WEP very_likely -> likely on the exploitation layer; NOT publication-blocking
+    single_source_veto_applied: true  # exploitation ACT only (procedural KEV/patch facts A1, not vetoed)
+    hard_rule_2_framings_load_bearing:
+      - "No threat actor attributed by any source — Archimedes originates none (DART/Mandiant/Google Cloud = discoverers only)"
+      - "Active exploitation banded LIKELY, not very_likely — CISA KEV + Microsoft are the two A-class streams; media RELAY Microsoft, they do not independently confirm; NOT a triangulated multi-source exploitation finding"
+      - "BitLocker CVE-2026-50661 publicly disclosed but NOT reported exploited (physical access) — keep distinct from the two exploited EoP zero-days"
+      - "A&D relevance STRUCTURAL only (ubiquitous ADFS/SharePoint/BitLocker) — no A&D targeting implied"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0   # entire afternoon brief is quote-free (all paraphrased)
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_no_published_iocs_for_patch_tuesday_zero_days_nothing_to_hunt_frank_visibility_bounded
+    vuln_tracker_handoff:
+      cves: [CVE-2026-56155, CVE-2026-56164, CVE-2026-50661]
+      status: net-new-not-in-index-rows-requested
+      note: "Two exploited EoP zero-days KEV-listed + A&D-structural (identity/collaboration) — elevate for tracking; retrieve NVD CVSS + assign VT rows. BitLocker CVE-2026-50661 = new July physical-access bypass, DISTINCT from June VT-013 YELLOWKEY (CVE-2026-45585, WinRE mechanism)."
+    escalation_tripwire: "A directly-retrieved INDEPENDENT third-party IR/telemetry exploitation cross-match re-lifts the exploitation layer toward very_likely; a published IOC + first-party Splunk hit = line-104 exception path."
+    resurface_if:
+      - independent_third_party_exploitation_telemetry_confirms_lifts_veto
+      - published_ioc_for_any_of_the_three_cves
+      - first_party_splunk_hit_any_of_the_three_cves
+      - named_ad_or_dib_prime_victim_disclosed
+      - bitlocker_cve_2026_50661_moves_to_exploited
+      - cvss_enrichment_or_kev_ransomware_use_tag
+    first_covered: 2026-07-14
+    last_covered: 2026-07-14
+    retraction: null
+    test: false
+
+  - id: 2026-07-14-pm-002-cisa-kev-two-sonicwall-sma1000-cve-2026-15409-ssrf-cve-2026-15410-code-injection-active-exploitation-a2-lead-active-threats
+    covered_in: [2026-07-14-afternoon]
+    brief_file: threats/briefs/2026-07-14-afternoon.md
+    headline: "CISA KEV v2026.07.14 adds TWO SonicWall SMA1000 CVEs under active exploitation — CVE-2026-15409 (server-side request forgery, remote unauthenticated) + CVE-2026-15410 (code injection, remote authenticated-admin -> arbitrary OS commands) — on SonicWall's secure-mobile-access / remote-access gateway (BOD 22-01 deadline applies). Co-lead of the 07-14 afternoon cycle (Active Threats, Patch This Week tier 1). Layered grade A2: KEV-listing fact A1/almost-certain (directly retrieved); active-exploitation determination LIKELY — CISA single-source this sweep, no independent telemetry cross-match, single-source veto. KEV does NOT assert the two chain (do not manufacture an SSRF-to-RCE breach chain). Affected/fixed versions ABSENT from the KEV entry -> point defenders to SonicWall PSIRT / NVD. A&D relevance STRUCTURAL exposure-class (internet-facing perimeter appliance) — NO named A&D victim, NO actor attributed."
+    topic_tags:
+      - cve
+      - cisa-kev-v2026-07-14-directly-retrieved
+      - sonicwall-sma1000-secure-mobile-access-remote-access-gateway
+      - cve-2026-15409-ssrf-remote-unauthenticated-exploited
+      - cve-2026-15410-code-injection-authenticated-admin-os-commands-exploited
+      - bod-22-01-remediation-deadline
+      - active-exploitation-cisa-single-source-veto-capped-likely
+      - kev-does-not-assert-the-two-chain-do-not-manufacture-ssrf-to-rce
+      - affected-fixed-versions-absent-from-kev-point-to-sonicwall-psirt-nvd
+      - ad-relevance-structural-internet-facing-perimeter-appliance-no-named-victim
+      - hard-rule-2-no-actor-attributed
+      - lead-active-threats-patch-now-co-lead-with-microsoft-patch-tuesday
+      - sonicwall-sma1000-rapid-post-disclosure-exploitation-history
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-15409, CVE-2026-15410]   # net-new; NOT in vulnerabilities/_index.yaml — vuln-tracker handoff pending
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0007]
+    digraph: A2                     # layered: KEV fact A1; exploitation likely (single-source veto)
+    wep: likely
+    single_source_veto_applied: true
+    hard_rule_2_framings_load_bearing:
+      - "No actor attributed — Archimedes originates none"
+      - "Active exploitation is CISA's SINGLE-source KEV determination — present as authoritative, NOT multi-source triangulated"
+      - "KEV does not assert the two CVEs chain — do not manufacture an SSRF-to-RCE breach chain the source omits"
+      - "Affected/fixed versions absent from KEV — point defenders to SonicWall PSIRT / NVD, do not imply a fixed version is already published"
+      - "A&D relevance STRUCTURAL exposure-class (internet-exposed SMA1000) — no named A&D victim"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_no_atomic_iocs_in_kev_cataloging_nothing_to_hunt
+    vuln_tracker_handoff:
+      cves: [CVE-2026-15409, CVE-2026-15410]
+      status: net-new-not-in-index-rows-requested
+      note: "Both KEV-listed active-exploitation on a remote-access appliance (SonicWall SMA1000 has a rapid post-disclosure exploitation history). Retrieve NVD CVSS + SonicWall PSIRT affected/fixed versions. Watch: SonicWall advisory, IR/telemetry corroboration, ransomware-campaign-use KEV tag."
+    escalation_tripwire: "SonicWall PSIRT advisory (direct), independent IR/telemetry, or a second publisher attesting exploitation lifts the single-source veto toward very_likely."
+    resurface_if:
+      - independent_second_source_confirms_exploitation_lifts_veto
+      - sonicwall_psirt_affected_fixed_versions_published
+      - published_ioc_or_first_party_splunk_hit
+      - named_ad_or_dib_prime_victim_disclosed
+      - kev_ransomware_use_tag_added
+    first_covered: 2026-07-14
+    last_covered: 2026-07-14
+    retraction: null
+    test: false
+
+  - id: 2026-07-14-pm-003-adobe-coldfusion-july-2026-eight-critical-cve-cluster-priority-1-no-itw-distinct-from-vt-017-cve-2026-48282-b2-likely
+    covered_in: [2026-07-14-afternoon]
+    brief_file: threats/briefs/2026-07-14-afternoon.md
+    headline: "Adobe July 2026 update patches EIGHT critical ColdFusion CVEs (CVE-2026-48318/48319/48321/48322/48324/48325/48327/48284), Adobe Priority 1 (immediate patching advised), impacts arbitrary code execution + privilege escalation, fixed in ColdFusion 2025 Update 11 / 2023 Update 22. Adobe reports NO in-the-wild exploitation of these eight — current awareness, NOT safe-to-defer. Urgency is BASE-RATE driven: ColdFusion's recent exploited-shortly-after-disclosure pattern (per Adobe/SecurityWeek). NET-NEW July cohort, DISTINCT from the actively-exploited KEV-listed CVE-2026-48282 (VT-017, flash-2026-07-06-1629-001) — different CVE cohort, do NOT conflate. Vulnerabilities section. B2/likely, single-source veto (Adobe advisory via one SecurityWeek B relay; NVD not enriched). A&D relevance STRUCTURAL (internet-facing app-server platform, perimeter-exposure class); no named prime, no actor."
+    topic_tags:
+      - cve
+      - adobe-coldfusion-july-2026-cluster
+      - eight-critical-cves-priority-1-ace-privesc
+      - cve-2026-48318-48319-48321-48322-48324-48325-48327-48284
+      - fixed-coldfusion-2025-update-11-2023-update-22
+      - no-in-the-wild-exploitation-per-adobe-current-awareness-not-safe-to-defer
+      - urgency-base-rate-coldfusion-exploited-after-disclosure-pattern
+      - distinct-from-vt-017-cve-2026-48282-actively-exploited-kev-different-cohort-do-not-conflate
+      - single-source-veto-adobe-advisory-one-securityweek-b-relay-nvd-not-enriched
+      - ad-relevance-structural-internet-facing-app-server-perimeter-exposure-no-named-prime
+      - hard-rule-2-no-actor
+      - patched-not-equal-safe-to-defer
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-48318, CVE-2026-48319, CVE-2026-48321, CVE-2026-48322, CVE-2026-48324, CVE-2026-48325, CVE-2026-48327, CVE-2026-48284]   # net-new; cross-ref VT-017 CVE-2026-48282 (same product, different cohort)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0006]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    cross_reference: VT-017            # CVE-2026-48282 — SAME product family (Adobe ColdFusion), DIFFERENT CVE cohort; kept explicitly distinct in the brief
+    hard_rule_2_framings_load_bearing:
+      - "No actor attributed"
+      - "Adobe reports NO in-the-wild exploitation of these eight — current awareness, NOT a guarantee; brief must not read as safe-to-defer"
+      - "Urgency is BASE-RATE-driven (ColdFusion's exploited-after-disclosure pattern), NOT evidence these eight are exploited"
+      - "DISTINCT cohort from the actively-exploited VT-017 CVE-2026-48282 — keep the two cohorts separate"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_cves_only_no_atomic_iocs_nothing_to_hunt
+    vuln_tracker_handoff:
+      cves: [CVE-2026-48318, CVE-2026-48319, CVE-2026-48321, CVE-2026-48322, CVE-2026-48324, CVE-2026-48325, CVE-2026-48327, CVE-2026-48284]
+      status: net-new-not-in-index-rows-requested-cross-ref-vt-017
+      note: "New July ColdFusion cluster (8 CVEs), DISTINCT from VT-017 CVE-2026-48282. Cross-ref VT-017. Retrieve NVD CVSS. Watch: KEV addition or exploitation report for any of the eight, given the ColdFusion exploited-shortly-after-disclosure pattern. Recommend a tracking row keyed on the CF2025 u11 / CF2023 u22 fix boundary."
+    escalation_tripwire: "CISA KEV addition OR any A/B-grade ITW exploitation report on any of the eight re-opens FLASH eligibility."
+    resurface_if:
+      - cisa_kev_addition_any_of_the_eight
+      - any_ab_grade_in_the_wild_exploitation_report
+      - public_poc_release_existence_tracking_only_hard_rule_3
+      - nvd_enrichment_material_cvss
+      - named_ad_or_dib_prime_victim_disclosed
+      - first_party_splunk_hit
+    first_covered: 2026-07-14
+    last_covered: 2026-07-14
+    retraction: null
+    test: false
+
+  - id: 2026-07-14-pm-004-vmware-avi-load-balancer-seven-vulns-cve-2026-47865-critical-auth-bypass-through-47871-no-itw-b2-likely
+    covered_in: [2026-07-14-afternoon]
+    brief_file: threats/briefs/2026-07-14-afternoon.md
+    headline: "VMware (Broadcom) patches SEVEN VMware Avi Load Balancer vulnerabilities (CVE-2026-47865 through CVE-2026-47871), headlined by a CRITICAL authentication bypass (CVE-2026-47865); the set spans auth bypass, remote code execution, privilege escalation (incl. to root), and directory traversal. NO in-the-wild exploitation per Broadcom, but an unauthenticated auth-bypass chaining to root RCE on an ADC warrants prompt patching (base-rate: VMware exploitation history). CVSS + affected/fixed versions NOT in source (relay-only) -> point to Broadcom / NVD. Vulnerabilities section (Patch This Week tier 2). B2/likely, single-source veto (VMware advisory via one SecurityWeek B relay). A&D relevance STRUCTURAL (ADC sits in front of application estates incl. DIB datacenter/edge); no named prime, no actor."
+    topic_tags:
+      - cve
+      - vmware-avi-load-balancer-broadcom
+      - seven-vulnerabilities-cve-2026-47865-through-47871
+      - cve-2026-47865-critical-authentication-bypass-headline
+      - rce-privesc-to-root-directory-traversal
+      - no-in-the-wild-exploitation-per-broadcom-current-awareness
+      - urgency-base-rate-vmware-exploitation-history-plus-critical-unauth-auth-bypass-adc
+      - cvss-affected-fixed-versions-not-in-source-point-to-broadcom-nvd
+      - single-source-veto-vmware-advisory-one-securityweek-b-relay
+      - ad-relevance-structural-adc-in-front-of-application-estates-no-named-prime
+      - hard-rule-2-no-actor
+      - vulnerabilities
+    related_actors: []
+    related_vulns: [CVE-2026-47865, CVE-2026-47866, CVE-2026-47867, CVE-2026-47868, CVE-2026-47869, CVE-2026-47870, CVE-2026-47871]   # net-new; vuln-tracker handoff pending
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0008]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    hard_rule_2_framings_load_bearing:
+      - "No actor attributed"
+      - "NO in-the-wild exploitation per Broadcom — current awareness, not a guarantee; urgency is base-rate + intrinsic criticality of an unauth auth-bypass chaining to root RCE"
+      - "CVSS + affected/fixed versions ABSENT from source (relay-only) — the 'critical' label is a relayed vendor rating; point defenders to Broadcom / NVD"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_cves_only_no_atomic_iocs_nothing_to_hunt
+    vuln_tracker_handoff:
+      cves: [CVE-2026-47865, CVE-2026-47866, CVE-2026-47867, CVE-2026-47868, CVE-2026-47869, CVE-2026-47870, CVE-2026-47871]
+      status: net-new-not-in-index-rows-requested
+      note: "Seven-CVE Avi Load Balancer set; headline critical auth bypass CVE-2026-47865. Retrieve CVSS + affected/fixed versions from Broadcom/NVD. Watch: KEV addition or exploitation report given the VMware exploitation base rate."
+    escalation_tripwire: "CISA KEV addition OR any A/B-grade ITW report (esp. on the CVE-2026-47865 auth bypass) re-opens FLASH eligibility."
+    resurface_if:
+      - cisa_kev_addition_any_of_the_seven
+      - any_ab_grade_in_the_wild_exploitation_report
+      - broadcom_nvd_cvss_affected_fixed_versions_published_material
+      - named_ad_or_dib_prime_victim_disclosed
+      - first_party_splunk_hit
+    first_covered: 2026-07-14
+    last_covered: 2026-07-14
+    retraction: null
+    test: false
+
+  - id: 2026-07-14-pm-005-aivd-mivd-joint-advisory-russian-intelligence-camera-espionage-nato-logistics-ukraine-shipments-generic-attribution-b2-likely-sector-focus
+    covered_in: [2026-07-14-afternoon]
+    brief_file: threats/briefs/2026-07-14-afternoon.md
+    headline: "Joint Dutch AIVD/MIVD advisory (dated 2026-07-10) states at least ONE Russian intelligence service (UNSPECIFIED — no APT designation) is compromising internet-connected cameras across Europe to surveil NATO military-logistics routes + Ukraine-bound weapons shipments + Ukrainian military positions; method is OPPORTUNISTIC edge-device compromise (default passwords, outdated firmware, default configs) + image-recognition analysis of feeds. Sector Focus: A&D. B2/likely, single-source (The Record B relay of a not-directly-retrieved government advisory), HIGH brittleness. HARD RULE 2 BINDING: attribution stays GENERIC — NOT mapped to APT28 (#006), Sandworm (#007), or any roster actor; Archimedes originates none. A&D relevance is an EXTRAPOLATION: advisory targets are MILITARY logistics / Ukraine-theater, NOT commercial A&D primes — framed as defense-logistics-sector awareness + physical edge-device (IP camera) hygiene, NOT evidence primes are being surveilled. No CVE, no atomic IOCs, no named victims."
+    topic_tags:
+      - russia
+      - aivd-mivd-joint-advisory-2026-07-10-netherlands
+      - russian-intelligence-service-unspecified-generic-attribution
+      - internet-connected-ip-camera-compromise-espionage
+      - nato-military-logistics-ukraine-bound-weapons-shipments-surveillance
+      - opportunistic-edge-device-compromise-default-creds-outdated-firmware-default-configs
+      - image-recognition-analysis-of-camera-feeds-military-vehicles-cargo
+      - hard-rule-2-generic-attribution-not-mapped-to-apt28-006-sandworm-007-or-any-roster-actor
+      - ad-relevance-extrapolation-military-logistics-not-commercial-primes-defense-logistics-sector-awareness
+      - physical-edge-device-camera-hygiene-not-it-network-intrusion-path
+      - single-source-the-record-b-relay-advisory-not-directly-retrieved-high-brittleness
+      - no-cve-no-atomic-iocs-no-named-victims
+      - sector-focus-ad-standing-section
+    related_actors: []              # HARD RULE 2 — generic "Russian intelligence service" only; NO roster mapping (NOT APT28 #006, NOT Sandworm #007). Do not link to finding-2026-07-13-0001 Sandworm sanctions thread.
+    related_vulns: []               # no CVE — opportunistic edge-device compromise, not a named-CVE exploit chain
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0010]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    hard_rule_2_framings_load_bearing:
+      - "Attribution GENERIC and verbatim: 'at least one Russian intelligence service' — NO specific service, NO APT designation. NOT mapped to APT28 (#006), Sandworm (#007), or any roster actor. Archimedes originates no attribution."
+      - "Do NOT link to the 2026-07-13 Sandworm sanctions thread (finding-2026-07-13-0001) — no cited source attributes THIS camera campaign to any named actor"
+      - "A&D relevance is an EXTRAPOLATION — advisory targets are NATO MILITARY logistics + Ukraine-bound WEAPONS shipments, not commercial A&D primes; frame as defense-logistics-sector awareness + physical edge-device hygiene, NOT evidence primes are surveilled"
+      - "Threat vector is physical-surveillance camera compromise, NOT an IT-network intrusion path — defensive takeaway is edge-device hygiene, not enterprise patching"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_no_cves_no_atomic_iocs_nothing_to_hunt
+    source_grade_note: "AIVD/MIVD joint advisory flagged to librarian for a provisional-B source id (foreign-government official-body class, cf. ABW/CCB/CCCS/CSA first-surface precedent); advisory primary NOT directly retrieved this sweep (relay via The Record)."
+    sat_ach_applied: true            # ACH ranked the SOURCED generic claim (H1) rank-1, zero inconsistencies; named-actor hypotheses DELIBERATELY EXCLUDED (Hard Rule 2). High brittleness, single point of failure = the one advisory.
+    resurface_if:
+      - second_independent_ab_source_corroborates_camera_campaign_lifts_veto
+      - ab_grade_vendor_attributes_this_campaign_to_a_specific_named_actor   # ONLY THEN may a named-actor hypothesis enter — still no Archimedes origination
+      - named_ad_or_dib_prime_or_supplier_victim_disclosed
+      - evidence_activity_is_undirected_botnet_reclassification
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-14
+    last_covered: 2026-07-14
+    retraction: null
+    test: false
+
+  - id: 2026-07-14-pm-006-m365-phishing-kits-jalisco-omegalord-oauth-device-code-mfa-bypass-reliaquest-ttp-awareness-no-iocs-b2-likely-sector-focus
+    covered_in: [2026-07-14-afternoon]
+    brief_file: threats/briefs/2026-07-14-afternoon.md
+    headline: "ReliaQuest details TWO M365-targeting phishing kits engineered to defeat MFA: JALISCO abuses the OAuth 2.0 Device Authorization Grant flow (fresh device codes generated in real time to beat the 15-min validity window; up to five rogue devices per account under benign names; operator portal); OMEGALORD uses fake PDF-Reader login pages capturing email/password/PHONE NUMBER (phone-capture engineered for MFA bypass). Post-compromise: SharePoint/SaaS search + exfiltration within minutes (as little as 6), then extortion. Sector Focus: A&D. B2/likely, single-source (ReliaQuest via one BleepingComputer B relay). NO atomic IOCs (kit names are researcher-coined tooling designations) -> actionability is POSTURE-HARDENING, NOT hunting: block device-code auth via Conditional Access, cut Entra device-registration limits (50->1-2), restrict OAuth Device Authorization grants, audit app registrations. A&D relevance STRUCTURAL — M365/Entra is the dominant DIB identity fabric; directly-portable TTP, NO named A&D victim, NO actor."
+    topic_tags:
+      - m365-entra-identity-layer-threat
+      - phishing-kits-jalisco-omegalord-reliaquest
+      - oauth-2-0-device-authorization-grant-device-code-abuse-mfa-bypass
+      - real-time-device-code-generation-beat-15-min-validity-window
+      - up-to-five-rogue-devices-per-account-benign-names-operator-portal
+      - omegalord-fake-pdf-reader-login-phone-number-capture-mfa-bypass
+      - rapid-sharepoint-saas-exfiltration-minutes-then-extortion
+      - no-atomic-iocs-ttp-awareness-posture-hardening-not-hunting
+      - defensive-levers-conditional-access-block-device-code-entra-device-registration-limits-oauth-grant-restriction
+      - ad-relevance-structural-m365-entra-dominant-dib-identity-fabric-directly-portable-ttp-no-named-victim
+      - hard-rule-2-no-actor-kit-names-tooling-designations-not-attribution
+      - single-source-reliaquest-one-bleepingcomputer-b-relay
+      - sector-focus-ad-standing-section
+    related_actors: []              # kit names are researcher-coined tooling designations, NOT threat-actor attribution
+    related_vulns: []               # no CVE — TTP/tooling item
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0009]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    hard_rule_2_framings_load_bearing:
+      - "No actor attributed — Jalisco/OmegaLord are researcher-coined TOOLING designations, not threat-actor names"
+      - "NO atomic IOCs published — actionability is POSTURE-HARDENING, not hunting/detection (defenders cannot hunt indicators)"
+      - "A&D relevance is STRUCTURAL (M365/Entra ubiquity across the DIB) — an inference from portability, NOT evidence of A&D-sector targeting; source names no sectors/victims"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_no_atomic_iocs_published_nothing_to_hunt
+    source_grade_note: "ReliaQuest flagged to librarian for a provisional-B source id (established MDR/threat-research vendor, first Archimedes-corpus citation; primary not directly retrieved, relay via BleepingComputer)."
+    defensive_levers:
+      - "Block device-code authentication via Conditional Access"
+      - "Reduce Entra ID device-registration limits (50 -> 1-2)"
+      - "Restrict OAuth Device Authorization grants"
+      - "Audit unnecessary app registrations"
+    related_theme: finding-2026-07-14-0001   # morning ShinyHunters/Storm-3138 OAuth Salesforce supply-chain — related M365/Entra identity-layer theme, DISTINCT campaign/tooling (no merge)
+    resurface_if:
+      - atomic_iocs_published_enables_hunting
+      - ab_grade_source_names_ad_sector_victimology
+      - second_independent_corroboration_lifts_veto
+      - reliaquest_primary_directly_retrieved_material_change
+      - first_party_splunk_hit_device_code_or_rogue_device_registration
+    first_covered: 2026-07-14
+    last_covered: 2026-07-14
+    retraction: null
+    test: false
+
+  - id: 2026-07-14-pm-brief-meta
+    covered_in: [2026-07-14-afternoon]
+    brief_file: threats/briefs/2026-07-14-afternoon.md
+    topic_tags:
+      - afternoon-brief
+      - meta-tracking
+      - vuln-heavy-patch-tuesday-afternoon-seven-findings-briefed-one-deferred
+      - patch-this-week-consolidated-action-block-prioritized-by-exploitation-status
+      - two-kev-active-exploitation-co-leads-microsoft-patch-tuesday-plus-sonicwall-sma1000
+      - microsoft-exploitation-layer-banded-likely-per-red-team-not-triangulated-bitlocker-disclosed-not-exploited
+      - coldfusion-july-cluster-net-new-distinct-from-vt-017-cve-2026-48282-do-not-conflate
+      - sharefile-resolution-resurface-update-flag-retires-speculated-cve-2026-2699-2701-vector
+      - aivd-mivd-generic-attribution-hard-rule-2-no-roster-mapping-defense-logistics-awareness-camera-hygiene
+      - m365-kits-no-iocs-posture-hardening-not-hunting
+      - claudebleed-finding-0011-deferred-b3-below-action-floor-low-ad-relevance-space
+      - standing-sections-sector-focus-ad-carries-aivd-plus-m365-iran-cyber-watch-silent-template
+      - hard-rule-6-zero-direct-quotes-entire-brief-all-paraphrased
+      - preflight-13-of-13-pass
+    related_actors: []              # none attributed across the cycle (Hard Rule 2 across all seven items)
+    related_vulns: [CVE-2026-56155, CVE-2026-56164, CVE-2026-50661, CVE-2026-15409, CVE-2026-15410, CVE-2026-48318, CVE-2026-48319, CVE-2026-48321, CVE-2026-48322, CVE-2026-48324, CVE-2026-48325, CVE-2026-48327, CVE-2026-48284, CVE-2026-47865, CVE-2026-47866, CVE-2026-47867, CVE-2026-47868, CVE-2026-47869, CVE-2026-47870, CVE-2026-47871]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0004, finding-2026-07-14-0007, finding-2026-07-14-0006, finding-2026-07-14-0008, finding-2026-07-14-0005, finding-2026-07-14-0010, finding-2026-07-14-0009]
+    digraph: A2                     # cycle high-water (MS + SonicWall A2); ColdFusion/VMware/ShareFile/AIVD/M365 B2
+    wep: likely
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      layer_1_word_count: 772       # \S+ token count incl markup; 400-800 band
+      layer_2_discord_summary: "~265 words / est. ~2440 chars (150-300 word band). Exceeds the 1900-char single-message ceiling on a 7-finding patch-heavy day — librarian posts as 2 chunks, each <2000 chars, per orchestrator 'under 2000 per chunk' directive. 7 source-linked bullets; natural-language dates; no digraph/WEP/finding-id in Layer 2; Iran silent-day boilerplate omitted from Layer 2 per spec; no themed-character voice."
+    deferred_findings:
+      - finding_id: finding-2026-07-14-0011
+        reason: "ClaudeBleed Claude-for-Chrome flaw persistence (Manifold, vendor-unconfirmed) — B3/roughly_even, below the action floor, LOW A&D relevance, anti-repetition against prior ClaudeBleed coverage. Deferred on space/judgment per orchestrator guidance ('include only if space, or omit'). NOT briefed; published_in_briefs left empty."
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-14-0004
+          append_brief_id: 2026-07-14-afternoon   # DONE by briefer
+        - finding_id: finding-2026-07-14-0005
+          append_brief_id: 2026-07-14-afternoon   # DONE by briefer (ShareFile RESOLUTION resurface)
+        - finding_id: finding-2026-07-14-0006
+          append_brief_id: 2026-07-14-afternoon   # DONE by briefer
+        - finding_id: finding-2026-07-14-0007
+          append_brief_id: 2026-07-14-afternoon   # DONE by briefer
+        - finding_id: finding-2026-07-14-0008
+          append_brief_id: 2026-07-14-afternoon   # DONE by briefer
+        - finding_id: finding-2026-07-14-0009
+          append_brief_id: 2026-07-14-afternoon   # DONE by briefer
+        - finding_id: finding-2026-07-14-0010
+          append_brief_id: 2026-07-14-afternoon   # DONE by briefer
+      coverage_log_resurface_update:
+        - "ShareFile 2026-07-10-pm-001 (finding-2026-07-14-0005): covered_in appended 2026-07-14-afternoon; last_covered -> 2026-07-14; finding_ids appended finding-2026-07-14-0005; resurface_2026_07_14 block added (RESOLUTION state-change — vendor-confirmed path-traversal zero-day + patch; speculated CVE-2026-2699/2701 retired). UPDATE resurface, Vulnerabilities. No duplicate item entry created."
+      vuln_tracker_handoffs_proposed:
+        - "Microsoft July PT: CVE-2026-56155 (ADFS EoP, exploited/KEV) + CVE-2026-56164 (SharePoint EoP, exploited/KEV) + CVE-2026-50661 (BitLocker SFB, disclosed) — net-new; retrieve NVD CVSS + VT rows; BitLocker distinct from VT-013 YELLOWKEY."
+        - "SonicWall SMA1000: CVE-2026-15409 (SSRF) + CVE-2026-15410 (code injection) — net-new, KEV-listed active exploitation; retrieve NVD CVSS + SonicWall PSIRT versions."
+        - "Adobe ColdFusion July cluster (8 CVEs) — net-new, DISTINCT from VT-017 CVE-2026-48282; cross-ref VT-017; retrieve NVD CVSS."
+        - "VMware Avi Load Balancer (7 CVEs, headline CVE-2026-47865 critical auth bypass) — net-new; retrieve CVSS + affected/fixed versions from Broadcom/NVD."
+        - "ShareFile SZC reserved-CVE path-traversal zero-day — VENDOR-CONFIRMED cause (updates finding-2026-07-13-0003); mark speculated CVE-2026-2699/2701 pair superseded-by-vendor-confirmation; watch CVE publication (~2 weeks) + potential CISA KEV addition."
+      source_grade_additions_proposed:
+        - "reliaquest — provisional B (established MDR/threat-research vendor, first corpus citation via finding-0009)."
+        - "aivd-mivd-joint-advisory — provisional B (Dutch national intelligence/security services, foreign-government official-body class, first corpus citation via finding-0010)."
+        - "manifold — provisional C (unknown-to-corpus research firm, first citation via the DEFERRED finding-0011; add if/when ClaudeBleed continuation is briefed)."
+    notes: |
+      2026-07-14 AFTERNOON BRIEF (briefer phase, afternoon-20260714-160000). Vuln-heavy Patch-Tuesday
+      afternoon: 8 findings promoted, 7 briefed + 1 deferred (finding-0011 ClaudeBleed, B3, below action
+      floor / low A&D relevance). Red-team ran on finding-0004 (Microsoft, WEP very_likely on the
+      exploitation layer) -> QUALIFY: exploitation-layer band dropped very_likely -> likely (single-source
+      veto; CISA KEV + Microsoft share upstream, media relay only, NOT triangulated multi-source);
+      procedural CVE/KEV/patch facts remain A1/almost-certain. No other finding required red-team (all
+      others capped WEP likely).
+
+      LEAD: "Patch now: four actively-exploited flaws hit CISA KEV today" — the two Microsoft zero-days
+      (finding-0004) + the two SonicWall SMA1000 flaws (finding-0007) co-lead Active Threats, all KEV-listed
+      under BOD 22-01. A consolidated "Patch This Week" block (requested by orchestrator) prioritizes by
+      exploitation status: tier 1 exploited/KEV (MS + SonicWall) > tier 2 critical-no-ITW (ColdFusion 8,
+      VMware Avi 7) > tier 3 resolved (ShareFile).
+
+      Section placement:
+      - Active Threats: finding-0004 (Microsoft PT, A2, exploitation likely per red-team; BitLocker disclosed-
+        not-exploited kept crisp; structural-only A&D framing, Hard Rule 2 no attribution) + finding-0007
+        (SonicWall SMA1000 KEV, A2, single-source exploitation likely, no manufactured SSRF-to-RCE chain).
+      - Vulnerabilities: finding-0006 (Adobe ColdFusion July cluster, NET-NEW, explicitly DISTINCT from
+        VT-017 CVE-2026-48282 via 🔗 callout; "no ITW" framed as current awareness NOT safe-to-defer) +
+        finding-0008 (VMware Avi, critical auth bypass, no ITW) + finding-0005 (ShareFile RESOLUTION,
+        UPDATE flag + 🔗 callout to 07-10 pm / 07-11 am; retires speculated CVE-2026-2699/2701 vector).
+      - Sector Focus: A&D (standing, NOT silent): finding-0010 (AIVD/MIVD Russian camera espionage — Hard
+        Rule 2 GENERIC attribution, NO roster mapping to APT28/Sandworm; A&D relevance framed as
+        defense-logistics-sector awareness + physical edge-device/camera hygiene, an EXTRAPOLATION not
+        evidence primes are surveilled; single-source high-brittleness) + finding-0009 (M365 kits
+        Jalisco/OmegaLord — NO IOCs, actionability = posture-hardening NOT hunting; structural M365/Entra
+        DIB identity-fabric relevance).
+      - Iran Cyber Watch — silent-day template (no in-window Iranian tracked-actor activity).
+      - ClaudeBleed (finding-0011) DEFERRED (see deferred_findings).
+
+      Anti-repetition: ShareFile resurfaced ONLY on the material RESOLUTION state-change (vendor-confirmed
+      cause + patch) — existing entry updated in place, no duplicate. ColdFusion July cluster is NET-NEW,
+      NOT a resurface of VT-017 CVE-2026-48282 (kept explicitly distinct). AIVD camera item NOT linked to
+      the 2026-07-13 Sandworm sanctions thread (Hard Rule 2 — no cited source attributes THIS campaign).
+
+      Hard Rule 6: ZERO direct quotes in the entire brief (all sources paraphrased) — clean quote budget.
+      Hard Rule 8: first-party Splunk 0-hits across all seven findings (no atomic IOCs published on any) —
+      silence not disconfirming, Frank visibility-bounded.
+
+      Layer 1 772 \S+ tokens (400-800 band). Layer 2 Discord Summary ~265 words (150-300 band) / est.
+      ~2440 chars — exceeds the 1900-char single-message ceiling on this 7-finding patch-heavy day, so the
+      librarian posts it as 2 chunks (each <2000 chars) per the orchestrator "under 2000 per chunk"
+      directive. 7 source-linked bullets (2 Active Threats, 3 Vulnerabilities, 2 Sector Focus); Iran
+      silent-day boilerplate omitted from Layer 2 per spec; natural-language dates; no digraph/WEP/finding-id
+      in Layer 2; Hard Rule 2 framings preserved (generic attribution, "media only relay"); no themed voice.
+      Pre-flight 13-of-13 PASS. Not posted to Discord by briefer — librarian owns delivery/commit.
 
 # ============================================================================
 # Valid resurface_if conditions

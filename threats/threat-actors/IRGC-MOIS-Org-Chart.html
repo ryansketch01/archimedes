@@ -1,0 +1,475 @@
+<title>IRGC Cyber Order of Battle — Archimedes CTI</title>
+<style>
+  :root {
+    /* light (base) */
+    --bg: #e6e9ea;
+    --surface: #f4f6f6;
+    --surface-2: #dbe0e1;
+    --ink: #171a1d;
+    --ink-soft: #4d565b;
+    --ink-faint: #78838a;
+    --line: #c3cbcd;
+    --line-soft: #d5dcdd;
+    --accent: #a01f2d;      /* IRGC crimson */
+    --accent-ink: #7d1622;
+    --accent-2: #276574;    /* MOIS steel */
+    --accent-2-ink: #1d4e5a;
+    --sev-high: #ad2a1f;
+    --sev-med: #a9720d;
+    --sev-low: #327a5f;
+    --chip-bg: #dde2e3;
+    --banner-bg: #171a1d;
+    --banner-ink: #d5dcdd;
+    --shadow: 0 1px 2px rgba(20,26,30,.08), 0 6px 18px rgba(20,26,30,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0d1013;
+      --surface: #161b20;
+      --surface-2: #1e242b;
+      --ink: #e7ebed;
+      --ink-soft: #98a3a9;
+      --ink-faint: #6a757c;
+      --line: #2a323a;
+      --line-soft: #232a31;
+      --accent: #d75360;
+      --accent-ink: #e97c86;
+      --accent-2: #4fa3b5;
+      --accent-2-ink: #6fc0d0;
+      --sev-high: #e5675c;
+      --sev-med: #e0a338;
+      --sev-low: #56b892;
+      --chip-bg: #212932;
+      --banner-bg: #05070a;
+      --banner-ink: #9aa5ab;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #e6e9ea; --surface: #f4f6f6; --surface-2: #dbe0e1;
+    --ink: #171a1d; --ink-soft: #4d565b; --ink-faint: #78838a;
+    --line: #c3cbcd; --line-soft: #d5dcdd;
+    --accent: #a01f2d; --accent-ink: #7d1622; --accent-2: #276574; --accent-2-ink: #1d4e5a;
+    --sev-high: #ad2a1f; --sev-med: #a9720d; --sev-low: #327a5f;
+    --chip-bg: #dde2e3; --banner-bg: #171a1d; --banner-ink: #d5dcdd;
+    --shadow: 0 1px 2px rgba(20,26,30,.08), 0 6px 18px rgba(20,26,30,.06);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1013; --surface: #161b20; --surface-2: #1e242b;
+    --ink: #e7ebed; --ink-soft: #98a3a9; --ink-faint: #6a757c;
+    --line: #2a323a; --line-soft: #232a31;
+    --accent: #d75360; --accent-ink: #e97c86; --accent-2: #4fa3b5; --accent-2-ink: #6fc0d0;
+    --sev-high: #e5675c; --sev-med: #e0a338; --sev-low: #56b892;
+    --chip-bg: #212932; --banner-bg: #05070a; --banner-ink: #9aa5ab;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: ui-monospace, "Cascadia Code", "Cascadia Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px 64px; }
+
+  /* Classification banner */
+  .banner {
+    background: var(--banner-bg);
+    color: var(--banner-ink);
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 7px 12px;
+    display: flex; justify-content: center; gap: 1.5em; flex-wrap: wrap;
+  }
+  .banner b { color: var(--accent-ink); font-weight: 700; }
+
+  /* Masthead */
+  header.mast { padding: 44px 0 26px; border-bottom: 1px solid var(--line); }
+  .eyebrow {
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent-ink); margin: 0 0 14px;
+  }
+  h1 {
+    font-size: clamp(30px, 5.2vw, 52px);
+    line-height: 1.02; letter-spacing: -.02em; font-weight: 800;
+    margin: 0 0 16px; text-wrap: balance; max-width: 18ch;
+  }
+  .dek { font-size: clamp(15px, 2vw, 18px); color: var(--ink-soft); max-width: 68ch; margin: 0; }
+  .metastrip {
+    display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 24px;
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-size: 12px;
+    color: var(--ink-faint);
+  }
+  .metastrip span { display: inline-flex; align-items: baseline; gap: .5em; }
+  .metastrip b { color: var(--ink); font-weight: 600; }
+
+  /* Legend */
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center;
+    padding: 16px 0; margin: 22px 0 6px; border-bottom: 1px solid var(--line-soft);
+    font-size: 12.5px; color: var(--ink-soft);
+  }
+  .legend .grp { display: inline-flex; align-items: center; gap: 8px; }
+  .lg-label { font-family: ui-monospace, Consolas, monospace; text-transform: uppercase; letter-spacing: .12em; font-size: 10.5px; color: var(--ink-faint); }
+  .sw { width: 26px; height: 10px; border-radius: 2px; display: inline-block; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+  /* Command context strip */
+  .apex { margin: 30px 0 8px; }
+  .apex-node {
+    border: 1px solid var(--line); background: var(--surface);
+    border-radius: 10px; padding: 14px 18px; box-shadow: var(--shadow);
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;
+  }
+  .apex-node .k { font-family: ui-monospace, Consolas, monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
+  .apex-node .v { font-weight: 700; font-size: 15px; }
+  .apex-node .arrow { color: var(--ink-faint); }
+  .apex-note { font-size: 12.5px; color: var(--ink-faint); margin: 10px 2px 0; max-width: 82ch; }
+
+  /* Two-pillar grid */
+  .pillars { display: grid; grid-template-columns: 1.15fr .85fr; gap: 22px; margin-top: 26px; align-items: start; }
+  @media (max-width: 860px) { .pillars { grid-template-columns: 1fr; } }
+
+  .pillar { border-radius: 14px; padding: 4px; }
+  .pillar-head {
+    border-radius: 11px 11px 4px 4px; padding: 16px 18px; color: #fff;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .pillar-irgc .pillar-head { background: linear-gradient(135deg, var(--accent-ink), var(--accent)); }
+  .pillar-mois .pillar-head { background: linear-gradient(135deg, var(--accent-2-ink), var(--accent-2)); }
+  .pillar-head .svc { font-family: ui-monospace, Consolas, monospace; font-size: 11px; letter-spacing: .18em; opacity: .85; text-transform: uppercase; }
+  .pillar-head .nm { font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
+  .pillar-head .sub { font-size: 12.5px; opacity: .9; font-weight: 500; }
+
+  .subcmd { margin-top: 14px; }
+  .subcmd-label {
+    display: flex; align-items: center; gap: 10px; margin: 0 4px 10px;
+    font-family: ui-monospace, Consolas, monospace; font-size: 11px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  .subcmd-label::after { content: ""; flex: 1; height: 1px; background: var(--line-soft); }
+  .subcmd-label .tag {
+    color: var(--ink-faint); font-size: 10px; letter-spacing: .1em;
+    border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px;
+  }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(228px, 1fr)); gap: 12px; }
+
+  /* Actor card */
+  .card {
+    position: relative; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 10px; padding: 13px 14px 13px 18px; box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .card::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--stripe, var(--line));
+  }
+  .card.untracked { border-style: dashed; background: transparent; box-shadow: none; }
+  .card.untracked::before { opacity: .55; }
+
+  .card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 7px; }
+  .idchip {
+    font-family: ui-monospace, Consolas, monospace; font-size: 11px; font-weight: 600;
+    background: var(--chip-bg); color: var(--ink-soft); border-radius: 5px; padding: 2px 7px;
+    letter-spacing: .02em; white-space: nowrap;
+  }
+  .idchip.cand { color: var(--ink-faint); background: transparent; border: 1px dashed var(--line); }
+  .sev {
+    font-family: ui-monospace, Consolas, monospace; font-size: 10px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; padding: 2px 7px; border-radius: 5px;
+    color: #fff; white-space: nowrap;
+  }
+  .sev.high { background: var(--sev-high); }
+  .sev.med { background: var(--sev-med); }
+  .sev.low { background: var(--sev-low); }
+  .sev.na { background: transparent; color: var(--ink-faint); border: 1px solid var(--line); }
+
+  .card h3 { margin: 0 0 2px; font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
+  .aka { font-family: ui-monospace, Consolas, monospace; font-size: 10.5px; color: var(--ink-faint); line-height: 1.45; margin: 0 0 8px; }
+  .vector { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 10px; }
+  .card-foot { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .adtag {
+    font-family: ui-monospace, Consolas, monospace; font-size: 9.5px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--ink-soft);
+  }
+  .adtag.direct { border-color: var(--sev-high); color: var(--sev-high); }
+  .adtag.structural { border-color: var(--sev-med); color: var(--sev-med); }
+
+  /* Notes */
+  .notes { margin-top: 44px; padding-top: 26px; border-top: 1px solid var(--line); }
+  .notes h2 { font-size: 13px; font-family: ui-monospace, Consolas, monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--accent-ink); margin: 0 0 18px; }
+  .note-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px 28px; }
+  .note { }
+  .note .n { font-family: ui-monospace, Consolas, monospace; font-size: 11px; color: var(--ink-faint); }
+  .note h4 { margin: 4px 0 5px; font-size: 14.5px; font-weight: 700; }
+  .note p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+
+  .sources { margin-top: 30px; font-size: 12px; color: var(--ink-faint); line-height: 1.6; }
+  .sources b { color: var(--ink-soft); font-weight: 600; }
+
+  footer.tail { margin-top: 40px; }
+
+  a.repo { color: var(--accent-ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  a.repo:hover { border-color: var(--accent); }
+</style>
+
+<div class="banner">
+  <span><b>TLP:CLEAR</b></span>
+  <span>ARCHIMEDES CTI // IRANIAN STATE CYBER</span>
+  <span>ORDER OF BATTLE — IRGC-FOCUS</span>
+</div>
+
+<div class="wrap">
+  <header class="mast">
+    <p class="eyebrow">Structural Assessment · ad-prime-v1 calibration</p>
+    <h1>IRGC Cyber Order of Battle</h1>
+    <p class="dek">How the Islamic Revolutionary Guard Corps organizes its offensive cyber effort — mapped to the threat actors Archimedes tracks, with the major clusters we don't yet track flagged as intake candidates. The Ministry of Intelligence (MOIS) sits alongside as a parallel, competing service — half of what reads as "Iranian" in the roster is MOIS, not IRGC.</p>
+    <div class="metastrip mono">
+      <span><b>28</b> roster actors</span>
+      <span><b>8</b> Iranian tracked</span>
+      <span><b>4</b> IRGC · <b>4</b> MOIS</span>
+      <span><b>6</b> intake candidates</span>
+      <span>Compiled <b>2026-07-14</b></span>
+    </div>
+  </header>
+
+  <div class="legend">
+    <span class="grp"><span class="lg-label">Tracked threat level</span>
+      <span class="dot" style="background:var(--sev-high)"></span> HIGH
+      <span class="dot" style="background:var(--sev-med)"></span> MEDIUM
+      <span class="dot" style="background:var(--sev-low)"></span> LOW
+    </span>
+    <span class="grp"><span class="sw" style="background:var(--surface-2);border:1px dashed var(--line)"></span> <span class="lg-label">Untracked · /new-actor candidate</span></span>
+    <span class="grp"><span class="adtag direct" style="font-size:9px">A&amp;D DIRECT</span><span class="adtag structural" style="font-size:9px">STRUCTURAL</span><span class="adtag" style="font-size:9px">INDIRECT</span></span>
+  </div>
+
+  <!-- Apex context -->
+  <div class="apex">
+    <div class="apex-node">
+      <span class="k">Apex</span>
+      <span class="v">Supreme Leader (Khamenei)</span>
+      <span class="arrow mono">→</span>
+      <span class="v" style="color:var(--ink-soft);font-weight:600">Supreme Council of Cyberspace</span>
+      <span class="arrow mono">→</span>
+      <span class="v" style="color:var(--accent-ink)">IRGC</span>
+      <span style="color:var(--ink-faint)">‖</span>
+      <span class="v" style="color:var(--accent-2-ink)">MOIS</span>
+    </div>
+    <p class="apex-note">National-level coordination is nominal. In practice IRGC and MOIS run <b>parallel, competing</b> cyber programs with overlapping targets, separate contractor ecosystems, and occasional operational hand-offs — not a single unified command. Placement below reflects <b>publicly reported</b> service attribution; per Hard Rule 2, Archimedes originates none of it.</p>
+  </div>
+
+  <!-- Pillars -->
+  <div class="pillars">
+
+    <!-- IRGC -->
+    <section class="pillar pillar-irgc">
+      <div class="pillar-head">
+        <span class="svc">Islamic Revolutionary Guard Corps</span>
+        <span class="nm">IRGC · Sepah</span>
+        <span class="sub">Military. Regime-protection & strategic collection. 4 tracked · 4 candidates.</span>
+      </div>
+
+      <div class="subcmd">
+        <div class="subcmd-label">IRGC — General / unit-unspecified <span class="tag">A&amp;D primary</span></div>
+        <div class="cards">
+          <article class="card" style="--stripe:var(--sev-med)">
+            <div class="card-top"><span class="idchip">#004 TRACKED</span><span class="sev med">Medium</span></div>
+            <h3>UNC1549</h3>
+            <p class="aka mono">Tortoiseshell · Smoke Sandstorm · Imperial Kitten · Crimson Sandstorm · Yellow Liderc</p>
+            <p class="vector">Aerospace-&amp;-defense espionage vs US/UK/FR/IL primes. Azure-hosted C2, MINIBIKE/MINIBUS implants, fake-recruiting lures.</p>
+            <div class="card-foot"><span class="adtag direct">A&amp;D Direct</span><span class="adtag">Espionage cat 🔴 10</span></div>
+          </article>
+          <article class="card" style="--stripe:var(--sev-med)">
+            <div class="card-top"><span class="idchip">#027 TRACKED</span><span class="sev med">Medium</span></div>
+            <h3>Peach Sandstorm</h3>
+            <p class="aka mono">APT33 · Refined Kitten · HOLMIUM · Elfin · Curious Serpens · MAGNALLIUM</p>
+            <p class="vector">Password-spray → FalseFont / Tickler backdoors vs aerospace, defense, satellite, energy. Documented destructive ties (SHAPESHIFT / StoneDrill).</p>
+            <div class="card-foot"><span class="adtag direct">A&amp;D Direct</span><span class="adtag">Espionage cat 🔴 9</span></div>
+          </article>
+          <article class="card untracked" style="--stripe:var(--sev-high)">
+            <div class="card-top"><span class="idchip cand">Candidate</span><span class="sev na">Unscored</span></div>
+            <h3>Pioneer Kitten</h3>
+            <p class="aka mono">Fox Kitten · Parisite · UNC757 · Lemon Sandstorm · RUBIDIUM · "Br0k3r"</p>
+            <p class="vector">IRGC-aligned access broker. VPN/edge exploitation → sells footholds → enables ransomware (NoEscape, ALPHV, RansomHouse). FBI/CISA: US defense-contractor targeting.</p>
+            <div class="card-foot"><span class="adtag direct">A&amp;D Direct</span><span class="adtag">Access broker</span></div>
+          </article>
+          <article class="card untracked" style="--stripe:var(--sev-med)">
+            <div class="card-top"><span class="idchip cand">Candidate</span><span class="sev na">Unscored</span></div>
+            <h3>Nemesis Kitten</h3>
+            <p class="aka mono">Cobalt Mirage · DEV-0270 · TunnelVision · UNC2448 · Storm-0270</p>
+            <p class="vector">IRGC contractor (Secnerd / Najee Technology fronts, OFAC-sanctioned). Opportunistic ransomware; Log4Shell/ProxyShell mass-exploitation, BitLocker abuse.</p>
+            <div class="card-foot"><span class="adtag structural">Opportunistic</span><span class="adtag">Contractor</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="subcmd">
+        <div class="subcmd-label">IRGC-IO — Intelligence Organization</div>
+        <div class="cards">
+          <article class="card" style="--stripe:var(--sev-low)">
+            <div class="card-top"><span class="idchip">#011 TRACKED</span><span class="sev low">Low</span></div>
+            <h3>Charming Kitten</h3>
+            <p class="aka mono">APT35 · Mint Sandstorm · Phosphorus · Magic Hound · TA453 · Newscaster · Yellow Garuda</p>
+            <p class="vector">Persona-driven credential harvest &amp; OAuth-consent phishing vs think tanks, academics, dissidents, defense-policy circles.</p>
+            <div class="card-foot"><span class="adtag">A&amp;D Indirect</span><span class="adtag">Espionage cat 🔴 9</span></div>
+          </article>
+          <article class="card untracked" style="--stripe:var(--sev-med)">
+            <div class="card-top"><span class="idchip cand">Candidate</span><span class="sev na">Unscored</span></div>
+            <h3>APT42</h3>
+            <p class="aka mono">Mint Sandstorm (operational subset) · Yellow Garuda · TA453 overlap</p>
+            <p class="vector">Mandiant splits from APT35: surveillance &amp; credential ops against individuals, mobile malware, extensive social-engineering.</p>
+            <div class="card-foot"><span class="adtag">A&amp;D Indirect</span><span class="adtag">Surveillance</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="subcmd">
+        <div class="subcmd-label">IRGC-CEC — Cyber-Electronic Command</div>
+        <div class="cards">
+          <article class="card" style="--stripe:var(--sev-low)">
+            <div class="card-top"><span class="idchip">#028 TRACKED</span><span class="sev low">Low</span></div>
+            <h3>CyberAv3ngers</h3>
+            <p class="aka mono">Soldiers of Solomon · Storm-0784 · Bauxite · UNC5691 · Hydro Kitten · Cyber4vengers</p>
+            <p class="vector">OT/ICS disruption. Unitronics PLC defacements, Rockwell CVE-2021-22681, IOCONTROL malware vs water/energy/critical infra. $10M RFJ bounty.</p>
+            <div class="card-foot"><span class="adtag structural">A&amp;D Structural</span><span class="adtag">Disruptive cat 🔴 8</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="subcmd">
+        <div class="subcmd-label">IRGC — Contractor fronts &amp; influence <span class="tag">hack-and-leak / IO</span></div>
+        <div class="cards">
+          <article class="card untracked" style="--stripe:var(--sev-med)">
+            <div class="card-top"><span class="idchip cand">Candidate</span><span class="sev na">Unscored</span></div>
+            <h3>Emennet Pasargad</h3>
+            <p class="aka mono">Cotton Sandstorm · Marnanus/Haywyn Cyber · Storm-2035 · "For Humanity"</p>
+            <p class="vector">IRGC-affiliated info ops &amp; hack-and-leak. Election-interference ("Enemies of the People", 2020), FBI/OFAC-indicted; sports/media leak sites.</p>
+            <div class="card-foot"><span class="adtag">Info Ops</span><span class="adtag">Indicted</span></div>
+          </article>
+          <article class="card untracked" style="--stripe:var(--sev-low)">
+            <div class="card-top"><span class="idchip cand">Candidate</span><span class="sev na">Unscored</span></div>
+            <h3>Mabna Institute</h3>
+            <p class="aka mono">Silent Librarian · Cobalt Dickens · TA407 · Yellow Nabu</p>
+            <p class="vector">IRGC-linked academic credential theft at scale (DOJ 2018, 9 indicted). University/library phishing to exfiltrate research IP.</p>
+            <div class="card-foot"><span class="adtag">A&amp;D Indirect</span><span class="adtag">Research theft</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOIS -->
+    <section class="pillar pillar-mois">
+      <div class="pillar-head">
+        <span class="svc">Ministry of Intelligence &amp; Security · VAJA</span>
+        <span class="nm">MOIS</span>
+        <span class="sub">Civilian ministry. Parallel service — shown for context. 4 tracked · 2 candidates.</span>
+      </div>
+
+      <div class="subcmd">
+        <div class="subcmd-label">MOIS — Attributed clusters</div>
+        <div class="cards">
+          <article class="card" style="--stripe:var(--sev-med)">
+            <div class="card-top"><span class="idchip">#023 TRACKED</span><span class="sev med">Medium</span></div>
+            <h3>APT34 / OilRig</h3>
+            <p class="aka mono">Helix Kitten · Cobalt Gypsy · Crambus · Hazel Sandstorm · Greenbug</p>
+            <p class="vector">Long-running regional espionage. StealHook backdoor, Earth Simnavaz, password-filter DLL credential theft (ITSecTeam contractor per 3rd-party).</p>
+            <div class="card-foot"><span class="adtag structural">A&amp;D Structural</span><span class="adtag">Espionage cat 🔴 8</span></div>
+          </article>
+          <article class="card" style="--stripe:var(--sev-med)">
+            <div class="card-top"><span class="idchip">#014 TRACKED</span><span class="sev med">Medium</span></div>
+            <h3>Handala Hack</h3>
+            <p class="aka mono">Void Manticore · Storm-0842 · Red Sandstorm · Banished Kitten</p>
+            <p class="vector">Hacktivist-fronted destruction. Custom wipers (BiBi, Handala Wiper), Stryker Intune-MDM mass-wipe (200k+ devices). Hack-and-leak posture.</p>
+            <div class="card-foot"><span class="adtag structural">A&amp;D Structural</span><span class="adtag">Destructive cat 🔴 9</span></div>
+          </article>
+          <article class="card" style="--stripe:var(--sev-low)">
+            <div class="card-top"><span class="idchip">#022 TRACKED</span><span class="sev low">Low</span></div>
+            <h3>MuddyWater</h3>
+            <p class="aka mono">Static Kitten · Mango Sandstorm · Mercury · Seedworm · TEMP.Zagros</p>
+            <p class="vector">Gov/telecom espionage across MENA. PowerShell living-off-the-land, RMM-tool abuse, phishing.</p>
+            <div class="card-foot"><span class="adtag structural">A&amp;D Structural</span><span class="adtag">Espionage cat 🟠 7</span></div>
+          </article>
+          <article class="card" style="--stripe:var(--sev-low)">
+            <div class="card-top"><span class="idchip">#026 TRACKED</span><span class="sev low">Low</span></div>
+            <h3>Cavern Manticore</h3>
+            <p class="aka mono">operates the "Cav3rn" modular .NET C2 framework</p>
+            <p class="vector">Espionage vs Israeli IT-provider / government orgs (+ Egypt, UAE). DLL-sideloading, custom C2. CPR-noted overlap w/ MuddyWater &amp; OilRig.</p>
+            <div class="card-foot"><span class="adtag">A&amp;D Indirect</span><span class="adtag">Espionage cat 🟡 5</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="subcmd">
+        <div class="subcmd-label">MOIS — Intake candidates</div>
+        <div class="cards">
+          <article class="card untracked" style="--stripe:var(--sev-low)">
+            <div class="card-top"><span class="idchip cand">Candidate</span><span class="sev na">Unscored</span></div>
+            <h3>APT39 / Chafer</h3>
+            <p class="aka mono">Remix Kitten · ITG07 · Cobalt Hickman</p>
+            <p class="vector">Personal-info tracking &amp; surveillance (travel, telecom). Rana Intelligence Computing front — OFAC-sanctioned Sep 2020.</p>
+            <div class="card-foot"><span class="adtag">A&amp;D Indirect</span><span class="adtag">Surveillance</span></div>
+          </article>
+          <article class="card untracked" style="--stripe:var(--sev-med)">
+            <div class="card-top"><span class="idchip cand">Candidate</span><span class="sev na">Unscored</span></div>
+            <h3>Scarred Manticore</h3>
+            <p class="aka mono">Storm-0861 · LIONTAIL framework</p>
+            <p class="vector">High-value gov/telecom/defense espionage in the Middle East. CPR-documented hand-off of victims to Void Manticore / Handala for destruction.</p>
+            <div class="card-foot"><span class="adtag structural">A&amp;D Structural</span><span class="adtag">Hand-off → #014</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Analytic notes -->
+  <section class="notes">
+    <h2>Analytic notes — read before briefing off this chart</h2>
+    <div class="note-grid">
+      <div class="note">
+        <span class="n">01</span>
+        <h4>"LOW" is often a weighting artifact, not low risk</h4>
+        <p>Our threat-box weighting is espionage-heavy (35%). An OT-disruption actor (CyberAv3ngers) or a think-tank harvester (Charming Kitten) can post a category 🔴 HIGH yet weight to LOW overall. Prioritize on the <b>per-category vector</b>, not the overall label.</p>
+      </div>
+      <div class="note">
+        <span class="n">02</span>
+        <h4>IRGC ≠ MOIS</h4>
+        <p>Two services, not one org. Handala, MuddyWater, APT34 and Cavern Manticore are <b>MOIS</b> — do not brief them as IRGC. Overlaps (e.g. Scarred Manticore → Handala hand-off) are cited collaborations, never Archimedes-asserted merges.</p>
+      </div>
+      <div class="note">
+        <span class="n">03</span>
+        <h4>The A&amp;D-direct tier is small</h4>
+        <p>Only <b>UNC1549</b> and <b>Peach Sandstorm</b> carry A-grade documentation of prime-direct aerospace/defense targeting (Intent=5). Pioneer Kitten reaches defense contractors via access-brokering. Everyone else is structural or indirect exposure.</p>
+      </div>
+      <div class="note">
+        <span class="n">04</span>
+        <h4>Candidates are proposals, not roster entries</h4>
+        <p>The six dashed cards are well-documented in public reporting but <b>not yet tracked, scored, or in the roster</b>. Promoting any of them runs <span class="mono">/new-actor</span> — human approval, first-pass dossier, threat-box scoring, Hard Rule 5 gate on HIGH.</p>
+      </div>
+    </div>
+
+    <p class="sources">
+      <b>Attribution sourcing (Hard Rule 2 — inherited, not originated):</b> service and cluster attributions reflect public reporting from Mandiant/Google TIG, Microsoft MSTIC, CrowdStrike, Palo Alto Unit&nbsp;42, Dragos, Check Point Research, Claroty Team82, CISA, US DOJ indictments, and US Treasury/OFAC designations. Tracked-actor placements, aliases, threat levels and category scores are drawn from the Archimedes dossiers under <span class="mono">threats/threat-actors/</span>. Untracked candidates are compiled from the same open bodies of reporting and are unverified against our grading pipeline.
+      <br><br>
+      <b>Selected candidate additions to consider:</b> Pioneer Kitten (FBI/CISA AA24-241A) · Nemesis Kitten / Cobalt Mirage (Treasury Sep 2022) · Emennet Pasargad (FBI/OFAC 2022) · Mabna Institute / Silent Librarian (DOJ 2018) · APT42 (Mandiant) · APT39 / Chafer (Treasury Sep 2020) · Scarred Manticore (Check Point).
+    </p>
+  </section>
+
+  <footer class="tail banner" style="border-radius:10px;">
+    <span><b>TLP:CLEAR</b></span>
+    <span>ARCHIMEDES · CTI ANALYST</span>
+    <span>ORG CHART v1 · 2026-07-14</span>
+    <span>ad-prime-v1</span>
+  </footer>
+</div>

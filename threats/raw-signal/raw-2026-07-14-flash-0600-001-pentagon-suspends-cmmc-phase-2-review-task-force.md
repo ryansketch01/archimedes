@@ -17,7 +17,9 @@ triage_tags: [non_flash, ad_sector, policy_compliance, grader_queue]
 iocs_extracted: true
 iocs_count: 0
 text_word_count: 0
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-07-14-0003
+promoted_at: 2026-07-14T08:26:00-04:00
 ttl_expires_at: 2026-10-12T06:02:00-04:00
 test: false
 ---

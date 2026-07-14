@@ -39154,7 +39154,7 @@ entries:
       actor).
 
   - id: 2026-06-19-am-001-klue-salesforce-supply-chain-compromise-icarus-extortion-group-huntress-recorded-future-named-victims-net-new-actor-candidate
-    covered_in: [2026-06-19-morning]
+    covered_in: [2026-06-19-morning, 2026-07-14-morning]
     headline: "NEW: Klue Battlecards / Salesforce supply-chain compromise — Icarus extortion group (net-new finding scaffold + operator-deferred /new-actor candidacy); Klue Inc. compromised 2026-06-11 via legacy integration credential, OAuth tokens for downstream customer Salesforce instances harvested; Salesforce disabled Klue Battlecards app integration 2026-06-17; Huntress + Recorded Future named cybersecurity-firm victims (NEITHER A&D-prime); Icarus actor identity per Huntress single-IR-vendor 'high confidence' attestation, 'Mr Brean' persona for extortion comms; THN explicit-distinction framing 'mirrors' ShinyHunters/UNC6395 (methodological similarity NOT attribution overlap); Hard Rule 2 BINDING — Icarus preserved as distinct net-new actor identity, NO cross-walk to ShinyHunters/UNC6395/Scattered-Spider/UNC3944/tracked-roster; A&D-DIB structural exposure HIGH via Salesforce-ecosystem-tenants on same OAuth-governance pattern"
     topic_tags:
       - klue-battlecards-competitive-intelligence-platform-compromise
@@ -39173,7 +39173,7 @@ entries:
     related_vulns: []
     related_campaigns:
       - icarus-extortion-group-salesforce-supply-chain-april-2026-emergence-two-victims-to-date
-    finding_ids: [finding-2026-06-19-0003]
+    finding_ids: [finding-2026-06-19-0003, finding-2026-07-14-0001]
     update_type: net_new_finding_scaffold
     digraph: B2
     wep_layered:
@@ -39188,10 +39188,39 @@ entries:
       - additional_compromised_salesforce_appexchange_integrations_disclosed
       - third_icarus_victim_beyond_klue_and_first_two_per_thn
       - first_party_ioc_hit_oauth_token_abuse_pattern
+      - third_vendor_or_explicit_cross_vendor_reconciliation_of_storm3138_icarus_shinyhunters_labels
     first_covered: 2026-06-19
-    last_covered: 2026-06-19
+    last_covered: 2026-07-14
     retraction: null
     test: false
+    resurface_history:
+      - brief_id: 2026-07-14-morning
+        date: 2026-07-14
+        finding_id: finding-2026-07-14-0001
+        digraph: A2
+        update_type: same_incident_cross_vendor_label_development
+        summary: >
+          UPDATE (Actor Activity). MSTIC (A) published defensive guidance on a
+          mid-2025->mid-2026 Salesforce OAuth-abuse campaign and named Storm-3138
+          for the June-2026 Klue compromise — the SAME incident this entry tracks
+          as Icarus (#025) via Huntress. Storm-3138 (Microsoft) and Icarus
+          (Huntress) briefed as TWO PARALLEL VENDOR LABELS on one incident, NOT a
+          confirmed same-actor merge (ACH H1/H3/H5 tied at zero inconsistencies;
+          no cited source asserts the merge). MSTIC's ShinyHunters reference held
+          as HEDGED tradecraft overlap ("commonly associated with"), not an
+          identity claim — the one MSTIC quote used in the brief (4 words, Hard
+          Rule 6). Hard Rule 2 BINDING: Archimedes originates no merge and no
+          ShinyHunters/UNC6395 cross-walk. A second A-grade vendor label does NOT
+          resolve the standing Icarus #025 distinctness question (Huntress primary
+          still unretrieved). This did NOT satisfy the
+          second_ir_vendor_corroboration_of_icarus_actor_identity resurface
+          condition — MSTIC applied its OWN label, it did not corroborate the
+          Icarus label. Broader campaign context surfaced: Salesloft Drift (Aug
+          2025) + Gainsight (Nov 2025) integration compromise, vishing-driven
+          OAuth consent abuse. Victims retail/education/manufacturing — no A&D
+          prime; A&D relevance structural. Routed to actor-profiler as an Icarus
+          dossier DATA-POINT (add "Microsoft labels this Storm-3138"), NOT a
+          rescore and NOT a merge.
     notes: |
       Net-new finding scaffold. Operator-deferred /new-actor Icarus
       candidacy noted (third in queue after Gentlemen RaaS + UAT-8616 —
@@ -42407,6 +42436,229 @@ entries:
       Layer 1 558 \S+ tokens (400-800 band). Layer 2 Discord Summary ~177 words / est. ~1350 chars
       (150-300 word band; under the 1900-char hard ceiling — single Discord message, no chunk
       needed). Pre-flight 13-of-13 PASS (iteration 1). Not posted to Discord by briefer — librarian
+      owns delivery/commit.
+
+  - id: 2026-07-14-am-001-sap-july-2026-patch-day-critical-cluster-cve-2026-44747-netweaver-abap-9-9-cve-2026-27690-approuter-cve-2026-44761-commerce-cloud-b2-likely-monitoring-patch-hygiene
+    covered_in: [2026-07-14-morning]
+    brief_file: threats/briefs/2026-07-14-morning.md
+    headline: "SAP July 2026 Security Patch Day critical cluster (net-new): CVE-2026-44747 (CVSS 9.9, NetWeaver Application Server ABAP, memory-corruption -> unauthorized data access/modification + system unavailability), CVE-2026-27690 (9.1, Approuter non-Cloud-Foundry, HTTP request smuggling / request-response desync -> unauthenticated access), CVE-2026-44761 (9.1, Commerce Cloud, hardcoded OAuth2 client credentials -> unauthorized API access + data tampering); patches available, NO in-the-wild exploitation asserted by any source; plus 6 high-severity flaws not individually CVE-enumerated in the relay. Monitoring tier / patch-hygiene, NOT an emergency. A&D relevance STRUCTURAL only (NetWeaver ABAP is the ERP backbone across large ITAR/defense-prime estates; NO named prime, NO sector targeting). Reached via SecurityWeek (B) relay + Onapsis (B) analysis of SAP's own Patch Day advisory (advisory not directly retrieved, NVD not enriched this pass) -> headline B2/likely, single-source veto applied. DISTINCT from the 2026-05-12 SAP May Patch Day entry (different CVEs/products) — net-new, not a resurface."
+    topic_tags:
+      - cve
+      - sap
+      - sap-july-2026-patch-day
+      - patch-tuesday
+      - cve-2026-44747-netweaver-abap-9-9-memory-corruption
+      - cve-2026-27690-approuter-9-1-http-request-smuggling-request-response-desync
+      - cve-2026-44761-commerce-cloud-9-1-hardcoded-oauth2-credentials
+      - patches-available-no-in-the-wild-exploitation-asserted-point-in-time-snapshot
+      - six-additional-high-severity-flaws-not-cve-enumerated-in-relay
+      - monitoring-tier-patch-hygiene-not-emergency-non-flash
+      - patched-not-equal-handled-sap-erp-estates-patch-slowly
+      - 2025-cve-2025-31324-netweaver-rapid-post-disclosure-exploitation-precedent
+      - ad-relevance-structural-netweaver-abap-erp-backbone-itar-primes-no-named-victim
+      - securityweek-b-relay-plus-onapsis-b-analysis-of-sap-advisory-single-effective-origin
+      - single-source-veto-applied-capped-likely-nvd-not-enriched-advisory-not-retrieved
+      - net-new-not-in-vuln-index-vuln-tracker-handoff-pending-vt-024-plus
+      - distinct-from-2026-05-12-sap-may-patch-day-different-cves
+      - vulnerabilities
+    related_actors: []              # NONE attributed. Hard Rule 2: no attribution originated.
+    related_vulns: [CVE-2026-44747, CVE-2026-27690, CVE-2026-44761]   # all net-new; NOT in vulnerabilities/_index.yaml — vuln-tracker handoff pending (NVD enrichment + affected-version matrix + the 6 unenumerated high-severity CVEs)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0002]
+    digraph: B2                     # headline; vendor-procedural layer A2 (SAP authoritative on own product, reached via B relay, advisory not directly retrieved, NVD deferred)
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Single effective origin (SAP Security Patch Day advisory via one SecurityWeek relay + one
+      Onapsis specialist analysis of the same advisory; NVD not retrieved this pass). WEP capped at
+      "likely." Lifts on NVD enrichment of the three CVEs (independent authoritative second basis for
+      the procedural facts) or direct retrieval of the SAP advisory.
+    hard_rule_2_framings_load_bearing:
+      - "No threat actor attributed by any source — Archimedes originates none"
+      - "Brief as patch-hygiene / attack-surface awareness, NOT an active emergency (no ITW exploitation asserted; patches available)"
+      - "'Patched' does NOT read as 'handled' — SAP ERP estates patch slowly; the 9.9 NetWeaver ABAP flaw stays on escalation watch (2025 CVE-2025-31324 rapid-exploitation precedent)"
+      - "A&D relevance STRUCTURAL only — NetWeaver ABAP is the ERP backbone across ITAR/defense-prime estates, but no prime named and no sector targeting reported"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 1   # one MSTIC quote in the Actor Activity item; 0 quotes in this SAP item
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_no_target_sap_netweaver_telemetry_frank_visibility_bounded_no_atomic_ioc_to_sweep
+    vuln_tracker_handoff:
+      cves: [CVE-2026-44747, CVE-2026-27690, CVE-2026-44761]
+      status: net-new-not-in-index-rows-requested-vt-024-plus
+      priority_cve: CVE-2026-44747
+      note: "Net-new critical cluster; NOT in vulnerabilities/_index.yaml (runs through VT-023 RabbitMQ). Key three net-new rows (candidate VT-024+); retrieve NVD enrichment + SAP Patch Day notes for the full affected-version matrix and the six additional high-severity CVEs the relay did not enumerate. CVE-2026-44747 (9.9 NetWeaver ABAP) is the highest-priority row — watch CISA KEV closely (2025 CVE-2025-31324 rapid-exploitation precedent)."
+    escalation_tripwire: "CISA KEV addition OR any A/B-grade ITW report on any of the three (priority CVE-2026-44747, the 9.9 ABAP flaw) re-opens FLASH eligibility."
+    resurface_if:
+      - cisa_kev_addition_any_of_the_three
+      - any_ab_grade_in_the_wild_exploitation_report_priority_cve_2026_44747
+      - public_poc_release_existence_tracking_only_hard_rule_3
+      - nvd_enrichment_lifts_single_source_veto_on_procedural_layer
+      - named_ad_or_dib_prime_victim_disclosed
+      - first_party_splunk_hit_any_of_the_three_cves
+    first_covered: 2026-07-14
+    last_covered: 2026-07-14
+    retraction: null
+    test: false
+
+  - id: 2026-07-14-am-002-dod-suspends-cmmc-phase-2-review-reform-task-force-dib-compliance-baseline-shift-securityweek-single-source-b2-likely-ad-watchlist-policy
+    covered_in: [2026-07-14-morning]
+    brief_file: threats/briefs/2026-07-14-morning.md
+    headline: "DoD suspends CMMC (Cybersecurity Maturity Model Certification) Phase 2 and stands up a review/reform task force to reassess contractor cybersecurity rules — a shift to the DIB compliance-assurance baseline that governs the target profile. Policy/compliance item (no actor, no CVE, no IOC), briefed in the standing Sector Focus: A&D section. LEAD of the 07-14 cycle. Single SecurityWeek RSS summary, body not deep-fetched, DoD primary (memo/press release/DFARS action) NOT retrieved -> B2/likely, single-source veto. HALT-vs-PAUSE ambiguity unresolved and carried explicitly; scope/timeline/contractual impact NOT characterized pending DoD-primary retrieval. Second-order supplier-attack-surface question flagged as a WATCH item, not a claim."
+    topic_tags:
+      - cmmc
+      - cmmc-phase-2-suspension
+      - dod-review-reform-task-force
+      - dib-compliance-assurance-baseline-shift
+      - policy-compliance-item-no-actor-no-cve-no-ioc
+      - ad-watchlist-standing-section-material-sector-focus
+      - lead-of-cycle-most-directly-ad-relevant-of-three-monitoring-items
+      - single-source-securityweek-rss-summary-body-not-deep-fetched
+      - dod-primary-not-retrieved-memo-press-release-dfars-action
+      - single-source-veto-applied-capped-likely-corroboration-expected-readily-available
+      - halt-vs-pause-ambiguity-unresolved-carried-explicitly
+      - do-not-characterize-scope-timeline-contractual-impact-pending-primary
+      - second-order-supplier-attack-surface-watch-item-not-a-claim
+      - attribute-to-securityweek-hedge-pending-confirmation
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0003]
+    digraph: B2
+    wep: likely                     # policy action occurred; single-source-veto-capped, corroboration expected readily available
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Single source (SecurityWeek RSS summary), body not deep-fetched, DoD primary not retrieved.
+      WEP capped at "likely." The core awareness claim (DoD suspending CMMC Phase 2) is very likely
+      true and readily corroborable, but held at "likely" pending independent second reporting or
+      direct retrieval of the DoD memo / press release / DFARS action.
+    hard_rule_2_framings_load_bearing:
+      - "Attribute explicitly to SecurityWeek and hedge (pending confirmation); no actor, no attribution to originate"
+      - "Do NOT characterize contractual specifics — scope of the suspension, task-force mandate, timeline — until the DoD primary is retrieved"
+      - "Carry the halt-vs-pause ambiguity explicitly — a genuine program halt vs. a rulemaking/comment-period pause have materially different so-whats"
+      - "Second-order question (whether a paused/reformed CMMC alters supplier-network attack surface) is a WATCH item, not a claim to assert now"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_item: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: not_applicable_cmmc_compliance_posture_not_first_party_observable_telemetry
+    recommended_next_action: "Direct-retrieval pass on the DoD primary (defense.gov / DFARS rulemaking) before the next brief characterizes contractual impact. Veto lifts on independent second reporting or primary retrieval."
+    resurface_if:
+      - dod_primary_directly_retrieved_memo_press_release_dfars_action
+      - independent_second_reporting_corroborates_scope_or_timeline
+      - halt_vs_pause_ambiguity_resolved_by_authoritative_source
+      - contractual_impact_or_task_force_mandate_specifics_published
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-14
+    last_covered: 2026-07-14
+    retraction: null
+    test: false
+
+  - id: 2026-07-14-am-brief-meta
+    covered_in: [2026-07-14-morning]
+    brief_file: threats/briefs/2026-07-14-morning.md
+    topic_tags:
+      - morning-brief
+      - meta-tracking
+      - three-monitoring-items-no-action-item-quiet-day-all-touch-dib-indirectly
+      - cmmc-phase-2-suspension-lead-sector-focus-ad-watchlist-single-source-hedged
+      - sap-july-patch-day-critical-cluster-vulnerabilities-patch-hygiene-net-new
+      - mstic-storm3138-klue-oauth-abuse-update-resurface-actor-activity-parallel-vendor-labels
+      - anti-repetition-klue-icarus-resurfaced-with-update-flag-and-correlation-callout
+      - anti-repetition-sap-net-new-distinct-from-2026-05-12-may-patch-day
+      - hard-rule-2-storm3138-icarus-parallel-labels-not-merged-shinyhunters-hedged-tradecraft
+      - hard-rule-6-one-mstic-quote-4-words-commonly-associated-with-shinyhunters-hedge-preserved
+      - standing-sections-sector-focus-ad-carries-cmmc-iran-cyber-watch-silent-template
+      - preflight-13-of-13-pass
+    related_actors: ["025"]         # Icarus #025 (parallel MSTIC label Storm-3138 recorded, no merge). ShinyHunters + Storm-3138 NOT on roster (Hard Rule 2 hedged/parallel).
+    related_vulns: [CVE-2026-44747, CVE-2026-27690, CVE-2026-44761]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-14-0003, finding-2026-07-14-0002, finding-2026-07-14-0001]
+    digraph: A2                     # cycle high-water (MSTIC A2); SAP + CMMC B2
+    wep: likely
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      layer_1_word_count: 745       # \S+ token count incl. markup; 400-800 band
+      layer_2_discord_summary: "~205 words / est. ~1740 chars (150-300 word band; under the 1900-char hard ceiling — single Discord message, no chunk needed)"
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-14-0001
+          append_brief_id: 2026-07-14-morning   # DONE by briefer (UPDATE resurface / same-incident MSTIC label development)
+        - finding_id: finding-2026-07-14-0002
+          append_brief_id: 2026-07-14-morning   # DONE by briefer
+        - finding_id: finding-2026-07-14-0003
+          append_brief_id: 2026-07-14-morning   # DONE by briefer
+      coverage_log_resurface_update:
+        - "Klue/Salesforce/Icarus 2026-06-19-am-001 (finding-2026-06-19-0003): covered_in appended 2026-07-14-morning; last_covered -> 2026-07-14; finding_ids appended finding-2026-07-14-0001; resurface_history block added (MSTIC Storm-3138 same-incident cross-vendor label development). UPDATE resurface, Actor Activity. No duplicate item entry created. NOTE: this did NOT satisfy the second_ir_vendor_corroboration_of_icarus_actor_identity condition — MSTIC applied its OWN parallel label, it did not corroborate the Icarus label."
+      vuln_tracker_handoffs_proposed:
+        - "CVE-2026-44747 (9.9 NetWeaver ABAP, priority) + CVE-2026-27690 (9.1 Approuter) + CVE-2026-44761 (9.1 Commerce Cloud) — net-new SAP July Patch Day cluster, NOT in vulnerabilities/_index.yaml. Key three net-new rows (candidate VT-024+); NVD enrichment + affected-version matrix + the six unenumerated high-severity CVEs. Watch CISA KEV on the 9.9 ABAP flaw."
+      actor_profiler_handoffs_proposed:
+        - "Icarus #025 — DATA-POINT update only (external-labeling / cross-vendor tracking section: add 'Microsoft labels the same June-2026 Klue incident Storm-3138; MSTIC clusters the broader campaign under hedged ShinyHunters-associated tradecraft'). NOT a rescore, NOT a Storm-3138<->Icarus<->ShinyHunters merge (Hard Rule 2). Standing KAC-A1 distinctness question remains open pending the Huntress primary."
+      source_grade_notes:
+        - "securityweek remains provisional B (anchor relay for both the SAP and CMMC findings). onapsis remains provisional B (SAP-security specialist). SAP vendor advisory has no dedicated source-grades.yaml id — recommend a provisional `sap` vendor-self-disclosure id (procedurally A on own products, cf. f5 / cisco-psirt) if SAP patch-day content recurs. mstic A-grade authoritative (ratified)."
+    notes: |
+      2026-07-14 MORNING BRIEF (briefer phase, morning-20260714-080000). Quiet day: three
+      graded findings promoted, ALL WEP "likely," ALL monitoring tier, NO action item. Red-team
+      NOT required — all three capped at WEP "likely" (< very likely). Each item touches the DIB
+      indirectly; none is a defense-specific campaign or a named-prime victim.
+
+      Section placement:
+      - LEAD + Sector Focus: A&D: finding-2026-07-14-0003 — DoD suspends CMMC Phase 2 + review/
+        reform task force. Chosen as lead as the item most directly relevant to the target
+        profile (CMMC is the DoD compliance regime governing an ITAR A&D contractor). Analyst
+        KAC honored: attributed explicitly to SecurityWeek, hedged pending confirmation (single
+        RSS summary, DoD primary not retrieved, B2); halt-vs-pause ambiguity carried explicitly;
+        scope/timeline/contractual impact NOT characterized; second-order supplier-attack-surface
+        effect flagged as a WATCH item, not a claim.
+      - Vulnerabilities: finding-2026-07-14-0002 — SAP July 2026 Patch Day critical cluster
+        (CVE-2026-44747 9.9 NetWeaver ABAP + CVE-2026-27690 9.1 Approuter + CVE-2026-44761 9.1
+        Commerce Cloud). Analyst KAC honored: briefed as patch-hygiene, NOT an emergency (patched,
+        no ITW); "patched" explicitly NOT read as "handled" (SAP ERP estates patch slowly; 2025
+        CVE-2025-31324 rapid-exploitation precedent; 9.9 ABAP flaw on escalation watch); A&D
+        relevance STRUCTURAL (NetWeaver ABAP ERP backbone across ITAR primes, no named prime).
+        Escalation tripwire (KEV add / ITW report re-opens FLASH) stated. Net-new — DISTINCT from
+        the 2026-05-12 SAP May Patch Day entry (different CVEs); not a resurface.
+      - Actor Activity: finding-2026-07-14-0001 — UPDATE resurface of the Klue/Salesforce/Icarus
+        thread (2026-06-19-am-001). MSTIC (A) names Storm-3138 for the June-2026 Klue compromise
+        inside a mid-2025->mid-2026 Salesforce OAuth-abuse campaign. MANDATORY analyst caveat
+        honored in full: Storm-3138 (Microsoft) and Icarus (Huntress) presented as TWO PARALLEL
+        VENDOR LABELS on one incident, NOT a confirmed same-actor merge (ACH H1/H3/H5 tied at zero
+        inconsistencies; no cited source asserts the merge). MSTIC's ShinyHunters reference held
+        as HEDGED tradecraft overlap, preserved via the ONE direct quote in the brief ("commonly
+        associated with ShinyHunters", 4 words, Hard Rule 6). Hard Rule 2 BINDING: Archimedes
+        originates no merge and no ShinyHunters/UNC6395 cross-walk. 🔗 Update-on callout to the
+        2026-06-19 morning brief. A&D relevance STRUCTURAL (victims retail/education/manufacturing,
+        no prime). NOTE: this development did NOT satisfy the entry's
+        second_ir_vendor_corroboration_of_icarus_actor_identity resurface condition — MSTIC applied
+        its OWN label, it did NOT corroborate the Icarus label; resurfaced on the material-update
+        condition (new A-grade attribution/label + defensive guidance) instead.
+
+      Standing sections: Sector Focus: A&D carries the CMMC item (NOT silent this cycle). Iran
+      Cyber Watch — silent-day template (no in-window Iranian tracked-actor activity among the
+      three findings).
+
+      Hard Rule 6: exactly ONE direct quote in the whole brief — MSTIC "commonly associated with
+      ShinyHunters" (4 words, the load-bearing hedge, preserved verbatim per analyst guidance);
+      Layer 2 paraphrases it ("tradecraft it associates with ShinyHunters") to keep the one-quote-
+      per-source-per-brief limit across both layers. SAP + CMMC fully paraphrased. Hard Rule 8:
+      first-party Splunk 0-hits on all three findings (SAP CVEs / Storm-3138-Klue-Salesforce /
+      CMMC) — silence not disconfirming, Frank visibility-bounded.
+
+      Layer 1 745 \S+ tokens (400-800 band). Layer 2 Discord Summary ~205 words / est. ~1740
+      chars (150-300 word band; under the 1900-char hard ceiling — single Discord message, no
+      chunk needed). Three bullets (Sector Focus/CMMC lead + Vulnerabilities/SAP + Actor Activity/
+      MSTIC); Iran Cyber Watch silent boilerplate omitted from Layer 2 per spec; natural-language
+      dates ("June", "August 2025", "November 2025"), ISO only in the greeting anchor; no digraph/
+      WEP/finding-id in Layer 2; Hard Rule 2 parallel-label framing preserved in Layer 2 ("two
+      vendor labels on one incident, not a confirmed same actor"); no themed-character voice.
+      Pre-flight 13-of-13 PASS on first iteration. Not posted to Discord by briefer — librarian
       owns delivery/commit.
 
 # ============================================================================

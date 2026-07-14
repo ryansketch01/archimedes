@@ -18,8 +18,8 @@ motivation:
 threat_level: LOW
 admiralty_grade: B2
 tlp: CLEAR
-dossier_version: 1
-last_updated: 2026-07-06
+dossier_version: 2
+last_updated: 2026-07-14
 last_reviewed: 2026-07-06
 next_review_due: 2026-10-04
 profile_path: threats/threat-actors/Icarus/
@@ -44,6 +44,8 @@ Icarus is a financially-motivated extortion group that surfaced in a single docu
 
 **Open question / standing tripwire (from the finding's SAT-KAC).** A load-bearing assumption (KAC A1, classified *test*, confidence *low*, centrality *critical*) is unresolved: whether Huntress's *actual* attribution language asserts "Icarus is a distinct actor" versus "Huntress is tracking this unattributed activity under the label Icarus." Huntress's primary publication was not retrieved. The Hacker News framed the campaign as "mirroring prior attack waves mounted by ShinyHunters and UNC6395" — but that is publisher framing, not Huntress attribution language. Per the finding's SAT-ACH, two hypotheses are **not operationally distinguishable on current evidence**: H1 (Icarus is a genuinely-distinct net-new actor) and H3 (Icarus is a UNC6395 affiliate/splinter). Both predict the same future behavior; the distinction is attribution theory, not observable tradecraft. Until Huntress's primary language is reviewed or a second IR vendor weighs in, `/new-actor` tracking proceeds under an explicit caveat that "Icarus" may be a provisional single-vendor label rather than a settled distinct-actor attribution.
 
+**Cross-vendor labeling — Microsoft/MSTIC "Storm-3138" (added 2026-07-14, per [finding-2026-07-14-0001](../../findings/finding-2026-07-14-0001-mstic-shinyhunters-oauth-storm3138-klue-salesforce-supply-chain-a2-likely.md)).** On 2026-07-13 Microsoft Threat Intelligence (MSTIC, admiralty A) published defensive guidance naming **Storm-3138** as the actor that compromised Klue in June 2026 and used harvested credentials to query and exfiltrate data from downstream Salesforce customer instances — the *same* Klue June-2026 incident this dossier tracks as Icarus (Huntress attribution). Archimedes records Storm-3138 as a **parallel vendor label on the one incident**, **not** as a confirmed same-actor identification and **not** as an Icarus alias (it is deliberately kept out of the `aliases` frontmatter): no cited source asserts Storm-3138 == Icarus, and per Hard Rule 2 Archimedes originates no merge. Microsoft's "Storm-####" prefix denotes a distinct cluster-in-development; MSTIC additionally clusters the broader mid-2025→mid-2026 Salesforce OAuth-abuse campaign set under "overlapping tradecraft commonly associated with ShinyHunters" — a **hedged, tradecraft-level** clustering, not an identity attribution (hedge preserved verbatim; do not paraphrase it into a lineage claim). The finding's SAT-ACH left three relationship hypotheses tied at zero inconsistencies — H1 (Storm-3138 a distinct Microsoft-tracked cluster), H3 (Storm-3138 == Icarus, the "merge") and H5 (ShinyHunters-affiliate composite) — and could not distinguish them. The standing open question of whether Icarus is a distinct actor (KAC-A1) therefore **remains unresolved**: a second A-grade vendor applying its own label is not resolution. This is a data-point addition only; the threat-box scoring is **unchanged**.
+
 **Hard Rule 2 — no cross-walk.** The observed TTP pattern (data theft + extortion + OAuth-token abuse via third-party SaaS) resembles that of ShinyHunters and UNC6395 (and, more loosely, Scattered Spider / UNC3944). Archimedes preserves Icarus as a distinct identity and does **not** originate any attribution linking it to those actors. See Connection Web for pattern-adjacent, non-attributed comparisons only.
 
 ---
@@ -63,7 +65,7 @@ Icarus is a financially-motivated extortion group that surfaced in a single docu
 
 | Campaign | Year | Description |
 |---|---|---|
-| Klue / Salesforce supply-chain compromise | 2026 | Compromise of Klue Inc. (2026-06-11) via a legacy credential tied to an integration service; OAuth tokens for downstream customer Salesforce instances harvested; Huntress and Recorded Future named as victims; extortion demands reached Huntress employees 2026-06-16; Salesforce disabled the Klue Battlecards app integration 2026-06-17. Per Huntress via THN. |
+| Klue / Salesforce supply-chain compromise | 2026 | Compromise of Klue Inc. (2026-06-11) via a legacy credential tied to an integration service; OAuth tokens for downstream customer Salesforce instances harvested; Huntress and Recorded Future named as victims; extortion demands reached Huntress employees 2026-06-16; Salesforce disabled the Klue Battlecards app integration 2026-06-17. Per Huntress via THN. Microsoft/MSTIC labels this same incident **Storm-3138** (parallel vendor label, not a confirmed merge — see Overview cross-vendor labeling note). |
 
 ---
 
@@ -154,6 +156,8 @@ The `related_actors` frontmatter array is intentionally empty — no confirmed r
 ## References
 
 - [finding-2026-06-19-0003 — Klue/Salesforce supply-chain compromise; Icarus extortion group](../../findings/finding-2026-06-19-0003-klue-salesforce-supply-chain-compromise-icarus-extortion-group-huntress-recorded-future-named-victims-oauth-token-abuse-net-new-actor-candidate.md) (Archimedes finding; source of record for this dossier)
+- [finding-2026-07-14-0001 — MSTIC labels the June-2026 Klue incident Storm-3138; ShinyHunters-associated OAuth-abuse campaign set](../../findings/finding-2026-07-14-0001-mstic-shinyhunters-oauth-storm3138-klue-salesforce-supply-chain-a2-likely.md) (Archimedes finding, A2; source of the 2026-07-14 cross-vendor labeling data point — parallel Storm-3138 label, no merge)
+- Microsoft Threat Intelligence (MSTIC), "Defending SaaS-based applications against ShinyHunters OAuth abuse," 2026-07-13 — https://www.microsoft.com/en-us/security/blog/2026/07/13/defending-saas-based-applications-against-shinyhunters-oauth-abuse/ (names Storm-3138 for the June-2026 Klue compromise; ShinyHunters clustering is hedged tradecraft, not identity)
 - SecurityWeek (Ionut Arghire), "Cybersecurity Firms Impacted by Klue Supply Chain Attack," 2026-06-19 — https://www.securityweek.com/cybersecurity-firms-impacted-by-klue-supply-chain-attack/
 - The Hacker News (Ravie Lakshmanan), "Salesforce Disables Klue App Integration After OAuth Token Abuse Exposes Customer Data," 2026-06-19 — https://thehackernews.com/2026/06/salesforce-disables-klue-app.html
 - Huntress — IR-vendor primary on Icarus attribution and named-victim self-disclosure (primary publication not retrieved at time of tracking; cited via publisher relay).
@@ -163,3 +167,5 @@ The `related_actors` frontmatter array is intentionally empty — no confirmed r
 ---
 
 *Created 2026-07-06 via `/new-actor Icarus` (operator Ryan). First-pass dossier from finding-2026-06-19-0003. Single-IR-vendor (Huntress) attribution; admiralty B2, WEP likely on actor-identity layer.*
+
+*Updated 2026-07-14 (dossier_version 2) — cross-vendor labeling data point added per finding-2026-07-14-0001: MSTIC labels the same Klue June-2026 incident **Storm-3138** (parallel vendor label, NOT a confirmed same-actor merge; not recorded as an alias). Data-point addition only — no rescore, threat-box unchanged, KAC-A1 distinctness question still open, 90-day review clock not reset (last_reviewed / next_review_due unchanged, per Mode 3 data-point-edit procedure).*

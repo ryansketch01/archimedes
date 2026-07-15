@@ -1,0 +1,359 @@
+actor_id: "029"
+actor_name: "Pioneer Kitten"
+target_profile: "ad-prime-v1"
+scored_at: "2026-07-14"
+scored_by: "actor-profiler"
+reviewed_by: auto-committed          # MEDIUM overall (weighted 5.5) — auto-commit with notification; Hard Rule 5 gate did NOT fire
+scoring_version: 1
+
+scores:
+  espionage:
+    intent:
+      score: 4
+      label: ideology-association
+      willingness_modifier: 0
+      evidence: |
+        Pioneer Kitten is an IRGC-aligned state-nexus actor whose state-intelligence
+        track conducts high-volume network intrusions against US and allied targets
+        "consistent with Iranian state intelligence objectives" (AA24-241A). This is
+        ideologically/strategically-driven anti-Western state targeting — the
+        Ideology-Association basis. The evidence-minimum for Intent=4 (1 A-grade
+        source) is met by AA24-241A (FBI/CISA/DC3), which names "defense" among the
+        US victim sectors, corroborated by CrowdStrike's IRGC-alignment framing and
+        MITRE G0117's "suspected nexus to the Iranian government."
+        Intent is NOT elevated to 5 (Target-Specific): NO A-grade source in the
+        reporting reviewed for this build names a specific US A&D prime / DIB
+        contractor victim. AA24-241A and MITRE name the "defense" SECTOR generically;
+        Dragos names the "aerospace" SECTOR. Per the evidence-minimum table, Intent=5
+        requires an A-grade source documenting targeting of the ad-prime-v1 SPECIFIC
+        profile — sector-list attribution does not clear that bar. A&D relevance is
+        STRUCTURAL/SECTOR-LEVEL. Directly parallels roster precedent: Handala (#014)
+        and CyberAv3ngers (#028) both held at Ideology=4 on sector-only A&D relevance.
+      sources: [cisa-fbi-dc3-aa24-241a-2024-08, mitre-g0117-vendor-cluster-2024, dragos-parisite]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC-linked — active US sanctions regime and sustained hostilities; no diplomatic constraints on cyber operations against US/Western targets."
+    capability:
+      score: 5
+      label: significant
+      novelty_modifier: 1
+      evidence: |
+        Multi-year, multi-source-documented espionage capability with active use
+        inside 24 months. AA24-241A (A-grade US-gov) documents sustained state-
+        intelligence intrusion operations; FortiGuard IR independently documents a
+        ~2-year Middle East CNI espionage intrusion (May 2023 into early 2025,
+        initial-access traces to 2021) deploying a novel custom backdoor arsenal
+        (HanifNet, HXLibrary, NeoExpressRAT); Dragos documents access/recon
+        operations; MITRE G0117 curates the cluster. Multiple A-grade sources AND
+        documented active use within 24 months meets Cap=5 (Significant).
+        Semi-custom novelty (-1) reduces final Capability to 4.
+      sources: [cisa-fbi-dc3-aa24-241a-2024-08, fortiguard-lemon-sandstorm-cni-2025-05, dragos-parisite, mitre-g0117-vendor-cluster-2024]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Blended toolkit: the CNI campaign deployed novel custom backdoors (HanifNet/HXLibrary/NeoExpressRAT — now identified/reverse-engineered by FortiGuard), but the actor's signature access phase relies on PUBLIC edge-device CVEs, China Chopper, and commodity tunnelers (ngrok/Havoc/Ligolo) for which defenders have signatures. -1 semi-custom is the honest defensive-difficulty call, weighted across the identified custom backdoors and the commodity access toolkit."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "First-party Splunk sweep 2026-07-14: 0 hits over -90d across archimedes + defenseclaw_local on the full CVE/alias/persona set. Both indices live (archimedes 1725 events, defenseclaw_local 6 events / -90d). Visibility-bounded null — Frank is not a Pioneer Kitten victim env. No bonus."
+    final_intent: 4
+    final_capability: 4
+    composite: 8
+    threat_level: HIGH
+    ioc_bonus_applied: 0
+
+  supply_chain:
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        Pioneer Kitten's MO is DIRECT edge-device compromise of end victims, then
+        monetization of that access — not a classic supply-chain pivot (no compromised
+        vendor build/update pushing malware downstream, no documented compromise of a
+        supplier to reach a downstream A&D victim). The access-broker/ransomware-
+        affiliate handoff IS a "supply chain of access," but that dimension is scored
+        primarily under cyber-crime and disruptive. For the supply_chain category as
+        defined (reaching us THROUGH our suppliers/shared software), no A-grade source
+        documents an A&D-supplier-directed campaign. Intent held at 2 (Regional
+        Association) — broad US/Western targeting, no supplier-pivot to a downstream
+        A&D prime documented.
+      sources: [cisa-fbi-dc3-aa24-241a-2024-08, mitre-g0117-vendor-cluster-2024]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC-linked — no diplomatic constraints."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        The broad edge-device exploitation capability means the actor COULD compromise
+        a Tier-1/2 supplier's perimeter and broker that access — feasibility is clear —
+        but no A-grade source documents a COMPLETED supply-chain compromise reaching a
+        downstream A&D victim. Cap=2 (Possible), reduced to 1 by semi-custom novelty.
+      sources: [cisa-fbi-dc3-aa24-241a-2024-08]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Same identified edge-exploitation + commodity access toolkit — -1 semi-custom."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 2
+    final_capability: 1
+    composite: 3
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  destructive:
+    intent:
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        FortiGuard IR (A-grade) assesses that during the ~2-year Middle East CNI
+        intrusion the attackers "may have been positioning themselves to carry out a
+        future destructive attack" — a documented but HEDGED destructive-prepositioning
+        signal against a critical-infrastructure entity. This is a real, A-grade-sourced
+        destructive-intent indicator at the SECTOR/critical-infrastructure level
+        (Intent=3), NOT a regional afterthought (2) and NOT confirmed ideological
+        tasking against a specific target (which would need harder evidence). Per Hard
+        Rule 2 the hedge is preserved — this is SUSPECTED/ASSESSED intent, not confirmed
+        destructive tasking. The prepositioning was observed against Middle East CNI,
+        not a US A&D prime; scored at Sector Association reflecting the documented
+        CNI-prepositioning pattern that structurally extends to the OT/critical-infra
+        footprint an A&D prime runs.
+      sources: [fortiguard-lemon-sandstorm-cni-2025-05]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC-linked — no diplomatic constraints on destructive/prepositioning operations against Western-aligned critical infrastructure."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        No CONFIRMED destructive/wiper event is documented against Pioneer Kitten in
+        any A-grade source reviewed for this build. FortiGuard reports SUSPECTED
+        prepositioning only ("may have been positioning"); Dragos explicitly states
+        PARISITE "does not appear to have an ICS-specific disruptive or destructive
+        capability." The historical Pay2Key (2020) was extortion/hack-and-leak, not a
+        wiper. Deep, persistent network access provides the FEASIBILITY of a destructive
+        effect, but demonstrated destructive capability is absent. Cap=2 (Possible),
+        reduced to 1 by semi-custom novelty. This deliberately does NOT harden the
+        FortiGuard hedge into a confirmed capability (Hard Rule 2); it also records the
+        Dragos "no observed destructive capability" counter-assessment as the tension.
+      sources: [fortiguard-lemon-sandstorm-cni-2025-05, dragos-parisite]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Any destructive potential would rest on the identified custom backdoors + persistent access — -1 semi-custom; no confirmed wiper tooling to assess."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 3
+    final_capability: 1
+    composite: 4
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  disruptive:
+    intent:
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        Pioneer Kitten's ransomware-enabler track predictably produces availability
+        denial: access is handed to affiliates (NoEscape, RansomHouse, ALPHV/BlackCat)
+        who encrypt victim environments (T1486), and the actor historically ran its own
+        Pay2Key ransomware (2020). AA24-241A (A-grade) names "defense" among the US
+        sectors hit by exactly this ransomware-enablement activity, meeting the Intent=3
+        (Sector Association) minimum. The CNI-prepositioning signal (FortiGuard) is also
+        disruption-capable. Intent held at 3, not 5 — no A&D prime named; the
+        availability impact is a downstream consequence of opportunistic access
+        monetization across US sectors.
+      sources: [cisa-fbi-dc3-aa24-241a-2024-08, mitre-g0117-vendor-cluster-2024]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC-linked — no diplomatic constraints; demonstrated willingness to enable disruptive encryption operations against US entities."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 1
+      evidence: |
+        Disruptive/availability impact is documented but the DIRECT encryption is
+        executed by ransomware affiliates, with Pioneer Kitten as the access enabler;
+        the actor's own direct disruptive campaign (Pay2Key, 2020) is dated. AA24-241A
+        documents the enablement model extensively but the demonstrated capability is
+        ENABLEMENT + one historical direct campaign, not a sustained record of
+        actor-run disruptive operations. Cap=3 (Limited — some evidence across a few
+        incidents), reduced to 2 by semi-custom novelty. Deliberately conservative to
+        avoid double-counting the ransomware model (its financial-extortion dimension
+        is scored under cyber-crime).
+      sources: [cisa-fbi-dc3-aa24-241a-2024-08, mitre-g0117-vendor-cluster-2024]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Blended: the affiliate ransomware (ALPHV/BlackCat, NoEscape, RansomHouse) is commodity RaaS, but the actor's access-generation capability that makes the disruption possible is semi-custom identified tooling. -1 semi-custom, weighted toward the specialized access capability."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 3
+    final_capability: 2
+    composite: 5
+    threat_level: MEDIUM
+    ioc_bonus_applied: 0
+
+  cyber_crime:
+    intent:
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        Pioneer Kitten's DISTINCTIVE feature (vs every other Iranian roster actor) is a
+        commercial financially-motivated track: it sells network access via the
+        Br0k3r/xplfinder persona and collaborates directly with ransomware affiliates
+        for a SHARE OF RANSOM PROCEEDS (AA24-241A). Per the methodology's ransomware
+        disambiguation, legitimate extortion for financial gain scores under Cyber-Crime.
+        AA24-241A documents the US "defense" sector among the victims of this exact
+        ransomware-enablement activity — an A-grade source placing the financial-crime
+        activity within the defense sector, meeting the Intent=3 (Sector Association)
+        minimum. Not elevated to 5: the financial motive is opportunistic monetization
+        of whatever access the actor obtains, and no A&D prime is named.
+      sources: [cisa-fbi-dc3-aa24-241a-2024-08, mitre-g0117-vendor-cluster-2024]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Iran / IRGC-linked criminal-freelancing track — no diplomatic constraints; the sanctions regime does not deter for-profit access-brokering."
+    capability:
+      score: 4
+      label: credible
+      novelty_modifier: 2
+      evidence: |
+        Well-documented commercial cyber-crime capability: the Br0k3r access-broker
+        marketplace operation, direct collaboration with THREE named ransomware
+        affiliate programs (NoEscape, RansomHouse, ALPHV/BlackCat) for ransom-proceeds
+        share, and the historical actor-operated Pay2Key ransomware (2020). AA24-241A is
+        a dedicated US-gov advisory documenting exactly this model with active use in
+        2024, corroborated by MITRE G0117. Cap=4 (Credible — one extensively documented
+        A-grade body plus corroboration). NOT Cap=5: the ransomware-enablement rests
+        substantially on the single AA24-241A originating primary. Commodity novelty
+        (-2) reduces final Capability to 2 — the affiliate ransomware (ALPHV/BlackCat,
+        NoEscape, RansomHouse RaaS) and public edge-exploits are off-the-shelf, and
+        defenders have strong signatures for them.
+      sources: [cisa-fbi-dc3-aa24-241a-2024-08, mitre-g0117-vendor-cluster-2024]
+    novelty:
+      modifier: 2
+      label: commodity
+      evidence: "The cyber-crime capability operates through commodity RaaS affiliate programs (ALPHV/BlackCat, NoEscape, RansomHouse) and public edge-device exploits — generally-available tooling with mature detection signatures. -2 commodity."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits at time of scoring."
+    final_intent: 3
+    final_capability: 2
+    composite: 5
+    threat_level: MEDIUM
+    ioc_bonus_applied: 0
+
+overall:
+  weighted_score: 5.5
+  weights_used:
+    espionage: 0.35
+    supply_chain: 0.20
+    destructive: 0.15
+    disruptive: 0.15
+    cyber_crime: 0.15
+  threat_level: MEDIUM
+  authority_level: actor-profiler-autonomous-with-notification
+  primary_threat_vector: espionage     # category HIGH (composite 8) — the top-scoring category driving the overall
+
+confidence:
+  admiralty: A2
+  notes: >
+    SINGLE originating US-gov primary on the load-bearing attribution + ransomware-
+    enablement layer (FBI/CISA/DC3 AA24-241A); all the news relays (THN/SOC Prime/
+    SOCRadar/Tenable) trace to that one CSA and are NOT independent corroboration of
+    it. The VENDOR alias cluster (MITRE G0117 curated + Dragos PARISITE direct primary
+    + CrowdStrike + Microsoft) provides genuine INDEPENDENT attribution corroboration
+    on IDENTITY (the Fox Kitten/UNC757/Parisite/RUBIDIUM/Lemon Sandstorm equivalence),
+    and FortiGuard IR is an independent second body documenting the recent CNI campaign
+    + novel arsenal + suspected prepositioning. Net: identity attribution is well-
+    corroborated across bodies (A1-shaped); the ransomware-affiliate specifics and the
+    network IOC appendix rest on the single AA24-241A primary (which was reconstructed
+    via relays this build and is pending direct retrieval), and FortiGuard is a first-
+    corpus-surface provisional-A source pending human ratification. Overall confidence
+    graded A2 to reflect the pending-direct-retrieval state of the two originating
+    primaries and the single-primary basis of the ransomware-enablement/IOC layer.
+    SINGLE-SOURCE DISCIPLINE: no single-source VETO applied to the CORE facts, because
+    the identity cluster and the espionage/edge-exploitation capability are corroborated
+    across multiple independent bodies (US-gov + MITRE + Dragos + FortiGuard). The
+    single-primary caveat is applied specifically to (a) the ransomware-affiliate
+    collaboration detail and (b) the network IOC appendix — both AA24-241A-only and
+    pending direct retrieval.
+    WEIGHTING NOTE: the overall MEDIUM (5.5) is driven by an espionage category HIGH
+    (composite 8) AMPLIFIED by an unusually broad non-floor profile — disruptive (5),
+    cyber-crime (5), destructive (4) are all non-floor because of the dual-track
+    access-broker/ransomware-enabler model and the CNI-prepositioning signal. This
+    VERSATILITY (breadth across four categories), not any single ceiling score, is what
+    lifts Pioneer Kitten to parity with the top of the Iranian MEDIUM cluster. It
+    calibrates at Peach Sandstorm (#027, 5.5) — reached by a different path: Peach is
+    Intent=5 Target-Specific espionage-dominant (composite 9) with floors elsewhere,
+    whereas Pioneer Kitten is Intent=4 Ideology espionage (composite 8, capped because
+    no A&D prime named) but broader. Above UNC1549 (5.4), APT34 (4.9), and the Iranian
+    LOW cluster (Charming Kitten 4.45, CyberAv3ngers 4.2, MuddyWater 4.15, Cavern
+    Manticore 3.25). Pioneer Kitten is the ONLY roster Iranian actor with a genuine
+    cyber-crime/ransomware-enablement dimension (composite 5).
+    LIFT PATHS: (1) a named US A&D-prime / DIB victim in an A-grade source would lift
+    espionage Intent toward Target-Specific (5) and could move the overall toward HIGH;
+    (2) a CONFIRMED destructive/wiper event (vs the current suspected prepositioning)
+    would lift Destructive Capability; (3) any first-party Splunk observation of the
+    pending IOC appendix would fire an immediate review + FLASH sweep and could apply
+    the +1 IOC-corroboration bonus.
+
+hard_rule_notes:
+  rule_2: >
+    NO Archimedes-originated attribution. GOI-linkage (AA24-241A) kept DISTINCT from
+    the crisper IRGC-alignment (CrowdStrike/industry), MITRE "suspected nexus," and
+    Dragos's deliberate NON-attribution — the confidence-language spread is preserved,
+    NOT hardened to "IRGC-directed." The alias cluster (Fox Kitten/UNC757/Parisite/
+    RUBIDIUM/Lemon Sandstorm) is the VENDORS'/MITRE's mapping, recorded as such.
+    EXPLICIT NON-MERGES: (a) Aria Sepehr Ayandehsazan (ASA) = Emennet Pasargad rename
+    = Cotton Sandstorm front is a SEPARATE actor, NOT a Pioneer Kitten front and NOT
+    folded (only Danesh Novin Sahand is the Pioneer Kitten front); (b) ransomware
+    affiliates NoEscape/RansomHouse/ALPHV-BlackCat are collaborators/customers, NOT
+    Pioneer Kitten identities. related_actors [004,027,011,028,022,023] are Iranian-
+    nexus PEERS for analytic context, NOT merges. FortiGuard's "tradecraft overlaps
+    with" attribution hedge and "may have been positioning" destructive-intent hedge
+    are both preserved.
+  rule_3: "All 10 exploited CVEs referenced by ID/product only. No exploitation mechanism, PoC, or exploit steps. Defensive framing throughout. All are vuln-tracker handoff candidates (four flagged headline-relevance)."
+  rule_5: "Did NOT fire — overall MEDIUM (weighted 5.5). Auto-commit with #actor-review notification (MEDIUM authority). Per-category espionage is HIGH (composite 8) but the gate keys on the weighted OVERALL, which is MEDIUM. No /approve-scoring required."
+  rule_7: "No credentials surfaced or stored. The Br0k3r/xplfinder persona handles are actor-attribution context, not victim credentials. Front-company registration ID (14007585836) is public-record attribution detail, not a secret."
+  rule_8: "Splunk first-party sweep 2026-07-14: 0 hits over -90d, both indices live (archimedes 1725, defenseclaw_local 6 events), visibility-bounded null, no IOC bonus applied."
+
+review_policy:
+  interval_days: 90
+  last_reviewed: "2026-07-14"
+  next_review_due: "2026-10-12"
+  review_triggers:
+    - new_attribution_from_a_source
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation
+    - named_ad_prime_or_dib_victim               # would lift espionage Intent toward Target-Specific
+    - confirmed_destructive_or_wiper_event        # would lift Destructive Capability (vs current suspected prepositioning)
+    - aa24_241a_or_fortiguard_ioc_appendix_retrieved   # loads pending network IOCs; re-run Splunk sweep
+
+status: scored
+
+history:
+  - scored_at: "2026-07-14"
+    scorer: archimedes-actor-profiler
+    change: "initial — /new-actor Pioneer Kitten (operator Ryan); net-new roster actor #029. Weighted 5.5 MEDIUM; espionage category HIGH (composite 8, primary_threat_vector), disruptive MEDIUM (5), cyber-crime MEDIUM (5), destructive LOW-but-non-floor (4), supply-chain LOW (3). Intent held at Ideology=4 on espionage — no A&D prime named, A&D relevance sector-level (parallels Handala #014, CyberAv3ngers #028). Single originating US-gov primary (AA24-241A) on ransomware-enablement + IOC appendix (pending direct retrieval); vendor cluster (MITRE/Dragos/CrowdStrike/Microsoft) + FortiGuard provide independent identity + capability corroboration; confidence A2. Splunk 0 hits -90d (visibility-bounded null). Hard Rule 5 gate did NOT fire; auto-committed with #actor-review notification."

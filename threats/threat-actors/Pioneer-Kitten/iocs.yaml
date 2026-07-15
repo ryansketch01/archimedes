@@ -1,0 +1,206 @@
+actor_id: "029"
+actor_name: Pioneer Kitten
+last_updated: 2026-07-14
+admiralty_grade: A2
+tlp: CLEAR
+source_of_record: iocs.md
+
+# NOTE: This dossier's atomic network-IOC layer is INCOMPLETE by design.
+# The AA24-241A network-indicator appendix (IPs/domains/hashes/email accounts)
+# and the FortiGuard backdoor hashes/C2 were NOT cleanly retrieved this build
+# (CISA page 403 WAF; IC3 PDF rendered corrupted; FortiGuard PDF not rendered).
+# They are recorded below as pending_direct_retrieval. Do NOT fabricate values.
+# Only CVEs (by ID, Hard Rule 3), persona handles, and the front-company
+# attribution note are folded as confirmed indicators this pass.
+
+ttl:
+  network_infrastructure: 90
+  file_hashes: 730
+  registry: never
+  vulnerabilities: never
+
+indicators:
+  # --- CVEs (Hard Rule 3: IDs only). Cross-corroborated across AA24-241A relays + MITRE G0117 + FortiGuard. ---
+  - id: pioneer-cve-2024-24919
+    type: cve
+    value: CVE-2024-24919
+    product: "Check Point Security Gateway"
+    description: "Information-disclosure — headline 2024 CVE in AA24-241A. NOTE: some relays mislabel as F5 BIG-IP; NVD confirms Check Point."
+    status: exploited
+    role: initial-access
+    first_seen: 2024
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+    vuln_tracker_handoff: true
+
+  - id: pioneer-cve-2024-3400
+    type: cve
+    value: CVE-2024-3400
+    product: "Palo Alto Networks PAN-OS GlobalProtect"
+    description: "Command-injection / RCE used for initial access."
+    status: exploited
+    role: initial-access
+    first_seen: 2024
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+    vuln_tracker_handoff: true
+
+  - id: pioneer-cve-2023-3519
+    type: cve
+    value: CVE-2023-3519
+    product: "Citrix NetScaler ADC / Gateway"
+    description: "Unauthenticated RCE."
+    status: exploited
+    role: initial-access
+    first_seen: 2023
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+    vuln_tracker_handoff: true
+
+  - id: pioneer-cve-2019-19781
+    type: cve
+    value: CVE-2019-19781
+    product: "Citrix ADC / Gateway (NetScaler)"
+    description: "Directory-traversal RCE — long-running Pioneer Kitten access vector since 2019."
+    status: exploited
+    role: initial-access
+    first_seen: 2019
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+
+  - id: pioneer-cve-2019-11510
+    type: cve
+    value: CVE-2019-11510
+    product: "Pulse Secure / Ivanti Connect Secure"
+    description: "Arbitrary file read — recurs across Pioneer Kitten campaigns (AA24-241A AND FortiGuard CNI campaign)."
+    status: exploited
+    role: initial-access
+    first_seen: 2019
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A); Lemon Sandstorm CNI intrusion (FortiGuard)"
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+
+  - id: pioneer-cve-2020-5902
+    type: cve
+    value: CVE-2020-5902
+    product: "F5 BIG-IP TMUI"
+    description: "Remote code execution."
+    status: exploited
+    role: initial-access
+    first_seen: 2020
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+
+  - id: pioneer-cve-2022-1388
+    type: cve
+    value: CVE-2022-1388
+    product: "F5 BIG-IP iControl REST"
+    description: "Authentication bypass."
+    status: exploited
+    role: initial-access
+    first_seen: 2022
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+
+  - id: pioneer-cve-2018-13379
+    type: cve
+    value: CVE-2018-13379
+    product: "Fortinet FortiOS SSL VPN"
+    description: "Path-traversal used for initial access in the Lemon Sandstorm CNI campaign."
+    status: exploited
+    role: initial-access
+    first_seen: 2021
+    related_campaign: "Lemon Sandstorm Middle East CNI intrusion (FortiGuard, 2023-2025)"
+    related_malware: [HanifNet, HXLibrary, NeoExpressRAT, Havoc]
+    source_brief: fortiguard-lemon-sandstorm-cni-2025-05
+    vuln_tracker_handoff: true
+
+  - id: pioneer-cve-2019-1579
+    type: cve
+    value: CVE-2019-1579
+    product: "Palo Alto Networks GlobalProtect SSL VPN"
+    description: "Remote code execution — Lemon Sandstorm CNI campaign."
+    status: exploited
+    role: initial-access
+    first_seen: 2021
+    related_campaign: "Lemon Sandstorm Middle East CNI intrusion (FortiGuard, 2023-2025)"
+    source_brief: fortiguard-lemon-sandstorm-cni-2025-05
+
+  # --- Persona handles (attribution/hunt context, type=other — NOT network IOCs). ---
+  - id: pioneer-persona-br0k3r
+    type: other
+    type_detail: actor_persona_handle
+    value: "Br0k3r"
+    description: "Self-identified access-broker persona through which Pioneer Kitten sells network access on underground marketplaces (AA24-241A). KeyBase / Twitter channels referenced per SOCRadar relay."
+    role: attribution_context
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+
+  - id: pioneer-persona-xplfinder
+    type: other
+    type_detail: actor_persona_handle
+    value: "xplfinder"
+    description: "2024 marketplace handle used by the Br0k3r persona. Any xplfinder[.]* domain infra pending direct retrieval of the AA24-241A appendix."
+    role: attribution_context
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+
+  # --- Front-company attribution note (NOT a network IOC). ---
+  - id: pioneer-frontco-danesh-novin-sahand
+    type: note
+    value: "Front company: Danesh Novin Sahand (Iranian IT company, company ID 14007585836), assessed 'likely' a cover entity for Pioneer Kitten per AA24-241A. Recorded as attribution context. DISTINCT from Aria Sepehr Ayandehsazan (ASA) = Emennet Pasargad rename = Cotton Sandstorm front — NOT Pioneer Kitten (Hard Rule 2 non-merge)."
+    role: attribution_context
+    source_brief: cisa-fbi-dc3-aa24-241a-2024-08
+
+  # --- PENDING network IOC appendices (values NOT retrieved — do NOT fabricate). ---
+  - id: pioneer-pending-aa24241a-appendix
+    type: note
+    value: "AA24-241A ships a network-IOC appendix (IPs, domains, hashes, email accounts). NOT cleanly retrievable this build — CISA-hosted page 403s (WAF); IC3 PDF mirror rendered as corrupted binary; the three relay articles reproduce CVEs/personas/tools but NOT the atomic network indicators. Network IOC VALUES held PENDING DIRECT RETRIEVAL. Candidate broker-infra domain gupdate.net was swept in Splunk but is NOT confirmed as a folded IOC this pass."
+    role: pending_retrieval
+
+  - id: pioneer-pending-fortiguard-appendix
+    type: note
+    value: "FortiGuard Lemon Sandstorm report ships an IOC appendix (HanifNet / HXLibrary / NeoExpressRAT / Havoc hashes + C2 IPs/domains). NOT retrieved this build (search-summary only). Backdoor family names recorded as tooling in profile.md; hashes + C2 VALUES held PENDING DIRECT RETRIEVAL of the FortiGuard report PDF."
+    role: pending_retrieval
+
+  # --- First-party Splunk baseline. ---
+  - id: pioneer-splunk-baseline
+    type: note
+    value: "FIRST-PARTY SPLUNK BASELINE (Mode 4, Hard Rule 8): -90d sweep across archimedes + defenseclaw_local for the full Pioneer Kitten indicator/alias/CVE/persona set (10 CVEs + aliases Pioneer/Fox Kitten, UNC757, Lemon Sandstorm + Br0k3r/xplfinder + candidate domain gupdate.net) = 0 hits. Index liveness control: archimedes 1725 events, defenseclaw_local 6 events over -90d (both live). Visibility-bounded null — NO corroboration, NO bonus. Frank not a Pioneer Kitten victim env."
+    role: first_party_splunk_baseline
+
+hunt_queries:
+  - id: pioneer-hunt-edge-cve-exploit
+    platform: splunk
+    title: "Pioneer Kitten edge/VPN CVE exploitation attempts"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=citrix* OR sourcetype=pan* OR sourcetype=fortinet*
+        OR sourcetype=ivanti* OR sourcetype=pulse* OR sourcetype=f5* OR sourcetype=checkpoint*)
+      | search ("CVE-2024-24919" OR "CVE-2024-3400" OR "CVE-2023-3519" OR "CVE-2019-19781"
+        OR "CVE-2019-11510" OR "CVE-2020-5902" OR "CVE-2022-1388" OR "CVE-2018-13379"
+        OR "CVE-2019-1579")
+      | stats count by src_ip, dest, sourcetype
+      # FP note: legitimate vuln scanners will also match CVE strings — correlate
+      # with successful-exploit indicators (web-shell writes, anomalous auth) before escalating.
+
+  - id: pioneer-hunt-tunneler-remote-access
+    platform: edr
+    title: "Unauthorized tunneling / remote-access utilities on or behind edge devices"
+    query_type: pseudo-kql
+    query: |
+      DeviceProcessEvents
+      | where FileName has_any ("ngrok.exe","ligolo.exe","frpc.exe","chisel.exe",
+          "reversesocks5.exe","anydesk.exe","meshagent.exe","tvnserver.exe","plink.exe")
+      | where InitiatingProcessFolderPath has_any ("\\inetpub\\","\\netscaler\\","\\tmp\\","\\temp\\")
+      // FP note: AnyDesk/TightVNC may be sanctioned IT tools — exclude approved deployments.
+      // Maps to T1572 (Protocol Tunneling) / T1219 (Remote Access Software).
+
+  - id: pioneer-hunt-masquerading-scheduled-tasks
+    platform: edr
+    title: "Scheduled tasks masquerading as legitimate system jobs (FortiGuard persistence pattern)"
+    query_type: pseudo-kql
+    query: |
+      DeviceEvents
+      | where ActionType == "ScheduledTaskCreated"
+      | where TaskName has_any ("Update","Microsoft","System","Windows")
+        and InitiatingProcessAccountName != "SYSTEM"
+      // FP note: baseline legitimate task creation first; alert on tasks pointing to
+      // unsigned binaries in temp/web dirs. Maps to T1053.005 (HanifNet/HXLibrary/NeoExpressRAT).

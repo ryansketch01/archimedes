@@ -6,8 +6,8 @@
 # To add a new standing section, add an entry below. To disable one, set
 # `active: false` rather than deleting — preserves history.
 
-version: 2
-last_updated: 2026-07-15   # v2: +vuln_watch_keywords entry nightmare-eclipse-legacyhive-2026-07-15 (VT-042; queued for next scheduled brief as monitoring item + standing CVE/KEV/ITW watch)
+version: 3
+last_updated: 2026-07-15   # v3: +vuln_watch_keywords entry oracle-ebs-cve-2026-46817-2026-07-15 (VT-043; held-FLASH state-change queued for next scheduled brief as an UPDATE item + standing KEV-deadline/exploitation/attribution watch). v2: +vuln_watch_keywords entry nightmare-eclipse-legacyhive-2026-07-15 (VT-042; queued for next scheduled brief as monitoring item + standing CVE/KEV/ITW watch)
 
 # ============================================================================
 # Vuln-watch keywords
@@ -118,6 +118,58 @@ vuln_watch_keywords:
       (2026-07-16 morning) brief as a MONITORING item — NOT a FLASH (no substantive
       trigger). Same vendor-silent / CVE-pending monitoring pattern as the gogs and
       ServiceNow entries above. Resurface as UPDATE: on any monitor_for lift condition.
+    active: true
+
+  - id: oracle-ebs-cve-2026-46817-2026-07-15
+    keywords:
+      - "CVE-2026-46817"
+      - "Oracle E-Business Suite"
+      - "Oracle EBS"
+      - "Oracle Payments"
+      - "File Transmission"
+      - "/OA_HTML/ibytransmit"
+      - "EBS 12.2"
+    first_citation_finding: finding-2026-07-15-flash-1800-0001-cisa-kev-oracle-ebs-cve-2026-46817-payments-unauth-takeover-actively-exploited-3day-deadline-a2-likely-single-source-veto
+    first_citation_brief: pending_2026-07-16-morning   # QUEUED — held FLASH, not yet briefed; briefer to first-cite as an UPDATE item
+    added_at: 2026-07-15T18:50:00-04:00
+    brief_inclusion: queued_next_scheduled_as_update   # inclusion flag on the finding: daily_brief_action. HELD FLASH absorbed into next scheduled brief per anti-noise rule 1.
+    held_flash:
+      swept: flash-sweep-1800-2026-07-15
+      trigger: critical-cve-exploited            # Trigger 1
+      digraph: A2
+      wep: likely                                 # clears B2 FLASH min
+      disposition: held_absorb_next_brief
+      posted_to_discord: false
+      rationale: >
+        ~3-week-old exploitation (first ITW ~2026-06-27), no attribution, no named A&D victim,
+        already an in-corpus state change (carried at no-ITW in finding-2026-05-29-0003), and the
+        next scheduled window is ~14h out with slack before the 2026-07-18 KEV deadline. Consistent
+        with the SharePoint 3-day-KEV precedent (routed to a scheduled brief, not a FLASH).
+    monitor_for:
+      - mandiant_gtig_direct_retrieval_lifting_exploitation_toward_confirmed
+      - atomic_network_iocs_specific_to_cve_2026_46817_published   # none as of queue time (only CVE id + ibytransmit behavioral observable)
+      - actor_attribution_surfacing_from_a_or_b_grade_source        # currently UNKNOWN (Hard Rule 2)
+      - cisa_kev_ransomware_campaign_use_flipping_from_unknown
+      - kev_due_date_2026_07_18_passing_without_federal_remediation
+      - named_ad_or_dib_prime_victim_disclosure
+    kev_due_date: 2026-07-18                       # accelerated ~3-day BOD 26-04 deadline
+    dossier: threats/vulnerabilities/CVE-2026-46817/profile.md   # scaffolded this run (VT-043) — profile.md + tracking.yaml + iocs.yaml
+    notes: |
+      Oracle E-Business Suite / Oracle Payments (File Transmission) unauthenticated takeover,
+      CVE-2026-46817, CVSS 9.8, EBS 12.2.3-12.2.15. n-day (patched Oracle May 2026 CPU) but
+      ACTIVELY EXPLOITED — first ITW ~2026-06-27 against EBS decoys (pre-PoC); CISA KEV
+      2026-07-15 (dateAdded verbatim, due 2026-07-18 accelerated ~3-day). Graded A2 / WEP
+      likely (single-source veto on the exploitation claim: only CISA KEV directly retrieved;
+      Mandiant/GTIG A-grade exploitation basis NOT retrieved this sweep — B relays aggregate
+      the same upstream research, not independent). STATE CHANGE + COVERAGE-GAP CLOSURE:
+      carried at no-ITW in finding-2026-05-29-0003 (Oracle May 2026 CPU batch) but never
+      indexed, so the collector treated the KEV add as net-new. HELD FLASH (Trigger 1
+      critical-cve-exploited fired) absorbed into the next scheduled (2026-07-16 morning) brief
+      as an UPDATE per anti-noise rule 1 — NOT posted to #flash-alerts. CONFLATION GUARD: the
+      Mandiant/GTIG "Oracle EBS zero-day" reporting is about CVE-2025-61882 (2025 CL0P campaign),
+      a DIFFERENT CVE — its IOCs deliberately excluded (see CVE-2026-46817/iocs.yaml
+      benign_filtered). No actor attributed (Hard Rule 2). No PoC mirrored (Hard Rule 3).
+      Resurface as UPDATE: on any monitor_for lift condition.
     active: true
 
 standing_sections:

@@ -6,8 +6,8 @@
 # To add a new standing section, add an entry below. To disable one, set
 # `active: false` rather than deleting — preserves history.
 
-version: 1
-last_updated: 2026-06-10
+version: 2
+last_updated: 2026-07-15   # v2: +vuln_watch_keywords entry nightmare-eclipse-legacyhive-2026-07-15 (VT-042; queued for next scheduled brief as monitoring item + standing CVE/KEV/ITW watch)
 
 # ============================================================================
 # Vuln-watch keywords
@@ -77,6 +77,47 @@ vuln_watch_keywords:
       per THN). Pattern observation parallel to gogs-argument-injection-
       2026-05-28: vendor-disclosed-with-CVE-pending → monitor for CVE
       assignment in defined window → CISA KEV addition pathway expected.
+    active: true
+
+  - id: nightmare-eclipse-legacyhive-2026-07-15
+    keywords:
+      - "LegacyHive"
+      - "Nightmare Eclipse"
+      - "Chaotic Eclipse"
+      - "Dead Eclipse"
+      - "deadeclipse666"
+      - "MSNightmare"
+      - "User Profile Service"
+      - "profsvc"
+      - "arbitrary hive load"
+      - "projectnightcrawler"
+    first_citation_finding: finding-2026-07-15-0002-nightmare-eclipse-legacyhive-windows-profsvc-lpe-zero-day-no-cve-vendor-silent-b2-single-source-veto-monitoring
+    first_citation_brief: pending_2026-07-16-morning   # QUEUED — not yet briefed; briefer to first-cite as monitoring item
+    added_at: 2026-07-15T17:30:00-04:00
+    brief_inclusion: queued_next_scheduled_as_monitoring   # inclusion flags on the finding: daily_brief_action + daily_brief_monitoring
+    monitor_for:
+      - cve_assignment_nvd_or_mitre
+      - msrc_advisory_or_patch_referencing_user_profile_service_or_profsvc_hive_load
+      - cisa_kev_addition_once_cve_assigned
+      - independent_itw_confirmation_huntress_vectra_mandiant
+      - un_stripped_or_no_credentials_poc_variant_surfacing
+      - defender_memory_corruption_batch_or_bitskrieg_materializing_as_next_drop
+    expected_cve_assignment_window: unknown_msrc_silent_no_advisory   # no vendor acknowledgement at queue time
+    dossier: threats/vulnerabilities/LegacyHive/profile.md   # ALREADY scaffolded (VT-042) — not a handoff-pending
+    notes: |
+      Nightmare Eclipse 8th public drop (series reopened after 2026-07-09 RoguePlanet
+      closure). Windows User Profile Service (profsvc) arbitrary registry-hive-load LPE
+      zero-day via timed path-switch (TOCTOU): standard-user -> another user's/admin's
+      context. NO CVE, NO CVSS, UNPATCHED — MSRC contacted-and-silent -> CISA-KEV-
+      ineligible (no BOD 22-01 mandate). NO ITW. PoC public but deliberately stripped
+      (existence only, Hard Rule 3). Graded B2 headline, single-source veto (8+ outlets,
+      one originating evidence basis = researcher's own PoC + blog); severity claims
+      disputed by Matei Badanoiu. No actor attributed (Hard Rule 2 — persona self-claim).
+      A&D relevance HIGH (structural: ubiquitous Windows endpoint LPE = ransomware/
+      lateral-movement precursor); no named A&D victim. Queued for the next scheduled
+      (2026-07-16 morning) brief as a MONITORING item — NOT a FLASH (no substantive
+      trigger). Same vendor-silent / CVE-pending monitoring pattern as the gogs and
+      ServiceNow entries above. Resurface as UPDATE: on any monitor_for lift condition.
     active: true
 
 standing_sections:

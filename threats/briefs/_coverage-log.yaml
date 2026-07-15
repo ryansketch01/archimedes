@@ -42670,7 +42670,7 @@ entries:
       owns delivery/commit.
 
   - id: 2026-07-14-pm-001-microsoft-july-patch-tuesday-two-exploited-kev-zero-days-adfs-cve-2026-56155-sharepoint-cve-2026-56164-bitlocker-cve-2026-50661-disclosed-a2-lead-active-threats
-    covered_in: [2026-07-14-afternoon]
+    covered_in: [2026-07-14-afternoon, 2026-07-15-afternoon]
     brief_file: threats/briefs/2026-07-14-afternoon.md
     headline: "Microsoft July 2026 Patch Tuesday ships TWO actively-exploited KEV-listed zero-days — CVE-2026-56155 (ADFS elevation of privilege, local) + CVE-2026-56164 (SharePoint Server EoP, network) — added to CISA KEV v2026.07.14 the same day (BOD 22-01 deadlines). PLUS CVE-2026-50661 (BitLocker Security Feature Bypass, physical access) publicly disclosed but NOT reported exploited — distinct from June's VT-013 YELLOWKEY WinRE bypass. LEAD of the 07-14 afternoon cycle (co-lead with SonicWall KEV). Layered grade A2: procedural CVE/KEV/patch facts A1/almost-certain (CISA KEV directly retrieved + vendor authoritative); active-exploitation layer banded LIKELY per red-team (CISA KEV load-bearing attestation + Microsoft self-disclosure; media RELAY not independent confirmation — NOT triangulated multi-source; single-source veto on the exploitation ACT, DART-shared-upstream for -56155). A&D relevance STRUCTURAL only (ADFS/SharePoint/BitLocker ubiquitous DIB identity/collaboration/data-at-rest) — NO A&D targeting, NO actor attributed (Hard Rule 2; DART/Mandiant/Google Cloud named as discoverers only). Flaw-count conflict 570 (BleepingComputer) vs 622 (SecurityWeek) recorded, unreconciled."
     topic_tags:
@@ -42694,7 +42694,7 @@ entries:
     related_actors: []              # NONE. Hard Rule 2 — no attribution originated.
     related_vulns: [CVE-2026-56155, CVE-2026-56164, CVE-2026-50661]   # net-new; NOT in vulnerabilities/_index.yaml — vuln-tracker handoff pending (NVD CVSS + VT rows). BitLocker distinct from VT-013 YELLOWKEY.
     related_campaigns: []
-    finding_ids: [finding-2026-07-14-0004]
+    finding_ids: [finding-2026-07-14-0004, finding-2026-07-15-0001]   # finding-2026-07-15-0001 appended on 2026-07-15-afternoon UPDATE resurface (CISA patch-now advisory + 3-day KEV deadline)
     digraph: A2                     # layered: procedural facts A1; exploitation act likely (red-team qualified)
     wep: likely                     # exploitation-layer band after red-team (procedural facts almost_certain)
     red_team_review: qualify        # WEP very_likely -> likely on the exploitation layer; NOT publication-blocking
@@ -42723,8 +42723,21 @@ entries:
       - named_ad_or_dib_prime_victim_disclosed
       - bitlocker_cve_2026_50661_moves_to_exploited
       - cvss_enrichment_or_kev_ransomware_use_tag
+    resurface_2026_07_15:
+      brief: 2026-07-15-afternoon
+      finding: finding-2026-07-15-0001
+      reason: >
+        UPDATE resurface (material escalation) — CISA issued an explicit patch-now advisory over the
+        actively-exploited on-prem SharePoint cluster and CVE-2026-56164 now carries an ACCELERATED
+        3-day federal KEV remediation deadline (dateAdded 2026-07-14, due 2026-07-17, BOD 26-04),
+        confirmed via DIRECT CISA KEV feed retrieval (v2026.07.15) — resolves the prior 07-14/07-15
+        relay date discrepancy (correct dateAdded is 07-14; SecurityWeek's "07-15" was a relay error).
+        The base CVE-2026-56164 disclosure was NOT re-reported; only the escalation. The genuinely-NEW
+        cluster-expansion (CVE-2026-45659 past-due exploited zero-day, CVE-2026-32201/-55040/-58644) +
+        machine-key-persistence developments are logged as the distinct entry 2026-07-15-pm-001. Anchor
+        entry updated in place per anti-repetition (covered_in + last_covered bumped, finding_id appended).
     first_covered: 2026-07-14
-    last_covered: 2026-07-14
+    last_covered: 2026-07-15
     retraction: null
     test: false
 
@@ -43119,6 +43132,133 @@ entries:
       silent-day boilerplate omitted from Layer 2 per spec; natural-language dates; no digraph/WEP/finding-id
       in Layer 2; Hard Rule 2 framings preserved (generic attribution, "media only relay"); no themed voice.
       Pre-flight 13-of-13 PASS. Not posted to Discord by briefer — librarian owns delivery/commit.
+
+  - id: 2026-07-15-pm-001-cisa-patch-now-advisory-onprem-sharepoint-cluster-vt037-cve-2026-56164-3day-kev-deadline-plus-past-due-exploited-zero-day-cve-2026-45659-machine-key-theft-persistence-b2-likely-update
+    covered_in: [2026-07-15-afternoon]
+    brief_file: threats/briefs/2026-07-15-afternoon.md
+    headline: "UPDATE — CISA issued a patch-now advisory over the actively-exploited on-prem SharePoint cluster. Anchor CVE-2026-56164 (VT-037) now under an ACCELERATED 3-day federal KEV remediation deadline (dateAdded 2026-07-14, due 2026-07-17, BOD 26-04) — DIRECT CISA KEV feed retrieval (v2026.07.15) confirms + resolves the prior 07-14/07-15 relay date discrepancy (SecurityWeek '07-15' was a relay error). CLUSTER EXPANSION: a SECOND actively-exploited SharePoint zero-day, CVE-2026-45659 (VT-038, CWE-502 deserialization RCE, CVSS 8.8 HIGH, PR:L authenticated), directly KEV-confirmed dateAdded 2026-07-01 / due 2026-07-04 — ALREADY PAST-DUE. Post-exploitation characterized as RCE + IIS machine-key (ValidationKey/DecryptionKey) theft yielding forged-auth persistence surviving patching (2025 ToolShell pattern) — B3 relay-asserted, no atomic IOCs; defensive guidance patch-THEN-rotate-machine-keys farm-wide. Cluster context: CVE-2026-32201 (VT-039, 6.5 spoofing) relay-asserted-exploited but NOT listed in the authoritative CISA KEV feed -> carried NOT-confirmed; CVE-2026-55040 (VT-040, 9.1 unauth security-feature bypass) + CVE-2026-58644 (VT-041, 9.8 unauth deserialization RCE) patched/NOT-exploited -> escalation-watch (-58644 is the unauth counterpart to exploited -45659). A&D relevance STRUCTURAL only (on-prem SharePoint DIB-pervasive incl. air-gapped/ITAR enclaves); NO named A&D victim, NO actor attributed (Hard Rule 2). Layered grade: KEV/patch/CVSS facts A1 (direct-retrieved CISA KEV + NVD 2026-07-15); exploitation act likely (single-authority CISA determination); CVE-2026-32201 exploitation claim B2 relay-asserted; machine-key persistence B3."
+    topic_tags:
+      - cve
+      - onprem-sharepoint-server-exploited-cluster
+      - cisa-patch-now-advisory
+      - cve-2026-56164-vt037-3day-accelerated-kev-deadline-due-2026-07-17-bod-26-04
+      - cve-2026-56164-dateadded-07-14-direct-kev-feed-resolves-relay-date-discrepancy
+      - cve-2026-45659-vt038-second-exploited-zero-day-kev-past-due-due-2026-07-04
+      - cve-2026-45659-cwe-502-deserialization-rce-cvss-8-8-pr-l-authenticated
+      - cve-2026-32201-vt039-spoofing-relay-asserted-exploited-NOT-kev-confirmed
+      - cve-2026-55040-vt040-9-1-unauth-security-feature-bypass-not-exploited-escalation-watch
+      - cve-2026-58644-vt041-9-8-unauth-deserialization-rce-not-exploited-priority-escalation-watch
+      - machine-key-theft-iis-validationkey-decryptionkey-persistence-survives-patch-b3-relay-asserted
+      - defensive-guidance-patch-then-rotate-machine-keys-farm-wide
+      - 2025-toolshell-sharepoint-machine-key-pattern
+      - ad-relevance-structural-onprem-sharepoint-dib-pervasive-air-gapped-itar-no-named-victim
+      - hard-rule-2-no-attribution-no-actor
+      - single-source-veto-cluster-expansion-machine-key-3day-deadline-securityweek-relay
+      - vuln-tracker-direct-retrieval-supersedes-finding-b-relay-caveats
+      - update-resurface-of-2026-07-14-pm-001-anchor-cve-2026-56164
+      - lead-active-threats
+    related_actors: []              # NONE. Hard Rule 2 — no attribution originated.
+    related_vulns: [CVE-2026-56164, CVE-2026-45659, CVE-2026-32201, CVE-2026-55040, CVE-2026-58644]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-15-0001]
+    digraph: B2                     # finding-level overall; LAYERED — KEV/patch/CVSS facts A1 (direct-retrieved 2026-07-15), exploitation act likely (single-authority), CVE-2026-32201 claim B2 relay, machine-key B3
+    wep: likely
+    red_team_review: null           # WEP ceiling "likely" — red-team not required
+    single_source_veto_applied: true  # NEW cluster-expansion / machine-key / 3-day-deadline framing traced to one SecurityWeek relay; anchor KEV/CVSS facts direct-retrieved (A1)
+    vuln_tracker_direct_retrieval_supersedes_finding_b_relay_caveats: true
+    vuln_tracker_refined_picture:
+      cve_2026_56164_vt037: "KEV-CONFIRMED dateAdded 2026-07-14 due 2026-07-17 (3-day accelerated, BOD 26-04); direct feed resolves SecurityWeek '07-15' relay error. Unauth remote priv-esc. CVSS DISPUTED NVD 9.8 vs Microsoft 5.3."
+      cve_2026_45659_vt038: "Directly KEV-CONFIRMED dateAdded 2026-07-01 due 2026-07-04 (PAST-DUE); CWE-502 deserialization RCE 8.8 HIGH PR:L; distinct brief-worthy exploited zero-day."
+      cve_2026_32201_vt039: "SecurityWeek relay ASSERTED exploited-as-zero-day; CISA KEV feed does NOT list it (6.5 spoofing) — carried relay-asserted / NOT KEV-confirmed. Do not state confirmed-exploited."
+      cve_2026_55040_vt040: "9.1 CRITICAL unauth security-feature bypass — patched, NOT exploited/KEV (escalation-watch)."
+      cve_2026_58644_vt041: "9.8 CRITICAL unauth deserialization RCE — patched, NOT exploited/KEV; highest-severity non-exploited cluster member, unauth counterpart to VT-038 (priority escalation-watch)."
+      machine_key_theft: "B3 relay-asserted only (no independent corroboration, no atomic IOCs). Defensive guidance patch-THEN-rotate machine keys (ValidationKey/DecryptionKey) farm-wide — key theft survives the patch."
+    hard_rule_2_framings_load_bearing:
+      - "No threat actor attributed by any source — Archimedes originates none"
+      - "A&D relevance STRUCTURAL only (on-prem SharePoint DIB-pervasive incl. air-gapped/ITAR enclaves) — no A&D targeting implied, no named victim"
+      - "CVE-2026-32201 relay-asserted exploited but NOT KEV-confirmed — carried unconfirmed, not stated as exploited"
+      - "Machine-key-theft this-campaign use is relay-asserted (B3); the patch-then-rotate guidance is a sound defensive primitive independent of the relay"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0   # entire brief quote-free (CISA/SecurityWeek paraphrased)
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: silence_not_disconfirming_no_published_iocs_visibility_bounded_frank
+    resurface_if:
+      - independent_third_party_exploitation_telemetry_confirms_cluster
+      - published_ioc_for_any_cluster_cve
+      - first_party_splunk_hit_any_cluster_cve
+      - cve_2026_32201_added_to_cisa_kev_feed
+      - cve_2026_55040_or_cve_2026_58644_moves_to_exploited_or_kev
+      - named_ad_or_dib_prime_victim_disclosed
+      - machine_key_rotation_guidance_formally_confirmed_in_cisa_advisory_text
+    first_covered: 2026-07-15
+    last_covered: 2026-07-15
+    retraction: null
+    test: false
+
+  - id: 2026-07-15-pm-brief-meta
+    covered_in: [2026-07-15-afternoon]
+    brief_file: threats/briefs/2026-07-15-afternoon.md
+    topic_tags:
+      - brief-meta
+      - light-quiet-post-patch-tuesday-afternoon-cycle-one-substantive-finding
+      - lead-cisa-3day-kev-deadline-onprem-sharepoint-cluster-escalation
+      - update-resurface-anchor-cve-2026-56164-plus-new-cluster-expansion-machine-key-persistence
+      - vuln-tracker-direct-kev-nvd-retrieval-supersedes-finding-b-relay-caveats
+      - hard-rule-2-structural-only-ad-no-attribution
+      - hard-rule-6-zero-direct-quotes
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: [CVE-2026-56164, CVE-2026-45659, CVE-2026-32201, CVE-2026-55040, CVE-2026-58644]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-15-0001]
+    digraph: B2
+    wep: likely
+    preflight:
+      result: pass_13_of_13
+      word_count_layer1: 461
+      word_count_full_body: 628         # 400-800 band
+      layer2_words: 167                 # 150-300 band
+      layer2_chars_est: ~1650           # <=1900 ceiling, single Discord message
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - finding_id: finding-2026-07-15-0001
+          append_brief_id: 2026-07-15-afternoon   # DONE by briefer
+      coverage_log_resurface_update:
+        - "2026-07-14-pm-001 (anchor CVE-2026-56164): covered_in appended 2026-07-15-afternoon; last_covered -> 2026-07-15; finding_ids appended finding-2026-07-15-0001; resurface_2026_07_15 block added (UPDATE material escalation — CISA patch-now advisory + accelerated 3-day KEV deadline; direct-feed resolves the 07-14/07-15 date discrepancy). Base CVE-2026-56164 disclosure NOT re-reported. No duplicate anchor item entry; NEW developments logged as 2026-07-15-pm-001."
+    notes: |
+      2026-07-15 AFTERNOON BRIEF (briefer phase, afternoon-20260715-160000). LIGHT / quiet
+      post-Patch-Tuesday cycle: 1 substantive finding (finding-2026-07-15-0001). No red-team (WEP
+      ceiling "likely"). Lead = CISA's 3-day accelerated KEV deadline on the actively-exploited
+      on-prem SharePoint cluster + the second, already-past-due exploited zero-day CVE-2026-45659.
+
+      Anti-repetition: the base CVE-2026-56164/VT-037 disclosure was delivered 2026-07-14-afternoon
+      (finding-2026-07-14-0004). Today reports ONLY the escalation — CISA patch-now advisory, the
+      accelerated 3-day deadline, the cluster expansion (esp. the past-due exploited CVE-2026-45659),
+      and the machine-key-theft persistence + rotation angle. Anchor entry 2026-07-14-pm-001 updated
+      in place (UPDATE resurface); genuinely-new developments logged as 2026-07-15-pm-001.
+
+      Vuln-tracker DIRECT CISA KEV/NVD retrieval (v2026.07.15) SUPERSEDES the finding's B-relay
+      caveats: KEV/patch/CVSS facts now A1 (direct-retrieved). CVE-2026-56164 dateAdded confirmed
+      07-14 (SecurityWeek '07-15' was a relay error). CVE-2026-45659 KEV-confirmed PAST-DUE.
+      CVE-2026-32201 relay-asserted exploited but NOT in the KEV feed -> carried NOT-confirmed.
+      CVE-2026-55040 / CVE-2026-58644 patched/not-exploited -> escalation-watch. Machine-key-theft
+      this-campaign use stays B3 relay-asserted (no IOCs); patch-THEN-rotate guidance carried as a
+      sound defensive primitive.
+
+      Standing sections: Sector Focus A&D silent-day template (A&D nexus STRUCTURAL only — no named
+      victim, no targeting implied, Hard Rule 2); Iran Cyber Watch silent-day template. Hard Rule 6:
+      ZERO direct quotes (CISA/SecurityWeek paraphrased). Hard Rule 8: first-party Splunk 0-hits, no
+      published IOCs -> silence not disconfirming, Frank visibility-bounded.
+
+      Layer 1 ~461 tokens + Layer 2 ~167 words (full body ~628, 400-800 band). Layer 2 Discord Summary
+      4 source-linked bullets (2 Active Threats, 2 Vulnerabilities), est. ~1650 chars (<1900 ceiling,
+      single message); natural-language dates; no digraph/WEP/finding-id in Layer 2; Hard Rule 2
+      framings preserved (relay-asserted, "not listed in CISA KEV"); no themed voice; standing silent-day
+      boilerplate omitted from Layer 2. Pre-flight 13-of-13 PASS. Not posted to Discord by briefer —
+      librarian owns delivery/commit.
 
 # ============================================================================
 # Valid resurface_if conditions

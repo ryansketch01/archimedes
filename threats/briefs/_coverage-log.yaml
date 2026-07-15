@@ -42729,7 +42729,7 @@ entries:
     test: false
 
   - id: 2026-07-14-pm-002-cisa-kev-two-sonicwall-sma1000-cve-2026-15409-ssrf-cve-2026-15410-code-injection-active-exploitation-a2-lead-active-threats
-    covered_in: [2026-07-14-afternoon]
+    covered_in: [2026-07-14-afternoon, 2026-07-15-morning]
     brief_file: threats/briefs/2026-07-14-afternoon.md
     headline: "CISA KEV v2026.07.14 adds TWO SonicWall SMA1000 CVEs under active exploitation — CVE-2026-15409 (server-side request forgery, remote unauthenticated) + CVE-2026-15410 (code injection, remote authenticated-admin -> arbitrary OS commands) — on SonicWall's secure-mobile-access / remote-access gateway (BOD 22-01 deadline applies). Co-lead of the 07-14 afternoon cycle (Active Threats, Patch This Week tier 1). Layered grade A2: KEV-listing fact A1/almost-certain (directly retrieved); active-exploitation determination LIKELY — CISA single-source this sweep, no independent telemetry cross-match, single-source veto. KEV does NOT assert the two chain (do not manufacture an SSRF-to-RCE breach chain). Affected/fixed versions ABSENT from the KEV entry -> point defenders to SonicWall PSIRT / NVD. A&D relevance STRUCTURAL exposure-class (internet-facing perimeter appliance) — NO named A&D victim, NO actor attributed."
     topic_tags:
@@ -42772,14 +42772,30 @@ entries:
       status: net-new-not-in-index-rows-requested
       note: "Both KEV-listed active-exploitation on a remote-access appliance (SonicWall SMA1000 has a rapid post-disclosure exploitation history). Retrieve NVD CVSS + SonicWall PSIRT affected/fixed versions. Watch: SonicWall advisory, IR/telemetry corroboration, ransomware-campaign-use KEV tag."
     escalation_tripwire: "SonicWall PSIRT advisory (direct), independent IR/telemetry, or a second publisher attesting exploitation lifts the single-source veto toward very_likely."
+    resurface_2026_07_15:
+      brief_id: 2026-07-15-morning
+      finding_update_id: update-2026-07-15-0001
+      resurface_condition_met: sonicwall_psirt_affected_fixed_versions_published
+      presented_as: UPDATE line (Vulnerabilities) + correlation callout to 2026-07-14 afternoon — NOT a fresh item
+      what_is_new: >
+        SonicWall PSIRT self-disclosure confirms active in-the-wild exploitation (2nd
+        institutional attestation beyond CISA KEV); CVSS now known (CVE-2026-15409 = 10.0
+        Critical, CVE-2026-15410 = 7.2 High); fixed versions published (platform-hotfix
+        12.4.3-03453 / 12.5.0-02835 and later); affected models (6210/7210/8200v); 4 defender
+        detection indicators. Resolves the prior A3 "remediation target unspecified" caveat.
+      grade_unchanged: "A2 / WEP likely — single-source veto still governs (independence doubt: KEV determination likely derives from SonicWall's own IR; PSIRT primary relay-only, awaiting_direct_retrieval)"
+      first_party: "archimedes + defenseclaw_local 0 IOC hits (-48h), both indices reachable — non-probative (SMA1000 perimeter logs not forwarded)"
+      hard_rule_2: "clean — SonicWall names no actor"
+      hard_rule_6_quote_budget: { total_direct_quotes_in_brief: 0, per_source_max: 1 }
+      cycle_note: "No 07:30 pre-brief collection ran this cycle; this UPDATE was the sole newly-graded item. Brief legitimately short with explicit collection caveat — not padded."
     resurface_if:
-      - independent_second_source_confirms_exploitation_lifts_veto
-      - sonicwall_psirt_affected_fixed_versions_published
+      - independent_second_source_confirms_exploitation_lifts_veto           # STILL OPEN — PSIRT relay of doubtful independence did NOT lift the veto
       - published_ioc_or_first_party_splunk_hit
       - named_ad_or_dib_prime_victim_disclosed
       - kev_ransomware_use_tag_added
+      - direct_sonicwall_psirt_advisory_retrieval_removes_relay_only_awaiting_direct_retrieval_flag
     first_covered: 2026-07-14
-    last_covered: 2026-07-14
+    last_covered: 2026-07-15
     retraction: null
     test: false
 

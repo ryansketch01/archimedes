@@ -6,8 +6,8 @@
 # Migrated from C3PO ZD-001/002/003 entries. Additional vulns added as
 # they emerge via FLASH triggers or vuln-tracker weekly review.
 
-version: 10
-last_updated: 2026-07-14        # v10: +3 rows VT-024 (SAP NetWeaver AS ABAP CVE-2026-44747, CVSS v3.1 9.9 CRITICAL, CWE-787 out-of-bounds write, PR:L authenticated, S:C, patched SAP Note 3747367) + VT-025 (SAP Approuter CVE-2026-27690, CVSS v3.1 9.1 CRITICAL, CWE-444 HTTP request smuggling, PR:N unauth, fixed Approuter 20.10.0 / SAP Note 3720138) + VT-026 (SAP Commerce Cloud CVE-2026-44761, CVSS v3.1 9.1 CRITICAL, CWE-1392 Use of Default Credentials / retained sample OAuth2 client, PR:N unauth, patched SAP Note 3753495) — SAP July 2026 Security Patch Day critical cluster via finding-2026-07-14-0002 (SecurityWeek B relay + Onapsis B analysis of the SAP advisory, B2 / likely). All three DISCLOSED / PATCHED at 2026-07-14 disclosure, NO known ITW, non-KEV (CISA KEV catalog 2026.07.13 directly checked — none listed; disclosure postdates catalog). All three directly retrieved from NVD 2026-07-14 (status Received / pre-enrichment; CVSS v3.1 only, no v4.0). NVD refinements over the relay: -44747 is authenticated (PR:L, not pre-auth); -44761 is CWE-1392 default/sample OAuth2 client with publicly-documented creds (not "hardcoded"); -27690 is CWE-444. No actor attributed. A&D relevance structural_indirect (ERP backbone / SAP middleware; no named prime, no sector targeting). profile.md each; tracking.yaml not scaffolded. Prior v9: +2 rows VT-022 (RabbitMQ CVE-2026-57219 unauth OAuth client-secret disclosure -> broker takeover, CVSS v4.0 8.7 HIGH, CWE-200, patched, no ITW, non-KEV) + VT-023 (RabbitMQ CVE-2026-57221 authenticated passive-declaration authz bypass / enumeration, CVSS v4.0 5.3 MEDIUM, CWE-862, patched) via finding-2026-07-13-0004 (Miggo disclosure via SecurityWeek, B2). CVE-ID CORRECTION: finding + SecurityWeek mis-cited the primary as CVE-2026-5721 (a transcription error; NVD CVE-2026-5721 = unrelated wpDataTables WordPress XSS) — NVD-authoritative primary is CVE-2026-57219. Both matrices directly retrieved from NVD 2026-07-13. A&D relevance structural_indirect / low. Prior v8: +2 rows VT-020 (iCagenda for Joomla CVE-2026-48939) + VT-021 (Balbooa Forms for Joomla CVE-2026-56291) — paired Joomla-extension unauthenticated file-upload RCE zero-days (CWE-434, CVSS 9.8 v3.1 / 10.0 v4.0), both KEV-listed 2026-07-10 (due 2026-07-13), both patched, same discoverer (mySites.guru), A1; A&D relevance low_medium (peripheral public-web CMS, structural attack-surface only). Scaffolded on operator request. Prior v7: +1 row VT-019 (PAN-OS User-ID Terminal Server Agent (TSA) multiple buffer overflows CVE-2026-0288, CVSS v4.0 7.2 HIGH / vendor High+highest-urgency, CWE-787, n-day patched at disclosure, vendor no-ITW, non-KEV; awareness tier) via finding-2026-07-09-0003 — DISTINCT from ZD-004 CVE-2026-0300 (User-ID Auth Portal) and CVE-2026-0257 (GlobalProtect). Prior v6: VT-011 RoguePlanet STATE CHANGE (unpatched->patched; cve null->CVE-2026-50656; OOB Defender engine 1.1.26060.3008; CVSS 7.0/7.8; CWE-59; KEV-eligible-not-listed; Nightmare Eclipse series fully closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel rtmutex UAF CVE-2026-43499, CVSS 7.8, root LPE + container escape, n-day patched, no ITW, non-KEV) via finding-2026-07-09-0001. Prior v5: +1 row VT-017 (Adobe ColdFusion CVE-2026-48282) via finding-2026-07-06-flash-1629-0001; v4: +1 row VT-016 (BeyondTrust RS/PRA BT26-03); 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation
+version: 12
+last_updated: 2026-07-14        # v12: +9 rows VT-028..VT-036 — Pioneer Kitten (#029) edge & VPN initial-access CVE set, scaffolded from the /new-actor Pioneer Kitten dossier handoff (source of record threats/threat-actors/Pioneer-Kitten/iocs.yaml). CVE-2024-24919 Check Point Sec Gateway info-disclosure (CVSS 8.6, CWE-200, KEV 2024-05-30); CVE-2024-3400 PAN-OS GlobalProtect cmd-injection RCE (CVSS 10.0, CWE-77/20, KEV 2024-04-12); CVE-2023-3519 Citrix NetScaler unauth RCE (CVSS 9.8, CWE-94, KEV 2023-07-19); CVE-2018-13379 FortiOS/FortiProxy SSL VPN path-traversal (CVSS 9.8 NVD / 9.1 Fortinet, CWE-22, KEV 2021-11-03); CVE-2019-19781 Citrix ADC/Gateway dir-traversal RCE 'Shitrix' (CVSS 9.8, CWE-22, KEV 2021-11-03); CVE-2019-11510 Pulse/Ivanti Connect Secure pre-auth file-read (CVSS 10.0, CWE-22, KEV 2021-11-03); CVE-2020-5902 F5 BIG-IP TMUI RCE (CVSS 9.8, CWE-22, KEV 2021-11-03); CVE-2022-1388 F5 BIG-IP iControl REST auth-bypass RCE (CVSS 9.8, CWE-306, KEV 2022-05-10); CVE-2019-1579 PAN-OS GlobalProtect SSL VPN RCE (CVSS 8.1 AC:H, CWE-134, KEV 2022-01-10). ALL 9 CISA-KEV, ALL PATCHED (n-day), all attributed to Pioneer Kitten (aka Fox Kitten / UNC757 / Lemon Sandstorm) for INITIAL ACCESS per CISA/FBI/DC3 AA24-241A + FortiGuard Lemon Sandstorm (Hard Rule 2 — inherited, not Archimedes-originated); related_actors ["029"] each. CVE-2019-11510 + CVE-2018-13379 + CVE-2019-1579 additionally tie the Lemon Sandstorm Middle East CNI campaign. All 9 directly retrieved from NVD 2026-07-14; profile.md + tracking.yaml each. Hard Rule 3: CVE IDs + facts only, no PoC. Note: originally drafted VT-027..035, renumbered +1 after concurrent VT-027 (Rockwell) claim. Prior v11: +1 row VT-027 (Rockwell Automation Logix controller authentication bypass CVE-2021-22681, CVSS v3.1 9.8 CRITICAL, CWE-522 Insufficiently Protected Credentials, unauth verification bypass via insufficiently-protected cryptographic key -> alter controller config/application code). 2021 DISCLOSURE with 2026 ACTIVE-EXPLOITATION RESURGENCE — the newsworthy state change. NO VENDOR PATCH (mitigation/defense-in-depth only, unchanged since Feb 2021). CISA KEV added 2026-03-05 (due 2026-03-26, same tranche as Hikvision CVE-2017-7921). Actively exploited by CyberAv3ngers (Actor #028, IRGC-CEC) per six-agency CISA AA26-097A (2026-04-07) against US water/energy/government OT — confirmed operational disruption + financial loss; attribution INHERITED (Hard Rule 2). Handed off from the #028 actor-dossier build (actor's PRIMARY current CVE); related_actors ["028"]. CVE-CLASS CORRECTION vs handoff package: NVD assigns CWE-522 (insufficiently-protected cryptographic key), NOT a hard-coded-key CWE. Procedural facts A1 (NVD direct-retrieval + KEV metadata + SecurityWeek/The Hacker News B relays). ICSA-21-056-03 + AA26-097A both 403 on direct fetch this pass — pending_direct_retrieval flagged; affected matrix reconciled from NVD CPE + relays; exploitation/attribution inherited from A1 #028 dossier. A&D relevance structural_indirect (Logix controllers pervasive in A&D manufacturing/test/facility OT; no named A&D-prime/DIB victim). profile.md only, tracking.yaml not scaffolded. Prior v10: +3 rows VT-024 (SAP NetWeaver AS ABAP CVE-2026-44747, CVSS v3.1 9.9 CRITICAL, CWE-787 out-of-bounds write, PR:L authenticated, S:C, patched SAP Note 3747367) + VT-025 (SAP Approuter CVE-2026-27690, CVSS v3.1 9.1 CRITICAL, CWE-444 HTTP request smuggling, PR:N unauth, fixed Approuter 20.10.0 / SAP Note 3720138) + VT-026 (SAP Commerce Cloud CVE-2026-44761, CVSS v3.1 9.1 CRITICAL, CWE-1392 Use of Default Credentials / retained sample OAuth2 client, PR:N unauth, patched SAP Note 3753495) — SAP July 2026 Security Patch Day critical cluster via finding-2026-07-14-0002 (SecurityWeek B relay + Onapsis B analysis of the SAP advisory, B2 / likely). All three DISCLOSED / PATCHED at 2026-07-14 disclosure, NO known ITW, non-KEV (CISA KEV catalog 2026.07.13 directly checked — none listed; disclosure postdates catalog). All three directly retrieved from NVD 2026-07-14 (status Received / pre-enrichment; CVSS v3.1 only, no v4.0). NVD refinements over the relay: -44747 is authenticated (PR:L, not pre-auth); -44761 is CWE-1392 default/sample OAuth2 client with publicly-documented creds (not "hardcoded"); -27690 is CWE-444. No actor attributed. A&D relevance structural_indirect (ERP backbone / SAP middleware; no named prime, no sector targeting). profile.md each; tracking.yaml not scaffolded. Prior v9: +2 rows VT-022 (RabbitMQ CVE-2026-57219 unauth OAuth client-secret disclosure -> broker takeover, CVSS v4.0 8.7 HIGH, CWE-200, patched, no ITW, non-KEV) + VT-023 (RabbitMQ CVE-2026-57221 authenticated passive-declaration authz bypass / enumeration, CVSS v4.0 5.3 MEDIUM, CWE-862, patched) via finding-2026-07-13-0004 (Miggo disclosure via SecurityWeek, B2). CVE-ID CORRECTION: finding + SecurityWeek mis-cited the primary as CVE-2026-5721 (a transcription error; NVD CVE-2026-5721 = unrelated wpDataTables WordPress XSS) — NVD-authoritative primary is CVE-2026-57219. Both matrices directly retrieved from NVD 2026-07-13. A&D relevance structural_indirect / low. Prior v8: +2 rows VT-020 (iCagenda for Joomla CVE-2026-48939) + VT-021 (Balbooa Forms for Joomla CVE-2026-56291) — paired Joomla-extension unauthenticated file-upload RCE zero-days (CWE-434, CVSS 9.8 v3.1 / 10.0 v4.0), both KEV-listed 2026-07-10 (due 2026-07-13), both patched, same discoverer (mySites.guru), A1; A&D relevance low_medium (peripheral public-web CMS, structural attack-surface only). Scaffolded on operator request. Prior v7: +1 row VT-019 (PAN-OS User-ID Terminal Server Agent (TSA) multiple buffer overflows CVE-2026-0288, CVSS v4.0 7.2 HIGH / vendor High+highest-urgency, CWE-787, n-day patched at disclosure, vendor no-ITW, non-KEV; awareness tier) via finding-2026-07-09-0003 — DISTINCT from ZD-004 CVE-2026-0300 (User-ID Auth Portal) and CVE-2026-0257 (GlobalProtect). Prior v6: VT-011 RoguePlanet STATE CHANGE (unpatched->patched; cve null->CVE-2026-50656; OOB Defender engine 1.1.26060.3008; CVSS 7.0/7.8; CWE-59; KEV-eligible-not-listed; Nightmare Eclipse series fully closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel rtmutex UAF CVE-2026-43499, CVSS 7.8, root LPE + container escape, n-day patched, no ITW, non-KEV) via finding-2026-07-09-0001. Prior v5: +1 row VT-017 (Adobe ColdFusion CVE-2026-48282) via finding-2026-07-06-flash-1629-0001; v4: +1 row VT-016 (BeyondTrust RS/PRA BT26-03); 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation (SAP NetWeaver AS ABAP CVE-2026-44747, CVSS v3.1 9.9 CRITICAL, CWE-787 out-of-bounds write, PR:L authenticated, S:C, patched SAP Note 3747367) + VT-025 (SAP Approuter CVE-2026-27690, CVSS v3.1 9.1 CRITICAL, CWE-444 HTTP request smuggling, PR:N unauth, fixed Approuter 20.10.0 / SAP Note 3720138) + VT-026 (SAP Commerce Cloud CVE-2026-44761, CVSS v3.1 9.1 CRITICAL, CWE-1392 Use of Default Credentials / retained sample OAuth2 client, PR:N unauth, patched SAP Note 3753495) — SAP July 2026 Security Patch Day critical cluster via finding-2026-07-14-0002 (SecurityWeek B relay + Onapsis B analysis of the SAP advisory, B2 / likely). All three DISCLOSED / PATCHED at 2026-07-14 disclosure, NO known ITW, non-KEV (CISA KEV catalog 2026.07.13 directly checked — none listed; disclosure postdates catalog). All three directly retrieved from NVD 2026-07-14 (status Received / pre-enrichment; CVSS v3.1 only, no v4.0). NVD refinements over the relay: -44747 is authenticated (PR:L, not pre-auth); -44761 is CWE-1392 default/sample OAuth2 client with publicly-documented creds (not "hardcoded"); -27690 is CWE-444. No actor attributed. A&D relevance structural_indirect (ERP backbone / SAP middleware; no named prime, no sector targeting). profile.md each; tracking.yaml not scaffolded. Prior v9: +2 rows VT-022 (RabbitMQ CVE-2026-57219 unauth OAuth client-secret disclosure -> broker takeover, CVSS v4.0 8.7 HIGH, CWE-200, patched, no ITW, non-KEV) + VT-023 (RabbitMQ CVE-2026-57221 authenticated passive-declaration authz bypass / enumeration, CVSS v4.0 5.3 MEDIUM, CWE-862, patched) via finding-2026-07-13-0004 (Miggo disclosure via SecurityWeek, B2). CVE-ID CORRECTION: finding + SecurityWeek mis-cited the primary as CVE-2026-5721 (a transcription error; NVD CVE-2026-5721 = unrelated wpDataTables WordPress XSS) — NVD-authoritative primary is CVE-2026-57219. Both matrices directly retrieved from NVD 2026-07-13. A&D relevance structural_indirect / low. Prior v8: +2 rows VT-020 (iCagenda for Joomla CVE-2026-48939) + VT-021 (Balbooa Forms for Joomla CVE-2026-56291) — paired Joomla-extension unauthenticated file-upload RCE zero-days (CWE-434, CVSS 9.8 v3.1 / 10.0 v4.0), both KEV-listed 2026-07-10 (due 2026-07-13), both patched, same discoverer (mySites.guru), A1; A&D relevance low_medium (peripheral public-web CMS, structural attack-surface only). Scaffolded on operator request. Prior v7: +1 row VT-019 (PAN-OS User-ID Terminal Server Agent (TSA) multiple buffer overflows CVE-2026-0288, CVSS v4.0 7.2 HIGH / vendor High+highest-urgency, CWE-787, n-day patched at disclosure, vendor no-ITW, non-KEV; awareness tier) via finding-2026-07-09-0003 — DISTINCT from ZD-004 CVE-2026-0300 (User-ID Auth Portal) and CVE-2026-0257 (GlobalProtect). Prior v6: VT-011 RoguePlanet STATE CHANGE (unpatched->patched; cve null->CVE-2026-50656; OOB Defender engine 1.1.26060.3008; CVSS 7.0/7.8; CWE-59; KEV-eligible-not-listed; Nightmare Eclipse series fully closed) via finding-2026-07-09-0002; +1 row VT-018 GhostLock (Linux kernel rtmutex UAF CVE-2026-43499, CVSS 7.8, root LPE + container escape, n-day patched, no ITW, non-KEV) via finding-2026-07-09-0001. Prior v5: +1 row VT-017 (Adobe ColdFusion CVE-2026-48282) via finding-2026-07-06-flash-1629-0001; v4: +1 row VT-016 (BeyondTrust RS/PRA BT26-03); 2026-06-10 patch-status audit + VT-012..015 + 6th consolidation
 
 vulnerabilities:
 
@@ -1407,6 +1407,367 @@ vulnerabilities:
       CISA KEV addition (kev_pending); any A/B-grade ITW report; NVD re-analysis; public PoC (existence-
       tracking only, Hard Rule 3); A&D-prime named victim. Track jointly with VT-024 / VT-025.
 
+  - id: VT-027
+    name: "Rockwell Automation Logix controller authentication bypass (CVE-2021-22681) — CyberAv3ngers 2026 active-exploitation resurgence"
+    type: "Unauthenticated authentication/verification bypass via insufficiently-protected cryptographic key -> connect as trusted engineering workstation -> alter Logix controller configuration and/or application code (CWE-522)"
+    platform: "Rockwell Automation Studio 5000 Logix Designer / RSLogix 5000 engineering software + Logix controller line (CompactLogix, ControlLogix, DriveLogix, FlexLogix, GuardLogix, SoftLogix); pervasive manufacturing / facility / test-range OT"
+    cve: CVE-2021-22681
+    cvss: 9.8                        # NVD CVSS v3.1 base (CRITICAL); directly retrieved 2026-07-14
+    cvss_v4: null                    # no CVSS v4.0 published (2021-era record; NVD last modified 2026-06-17)
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    cvss_source_note: "NVD CVSS v3.1 9.8 CRITICAL, uncontested across NVD + KEV metadata + SecurityWeek/The Hacker News relays. Unauthenticated (PR:N), network (AV:N), no UI, full CIA impact."
+    cwe: CWE-522                     # Insufficiently Protected Credentials (NVD authoritative). CORRECTION vs handoff package's "hard-coded key" (would be CWE-321/798) — NVD assigns CWE-522.
+    cisa_ics_advisory: "ICSA-21-056-03"
+    nvd_published: 2021-03-03
+    nvd_last_modified: 2026-06-17
+    discovered_by: "Soonchunhyang University (South Korea), Kaspersky, Claroty (Claroty reported to Rockwell 2019)"
+    affected_versions: "RSLogix 5000 v16-20; Studio 5000 Logix Designer v21+; FactoryTalk Services Platform v2.10+ (NVD CPE); Logix controllers CompactLogix/ControlLogix/DriveLogix/FlexLogix/GuardLogix/SoftLogix (+ Compact GuardLogix per package) — exact per-model/firmware matrix per ICSA-21-056-03 (403 on direct fetch this pass)"
+    patch_status: no_vendor_patch_mitigation_only
+    patch_note: "NO VENDOR SOFTWARE PATCH — mitigation is architectural/defense-in-depth only (remove internet exposure; segment OT; restrict/monitor CIP EtherNet-IP TCP/UDP 44818 + TCP 2222; controller mode-switch to RUN; VPN+MFA for remote OT). Posture unchanged since Feb 2021 vendor mitigations announcement."
+    kev: true
+    kev_added: 2026-03-05
+    kev_due_date: 2026-03-26         # BOD 22-01 FCEB; same 2026-03-05 KEV tranche as Hikvision CVE-2017-7921
+    kev_last_checked: 2026-07-14     # date-added/due confirmed via SecurityWeek + The Hacker News B relays; verbatim KEV-catalog re-confirm flagged for next refresh (full JSON feed did not surface entry via WebFetch summarization this pass)
+    exploitation_status: active_exploitation_kev_listed_aa26_097a_attributed
+    exploitation_note: "2021 disclosure / 2026 active-exploitation RESURGENCE. KEV-listed 2026-03-05 (CISA reliable-evidence-of-exploitation criterion); at KEV-add no public per-CVE attack report existed (The Hacker News). AA26-097A (six-agency, 2026-04-07) is the operational-exploitation attestation naming CyberAv3ngers, US water/energy/government sectors, confirmed disruption + financial loss."
+    public_exploit_available: false  # no public weaponized PoC surfaced in reporting; none mirrored regardless (Hard Rule 3)
+    detection_signatures_published: false   # behavioral only: anomalous CIP/44818 sessions from non-EWS hosts; unexpected controller program/mode/config changes (T0889/T0836/T0821); cross-ref #028 IOCONTROL C2 IOCs. No atomic network IOC for the CVE itself.
+    digraph: A1                      # procedural CVE facts A1 (NVD direct-retrieval + KEV metadata + 2 corroborating B relays)
+    digraph_layered:
+      procedural_cve_facts: A1
+      exploitation_attribution: A1   # inherited from CISA six-agency AA26-097A via A1 actor #028 dossier
+    wep_split:
+      procedural_facts: very_likely
+      active_exploitation_aa26_097a: very_likely
+    related_actors:
+      - "028"                        # CyberAv3ngers — attributed exploiter per CISA AA26-097A (inherited, Hard Rule 2). This is the actor's PRIMARY current-exploitation CVE.
+    related_findings: []             # handed off from the #028 actor dossier build, not from a graded finding
+    related_briefs: []
+    sibling_kev_tranche_cves:
+      - CVE-2017-7921                # Hikvision — same 2026-03-05 KEV tranche; not tracked (consumer/enterprise IP-camera scope, no A&D dossier pathway)
+    ad_relevance: structural_indirect
+    ad_relevance_rationale: >
+      STRUCTURAL / INDIRECT (do not overstate). Rockwell Logix controllers are among the most widely deployed
+      PLCs in industrial and facility OT worldwide, including inside A&D-prime manufacturing lines, test-range /
+      environmental-test infrastructure, and facilities/building-automation SCADA — that pervasiveness is why
+      this is not zero. But NO A-grade source (CISA AA26-097A, IC3 CSA, Claroty) names an aerospace-defense
+      prime or DIB victim; documented targeting is water/wastewater, energy/fuel, and government/municipal OT.
+      A&D exposure is shared-vulnerability-class (internet-exposed / flat-network Logix controllers with
+      unrestricted CIP), NOT A&D-directed tasking. Because there is NO patch, segmentation + exposure-reduction
+      ARE the remediation — a standing OT-hardening item, not patch-and-forget. Same OT/ICS tracking class as
+      VT-005 (OpenC3 COSMOS) / VT-010 (Yamcs) but a live-exploitation, no-patch case.
+    dossier: threats/vulnerabilities/CVE-2021-22681/profile.md
+    tracking: null                   # profile.md only; tracking.yaml not scaffolded
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-08-14       # 30-day cadence — no-patch active-exploitation OT CVE; watch AA26-097A/ICSA-21-056-03 direct retrieval + any A&D-sector victim naming
+    pending_direct_retrieval:
+      - "CISA ICSA-21-056-03 (403 this pass) — authoritative per-model/firmware affected matrix + verbatim mitigation text"
+      - "CISA AA26-097A (403 this pass) — exploitation/attribution attestation; inherited from A1 #028 dossier + IC3 CSA 260407"
+      - "CISA KEV catalog verbatim dateAdded/dueDate re-confirm (relay-confirmed 2026-03-05 / 2026-03-26)"
+    note: >
+      Scaffolded 2026-07-14, handed off from the CyberAv3ngers (#028) actor-dossier build — this is the actor's
+      PRIMARY current-exploitation CVE. 2021 DISCLOSURE with a 2026 ACTIVE-EXPLOITATION RESURGENCE (the
+      newsworthy state change). CONFIRMED via NVD direct-retrieval (CVSS v3.1 9.8 CRITICAL + vector, CWE-522,
+      published 2021-03-03, last modified 2026-06-17, CPE set, references) + KEV metadata (added 2026-03-05, due
+      2026-03-26) corroborated by SecurityWeek + The Hacker News B relays. CVE-CLASS CORRECTION vs handoff
+      package: NVD assigns CWE-522 (Insufficiently Protected Credentials) — root cause is an
+      insufficiently-protected cryptographic key used to verify Logix comms, NOT a hard-coded-key CWE. NO VENDOR
+      PATCH — mitigation/defense-in-depth only (unchanged since Feb 2021). Attribution to CyberAv3ngers inherits
+      from CISA six-agency AA26-097A (2026-04-07), NOT originated (Hard Rule 2). Hard Rule 3: class-level only,
+      no PoC. Discoverers: Soonchunhyang University (SK) + Kaspersky + Claroty. Watch signals: verbatim
+      ICSA-21-056-03 / AA26-097A direct retrieval; any A-grade A&D-prime/DIB victim naming (would lift
+      ad_relevance); Rockwell issuing an actual patch; KEV due-date re-confirm.
+
+  # --- Pioneer Kitten (#029) edge & VPN initial-access CVE set (VT-028..VT-036) ---
+  # NOTE: originally scaffolded as VT-027..VT-035; renumbered +1 to VT-028..VT-036
+  # after a concurrent build claimed VT-027 (Rockwell Logix CVE-2021-22681, actor #028).
+  # Scaffolded 2026-07-14 via the /new-actor Pioneer Kitten dossier build handoff.
+  # Source of record: threats/threat-actors/Pioneer-Kitten/iocs.yaml. All 9 are
+  # long-standing CISA KEV entries, all patched, all attributed (per AA24-241A /
+  # FortiGuard Lemon Sandstorm) to Pioneer Kitten (aka Fox Kitten / UNC757 /
+  # Lemon Sandstorm) for INITIAL ACCESS. Hard Rule 3: IDs + facts only, no PoC.
+  # Hard Rule 2: attribution reflects cited advisories, not Archimedes-originated.
+
+  - id: VT-028
+    name: "Check Point Security Gateway Remote Access VPN information disclosure (CVE-2024-24919)"
+    type: "Unauthenticated information disclosure (arbitrary file/secret read) — CWE-200"
+    platform: "Check Point Quantum / Spark Security Gateway; CloudGuard Network Security (Remote Access VPN / Mobile Access / IPsec Blade enabled)"
+    cve: CVE-2024-24919
+    cvss: 8.6
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:N/A:N"
+    cwe: CWE-200
+    affected_versions: ["R80.40", "R81", "R81.10", "R81.20"]
+    patch_status: patched
+    patch_release_date: 2024-05-28
+    kev: true
+    kev_added: 2024-05-30
+    kev_due_date: 2024-06-20
+    kev_last_checked: 2026-07-14
+    exploitation_status: active_exploitation_kev_listed_ndays
+    public_exploit_available: true      # public; NOT mirrored (Hard Rule 3)
+    related_actors: ["029"]
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    attribution_source: cisa-fbi-dc3-aa24-241a-2024-08
+    related_findings: []
+    ad_relevance: high
+    ad_relevance_rationale: "Internet-facing Remote Access VPN gateway at the A&D perimeter; credential-leak foothold. Tracked actor #029 initial-access vector per AA24-241A."
+    dossier: threats/vulnerabilities/CVE-2024-24919/profile.md
+    tracking: threats/vulnerabilities/CVE-2024-24919/tracking.yaml
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-10-14
+    note: "Scaffolded 2026-07-14 (Pioneer Kitten #029 handoff). NVD directly retrieved: CVSS 8.6 (S:C/C:H/I:N/A:N), CWE-200, published 2024-05-28. KEV-listed 2024-05-30 (due 2024-06-20). Patched (Check Point sk182336). NOTE: some AA24-241A relays mislabel as F5 BIG-IP — NVD confirms Check Point."
+
+  - id: VT-029
+    name: "Palo Alto PAN-OS GlobalProtect unauthenticated command injection RCE (CVE-2024-3400)"
+    type: "Unauthenticated command injection -> root RCE — CWE-77 / CWE-20"
+    platform: "Palo Alto Networks PAN-OS firewalls with GlobalProtect gateway/portal enabled (Cloud NGFW / Panorama / Prisma Access NOT affected)"
+    cve: CVE-2024-3400
+    cvss: 10.0
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    cwe: CWE-77
+    affected_versions: ["10.2.x < 10.2.9-h1", "11.0.x < 11.0.4-h1", "11.1.x < 11.1.2-h3"]
+    patch_status: patched
+    patch_release_date: 2024-04-14
+    kev: true
+    kev_added: 2024-04-12
+    kev_due_date: 2024-04-19
+    kev_last_checked: 2026-07-14
+    exploitation_status: widespread_exploitation_kev_listed
+    public_exploit_available: true      # public; NOT mirrored (Hard Rule 3)
+    related_actors: ["029"]
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    attribution_source: cisa-fbi-dc3-aa24-241a-2024-08
+    attribution_note: "Early zero-day exploitation attributed by Volexity/Unit 42 to cluster UTA0218 — distinct from Pioneer Kitten, recorded as-cited (Hard Rule 2)."
+    related_findings: []
+    ad_relevance: high
+    ad_relevance_rationale: "Max-severity root RCE on PAN-OS GlobalProtect, core A&D perimeter remote-access. Tracked actor #029 initial-access vector per AA24-241A."
+    dossier: threats/vulnerabilities/CVE-2024-3400/profile.md
+    tracking: threats/vulnerabilities/CVE-2024-3400/tracking.yaml
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-10-14
+    note: "Scaffolded 2026-07-14 (Pioneer Kitten #029 handoff). NVD directly retrieved: CVSS 10.0, CWE-77/CWE-20, published 2024-04-12. KEV same-day (2024-04-12, due 2024-04-19). Operation MidnightEclipse zero-day; patched from 2024-04-14."
+
+  - id: VT-030
+    name: "Citrix NetScaler ADC / Gateway unauthenticated RCE (CVE-2023-3519)"
+    type: "Unauthenticated remote code execution (code injection) — CWE-94"
+    platform: "Citrix NetScaler ADC / Gateway configured as Gateway (VPN/ICA Proxy/CVPN/RDP Proxy) or AAA virtual server"
+    cve: CVE-2023-3519
+    cvss: 9.8
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    cwe: CWE-94
+    affected_versions: ["13.1 < 13.1-49.13", "13.0 < 13.0-91.13", "13.1-FIPS < 13.1-37.159", "12.1-FIPS/NDcPP", "12.1 (EOL)"]
+    patch_status: patched
+    patch_release_date: 2023-07-18
+    kev: true
+    kev_added: 2023-07-19
+    kev_due_date: 2023-08-09
+    kev_last_checked: 2026-07-14
+    exploitation_status: widespread_exploitation_kev_listed
+    public_exploit_available: true      # public; NOT mirrored (Hard Rule 3)
+    related_actors: ["029"]
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    attribution_source: cisa-fbi-dc3-aa24-241a-2024-08
+    attribution_note: "2023 zero-day compromise of a CNI org documented in CISA AA23-201A was not actor-attributed; Pioneer Kitten attribution is from AA24-241A (Hard Rule 2)."
+    related_findings: []
+    ad_relevance: high
+    ad_relevance_rationale: "Unauthenticated RCE on NetScaler Gateway, common A&D remote-access/app-delivery perimeter. Tracked actor #029 initial-access vector per AA24-241A."
+    dossier: threats/vulnerabilities/CVE-2023-3519/profile.md
+    tracking: threats/vulnerabilities/CVE-2023-3519/tracking.yaml
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-10-14
+    note: "Scaffolded 2026-07-14 (Pioneer Kitten #029 handoff). NVD directly retrieved: CVSS 9.8, CWE-94, published 2023-07-19. KEV 2023-07-19 (due 2023-08-09). Zero-day; mass web-shell deployment; no config workaround (upgrade only)."
+
+  - id: VT-031
+    name: "Fortinet FortiOS / FortiProxy SSL VPN pre-auth path traversal (CVE-2018-13379)"
+    type: "Unauthenticated path traversal -> system-file / VPN session-credential read — CWE-22"
+    platform: "Fortinet FortiOS SSL VPN web portal; FortiProxy"
+    cve: CVE-2018-13379
+    cvss: 9.8                            # NVD primary; Fortinet CNA scores 9.1 (integrity None)
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    cvss_source_note: "NVD 9.8 authoritative primary; Fortinet CNA 9.1 (I:N). Both CRITICAL."
+    cwe: CWE-22
+    affected_versions: ["FortiOS 5.4.6-5.4.12", "5.6.3-5.6.7", "6.0.0-6.0.4", "FortiProxy 1.0.0-1.0.7/1.1.0-1.1.6/1.2.0-1.2.8/2.0.0"]
+    patch_status: patched
+    patch_release_date: 2019-05
+    kev: true
+    kev_added: 2021-11-03
+    kev_due_date: 2022-05-03
+    kev_last_checked: 2026-07-14
+    exploitation_status: widespread_exploitation_kev_listed_ndays
+    public_exploit_available: true      # public; NOT mirrored (Hard Rule 3)
+    credential_exposure_note: "Primary risk = harvested SSL VPN session credentials that stay valid after patching. Forced rotation mandatory for exposed appliances (Hard Rule 7)."
+    related_actors: ["029"]
+    related_campaign: "Lemon Sandstorm Middle East CNI intrusion (FortiGuard, 2023-2025)"
+    attribution_source: fortiguard-lemon-sandstorm-cni-2025-05
+    related_malware: [HanifNet, HXLibrary, NeoExpressRAT, Havoc]
+    related_findings: []
+    ad_relevance: high
+    ad_relevance_rationale: "FortiOS SSL VPN credential-harvest foothold on A&D remote-access perimeter. Tracked actor #029 / Lemon Sandstorm initial-access vector per FortiGuard + AA24-241A."
+    dossier: threats/vulnerabilities/CVE-2018-13379/profile.md
+    tracking: threats/vulnerabilities/CVE-2018-13379/tracking.yaml
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-10-14
+    note: "Scaffolded 2026-07-14 (Pioneer Kitten #029 handoff). NVD directly retrieved: CVSS 9.8 (Fortinet CNA 9.1), CWE-22, FG-IR-18-384. KEV initial catalog 2021-11-03 (due 2022-05-03). Durable n-day: patched appliances with unrotated leaked creds keep enabling access. Lemon Sandstorm CNI campaign tie."
+
+  - id: VT-032
+    name: "Citrix ADC / Gateway (NetScaler) directory-traversal RCE (CVE-2019-19781)"
+    type: "Unauthenticated directory traversal -> RCE ('Shitrix') — CWE-22"
+    platform: "Citrix ADC / Gateway / NetScaler Gateway; certain SD-WAN WANOP appliances"
+    cve: CVE-2019-19781
+    cvss: 9.8
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    cwe: CWE-22
+    affected_versions: ["10.5", "11.1", "12.0", "12.1", "13.0", "SD-WAN WANOP 10.2.6/11.0.3"]
+    patch_status: patched
+    patch_release_date: 2020-01-19
+    kev: true
+    kev_added: 2021-11-03
+    kev_due_date: 2022-05-03
+    kev_last_checked: 2026-07-14
+    exploitation_status: widespread_exploitation_kev_listed_ndays
+    public_exploit_available: true      # public; NOT mirrored (Hard Rule 3)
+    related_actors: ["029"]
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A); early Fox Kitten campaign (ClearSky 2020)"
+    attribution_source: cisa-fbi-dc3-aa24-241a-2024-08
+    related_findings: []
+    ad_relevance: high
+    ad_relevance_rationale: "Unauthenticated RCE on Citrix ADC/Gateway, common A&D remote-access perimeter. Early/prolific Fox Kitten vector; tracked actor #029 initial-access per AA24-241A."
+    dossier: threats/vulnerabilities/CVE-2019-19781/profile.md
+    tracking: threats/vulnerabilities/CVE-2019-19781/tracking.yaml
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-10-14
+    note: "Scaffolded 2026-07-14 (Pioneer Kitten #029 handoff). NVD directly retrieved: CVSS 9.8, CWE-22, published 2019-12-27. KEV initial catalog 2021-11-03 (due 2022-05-03). Interim mitigation was incomplete on some configs; permanent fix from 2020-01-19."
+
+  - id: VT-033
+    name: "Pulse Secure / Ivanti Connect Secure pre-auth arbitrary file read (CVE-2019-11510)"
+    type: "Unauthenticated path traversal -> arbitrary file read incl. plaintext credentials — CWE-22"
+    platform: "Pulse Connect Secure (now Ivanti Connect Secure) SSL VPN"
+    cve: CVE-2019-11510
+    cvss: 10.0
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H"
+    cwe: CWE-22
+    affected_versions: ["8.2 < 8.2R12.1", "8.3 < 8.3R7.1", "9.0 < 9.0R3.4"]
+    patch_status: patched
+    patch_release_date: 2019-04-24
+    kev: true
+    kev_added: 2021-11-03
+    kev_due_date: 2022-05-03
+    kev_last_checked: 2026-07-14
+    exploitation_status: widespread_exploitation_kev_listed_ndays
+    public_exploit_available: true      # public; NOT mirrored (Hard Rule 3)
+    credential_exposure_note: "Readable session/credential material stays valid after patching. Forced rotation + session invalidation mandatory for exposed appliances (Hard Rule 7)."
+    related_actors: ["029"]
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A); Lemon Sandstorm CNI intrusion (FortiGuard)"
+    attribution_source: cisa-fbi-dc3-aa24-241a-2024-08
+    related_findings: []
+    ad_relevance: high
+    ad_relevance_rationale: "CVSS 10.0 pre-auth credential-harvest on Pulse/Ivanti Connect Secure, widely deployed A&D remote-access VPN. Tracked actor #029 initial-access across both AA24-241A + Lemon Sandstorm campaigns."
+    dossier: threats/vulnerabilities/CVE-2019-11510/profile.md
+    tracking: threats/vulnerabilities/CVE-2019-11510/tracking.yaml
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-10-14
+    note: "Scaffolded 2026-07-14 (Pioneer Kitten #029 handoff). NVD directly retrieved: CVSS 10.0 (S:C), CWE-22, published 2019-05-08 (Pulse SA44101). KEV initial catalog 2021-11-03 (due 2022-05-03). Ties to BOTH AA24-241A and the FortiGuard Lemon Sandstorm CNI campaign. Durable n-day: unrotated leaked creds keep enabling access."
+
+  - id: VT-034
+    name: "F5 BIG-IP TMUI unauthenticated RCE (CVE-2020-5902)"
+    type: "Unauthenticated RCE via Traffic Management User Interface (path traversal) — CWE-22"
+    platform: "F5 BIG-IP (TMUI / Configuration utility) — exploitable when management interface reachable"
+    cve: CVE-2020-5902
+    cvss: 9.8
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    cwe: CWE-22
+    affected_versions: ["11.6.1-11.6.5.1", "12.1.0-12.1.5.1", "13.1.0-13.1.3.3", "14.1.0-14.1.2.5", "15.0.0-15.1.0.3"]
+    patch_status: patched
+    patch_release_date: 2020-06-30
+    kev: true
+    kev_added: 2021-11-03
+    kev_due_date: 2022-05-03
+    kev_last_checked: 2026-07-14
+    exploitation_status: widespread_exploitation_kev_listed_ndays
+    public_exploit_available: true      # public; NOT mirrored (Hard Rule 3)
+    exploitability_condition: "TMUI / management interface reachable by attacker"
+    related_actors: ["029"]
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    attribution_source: cisa-fbi-dc3-aa24-241a-2024-08
+    related_findings: []
+    ad_relevance: high
+    ad_relevance_rationale: "Unauthenticated RCE on F5 BIG-IP TMUI, application-delivery/load-balancing tier fronting A&D applications; powerful pivot. Tracked actor #029 initial-access per AA24-241A."
+    dossier: threats/vulnerabilities/CVE-2020-5902/profile.md
+    tracking: threats/vulnerabilities/CVE-2020-5902/tracking.yaml
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-10-14
+    note: "Scaffolded 2026-07-14 (Pioneer Kitten #029 handoff). NVD directly retrieved: CVSS 9.8, CWE-22, published 2020-07-01 (F5 K52145254). KEV initial catalog 2021-11-03 (due 2022-05-03). Key compensating control: TMUI must never be internet-exposed."
+
+  - id: VT-035
+    name: "F5 BIG-IP iControl REST authentication bypass -> RCE (CVE-2022-1388)"
+    type: "Unauthenticated authentication bypass -> RCE via iControl REST — CWE-306"
+    platform: "F5 BIG-IP (iControl REST) — exploitable when management interface reachable"
+    cve: CVE-2022-1388
+    cvss: 9.8
+    cvss_vector: "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    cwe: CWE-306
+    affected_versions: ["16.1.x < 16.1.2.2", "15.1.x < 15.1.5.1", "14.1.x < 14.1.4.6", "13.1.x < 13.1.5", "12.1.x (EOL)", "11.6.x (EOL)"]
+    patch_status: patched
+    patch_release_date: 2022-05-04
+    kev: true
+    kev_added: 2022-05-10
+    kev_due_date: 2022-05-31
+    kev_last_checked: 2026-07-14
+    exploitation_status: widespread_exploitation_kev_listed_ndays
+    public_exploit_available: true      # public; NOT mirrored (Hard Rule 3)
+    exploitability_condition: "iControl REST / management interface reachable by attacker"
+    related_actors: ["029"]
+    related_campaign: "Pioneer Kitten edge-device access operations (AA24-241A)"
+    attribution_source: cisa-fbi-dc3-aa24-241a-2024-08
+    related_findings: []
+    ad_relevance: high
+    ad_relevance_rationale: "Unauthenticated auth-bypass-to-RCE on F5 BIG-IP iControl REST, application-delivery tier fronting A&D apps. Tracked actor #029 initial-access per AA24-241A."
+    dossier: threats/vulnerabilities/CVE-2022-1388/profile.md
+    tracking: threats/vulnerabilities/CVE-2022-1388/tracking.yaml
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-10-14
+    note: "Scaffolded 2026-07-14 (Pioneer Kitten #029 handoff). NVD directly retrieved: CVSS 9.8, CWE-306, published 2022-05-05 (F5 K23605346). KEV 2022-05-10 (due 2022-05-31). Exploited within ~2 days of disclosure; EOL 11.6.x/12.1.x have no fix (upgrade required)."
+
+  - id: VT-036
+    name: "Palo Alto PAN-OS GlobalProtect SSL VPN RCE (CVE-2019-1579)"
+    type: "Unauthenticated RCE via GlobalProtect format-string — CWE-134"
+    platform: "Palo Alto Networks PAN-OS (GlobalProtect portal/gateway) legacy 7.1/8.0/8.1 branches; 9.0+ NOT affected"
+    cve: CVE-2019-1579
+    cvss: 8.1
+    cvss_vector: "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
+    cwe: CWE-134
+    affected_versions: ["7.1.18 and earlier", "8.0.x <= 8.0.11", "8.1.x <= 8.1.2"]
+    patch_status: patched
+    patch_release_date: 2019-07
+    kev: true
+    kev_added: 2022-01-10
+    kev_due_date: 2022-07-10
+    kev_last_checked: 2026-07-14
+    exploitation_status: active_exploitation_kev_listed_ndays
+    public_exploit_available: true      # public; NOT mirrored (Hard Rule 3)
+    related_actors: ["029"]
+    related_campaign: "Lemon Sandstorm Middle East CNI intrusion (FortiGuard, 2023-2025)"
+    attribution_source: fortiguard-lemon-sandstorm-cni-2025-05
+    related_malware: [HanifNet, HXLibrary, NeoExpressRAT, Havoc]
+    related_findings: []
+    ad_relevance: high
+    ad_relevance_rationale: "Unauthenticated RCE on PAN-OS GlobalProtect (legacy branches), A&D remote-access perimeter. Tracked actor #029 / Lemon Sandstorm initial-access per FortiGuard."
+    dossier: threats/vulnerabilities/CVE-2019-1579/profile.md
+    tracking: threats/vulnerabilities/CVE-2019-1579/tracking.yaml
+    tracked_since: 2026-07-14
+    last_reviewed: 2026-07-14
+    next_review_due: 2026-10-14
+    note: "Scaffolded 2026-07-14 (Pioneer Kitten #029 handoff). NVD directly retrieved: CVSS 8.1 (AC:H — higher attack complexity than CVE-2024-3400, not lower consequence), CWE-134, published 2019-07-19. KEV 2022-01-10 (due 2022-07-10). Affects legacy EOL PAN-OS only (9.0+ safe). Lemon Sandstorm CNI campaign tie."
+
   # Notes on KEV-add finding-2026-05-27-0007 third CVE:
   # CVE-2026-8398 (Daemon Tools Lite) was the third KEV addition in
   # catalog version 2026.05.27 but is NOT tracked as a vuln dossier —
@@ -1462,10 +1823,31 @@ _meta:
   # CWE-444. No actor attributed. A&D relevance structural_indirect (SAP ERP/middleware; no named prime,
   # no sector targeting; VT-024 highest-priority escalation-watch row given 2025 CVE-2025-31324 precedent).
   # profile.md each, tracking.yaml not scaffolded.
-  total_tracked: 26
+  # v11 recompute 2026-07-14: +1 row VT-027 Rockwell Automation Logix controller authentication bypass
+  # (CVE-2021-22681, CVSS v3.1 9.8 CRITICAL, CWE-522 Insufficiently Protected Credentials, unauth
+  # verification bypass via insufficiently-protected cryptographic key -> alter Logix controller
+  # config/application code). 2021 disclosure / 2026 active-exploitation RESURGENCE. NO VENDOR PATCH
+  # (mitigation/defense-in-depth only, unchanged since Feb 2021). CISA KEV added 2026-03-05 (due
+  # 2026-03-26). Actively exploited by CyberAv3ngers (#028, IRGC-CEC) per six-agency CISA AA26-097A
+  # (2026-04-07) vs US water/energy/government OT; attribution INHERITED (Hard Rule 2). Handed off from
+  # the #028 actor-dossier build (actor's primary current CVE). Procedural facts A1 (NVD direct-retrieval
+  # + KEV metadata + SecurityWeek/The Hacker News B relays). CVE-CLASS CORRECTION: NVD CWE-522, not the
+  # package's "hard-coded key". ICSA-21-056-03 + AA26-097A both 403 this pass (pending_direct_retrieval).
+  # A&D relevance structural_indirect (Logix pervasive in A&D manufacturing/test/facility OT; no named
+  # A&D-prime/DIB victim). profile.md only, tracking.yaml not scaffolded.
+  # v12 recompute 2026-07-14: +9 rows VT-028..VT-036 — Pioneer Kitten (#029) edge & VPN
+  # initial-access CVE set (CVE-2024-24919 / CVE-2024-3400 / CVE-2023-3519 / CVE-2018-13379 /
+  # CVE-2019-19781 / CVE-2019-11510 / CVE-2020-5902 / CVE-2022-1388 / CVE-2019-1579). ALL 9
+  # CISA-KEV, ALL PATCHED (n-day), all attributed to Pioneer Kitten (Fox Kitten / UNC757 /
+  # Lemon Sandstorm) for INITIAL ACCESS per AA24-241A + FortiGuard (Hard Rule 2 inherited).
+  # Directly retrieved from NVD 2026-07-14; profile.md + tracking.yaml each. Scaffolded from
+  # the /new-actor Pioneer Kitten dossier handoff. Renumbered +1 from originally-drafted
+  # VT-027..035 after concurrent VT-027 (Rockwell) claim.
+  total_tracked: 36
 
-  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 26) ---
-  patched: 21                     # (+VT-024 SAP NetWeaver ABAP CVE-2026-44747 + VT-025 SAP Approuter CVE-2026-27690 + VT-026 SAP Commerce Cloud CVE-2026-44761 — SAP July 2026 Patch Day cluster, all patched at 2026-07-14 disclosure, no ITW) (+VT-022 RabbitMQ CVE-2026-57219 + VT-023 RabbitMQ CVE-2026-57221 — both patched at 2026-07-10 disclosure, no ITW) (+VT-020 iCagenda CVE-2026-48939 + VT-021 Balbooa Forms CVE-2026-56291 — both patched Joomla-extension zero-days) (+VT-019 PAN-OS CVE-2026-0288 TSA buffer overflows — n-day patched at disclosure 2026-07-08) ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-011 RoguePlanet (OOB Defender engine 1.1.26060.3008, 2026-07-09 — moved from unpatched); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma; VT-016 BeyondTrust RS/PRA BT26-03 cluster (cloud patched 2026-04-21, on-prem fixed versions available); VT-017 Adobe ColdFusion CVE-2026-48282 (Adobe APSB26-68 shipped 2026-07-01; n-day); VT-018 GhostLock CVE-2026-43499 (Linux kernel n-day, fixes since April 2026)
+  # --- Patch-status partition (mutually exclusive; sums to total_tracked = 36) ---
+  no_vendor_patch_mitigation_only: 1   # VT-027 Rockwell Logix CVE-2021-22681 (NO vendor software patch — mitigation/defense-in-depth only since Feb 2021; KEV-listed + actively exploited)
+  patched: 30                     # (+VT-028..VT-036 Pioneer Kitten #029 edge/VPN set — all 9 patched n-day: CVE-2024-24919 Check Point sk182336, CVE-2024-3400 PAN-OS 2024-04-14, CVE-2023-3519 Citrix CTX561482, CVE-2018-13379 Fortinet FG-IR-18-384, CVE-2019-19781 Citrix CTX267027, CVE-2019-11510 Pulse SA44101, CVE-2020-5902 F5 K52145254, CVE-2022-1388 F5 K23605346, CVE-2019-1579 PAN-OS)                    # (+VT-024 SAP NetWeaver ABAP CVE-2026-44747 + VT-025 SAP Approuter CVE-2026-27690 + VT-026 SAP Commerce Cloud CVE-2026-44761 — SAP July 2026 Patch Day cluster, all patched at 2026-07-14 disclosure, no ITW) (+VT-022 RabbitMQ CVE-2026-57219 + VT-023 RabbitMQ CVE-2026-57221 — both patched at 2026-07-10 disclosure, no ITW) (+VT-020 iCagenda CVE-2026-48939 + VT-021 Balbooa Forms CVE-2026-56291 — both patched Joomla-extension zero-days) (+VT-019 PAN-OS CVE-2026-0288 TSA buffer overflows — n-day patched at disclosure 2026-07-08) ZD-001 BlueHammer; ZD-002 RedSun; ZD-003 UnDefend; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator (patched at disclosure); VT-010 Yamcs (patched at disclosure); VT-011 RoguePlanet (OOB Defender engine 1.1.26060.3008, 2026-07-09 — moved from unpatched); VT-012 GreenPlasma; VT-013 YellowKey; VT-014 MiniPlasma; VT-016 BeyondTrust RS/PRA BT26-03 cluster (cloud patched 2026-04-21, on-prem fixed versions available); VT-017 Adobe ColdFusion CVE-2026-48282 (Adobe APSB26-68 shipped 2026-07-01; n-day); VT-018 GhostLock CVE-2026-43499 (Linux kernel n-day, fixes since April 2026)
   patches_available: 1            # ZD-004 PAN-OS CVE-2026-0300 (both waves RELEASED 2026-05-13 + 2026-05-28)
   rolling_unpublishes: 1          # VT-006 Mini Shai-Hulud (npm + PyPI rolling unpublishes/revocations, no single patch boundary)
   security_update_available_esu_gated: 1   # VT-008 Exchange CVE-2026-42897 (June 2026 SU / KB5094140 shipped 2026-06-09; SE automatic, 2016/2019 ESU-gated; EEMS/EOMT still advised for non-ESU)
@@ -1476,14 +1858,14 @@ _meta:
   no_ga_patch_esu_or_mitigation_only: 0   # (was 1; VT-008 Exchange moved to security_update_available_esu_gated after June SU)
 
   # --- Exploitation / KEV ---
-  active_exploitation: 8          # ZD-004 PAN-OS + VT-006 Mini Shai-Hulud worm + VT-008 Exchange + VT-009 Nx Console + VT-015 SD-WAN (KEV-listed 2026-06-09) + VT-017 Adobe ColdFusion CVE-2026-48282 (KEV-listed 2026-07-07) + VT-020 iCagenda CVE-2026-48939 (KEV-listed 2026-07-10, zero-day since ~2026-06-15) + VT-021 Balbooa Forms CVE-2026-56291 (KEV-listed 2026-07-10, zero-day ~2026-07-08)
-  kev_listed: 10                  # ZD-002 RedSun (due 2026-06-03, past) + ZD-003 UnDefend (due 2026-06-03, past) + ZD-004 PAN-OS (due 2026-05-09, past — value corrected to verbatim CISA) + VT-006 Mini Shai-Hulud (due 2026-06-10) + VT-008 Exchange (due 2026-05-29, past) + VT-009 Nx Console (due 2026-06-10) + VT-015 SD-WAN (due 2026-06-23) + VT-017 Adobe ColdFusion CVE-2026-48282 (due 2026-07-10) + VT-020 iCagenda CVE-2026-48939 (due 2026-07-13) + VT-021 Balbooa Forms CVE-2026-56291 (due 2026-07-13)
+  active_exploitation: 18         # ZD-004 PAN-OS + VT-006 Mini Shai-Hulud worm + VT-008 Exchange + VT-009 Nx Console + VT-015 SD-WAN (KEV-listed 2026-06-09) + VT-017 Adobe ColdFusion CVE-2026-48282 (KEV-listed 2026-07-07) + VT-020 iCagenda CVE-2026-48939 (KEV-listed 2026-07-10, zero-day since ~2026-06-15) + VT-021 Balbooa Forms CVE-2026-56291 (KEV-listed 2026-07-10, zero-day ~2026-07-08) + VT-027 Rockwell Logix CVE-2021-22681 (KEV-listed 2026-03-05; AA26-097A 2026-04-07 CyberAv3ngers ITW vs US water/energy/gov OT — attribution inherited, Hard Rule 2) + VT-028..VT-036 Pioneer Kitten #029 edge/VPN set (all 9 KEV-listed, historically widespread + ongoing n-day exploitation; Pioneer Kitten initial-access per AA24-241A/FortiGuard — attribution inherited, Hard Rule 2)
+  kev_listed: 20                  # (+VT-028..VT-036 Pioneer Kitten #029 edge/VPN set — all 9 CISA-KEV: CVE-2024-24919 added 2024-05-30 / CVE-2024-3400 2024-04-12 / CVE-2023-3519 2023-07-19 / CVE-2018-13379 2021-11-03 / CVE-2019-19781 2021-11-03 / CVE-2019-11510 2021-11-03 / CVE-2020-5902 2021-11-03 / CVE-2022-1388 2022-05-10 / CVE-2019-1579 2022-01-10; all remediation deadlines long past) ZD-002 RedSun (due 2026-06-03, past) + ZD-003 UnDefend (due 2026-06-03, past) + ZD-004 PAN-OS (due 2026-05-09, past — value corrected to verbatim CISA) + VT-006 Mini Shai-Hulud (due 2026-06-10) + VT-008 Exchange (due 2026-05-29, past) + VT-009 Nx Console (due 2026-06-10) + VT-015 SD-WAN (due 2026-06-23) + VT-017 Adobe ColdFusion CVE-2026-48282 (due 2026-07-10) + VT-020 iCagenda CVE-2026-48939 (due 2026-07-13) + VT-021 Balbooa Forms CVE-2026-56291 (due 2026-07-13) + VT-027 Rockwell Logix CVE-2021-22681 (added 2026-03-05, due 2026-03-26, past — relay-confirmed; verbatim KEV-catalog re-confirm pending)
   kev_pending: 6                  # VT-007 FortiAuthenticator (KEV watch active; verified NOT KEV-listed as of 2026-06-10) + VT-011 RoguePlanet (CVE-2026-50656 now assigned -> KEV-eligible; NOT listed as of CISA KEV catalog 2026.07.07, checked 2026-07-09) + VT-019 PAN-OS CVE-2026-0288 (CVE published 2026-07-08, postdates catalog 2026.07.07 — KEV watch active) + VT-024 SAP NetWeaver ABAP CVE-2026-44747 + VT-025 SAP Approuter CVE-2026-27690 + VT-026 SAP Commerce Cloud CVE-2026-44761 (SAP July 2026 Patch Day cluster; disclosed 2026-07-14, postdates CISA KEV catalog 2026.07.13 checked 2026-07-14 — none listed; KEV watch active, VT-024 priority given 2025 CVE-2025-31324 rapid-exploitation precedent)
-  public_exploit_available: 8     # ZD-004 PAN-OS + VT-006 (worm IS the ITW exploitation) + VT-007 FortiAuthenticator (GitHub PoC, flipped true 2026-06-10) + VT-011 RoguePlanet (self-hosted PoC) + VT-012 GreenPlasma (partial PoC) + VT-013 YellowKey (full PoC, physical access) + VT-014 MiniPlasma (full PoC) + VT-020 iCagenda CVE-2026-48939 (public GitHub PoC). NONE mirrored (Hard Rule 3). NOTE: VT-018 GhostLock has NO public weaponized PoC (kernelCTF research demonstration only); VT-021 Balbooa Forms CVE-2026-56291 has NO public weaponized PoC surfaced in reporting.
+  public_exploit_available: 17    # ZD-004 PAN-OS + VT-006 (worm IS the ITW exploitation) + VT-007 FortiAuthenticator (GitHub PoC, flipped true 2026-06-10) + VT-011 RoguePlanet (self-hosted PoC) + VT-012 GreenPlasma (partial PoC) + VT-013 YellowKey (full PoC, physical access) + VT-014 MiniPlasma (full PoC) + VT-020 iCagenda CVE-2026-48939 (public GitHub PoC) + VT-028..VT-036 Pioneer Kitten #029 edge/VPN set (all 9 have long-public exploit code — these are among the most weaponized edge CVEs of 2019-2024). NONE mirrored (Hard Rule 3). NOTE: VT-018 GhostLock has NO public weaponized PoC (kernelCTF research demonstration only); VT-021 Balbooa Forms CVE-2026-56291 has NO public weaponized PoC surfaced in reporting.
   no_cve_assigned: 0              # (was 1; VT-011 RoguePlanet assigned CVE-2026-50656 on 2026-07-09). Every tracked vuln is now CVE-bound.
   vendor_ghsa_poc_only: 2         # VT-005 OpenC3 COSMOS cluster + VT-010 Yamcs (PoC embedded in vendor advisories only)
 
   # --- Dossier / housekeeping ---
-  dossiers_present: 26            # every row now points at an existing per-vuln dossier directory (VT-024 CVE-2026-44747 + VT-025 CVE-2026-27690 + VT-026 CVE-2026-44761 scaffolded 2026-07-14: profile.md each, tracking.yaml not scaffolded; VT-022 CVE-2026-57219 + VT-023 CVE-2026-57221 scaffolded 2026-07-13: profile.md each, tracking.yaml not scaffolded; VT-020 CVE-2026-48939 + VT-021 CVE-2026-56291 scaffolded 2026-07-13: profile.md each, tracking.yaml not scaffolded; VT-019 PAN-OS-CVE-2026-0288 scaffolded 2026-07-09: profile.md + tracking.yaml)
+  dossiers_present: 36            # every row now points at an existing per-vuln dossier directory (VT-028..VT-036 Pioneer Kitten #029 edge/VPN set scaffolded 2026-07-14: profile.md + tracking.yaml EACH — CVE-2024-24919 / CVE-2024-3400 / CVE-2023-3519 / CVE-2018-13379 / CVE-2019-19781 / CVE-2019-11510 / CVE-2020-5902 / CVE-2022-1388 / CVE-2019-1579) (VT-027 CVE-2021-22681 Rockwell Logix scaffolded 2026-07-14: profile.md only, tracking.yaml not scaffolded) (VT-024 CVE-2026-44747 + VT-025 CVE-2026-27690 + VT-026 CVE-2026-44761 scaffolded 2026-07-14: profile.md each, tracking.yaml not scaffolded; VT-022 CVE-2026-57219 + VT-023 CVE-2026-57221 scaffolded 2026-07-13: profile.md each, tracking.yaml not scaffolded; VT-020 CVE-2026-48939 + VT-021 CVE-2026-56291 scaffolded 2026-07-13: profile.md each, tracking.yaml not scaffolded; VT-019 PAN-OS-CVE-2026-0288 scaffolded 2026-07-09: profile.md + tracking.yaml)
   consolidations_2026_06_10: 6    # CVE-keyed duplicates folded into codename-canonical dossiers, pending librarian git rm: CVE-2026-41091->REDSUN, CVE-2026-45498->UNDEFEND, CVE-2026-0300->PAN-OS-CVE-2026-0300, CVE-2026-42897->Exchange-CVE-2026-42897, CVE-2026-44277->FortiAuthenticator-CVE-2026-44277, CVE-2026-46333->ssh-keysign-pwn
   dossiers_migrated: 4            # ZD-004 PAN-OS; VT-005 OpenC3 COSMOS cluster; VT-007 FortiAuthenticator; VT-008 Exchange CVE-2026-42897. VT-006 Mini Shai-Hulud + VT-009 Nx Console + VT-010 Yamcs full dossiers still not scaffolded (recommend vuln-tracker next pass).

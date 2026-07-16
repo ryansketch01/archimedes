@@ -141,7 +141,7 @@ source_grade_notes:
 
 # Lifecycle
 tlp: CLEAR
-published_in_briefs: []
+published_in_briefs: [2026-07-16-afternoon]
 retracted: false
 retraction_brief_id: null
 ---

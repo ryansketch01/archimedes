@@ -1,0 +1,232 @@
+# threats/iocs/unattributed/mstic-asyncapi-npm-supply-chain-miasma-import-time-2026-07-14.yaml
+#
+# Unattributed cluster — IOCs published by Microsoft MSTIC (Microsoft Threat
+# Intelligence blog, 2026-07-15) covering the @asyncapi npm organization
+# compromise disclosed 2026-07-14: five malicious versions across four packages
+# run a "Miasma" loader at IMPORT time (survives `npm install --ignore-scripts`),
+# auto-published with valid OIDC provenance built from unauthorized source
+# commits (an `asyncapi-bot` PAT exposed via a misconfigured
+# `pull_request_target` "pwn request" workflow).
+#
+# MSTIC names NO threat actor. Per Hard Rule 2, Archimedes does NOT originate
+# attribution. This is a fresh deployment of the previously-documented Miasma
+# runtime family (see the 2026-06-03 "Miasma A1 origin" finding), NOT a first
+# sighting — but same-vendor MSTIC lineage, so NOT independent corroboration of
+# this specific compromise. Structurally sibling to tracked VT-006 (Mini
+# Shai-Hulud / OIDC-token hijack + provenance-breaking) and VT-009 (Nx Console);
+# mechanism DIFFERS (import-time loader vs. self-propagating worm) — do not
+# conflate, and TeamPCP (#001) is NOT named here.
+#
+# DO-NOT-BLOCKLIST (deliberately NOT indexed as an indicator below):
+#   npm-oidc-no-reply@github.com is a LEGITIMATE GitHub OIDC publish identity
+#   that was ABUSED by the release workflow — provenance/context only, NOT an
+#   attacker-owned identity. Naive blocklisting would break legitimate OIDC
+#   publishing. Excluded from indicators per the finding's do_not_blocklist flag.
+
+cluster_id: mstic-asyncapi-npm-supply-chain-miasma-import-time-2026-07-14
+cluster_name: "MSTIC — @asyncapi npm org compromise, import-time Miasma loader, OIDC-provenance abuse (2026-07-14)"
+first_seen: 2026-07-14
+last_updated: 2026-07-16
+admiralty_grade: A2
+tlp: CLEAR
+
+provenance:
+  - source: finding-2026-07-16-0001-mstic-asyncapi-npm-supply-chain-compromise-miasma-import-time-oidc-provenance-abuse-a2-likely-single-source-veto
+    note: >
+      Microsoft Threat Intelligence (MSTIC) primary blog publication
+      2026-07-15 — vendor-authority disclosure on own-product Defender
+      detection telemetry plus npm takedown coordination. Cluster digraph
+      A2 (single-source veto at the envelope level pending independent
+      corroboration; individual procedural facts at A1). Assessed likely
+      opportunistic and ecosystem-wide — no victimology or sector
+      targeting reported; a targeted-A&D read is unlikely but not ruled
+      out. No actor named (Hard Rule 2).
+
+notes: |
+  Mechanism (per MSTIC):
+    1. A "pwn request" against `asyncapi/generator` — a misconfigured
+       `pull_request_target` GitHub Actions workflow executed
+       attacker-controlled PR code, exposing the `asyncapi-bot` PAT.
+    2. Unauthorized pushes to the @asyncapi org followed. Legitimate OIDC
+       release workflows then auto-published five poisoned package
+       versions under the automated identity npm-oidc-no-reply@github.com
+       — yielding artifacts with VALID provenance signatures built from
+       UNAUTHORIZED source commits (provenance-trust abuse).
+    3. The malicious versions run a Miasma loader at IMPORT time (module
+       load), NOT via a postinstall hook — so `npm install --ignore-scripts`
+       does NOT stop execution.
+    4. The loader fetches an IPFS-hosted `sync.js` second stage and beacons
+       to C2 85.137.53.71 on ports 8080/8081/8091 (LIVE at disclosure).
+
+  CRITICAL DEFENSIVE NOTE — import-time execution defeats two common
+  developer-side assumptions:
+    - `--ignore-scripts` is NOT a mitigation here (import-time, not
+      lifecycle-hook, execution).
+    - Valid OIDC provenance is NOT proof of trustworthiness for these
+      versions (built from unauthorized commits).
+    MSTIC vendor mitigations (verbatim): remove all five affected
+    versions; purge npm and Yarn caches; hunt for `sync.js` under NodeJS
+    masquerade directories; block outbound to 85.137.53.71 on
+    8080/8081/8091; rotate credentials reachable from any environment
+    that imported the packages.
+
+  A&D-nexus assessment:
+    - NO named A&D victim and NO sector targeting — ecosystem-wide,
+      opportunistic (likely). Relevance is STRUCTURAL / SDLC-exposure:
+      `@asyncapi/specs` as a transitive dependency can reach A&D-prime and
+      supplier SDLCs, CI/CD pipelines, and container builds.
+    - Same dependency-graph-reach concern already logged for VT-006's
+      `@squawk` aviation-namespace analysis.
+
+  Splunk first-party status at finding creation (2026-07-16):
+    Queried (defenseclaw_local OR archimedes) for C2 IP 85.137.53.71,
+    "asyncapi", and "Miasma". Dormant. Hard Rule 8 — silence is NOT
+    disconfirming, just absent.
+
+  Relationship / lineage (Hard Rule 2 — no origination):
+    - New deployment of the previously-documented Miasma runtime family
+      (2026-06-03 "Miasma A1 origin" finding). Same-vendor MSTIC lineage;
+      NOT independent corroboration of this compromise.
+    - Structurally sibling to VT-006 (Mini Shai-Hulud) and VT-009 (Nx
+      Console) supply-chain lineage; mechanism DIFFERS (import-time loader
+      vs. self-propagating worm; Miasma vs. TeamPCP tooling; distinct C2).
+      No attribution overlap — TeamPCP (#001) is NOT named here.
+
+  To migrate this cluster to actor-attributed:
+    - A second A/B-grade vendor (Mandiant / CrowdStrike / Unit 42 /
+      SentinelOne / GTIG) independently corroborates with attribution to a
+      roster actor.
+    - First-party Splunk hit on 85.137.53.71 or a compromised package
+      version ties to a roster actor's infrastructure.
+
+ttl:
+  network_infrastructure: 90    # C2 IP may be sinkholed / rotated
+  malware_families: never
+  compromised_artifacts: 365    # poisoned package versions durable detection signal on registries/lockfiles
+
+indicators:
+  - id: asyncapi-miasma-c2-ipv4-001
+    type: ipv4
+    value: 85.137.53.71
+    role: c2
+    confidence: high
+    description: "Miasma second-stage C2 on ports 8080/8081/8091; MSTIC advises blocking outbound. LIVE/active at disclosure — a real operating malicious deployment, not dormant."
+    ports: [8080, 8081, 8091]
+    campaign: "AsyncAPI npm supply-chain compromise (2026-07-14)"
+    related_malware: [Miasma]
+    first_seen: 2026-07-14
+    last_seen: 2026-07-15
+    source: finding-2026-07-16-0001
+    source_attribution: ["MSTIC 2026-07-15"]
+
+  - id: asyncapi-miasma-staging-file-001
+    type: file_path
+    value: "sync.js (under OS-specific 'NodeJS' masquerade directory)"
+    role: staging
+    confidence: medium
+    description: "IPFS-fetched second-stage loader; hunt hint (exact per-OS path not enumerated by MSTIC)."
+    related_malware: [Miasma]
+    source: finding-2026-07-16-0001
+    source_attribution: ["MSTIC 2026-07-15"]
+
+  - id: asyncapi-miasma-defender-detection-001
+    type: detection_signature
+    value: "Trojan:JS/MiasmStealer.SC"
+    role: defender_detection
+    confidence: high
+    description: "Microsoft Defender AV detection name for the Miasma loader stage."
+    source: finding-2026-07-16-0001
+    source_attribution: ["MSTIC 2026-07-15"]
+
+  - id: asyncapi-miasma-defender-detection-002
+    type: detection_signature
+    value: "Trojan:Script/Supychain.A"
+    role: defender_detection
+    confidence: high
+    description: "Microsoft Defender AV detection name associated with the compromised-package supply-chain stage."
+    source: finding-2026-07-16-0001
+    source_attribution: ["MSTIC 2026-07-15"]
+
+  - id: asyncapi-compromised-pkg-001
+    type: npm_package_version
+    value: "@asyncapi/specs@6.11.2"
+    role: compromised_artifact
+    confidence: high
+    description: "Poisoned @asyncapi package version — remove and purge npm/Yarn caches."
+    source: finding-2026-07-16-0001
+    source_attribution: ["MSTIC 2026-07-15"]
+
+  - id: asyncapi-compromised-pkg-002
+    type: npm_package_version
+    value: "@asyncapi/specs@6.11.2-alpha.1"
+    role: compromised_artifact
+    confidence: high
+    description: "Poisoned @asyncapi package version — remove and purge npm/Yarn caches."
+    source: finding-2026-07-16-0001
+    source_attribution: ["MSTIC 2026-07-15"]
+
+  - id: asyncapi-compromised-pkg-003
+    type: npm_package_version
+    value: "@asyncapi/generator@3.3.1"
+    role: compromised_artifact
+    confidence: high
+    description: "Poisoned @asyncapi package version — remove and purge npm/Yarn caches."
+    source: finding-2026-07-16-0001
+    source_attribution: ["MSTIC 2026-07-15"]
+
+  - id: asyncapi-compromised-pkg-004
+    type: npm_package_version
+    value: "@asyncapi/generator-components@0.7.1"
+    role: compromised_artifact
+    confidence: high
+    description: "Poisoned @asyncapi package version — remove and purge npm/Yarn caches."
+    source: finding-2026-07-16-0001
+    source_attribution: ["MSTIC 2026-07-15"]
+
+  - id: asyncapi-compromised-pkg-005
+    type: npm_package_version
+    value: "@asyncapi/generator-helpers@1.1.1"
+    role: compromised_artifact
+    confidence: high
+    description: "Poisoned @asyncapi package version — remove and purge npm/Yarn caches."
+    source: finding-2026-07-16-0001
+    source_attribution: ["MSTIC 2026-07-15"]
+
+# DELIBERATELY NOT AN INDICATOR (do-not-blocklist):
+#   npm-oidc-no-reply@github.com — legitimate GitHub OIDC publish identity
+#   ABUSED via the release workflow. Provenance/context only, NOT attacker-owned.
+#   Indexing it as a blocklist indicator would break legitimate OIDC publishing.
+
+hunt_queries:
+  - id: asyncapi-miasma-hunt-c2-ip
+    platform: splunk
+    title: "AsyncAPI/Miasma cluster — C2 85.137.53.71 hunt"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      (dest_ip="85.137.53.71" OR src_ip="85.137.53.71"
+        OR dest="85.137.53.71" OR url="*85.137.53.71*")
+      | stats count by user, src_ip, dest_ip, dest_port, _time
+      | sort -_time
+    notes: >
+      Live C2 on 8080/8081/8091. ANY hit from a defense-contractor
+      environment warrants immediate developer-laptop EDR pivot and
+      CI/CD-pipeline / lockfile review for the five poisoned versions.
+
+  - id: asyncapi-miasma-hunt-packages
+    platform: splunk
+    title: "AsyncAPI/Miasma cluster — poisoned package-version hunt (lockfiles / registry logs)"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      ("@asyncapi/specs@6.11.2" OR "@asyncapi/specs@6.11.2-alpha.1"
+        OR "@asyncapi/generator@3.3.1" OR "@asyncapi/generator-components@0.7.1"
+        OR "@asyncapi/generator-helpers@1.1.1")
+      | stats count by index, source, sourcetype, _time
+      | sort -_time
+    notes: >
+      Any resolution / install of the five poisoned versions. Import-time
+      loader means `--ignore-scripts` did NOT prevent execution — treat any
+      hit as a compromised build host until proven otherwise.
+
+ttl_review: 2026-10-14        # 90-day cluster review checkpoint

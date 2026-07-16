@@ -24346,7 +24346,7 @@ entries:
       dormant non-self-telemetry sweep; absence not disconfirming.
 
   - id: 2026-06-01-am-003-oracle-cpu-may-2026-critical-batch-t-plus-4-carry-forward-pointer-only
-    covered_in: [2026-06-01-morning]
+    covered_in: [2026-06-01-morning, 2026-07-16-morning]   # 2026-07-16 UPDATE resurface — CVE-2026-46817 escalated to active exploitation + CISA KEV (see 2026-07-16-am-001)
     brief_file: threats/briefs/2026-06-01-morning.md
     update_on:
       - finding-2026-05-29-0003
@@ -24381,9 +24381,16 @@ entries:
       - kev_addition
       - named_ad_prime_victim_disclosure
     first_covered: 2026-05-29
-    last_covered: 2026-06-01
+    last_covered: 2026-07-16   # was 2026-06-01; bumped on the CVE-2026-46817 active-exploitation/KEV UPDATE
     retraction: null
     test: false
+    resurface_2026_07_16: >
+      UPDATE resurface (in_the_wild_exploitation_reported + kev_addition BOTH met): CVE-2026-46817
+      (Oracle EBS Payments) moved from no-ITW/no-KEV to ACTIVELY EXPLOITED + CISA KEV (dateAdded
+      2026-07-15, accelerated ~3-day BOD deadline due Saturday 2026-07-18). Genuinely-new escalation
+      developments logged as the distinct entry 2026-07-16-am-001 (finding-2026-07-15-flash-1800-0001,
+      VT-043). Held FLASH absorbed into 2026-07-16 morning per anti-noise rule 1. This anchor batch
+      entry updated in place; the EBS-Payments CVE line carried forward under the new escalation entry.
     notes: |
       Pointer-only carry-forward. T+3 → T+4 status tick only.
       Public-PoC watch window closes 2026-06-11.
@@ -43259,6 +43266,235 @@ entries:
       framings preserved (relay-asserted, "not listed in CISA KEV"); no themed voice; standing silent-day
       boilerplate omitted from Layer 2. Pre-flight 13-of-13 PASS. Not posted to Discord by briefer —
       librarian owns delivery/commit.
+
+  - id: 2026-07-16-am-001-oracle-ebs-cve-2026-46817-payments-unauth-takeover-active-exploitation-cisa-kev-3day-bod-deadline-saturday-2026-07-18-update-a2-likely-single-source-veto
+    covered_in: [2026-07-16-morning]
+    brief_file: threats/briefs/2026-07-16-morning.md
+    update_on:
+      - finding-2026-05-29-0003          # carried at no-ITW in the Oracle May 2026 CPU batch finding
+    headline: "UPDATE — Oracle E-Business Suite CVE-2026-46817 (Oracle Payments / File Transmission, unauthenticated pre-auth takeover, CVSS 9.8, EBS 12.2.3-12.2.15) escalated from no-ITW/no-KEV to ACTIVELY EXPLOITED. CISA KEV dateAdded 2026-07-15 with an accelerated ~3-day BOD deadline due Saturday 2026-07-18; in-the-wild exploitation traces to ~2026-06-27 (pre-PoC). n-day — patched in Oracle May 2026 CPU. Held FLASH (flash-sweep-1800-2026-07-15, Trigger 1 critical-cve-exploited) absorbed into this scheduled brief per anti-noise rule 1 — NOT posted to #flash-alerts. A2/likely single-source veto (only CISA KEV directly retrieved; Mandiant/GTIG A-grade exploitation basis not retrieved this pass). No actor attributed (Hard Rule 2). A&D relevance STRUCTURAL (DIB-pervasive ERP); no named A&D victim. Brief lead item."
+    topic_tags:
+      - cve
+      - oracle-e-business-suite
+      - cve-2026-46817-vt043
+      - oracle-payments-file-transmission-unauth-pre-auth-takeover
+      - active-exploitation-first-itw-approx-2026-06-27
+      - cisa-kev-dateadded-2026-07-15-due-2026-07-18-accelerated-3day-bod
+      - n-day-patched-oracle-may-2026-cpu
+      - held-flash-1800-2026-07-15-absorbed-next-scheduled-anti-noise-rule-1
+      - single-source-veto-cisa-kev-only-directly-retrieved
+      - hard-rule-2-no-attribution
+      - ad-relevance-structural-dib-erp-no-named-victim
+      - update-resurface-of-finding-2026-05-29-0003
+      - lead-active-threats
+    related_actors: []
+    related_vulns: [CVE-2026-46817]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-15-flash-1800-0001]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    red_team_review: null            # WEP ceiling "likely" — red-team not required
+    absorbed_flash: flash-sweep-1800-2026-07-15
+    resurface_if:
+      - mandiant_gtig_direct_retrieval_lifting_exploitation_toward_confirmed
+      - atomic_network_iocs_specific_to_cve_2026_46817_published
+      - actor_attribution_surfacing_from_a_or_b_grade_source
+      - cisa_kev_ransomware_campaign_use_flipping_from_unknown
+      - kev_due_date_2026_07_18_passing_without_federal_remediation
+      - named_ad_or_dib_prime_victim_disclosure
+    first_covered: 2026-07-16
+    last_covered: 2026-07-16
+    retraction: null
+    test: false
+
+  - id: 2026-07-16-am-002-mstic-asyncapi-npm-supply-chain-compromise-import-time-miasma-loader-oidc-provenance-abuse-live-c2-a2-likely-single-source-veto
+    covered_in: [2026-07-16-morning]
+    brief_file: threats/briefs/2026-07-16-morning.md
+    headline: "MSTIC disclosed the @asyncapi npm org was compromised 2026-07-14 — five malicious versions across four packages (@asyncapi/specs, generator, generator-components, generator-helpers) carry an import-time 'Miasma' loader that survives npm install --ignore-scripts, auto-published via OIDC with VALID provenance signatures built from unauthorized commits (pwn-request PAT theft). Live C2 85.137.53.71 (8080/8081/8091). ACH leading read: opportunistic, non-targeted, ecosystem-wide financial-crime supply-chain compromise; targeted-A&D espionage NOT ruled out but rests on absence-of-victimology (unlikely). NEW deployment of the previously-corpus-documented Miasma family (2026-06-03 origin), not a first sighting. No actor named (Hard Rule 2). A2/likely single-source veto (MSTIC sole source; Unit 42 npm doc is a DIFFERENT Shai-Hulud/VT-006 lineage, NOT corroboration). A&D relevance STRUCTURAL/SDLC-exposure; no named victim."
+    topic_tags:
+      - npm-supply-chain-compromise
+      - asyncapi-org-compromise-2026-07-14
+      - miasma-family-new-deployment-not-first-sighting
+      - import-time-loader-survives-ignore-scripts
+      - oidc-valid-provenance-abuse-pwn-request-pat-theft
+      - live-c2-85-137-53-71-blocklist-eligible
+      - do-not-blocklist-npm-oidc-no-reply-github-legitimate-abused-identity
+      - mstic-first-party-disclosure
+      - single-source-veto-mstic-sole-source
+      - ach-opportunistic-ecosystem-wide-not-inflated-targeted-ad
+      - hard-rule-2-no-actor-named
+      - sibling-vt-006-vt-009-npm-cicd-lineage
+      - no-cve-kev-ineligible
+      - ad-relevance-structural-sdlc-exposure-no-named-victim
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [asyncapi-npm-miasma-compromise-2026-07-14]
+    finding_ids: [finding-2026-07-16-0001]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    red_team_review: null
+    resurface_if:
+      - independent_ab_grade_source_confirms_asyncapi_miasma_with_named_victimology
+      - miasma_modules_observed_enabled_active_in_later_build
+      - first_party_splunk_hit_c2_85_137_53_71_or_compromised_package
+      - named_ad_prime_or_tier1_supplier_customer_impact_statement
+    first_covered: 2026-07-16
+    last_covered: 2026-07-16
+    retraction: null
+    test: false
+
+  - id: 2026-07-16-am-003-f5-quarterly-k000161837-cve-2026-42533-nginx-unauth-heap-overflow-cvss-9-2-vt044-no-itw-a2-likely-single-source-veto
+    covered_in: [2026-07-16-morning]
+    brief_file: threats/briefs/2026-07-16-morning.md
+    headline: "F5 quarterly out-of-band notification K000161837, headline CVE-2026-42533 (VT-044) — unauthenticated NGINX heap buffer overflow in NGINX Plus + NGINX Open Source via a crafted-request regex map directive. CVSS v4.0 9.2 Critical (NVD also carries CVSS v3.1 8.1 HIGH; both AC:H, CWE-122). DoS-PRIMARY (worker restart); code execution CONTINGENT on ASLR disabled. n-day PATCHED at disclosure (NGINX OSS 1.31.3; NGINX Plus R37+). F5 attests NO in-the-wild exploitation; NOT KEV as of 2026-07-16. Active CISA-KEV WATCH warranted (F5 unauth-vector historically rapid-to-KEV; VT-007 sibling) but NOT KEV this morning. Additional NGINX Ingress / BIG-IP CVE IDs in the same quarterly pending F5-primary retrieval — deliberately NOT enumerated. A2/likely single-source veto (F5 via single SecurityWeek B relay). No actor (Hard Rule 2). A&D relevance STRUCTURAL edge-infra; no named victim."
+    topic_tags:
+      - cve
+      - f5-quarterly-k000161837
+      - cve-2026-42533-vt044
+      - nginx-plus-nginx-open-source-unauth-heap-overflow
+      - cvss-v4-9-2-critical-nvd-v3-1-8-1-high-both-ac-h-cwe-122
+      - dos-primary-worker-restart-rce-contingent-aslr-disabled
+      - n-day-patched-at-disclosure-nginx-oss-1-31-3-nginx-plus-r37
+      - no-itw-not-kev-cisa-kev-watch-active-vt-007-sibling
+      - additional-ingress-bigip-cve-ids-pending-f5-primary-retrieval
+      - single-source-veto-f5-via-single-securityweek-relay
+      - hard-rule-2-no-actor
+      - ad-relevance-structural-edge-infra-no-named-victim
+      - vulnerabilities-section
+    related_actors: []
+    related_vulns: [CVE-2026-42533]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-16-0002]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    red_team_review: null
+    resurface_if:
+      - cisa_kev_adds_cve_2026_42533
+      - public_poc_or_nday_research_watchtowr_horizon3_assetnote_rapid7
+      - any_itw_report_contradicting_f5_no_itw
+      - f5_primary_confirms_broader_non_aslr_dependent_rce
+      - additional_cluster_cve_ids_retrieved_changing_prioritization
+    first_covered: 2026-07-16
+    last_covered: 2026-07-16
+    retraction: null
+    test: false
+
+  - id: 2026-07-16-am-004-nightmare-eclipse-legacyhive-windows-profsvc-lpe-zero-day-vt042-second-outlet-securityweek-relay-no-state-change-b2-likely-monitoring
+    covered_in: [2026-07-16-morning]
+    brief_file: threats/briefs/2026-07-16-morning.md
+    headline: "MONITORING — Nightmare Eclipse 'LegacyHive' Windows User Profile Service (profsvc) arbitrary registry-hive-load LPE zero-day (8th public drop in the series; VT-042). SecurityWeek (2026-07-16) added as a second/publisher-independent outlet relaying the SAME drop already graded on 2026-07-15 — relay, NOT new evidence; NO STATE CHANGE. Still no CVE, no CVSS, UNPATCHED (MSRC contacted-and-silent -> CISA-KEV-ineligible), NO ITW. PoC public but deliberately stripped (Hard Rule 3). B2 headline / single-source veto (8+ outlets, one originating evidence basis = researcher's PoC + blog). Strong severity claims (full compromise on patched systems; no-credentials variant) disputed by independent researcher Matei Badanoiu (B3). No actor attributed (Hard Rule 2 — self-claimed persona). A&D relevance STRUCTURAL (ubiquitous Windows-endpoint LPE = ransomware/lateral-movement precursor); no named victim. First brief citation of finding-2026-07-15-0002 (queued monitoring item)."
+    topic_tags:
+      - monitoring
+      - nightmare-eclipse-series-8th-drop
+      - legacyhive-windows-profsvc-lpe-zero-day-vt042
+      - no-cve-no-cvss-unpatched-msrc-silent-kev-ineligible
+      - no-itw
+      - securityweek-second-outlet-relay-no-state-change
+      - single-source-veto-8plus-outlets-one-evidence-basis
+      - severity-disputed-matei-badanoiu-b3
+      - hard-rule-2-self-claimed-persona-no-tracked-actor
+      - hard-rule-3-poc-stripped-not-mirrored
+      - ad-relevance-structural-windows-endpoint-lpe-precursor-no-named-victim
+      - first-brief-citation-queued-monitoring-item
+    related_actors: []
+    related_vulns: []
+    related_campaigns: [nightmare-eclipse-disclosure-series]
+    finding_ids: [finding-2026-07-15-0002]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    red_team_review: null
+    resurface_if:
+      - cve_assignment_nvd_or_mitre
+      - msrc_advisory_or_patch_referencing_user_profile_service_or_profsvc_hive_load
+      - cisa_kev_addition_once_cve_assigned
+      - independent_itw_confirmation_huntress_vectra_mandiant
+      - un_stripped_or_no_credentials_poc_variant_surfacing
+      - next_nightmare_eclipse_drop_or_defender_batch_materializing
+    first_covered: 2026-07-16
+    last_covered: 2026-07-16
+    retraction: null
+    test: false
+
+  - id: 2026-07-16-am-brief-meta
+    covered_in: [2026-07-16-morning]
+    brief_file: threats/briefs/2026-07-16-morning.md
+    headline: "Morning brief 2026-07-16 (Thursday) — lead: CISA's accelerated ~3-day KEV deadline (Saturday 2026-07-18) on the actively-exploited Oracle EBS CVE-2026-46817 Payments takeover (held-FLASH UPDATE absorbed per anti-noise rule 1). Active Threats: Oracle EBS UPDATE + MSTIC @asyncapi npm/Miasma supply-chain compromise (presented opportunistic/ecosystem-wide, deliberately NOT inflated to a targeted-A&D narrative per analyst calibration). Vulnerabilities: F5 K000161837 CVE-2026-42533 NGINX unauth heap overflow (DoS-primary, no-ITW, KEV-watch, not headlined as clean unauth-RCE) + LegacyHive monitoring line (second-outlet relay, no state change). Standing sections silent-day (A&D STRUCTURAL-only, no named victim; Iran no activity). 4 findings; no red-team (all WEP <= likely, single-source veto binds). Hard Rule 2 held throughout (no attribution originated); Hard Rule 6 zero direct quotes; C2 85.137.53.71 blocklist-eligible, npm-oidc-no-reply@github.com explicitly NOT blocklisted."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - lead-oracle-ebs-cve-2026-46817-saturday-kev-deadline-held-flash-absorbed
+      - active-threats-oracle-update-plus-asyncapi-miasma-npm
+      - asyncapi-miasma-opportunistic-not-inflated-targeted-ad
+      - vulnerabilities-f5-cve-2026-42533-nginx-dos-primary-kev-watch-not-clean-rce
+      - legacyhive-monitoring-second-outlet-no-state-change
+      - standing-sections-ad-structural-only-iran-silent
+      - hard-rule-2-held-no-attribution
+      - hard-rule-6-zero-direct-quotes
+      - c2-85-137-53-71-blocklist-eligible-oidc-identity-not-blocklisted
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: [CVE-2026-46817, CVE-2026-42533]
+    related_campaigns: [asyncapi-npm-miasma-compromise-2026-07-14, nightmare-eclipse-disclosure-series]
+    finding_ids: [finding-2026-07-16-0001, finding-2026-07-16-0002, finding-2026-07-15-flash-1800-0001, finding-2026-07-15-0002]
+    absorbs_flashes: [flash-sweep-1800-2026-07-15]   # VT-043 held FLASH, Trigger 1 critical-cve-exploited
+    digraph: mixed              # A2 x3 (Oracle, Miasma, F5), B2 x1 (LegacyHive)
+    wep: likely
+    preflight:
+      result: pass_13_of_13
+      word_count_full_body: 758         # 400-800 band
+      layer2_words: ~192                # 150-300 band
+      layer2_chars_est: ~1560           # <=1900 ceiling, single Discord message
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-16-0001, append_brief_id: 2026-07-16-morning}
+        - {finding_id: finding-2026-07-16-0002, append_brief_id: 2026-07-16-morning}
+        - {finding_id: finding-2026-07-15-flash-1800-0001, append_brief_id: 2026-07-16-morning}
+        - {finding_id: finding-2026-07-15-0002, append_brief_id: 2026-07-16-morning}
+      coverage_log_resurface_update:
+        - "2026-06-01-am-003 (Oracle CPU May 2026 batch anchor, CVE-2026-46817): covered_in appended 2026-07-16-morning; last_covered -> 2026-07-16; resurface_2026_07_16 note added (in_the_wild_exploitation_reported + kev_addition met). New escalation developments logged as distinct entry 2026-07-16-am-001."
+      watch_config_update:
+        - "oracle-ebs-cve-2026-46817-2026-07-15: first_citation_brief pending_2026-07-16-morning -> 2026-07-16-morning (now cited)."
+        - "nightmare-eclipse-legacyhive-2026-07-15: first_citation_brief pending_2026-07-16-morning -> 2026-07-16-morning (now cited as monitoring)."
+    first_covered: 2026-07-16
+    last_covered: 2026-07-16
+    retraction: null
+    test: false
+    notes: |
+      2026-07-16 MORNING BRIEF (briefer phase). 4 findings: 2 NEW (Miasma npm A2/likely;
+      F5 CVE-2026-42533 A2/likely) + 2 UPDATES absorbed/first-cited from 2026-07-15 queue
+      (Oracle EBS CVE-2026-46817 held-FLASH escalation UPDATE A2/likely; LegacyHive VT-042
+      monitoring, second-outlet relay no-state-change B2/likely). No red-team (all WEP ceiling
+      "likely"; single-source veto binds every finding).
+
+      Anti-repetition: Oracle EBS CVE-2026-46817 previously carried no-ITW/no-KEV (2026-06-01-am-003,
+      from finding-2026-05-29-0003). Resurfaced ONLY on the material escalation (active exploitation
+      + CISA KEV + Saturday BOD deadline) with UPDATE flag + correlation callout. LegacyHive is the
+      FIRST brief citation of finding-2026-07-15-0002; the broader Nightmare Eclipse series is heavily
+      pre-covered, so the 2026-07-16 SecurityWeek relay is carried as a short monitoring line (no state
+      change) rather than a full re-treatment.
+
+      Analyst calibrations honored: (1) Miasma presented as opportunistic/ecosystem-wide with real
+      defensive urgency but NOT inflated into a targeted-A&D story; targeted-espionage read carried as
+      "unlikely, not ruled out." C2 85.137.53.71 listed as blocklist indicator; npm-oidc-no-reply@github.com
+      explicitly EXCLUDED (legitimate OIDC identity abused). (2) F5 headlined DoS-primary with RCE
+      contingent on ASLR-disabled (NOT clean unauth-RCE); KEV-watch active but NOT KEV; additional
+      Ingress/BIG-IP CVE IDs NOT enumerated (pending F5-primary). (3) Oracle led with the hard Saturday
+      deadline. Rejected item (Unit 42 npm living-doc refresh) NOT briefed.
+
+      Standing sections: Sector Focus A&D silent-day (all four items STRUCTURAL DIB relevance only, no
+      named victim, no targeting — Hard Rule 2); Iran Cyber Watch silent-day. Hard Rule 6: ZERO direct
+      quotes. Hard Rule 2 held throughout — no attribution originated on any item. Hard Rule 3: no PoC
+      mirrored (Miasma technical detail + LegacyHive both awareness-level only).
+
+      Layer 1 ~566 words + Layer 2 ~192 words (full body ~758, 400-800 band). Layer 2 Discord Summary:
+      4 source-linked bullets (2 Active Threats, 2 Vulnerabilities), est. ~1560 chars (<1900 ceiling,
+      single message); natural-language dates; no digraph/WEP/finding-id in Layer 2; no themed voice;
+      standing silent-day boilerplate omitted from Layer 2. Pre-flight 13-of-13 PASS. Not posted to
+      Discord by briefer — librarian owns delivery/commit.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -92,7 +92,7 @@ vuln_watch_keywords:
       - "arbitrary hive load"
       - "projectnightcrawler"
     first_citation_finding: finding-2026-07-15-0002-nightmare-eclipse-legacyhive-windows-profsvc-lpe-zero-day-no-cve-vendor-silent-b2-single-source-veto-monitoring
-    first_citation_brief: pending_2026-07-16-morning   # QUEUED — not yet briefed; briefer to first-cite as monitoring item
+    first_citation_brief: 2026-07-16-morning   # first-cited as MONITORING item in the 2026-07-16 morning brief
     added_at: 2026-07-15T17:30:00-04:00
     brief_inclusion: queued_next_scheduled_as_monitoring   # inclusion flags on the finding: daily_brief_action + daily_brief_monitoring
     monitor_for:
@@ -130,7 +130,7 @@ vuln_watch_keywords:
       - "/OA_HTML/ibytransmit"
       - "EBS 12.2"
     first_citation_finding: finding-2026-07-15-flash-1800-0001-cisa-kev-oracle-ebs-cve-2026-46817-payments-unauth-takeover-actively-exploited-3day-deadline-a2-likely-single-source-veto
-    first_citation_brief: pending_2026-07-16-morning   # QUEUED — held FLASH, not yet briefed; briefer to first-cite as an UPDATE item
+    first_citation_brief: 2026-07-16-morning   # first-cited as an UPDATE item in the 2026-07-16 morning brief (held FLASH absorbed)
     added_at: 2026-07-15T18:50:00-04:00
     brief_inclusion: queued_next_scheduled_as_update   # inclusion flag on the finding: daily_brief_action. HELD FLASH absorbed into next scheduled brief per anti-noise rule 1.
     held_flash:

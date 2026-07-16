@@ -618,3 +618,23 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 **Reviewer:** Awaiting Ryan ratification.
 **Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`.
 **Next review:** rolling pivot on first-direct-retrieval of proofpoint.com/us/blog/threat-insight primary (which would also enable a first-party Splunk IOC hunt) AND human ratification.
+
+---
+
+## 2026-07-16 — CERT-UA (Computer Emergency Response Team of Ukraine) — (none) → A (provisional, awaiting ratification + direct retrieval)
+
+**Type:** New source — provisional (single addition)
+**Source ID:** `cert-ua`
+**Run:** librarian-20260716-flash1600 (Mode 2 held FLASH sweep — no FLASH shipped)
+
+**Summary:** First Archimedes-corpus citation of CERT-UA (Ukraine's national CERT), added during the 16:00 EDT 2026-07-16 held FLASH sweep. First cited via finding-2026-07-16-0003 (Sandworm / APT44 / GRU Unit 74455 shift to a ClickFix fake-CAPTCHA -> pasted-PowerShell delivery chain deploying a new named malware set — GhettoVibe / ScoutCurl / FluidLeech / LoadLoop — against primarily Ukrainian targets). The finding was graded A2 / WEP likely, HELD from FLASH on anti-noise + no-A&D-nexus grounds, and PROMOTED + routed to the next scheduled brief (Russia-watch / afternoon).
+
+**Grade rationale:** National cyber authority / government-CERT class — the authoritative primary on Sandworm/GRU Ukraine-theater operations (CISA-analog). Anchored at A on originator authority per the CISA / NSA-CNSA precedent. Conservative alternative FLOOR is B, consistent with the first-surface provisional-B starting point applied to foreign national cyber/CERT bodies ABW (2026-05-08), CCB (2026-06-01), CCCS (2026-07-06), Singapore CSA (2026-07-10). Either A2 or the conservative B2 floor clears the FLASH grade threshold, so the letter did not move the (held) disposition. Sandworm=GRU Unit 74455 attribution is long-established and was preserved verbatim, not originated (Hard Rule 2).
+
+**Retrieval status:** Relay-only via The Record (`the-record`, ratified B, Recorded Future News) this sweep. The CERT-UA advisory primary was NOT directly retrieved — atomic IOCs (domains / hashes / PowerShell command detail) are absent from the relay and are the specific target of the direct-retrieval todo. Single-source veto applied at grader (one effective evidence basis — The Record is a relay of CERT-UA, fails the independence test) — WEP capped at 'likely'.
+
+**Supporting findings:** [finding-2026-07-16-0003]
+**Posted to:** Nothing posted to Discord this sweep — held FLASH, no FLASH shipped. The Sandworm item is routed into the next scheduled brief (Russia-watch) by the briefer; source citation will appear inline there. No separate `#actor-review` post required per Mode 9 (first-citation provisional addition under the precedent-class auto-add path, not a B->D-or-worse downgrade or an unsolicited C->A upgrade).
+**Reviewer:** Awaiting Ryan ratification.
+**Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`; `ratification_clock: 2026-07-19T16:00:00-04:00` (72h).
+**Next review:** ratification target 2026-07-19; rolling pivot on first-direct-retrieval of cert.gov.ua primary (which would supply atomic IOCs for a first-party Splunk IOC hunt) AND human ratification.

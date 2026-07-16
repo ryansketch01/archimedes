@@ -179,6 +179,21 @@ government_sources:
     urls:
       - https://www.csa.gov.sg/
 
+  - id: cert-ua
+    name: "CERT-UA (Computer Emergency Response Team of Ukraine)"
+    category: government
+    grade: A
+    provisional: true
+    provisional_since: 2026-07-16
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-07-16-0003 (Sandworm / APT44 / GRU Unit 74455 shift to ClickFix fake-CAPTCHA -> pasted-PowerShell delivery of a new malware set — GhettoVibe / ScoutCurl / FluidLeech / LoadLoop — against primarily Ukrainian targets). CERT-UA is Ukraine's national CERT and the authoritative primary on Sandworm/GRU Ukraine-theater operations — CISA-analog / national-cyber-authority class, which the corpus grades A on originator authority (per the CISA / NSA-CNSA precedent). Grade anchored at A on national-CERT authority; conservative alternative FLOOR is B, consistent with the first-surface provisional-B starting point applied to foreign national cyber/CERT bodies ABW (2026-05-08), CCB (2026-06-01), CCCS (2026-07-06), Singapore CSA (2026-07-10). Operator may ratify at A, hold at the conservative B floor, or downgrade on subsequent low-fidelity surfaces. This surface: relay-only via The Record (the-record, ratified B); the CERT-UA advisory primary was NOT directly retrieved — atomic IOCs (domains / hashes / PowerShell command detail) are absent from the relay and are the specific target of the direct-retrieval todo. Pending human ratification per source-grade-log.md. 72h ratification clock to 2026-07-19T16:00:00-04:00."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    ratification_clock: 2026-07-19T16:00:00-04:00
+    provenance: finding-2026-07-16-0003
+    active: true
+    urls:
+      - https://cert.gov.ua/
+
 # ============================================================================
 # Tier-1 Threat Intel Firms
 # ============================================================================

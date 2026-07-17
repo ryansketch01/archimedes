@@ -43538,8 +43538,18 @@ entries:
       Discord by briefer — librarian owns delivery/commit.
 
   - id: 2026-07-16-pm-001-cisa-kev-2026-07-16-batch-sharepoint-cve-2026-58644-vt041-flip-actively-exploited-plus-fortisandbox-cve-2026-25089-cve-2026-39808-kev-a2-likely-single-source-veto
-    covered_in: [2026-07-16-afternoon]
+    covered_in: [2026-07-16-afternoon, 2026-07-17-afternoon]   # 2026-07-17-afternoon: 🔗 correlation callout resurface — Rapid7 ETR net-new A-grade corroboration of CVE-2026-58644 (VT-041) facts, folded into finding-2026-07-16-0005
     brief_file: threats/briefs/2026-07-16-afternoon.md
+    resurface_2026_07_17: >
+      Rapid7 Emergent Threat Response independently corroborated the CVE-2026-58644 (VT-041) facts
+      (CVSS 9.8, unauthenticated on-prem SharePoint deserialization RCE, Server 2016/2019/SE only)
+      on 2026-07-17; folded into finding-2026-07-16-0005. Carried in the 2026-07-17 afternoon brief
+      Vulnerabilities section as a one-line 🔗 correlation callout / status reinforcement (NOT a
+      repeat headline). Grade holds A2/likely: Rapid7 corroborates the VULNERABILITY, but the
+      active-exploitation basis still relays Microsoft/CISA — not a second independent exploitation
+      evidence basis — so the single-source veto on exploitation stands. KEV due date 2026-07-19
+      (Saturday) reiterated as the standing patch deadline. No new victim, no atomic IOC, no
+      attribution surfaced this sweep.
     update_on:
       - 2026-07-15-pm-001          # VT-041 was a priority escalation-watch in the 2026-07-15 SharePoint cluster
       - 2026-06-16-am-001          # FortiSandbox cluster carried KEV-pending on 2026-06-16
@@ -43582,7 +43592,7 @@ entries:
       - named_ad_or_dib_prime_victim_disclosed
       - knownransomwarecampaignuse_flips_from_unknown_for_any_of_the_three
     first_covered: 2026-07-16
-    last_covered: 2026-07-16
+    last_covered: 2026-07-17   # was 2026-07-16; bumped on the 2026-07-17 Rapid7 ETR corroboration callout
     retraction: null
     test: false
 
@@ -43978,6 +43988,197 @@ entries:
       the char ceiling. Natural-language dates; no digraph/WEP/finding-id in Layer 2; no themed voice;
       standing silent-day boilerplate omitted from Layer 2. Pre-flight 13-of-13 PASS. NOT posted to
       Discord by briefer — librarian owns delivery/commit.
+
+  - id: 2026-07-17-pm-001-securityweek-tkms-thyssenkrupp-marine-systems-atlas-elektronik-naval-defense-the-gentlemen-data-extortion-b3-monitoring-single-source-veto
+    covered_in: [2026-07-17-afternoon]
+    brief_file: threats/briefs/2026-07-17-afternoon.md
+    headline: "SECTOR FOCUS: A&D (monitoring, LEAD) — Naval defense prime TKMS (ThyssenKrupp Marine Systems) + combat-systems subsidiary Atlas Elektronik posted to a leak portal by non-roster extortion crew 'The Gentlemen', which self-claims >1TB exfiltration. TKMS victim-confirms a compromise of a North American unit it states was segmented from core corporate infrastructure and held no classified military records. Incident-occurred is victim-confirmed (WEP likely); the >1TB scale AND the attribution to The Gentlemen are the extortion side's own uncorroborated leak-portal self-claims; the segmented / no-classified-records scope is the victim's own statement during active extortion, not independently verified. B3, single publisher (SecurityWeek In Other News relay), no corroboration this sweep, no CVE / initial-access vector / atomic IOC, no first-party telemetry relevance (third-party German prime). The Gentlemen recorded verbatim as the claimant's claim, NO roster mapping (Hard Rule 2). No FLASH (single-victim cybercrime, no nation-state nexus, no A&D-contractor victim named). One 12-word victim quote (Hard Rule 6 respected)."
+    topic_tags:
+      - sector-focus-ad-monitoring-lead
+      - naval-defense-industrial-base-data-extortion
+      - tkms-thyssenkrupp-marine-systems-submarines-surface-warships
+      - atlas-elektronik-combat-systems-subsidiary
+      - the-gentlemen-non-roster-extortion-crew-self-claim-leak-portal
+      - victim-confirmed-incident-north-american-unit-segmented-no-classified-records
+      - self-claimed-1tb-scale-and-attribution-uncorroborated-extortion-side
+      - b3-monitoring-single-source-veto-securityweek-in-other-news-relay
+      - no-cve-no-ioc-no-initial-access-vector-disclosed
+      - hard-rule-2-the-gentlemen-recorded-verbatim-no-roster-mapping
+      - no-flash-single-victim-cybercrime-no-nation-state-nexus
+      - no-first-party-telemetry-third-party-german-prime
+      - hard-rule-6-one-12word-victim-quote
+    related_actors: []              # The Gentlemen NOT on _roster.yaml (standing /new-actor candidate per prior coverage); no roster mapping originated (Hard Rule 2)
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-07-17-0003]
+    digraph: B3
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Single effective source (SecurityWeek In Other News relay of both the leak-portal boast and the
+      TKMS statement). No primary retrieved, no independent second publisher, no atomic artifacts to
+      cross-match. WEP "likely" attaches ONLY to the victim-confirmed incident-occurred fact — NOT to
+      the self-claimed >1TB scale or the attribution to The Gentlemen. Veto lifts if a second
+      independent outlet or an A/B-grade IR firm corroborates the attack or publishes IOCs.
+    hard_rule_2_framings_load_bearing:
+      - "The Gentlemen self-claim (responsibility + >1TB scale) recorded verbatim as the claimant's claim; NO roster mapping, no attribution originated"
+      - "TKMS scope-bounding (segmented unit / no classified military records) carried as the victim's own statement during active extortion, not as an Archimedes conclusion"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_item: 1
+      per_source_max: 1
+      note: "One 12-word quote of TKMS's statement (relayed by SecurityWeek), under the 15-word limit; all else paraphrased."
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: no_queryable_atomic_ioc_tkms_third_party_german_prime_not_in_defenseclaw_local_silent_not_disconfirming
+    resurface_if:
+      - second_independent_outlet_or_ab_grade_ir_firm_corroborates_attack_or_publishes_iocs   # lifts single-source veto
+      - victim_scope_bounding_later_contradicted_classified_or_itar_data_or_lateral_movement_to_core_infra
+      - named_ad_or_dib_prime_disclosed_as_victim
+      - the_gentlemen_attribution_refined_or_state_nexus_surfaces_from_a_or_b_grade_source
+      - operator_invokes_new_actor_the_gentlemen_standing_candidate
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-17
+    last_covered: 2026-07-17
+    retraction: null
+    test: false
+
+  - id: 2026-07-17-pm-002-securityweek-ft-iran-linked-us-military-phone-tracking-adtech-metadata-cellular-roaming-b3-monitoring-single-source-veto
+    covered_in: [2026-07-17-afternoon]
+    brief_file: threats/briefs/2026-07-17-afternoon.md
+    headline: "IRAN CYBER WATCH (monitoring) — SecurityWeek In Other News relays a paywalled Financial Times report that foreign threat actors linked to Iran track US military personnel's phones via advertising-technology location metadata + cellular-roaming exposure. Reported location-tracking / SIGINT-style tradecraft, NOT a confirmed intrusion, CVE, or software vulnerability. Relay-of-a-relay (SecurityWeek summarizing an unretrieved paywalled FT primary), single-source, uncorroborated. The 'Iran-linked' framing is the source's own generic label — NO group named, NO roster mapping to any of the nine roster Iranian actors (Hard Rule 2). WEP roughly even chance. A&D relevance is personnel-OPSEC / counterintelligence for cleared and travelling staff — thematic, not a direct intrusion nexus. B3. Direct-retrieval TODO: FT primary (paywalled) could firm credibility toward 2 and reveal whether FT names a specific actor or a confidence level."
+    topic_tags:
+      - iran-cyber-watch-monitoring
+      - iran-linked-us-military-personnel-phone-location-tracking
+      - adtech-location-metadata-plus-cellular-roaming-exposure-tradecraft
+      - reported-sigint-location-tracking-not-a-confirmed-intrusion-no-cve
+      - relay-of-a-relay-securityweek-summarizing-unretrieved-paywalled-ft-primary
+      - b3-monitoring-single-source-veto-uncorroborated
+      - iran-linked-generic-label-no-group-named-no-roster-mapping
+      - hard-rule-2-attribution-recorded-verbatim-not-originated
+      - personnel-opsec-counterintelligence-cleared-travelling-staff-thematic-relevance
+      - ft-primary-direct-retrieval-todo-paywall-blocker
+      - no-first-party-telemetry-mobile-adtech-outside-archimedes-surface
+    related_actors: []              # generic "Iran-linked" — NOT mapped to any roster Iranian actor (UNC1549/Charming Kitten/Handala/MuddyWater/APT34/Cavern Manticore/Peach Sandstorm/CyberAv3ngers/Pioneer Kitten). Hard Rule 2.
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-07-17-0004]
+    digraph: B3
+    wep: roughly_even_chance
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      One retrieved source (SecurityWeek) relaying one upstream primary (FT, paywalled, unretrieved).
+      Remove SecurityWeek and nothing independent stands; no second outlet, no telemetry, no artifacts.
+      WEP capped at "roughly even chance." Veto/credibility lift on FT primary retrieval or an
+      independent second outlet.
+    hard_rule_2_framings_load_bearing:
+      - "'Iran-linked' carried verbatim as the source's own generic language; NO roster Iranian actor inferred, no first-time attribution originated"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_item: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: no_atomic_ioc_no_actor_tool_domain_ip_hash_cve_mobile_adtech_location_metadata_outside_archimedes_telemetry_surface_silent_not_disconfirming
+    direct_retrieval_todo:
+      target: "Financial Times primary (paywalled) — mechanism specifics (ad networks, roaming exposure), any named actor or confidence language"
+      blocker: paywall
+      grade_impact_if_retrieved: "Could firm credibility toward 2 and/or refine attribution language if FT names a specific tracked actor or states a confidence level."
+    resurface_if:
+      - ft_primary_retrieved_naming_specific_roster_iranian_actor
+      - ft_primary_retrieved_confirming_or_refining_mechanism_or_confidence_level
+      - independent_second_outlet_corroborates
+      - named_ad_or_dib_cleared_personnel_targeted_disclosed
+      - roster_iranian_actor_attribution_surfaces_from_a_or_b_grade_source
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-17
+    last_covered: 2026-07-17
+    retraction: null
+    test: false
+
+  - id: 2026-07-17-pm-brief-meta
+    covered_in: [2026-07-17-afternoon]
+    brief_file: threats/briefs/2026-07-17-afternoon.md
+    headline: "Afternoon brief 2026-07-17 (Friday) — QUIET, low-tempo, monitoring-grade cycle. No action-tier item, no FLASH. BLUF states the low-tempo read plainly. LEAD (Sector Focus: A&D): NEW naval-defense-prime TKMS + Atlas Elektronik data-extortion claimed by non-roster crew 'The Gentlemen' (B3/likely, finding-2026-07-17-0003) — incident victim-confirmed, scale + attribution self-claimed and caveated. Iran Cyber Watch: NEW FT-via-SecurityWeek Iran-linked US-military phone-tracking via adtech metadata + cellular roaming (B3/roughly even chance, finding-2026-07-17-0004) — reported tradecraft, personnel-OPSEC relevance, NOT an intrusion. Vulnerabilities: 🔗 correlation callout only — CVE-2026-58644 (VT-041) Rapid7 ETR net-new A-grade corroboration folded into finding-2026-07-16-0005; grade holds A2/likely (corroborates vuln, not a 2nd independent exploitation basis); KEV deadline Saturday 2026-07-19 reiterated; NOT a repeat headline. 3 findings referenced (2 NEW + 1 resurface callout); NO red-team (all WEP <= likely). Hard Rule 2 held (no attribution originated); Hard Rule 6 one 12-word TKMS victim quote total."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - quiet-low-tempo-monitoring-grade-cycle-no-action-no-flash
+      - bluf-states-low-tempo-read-plainly
+      - lead-tkms-naval-defense-prime-data-extortion-the-gentlemen-new-monitoring
+      - iran-cyber-watch-ft-iran-linked-phone-tracking-new-monitoring
+      - vulnerabilities-vt041-cve-2026-58644-rapid7-etr-corroboration-callout-not-repeat-headline
+      - two-new-one-resurface-callout-three-findings-referenced
+      - no-red-team-all-wep-likely-or-lower-single-source-veto
+      - hard-rule-2-held-no-attribution-originated
+      - hard-rule-6-one-12word-tkms-victim-quote
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: [CVE-2026-58644]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-17-0003, finding-2026-07-17-0004, finding-2026-07-16-0005]
+    digraph: B3                     # cycle high-water on NEW items B3; VT-041 correlation callout A2
+    wep: likely
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      layer_1_word_count: 539       # 400-800 band (canonical brief, Layer 1)
+      layer_2_discord_summary: "~210 words / est. ~1615 chars (150-300 word band; under the 1900-char hard ceiling — single Discord message, no chunk needed). 3 source-linked bullets (TKMS / Iran phone-tracking / CVE-2026-58644 KEV-deadline reminder). Full-body word count (Layer 1 + Layer 2) ~749, within the 400-800 afternoon band."
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-17-0003, append_brief_id: 2026-07-17-afternoon}   # DONE by briefer
+        - {finding_id: finding-2026-07-17-0004, append_brief_id: 2026-07-17-afternoon}   # DONE by briefer
+        - {finding_id: finding-2026-07-16-0005, append_brief_id: 2026-07-17-afternoon}   # DONE by briefer (VT-041 resurface correlation callout)
+      coverage_log_resurface_update:
+        - "2026-07-16-pm-001 (VT-041 SharePoint KEV batch, finding-2026-07-16-0005): covered_in appended 2026-07-17-afternoon; last_covered -> 2026-07-17; resurface_2026_07_17 note added (Rapid7 ETR net-new A-grade corroboration of the CVE facts; grade holds A2/likely — corroborates the vulnerability, NOT a 2nd independent exploitation basis; single-source veto on exploitation stands). No net-new item entry — carried as a 🔗 correlation callout, not a repeat headline."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, and git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-17 AFTERNOON BRIEF (briefer phase, briefer-20260717-160000). Deliberately calm,
+      low-tempo, monitoring-grade cycle — the BLUF says so plainly rather than inflating. 3 findings
+      referenced: 2 NEW B3 monitoring items + 1 resurface correlation callout.
+
+      Section placement:
+      - BLUF + Why-it-matters: leads with the TKMS naval-defense-prime extortion claim (the single most
+        decision-relevant item), immediately caveated + framed as low-tempo with no action-tier items.
+      - Vulnerabilities: finding-2026-07-16-0005 VT-041 CVE-2026-58644 — 🔗 correlation callout ONLY
+        (Rapid7 ETR net-new corroboration). Per anti-repetition: NOT a repeat headline (VT-041 was the
+        2026-07-16 afternoon lead). Grade holds A2/likely; Rapid7 corroborates the vulnerability but the
+        exploitation basis still relays Microsoft/CISA — single-source veto on exploitation stands. KEV
+        deadline Saturday 2026-07-19 reiterated as the standing action.
+      - Sector Focus: A&D (LEAD content): finding-2026-07-17-0003 TKMS + Atlas Elektronik. Analyst KAC
+        honored: one victim-confirmed fact (incident occurred, WEP likely) separated from three
+        extortion-side/interested-party self-claims (The Gentlemen responsibility, >1TB scale, segmented/
+        no-classified-records scope). Non-roster crew recorded verbatim (Hard Rule 2). Monitoring-tier —
+        no CVE/IOC/A&D-contractor victim named.
+      - Iran Cyber Watch: finding-2026-07-17-0004 FT-via-SecurityWeek phone-tracking. Analyst KAC honored:
+        framed as REPORTED location-tracking tradecraft (adtech metadata + cellular roaming), NOT an
+        intrusion/CVE; "Iran-linked" carried verbatim as the source's generic label, no roster mapping
+        (Hard Rule 2); relevance is personnel-OPSEC/counterintelligence, thematic not a direct nexus.
+        WEP "roughly even chance" (relay-of-a-relay, paywalled FT primary unretrieved).
+
+      Standing sections: BOTH standing sections carried live content this cycle (A&D Sector Focus = TKMS;
+      Iran Cyber Watch = phone-tracking) — no silent-day templates needed. Active Threats and Actor
+      Activity omitted (no net-new B2+ / no net-new actor activity; Sandworm ClickFix, Scattered Spider,
+      Oracle EBS VT-043, FortiSandbox VT-045/046, Siemens ROX II VT-047, ACR Stealer already covered and
+      unchanged — not re-headlined per the coverage log).
+
+      Hard Rules: Rule 2 held throughout — The Gentlemen and "Iran-linked" both recorded verbatim as the
+      claimant's/source's own claims, no roster mapping, no attribution originated. Rule 6: exactly ONE
+      direct quote in the whole brief — a 12-word TKMS victim statement relayed by SecurityWeek (under 15
+      words, one-per-source respected); the initially-drafted re-quoted fragments ("segmented / no
+      classified records" and "Iran-linked") were de-quoted to paraphrase during pre-flight check 12 to
+      preserve the one-quote-per-source limit. Rule 3: no exploitation content (no CVE/PoC in either
+      item). Rule 8: both items silent first-party (no queryable atomic IOC; TKMS third-party German
+      prime, Iran item outside the mobile-adtech telemetry surface) — silent, not disconfirming.
+
+      Layer 1 ~539 words (400-800 band) + Layer 2 ~210 words / ~1615 chars (150-300 word band, <1900
+      ceiling, single Discord message). Layer 2: 3 source-linked bullets; standing silent-day boilerplate
+      omitted from Layer 2; natural-language dates ("Saturday July 19," "today"); no digraph/WEP/finding-
+      id in Layer 2; no themed voice. Pre-flight 13-of-13 PASS (1 iteration; quote-discipline de-quote
+      applied before ship, not a failed-ship). NOT posted to Discord by briefer — librarian owns
+      delivery/commit.
 
 # ============================================================================
 # Valid resurface_if conditions

@@ -206,9 +206,55 @@ analysis_sections:
           source, do not characterize contractual detail, flag the halt-vs-pause ambiguity)
           rather than confidence. No blocking Test at awareness tier.
 
+# Recalibration log (grade UNCHANGED — corroboration + scope-clarification absorbed, not a new finding)
+recalibrations:
+  - at: 2026-07-17T08:22:00-04:00
+    by: grader
+    run_id: morning-20260717-080000
+    trigger_raw_signal: raw-2026-07-17-am-002
+    trigger_source: securityweek (B provisional, Feedback Friday roundup), 2026-07-17 11:08 UTC
+    grade_before: B2
+    grade_after: B2
+    wep_before: likely
+    wep_after: likely
+    material_change: true
+    material_change_note: >
+      Grade + WEP UNCHANGED, but a substantive SCOPE-CLARIFICATION and industry-
+      reaction layer is absorbed (does not lift the single-source veto — same
+      publisher, SecurityWeek, not evidence-basis independent of the 2026-07-14
+      originating report).
+    detail: >
+      SecurityWeek's "Feedback Friday" industry-reaction roundup on the mid-July 2026
+      Pentagon CMMC Phase 2 suspension. Substantively RESOLVES the halt-vs-pause
+      ambiguity the KAC flagged (assumption A1): what was suspended is MANDATORY
+      THIRD-PARTY (C3PAO) CMMC Phase 2 assessments only — NOT a repeal of the
+      underlying obligations. Explicitly UNCHANGED and enforceable: Phase 1
+      self-assessment against NIST SP 800-171, SPRS score submissions, and DFARS
+      252.204-7012 CUI-protection (including under the False Claims Act). A new CMMC
+      Reform Task Force runs a 60-day review reporting ~mid-September 2026. Expert
+      consensus (Emil Sayegh/CyberSheath; Abdie Mohamed/NR Labs; Tyler Fordham/Dark
+      Wolf; Austin Berglas/BlueVoyant) flags INCREASED False Claims Act exposure on
+      the self-reported-vs-assessed score gap, citing settled cases (Aerojet
+      Rocketdyne $9M, Raytheon $8.4M — both A&D — plus Penn State $1.25M, MORSE Corp
+      $4.6M). This is the KEY DEFENSIVE POINT for the A&D standing section: the
+      suspension of independent verification does NOT lower the DFARS/CUI legal bar.
+      Does NOT lift the single-source veto (same publisher; DoD primary still not
+      directly retrieved) — WEP stays "likely." A2 (accuracy-of-summary) risk from the
+      original grading is materially reduced: multiple named industry experts on the
+      record confirm the action and its scope. No actor, no CVE, no IOC. Standing
+      A&D-watchlist / awareness material; UPDATE layer on the 2026-07-14 item, not a
+      net-new event — anti-repetition note for briefer.
+    additional_relay_added: null   # same publisher (securityweek) — publisher-level breadth NOT added; scope-clarification + expert-reaction content only
+    briefer_guidance: >
+      Place in the standing A&D (Sector Focus) section as an UPDATE to the 2026-07-14
+      CMMC-suspension item. Lead with the defensive so-what: third-party assessment
+      paused, DFARS 252.204-7012 / CUI legal obligations + False Claims Act exposure
+      UNCHANGED (arguably heightened on the self-reported gap). Do NOT re-report as a
+      net-new suspension. 15-word quote limit / one quote per source (Hard Rule 6).
+
 # Lifecycle
 tlp: CLEAR
-published_in_briefs: [2026-07-14-morning]
+published_in_briefs: [2026-07-14-morning, 2026-07-17-morning]
 retracted: false
 retraction_brief_id: null
 ---

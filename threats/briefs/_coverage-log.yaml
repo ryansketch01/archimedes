@@ -42525,7 +42525,7 @@ entries:
     test: false
 
   - id: 2026-07-14-am-002-dod-suspends-cmmc-phase-2-review-reform-task-force-dib-compliance-baseline-shift-securityweek-single-source-b2-likely-ad-watchlist-policy
-    covered_in: [2026-07-14-morning]
+    covered_in: [2026-07-14-morning, 2026-07-17-morning]   # 2026-07-17-morning: UPDATE resurface — scope-clarification layer (Sector Focus: A&D)
     brief_file: threats/briefs/2026-07-14-morning.md
     headline: "DoD suspends CMMC (Cybersecurity Maturity Model Certification) Phase 2 and stands up a review/reform task force to reassess contractor cybersecurity rules — a shift to the DIB compliance-assurance baseline that governs the target profile. Policy/compliance item (no actor, no CVE, no IOC), briefed in the standing Sector Focus: A&D section. LEAD of the 07-14 cycle. Single SecurityWeek RSS summary, body not deep-fetched, DoD primary (memo/press release/DFARS action) NOT retrieved -> B2/likely, single-source veto. HALT-vs-PAUSE ambiguity unresolved and carried explicitly; scope/timeline/contractual impact NOT characterized pending DoD-primary retrieval. Second-order supplier-attack-surface question flagged as a WATCH item, not a claim."
     topic_tags:
@@ -42574,8 +42574,23 @@ entries:
       - halt_vs_pause_ambiguity_resolved_by_authoritative_source
       - contractual_impact_or_task_force_mandate_specifics_published
       - seven_days_elapsed_and_evolving
+    resurface_history:
+      - at: 2026-07-17-morning
+        trigger: [halt_vs_pause_ambiguity_resolved_by_authoritative_source, contractual_impact_or_task_force_mandate_specifics_published]
+        material_change: true
+        note: >
+          UPDATE resurface in the 2026-07-17 morning brief (Sector Focus: A&D). SecurityWeek's
+          Feedback Friday industry-reaction roundup (2026-07-17) resolves the halt-vs-pause ambiguity
+          carried on 2026-07-14: only mandatory third-party (C3PAO) Phase 2 assessments are paused;
+          NIST SP 800-171 self-assessment, SPRS submission, and DFARS 252.204-7012 CUI protection stay
+          in force, and False Claims Act exposure is heightened on the self-reported-versus-assessed gap
+          (settled A&D cases cited: Aerojet Rocketdyne $9M, Raytheon $8.4M). A 60-day CMMC Reform Task
+          Force reports ~mid-September 2026. Grade + WEP UNCHANGED (B2 / likely) — single-source veto NOT
+          lifted (same publisher, SecurityWeek; DoD primary still not directly retrieved). Recalibration
+          material_change: true. No net-new item entry created; covered_in/last_covered updated on this
+          entry per anti-repetition rules.
     first_covered: 2026-07-14
-    last_covered: 2026-07-14
+    last_covered: 2026-07-17
     retraction: null
     test: false
 
@@ -43395,7 +43410,21 @@ entries:
     test: false
 
   - id: 2026-07-16-am-004-nightmare-eclipse-legacyhive-windows-profsvc-lpe-zero-day-vt042-second-outlet-securityweek-relay-no-state-change-b2-likely-monitoring
-    covered_in: [2026-07-16-morning, 2026-07-16-afternoon]   # 2026-07-16-afternoon standing monitoring carry-forward (unchanged; no state change since morning)
+    covered_in: [2026-07-16-morning, 2026-07-16-afternoon, 2026-07-17-morning]   # 2026-07-17-morning: UPDATE status line (Vulnerabilities) — BleepingComputer added as publisher-level relay, NO state change; single-source veto stands, "admin access" headline NOT credited
+    resurface_history:
+      - at: 2026-07-17-morning
+        trigger: [relay_breadth_only_no_monitor_for_lift_condition_met]
+        material_change: false
+        note: >
+          Carried as a brief 'status unchanged' UPDATE line in the 2026-07-17 morning Vulnerabilities
+          section. BleepingComputer (Sergiu Gatlan, 2026-07-17) added to publisher-level relay breadth
+          only — publisher-independent of The Register / THN / SecurityWeek but NOT evidence-basis-
+          independent (all trace to the one originating researcher PoC + blog). Recalibration
+          material_change: false — single-source veto NOT lifted; no monitor_for lift condition met
+          (no CVE, no CVSS, unpatched/MSRC-silent, no ITW). BleepingComputer's "grants hackers admin
+          access" headline is STRONGER than the disputed-severity posture and is explicitly NOT credited
+          (Matei Badanoiu / The Register caveats stand). No re-escalation; grade/WEP/layered-split all
+          unchanged (B2 / likely). last_covered advanced to 2026-07-17; no net-new item entry created.
     brief_file: threats/briefs/2026-07-16-morning.md
     headline: "MONITORING — Nightmare Eclipse 'LegacyHive' Windows User Profile Service (profsvc) arbitrary registry-hive-load LPE zero-day (8th public drop in the series; VT-042). SecurityWeek (2026-07-16) added as a second/publisher-independent outlet relaying the SAME drop already graded on 2026-07-15 — relay, NOT new evidence; NO STATE CHANGE. Still no CVE, no CVSS, UNPATCHED (MSRC contacted-and-silent -> CISA-KEV-ineligible), NO ITW. PoC public but deliberately stripped (Hard Rule 3). B2 headline / single-source veto (8+ outlets, one originating evidence basis = researcher's PoC + blog). Strong severity claims (full compromise on patched systems; no-credentials variant) disputed by independent researcher Matei Badanoiu (B3). No actor attributed (Hard Rule 2 — self-claimed persona). A&D relevance STRUCTURAL (ubiquitous Windows-endpoint LPE = ransomware/lateral-movement precursor); no named victim. First brief citation of finding-2026-07-15-0002 (queued monitoring item)."
     topic_tags:
@@ -43427,7 +43456,7 @@ entries:
       - un_stripped_or_no_credentials_poc_variant_surfacing
       - next_nightmare_eclipse_drop_or_defender_batch_materializing
     first_covered: 2026-07-16
-    last_covered: 2026-07-16
+    last_covered: 2026-07-17
     retraction: null
     test: false
 
@@ -43749,6 +43778,206 @@ entries:
       ceiling, single message); natural-language dates; no digraph/WEP/finding-id in Layer 2; no themed voice;
       standing silent-day boilerplate omitted from Layer 2. Pre-flight 13-of-13 PASS. Not posted to Discord by
       briefer — librarian owns delivery/commit.
+
+  - id: 2026-07-17-am-001-unit42-siemens-ruggedcom-rox-ii-chained-zero-day-trilogy-cve-2025-40947-40948-40949-patched-v2171-no-itw-a2-likely-monitoring-structural-ot
+    covered_in: [2026-07-17-morning]
+    brief_file: threats/briefs/2026-07-17-morning.md
+    headline: "MONITORING — Unit 42 discloses a three-CVE CHAINED zero-day trilogy in Siemens RUGGEDCOM ROX II OT/industrial ethernet switches: CVE-2025-40948 (arbitrary file disclosure, CVSS 6.8) -> CVE-2025-40947 (root command injection, CVSS 7.5) -> CVE-2025-40949 (persistent root code exec via cron-table injection, CVSS 9.1 Critical, chain anchor). All PATCHED in firmware V2.17.1 (Siemens SSA-973901/078743/081142). NO in-the-wild exploitation, NO public PoC, NO actor (Hard Rule 2 empty). A2/likely, single-source veto (Unit 42 sole directly-retrieved source; Siemens SSA advisories + NVD referenced but NOT independently retrieved). A&D relevance STRUCTURAL / UNVERIFIED-EXPOSURE (medium): no evidence the target profile runs RUGGEDCOM ROX II specifically — RUGGEDCOM's core market is utility/rail/substation; VT-005/VT-010 OT-in-A&D precedent cited as a TRACKING rationale, not confirmed exposure. Vendor-patched != field-patched. vuln-tracker handoff pending (new CVE cluster, not yet in _index.yaml)."
+    topic_tags:
+      - monitoring
+      - siemens-ruggedcom-rox-ii-ot-switch-zero-day-trilogy
+      - cve-2025-40949-cvss-9-1-critical-persistent-root-cron-table-injection
+      - cve-2025-40947-cvss-7-5-root-command-injection-feature-key-validation
+      - cve-2025-40948-cvss-6-8-file-disclosure-root-priv-xz-misconfig
+      - patched-v2-17-1-ssa-973901-078743-081142
+      - no-itw-no-public-poc-no-actor-hard-rule-2-empty
+      - a2-likely-single-source-veto-unit42-sole-retrieved-ssa-nvd-not-retrieved
+      - ad-relevance-structural-unverified-exposure-medium-no-evidence-target-runs-rox-ii
+      - ruggedcom-core-market-utility-rail-substation-not-ad
+      - vt-005-vt-010-ot-in-ad-precedent-tracking-rationale-not-confirmed-exposure
+      - vendor-patched-not-field-patched-ot-gear-lags
+      - vuln-tracker-handoff-pending-new-cve-cluster-not-in-index
+      - hard-rule-3-reverse-shell-example-capability-level-only-not-mirrored
+    related_actors: []
+    related_vulns: [CVE-2025-40949, CVE-2025-40947, CVE-2025-40948]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-17-0001]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Single directly-retrieved evidence basis (Unit 42). Siemens SSA advisories (SSA-973901/078743/
+      081142) + NVD records referenced but NOT independently retrieved. WEP capped at "likely." Veto
+      lifts on direct retrieval of the Siemens SSA advisories or NVD records, or a second independent
+      research firm.
+    hard_rule_2_framings_load_bearing:
+      - "No actor attribution — Unit 42 provides none; cluster.attribution_claims empty, not omitted"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_item: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: no_queryable_malicious_atomic_ioc_ruggedcom_ot_switch_telemetry_not_in_defenseclaw_local_silent_not_disconfirming
+    vuln_tracker_handoff: "New CVE cluster (anchor CVE-2025-40949) — not yet in threats/vulnerabilities/_index.yaml. vuln-tracker to open a cluster dossier or awareness row per the VT-005/VT-010 OT/ICS structural-relevance precedent; enrich against Siemens SSA + NVD; watch for a CISA ICS advisory (ICSA-*)."
+    resurface_if:
+      - in_the_wild_exploitation_confirmed
+      - public_weaponized_poc_surfaces
+      - actor_attribution_from_a_or_b_grade_source
+      - cisa_ics_advisory_icsa_covering_the_cluster
+      - siemens_ssa_or_nvd_directly_retrieved_lifting_single_source_veto
+      - named_ad_or_dib_victim_running_ruggedcom_rox_ii
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-17
+    last_covered: 2026-07-17
+    retraction: null
+    test: false
+
+  - id: 2026-07-17-am-002-mstic-acr-stealer-clickfix-webdav-mshta-lolbin-enterprise-credential-theft-a2-likely-ttp-watch-clickfix-cross-tier
+    covered_in: [2026-07-17-morning]
+    brief_file: threats/briefs/2026-07-17-morning.md
+    headline: "OTHER SIGNAL / TTP-WATCH — MSTIC reports increased ACR Stealer activity (late Apr - mid Jun 2026) using ClickFix lures + two LOLBin intrusion chains (WebDAV+rundll32+blockchain dead-drop C2; MSHTA+PowerShell+steganography) to steal enterprise browser credentials, session tokens, and documents. Family-level attribution only (ACR Stealer, reportedly an Amatera rebrand — INCIDENTAL color, not load-bearing per analyst KAC); NO roster actor, NO A&D victim (Hard Rule 2). A2/likely, single-source veto (MSTIC sole effective basis; atomic IOC appendix pending_direct_retrieval). A&D relevance GENERIC-ENTERPRISE (medium), not A&D-specific. Primary analytic value: ClickFix TTP tracking — now CONFIRMED across commodity MaaS (this) + nation-state (Sandworm/APT44, finding-2026-07-16-0003) tiers. Honest framing: 'confirmed across actor tiers,' NOT 'proliferating' (two data points near base-rate). Rule 8: 0 defenseclaw_local hits, silent not disconfirming (no atomic IOC yet to match)."
+    topic_tags:
+      - other-signal
+      - ttp-watch
+      - mstic-acr-stealer-maas-infostealer
+      - clickfix-lure-lolbin-execution-cross-cutting-delivery-primitive
+      - webdav-rundll32-dll-load-blockchain-dead-drop-c2-campaign-1
+      - mshta-powershell-steganography-in-memory-campaign-2
+      - google-ct-masquerade-filename-observable-atomic-iocs-pending-retrieval
+      - family-level-attribution-only-acr-amatera-rebrand-incidental-not-load-bearing
+      - hard-rule-2-no-roster-actor-commodity-maas-family
+      - a2-likely-single-source-veto-mstic-sole-basis
+      - ad-relevance-generic-enterprise-not-ad-specific-medium
+      - clickfix-confirmed-across-tiers-not-proliferating-two-data-points-near-base-rate
+      - correlation-callout-sandworm-apt44-clickfix-finding-2026-07-16-0003
+      - rule-8-zero-defenseclaw-hits-silent-not-disconfirming-no-atomic-ioc-to-match
+    related_actors: []              # ACR Stealer = commodity MaaS family, not a roster actor (Hard Rule 2). Sandworm/APT44 referenced via correlation callout but NOT yet a tracked _roster.yaml dossier.
+    related_vulns: []
+    related_campaigns: [acr-stealer-clickfix-2026, clickfix-cross-tier-delivery-primitive-watch]
+    finding_ids: [finding-2026-07-17-0002]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Single effective evidence basis (MSTIC Defender telemetry) for this ACR Stealer wave. WEP capped
+      at "likely." Veto lifts on independent second research-firm corroboration, or first-party
+      defenseclaw_local telemetry matching the (pending) atomic IOC set.
+    hard_rule_2_framings_load_bearing:
+      - "No roster-actor attribution — family-level (ACR Stealer / Amatera) is a malware label, not a threat actor"
+      - "Sandworm/APT44 named only as prior-coverage correlation (finding-2026-07-16-0003); flagged for actor-profiler #007 dossier, not yet a tracked roster dossier"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_item: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: zero_defenseclaw_local_target_hits_4_returned_were_archimedes_own_operational_telemetry_atomic_iocs_pending_silent_not_disconfirming
+    ttp_tracking_handoff: "ClickFix cross-cutting delivery primitive — now documented across commodity MaaS (this) + nation-state (Sandworm/APT44, finding-2026-07-16-0003). Weekly-synthesis WATCH theme. Direct-retrieve MSTIC blog atomic IOC appendix (WebDAV host, C2 domains/IPs, blockchain resolver, payload SHA-256 + KQL hunts) to fold into master IOC index + re-run Rule 8."
+    actor_profiler_handoff: "Sandworm/APT44 referenced (ClickFix cross-tier) but NOT yet a _roster.yaml dossier — flagged for actor-profiler #007 scaffolding (also noted in the 2026-07-16 pm handoff)."
+    resurface_if:
+      - independent_second_research_firm_corroborates_this_acr_wave
+      - atomic_iocs_retrieved_and_first_party_defenseclaw_hit
+      - named_ad_or_dib_victim_or_targeting_disclosed
+      - roster_actor_attribution_surfaces
+      - clickfix_third_plus_tier_data_point_strengthening_proliferation_signal
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-17
+    last_covered: 2026-07-17
+    retraction: null
+    test: false
+
+  - id: 2026-07-17-am-brief-meta
+    covered_in: [2026-07-17-morning]
+    brief_file: threats/briefs/2026-07-17-morning.md
+    headline: "Morning brief 2026-07-17 (Friday) — QUIET cycle, no action item, no FLASH. LEAD (Sector Focus: A&D): CMMC Phase 2 suspension scope-clarification UPDATE — only mandatory third-party (C3PAO) assessments paused; DFARS 252.204-7012 / CUI / NIST 800-171 self-assessment / SPRS UNCHANGED and FCA exposure heightened (finding-2026-07-14-0003, material_change UPDATE). Vulnerabilities: NEW Siemens RUGGEDCOM ROX II chained zero-day trilogy CVE-2025-40947/-40948/-40949 patched V2.17.1, no ITW, structural/unverified-exposure OT (A2/likely, finding-2026-07-17-0001) + LegacyHive VT-042 'status unchanged' UPDATE line (BleepingComputer relay, no state change, admin-access headline NOT credited). Other Signal: NEW MSTIC ACR Stealer / ClickFix enterprise credential theft, generic-enterprise TTP-watch, ClickFix confirmed across commodity+nation-state tiers not 'proliferating' (A2/likely, finding-2026-07-17-0002). Standing: Iran Cyber Watch silent-day. 4 findings referenced (2 NEW + 2 UPDATE); NO red-team (all WEP <= likely, single-source veto binds every item). Hard Rule 2 held throughout (no attribution originated); Hard Rule 6 one 2-word BleepingComputer quote ('admin access')."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - quiet-cycle-no-action-item-no-flash
+      - lead-cmmc-phase-2-scope-clarification-update-sector-focus-ad
+      - cmmc-c3pao-paused-dfars-cui-nist-800-171-sprs-unchanged-fca-heightened
+      - vulnerabilities-ruggedcom-rox-ii-new-trilogy-plus-legacyhive-status-unchanged-update
+      - other-signal-acr-stealer-clickfix-generic-enterprise-ttp-watch
+      - clickfix-confirmed-across-tiers-not-proliferating
+      - standing-iran-cyber-watch-silent-day
+      - two-new-two-update-four-findings-referenced
+      - no-red-team-all-wep-likely-single-source-veto
+      - hard-rule-2-held-no-attribution-originated
+      - hard-rule-6-one-2word-bleepingcomputer-quote-admin-access
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: [CVE-2025-40949, CVE-2025-40947, CVE-2025-40948]
+    related_campaigns: [nightmare-eclipse-disclosure-series, acr-stealer-clickfix-2026, clickfix-cross-tier-delivery-primitive-watch]
+    finding_ids: [finding-2026-07-17-0001, finding-2026-07-17-0002, finding-2026-07-14-0003, finding-2026-07-15-0002]
+    digraph: A2                     # cycle high-water (Unit 42 + MSTIC A2); CMMC + LegacyHive B2
+    wep: likely
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      layer_1_word_count: 645       # 400-800 band (canonical brief)
+      layer_2_discord_summary: "~216 words / est. ~1660 chars (150-300 word band; under the 1900-char hard ceiling — single Discord message, no chunk needed). LegacyHive dropped from Layer 2 (no-state-change monitoring item; Layer 1 carries it) to stay under ceiling with 3 cleanly-linked bullets."
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-17-0001, append_brief_id: 2026-07-17-morning}   # DONE by briefer
+        - {finding_id: finding-2026-07-17-0002, append_brief_id: 2026-07-17-morning}   # DONE by briefer
+        - {finding_id: finding-2026-07-14-0003, append_brief_id: 2026-07-17-morning}   # DONE by briefer (UPDATE resurface)
+        - {finding_id: finding-2026-07-15-0002, append_brief_id: 2026-07-17-morning}   # DONE by briefer (UPDATE status line)
+      coverage_log_resurface_update:
+        - "2026-07-14-am-002 (CMMC, finding-2026-07-14-0003): covered_in appended 2026-07-17-morning; last_covered -> 2026-07-17; resurface_history added (halt-vs-pause resolved + task-force/contractual specifics published; material_change true; single-source veto NOT lifted). No net-new item entry."
+        - "2026-07-16-am-004 (LegacyHive VT-042, finding-2026-07-15-0002): covered_in appended 2026-07-17-morning; last_covered -> 2026-07-17; resurface_history added (BleepingComputer publisher-level relay, material_change false, no monitor_for lift, admin-access headline NOT credited). No net-new item entry."
+      vuln_tracker_handoffs_proposed:
+        - "CVE-2025-40949 (9.1 Critical, chain anchor) + CVE-2025-40947 (7.5) + CVE-2025-40948 (6.8) — NEW Siemens RUGGEDCOM ROX II cluster, patched V2.17.1, no ITW; NOT in vulnerabilities/_index.yaml. Open a cluster dossier or awareness row per the VT-005/VT-010 OT/ICS structural-relevance precedent; enrich against Siemens SSA-973901/078743/081142 + NVD; watch for a CISA ICS advisory (ICSA-*)."
+      ttp_tracking_handoffs_proposed:
+        - "ClickFix cross-cutting delivery primitive — direct-retrieve the MSTIC ACR Stealer blog atomic IOC appendix (WebDAV host, C2 domains/IPs, blockchain dead-drop resolver, payload SHA-256) + KQL hunts; fold into master IOC index; re-run Rule 8 first-party check against defenseclaw_local."
+      actor_profiler_handoffs_proposed:
+        - "Sandworm/APT44 — referenced only as ClickFix cross-tier correlation (finding-2026-07-16-0003); NOT yet a _roster.yaml dossier. Standing #007 scaffolding candidacy (also flagged 2026-07-16 pm)."
+      source_grade_notes:
+        - "unit42 A-grade (ratified) directly retrieved. mstic A-grade (ratified) full RSS body retrieved; atomic IOC appendix pending_direct_retrieval. securityweek remains provisional B (CMMC scope-clarification relay; DoD primary still not retrieved). bleepingcomputer provisional B (LegacyHive publisher-level relay; NOT evidence-basis-independent)."
+    notes: |
+      2026-07-17 MORNING BRIEF (briefer phase, briefer-20260717-080000). Quiet cycle: 4 findings —
+      2 NEW (RUGGEDCOM ROX II trilogy A2/likely monitoring; ACR Stealer/ClickFix A2/likely TTP-watch)
+      + 2 UPDATE layers on standing/monitoring items (CMMC scope-clarification material_change true;
+      LegacyHive relay-breadth material_change false). ALL WEP "likely," single-source veto binds every
+      item, NO red-team required. Calm, well-caveated brief by design — no manufactured urgency.
+
+      Section placement:
+      - LEAD + Sector Focus: A&D: finding-2026-07-14-0003 CMMC scope-clarification UPDATE. Chosen as
+        lead — most directly A&D-relevant item of the cycle. Defensive so-what led: only C3PAO third-
+        party assessment paused; DFARS/CUI/NIST-800-171/SPRS obligations UNCHANGED and FCA exposure
+        heightened. Correlation callout to 2026-07-14 morning (resolves the halt-vs-pause ambiguity).
+        Attributed to SecurityWeek; single-source veto NOT lifted (same publisher, DoD primary not
+        retrieved).
+      - Vulnerabilities: finding-2026-07-17-0001 (RUGGEDCOM ROX II trilogy, NEW). Analyst KAC honored:
+        A&D relevance framed STRUCTURAL / UNVERIFIED-EXPOSURE (no evidence target runs ROX II; RUGGEDCOM
+        core market utility/rail/substation); VT-005/VT-010 cited as TRACKING rationale only; vendor-
+        patched != field-patched. CVEs flagged for vuln-tracker (not in _index.yaml). PLUS LegacyHive
+        VT-042 'status unchanged' UPDATE line (BleepingComputer relay, no state change; admin-access
+        headline explicitly NOT credited — disputed-severity posture stands).
+      - Other Signal: finding-2026-07-17-0002 (ACR Stealer / ClickFix, NEW). Analyst KAC honored: led
+        with credential-theft substance (ACR=Amatera rebrand treated as incidental color); A&D relevance
+        GENERIC-ENTERPRISE not A&D-specific; ClickFix framed 'confirmed across actor tiers' NOT
+        'proliferating' (two data points near base-rate). Correlation callout to 2026-07-16 afternoon
+        (Sandworm/APT44 ClickFix). Rule 8 0-hit framed silent-not-disconfirming (no atomic IOC yet).
+
+      Standing sections: Sector Focus A&D carries the CMMC UPDATE (NOT silent this cycle). Iran Cyber
+      Watch silent-day template (no UNC1549 / Charming Kitten / Handala / MuddyWater activity in 48h).
+
+      Hard Rules: Rule 2 held throughout — no attribution originated (RUGGEDCOM no actor; ACR family-
+      level only; Sandworm/APT44 named as prior-coverage correlation, flagged not-yet-roster). Rule 6:
+      one 2-word direct quote total ("admin access", BleepingComputer) — under 15 words, one-per-source
+      respected; all else paraphrased. Rule 3: no PoC mirrored (RUGGEDCOM reverse-shell + LegacyHive PoC
+      capability-level only). Rule 8: RUGGEDCOM + ACR both silent first-party (no queryable malicious
+      atomic IOC / telemetry gap) — not disconfirming.
+
+      Layer 1 ~645 words (400-800 band) + Layer 2 ~216 words / ~1660 chars (150-300 band, <1900 ceiling,
+      single Discord message). Layer 2: 3 source-linked bullets (CMMC / RUGGEDCOM / ACR Stealer);
+      LegacyHive omitted from Layer 2 (no-state-change monitoring item, Layer 1 carries it) to stay under
+      the char ceiling. Natural-language dates; no digraph/WEP/finding-id in Layer 2; no themed voice;
+      standing silent-day boilerplate omitted from Layer 2. Pre-flight 13-of-13 PASS. NOT posted to
+      Discord by briefer — librarian owns delivery/commit.
 
 # ============================================================================
 # Valid resurface_if conditions

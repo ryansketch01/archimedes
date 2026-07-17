@@ -1,0 +1,393 @@
+# threats/vulnerabilities/Siemens-RUGGEDCOM-ROX-II-2025-Cluster/tracking.yaml
+#
+# Structured tracking data for the Siemens RUGGEDCOM ROX II three-CVE
+# zero-day trilogy. Maintained by vuln-tracker subagent. Profile prose is
+# in profile.md; this file is the machine-readable state.
+
+dossier_id: VT-047
+cluster_name: Siemens-RUGGEDCOM-ROX-II-2025-Cluster
+anchor_cve: CVE-2025-40949
+last_updated: 2026-07-17
+tracking_version: 1
+created_from:
+  trigger: vuln_tracker_handoff_from_grader
+  source_finding: finding-2026-07-17-0001
+  finding_digraph: A2
+  finding_wep: likely
+  related_brief: null
+  cluster_keying_principle: >
+    Single cluster dossier keyed on the fix-version V2.17.1 boundary, not
+    three per-CVE entries. Operational unit-of-tracking is "estate running
+    RUGGEDCOM ROX II firmware before V2.17.1." All three CVEs share
+    disclosure date (Siemens SSAs / NVD 2026-05-12), share fix release
+    (V2.17.1), and Unit 42 documents them as a single exploitation chain.
+    Matches the VT-005 OpenC3 COSMOS cluster precedent the finding cites.
+
+# ============================================================================
+# CVE roster
+# ============================================================================
+
+cves:
+  - cve_id: CVE-2025-40949
+    severity: critical
+    chain_stage: 3
+    chain_role: persistent_root_code_execution
+    cvss_v3_base: 9.1
+    cvss_v3_vector: "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:H/A:H"
+    cvss_v4_base: 8.9
+    cvss_v4_severity: high
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:L/AT:P/PR:H/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H"
+    cwe: [CWE-78]
+    component: "Scheduler Web UI / task-scheduling backend (root cron table)"
+    class: "OS command injection -> persistent root code execution"
+    ssa_id: SSA-081142
+    ssa_url: https://cert-portal.siemens.com/productcert/html/ssa-081142.html
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2025-40949
+    affected_range: "all versions < V2.17.1"
+    fixed_in: "V2.17.1"
+    authenticated: true
+    in_kev: false
+    exploitation_status: not_observed
+    public_exploit_available: false
+
+  - cve_id: CVE-2025-40947
+    severity: high
+    chain_stage: 2
+    chain_role: privilege_escalation_to_root
+    cvss_v3_base: 7.5
+    cvss_v3_vector: "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H"
+    cvss_v4_base: 7.7
+    cvss_v4_severity: high
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"
+    cwe: [CWE-78]
+    component: "Feature-key installation process"
+    class: "OS command injection -> privilege escalation to root"
+    ssa_id: SSA-078743
+    ssa_url: https://cert-portal.siemens.com/productcert/html/ssa-078743.html
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2025-40947
+    affected_range: "all versions < V2.17.1"
+    fixed_in: "V2.17.1"
+    authenticated: true
+    note: "Lowest privilege bar of the three per NVD (PR:L), offset by high attack complexity (AC:H)."
+    in_kev: false
+    exploitation_status: not_observed
+    public_exploit_available: false
+
+  - cve_id: CVE-2025-40948
+    severity: medium
+    chain_stage: 1
+    chain_role: arbitrary_file_read_as_root
+    cvss_v3_base: 6.8
+    cvss_v3_vector: "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:C/C:H/I:N/A:N"
+    cvss_v4_base: 6.1
+    cvss_v4_severity: medium
+    cvss_v4_vector: "CVSS:4.0/AV:N/AC:L/AT:N/PR:H/UI:N/VC:N/VI:N/VA:N/SC:H/SI:N/SA:N"
+    cwe: [CWE-88]
+    component: "Web server JSON-RPC interface"
+    class: "Improper input validation / argument injection -> arbitrary file read as root"
+    ssa_id: SSA-973901
+    ssa_url: https://cert-portal.siemens.com/productcert/html/ssa-973901.html
+    nvd_url: https://nvd.nist.gov/vuln/detail/CVE-2025-40948
+    affected_range: "all versions < V2.17.1"
+    fixed_in: "V2.17.1"
+    authenticated: true
+    mechanism_divergence_note: >
+      Source finding characterized this as arbitrary file disclosure via a
+      root-privileged xz misconfiguration; NVD authoritative description
+      attributes it to improper input validation in the web server's JSON-RPC
+      interface (CWE-88). May be the same primitive at different layers; NOT
+      adjudicated. NVD recorded as authoritative.
+    in_kev: false
+    exploitation_status: not_observed
+    public_exploit_available: false
+
+# ============================================================================
+# Authoritative records (primary canonical sources)
+# ============================================================================
+
+nvd:
+  cve_records_publication_date: 2026-05-12
+  cve_records_last_modified: 2026-06-29
+  nvd_status: Analyzed
+  source_grade_yaml_id: nvd
+  source_grade_letter: A
+  last_pulled: 2026-07-17T00:00:00-04:00
+  pulled_via: nvd_json_api
+  independence_caveat: >
+    NVD records are downstream of the Siemens CNA process and share the
+    vendor evidence basis. Direct NVD retrieval this pass corroborates CVE
+    facts, CVSS (v3.1 and v4.0), CWE, affected-model matrix, and the V2.17.1
+    fix boundary, but does not constitute independent research-firm
+    corroboration. Single-source veto from the source finding stands.
+
+vendor_advisory:
+  source: siemens-productcert
+  source_grade_letter: A
+  advisories:
+    - id: SSA-081142
+      cve: CVE-2025-40949
+      url: https://cert-portal.siemens.com/productcert/html/ssa-081142.html
+      directly_retrieved: false
+    - id: SSA-078743
+      cve: CVE-2025-40947
+      url: https://cert-portal.siemens.com/productcert/html/ssa-078743.html
+      directly_retrieved: false
+    - id: SSA-973901
+      cve: CVE-2025-40948
+      url: https://cert-portal.siemens.com/productcert/html/ssa-973901.html
+      directly_retrieved: false
+  note: >
+    SSA URLs confirmed as NVD references; advisory bodies not directly
+    retrieved this pass (deferred enrichment).
+
+secondary_research:
+  source: unit42
+  source_grade_letter: A
+  url: https://unit42.paloaltonetworks.com/siemens-rox-ii-zero-day-vulnerabilities/
+  published: 2026-07-17
+  role: >
+    Chained-trilogy technical write-up; the single directly-retrieved
+    narrative source in the source finding. No public PoC released; no actor
+    named. Reverse-shell detail described at capability level only and NOT
+    reproduced here (Hard Rule 3).
+
+kev:
+  any_cve_in_kev: false
+  cves_in_kev: []
+  last_checked: 2026-07-17
+  last_checked_method: >
+    Indirect via NVD — all three records Analyzed (last modified 2026-06-29)
+    and carry only Siemens SSA references; no CISA KEV/ADP catalog reference
+    present, consistent with not-KEV. CISA KEV feed not separately retrieved.
+  watch_signal_active: true
+  watch_signal_note: >
+    Track CISA KEV and CISA ICS advisories (ICSA-*). A KEV add or ICSA would
+    lift the single-source-veto exploitation leg and re-rate A&D relevance.
+
+# ============================================================================
+# Affected products and versions
+# ============================================================================
+
+affected_products:
+  - vendor: Siemens
+    product: RUGGEDCOM ROX II
+    description: >
+      Hardened OT / industrial ethernet switches and routers (RUGGEDCOM ROX II
+      firmware line) for industrial, utility, rail, and substation networks.
+    models_affected:
+      - RUGGEDCOM ROX MX5000
+      - RUGGEDCOM ROX MX5000RE
+      - RUGGEDCOM ROX RX1400
+      - RUGGEDCOM ROX RX1500
+      - RUGGEDCOM ROX RX1501
+      - RUGGEDCOM ROX RX1510
+      - RUGGEDCOM ROX RX1511
+      - RUGGEDCOM ROX RX1512
+      - RUGGEDCOM ROX RX1524
+      - RUGGEDCOM ROX RX1536
+      - RUGGEDCOM ROX RX5000
+    versions_affected: "all versions < V2.17.1"
+    fixed_versions: ["V2.17.1"]
+    fix_release_date: 2026-05-12
+
+# ============================================================================
+# Exploitation state
+# ============================================================================
+
+exploitation_status: not_observed
+exploitation_status_history:
+  - on: 2026-07-17
+    status: not_observed
+    sources:
+      - unit42 (explicit no-ITW, no-PoC, no-actor)
+      - nvd (no CISA KEV reference on any record)
+      - splunk-out-of-scope (no ROX II OT-switch telemetry)
+    note: "Initial state at dossier creation."
+exploitation_first_observed: null
+
+public_exploit:
+  available: false
+  note: >
+    No public PoC released. Unit 42 describes a reverse-shell chain at
+    capability level; per Hard Rule 3 no exploit code / payload / attack-step
+    chain is recorded. Existence-only tracking of the three CVE IDs.
+
+# ============================================================================
+# Patch and mitigation state
+# ============================================================================
+
+patch_status: patched
+patch_release_date: 2026-05-12
+patches:
+  - release_date: 2026-05-12
+    vendor: Siemens
+    fixed_versions: ["V2.17.1"]
+    covers_cves:
+      - CVE-2025-40949
+      - CVE-2025-40947
+      - CVE-2025-40948
+    note: "Single firmware release closes all three CVEs."
+
+mitigation_available: true
+mitigation_note: >
+  Per Siemens SSAs (paraphrased): restrict management-plane / Web UI /
+  JSON-RPC reachability to trusted administrative networks; follow Siemens
+  RUGGEDCOM operational-security guidelines. All three CVEs are authenticated
+  and network-reachable, so limiting management-surface reachability
+  materially reduces pre-patch exposure.
+patch_tempo_caveat: >
+  OT/ICS gear is slow to patch in the field; vendor-fixed is not fleet-patched
+  (analyst KAC assumption A5). Substation/rail/industrial switch firmware
+  updates commonly gate behind maintenance windows and change-control.
+
+detection_signatures_published: false
+behavioral_detection_observables:
+  - "Unexpected scripts/commands appearing in switch config or task-scheduler (cron) files"
+  - "Execution of xz with -f/-c/-d parameters by the privileged config daemon"
+atomic_iocs: none   # no IPs/domains/hashes in the disclosure
+
+# ============================================================================
+# Attribution (Hard Rule 2 enforcement)
+# ============================================================================
+
+attribution:
+  source_attributed: false
+  archimedes_originated: false
+  related_actors: []
+  note: >
+    No actor named by Unit 42, Siemens SSAs, or NVD. No exploitation reported.
+    Per Hard Rule 2, Archimedes does not originate attribution. Empty, not
+    omitted. Populate only on inherited A/B-grade attribution.
+
+# ============================================================================
+# Grading state (inherited from source finding)
+# ============================================================================
+
+grading:
+  current_digraph: A2
+  current_wep: likely
+  current_wep_basis: >
+    Inherited from finding-2026-07-17-0001. Single-source veto (Unit 42 sole
+    directly-retrieved narrative source in the finding). This dossier adds
+    direct NVD retrieval, which corroborates the CVE facts but is downstream
+    of the Siemens CNA process; veto not fully lifted. WEP held at "likely."
+  single_source_veto_applied: true
+
+grading_history:
+  - on: 2026-07-17
+    finding: finding-2026-07-17-0001
+    digraph: A2
+    wep: likely
+    single_source_veto: applied
+    note: "Initial state at dossier creation. Grader run morning-20260717-080000."
+
+# ============================================================================
+# A&D relevance
+# ============================================================================
+
+ad_relevance: medium
+ad_relevance_tag: structural_unverified_exposure
+ad_relevance_rationale: >
+  STRUCTURAL, not victim-specific. RUGGEDCOM ROX II are hardened OT/industrial
+  ethernet switches, structurally pervasive in industrial network estates.
+  Tracked on the OT/ICS-in-A&D rationale the corpus applies to VT-005 (OpenC3
+  COSMOS) and VT-010 (Yamcs). Per analyst KAC (A3, low confidence): NO evidence
+  the target profile runs RUGGEDCOM ROX II — RUGGEDCOM core market is utility/
+  rail/substation; an A&D prime OT estate may run different vendors (Cisco IE,
+  Hirschmann, etc.). Exposure is inference from OT-appliance ubiquity, not
+  observation. VT-005/VT-010 is a tracking rationale (A4), NOT evidence of A&D
+  exposure — COSMOS/Yamcs are A&D mission-stack software; ROX II is general
+  industrial gear. Held at medium / structural / unverified-exposure. Re-rate
+  upward only on ITW, weaponized PoC, CISA ICS advisory, or actor attribution.
+
+# ============================================================================
+# Watch signals — tripwires for state-change update and brief inclusion
+# ============================================================================
+
+watch_signals:
+  - id: ws-1
+    name: kev_addition_or_cisa_ics_advisory
+    description: "CISA KEV adds any of the three CVEs, or a CISA ICS advisory (ICSA-*) covers them."
+    significance: "Lifts single-source-veto exploitation leg via CISA independent determination; re-rate relevance; brief candidate."
+    cves_to_monitor: [CVE-2025-40949, CVE-2025-40947, CVE-2025-40948]
+    last_checked: 2026-07-17
+    triggered: false
+  - id: ws-2
+    name: in_the_wild_exploitation_observed
+    description: "ITW observation in any source (vendor IR, government bulletin, security-firm telemetry, news)."
+    significance: "Converts from disclosure-tracking to exploitation-tracking; changes operational urgency."
+    last_checked: 2026-07-17
+    triggered: false
+  - id: ws-3
+    name: weaponized_public_exploit
+    description: "Standalone weaponized PoC published outside Unit 42's write-up."
+    significance: "Broadens attacker population probing the surface."
+    last_checked: 2026-07-17
+    triggered: false
+  - id: ws-4
+    name: actor_attribution
+    description: "Any A/B-grade source attributes exploitation to a named actor."
+    significance: "Populate related_actors (Hard Rule 2 — inherited only)."
+    last_checked: 2026-07-17
+    triggered: false
+  - id: ws-5
+    name: ad_deployment_evidence
+    description: "A&D operator statement, DoD SBOM, or third-party survey naming ROX II in an A&D estate."
+    significance: "Resolves the unverified-exposure assumption (analyst A3); could re-rate relevance."
+    last_checked: 2026-07-17
+    triggered: false
+  - id: ws-6
+    name: siemens_ssa_direct_retrieval
+    description: "Directly retrieve SSA-973901 / -078743 / -081142 to confirm vendor mitigation detail and exact affected-build enumeration."
+    test_type: deferred_vuln_tracker_task
+    triggered: false
+
+# ============================================================================
+# Data gaps (open items at dossier creation)
+# ============================================================================
+
+data_gaps:
+  - id: gap-1
+    description: "Siemens SSA advisories not directly retrieved; NVD corroborates CVE facts + fix boundary but SSA bodies not read."
+    severity: low
+    resolution_path: "ws-6 deferred task — direct SSA retrieval on next refresh."
+  - id: gap-2
+    description: "CVE-2025-40948 mechanism divergence (finding 'xz misconfig' vs NVD 'JSON-RPC interface' CWE-88) recorded, not adjudicated."
+    severity: low
+    resolution_path: "Direct SSA-973901 retrieval may reconcile; NVD authoritative in the interim."
+  - id: gap-3
+    description: "A&D exposure surface unverified — no evidence target profile runs RUGGEDCOM ROX II (analyst A3)."
+    severity: medium
+    resolution_path: "Passive monitoring (ws-5); no active pull-side resolution in scope."
+  - id: gap-4
+    description: "First-party exploitation telemetry not in scope — Splunk carries no ROX II OT-switch instrumentation."
+    severity: low
+    resolution_path: "Hard Rule 8 silent-Splunk-not-disconfirming applies; no resolution within current Splunk coverage."
+
+# ============================================================================
+# Cross-references
+# ============================================================================
+
+related_findings:
+  - finding-2026-07-17-0001
+
+related_briefs: []
+
+related_raw_signal:
+  - raw-2026-07-17-am-001
+
+# ============================================================================
+# Refresh schedule
+# ============================================================================
+
+refresh_schedule:
+  next_periodic_refresh_due: 2026-07-24
+  refresh_cadence: weekly_during_active_tracking
+  refresh_actions:
+    - "Re-fetch NVD for all three CVEs (capture any CVSS/CWE/reference changes)"
+    - "Check CISA KEV catalog and CISA ICS advisories (ICSA-*) for any of the three (ws-1)"
+    - "Check for ITW observation / vendor IR / government bulletin (ws-2)"
+    - "Check exploit-DB / GitHub / Metasploit for weaponized PoC (ws-3)"
+    - "Directly retrieve Siemens SSA-973901 / -078743 / -081142 (ws-6, one-time deferred task)"
+
+tlp: CLEAR

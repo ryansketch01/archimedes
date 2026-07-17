@@ -8,7 +8,7 @@
 # not yet tracked. Same lazy/event-driven pattern as threats/vulnerabilities/_index.yaml.
 
 version: 1
-last_updated: 2026-05-18
+last_updated: 2026-07-17
 
 campaigns:
 
@@ -110,12 +110,41 @@ campaigns:
     next_review_due: 2026-08-14
     note: "ARCHITECTURAL DEEP-DIVE, not fresh-incident. No 2026 victim named per MSTIC. Actor NOT in roster — /new-actor strong-flagged. 4 SHA256 hashes published; push to A&D EDR. Targeting language includes 'defense departments and defense-related companies worldwide' per MSTIC verbatim."
 
+  - id: phantom-squatting
+    aliases: [Phantom Squatting, AI-hallucinated-domain squatting]
+    status: active-emerging
+    attributed_actor: none                         # technique class, not actor-attributed
+    attribution_confidence: explicit-non-attribution
+    dossier: threats/campaigns/phantom-squatting/profile.md
+    first_observed: 2026-06-30                      # Unit 42 disclosure
+    last_observed: 2026-06-30
+    ad_relevance: structural-supply-chain-and-developer-trust
+    tracked_since: 2026-07-17
+    last_reviewed: 2026-07-17
+    next_review_due: 2026-10-17
+    note: "TECHNIQUE/TTP, not a campaign. Unit 42 (2026-06-30) primary; secondary outlets are relays (single-primary-source, WEP capped likely). Adversaries register LLM-hallucinated domains; AI is the delivery mechanism. A&D exposure via dev/CI-CD trust in AI-suggested URLs — monitoring tier, no A&D-prime victim named. Montana Empire is the in-the-wild instance."
+
+  - id: montana-empire
+    aliases: [Montana Empire, PTTAVM phishing kit, AI-built postal phishing kit]
+    status: active
+    attributed_actor: none                         # Unit 42 attributes to no actor
+    attribution_confidence: explicit-non-attribution
+    dossier: threats/campaigns/montana-empire/profile.md
+    first_observed: 2026-03-31                      # domain registration + kit deployment
+    last_observed: 2026-06-30
+    ad_relevance: none-direct-illustrative
+    tracked_since: 2026-07-17
+    last_reviewed: 2026-07-17
+    next_review_due: 2026-10-17
+    note: "In-the-wild phantom-squatting instance. AI-coding-assistant-built phishing kit impersonating PTT AVM (Türkiye postal e-commerce; per VT filename PTTAVM.zip — Unit 42 redacts). Card+bank+national-ID theft, Telegram C2, manual OTP relay. Turkish admin string 'Kimseye Guvenme' = operator context, NOT attribution. 2 SHA256 VT-confirmed. No A&D nexus — tracked as technique proof."
+
 
 # Quick-lookup indices (regenerated when campaigns list changes)
 _meta:
-  total: 7
+  total: 9
   by_status:
-    active: 7
+    active: 8
+    active-emerging: 1            # phantom-squatting (technique class)
     dormant: 0
     concluded: 0
     historical: 0
@@ -123,16 +152,18 @@ _meta:
     high: 1                       # mini-shai-hulud
     per-A-grade-single-source: 2  # frostyneighbor (ESET), kazuar (MSTIC + CISA citation)
     per-single-source: 3          # chromelevator (Symantec), salt-typhoon-azerbaijan (FLASH source), fdmtp (Darktrace)
-    explicit-non-attribution: 1   # shai-hulud-clone-wave
+    explicit-non-attribution: 3   # shai-hulud-clone-wave, phantom-squatting, montana-empire
   by_ad_relevance:
     indirect-supply-chain: 2      # mini-shai-hulud, shai-hulud-clone-wave
     sector-adjacency: 1           # chromelevator
     structural-not-prime-direct: 1 # salt-typhoon-azerbaijan
+    structural-supply-chain-and-developer-trust: 1 # phantom-squatting
     partner-of-partner-exposure: 1 # frostyneighbor
     low: 1                        # fdmtp-mustang-panda-apac
+    none-direct-illustrative: 1   # montana-empire
     historical-baseline: 1        # kazuar-p2p-evolution
   by_attributed_actor_in_roster:
     yes: 3                        # TeamPCP, MuddyWater, Salt Typhoon
     no_flagged_new_actor: 3       # UNC1151, Twill Typhoon, Secret Blizzard
-    unattributed: 1               # shai-hulud-clone-wave-202605
+    unattributed: 3               # shai-hulud-clone-wave-202605, phantom-squatting, montana-empire
   new_actor_flags_outstanding: 3  # UNC1151, Twill Typhoon (or Mustang Panda or TA416), Secret Blizzard (or Turla)

@@ -1,0 +1,145 @@
+# threats/iocs/unattributed/montana-empire-phantom-squatting-pttavm-phishing-kit-2026-06-30.yaml
+#
+# Unattributed cluster — IOCs from Unit 42 (Palo Alto Networks) "Phantom
+# Squatting: AI-Hallucinated Domains as a Software Supply Chain Vector"
+# (2026-06-30), enriched with first-party VirusTotal metadata.
+#
+# Unit 42 attributes to NO named actor (Hard Rule 2 — no attribution originated).
+# Most network IOCs in the source are REDACTED to protect impersonated brands;
+# only the two file artifacts below are concrete. Domains/URLs marked [redacted]
+# in the Unit 42 report are NOT reproduced here (we do not have them).
+#
+# File hashes independently confirmed on VirusTotal (first-party enrichment):
+# the ZIP is the Montana Empire kit (impersonating PTT AVM, Türkiye's postal
+# e-commerce marketplace); the APK is a related, separate phantom-squatting
+# artifact impersonating Australia Post.
+
+cluster_id: montana-empire-phantom-squatting-pttavm-phishing-kit-2026-06-30
+cluster_name: "Montana Empire phishing kit + related APK — phantom-squatting in-the-wild artifacts (Unit 42, 2026-06-30)"
+first_seen: 2026-03-31            # Montana Empire domain registration / kit deployment
+last_updated: 2026-07-17
+admiralty_grade: A2              # Unit 42 primary + first-party VT artifact confirmation
+tlp: CLEAR
+
+provenance:
+  - source: "Unit 42 (Palo Alto Networks) — Phantom Squatting report, 2026-06-30 (Keerthiraj Nagaraj, Diva-Oriane Marty, Beliz Kaleli, Oleksii Starov)"
+    url: https://unit42.paloaltonetworks.com/phantom-squatting-hallucinated-web-domains/
+    note: >
+      Primary research. Publishes the two SHA256 file hashes below. Redacts
+      impersonated brand names and most phantom domain/URL IOCs. Single
+      primary source — secondary outlets (The Hacker News, SC Media, Dark
+      Reading, Cybernews, GBHackers, Check Point) are relays, not independent
+      corroboration. WEP capped at likely.
+  - source: "VirusTotal (first-party enrichment, queried 2026-07-17)"
+    note: >
+      Independently confirms both artifacts and their filenames — de-anonymizing
+      the Unit 42-redacted brands: PTTAVM.zip (PTT AVM / Türkiye postal
+      e-commerce) and auspost.apk (Australia Post). Artifact existence is
+      first-party corroborated; campaign narrative still single-primary-source.
+
+notes: |
+  Two RELATED-BUT-DISTINCT artifacts from the same Unit 42 dataset:
+
+    1. Montana Empire kit (PTTAVM.zip) — the flagship phantom-squatting case.
+       AI-coding-assistant-built phishing kit: real-time storefront scraper,
+       PHP backend, dual payment interception (card + bank transfer), IBAN
+       rotation via Telegram, national-ID harvesting, manual OTP relay via
+       operator panel, Telegram C2. Admin panel string "Kimseye Guvenme"
+       (Turkish: "Trust No One") — operator context, NOT attribution.
+       AEW (hallucination-to-registration): 23 days.
+
+    2. Australia Post APK (auspost.apk) — a SEPARATE phantom-squatting artifact
+       (national postal delivery service impersonation, AEW 51 days). Well-
+       flagged Android phishing/banker (18/62 on VT). Included here because it
+       shares the tactic; it is NOT part of the Montana Empire kit.
+
+  SIZE DISCREPANCY NOTE: Unit 42 lists the ZIP as 7,958,528 bytes; VirusTotal
+  reports 7,957,586 bytes for the same SHA256. Trust the SHA256 as the anchor;
+  the byte-count delta is a source-reporting artifact, not a different file.
+
+  REDACTED IOCs NOT REPRODUCED (we do not have the cleartext):
+    - hxxp://[redacted].com/{[redacted].zip, letgovip.zip}
+    - hxxp://[redacted].com/{mentalite.php, panel_track.php, verify_api.php}
+    - hxxp://[redacted]post-app[.]com/[redacted]post.apk  (APK host)
+    - Phantom sandbox/admin/billing subdomains for the postal marketplace.
+    Note: pttavm.com is the LEGITIMATE PTT AVM domain — the impersonated
+    brand, NOT an IOC. Never block.
+
+  Splunk first-party status at cluster creation (2026-07-17): not yet queried
+  against archimedes / defenseclaw_local. Hard Rule 8 — silence is not
+  disconfirming. Retro-hunt the two SHA256 below if EDR telemetry is available.
+
+  A&D relevance: none direct (consumer postal fraud). Tracked as the in-the-wild
+  proof of the phantom-squatting tactic and AI-built-tooling technique class.
+
+ttl:
+  network_infrastructure: 90     # redacted here anyway; phantom domains rotate/sinkhole
+  file_artifacts: 730            # sample hashes durable for retro-hunting
+  malware_families: never
+
+indicators:
+  - id: montana-empire-sha256-kit-001
+    type: sha256
+    value: eb07edaa2786cfddfa4c15526168f2200d85300aee0a8f253b32d2462a7b0bcd
+    sha1: f0520d8ab6b59db5040bd55761f8ae007f43f2da
+    md5: 9e8ba3240957ce9b7f0520d38389b45d
+    role: phishing_kit_archive
+    filename: PTTAVM.zip
+    file_type: ZIP
+    file_size: 7957586            # bytes per VirusTotal (Unit 42 reports 7,958,528 — SHA256 is authoritative)
+    description: "Montana Empire phishing kit ZIP impersonating PTT AVM (Türkiye postal e-commerce). AI-coding-assistant-built: scraper + PHP backend + Telegram C2 + manual OTP relay. VT 1/61 (Tencent) — novel/low-signature, consistent with a fresh custom kit."
+    vt_detections: "1/61 (Tencent)"
+    vt_first_submission: 2026-04-08
+    first_seen: 2026-03-31
+    last_seen: 2026-06-30
+    source: "Unit 42 (2026-06-30); VirusTotal (2026-07-17)"
+    source_attribution: ["Unit 42", "VirusTotal"]
+
+  - id: montana-empire-sha256-apk-001
+    type: sha256
+    value: 2202a30daad9928ef47cca5f4ab04ce083692a94428e386fa01c2dd44557e34b
+    sha1: d0492d8f34641cbd524c359bd70d54ee3826cd5a
+    md5: e064b540d57392c027e19c8da683d54f
+    role: mobile_phishing_payload
+    filename: auspost.apk
+    file_type: Android APK
+    file_size: 12649338          # bytes per VirusTotal (Unit 42 reports 12,649,472)
+    description: "Related (separate) phantom-squatting artifact — Android phishing/banker impersonating Australia Post. NOT part of the Montana Empire kit; shares the tactic. AEW 51 days. VT 18/62 — well-flagged."
+    vt_detections: "18/62 (Kaspersky, ESET, Fortinet, Symantec, TrendMicro, BitDefenderFalx, +12)"
+    vt_first_submission: 2026-04-10
+    first_seen: 2026-04-10
+    last_seen: 2026-06-30
+    source: "Unit 42 (2026-06-30); VirusTotal (2026-07-17)"
+    source_attribution: ["Unit 42", "VirusTotal"]
+
+hunt_queries:
+  - id: montana-empire-hunt-sample-hashes
+    platform: edr
+    title: "Phantom-squatting artifacts — SHA256 retro-hunt (kit ZIP + APK)"
+    query_type: pseudo_kql
+    query: |
+      DeviceFileEvents
+      | where SHA256 in (
+          "eb07edaa2786cfddfa4c15526168f2200d85300aee0a8f253b32d2462a7b0bcd",
+          "2202a30daad9928ef47cca5f4ab04ce083692a94428e386fa01c2dd44557e34b"
+        )
+      | project DeviceId, AccountName, Timestamp, FileName, FolderPath, SHA256
+    notes: >
+      Consumer postal fraud — low prior for A&D-prime telemetry. Any hit
+      still warrants triage (kit ZIP on a corporate host = investigation).
+
+  - id: montana-empire-hunt-newly-registered-brandlike-domains
+    platform: splunk
+    title: "Phantom-squatting posture — internal resolution of freshly registered brand-lookalike domains"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes sourcetype=dns
+      | eval brandlike=if(match(query, "(?i)(sandbox|admin|billing|api|portal|login)\.[a-z0-9-]+\.(com|net|org)"), 1, 0)
+      | where brandlike=1
+      | stats count values(query) as domains by src_ip, user
+      | sort -count
+    notes: >
+      CONTEXTUAL, high-false-positive by design. Phantom-squatting defense is
+      about newly-registered, zero-reputation domains reached via AI-assistant
+      output. Pair with a newly-registered-domain (NRD) feed; do NOT block on
+      this pattern alone. Tune to the prime's own brand/service namespace.

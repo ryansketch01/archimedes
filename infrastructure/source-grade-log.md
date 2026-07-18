@@ -638,3 +638,25 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 **Reviewer:** Awaiting Ryan ratification.
 **Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`; `ratification_clock: 2026-07-19T16:00:00-04:00` (72h).
 **Next review:** ratification target 2026-07-19; rolling pivot on first-direct-retrieval of cert.gov.ua primary (which would supply atomic IOCs for a first-party Splunk IOC hunt) AND human ratification.
+
+---
+
+## 2026-07-18 — watchTowr — (none) → B (provisional, awaiting ratification + direct retrieval)
+
+**Type:** New source — provisional (single addition)
+**Source ID:** `watchtowr`
+**Run:** librarian-20260718-160045 (Mode 1 post-scheduled afternoon brief)
+
+**Summary:** First Archimedes-corpus citation of watchTowr, added during 2026-07-18 afternoon brief delivery. First cited via finding-2026-07-18-0001 (state change; raw-2026-07-18-pm-001) as the originating source of the CVE-2026-63030 "wp2shell" in-the-wild-onset observation — watchTowr CEO Benjamin Harris reports the "first signs of in-the-wild exploitation" of the critical unauthenticated WordPress Core RCE, hours after the morning disclosure and alongside a public-PoC drop. The state-change ITW-onset leg was graded **B3** (roughly even chance); the PoC-availability leg (BleepingComputer) graded B2; the finding's WEP ceiling stays "likely" (single-source veto binds on both new legs).
+
+**Grade rationale:** Conservative provisional **B** on first surface. watchTowr is a recognized offensive-security / n-day exploitation-research firm (CEO Benjamin Harris) with exploitation-observation telemetry — a real, established research practice (rules out the unknown/unestablished floor), but with no prior Archimedes-corpus track record to assess and reaching the corpus this pass only through a B-grade relay. Provisional B follows the conservative first-surface starting-grade precedent. Operator may ratify at B, upgrade toward A on subsequent surfaces showing consistent first-party exploitation-telemetry rigor, or downgrade if low-fidelity. The hedged single-firm "first signs" observation with no published atomic IOCs caps the ITW-onset leg's credibility at 3 regardless of the reliability letter.
+
+**Retrieval status:** Relay-only via BleepingComputer (B relay, Lawrence Abrams byline, ratified) this sweep. The watchTowr primary was NOT directly retrieved; watchTowr published no atomic IOCs to pivot on, so no first-party Splunk hunt was possible (Rule 8 re-run for CVE-2026-63030 / wp2shell returned only Archimedes' own operational audit records — silent by absence-of-artifact).
+
+**Source-name fidelity flag:** the BleepingComputer relay rendered the firm as **"watchToyr"** — an OCR/transcription artifact. Recorded here and in `source-grades.yaml` under the correct name **watchTowr** (Benjamin Harris is watchTowr's CEO). Flagged, not silently propagated (Hard Rule 2 fidelity discipline).
+
+**Supporting findings:** [finding-2026-07-18-0001]
+**Posted to:** Discord `#intel-briefs` (afternoon brief message_id 1528133505496649850) carries the finding source citation inline; no separate `#actor-review` post required per Mode 9 (first-citation provisional addition under the precedent-class auto-add path — provisional B is NOT a B->D-or-worse downgrade and NOT an unsolicited C->A upgrade, so it does not trip the human-review gate).
+**Reviewer:** Awaiting Ryan ratification.
+**Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`.
+**Next review:** rolling pivot on first-direct-retrieval of watchtowr.com primary (which would supply atomic IOCs / exploitation signatures for a first-party Splunk IOC hunt and could lift the ITW-onset leg above B3) AND human ratification.

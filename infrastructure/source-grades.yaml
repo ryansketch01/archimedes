@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-07-10T16:00:00-04:00
+last_updated: 2026-07-18T16:00:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -922,6 +922,20 @@ vendor_sources:
     active: true
     urls:
       - https://kevintel.com/
+
+  - id: watchtowr
+    name: "watchTowr"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-07-18
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-07-18-0001 (state change; raw-2026-07-18-pm-001) as the originating source of the CVE-2026-63030 'wp2shell' in-the-wild-onset observation (CEO Benjamin Harris: 'first signs of in-the-wild exploitation'). watchTowr is a recognized offensive-security / n-day exploitation-research firm with exploitation-observation telemetry. No prior Archimedes-corpus citation -> conservative provisional B on first surface, pending human ratification. Reached the corpus THIS pass only as a BleepingComputer (B) relay (NOT directly retrieved), so no independent-retrieval basis yet; the ITW-onset leg is graded B3 (single provisional firm, hedged 'first signs', no atomic IOCs published, single-source veto binds). Operator may ratify at B, upgrade toward A on subsequent surfaces showing consistent first-party exploitation-telemetry rigor, or downgrade if low-fidelity. NOTE on source-name fidelity: the BleepingComputer relay rendered the firm as 'watchToyr' — recorded here as the correct name watchTowr (OCR/transcription artifact; flagged, not silently propagated)."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-18-0001
+    active: true
+    urls:
+      - https://watchtowr.com/
 
 # ============================================================================
 # Security Media & Researchers

@@ -43295,7 +43295,7 @@ entries:
       librarian owns delivery/commit.
 
   - id: 2026-07-16-am-001-oracle-ebs-cve-2026-46817-payments-unauth-takeover-active-exploitation-cisa-kev-3day-bod-deadline-saturday-2026-07-18-update-a2-likely-single-source-veto
-    covered_in: [2026-07-16-morning, 2026-07-16-afternoon, 2026-07-18-morning, 2026-07-18-afternoon]   # 2026-07-18-afternoon: KEV-deadline-tracker standing-watch carry-forward — deadline lands TODAY (2026-07-18), last-chance reminder before EOD; NO new exploitation/IOC/attribution/A&D-victim since the AM brief. 2026-07-18-morning: KEV-deadline-tracker UPDATE — accelerated BOD 26-04 deadline LANDS TODAY (2026-07-18); no new exploitation/IOC/attribution/A&D-victim this window (kev_due_date_2026_07_18 resurface trigger met — the deadline arrival is the development). 2026-07-16-afternoon standing-watch carry-forward (Saturday 2026-07-18 KEV deadline reminder; no new development)
+    covered_in: [2026-07-16-morning, 2026-07-16-afternoon, 2026-07-18-morning, 2026-07-18-afternoon, 2026-07-19-morning]   # 2026-07-19-morning: standing-watch "no change" carry-forward — federal deadline now PAST-DUE (was 2026-07-18); resurface trigger kev_due_date_2026_07_18_passing_without_federal_remediation met, but NO new exploitation/IOC/attribution/Mandiant-GTIG-confirmation/A&D-victim this window. Carried as a no-change status line under the Sunday Vulnerabilities "Standing watch" rollup, NOT a fresh headline. 2026-07-18-afternoon: KEV-deadline-tracker standing-watch carry-forward — deadline lands TODAY (2026-07-18), last-chance reminder before EOD; NO new exploitation/IOC/attribution/A&D-victim since the AM brief. 2026-07-18-morning: KEV-deadline-tracker UPDATE — accelerated BOD 26-04 deadline LANDS TODAY (2026-07-18); no new exploitation/IOC/attribution/A&D-victim this window (kev_due_date_2026_07_18 resurface trigger met — the deadline arrival is the development). 2026-07-16-afternoon standing-watch carry-forward (Saturday 2026-07-18 KEV deadline reminder; no new development)
     brief_file: threats/briefs/2026-07-16-morning.md
     update_on:
       - finding-2026-05-29-0003          # carried at no-ITW in the Oracle May 2026 CPU batch finding
@@ -43331,7 +43331,7 @@ entries:
       - kev_due_date_2026_07_18_passing_without_federal_remediation
       - named_ad_or_dib_prime_victim_disclosure
     first_covered: 2026-07-16
-    last_covered: 2026-07-18   # AM + PM 2026-07-18: KEV-deadline-tracker (deadline lands today); PM = standing-watch last-chance reminder, no new development
+    last_covered: 2026-07-19   # 2026-07-19-morning: standing-watch "no change" — deadline now PAST-DUE (2026-07-18 passed), quiet, no new development
     retraction: null
     test: false
 
@@ -43538,7 +43538,7 @@ entries:
       Discord by briefer — librarian owns delivery/commit.
 
   - id: 2026-07-16-pm-001-cisa-kev-2026-07-16-batch-sharepoint-cve-2026-58644-vt041-flip-actively-exploited-plus-fortisandbox-cve-2026-25089-cve-2026-39808-kev-a2-likely-single-source-veto
-    covered_in: [2026-07-16-afternoon, 2026-07-17-afternoon, 2026-07-18-morning, 2026-07-18-afternoon]   # 2026-07-18-afternoon: KEV-deadline-tracker look-ahead reminder — CVE-2026-58644 (VT-041) + FortiSandbox CVE-2026-25089/CVE-2026-39808 due tomorrow (2026-07-19); QUIET, no new development since the AM brief (carried as standing deadline reminder, NOT a repeat headline). 2026-07-18-morning: KEV-deadline-tracker look-ahead reminder — CVE-2026-58644 (VT-041) + FortiSandbox CVE-2026-25089/CVE-2026-39808 due tomorrow (2026-07-19); QUIET, no new development this window (carried as standing deadline reminder, NOT a repeat headline). 2026-07-17-afternoon: 🔗 correlation callout resurface — Rapid7 ETR net-new A-grade corroboration of CVE-2026-58644 (VT-041) facts, folded into finding-2026-07-16-0005
+    covered_in: [2026-07-16-afternoon, 2026-07-17-afternoon, 2026-07-18-morning, 2026-07-18-afternoon, 2026-07-19-morning]   # 2026-07-19-morning: KEV-deadline-tracker UPDATE + Sunday brief LEAD — accelerated federal remediation deadline LANDS TODAY (2026-07-19) for CVE-2026-58644 (VT-041) + FortiSandbox CVE-2026-25089/CVE-2026-39808 (VT-045/046); resurface trigger kev_due_date_2026_07_19_passing_without_federal_remediation met (deadline arrival = the development). QUIET otherwise — no new exploitation/IOC/attribution/A&D-victim this window. 2026-07-18-afternoon: KEV-deadline-tracker look-ahead reminder — CVE-2026-58644 (VT-041) + FortiSandbox CVE-2026-25089/CVE-2026-39808 due tomorrow (2026-07-19); QUIET, no new development since the AM brief (carried as standing deadline reminder, NOT a repeat headline). 2026-07-18-morning: KEV-deadline-tracker look-ahead reminder — CVE-2026-58644 (VT-041) + FortiSandbox CVE-2026-25089/CVE-2026-39808 due tomorrow (2026-07-19); QUIET, no new development this window (carried as standing deadline reminder, NOT a repeat headline). 2026-07-17-afternoon: 🔗 correlation callout resurface — Rapid7 ETR net-new A-grade corroboration of CVE-2026-58644 (VT-041) facts, folded into finding-2026-07-16-0005
     brief_file: threats/briefs/2026-07-16-afternoon.md
     resurface_2026_07_17: >
       Rapid7 Emergent Threat Response independently corroborated the CVE-2026-58644 (VT-041) facts
@@ -43592,7 +43592,7 @@ entries:
       - named_ad_or_dib_prime_victim_disclosed
       - knownransomwarecampaignuse_flips_from_unknown_for_any_of_the_three
     first_covered: 2026-07-16
-    last_covered: 2026-07-18   # AM + PM 2026-07-18: KEV-deadline-tracker look-ahead reminders (due tomorrow 2026-07-19); PM quiet, no new development since AM
+    last_covered: 2026-07-19   # 2026-07-19-morning: KEV-deadline-tracker UPDATE — deadline LANDS TODAY (2026-07-19); brief lead. Quiet otherwise, no new exploitation/IOC/attribution/A&D-victim
     retraction: null
     test: false
 
@@ -44181,7 +44181,7 @@ entries:
       delivery/commit.
 
   - id: 2026-07-18-am-001-rapid7-wordpress-core-cve-2026-63030-wp2shell-unauth-rce-nvd-9-8-patched-no-itw-no-poc-imminent-poc-a2-likely-single-source-veto-monitoring
-    covered_in: [2026-07-18-morning, 2026-07-18-afternoon]   # 2026-07-18-afternoon: UPDATE resurface — SAME-DAY STATE CHANGE. Two escalation triggers fired within hours: (1) multiple public GitHub PoCs released (poc_availability B2 / "likely"); (2) watchTowr (Benjamin Harris) reports "first signs of in-the-wild exploitation" (itw_onset B3 / "roughly even chance", single provisional firm via BleepingComputer B relay). Headline holds A2 / "likely" (single-source veto binds both new legs). Still PATCHED (6.9.5 / 7.0.2 / 7.1 Beta 2, forced auto-updates), still MONITORING tier, still LOW/structural A&D. VW-001 -> full VT dossier recommended (vuln-tracker). Absorbed as brief UPDATE, NOT a FLASH (Trigger 1 needs A-grade confirmed exploitation; ITW is hedged first-signs via B relay). Net-new: chained SQLi CVE-2026-60137 also affects WP 6.8.0-6.8.5 (that branch cannot chain to RCE).
+    covered_in: [2026-07-18-morning, 2026-07-18-afternoon, 2026-07-19-morning]   # 2026-07-19-morning: standing-watch "no change" carry-forward — holds at the 2026-07-18 PM state (public GitHub PoCs + watchTowr early-ITW first-signs); NO new escalation, no named A&D victim, no mass-exploitation telemetry beyond that onset this window. Carried as a no-change status line under the Sunday Vulnerabilities "Standing watch" rollup (still within the 72h active-exploit freshness window), NOT a fresh headline. Still PATCHED (6.9.5 / 7.0.2, forced auto-updates), still MONITORING, still LOW/structural A&D, no actor. 2026-07-18-afternoon: UPDATE resurface — SAME-DAY STATE CHANGE. Two escalation triggers fired within hours: (1) multiple public GitHub PoCs released (poc_availability B2 / "likely"); (2) watchTowr (Benjamin Harris) reports "first signs of in-the-wild exploitation" (itw_onset B3 / "roughly even chance", single provisional firm via BleepingComputer B relay). Headline holds A2 / "likely" (single-source veto binds both new legs). Still PATCHED (6.9.5 / 7.0.2 / 7.1 Beta 2, forced auto-updates), still MONITORING tier, still LOW/structural A&D. VW-001 -> full VT dossier recommended (vuln-tracker). Absorbed as brief UPDATE, NOT a FLASH (Trigger 1 needs A-grade confirmed exploitation; ITW is hedged first-signs via B relay). Net-new: chained SQLi CVE-2026-60137 also affects WP 6.8.0-6.8.5 (that branch cannot chain to RCE).
     brief_file: threats/briefs/2026-07-18-morning.md
     resurface_2026_07_18_pm: >
       UPDATE resurface (public_poc_released_rapid7_imminent_assessment_materializes +
@@ -44237,7 +44237,7 @@ entries:
       - named_ad_or_dib_victim_disclosed_running_affected_wordpress
       - chained_cve_2026_60137_wp_query_sqli_warrants_own_tracked_row
     first_covered: 2026-07-18
-    last_covered: 2026-07-18   # AM + PM same-day; PM was a same-day state-change UPDATE (PoC drop + ITW onset) — see resurface_2026_07_18_pm
+    last_covered: 2026-07-19   # 2026-07-19-morning: standing-watch "no change" carry-forward — holds at the 2026-07-18 PM state, no new escalation this window
     retraction: null
     test: false
 
@@ -44433,6 +44433,99 @@ entries:
       July 19," "this morning"); no digraph/WEP/finding-id in Layer 2; no themed voice. Pre-flight 13-of-13
       PASS (2 iterations — Layer 2 expanded from ~130 to ~168 words to clear the 150-word floor). NOT posted
       to Discord by briefer — librarian owns delivery/commit.
+
+  - id: 2026-07-19-am-brief-meta
+    covered_in: [2026-07-19-morning]
+    brief_file: threats/briefs/2026-07-19-morning.md
+    headline: "Morning brief 2026-07-19 (Sunday) — GENUINELY QUIET. Weekend pre-brief sweep clean (sentinel only); grader promoted 0 new findings / 0 rejections. Brief built entirely from standing sections + carry-forward. LEAD + sole material development: KEV-deadline-tracker UPDATE — SharePoint on-prem CVE-2026-58644 (VT-041) + FortiSandbox CVE-2026-25089/CVE-2026-39808 (VT-045/046) accelerated federal remediation deadline LANDS TODAY (2026-07-19); all three actively exploited, all QUIET this window (deadline arrival = the development, no new exploitation/IOC/attribution/A&D-victim). Standing-watch 'no change' rollup: Oracle EBS CVE-2026-46817 (VT-043) now PAST-DUE (deadline was 2026-07-18), quiet; wp2shell CVE-2026-63030 holds at the 2026-07-18 PM public-PoC + early-ITW state, no new escalation. Standing sections silent-day (A&D = today's KEV deadlines are the standing DIB patch-priority, no named victim; Iran = no new activity 48h). 3 findings referenced (all carry-forward, 0 net-new). NO red-team (all WEP <= likely, single-source veto binds every item). NO FLASH. Hard Rule 2 held (no attribution originated); Hard Rule 6 ZERO direct quotes; Hard Rule 3 no PoC/mechanism-step mirrored."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - genuinely-quiet-sunday-clean-sweep-zero-net-new-findings-zero-rejections
+      - lead-kev-deadline-tracker-update-sharepoint-cve-2026-58644-vt041-plus-fortisandbox-cve-2026-25089-cve-2026-39808-vt045-vt046-deadline-lands-today-2026-07-19
+      - deadline-arrival-is-the-development-no-new-exploitation-ioc-attribution-ad-victim
+      - standing-watch-no-change-rollup-oracle-ebs-cve-2026-46817-vt043-past-due-plus-wp2shell-cve-2026-63030-holds-poc-early-itw
+      - standing-sections-ad-kev-deadlines-dib-patch-priority-iran-silent
+      - three-findings-all-carry-forward-zero-net-new
+      - no-red-team-all-wep-likely-single-source-veto
+      - no-flash
+      - hard-rule-2-held-no-attribution
+      - hard-rule-6-zero-direct-quotes
+      - hard-rule-3-no-poc-mechanism-step-mirrored
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: [CVE-2026-58644, CVE-2026-25089, CVE-2026-39808, CVE-2026-46817, CVE-2026-63030]
+    related_campaigns: [wp2shell]
+    finding_ids: [finding-2026-07-16-0005, finding-2026-07-15-flash-1800-0001, finding-2026-07-18-0001]
+    digraph: A2               # all three referenced items A2; all carry-forward (KEV-deadline UPDATE + two no-change standing-watch)
+    wep: likely
+    preflight:
+      result: pass_13_of_13
+      word_count_full_body: 650         # 400-800 morning band (Layer 1 + Layer 2)
+      layer2_words: ~159                # 150-300 band
+      layer2_chars_est: ~1200           # <=1900 ceiling, single Discord message
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-16-0005, append_brief_id: 2026-07-19-morning}          # DONE by briefer (VT-041 + FortiSandbox KEV-deadline UPDATE — deadline lands today)
+        - {finding_id: finding-2026-07-15-flash-1800-0001, append_brief_id: 2026-07-19-morning}  # DONE by briefer (VT-043 Oracle EBS standing-watch no-change, now past-due)
+        - {finding_id: finding-2026-07-18-0001, append_brief_id: 2026-07-19-morning}           # DONE by briefer (wp2shell standing-watch no-change)
+      coverage_log_resurface_update:
+        - "2026-07-16-pm-001 (VT-041 SharePoint + FortiSandbox KEV batch, finding-2026-07-16-0005): covered_in appended 2026-07-19-morning; last_covered -> 2026-07-19; KEV-deadline-tracker UPDATE (kev_due_date_2026_07_19 met — deadline lands today). No new item entry."
+        - "2026-07-16-am-001 (Oracle EBS CVE-2026-46817 / VT-043): covered_in appended 2026-07-19-morning; last_covered -> 2026-07-19; standing-watch 'no change' (deadline now past-due). No new item entry."
+        - "2026-07-18-am-001 (wp2shell CVE-2026-63030 / finding-2026-07-18-0001): covered_in appended 2026-07-19-morning; last_covered -> 2026-07-19; standing-watch 'no change' (holds at 2026-07-18 PM state). No new item entry."
+      watch_config_update:
+        - "oracle-ebs-cve-2026-46817-2026-07-15 (VT-043): kev_due_date 2026-07-18 now PAST. Remediation window passed without a new escalation signal — consider closing/pruning the vuln_watch_keywords entry to standing-monitor if the next few windows stay quiet."
+      vuln_tracker_handoff_pending:
+        - "wp2shell CVE-2026-63030: VW-001 -> full VT-NNN dossier still pending from the 2026-07-18 PM handoff (both escalation triggers fired). No new escalation this window; handoff unchanged."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, and git commit — briefer did NOT post or commit."
+    first_covered: 2026-07-19
+    last_covered: 2026-07-19
+    retraction: null
+    test: false
+    notes: |
+      2026-07-19 MORNING BRIEF (briefer phase, briefer-20260719-080000). Genuinely quiet Sunday —
+      weekend pre-brief sweep clean (sentinel only), grader promoted 0 new findings and logged 0
+      rejections. Brief built entirely from standing sections + carry-forward. 3 findings referenced,
+      ALL carry-forward (0 net-new). No red-team (all WEP ceiling "likely"; single-source veto binds
+      every item). No FLASH.
+
+      Section placement:
+      - BLUF + Why-it-matters: leads with the SharePoint + FortiSandbox KEV deadline landing TODAY
+        (2026-07-19) — the single decision-useful item for the ITAR A&D target on a quiet Sunday.
+        Framed as an action/patch-deadline tracker; honest "genuinely quiet Sunday, no new findings"
+        acknowledgement, no manufactured urgency.
+      - Vulnerabilities: (1) SharePoint CVE-2026-58644 (VT-041) + FortiSandbox CVE-2026-25089 /
+        CVE-2026-39808 (VT-045/046) as a KEV-deadline UPDATE — deadline lands today (kev_due_date
+        _2026_07_19 resurface trigger met); QUIET, no new exploitation/IOC/attribution/A&D-victim.
+        (2) "Standing watch — no change" rollup covering Oracle EBS CVE-2026-46817 (VT-043, now
+        past-due) and wp2shell CVE-2026-63030 (holds at 2026-07-18 PM PoC + early-ITW state). Both
+        explicitly labeled no-change status lines, NOT fresh headlines — standing-watch carry-forward
+        pattern (precedent: 2026-07-16-afternoon through 2026-07-18-afternoon).
+      - Standing sections: A&D Sector Focus silent-day (today's KEV deadlines = standing DIB patch-
+        priority, no named victim); Iran Cyber Watch silent-day (no new activity 48h).
+      - Active Threats + Actor Activity + Other Signal omitted (no net-new B2+ action item, no net-new
+        actor activity, no monitoring-tier net-new).
+
+      Anti-repetition: SharePoint/FortiSandbox carried with an UPDATE flag (deadline arrival = material
+      time trigger). Oracle EBS + wp2shell carried as explicit "no change" standing-watch status lines
+      (not re-reported as fresh) — honest continuing-coverage of actively-exploited items still inside
+      the freshness window. Warm-but-already-briefed items (TKMS naval-DIB extortion 07-17 PM, Iran
+      phone-tracking 07-17 PM, Siemens ROX II VT-047 07-17 AM, ACR Stealer/ClickFix 07-17 AM, MSTIC
+      asyncapi npm supply-chain 07-16 AM, Sandworm ClickFix 07-16 PM) NOT re-led or re-reported.
+
+      Hard Rules: Rule 2 held throughout — no attribution originated (none of the carry-forward CVEs
+      carry attribution; wp2shell has no actor). Rule 6: ZERO direct quotes (watchTowr's first-signs
+      report paraphrased, not quoted). Rule 3: no PoC or mechanism-step mirrored. Rule 8: no queryable
+      atomic IOC on any item this window — silent by absence-of-artifact, not disconfirming.
+
+      Layer 1 ~490 words (400-800 band) + Layer 2 ~159 words / ~1200 chars (150-300 word band, <1900
+      ceiling, single Discord message, no chunk needed). Layer 2: 2 bullets (SharePoint+FortiSandbox
+      deadline source-linked to CISA KEV catalog; "Standing watch — no change" rollup, unlinked — no
+      single article URL, same as AM/PM 07-18 precedent); standing silent-day boilerplate omitted from
+      Layer 2; natural-language dates ("today, July 19," "July 18," "yesterday"); no digraph/WEP/finding
+      -id in Layer 2; no themed voice. Pre-flight 13-of-13 PASS (2 iterations — Layer 2 expanded from
+      ~119 to ~159 words to clear the 150-word floor). NOT posted to Discord by briefer — librarian owns
+      delivery/commit.
 
 # ============================================================================
 # Valid resurface_if conditions

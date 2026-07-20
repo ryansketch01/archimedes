@@ -8,7 +8,7 @@
 # The collector reads this file to know which sources are active vs. disabled.
 
 version: 1
-last_updated: 2026-07-18T16:00:00-04:00
+last_updated: 2026-07-20T06:15:00-04:00
 doctrine_version: "1.0.0"
 
 # ============================================================================
@@ -936,6 +936,48 @@ vendor_sources:
     active: true
     urls:
       - https://watchtowr.com/
+
+  - id: defused
+    name: "Defused (exploitation-detection telemetry)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-07-20
+    provisional_reason: "First Archimedes-corpus surface via finding-2026-07-20-flash-0600-0001 (raw-2026-07-20-flash-0600-001) as the originating source of the CVE-2026-6875 ServiceNow AI Platform in-the-wild-exploitation observation (first attempts 2026-07-18; attackers using an exploitation route distinct from the published PoC). Defused is a threat-intel / exploitation-detection telemetry feed (tracks in-the-wild exploitation attempts). First surface -> conservative provisional B on the exploitation-telemetry-feed class, consistent with the watchTowr (2026-07-18) and KEVIntel (2026-07-07) precedents for first-surface exploitation-telemetry firms. Reached the corpus THIS pass only as a BleepingComputer (B) relay (NOT directly retrieved), so no independent-retrieval basis yet. Operator may ratify at B, upgrade toward A on subsequent surfaces showing consistent first-party exploitation-telemetry rigor, or downgrade if low-fidelity."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-20-flash-0600-0001
+    active: true
+    urls:
+      - https://defused.io/
+
+  - id: patchstack
+    name: "Patchstack (WordPress vulnerability intelligence)"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-07-20
+    provisional_reason: "First Archimedes-corpus surface via finding-2026-07-18-0001 STATE CHANGE #2 (raw-2026-07-20-flash-0600-002) as one of three firms confirming CVE-2026-63030 / CVE-2026-60137 'wp2shell' in-the-wild exploitation (Patchstack: documented active attacks). Patchstack is the recognized WordPress-vulnerability-intelligence authority (WP VDP + vulnerability database) with documented active-attack telemetry. First surface -> conservative provisional B (WordPress-security specialist research class, peer to the Sysdig / Socket / watchTowr provisional-B precedents). Reached the corpus THIS pass only as a SecurityWeek (B) relay (NOT directly retrieved). Operator may ratify at B, upgrade toward A on subsequent surfaces showing consistent WP-security telemetry rigor, or downgrade if low-fidelity."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-18-0001
+    active: true
+    urls:
+      - https://patchstack.com/
+
+  - id: hexastrike
+    name: "Hexastrike (exploitation-honeypot / IR)"
+    category: vendor
+    grade: C
+    provisional: true
+    provisional_since: 2026-07-20
+    provisional_reason: "First Archimedes-corpus surface via finding-2026-07-18-0001 STATE CHANGE #2 (raw-2026-07-20-flash-0600-002) as one of three firms confirming CVE-2026-63030 / CVE-2026-60137 'wp2shell' in-the-wild exploitation (Hexastrike: honeypot exploitation over the weekend + IR assist). Hexastrike is an exploitation-honeypot / IR firm with no prior Archimedes-corpus track record and no established public profile visible at first surface. Conservative provisional C (unknown vendor with a technical/honeypot writeup, pending review) — one notch below Patchstack / watchTowr, erring low for a truly-unknown outfit per the LayerX / Seqrite / Aikido conservative-starting-grade precedent. Reached the corpus THIS pass only as a SecurityWeek (B) relay (NOT directly retrieved). Operator may upgrade to B on subsequent surfaces showing consistent honeypot-telemetry rigor, or hold at C if context-thin."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-18-0001
+    active: true
+    urls:
+      - https://hexastrike.com/
 
 # ============================================================================
 # Security Media & Researchers

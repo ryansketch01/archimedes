@@ -42770,7 +42770,7 @@ entries:
     test: false
 
   - id: 2026-07-14-pm-002-cisa-kev-two-sonicwall-sma1000-cve-2026-15409-ssrf-cve-2026-15410-code-injection-active-exploitation-a2-lead-active-threats
-    covered_in: [2026-07-14-afternoon, 2026-07-15-morning]
+    covered_in: [2026-07-14-afternoon, 2026-07-15-morning, 2026-07-20-afternoon]
     brief_file: threats/briefs/2026-07-14-afternoon.md
     headline: "CISA KEV v2026.07.14 adds TWO SonicWall SMA1000 CVEs under active exploitation — CVE-2026-15409 (server-side request forgery, remote unauthenticated) + CVE-2026-15410 (code injection, remote authenticated-admin -> arbitrary OS commands) — on SonicWall's secure-mobile-access / remote-access gateway (BOD 22-01 deadline applies). Co-lead of the 07-14 afternoon cycle (Active Threats, Patch This Week tier 1). Layered grade A2: KEV-listing fact A1/almost-certain (directly retrieved); active-exploitation determination LIKELY — CISA single-source this sweep, no independent telemetry cross-match, single-source veto. KEV does NOT assert the two chain (do not manufacture an SSRF-to-RCE breach chain). Affected/fixed versions ABSENT from the KEV entry -> point defenders to SonicWall PSIRT / NVD. A&D relevance STRUCTURAL exposure-class (internet-facing perimeter appliance) — NO named A&D victim, NO actor attributed."
     topic_tags:
@@ -42829,14 +42829,36 @@ entries:
       hard_rule_2: "clean — SonicWall names no actor"
       hard_rule_6_quote_budget: { total_direct_quotes_in_brief: 0, per_source_max: 1 }
       cycle_note: "No 07:30 pre-brief collection ran this cycle; this UPDATE was the sole newly-graded item. Brief legitimately short with explicit collection caveat — not padded."
+    resurface_2026_07_20:
+      brief_id: 2026-07-20-afternoon
+      finding_update_id: update-2026-07-20-0001
+      resurface_condition_met: independent_second_source_confirms_exploitation_lifts_veto   # material update — Volexity third-party IR; see grade note (attempted lift BLOCKED)
+      presented_as: UPDATE line (Vulnerabilities) + 🔗 correlation callout to 2026-07-15 morning — brief LEAD; NOT a fresh item
+      what_is_new: >
+        Volexity (assisting the SonicWall IR), relayed via SecurityWeek, reports in-the-wild
+        exploitation of the SMA1000 CVE pair as a ZERO-DAY from ~2026-06-22 — ~3 weeks BEFORE the
+        07-14 disclosure/patch — recasting the KEV listing as the tail of an active campaign. New
+        actor label UTA0533 (Volexity's own designation, "more consistent with state-sponsored than
+        criminal"); named tooling KnuckleBall / OrangeTail / Suo5.
+      grade_outcome: >
+        A2 / WEP likely — UNCHANGED. The grader's 2026-07-20 lift to A1 / very_likely (single-source
+        veto lifted on the theory Volexity independently corroborates CISA KEV) was BLOCKED + REVERTED
+        by red-team-20260720-181500: CISA KEV <- SonicWall <- Volexity is ONE common-upstream chain
+        (Volexity inside the SonicWall IR; same-day 07-14 KEV; origin-based independence test not met).
+        Veto RE-BOUND. Brief presents exploitation at "likely," not confirmed; UTA0533 + ~06-22 onset
+        as Volexity single-source, source-stated (Hard Rule 2 clean, no roster cross-walk).
+      first_party: "archimedes + defenseclaw_local 0 IOC hits (-90d), both indices reachable — non-probative (no atomic IOCs in the Volexity relay; SMA1000 perimeter logs not forwarded)"
+      hard_rule_2: "clean — UTA0533 stays Volexity single-source, source-stated; no cross-walk"
+      hard_rule_6_quote_budget: { total_direct_quotes_in_brief: 0, per_source_max: 1 }
+      vuln_tracker_note: "VT dossier for CVE-2026-15409 / CVE-2026-15410 should now be actioned (net-new to vulnerabilities/_index.yaml); add UTA0533 label, KnuckleBall/OrangeTail/Suo5 tooling, ~2026-06-22 pre-disclosure onset."
     resurface_if:
-      - independent_second_source_confirms_exploitation_lifts_veto           # STILL OPEN — PSIRT relay of doubtful independence did NOT lift the veto
+      - direct_volexity_primary_retrieval_establishes_cisa_determination_outside_volexity_sonicwall_chain   # would legitimately restore very_likely -> re-routes to red-team
       - published_ioc_or_first_party_splunk_hit
       - named_ad_or_dib_prime_victim_disclosed
       - kev_ransomware_use_tag_added
       - direct_sonicwall_psirt_advisory_retrieval_removes_relay_only_awaiting_direct_retrieval_flag
     first_covered: 2026-07-14
-    last_covered: 2026-07-15
+    last_covered: 2026-07-20
     retraction: null
     test: false
 
@@ -44796,6 +44818,189 @@ entries:
       boilerplate omitted from Layer 2; natural-language dates ("July 18," "July 13," "Saturday's,"
       "July 19"); no digraph/WEP/finding-id in Layer 2; no themed voice. Pre-flight 13-of-13 PASS.
       NOT posted to Discord by briefer — librarian owns delivery/commit.
+
+  - id: 2026-07-20-pm-001-groupib-hollowgraph-m365-graph-calendar-c2-cavern-framework-linkage-iran-israel-espionage-a2-likely-single-source-veto-actor-identity-unresolved
+    covered_in: [2026-07-20-afternoon]
+    brief_file: threats/briefs/2026-07-20-afternoon.md
+    headline: "IRAN CYBER WATCH (NET-NEW) — Group-IB (via BleepingComputer B relay) reports HollowGraph, a new malware component that abuses the Microsoft Graph API + the calendar feature of compromised Microsoft 365 mailboxes as a stealthy living-off-trusted-cloud C2 channel (reads commands from / exfiltrates through calendar items, blends with legitimate M365 traffic). Iran-nexus, ISRAEL-targeted espionage; >=12 systems infected, 3 actively communicating 2026-06-03->2026-07-09. IOC cloudlanecdn[.]com (C2 / DNS tunneling), config file logAzure.txt. NO CVE, NO A&D victim named. ATTRIBUTION UNRESOLVED (analytic crux): Group-IB links HollowGraph to the Cavern C2 framework at HIGH CONFIDENCE — recorded as a source-stated TOOLING call that does NOT identify the operator; Archimedes does NOT name Cavern Manticore #026 (SAT-ACH: H1 #026 vs H2 distinct Cavern-framework operator INDISTINGUISHABLE; the one weakly-diagnostic infra signal — a brand-new C2 domain with no overlap to #026's hospitalinstallation[.]com — leans toward a DISTINCT operator). Group-IB's own Lyceum similarity is LOW-confidence, insufficient-to-attribute (NOT cross-walked to OilRig/APT34 #023). A2 / WEP likely (capability + Iran-espionage framing); actor identity roughly_even_chance. Single-source veto (Group-IB provisional-A, primary NOT directly retrieved — BleepingComputer relay). A&D relevance STRUCTURAL / TTP-PORTABILITY ONLY — the M365-Graph/calendar C2 technique is portable to any Microsoft 365 tenant incl. A&D primes (defensive TTP-watch, NOT asserted A&D targeting)."
+    topic_tags:
+      - iran-cyber-watch
+      - net-new
+      - hollowgraph-m365-graph-calendar-living-off-trusted-cloud-c2
+      - microsoft-graph-api-abuse-mailbox-calendar-c2-channel
+      - iran-nexus-israel-targeted-espionage
+      - cavern-c2-framework-linkage-source-stated-high-confidence-tooling-not-operator-id
+      - actor-identity-unresolved-h1-cavern-manticore-026-vs-h2-distinct-operator-indistinguishable
+      - do-not-name-cavern-manticore-026-hard-rule-2
+      - new-c2-domain-cloudlanecdn-no-overlap-hospitalinstallation-leans-distinct-operator
+      - lyceum-similarity-group-ib-low-confidence-insufficient-to-attribute-no-crosswalk-oilrig-apt34-023
+      - a2-likely-capability-actor-identity-roughly-even-chance
+      - single-source-veto-group-ib-provisional-a-primary-not-directly-retrieved-bleepingcomputer-relay
+      - ad-relevance-structural-ttp-portability-m365-tenant-not-asserted-targeting
+      - ioc-cloudlanecdn-c2-dns-tunneling-config-logazure-txt
+      - no-cve-no-ad-victim-no-hashes-no-ips
+      - sat-ach-sat-kac-applied-attribution-crux
+      - actor-profiler-queue-026-tooling-linked-development-no-threat-box-rescore
+    related_actors: []              # NONE hardened. Cavern Manticore #026 recorded as roster-ADJACENT (Group-IB tooling linkage source-stated only); Lyceum = Group-IB's low-confidence label, NOT cross-walked to #023. Hard Rule 2.
+    related_vulns: []
+    related_campaigns: [hollowgraph-m365-graph-calendar-c2-cavern-framework-iran-israel-2026]
+    finding_ids: [finding-2026-07-20-0001]
+    digraph: A2
+    wep: likely                     # capability + Iran-espionage framing; actor identity roughly_even_chance (H1 #026 vs H2 distinct operator)
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Single effective source (Group-IB, provisional-A, primary NOT directly retrieved — reached the
+      corpus as a BleepingComputer relay). WEP capped at "likely" on the capability leg regardless of the
+      provisional-A letter grade. Lifts on a genuinely independent second evidence basis on the HollowGraph
+      capability specifically (a second vendor's telemetry, a first-party Splunk hit, or direct Group-IB
+      primary retrieval PLUS an independent corroborator).
+    red_team_review: null           # WEP ceiling "likely" < "very likely" — red-team not required (analyst SAT-ACH/SAT-KAC confirmed the capability/identity split)
+    hard_rule_2_framings_load_bearing:
+      - "Group-IB's Cavern-framework linkage is a SOURCE-STATED, high-confidence TOOLING call that does NOT identify the operator — Archimedes originates no actor attribution"
+      - "Cavern Manticore #026 NOT named as the actor (SAT-ACH: H1 #026 and H2 distinct Cavern-framework operator indistinguishable; the one weakly-diagnostic infra signal leans toward a distinct operator)"
+      - "Lyceum similarity is Group-IB's OWN low-confidence, insufficient-to-attribute note — NOT cross-walked to OilRig/APT34 #023"
+      - "A&D relevance is STRUCTURAL / TTP-PORTABILITY only — M365-Graph/calendar C2 portable to any tenant incl. A&D primes; NO asserted A&D targeting, NO named A&D victim"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0   # entire afternoon brief quote-free (Group-IB + Volexity + CISA/SecurityWeek all paraphrased)
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: collector_swept_archimedes_defenseclaw_local_-90d_on_cloudlanecdn_hospitalinstallation_hollowgraph_logazure_0_hits_visibility_bounded_null_frank_not_israeli_target_silent_not_disconfirming
+    actor_profiler_handoff: "Queue actor-profiler review of Cavern Manticore #026 (Iran-MOIS): NEW roster-adjacent development — an independent vendor (Group-IB) attaches a new capability (HollowGraph, M365 Graph/calendar C2) + new IOC (cloudlanecdn[.]com) to the Cavern C2 framework #026 operates per CPR/finding-2026-07-06-0001. Adjudicate a #026 dossier development note (tooling-linked, actor UNCONFIRMED) WITHOUT hardening attribution (Hard Rule 2). Do NOT re-score threat-box off a single-source tooling linkage."
+    source_grade_note: "group-ib has no dedicated source-grades.yaml id — librarian to ADD as provisional A (Tier-1-vendor-research first-surface precedent), awaiting_ratification + awaiting_direct_retrieval, provenance finding-2026-07-20-0001. No grade revision proposed on any existing source."
+    ttp_watch_handoff: "M365 Microsoft Graph API / mailbox-calendar living-off-trusted-cloud C2 — record as a defensive TTP-watch interest (portable to any M365 tenant incl. A&D primes). Weekly-synthesis + detection-weekly candidate: calendar-item-based C2 / anomalous Graph API calendar read-write patterns."
+    actor_identity_test_tripwire: "Cavern-framework exclusivity to #026 is UNestablished. A future promotion of the actor-identity leg is gated on (a) a vendor exclusivity statement, (b) cloudlanecdn[.]com <-> #026 hospitalinstallation[.]com infra/victim overlap, or (c) evidence of a second distinct Cavern operator."
+    resurface_if:
+      - independent_second_vendor_or_first_party_splunk_confirms_hollowgraph_or_cloudlanecdn   # lifts single-source veto
+      - direct_group_ib_primary_retrieval_plus_independent_corroborator
+      - infra_or_victim_overlap_cloudlanecdn_com_and_026_hospitalinstallation_com                # diagnostic — strengthens H1 (#026) over H2; re-run ACH
+      - evidence_cavern_framework_operated_by_two_or_more_distinct_clusters                      # strengthens H2; hardens shared-tooling framing
+      - group_ib_primary_retrieval_reveals_actor_attribution_language                           # re-run ACH with new source-stated attribution
+      - named_ad_prime_or_dib_victim_of_hollowgraph_or_m365_calendar_c2_disclosed
+      - resolution_of_standing_sat_ach_finding_2026_07_06_0001_026_cluster_coherence
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-20
+    last_covered: 2026-07-20
+    retraction: null
+    test: false
+
+  - id: 2026-07-20-pm-brief-meta
+    covered_in: [2026-07-20-afternoon]
+    brief_file: threats/briefs/2026-07-20-afternoon.md
+    headline: "Afternoon brief 2026-07-20 (Monday) — 2 substantive items. LEAD (Vulnerabilities, UPDATE/escalation): SonicWall SMA1000 CVE-2026-15409 (unauth SSRF, CVSS 10.0) + CVE-2026-15410 (auth-admin OS command injection, CVSS 7.2) — Volexity IR (via SecurityWeek) reports pre-disclosure ZERO-DAY exploitation from ~2026-06-22 (~3 weeks before the 07-14 patch), tracked as UTA0533 (Volexity's own designation, 'more consistent with state-sponsored than criminal'), tooling KnuckleBall/OrangeTail/Suo5. Presented at A2/likely (NOT very_likely): the grader's attempted A1 lift was BLOCKED + reverted by red-team-20260720-181500 — CISA KEV <- SonicWall <- Volexity is one common-upstream chain, so it's a well-sourced SINGLE evidence chain, not independent multi-source confirmation; UTA0533 + ~06-22 onset are Volexity single-source, source-stated (Hard Rule 2, no roster cross-walk). Patch-now (12.4.3-03453 / 12.5.0-02835, models 6210/7210/8200v), BOD 22-01 deadline. Second item (Iran Cyber Watch, NET-NEW): Group-IB HollowGraph — M365 Graph/calendar living-off-trusted-cloud C2, Iran-nexus/Israel-targeted espionage (>=12 systems, 3 active 06-03->07-09; IOC cloudlanecdn[.]com); A2/likely, single-source veto (Group-IB via BleepingComputer). ATTRIBUTION UNRESOLVED — Cavern-framework link is a source-stated HIGH-confidence TOOLING call, NOT an operator ID; #026 NOT named; Lyceum = Group-IB low-confidence, no #023 cross-walk. A&D relevance TTP-portability watch (M365-calendar C2 portable to any tenant), NOT asserted targeting. Standing sections: A&D Sector Focus (no named victim — SonicWall + past-due KEV board are the standing DIB patch-priorities); Iran Cyber Watch LIVE (HollowGraph). 2 findings referenced. red-team run on the SonicWall lift (BLOCK). Hard Rule 2 held throughout (no attribution originated); Hard Rule 6 ZERO direct quotes; Hard Rule 3 no PoC/mechanism-step mirrored; Hard Rule 8 both items silent first-party (visibility-bounded / no atomic IOCs to hunt)."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - two-substantive-items-sonicwall-update-plus-hollowgraph-net-new
+      - lead-sonicwall-sma1000-cve-2026-15409-cve-2026-15410-volexity-ir-pre-disclosure-zero-day-update
+      - sonicwall-attempted-a1-lift-blocked-reverted-red-team-common-upstream-chain-a2-likely
+      - uta0533-volexity-single-source-source-stated-no-roster-crosswalk-hard-rule-2
+      - hollowgraph-m365-graph-calendar-c2-iran-israel-net-new-iran-cyber-watch
+      - hollowgraph-attribution-unresolved-cavern-framework-tooling-not-operator-id-026-not-named
+      - lyceum-group-ib-low-confidence-no-023-crosswalk
+      - ad-relevance-sonicwall-dib-edge-appliance-patch-now-hollowgraph-ttp-portability-watch
+      - standing-sections-ad-sector-focus-no-named-victim-iran-cyber-watch-live-hollowgraph
+      - kev-board-past-due-referenced-no-change-standing-watch-covered-in-not-appended
+      - two-findings-referenced-one-update-one-net-new
+      - red-team-run-sonicwall-lift-block
+      - hard-rule-2-held-no-attribution-originated
+      - hard-rule-6-zero-direct-quotes
+      - hard-rule-3-no-poc-mechanism-step-mirrored
+      - preflight-13-of-13-pass
+    related_actors: []              # NONE hardened. UTA0533 (Volexity) + Cavern Manticore #026 (roster-adjacent, Group-IB tooling linkage) + Lyceum both recorded source-stated only; Hard Rule 2.
+    related_vulns: [CVE-2026-15409, CVE-2026-15410]   # net-new; NOT in vulnerabilities/_index.yaml — vuln-tracker handoff to be actioned
+    related_campaigns: [hollowgraph-m365-graph-calendar-c2-cavern-framework-iran-israel-2026]
+    finding_ids: [finding-2026-07-14-0007, finding-2026-07-20-0001]
+    digraph: A2               # both referenced items A2 (SonicWall active-exploitation leg A2 / KEV fact A1; HollowGraph capability A2)
+    wep: likely
+    preflight:
+      result: pass_13_of_13
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 686        # 400-800 afternoon band (Layer 1)
+      layer2_words: ~197            # 150-300 band
+      layer2_chars_est: ~1640       # <=1900 ceiling, single Discord message, no chunk needed
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-14-0007, append_brief_id: 2026-07-20-afternoon}   # DONE by briefer (SonicWall SMA1000 Volexity UPDATE/escalation)
+        - {finding_id: finding-2026-07-20-0001, append_brief_id: 2026-07-20-afternoon}   # DONE by briefer (HollowGraph net-new)
+      coverage_log_resurface_update:
+        - "2026-07-14-pm-002 (SonicWall SMA1000 CVE-2026-15409/CVE-2026-15410, finding-2026-07-14-0007): covered_in appended 2026-07-20-afternoon; last_covered -> 2026-07-20; resurface_2026_07_20 block added (Volexity third-party IR — pre-disclosure ~06-22 zero-day window + UTA0533 label; material update). Attempted A1/very_likely lift BLOCKED by red-team-20260720-181500 -> grade HELD A2/likely, single-source veto re-bound. resurface_if updated (very_likely now gated on direct Volexity primary retrieval outside the Volexity/SonicWall chain). No new item entry — anchor updated in place."
+        - "Weekend past-due KEV board (Oracle EBS VT-043 / SharePoint VT-041 / FortiSandbox VT-045/046): referenced as a single no-change standing-watch line in the A&D Sector Focus section (covered THIS MORNING in 2026-07-20-morning; no state change). covered_in NOT appended (pure no-change mention, per the 2026-07-19-afternoon / 2026-07-20-morning precedent); not re-itemized as a fresh Vulnerabilities item."
+      new_sources_flagged:
+        - "group-ib: add to source-grades.yaml provisional A (Tier-1-vendor-research first-surface precedent), awaiting_ratification + awaiting_direct_retrieval (first corpus surface via finding-2026-07-20-0001 / BleepingComputer relay)."
+        - "volexity: add to source-grades.yaml provisional A (Tier-1 IR/DFIR-vendor first-surface precedent), awaiting_ratification + awaiting_direct_retrieval (first corpus surface via finding-2026-07-14-0007 update-2026-07-20-0001 / SecurityWeek relay)."
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-15409 + CVE-2026-15410 (SonicWall SMA1000): ACTION the long-proposed VT dossier (net-new to vulnerabilities/_index.yaml). Add UTA0533 label, KnuckleBall/OrangeTail/Suo5 tooling, ~2026-06-22 pre-disclosure exploitation onset, fixed versions 12.4.3-03453 / 12.5.0-02835, models 6210/7210/8200v, 4 SonicWall PSIRT detection indicators."
+      actor_profiler_handoff_pending:
+        - "Cavern Manticore #026 (Iran-MOIS): dossier development note — Group-IB attaches HollowGraph + cloudlanecdn[.]com to the Cavern framework #026 operates. Tooling-linked, actor UNCONFIRMED — do NOT harden attribution (Hard Rule 2), do NOT re-score threat-box off a single-source tooling linkage."
+      ttp_tracking_handoff_pending:
+        - "M365 Microsoft Graph API / mailbox-calendar living-off-trusted-cloud C2 (HollowGraph) — TTP-watch, portable to any M365 tenant incl. A&D primes. Detection-weekly / weekly-synthesis candidate (anomalous Graph API calendar read-write / calendar-item C2 patterns)."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, and git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-20 AFTERNOON BRIEF (briefer phase, briefer-20260720-160000). 2 substantive items on a
+      Monday afternoon: 1 UPDATE/escalation (SonicWall SMA1000 — Volexity pre-disclosure zero-day) +
+      1 NET-NEW (Group-IB HollowGraph, Iran/Israel M365-calendar C2). Both items WEP "likely."
+
+      Section placement:
+      - LEAD + Why-it-matters + Vulnerabilities: SonicWall SMA1000 (finding-2026-07-14-0007) as the brief
+        LEAD — highest-impact/most-actionable for the ITAR A&D target (CVSS-10 unauth flaw on an
+        internet-facing remote-access edge appliance common across DIB/supplier estates, now revealed as a
+        ~3-week pre-disclosure zero-day, BOD 22-01 deadline). Presented as an UPDATE/escalation line +
+        correlation callout to 2026-07-15 morning (last covered), NOT a re-introduction. CONFIDENCE
+        DISCIPLINE (red-team-adjudicated): active exploitation at "likely," NOT very_likely/confirmed —
+        the grader's attempted A1 lift on the Volexity-independence theory was BLOCKED + reverted by
+        red-team-20260720-181500 (CISA KEV <- SonicWall <- Volexity = one common-upstream chain; Volexity
+        was inside the SonicWall IR; origin-based independence test not met). Framed as a well-sourced
+        SINGLE evidence chain. UTA0533 + ~06-22 onset carried as Volexity single-source, source-stated
+        (Hard Rule 2, no roster cross-walk).
+      - Iran Cyber Watch (LIVE, not silent-day): HollowGraph (finding-2026-07-20-0001) NET-NEW. Led with
+        the CAPABILITY + TTP per analyst guidance (M365 Graph/calendar living-off-trusted-cloud C2). The
+        Cavern-framework link presented as Group-IB's source-stated HIGH-confidence TOOLING call that does
+        NOT identify the operator; Cavern Manticore #026 NOT named (SAT-ACH: H1 #026 vs H2 distinct
+        operator indistinguishable, the new-C2-domain infra signal leaning toward a distinct operator);
+        Lyceum kept as Group-IB's own low-confidence, insufficient-to-attribute note (no #023 cross-walk).
+        A&D relevance framed as TTP-portability watch (M365-calendar C2 portable to any tenant incl. A&D
+        primes), NOT asserted targeting.
+      - Standing sections: A&D Sector Focus present (no named A&D victim this window; SonicWall SMA1000 +
+        the weekend past-due KEV board are the standing DIB patch-priorities; HollowGraph TTP-portability
+        noted). Iran Cyber Watch is LIVE (HollowGraph is the Iran-nexus item this window) — NOT the
+        silent-day template.
+
+      Anti-repetition: SonicWall resurfaced ONLY on the material Volexity-IR escalation (existing anchor
+      2026-07-14-pm-002 updated in place — covered_in appended, resurface_2026_07_20 block added; NOT a
+      duplicate entry). Morning-brief items (ServiceNow CVE-2026-6875, wp2shell CVE-2026-63030) NOT
+      re-run — quiet this window. Weekend past-due KEV board (Oracle EBS / SharePoint / FortiSandbox)
+      referenced as a single no-change standing-watch line in A&D Sector Focus (covered this morning, no
+      state change); covered_in NOT appended, not re-itemized (2026-07-19-afternoon / 2026-07-20-morning
+      precedent).
+
+      Hard Rules: Rule 2 held throughout — no attribution originated. UTA0533 = Volexity's single-source
+      designation with the state-sponsored hedge preserved (no roster cross-walk); Cavern Manticore #026
+      recorded roster-adjacent via Group-IB's source-stated tooling linkage, NOT named as the HollowGraph
+      operator; Lyceum = Group-IB's low-confidence label, not cross-walked to OilRig/APT34 #023. Rule 6:
+      ZERO direct quotes (Volexity, Group-IB, CISA all paraphrased). Rule 3: no PoC / mechanism-step
+      mirrored (both items at class level). Rule 8: both items silent first-party — SonicWall SMA1000
+      perimeter logs not forwarded + no atomic IOCs in the Volexity relay; HollowGraph swept -90d on
+      cloudlanecdn[.]com / hospitalinstallation[.]com / HollowGraph / logAzure with 0 hits (Frank not an
+      Israeli target — visibility-bounded null) — silence not disconfirming.
+
+      Layer 1 ~686 words (400-800 afternoon band) + Layer 2 ~197 words / est. ~1640 chars (150-300 word
+      band, <1900 ceiling, single Discord message, no chunk needed). Layer 2: 2 source-linked bullets
+      (SonicWall -> SecurityWeek under 🔓 Vulnerabilities; HollowGraph -> BleepingComputer under 🇮🇷 Iran
+      Cyber Watch); A&D Sector Focus standing content omitted from Layer 2 (no new named-victim activity);
+      natural-language dates ("June 22," "July 14," "June 3–July 9"); italic urgency on the SonicWall
+      patch call (*right now*); no digraph/WEP/finding-id in Layer 2; Hard Rule 2 framings preserved
+      ("Archimedes does not name the actor," "a tooling call, not an operator ID"); no themed voice.
+      Pre-flight 13-of-13 PASS (1 iteration; two bare-"may" hedges rewritten to present-tense/action
+      framing during check 7 before ship). NOT posted to Discord by briefer — librarian owns
+      delivery/commit.
+    first_covered: 2026-07-20
+    last_covered: 2026-07-20
+    retraction: null
+    test: false
 
 # ============================================================================
 # Valid resurface_if conditions

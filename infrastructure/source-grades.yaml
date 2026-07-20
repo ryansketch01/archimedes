@@ -979,6 +979,34 @@ vendor_sources:
     urls:
       - https://hexastrike.com/
 
+  - id: group-ib
+    name: "Group-IB (threat intelligence / IR)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-07-20
+    provisional_reason: "First Archimedes-corpus surface via finding-2026-07-20-0001 (HollowGraph — new Iran-nexus M365-Graph/calendar covert-C2 espionage malware; Israel-focused set, >=12 systems infected / 3 actively communicating June 3-July 9; C2 cloudlanecdn[.]com, config logAzure.txt; Group-IB links HollowGraph to the Cavern C2 framework at high confidence as a tooling call, plus a low-confidence Lyceum similarity it states is insufficient to attribute). Group-IB is a globally recognized threat-intelligence / DFIR vendor with an established APT-tracking and malware-teardown track record — peer class to the corpus A-grade vendor tier (Mandiant / CrowdStrike / Recorded Future / MSTIC). Provisional A on that vendor-authority basis. Reached the corpus THIS pass only as a BleepingComputer (B) relay — the Group-IB primary research writeup was NOT directly retrieved (awaiting_direct_retrieval preserved as a collection todo, not a grade blocker). Operator may ratify at A, or hold to B pending a subsequent direct-retrieval surface establishing consistent first-party technical rigor. Attribution note per Hard Rule 2: Group-IB's Cavern-framework linkage is a tooling call, NOT an operator identification — do NOT propagate to a named tracked actor on this single-source tooling linkage."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-20-0001
+    active: true
+    urls:
+      - https://www.group-ib.com/blog/
+
+  - id: volexity
+    name: "Volexity (IR / threat intelligence)"
+    category: vendor
+    grade: A
+    provisional: true
+    provisional_since: 2026-07-20
+    provisional_reason: "First Archimedes-corpus surface via finding-2026-07-14-0007 update-2026-07-20-0001 (SonicWall SMA1000 CVE-2026-15409 unauth SSRF CVSS 10.0 / CVE-2026-15410 authenticated-admin OS command injection CVSS 7.2 — Volexity, assisting the SonicWall IR, dates in-the-wild exploitation to ~June 22, roughly three weeks before the July 14 disclosure/patch; tracks the activity as UTA0533 and assesses it more consistent with state-sponsored than criminal; named tooling KnuckleBall / OrangeTail / Suo5). Volexity is a well-regarded IR / threat-intelligence firm with an established memory-forensics and nation-state-IR track record — peer class to the corpus A-grade vendor tier (Mandiant / CrowdStrike). Provisional A on that vendor-authority basis. Reached the corpus THIS pass only as a SecurityWeek (B) relay — the Volexity primary writeup was NOT directly retrieved (awaiting_direct_retrieval preserved as a collection todo, not a grade blocker). Single-source-veto note: CISA KEV and Volexity likely share one upstream evidence chain (Volexity sits inside the SonicWall IR), so the active-exploitation leg holds at 'likely' / digraph A2 — a red-team review blocked an attempted lift to very likely on exactly this independence question. UTA0533 is Volexity's own single-source designation, NOT cross-walked to any tracked actor (Hard Rule 2). Operator may ratify at A, or hold to B pending a direct-retrieval surface."
+    awaiting_ratification: true
+    awaiting_direct_retrieval: true
+    provenance: finding-2026-07-14-0007
+    active: true
+    urls:
+      - https://www.volexity.com/blog/
+
 # ============================================================================
 # Security Media & Researchers
 # ============================================================================

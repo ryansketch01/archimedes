@@ -44181,7 +44181,7 @@ entries:
       delivery/commit.
 
   - id: 2026-07-18-am-001-rapid7-wordpress-core-cve-2026-63030-wp2shell-unauth-rce-nvd-9-8-patched-no-itw-no-poc-imminent-poc-a2-likely-single-source-veto-monitoring
-    covered_in: [2026-07-18-morning, 2026-07-18-afternoon, 2026-07-19-morning]   # 2026-07-19-morning: standing-watch "no change" carry-forward — holds at the 2026-07-18 PM state (public GitHub PoCs + watchTowr early-ITW first-signs); NO new escalation, no named A&D victim, no mass-exploitation telemetry beyond that onset this window. Carried as a no-change status line under the Sunday Vulnerabilities "Standing watch" rollup (still within the 72h active-exploit freshness window), NOT a fresh headline. Still PATCHED (6.9.5 / 7.0.2, forced auto-updates), still MONITORING, still LOW/structural A&D, no actor. 2026-07-18-afternoon: UPDATE resurface — SAME-DAY STATE CHANGE. Two escalation triggers fired within hours: (1) multiple public GitHub PoCs released (poc_availability B2 / "likely"); (2) watchTowr (Benjamin Harris) reports "first signs of in-the-wild exploitation" (itw_onset B3 / "roughly even chance", single provisional firm via BleepingComputer B relay). Headline holds A2 / "likely" (single-source veto binds both new legs). Still PATCHED (6.9.5 / 7.0.2 / 7.1 Beta 2, forced auto-updates), still MONITORING tier, still LOW/structural A&D. VW-001 -> full VT dossier recommended (vuln-tracker). Absorbed as brief UPDATE, NOT a FLASH (Trigger 1 needs A-grade confirmed exploitation; ITW is hedged first-signs via B relay). Net-new: chained SQLi CVE-2026-60137 also affects WP 6.8.0-6.8.5 (that branch cannot chain to RCE).
+    covered_in: [2026-07-18-morning, 2026-07-18-afternoon, 2026-07-19-morning, 2026-07-20-morning]   # 2026-07-20-morning: UPDATE resurface — STATE CHANGE #2 (multi-firm ITW confirmation). SecurityWeek relays THREE firms (Patchstack "documented active attacks" + Hexastrike weekend honeypot exploitation/IR + watchTowr exploitation attempts) confirming active exploitation of the wp2shell chain; ITW leg escalated B3 -> B2 (single-firm hedged "first signs" -> multi-firm confirmed). WEP HELD at "likely" (Singapore-CSA single-relay-unverified cap: all three attestations via one un-retrieved SecurityWeek relay, no atomic IOCs). Still PATCHED (6.9.5 / 7.0.2, WordPress.org forced auto-updates), still LOW/structural A&D, no actor (Hard Rule 2). Carried as an UPDATE row + 🔗 correlation callout in the 2026-07-20 morning Vulnerabilities section. 2026-07-19-morning: standing-watch "no change" carry-forward — holds at the 2026-07-18 PM state (public GitHub PoCs + watchTowr early-ITW first-signs); NO new escalation, no named A&D victim, no mass-exploitation telemetry beyond that onset this window. Carried as a no-change status line under the Sunday Vulnerabilities "Standing watch" rollup (still within the 72h active-exploit freshness window), NOT a fresh headline. Still PATCHED (6.9.5 / 7.0.2, forced auto-updates), still MONITORING, still LOW/structural A&D, no actor. 2026-07-18-afternoon: UPDATE resurface — SAME-DAY STATE CHANGE. Two escalation triggers fired within hours: (1) multiple public GitHub PoCs released (poc_availability B2 / "likely"); (2) watchTowr (Benjamin Harris) reports "first signs of in-the-wild exploitation" (itw_onset B3 / "roughly even chance", single provisional firm via BleepingComputer B relay). Headline holds A2 / "likely" (single-source veto binds both new legs). Still PATCHED (6.9.5 / 7.0.2 / 7.1 Beta 2, forced auto-updates), still MONITORING tier, still LOW/structural A&D. VW-001 -> full VT dossier recommended (vuln-tracker). Absorbed as brief UPDATE, NOT a FLASH (Trigger 1 needs A-grade confirmed exploitation; ITW is hedged first-signs via B relay). Net-new: chained SQLi CVE-2026-60137 also affects WP 6.8.0-6.8.5 (that branch cannot chain to RCE).
     brief_file: threats/briefs/2026-07-18-morning.md
     resurface_2026_07_18_pm: >
       UPDATE resurface (public_poc_released_rapid7_imminent_assessment_materializes +
@@ -44237,7 +44237,22 @@ entries:
       - named_ad_or_dib_victim_disclosed_running_affected_wordpress
       - chained_cve_2026_60137_wp_query_sqli_warrants_own_tracked_row
     first_covered: 2026-07-18
-    last_covered: 2026-07-19   # 2026-07-19-morning: standing-watch "no change" carry-forward — holds at the 2026-07-18 PM state, no new escalation this window
+    last_covered: 2026-07-20   # 2026-07-20-morning: UPDATE — multi-firm ITW confirmation (STATE CHANGE #2), ITW leg B3 -> B2, WEP held "likely"
+    resurface_2026_07_20_am: >
+      UPDATE resurface (any_itw_exploitation_reporting escalating on the already-covered claim): the
+      2026-07-20 06:00 FLASH sweep surfaced STATE CHANGE #2 (finding-2026-07-18-0001 state_change_2,
+      raw-2026-07-20-flash-0600-002, flash-grade-20260720-060000). SecurityWeek (Eduard Kovacs)
+      relays THREE research firms — Patchstack (documented active attacks), Hexastrike (weekend
+      honeypot exploitation + IR), watchTowr (exploitation attempts) — confirming active in-the-wild
+      exploitation of the WP2Shell chain (CVE-2026-63030 + CVE-2026-60137). ITW leg escalated B3 ->
+      B2. WEP HELD at "likely" per the Singapore-CSA single-relay-unverified cap (all three
+      attestations via one un-retrieved SecurityWeek relay; none directly retrieved; no atomic IOCs
+      to cross-match). Still PATCHED (6.9.5 / 7.0.2, WordPress.org forced auto-updates); LOW/structural
+      A&D; no actor (Hard Rule 2). Anti-noise rule 1: absorbed as an UPDATE (topic already in
+      continuous scheduled coverage since 07-18), NOT a fresh FLASH. Carried as an UPDATE row + 🔗
+      correlation callout in the 2026-07-20 morning Vulnerabilities section. This anchor entry updated
+      in place — NOT a new entry. New sources flagged to librarian: Patchstack (provisional B),
+      Hexastrike (provisional C). VW-001 -> full VT dossier promotion reaffirmed.
     retraction: null
     test: false
 
@@ -44617,6 +44632,169 @@ entries:
       linked to CISA KEV catalog; wp2shell source-linked to BleepingComputer); standing silent-day
       boilerplate omitted from Layer 2; natural-language dates ("today, July 19," "July 18," "Saturday");
       no digraph/WEP/finding-id in Layer 2; no themed voice. Pre-flight 13-of-13 PASS (iteration 1).
+      NOT posted to Discord by briefer — librarian owns delivery/commit.
+
+  - id: 2026-07-20-am-001-servicenow-ai-platform-cve-2026-6875-unauth-sandbox-escape-rce-active-exploitation-defused-n-day-b2-likely-single-source-veto
+    covered_in: [2026-07-20-morning]
+    brief_file: threats/briefs/2026-07-20-morning.md
+    headline: "ACTION/MONITORING — Defused (via BleepingComputer B relay) reports active in-the-wild exploitation of CVE-2026-6875, a critical (CVSS 9.5) unauthenticated sandbox-escape -> RCE in the ServiceNow AI Platform (formerly Now Platform); first attempts 2026-07-18 via a route distinct from the published PoC. n-day — PATCHED 2026-07-13 (advisory KB3137947), so the patch predates exploitation. Hosted + self-hosted deployments; exploitable 'under certain conditions' with no valid login (precondition under-specified -> at-risk deploy base a bounded unknown pending NVD/KB direct retrieval). B2 / likely (layered A2 CVE facts / B2 exploitation), single-source veto on the exploitation leg (Defused sole telemetry basis via one B relay). NOT CISA-KEV as of 2026-07-20 (open watch). No actor (Hard Rule 2). No atomic IOCs. A&D relevance MEDIUM / STRUCTURAL — ServiceNow is DIB-pervasive (ITSM/GRC/service delivery) so an unauth RCE is a real initial-access surface, but no A&D-specific targeting or victimology; frame generic-but-DIB-pervasive, NOT A&D-targeted. Net-new CVE — NOT in threats/vulnerabilities/_index.yaml; vuln-tracker handoff recommends a tracked row/watch entry. Resolves the standing 'ServiceNow API exploitation unassigned CVE' watch's exploitation-state question. GRADE-eligible-but-absorbed-to-morning FLASH (Trigger 1 fails A-grade-exploitation-source leg; quiet hours active at 06:00; morning brief ~2h out)."
+    topic_tags:
+      - action-monitoring
+      - vulnerabilities-section
+      - cve
+      - cve-2026-6875-servicenow-ai-platform-unauth-sandbox-escape-rce
+      - active-in-the-wild-exploitation-defused-first-attempts-2026-07-18
+      - route-distinct-from-published-poc
+      - n-day-patched-2026-07-13-kb3137947
+      - cvss-9-5-critical
+      - certain-conditions-precondition-under-specified-at-risk-base-bounded-unknown
+      - single-source-veto-defused-sole-exploitation-telemetry-via-one-b-relay
+      - not-cisa-kev-as-of-2026-07-20-open-watch
+      - hard-rule-2-no-actor
+      - hard-rule-3-mechanism-class-level-only-no-poc-mirrored
+      - ad-relevance-medium-structural-dib-pervasive-not-a-and-d-targeted
+      - net-new-cve-not-in-index-vuln-tracker-handoff-tracked-row-or-watch-entry
+      - resolves-standing-servicenow-api-exploitation-unassigned-cve-watch-exploitation-state
+      - flash-grade-eligible-absorbed-to-morning-trigger-1-fails-a-grade-source
+      - discoverer-credit-disputed-searchlight-cyber-vs-adam-kues-assetnote
+    related_actors: []
+    related_vulns: [CVE-2026-6875]   # net-new; NOT in _index.yaml
+    related_campaigns: []
+    finding_ids: [finding-2026-07-20-flash-0600-0001]
+    digraph: B2
+    digraph_layered:
+      procedural_cve_facts: A2
+      active_exploitation_claim: B2
+    wep: likely
+    wep_split:
+      procedural_cve_facts: very_likely
+      active_exploitation_in_the_wild: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Applies on the active-exploitation claim — single evidence basis (Defused telemetry via one
+      BleepingComputer B relay); no second independent exploitation witness. WEP capped at "likely".
+      Veto lifts on an independent exploitation-telemetry witness distinct from Defused, a CISA KEV
+      add, or a first-party Splunk confirmation.
+    red_team_review: null            # WEP ceiling "likely" < "very likely"; single-source veto binds
+    vuln_tracker_handoff:
+      recommended_action: add_tracked_row_or_watch_entry
+      anchor_cve: CVE-2026-6875
+      name: "ServiceNow AI Platform unauthenticated sandbox-escape -> RCE"
+      vendor_advisory: KB3137947
+      cvss: 9.5
+      rationale: "Net-new critical unauth-RCE with reported active exploitation + broad DIB deployment surface. Tracked row/watch entry now; full VT dossier if a KEV add, an independent exploitation witness, or an A&D-victim disclosure materializes."
+    new_sources_flagged:
+      - {source_name: Defused, proposed_id: defused, provisional_grade: B, note: "exploitation-telemetry feed; first Archimedes-corpus surface; via BleepingComputer relay, not directly retrieved"}
+    resurface_if:
+      - cisa_kev_addition_cve_2026_6875                        # would lift toward action tier + fresh FLASH-eligibility check
+      - independent_exploitation_witness_distinct_from_defused  # lifts exploitation leg above single-source veto
+      - first_party_splunk_hit_cve_2026_6875_or_servicenow
+      - nvd_or_kb3137947_direct_retrieval_resolving_certain_conditions_precondition_and_affected_scope
+      - named_ad_or_dib_victim_disclosed
+      - actor_attribution_surfacing_from_a_or_b_grade_source     # currently UNKNOWN (Hard Rule 2)
+    first_covered: 2026-07-20
+    last_covered: 2026-07-20
+    retraction: null
+    test: false
+
+  - id: 2026-07-20-am-brief-meta
+    covered_in: [2026-07-20-morning]
+    brief_file: threats/briefs/2026-07-20-morning.md
+    headline: "Morning brief 2026-07-20 (Monday) — QUIET Monday, 0 net-new findings from the pre-brief collection; 2 carried findings both graded + analytically cleared, both WEP 'likely'. LEAD: net-new ACTION item — ServiceNow AI Platform CVE-2026-6875 (B2/likely, active in-the-wild exploitation per Defused via BleepingComputer, CVSS 9.5 unauth sandbox-escape->RCE, n-day patched 07-13, NOT KEV, MEDIUM/structural-DIB A&D relevance, single-source veto). Second Vulnerabilities item: wp2shell CVE-2026-63030 UPDATE — ITW escalated single-firm hedged (07-18) -> multi-firm confirmed (07-20, Patchstack + Hexastrike + watchTowr via SecurityWeek), WEP held 'likely' (single-relay cap), still patched/forced-auto-updates, LOW/structural A&D. Third: standing KEV-deadline watch rollup — Oracle EBS CVE-2026-46817 (VT-043) past-due since 07-18, SharePoint CVE-2026-58644 (VT-041) + FortiSandbox CVE-2026-25089/CVE-2026-39808 (VT-045/046) deadlines lapsed 07-19, all quiet (no-change carry-forward). Standing sections silent-day (A&D = past-due KEV deadlines are the standing DIB patch-priority + ServiceNow no A&D targeting; Iran = no new activity 48h). 4 findings referenced (1 net-new action + 1 UPDATE + 2 KEV standing-watch). NO red-team (all WEP <= likely, single-source veto binds every item). NO FLASH posted (ServiceNow + wp2shell both absorbed-to-morning per anti-noise + Trigger-1-A-grade-source-fail). Hard Rule 2 held (no attribution originated); Hard Rule 6 ZERO direct quotes; Hard Rule 3 no PoC/mechanism-step mirrored; Hard Rule 8 Rule-8 run on both new items (silent by absence-of-artifact)."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - quiet-monday-zero-net-new-two-carried-findings-both-wep-likely
+      - lead-net-new-action-servicenow-cve-2026-6875-active-exploitation-b2-likely
+      - wp2shell-cve-2026-63030-update-itw-single-firm-to-multi-firm-confirmed-wep-held-likely
+      - standing-kev-deadline-watch-oracle-ebs-vt043-past-due-sharepoint-vt041-fortisandbox-vt045-vt046-lapsed-quiet
+      - standing-sections-ad-past-due-kev-deadlines-dib-patch-priority-iran-silent
+      - four-findings-one-net-new-action-one-update-two-kev-standing-watch
+      - no-red-team-all-wep-likely-single-source-veto
+      - no-flash-posted-both-new-items-absorbed-to-morning
+      - hard-rule-2-held-no-attribution
+      - hard-rule-6-zero-direct-quotes
+      - hard-rule-3-no-poc-mechanism-step-mirrored
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: [CVE-2026-6875, CVE-2026-63030, CVE-2026-46817, CVE-2026-58644, CVE-2026-25089, CVE-2026-39808]
+    related_campaigns: [wp2shell]
+    finding_ids: [finding-2026-07-20-flash-0600-0001, finding-2026-07-18-0001, finding-2026-07-16-0005, finding-2026-07-15-flash-1800-0001]
+    digraph: B2               # lead item (ServiceNow) B2; wp2shell A2 headline/B2 ITW leg; KEV items A2
+    wep: likely
+    preflight:
+      result: pass_13_of_13
+      word_count_full_body: 779         # 400-800 morning band (Layer 1 ~560 + Layer 2 ~219)
+      layer2_words: ~219                # 150-300 band
+      layer2_chars_est: ~1680           # <=1900 ceiling, single Discord message, no chunk needed
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-20-flash-0600-0001, append_brief_id: 2026-07-20-morning}   # DONE by briefer (net-new ServiceNow action item)
+        - {finding_id: finding-2026-07-18-0001, append_brief_id: 2026-07-20-morning}              # DONE by briefer (wp2shell multi-firm ITW UPDATE)
+        - {finding_id: finding-2026-07-16-0005, append_brief_id: 2026-07-20-morning}              # DONE by briefer (VT-041 + FortiSandbox KEV standing-watch, lapsed 07-19)
+        - {finding_id: finding-2026-07-15-flash-1800-0001, append_brief_id: 2026-07-20-morning}   # DONE by briefer (VT-043 Oracle EBS KEV standing-watch, past-due 07-18)
+      coverage_log_resurface_update:
+        - "2026-07-18-am-001 (wp2shell CVE-2026-63030 / finding-2026-07-18-0001): covered_in appended 2026-07-20-morning; last_covered -> 2026-07-20; UPDATE resurface — STATE CHANGE #2 multi-firm ITW confirmation (B3 -> B2), WEP held 'likely'. Anchor updated in place (see resurface_2026_07_20_am). No new item entry."
+        - "2026-07-16-am-001 (Oracle EBS CVE-2026-46817 / VT-043 / finding-2026-07-15-flash-1800-0001): standing-watch 'no change' (past-due since 07-18). Pure no-change rollup line — covered_in NOT appended (consistent with the 2026-07-19-afternoon precedent for standing-watch mentions); published_in_briefs back-write applied to the finding."
+        - "2026-07-16-pm-001 (SharePoint CVE-2026-58644 VT-041 + FortiSandbox CVE-2026-25089/CVE-2026-39808 VT-045/046 / finding-2026-07-16-0005): standing-watch 'no change' (deadlines lapsed 07-19). Pure no-change rollup line — covered_in NOT appended; published_in_briefs back-write applied to the finding."
+      new_sources_flagged:
+        - "Defused (exploitation-telemetry feed): add to source-grades.yaml provisional B, awaiting_ratification + awaiting_direct_retrieval (first surface via finding-2026-07-20-flash-0600-0001 / BleepingComputer relay)."
+        - "Patchstack (WordPress vuln-intel): add provisional B (first surface via finding-2026-07-18-0001 STATE CHANGE #2)."
+        - "Hexastrike (honeypot/IR): add provisional C (first surface via finding-2026-07-18-0001 STATE CHANGE #2)."
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-6875 (ServiceNow AI Platform): NEW — add a tracked row / watch-keywords entry (full VT dossier if KEV add / independent exploitation witness / A&D-victim disclosure)."
+        - "wp2shell CVE-2026-63030: VW-001 -> full VT-NNN dossier still pending; multi-firm ITW confirmation reaffirms the promotion (both escalation triggers long since fired)."
+      watch_config_update:
+        - "servicenow-api-exploitation-2026-06-09: CVE-2026-6875 exploitation resolves the exploitation-state question for the standing 'ServiceNow API exploitation unassigned CVE' watch (though CVE-2026-6875 is a distinct AI-Platform sandbox-escape, not the related_list_edit REST API path). Consider linking or annotating the watch entry."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, and git commit — briefer did NOT post or commit."
+    first_covered: 2026-07-20
+    last_covered: 2026-07-20
+    retraction: null
+    test: false
+    notes: |
+      2026-07-20 MORNING BRIEF (briefer phase). Quiet Monday: pre-brief collection promoted 0 net-new
+      findings. Brief built from 2 carried findings (both graded + analytically cleared, both WEP
+      "likely") + standing KEV-deadline watch rollup + standing silent sections. No red-team (all WEP
+      ceiling "likely"; single-source veto / single-relay cap binds every item). No FLASH posted.
+
+      Section placement:
+      - BLUF + Why-it-matters: leads with the net-new ServiceNow CVE-2026-6875 active-exploitation
+        action item (the single most decision-useful item). Why-it-matters frames it as a
+        defensive-priority row (DIB-pervasive initial-access surface), NOT a confirmed sector campaign —
+        no A&D targeting, single provisional telemetry source, not yet KEV.
+      - Vulnerabilities: (1) ServiceNow CVE-2026-6875 net-new action item (B2/likely; layered A2 CVE
+        facts / B2 exploitation) with an explicit Action line + the three analyst load-bearing caveats
+        preserved (single-source Defused; "certain conditions" -> at-risk base bounded unknown;
+        MEDIUM/structural-DIB A&D, not A&D-targeted; NOT KEV). (2) wp2shell CVE-2026-63030 UPDATE —
+        multi-firm ITW confirmation (Patchstack + Hexastrike + watchTowr via SecurityWeek), ITW leg
+        B3 -> B2, WEP held "likely" (single-relay cap), with a correlation callout to 2026-07-18.
+        (3) Standing KEV-deadline watch rollup — Oracle EBS (VT-043) past-due, SharePoint (VT-041) +
+        FortiSandbox (VT-045/046) lapsed 07-19, all quiet (no-change carry-forward).
+      - Standing sections: A&D Sector Focus silent-day (past-due KEV deadlines = standing DIB
+        patch-priority; ServiceNow no A&D-specific targeting; no named victim); Iran Cyber Watch
+        silent-day (no new activity 48h).
+      - Active Threats + Actor Activity + Other Signal omitted (ServiceNow placed under Vulnerabilities
+        as a CVE-focused action item per the wp2shell/Oracle-EBS precedent; no net-new actor activity;
+        no monitoring-tier net-new).
+
+      Anti-repetition: wp2shell resurfaced with UPDATE flag + correlation callout (material escalation:
+      single-firm -> multi-firm ITW). KEV items carried as pure no-change standing-watch rollup lines
+      (covered_in NOT appended, per the 2026-07-19-afternoon precedent). ServiceNow is a genuine
+      net-new topic (no prior coverage of CVE-2026-6875).
+
+      Hard Rules: Rule 2 held throughout — no attribution originated (neither finding carries an actor;
+      KEV CVEs unattributed). Rule 6: ZERO direct quotes (Defused telemetry, watchTowr/Patchstack/
+      Hexastrike attestations, and the "certain conditions" precondition all paraphrased). Rule 3: no
+      PoC or mechanism-step mirrored (both CVEs recorded at class level; "route distinct from published
+      PoC" noted without detail). Rule 8: Rule-8 Splunk check run on both new items — silent by
+      absence-of-artifact (no ServiceNow/wp2shell exploitation telemetry, no atomic IOCs to pivot on),
+      not disconfirming.
+
+      Layer 1 ~560 words (400-800 band) + Layer 2 ~219 words / ~1680 chars (150-300 word band, <1900
+      ceiling, single Discord message, no chunk needed). Layer 2: 3 source-linked bullets (ServiceNow ->
+      BleepingComputer; wp2shell -> SecurityWeek; KEV rollup -> CISA KEV catalog); standing silent-day
+      boilerplate omitted from Layer 2; natural-language dates ("July 18," "July 13," "Saturday's,"
+      "July 19"); no digraph/WEP/finding-id in Layer 2; no themed voice. Pre-flight 13-of-13 PASS.
       NOT posted to Discord by briefer — librarian owns delivery/commit.
 
 # ============================================================================

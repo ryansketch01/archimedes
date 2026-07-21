@@ -19,6 +19,24 @@ iocs_extracted: true
 iocs_count: 4
 text_word_count: 320
 promoted: false        # UPDATE material for existing finding-2026-07-14-0007; grader folds
+disposition: update_material_vuln_tracker_and_existing_finding
+related_finding: finding-2026-07-14-0007    # SonicWall SMA1000 CVE-2026-15409/15410 (UTA0533)
+vuln_tracker_target: sonicwall-sma1000-cve-2026-15409-15410   # proposed VT-NNN dossier (net-new to _index.yaml)
+graded_at: 2026-07-21T08:24:00-04:00
+grading_run_id: morning-20260721-080000
+grader_note: >
+  NOT a net-new finding and NOT a rejection. Incremental-facts UPDATE for the existing SonicWall
+  SMA1000 finding (finding-2026-07-14-0007). Net-new details vs the 07-20 12:00 raw-signal: CVE
+  type split (CVE-2026-15409 = critical SSRF; CVE-2026-15410 = high command injection); NET-NEW
+  tooling ROOTRUN (privesc/root command execution); affected models SMA1000 6210/7210/8200v;
+  patch versions 12.4.3-03453 / 12.5.0-02835. DOES NOT lift the existing A2/likely grade: this is
+  a second BleepingComputer relay of the SAME Volexity upstream, so it shares a common origin
+  (the A2->A1 lift was already BLOCKED by red-team-20260720-181500 on common-upstream grounds).
+  Incremental facts fold at "likely." Splunk Rule 8 re-run on ROOTRUN / deploy_new.py /
+  agent_wp8.jar / agent_wp9.jar / SMA1000 / CVE-2026-15409/15410 -> 0 genuine defenseclaw_local
+  IOC hits (the 13 archimedes-index matches are the agent's own operational sweep/commit logs,
+  NOT telemetry). Visibility-bounded null. vuln-tracker to open/populate the SonicWall SMA1000
+  VT-NNN dossier (still absent from _index.yaml) with the ROOTRUN + model + patch-version facts.
 ttl_expires_at: 2026-10-19T00:10:00-04:00
 ---
 

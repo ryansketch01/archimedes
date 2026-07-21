@@ -19,6 +19,23 @@ iocs_extracted: true
 iocs_count: 0
 text_word_count: 300
 promoted: false
+disposition: actor_profiler_awareness_no_promotion
+related_actor: "018"                          # Cl0p (aliases TA505, FIN11, GOLD TAHOE)
+graded_at: 2026-07-21T08:26:00-04:00
+grading_run_id: morning-20260721-080000
+grader_note: >
+  NOT promoted to a finding and NOT a rejection — routed as actor-profiler-awareness. Cl0p (#018)
+  is a tracked roster actor, so the new named victim (Estée Lauder) is a data point for the Cl0p
+  Oracle-EBS victim ledger. But it does NOT meet the bar for a net-new A&D-calibrated finding:
+  (a) attribution is RE-STATED, not new (established 2025 CrowdStrike Cl0p<->Oracle-EBS campaign,
+  CVE-2025-61882 — Hard Rule 2, inherited); (b) victim is cosmetics (non-A&D); (c) CVE-2025-61882
+  is NOT tracked and is DISTINCT from VT-043 CVE-2026-46817 (do not conflate). Effective grade if
+  forced would be ~B2 (BleepingComputer breach-disclosure relay + established CrowdStrike
+  attribution), but no A&D nexus and no new intelligence value beyond the victim ledger. Closest-
+  to-relevant data point: Envoy Air (American Airlines subsidiary, aviation) is named as a prior
+  Cl0p Oracle-EBS victim, but is NOT an A&D watchlist entity. Actor-profiler: add Estée Lauder
+  (+re-note Envoy Air) to the Cl0p #018 victim ledger; do NOT re-score threat-box off a
+  re-stated-attribution victim disclosure. Splunk Rule 8: no atomic IOCs in source to check.
 ttl_expires_at: 2026-10-19T00:08:00-04:00
 ---
 

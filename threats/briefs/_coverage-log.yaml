@@ -42770,7 +42770,7 @@ entries:
     test: false
 
   - id: 2026-07-14-pm-002-cisa-kev-two-sonicwall-sma1000-cve-2026-15409-ssrf-cve-2026-15410-code-injection-active-exploitation-a2-lead-active-threats
-    covered_in: [2026-07-14-afternoon, 2026-07-15-morning, 2026-07-20-afternoon]
+    covered_in: [2026-07-14-afternoon, 2026-07-15-morning, 2026-07-20-afternoon, 2026-07-21-morning]
     brief_file: threats/briefs/2026-07-14-afternoon.md
     headline: "CISA KEV v2026.07.14 adds TWO SonicWall SMA1000 CVEs under active exploitation — CVE-2026-15409 (server-side request forgery, remote unauthenticated) + CVE-2026-15410 (code injection, remote authenticated-admin -> arbitrary OS commands) — on SonicWall's secure-mobile-access / remote-access gateway (BOD 22-01 deadline applies). Co-lead of the 07-14 afternoon cycle (Active Threats, Patch This Week tier 1). Layered grade A2: KEV-listing fact A1/almost-certain (directly retrieved); active-exploitation determination LIKELY — CISA single-source this sweep, no independent telemetry cross-match, single-source veto. KEV does NOT assert the two chain (do not manufacture an SSRF-to-RCE breach chain). Affected/fixed versions ABSENT from the KEV entry -> point defenders to SonicWall PSIRT / NVD. A&D relevance STRUCTURAL exposure-class (internet-facing perimeter appliance) — NO named A&D victim, NO actor attributed."
     topic_tags:
@@ -42857,8 +42857,19 @@ entries:
       - named_ad_or_dib_prime_victim_disclosed
       - kev_ransomware_use_tag_added
       - direct_sonicwall_psirt_advisory_retrieval_removes_relay_only_awaiting_direct_retrieval_flag
+    resurface_2026_07_21:
+      brief_id: 2026-07-21-morning
+      resurface_condition_met: actor_ttps_evolve   # net-new tooling name ROOTRUN; incremental only
+      presented_as: UPDATE line (Vulnerabilities) — incremental detail, explicitly NON-lifting
+      what_is_new: >
+        Net-new tooling designation ROOTRUN attached to the UTA0533 SMA1000 activity; the CVE-type
+        split (SSRF 15409 / command injection 15410) and affected models 6210/7210/8200v are restated
+        as context (already covered 2026-07-20-afternoon), NOT presented as new. Does NOT lift the
+        assessment — active exploitation holds at A2 / WEP likely, single-source veto unchanged.
+        Framed deflationary; the only genuinely-new element this window is ROOTRUN.
+      grade_unchanged: "A2 / WEP likely"
     first_covered: 2026-07-14
-    last_covered: 2026-07-20
+    last_covered: 2026-07-21
     retraction: null
     test: false
 
@@ -43432,7 +43443,7 @@ entries:
     test: false
 
   - id: 2026-07-16-am-004-nightmare-eclipse-legacyhive-windows-profsvc-lpe-zero-day-vt042-second-outlet-securityweek-relay-no-state-change-b2-likely-monitoring
-    covered_in: [2026-07-16-morning, 2026-07-16-afternoon, 2026-07-17-morning]   # 2026-07-17-morning: UPDATE status line (Vulnerabilities) — BleepingComputer added as publisher-level relay, NO state change; single-source veto stands, "admin access" headline NOT credited
+    covered_in: [2026-07-16-morning, 2026-07-16-afternoon, 2026-07-17-morning, 2026-07-21-morning]   # 2026-07-17-morning: UPDATE status line, BleepingComputer relay-breadth only; 2026-07-21-morning: UPDATE — ACROS/0patch unofficial micropatch now available (interim mitigation, still no CVE/MSRC/ITW)
     resurface_history:
       - at: 2026-07-17-morning
         trigger: [relay_breadth_only_no_monitor_for_lift_condition_met]
@@ -43447,6 +43458,16 @@ entries:
           access" headline is STRONGER than the disputed-severity posture and is explicitly NOT credited
           (Matei Badanoiu / The Register caveats stand). No re-escalation; grade/WEP/layered-split all
           unchanged (B2 / likely). last_covered advanced to 2026-07-17; no net-new item entry created.
+      - at: 2026-07-21-morning
+        trigger: [interim_unofficial_micropatch_now_available]
+        material_change: true
+        note: >
+          Carried as a brief UPDATE line in the 2026-07-21 morning Vulnerabilities section. ACROS
+          Security / 0patch shipped an unofficial micropatch for the profsvc arbitrary-hive-load LPE
+          — an interim mitigation defenders can apply ahead of any vendor fix. STILL no CVE, no MSRC
+          patch, and no in-the-wild exploitation; single-source veto unchanged (B2 / likely). The new
+          fact is the availability of an interim mitigation, not any change to severity/attribution.
+          last_covered advanced to 2026-07-21; no net-new item entry created (in-place resurface).
     brief_file: threats/briefs/2026-07-16-morning.md
     headline: "MONITORING — Nightmare Eclipse 'LegacyHive' Windows User Profile Service (profsvc) arbitrary registry-hive-load LPE zero-day (8th public drop in the series; VT-042). SecurityWeek (2026-07-16) added as a second/publisher-independent outlet relaying the SAME drop already graded on 2026-07-15 — relay, NOT new evidence; NO STATE CHANGE. Still no CVE, no CVSS, UNPATCHED (MSRC contacted-and-silent -> CISA-KEV-ineligible), NO ITW. PoC public but deliberately stripped (Hard Rule 3). B2 headline / single-source veto (8+ outlets, one originating evidence basis = researcher's PoC + blog). Strong severity claims (full compromise on patched systems; no-credentials variant) disputed by independent researcher Matei Badanoiu (B3). No actor attributed (Hard Rule 2 — self-claimed persona). A&D relevance STRUCTURAL (ubiquitous Windows-endpoint LPE = ransomware/lateral-movement precursor); no named victim. First brief citation of finding-2026-07-15-0002 (queued monitoring item)."
     topic_tags:
@@ -43478,7 +43499,7 @@ entries:
       - un_stripped_or_no_credentials_poc_variant_surfacing
       - next_nightmare_eclipse_drop_or_defender_batch_materializing
     first_covered: 2026-07-16
-    last_covered: 2026-07-17
+    last_covered: 2026-07-21
     retraction: null
     test: false
 
@@ -44657,7 +44678,7 @@ entries:
       NOT posted to Discord by briefer — librarian owns delivery/commit.
 
   - id: 2026-07-20-am-001-servicenow-ai-platform-cve-2026-6875-unauth-sandbox-escape-rce-active-exploitation-defused-n-day-b2-likely-single-source-veto
-    covered_in: [2026-07-20-morning]
+    covered_in: [2026-07-20-morning, 2026-07-21-morning]
     brief_file: threats/briefs/2026-07-20-morning.md
     headline: "ACTION/MONITORING — Defused (via BleepingComputer B relay) reports active in-the-wild exploitation of CVE-2026-6875, a critical (CVSS 9.5) unauthenticated sandbox-escape -> RCE in the ServiceNow AI Platform (formerly Now Platform); first attempts 2026-07-18 via a route distinct from the published PoC. n-day — PATCHED 2026-07-13 (advisory KB3137947), so the patch predates exploitation. Hosted + self-hosted deployments; exploitable 'under certain conditions' with no valid login (precondition under-specified -> at-risk deploy base a bounded unknown pending NVD/KB direct retrieval). B2 / likely (layered A2 CVE facts / B2 exploitation), single-source veto on the exploitation leg (Defused sole telemetry basis via one B relay). NOT CISA-KEV as of 2026-07-20 (open watch). No actor (Hard Rule 2). No atomic IOCs. A&D relevance MEDIUM / STRUCTURAL — ServiceNow is DIB-pervasive (ITSM/GRC/service delivery) so an unauth RCE is a real initial-access surface, but no A&D-specific targeting or victimology; frame generic-but-DIB-pervasive, NOT A&D-targeted. Net-new CVE — NOT in threats/vulnerabilities/_index.yaml; vuln-tracker handoff recommends a tracked row/watch entry. Resolves the standing 'ServiceNow API exploitation unassigned CVE' watch's exploitation-state question. GRADE-eligible-but-absorbed-to-morning FLASH (Trigger 1 fails A-grade-exploitation-source leg; quiet hours active at 06:00; morning brief ~2h out)."
     topic_tags:
@@ -44714,8 +44735,20 @@ entries:
       - nvd_or_kb3137947_direct_retrieval_resolving_certain_conditions_precondition_and_affected_scope
       - named_ad_or_dib_victim_disclosed
       - actor_attribution_surfacing_from_a_or_b_grade_source     # currently UNKNOWN (Hard Rule 2)
+    resurface_2026_07_21:
+      brief_id: 2026-07-21-morning
+      resurface_condition_met: exploitation_claim_narrowed_material_nuance   # Defused self-correction
+      presented_as: UPDATE line (Vulnerabilities) — exploitation-certainty nuance, NOT a retraction
+      what_is_new: >
+        Defused self-corrected: the captured traffic it originally reported as in-the-wild
+        exploitation matched a public proof-of-concept (Searchlight Cyber's PoC replay), NOT
+        confirmed malicious activity, and ServiceNow attests hosted instances are unaffected. The
+        exploitation OBSERVATION still stands (B2 / likely) — this is a narrowing of certainty, NOT
+        a retraction. Still NOT CISA-KEV-listed. On-prem operators should still apply KB3137947.
+      grade_unchanged: "B2 / WEP likely; KEV still false"
+      hard_rule_note: "Framed honestly as reduced certainty on the ITW leg; patch imperative unchanged. Not a RETRACTION-POLICY event."
     first_covered: 2026-07-20
-    last_covered: 2026-07-20
+    last_covered: 2026-07-21
     retraction: null
     test: false
 
@@ -44999,6 +45032,187 @@ entries:
       delivery/commit.
     first_covered: 2026-07-20
     last_covered: 2026-07-20
+    retraction: null
+    test: false
+
+  - id: 2026-07-21-am-001-arctic-wolf-qilin-ransomware-pan-os-globalprotect-cve-2026-0257-initial-access-b2-likely-single-source-veto-attribution
+    covered_in: [2026-07-21-morning]
+    brief_file: threats/briefs/2026-07-21-morning.md
+    headline: "LEAD (Active Threats, UPDATE): Arctic Wolf Labs (via BleepingComputer relay) attributes the Qilin ransomware operation to active exploitation of PAN-OS GlobalProtect CVE-2026-0257 — a critical unauthenticated auth-bypass (unauthenticated VPN-connection establishment), patched 2026-05-13, CISA-KEV-listed 2026-05-29 with an accelerated ~3-day BOD deadline — as the initial-access vector in multiple distinct June 2026 intrusions ending in ransomware deployment. TWO LEGS KEPT DISTINCT: exploitation-EXISTENCE very_likely (CISA KEV attests independently, A2); Qilin-ATTRIBUTION likely (Arctic Wolf sole originator, BleepingComputer pure relay, single-source veto, B2). Named victim sectors automotive/beverage/healthcare/media/government — NO A&D victim. A&D relevance HIGH but STRUCTURAL (167,000+ internet-exposed GlobalProtect per Shadowserver; DIB-pervasive edge VPN), NOT targeting. No atomic IOCs (CVE ID only). CVSS unestablished. Qilin NOT a roster actor (Hard Rule 2). CVE-2026-0257 = coverage-gap (no repo dossier despite prior late-May/early-June coverage under finding-2026-05-29-0004); vuln-tracker VT-row handoff. Distinct from ZD-004 CVE-2026-0300 + VT-019 CVE-2026-0288."
+    topic_tags:
+      - active-threats
+      - update-material-new-attribution-on-previously-covered-cve
+      - cve
+      - cve-2026-0257-pan-os-globalprotect-auth-bypass
+      - qilin-ransomware-raas-arctic-wolf-attribution
+      - two-legs-distinct-exploitation-existence-a2-vs-attribution-b2
+      - exploitation-existence-very-likely-cisa-kev-independent
+      - qilin-attribution-likely-single-source-veto-arctic-wolf-sole-originator
+      - bleepingcomputer-pure-relay-not-independent-corroboration
+      - n-day-patched-2026-05-13-cisa-kev-2026-05-29-accelerated-bod-deadline
+      - no-ad-victim-named-automotive-beverage-healthcare-media-government
+      - ad-relevance-high-structural-167000-exposed-globalprotect-shadowserver-not-targeting
+      - no-atomic-iocs-cve-id-only
+      - cvss-unestablished-do-not-assert
+      - hard-rule-2-qilin-not-roster-attribution-inherited-not-originated
+      - cve-2026-0257-coverage-gap-no-repo-dossier-vuln-tracker-handoff
+      - distinct-from-zd-004-cve-2026-0300-and-vt-019-cve-2026-0288
+      - first-party-splunk-null-visibility-bounded-non-disconfirming
+    related_actors: []                    # Qilin NOT in _roster.yaml — recorded source-stated only (Hard Rule 2)
+    related_vulns: [CVE-2026-0257]         # coverage-gap: no repo dossier row yet — vuln-tracker handoff
+    related_campaigns: [qilin-ransomware-globalprotect-cve-2026-0257-initial-access-june-2026]
+    finding_ids: [finding-2026-07-21-0001]
+    digraph: B2                            # layered: exploitation-existence A2 (CISA KEV); Qilin attribution B2 (single-source veto)
+    digraph_layered:
+      procedural_cve_facts: A2
+      exploitation_in_the_wild_existence: A2
+      qilin_ransomware_attribution: B2
+    wep: likely
+    wep_split:
+      exploitation_in_the_wild_existence: very_likely
+      qilin_ransomware_attribution: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Binds the Qilin-attribution leg only — Arctic Wolf Labs sole originator via one BleepingComputer
+      relay; no second independent witness to the Qilin linkage. WEP on attribution capped at "likely".
+      Does NOT cap the exploitation-EXISTENCE leg, which CISA KEV attests independently (A2). Veto lifts
+      on an independent IR/telemetry witness attributing the same CVE-2026-0257 exploitation to Qilin,
+      or first-party Splunk confirmation.
+    hard_rule_2_framings_load_bearing:
+      - "Qilin attribution INHERITED from Arctic Wolf and recorded source-stated — NOT originated by Archimedes; Qilin is not a roster actor"
+      - "Keep the two legs distinct — do NOT let the CISA KEV A-grade halo bleed into the Qilin attribution leg (KEV is operator-agnostic)"
+      - "A&D relevance HIGH is STRUCTURAL edge-exposure (DIB-pervasive GlobalProtect), NOT A&D targeting — no named A&D victim"
+      - "CVSS NOT provided in the relay — do not assert a severity figure"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: visibility_bounded_null_non_disconfirming_no_pan_os_globalprotect_telemetry_on_frank_cve_id_only_no_huntable_ioc
+    correlation_callouts:
+      - "🔗 Update on CVE-2026-0257 (covered late May–early June, finding-2026-05-29-0004) — material change is a Qilin ransomware attribution; CVSS still unestablished; no repo dossier (vuln-tracker coverage-gap)"
+      - "Distinct from ZD-004 CVE-2026-0300 (PAN-OS User-ID pre-auth RCE) — different component; distinctness anchor, not a re-report"
+    vuln_tracker_handoff:
+      anchor_cve: CVE-2026-0257
+      recommended_action: open_tracked_row_or_dossier_coverage_gap_closure
+      note: "CVE-2026-0257 (PAN-OS GlobalProtect auth bypass) is CISA-KEV-listed since 2026-05-29 and now carries a Qilin ransomware attribution but has NO tracked dossier row (appears only as a 'distinct from' note inside VT-019). Open a VT-NNN row/dossier (coverage-gap closure, mirroring VT-043 Oracle EBS precedent). Enrich: NVD CVSS vector + CWE + affected/fixed PAN-OS version matrix; verbatim CISA KEV dateAdded/dueDate + knownRansomwareCampaignUse field."
+    resurface_if:
+      - independent_ir_or_telemetry_witness_attributes_cve_2026_0257_exploitation_to_qilin   # lifts single-source veto -> very_likely, rerun ACH
+      - atomic_iocs_published_and_correlate_to_known_qilin_infrastructure
+      - second_crew_or_iab_publicly_linked_to_cve_2026_0257_exploitation                     # elevates ACH H2/H3, caps exclusivity reading
+      - first_party_splunk_hit_cve_2026_0257_or_globalprotect
+      - named_ad_or_dib_prime_victim_disclosed
+      - nvd_cvss_or_cisa_kev_direct_retrieval_resolving_severity_and_ransomware_use_field
+    first_covered: 2026-07-21
+    last_covered: 2026-07-21
+    retraction: null
+    test: false
+
+  - id: 2026-07-21-am-brief-meta
+    covered_in: [2026-07-21-morning]
+    brief_file: threats/briefs/2026-07-21-morning.md
+    headline: "Morning brief 2026-07-21 (Tuesday) — 1 net-new LEAD + 3 UPDATE deltas. LEAD (Active Threats, UPDATE): Arctic Wolf attributes Qilin ransomware to active exploitation of PAN-OS GlobalProtect CVE-2026-0257 (initial access -> ransomware, June 2026); two legs kept distinct (exploitation-existence very_likely/CISA-KEV-A2; Qilin attribution likely/B2 single-source veto); no A&D victim, HIGH structural edge-exposure only; CVE-2026-0257 coverage-gap -> vuln-tracker handoff; Qilin NOT roster (Hard Rule 2). Vulnerabilities (3 UPDATE deltas): (1) ServiceNow CVE-2026-6875 — Defused self-corrected the ITW claim to a public-PoC replay; ServiceNow attests hosted unaffected; observation stands B2/likely, NOT a retraction, KEV still false; (2) LegacyHive VT-042 — ACROS/0patch unofficial micropatch now available, still no CVE/MSRC/ITW; (3) SonicWall SMA1000 CVE-2026-15409/15410 — incremental (ROOTRUN tooling net-new, CVE-split + models restated), does NOT lift A2/likely. Cl0p/Oracle EBS Estée Lauder victim (non-A&D, attribution re-stated) DELIBERATELY OMITTED (anti-repetition — no A&D nexus, no new attribution). Standing sections silent-day (A&D STRUCTURAL-only, no named victim + first-party Splunk null visibility-bounded; Iran no activity). 4 findings referenced; no red-team (all WEP <= likely, single-source veto binds). Hard Rule 2 held throughout; Hard Rule 6 zero direct quotes both layers; Hard Rule 8 first-party Splunk null (0 tracked-IOC hits -24h, visibility-bounded non-disconfirming). Pre-flight 13-of-13 PASS."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - one-net-new-lead-plus-three-update-deltas
+      - lead-qilin-pan-os-globalprotect-cve-2026-0257-two-legs-distinct
+      - update-servicenow-cve-2026-6875-poc-replay-narrowing-not-retraction
+      - update-legacyhive-vt042-acros-0patch-unofficial-micropatch
+      - update-sonicwall-sma1000-rootrun-incremental-non-lifting
+      - cl0p-oracle-ebs-estee-lauder-deliberately-omitted-anti-repetition-no-ad-nexus
+      - standing-sections-ad-structural-only-first-party-splunk-null-iran-silent
+      - four-findings-referenced-no-red-team-all-wep-likely
+      - hard-rule-2-held-no-attribution-originated-qilin-inherited
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-8-first-party-splunk-null-visibility-bounded-non-disconfirming
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: [CVE-2026-0257, CVE-2026-6875, CVE-2026-15409, CVE-2026-15410]
+    related_campaigns: [qilin-ransomware-globalprotect-cve-2026-0257-initial-access-june-2026]
+    finding_ids: [finding-2026-07-21-0001, finding-2026-07-20-flash-0600-0001, finding-2026-07-15-0002, finding-2026-07-14-0007]
+    resurface_if:
+      - seven_days_elapsed_and_evolving
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 612          # 400-800 morning band
+      layer2_words: ~215             # 150-300 band
+      layer2_chars_est: ~1560        # <=1900 ceiling, single Discord message, no chunk needed
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-21-0001, append_brief_id: 2026-07-21-morning}          # DONE by briefer (Qilin/CVE-2026-0257 lead)
+        - {finding_id: finding-2026-07-20-flash-0600-0001, append_brief_id: 2026-07-21-morning} # DONE by briefer (ServiceNow UPDATE)
+        - {finding_id: finding-2026-07-15-0002, append_brief_id: 2026-07-21-morning}           # DONE by briefer (LegacyHive UPDATE)
+        - {finding_id: finding-2026-07-14-0007, append_brief_id: 2026-07-21-morning}           # DONE by briefer (SonicWall UPDATE)
+      coverage_log_resurface_update:
+        - "2026-07-14-pm-002 (SonicWall SMA1000, finding-2026-07-14-0007): covered_in appended 2026-07-21-morning; last_covered -> 2026-07-21; resurface_2026_07_21 block added (ROOTRUN tooling net-new, incremental, NON-lifting). In-place resurface, no new entry."
+        - "2026-07-20-am-001 (ServiceNow CVE-2026-6875, finding-2026-07-20-flash-0600-0001): covered_in appended 2026-07-21-morning; last_covered -> 2026-07-21; resurface_2026_07_21 block added (Defused self-correction — ITW claim narrowed to PoC replay; NOT a retraction). In-place resurface, no new entry."
+        - "2026-07-16-am-004 (LegacyHive VT-042, finding-2026-07-15-0002): covered_in appended 2026-07-21-morning; last_covered -> 2026-07-21; resurface_history entry added (ACROS/0patch unofficial micropatch now available, material_change true). In-place resurface, no new entry."
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-0257 (PAN-OS GlobalProtect auth bypass): open a tracked VT row/dossier (coverage-gap closure — KEV-listed since 2026-05-29 + now Qilin-ransomware-attributed but only a 'distinct from' note in VT-019). Enrich NVD CVSS/CWE + affected/fixed PAN-OS matrix + verbatim CISA KEV dateAdded/dueDate + knownRansomwareCampaignUse. Distinct from ZD-004 CVE-2026-0300 and VT-019 CVE-2026-0288."
+        - "CVE-2026-6875 (ServiceNow AI Platform): update tracked-row/watch state — Defused ITW claim narrowed to a public-PoC replay; ServiceNow attests hosted instances unaffected; exploitation-certainty reduced, KEV still false."
+        - "CVE-2026-15409/CVE-2026-15410 (SonicWall SMA1000): action the long-pending VT dossier; add net-new ROOTRUN tooling alongside KnuckleBall/OrangeTail/Suo5; models 6210/7210/8200v."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, and git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-21 MORNING BRIEF (briefer phase, briefer-20260721-080000). 1 net-new LEAD + 3 UPDATE
+      deltas; a quiet-but-substantive Tuesday.
+
+      LEAD (Active Threats, UPDATE flag + 🔗 correlation callout): finding-2026-07-21-0001 — Arctic Wolf
+      Labs (via BleepingComputer relay) attributes the Qilin ransomware operation to active exploitation
+      of PAN-OS GlobalProtect CVE-2026-0257 (unauthenticated auth-bypass, patched 2026-05-13, CISA-KEV
+      2026-05-29) as the initial-access vector in multiple June 2026 intrusions. ANTI-REPETITION: the CVE
+      itself was covered heavily late-May/early-June (finding-2026-05-29-0004); the MATERIAL UPDATE that
+      unlocks resurface is the NEW Qilin ransomware attribution (new_attribution condition). Framed as an
+      UPDATE + correlation callout to the prior coverage, NOT a re-introduction. TWO-LEGS DISCIPLINE
+      (per analyst constraint): exploitation-EXISTENCE very_likely (CISA KEV, A2, independent) kept
+      explicitly DISTINCT from the Qilin-ATTRIBUTION likely (Arctic Wolf sole originator, B2,
+      single-source veto). Did NOT harden Qilin — attributed explicitly to Arctic Wolf with the hedge
+      preserved; Qilin recorded source-stated, NOT roster (Hard Rule 2). A&D relevance HIGH but framed
+      STRUCTURAL (167k exposed GlobalProtect per Shadowserver; DIB-pervasive edge VPN), explicitly NOT
+      targeting (no named A&D victim). CVSS unestablished — not asserted (Hard Rule discipline). CVE
+      coverage-gap flagged to vuln-tracker.
+
+      Vulnerabilities (3 UPDATE deltas, all previously covered, all with a material change):
+      - ServiceNow CVE-2026-6875 (finding-2026-07-20-flash-0600-0001): Defused self-corrected — its ITW
+        report matched a public PoC replay (Searchlight Cyber), not confirmed malicious activity;
+        ServiceNow attests hosted instances unaffected. Framed HONESTLY as a NARROWING of certainty,
+        explicitly NOT a RETRACTION-POLICY event; observation stands B2/likely; KEV still false.
+      - LegacyHive VT-042 (finding-2026-07-15-0002): ACROS Security / 0patch unofficial micropatch now
+        available (interim mitigation). Still no CVE, no MSRC patch, no ITW; single-source veto unchanged.
+      - SonicWall SMA1000 CVE-2026-15409/15410 (finding-2026-07-14-0007): incremental — net-new ROOTRUN
+        tooling; CVE-type split + affected models restated as context (already covered 2026-07-20-pm).
+        Explicitly NON-lifting; active exploitation holds A2/likely.
+
+      DELIBERATE OMISSION: Cl0p/Oracle EBS CVE-2025-61882 new Estée Lauder victim — omitted per
+      anti-repetition (non-A&D cosmetics victim, attribution re-stated not new, no resurface_if met). Not
+      forced into the brief just because it was in the raw feed.
+
+      Standing sections (Layer 1): A&D Sector Focus — silent-day + structural-nexus note tying the
+      edge-exposure items (PAN-OS GlobalProtect / SonicWall SMA1000 / ServiceNow) to DIB estates without
+      inflating to targeting + first-party Splunk null (0 tracked-IOC hits -24h in defenseclaw_local;
+      visibility-bounded — Frank runs no PAN-OS GlobalProtect telemetry — non-disconfirming, Hard Rule 8
+      honest). Iran Cyber Watch — silent-day template (HollowGraph from 2026-07-20-pm quiet this window;
+      no new Iranian-actor activity). NEITHER standing section silently omitted.
+
+      Hard Rules: Rule 2 held throughout — Qilin attribution inherited/source-stated, not originated;
+      Qilin not roster. Rule 6 — ZERO direct quotes in Layer 1 and Layer 2. Rule 3 — CVE-2026-0257
+      mechanism at class level only, no PoC/exploit-step mirrored. Rule 8 — first-party Splunk null,
+      framed visibility-bounded and non-disconfirming (not spun as reassurance).
+
+      Layer 1 ~612 words (400-800 morning band). Layer 2 Discord Summary ~215 words / est. ~1560 chars
+      (150-300 word band; under 1900-char hard ceiling); single message, no chunking; 4 bullets (1
+      Active Threats + 3 Vulnerabilities); standing-section boilerplate omitted from Layer 2 per spec;
+      natural-language dates ("May 13," "May 29," "June"); ISO date only in the greeting anchor; italic
+      urgency on the GlobalProtect patch call + the "keep it hedged" attribution discipline; no digraph/
+      WEP/finding-id in Layer 2; Hard Rule 2 framing preserved in Layer 2 ("the Qilin linkage rests on
+      Arctic Wolf alone, so keep it hedged"); no themed-character voice. Pre-flight 13-of-13 PASS on
+      first iteration.
+    first_covered: 2026-07-21
+    last_covered: 2026-07-21
     retraction: null
     test: false
 

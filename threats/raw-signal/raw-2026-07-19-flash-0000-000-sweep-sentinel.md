@@ -16,7 +16,7 @@ match_reason:
 triage_tags: [flash_sweep, coverage_record, non_flash, clean_sweep]
 iocs_extracted: false
 iocs_count: 0
-text_word_count: 566
+text_word_count: 457
 promoted: false
 ttl_expires_at: 2026-10-17T00:04:00-04:00
 ---

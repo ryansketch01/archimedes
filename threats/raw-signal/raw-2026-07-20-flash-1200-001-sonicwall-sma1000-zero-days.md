@@ -18,7 +18,9 @@ triage_tags: [flash_sweep, non_flash, grader_queue, vuln_tracker_candidate, edge
 iocs_extracted: true
 iocs_count: 6
 text_word_count: 210
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-07-14-0007        # state-change #2 (update-2026-07-20-0001) — same CVE pair; NOT a new finding. Attempted lift A2->A1/very_likely BLOCKED by red-team-20260720-181500 (common-upstream); finding stays A2/likely. Factual additions (~06-22 onset, UTA0533, tooling) shipped at likely.
+promoted_at: 2026-07-20T16:10:00-04:00
 ttl_expires_at: 2026-10-18T12:12:00-04:00
 ---
 

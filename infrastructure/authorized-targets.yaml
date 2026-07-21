@@ -11,7 +11,14 @@
 version: 1
 last_updated: 2026-04-18
 
-authorized_for_active_recon: []
+authorized_for_active_recon:
+  - type: ip_range
+    value: "192.168.1.0/24"
+    authorization: "Owner — Ryan (home network)"
+    scope: "Host discovery + port enumeration for coverage monitoring"
+    expires: null
+    added: 2026-07-08
+    added_by: ryan
 
 # Example entry format (uncomment and modify when adding):
 #

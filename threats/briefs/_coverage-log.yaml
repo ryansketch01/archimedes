@@ -44224,7 +44224,7 @@ entries:
       delivery/commit.
 
   - id: 2026-07-18-am-001-rapid7-wordpress-core-cve-2026-63030-wp2shell-unauth-rce-nvd-9-8-patched-no-itw-no-poc-imminent-poc-a2-likely-single-source-veto-monitoring
-    covered_in: [2026-07-18-morning, 2026-07-18-afternoon, 2026-07-19-morning, 2026-07-20-morning]   # 2026-07-20-morning: UPDATE resurface — STATE CHANGE #2 (multi-firm ITW confirmation). SecurityWeek relays THREE firms (Patchstack "documented active attacks" + Hexastrike weekend honeypot exploitation/IR + watchTowr exploitation attempts) confirming active exploitation of the wp2shell chain; ITW leg escalated B3 -> B2 (single-firm hedged "first signs" -> multi-firm confirmed). WEP HELD at "likely" (Singapore-CSA single-relay-unverified cap: all three attestations via one un-retrieved SecurityWeek relay, no atomic IOCs). Still PATCHED (6.9.5 / 7.0.2, WordPress.org forced auto-updates), still LOW/structural A&D, no actor (Hard Rule 2). Carried as an UPDATE row + 🔗 correlation callout in the 2026-07-20 morning Vulnerabilities section. 2026-07-19-morning: standing-watch "no change" carry-forward — holds at the 2026-07-18 PM state (public GitHub PoCs + watchTowr early-ITW first-signs); NO new escalation, no named A&D victim, no mass-exploitation telemetry beyond that onset this window. Carried as a no-change status line under the Sunday Vulnerabilities "Standing watch" rollup (still within the 72h active-exploit freshness window), NOT a fresh headline. Still PATCHED (6.9.5 / 7.0.2, forced auto-updates), still MONITORING, still LOW/structural A&D, no actor. 2026-07-18-afternoon: UPDATE resurface — SAME-DAY STATE CHANGE. Two escalation triggers fired within hours: (1) multiple public GitHub PoCs released (poc_availability B2 / "likely"); (2) watchTowr (Benjamin Harris) reports "first signs of in-the-wild exploitation" (itw_onset B3 / "roughly even chance", single provisional firm via BleepingComputer B relay). Headline holds A2 / "likely" (single-source veto binds both new legs). Still PATCHED (6.9.5 / 7.0.2 / 7.1 Beta 2, forced auto-updates), still MONITORING tier, still LOW/structural A&D. VW-001 -> full VT dossier recommended (vuln-tracker). Absorbed as brief UPDATE, NOT a FLASH (Trigger 1 needs A-grade confirmed exploitation; ITW is hedged first-signs via B relay). Net-new: chained SQLi CVE-2026-60137 also affects WP 6.8.0-6.8.5 (that branch cannot chain to RCE).
+    covered_in: [2026-07-18-morning, 2026-07-18-afternoon, 2026-07-19-morning, 2026-07-20-morning, 2026-07-21-afternoon]   # 2026-07-21-afternoon: UPDATE resurface — STATE CHANGE #3 (CISA KEV addition + confirmed webshell deployment; exploitation leg escalated to A1 / "very likely" — first A-grade directly-observed confirmation, single-source/single-relay cap BROKEN). LEAD item of the 2026-07-21 afternoon brief. See resurface_2026_07_21_pm below. 2026-07-20-morning: UPDATE resurface — STATE CHANGE #2 (multi-firm ITW confirmation). SecurityWeek relays THREE firms (Patchstack "documented active attacks" + Hexastrike weekend honeypot exploitation/IR + watchTowr exploitation attempts) confirming active exploitation of the wp2shell chain; ITW leg escalated B3 -> B2 (single-firm hedged "first signs" -> multi-firm confirmed). WEP HELD at "likely" (Singapore-CSA single-relay-unverified cap: all three attestations via one un-retrieved SecurityWeek relay, no atomic IOCs). Still PATCHED (6.9.5 / 7.0.2, WordPress.org forced auto-updates), still LOW/structural A&D, no actor (Hard Rule 2). Carried as an UPDATE row + 🔗 correlation callout in the 2026-07-20 morning Vulnerabilities section. 2026-07-19-morning: standing-watch "no change" carry-forward — holds at the 2026-07-18 PM state (public GitHub PoCs + watchTowr early-ITW first-signs); NO new escalation, no named A&D victim, no mass-exploitation telemetry beyond that onset this window. Carried as a no-change status line under the Sunday Vulnerabilities "Standing watch" rollup (still within the 72h active-exploit freshness window), NOT a fresh headline. Still PATCHED (6.9.5 / 7.0.2, forced auto-updates), still MONITORING, still LOW/structural A&D, no actor. 2026-07-18-afternoon: UPDATE resurface — SAME-DAY STATE CHANGE. Two escalation triggers fired within hours: (1) multiple public GitHub PoCs released (poc_availability B2 / "likely"); (2) watchTowr (Benjamin Harris) reports "first signs of in-the-wild exploitation" (itw_onset B3 / "roughly even chance", single provisional firm via BleepingComputer B relay). Headline holds A2 / "likely" (single-source veto binds both new legs). Still PATCHED (6.9.5 / 7.0.2 / 7.1 Beta 2, forced auto-updates), still MONITORING tier, still LOW/structural A&D. VW-001 -> full VT dossier recommended (vuln-tracker). Absorbed as brief UPDATE, NOT a FLASH (Trigger 1 needs A-grade confirmed exploitation; ITW is hedged first-signs via B relay). Net-new: chained SQLi CVE-2026-60137 also affects WP 6.8.0-6.8.5 (that branch cannot chain to RCE).
     brief_file: threats/briefs/2026-07-18-morning.md
     resurface_2026_07_18_pm: >
       UPDATE resurface (public_poc_released_rapid7_imminent_assessment_materializes +
@@ -44254,7 +44254,7 @@ entries:
       - net-new-cve-not-in-index-vuln-watch-keywords-recommended
       - methodological-sibling-siemens-rox-ii-vt047-finding-2026-07-17-0001
     related_actors: []
-    related_vulns: [CVE-2026-63030]   # net-new; NOT in _index.yaml. Chained leg CVE-2026-60137 (WP_Query SQLi) not separately tracked.
+    related_vulns: [CVE-2026-63030, CVE-2026-60137]   # BOTH added to CISA KEV 2026-07-21 (63030 due 07-24; 60137 due 08-04). CVE-2026-60137 (WP_Query SQLi) chained leg — now KEV-listed in its own right; still not a separate _index.yaml dossier (folded into the wp2shell VT scaffold).
     related_campaigns: [wp2shell]
     finding_ids: [finding-2026-07-18-0001]
     digraph: A2
@@ -44279,8 +44279,37 @@ entries:
       - second_independent_research_firm_telemetry_or_ir_lifting_single_source_veto
       - named_ad_or_dib_victim_disclosed_running_affected_wordpress
       - chained_cve_2026_60137_wp_query_sqli_warrants_own_tracked_row
+    kev: true                  # UPDATED 2026-07-21: BOTH CVEs added to CISA KEV 2026-07-21 (63030 due 07-24 accelerated ~3-day; 60137 due 08-04). Was false through 07-20.
+    exploitation_wep_2026_07_21: very_likely   # exploitation-OCCURRING leg only (A1). Webshell-DEPLOYMENT specifics remain B2 single-vendor (Wiz) relay-only. Headline core-disclosure digraph unchanged A2.
+    red_team_2026_07_21:
+      outcome: qualify         # red-team-20260721-162200 — first red-team on this finding (exploitation leg crossed to very_likely). NO WEP downgrade on the core exploitation-occurring claim; qualifies SCOPE + independence framing.
+      constraint: "very_likely/A1 applies to EXPLOITATION-IS-OCCURRING only — NOT to the Wiz webshell-deployment specifics (B2 single-vendor relay-only) and NOT to any A&D-nexus framing (ad_relevance LOW/structural UNCHANGED). Honored in the 2026-07-21 afternoon brief."
     first_covered: 2026-07-18
-    last_covered: 2026-07-20   # 2026-07-20-morning: UPDATE — multi-firm ITW confirmation (STATE CHANGE #2), ITW leg B3 -> B2, WEP held "likely"
+    last_covered: 2026-07-21   # 2026-07-21-afternoon: UPDATE — CISA KEV addition + confirmed webshell deployment (STATE CHANGE #3), exploitation leg B2 -> A1, WEP "likely" -> "very likely" (cap broken)
+    resurface_2026_07_21_pm: >
+      UPDATE resurface (cisa_kev_addition_cve_2026_63030 MET + escalation to confirmed active
+      exploitation from an A-grade source): STATE CHANGE #3 (finding-2026-07-18-0001 state_change_3,
+      raw-2026-07-21-flash-1200-001 + raw-2026-07-21-pm-001, afternoon-20260721-160000). Two escalations
+      on the SAME core claim: (a) CISA added BOTH wp2shell CVEs to KEV 2026-07-21 — CVE-2026-63030 due
+      2026-07-24 (accelerated ~3-day), CVE-2026-60137 due 2026-08-04; (b) Wiz (via a directly-retrieved
+      BleepingComputer / Bill Toulas relay) reported confirmed in-the-wild WEBSHELL DEPLOYMENT with a full
+      attack chain (first probing 2026-07-17 23:29 UTC). The KEV listing is the decisive change: it supplies
+      the A-grade, directly-observed, authoritative active-exploitation confirmation that SC#1 (single-firm
+      hedged) and SC#2 (multi-firm via one un-retrieved relay) both lacked. Exploitation leg escalated B2 ->
+      A1; WEP "likely" -> "very likely" (single-source/single-relay cap BROKEN — CISA KEV directly observed +
+      independent Wiz telemetry). RED-TEAM QUALIFY (red-team-20260721-162200) honored: "very likely/A1" applied
+      ONLY to exploitation-is-occurring; the Wiz webshell-deployment SPECIFICS kept at B2 (single-vendor,
+      relay-only, not confirmed); A&D relevance held LOW/structural (public-web/CMS tier — generic internet-facing
+      exposure, NOT A&D targeting). Still PATCHED (6.8.6 / 6.9.5 / 7.0.2 + WordPress.org forced auto-updates;
+      Macnica ~82% of 124,580 sampled sites patched). No threat actor named (Hard Rule 2). Defensive hunt
+      observables surfaced (webshells under /wp-content/cache/ fake-404-gated randomized names; CMSmap family;
+      wp-config LFI via admin-ajax.php; PHP exec-function indicators) — host artifacts, NOT atomic network IOCs,
+      no _master-index regen. Anti-noise rule 1: KEV add surfaced at the 12:00 sweep, routed to the 16:00
+      afternoon brief (held-FLASH-absorbed precedent: Oracle EBS VT-043, SharePoint VT-041) — UPDATE, NOT a fresh
+      FLASH; critical override NOT met (CVSS 9.8 not 10.0; no tracked actor; no A&D/DIB entity named). LEAD item +
+      🔗 correlation callout in the 2026-07-21 afternoon Vulnerabilities section. VW-001 -> full VT dossier
+      promotion now URGENT (KEV-listed + confirmed webshell + accelerated deadline). New source flagged to
+      librarian: Macnica (provisional C, patch-rate telemetry). This anchor entry updated in place — NOT a new entry.
     resurface_2026_07_20_am: >
       UPDATE resurface (any_itw_exploitation_reporting escalating on the already-covered claim): the
       2026-07-20 06:00 FLASH sweep surfaced STATE CHANGE #2 (finding-2026-07-18-0001 state_change_2,
@@ -45211,6 +45240,207 @@ entries:
       WEP/finding-id in Layer 2; Hard Rule 2 framing preserved in Layer 2 ("the Qilin linkage rests on
       Arctic Wolf alone, so keep it hedged"); no themed-character voice. Pre-flight 13-of-13 PASS on
       first iteration.
+    first_covered: 2026-07-21
+    last_covered: 2026-07-21
+    retraction: null
+    test: false
+
+  - id: 2026-07-21-pm-001-cisa-kev-langflow-cve-2026-0770-unauth-rce-unsafe-code-eval-actively-exploited-3day-deadline-a2-likely-single-source-veto
+    covered_in: [2026-07-21-afternoon]
+    brief_file: threats/briefs/2026-07-21-afternoon.md
+    headline: "CISA adds Langflow CVE-2026-0770 to the KEV catalog 2026-07-21 (dueDate 2026-07-24, accelerated ~3-day) — a critical (CVSS 9.8) unauthenticated RCE via unsafe Python code evaluation at Langflow's /api/v1/validate/code endpoint (inclusion of functionality from an untrusted control sphere). Unauthenticated attackers — especially against AUTO_LOGIN=true / default-credential instances — achieve arbitrary command execution + full server compromise. Actively exploited per the KEV listing (A-grade determination). Langflow = niche visual AI/LLM agent-pipeline builder; prior actively-exploited RCE/auth-bypass lineage (e.g., CVE-2025-3248). A2 / 'likely' SINGLE-SOURCE VETO (CISA KEV sole effective source; trade-press relays re-report the listing, not independent evidence). NO actor (Hard Rule 2). NO A&D/DIB victimology — A&D relevance LOW/structural (generic internet-facing unauth-RCE foothold, could appear in a DIB dev/ML environment). Action/awareness row on the strength of 9.8 + confirmed exploitation + 07-24 deadline, NOT on A&D nexus. Absorbed into the 16:00 afternoon brief (NOT a FLASH) — same held-FLASH-absorbed disposition class as Oracle EBS CVE-2026-46817 / SharePoint CVE-2026-58644 KEV criticals lacking an A&D/actor nexus; critical override NOT met (9.8 not 10.0)."
+    topic_tags:
+      - vulnerabilities-section
+      - action-awareness-item
+      - cve
+      - cve-2026-0770-langflow-unauth-rce-unsafe-code-eval-api-v1-validate-code
+      - cisa-kev-added-2026-07-21-due-2026-07-24-accelerated-3-day
+      - cvss-9-8-critical-unauthenticated-no-auth-required
+      - auto-login-true-default-credential-instances-most-exposed
+      - actively-exploited-per-kev-a-grade-determination
+      - single-source-veto-cisa-kev-sole-effective-source-relays-re-report
+      - langflow-niche-ai-llm-agent-pipeline-builder-prior-rce-lineage-cve-2025-3248
+      - hard-rule-2-no-actor
+      - hard-rule-3-mechanism-class-level-only-no-poc-mirrored
+      - ad-relevance-low-structural-no-named-victim
+      - net-new-cve-not-in-index-vt-dossier-scaffold-recommended
+      - held-flash-absorbed-disposition-oracle-ebs-sharepoint-precedent-critical-override-not-met
+    related_actors: []
+    related_vulns: [CVE-2026-0770]   # net-new; NOT in _index.yaml. vuln-tracker to scaffold a VT dossier.
+    related_campaigns: []
+    finding_ids: [finding-2026-07-21-0002]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Single effective source (CISA KEV). Trade-press relays (BleepingComputer, The Hacker News)
+      re-report the KEV listing, not independent evidence bases. WEP capped at "likely" regardless of
+      the A letter grade. Veto lifts on an independent research-firm exploitation observation with a
+      separate evidence basis, or direct retrieval of independent corroboration.
+    red_team_review: null            # WEP ceiling "likely" < "very likely"; single-source veto binds — red-team not required
+    vuln_tracker_handoff:
+      recommended_action: scaffold_new_vt_dossier
+      anchor_cve: CVE-2026-0770
+      cluster_cves: [CVE-2026-0770]
+      rationale: "New actively-exploited critical KEV entry, CVSS 9.8, accelerated 07-24 federal deadline, no scaffolded dossier. Enrich NVD CVSS vector/CWE + affected/fixed matrix; confirm the fix guards/removes the /api/v1/validate/code eval path; note the prior Langflow RCE/auth-bypass lineage (CVE-2025-3248)."
+    resurface_if:
+      - tracked_actor_attribution_surfacing_from_a_or_b_grade_source
+      - mass_exploitation_campaign_reporting
+      - named_ad_or_dib_victim_disclosure
+      - first_party_splunk_hit_on_langflow_or_api_v1_validate_code
+      - kev_due_date_2026_07_24_passing_without_federal_remediation
+      - second_independent_research_firm_telemetry_lifting_single_source_veto
+    first_covered: 2026-07-21
+    last_covered: 2026-07-21
+    retraction: null
+    test: false
+
+  - id: 2026-07-21-pm-002-executive-order-defense-contractor-supply-chain-mapping-indentured-bom-foreign-ownership-vetting-dow-15-45-day-reporting-cmmc-phase-2-b2-sector-context
+    covered_in: [2026-07-21-afternoon]
+    brief_file: threats/briefs/2026-07-21-afternoon.md
+    headline: "SECTOR CONTEXT (governance, NOT a threat event): a new executive order directs U.S. defense contractors to map software dependencies + suppliers across ALL supply-chain tiers — complete 'indentured Bill of Materials' tracing components/software/raw-material origins through every tier; written supplier-vetting for foreign ownership/influence + sole-source dependencies; report significant supply-chain risks to the Department of War within 15 days of vetting, corrective plans within 45; DoW 180 days for mapping/security policy + 90 days for regulations; waiver restrictions effective 2027-01-01; references CMMC Phase 2 SUSPENSION (cyber-maturity requirements under revision). B2 (SecurityWeek single collected source; EO is independently-verifiable public record). NO actor, NO CVE, NO IOC — governance/compliance + attack-surface backdrop directly at the target profile (ITAR A&D prime + Tier-1/2 supplier network). A&D relevance HIGH as SECTOR CONTEXT (reshapes SBOM + foreign-ownership compliance posture for every watchlist prime) but explicitly context, NOT a threat. No individual prime named. CMMC Phase 2 thread = CONTINUITY with 2026-07-14 CMMC coverage (finding-2026-07-14-0003), not net-new."
+    topic_tags:
+      - sector-focus-ad-section
+      - sector-policy-governance-context-not-a-threat-event
+      - executive-order-defense-contractor-supply-chain-mapping
+      - indentured-bill-of-materials-sbom-all-tiers
+      - foreign-ownership-influence-vetting-sole-source-dependency-concentration
+      - department-of-war-15-day-risk-reporting-45-day-corrective-plans
+      - dow-180-day-mapping-90-day-regulations-waiver-restrictions-2027-01-01
+      - cmmc-phase-2-suspension-continuity-finding-2026-07-14-0003
+      - b2-securityweek-single-source-public-record-independently-verifiable
+      - no-actor-no-cve-no-ioc-governance-not-threat
+      - ad-relevance-high-as-sector-context-no-prime-named
+      - direct-target-profile-nexus-itar-prime-tier-1-2-supplier-network
+    related_actors: []
+    related_vulns: []
+    related_campaigns: []
+    finding_ids: [finding-2026-07-21-0003]
+    digraph: B2
+    wep: likely                      # single-source cap on a DESCRIPTIVE public-policy fact; NOT a threat forecast (no WEP threat-confidence asserted)
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Single collected source (SecurityWeek). Largely moot — descriptive policy-context item, not a
+      predictive threat claim; the EO is public record and independently verifiable. No WEP above
+      "likely" asserted.
+    red_team_review: null            # no high-confidence threat assessment to challenge (governance context)
+    resurface_if:
+      - eo_primary_text_or_dow_fact_sheet_directly_retrieved_corroborating
+      - implementing_regulations_or_dow_mapping_policy_published
+      - named_ad_prime_compliance_action_or_supplier_vetting_disclosure
+      - cmmc_phase_2_status_change_reinstatement_or_replacement
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-21
+    last_covered: 2026-07-21
+    retraction: null
+    test: false
+
+  - id: 2026-07-21-pm-brief-meta
+    covered_in: [2026-07-21-afternoon]
+    brief_file: threats/briefs/2026-07-21-afternoon.md
+    headline: "Afternoon brief 2026-07-21 (Tuesday) — 1 UPDATE LEAD + 1 net-new action item + 1 sector-context item. LEAD (Vulnerabilities, UPDATE + 🔗 callout): wp2shell CVE-2026-63030 STATE CHANGE #3 — CISA KEV-listed 2026-07-21 (due 07-24) + Wiz confirmed webshell deployment; exploitation leg escalated B2 -> A1 / 'likely' -> 'very likely' (single-source/single-relay cap BROKEN by A-grade directly-observed CISA KEV + independent Wiz telemetry). RED-TEAM QUALIFY honored: very_likely/A1 on exploitation-OCCURRING only; Wiz webshell SPECIFICS kept B2 single-vendor relay-only; A&D relevance held LOW/structural. Net-new action item (Vulnerabilities): Langflow CVE-2026-0770 KEV add (CVSS 9.8 unauth RCE, due 07-24, A2/likely single-source veto, LOW/structural A&D, no actor). Sector context (✈️ A&D Sector Focus, NOT a threat): Trump defense-supply-chain EO (indentured BOM, foreign-ownership vetting, DoW 15/45-day reporting, CMMC Phase 2 suspension continuity) — B2, HIGH-as-sector-context, no prime named. Standing sections: A&D Sector Focus filled by the EO + structural note + first-party Splunk null (visibility-bounded); Iran silent-day (HollowGraph quiet). 3 findings referenced; 1 red-team (wp2shell SC#3 qualify, no WEP downgrade). Hard Rule 2 held (no attribution originated, none named on any item); Hard Rule 6 ZERO direct quotes both layers; Hard Rule 3 mechanism/host-artifact class only, no PoC mirrored; Hard Rule 8 first-party Splunk null visibility-bounded non-disconfirming. Pre-flight 13-of-13 PASS (1 iteration)."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - one-update-lead-one-net-new-action-one-sector-context
+      - lead-wp2shell-cve-2026-63030-state-change-3-kev-listed-webshell-deployment
+      - wp2shell-exploitation-leg-b2-to-a1-likely-to-very-likely-cap-broken
+      - red-team-qualify-honored-very-likely-exploitation-occurring-only-webshell-specifics-b2-ad-low-structural
+      - net-new-langflow-cve-2026-0770-kev-add-a2-likely-single-source-veto-action-item
+      - sector-context-trump-defense-supply-chain-eo-b2-high-as-context-not-threat
+      - eo-indentured-bom-foreign-ownership-vetting-dow-15-45-day-cmmc-phase-2-suspension-continuity
+      - standing-sections-ad-filled-by-eo-plus-splunk-null-iran-silent-hollowgraph-quiet
+      - three-findings-one-red-team-wp2shell-sc3-qualify-no-wep-downgrade
+      - hard-rule-2-held-no-attribution-originated
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-3-mechanism-host-artifact-class-only-no-poc-mirrored
+      - hard-rule-8-first-party-splunk-null-visibility-bounded-non-disconfirming
+      - preflight-13-of-13-pass
+    related_actors: []
+    related_vulns: [CVE-2026-63030, CVE-2026-60137, CVE-2026-0770]
+    related_campaigns: [wp2shell]
+    finding_ids: [finding-2026-07-18-0001, finding-2026-07-21-0002, finding-2026-07-21-0003]
+    digraph: A1               # lead item exploitation leg A1; Langflow A2; EO B2
+    wep: very_likely          # lead item exploitation-occurring leg
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 641          # 400-800 afternoon band
+      layer2_words: ~216             # 150-300 band
+      layer2_chars_est: ~1770        # <=1900 ceiling, single Discord message, no chunk needed
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-18-0001, append_brief_id: 2026-07-21-afternoon}   # DONE by briefer (wp2shell SC#3 LEAD)
+        - {finding_id: finding-2026-07-21-0002, append_brief_id: 2026-07-21-afternoon}   # DONE by briefer (Langflow net-new)
+        - {finding_id: finding-2026-07-21-0003, append_brief_id: 2026-07-21-afternoon}   # DONE by briefer (EO sector context)
+      coverage_log_resurface_update:
+        - "2026-07-18-am-001 (wp2shell CVE-2026-63030, finding-2026-07-18-0001): covered_in appended 2026-07-21-afternoon; last_covered -> 2026-07-21; kev -> true; resurface_2026_07_21_pm block added (STATE CHANGE #3 — KEV addition + confirmed webshell deployment; exploitation leg B2 -> A1, WEP -> very_likely; red-team qualify honored). related_vulns += CVE-2026-60137. In-place resurface, no new entry."
+      new_sources_flagged:
+        - "Macnica (proposed id: macnica): patch-rate telemetry dashboard (81.6% of 124,580 sampled sites patched), surfaced via BleepingComputer relay on wp2shell SC#3. Provisional C, awaiting_ratification + awaiting_direct_retrieval. Add to source-grades.yaml + source-grade-log.md."
+      vuln_tracker_handoff_pending:
+        - "wp2shell CVE-2026-63030 (VW-001): promotion to a full VT-NNN dossier now URGENT — KEV-listed 2026-07-21 (63030 due 07-24; 60137 due 08-04), confirmed webshell deployment, CVSS 9.8 (dispute resolved: NVD primary). Set exploitation_status: active_itw_confirmed_kev_listed_webshell_deployment; kev: true; public_exploit_available: true. Fold or separately-row CVE-2026-60137 (also affects 6.8.0-6.8.5 standalone, non-chainable to RCE there)."
+        - "Langflow CVE-2026-0770: scaffold a new VT dossier — KEV-listed 2026-07-21 (due 07-24), CVSS 9.8 unauth RCE, actively exploited. Enrich NVD vector/CWE + affected/fixed matrix; confirm the fix guards /api/v1/validate/code; note CVE-2025-3248 lineage."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, and git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-21 AFTERNOON BRIEF (briefer phase, briefer-20260721-160000). 1 UPDATE lead + 1 net-new
+      action item + 1 sector-context governance item; a substantive Tuesday afternoon.
+
+      LEAD (Vulnerabilities, UPDATE flag + 🔗 correlation callout): finding-2026-07-18-0001 STATE CHANGE #3.
+      CISA added BOTH wp2shell CVEs to KEV 2026-07-21 (CVE-2026-63030 due 07-24 accelerated ~3-day;
+      CVE-2026-60137 due 08-04), and Wiz (via a directly-retrieved BleepingComputer / Bill Toulas relay)
+      reported confirmed in-the-wild webshell deployment. The KEV listing supplies the A-grade,
+      directly-observed active-exploitation confirmation that SC#1/SC#2 lacked -> exploitation leg escalated
+      B2 -> A1, WEP "likely" -> "very likely" (single-source/single-relay cap BROKEN). ANTI-REPETITION: the
+      topic has been in continuous scheduled coverage since 2026-07-18; the MATERIAL UPDATE unlocking this
+      resurface is the KEV addition + confirmed-exploitation escalation (cisa_kev_addition_cve_2026_63030 +
+      escalated_threat_level). RED-TEAM QUALIFY (red-team-20260721-162200) honored precisely: "very likely/A1"
+      applied ONLY to exploitation-is-occurring; the Wiz webshell-deployment SPECIFICS kept at B2 (single-vendor,
+      relay-only, "probably true," not confirmed) with the corroborated-attempts-vs-single-sourced-compromise
+      distinction stated in-brief; A&D relevance held LOW/structural (public-web/CMS tier — generic
+      internet-facing exposure, NOT A&D targeting). Defensive HUNT observables surfaced (webshells under
+      /wp-content/cache/ fake-404-gated randomized names; CMSmap; wp-config LFI via admin-ajax.php; PHP
+      exec-function indicators) as host artifacts, NOT atomic network IOCs (no _master-index regen). No actor
+      (Hard Rule 2). Absorbed as UPDATE not FLASH (anti-noise rule 1; KEV surfaced at 12:00 sweep, routed to
+      16:00 brief per Oracle-EBS/SharePoint held-FLASH-absorbed precedent); critical override NOT met (9.8 not
+      10.0; no tracked actor; no A&D/DIB entity named).
+
+      NET-NEW ACTION ITEM (Vulnerabilities): finding-2026-07-21-0002 — CISA added Langflow CVE-2026-0770 to KEV
+      2026-07-21 (due 07-24), CVSS 9.8 unauthenticated RCE via unsafe code eval at /api/v1/validate/code. A2 /
+      "likely" single-source veto (CISA KEV sole effective source; relays re-report). LOW/structural A&D (niche
+      AI-pipeline builder; generic unauth-RCE foothold). No actor. Action: inventory internet-facing Langflow,
+      patch by 07-24, disable AUTO_LOGIN / default creds.
+
+      SECTOR CONTEXT (✈️ A&D Sector Focus — governance, explicitly NOT a threat event): finding-2026-07-21-0003 —
+      a new executive order directing defense contractors to map software + suppliers across all tiers (indentured
+      BOM, foreign-ownership/influence vetting, DoW 15-day risk reporting / 45-day corrective plans, waiver
+      restrictions from 2027-01-01), referencing CMMC Phase 2 suspension. B2 (SecurityWeek single collected source;
+      public-record EO). A&D relevance HIGH as SECTOR CONTEXT (direct target-profile nexus — ITAR prime + Tier-1/2
+      supplier network; reshapes SBOM/foreign-ownership compliance posture) but framed as compliance/attack-surface
+      backdrop, NOT a threat. No prime named. Zero direct quotes (the EO's "physical, cyber, and economic subversion"
+      rationale and "indentured Bill of Materials" term PARAPHRASED, not quoted — Hard Rule 6). CMMC Phase 2 thread
+      framed as CONTINUITY with the 2026-07-14 CMMC coverage (finding-2026-07-14-0003), not net-new.
+
+      Standing sections (Layer 1): A&D Sector Focus — FILLED by the EO governance item + a closing structural note
+      (no named A&D victim in any threat item this window; first-party Splunk defenseclaw_local 0 tracked-IOC hits
+      -24h, visibility-bounded non-disconfirming). Iran Cyber Watch — silent-day template (no new Iranian-actor
+      activity; HollowGraph from 2026-07-20 afternoon quiet this window). NEITHER standing section silently omitted.
+      Active Threats / Actor Activity / Other Signal omitted (no net-new B2+ A&D-targeting action item; no net-new
+      actor activity).
+
+      Hard Rules: Rule 2 held throughout — no attribution originated; no actor named on any of the three items
+      (wp2shell, Langflow, EO all actor-empty per source). Rule 6 — ZERO direct quotes in Layer 1 and Layer 2 (EO
+      terms paraphrased). Rule 3 — wp2shell/Langflow mechanism at class level; Wiz webshell chain at behavioral/
+      host-artifact class only, no PoC/exploit-step mirrored. Rule 8 — first-party Splunk null (0 tracked-IOC hits;
+      Wiz published host artifacts, no atomic network IOCs), framed visibility-bounded non-disconfirming.
+
+      Layer 1 ~641 words (400-800 afternoon band). Layer 2 Discord Summary ~216 words / est. ~1770 chars (150-300
+      word band; under 1900-char hard ceiling); single message, no chunking; 3 source-linked bullets (2
+      Vulnerabilities + 1 Sector Focus); standing silent-day boilerplate omitted from Layer 2; natural-language
+      dates ("today," "July 24," "Friday," "January 2027"); ISO date only in the greeting anchor; italic urgency on
+      the two patch-by-07-24 action calls; no digraph/WEP/finding-id in Layer 2; no themed-character voice. Pre-flight
+      13-of-13 PASS on first iteration. NOT posted to Discord by briefer — librarian owns delivery/commit.
     first_covered: 2026-07-21
     last_covered: 2026-07-21
     retraction: null

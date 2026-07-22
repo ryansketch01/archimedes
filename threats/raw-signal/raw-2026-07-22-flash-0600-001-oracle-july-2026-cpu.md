@@ -17,7 +17,9 @@ triage_tags: [non_flash, patch_release, oracle_cpu, vuln_tracker_handoff, oracle
 iocs_extracted: true
 iocs_count: 0
 text_word_count: 210
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-07-22-0002
+promoted_at: 2026-07-22T08:14:00-04:00
 ttl_expires_at: 2026-10-20T06:14:00-04:00
 ---
 

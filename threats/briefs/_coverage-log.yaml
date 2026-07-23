@@ -46034,6 +46034,273 @@ entries:
     retraction: null
     test: false
 
+  - id: 2026-07-23-pm-001-cisa-aa26-204a-unit42-cl-sta-1114-laundry-bear-void-blizzard-zimbra-cve-2025-66376-zero-click-xss-email-theft-dib-sector-a2-likely
+    covered_in: [2026-07-23-afternoon]
+    brief_file: threats/briefs/2026-07-23-afternoon.md
+    headline: "NET-NEW LEAD (🚨 Active Threats): CISA advisory AA26-204A + Palo Alto Unit 42 (CL-STA-1114) — two INDEPENDENT A-grade originators — report a Russian state-supported cluster exploiting a Zimbra Collaboration Suite Classic-UI zero-click stored-XSS (CVE-2025-66376) for covert email theft against Western gov/commercial orgs since >=July 2025. Mechanism (class level): JS in a crafted HTML email runs automatically on message-view, no user interaction. Exploited as a 0-day pre-Nov-2025; Zimbra patched Nov 2025; unpatched servers still targeted (active n-day). CISA's targeted-sector list EXPLICITLY names the Defense Industrial Base — but NO named A&D/DIB victim (ad_relevance MEDIUM, STRUCTURAL/sector-level, not targeted). A2 / WEP 'likely' — single-source veto does NOT apply (two independent A-originators; BleepingComputer + The Record relays carry the same two upstreams, add no independence), BUT WEP conservatively CAPPED at 'likely' (retrieval caveat: neither A-primary directly retrieved this cycle — CISA landing 403'd, Unit 42 body not fetched; atomic-artifact cross-match rests on B-grade relay rendering). HARD RULE 2: attribution is the sources' — CISA confirmed-language 'Russian state-supported' + intent assessed as intelligence collection for the Russian Federation; cluster = LAUNDRY BEAR (AIVD/MIVD) / Void Blizzard (Microsoft) / CL-STA-1114 (Unit 42). Void Blizzard NOT roster; corpus precedent finding-2026-06-11-0007 (DOJ); candidate /new-actor DECISION FOR OPERATOR — flagged, not originated, not merged. Six campaign domains relay-captured (roles ambiguous, PENDING verification vs authoritative appendix — NOT confirmed IOCs). First-party Splunk 0 hits -90d (visibility-bounded null, non-disconfirming, Hard Rule 8)."
+    topic_tags:
+      - active-threats
+      - net-new
+      - cve
+      - cve-2025-66376-zimbra-classic-ui-zero-click-stored-xss-email-theft
+      - russia-state-supported-espionage
+      - laundry-bear-aivd-mivd-void-blizzard-microsoft-cl-sta-1114-unit42-three-name-cluster
+      - cisa-advisory-aa26-204a-plus-unit42-two-independent-a-grade-originators
+      - single-source-veto-not-applied-but-wep-conservatively-capped-likely-retrieval-caveat
+      - neither-a-primary-directly-retrieved-cisa-403-unit42-body-not-fetched
+      - dib-named-as-targeted-sector-no-named-ad-dib-victim-ad-relevance-medium-structural
+      - patched-n-day-nov-2025-exploited-as-zero-day-pre-nov-2025-unpatched-servers-still-hit
+      - hard-rule-2-attribution-sources-cisa-confirmed-language-not-originated
+      - void-blizzard-candidate-new-actor-operator-decision-corpus-precedent-finding-2026-06-11-0007
+      - six-campaign-domains-relay-captured-roles-ambiguous-not-confirmed-iocs-pending-appendix
+      - first-party-splunk-null-visibility-bounded-non-disconfirming
+      - cve-not-in-vuln-index-vuln-tracker-handoff
+    related_actors: []              # LAUNDRY BEAR / Void Blizzard / CL-STA-1114 NOT roster — recorded source-stated only; Void Blizzard candidate /new-actor (operator); corpus precedent finding-2026-06-11-0007. Hard Rule 2.
+    related_vulns: [CVE-2025-66376]  # net-new; NOT in vulnerabilities/_index.yaml — vuln-tracker handoff
+    related_campaigns: [laundry-bear-void-blizzard-cl-sta-1114-zimbra-cve-2025-66376-email-theft-2025-2026]
+    finding_ids: [finding-2026-07-23-0003]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: false
+    single_source_veto_note: >
+      Does NOT apply — two genuinely independent A-grade originators (CISA AA26-204A + Unit 42 CL-STA-1114);
+      the BleepingComputer + The Record relays carry the same two upstreams and add no independence. The
+      'likely' cap is a SEPARATE conservative retrieval-caveat cap (neither A-primary directly retrieved this
+      cycle), NOT the single-source veto. Lift to 'very likely' on direct retrieval of either primary
+      confirming the independent evidence bases + the atomic-artifact cross-match.
+    red_team_review: null           # WEP ceiling 'likely' < 'very likely' — red-team not required (analyst SAT-ACH/SAT-KAC vindicated the conservative cap)
+    hard_rule_2_framings_load_bearing:
+      - "Attribution is CISA's (confirmed language 'Russian state-supported') + AIVD/MIVD (LAUNDRY BEAR) + Microsoft (Void Blizzard) + Unit 42 (CL-STA-1114) — Archimedes originates nothing"
+      - "Void Blizzard candidate /new-actor is an OPERATOR decision, not originated; not merged with any roster actor; corpus precedent finding-2026-06-11-0007 (DOJ)"
+      - "DIB named as a targeted SECTOR only — no named A&D/DIB victim; ad_relevance MEDIUM/structural, NOT a targeted A&D campaign"
+      - "Six campaign domains are relay-captured with ambiguous roles — NOT confirmed IOCs pending the authoritative CISA/Unit 42 appendix"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 1      # CISA verbatim label "Russian state-supported" (2 words, one source) — load-bearing confirmed-vs-suspected distinction; all else paraphrased
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: grader_swept_archimedes_defenseclaw_local_-90d_on_six_domains_plus_cve_plus_zimbra_0_hits_visibility_bounded_null_non_disconfirming
+    vuln_tracker_handoff:
+      anchor_cve: CVE-2025-66376
+      recommended_action: open_tracked_row_or_dossier
+      note: "CVE-2025-66376 (Zimbra Collaboration Suite Classic-UI zero-click stored XSS -> email theft) is NOT in vulnerabilities/_index.yaml. Actively-exploited n-day (0-day pre-Nov-2025, patched Nov 2025, unpatched servers still hit). CVSS not stated in relay; NVD not retrieved. Enrich NVD CVSS/CWE + affected/fixed Zimbra version matrix; capture the authoritative CISA/Unit 42 IOC appendix (hashes/IPs/user-agents) when a primary is directly retrieved."
+    actor_profiler_handoff: "Void Blizzard / LAUNDRY BEAR / CL-STA-1114 — candidate /new-actor for the operator (Hard Rule 2 — briefer/grader do NOT open the roster entry). Corpus precedent finding-2026-06-11-0007 (DOJ indictment of Denis Obrezko, infrastructure-provider role in the Void Blizzard cluster). If opened, record the Zimbra CVE-2025-66376 mechanism + DIB-sector-named targeting as a corpus-footprint addition. Do NOT merge with any existing roster actor."
+    direct_retrieval_todo:
+      - "Directly retrieve CISA AA26-204A (CSAF/STIX/IOC appendix) — 403'd on WebFetch this cycle; needed to lift credibility toward 1 / WEP toward very-likely and to confirm the six domains + hashes/IPs."
+      - "Fetch the Unit 42 CL-STA-1114 blog body — confirm the non-derivative independent evidence basis + cross-match atomic artifacts."
+    resurface_if:
+      - direct_retrieval_of_cisa_aa26_204a_or_unit42_cl_sta_1114_primary   # collapses relay-brittleness caveats; may lift WEP toward very_likely
+      - named_ad_or_dib_victim_disclosed                                   # re-rate ad_relevance up from MEDIUM/structural
+      - independent_source_reports_cve_2025_66376_opportunistic_exploitation_by_non_russian_actors   # sharpen defensive framing (not auto-attribute Zimbra-XSS to the named cluster)
+      - source_reveals_cisa_and_unit42_share_common_upstream              # downgrade E1 independence; re-engage single-source veto (still 'likely')
+      - void_blizzard_new_actor_roster_decision_by_operator
+      - first_party_splunk_hit_on_six_domains_or_cve_2025_66376
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-23
+    last_covered: 2026-07-23
+    retraction: null
+    test: false
+
+  - id: 2026-07-23-pm-002-certua-bleepingcomputer-uac0099-notepadpp-plugin-dll-hijack-cve-2025-56383-disputed-lunchpoke-burnybear-matchboil-v2-sandworm-apt44-007-access-handoff-b2-likely-single-source-veto
+    covered_in: [2026-07-23-afternoon]
+    brief_file: threats/briefs/2026-07-23-afternoon.md
+    headline: "NET-NEW (🕵️ Actor Activity): CERT-UA (via a single BleepingComputer / Bill Toulas relay, 2026-07-23) reports UAC-0099 distributes a password-protected archive (updater.rar) bundling legitimate Notepad++ v8.8.3 with a malicious sidecar DLL — LunchPoke, posing as the NppExport.dll plugin — establishing scheduled-task persistence and loading BurnyBear -> MatchBoil V2 (InitTest.dll); delivery is a ZIP with a VBS disguised as a PDF. Targeting Ukrainian organizations; NO named A&D/DIB victim (ad_relevance LOW; portable-tradecraft interest only — signed-app + malicious-sidecar-DLL -> scheduled task transfers to any Notepad++-using dev/eng endpoint). B2 / WEP 'likely', SINGLE-SOURCE VETO (one B relay of one CERT-UA advisory; CERT-UA primary NOT directly retrieved — no advisory reference number, no atomic IOCs). HARD RULE 2: CERT-UA attributes the campaign to UAC-0099 (NOT roster; candidate operator review) and states the activity is 'linked to handing initial access to APT44 (Sandworm)' — recorded EXACTLY as an ACCESS-HANDOFF RELATIONSHIP to roster #007, NOT an identity merge (SAT-ACH positively REJECTS the merge H5; H1/H2/H3 faithful/overstated/conflated tie at 0 inconsistencies — relay-fidelity brittleness, resolves only on primary retrieval). CVE-2025-56383 DISPUTED by the Notepad++ team as standard plugin functionality (hedge preserved verbatim) — framed as disputed plugin-DLL-load ABUSE, not a confirmed exploitation primitive. Filename-only IOCs (NppExport.dll/InitTest.dll/updater.rar), NO hashes — not actionable alone (NppExport.dll is also a legit Notepad++ plugin name). First-party Splunk 0 hits -90d (visibility-bounded null, non-disconfirming, Hard Rule 8). Continues the CERT-UA -> Sandworm thread from finding-2026-07-16-0003 (thematic, NOT corroboration)."
+    topic_tags:
+      - actor-activity
+      - net-new
+      - cert-ua-advisory-via-bleepingcomputer-relay-bill-toulas
+      - uac-0099-notepadpp-plugin-dll-hijack-campaign
+      - updater-rar-bundle-legit-notepadpp-v8-8-3-plus-malicious-sidecar-dll
+      - lunchpoke-nppexport-dll-scheduled-task-persistence
+      - burnybear-loader-matchboil-v2-inittest-dll-loader-chain
+      - vbs-disguised-as-pdf-delivery
+      - cve-2025-56383-disputed-by-notepadpp-team-standard-plugin-functionality-hedge-preserved
+      - disputed-plugin-dll-load-abuse-not-confirmed-exploitation-primitive
+      - single-source-veto-one-relay-of-one-cert-ua-advisory-primary-not-retrieved
+      - hard-rule-2-uac-0099-sandworm-access-handoff-relationship-not-merge
+      - sat-ach-rejects-identity-merge-h5-h1-h2-h3-tie-relay-fidelity-brittleness
+      - apt44-sandworm-roster-007-access-handoff-recipient
+      - uac-0099-not-roster-candidate-operator-review
+      - ad-relevance-low-portable-tradecraft-no-named-ad-victim
+      - filename-only-iocs-no-hashes-nppexport-dll-also-legit-plugin-name
+      - first-party-splunk-null-visibility-bounded-non-disconfirming
+      - continues-cert-ua-sandworm-thread-finding-2026-07-16-0003-thematic-not-corroboration
+      - cve-not-in-vuln-index-low-priority-vuln-tracker-candidate-disputed
+      - sandworm-007-dossier-unscaffolded-scaffolding-gap-flagged
+    related_actors: ["007"]          # APT44/Sandworm #007 = access-handoff RECIPIENT (CERT-UA-stated relationship, NOT merge). UAC-0099 NOT roster (candidate operator review). Hard Rule 2.
+    related_vulns: [CVE-2025-56383]  # DISPUTED (Notepad++ team); NOT in vulnerabilities/_index.yaml — low-priority vuln-tracker candidate
+    related_campaigns: [uac-0099-notepadpp-plugin-dll-hijack-lunchpoke-burnybear-matchboil-v2-sandworm-access-handoff-2026]
+    finding_ids: [finding-2026-07-23-0004]
+    digraph: B2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_note: >
+      Applies — single effective source (one BleepingComputer relay of one CERT-UA advisory; CERT-UA primary
+      NOT directly retrieved — no advisory reference number, no atomic IOCs). WEP capped at 'likely' regardless
+      of CERT-UA's underlying provisional-A authority. Lifts on an independent second source reporting the
+      UAC-0099 -> Sandworm handoff OR on direct retrieval of the CERT-UA primary PLUS an independent
+      corroborating basis. Corpus continuity with finding-2026-07-16-0003 is THEMATIC, not corroboration.
+    red_team_review: null            # WEP ceiling 'likely' < 'very likely'; single-source veto binds — red-team not required
+    hard_rule_2_framings_load_bearing:
+      - "CERT-UA's attribution to UAC-0099 recorded exactly as stated — UAC-0099 NOT roster, candidate operator review; Archimedes originates nothing"
+      - "UAC-0099 -> APT44/Sandworm (#007) is an ACCESS-HANDOFF RELATIONSHIP as CERT-UA describes it, NEVER a merge/identity-equation (SAT-ACH rejects the merge H5)"
+      - "CVE-2025-56383 DISPUTED by the Notepad++ team as standard plugin functionality — hedge preserved verbatim; described as plugin-DLL-load ABUSE, not confirmed vulnerability EXPLOITATION"
+      - "A&D relevance LOW / portable-tradecraft only — no named A&D/DIB victim; targeting is Ukrainian orgs"
+      - "Filename-only IOCs not actionable without hashes; NppExport.dll is also a legitimate Notepad++ plugin filename"
+    hard_rule_6_quote_budget:
+      total_direct_quotes_in_brief: 0   # UAC-0099 item quote-free — CERT-UA handoff language + Notepad++-team dispute both paraphrased
+      per_source_max: 1
+    hard_rule_8_first_party:
+      applied: false
+      sentinel_hits: 0
+      framing: grader_swept_archimedes_defenseclaw_local_-90d_on_nppexport_inittest_updater_rar_lunchpoke_burnybear_matchboil_cve_2025_56383_uac_0099_0_hits_visibility_bounded_null_frank_not_cert_ua_target_org_non_disconfirming
+    vuln_tracker_handoff:
+      anchor_cve: CVE-2025-56383
+      recommended_action: low_priority_watch_candidate_disputed
+      note: "CVE-2025-56383 (Notepad++ v8.8.3 plugin DLL-hijacking) is DISPUTED by the Notepad++ team as standard plugin functionality — LOW-PRIORITY given the vendor dispute. NOT in vulnerabilities/_index.yaml. CVSS not stated; recorded by ID only (Hard Rule 3). CERT-UA remediation per the relay: Notepad++ v8.9.7, 7-Zip v26.02, WinRAR v7.23. Resolve mechanism-framing on any MITRE/NVD adjudication (confirmed vuln vs disputed-as-intended-behavior)."
+    actor_profiler_handoff: "Sandworm/#007 dossier candidate-update: record the CERT-UA-stated UAC-0099 -> APT44 ACCESS-HANDOFF relationship + new tooling (LunchPoke / BurnyBear / MatchBoil V2, NppExport.dll/InitTest.dll filenames) as a TTP/tooling note. Do NOT merge UAC-0099 into #007 (Hard Rule 2); UAC-0099 roster candidacy is an operator decision. SCAFFOLDING GAP: roster #007 dossier path threats/threat-actors/Sandworm/ has NO files (no profile.md) — actor-profiler should scaffold the Sandworm dossier per ACTOR-PROFILE-STANDARD; the afternoon brief links #007 to the canonical ../threat-actors/Sandworm/profile.md path in anticipation."
+    direct_retrieval_todo:
+      - "Directly retrieve the CERT-UA advisory (reference number absent from the relay) for atomic IOCs — hashes, C2, scheduled-task paths — enabling a Rule 8 hunt, strengthening the source letter toward A, and diffing the primary's handoff phrasing vs the relay (resolves SAT-ACH H1/H2/H3 tie)."
+    resurface_if:
+      - direct_retrieval_of_cert_ua_primary_renders_handoff_language_verbatim   # collapses SAT-ACH H2/H3; elevate H1
+      - independent_second_source_reports_uac0099_sandworm_access_handoff        # lifts single-source veto -> candidate very_likely, re-run ACH
+      - cert_ua_primary_hedges_sandworm_linkage_more_softly_than_relay           # soften handoff framing; relay grade-down
+      - mitre_or_nvd_adjudicates_cve_2025_56383_confirmed_or_rejected            # resolve mechanism-framing (no effect on handoff)
+      - named_ad_or_dib_victim_disclosed                                         # re-rate ad_relevance up from LOW
+      - sandworm_007_dossier_scaffolded_and_updated_with_uac0099_handoff_and_new_tooling
+      - seven_days_elapsed_and_evolving
+    first_covered: 2026-07-23
+    last_covered: 2026-07-23
+    retraction: null
+    test: false
+
+  - id: 2026-07-23-pm-brief-meta
+    covered_in: [2026-07-23-afternoon]
+    brief_file: threats/briefs/2026-07-23-afternoon.md
+    headline: "Afternoon brief 2026-07-23 (Thursday) — 2 NET-NEW items (both WEP 'likely'; no red-team required). LEAD (🚨 Active Threats): Zimbra CVE-2025-66376 zero-click XSS email theft — CISA AA26-204A + Unit 42 CL-STA-1114 (two independent A-grade originators), Russian state-supported LAUNDRY BEAR/Void Blizzard, DIB named as targeted SECTOR (no named victim, MEDIUM/structural), A2/likely (veto NOT applied but WEP conservatively capped — neither A-primary directly retrieved; CISA 403'd, Unit 42 body not fetched). Void Blizzard candidate /new-actor flagged as OPERATOR decision (corpus precedent finding-2026-06-11-0007), not originated. Second item (🕵️ Actor Activity): CERT-UA UAC-0099 Notepad++ plugin-DLL-hijack (CVE-2025-56383, DISPUTED by Notepad++ team, hedge preserved) -> LunchPoke/BurnyBear/MatchBoil V2, Ukrainian targets, no A&D victim (LOW/portable-tradecraft); B2/likely single-source veto (one BleepingComputer relay of one CERT-UA advisory, primary not retrieved). UAC-0099 -> APT44/Sandworm #007 recorded as CERT-UA-stated ACCESS-HANDOFF RELATIONSHIP, NOT a merge (SAT-ACH rejects merge H5). Standing sections: A&D Sector Focus structural-only (DIB named as Zimbra sector, no victim; Notepad++ no A&D nexus); Iran Cyber Watch SILENT-DAY (today Russia/Ukraine-nexus; this-morning's CISA/FBI/EPA Iran-OT coverage stands, no state change). Other Signal: single no-change standing-KEV pointer (Check Point SmartConsole CVE-2026-16232 + SharePoint CVE-2026-50522 -> 07-25 deadline 2 days out; Oracle EBS VT-043 past-due) — covered_in NOT appended (pure no-change pointer per precedent). 2 findings referenced; 0 red-team (both WEP 'likely'). Hard Rule 2 held (attribution source-stated on both; Void Blizzard + UAC-0099 candidacies flagged not originated; Sandworm handoff = relationship not merge). Hard Rule 6: 1 direct quote total (CISA 'Russian state-supported', 2 words) — UAC-0099 item quote-free. Hard Rule 3: mechanism at class level, no PoC. Hard Rule 8: both items first-party Splunk null, visibility-bounded non-disconfirming. Pre-flight 13-of-13 PASS (1 iteration)."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - two-net-new-items-both-wep-likely-no-red-team
+      - lead-zimbra-cve-2025-66376-zero-click-xss-email-theft-laundry-bear-void-blizzard-a2-likely
+      - zimbra-two-independent-a-originators-cisa-aa26-204a-unit42-cl-sta-1114-veto-not-applied-wep-capped-retrieval-caveat
+      - dib-named-as-targeted-sector-no-victim-medium-structural
+      - void-blizzard-candidate-new-actor-operator-decision-not-originated-corpus-precedent-finding-2026-06-11-0007
+      - second-item-certua-uac-0099-notepadpp-plugin-dll-hijack-cve-2025-56383-disputed-b2-likely-single-source-veto
+      - uac-0099-sandworm-007-access-handoff-relationship-not-merge-sat-ach-rejects-h5
+      - lunchpoke-burnybear-matchboil-v2-loader-chain-portable-tradecraft-low-ad-relevance
+      - standing-ad-sector-focus-structural-only-iran-cyber-watch-silent-day-russia-ukraine-nexus
+      - other-signal-no-change-kev-pointer-checkpoint-sharepoint-07-25-deadline-oracle-ebs-past-due-covered-in-not-appended
+      - two-findings-zero-red-team-both-wep-likely
+      - hard-rule-2-held-attribution-source-stated-candidacies-flagged-not-originated-sandworm-handoff-not-merge
+      - hard-rule-6-one-direct-quote-cisa-russian-state-supported-two-words-notepad-item-quote-free
+      - hard-rule-3-mechanism-class-level-no-poc
+      - hard-rule-8-both-items-first-party-splunk-null-visibility-bounded-non-disconfirming
+      - sandworm-007-dossier-unscaffolded-scaffolding-gap-flagged-actor-profiler
+      - preflight-13-of-13-pass
+    related_actors: ["007"]          # Sandworm #007 (Zimbra item: none roster). Void Blizzard + UAC-0099 candidate/source-stated only — Hard Rule 2.
+    related_vulns: [CVE-2025-66376, CVE-2025-56383, CVE-2026-16232, CVE-2026-50522, CVE-2026-46817]
+    related_campaigns:
+      - laundry-bear-void-blizzard-cl-sta-1114-zimbra-cve-2025-66376-email-theft-2025-2026
+      - uac-0099-notepadpp-plugin-dll-hijack-lunchpoke-burnybear-matchboil-v2-sandworm-access-handoff-2026
+    finding_ids: [finding-2026-07-23-0003, finding-2026-07-23-0004]
+    digraph: mixed            # A2 (Zimbra, two independent A-originators, WEP-capped likely); B2 (UAC-0099, single-source veto)
+    wep: likely
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 2                   # iter-1 draft ~880 words exceeded the 800 ceiling (check 8 fail); Layer 1 regenerated tighter to ~746
+      word_count_layer1: 746          # 400-800 afternoon band
+      layer2_words: ~192             # 150-300 band
+      layer2_chars_est: ~1520        # <=1900 ceiling; single Discord message, no chunk needed
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-23-0003, append_brief_id: 2026-07-23-afternoon}   # DONE by briefer (Zimbra net-new LEAD)
+        - {finding_id: finding-2026-07-23-0004, append_brief_id: 2026-07-23-afternoon}   # DONE by briefer (UAC-0099 net-new)
+      new_sources_flagged:
+        - "unit42 (Palo Alto Unit 42): confirm/ratify in source-grades.yaml as A (Tier-1 vendor research) — co-primary A-grade originator on the Zimbra finding (CL-STA-1114). in_hand_this_cycle=false (feed + relay, blog body not fetched)."
+        - "cert-ua: provisional-A, awaiting_ratification + awaiting_direct_retrieval (per source-grades.yaml) — reaffirmed via finding-2026-07-23-0004; primary not directly retrieved this cycle."
+      vuln_tracker_handoff_pending:
+        - "CVE-2025-66376 (Zimbra Classic-UI zero-click stored XSS -> email theft): open a tracked VT row/dossier — actively-exploited n-day, NOT in _index.yaml. Enrich NVD CVSS/CWE + affected/fixed Zimbra matrix; capture the CISA/Unit 42 IOC appendix on direct primary retrieval."
+        - "CVE-2025-56383 (Notepad++ v8.8.3 plugin DLL-hijacking): LOW-PRIORITY watch candidate — DISPUTED by the Notepad++ team as standard plugin functionality. NOT in _index.yaml. Resolve on any MITRE/NVD adjudication."
+      actor_profiler_handoff_pending:
+        - "Void Blizzard / LAUNDRY BEAR / CL-STA-1114: candidate /new-actor for the OPERATOR (Hard Rule 2 — not originated). Corpus precedent finding-2026-06-11-0007 (DOJ). Do NOT merge with any roster actor."
+        - "Sandworm/#007 dossier: (a) SCAFFOLDING GAP — roster #007 dossier path threats/threat-actors/Sandworm/ has NO files (no profile.md); scaffold per ACTOR-PROFILE-STANDARD. (b) candidate-update — record the CERT-UA-stated UAC-0099 access-handoff relationship + new tooling (LunchPoke/BurnyBear/MatchBoil V2). Do NOT merge UAC-0099 into #007 (Hard Rule 2); UAC-0099 roster candidacy is an operator decision."
+      coverage_log_resurface_update:
+        - "No prior-topic resurfaces this cycle — both items NET-NEW. Standing KEV threads (Check Point SmartConsole CVE-2026-16232 / SharePoint CVE-2026-50522 / Oracle EBS VT-043) referenced as a SINGLE no-change Other Signal pointer only; covered_in NOT appended (pure no-change mention, per the 2026-07-23-morning / 2026-07-19-afternoon precedent)."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, and git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-23 AFTERNOON BRIEF (briefer phase, briefer-20260723-160000). 2 NET-NEW items on a
+      Russia/Ukraine-nexus Thursday afternoon; both WEP 'likely'; no red-team required (neither reaches
+      the 'very likely' trigger).
+
+      LEAD (🚨 Active Threats): finding-2026-07-23-0003 — Zimbra Collaboration Suite Classic-UI zero-click
+      stored-XSS CVE-2025-66376 exploited for covert email theft by a Russian state-supported cluster
+      (LAUNDRY BEAR/Void Blizzard/CL-STA-1114). Two INDEPENDENT A-grade originators (CISA AA26-204A + Unit 42)
+      -> single-source veto NOT applied, BUT WEP conservatively CAPPED at 'likely' (retrieval caveat: neither
+      A-primary directly retrieved — CISA landing 403'd, Unit 42 body not fetched; the atomic-artifact
+      cross-match + three-name equivalence rest on B-grade relay rendering). DIB named as a targeted SECTOR
+      only — no named A&D/DIB victim; ad_relevance MEDIUM/structural, framed explicitly as sector exposure not
+      a targeted A&D campaign. Void Blizzard candidate /new-actor flagged as an OPERATOR decision (corpus
+      precedent finding-2026-06-11-0007), NOT originated, NOT merged (Hard Rule 2). Six campaign domains
+      relay-captured (roles ambiguous, PENDING verification — not asserted as confirmed IOCs; the hash/IP
+      appendix not retrieved). Mechanism at class level only (JS-in-HTML-email runs on message-view) — no PoC
+      (Hard Rule 3).
+
+      SECOND ITEM (🕵️ Actor Activity): finding-2026-07-23-0004 — CERT-UA (via one BleepingComputer relay)
+      reports UAC-0099 abusing a Notepad++ plugin DLL-hijack (updater.rar bundling legit Notepad++ v8.8.3 +
+      malicious NppExport.dll/LunchPoke -> BurnyBear -> MatchBoil V2, scheduled-task persistence, VBS-as-PDF
+      delivery) against Ukrainian orgs. B2/likely, single-source veto (one relay of one CERT-UA advisory,
+      primary not retrieved). HARD RULE 2: CERT-UA's UAC-0099 attribution + the 'linked to handing initial
+      access to APT44 (Sandworm)' statement recorded EXACTLY as an ACCESS-HANDOFF RELATIONSHIP to roster #007
+      — NOT a merge (SAT-ACH positively rejects the identity-merge H5; H1/H2/H3 faithful/overstated/conflated
+      tie at 0 inconsistencies = relay-fidelity brittleness resolvable only on primary retrieval). CVE-2025-56383
+      DISPUTED by the Notepad++ team as standard plugin functionality — hedge preserved verbatim; framed as
+      disputed plugin-DLL-load ABUSE, not a confirmed exploitation primitive. Filename-only IOCs, no hashes —
+      not actionable alone (NppExport.dll is also a legit plugin name). A&D relevance LOW/portable-tradecraft.
+      Continues the CERT-UA -> Sandworm thread from finding-2026-07-16-0003 (thematic, NOT corroboration).
+
+      Standing sections (Layer 1): A&D Sector Focus — structural-only note (Zimbra's DIB-sector naming is the
+      structural exposure, no named victim; UAC-0099/Notepad++ no A&D nexus, portable-tradecraft only) + the
+      roster's historical-A&D-targeting actor list. Iran Cyber Watch — SILENT-DAY template (today's items are
+      Russia/Ukraine-nexus; this-morning's CISA/FBI/EPA Iran-OT advisory coverage stands with no state change,
+      noted as a one-line pointer). NEITHER standing section silently omitted.
+
+      Other Signal: single no-change standing-KEV pointer — Check Point SmartConsole CVE-2026-16232 + on-prem
+      SharePoint CVE-2026-50522 both hit the 2026-07-25 federal deadline (2 days out), no net-new either;
+      Oracle EBS CVE-2026-46817 (VT-043) past-due since 07-18. covered_in NOT appended for these (pure
+      no-change mention, per the 2026-07-23-morning / 2026-07-19-afternoon precedent).
+
+      Anti-repetition: BOTH substantive items NET-NEW topics (no prior coverage of CVE-2025-66376 or the
+      UAC-0099 Notepad++ campaign). No prior-topic resurfaces. Standing KEV threads carried as a no-change
+      pointer only, not re-itemized.
+
+      Hard Rules: Rule 2 held throughout — attribution source-stated on both items; Void Blizzard + UAC-0099
+      roster candidacies flagged as operator decisions (not originated); UAC-0099 -> Sandworm recorded as a
+      relationship, never a merge. Rule 6 — 1 direct quote in the whole brief (CISA verbatim label 'Russian
+      state-supported', 2 words, one source — load-bearing confirmed-vs-suspected distinction); the UAC-0099
+      item is quote-free; Layer 2 quote-free; CISA intent language + Notepad++-team dispute + CERT-UA handoff
+      language all paraphrased. Rule 3 — both mechanisms at class level, no PoC/exploit-step mirrored. Rule 8 —
+      both items first-party Splunk null (-90d, 0 hits), visibility-bounded non-disconfirming (Frank is neither
+      a Zimbra-campaign target nor a CERT-UA-advisory Ukrainian target org).
+
+      Layer 1 ~690 words (400-800 afternoon band). Layer 2 Discord Summary ~192 words / est. ~1520 chars
+      (150-300 word band; under 1900-char hard ceiling); single message, no chunk; 2 source-linked bullets
+      (1 Active Threats -> CISA AA26-204A; 1 Actor Activity -> BleepingComputer); A&D + Iran silent/structural
+      content + Other Signal omitted from Layer 2; natural-language dates ("July 2025," "November 2025,"
+      "July 23"); ISO date only in the greeting anchor; italic urgency on the Zimbra patch call; Hard Rule 2
+      framings preserved in Layer 2 ("Attribution is CISA's and Unit 42's, not ours"; "linked to handing
+      initial access to APT44/Sandworm"; "The Notepad++ team disputes..."); no digraph/WEP/finding-id in
+      Layer 2; no themed-character voice. Pre-flight 13-of-13 PASS (2 iterations — iter-1 Layer 1 draft ~880
+      words tripped check 8's 800-word ceiling; Layer 1 regenerated tighter to ~746, all 13 re-run clean).
+      NOT posted to Discord by briefer — librarian owns delivery/commit.
+    first_covered: 2026-07-23
+    last_covered: 2026-07-23
+    retraction: null
+    test: false
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

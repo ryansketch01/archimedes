@@ -45676,7 +45676,7 @@ entries:
     test: false
 
   - id: 2026-07-22-pm-001-cisa-kev-checkpoint-smartconsole-cve-2026-16232-improper-auth-unauthenticated-login-token-theft-a2-likely-single-source-veto
-    covered_in: [2026-07-22-afternoon]
+    covered_in: [2026-07-22-afternoon, 2026-07-23-morning]
     headline: "CISA added Check Point SmartConsole CVE-2026-16232 (improper authentication -> unauthenticated login-token theft) to the KEV catalog v2026.07.22 (dateAdded 2026-07-22, dueDate 2026-07-25 accelerated ~3-day). Net-new, not previously tracked. Actively exploited per the listing; an unauthenticated remote attacker obtains a SmartConsole application login token (access-broker-grade primitive on a security-management console). CVSS UNVERIFIED — KEV carries no score, NVD not pulled this sweep; do NOT assert 'critical'/>=9.0. A2/'likely' single-source veto (CISA KEV sole effective source). No actor named (Hard Rule 2 — Pioneer Kitten #029 edge-appliance note is awareness-only, NOT an attribution for this CVE). A&D relevance MEDIUM/structural (security-management-plane placement in DIB estates), no named A&D victim. Distinct from CVE-2024-24919 (VT-028, Check Point Security Gateway) — do NOT conflate or import #029 association."
     topic_tags:
       - cve
@@ -45703,7 +45703,7 @@ entries:
     related_actors: []
     related_vulns: [CVE-2026-16232, CVE-2024-24919]
     related_campaigns: []
-    finding_ids: [finding-2026-07-22-0003]
+    finding_ids: [finding-2026-07-22-0003, finding-2026-07-23-0001]
     digraph: A2
     wep: likely
     resurface_if:
@@ -45712,8 +45712,28 @@ entries:
       - named_ad_or_dib_victim_disclosure
       - mass_exploitation_or_itw_infrastructure_signatures_published
       - kev_due_date_2026_07_25_passing_without_federal_remediation
+    resurface_2026_07_23_morning:
+      brief: 2026-07-23-morning
+      finding: finding-2026-07-23-0001
+      section: "🚨 Active Threats (UPDATE)"
+      condition_met:
+        - patch_released                                     # Check Point published its own advisory + shipped the fix (zero-day-no-patch posture ends)
+        - mass_exploitation_or_itw_infrastructure_signatures_published   # 5 attacker source IPs published for defensive log monitoring (finding-0003 carried ZERO atomic IOCs)
+      net_new_this_window: >
+        Check Point published its OWN vendor advisory and RELEASED THE FIX (patch-available; the zero-day/no-patch
+        posture no longer holds), published 5 attacker source IPs for defensive log monitoring (151.241.99.207,
+        151.241.99.233, 158.62.198.182, 192.142.10.99, 139.28.37.250 — role AMBIGUOUS, hunt-not-block), and gave a
+        direct vendor exploitation attestation (small number of customers affected). CISA 2026-07-25 deadline reaffirmed.
+      grade_after: B2                                        # relay-of-vendor-advisory: two B-grade publishers (BleepingComputer + SecurityWeek) relay one Check Point advisory; the A-grade primary was NOT directly retrieved this sweep, so the load-bearing layer is B. Yesterday's A2 rested on CISA KEV directly.
+      wep_after: likely                                      # single-source veto still binds (one effective evidence basis)
+      analyst_caveats_carried:
+        - "Patch-available is NOT patch-applied — the exposure window is now CLOSABLE, not CLOSED; stays OPEN until the fix is deployed; exploitation ongoing against the 2026-07-25 KEV deadline. Framed 'closable, not closed.'"
+        - "The 5 IPs are HUNT indicators of ambiguous role (spray-source vs C2 unstated) — hunt, do NOT block-on-sight without validating for shared/NAT/CDN egress false positives."
+        - "CVSS STILL UNVERIFIED — neither relay nor NVD states a score this sweep; brief did NOT assert >=9.0 / 'critical' (unchanged from 07-22)."
+        - "No actor named (Hard Rule 2 preserved). Distinct from CVE-2024-24919 (VT-028) — called out again to prevent Pioneer Kitten #029 association bleed."
+      first_party_splunk: "0 hits over -90d on all 5 IPs (grader re-ran Rule 8 independently; visibility-bounded null, not disconfirming)"
     first_covered: 2026-07-22
-    last_covered: 2026-07-22
+    last_covered: 2026-07-23
     retraction: null
     test: false
     notes: |
@@ -45729,7 +45749,7 @@ entries:
       librarian _index.yaml addition). CVE-2024-24919 dossier-linked for check-9. Hard Rule 6 zero direct quotes.
 
   - id: 2026-07-22-pm-002-therecord-cisa-fbi-epa-iran-linked-ot-advisory-revision-hmi-scada-plc-generic-iran-b2-likely-single-source-veto
-    covered_in: [2026-07-22-afternoon]
+    covered_in: [2026-07-22-afternoon, 2026-07-23-morning]
     headline: "CISA/FBI/EPA broadened their April 2026 advisory on Iranian regime-affiliated OT attacks against US critical infrastructure (relayed by The Record 2026-07-22). Observed HMI/SCADA display manipulation + malicious project-file interaction against internet-facing Rockwell/Allen-Bradley, Schneider, Siemens PLCs; operational disruption + financial loss. Named sectors: power utilities, wastewater treatment, manufacturing — NO A&D/DIB victim. GENERIC IRAN attribution (advisory names NO specific group; Hard Rule 2 — do NOT name CyberAv3ngers/#028 or any actor). Assessed a RESTATEMENT/BROADENING of the AA26-097A baseline (TTPs match, no net-new), not an escalation. B2/'likely' single-source veto (B-grade The Record relay of an A-grade CISA/FBI/EPA primary not directly retrieved this cycle). A&D relevance MEDIUM/structural — shared internet-facing-PLC attack surface, likely MORE bounded than the named victims under ITAR/CMMC segmentation. Rockwell Logix CVE-2021-22681 (VT-027, KEV 2026-03-05) structurally implicated but NOT named in the advisory."
     topic_tags:
       - iran
@@ -45754,7 +45774,7 @@ entries:
     related_actors: []                # NO actor named/attributed (Hard Rule 2). #028 correspondence is actor-profiler adjudication only, NOT an Archimedes attribution.
     related_vulns: [CVE-2021-22681]
     related_campaigns: []
-    finding_ids: [finding-2026-07-22-0004]
+    finding_ids: [finding-2026-07-22-0004, finding-2026-07-23-0002]
     digraph: B2
     wep: likely
     resurface_if:
@@ -45762,8 +45782,34 @@ entries:
       - named_ad_or_dib_ot_victim_disclosure
       - a_or_b_grade_source_attributes_activity_to_a_named_group
       - ioc_appendix_retrieved_enabling_first_party_hunt
+    resurface_2026_07_23_morning:
+      brief: 2026-07-23-morning
+      finding: finding-2026-07-23-0002
+      section: "🇮🇷 Iran Cyber Watch (UPDATE, ACTIVE)"
+      condition_met:
+        - new_victims_confirmed                              # named victims California Water Service + Stryker (not in the 07-22 The Record relay)
+        - escalation_in_scope_detection_specificity          # net-new PLC-model/config-software + targeted-port specificity vs the product-family-level 07-22 coverage
+      net_new_this_window: >
+        Second publisher (SecurityWeek) of the SAME CISA/FBI/EPA advisory revision (260722.pdf) The Record relayed
+        in finding-0004 — enrichment, NOT an independent second evidence basis. Net-new detail: specific targeted
+        PLC models + config software (Rockwell CompactLogix/Micro850 + Studio 5000; Schneider Modicon M340 +
+        EcoStruxure Control Expert; Siemens S7-1200 + TIA Portal); targeted ports 44818/502/102/2222/22; named
+        victims California Water Service + Stryker (NO A&D/DIB victim); source-designated persona context.
+      grade_after: B2
+      wep_after: likely                                      # single-source veto binds (same government primary, second publisher — not independent corroboration)
+      hard_rule_2_guardrail: >
+        HELD. Advisory's own attribution stays GENERIC IRAN ("Iranian government... using hacktivist personas";
+        no specific group). SecurityWeek names CyberAv3ngers (#028) and Handala (#014) as active Iranian OT
+        personas — RECORDED as the source's editorial persona context ONLY, NOT narrowed to the operator of this
+        specific advisory activity. Both already on roster (#028, #014) so NOT novel attribution. Brief did NOT
+        attribute this activity to either group. TTP-fit (PLC/port correspondence) is actor-profiler dossier
+        context, never an attribution basis. Personas mentioned in Layer 1 + Layer 2 with the non-extension
+        framing explicit ("which Archimedes does not extend to this activity").
+      structural_vuln_note: "CVE-2021-22681 (VT-027, Rockwell Logix auth-bypass, KEV 2026-03-05) structurally implicated by the Rockwell targeting, NOT named in the advisory — dossier-linked for check-9 only, no VT-027 state change."
+      actor_profiler_handoff: "SecurityWeek persona context + PLC/port TTP specificity handed to actor-profiler for #028 + #014 dossier adjudication ONLY — not asserted as this advisory's operator."
+      first_party_splunk: "No queryable atomic IOC in the relay (PLC models + ports are behavioral observables) — no Rule 8 hunt this cycle; re-run against any IOC appendix once the government primary is retrieved."
     first_covered: 2026-07-22
-    last_covered: 2026-07-22
+    last_covered: 2026-07-23
     retraction: null
     test: false
     notes: |
@@ -45880,6 +45926,111 @@ entries:
       posted to Discord by briefer — librarian owns delivery/commit.
     first_covered: 2026-07-22
     last_covered: 2026-07-22
+    retraction: null
+    test: false
+
+  - id: 2026-07-23-am-brief-meta
+    covered_in: [2026-07-23-morning]
+    brief_file: threats/briefs/2026-07-23-morning.md
+    headline: "Morning brief 2026-07-23 (Thursday) — 2 items, BOTH UPDATE resurfaces of the 2026-07-22 afternoon brief (anti-repetition load-bearing this cycle; no net-new topics). LEAD / UPDATE (🚨 Active Threats): Check Point SmartConsole CVE-2026-16232 — vendor published its OWN advisory + RELEASED THE FIX (zero-day/no-patch posture ends) + published 5 attacker IPs for log monitoring; state-change to yesterday's KEV-add finding-0003; graded B2/likely (two B publishers relay one Check Point advisory = single effective basis; A primary not retrieved — yesterday's A2 rested on CISA KEV direct). Analyst caveats carried: patch-available≠patch-applied (window CLOSABLE not CLOSED, exploitation ongoing vs 07-25 KEV deadline); 5 IPs HUNT-not-block (role ambiguous); CVSS UNVERIFIED no >=9.0 asserted; no actor (Hard Rule 2); distinct from CVE-2024-24919 VT-028. UPDATE (🇮🇷 Iran Cyber Watch ACTIVE): SecurityWeek second-publisher relay of the same 07-22 CISA/FBI/EPA Iran-OT advisory — net-new PLC-model/config-software (Rockwell CompactLogix/Micro850, Schneider Modicon M340, Siemens S7-1200) + targeted ports (44818/502/102/2222/22) + named victims (Cal Water, Stryker, NO A&D victim) + source-designated persona context (CyberAv3ngers #028, Handala #014); B2/likely single-source veto; HARD RULE 2 HELD — generic-Iran attribution NOT narrowed to either persona, recorded as source's editorial context only ('which Archimedes does not extend to this activity'). Standing sections: A&D Sector Focus structural-only note (no named A&D/DIB victim either item); Iran Cyber Watch ACTIVE. Other Signal: both KEV items converge on 07-25 deadline (Check Point + yesterday's SharePoint CVE-2026-50522) — SharePoint pointer, not a resurface. Hard Rule 6 ZERO direct quotes both layers. Pre-flight 13-of-13 PASS."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - two-items-both-update-resurfaces-no-net-new-topic
+      - anti-repetition-load-bearing-both-updates-to-07-22-afternoon
+      - update-checkpoint-smartconsole-cve-2026-16232-vendor-advisory-fix-released-5-attacker-ips
+      - checkpoint-b2-likely-relay-of-vendor-advisory-single-effective-basis-a-primary-not-retrieved
+      - patch-available-not-patch-applied-window-closable-not-closed
+      - five-ips-hunt-not-block-role-ambiguous-shared-egress-caveat
+      - cvss-unverified-no-ge-9-0-asserted
+      - no-actor-hard-rule-2-distinct-from-cve-2024-24919-vt028
+      - update-iran-ot-advisory-securityweek-second-publisher-plc-models-ports-named-victims
+      - iran-ot-b2-likely-single-source-veto-same-government-primary-second-publisher
+      - hard-rule-2-held-generic-iran-not-narrowed-cyberav3ngers-028-handala-014-source-context-only
+      - cve-2021-22681-vt027-structurally-implicated-not-named
+      - named-victims-cal-water-stryker-no-ad-dib-victim
+      - standing-ad-structural-note-iran-cyber-watch-active
+      - other-signal-07-25-deadline-convergence-sharepoint-pointer-not-resurfaced
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - preflight-13-of-13-pass
+    related_actors: []                # Hard Rule 2 — #028/#014 recorded as SecurityWeek editorial persona context ONLY, NOT attributed to this activity; not extended to any roster cluster
+    related_vulns: [CVE-2026-16232, CVE-2024-24919, CVE-2021-22681, CVE-2026-50522]
+    related_campaigns: []
+    finding_ids: [finding-2026-07-23-0001, finding-2026-07-23-0002]
+    digraph: mixed            # B2 (Check Point UPDATE, relay-of-vendor), B2 (Iran OT UPDATE, second-publisher relay)
+    wep: likely
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 690          # 400-800 morning band
+      layer2_words: ~178             # 150-300 band
+      layer2_chars_est: ~1520        # <=1900 ceiling; single Discord message, no chunk needed
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-23-0001, append_brief_id: 2026-07-23-morning}   # DONE by briefer (Check Point UPDATE)
+        - {finding_id: finding-2026-07-23-0002, append_brief_id: 2026-07-23-morning}   # DONE by briefer (Iran OT UPDATE)
+      resurface_updates:
+        - "2026-07-22-pm-001 (Check Point CVE-2026-16232, finding-2026-07-22-0003): covered_in appended 2026-07-23-morning; resurface_2026_07_23_morning block added (patch_released + itw_infrastructure_signatures_published MET; finding-2026-07-23-0001 appended to finding_ids; last_covered -> 2026-07-23). Resurfaced in place — NO new topic entry."
+        - "2026-07-22-pm-002 (Iran-OT advisory, finding-2026-07-22-0004): covered_in appended 2026-07-23-morning; resurface_2026_07_23_morning block added (new_victims_confirmed + escalation_in_scope_detection_specificity MET; finding-2026-07-23-0002 appended to finding_ids; last_covered -> 2026-07-23). Resurfaced in place — NO new topic entry."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, and git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-23 MORNING BRIEF (briefer phase, briefer-20260723-080000). 2 items, BOTH UPDATE resurfaces of the
+      2026-07-22 afternoon brief — anti-repetition was load-bearing this cycle (no net-new topics; both carry
+      net-new corpus-additive substrate, resurfaced IN PLACE, not as new entries).
+
+      LEAD / UPDATE (🚨 Active Threats): finding-2026-07-23-0001 — Check Point SmartConsole CVE-2026-16232. State
+      change to yesterday's KEV-add (finding-0003): vendor published its OWN advisory, RELEASED THE FIX (the
+      zero-day/no-patch posture no longer holds), published 5 attacker source IPs (151.241.99.207, 151.241.99.233,
+      158.62.198.182, 192.142.10.99, 139.28.37.250) for defensive log monitoring, and gave a direct vendor
+      exploitation attestation. Graded B2/likely — the load-bearing sources are two B-grade publishers
+      (BleepingComputer + SecurityWeek) relaying ONE Check Point advisory (single effective basis; the A-grade
+      vendor primary was NOT directly retrieved). Note the digraph shifts vs yesterday's A2, which rested on the
+      CISA KEV directly. Analyst caveats all carried in-brief: (1) patch-available is NOT patch-applied — window
+      CLOSABLE not CLOSED, stays open until deployed, exploitation ongoing vs the 2026-07-25 KEV deadline; (2) the
+      5 IPs are HUNT indicators of ambiguous role (spray vs C2 unstated) — hunt, do NOT block-on-sight without
+      checking shared/NAT/CDN egress; (3) CVSS STILL UNVERIFIED — no >=9.0/'critical' asserted; (4) no actor
+      (Hard Rule 2); distinct from CVE-2024-24919 (VT-028). First-party Splunk 0 hits over -90d on all 5 IPs
+      (visibility-bounded null).
+
+      UPDATE (🇮🇷 Iran Cyber Watch — ACTIVE, not silent-day): finding-2026-07-23-0002 — SecurityWeek relays the
+      SAME 2026-07-22 CISA/FBI/EPA Iran-OT advisory revision The Record relayed yesterday (finding-0004). Second
+      publisher of the same government primary = enrichment, NOT independent corroboration. Net-new detail:
+      specific PLC models + config software (Rockwell CompactLogix/Micro850 + Studio 5000; Schneider Modicon M340
+      + EcoStruxure Control Expert; Siemens S7-1200 + TIA Portal), targeted ports (44818/502/102/2222/22), named
+      victims (California Water Service, Stryker — NO A&D/DIB victim), and source-designated persona context.
+      B2/likely single-source veto. HARD RULE 2 GUARDRAIL HELD: advisory's own attribution stays GENERIC IRAN;
+      SecurityWeek names CyberAv3ngers (#028) and Handala (#014) as active Iranian OT personas — RECORDED as the
+      source's editorial context ONLY, NOT narrowed to the operator of this specific advisory activity (both
+      already roster #028/#014 = not novel attribution). Brief made the non-extension explicit in both layers
+      ("which Archimedes does not extend to this activity"). CVE-2021-22681 (VT-027) structurally implicated,
+      NOT named. Persona context + PLC/port TTP handed to actor-profiler for #028/#014 dossier adjudication only.
+
+      Standing sections: A&D Sector Focus — structural-only note (no named A&D/DIB victim either item; SmartConsole
+      DIB-ubiquitous; PLC surface shared with A&D OT, segmentation-bounded, likely more bounded than water/medical
+      victims). Iran Cyber Watch — carried ACTIVE (the Iran-OT UPDATE), NOT silent-day. Neither standing section
+      omitted from Layer 1.
+
+      Anti-repetition: SharePoint CVE-2026-50522 (VT-048, yesterday's KEV UPDATE) NOT resurfaced as an item — a
+      one-clause Other Signal pointer only, noting both KEV items now share the 2026-07-25 federal deadline. No
+      resurface_if condition met for SharePoint this cycle.
+
+      Hard Rules: Rule 2 held (generic Iran, no actor attributed to the OT activity; personas recorded as source
+      context, not extended; Check Point no actor named). Rule 6 — ZERO direct quotes Layer 1 + Layer 2 (vendor
+      exploitation attestation + SecurityWeek persona language both paraphrased). Rule 3 — CVE-2026-16232 CWE-287
+      and the Iran-OT activity at mechanism-class level only, no PoC. Rule 8 — Check Point 5-IP Splunk sweep null
+      (visibility-bounded); Iran-OT no queryable atom, no hunt.
+
+      Layer 1 ~690 words (400-800 morning band). Layer 2 Discord Summary ~178 words / est. ~1520 chars (150-300
+      word band; under 1900-char hard ceiling); single message, no chunk; 2 source-linked bullets (1 Active
+      Threats + 1 Iran Cyber Watch); A&D silent-structural note + Other Signal omitted from Layer 2; natural-
+      language dates (Wednesday, Friday July 25, July 22); ISO only in greeting anchor; italic urgency on action
+      calls; no digraph/WEP/finding-id in Layer 2; Hard Rule 2 non-extension framing preserved in Layer 2; no
+      themed-character voice. Pre-flight 13-of-13 PASS (1 iteration). NOT posted to Discord by briefer — librarian
+      owns delivery/commit.
+    first_covered: 2026-07-23
+    last_covered: 2026-07-23
     retraction: null
     test: false
 

@@ -46302,7 +46302,8 @@ entries:
     test: false
 
   - id: 2026-07-24-flash-0650-001-ptc-windchill-flexplm-cve-2026-12569-unauth-deserialization-rce-cvss-9-3-active-itw-webshell-cisa-kev-2026-06-25-a1-very-likely-clop-hedged-b3-possibly-reliaquest-single-source
-    covered_in: [flash-2026-07-24-0650]
+    covered_in: [flash-2026-07-24-0650, 2026-07-24-morning]   # 06:50 FLASH QUEUED (quiet hours) for 09:00 catch-up, NEVER delivered; absorbed + delivered by the 08:00 morning brief, which SUPERSEDES the queued FLASH. Librarian: mark flash-queue.yaml entry flash-2026-07-24-0650 superseded:true / superseded_by:2026-07-24-morning and archive.
+    superseded_flash: flash-2026-07-24-0650   # topic must not be dropped — morning brief is the first/only Discord delivery of CVE-2026-12569
     headline: "FLASH — CISA-KEV-listed PTC Windchill/FlexPLM CVE-2026-12569 (unauth deserialization RCE, CVSS 9.3) under active ITW exploitation via persistent JSP webshells (KEV 2026-06-25, federal due 2026-06-28; PTC patches from 2026-06-17); first corpus surface of the A&D-dominant PLM platform. Exploitation A1/very-likely (two independent A bases CISA KEV + PTC, independence RESOLVED this sweep by direct retrieval + 4 trade relays). Cl0p (#018) attribution B3/possibly — ReliaQuest single-source, explicitly UNCONFIRMED, carried as-reported not originated (Hard Rule 2)."
     topic_tags:
       - flash-brief
@@ -46417,6 +46418,21 @@ entries:
       queues, librarian delivers post-catch-up.
     first_covered: 2026-07-24
     last_covered: 2026-07-24
+    delivery_note: |
+      SUPERSESSION (2026-07-24 08:00 morning brief): the 06:50 FLASH (flash-2026-07-24-0650) was
+      QUEUED to infrastructure/flash-queue.yaml for the 09:00 catch-up because 06:00 is inside quiet
+      hours and the critical-override CVSS-10 condition was not met (CVSS 9.3 + attribution hedged +
+      no named A&D victim). It NEVER reached Discord. The 08:00 morning brief (2026-07-24-morning)
+      absorbs and DELIVERS the CVE-2026-12569 topic and SUPERSEDES the queued FLASH — the morning
+      brief is the first and only Discord delivery of this topic. Morning-brief framing holds the
+      exploitation layer at WEP "likely" (A1 digraph; red-team conditional ceiling pending direct
+      retrieval of the CISA KEV + PTC primaries) rather than the FLASH draft's very-likely; Cl0p
+      attribution unchanged at B3/"roughly even chance," Hard Rule 2 framings preserved. Standing
+      sections: Sector Focus A&D carries the Windchill DIB-centrality angle; Iran Cyber Watch silent-
+      day (no new tracked-Iranian activity in 48h). The 07-23 findings (Laundry Bear/Void Blizzard
+      Zimbra-DIB, UAC-0099/Sandworm) were NOT re-led (anti-repetition — already delivered 07-23 PM).
+      Librarian: mark flash-queue.yaml flash-2026-07-24-0650 superseded:true / superseded_by:
+      2026-07-24-morning and archive; do NOT deliver the FLASH at the 09:00 catch-up.
     retraction: null
     test: false
 

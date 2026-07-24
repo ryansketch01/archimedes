@@ -22,7 +22,7 @@
 #   - librarian_note: free-form supersession / disposition reasoning
 
 version: 1
-last_updated: 2026-07-07T23:29:49-04:00
+last_updated: 2026-07-24T08:01:00-04:00
 
 archive:
   # ==========================================================================
@@ -386,3 +386,38 @@ archive:
       shipped: brief_published (morning) + flash_superseded (this entry).
       Discord post: morning summary delivered to #intel-briefs only;
       #flash-alerts intentionally silent on this topic.
+
+  - queued_at: 2026-07-24T06:50:00-04:00
+    archived_at: 2026-07-24T08:01:00-04:00
+    archived_by: librarian-20260724-080045
+    disposition: superseded_by_morning_brief
+    brief_id: flash-2026-07-24-0650
+    brief_path: threats/briefs/flash-2026-07-24-0650.md
+    finding_id: finding-2026-07-24-flash-0600-0001
+    trigger: critical-cve-exploited
+    secondary_trigger: tracked-actor-ttp-change
+    cve: CVE-2026-12569
+    digraph: A1
+    wep: very likely
+    critical_override_applied: false
+    quiet_hours_at_queue: true
+    expires_at: 2026-07-24T18:50:00-04:00
+    catchup_sweep: 2026-07-24T09:00:00-04:00
+    superseded: true
+    superseded_by: 2026-07-24-morning
+    librarian_note: |
+      08:00 morning brief 2026-07-24-morning absorbed
+      finding-2026-07-24-flash-0600-0001 (CVE-2026-12569 PTC Windchill/FlexPLM
+      active exploitation, CVSS 9.3, CISA KEV 2026-06-25) as its lead Active
+      Threats item with full mitigation triage, a dedicated Vulnerabilities
+      section, and the hedged Cl0p (#018) B3 attribution in Actor Activity.
+      Superseded ahead of the 09:00 catchup sweep — re-posting the queued FLASH
+      to #flash-alerts would be duplicate signal per FLASH-POLICY anti-noise.
+      The morning brief is the FIRST and ONLY Discord delivery of CVE-2026-12569;
+      #flash-alerts intentionally silent on this topic. Brief frontmatter records
+      supersedes: flash-2026-07-24-0650. IOC support@cryptohox.com is net-new at
+      the finding level but not yet written to any actor iocs.yaml or unattributed
+      cluster, so no master-index regeneration this run (regen reads only those
+      two source buckets — a regen would be a content-free timestamp bump). Splunk
+      events: brief_published (morning) + flash_superseded (this entry) +
+      git_committed.

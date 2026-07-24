@@ -46436,6 +46436,99 @@ entries:
     retraction: null
     test: false
 
+  - id: 2026-07-24-pm-brief-meta
+    covered_in: [2026-07-24-afternoon]
+    brief_file: threats/briefs/2026-07-24-afternoon.md
+    headline: "Afternoon brief 2026-07-24 (Friday) — QUIET AFTERNOON, 0 NET-NEW promotions. The 15:30 pre-brief produced 0 net-new substantive raw-signal (all in-window items dedup/discarded). No finding promoted; no finding receives net-new coverage. Every topic surfaced is a transparent NO-CHANGE continuing-coverage POINTER to prior briefs, explicitly flagged 'no change' and NOT presented as new. Lead: honest low-signal framing — highest standing A&D exposure is unchanged Zimbra CVE-2025-66376 (Russian state LAUNDRY BEAR/Void Blizzard, DIB-sector, covered 2026-07-23 PM), and the one live action is tomorrow's 2026-07-25 KEV deadline on Check Point SmartConsole CVE-2026-16232 + on-prem SharePoint CVE-2026-50522 (both covered 2026-07-22/07-23). Other Signal no-change pointers: Oracle EBS CVE-2026-46817 (VT-043) past July-18 deadline; Windchill/FlexPLM CVE-2026-12569 morning lead carries forward; UAC-0099/Notepad++ no A&D nexus. Standing sections: Sector Focus A&D silent-day (no named A&D/DIB victim on any surfaced topic); Iran Cyber Watch silent-day (Iran-OT AA26-097A thread stands, no state change). Anti-repetition LOAD-BEARING: this-morning's Windchill lead NOT re-led; yesterday-PM's Zimbra/UAC-0099 NOT re-covered as new."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - quiet-afternoon-zero-net-new-promotions
+      - low-signal-15-30-pre-brief-zero-net-new-substantive-raw-signal
+      - all-topics-no-change-continuing-coverage-pointers-not-presented-as-new
+      - lead-honest-low-signal-framing-no-manufactured-urgency
+      - highest-standing-ad-exposure-unchanged-zimbra-cve-2025-66376-laundry-bear-void-blizzard-covered-2026-07-23-pm
+      - live-action-2026-07-25-kev-deadline-tomorrow-checkpoint-cve-2026-16232-sharepoint-cve-2026-50522
+      - other-signal-no-change-oracle-ebs-cve-2026-46817-past-july-18-windchill-cve-2026-12569-morning-lead-carries-forward-uac-0099-no-ad-nexus
+      - standing-ad-sector-focus-silent-day-no-named-victim
+      - iran-cyber-watch-silent-day-iran-ot-aa26-097a-thread-no-state-change
+      - anti-repetition-load-bearing-morning-windchill-not-re-led-yesterday-pm-zimbra-uac0099-not-re-covered
+      - no-new-topic-entries-no-covered-in-appends-no-published-in-briefs-back-writes-per-2026-07-23-pm-precedent
+      - hard-rule-2-zimbra-attribution-source-stated-cisa-unit42-not-originated
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - preflight-13-of-13-pass
+    related_actors: []              # No roster-actor mention as a graded item. Zimbra cluster (LAUNDRY BEAR/Void Blizzard) source-stated pointer only; UNC1549/Charming Kitten/Handala/MuddyWater + APT28/Lazarus/APT41/Salt Typhoon appear only in verbatim silent-day templates. Hard Rule 2.
+    related_vulns: [CVE-2025-66376, CVE-2026-16232, CVE-2026-50522, CVE-2026-46817, CVE-2026-12569]   # ALL no-change pointers; none newly covered
+    related_campaigns: []
+    finding_ids: []                 # 0 net-new; no finding covered net-new this cycle
+    digraph: n/a                    # no net-new graded item
+    wep: n/a
+    disposition:
+      net_new_findings_promoted: 0
+      new_topic_entries_created: 0
+      covered_in_appends: 0         # per 2026-07-23-pm precedent — pure no-change pointers do NOT append covered_in to their topic entries
+      published_in_briefs_back_writes: 0   # no finding receives net-new coverage — nothing to back-write
+      rationale: >
+        Genuinely low-signal afternoon. Every topic in the brief is a transparent no-change continuing-
+        coverage pointer to a prior brief, explicitly flagged 'no change' and not presented as new. Consistent
+        with the 2026-07-23-afternoon Other-Signal precedent (no-change standing-KEV pointer; covered_in NOT
+        appended). Therefore: no new per-topic coverage-log entries, no covered_in appends to the existing
+        Zimbra / Check Point / SharePoint / Oracle-EBS / Windchill entries, and no published_in_briefs back-
+        writes to any finding. This brief-meta entry is the sole coverage-log addition for the cycle.
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 497         # 400-800 afternoon band
+      layer2_words: ~165            # 150-300 band
+      layer2_chars_est: ~1300       # <=1900 ceiling; single Discord message, no chunk needed
+      check_3_note: >
+        Anti-repetition (check 3) PASS on the transparent-no-change-pointer basis. No item is presented as
+        net-new; each repeated topic explicitly states 'no change' and cites the prior brief. Check-3 intent
+        (prevent unauthorized RE-COVERAGE of stale news as new) is satisfied. Same disposition as the
+        2026-07-23-afternoon brief-meta.
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings: []   # none — 0 net-new coverage
+      resurface_updates: []                            # no in-place resurfaces this cycle
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 → #intel-briefs), Teams (skip if webhook unset), Splunk log, and git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-24 AFTERNOON BRIEF (briefer phase, briefer-20260724-160000). A legitimately QUIET Friday
+      afternoon: grader reported 0 net-new substantive raw-signal from the 15:30 pre-brief. NOTHING promoted.
+      The brief is assembled honestly from standing sections + transparent no-change continuing-coverage
+      pointers; NO urgency manufactured.
+
+      LEAD: honest low-signal statement. First sentence names CVE-2025-66376 + Russian state actor +
+      tomorrow's KEV deadline (check 4 impact-lead satisfied) while stating plainly nothing net-new crossed
+      the wire. Highest standing A&D exposure = Zimbra (unchanged from 2026-07-23 PM); one live action =
+      2026-07-25 KEV deadline (tomorrow).
+
+      ANTI-REPETITION was the load-bearing constraint. Every candidate finding handed by the grader was
+      ALREADY covered and NONE met its resurface_if conditions (0 net-new signal; KEV deadline 2026-07-25
+      has NOT yet passed): Zimbra finding-2026-07-23-0003 (led 2026-07-23 PM), SharePoint finding-2026-07-22-
+      0001 (07-22 AM+PM), Check Point finding-2026-07-22-0003 (07-22 PM + 07-23 AM), Iran-OT finding-2026-07-
+      22-0004 (07-22 PM + 07-23 AM), UAC-0099 finding-2026-07-23-0004 (07-23 PM). This morning's Windchill
+      CVE-2026-12569 lead was explicitly NOT re-led (carried as a one-line Other-Signal continuation only).
+
+      SECTIONS: 🚨 Active Threats — 'no net-new' statement + Zimbra no-change standing-watch pointer (A2/likely,
+      CISA AA26-204A + Unit 42, DIB structural, Hard Rule 2 attribution source-stated). 🔓 Vulnerabilities —
+      the two 2026-07-25 KEV deadlines (CVE-2026-16232 + CVE-2026-50522), no net-new, action = remediate by
+      tomorrow + SharePoint machine-key rotation; digraph A2 (CISA KEV authoritative on the listing/deadline).
+      ✈️ Sector Focus A&D — silent-day template (no named A&D/DIB victim). 🇮🇷 Iran Cyber Watch — silent-day
+      (Iran-OT AA26-097A thread no state change). 📰 Other Signal — Oracle EBS CVE-2026-46817 past July-18;
+      Windchill CVE-2026-12569 morning lead carries forward; UAC-0099 no A&D nexus.
+
+      HARD RULES: Rule 2 — Zimbra attribution carried strictly as CISA's + Unit 42's, not originated. Rule 6 —
+      ZERO direct quotes, both layers. Rule 3 — Zimbra mechanism at class level, no PoC. Rule 8 — n/a this
+      cycle (no net-new first-party sweep; prior findings' visibility-bounded nulls stand). No ITAR/export-
+      controlled detail. Pre-flight 13-of-13 PASS (iteration 1). Layer 2 omits standing-section boilerplate
+      (Iran/Sector), carries the two actionable pointers with source-linked headlines + natural-language
+      dates. NOT posted/committed by briefer — librarian delivers.
+    first_covered: 2026-07-24
+    last_covered: 2026-07-24
+    retraction: null
+    test: false
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

@@ -660,3 +660,43 @@ Ledger of all source reliability grade changes. Every grade change gets an entry
 **Reviewer:** Awaiting Ryan ratification.
 **Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`.
 **Next review:** rolling pivot on first-direct-retrieval of watchtowr.com primary (which would supply atomic IOCs / exploitation signatures for a first-party Splunk IOC hunt and could lift the ITW-onset leg above B3) AND human ratification.
+
+---
+
+## 2026-07-24 — ReliaQuest — (none) → B (provisional, awaiting ratification + direct retrieval)
+
+**Type:** New source — provisional (single addition)
+**Source ID:** `reliaquest`
+**Run:** librarian-20260724-flash0600 (Mode 2 held FLASH sweep — queued, no FLASH shipped)
+
+**Summary:** First Archimedes-corpus citation of ReliaQuest, surfaced during the 06:00 EDT 2026-07-24 held FLASH sweep (quiet hours; brief flash-2026-07-24-0650 QUEUED for the 09:00 catchup, not posted). First cited via finding-2026-07-24-flash-0600-0001 as the sole basis for the hedged Cl0p attribution leg of the PTC Windchill/FlexPLM CVE-2026-12569 active-exploitation item. The Cl0p tie is ReliaQuest's own "unconfirmed" tradecraft-similarity assessment — graded **B3 / possibly**, single-source veto applied, carried as-reported only (Hard Rule 2, no origination). The exploitation-fact headline is independently anchored (CISA KEV + PTC advisory + trade relays) and does NOT rest on ReliaQuest.
+
+**Grade rationale:** Conservative provisional **B** on first surface. ReliaQuest is a recognized commercial IR / threat-research firm (GreyMatter security-operations practice) with real incident telemetry — rules out the unknown/unestablished floor — but with no prior Archimedes-corpus track record to assess. Provisional B follows the conservative first-surface starting-grade precedent (watchTowr 2026-07-18, and the foreign-CERT provisional-B line). Operator may ratify at B, upgrade on subsequent surfaces showing consistent first-party IR rigor, or downgrade if low-fidelity. The firm's own "unconfirmed" hedge on the Cl0p linkage caps that leg's credibility at 3 regardless of the reliability letter.
+
+**Retrieval status:** Relay-only this sweep; ReliaQuest primary not directly retrieved. No atomic IOCs pivoted from the Cl0p-attribution leg.
+
+**Supporting findings:** [finding-2026-07-24-flash-0600-0001]
+**Posted to:** Nothing posted to Discord/Teams this sweep — quiet-hours held/queued FLASH. No separate `#actor-review` post required per Mode 9 (first-citation provisional addition under the precedent-class auto-add path — provisional B is NOT a B->D-or-worse downgrade and NOT an unsolicited C->A upgrade).
+**Reviewer:** Awaiting Ryan ratification.
+**Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`.
+**Next review:** rolling pivot on first-direct-retrieval of a reliaquest.com primary AND human ratification. NOTE: `source-grades.yaml` NOT yet updated by the librarian this sweep — provisional entry logged here for operator ratification; grader/actor-profiler owns the yaml add.
+
+---
+
+## 2026-07-24 — CSO Online — (none) → B (provisional, awaiting ratification + direct retrieval)
+
+**Type:** New source — provisional (single addition)
+**Source ID:** `cso-online`
+**Run:** librarian-20260724-flash0600 (Mode 2 held FLASH sweep — queued, no FLASH shipped)
+
+**Summary:** First Archimedes-corpus citation of CSO Online, surfaced during the 06:00 EDT 2026-07-24 held FLASH sweep as a trade-press relay on the PTC Windchill/FlexPLM CVE-2026-12569 active-exploitation item (finding-2026-07-24-flash-0600-0001). Relay layer only — the exploitation fact is anchored on CISA KEV + PTC advisory, not on CSO Online.
+
+**Grade rationale:** Conservative provisional **B** on first surface. CSO Online (Foundry/IDG) is an established security trade-press outlet with editorial process — rules out the unknown/unestablished floor — but no prior Archimedes-corpus track record. Provisional B per the conservative first-surface starting-grade precedent (consistent with the trade-press relay class: SecurityWeek, HelpNet, THN, BleepingComputer). Operator may ratify at B or adjust on subsequent surfaces.
+
+**Retrieval status:** Relay-only this sweep; treated as secondary corroboration of the KEV/PTC-anchored exploitation fact, not an independent basis.
+
+**Supporting findings:** [finding-2026-07-24-flash-0600-0001]
+**Posted to:** Nothing posted to Discord/Teams this sweep — quiet-hours held/queued FLASH. No separate `#actor-review` post required per Mode 9 (first-citation provisional addition, precedent-class auto-add path).
+**Reviewer:** Awaiting Ryan ratification.
+**Provisional flags set:** `provisional: true`, `awaiting_ratification: true`, `awaiting_direct_retrieval: true`.
+**Next review:** human ratification; `source-grades.yaml` add owned by grader/actor-profiler, not modified by the librarian this sweep.

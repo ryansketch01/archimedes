@@ -45447,7 +45447,7 @@ entries:
     test: false
 
   - id: 2026-07-22-am-001-sharepoint-cve-2026-50522-onprem-deserialization-rce-active-exploitation-machine-key-theft-watchtowr-defused-b2-likely-single-source-veto-vt048
-    covered_in: [2026-07-22-morning, 2026-07-22-afternoon]   # RESURFACE 2026-07-22 afternoon — CISA KEV listing UPDATE (resurface_if cisa_kev_addition_cve_2026_50522 MET)
+    covered_in: [2026-07-22-morning, 2026-07-22-afternoon, 2026-07-25-morning]   # RESURFACE 2026-07-22 afternoon — CISA KEV listing UPDATE (resurface_if cisa_kev_addition_cve_2026_50522 MET). RESURFACE 2026-07-25 morning — deadline-day UPDATE (2026-07-25 KEV federal remediation due date lands today); led the brief's Vulnerabilities section as an UPDATE with 🔗 callout, no net-new exploitation/victim/IOC. covered_in + last_covered appended; published_in_briefs back-written to finding.
     headline: "Net-new on-prem SharePoint RCE CVE-2026-50522 (VT-048) actively exploited for machine-key theft — WatchTowr confirmed 07-20/21 within hours of a public PoC, Defused activity from 07-17. NVD (Analyzed) confirms UNAUTHENTICATED PR:N / CVSS 9.8 — SecurityWeek's authenticated-Site-Owner reading contradicted by the primary (privilege-vector conflict RESOLVED). Deserialization (CWE-502); stolen machine keys forge tokens that survive patching -> key rotation is load-bearing, patching alone insufficient. B2 / 'likely' single-source veto (2 publishers BleepingComputer+SecurityWeek, ONE evidence basis WatchTowr+Defused honeypot telemetry — not confirmed at scale). A&D relevance STRUCTURAL/DIB-pervasive on-prem SharePoint, NO named A&D/DIB victim, NO actor attributed (Hard Rule 2). Patched Microsoft July 14 2026 SU. NOT KEV-listed as of catalog v2026.07.21 — strongest rapid-KEV candidate in corpus (unauth vector + ITW + public PoC). First-party Splunk clean 0 tracked-IOC hits, no atomic network IOCs published, visibility-bounded non-disconfirming (Hard Rule 8)."
     topic_tags:
       - cve
@@ -45503,8 +45503,21 @@ entries:
         entry for the same topic.
       digraph_after: A2
       wep_after: likely
+    resurface_2026_07_25_morning:
+      brief_id: 2026-07-25-morning
+      trigger: kev_due_date_2026_07_25_lands_today   # federal remediation deadline arrives (terminal state change)
+      as: UPDATE
+      section: "🔓 Vulnerabilities (UPDATE, co-led with CVE-2026-16232)"
+      state_change: >
+        The 2026-07-25 CISA KEV federal remediation deadline lands today. No net-new exploitation,
+        victim, or IOC this quiet cycle — the news is the deadline arriving. Grade unchanged (A2 /
+        likely). Paired with CVE-2026-16232 as the brief's lead action item; machine-key rotation
+        reiterated (patching alone leaves forged tokens valid). 🔗 callout: status moved from
+        "deadline pending" to "deadline today."
+      digraph_after: A2
+      wep_after: likely
     first_covered: 2026-07-22
-    last_covered: 2026-07-22
+    last_covered: 2026-07-25
     retraction: null
     test: false
     notes: |
@@ -45676,7 +45689,7 @@ entries:
     test: false
 
   - id: 2026-07-22-pm-001-cisa-kev-checkpoint-smartconsole-cve-2026-16232-improper-auth-unauthenticated-login-token-theft-a2-likely-single-source-veto
-    covered_in: [2026-07-22-afternoon, 2026-07-23-morning]
+    covered_in: [2026-07-22-afternoon, 2026-07-23-morning, 2026-07-25-morning]   # RESURFACE 2026-07-25 morning — deadline-day UPDATE (resurface_if kev_due_date_2026_07_25_passing MET; deadline lands today). Co-led the Vulnerabilities section with CVE-2026-50522, grade unchanged A2/likely, no net-new exploitation/victim/IOC. covered_in + last_covered appended; published_in_briefs back-written to finding-2026-07-22-0003.
     headline: "CISA added Check Point SmartConsole CVE-2026-16232 (improper authentication -> unauthenticated login-token theft) to the KEV catalog v2026.07.22 (dateAdded 2026-07-22, dueDate 2026-07-25 accelerated ~3-day). Net-new, not previously tracked. Actively exploited per the listing; an unauthenticated remote attacker obtains a SmartConsole application login token (access-broker-grade primitive on a security-management console). CVSS UNVERIFIED — KEV carries no score, NVD not pulled this sweep; do NOT assert 'critical'/>=9.0. A2/'likely' single-source veto (CISA KEV sole effective source). No actor named (Hard Rule 2 — Pioneer Kitten #029 edge-appliance note is awareness-only, NOT an attribution for this CVE). A&D relevance MEDIUM/structural (security-management-plane placement in DIB estates), no named A&D victim. Distinct from CVE-2024-24919 (VT-028, Check Point Security Gateway) — do NOT conflate or import #029 association."
     topic_tags:
       - cve
@@ -45732,8 +45745,20 @@ entries:
         - "CVSS STILL UNVERIFIED — neither relay nor NVD states a score this sweep; brief did NOT assert >=9.0 / 'critical' (unchanged from 07-22)."
         - "No actor named (Hard Rule 2 preserved). Distinct from CVE-2024-24919 (VT-028) — called out again to prevent Pioneer Kitten #029 association bleed."
       first_party_splunk: "0 hits over -90d on all 5 IPs (grader re-ran Rule 8 independently; visibility-bounded null, not disconfirming)"
+    resurface_2026_07_25_morning:
+      brief_id: 2026-07-25-morning
+      trigger: kev_due_date_2026_07_25_passing_without_federal_remediation   # resurface_if condition MET — deadline lands today
+      as: UPDATE
+      section: "🔓 Vulnerabilities (UPDATE, co-led with CVE-2026-50522)"
+      state_change: >
+        The accelerated ~3-day 2026-07-25 CISA KEV federal remediation deadline lands today. No net-new
+        exploitation, victim, or IOC this quiet cycle — the news is the deadline arriving. Grade unchanged
+        (A2 / likely; CVSS still UNVERIFIED, not asserted >=9.0). Paired with CVE-2026-50522 as the brief's
+        lead action item. 🔗 callout: status moved from "deadline pending" to "deadline today."
+      digraph_after: A2
+      wep_after: likely
     first_covered: 2026-07-22
-    last_covered: 2026-07-23
+    last_covered: 2026-07-25
     retraction: null
     test: false
     notes: |
@@ -46526,6 +46551,111 @@ entries:
       dates. NOT posted/committed by briefer — librarian delivers.
     first_covered: 2026-07-24
     last_covered: 2026-07-24
+    retraction: null
+    test: false
+
+  - id: 2026-07-25-am-brief-meta
+    covered_in: [2026-07-25-morning]
+    brief_file: threats/briefs/2026-07-25-morning.md
+    headline: "Morning brief 2026-07-25 (Saturday) — QUIET CYCLE, 0 net-new promotions, 0 grader rejections (no gradeable candidates; 07:30 pre-brief clean). Lead = the two 2026-07-25 CISA KEV federal remediation deadlines landing TODAY: Check Point SmartConsole CVE-2026-16232 + Microsoft on-prem SharePoint CVE-2026-50522, both actively exploited for auth-token/credential theft (deadline-day UPDATE resurface of finding-2026-07-22-0003 + finding-2026-07-22-0001; A2/likely unchanged, no net-new exploitation/victim/IOC; 🔗 callout deadline-pending -> deadline-today; SharePoint machine-key rotation reiterated). Active Threats = 'no net-new' + Zimbra CVE-2025-66376 (Russian state LAUNDRY BEAR/Void Blizzard, DIB) no-change standing-watch pointer. Standing sections: Sector Focus A&D structural-only note (no named A&D/DIB victim on any surfaced topic); Iran Cyber Watch silent-day (Iran-OT AA26-097A thread no state change). Other Signal no-change pointers: Windchill/FlexPLM CVE-2026-12569 (yesterday's lead) carries forward Cl0p-hedged; Oracle EBS CVE-2026-46817 (VT-043) past July-18; libssh2 CVE-2026-55200 (VT-051) PoC-only; LegacyHive/Nightmare Eclipse (VT-042) unpatched no-CVE no-ITW. Anti-repetition LOAD-BEARING: Windchill NOT re-led (Other-Signal one-liner only); Zimbra NOT re-covered as new. Distinct framing from 2026-07-24 AM (Windchill lead) + 2026-07-24 PM (Zimbra lead + KEV-tomorrow) — today leads on KEV-deadline-TODAY."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - quiet-cycle-zero-net-new-promotions-zero-rejections
+      - no-gradeable-candidates-07-30-pre-brief-clean
+      - lead-two-kev-federal-remediation-deadlines-land-today-2026-07-25
+      - checkpoint-smartconsole-cve-2026-16232-deadline-day-update-resurface
+      - sharepoint-cve-2026-50522-deadline-day-update-resurface-machine-key-rotation
+      - deadline-day-update-a2-likely-unchanged-no-net-new-exploitation-victim-ioc
+      - resurface-callout-deadline-pending-to-deadline-today
+      - zimbra-cve-2025-66376-laundry-bear-void-blizzard-no-change-standing-watch-pointer
+      - standing-ad-sector-focus-structural-only-no-named-victim
+      - iran-cyber-watch-silent-day-iran-ot-aa26-097a-thread-no-state-change
+      - other-signal-no-change-windchill-cve-2026-12569-clop-hedged-oracle-ebs-cve-2026-46817-past-july-18-libssh2-cve-2026-55200-poc-only-legacyhive-vt042-unpatched
+      - anti-repetition-load-bearing-windchill-not-re-led-zimbra-not-re-covered-as-new
+      - distinct-framing-from-2026-07-24-am-windchill-lead-and-pm-zimbra-lead-kev-tomorrow
+      - hard-rule-2-zimbra-and-clop-attribution-source-stated-not-originated
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - preflight-13-of-13-pass
+    related_actors: []              # No roster-actor mention as a graded item. Zimbra cluster (LAUNDRY BEAR/Void Blizzard) + Cl0p (Windchill, hedged) are source-stated pointers only; UNC1549/Charming Kitten/Handala/MuddyWater + APT28/Lazarus/APT41/Salt Typhoon appear only in verbatim silent-day/sector templates. Hard Rule 2.
+    related_vulns: [CVE-2026-16232, CVE-2026-50522, CVE-2025-66376, CVE-2026-12569, CVE-2026-46817, CVE-2026-55200]   # 16232+50522 = deadline-day UPDATE resurfaces (covered_in appended); the rest are no-change pointers (not newly covered)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-22-0001, finding-2026-07-22-0003]   # the two deadline-day UPDATE resurfaces; published_in_briefs back-written
+    digraph: A2                     # the two co-led KEV items (unchanged)
+    wep: likely
+    disposition:
+      net_new_findings_promoted: 0
+      new_topic_entries_created: 0
+      covered_in_appends: 2         # CVE-2026-16232 (2026-07-22-pm-001) + CVE-2026-50522 (2026-07-22-am-001) — deadline-day UPDATE resurfaces
+      published_in_briefs_back_writes: 2   # finding-2026-07-22-0001 + finding-2026-07-22-0003
+      rationale: >
+        Genuinely quiet Saturday morning — grader promoted/rejected nothing (no gradeable candidates).
+        The one time-driven development is the two 2026-07-25 KEV federal remediation deadlines landing
+        TODAY — a terminal state change on both items that justifies an UPDATE resurface (distinct from
+        the 2026-07-24 PM no-change pointer, when the deadline had NOT yet arrived). Both are led as the
+        brief's top action item with UPDATE flag + 🔗 callout, so covered_in is appended and
+        published_in_briefs is back-written on both findings. Zimbra, Windchill, Oracle-EBS, libssh2, and
+        LegacyHive are pure no-change carry-forward pointers — NOT re-covered as new, NO covered_in append,
+        NO back-write (2026-07-23/07-24 precedent).
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 502         # 400-800 morning band
+      layer2_words: ~165            # 150-300 band
+      layer2_chars_est: ~1200       # <=1900 ceiling; single Discord message, no chunk needed
+      check_3_note: >
+        Anti-repetition (check 3) PASS. The two KEV items are re-covered under an explicit UPDATE flag +
+        🔗 callout on a met resurface condition (deadline lands today) — authorized. Zimbra / Windchill /
+        Oracle-EBS / libssh2 / LegacyHive are transparent no-change pointers, each flagged 'no change' and
+        not presented as new; check-3 intent (block unauthorized re-coverage of stale news as new) satisfied.
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-22-0001, append_brief_id: 2026-07-25-morning}   # DONE by briefer
+        - {finding_id: finding-2026-07-22-0003, append_brief_id: 2026-07-25-morning}   # DONE by briefer
+      resurface_updates:
+        - {entry_id: 2026-07-22-am-001, appended: 2026-07-25-morning, last_covered: 2026-07-25}   # SharePoint — DONE by briefer
+        - {entry_id: 2026-07-22-pm-001, appended: 2026-07-25-morning, last_covered: 2026-07-25}   # Check Point — DONE by briefer
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 → #intel-briefs), Teams (skip if webhook unset), Splunk log, and git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-25 MORNING BRIEF (briefer phase, briefer-20260725-080000). A genuinely QUIET Saturday: grader
+      promoted 0 net-new findings and rejected 0 (no gradeable candidates); the 07:30 pre-brief was clean. No
+      urgency manufactured.
+
+      LEAD: honest, time-driven. The two 2026-07-25 CISA KEV federal remediation deadlines land TODAY —
+      Check Point SmartConsole CVE-2026-16232 + Microsoft on-prem SharePoint CVE-2026-50522, both actively
+      exploited for auth-token/credential theft. This is the day the deadline actually arrives (yesterday PM
+      framed it as "tomorrow" and treated it as a no-change pointer). Deadline-arrival = terminal state change
+      = authorized UPDATE resurface of both findings (A2/likely unchanged; no net-new exploitation/victim/IOC).
+      Check 4 impact-lead satisfied (named CVEs + status + action).
+
+      ANTI-REPETITION load-bearing and framing deliberately VARIED from the prior two quiet cycles: 2026-07-24
+      AM led on Windchill; 2026-07-24 PM led on Zimbra + "KEV deadline tomorrow"; today leads on "KEV deadline
+      TODAY." Windchill CVE-2026-12569 (yesterday's lead) was explicitly NOT re-led — carried as a one-line
+      Other-Signal continuation only (Cl0p attribution still hedged, "Archimedes does not endorse"). Zimbra
+      carried as a no-change standing-watch pointer, not re-covered as new.
+
+      SECTIONS: 🚨 Active Threats — 'no net-new' statement + Zimbra no-change standing-watch (A2/likely, CISA
+      AA26-204A + Unit 42, DIB structural, Hard Rule 2 attribution source-stated). 🔓 Vulnerabilities — the two
+      2026-07-25 KEV deadlines as an UPDATE (co-led), action = remediate both today + SharePoint machine-key
+      rotation, 🔗 callout deadline-pending -> deadline-today; digraph A2 (CISA KEV authoritative on listing/
+      deadline). ✈️ Sector Focus A&D — structural-only note (no named A&D/DIB victim on any surfaced topic).
+      🇮🇷 Iran Cyber Watch — silent-day (Iran-OT AA26-097A thread no state change). 📰 Other Signal — Windchill
+      CVE-2026-12569 carries forward; Oracle EBS CVE-2026-46817 (VT-043) past July-18; libssh2 CVE-2026-55200
+      (VT-051) PoC-only; LegacyHive/Nightmare Eclipse (VT-042) unpatched no-CVE no-ITW MSRC-silent.
+
+      HARD RULES: Rule 2 — Zimbra + Cl0p attributions carried strictly as the sources', not originated. Rule 6 —
+      ZERO direct quotes, both layers. Rule 3 — mechanisms at class level, no PoC. Rule 8 — n/a this cycle
+      (no net-new first-party sweep; prior findings' visibility-bounded nulls stand). No ITAR/export-controlled
+      detail. All six CVE mentions dossier-linked for check 9 (CVE-2025-66376 flagged 'pending vuln-tracker
+      index' — not yet in _index.yaml). Pre-flight 13-of-13 PASS (iteration 1; one within-band wording fix,
+      "additionally" -> "also", pre-check to keep the check-5 banned-phrase scan clean). Layer 2 omits standing-
+      section boilerplate (Iran/Sector), two source-linked bullets with natural-language dates ("today, July
+      25," "since Thursday," "November 2025"), Hard Rule 2 framings preserved, italic urgency on the remediate/
+      confirm calls. NOT posted/committed by briefer — librarian delivers.
+    first_covered: 2026-07-25
+    last_covered: 2026-07-25
     retraction: null
     test: false
 

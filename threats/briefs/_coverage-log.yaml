@@ -46764,6 +46764,118 @@ entries:
     retraction: null
     test: false
 
+  - id: 2026-07-26-am-brief-meta
+    covered_in: [2026-07-26-morning]
+    brief_file: threats/briefs/2026-07-26-morning.md
+    headline: "Morning brief 2026-07-26 (Sunday) — QUIET CYCLE, 0 net-new promotions, 0 rejections (07:30 pre-brief raw-2026-07-26-am-000 clean sweep; one BleepingComputer Steam/ClickFix XMRig item discarded as non-A&D/non-roster/non-CVE). FIRST brief AFTER the two 2026-07-25 CISA KEV federal remediation deadlines LAPSED yesterday: Check Point SmartConsole CVE-2026-16232 + Microsoft on-prem SharePoint CVE-2026-50522, both still actively exploited for auth-token/credential theft. Deadline-countdown angle EXHAUSTED (led three prior briefs); reframed honestly POST-DEADLINE — unpatched fleets now in federal NON-COMPLIANCE + standing active-exploitation risk beyond the deadline ('deadline's passing removed the countdown, not the threat'). NO net-new exploitation/victim/IOC since 08:00 2026-07-25 -> the two KEV items are POST-DEADLINE continuing-coverage POINTERS, 🔗 callout 'deadline closing tonight' -> 'deadline lapsed; unpatched fleets now non-compliant'; NOT a fresh resurface, NO covered_in append, NO back-write (2026-07-24-pm / 2026-07-25 precedent). Active Threats = 'no net-new' + Zimbra CVE-2025-66376 (Russian state LAUNDRY BEAR/Void Blizzard, DIB) no-change standing-watch pointer. Standing sections: Sector Focus A&D structural-only note (no named A&D/DIB victim); Iran Cyber Watch silent-day. Other Signal no-change pointers: Windchill/FlexPLM CVE-2026-12569 (Cl0p-hedged) carries forward; Oracle EBS CVE-2026-46817 (VT-043) past July-18; libssh2 CVE-2026-55200 (VT-051) PoC-only; LegacyHive/Nightmare Eclipse (VT-042) unpatched no-CVE no-ITW. Anti-repetition LOAD-BEARING: KEV items NOT re-led as a countdown (post-deadline reframe); Windchill NOT re-led; Zimbra NOT re-covered as new. Distinct framing from 2026-07-25 AM ('deadline TODAY') + 2026-07-25 PM ('window closing TONIGHT') by leading on 'deadline LAPSED yesterday'."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - quiet-cycle-zero-net-new-promotions-zero-rejections
+      - clean-sweep-07-30-pre-brief-raw-2026-07-26-am-000-one-bleepingcomputer-steam-clickfix-xmrig-discarded-non-ad-non-roster-non-cve
+      - lead-first-brief-after-two-kev-federal-remediation-deadlines-lapsed-2026-07-25
+      - checkpoint-smartconsole-cve-2026-16232-post-deadline-continuing-coverage-pointer
+      - sharepoint-cve-2026-50522-post-deadline-continuing-coverage-pointer-machine-key-rotation
+      - deadline-countdown-angle-exhausted-reframed-post-deadline-federal-non-compliance-plus-standing-exploitation-risk
+      - kev-items-no-net-new-since-morning-2026-07-25-not-a-fresh-resurface-no-covered-in-append-no-back-write
+      - resurface-callout-deadline-closing-tonight-to-deadline-lapsed-non-compliant
+      - zimbra-cve-2025-66376-laundry-bear-void-blizzard-no-change-standing-watch-pointer
+      - standing-ad-sector-focus-structural-only-no-named-victim
+      - iran-cyber-watch-silent-day
+      - other-signal-no-change-windchill-cve-2026-12569-clop-hedged-oracle-ebs-cve-2026-46817-past-july-18-libssh2-cve-2026-55200-poc-only-legacyhive-vt042-unpatched
+      - anti-repetition-load-bearing-kev-not-re-led-as-countdown-windchill-not-re-led-zimbra-not-re-covered-as-new
+      - distinct-framing-from-2026-07-25-am-deadline-today-and-pm-window-closing-tonight-leads-on-deadline-lapsed-yesterday
+      - hard-rule-2-zimbra-and-clop-attribution-source-stated-not-originated
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - preflight-13-of-13-pass
+    related_actors: []              # No roster-actor mention as a graded item. Zimbra cluster (LAUNDRY BEAR/Void Blizzard) + Cl0p (Windchill, hedged) are source-stated pointers only; UNC1549/Charming Kitten/Handala/MuddyWater + APT28/Lazarus/APT41/Salt Typhoon appear only in verbatim silent-day/sector templates. Hard Rule 2.
+    related_vulns: [CVE-2026-16232, CVE-2026-50522, CVE-2025-66376, CVE-2026-12569, CVE-2026-46817, CVE-2026-55200]   # ALL post-deadline / no-change continuing-coverage pointers; NONE newly covered this cycle
+    related_campaigns: []
+    finding_ids: []                 # 0 net-new; no finding receives net-new coverage this cycle
+    digraph: n/a                    # no net-new graded item
+    wep: n/a
+    disposition:
+      net_new_findings_promoted: 0
+      new_topic_entries_created: 0
+      covered_in_appends: 0         # the two KEV items were the deadline-day UPDATE resurface in the 2026-07-25 MORNING brief; the deadline LAPSED end-of-day 07-25. This brief is the first AFTER the lapse with NO net-new exploitation/victim/IOC since 08:00 07-25 -> post-deadline continuing-coverage pointer, NOT a fresh resurface. Per 2026-07-24-pm / 2026-07-25 precedent, no-change / post-deadline pointers do NOT append covered_in.
+      published_in_briefs_back_writes: 0   # no finding receives net-new coverage — nothing to back-write
+      rationale: >
+        Genuinely quiet Sunday morning. Grader promoted/rejected nothing (07:30 pre-brief clean sweep;
+        one BleepingComputer Steam/ClickFix XMRig item discarded as non-A&D/non-roster/non-CVE). The two
+        2026-07-25 KEV deadlines were already the deadline-day UPDATE resurface in the 2026-07-25 MORNING
+        brief (covered_in appended + published_in_briefs back-written THERE) and the end-of-day close-out
+        pointer in the 2026-07-25 AFTERNOON brief. The deadline LAPSED at end of day 07-25; this brief is
+        the first AFTER the lapse. There is NO net-new exploitation/victim/IOC since 08:00 07-25 — the
+        lapse itself is a known, already-forecast terminal state, reframed honestly (federal non-compliance
+        + standing exploitation risk) but NOT a new resurface trigger beyond the morning's UPDATE. Therefore
+        NO covered_in append and NO published_in_briefs back-write, consistent with the 2026-07-24-pm /
+        2026-07-25 no-change-pointer precedent. Zimbra, Windchill, Oracle-EBS, libssh2, and LegacyHive are
+        pure no-change carry-forward pointers. This brief-meta entry is the sole coverage-log addition for
+        the cycle.
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 512         # 400-800 morning band
+      layer2_words: ~175            # 150-300 band
+      layer2_chars_est: ~1350       # <=1900 ceiling; single Discord message, no chunk needed
+      check_3_note: >
+        Anti-repetition (check 3) PASS. The two KEV items are re-referenced under an explicit 🔗 correlation
+        callout to previously covered material (2026-07-25 afternoon) and stated plainly 'no net-new since the
+        deadline' — a post-deadline continuing-coverage pointer, NOT presented as net-new, and deliberately NOT
+        re-led as a countdown (the countdown angle is exhausted after three prior briefs). Zimbra / Windchill /
+        Oracle-EBS / libssh2 / LegacyHive are transparent no-change pointers, each flagged 'no change'. Check-3
+        intent (block unauthorized re-coverage of stale news as new) satisfied.
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings: []   # none — 0 net-new coverage this cycle
+      resurface_updates: []                            # no in-place resurfaces this cycle
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 → #intel-briefs), Teams (skip if webhook unset), Splunk log, and git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-26 MORNING BRIEF (briefer phase, briefer-20260726-080000). A genuinely QUIET Sunday: grader
+      promoted 0 net-new findings and rejected 0 (07:30 pre-brief raw-2026-07-26-am-000 clean sweep; one
+      BleepingComputer Steam/ClickFix XMRig item discarded as non-A&D / non-roster / non-CVE). No urgency
+      manufactured.
+
+      LEAD: honest, POST-DEADLINE reframe. The deadline-countdown angle is EXHAUSTED — the two 2026-07-25 KEV
+      deadlines led the 2026-07-24 PM ('deadline tomorrow'), 2026-07-25 AM ('deadline today') and 2026-07-25 PM
+      ('window closing tonight') briefs, and the deadline LAPSED at end of day yesterday. First sentence names
+      the two CVEs + new status (lapsed) + impact: any unpatched fleet is now in federal NON-COMPLIANCE and
+      still carries standing active-exploitation risk ('the deadline's passing removed the countdown, not the
+      threat'). Check 4 impact-lead satisfied.
+
+      ANTI-REPETITION load-bearing. The two KEV items were the deadline-day UPDATE resurface in the 2026-07-25
+      MORNING brief (covered_in + back-write done THERE) and the end-of-day close-out pointer in the 2026-07-25
+      AFTERNOON brief. There is NO net-new exploitation/victim/IOC since 08:00 07-25 — the deadline lapse is a
+      known, already-forecast terminal state, so this is a post-deadline continuing-coverage pointer (🔗 callout
+      'deadline closing tonight' -> 'deadline lapsed; unpatched fleets now non-compliant'), NOT a fresh resurface.
+      Per the 2026-07-24-pm / 2026-07-25 no-change-pointer precedent: NO covered_in append, NO published_in_briefs
+      back-write. Windchill NOT re-led; Zimbra carried as a no-change standing-watch pointer, not re-covered as new.
+
+      SECTIONS: 🚨 Active Threats — 'no net-new' statement + Zimbra no-change standing-watch (A2/likely, CISA
+      AA26-204A + Unit 42, DIB structural, Hard Rule 2 attribution source-stated). 🔓 Vulnerabilities — the two
+      lapsed 2026-07-25 KEV deadlines as a post-deadline pointer, action = remediate immediately off the countdown
+      + SharePoint machine-key rotation, 🔗 callout deadline-closing-tonight -> deadline-lapsed-non-compliant;
+      digraph A2 (CISA KEV authoritative on listing/lapsed deadline). ✈️ Sector Focus A&D — structural-only note
+      (no named A&D/DIB victim on any surfaced topic). 🇮🇷 Iran Cyber Watch — silent-day. 📰 Other Signal —
+      Windchill CVE-2026-12569 carries forward (Cl0p-hedged, Archimedes does not endorse); Oracle EBS
+      CVE-2026-46817 (VT-043) past July-18; libssh2 CVE-2026-55200 (VT-051) PoC-only; LegacyHive/Nightmare
+      Eclipse (VT-042) unpatched no-CVE no-ITW MSRC-silent.
+
+      HARD RULES: Rule 2 — Zimbra + Cl0p attributions carried strictly as the sources', not originated. Rule 6 —
+      ZERO direct quotes, both layers. Rule 3 — mechanisms at class level, no PoC. Rule 8 — n/a this cycle
+      (07:30 sentinel sweep over -24h returned 0 events both indexes; no first-party IOC hit). No ITAR/
+      export-controlled detail. All six CVE mentions dossier-linked for check 9 (CVE-2025-66376 flagged 'pending
+      vuln-tracker index'). Pre-flight 13-of-13 PASS (iteration 1). Layer 2 omits standing-section boilerplate
+      (Iran/Sector), carries the two actionable bullets (KEV post-deadline lead + Zimbra standing second) with
+      source-linked headlines + natural-language dates ("yesterday, July 25," "since Thursday," "November 2025"),
+      Hard Rule 2 framings preserved, italic urgency on the remediate/confirm calls. NOT posted/committed by
+      briefer — librarian delivers.
+    first_covered: 2026-07-26
+    last_covered: 2026-07-26
+    retraction: null
+    test: false
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

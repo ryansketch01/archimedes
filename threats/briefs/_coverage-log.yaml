@@ -46327,7 +46327,7 @@ entries:
     test: false
 
   - id: 2026-07-24-flash-0650-001-ptc-windchill-flexplm-cve-2026-12569-unauth-deserialization-rce-cvss-9-3-active-itw-webshell-cisa-kev-2026-06-25-a1-very-likely-clop-hedged-b3-possibly-reliaquest-single-source
-    covered_in: [flash-2026-07-24-0650, 2026-07-24-morning]   # 06:50 FLASH QUEUED (quiet hours) for 09:00 catch-up, NEVER delivered; absorbed + delivered by the 08:00 morning brief, which SUPERSEDES the queued FLASH. Librarian: mark flash-queue.yaml entry flash-2026-07-24-0650 superseded:true / superseded_by:2026-07-24-morning and archive.
+    covered_in: [flash-2026-07-24-0650, 2026-07-24-morning, 2026-07-27-afternoon]   # 06:50 FLASH QUEUED (quiet hours) for 09:00 catch-up, NEVER delivered; absorbed + delivered by the 08:00 morning brief, which SUPERSEDES the queued FLASH. Librarian: mark flash-queue.yaml entry flash-2026-07-24-0650 superseded:true / superseded_by:2026-07-24-morning and archive. 2026-07-27-afternoon RESURFACE (in-place, UPDATE): SecurityWeek campaign enrichment (finding-2026-07-27-0001) — active data-theft extortion campaign since ~2026-07-20, chained pre-auth exploit mechanism, extortion to hundreds of users, aerospace named among target sectors. resurface_if condition met: escalation_to_exploitation (active-campaign scope) + actor_ttps_evolve (mechanism). Exploitation grade (A1-by-lineage/likely) and Cl0p tie (B3/possibly) UNCHANGED; SecurityWeek NOT independent corroboration of the Cl0p attribution (ACH-confirmed corroboration-collapse).
     superseded_flash: flash-2026-07-24-0650   # topic must not be dropped — morning brief is the first/only Discord delivery of CVE-2026-12569
     headline: "FLASH — CISA-KEV-listed PTC Windchill/FlexPLM CVE-2026-12569 (unauth deserialization RCE, CVSS 9.3) under active ITW exploitation via persistent JSP webshells (KEV 2026-06-25, federal due 2026-06-28; PTC patches from 2026-06-17); first corpus surface of the A&D-dominant PLM platform. Exploitation A1/very-likely (two independent A bases CISA KEV + PTC, independence RESOLVED this sweep by direct retrieval + 4 trade relays). Cl0p (#018) attribution B3/possibly — ReliaQuest single-source, explicitly UNCONFIRMED, carried as-reported not originated (Hard Rule 2)."
     topic_tags:
@@ -46354,7 +46354,7 @@ entries:
     related_vulns: [CVE-2026-12569]  # net-new; distinct from tracked family CVE-2026-4681 (Windchill-FlexPLM-ZeroDay profile, CVSS 10.0, no confirmed ITW as of 2026-06-10)
     related_campaigns:
       - reliaquest-suspected-unconfirmed-clop-windchill-flexplm-data-theft-extortion-2026
-    finding_ids: [finding-2026-07-24-flash-0600-0001]
+    finding_ids: [finding-2026-07-24-flash-0600-0001, finding-2026-07-27-0001]   # +finding-2026-07-27-0001 (2026-07-27-afternoon resurface — campaign enrichment layer)
     digraph: A1                      # headline = exploitation claim; attribution layer graded B3 separately
     digraph_layered:
       exploitation_cve_fact: A1
@@ -46442,7 +46442,7 @@ entries:
       within-band tightening, not a check-8 failure). NOT posted/queued/committed by briefer — orchestrator
       queues, librarian delivers post-catch-up.
     first_covered: 2026-07-24
-    last_covered: 2026-07-24
+    last_covered: 2026-07-27   # was 2026-07-24; in-place resurface in 2026-07-27-afternoon (UPDATE — campaign enrichment)
     delivery_note: |
       SUPERSESSION (2026-07-24 08:00 morning brief): the 06:50 FLASH (flash-2026-07-24-0650) was
       QUEUED to infrastructure/flash-queue.yaml for the 09:00 catch-up because 06:00 is inside quiet
@@ -47097,6 +47097,234 @@ entries:
       2025"), Hard Rule 2 framings preserved, italic urgency on the verify/patch/confirm calls; intro + Windchill
       + Zimbra bullets trimmed to hold Layer 2 under the 1900-char ceiling with headroom. NOT posted/committed by
       briefer — librarian delivers.
+    first_covered: 2026-07-27
+    last_covered: 2026-07-27
+    retraction: null
+    test: false
+
+  - id: 2026-07-27-pm-001-cisa-kev-arista-velocloud-orchestrator-cve-2026-16812-sd-wan-control-plane-active-exploitation-accelerated-3-day-deadline-2026-07-30-a2-likely-single-source-veto
+    covered_in: [2026-07-27-afternoon]
+    headline: "CISA added Arista VeloCloud Orchestrator CVE-2026-16812 (SD-WAN control plane) to KEV on 2026-07-27 with an ACCELERATED ~3-day federal deadline (dueDate 2026-07-30) — active exploitation, knownRansomwareCampaignUse Unknown. Orchestrator compromise implies fleet-wide SD-WAN control (high blast radius). A2/likely (single-source veto — CISA KEV sole basis this surface; caps at likely pending an independent second basis, NOT doubt about CISA). CVSS NOT confirmed >=9.0 from the KEV entry; blast-radius framing is architectural, not from CVE mechanics. No actor named (Hard Rule 2). Net-new to the corpus; strongest FLASH-adjacent candidate this window but critical-override quiet-hours bypass does NOT fire (CVSS unconfirmed / ransomware Unknown / no actor / no named A&D victim) — absorbed into the 16:00 afternoon brief per the accelerated-KEV-into-imminent-scheduled-brief precedent (Oracle-EBS / SharePoint / Check Point)."
+    topic_tags:
+      - afternoon-brief
+      - net-new-cisa-kev-addition-2026-07-27
+      - cve-2026-16812-arista-velocloud-orchestrator-sd-wan-control-plane
+      - accelerated-3-day-federal-deadline-2026-07-30-distinguishing-urgency-signal
+      - active-exploitation-a-grade-cisa-kev-authoritative-determination
+      - knownransomwarecampaignuse-unknown
+      - orchestrator-compromise-fleet-wide-sd-wan-control-high-blast-radius-structural-ad-relevance
+      - cvss-not-confirmed-ge-9-blast-radius-framing-architectural-not-cve-mechanics
+      - single-source-veto-cisa-kev-sole-basis-caps-likely-not-doubt-about-cisa
+      - no-actor-named-hard-rule-2
+      - no-named-ad-prime-victim-structural-network-infra-control-plane-class
+      - velocloud-moved-under-arista-post-2025-broadcom-acquisition
+      - flash-adjacent-strongest-candidate-window-critical-override-does-not-fire
+      - pending-vuln-tracker-index-dossier-open-accelerated-deadline-tracking
+      - preflight-13-of-13-pass
+    related_actors: []               # CISA names no actor (Hard Rule 2)
+    related_vulns: [CVE-2026-16812]  # net-new; not yet in vuln-index — librarian flag: open dossier + track accelerated 2026-07-30 deadline
+    related_campaigns: []
+    finding_ids: [finding-2026-07-27-0003]
+    digraph: A2
+    wep: likely                      # single-source veto (CISA KEV sole basis this surface)
+    resurface_if:
+      - new_victims_confirmed              # any named A&D/DIB victim
+      - new_attribution                    # any A/B source attributes exploitation
+      - actor_ttps_evolve                  # CVE-specific atomic IOCs / exploit detail published
+      - escalation_to_exploitation         # mass-exploitation / scope expansion
+      - first_party_ioc_hit                # observed in archimedes/defenseclaw_local
+      - patch_released                     # Arista advisory + confirmed CVSS on direct retrieval (candidate to lift toward very_likely)
+      - kev_due_date_2026_07_30_passing_without_federal_remediation
+    librarian_handoff:
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-16812 (Arista VeloCloud Orchestrator SD-WAN control plane, CISA KEV 2026-07-27, accelerated dueDate 2026-07-30, active exploitation, ransomware Unknown): NET-NEW, not in _index.yaml. Open a dossier; track the accelerated 2026-07-30 deadline. Direct-retrieval TODO: Arista security advisory (SA series) + NVD record NOT retrieved this sweep (public detail sparse) — firms CVSS/affected-versions/CWE and would establish an independent second evidence basis (candidate to lift credibility toward 1 / WEP toward very_likely)."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-27 AFTERNOON BRIEF, Vulnerabilities section (led the section — accelerated deadline is the
+      distinguishing urgency signal). Net-new CISA KEV addition. A2/likely, single-source veto (CISA KEV sole
+      basis this surface; the veto is about a missing independent SECOND evidence basis needed for 'confirmed',
+      NOT doubt about CISA). Analyst light-touch KAC (no ACH — no genuine competing explanation for a KEV
+      active-exploitation determination); accelerated deadline treated as a genuine urgency signal
+      (precedent-consistent) but blast radius NOT over-stated (CVSS unconfirmed >=9.0; framing architectural).
+      Hard Rule 2 — no actor named/originated. Pre-flight 13-of-13 PASS.
+    first_covered: 2026-07-27
+    last_covered: 2026-07-27
+    retraction: null
+    test: false
+
+  - id: 2026-07-27-pm-002-cisa-kev-fortinet-fortios-cve-2025-68686-ssl-vpn-active-exploitation-standard-14-day-deadline-2026-08-10-a2-likely-single-source-veto
+    covered_in: [2026-07-27-afternoon]
+    headline: "CISA added Fortinet FortiOS CVE-2025-68686 (SSL-VPN) to KEV on 2026-07-27 with a STANDARD 14-day federal deadline (dueDate 2026-08-10) — active exploitation, knownRansomwareCampaignUse Unknown. FortiOS SSL-VPN is a dominant remote-access gateway on A&D-prime perimeters; actively-exploited unauth SSL-VPN flaw = first-order initial-access risk. A2/likely (single-source veto — CISA KEV sole basis this surface; mechanism detail from public reporting UNVERIFIED against the Fortinet FG-IR-25-934 primary this sweep). No actor named (Hard Rule 2); Pioneer Kitten #029 FortiOS-edge repertoire is DEFENSIVE CONTEXT ONLY, not an attribution — deliberately omitted from the brief to avoid implying attribution. Net-new to the corpus (distinct from the unrelated 2018 CVE-2018-13379). Standard deadline (not accelerated) — critical-override does NOT fire; absorbed into the 16:00 afternoon brief as a net-new item."
+    topic_tags:
+      - afternoon-brief
+      - net-new-cisa-kev-addition-2026-07-27
+      - cve-2025-68686-fortinet-fortios-ssl-vpn
+      - active-exploitation-a-grade-cisa-kev-authoritative-determination
+      - standard-14-day-federal-deadline-2026-08-10-not-accelerated
+      - knownransomwarecampaignuse-unknown
+      - fortios-ssl-vpn-dominant-remote-access-gateway-ad-prime-perimeter-first-order-initial-access-risk
+      - fortinet-advisory-fg-ir-25-934-mechanism-unverified-vs-primary-this-sweep
+      - cvss-not-stated-in-kev-entry-pending-fg-ir-25-934-nvd-direct-retrieval
+      - single-source-veto-cisa-kev-sole-basis-caps-likely-not-doubt-about-cisa
+      - no-actor-named-hard-rule-2
+      - pioneer-kitten-029-fortios-edge-defensive-context-only-not-attribution-omitted-from-brief
+      - no-named-ad-prime-victim-structural-perimeter-class
+      - distinct-from-unrelated-2018-fortios-cve-2018-13379
+      - edge-vpn-kev-cadence-july-2026-sonicwall-paloalto-globalprotect-checkpoint-smartconsole
+      - pending-vuln-tracker-index-dossier-open
+      - preflight-13-of-13-pass
+    related_actors: []               # CISA names no actor (Hard Rule 2). Pioneer Kitten #029 = defensive context only, NOT an attribution; deliberately kept out of the brief.
+    related_vulns: [CVE-2025-68686]  # net-new; not yet in vuln-index — librarian flag: open dossier (distinct from 2018 CVE-2018-13379)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-27-0002]
+    digraph: A2
+    wep: likely                      # single-source veto (CISA KEV sole basis this surface)
+    resurface_if:
+      - new_victims_confirmed
+      - new_attribution
+      - actor_ttps_evolve
+      - escalation_to_exploitation
+      - first_party_ioc_hit
+      - patch_released                     # FG-IR-25-934 primary + confirmed CVSS on direct retrieval (candidate to lift toward very_likely)
+      - kev_due_date_2026_08_10_passing_without_federal_remediation
+    librarian_handoff:
+      vuln_tracker_handoff_pending:
+        - "CVE-2025-68686 (Fortinet FortiOS SSL-VPN, CISA KEV 2026-07-27, dueDate 2026-08-10, active exploitation, ransomware Unknown): NET-NEW, not in _index.yaml (existing FortiOS index entry is the unrelated 2018 CVE-2018-13379). Open a dossier. Vendor advisory FG-IR-25-934. Direct-retrieval TODO: FG-IR-25-934 + NVD NOT retrieved this sweep — mechanism (SSL-VPN info-exposure / symlink-persistency patch-bypass) is from WebSearch and UNVERIFIED; retrieval firms CVSS/scope and would establish an independent second evidence basis (candidate to lift toward very_likely)."
+      actor_profiler_handoff_pending:
+        - "Pioneer Kitten #029: FortiOS-edge CVEs are within #029's exploitation repertoire, but CISA names NO actor for CVE-2025-68686. Recorded strictly as DEFENSIVE-RELEVANCE CONTEXT, NOT an attribution (Hard Rule 2). Deliberately kept out of the brief to avoid implying attribution. Do NOT cross-walk."
+      splunk_and_commit: "librarian owns Discord delivery, Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-27 AFTERNOON BRIEF, Vulnerabilities section (second item). Net-new CISA KEV addition on the
+      STANDARD 14-day clock (dueDate 2026-08-10 — not accelerated). A2/likely, single-source veto (CISA KEV sole
+      basis; mechanism detail unverified vs the Fortinet FG-IR-25-934 primary this sweep — the veto is about a
+      missing independent SECOND evidentiary basis, NOT doubt about CISA). Analyst light-touch KAC (no ACH).
+      Hard Rule 2 — no actor named/originated; Pioneer Kitten #029 FortiOS-edge note is defensive context only
+      and was DELIBERATELY OMITTED from the brief to avoid implying attribution. Pre-flight 13-of-13 PASS.
+    first_covered: 2026-07-27
+    last_covered: 2026-07-27
+    retraction: null
+    test: false
+
+  - id: 2026-07-27-pm-brief-meta
+    covered_in: [2026-07-27-afternoon]
+    brief_file: threats/briefs/2026-07-27-afternoon.md
+    headline: "Afternoon brief 2026-07-27 (Monday) — MODEST UPTICK from the quiet morning open: 2 net-new CISA KEV additions (Arista VeloCloud Orchestrator CVE-2026-16812 with an accelerated ~3-day 2026-07-30 deadline; Fortinet FortiOS SSL-VPN CVE-2025-68686 on the standard 2026-08-10 clock) + 1 continuing-coverage Windchill/FlexPLM CVE-2026-12569 enrichment (in-place resurface of the 2026-07-24 topic entry). Lead = the two KEV adds, foregrounding the Arista 3-day deadline as the sharp urgency signal; honest framing (two net-new KEV + one enrichment, a modest uptick from the morning's zero-net-new). Active Threats = Windchill UPDATE (B2/likely campaign enrichment; A1-by-lineage exploitation held at likely; Cl0p B3/possibly, SUSPECTED-ONLY, SecurityWeek NOT independent corroboration — Hard Rule 2, Archimedes does not endorse). Vulnerabilities = Arista (lead, accelerated deadline) + Fortinet, both A2/likely single-source veto, CISA names no actor. Sector Focus A&D = structural-only (no named A&D/DIB victim on any of the three items). Iran Cyber Watch = silent-day. Other Signal = standing patch-posture worklist unchanged since morning (Oracle-EBS / lapsed KEV pair / libssh2 / LegacyHive all no-change pointers — NOT re-covered as new)."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - modest-uptick-from-quiet-morning-two-net-new-kev-adds-plus-one-continuing-coverage-enrichment
+      - net-new-arista-velocloud-orchestrator-cve-2026-16812-accelerated-3-day-deadline-2026-07-30
+      - net-new-fortinet-fortios-ssl-vpn-cve-2025-68686-standard-deadline-2026-08-10
+      - continuing-coverage-windchill-flexplm-cve-2026-12569-in-place-resurface-of-2026-07-24-topic-entry
+      - lead-two-kev-adds-foreground-arista-3-day-deadline-sharp-urgency-signal-honest-framing
+      - active-threats-windchill-update-b2-likely-clop-b3-possibly-suspected-only-hard-rule-2-archimedes-does-not-endorse
+      - securityweek-not-independent-corroboration-of-clop-ach-confirmed-corroboration-collapse
+      - vulnerabilities-arista-lead-plus-fortinet-both-a2-likely-single-source-veto-cisa-names-no-actor
+      - sector-focus-ad-structural-only-no-named-victim
+      - iran-cyber-watch-silent-day
+      - other-signal-standing-patch-posture-worklist-unchanged-oracle-ebs-lapsed-kev-pair-libssh2-legacyhive-no-change-pointers
+      - anti-repetition-windchill-resurfaced-in-place-not-new-entry-standing-worklist-not-re-covered-as-new
+      - hard-rule-2-clop-and-attribution-source-stated-not-originated-pioneer-kitten-defensive-context-omitted
+      - hard-rule-3-mechanism-class-level-no-poc-both-kev-and-windchill
+      - hard-rule-6-one-2-word-quote-remains-unconfirmed-securityweek-under-15-words-one-per-source
+      - preflight-13-of-13-pass
+    related_actors: ["018"]          # Cl0p #018 — SUSPECTED-ONLY / hedged per SecurityWeek (Windchill). Hard Rule 2: carried as-reported, not originated. No Cl0p dossier in repo — flag for actor-profiler addition (dossier-pending).
+    related_vulns: [CVE-2026-16812, CVE-2025-68686, CVE-2026-12569, CVE-2026-46817, CVE-2026-16232, CVE-2026-50522, CVE-2026-55200]   # 16812 + 68686 = net-new (new topic entries); 12569 = in-place resurface (UPDATE); the rest are no-change Other-Signal carry-forward pointers (NOT newly covered)
+    related_campaigns:
+      - securityweek-suspected-unconfirmed-clop-windchill-flexplm-data-theft-extortion-2026
+    finding_ids: [finding-2026-07-27-0001, finding-2026-07-27-0002, finding-2026-07-27-0003]
+    digraph: n/a                     # meta entry — per-item digraphs on the three topic entries above (12569 resurface A1/B2, 16812 A2, 68686 A2)
+    wep: n/a
+    disposition:
+      net_new_findings_promoted: 3   # finding-2026-07-27-0001 (Windchill enrichment, update_to 07-24), -0002 (Fortinet KEV), -0003 (Arista KEV)
+      new_topic_entries_created: 2   # 2026-07-27-pm-001 (Arista), 2026-07-27-pm-002 (Fortinet)
+      in_place_resurfaces: 1         # Windchill 2026-07-24 topic entry — covered_in += 2026-07-27-afternoon, last_covered -> 2026-07-27, finding_ids += finding-2026-07-27-0001
+      covered_in_appends: 1          # the Windchill topic entry (resurface). Other-Signal carry-forwards (Oracle-EBS / lapsed KEV pair / libssh2 / LegacyHive) are no-change pointers -> NO append (2026-07-24-pm / 2026-07-25 / 2026-07-26 / 2026-07-27-am precedent).
+      published_in_briefs_back_writes: 3   # findings 0001, 0002, 0003 each get 2026-07-27-afternoon appended
+      rationale: >
+        Modest uptick from the quiet Monday morning open. Grader promoted 3 net-new findings this cycle: two
+        net-new CISA KEV additions (Arista VeloCloud Orchestrator CVE-2026-16812, accelerated ~3-day deadline;
+        Fortinet FortiOS SSL-VPN CVE-2025-68686, standard deadline) and one continuing-coverage Windchill/FlexPLM
+        CVE-2026-12569 campaign enrichment (finding-2026-07-27-0001, update_to the 2026-07-24 parent). The two KEV
+        items get new topic entries; the Windchill enrichment resurfaces the 2026-07-24 topic entry IN PLACE (not
+        a new entry, per anti-repetition doctrine). The standing Other-Signal worklist (Oracle-EBS CVE-2026-46817,
+        the two lapsed 2026-07-25 KEV flaws CVE-2026-16232 + CVE-2026-50522, libssh2 CVE-2026-55200, LegacyHive
+        VT-042) carried as pure no-change pointers — NOT re-covered as new, no covered_in append, consistent with
+        the 2026-07-24-pm / 2026-07-25 / 2026-07-26 / 2026-07-27-am no-change-pointer precedent.
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 698         # 400-800 afternoon band
+      layer2_words: ~215            # 150-300 band
+      layer2_chars_est: ~1610       # <=1900 ceiling; single Discord message, no chunk needed
+      check_3_note: >
+        Anti-repetition (check 3) PASS. Two net-new KEV items (net-new topic entries). Windchill is an UPDATE
+        with a 🔗 correlation callout to the 2026-07-24 thread and genuine new material (active-campaign tempo,
+        chained-exploit mechanism, extortion scope, aerospace-sector naming) — resurfaced in place, not a new
+        entry. Other-Signal standing worklist stated plainly as 'unchanged since this morning' / 'no change to
+        report' — no-change pointers, NOT presented as net-new. Check-3 intent satisfied.
+      check_11_note: >
+        Single-source veto (check 11) PASS. No 'very likely' or stronger claim anywhere. Windchill exploitation
+        is A1-by-lineage but explicitly held at 'likely' (parent red-team qualification, direct retrieval
+        outstanding). Both KEV items A2/likely with the single-source veto stated per item (CISA KEV sole basis;
+        the veto is about a missing independent SECOND basis, NOT doubt about CISA).
+      check_12_note: >
+        Quote discipline (check 12) PASS. Exactly one direct quote in the brief — 'remains unconfirmed' (2 words,
+        SecurityWeek, Windchill attribution). Under 15 words, one per source. All other source content paraphrased.
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-27-0001, append_brief_id: 2026-07-27-afternoon}   # DONE by briefer
+        - {finding_id: finding-2026-07-27-0002, append_brief_id: 2026-07-27-afternoon}   # DONE by briefer
+        - {finding_id: finding-2026-07-27-0003, append_brief_id: 2026-07-27-afternoon}   # DONE by briefer
+      resurface_updates:
+        - {topic_entry_id: 2026-07-24-flash-0650-001-ptc-windchill-flexplm-cve-2026-12569-unauth-deserialization-rce-cvss-9-3-active-itw-webshell-cisa-kev-2026-06-25-a1-very-likely-clop-hedged-b3-possibly-reliaquest-single-source, action: "covered_in += 2026-07-27-afternoon; last_covered -> 2026-07-27; finding_ids += finding-2026-07-27-0001 — DONE by briefer"}
+      new_sources_flagged: []        # securityweek already B (provisional) in source-grades.yaml; cisa-kev A. No new source this cycle.
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-16812 (Arista VeloCloud Orchestrator): net-new, open dossier, track accelerated 2026-07-30 deadline. See 2026-07-27-pm-001."
+        - "CVE-2025-68686 (Fortinet FortiOS SSL-VPN): net-new, open dossier (distinct from 2018 CVE-2018-13379). See 2026-07-27-pm-002."
+        - "CVE-2026-12569 (PTC Windchill/FlexPLM): existing dossier — update campaign timeline with the ~2026-07-20 active-campaign tempo + mechanism + extortion scope + aerospace-sector naming. Parent direct_retrieval_todo (KEV JSON + PTC advisory) still gates restoration of exploitation WEP to very_likely."
+      actor_profiler_handoff_pending:
+        - "Cl0p / #018: still no dossier (dossier-pending). SecurityWeek Windchill linkage is B3/hedged / SUSPECTED-ONLY — do NOT record as confirmed. ACH confirms SecurityWeek is NOT independent corroboration of the earlier ReliaQuest hedge."
+        - "Pioneer Kitten #029: FortiOS-edge defensive context only (CVE-2025-68686), NOT an attribution — kept out of the brief. Do not cross-walk."
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 -> #intel-briefs), Teams (skip if webhook unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-27 AFTERNOON BRIEF (briefer phase, briefer-20260727-160000). A modest uptick from the quiet Monday
+      morning open: grader promoted 3 net-new findings — two net-new CISA KEV additions and one continuing-coverage
+      Windchill enrichment.
+
+      LEAD: the two net-new KEV additions, foregrounding the Arista VeloCloud Orchestrator accelerated ~3-day
+      federal deadline (dueDate 2026-07-30) as the sharpest urgency signal. Honest framing per operator instruction
+      — two net-new KEV adds + one continuing-coverage enrichment, a genuine (modest) uptick from the morning's
+      zero-net-new. Check-4 impact-lead satisfied.
+
+      ANTI-REPETITION: Windchill CVE-2026-12569 resurfaced IN PLACE on the 2026-07-24 topic entry (UPDATE flag +
+      🔗 callout), NOT a new entry — genuine new material (active-campaign since ~07-20, chained pre-auth mechanism,
+      extortion to hundreds of users, aerospace named as a target sector). The two KEV items are net-new topic
+      entries. The standing Other-Signal worklist (Oracle-EBS CVE-2026-46817, the two lapsed 2026-07-25 KEV flaws,
+      libssh2 CVE-2026-55200, LegacyHive VT-042) carried as pure no-change pointers — NOT re-covered as new, no
+      covered_in append (2026-07-24-pm / 2026-07-25 / 2026-07-26 / 2026-07-27-am precedent).
+
+      HARD RULES: Rule 2 — Cl0p attribution carried strictly as SecurityWeek's hedged/unconfirmed claim, not
+      originated or firmed; 'Archimedes does not endorse the Cl0p tie' preserved; SecurityWeek is NOT independent
+      corroboration of the earlier ReliaQuest hedge (ACH-confirmed corroboration-collapse). Pioneer Kitten #029
+      FortiOS-edge repertoire is defensive context only, deliberately kept OUT of the brief to avoid implying
+      attribution. Rule 3 — mechanisms at class level (Windchill chained pre-auth -> webshell; SSL-VPN / SD-WAN
+      control-plane classes), no PoC. Rule 6 — exactly one 2-word direct quote ('remains unconfirmed', SecurityWeek),
+      under 15 words, one per source; all else paraphrased. Rule 8 — first-party Splunk null both indexes on all
+      three CVEs (visibility-bounded, non-disconfirming; Frank not a Windchill/FortiOS/VeloCloud-visible tenant).
+      No ITAR/export-controlled technical detail. CVE-2026-12569 dossier-linked (check 9); the two net-new CVEs
+      flagged 'pending vuln-tracker index'; Cl0p #018 dossier-pending (flagged, no broken link).
+
+      SECTIONS: 🚨 Active Threats — Windchill UPDATE. 🔓 Vulnerabilities — Arista (lead, accelerated deadline) +
+      Fortinet, both A2/likely single-source veto. ✈️ Sector Focus A&D — structural-only (no named A&D/DIB victim).
+      🇮🇷 Iran Cyber Watch — silent-day. 📰 Other Signal — standing patch-posture worklist unchanged since morning.
+      Pre-flight 13-of-13 PASS (iteration 1). Layer 2 omits standing-section boilerplate, carries three
+      source-linked bullets (Arista + Fortinet + Windchill) with natural-language dates ('today,' 'due July 30,'
+      'before Thursday,' 'due August 10,' 'since ~July 20,' 'PTC's June 17 releases'), Hard Rule 2 framings
+      preserved, italic urgency on the patch calls, ~215 words / ~1610 chars (<=1900 ceiling), single message.
+      NOT posted/committed by briefer — librarian delivers.
     first_covered: 2026-07-27
     last_covered: 2026-07-27
     retraction: null

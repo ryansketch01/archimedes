@@ -18,6 +18,10 @@ iocs_extracted: true
 iocs_count: 3
 text_word_count: 720
 promoted: false
+grader_reviewed: true
+grader_reviewed_at: 2026-07-28T08:12:00-04:00
+grader_disposition: no_promotion_sweep_sentinel
+grader_note: "FLASH 00:00 sweep coverage record — 0 net-new FLASH candidates, no promotable claim of its own. The 3 net-new Arista attacker IPs it surfaced are folded into finding-2026-07-28-0001 (CVE-2026-16812 UPDATE) via raw-2026-07-28-am-001. Not logged to _rejection-log.yaml (sentinel, not an ineligible claim)."
 ttl_expires_at: 2026-10-26T00:06:00-04:00
 ---
 

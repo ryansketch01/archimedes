@@ -47103,7 +47103,7 @@ entries:
     test: false
 
   - id: 2026-07-27-pm-001-cisa-kev-arista-velocloud-orchestrator-cve-2026-16812-sd-wan-control-plane-active-exploitation-accelerated-3-day-deadline-2026-07-30-a2-likely-single-source-veto
-    covered_in: [2026-07-27-afternoon]
+    covered_in: [2026-07-27-afternoon, 2026-07-28-morning]   # RESURFACE 2026-07-28 morning — material-update UPDATE (resurface_if patch_released MET): Arista RELEASED the patch matrix (VCO 5.2.3.14/6.1.3.4/6.4.2.4/7.0.0.1), CVSS CONFIRMED 10.0 (maximum), and published 3 attacker hunt-IPs (8.19.75.217, 206.72.242.124, 206.72.242.162) — the three items finding-0003 explicitly deferred. LED the 2026-07-28 morning brief (lead sentence + Vulnerabilities-section UPDATE item, 🔗 callout to 2026-07-27 afternoon). Carried via finding-2026-07-28-0001 (B2/likely, single-source veto — BC+SW relay one Arista advisory; CISA KEV shares the same telemetry basis). covered_in + last_covered appended; finding-2026-07-28-0001 added to finding_ids; published_in_briefs back-written.
     headline: "CISA added Arista VeloCloud Orchestrator CVE-2026-16812 (SD-WAN control plane) to KEV on 2026-07-27 with an ACCELERATED ~3-day federal deadline (dueDate 2026-07-30) — active exploitation, knownRansomwareCampaignUse Unknown. Orchestrator compromise implies fleet-wide SD-WAN control (high blast radius). A2/likely (single-source veto — CISA KEV sole basis this surface; caps at likely pending an independent second basis, NOT doubt about CISA). CVSS NOT confirmed >=9.0 from the KEV entry; blast-radius framing is architectural, not from CVE mechanics. No actor named (Hard Rule 2). Net-new to the corpus; strongest FLASH-adjacent candidate this window but critical-override quiet-hours bypass does NOT fire (CVSS unconfirmed / ransomware Unknown / no actor / no named A&D victim) — absorbed into the 16:00 afternoon brief per the accelerated-KEV-into-imminent-scheduled-brief precedent (Oracle-EBS / SharePoint / Check Point)."
     topic_tags:
       - afternoon-brief
@@ -47124,16 +47124,16 @@ entries:
     related_actors: []               # CISA names no actor (Hard Rule 2)
     related_vulns: [CVE-2026-16812]  # net-new; not yet in vuln-index — librarian flag: open dossier + track accelerated 2026-07-30 deadline
     related_campaigns: []
-    finding_ids: [finding-2026-07-27-0003]
-    digraph: A2
-    wep: likely                      # single-source veto (CISA KEV sole basis this surface)
+    finding_ids: [finding-2026-07-27-0003, finding-2026-07-28-0001]   # +finding-2026-07-28-0001 (2026-07-28 morning UPDATE: patch matrix + CVSS 10.0 confirmed + 3 attacker IPs)
+    digraph: A2                      # original KEV-add (finding-0003); the 2026-07-28 UPDATE (finding-0001) is B2/likely — see disposition note below
+    wep: likely                      # single-source veto (CISA KEV sole basis this surface; UPDATE relay layer also single-basis)
     resurface_if:
       - new_victims_confirmed              # any named A&D/DIB victim
       - new_attribution                    # any A/B source attributes exploitation
       - actor_ttps_evolve                  # CVE-specific atomic IOCs / exploit detail published
       - escalation_to_exploitation         # mass-exploitation / scope expansion
-      - first_party_ioc_hit                # observed in archimedes/defenseclaw_local
-      - patch_released                     # Arista advisory + confirmed CVSS on direct retrieval (candidate to lift toward very_likely)
+      - first_party_ioc_hit                # observed in archimedes/defenseclaw_local (the 3 hunt-IPs now on watch)
+      - independent_basis_established       # direct retrieval of the Arista advisory + NVD, or an independent IR/research exploitation witness (candidate to lift credibility toward 1 / WEP toward very_likely) — patch_released now SATISFIED 2026-07-28
       - kev_due_date_2026_07_30_passing_without_federal_remediation
     librarian_handoff:
       vuln_tracker_handoff_pending:
@@ -47147,8 +47147,17 @@ entries:
       active-exploitation determination); accelerated deadline treated as a genuine urgency signal
       (precedent-consistent) but blast radius NOT over-stated (CVSS unconfirmed >=9.0; framing architectural).
       Hard Rule 2 — no actor named/originated. Pre-flight 13-of-13 PASS.
+
+      2026-07-28 MORNING UPDATE (in-place resurface). finding-2026-07-28-0001 (B2/likely) supplies the
+      net-new substrate finding-0003 deferred: Arista RELEASED the patch matrix (VCO 5.2.3.14/6.1.3.4/
+      6.4.2.4/7.0.0.1), CVSS CONFIRMED 10.0 (maximum), and published 3 role-ambiguous attacker IPs
+      (8.19.75.217, 206.72.242.124, 206.72.242.162 — HUNT-not-block). LED the 2026-07-28 morning brief
+      (lead sentence + Vulnerabilities-section UPDATE row, 🔗 callout to 2026-07-27 afternoon). Single-source
+      veto still binds (BC + SW relay one Arista advisory; CISA KEV shares the same telemetry basis) — WEP
+      holds at "likely"; direct retrieval of the Arista advisory/NVD would establish an independent basis and
+      is the lift candidate toward very_likely. resurface_if patch_released condition SATISFIED this cycle.
     first_covered: 2026-07-27
-    last_covered: 2026-07-27
+    last_covered: 2026-07-28
     retraction: null
     test: false
 
@@ -47331,7 +47340,7 @@ entries:
     test: false
 
   - id: 2026-07-28-flash-0625-001-securityweek-fastjson-cve-2026-16723-unauth-type-resolution-rce-1x-eol-no-patch-reported-itw-exploitation-b2-likely-single-source-veto-trigger-6-zero-day-no-patch
-    covered_in: [flash-2026-07-28-0625]
+    covered_in: [flash-2026-07-28-0625, 2026-07-28-morning]   # RESURFACE 2026-07-28 morning — the 06:25 FLASH was quiet-hours-queued and ABSORBED into the 08:00 morning brief per the grader's absorb_to_morning_brief disposition (ServiceNow 07-20 / Joomla-KEV 07-08 precedent). Carried as an 🚨 Active Threats action row with an explicit "already posted in flash-2026-07-28-0625" continuity note — NOT re-led. Same finding (finding-2026-07-28-flash-0600-0001), same grade (B2/likely, single-source veto), no net-new substrate; covered_in appended, published_in_briefs back-written (append 2026-07-28-morning).
     brief_file: threats/briefs/flash-2026-07-28-0625.md
     headline: "No patch exists for a critical, actively-exploited RCE (CVE-2026-16723) in the end-of-life Fastjson 1.x Java library — mitigation-only; single-source veto; no actor; no A&D victim; not KEV-listed"
     topic_tags:
@@ -47442,6 +47451,141 @@ entries:
       framings preserved, single message <1900 chars). Pre-flight 13-of-13 applicable PASS iteration-1
       (check 6 standing-sections N/A for FLASH; check 13 exempt-but-compliant). published_in_briefs
       back-write to finding-2026-07-28-flash-0600-0001 (append flash-2026-07-28-0625) DONE by briefer.
+
+      2026-07-28 MORNING ABSORB (in-place resurface). The quiet-hours-queued 06:25 FLASH was absorbed into
+      the 08:00 morning brief as an 🚨 Active Threats action row with an explicit "already posted in
+      flash-2026-07-28-0625" continuity note (NOT re-led — readers already saw the FLASH). No net-new
+      substrate: same finding, same B2/likely grade, single-source veto still binds. CVE-2026-16723 linked to
+      its dossier in the morning brief (check 9). covered_in += 2026-07-28-morning; published_in_briefs
+      back-written (append 2026-07-28-morning). last_covered holds 2026-07-28.
+
+  - id: 2026-07-28-am-brief-meta
+    covered_in: [2026-07-28-morning]
+    brief_file: threats/briefs/2026-07-28-morning.md
+    headline: "Morning brief 2026-07-28 (Tuesday) — ONE action-forcing item on an otherwise unchanged board. LEAD: Arista shipped patches for the actively-exploited, CVSS 10.0 VeloCloud Orchestrator flaw (CVE-2026-16812) — accelerated federal deadline 48h out (2026-07-30), with a confirmed maximum-severity score and 3 attacker hunt-IPs all landed overnight (finding-2026-07-28-0001, B2/likely, in-place resurface of the 2026-07-27-pm-001 topic entry; material-update UPDATE, resurface_if patch_released MET). Active Threats = Fastjson CVE-2026-16723 unpatched (1.x EOL) unauthenticated RCE, active ITW, ABSORBED from the 06:25 FLASH (flash-2026-07-28-0625) with a continuity note, not re-led (finding-2026-07-28-flash-0600-0001, B2/likely, in-place resurface of the 2026-07-28-flash-0625-001 topic entry). Vulnerabilities = Arista (lead UPDATE, 🔗 callout to 2026-07-27 afternoon) + Fortinet FortiOS SSL-VPN CVE-2025-68686 (A2/likely, no-change pointer, standard 2026-08-10 deadline). Sector Focus A&D = structural-only (no named victim). Iran Cyber Watch = silent-day. Other Signal = standing patch-posture worklist unchanged (Windchill CVE-2026-12569 Cl0p-hedged top; two lapsed 07-25 KEV flaws + Oracle EBS CVE-2026-46817 no movement; libssh2 CVE-2026-55200 PoC-only; LegacyHive VT-042 unpatched no-CVE no-ITW)."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - one-action-forcing-item-otherwise-unchanged-board
+      - lead-arista-velocloud-orchestrator-cve-2026-16812-patch-released-cvss-10-0-confirmed-3-attacker-ips-deadline-2026-07-30-48h
+      - arista-in-place-resurface-2026-07-27-pm-001-material-update-patch-released
+      - active-threats-fastjson-cve-2026-16723-unpatched-1x-eol-unauth-rce-active-itw-absorbed-from-0625-flash-not-re-led
+      - fastjson-in-place-resurface-2026-07-28-flash-0625-001-morning-absorb
+      - vulnerabilities-arista-lead-update-plus-fortinet-fortios-ssl-vpn-cve-2025-68686-no-change-pointer-standard-2026-08-10-deadline
+      - both-action-items-b2-likely-single-source-veto
+      - sector-focus-ad-structural-only-no-named-victim
+      - iran-cyber-watch-silent-day
+      - other-signal-standing-patch-posture-worklist-unchanged-windchill-clop-hedged-lapsed-kev-pair-oracle-ebs-libssh2-legacyhive
+      - anti-repetition-load-bearing-both-lead-and-active-threat-items-in-place-resurfaces-fortinet-and-worklist-no-change-pointers
+      - hard-rule-2-clop-attribution-source-stated-not-originated-no-actor-on-either-action-item
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-8-first-party-splunk-0-hits-arista-3-ips-and-fastjson-visibility-bounded
+      - check-9-cve-2026-16723-and-worklist-cves-dossier-linked-arista-and-fortinet-flagged-pending-vuln-tracker-index
+      - preflight-13-of-13-pass
+    related_actors: ["018"]          # Cl0p #018 — SUSPECTED-ONLY / hedged (Windchill, Other-Signal no-change pointer). Hard Rule 2: carried as-reported, not originated. Dossier-pending. No roster actor on either action item.
+    related_vulns: [CVE-2026-16812, CVE-2026-16723, CVE-2025-68686, CVE-2026-12569, CVE-2026-46817, CVE-2026-16232, CVE-2026-50522, CVE-2026-55200]   # 16812 (Arista) + 16723 (Fastjson) = in-place resurfaces (net-new coverage this cycle); 68686 (Fortinet) + the rest = no-change carry-forward pointers (NOT newly covered)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-28-0001, finding-2026-07-28-flash-0600-0001]
+    digraph: n/a                     # meta entry — per-item grades on the two resurfaced topic entries (16812 UPDATE B2/likely; 16723 B2/likely)
+    wep: n/a
+    disposition:
+      net_new_findings_promoted: 1   # finding-2026-07-28-0001 (Arista UPDATE, update_to finding-2026-07-27-0003). finding-2026-07-28-flash-0600-0001 was promoted in the 06:00 FLASH cycle, not this scheduled cycle.
+      new_topic_entries_created: 0   # both covered items resurface EXISTING topic entries (Arista 2026-07-27-pm-001; Fastjson 2026-07-28-flash-0625-001)
+      in_place_resurfaces: 2         # Arista 2026-07-27-pm-001 (patch_released material update) + Fastjson 2026-07-28-flash-0625-001 (FLASH absorbed into morning)
+      covered_in_appends: 2          # both resurfaced entries get 2026-07-28-morning appended. Fortinet + Other-Signal worklist (Windchill/Oracle-EBS/lapsed-KEV-pair/libssh2/LegacyHive) are no-change pointers -> NO append (2026-07-24-pm through 2026-07-27 precedent).
+      published_in_briefs_back_writes: 2   # finding-2026-07-28-0001 (append 2026-07-28-morning) + finding-2026-07-28-flash-0600-0001 (append 2026-07-28-morning)
+      rationale: >
+        One action-forcing item on an otherwise unchanged board. finding-2026-07-28-0001 (B2/likely) is a
+        material-update UPDATE to the 2026-07-27 KEV-add finding-0003: Arista released the CVE-2026-16812
+        patch matrix, CVSS confirmed 10.0, and published 3 attacker hunt-IPs — resurface_if patch_released
+        MET, so the 2026-07-27-pm-001 topic entry resurfaces IN PLACE and LEADS the brief. finding-2026-07-28-
+        flash-0600-0001 (Fastjson CVE-2026-16723, B2/likely) was FLASHed at 06:25 (quiet-hours-queued) and is
+        absorbed into the morning brief as an Active Threats action row with a continuity note — the
+        2026-07-28-flash-0625-001 topic entry resurfaces IN PLACE (covered_in += 2026-07-28-morning), NOT a
+        new entry. Neither item is re-led as net-new. Fortinet CVE-2025-68686 (no movement, standard 08-10
+        deadline) and the standing patch-posture worklist are pure no-change pointers — NOT re-covered,
+        no covered_in append (precedent-consistent).
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 612         # 400-800 morning band
+      layer2_words: ~250            # 150-300 band
+      layer2_chars_est: ~1630       # <=1900 ceiling; single Discord message, no chunk needed
+      check_3_note: >
+        Anti-repetition (check 3) PASS. The lead (Arista) is an UPDATE with a 🔗 correlation callout to the
+        2026-07-27 afternoon KEV-add and genuine new material (patch matrix + confirmed CVSS 10.0 + 3 attacker
+        IPs) — resurfaced in place, not a new entry. Fastjson carries an explicit "already posted in
+        flash-2026-07-28-0625" continuity note and is not re-led. Fortinet is stated plainly "no change"; the
+        Other-Signal worklist "unchanged since yesterday." No stale news presented as net-new.
+      check_11_note: >
+        Single-source veto (check 11) PASS. No "very likely" or stronger claim. Both action items are B2/likely
+        with the single-source veto stated (Arista: BC + SW relay one Arista advisory, CISA KEV shares the same
+        telemetry basis; Fastjson: one SecurityWeek relay carrying three un-retrieved originators). Forward
+        claims use WEP ("remain likely targets").
+      check_12_note: >
+        Quote discipline (check 12) PASS. ZERO direct quotes in either layer — all source content paraphrased.
+      check_9_note: >
+        Check 9 PASS. CVE-2026-16723 (Fastjson) linked to its existing dossier; the Other-Signal worklist CVEs
+        (12569, 46817, 16232, 50522, 55200, LegacyHive VT-042) all dossier-linked. CVE-2026-16812 (Arista) and
+        CVE-2025-68686 (Fortinet) flagged "pending vuln-tracker index" (no dossier yet) — no broken link.
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-28-0001, append_brief_id: 2026-07-28-morning}                # DONE by briefer
+        - {finding_id: finding-2026-07-28-flash-0600-0001, append_brief_id: 2026-07-28-morning}     # DONE by briefer
+      resurface_updates:
+        - {topic_entry_id: 2026-07-27-pm-001-cisa-kev-arista-velocloud-orchestrator-cve-2026-16812-sd-wan-control-plane-active-exploitation-accelerated-3-day-deadline-2026-07-30-a2-likely-single-source-veto, action: "covered_in += 2026-07-28-morning; last_covered -> 2026-07-28; finding_ids += finding-2026-07-28-0001 — DONE by briefer"}
+        - {topic_entry_id: 2026-07-28-flash-0625-001-securityweek-fastjson-cve-2026-16723-unauth-type-resolution-rce-1x-eol-no-patch-reported-itw-exploitation-b2-likely-single-source-veto-trigger-6-zero-day-no-patch, action: "covered_in += 2026-07-28-morning — DONE by briefer"}
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-16812 (Arista VeloCloud Orchestrator): UPDATE the (still-to-open) dossier deferred by finding-0003 with the released patch matrix (VCO 5.2.3.14/6.1.3.4/6.4.2.4/7.0.0.1), confirmed CVSS 10.0, and the 3 attacker IPs (8.19.75.217, 206.72.242.124, 206.72.242.162; HUNT-not-block, role ambiguous). Direct-retrieval TODO: Arista SA + NVD (CVSS vector/CWE) — would establish an independent basis (lift candidate toward very_likely). See finding-2026-07-28-0001."
+        - "CVE-2025-68686 (Fortinet FortiOS SSL-VPN): no change; standard 2026-08-10 deadline. Dossier still to open (distinct from 2018 CVE-2018-13379). See 2026-07-27-pm-002."
+      actor_profiler_handoff_pending:
+        - "Cl0p / #018: still no dossier (dossier-pending). Windchill linkage is suspected-only/hedged — do NOT record as confirmed (Hard Rule 2)."
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 -> #intel-briefs), Teams (skip if webhook unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-28 MORNING BRIEF (briefer phase, briefer-20260728-080000). ONE action-forcing item on an
+      otherwise unchanged board — the operator's calibration (yesterday's "quiet" week now has a genuine
+      CVSS-10 + 48h-deadline + patch-available item; lead with it, keep the board honest) followed exactly.
+
+      LEAD: Arista shipped patches for CVE-2026-16812 (on-prem VeloCloud Orchestrator, SD-WAN control plane),
+      confirmed maximum CVSS 10.0, and published 3 attacker hunt-IPs — the three items yesterday's KEV-add
+      finding-0003 deferred, all landed overnight, with the accelerated federal deadline 48h out (2026-07-30).
+      Material-update UPDATE (resurface_if patch_released MET) -> in-place resurface of the 2026-07-27-pm-001
+      topic entry, LED the brief (lead sentence + Vulnerabilities UPDATE row, 🔗 callout to 2026-07-27 pm).
+      finding-2026-07-28-0001, B2/likely (single-source veto — BC + SW relay one Arista advisory; CISA KEV
+      shares the same telemetry basis). Check-4 impact-lead satisfied.
+
+      ANTI-REPETITION load-bearing (both covered items are in-place resurfaces, not new topics):
+      (1) Arista resurfaces 2026-07-27-pm-001 with genuine new material (patch + CVSS 10.0 + 3 IPs), UPDATE-
+      flagged + 🔗 callout. (2) Fastjson CVE-2026-16723 resurfaces 2026-07-28-flash-0625-001 — the 06:25 FLASH
+      was quiet-hours-queued and ABSORBED into this morning brief as an Active Threats action row with an
+      explicit "already posted in flash-2026-07-28-0625" continuity note; NOT re-led (readers saw the FLASH).
+      Fortinet CVE-2025-68686 (no movement) and the Other-Signal patch-posture worklist (Windchill CVE-2026-
+      12569 Cl0p-hedged; lapsed 07-25 KEV pair CVE-2026-16232 + CVE-2026-50522; Oracle EBS CVE-2026-46817;
+      libssh2 CVE-2026-55200; LegacyHive VT-042) carried as pure no-change pointers -> NO covered_in append.
+
+      SECTIONS: 🚨 Active Threats — Fastjson (absorbed FLASH, mitigation-only: migrate to 2.x / SafeMode).
+      🔓 Vulnerabilities — Arista (lead UPDATE) + Fortinet (no-change pointer). ✈️ Sector Focus A&D — structural-
+      only (no named A&D/DIB victim; both action items are pervasive-infrastructure classes). 🇮🇷 Iran Cyber
+      Watch — silent-day. 📰 Other Signal — standing patch-posture worklist unchanged since yesterday.
+
+      HARD RULES: Rule 2 — no actor named on either action item; Cl0p (Windchill) carried as suspected-only,
+      Archimedes does not endorse. Rule 6 — ZERO direct quotes, both layers. Rule 3 — mechanisms at class level
+      (SD-WAN control-plane OS command injection; Fastjson @type type-resolution), no PoC. Rule 8 — first-party
+      Splunk 0 hits over -30d on the Arista 3 IPs + CVE terms and on Fastjson/CVE-2026-16723 (visibility-bounded
+      null, non-disconfirming; Frank not a VeloCloud/Fastjson-visible tenant). No ITAR/export-controlled detail.
+      Check 9 — CVE-2026-16723 + all Other-Signal worklist CVEs dossier-linked; Arista + Fortinet flagged
+      "pending vuln-tracker index" (no dossier yet, no broken link). Pre-flight 13-of-13 PASS (iteration 1).
+      Layer 2 omits standing-section boilerplate, carries four source-linked/bolded bullets (Arista lead +
+      Fortinet no-change + Fastjson absorbed-FLASH + Other-Signal worklist) with natural-language dates
+      ("overnight," "before July 30," "deadline Thursday," "August 10," "this morning's 0625 FLASH"), Hard Rule 2
+      preserved, italic urgency on the patch/mitigate calls, ~250 words / ~1630 chars (<=1900 ceiling), single
+      message. NOT posted/committed by briefer — librarian delivers.
+    first_covered: 2026-07-28
+    last_covered: 2026-07-28
+    retraction: null
+    test: false
 
 # ============================================================================
 # Valid resurface_if conditions

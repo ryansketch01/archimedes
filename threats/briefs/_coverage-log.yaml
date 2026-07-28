@@ -45689,7 +45689,7 @@ entries:
     test: false
 
   - id: 2026-07-22-pm-001-cisa-kev-checkpoint-smartconsole-cve-2026-16232-improper-auth-unauthenticated-login-token-theft-a2-likely-single-source-veto
-    covered_in: [2026-07-22-afternoon, 2026-07-23-morning, 2026-07-25-morning]   # RESURFACE 2026-07-25 morning — deadline-day UPDATE (resurface_if kev_due_date_2026_07_25_passing MET; deadline lands today). Co-led the Vulnerabilities section with CVE-2026-50522, grade unchanged A2/likely, no net-new exploitation/victim/IOC. covered_in + last_covered appended; published_in_briefs back-written to finding-2026-07-22-0003.
+    covered_in: [2026-07-22-afternoon, 2026-07-23-morning, 2026-07-25-morning, 2026-07-28-afternoon]   # RESURFACE 2026-07-28 afternoon — enrichment UPDATE (Rapid7 root-cause analysis: first specific version matrix R81.20/R82.10 + fix R81.20 JHF Take 158+ closing the finding-0001 version-matrix TODO; SIC-DN trust-boundary root cause; first host-based detection signatures). resurface_if new-enrichment analogue MET (net-new actionable substrate, not mere passage of time). Grade A2/likely (single-source veto — Rapid7's own analysis on the new specifics; exploitation restated from vendor/KEV, unchanged). covered_in + last_covered appended; finding_ids += finding-2026-07-28-0002; published_in_briefs back-written. Prior RESURFACE 2026-07-25 morning — deadline-day UPDATE (kev_due_date_2026_07_25_passing MET). Co-led the Vulnerabilities section with CVE-2026-50522, grade unchanged A2/likely, no net-new exploitation/victim/IOC.
     headline: "CISA added Check Point SmartConsole CVE-2026-16232 (improper authentication -> unauthenticated login-token theft) to the KEV catalog v2026.07.22 (dateAdded 2026-07-22, dueDate 2026-07-25 accelerated ~3-day). Net-new, not previously tracked. Actively exploited per the listing; an unauthenticated remote attacker obtains a SmartConsole application login token (access-broker-grade primitive on a security-management console). CVSS UNVERIFIED — KEV carries no score, NVD not pulled this sweep; do NOT assert 'critical'/>=9.0. A2/'likely' single-source veto (CISA KEV sole effective source). No actor named (Hard Rule 2 — Pioneer Kitten #029 edge-appliance note is awareness-only, NOT an attribution for this CVE). A&D relevance MEDIUM/structural (security-management-plane placement in DIB estates), no named A&D victim. Distinct from CVE-2024-24919 (VT-028, Check Point Security Gateway) — do NOT conflate or import #029 association."
     topic_tags:
       - cve
@@ -45716,7 +45716,7 @@ entries:
     related_actors: []
     related_vulns: [CVE-2026-16232, CVE-2024-24919]
     related_campaigns: []
-    finding_ids: [finding-2026-07-22-0003, finding-2026-07-23-0001]
+    finding_ids: [finding-2026-07-22-0003, finding-2026-07-23-0001, finding-2026-07-28-0002]
     digraph: A2
     wep: likely
     resurface_if:
@@ -45725,6 +45725,8 @@ entries:
       - named_ad_or_dib_victim_disclosure
       - mass_exploitation_or_itw_infrastructure_signatures_published
       - kev_due_date_2026_07_25_passing_without_federal_remediation
+      - independent_research_or_ir_corroboration_of_root_cause_version_matrix_with_separate_evidence_basis   # lifts the single-source veto on the Rapid7 net-new specifics
+      - vendor_advisory_id_or_nvd_cpe_retrieved_extending_or_correcting_the_version_matrix
     resurface_2026_07_23_morning:
       brief: 2026-07-23-morning
       finding: finding-2026-07-23-0001
@@ -45757,8 +45759,41 @@ entries:
         lead action item. 🔗 callout: status moved from "deadline pending" to "deadline today."
       digraph_after: A2
       wep_after: likely
+    resurface_2026_07_28_afternoon:
+      brief_id: 2026-07-28-afternoon
+      finding: finding-2026-07-28-0002
+      trigger: new_actionable_enrichment_closes_version_matrix_todo_plus_first_host_detection   # resurface justified by net-new substrate, not passage of time (5 days since last cover)
+      as: UPDATE
+      section: "🔓 Vulnerabilities (UPDATE, lead item)"
+      finding_type: update
+      update_chain: [finding-2026-07-22-0003, finding-2026-07-23-0001, finding-2026-07-28-0002]
+      net_new_this_window: >
+        Rapid7 Labs published a root-cause technical analysis of CVE-2026-16232. Net-new corpus substrate: (1) first
+        specific AFFECTED version matrix in-corpus — R81.20 and R82.10; (2) first specific FIXED version — R81.20
+        Jumbo Hotfix Take 158 and later (closes the finding-2026-07-23-0001 open version-matrix vuln-tracker TODO);
+        (3) conceptual root cause — broken trust boundary accepting an attacker-supplied SIC distinguished name
+        rather than binding to the authenticated peer certificate DN; (4) exploitation prerequisites (network access
+        to mgmt ports TCP 18190 FWM/CPMI + TCP 19009 CPM/DLE; permissive default Trusted Clients config amplifier);
+        (5) first HOST-BASED detection signatures in-corpus (prior IOC set was network-IP-only) — application-token
+        audit-log string, SOAP UserSSOTokenAuthenticationInfo login pattern, gen-sso-token from remote apps, failed-
+        bind monitoring on TCP 18190/19009.
+      NOT_new_this_window: >
+        Exploitation STATUS unchanged (already active / KEV-listed / vendor-patched — Rapid7 restates the vendor/KEV
+        attestation, contributes no independent telemetry). CVSS STILL UNVERIFIED (Rapid7 did not state it; NVD not
+        retrieved) — brief did NOT assert >=9.0. No attribution (Hard Rule 2). No A&D/DIB victim.
+      grade_after: A2                                        # A-grade research primary (Rapid7's OWN root-cause analysis, directly retrieved), single-source on the net-new specifics -> credibility 2
+      wep_after: likely                                      # single-source veto binds (single effective evidence basis on the predictive/net-new substrate); provisional-A -> B slip would not move the ceiling
+      analyst_caveats_carried:
+        - "Version matrix (A1): R81.20/R82.10 affected + R81.20 JHF Take 158+ fixed are Rapid7 single-source, possibly non-exhaustive — confirm deployed release against the Check Point advisory when captured. Carried in the brief action row."
+        - "Exposure scope (A2): permissive-default Trusted Clients amplifier is Rapid7-test-qualified; hardened estates that restrict Trusted Clients present a narrower exposure. Framed config-dependent, not universal. Carried in the brief action row."
+        - "Detection signatures (A3): hunt inputs needing per-environment baselining, NOT drop-in high-fidelity alerts — several fire on legitimate application-token auth / normal mgmt traffic. Carried in the brief action row."
+        - "CVSS still UNVERIFIED — brief asserted no severity number (unchanged guardrail from 07-22/07-23/07-25)."
+      first_party_splunk: "0 hits over -90d (grader re-ran Rule 8: CVE + 5 prior IPs + mgmt ports 18190/19009 + gen-sso-token string; visibility-bounded null, non-disconfirming). NO net-new atomic network IOCs introduced (detection content is host-based, routed to detection engineering — type: other, NOT the atomic-IOC block-index)."
+      hard_rule_3: "Root cause described at concept level only (SIC-DN trust-boundary flaw); NO PoC / request sequence / reproduction steps."
+      vuln_tracker_handoff: "UPDATE the CVE-2026-16232 dossier row: populate affected_versions R81.20/R82.10; fixed_versions R81.20 JHF Take 158+; product scope Check Point Security Management Server + MDS/SmartConsole; attach the 4 host-based detection signatures to a detection-engineering sub-section (NOT atomic-IOC index); record the SIC-DN root-cause note. CVSS still the top enrichment priority (gates any FLASH re-evaluation)."
+      distinct_from: "CVE-2024-24919 (VT-028, Check Point Security Gateway info-disclosure, Pioneer Kitten #029 initial-access set) — DIFFERENT CVE/component; #029 association NOT imported (Hard Rule 2)."
     first_covered: 2026-07-22
-    last_covered: 2026-07-25
+    last_covered: 2026-07-28
     retraction: null
     test: false
     notes: |
@@ -47703,6 +47738,172 @@ entries:
       N/A for FLASH; check 13 exempt-but-compliant). published_in_briefs back-write to
       finding-2026-07-28-flash-1200-0001 (append flash-2026-07-28-1200) DONE by briefer. NOT posted/committed
       by briefer — orchestrator/librarian deliver to #flash-alerts (inside active hours).
+    first_covered: 2026-07-28
+    last_covered: 2026-07-28
+    retraction: null
+    test: false
+
+  - id: 2026-07-28-pm-brief-meta
+    covered_in: [2026-07-28-afternoon]
+    brief_file: threats/briefs/2026-07-28-afternoon.md
+    headline: "Afternoon brief 2026-07-28 (Tuesday) — ZERO net-new findings; ONE promoted UPDATE on an otherwise unchanged board. LEAD / only substantive item: Rapid7 Labs published a root-cause technical analysis of the already-tracked, actively-exploited Check Point SmartConsole auth-bypass CVE-2026-16232 (finding-2026-07-28-0002, A2/likely, single-source veto; enrichment UPDATE, update_chain finding-2026-07-22-0003 KEV -> finding-2026-07-23-0001 vendor advisory -> this). Net-new substrate = analytic depth, NOT a state change: first specific version matrix in-corpus (affected R81.20/R82.10; fixed R81.20 Jumbo Hotfix Take 158+, closing the finding-0001 version-matrix TODO), SIC-DN trust-boundary root cause, first host-based detection signatures (prior IOC set network-IP-only). Exploitation status UNCHANGED; CVSS still UNVERIFIED (no severity number asserted); no actor (Hard Rule 2). Three analyst KAC qualifying caveats travel with the action row (version matrix single-source/possibly non-exhaustive; Trusted-Clients amplifier test-qualified/config-dependent; detection signatures = hunt inputs needing baselining, not drop-in alerts). Sector Focus A&D = structural-only (no named victim). Iran Cyber Watch = carried ACTIVE (NOT silent-day) — CISA + partners 'CI Fortify' OT-isolation joint guidance as continuity context on the live Iran-linked OT thread (finding-2026-07-22-0004 / finding-2026-07-23-0002); guidance, not an incident, no actor. Other Signal = standing patch-posture worklist unchanged; two moving deadlines (Arista CVE-2026-16812 July 30, two days out; Fastjson CVE-2026-16723 unpatched EOL) as no-change continuity pointers."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - zero-net-new-findings-one-promoted-update
+      - lead-rapid7-checkpoint-smartconsole-cve-2026-16232-root-cause-version-matrix-host-detection-enrichment-update
+      - checkpoint-in-place-resurface-2026-07-22-pm-001-new-actionable-enrichment-not-passage-of-time
+      - a2-likely-single-source-veto-rapid7-own-analysis-exploitation-restated-from-vendor
+      - version-matrix-r8120-r8210-fix-jhf-take-158-closes-finding-0001-todo
+      - sic-dn-trust-boundary-root-cause-concept-only-hard-rule-3
+      - first-host-based-detection-signatures-in-corpus-routed-detection-engineering-type-other
+      - three-analyst-kac-qualifying-caveats-in-action-row
+      - cvss-still-unverified-no-severity-number-asserted
+      - exploitation-status-unchanged-not-a-flash
+      - no-actor-hard-rule-2-distinct-from-cve-2024-24919-vt028-no-029-import
+      - sector-focus-ad-structural-only-no-named-victim
+      - iran-cyber-watch-active-ci-fortify-ot-isolation-guidance-continuity-not-silent-day
+      - ci-fortify-guidance-not-incident-no-actor-live-iran-ot-thread-continuity
+      - other-signal-standing-patch-posture-worklist-unchanged-two-moving-deadlines-arista-fastjson-no-change-pointers
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-8-first-party-splunk-0-hits-90d-no-net-new-network-iocs
+      - check-9-cve-2026-16232-and-worklist-cves-dossier-linked
+      - preflight-13-of-13-pass
+    related_actors: ["018"]          # Cl0p #018 — SUSPECTED-ONLY / hedged (Windchill, Other-Signal no-change pointer). Hard Rule 2: carried as-reported, not originated. No roster actor on the lead item.
+    related_vulns: [CVE-2026-16232, CVE-2024-24919, CVE-2026-16812, CVE-2026-16723, CVE-2026-12569, CVE-2026-50522, CVE-2026-46817, CVE-2026-55200]   # 16232 = in-place resurface (enrichment UPDATE, net-new coverage this cycle); the rest = no-change Other-Signal / distinctness pointers (NOT newly covered)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-28-0002]
+    digraph: n/a                     # meta entry — the single covered item is A2/likely (CVE-2026-16232 enrichment UPDATE)
+    wep: n/a
+    disposition:
+      net_new_findings_promoted: 0   # afternoon promoted 1 UPDATE finding (finding-2026-07-28-0002), 0 net-new topics
+      updates_promoted: 1            # finding-2026-07-28-0002 (Rapid7 Check Point enrichment UPDATE, update_to finding-2026-07-23-0001)
+      new_topic_entries_created: 0   # the covered item resurfaces the EXISTING Check Point topic entry (2026-07-22-pm-001)
+      in_place_resurfaces: 1         # 2026-07-22-pm-001 (new actionable enrichment: version matrix TODO closure + first host detection)
+      covered_in_appends: 1          # 2026-07-22-pm-001 gets 2026-07-28-afternoon appended. Arista/Fastjson/Fortinet + Other-Signal worklist = no-change pointers -> NO append (precedent-consistent).
+      published_in_briefs_back_writes: 1   # finding-2026-07-28-0002 (append 2026-07-28-afternoon)
+      rationale: >
+        ZERO net-new findings; ONE promoted UPDATE. finding-2026-07-28-0002 (A2/likely) is an enrichment UPDATE
+        to the tracked Check Point SmartConsole CVE-2026-16232 thread: Rapid7's root-cause analysis closes the
+        finding-0001 version-matrix TODO (R81.20/R82.10 affected; fix R81.20 JHF Take 158+), characterizes the
+        SIC-DN trust-boundary root cause, and adds the first host-based detection signatures in-corpus. The
+        resurface is justified by NET-NEW ACTIONABLE SUBSTRATE (analytic depth), NOT the 5-day passage since the
+        07-25 deadline-day cover — so the 2026-07-22-pm-001 topic entry resurfaces IN PLACE and LEADS the brief
+        with an UPDATE flag + 🔗 callout to 2026-07-23 morning. NOT a FLASH: exploitation status is UNCHANGED and
+        CVSS remains UNVERIFIED (Trigger 1 critical-CVE-exploited not mechanically met). Arista CVE-2026-16812
+        (July 30 deadline, two days out) and Fastjson CVE-2026-16723 (unpatched EOL) carried as no-change
+        continuity/deadline pointers in Other Signal — NOT re-led, NO covered_in append.
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1
+      word_count_layer1: 763         # 400-800 afternoon band (trimmed from ~807 draft: cut lead tail + per-item A&D redundancy + tightened caveats/Other-Signal)
+      layer2_words: ~215            # 150-300 band
+      layer2_chars_est: ~1700       # <=1900 ceiling; single Discord message, no chunk needed
+      check_3_note: >
+        Anti-repetition (check 3) PASS. The lead (Check Point CVE-2026-16232) is an UPDATE with a 🔗 correlation
+        callout to 2026-07-23 morning and genuine net-new material (first specific version matrix closing an open
+        TODO + first host-based detection) — resurfaced in place, not a new entry, not mere passage of time.
+        Arista + Fastjson (Other Signal) carry deadline/no-change continuity only and are not re-led. No stale
+        news presented as net-new.
+      check_5_note: >
+        Banned phrases (check 5) PASS. Zero hot-list phrases. Iteration-1 fix applied: a paraphrase originally
+        wrapped in quotation marks (permissive-default Trusted Clients) was de-quoted to avoid presenting a
+        paraphrase as a direct quote (check-12 discipline), and the phrasing tightened.
+      check_11_note: >
+        Single-source veto (check 11) PASS. No "very likely" or stronger claim. The lead is A2/likely with the
+        single-source veto stated (Rapid7's own analysis carries the net-new specifics; exploitation restated from
+        the vendor/KEV, not independent telemetry). Provisional-A -> B ratification slip would not move the ceiling.
+      check_12_note: >
+        Quote discipline (check 12) PASS. ZERO direct quotes in either layer — all source content paraphrased
+        (the Trusted-Clients paraphrase de-quoted on iteration 1).
+      check_9_note: >
+        Check 9 PASS. CVE-2026-16232 linked to its dossier (lead item + distinctness); CVE-2024-24919 (VT-028)
+        linked for the distinctness note; the Other-Signal worklist CVEs (16723, 12569, 50522, 46817, 55200,
+        LegacyHive VT-042) all dossier-linked. Arista CVE-2026-16812 referenced without link (pending vuln-tracker
+        index, no dossier yet — no broken link; precedent-consistent).
+      standing_sections:
+        ad_sector: active_structural_only        # no named A&D/DIB victim; structural exposure framing
+        iran_cyber_watch: active_not_silent_day   # CI Fortify OT-isolation guidance carried as live-thread continuity context (guidance, not incident, no actor) — deliberately NOT silent-day
+      caveats_confirmation: "All THREE analyst KAC qualifying caveats (version-matrix single-source/non-exhaustive; Trusted-Clients test-qualified/config-dependent; detection-signatures hunt-inputs-needing-baselining) AND the CVSS-UNVERIFIED / no-severity-number note are present in the 🔓 Vulnerabilities action row."
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-28-0002, append_brief_id: 2026-07-28-afternoon}   # DONE by briefer
+      resurface_updates:
+        - {topic_entry_id: 2026-07-22-pm-001-cisa-kev-checkpoint-smartconsole-cve-2026-16232-improper-auth-unauthenticated-login-token-theft-a2-likely-single-source-veto, action: "covered_in += 2026-07-28-afternoon; last_covered -> 2026-07-28; finding_ids += finding-2026-07-28-0002; resurface_2026_07_28_afternoon block added; two resurface_if conditions appended (independent-corroboration + vendor-advisory/NVD-CPE retrieval) — DONE by briefer"}
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-16232 (Check Point SmartConsole): UPDATE the dossier row — affected_versions R81.20/R82.10; fixed_versions R81.20 Jumbo Hotfix Take 158+; product scope Security Management Server + MDS/SmartConsole; attach the 4 host-based detection signatures to a detection-engineering sub-section (type: other, NOT the atomic-IOC block-index); record the SIC-DN trust-boundary root-cause note. CVSS STILL UNVERIFIED (NVD not retrieved) — top enrichment priority, gates any FLASH re-evaluation. Vendor advisory ID still outstanding. See finding-2026-07-28-0002."
+      actor_profiler_handoff_pending:
+        - "Cl0p / #018: still no dossier (dossier-pending). Windchill linkage suspected-only/hedged — do NOT record as confirmed (Hard Rule 2)."
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 -> #intel-briefs), Teams (skip if webhook unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-28 AFTERNOON BRIEF (briefer phase, briefer-20260728-160000). ZERO net-new findings; ONE promoted
+      UPDATE on an otherwise unchanged steady-state board. The operator's calibration followed exactly: lead
+      with the single substantive item (Rapid7 Check Point enrichment), keep the board honest, do NOT re-lead the
+      morning's Arista/Fastjson or the 12:00 UNC1549 FLASH.
+
+      LEAD / only substantive item: finding-2026-07-28-0002 (A2/likely, single-source veto) — Rapid7 Labs'
+      root-cause technical analysis of the actively-exploited Check Point SmartConsole auth-bypass CVE-2026-16232.
+      Enrichment UPDATE (finding_type: update; update_chain finding-2026-07-22-0003 KEV -> finding-2026-07-23-0001
+      vendor advisory -> this). Net-new = ANALYTIC DEPTH, not a state change: (1) first specific version matrix
+      in-corpus (affected R81.20/R82.10; fixed R81.20 Jumbo Hotfix Take 158+), closing the finding-0001 open
+      vuln-tracker version-matrix TODO; (2) SIC distinguished-name trust-boundary root cause (concept level only,
+      Hard Rule 3); (3) first host-based detection signatures in-corpus (prior IOC set was network-IP-only) —
+      routed to detection engineering (type: other). Placed as the 🔓 Vulnerabilities UPDATE lead item with a
+      🔗 callout to 2026-07-23 morning.
+
+      GRADE / veto: A2 (A-grade research primary — Rapid7's OWN root-cause analysis, directly retrieved, one
+      letter stronger than the finding-0001 B-relay layer), single-source on the net-new specifics -> credibility
+      2 -> "likely" veto-bound. Exploitation is RESTATED from the vendor/KEV attestation (no independent Rapid7
+      telemetry), so the exploitation claim still rests on a single evidence basis. Provisional-A -> B ratification
+      slip would NOT move the ceiling (veto already binds). NOT a FLASH — exploitation status UNCHANGED, CVSS still
+      UNVERIFIED (Trigger 1 critical-CVE-exploited not mechanically met).
+
+      THREE analyst KAC qualifying caveats + the CVSS note travel with the action row (confirmed present): (1)
+      version matrix is Rapid7 single-source and possibly non-exhaustive — confirm deployed release against the
+      Check Point advisory when captured; (2) the permissive-default Trusted Clients amplifier is Rapid7-test-
+      qualified — hardened estates that restrict Trusted Clients present a narrower exposure (config-dependent,
+      not universal); (3) the host-based detection signatures are hunt inputs needing per-environment baselining,
+      NOT drop-in high-fidelity alerts (several fire on legitimate application-token auth / normal mgmt traffic).
+      CVSS remains UNVERIFIED (KEV carries none; NVD not retrieved) — brief asserted NO severity number.
+
+      SECTIONS: 🔓 Vulnerabilities — Check Point CVE-2026-16232 enrichment UPDATE (lead). ✈️ Sector Focus A&D —
+      structural-only (no named A&D/DIB victim; SmartConsole is a security-management-plane class). 🇮🇷 Iran Cyber
+      Watch — carried ACTIVE, NOT silent-day: CISA + partners (ASD/FBI framing per collector) 'CI Fortify'
+      OT-isolation joint guidance surfaced this window as genuine continuity on the live Iran-linked OT thread
+      (finding-2026-07-22-0004 / finding-2026-07-23-0002 CISA/FBI/EPA advisory revision). Carried as a
+      standing-section pointer (guidance, NOT an incident; NO actor — Hard Rule 2), linked to the CISA advisories
+      index (real resolvable URL; no fabricated advisory ID). 📰 Other Signal — standing patch-posture worklist
+      unchanged; two moving deadlines (Arista CVE-2026-16812 July 30 two-days-out; Fastjson CVE-2026-16723
+      unpatched EOL) as no-change continuity pointers; Windchill CVE-2026-12569 Cl0p-hedged (not endorsed);
+      lapsed SharePoint CVE-2026-50522, Oracle EBS CVE-2026-46817, libssh2 CVE-2026-55200, LegacyHive VT-042 all
+      no movement.
+
+      HARD RULES: Rule 2 — no actor on the lead item; Pioneer Kitten #029 NOT cross-walked (its awareness-only
+      note attaches to CVE-2024-24919/VT-028, a different CVE — distinctness called out in-brief); Cl0p (Windchill,
+      Other Signal) suspected-only, not endorsed. Rule 3 — root cause at concept level (SIC-DN trust boundary),
+      no PoC/reproduction. Rule 6 — ZERO direct quotes, both layers (a paraphrase originally quote-wrapped was
+      de-quoted on iteration 1). Rule 8 — first-party Splunk 0 hits over -90d (CVE + 5 prior IPs + mgmt ports
+      18190/19009 + gen-sso-token string); NO net-new atomic network IOCs (detection content host-based, routed to
+      detection engineering); visibility-bounded null, non-disconfirming. No ITAR/export-controlled detail
+      published. Check 9 — CVE-2026-16232 + CVE-2024-24919 + all Other-Signal worklist CVEs dossier-linked;
+      Arista flagged pending vuln-tracker index (no broken link).
+
+      ANTI-REPETITION: the ONLY resurface is the Check Point topic entry (2026-07-22-pm-001), justified by
+      net-new actionable enrichment (version-matrix TODO closure + first host detection), NOT the 5-day passage
+      since the 07-25 deadline-day cover. UPDATE-flagged + 🔗 callout. Morning's Arista (2026-07-27-pm-001) and
+      Fastjson (2026-07-28-flash-0625-001) and the 12:00 UNC1549 FLASH (2026-07-28-flash-1200-001) are NOT
+      re-led; Arista/Fastjson appear only as Other-Signal deadline/no-change pointers (no covered_in append).
+
+      PRE-FLIGHT 13-of-13 PASS (iteration 1 draft ran ~807 words + a quote-wrapped paraphrase; iteration-1 fix
+      trimmed to 763 words and de-quoted the paraphrase; re-run all-pass). red-team NOT required (WEP ceiling
+      "likely" < "very likely"; single-source veto binds — matches the finding red_team_review_required: false).
+      Layer 2 omits standing-section boilerplate (A&D structural + Iran CI-Fortify continuity stay in Layer 1),
+      carries two source-linked/bolded bullets (Check Point lead + a combined two-deadline pointer) with
+      natural-language dates ("July 25," "July 30, two days out," "this morning"), italic urgency on the confirm/
+      apply call, ~215 words / ~1700 chars (<=1900 ceiling), single message. NOT posted/committed by briefer —
+      librarian delivers.
     first_covered: 2026-07-28
     last_covered: 2026-07-28
     retraction: null

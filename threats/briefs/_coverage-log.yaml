@@ -47138,7 +47138,7 @@ entries:
     test: false
 
   - id: 2026-07-27-pm-001-cisa-kev-arista-velocloud-orchestrator-cve-2026-16812-sd-wan-control-plane-active-exploitation-accelerated-3-day-deadline-2026-07-30-a2-likely-single-source-veto
-    covered_in: [2026-07-27-afternoon, 2026-07-28-morning, 2026-07-29-morning]   # RESURFACE 2026-07-28 morning — material-update UPDATE (resurface_if patch_released MET): Arista RELEASED the patch matrix (VCO 5.2.3.14/6.1.3.4/6.4.2.4/7.0.0.1), CVSS CONFIRMED 10.0 (maximum), and published 3 attacker hunt-IPs (8.19.75.217, 206.72.242.124, 206.72.242.162) — the three items finding-0003 explicitly deferred. LED the 2026-07-28 morning brief (lead sentence + Vulnerabilities-section UPDATE item, 🔗 callout to 2026-07-27 afternoon). Carried via finding-2026-07-28-0001 (B2/likely, single-source veto — BC+SW relay one Arista advisory; CISA KEV shares the same telemetry basis). covered_in + last_covered appended; finding-2026-07-28-0001 added to finding_ids; published_in_briefs back-written. RESURFACE 2026-07-29 morning — T-1 KEV DEADLINE STATUS TICK (dueDate 2026-07-30, TOMORROW): NO new substance since the 07-28 patch/CVSS-10.0/3-IP disclosure; LED the 2026-07-29 morning brief as the 🔓 Vulnerabilities UPDATE item + 🔗 callout to 2026-07-28 morning, explicitly labelled a deadline status tick (deadline-calendar status-tick precedent 2026-05-28-am-005). References NO net-new finding -> NO finding_ids append, NO published_in_briefs back-write; covered_in + last_covered appended only.
+    covered_in: [2026-07-27-afternoon, 2026-07-28-morning, 2026-07-29-morning, 2026-07-30-morning]   # RESURFACE 2026-07-28 morning — material-update UPDATE (resurface_if patch_released MET): Arista RELEASED the patch matrix (VCO 5.2.3.14/6.1.3.4/6.4.2.4/7.0.0.1), CVSS CONFIRMED 10.0 (maximum), and published 3 attacker hunt-IPs (8.19.75.217, 206.72.242.124, 206.72.242.162) — the three items finding-0003 explicitly deferred. LED the 2026-07-28 morning brief (lead sentence + Vulnerabilities-section UPDATE item, 🔗 callout to 2026-07-27 afternoon). Carried via finding-2026-07-28-0001 (B2/likely, single-source veto — BC+SW relay one Arista advisory; CISA KEV shares the same telemetry basis). covered_in + last_covered appended; finding-2026-07-28-0001 added to finding_ids; published_in_briefs back-written. RESURFACE 2026-07-29 morning — T-1 KEV DEADLINE STATUS TICK (dueDate 2026-07-30, TOMORROW): NO new substance since the 07-28 patch/CVSS-10.0/3-IP disclosure; LED the 2026-07-29 morning brief as the 🔓 Vulnerabilities UPDATE item + 🔗 callout to 2026-07-28 morning, explicitly labelled a deadline status tick (deadline-calendar status-tick precedent 2026-05-28-am-005). References NO net-new finding -> NO finding_ids append, NO published_in_briefs back-write; covered_in + last_covered appended only. RESURFACE 2026-07-30 morning — DEADLINE-DAY terminal status tick (dueDate 2026-07-30 = today): no new substance since the 07-28 patch/CVSS-10.0/3-IP disclosure; carried as an UPDATE + 🔗 callout in the 🚨 Active Threats section (NOT led — the day's 4 net-new promotions lead), resurface_if kev_due_date_2026_07_30_passing condition MET. References NO net-new finding -> NO finding_ids append, NO published_in_briefs back-write; covered_in + last_covered appended only (deadline-day status-tick precedent 2026-07-25-am / 2026-05-28-am-005).
     headline: "CISA added Arista VeloCloud Orchestrator CVE-2026-16812 (SD-WAN control plane) to KEV on 2026-07-27 with an ACCELERATED ~3-day federal deadline (dueDate 2026-07-30) — active exploitation, knownRansomwareCampaignUse Unknown. Orchestrator compromise implies fleet-wide SD-WAN control (high blast radius). A2/likely (single-source veto — CISA KEV sole basis this surface; caps at likely pending an independent second basis, NOT doubt about CISA). CVSS NOT confirmed >=9.0 from the KEV entry; blast-radius framing is architectural, not from CVE mechanics. No actor named (Hard Rule 2). Net-new to the corpus; strongest FLASH-adjacent candidate this window but critical-override quiet-hours bypass does NOT fire (CVSS unconfirmed / ransomware Unknown / no actor / no named A&D victim) — absorbed into the 16:00 afternoon brief per the accelerated-KEV-into-imminent-scheduled-brief precedent (Oracle-EBS / SharePoint / Check Point)."
     topic_tags:
       - afternoon-brief
@@ -47192,7 +47192,7 @@ entries:
       holds at "likely"; direct retrieval of the Arista advisory/NVD would establish an independent basis and
       is the lift candidate toward very_likely. resurface_if patch_released condition SATISFIED this cycle.
     first_covered: 2026-07-27
-    last_covered: 2026-07-29
+    last_covered: 2026-07-30
     retraction: null
     test: false
 
@@ -48189,6 +48189,342 @@ entries:
       delivers.
     first_covered: 2026-07-29
     last_covered: 2026-07-29
+
+  - id: 2026-07-30-am-001-cisa-kev-cisco-secure-fmc-cve-2026-20316-hardcoded-credential-cwe-798-active-exploitation-patch-released-kev-due-2026-08-01-a2-likely-single-source-veto
+    covered_in: [2026-07-30-morning]
+    headline: "CISA KEV-listed Cisco Secure FMC CVE-2026-20316 (hard-coded/static credential, CWE-798) on 2026-07-29 (dueDate 2026-08-01) — remote unauthenticated login to the firewall management console, ACTIVELY EXPLOITED, Cisco patch released, Horizon3.ai discovery, CVSS 5.3. Net-new to the corpus; distinct from the March-2026 max-severity Cisco FMC pair CVE-2026-20079 / CVE-2026-20131 (both 10.0). A2/likely (single-source veto — CISA KEV A-grade anchor + SecurityWeek B relay of the un-retrieved Cisco PSIRT advisory share one Cisco evidence basis). No actor named (Hard Rule 2); no named A&D/DIB victim (structural management-plane exposure). Led the 🚨 Active Threats section alongside the VeloCloud deadline-day UPDATE. CVSS 5.3 = below-FLASH despite active exploitation; correctly absorbed into the 08:00 morning brief."
+    topic_tags:
+      - morning-brief
+      - net-new-cisa-kev-addition-2026-07-29
+      - cve-2026-20316-cisco-secure-fmc-firewall-management-center
+      - cwe-798-hard-coded-static-credential-remote-unauth-console-login
+      - active-exploitation-a-grade-cisa-kev-authoritative-determination
+      - cisco-patch-released-2026-07-29-horizon3ai-discovery
+      - cvss-5-3-below-flash-trigger-1-floor-despite-active-exploitation
+      - kev-due-2026-08-01-federal-deadline
+      - single-source-veto-cisa-kev-plus-securityweek-relay-one-cisco-evidence-basis-caps-likely
+      - cisco-psirt-advisory-not-directly-retrieved-this-sweep-direct-retrieval-todo-independent-documentary-basis-candidate
+      - no-actor-named-hard-rule-2
+      - no-named-ad-prime-victim-structural-management-plane-exposure
+      - conflation-guard-distinct-from-march-2026-cve-2026-20079-cve-2026-20131-both-10-0
+      - network-security-appliance-management-plane-kev-cadence-checkpoint-smartconsole-arista-velocloud-sonicwall
+      - hard-rule-3-mechanism-class-level-no-poc-hard-rule-7-credential-class-not-value
+      - hard-rule-8-first-party-splunk-null-both-indices-visibility-bounded
+      - preflight-13-of-13-pass
+    related_actors: []               # neither CISA, Cisco, nor SecurityWeek names an actor (Hard Rule 2)
+    related_vulns: [CVE-2026-20316]  # net-new; not in _index.yaml — librarian flag: open dossier (distinct from CVE-2026-20079 / CVE-2026-20131)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-30-0001]
+    digraph: A2
+    wep: likely                      # single-source veto (one Cisco evidence basis attested by CISA KEV, relayed by SecurityWeek)
+    resurface_if:
+      - escalation_to_exploitation             # mass-exploitation / scope expansion beyond the KEV determination
+      - new_victims_confirmed                  # any named A&D/DIB victim
+      - new_attribution                        # any A/B source attributes exploitation
+      - first_party_ioc_hit                    # Cisco's published detection IOCs observed in archimedes/defenseclaw_local
+      - independent_basis_established          # direct retrieval of Cisco PSIRT advisory + NVD (Cisco atomic IOCs) — candidate to lift credibility toward 1 / WEP toward very_likely
+      - kev_due_date_2026_08_01_passing_without_federal_remediation
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-30-0001, append_brief_id: 2026-07-30-morning}   # DONE by briefer
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-20316 (Cisco Secure FMC, CWE-798 hard-coded credential, CISA KEV 2026-07-29, dueDate 2026-08-01, active exploitation, CVSS 5.3, Cisco patch 2026-07-29): NET-NEW, not in _index.yaml. Open a dossier. Direct-retrieval TODO: Cisco PSIRT advisory + NVD (firms CVSS vector/CWE, supplies Cisco atomic detection IOCs, establishes an independent documentary basis). Conflation guard vs CVE-2026-20079 / CVE-2026-20131 (March 2026, both 10.0)."
+      splunk_and_commit: "librarian owns Discord delivery, Teams (skip if unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-30 MORNING BRIEF, 🚨 Active Threats. Net-new CISA KEV addition (below-FLASH: CVSS 5.3 fails the
+      Trigger-1 9.0 floor + patch available fails Trigger-6, so correctly held as a morning-brief item across the
+      06:00/18:00 sweeps). Actively-exploited, KEV due 2026-08-01. A2/likely, single-source veto (CISA KEV +
+      SecurityWeek relay of the un-retrieved Cisco PSIRT advisory = one Cisco evidence basis). Analyst light-touch
+      KAC, 5 assumptions all Sound; no red-team (WEP 'likely'). Hard Rule 2 — no actor named. Hard Rule 3/7 —
+      mechanism at class level; 'hard-coded credential' is a vuln-class descriptor, not a stored value.
+    first_covered: 2026-07-30
+    last_covered: 2026-07-30
+    retraction: null
+    test: false
+
+  - id: 2026-07-30-am-002-rapid7-securityweek-broadcom-vmware-vmsa-2026-0006-vcenter-cve-2026-59309-59310-cvss-9-8-unauth-auth-bypass-rce-esxi-vm-escape-a2-likely-single-source-veto
+    covered_in: [2026-07-30-morning]
+    headline: "Broadcom VMSA-2026-0006 (2026-07-29) patches a critical VMware cluster: vCenter CVE-2026-59309 (Directory Service authentication bypass) + CVE-2026-59310 (Syslog directory-traversal -> RCE), BOTH CVSS 9.8 unauthenticated/network, plus ESXi VM-escape CVE-2026-47876 (VMXNET3 OOB-write, needs local guest admin) and high CVE-2026-41703 / low CVE-2026-41709. Broadcom NOT aware of in-the-wild exploitation at disclosure; patched. A2/likely (single-source veto — Rapid7 A-grade ETR + SecurityWeek B relay of the same un-retrieved Broadcom advisory = one evidence basis). No actor named (Hard Rule 2); no named A&D/DIB victim (structural — ESXi/vCenter is the dominant DIB-datacenter virtualization stack). CARRIED WITH TRIPWIRE CAVEAT: 'no ITW' is vendor-awareness-bounded/point-in-time — this unauth vCenter auth-bypass+RCE class is likely weaponized quickly post-patch (incl. ransomware crews). Net-new to the corpus. Led the 🔓 Vulnerabilities section."
+    topic_tags:
+      - morning-brief
+      - net-new-vendor-advisory-broadcom-vmsa-2026-0006-2026-07-29
+      - cve-2026-59309-vcenter-directory-service-authentication-bypass-cvss-9-8-unauth
+      - cve-2026-59310-vcenter-syslog-directory-traversal-rce-cvss-9-8-unauth
+      - cve-2026-47876-esxi-vmxnet3-oob-write-vm-escape-needs-local-guest-admin
+      - high-cve-2026-41703-low-cve-2026-41709-round-out-cluster
+      - no-in-the-wild-exploitation-at-disclosure-vendor-awareness-bounded-point-in-time-tripwire
+      - strong-base-rate-rapid-post-patch-weaponization-esxi-vcenter-ransomware-crews
+      - patched-fix-available-vmsa-2026-0006
+      - single-source-veto-rapid7-plus-securityweek-relay-one-broadcom-evidence-basis-caps-likely
+      - broadcom-vmsa-not-directly-retrieved-direct-retrieval-todo-independent-documentary-basis-candidate
+      - no-actor-named-hard-rule-2
+      - no-named-ad-prime-victim-structural-hypervisor-management-plane-exposure
+      - enterprise-virtualization-management-plane-critical-cve-cadence-distinct-from-vmware-avi-cve-2026-47865-47871
+      - hard-rule-3-mechanism-class-level-no-poc
+      - hard-rule-8-first-party-splunk-null-both-indices-visibility-bounded
+      - preflight-13-of-13-pass
+    related_actors: []               # neither Broadcom nor either relay names an actor (Hard Rule 2)
+    related_vulns: [CVE-2026-59309, CVE-2026-59310, CVE-2026-47876, CVE-2026-41703, CVE-2026-41709]   # net-new cluster; not in _index.yaml — librarian flag: open dossier rows for VMSA-2026-0006
+    related_campaigns: []
+    finding_ids: [finding-2026-07-30-0002]
+    digraph: A2
+    wep: likely                      # single-source veto (Rapid7 + SecurityWeek relay one Broadcom advisory)
+    resurface_if:
+      - escalation_to_exploitation             # ITW state change — the WEP-moving tripwire for this cluster
+      - poc_or_exploit_published               # public PoC / weaponization
+      - new_victims_confirmed                  # any named A&D/DIB victim
+      - first_party_ioc_hit                    # exploitation infra / vCenter surfaces in archimedes/defenseclaw_local
+      - independent_basis_established          # direct retrieval of Broadcom VMSA + NVD (fixed-build matrix / vectors) — candidate to lift credibility toward 1
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-30-0002, append_brief_id: 2026-07-30-morning}   # DONE by briefer
+      vuln_tracker_handoff_pending:
+        - "VMSA-2026-0006 cluster (CVE-2026-59309 / -59310 vCenter CVSS 9.8 unauth; CVE-2026-47876 ESXi VM-escape; high -41703; low -41709; patched 2026-07-29; no ITW at disclosure): NET-NEW, not in _index.yaml. Open dossier row(s). Flag ESXi/vCenter as recurrent ransomware/APT post-patch target — monitor for exploitation state change. Direct-retrieval TODO: Broadcom VMSA + NVD (CVSS vectors/CWE + fixed-build matrix, independent documentary basis)."
+      splunk_and_commit: "librarian owns Discord delivery, Teams (skip if unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-30 MORNING BRIEF, 🔓 Vulnerabilities (lead item of the section). Net-new patch-priority cluster;
+      CVSS 9.8 clears the Trigger-1 floor but NO active exploitation + patch available = correctly below-FLASH.
+      A2/likely, single-source veto (Rapid7 ETR + SecurityWeek relay one Broadcom advisory). Analyst light-touch
+      KAC, 5 assumptions (2 Qualify): the load-bearing one is A1 'no ITW' — an absence-of-evidence claim over a
+      class with a bad base rate; carried in the brief as an explicit WEP-moving tripwire, NOT settled fact. No
+      red-team (WEP 'likely'). Hard Rule 2 — no actor named. Folds pm-003 (SecurityWeek first surface, no CVSS) +
+      am-002 (Rapid7 ETR CVSS-firming).
+    first_covered: 2026-07-30
+    last_covered: 2026-07-30
+    retraction: null
+    test: false
+
+  - id: 2026-07-30-am-003-rapid7-etr-jetbrains-teamcity-on-prem-cve-2026-63077-cvss-9-8-unauth-deserialization-rce-cicd-supply-chain-a2-likely-single-source-veto
+    covered_in: [2026-07-30-morning]
+    headline: "Rapid7 ETR (2026-07-29) flags JetBrains TeamCity On-Premises CVE-2026-63077 — critical (CVSS 9.8) unauthenticated deserialization RCE affecting ALL versions; agent-polling-protocol auth bypass -> OS command execution as the TeamCity server process + stored-credential read + CI/CD pipeline-integrity compromise. JetBrains advisory 2026-07-27; NOT aware of active exploitation at disclosure; fixed version available. A2/likely (single-source veto — one Rapid7 ETR relay of the un-retrieved JetBrains advisory; THINNEST sourcing of the three vuln findings this cycle). No actor named (Hard Rule 2); no named A&D/DIB victim (structural — CI/CD supply-chain archetype for an ITAR SDLC). CARRIED WITH TRIPWIRE CAVEAT: no-ITW is the most fragile of the three — Rapid7 notes prior TeamCity auth-bypass CVEs were rapidly weaponized post-disclosure; near-term exploitation likely. Net-new to the corpus. In the 🔓 Vulnerabilities section."
+    topic_tags:
+      - morning-brief
+      - net-new-vendor-advisory-jetbrains-2026-07-27-rapid7-etr-relay-2026-07-29
+      - cve-2026-63077-jetbrains-teamcity-on-premises-all-versions
+      - cwe-502-class-deserialization-of-untrusted-data-unauth-rce-agent-polling-protocol-auth-bypass
+      - cvss-9-8-unauthenticated-network-os-command-execution-as-server-process
+      - impact-stored-credential-read-plus-cicd-pipeline-integrity-compromise
+      - no-active-exploitation-at-disclosure-most-fragile-of-three-rapid7-notes-prior-teamcity-cves-rapidly-weaponized
+      - patched-fix-available-jetbrains-2026-07-27
+      - single-source-veto-one-rapid7-etr-relay-thinnest-sourcing-of-three-caps-likely
+      - jetbrains-advisory-not-directly-retrieved-direct-retrieval-todo-independent-documentary-basis-candidate
+      - no-actor-named-hard-rule-2
+      - no-named-ad-prime-victim-structural-cicd-supply-chain-itar-sdlc-signing-keys-artifact-repos-deploy-creds
+      - software-supply-chain-cicd-threat-archetype-npm-pypi-worms-tanstack-code-signing-cert-exfil
+      - hard-rule-3-mechanism-class-level-no-poc-hard-rule-7-no-credential-values
+      - hard-rule-8-first-party-splunk-null-both-indices-visibility-bounded
+      - preflight-13-of-13-pass
+    related_actors: []               # neither Rapid7 nor JetBrains names an actor (Hard Rule 2)
+    related_vulns: [CVE-2026-63077]  # net-new; not in _index.yaml — librarian flag: open dossier (JetBrains TeamCity On-Prem, all versions)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-30-0003]
+    digraph: A2
+    wep: likely                      # single-source veto (one Rapid7 ETR relay of one JetBrains primary)
+    resurface_if:
+      - escalation_to_exploitation             # ITW — the most fragile assumption; near-term WEP-moving tripwire
+      - poc_or_exploit_published               # public PoC / weaponization
+      - new_victims_confirmed                  # any named A&D/DIB victim
+      - first_party_ioc_hit                    # exploitation infra / TeamCity surfaces in archimedes/defenseclaw_local
+      - independent_basis_established          # direct retrieval of JetBrains advisory + NVD (fixed-version matrix / vector) — candidate to lift credibility toward 1
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-30-0003, append_brief_id: 2026-07-30-morning}   # DONE by briefer
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-63077 (JetBrains TeamCity On-Premises, all versions, CVSS 9.8 unauth deserialization RCE, CWE-502 class, agent-polling-protocol auth bypass, patched 2026-07-27, no ITW at disclosure): NET-NEW, not in _index.yaml. Open a dossier. Flag CI/CD supply-chain / DIB SDLC relevance; Rapid7 notes prior TeamCity auth-bypass CVEs rapidly weaponized post-disclosure — monitor for exploitation state change. Direct-retrieval TODO: JetBrains advisory + NVD (fixed-version matrix + vector/CWE, independent documentary basis)."
+      splunk_and_commit: "librarian owns Discord delivery, Teams (skip if unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-30 MORNING BRIEF, 🔓 Vulnerabilities. Net-new patch-priority item; CVSS 9.8 clears the Trigger-1
+      floor but NO active exploitation + patch available = correctly below-FLASH. A2/likely, single-source veto
+      (one Rapid7 ETR relay of the un-retrieved JetBrains advisory — the THINNEST sourcing of the three vuln
+      findings this cycle). Analyst light-touch KAC, 5 assumptions (2 Qualify): A1 'no active exploitation' is the
+      most fragile assumption across all three vuln findings — Rapid7 itself notes prior TeamCity auth-bypass CVEs
+      were rapidly weaponized post-disclosure, so carried in the brief as a live near-term tripwire. No red-team
+      (WEP 'likely'). Hard Rule 2 — no actor named. Hard Rule 3/7 — mechanism at class level, no credential values.
+    first_covered: 2026-07-30
+    last_covered: 2026-07-30
+    retraction: null
+    test: false
+
+  - id: 2026-07-30-am-004-unit42-knaithe-knyuan-china-nexus-ai-agent-driven-mass-exploitation-seven-cves-emerging-ttp-a2-likely-single-source-veto-monitoring
+    covered_in: [2026-07-30-morning]
+    headline: "Unit 42 (2026-07-30) reports a Chinese-speaking operator it tracks as knaithe/KnYuan (assessed Zhuhai, China) running LARGELY AUTONOMOUS, AI-agent-driven vulnerability scanning + exploitation across seven CVEs (five rated CVSS 9.8-10.0), observed autonomous session May 5-7 2026; primary tooling DeepSeek via the open-source Hermes Agent framework (+ Claude Code connectivity, OpenAI Codex exploit-dev dirs) + FOFA enumeration. Only named victim: a Malaysian government entity. MONITORING / emerging-TTP item. A2/likely (single-source veto — Unit 42 sole basis). ATTRIBUTION REPORTED, NOT ORIGINATED (Hard Rule 2). CRITICAL CAVEAT carried in brief: 'largely autonomous' is STRICTLY Unit 42's characterization — actor + AI-enabled nature well-supported (ACH: commodity/AI-incidental null and false-flag both fail), but the DEGREE of autonomy is under-determined (H2 AI-assisted-human + H3 partial/demonstrative survive with zero inconsistencies). Non-roster actor; NO /new-actor opened. In 🕵️ Actor Activity."
+    topic_tags:
+      - morning-brief
+      - monitoring-emerging-ttp-item
+      - unit42-china-nexus-operator-knaithe-knyuan-assessed-zhuhai-china
+      - largely-autonomous-ai-agent-driven-mass-exploitation-degree-of-autonomy-under-determined
+      - seven-cves-five-rated-cvss-9-8-to-10-0-observed-autonomous-session-may-5-7-2026
+      - toolchain-deepseek-via-hermes-agent-framework-claude-code-openai-codex-fofa-enumeration
+      - only-named-victim-malaysian-government-entity-not-ad-dib
+      - attribution-reported-not-originated-hard-rule-2-unit42-no-formal-confidence-language
+      - single-source-veto-unit42-sole-basis-caps-likely
+      - ach-actor-plus-ai-enabled-core-robust-autonomy-degree-brittle-single-point-of-failure-unit42
+      - non-roster-actor-no-new-actor-opened-track-as-weekly-synthesis-ai-enabled-exploitation-ttp-thread
+      - citrix-netscaler-cve-2026-3055-edge-class-most-perimeter-relevant-to-ad
+      - benign-ai-provider-endpoints-abused-api-deepseek-dashscope-aliyuncs-do-not-block
+      - code-newcli-com-proxy-domain-hunt-not-block
+      - langflow-cve-2026-33017-distinct-from-tracked-cve-2026-0770
+      - hard-rule-3-cves-by-id-no-poc-hard-rule-8-first-party-splunk-null-visibility-bounded
+      - preflight-13-of-13-pass
+    related_actors: []               # knaithe/KnYuan is NON-ROSTER (opportunistic individual, not a tracked APT). Attribution is Unit 42's, reported not originated (Hard Rule 2). Pioneer Kitten #029 Citrix-edge overlap = defensive context only, deliberately NOT cross-walked and kept out of the brief.
+    related_vulns: [CVE-2026-33017, CVE-2026-21858, CVE-2025-68613, CVE-2026-3055, CVE-2026-34486, CVE-2026-39987, CVE-2026-33824]   # 7 net-new; none in _index.yaml — librarian flag: open dossier rows, prioritize the 5 rated 9.8-10.0 (esp. Citrix NetScaler CVE-2026-3055 edge class)
+    related_campaigns: []
+    finding_ids: [finding-2026-07-30-0004]
+    digraph: A2
+    wep: likely                      # single-source veto (Unit 42 sole basis); ACH does not push above (single basis) or below (actor + AI-enabled core robust)
+    resurface_if:
+      - independent_corroboration              # a second research firm corroborates knaithe/KnYuan campaign — lifts single-source veto, rerun ACH, candidate to raise WEP
+      - human_in_loop_shown                    # any source demonstrates human-in-the-loop control -> downgrade the 'autonomous' framing
+      - ad_dib_victim_named                    # escalate disposition; reconsider /new-actor
+      - first_party_ioc_hit                    # code.newcli[.]com proxy domain recurs / appears in archimedes/defenseclaw_local
+      - knaithe_tooling_reused_by_distinct_operator   # elevates H5 (tool-author-vs-operator)
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-30-0004, append_brief_id: 2026-07-30-morning}   # DONE by briefer
+      vuln_tracker_handoff_pending:
+        - "7 net-new CVEs (Langflow CVE-2026-33017 [distinct from tracked CVE-2026-0770]; n8n CVE-2026-21858 10.0 + CVE-2025-68613 9.9; Citrix NetScaler CVE-2026-3055 9.8; Apache Tomcat CVE-2026-34486 7.5; Marimo CVE-2026-39987 9.8; Windows IKE CVE-2026-33824 9.8): none in _index.yaml. Open dossier rows; PRIORITIZE the 5 rated 9.8-10.0, esp. Citrix NetScaler CVE-2026-3055 (internet-facing edge class relevant to A&D perimeters). Confirm CVSS vectors/CWE/patch/KEV per CVE on direct retrieval (Unit 42 states scores, not full vectors)."
+      actor_profiler_handoff_pending:
+        - "knaithe/KnYuan: NON-ROSTER opportunistic individual; NO /new-actor now (single source, single foreign-gov victim, would score low per threat-box). Track the TTP (AI-agent-driven autonomous mass exploitation) as a weekly-synthesis thread, NOT an actor profile. Reconsider if independently corroborated OR an A&D/DIB victim is named. Hard Rule 2 — Archimedes reports Unit 42's attribution, originates/extends nothing."
+      ioc_handoff:
+        - "code.newcli[.]com = HUNT candidate (proxy domain, corroborate before block). api.deepseek[.]com + dashscope.aliyuncs[.]com = LEGITIMATE AI-provider endpoints ABUSED as tooling — DO NOT block / DO NOT classify as malicious C2 (benign_infrastructure_abused)."
+      splunk_and_commit: "librarian owns Discord delivery, Teams (skip if unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-30 MORNING BRIEF, 🕵️ Actor Activity (MONITORING / emerging-TTP). A2/likely, single-source veto
+      (Unit 42 sole basis). Analyst ran a full ACH (6 hypotheses) + KAC: the actor (knaithe/KnYuan per Unit 42)
+      and the AI-enabled nature are robust (commodity/AI-incidental null H4 fails on the bespoke Hermes-Agent
+      toolchain; false-flag H6 weak), but the DEGREE of autonomy is under-determined — H2 (AI-assisted-human) and
+      H3 (partial/demonstrative) both survive with zero inconsistencies and cannot be separated from Unit 42's
+      single, uncorroborated interpretation, which itself carries no formal confidence language. BRIEFER CAVEAT
+      HONORED (both layers): 'largely autonomous' carried strictly as Unit 42's characterization, not fact. Hard
+      Rule 2 — attribution reported not originated; Pioneer Kitten #029 Citrix-edge overlap kept OUT of the brief
+      to avoid implying attribution. No /new-actor. Good fit for a weekly-synthesis AI-enabled-exploitation thread.
+    first_covered: 2026-07-30
+    last_covered: 2026-07-30
+    retraction: null
+    test: false
+
+  - id: 2026-07-30-am-brief-meta
+    covered_in: [2026-07-30-morning]
+    brief_file: threats/briefs/2026-07-30-morning.md
+    headline: "Morning brief 2026-07-30 (Thursday) — ACTIVE board, 4 net-new promotions + 1 deadline-day UPDATE. LEAD = two actively-exploited network-appliance flaws forcing action this week: the Arista VeloCloud CVE-2026-16812 federal KEV deadline (CVSS 10.0) expires TODAY (deadline-day terminal status tick, UPDATE + 🔗 callout, in-place resurface of 2026-07-27-pm-001) + net-new actively-exploited Cisco Secure FMC CVE-2026-20316 (CWE-798, KEV due Aug 1, CVSS 5.3). 🚨 Active Threats = VeloCloud UPDATE + Cisco FMC. 🔓 Vulnerabilities = two net-new critical patch-priority clusters, both CVSS 9.8 unauth + no ITW-at-disclosure (tripwire-caveated): Broadcom VMware VMSA-2026-0006 vCenter auth-bypass+RCE + ESXi VM-escape; JetBrains TeamCity CVE-2026-63077 CI/CD RCE. ✈️ Sector Focus A&D = structural-only (no named victim; management-plane + CI/CD exposure axes). 🕵️ Actor Activity = Unit 42 knaithe/KnYuan AI-agent-driven mass exploitation (MONITORING, 'largely autonomous' carried as Unit 42's characterization, Hard Rule 2). 🇮🇷 Iran Cyber Watch = silent-day (UNC1549 07-28 tooling no state change). 📰 Other Signal = Fortinet FortiOS CVE-2025-68686 no-change (Aug 10 deadline) + first-party Splunk clean (0 hits both indices). Anti-repetition: Minnesota water + CubePilot (07-29 AM monitoring items) DROPPED — no new substance."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - active-board-4-net-new-promotions-plus-1-deadline-day-update
+      - lead-two-actively-exploited-network-appliance-flaws-velocloud-deadline-today-plus-cisco-fmc-net-new
+      - velocloud-cve-2026-16812-deadline-day-terminal-status-tick-update-callout-in-place-resurface-2026-07-27-pm-001
+      - cisco-fmc-cve-2026-20316-net-new-actively-exploited-kev-due-aug-1-cvss-5-3-below-flash
+      - vulnerabilities-two-net-new-critical-9-8-unauth-no-itw-tripwire-caveated-vmware-vmsa-2026-0006-teamcity-cve-2026-63077
+      - no-itw-tripwire-caveat-honored-both-vuln-findings-vendor-awareness-bounded-point-in-time
+      - sector-focus-ad-structural-only-no-named-victim-management-plane-plus-cicd-axes
+      - actor-activity-unit42-knaithe-knyuan-ai-agent-driven-monitoring-largely-autonomous-as-characterization-hard-rule-2
+      - iran-cyber-watch-silent-day-unc1549-0728-tooling-no-state-change
+      - other-signal-fortinet-fortios-cve-2025-68686-no-change-aug-10-plus-first-party-splunk-clean-0-hits
+      - anti-repetition-minnesota-water-cubepilot-07-29-am-monitoring-items-dropped-no-new-substance
+      - all-four-net-new-a2-likely-single-source-veto-no-red-team
+      - hard-rule-2-no-attribution-originated-knaithe-reported-per-unit42-pioneer-kitten-029-defensive-context-kept-out
+      - hard-rule-6-zero-direct-quotes-both-layers-largely-autonomous-is-characterization-label-under-15-words
+      - hard-rule-8-first-party-splunk-null-all-surfaced-cves-iocs-visibility-bounded
+      - preflight-13-of-13-pass
+    related_actors: []               # No roster actor as a graded item. UNC1549/Charming Kitten/Handala/MuddyWater + APT28/Lazarus/APT41/Salt Typhoon appear only in silent-day/sector templates; UNC1549 07-28 tooling is a no-state-change pointer. knaithe/KnYuan is NON-ROSTER (Unit 42 attribution, reported not originated). Hard Rule 2.
+    related_vulns: [CVE-2026-16812, CVE-2026-20316, CVE-2026-59309, CVE-2026-59310, CVE-2026-47876, CVE-2026-63077, CVE-2025-68686]   # 16812 = deadline-day UPDATE resurface; 20316/59309/59310/47876/63077 = net-new covered this cycle; 68686 = no-change Other-Signal pointer (NOT newly covered). knaithe's 7 CVEs logged under 2026-07-30-am-004.
+    related_campaigns: []
+    finding_ids: [finding-2026-07-30-0001, finding-2026-07-30-0002, finding-2026-07-30-0003, finding-2026-07-30-0004]
+    digraph: A2                      # all four net-new findings A2/likely (VeloCloud UPDATE also A2/likely)
+    wep: likely
+    disposition:
+      net_new_findings_promoted: 4   # finding-2026-07-30-0001 Cisco FMC, -0002 VMware VMSA cluster, -0003 TeamCity, -0004 knaithe/KnYuan
+      updates_promoted: 0            # VeloCloud is a deadline-day STATUS TICK (no net-new finding) — resurfaces the 2026-07-27-pm-001 topic entry
+      new_topic_entries_created: 4   # 2026-07-30-am-001 (Cisco FMC), am-002 (VMware), am-003 (TeamCity), am-004 (knaithe)
+      in_place_resurfaces: 1         # 2026-07-27-pm-001 (VeloCloud) — deadline-day KEV status tick (kev_due_date_2026_07_30 = today); deadline-day precedent 2026-07-25-am / 2026-05-28-am-005
+      covered_in_appends: 1          # 2026-07-27-pm-001 gets 2026-07-30-morning appended. Fortinet 68686 + dropped Minnesota/CubePilot = no append.
+      published_in_briefs_back_writes: 4   # all four net-new findings append 2026-07-30-morning. VeloCloud deadline tick references NO net-new finding -> no back-write (status-tick precedent).
+      dropped_prior_monitoring:      # anti-repetition: covered 07-29 AM, no new substance today -> NOT resurfaced
+        - "finding-2026-07-29-0001 Minnesota water OT (no attribution, no state change)"
+        - "finding-2026-07-29-0002 CubePilot UAV DNS-hijack supply-chain risk (no attribution, no state change)"
+      rationale: >
+        ACTIVE board after a quiet stretch. Led with the highest-impact actionable frame — two actively-exploited
+        network-appliance flaws forcing action this week: the VeloCloud CVE-2026-16812 KEV deadline expiring TODAY
+        (CVSS 10.0, deadline-day terminal status tick, UPDATE + 🔗 callout, in-place resurface of 2026-07-27-pm-001)
+        and the net-new actively-exploited Cisco FMC CVE-2026-20316 (KEV due Aug 1). The two net-new critical
+        unauth-RCE clusters (VMware VMSA-2026-0006, TeamCity CVE-2026-63077) are CVSS 9.8 with NO ITW at disclosure
+        — placed in Vulnerabilities with the analyst-mandated no-ITW tripwire caveat (vendor-awareness-bounded,
+        point-in-time, bad post-patch weaponization base rate). knaithe/KnYuan (Unit 42) is an emerging-TTP
+        MONITORING item with the mandated 'largely autonomous = Unit 42's characterization' caveat and Hard Rule 2
+        attribution framing. All four net-new A2/likely, single-source veto, no red-team (WEP < very_likely). The two
+        07-29 monitoring items (Minnesota water, CubePilot) were DROPPED per anti-repetition (no new substance).
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 3                  # iteration-1 Layer-1 ~878 naive words (over 800) + Layer-2 ~2160 chars (over 1900); iteration-2 swapped the vCenter Layer-2 link to the shorter SecurityWeek URL + tightened Layer-2 bullets (under 1900); iteration-3 merged redundant vuln bullets + dropped duplicate Related lines + trimmed lead/Cisco/Iran to land Layer 1 ~788 naive words (in band)
+      word_count_layer1: 788         # 400-800 morning band (naive split incl. markdown tokens; prose count lower)
+      layer2_words: ~215            # 150-300 band
+      layer2_chars_est: ~1855       # <=1900 ceiling (librarian re-verifies char count before posting); vCenter Layer-2 link uses the shorter SecurityWeek URL to hold the ceiling under the two long Rapid7 URLs
+      check_3_note: >
+        Anti-repetition (check 3) PASS. VeloCloud CVE-2026-16812 re-covered under an explicit UPDATE flag + 🔗
+        callout on a MET resurface condition (kev_due_date_2026_07_30 = today; deadline-day terminal status tick),
+        NOT led (the 4 net-new promotions lead) — authorized per deadline-day precedent (2026-07-25-am / 2026-05-28-
+        am-005). Minnesota water + CubePilot (07-29 AM) DROPPED — no resurface condition met. Fortinet 68686 =
+        transparent no-change pointer. The 4 net-new topics are genuinely first-surface.
+      check_5_note: "Banned phrases (check 5) PASS. Zero hot-list phrases in either layer."
+      check_9_note: >
+        Check 9 PASS. All 8 surfaced CVEs (CVE-2026-20316; VMSA-2026-0006 set -59309/-59310/-47876/-41703/-41709;
+        CVE-2026-63077; the 7 knaithe CVEs; CVE-2026-16812; CVE-2025-68686) are NET-NEW / not-yet-indexed and
+        referenced WITHOUT link (pending vuln-tracker dossier open — no broken links; precedent-consistent with
+        2026-07-29-am Arista/FortiOS handling). knaithe/KnYuan is NON-ROSTER (no dossier; correctly flagged). Tracked
+        actors (UNC1549 etc.) appear only in silent-day/sector templates as no-state-change pointers.
+      check_11_note: >
+        Single-source veto (check 11) PASS. All four net-new findings + the VeloCloud UPDATE are A2/likely, single-
+        source-veto-bound and stated as such. No 'very likely' or stronger anywhere. red_team NOT required (all WEP
+        ceilings 'likely' < 'very likely').
+      check_12_note: >
+        Quote discipline (check 12) PASS. ZERO direct external-source quotes in either layer — all source content
+        paraphrased. 'largely autonomous' appears once per layer as Unit 42's characterization LABEL (2 words, well
+        under 15, one source, Hard Rule 2 load-bearing); 'knaithe/KnYuan' is an actor handle, not a quote.
+      check_13_note: >
+        Discord Summary (check 13) PASS. Section present + last in file, ~215 words (150-300 band), ~1855 chars
+        (<=1900 ceiling, single message — the vCenter bullet uses the shorter SecurityWeek URL specifically to hold
+        the ceiling against the two long Rapid7 URLs). Greeting-anchored ('Good morning. Here's your 0800 brief —
+        2026-07-30.'), 5 source-linked bolded headlines across 🚨/🔓/🕵️, natural-language dates ('today', 'July 29',
+        'August 1', 'July 27', 'May session'), italic urgency (*right now*, *by August 1*), Hard Rule 2 framing
+        preserved on the knaithe bullet ('Archimedes carries Unit 42's attribution... as reported, not fact'). NO
+        digraph/WEP/finding-id in Layer 2. NO standing-section boilerplate (Sector Focus + Iran silent-day + Other
+        Signal stay in Layer 1).
+      standing_sections:
+        ad_sector: structural_only_no_named_victim    # management-plane + CI/CD exposure axes noted; no named A&D/DIB victim
+        iran_cyber_watch: silent_day                  # UNC1549 07-28 tooling no state change; no new tracked-Iranian activity in 48h
+      hard_rule_2_confirmation: "All four net-new items handled clean. Cisco FMC / VMware / TeamCity: no actor named by any source, nothing to inherit. knaithe/KnYuan: attribution is Unit 42's, REPORTED not originated; 'largely autonomous' carried as Unit 42's characterization; Pioneer Kitten #029 Citrix-edge overlap = defensive context only, deliberately KEPT OUT of the brief to avoid implying attribution."
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-30-0001, append_brief_id: 2026-07-30-morning}   # DONE by briefer
+        - {finding_id: finding-2026-07-30-0002, append_brief_id: 2026-07-30-morning}   # DONE by briefer
+        - {finding_id: finding-2026-07-30-0003, append_brief_id: 2026-07-30-morning}   # DONE by briefer
+        - {finding_id: finding-2026-07-30-0004, append_brief_id: 2026-07-30-morning}   # DONE by briefer
+      resurface_updates:
+        - {topic_entry_id: 2026-07-27-pm-001-cisa-kev-arista-velocloud-orchestrator-cve-2026-16812-sd-wan-control-plane-active-exploitation-accelerated-3-day-deadline-2026-07-30-a2-likely-single-source-veto, action: "covered_in += 2026-07-30-morning; last_covered -> 2026-07-30 (deadline-day KEV terminal status tick, dueDate 2026-07-30 = today; NO net-new finding -> NO finding_ids append, NO published_in_briefs back-write) — DONE by briefer"}
+      new_topic_entries:
+        - 2026-07-30-am-001-cisa-kev-cisco-secure-fmc-cve-2026-20316-hardcoded-credential-cwe-798-active-exploitation-patch-released-kev-due-2026-08-01-a2-likely-single-source-veto
+        - 2026-07-30-am-002-rapid7-securityweek-broadcom-vmware-vmsa-2026-0006-vcenter-cve-2026-59309-59310-cvss-9-8-unauth-auth-bypass-rce-esxi-vm-escape-a2-likely-single-source-veto
+        - 2026-07-30-am-003-rapid7-etr-jetbrains-teamcity-on-prem-cve-2026-63077-cvss-9-8-unauth-deserialization-rce-cicd-supply-chain-a2-likely-single-source-veto
+        - 2026-07-30-am-004-unit42-knaithe-knyuan-china-nexus-ai-agent-driven-mass-exploitation-seven-cves-emerging-ttp-a2-likely-single-source-veto-monitoring
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 -> #intel-briefs), Teams (skip if webhook unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-30 MORNING BRIEF (briefer phase). ACTIVE board after a quiet stretch: 4 net-new A2/likely promotions
+      + 1 deadline-day UPDATE. Lead frame = two actively-exploited network-appliance flaws forcing action this week
+      (VeloCloud deadline TODAY + net-new Cisco FMC). All four net-new capped at 'likely' by single-source veto; no
+      red-team. Analyst-mandated caveats honored: the two no-ITW critical clusters (VMware, TeamCity) carry the
+      point-in-time / bad-base-rate tripwire framing; the knaithe/KnYuan monitoring item carries 'largely autonomous
+      = Unit 42's characterization' (degree of autonomy under-determined). Anti-repetition: Minnesota water + CubePilot
+      (07-29 AM monitoring) DROPPED (no new substance). Hard Rules: Rule 2 — no attribution originated (knaithe per
+      Unit 42; Pioneer Kitten #029 defensive-context kept out); Rule 6 — zero direct quotes both layers; Rule 8 —
+      first-party Splunk 0 hits across both indices on all surfaced CVEs/IOCs (visibility-bounded null). PRE-FLIGHT
+      13-of-13 PASS (iteration 3: iter-1 over both ceilings; iter-2 swapped vCenter Layer-2 link to shorter
+      SecurityWeek URL + tightened bullets; iter-3 merged redundant vuln bullets + dropped duplicate Related lines +
+      trimmed lead/Cisco/Iran -> Layer 1 ~788 words, Layer 2 ~215 words / ~1855 chars). NOT posted/committed by
+      briefer — librarian delivers.
+    first_covered: 2026-07-30
+    last_covered: 2026-07-30
     retraction: null
     test: false
 

@@ -22,7 +22,7 @@
 #   - librarian_note: free-form supersession / disposition reasoning
 
 version: 1
-last_updated: 2026-07-24T08:01:00-04:00
+last_updated: 2026-07-30T18:00:00-04:00
 
 archive:
   # ==========================================================================
@@ -421,3 +421,35 @@ archive:
       two source buckets — a regen would be a content-free timestamp bump). Splunk
       events: brief_published (morning) + flash_superseded (this entry) +
       git_committed.
+
+  - queued_at: 2026-07-28T06:25:00-04:00
+    archived_at: 2026-07-30T18:00:00-04:00
+    archived_by: librarian-20260730-180045
+    disposition: stale
+    brief_id: flash-2026-07-28-0625
+    brief_path: threats/briefs/flash-2026-07-28-0625.md
+    finding_id: finding-2026-07-28-flash-0600-0001
+    trigger: zero-day-no-patch
+    cve: CVE-2026-16723
+    digraph: B2
+    wep: likely
+    critical_override_applied: false
+    quiet_hours_at_queue: true
+    expires_at: 2026-07-28T18:25:00-04:00
+    catchup_sweep: 2026-07-28T09:00:00-04:00
+    superseded: false
+    superseded_by: null
+    librarian_note: |
+      Fastjson 1.x EOL unpatched RCE (CVE-2026-16723), B2 single-source veto
+      (SecurityWeek relay only). Queued 2026-07-28 06:25 EDT during quiet hours
+      (override 0-of-4). Expired unposted at 2026-07-28 18:25 EDT and was NEVER
+      superseded — the 2026-07-28 09:00 catchup sweep and subsequent sweeps did
+      not clear it. Now ~48h past expiry (queue-hygiene sweep 2026-07-30 18:00
+      EDT), far beyond the 12h staleness window. Per FLASH-POLICY staleness
+      procedure + flash-queue.yaml header: stale (>12h past expires_at) -> log +
+      archive, not posted. Grader/briefer flagged likely absorption into the
+      2026-07-28 08:00 morning brief but that absorption was never confirmed at
+      the queue level (likely-absorbed-but-unconfirmed); B2 single-source-veto
+      content remains available in the finding + brief on disk for any future
+      pickup. Not posted to #flash-alerts. Queue-hygiene archive only, not a
+      content retraction. Live queue emptied to [].

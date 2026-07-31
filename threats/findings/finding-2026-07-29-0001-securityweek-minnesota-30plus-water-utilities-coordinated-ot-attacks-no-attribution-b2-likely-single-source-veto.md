@@ -270,9 +270,62 @@ handoffs:
 
 # Lifecycle
 tlp: CLEAR
-published_in_briefs: [2026-07-29-morning]   # briefer appends brief_ids
+published_in_briefs: [2026-07-29-morning, 2026-07-31-morning]   # briefer appends brief_ids
 retracted: false
 retraction_brief_id: null
+last_updated: 2026-07-31T08:16:00-04:00
+updates:
+  - update_id: upd-2026-07-31-0001
+    updated_at: 2026-07-31T08:16:00-04:00
+    updated_by: grader
+    grading_run_id: morning-20260731-080000
+    raw_signal_members:
+      - raw-2026-07-31-am-001
+    update_type: authoritative_advisory_followon
+    grade_change: none                    # remains B2 / likely; single-source veto still binds (same relay publisher, CISA advisory not directly retrieved)
+    summary: >
+      CISA has published an authoritative mitigation advisory following the Minnesota water-utility OT
+      incident, relayed by SecurityWeek (Mike Lennon, 2026-07-30). CISA's three immediate actions:
+      (1) disconnect PLCs from the internet / route remote access via VPN/gateway; (2) enable password
+      protection and change default credentials; (3) allowlist IP addresses to known devices. CISA also
+      recommends clean PLC backups and points to advisory AA26-097A for indicators of compromise. Named
+      PLC target families surfaced: Rockwell CompactLogix and Micro850, Schneider Electric Modicon M340,
+      Siemens S7-1200. Attack technique detail added: attackers modified passwords to lock out operators
+      and disconnected PLCs by changing IP addresses; vulnerable cellular modems called out as often-
+      undocumented entry points. Incident scope reaffirmed (30+ community water systems, 2026-07-26/27;
+      named municipalities Maple Plain, Braham, South St. Paul, Plymouth).
+    grade_rationale_note: >
+      Grade unchanged at B2 / likely. The advisory ELEVATES the originating authority from trade-press
+      relay of MNIT+municipality statements to a federal CISA advisory (A-grade authority) — but the
+      effective source IN HAND is still SecurityWeek (B), the SAME relay publisher as the original
+      finding, and neither the CISA advisory nor AA26-097A was directly retrieved this cycle. Per this
+      finding's own tripwire, the single-source veto lifts only on an INDEPENDENT SECOND PUBLISHER with a
+      separate evidence basis; a different authority (CISA) reaching us through the same publisher does
+      not satisfy that. Credibility stays 2; digraph stays B2; WEP stays "likely." Direct retrieval of the
+      CISA advisory + AA26-097A is the firming milestone (would establish an independent documentary basis
+      and possibly an IOC appendix).
+    attribution_note: >
+      Hard Rule 2 preserved. STILL no attribution. The source states no formal attribution has been made;
+      CyberAv3ngers (#028) and Handala (#014) remain named only as profile-fit, NOT as an attribution of
+      this campaign. Critically: CISA's own cross-reference to AA26-097A (the CyberAv3ngers six-agency
+      advisory) is a PROCEDURAL IOC-reference, not an attribution of this Minnesota campaign — that
+      distinction must be preserved downstream. Archimedes originates and inherits NO attribution.
+    named_plc_targets:
+      - "Rockwell Automation CompactLogix"
+      - "Rockwell Automation Micro850"
+      - "Schneider Electric Modicon M340"
+      - "Siemens S7-1200"
+    ioc_reference_advisory: AA26-097A       # CISA-referenced IOC set; NOT directly retrieved this cycle (direct-retrieval todo)
+    first_party_precedence:
+      applied: false
+      splunk_note: "Grader Rule 8 re-run 2026-07-31 over the named PLC families (CompactLogix / Micro850 / Modicon / S7-1200) across archimedes + defenseclaw_local -> 0 events. No atomic IOCs in the relay to pivot on; AA26-097A IOC set not retrieved. Visibility-bounded null (Hard Rule 8)."
+    handoff_note: >
+      Direct-retrieval todo elevated: pull the CISA advisory + AA26-097A for (a) an independent documentary
+      basis (could lift credibility toward 1 / lift the veto) and (b) the atomic IOC set for the master
+      index + first-party hunt. actor-profiler: the named PLC families + technique detail (password lockout,
+      IP-change PLC disconnection, cellular-modem entry) are sector-TTP-class CONTEXT for the #028 dossier
+      to adjudicate WITHOUT asserting #028 conducted this (Hard Rule 2). vuln-tracker: no CVE named.
+    briefer_note: "Present as an authoritative-advisory UPDATE to the 2026-07-29 Minnesota OT item — CISA now has published mitigation guidance and named PLC targets. Carry the named PLC families + CISA's three immediate actions as the actionable OT-hardening so-what. Keep attribution absent; Iranian personas only as the source's profile-fit, never Archimedes' lean."
 ---
 
 # 30+ Minnesota water utilities hit by coordinated OT attacks — automated control disrupted, water reported safe (NO attribution made)
@@ -324,3 +377,26 @@ Monitoring assessment holds at low-to-medium indirect A&D relevance. Briefer mus
 - URL: https://www.securityweek.com/dozens-of-minnesota-water-utilities-targeted-in-coordinated-ot-attacks/
 - Author: Eduard Kovacs
 - Key claim: 30+ Minnesota community water systems targeted in coordinated OT attacks on 2026-07-26/27; automated control disrupted, some systems briefly offline; drinking water safe; formal attribution not made (Iranian personas named only speculatively); MNIT + state/federal response.
+
+### SecurityWeek (securityweek, digraph letter: B) — 2026-07-30 18:18 EDT — CISA advisory relay (added in 2026-07-31 update)
+
+- URL: https://www.securityweek.com/cisa-urges-water-sector-to-protect-ot-after-coordinated-attacks-on-plcs/
+- Author: Mike Lennon (relaying a CISA alert dated 2026-07-30; CISA references advisory AA26-097A for IOCs)
+- Key claim: CISA urges the water sector to protect OT after the coordinated PLC attacks; three immediate actions (disconnect PLCs from the internet / VPN-gate remote access, enable password protection + change defaults, allowlist IPs) plus clean PLC backups and review of AA26-097A for IOCs; names targeted PLC families (Rockwell CompactLogix/Micro850, Schneider Modicon M340, Siemens S7-1200); attackers locked out operators by changing passwords and disconnected PLCs by changing IPs; vulnerable cellular modems flagged as entry points. Still NO attribution (CyberAv3ngers/Handala profile-fit only).
+
+## Update — 2026-07-31 morning (CISA advisory follow-on; grade unchanged B2 / likely; NO attribution)
+
+**Authoritative follow-on, grade unchanged.** CISA has published mitigation guidance following the Minnesota water-utility OT incident, relayed by SecurityWeek (Mike Lennon, 2026-07-30). This advances the tracked campaign from a trade-press incident report to an authoritative federal advisory. New material this cycle:
+
+- **CISA's three immediate actions:** (1) disconnect PLCs from the internet — route remote access through VPN/gateway; (2) enable password protection and change default credentials; (3) allowlist IP addresses to known devices only. Plus: maintain clean PLC backups; review advisory **AA26-097A** for indicators of compromise.
+- **Named targeted PLC families:** Rockwell Automation CompactLogix and Micro850, Schneider Electric Modicon M340, Siemens S7-1200.
+- **Technique detail:** attackers modified passwords to lock out operators and disconnected PLCs by changing IP addresses; vulnerable, often-undocumented cellular modems flagged as entry points.
+- **Scope reaffirmed:** 30+ community water systems, 2026-07-26/27; named municipalities (Maple Plain, Braham, South St. Paul, Plymouth).
+
+**Why the grade does not move.** The advisory elevates the ORIGINATING authority to CISA (A-grade federal), but the effective source in hand is still SecurityWeek (B) — the SAME relay publisher as the original finding — and neither the CISA advisory nor AA26-097A was directly retrieved this cycle. Per this finding's own tripwire, the single-source veto lifts only on an INDEPENDENT SECOND PUBLISHER with a separate evidence basis; a different authority (CISA) reaching us through the same publisher does not satisfy that. Credibility stays 2, digraph stays **B2**, WEP stays **"likely."** Grader Rule 8 re-run over the named PLC families across `archimedes` + `defenseclaw_local` returned 0 events (visibility-bounded null; AA26-097A IOC set not retrieved).
+
+**Hard Rule 2 — still no attribution.** The source states no formal attribution has been made. CyberAv3ngers (#028) and Handala (#014) remain profile-fit mentions only. Critically, CISA's own cross-reference to AA26-097A (the CyberAv3ngers six-agency advisory) is a **procedural IOC-reference, not an attribution** of this Minnesota campaign — preserve that distinction downstream. Archimedes originates and inherits no attribution.
+
+**So-what (now actionable OT hardening).** Carry the named PLC families and CISA's three immediate actions as the actionable defensive guidance for OT-owning readers (including A&D-facility/manufacturing OT by attack-surface analogy). Direct-retrieval todo elevated: pull the CISA advisory + AA26-097A for an independent documentary basis (could lift credibility toward 1 / lift the veto) and the atomic IOC set for the master index and a first-party hunt.
+
+*Update source: raw-2026-07-31-am-001. Grader run morning-20260731-080000.*

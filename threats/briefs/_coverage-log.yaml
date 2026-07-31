@@ -47910,7 +47910,7 @@ entries:
     test: false
 
   - id: 2026-07-29-am-001-securityweek-minnesota-30plus-water-utilities-coordinated-ot-attacks-no-attribution-b2-likely-single-source-veto
-    covered_in: [2026-07-29-morning]
+    covered_in: [2026-07-29-morning, 2026-07-31-morning]   # RESURFACED 2026-07-31 as UPDATE — CISA advisory follow-on + named PLC families
     brief_file: threats/briefs/2026-07-29-morning.md
     headline: "SecurityWeek reports 30+ Minnesota community water systems targeted 2026-07-26/27 in what it characterizes as coordinated OT attacks — automated control disrupted, some systems briefly offline, drinking water reported safe, service maintained via manual/contingency procedures. NO attribution made (Iranian personas CyberAv3ngers/Handala named ONLY as the source's own speculation; Archimedes originates none, inherits none — Hard Rule 2). Water/wastewater sector, NOT A&D; no named A&D/DIB victim; no CVE; 0 IOCs; Splunk 0 hits. B2/likely, single-source veto (one B-grade publisher relaying MNIT + municipality statements; independence fails -> capped likely). Carried under Iran Cyber Watch as UNATTRIBUTED OT-attack-surface awareness + continuity on the corpus Iran-OT / US-water-utility advisory thread (0722-0004 / 0723-0002). A&D relevance LOW-to-MEDIUM / indirect (OT attack-surface transfer to shared manufacturing + facility OT). 'Coordinated' + 'OT attack' presented as the SOURCE's characterization, not established fact (analyst KAC A1/A2/A3 Qualify)."
     topic_tags:
@@ -47944,9 +47944,18 @@ entries:
       - independent_basis_established       # CISA/EPA/MNIT primary or second independent publisher lifts single-source veto
       - seven_days_elapsed_and_evolving
     first_covered: 2026-07-29
-    last_covered: 2026-07-29
+    last_covered: 2026-07-31   # RESURFACED as UPDATE in 2026-07-31 morning brief
     retraction: null
     test: false
+    resurfaces:
+      - brief_id: 2026-07-31-morning
+        date: 2026-07-31
+        trigger: new_victims_confirmed_plus_advisory   # CISA mitigation advisory (relayed by SecurityWeek, Mike Lennon 2026-07-30) + named PLC target families
+        flag: "UPDATE + 🔗 callout to 2026-07-29-morning"
+        placement: "🚨 Active Threats (LEAD) — MOVED from 🇮🇷 Iran Cyber Watch (2026-07-29 placement) to Active Threats this cycle; Iran Cyber Watch ran silent-day with an explicit UNATTRIBUTED disclaimer to prevent a Hard-Rule-2 lean now that the item is the brief lead"
+        grade_change: none   # remains B2/likely; single-source veto still binds (CISA reached corpus via the SAME publisher, not an independent second basis)
+        new_material: "CISA's 3 immediate OT actions (disconnect PLCs from internet/VPN-gate; change default creds + enable password protection; allowlist IPs) + named PLC target families (Rockwell CompactLogix/Micro850, Schneider Modicon M340, Siemens S7-1200) + technique detail (password lockout, IP-change PLC disconnection, cellular-modem entry) + AA26-097A IOC-reference (procedural, NOT an attribution). Scope reaffirmed (30+ systems, 2026-07-26/27)."
+        hard_rule_2: "STILL no attribution. Iranian personas (CyberAv3ngers #028, Handala #014) remain source profile-fit speculation only; CISA's AA26-097A cross-reference is a procedural IOC pointer, NOT an attribution of this campaign. Archimedes originates and inherits none. The Active-Threats placement + Iran-Cyber-Watch unattributed disclaimer together prevent an Iran lean."
     notes: |
       2026-07-29 MORNING BRIEF, 🇮🇷 Iran Cyber Watch section (net-new monitoring finding).
       HARD RULE 2 IS THE CRITICAL CARE POINT: the source EXPLICITLY states no attribution
@@ -48295,7 +48304,7 @@ entries:
     test: false
 
   - id: 2026-07-30-am-003-rapid7-etr-jetbrains-teamcity-on-prem-cve-2026-63077-cvss-9-8-unauth-deserialization-rce-cicd-supply-chain-a2-likely-single-source-veto
-    covered_in: [2026-07-30-morning]
+    covered_in: [2026-07-30-morning, 2026-07-31-morning]   # RESURFACED 2026-07-31 as UPDATE — patch RELEASED with confirmed fixed-version matrix
     headline: "Rapid7 ETR (2026-07-29) flags JetBrains TeamCity On-Premises CVE-2026-63077 — critical (CVSS 9.8) unauthenticated deserialization RCE affecting ALL versions; agent-polling-protocol auth bypass -> OS command execution as the TeamCity server process + stored-credential read + CI/CD pipeline-integrity compromise. JetBrains advisory 2026-07-27; NOT aware of active exploitation at disclosure; fixed version available. A2/likely (single-source veto — one Rapid7 ETR relay of the un-retrieved JetBrains advisory; THINNEST sourcing of the three vuln findings this cycle). No actor named (Hard Rule 2); no named A&D/DIB victim (structural — CI/CD supply-chain archetype for an ITAR SDLC). CARRIED WITH TRIPWIRE CAVEAT: no-ITW is the most fragile of the three — Rapid7 notes prior TeamCity auth-bypass CVEs were rapidly weaponized post-disclosure; near-term exploitation likely. Net-new to the corpus. In the 🔓 Vulnerabilities section."
     topic_tags:
       - morning-brief
@@ -48341,9 +48350,18 @@ entries:
       were rapidly weaponized post-disclosure, so carried in the brief as a live near-term tripwire. No red-team
       (WEP 'likely'). Hard Rule 2 — no actor named. Hard Rule 3/7 — mechanism at class level, no credential values.
     first_covered: 2026-07-30
-    last_covered: 2026-07-30
+    last_covered: 2026-07-31   # RESURFACED as UPDATE in 2026-07-31 morning brief
     retraction: null
     test: false
+    resurfaces:
+      - brief_id: 2026-07-31-morning
+        date: 2026-07-31
+        trigger: patch_released   # FIX AVAILABLE -> FIX RELEASED with confirmed fixed-version matrix (actionable patch targets readers lacked yesterday)
+        flag: "UPDATE + callout to 2026-07-30-morning"
+        placement: "Vulnerabilities"
+        grade_change: none   # remains A2/likely; single-source veto still binds (SecurityWeek + BleepingComputer relays trace to the SAME JetBrains advisory = one effective evidence basis)
+        new_material: "Fixed versions 2025.11.7 and 2026.1.3 + security-patch plugin for 2017.1+ (back-port); CVSS 9.8 reaffirmed; JetBrains attests no ITW. Carried the tripwire caveat (Rapid7: prior TeamCity auth-bypass CVEs weaponized fast; near-term exploitation of unpatched exposed servers LIKELY)."
+        hard_rule_2: "No actor named (unchanged)."
 
   - id: 2026-07-30-am-004-unit42-knaithe-knyuan-china-nexus-ai-agent-driven-mass-exploitation-seven-cves-emerging-ttp-a2-likely-single-source-veto-monitoring
     covered_in: [2026-07-30-morning]
@@ -48851,6 +48869,188 @@ entries:
       posted/committed by briefer — librarian owns Discord+Teams delivery + Splunk log + git commit.
     first_covered: 2026-07-30
     last_covered: 2026-07-30
+    retraction: null
+    test: false
+
+  - id: 2026-07-31-am-001-securityweek-wiz-microsoft-azure-cosmosescape-cosmos-db-cross-tenant-primary-key-exposure-patched-no-itw-b2-likely-single-source-veto-monitoring
+    covered_in: [2026-07-31-morning]
+    brief_file: threats/briefs/2026-07-31-morning.md
+    headline: "SecurityWeek (Ionut Arghire, 2026-07-31) relays Wiz Research + Microsoft on 'CosmosEscape' — a now-patched Azure Cosmos DB flaw in the Gremlin API graph-query processor that reached a platform signing key ('Cosmos Master Key'), enabling cross-tenant/cross-region retrieval of any Cosmos DB account's primary keys. Microsoft hotfixed within ~2 days of the Nov 2025 report + completed the architectural fix Jul 2026 across all regions; NO evidence of malicious exploitation; NO customer action required. No CVE, no actor, no A&D victim, 0 atomic IOCs. B2/likely (single-source veto — one SecurityWeek relay carrying two un-retrieved originating primaries Wiz + Microsoft = one effective evidence basis). MONITORING/awareness only. A&D relevance LOW/structural (Cosmos DB used by DIB Azure tenants, but patched + no action). Placed in 📰 Other Signal as a one-item awareness mention."
+    topic_tags:
+      - morning-brief
+      - net-new-monitoring-awareness-item
+      - azure-cosmos-db-cosmosescape-wiz-coined-no-cve
+      - gremlin-api-graph-query-processor-sandbox-escape-cosmos-master-key-cross-tenant-primary-key-exposure
+      - microsoft-platform-owner-confirmed-hotfix-nov-2025-architectural-fix-jul-2026-all-regions
+      - no-in-the-wild-exploitation-access-log-bounded-point-in-time-attestation
+      - no-customer-action-required-inherits-from-no-exploitation-finding
+      - single-source-veto-one-securityweek-relay-two-un-retrieved-primaries-wiz-microsoft-one-basis
+      - ad-relevance-low-structural-dib-azure-tenants-patched-no-action
+      - cloud-provider-side-multi-tenant-isolation-failure-class-chaosdb-lineage
+      - collector-and-grader-flagged-inclusion-honestly-marginal
+      - hard-rule-7-no-credential-values-hard-rule-8-first-party-splunk-null-visibility-bounded
+      - preflight-13-of-13-pass
+    related_actors: []               # no actor named (Hard Rule 2, vacuously satisfied)
+    related_vulns: []                # no CVE assigned (vendor-named 'CosmosEscape')
+    related_campaigns: []
+    finding_ids: [finding-2026-07-31-0001]
+    digraph: B2
+    wep: likely
+    resurface_if:
+      - cve_assigned_to_cosmosescape
+      - any_in_the_wild_exploitation_report_emerges       # would activate the residual key-rotation caveat for exposed-window tenants
+      - residual_exposure_or_fix_bypass_caveat_surfaces
+      - independent_second_documentary_basis_established   # direct retrieval of Wiz blog + Microsoft statement lifts single-source veto (candidate toward credibility 1)
+      - seven_days_elapsed_and_evolving
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-31-0001, append_brief_id: 2026-07-31-morning}   # DONE by briefer
+      vuln_tracker_handoff_pending:
+        - "CosmosEscape (Azure Cosmos DB Gremlin-API cross-tenant primary-key exposure): NO CVE assigned -> watch-keyword/awareness tier at most, NOT indexable as a tracked CVE. Cloud-provider-side, fully remediated (hotfix Nov 2025 + architectural fix Jul 2026 all regions), no customer action. Direct-retrieval TODO: Wiz blog + Microsoft statement (two independent documentary bases; candidate to lift credibility toward 1 but changes nothing operationally)."
+      splunk_and_commit: "librarian owns Discord delivery, Teams (skip if unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-31 MORNING BRIEF, 📰 Other Signal (MONITORING/awareness). B2/likely, single-source veto (one
+      SecurityWeek relay carrying two un-retrieved originating primaries — Wiz discovery + Microsoft platform
+      confirmation = one effective evidence basis). Collector AND grader both flagged inclusion as honestly
+      MARGINAL (no A&D relevance hook: patched, no ITW, no CVE, no actor, no A&D victim, no customer action).
+      Briefer editorial call: earned a ONE-LINE awareness mention in Other Signal (not a full item, not the lead)
+      — cross-sector cloud-tenant-isolation significance justifies a monitoring line for DIB Azure tenants; the
+      weakest of the three items this cycle. Carried caveat A4 (analyst KAC): 'no customer action' inherits from
+      the no-exploitation finding; IF ITW key retrieval is ever confirmed for the Nov 2025 -> Jul 2026 exposure
+      window, A&D tenants with exposed Cosmos DB primary keys could face a residual key-rotation obligation the
+      platform-side patch does not resolve. Hard Rule 7 — no credential values. Hard Rule 8 — Splunk 0 hits
+      (visibility-bounded null; no atomic IOC to pivot).
+    first_covered: 2026-07-31
+    last_covered: 2026-07-31
+    retraction: null
+    test: false
+
+  - id: 2026-07-31-am-brief-meta
+    covered_in: [2026-07-31-morning]
+    brief_file: threats/briefs/2026-07-31-morning.md
+    headline: "Morning brief 2026-07-31 (Friday) — quiet board, 2 UPDATES + 1 marginal net-new awareness item. LEAD = CISA water-sector OT advisory (UPDATE to 2026-07-29 Minnesota water item): CISA names the exact PLC target families (Rockwell CompactLogix/Micro850, Schneider Modicon M340, Siemens S7-1200) + 3 immediate OT hardening actions — A&D so-what = those PLCs run defense-manufacturing/facility OT. 🚨 Active Threats = Minnesota water UPDATE (MOVED from Iran Cyber Watch to preserve Hard Rule 2 as the lead). 🔓 Vulnerabilities = JetBrains TeamCity CVE-2026-63077 UPDATE (patch RELEASED, confirmed matrix 2025.11.7/2026.1.3 + 2017.1+ plugin, still no ITW). ✈️ Sector Focus A&D = no named victim; structural cross-reference to the two items. 🇮🇷 Iran = silent-day + explicit UNATTRIBUTED disclaimer on the Minnesota item. 📰 Other Signal = Azure CosmosEscape (marginal net-new awareness) + first-party Splunk clean. Anti-repetition: 07-30 items (DPRK npm #002, Lazarus #003 Gunra, Analog Devices, NASA cFS CVE-2026-18064, VMware VMSA-2026-0006, Cisco FMC CVE-2026-20316) DROPPED — no new substance."
+    topic_tags:
+      - brief-meta
+      - morning-brief
+      - quiet-board-two-updates-plus-one-marginal-net-new-awareness
+      - lead-cisa-water-sector-ot-advisory-update-minnesota-named-plc-families-plus-3-immediate-actions
+      - minnesota-water-ot-update-moved-from-iran-cyber-watch-to-active-threats-hard-rule-2-preserve-lead
+      - teamcity-cve-2026-63077-update-patch-released-confirmed-matrix-2025-11-7-2026-1-3-2017-1-plugin-still-no-itw
+      - sector-focus-ad-no-named-victim-structural-cross-reference-two-items
+      - iran-cyber-watch-silent-day-plus-explicit-unattributed-disclaimer-minnesota
+      - other-signal-azure-cosmosescape-marginal-net-new-awareness-plus-first-party-splunk-clean
+      - anti-repetition-07-30-items-dprk-npm-lazarus-gunra-analog-devices-nasa-cfs-vmware-cisco-fmc-dropped-no-new-substance
+      - hard-rule-2-minnesota-unattributed-iranian-personas-source-speculation-only-active-threats-plus-iran-disclaimer
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-8-first-party-splunk-clean-0-hits-both-indices-visibility-bounded
+      - preflight-13-of-13-pass
+    related_actors: []               # No roster actor as a graded item. UNC1549/Charming Kitten/Handala/MuddyWater + APT28/Lazarus/APT41/Salt Typhoon appear only in silent-day/sector templates. Minnesota Iranian personas = source speculation only (Hard Rule 2). CyberAv3ngers #028 / Handala #014 deliberately NOT recorded as related_actors.
+    related_vulns: [CVE-2026-63077]  # TeamCity UPDATE (patch released). Minnesota named PLC families carry no CVE; CosmosEscape carries no CVE. Still not in _index.yaml — dossier pending.
+    related_campaigns: []
+    finding_ids: [finding-2026-07-29-0001, finding-2026-07-30-0003, finding-2026-07-31-0001]
+    digraph: B2                      # Minnesota B2/likely + CosmosEscape B2/likely; TeamCity A2/likely
+    wep: likely
+    disposition:
+      net_new_findings_promoted: 1   # finding-2026-07-31-0001 CosmosEscape (marginal MONITORING/awareness)
+      updates_covered: 2             # finding-2026-07-29-0001 Minnesota water (CISA advisory follow-on), finding-2026-07-30-0003 TeamCity (patch released)
+      new_topic_entries_created: 1   # 2026-07-31-am-001 (CosmosEscape)
+      in_place_resurfaces: 2         # 2026-07-29-am-001 (Minnesota water) + 2026-07-30-am-003 (TeamCity) — both resurfaced under UPDATE flag + callout
+      covered_in_appends: 2          # Minnesota am-001 + TeamCity am-003 each get 2026-07-31-morning appended
+      published_in_briefs_back_writes: 3   # finding-2026-07-29-0001 + finding-2026-07-30-0003 + finding-2026-07-31-0001 all append 2026-07-31-morning
+      deliberately_excluded_anti_repetition:
+        - "DPRK npm supply-chain / Stardust Chollima #002 (07-30 PM) — no new substance"
+        - "Lazarus #003 <-> Gunra 'Operation Double Barrel' (07-30 PM) — no new substance"
+        - "Analog Devices SEC breach (07-30 PM) — no new substance"
+        - "NASA cFS CVE-2026-18064 (07-30 PM) — no new substance"
+        - "VMware VMSA-2026-0006 (07-30 AM/PM) — no new substance"
+        - "Cisco FMC CVE-2026-20316 KEV (07-30 AM) — no new substance (KEV due 2026-08-01; carried as standing patch-posture, NOT re-covered)"
+      rationale: >
+        QUIET, steady-state Friday board reported honestly. The genuinely NEW material was 3 items: two UPDATES to
+        tracked threads + one marginal net-new awareness datum. LED with the highest-impact A&D-relevant item — the
+        CISA water-sector OT advisory following the Minnesota PLC attacks (UPDATE to 2026-07-29-am-001) — because it
+        is a fresh authoritative federal advisory that NAMES the exact PLC target families (Rockwell CompactLogix/
+        Micro850, Schneider Modicon M340, Siemens S7-1200) ubiquitous on A&D manufacturing floors, plus 3 immediate
+        actionable OT-hardening steps. CRITICAL HARD RULE 2 CARE POINT: the Minnesota incident is UNATTRIBUTED; to
+        avoid an Iran lean now that it is the brief LEAD, it was MOVED from Iran Cyber Watch (its 07-29 placement) to
+        Active Threats, and Iran Cyber Watch ran silent-day WITH an explicit unattributed disclaimer. TeamCity
+        CVE-2026-63077 UPDATE (patch RELEASED with confirmed version matrix) placed in Vulnerabilities as a
+        patch-hygiene item (not an emergency; no ITW; tripwire caveat carried). CosmosEscape earned only a one-line
+        Other-Signal awareness mention (marginal — patched, no ITW, no CVE, no A&D victim). Both UPDATES grade-
+        unchanged (single-source veto still binds). No red-team (all WEP 'likely').
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1                  # authored within Layer-1 400-800 band + Layer-2 150-300 words / <=1900 chars on first pass
+      word_count_layer1: 611         # 400-800 morning band
+      layer2_words: ~200            # 150-300 band
+      layer2_chars_est: ~1640       # <=1900 ceiling; single Discord message, no chunk needed (librarian re-verifies char count before posting)
+      check_3_note: >
+        Anti-repetition (check 3) PASS. Minnesota (am-001) + TeamCity (am-003) both resurfaced under explicit UPDATE
+        flag + 🔗 callout — Minnesota on a new-victims/authoritative-advisory trigger (CISA advisory + named PLC
+        families), TeamCity on a patch-released trigger (confirmed fixed-version matrix). CosmosEscape is genuinely
+        net-new (coverage-log clean). All 6 major 07-30 items DROPPED (no new substance) — logged under
+        deliberately_excluded_anti_repetition.
+      check_5_note: "Banned phrases (check 5) PASS. Zero hot-list phrases in either layer."
+      check_7_note: "WEP (check 7) PASS. The one forward claim (TeamCity near-term exploitation of unpatched exposed servers) uses 'likely'; within the A2 single-source-veto ceiling. No bare hedges."
+      check_9_note: >
+        Check 9 PASS. CVE-2026-63077 referenced with a link to threats/vulnerabilities/_index.yaml (dossier still
+        pending — flagged in librarian_handoff). Minnesota named PLC families carry no CVE (product names, no link
+        needed). Iranian personas (CyberAv3ngers #028 / Handala #014) deliberately UNLINKED — named only as the
+        source's speculation to DISCLAIM attribution (linking would lend undue analytic weight to an unattributed
+        incident, counter to Hard Rule 2); precedent-consistent with 2026-07-29-am-001 handling. Silent-day/sector
+        template actor names are boilerplate, unlinked per precedent.
+      check_11_note: >
+        Single-source veto (check 11) PASS. Minnesota B2/likely, TeamCity A2/likely, CosmosEscape B2/likely — all
+        single-source-veto-bound and stated as such. No 'very likely'+ anywhere. red_team NOT required (all WEP
+        'likely').
+      check_12_note: >
+        Quote discipline (check 12) PASS. ZERO direct external-source quotes in either layer — all source content
+        paraphrased. 'CosmosEscape' + 'Cosmos Master Key' are vendor-coined names, not source quotes.
+      check_13_note: >
+        Discord Summary (check 13) PASS. Section present + last in file, ~200 words (150-300 band), ~1640 chars
+        (<=1900 ceiling, single message). Greeting-anchored ('Good morning. Here's your 0800 brief — 2026-07-31.'),
+        3 source-linked bolded headlines across 🚨/🔓/📰, natural-language dates ('July 26-27', 'July 30', 'July
+        2026', 'this week'), italic urgency (*now*, *patch this week*), Hard Rule 2 framing preserved ('No actor is
+        attributed — Iranian personas are source speculation only'). NO digraph/WEP/finding-id in Layer 2. NO
+        standing-section boilerplate (Sector Focus + Iran silent-day stay in Layer 1 only).
+      standing_sections:
+        ad_sector: structural_no_named_victim       # cross-reference to the two items' indirect A&D exposure; no named watchlist victim
+        iran_cyber_watch: silent_day_plus_unattributed_disclaimer   # no new tracked-Iranian activity in 48h; explicit UNATTRIBUTED note on the Minnesota item to prevent a Hard-Rule-2 lean
+      hard_rule_2_confirmation: "Minnesota water OT incident UNATTRIBUTED — Iranian personas (CyberAv3ngers #028, Handala #014) are SecurityWeek's profile-fit speculation only; CISA's AA26-097A cross-reference is a procedural IOC pointer, NOT an attribution; Archimedes originates and inherits none. Placement (Active Threats) + Iran-Cyber-Watch unattributed disclaimer together prevent an Iran lean. TeamCity + CosmosEscape: no actor named, nothing to inherit."
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-29-0001, append_brief_id: 2026-07-31-morning}   # DONE by briefer (Minnesota water UPDATE)
+        - {finding_id: finding-2026-07-30-0003, append_brief_id: 2026-07-31-morning}   # DONE by briefer (TeamCity UPDATE)
+        - {finding_id: finding-2026-07-31-0001, append_brief_id: 2026-07-31-morning}   # DONE by briefer (CosmosEscape net-new)
+      resurface_updates:
+        - {topic_entry_id: 2026-07-29-am-001-securityweek-minnesota-30plus-water-utilities-coordinated-ot-attacks-no-attribution-b2-likely-single-source-veto, action: "covered_in += 2026-07-31-morning; last_covered -> 2026-07-31 (UPDATE — CISA advisory follow-on + named PLC families; grade unchanged B2/likely, single-source veto still binds) — DONE by briefer"}
+        - {topic_entry_id: 2026-07-30-am-003-rapid7-etr-jetbrains-teamcity-on-prem-cve-2026-63077-cvss-9-8-unauth-deserialization-rce-cicd-supply-chain-a2-likely-single-source-veto, action: "covered_in += 2026-07-31-morning; last_covered -> 2026-07-31 (UPDATE — patch RELEASED with confirmed fixed-version matrix; grade unchanged A2/likely, single-source veto still binds) — DONE by briefer"}
+      new_topic_entries:
+        - 2026-07-31-am-001-securityweek-wiz-microsoft-azure-cosmosescape-cosmos-db-cross-tenant-primary-key-exposure-patched-no-itw-b2-likely-single-source-veto-monitoring
+      vuln_tracker_handoff_pending:
+        - "CVE-2026-63077 (JetBrains TeamCity On-Premises, all versions): STILL not in _index.yaml / no dossier. Open dossier; record patch_status = FIX RELEASED with confirmed matrix 2025.11.7 / 2026.1.3 + 2017.1+ security-patch plugin; exploitation state unchanged (no ITW). See 2026-07-30-am-003."
+        - "CosmosEscape (no CVE): watch-keyword/awareness tier only; not indexable as a tracked CVE. See 2026-07-31-am-001."
+      actor_profiler_handoff_pending:
+        - "CyberAv3ngers (#028): the Minnesota water OT incident (finding-2026-07-29-0001) remains candidate CONTEXT for the dossier as a monitoring datum — sector-TTP-class correspondence + now the CISA-named PLC families + technique detail (password lockout, IP-change disconnection, cellular-modem entry). ADJUDICATE as context ONLY; do NOT assert #028 (or any Iranian actor) conducted it (NO source attributes it — Hard Rule 2)."
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 -> #intel-briefs), Teams (skip if webhook unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-31 MORNING BRIEF (briefer phase). QUIET Friday board — 2 UPDATES to tracked threads + 1 marginal
+      net-new awareness item. LED with the CISA water-sector OT advisory (UPDATE to the 2026-07-29 Minnesota water
+      item): the freshest authoritative action-forcing datum, naming the exact PLC target families ubiquitous on A&D
+      manufacturing floors + 3 immediate OT-hardening actions. HARD RULE 2 was THE critical care point: the Minnesota
+      incident is UNATTRIBUTED, so to avoid an Iran lean now that it is the brief LEAD, it was MOVED from Iran Cyber
+      Watch (07-29 placement) to Active Threats, and Iran Cyber Watch ran silent-day WITH an explicit unattributed
+      disclaimer. TeamCity CVE-2026-63077 UPDATE (patch RELEASED, confirmed matrix) = Vulnerabilities patch-hygiene
+      item (no ITW, tripwire caveat carried). CosmosEscape = one-line Other-Signal awareness mention (marginal;
+      collector + grader both flagged inclusion as honestly marginal). Anti-repetition: all 6 major 07-30 items
+      (DPRK npm #002, Lazarus #003/Gunra, Analog Devices, NASA cFS, VMware VMSA, Cisco FMC) DROPPED (no new
+      substance). Hard Rules: Rule 2 (Minnesota unattributed — personas are source speculation only); Rule 6 (zero
+      direct quotes both layers); Rule 8 (first-party Splunk 0 hits both indices, visibility-bounded null). No red-team
+      (all WEP 'likely'). PRE-FLIGHT 13-of-13 PASS (iteration 1). NOT posted/committed by briefer — librarian owns
+      Discord+Teams delivery + Splunk log + git commit.
+    first_covered: 2026-07-31
+    last_covered: 2026-07-31
     retraction: null
     test: false
 

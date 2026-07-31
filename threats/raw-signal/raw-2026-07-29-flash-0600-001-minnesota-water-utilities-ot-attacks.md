@@ -17,7 +17,9 @@ triage_tags: [non_flash, ot_ics, critical_infra, grader_queue, next_scheduled_br
 iocs_extracted: true
 iocs_count: 0
 text_word_count: 0
-promoted: false
+promoted: true
+promoted_to_finding: finding-2026-07-29-0001
+promoted_at: 2026-07-29T08:14:00-04:00
 ttl_expires_at: 2026-10-27T06:12:00-04:00
 ---
 

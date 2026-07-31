@@ -49197,6 +49197,142 @@ entries:
     retraction: null
     test: false
 
+  - id: 2026-07-31-flash-1800-captivecrunch-storm2945-midnight-blizzard-apt29-captive-portal-aitm-device-code-a2-likely-single-source-veto
+    covered_in: [flash-2026-07-31-1800]
+    brief_file: threats/briefs/flash-2026-07-31-1800.md
+    published_in_briefs: [flash-2026-07-31-1800]
+    headline: "CaptiveCrunch — MSTIC attributes a captive-portal / hospitality-Wi-Fi AitM device-code phishing + fake-update malware-delivery campaign against corporate travelers worldwide to a new Midnight Blizzard / APT29 (#009) sub-cluster it designates Storm-2945. A2/likely; single-source veto binds on the Storm-2945 -> Midnight Blizzard attribution (MSTIC sole originating primary; ReliaQuest 2026-07-23 corroborates ONLY the doppelganger-domain / device-code layer, NOT the actor binding)."
+    topic_tags:
+      - captivecrunch-campaign
+      - storm-2945-new-sub-cluster-designation
+      - midnight-blizzard-apt29-cozy-bear-svr-roster-009
+      - assessed-sub-cluster-not-confirmed-single-source-mstic
+      - captive-portal-hospitality-wifi-compromise-worldwide-new-access-vector
+      - aitm-adversary-in-the-middle-device-code-phishing
+      - microsoft-entra-id-device-code-flow-abuse
+      - entra-device-registration-m365-collection
+      - doppelganger-microsoft-service-domains
+      - clickfix-fake-browser-os-update-malware-delivery
+      - cornflake-golang-rat-chocoshell-infostealer-fruitstone-c2-android-apk
+      - ai-augmented-operation-mstic-claim
+      - reliaquest-partial-corroborator-device-code-layer-only
+      - not-forest-blizzard-apt28-dns-hijack-do-not-cross-walk
+      - trigger-2-tracked-actor-attribution
+      - trigger-4-tracked-actor-ttp-change
+      - single-source-veto-applied-attribution-layer
+      - hard-rule-2-attribution-as-mstic-assessment-not-originated
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - hard-rule-8-first-party-splunk-0-hits-both-indices-visibility-bounded
+      - ad-relevance-indirect-structural-no-named-watchlist-victim
+      - itar-dib-traveler-m365-device-code-hardening-defensive-guidance
+      - active-hours-1800-edt-posts-not-queued
+      - critical-override-0-of-4-no-cve
+      - 12-net-new-iocs-4-doppelganger-domains-6-c2-ips-2-sha256
+      - apt29-dossier-pending-scaffold-flagged-actor-profiler
+    related_actors: ["009"]            # APT29 / Midnight Blizzard — per MSTIC's assessment (Storm-2945 sub-cluster binding); recorded as MSTIC attribution, NOT originated by Archimedes (Hard Rule 2). Single-source veto binds.
+    related_vulns: []                  # No CVE in this campaign (access via captive-portal compromise + social engineering, not a vuln).
+    related_campaigns:
+      - captivecrunch
+      - storm-2945
+    finding_ids: [finding-2026-07-31-0002]
+    digraph: A2
+    wep: likely
+    single_source_veto_applied: true
+    single_source_veto_scope: storm_2945_to_midnight_blizzard_attribution_layer
+    trigger:
+      - trigger-2-tracked-actor-attribution   # Storm-2945 assessed as APT29 #009 sub-cluster (new attribution)
+      - trigger-4-tracked-actor-ttp-change     # new access vector (captive-portal Wi-Fi) + new tooling (CornFlake/ChocoShell/FruitStone/Android)
+    critical_override: false           # 0_of_4 — no CVE (so no CVSS 10.0), no named A&D watchlist victim
+    quiet_hours_queued: false          # 18:00 EDT INSIDE active hours (09:00-21:00) -> posts immediately to #flash-alerts, NOT queued
+    analyst_review_required: true      # new attribution/sub-cluster + WEP >= likely (per finding); analyst SAT-ACH pending — FLASH ships on grader+briefer, analyst folds post-hoc
+    red_team_review_required: false    # WEP ceiling 'likely' < very_likely (FLASH anti-noise rule 3); red-team NOT required
+    hard_rule_2_framings_load_bearing:
+      - "Storm-2945 -> Midnight Blizzard / APT29 binding is MSTIC's assessment on a SINGLE originating primary; Archimedes reports 'per MSTIC,' never 'APT29 did this.' Single-source veto caps WEP at 'likely.'"
+      - "ReliaQuest (2026-07-23, B) corroborates ONLY the doppelganger-domain / AitM device-code layer, NOT the Storm-2945 -> Midnight Blizzard attribution — corroborates a sub-component, not the actor binding."
+      - "MSTIC explicitly distinguishes CaptiveCrunch from the Forest Blizzard (APT28 #006) DNS-hijacking op (April 2026) — do NOT cross-walk the two."
+      - "AI-augmentation claim (Anthropic/OpenAI collaboration) is novel single-source MSTIC reporting; noted, not independently verifiable."
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1                    # authored within Layer-1 150-300 FLASH band (~273 words) + Layer-2 150-300 words / <=1900 chars on first pass
+      word_count_layer1: 273           # 150-300 FLASH band
+      layer2_words: ~190              # 150-300 band
+      layer2_chars_est: ~1450         # <=1900 ceiling; single Discord message, no chunk needed (librarian re-verifies char count before posting)
+      check_9_note: >
+        Check 9 PASS with a flag. APT29 IS in _roster.yaml (#009, dossier path threats/threat-actors/APT29/) but the
+        dossier directory is NOT yet scaffolded on disk. Referenced by roster id + dossier path in inline code (NOT a
+        hyperlink, so no broken link) and flagged pending-scaffold for actor-profiler — precedent-consistent with prior
+        'dossier-pending' handling (e.g., BlackCat #020, Icarus). No CVE in this finding.
+      check_11_note: >
+        Single-source veto (check 11) PASS. A2/WEP 'likely' — veto stated plainly in both layers on the Storm-2945 ->
+        Midnight Blizzard attribution layer; WEP does NOT exceed 'likely.' No 'very likely'+ anywhere. red_team NOT required.
+      check_12_note: >
+        Quote discipline (check 12) PASS. ZERO direct external-source quotes in either layer. Quoted terms ('browser/OS
+        update', 'update') label the lure type, not attributed source quotes. Well within <=15 words / <=1 per source.
+      check_13_note: >
+        Discord Summary (check 13) — FLASH is EXEMPT per doctrine, but a compliant Layer 2 IS included per operator
+        request + FLASH precedent (flash-2026-07-28-1200 / -0625 / flash-2026-07-24-0650). Section present + last in file,
+        ~190 words (150-300 band), ~1450 chars (<=1900 ceiling, single message). Greeting-anchored ('FLASH — Friday, July
+        31, 6:00 PM EDT'), source-linked bolded headline (MSTIC), natural-language date, italic urgency on Entra device-code
+        blocking, Hard Rule 2 framing preserved ('MSTIC's single-source assessment, not established fact'). NO digraph/WEP/
+        finding-id in Layer 2. NO standing-section boilerplate (FLASH carries none).
+      hard_rule_2_confirmation: "Storm-2945 -> Midnight Blizzard / APT29 attribution carried ONLY as MSTIC's single-source assessment; NEVER as Archimedes' origination; single-source veto binds (WEP capped 'likely'). ReliaQuest corroborates the device-code sub-component only, not the actor binding. CaptiveCrunch explicitly distinguished from the APT28 #006 DNS-hijack op — no cross-walk."
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-31-0002, append_brief_id: flash-2026-07-31-1800}   # DONE by briefer
+      resurface_updates: []            # net-new topic; no prior CaptiveCrunch/Storm-2945/captive-portal-APT29 coverage in corpus (coverage-log grep clean — 'captive-portal' tag hits are unrelated PAN-OS User-ID captive-portal CVEs)
+      new_topic_entries:
+        - "2026-07-31-flash-1800-captivecrunch-storm2945 (this entry)"
+      vuln_tracker_handoff_pending: [] # no CVE
+      actor_profiler_handoff_pending:
+        - "APT29 / Midnight Blizzard (#009): CaptiveCrunch / Storm-2945 is a candidate dossier increment — new sub-cluster designation (Storm-2945, assessed sub-cluster per MSTIC, sibling to Storm-2372), new access vector (captive-portal / hospitality Wi-Fi), new tooling (CornFlake Golang RAT, ChocoShell PowerShell infostealer, FruitStone C2, Android APK), 12 net-new IOCs. ADJUDICATE the attribution as MSTIC's single-source assessment (do NOT harden). ALSO: APT29 dossier directory (threats/threat-actors/APT29/) is NOT yet scaffolded — create it."
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 -> #flash-alerts, active hours -> post immediately not queued), Teams (skip if webhook unset), Splunk log, git commit — briefer did NOT post or commit."
+    resurface_if:
+      - second_independent_a_or_b_source_confirms_storm2945_to_midnight_blizzard_attribution   # lifts single-source veto -> WEP can move toward very_likely; re-grade on arrival
+      - new_victims_confirmed
+      - ad_or_dib_or_watchlist_entity_named_as_captivecrunch_victim
+      - first_party_ioc_hit_on_the_12_captivecrunch_indicators
+      - actor_ttps_evolve                # new tooling/infra/targeting beyond the CaptiveCrunch set
+      - cisa_or_a_grade_vendor_publishes_independent_captivecrunch_analysis
+      - seven_days_elapsed_and_evolving
+    notes: |
+      2026-07-31 18:00 EDT FLASH composition (briefer phase). 1 item, promoted this sweep.
+      Clears the B2 FLASH floor at A2/likely. TWO triggers met: Trigger 2 (new attribution —
+      Storm-2945 assessed as an APT29 / Midnight Blizzard #009 sub-cluster per MSTIC) and
+      Trigger 4 (tracked-actor TTP change — new captive-portal / hospitality-Wi-Fi access vector +
+      new tooling CornFlake/ChocoShell/FruitStone/Android APK, A-grade primary, attributable to
+      roster #009). MSTIC (A) disclosed CaptiveCrunch (active since early May 2026): Storm-2945
+      compromises hotel/conference Wi-Fi worldwide and funnels corporate travelers through
+      actor-controlled infrastructure for (1) AitM device-code phishing via doppelganger Microsoft
+      domains abusing the Entra ID device-code flow -> Entra device registration + M365 collection,
+      and (2) ClickFix fake browser/OS-update malware delivery. THE HARD RULE 2 CARE POINT: the
+      Storm-2945 -> Midnight Blizzard binding rests on MSTIC ALONE (assessed on overlap with its
+      Storm-2372 device-code cluster); single-source veto binds, WEP capped at 'likely.' ReliaQuest
+      (2026-07-23, B) corroborates ONLY the doppelganger-domain / device-code sub-component, NOT the
+      actor attribution. Archimedes reports MSTIC's assessment, never originates it. Distinct from the
+      Forest Blizzard / APT28 #006 DNS-hijack op (MSTIC explicitly distinguishes; no cross-walk).
+      A&D relevance INDIRECT / STRUCTURAL — no named A&D or watchlist victim; an ITAR/DIB executive on
+      a compromised venue Wi-Fi sits in the plausible victim envelope (session-token/credential theft ->
+      M365 access). Defensive guidance is GENERAL and defensive-only (traveler VPN-before-auth + reject
+      update/ClickFix prompts; identity-team Conditional Access to block/scope Entra device-code + alert
+      on unexpected device registrations; SOC hunt the 12 net-new IOCs). Critical override 0_of_4 (no CVE
+      -> no CVSS 10.0; no named A&D watchlist victim). Quiet hours MOOT — 18:00 EDT INSIDE active hours
+      (09:00-21:00) -> posts immediately to #flash-alerts, NOT queued. Hard Rule 6 ZERO direct quotes both
+      layers; Hard Rule 8 first-party Splunk 0 tracked-IOC hits both indices over -24h (visibility-bounded,
+      not disconfirming). NET-NEW topic (no prior CaptiveCrunch/Storm-2945/captive-portal-APT29 coverage;
+      the 'captive-portal' coverage-log tag hits are unrelated PAN-OS User-ID captive-portal CVEs). APT29
+      #009 dossier directory NOT yet scaffolded — flagged for actor-profiler to create + fold this increment.
+      1 finding referenced; red-team NOT required (WEP 'likely' < very_likely; single-source veto binds).
+      published_in_briefs back-write to finding-2026-07-31-0002 (append flash-2026-07-31-1800) DONE by briefer.
+      PRE-FLIGHT 13-of-13 applicable PASS (iteration 1; check 6 standing-sections N/A for FLASH; check 13
+      FLASH-exempt but Layer 2 included + compliant). NOT posted/committed by briefer — librarian owns
+      #flash-alerts delivery + Teams (skip if unset) + Splunk log + git commit.
+    first_covered: 2026-07-31
+    last_covered: 2026-07-31
+    retraction: null
+    test: false
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

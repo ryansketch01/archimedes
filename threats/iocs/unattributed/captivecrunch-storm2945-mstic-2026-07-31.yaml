@@ -1,0 +1,219 @@
+# threats/iocs/unattributed/captivecrunch-storm2945-mstic-2026-07-31.yaml
+#
+# Unattributed cluster — 12 net-new IOCs from Microsoft Threat Intelligence
+# (MSTIC) "CaptiveCrunch" disclosure, 2026-07-31. Storm-2945 compromises
+# captive-portal / hospitality Wi-Fi worldwide for AitM device-code phishing
+# (Entra ID device-code flow -> M365 collection) + malware delivery disguised
+# as browser/OS updates (ClickFix).
+#
+# HARD RULE 2 — held UNATTRIBUTED on purpose. MSTIC assesses Storm-2945 as an
+# operational sub-cluster of Midnight Blizzard (APT29 / Cozy Bear / SVR,
+# roster #009) based on overlap with its Storm-2372 device-code cluster. That
+# binding is SINGLE-SOURCE (MSTIC alone); single-source veto capped the finding
+# at WEP "likely" (finding-2026-07-31-0002, digraph A2). ReliaQuest (2026-07-23,
+# B) corroborates ONLY the doppelganger-domain / device-code AitM layer, NOT the
+# Storm-2945 -> Midnight Blizzard attribution. These indicators are therefore
+# kept in the unattributed bucket, NOT folded into an APT29 dossier, until
+# actor-profiler scaffolds threats/threat-actors/APT29/ and makes the fold
+# decision. Archimedes reports MSTIC's assessment, not established fact.
+#
+# HANDOFF: when actor-profiler scaffolds APT29 (#009) and folds the CaptiveCrunch
+# increment, migrate these indicators to threats/threat-actors/APT29/iocs.yaml and
+# retire this cluster file to avoid dual-listing (the index tolerates dual-listing;
+# it is not desired here once the fold decision is made).
+
+cluster_id: captivecrunch-storm2945-mstic-2026-07-31
+cluster_name: "CaptiveCrunch — Storm-2945 (MSTIC-assessed Midnight Blizzard / APT29 sub-cluster, single-source) captive-portal AitM device-code + malware delivery"
+first_seen: 2026-05-01            # MSTIC: campaign active since early May 2026
+last_updated: 2026-07-31
+admiralty_grade: A2               # MSTIC primary (A) + credibility 2 (single-source veto on attribution)
+tlp: CLEAR
+
+provenance:
+  - source: "Microsoft Threat Intelligence (MSTIC) — CaptiveCrunch disclosure, 2026-07-31"
+    url: https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/
+    note: >
+      Originating primary. Publishes the 12 indicators below and designates the
+      Storm-2945 cluster, assessed as a Midnight Blizzard (APT29) sub-cluster on
+      overlap with Storm-2372 device-code tradecraft. Single originating primary
+      on the attribution — WEP capped at likely (single-source veto).
+  - source: "ReliaQuest (2026-07-23, provisional B)"
+    note: >
+      Partial corroborator — independently reported a portion of the
+      doppelganger-domain / AitM device-code activity, but did NOT make the
+      Storm-2945 -> Midnight Blizzard sub-cluster attribution. Corroborates the
+      delivery layer only, not the actor binding.
+
+notes: |
+  Source finding: finding-2026-07-31-0002 (grader flash-grade-20260731-1800),
+  delivered via FLASH brief flash-2026-07-31-1800.
+
+  Two parallel strands per MSTIC:
+    1. AitM credential/session theft — doppelganger domains impersonating
+       Microsoft online services abusing the Entra ID device-code auth flow
+       (T1621), leading to Entra device registration + M365 data collection.
+       Consistent with Midnight Blizzard's Storm-2372 device-code tradecraft.
+    2. Malware delivery — payloads posing as browser/OS updates, triggered by
+       automated captive-portal connectivity checks, via ClickFix (T1204).
+       Android APK delivery also observed.
+
+  Tooling named by MSTIC (NOT atomic IOCs; carried for actor-profiler on fold):
+    CornFlake (Golang Windows RAT), ChocoShell (PowerShell infostealer),
+    FruitStone (C2 panel), plus an unnamed Android component.
+
+  DISAMBIGUATION: 31.57.243.154 (this cluster) is NOT the tracked 31.57.35.223
+  already in _master-index — different IOC, do not conflate.
+
+  NOT Forest Blizzard: MSTIC flags TTP similarity to the APT28 (Forest Blizzard,
+  #006) DNS-hijacking op but attributes CaptiveCrunch to Storm-2945 / Midnight
+  Blizzard, NOT Forest Blizzard. Do NOT cross-walk the two ops.
+
+  Hash->family bindings are collector best-effort pending full MSTIC IOC-appendix
+  direct retrieval (an Android APK hash may exist beyond this partial extraction).
+
+  Splunk first-party status (2026-07-31 18:00 FLASH sweep): 0 tracked-IOC hits in
+  archimedes (2148 events/-90d, self-log only) and 0 in defenseclaw_local (0 events
+  in window, visibility-bounded null). Hard Rule 8 — silence is not disconfirming.
+  Retro-hunt the indicators below if EDR/DNS telemetry is available.
+
+  A&D relevance: INDIRECT / STRUCTURAL. No named A&D-prime or watchlist victim —
+  targeting is corporate travelers broadly. An ITAR/DIB executive transiting a
+  compromised hotel/conference Wi-Fi is within the plausible victim envelope
+  (session-token / credential theft -> M365 access).
+
+ttl:
+  network_infrastructure: 90      # doppelganger domains + C2 IPs rotate/sinkhole
+  file_artifacts: 730             # sample hashes durable for retro-hunting
+  malware_families: never
+
+indicators:
+  - id: captivecrunch-domain-001
+    type: domain
+    value: ms365-device.com
+    role: aitm_doppelganger_m365
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "Doppelganger Microsoft-service domain abusing Entra ID device-code flow."
+  - id: captivecrunch-domain-002
+    type: domain
+    value: ms365-live.com
+    role: aitm_doppelganger_m365
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "Doppelganger Microsoft-service domain abusing Entra ID device-code flow."
+  - id: captivecrunch-domain-003
+    type: domain
+    value: m365-owa.com
+    role: aitm_doppelganger_m365
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "Doppelganger Microsoft-service domain (OWA lure) abusing device-code flow."
+  - id: captivecrunch-domain-004
+    type: domain
+    value: owa-ms365.com
+    role: aitm_doppelganger_m365
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "Doppelganger Microsoft-service domain (OWA lure) abusing device-code flow."
+  - id: captivecrunch-ipv4-001
+    type: ipv4
+    value: 31.57.243.154
+    role: c2
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "C2 for CornFlake / FruitStone. NOT the tracked 31.57.35.223 — distinct IOC."
+  - id: captivecrunch-ipv4-002
+    type: ipv4
+    value: 38.146.28.75
+    role: c2
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "C2 infrastructure."
+  - id: captivecrunch-ipv4-003
+    type: ipv4
+    value: 38.146.28.132
+    role: c2
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "C2 infrastructure (same /24 as .75)."
+  - id: captivecrunch-ipv4-004
+    type: ipv4
+    value: 104.194.159.150
+    role: c2
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "C2 infrastructure."
+  - id: captivecrunch-ipv4-005
+    type: ipv4
+    value: 107.189.26.194
+    role: c2
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "C2 infrastructure."
+  - id: captivecrunch-ipv4-006
+    type: ipv4
+    value: 213.145.86.112
+    role: c2
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "C2 infrastructure."
+  - id: captivecrunch-sha256-001
+    type: sha256
+    value: 918fa52ae45ed60ba7cc8bdc99c3cbe9ab92e0375ec31fc05d0d4513be11c593
+    role: malware_delivery_fake_update
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "Payload posing as browser/OS update (ClickFix delivery). Family binding best-effort pending appendix retrieval."
+  - id: captivecrunch-sha256-002
+    type: sha256
+    value: be99857449d2856dd5a84e21c8a3d5e0e01456adb44062ddec5a6b4970d8d42c
+    role: malware_delivery_fake_update
+    first_seen: 2026-05-01
+    last_seen: 2026-07-31
+    source: "MSTIC (2026-07-31)"
+    notes: "Payload posing as browser/OS update (ClickFix delivery). Family binding best-effort pending appendix retrieval."
+
+hunt_queries:
+  - id: captivecrunch-hunt-doppelganger-domains
+    platform: splunk
+    title: "CaptiveCrunch — internal resolution of doppelganger M365 domains"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes sourcetype=dns
+      | where query IN ("ms365-device.com","ms365-live.com","m365-owa.com","owa-ms365.com")
+      | stats count values(query) as domains by src_ip, user
+      | sort -count
+    notes: "Any hit = traveler funneled through actor AitM infrastructure. Investigate for Entra device-code registration."
+  - id: captivecrunch-hunt-c2-ips
+    platform: splunk
+    title: "CaptiveCrunch — outbound to tracked C2 IPs"
+    query_type: spl
+    query: |
+      index=defenseclaw_local OR index=archimedes
+      | where dest_ip IN ("31.57.243.154","38.146.28.75","38.146.28.132","104.194.159.150","107.189.26.194","213.145.86.112")
+      | stats count by src_ip, dest_ip, dest_port
+      | sort -count
+    notes: "31.57.243.154 is CornFlake/FruitStone C2. Distinct from tracked 31.57.35.223."
+  - id: captivecrunch-hunt-sample-hashes
+    platform: edr
+    title: "CaptiveCrunch — fake-update payload SHA256 retro-hunt"
+    query_type: pseudo_kql
+    query: |
+      DeviceFileEvents
+      | where SHA256 in (
+          "918fa52ae45ed60ba7cc8bdc99c3cbe9ab92e0375ec31fc05d0d4513be11c593",
+          "be99857449d2856dd5a84e21c8a3d5e0e01456adb44062ddec5a6b4970d8d42c"
+        )
+      | project DeviceId, AccountName, Timestamp, FileName, FolderPath, SHA256
+    notes: "Payloads masquerade as browser/OS updates. A hit on a corporate traveler's device warrants immediate triage."

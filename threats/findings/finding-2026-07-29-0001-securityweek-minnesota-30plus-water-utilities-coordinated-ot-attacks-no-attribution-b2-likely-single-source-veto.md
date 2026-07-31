@@ -129,14 +129,25 @@ analyst_review_note: >
   makes no attribution and building one would manufacture/originate attribution.
 analyst_review_complete: true
 analyst_review_run_id: analyst-20260729-0830
+analyst_review_run_id_20260731_pm: analyst-20260731-160000
+analyst_review_refresh_note: >
+  Afternoon refresh (analyst-20260731-160000) on grader handoff upd-2026-07-31-0002. Targeted KAC on
+  the ONE new assumption class the increment introduces — carrying generic nation-level ("Iranian
+  hackers") attribution CONTEXT without drifting into actor-level attribution (Hard Rule 2). Four new
+  assumptions surfaced (A8-A11), all Qualify-class (0 Reject / 0 Test); see
+  analysis_sections.sat_kac.kac_refresh_20260731_pm. Full ACH DEFERRED — no cited source makes an
+  actor-level attribution, so an actor-identity matrix would originate attribution (Hard Rule 2). WEP
+  UNCHANGED at "likely"; digraph B2 untouched (grader's domain). Red-team still not mandatory.
 red_team_review_required: false           # WEP ceiling "likely" < "very likely"; single-source veto binds. Red-team not mandatory.
 red_team_review: null
 wep_ceiling_after_analysis: likely        # UNCHANGED — SATs do not override the single-source veto grading floor
 wep_ceiling_adjusted: false
 wep_ceiling_adjustment_reason: >
-  KAC surfaced no Reject and no Test classification. Load-bearing assumptions are Qualify-class
-  (framing caveats), not evidence collapse. WEP remains "likely" per the single-source veto; SATs
-  qualify HOW the event is framed for monitoring, not the grade.
+  KAC surfaced no Reject and no Test classification (morning A1-A7 event-framing + afternoon A8-A11
+  attribution-context refresh). Load-bearing assumptions are all Qualify-class (framing/discipline
+  caveats), not evidence collapse. WEP remains "likely" per the single-source veto; SATs qualify HOW
+  the event and its generic-Iran CONTEXT are framed for monitoring, not the grade. PM refresh
+  reaffirmed: no adjustment.
 assessment_blocked_pending_test: false
 analysis_sections:
   sat_ach: null                           # NOT run by design — an actor-identity ACH would originate attribution the source declines to make (Hard Rule 2, per grader instruction). Mechanism-class ACH not warranted: the finding makes no mechanism claim beyond "coordinated OT disruption," and the diagnostic question here is about framing-assumptions (KAC's job), not competing explanations of graded evidence.
@@ -257,6 +268,124 @@ analysis_sections:
         current: likely
         if_root_cause_commodity: likely (relevance framing narrows to generic OT-outage datum)
         if_attribution_published: likely (veto still binds until independent corroboration; attribution then inherited not originated)
+    kac_refresh_20260731_pm:
+      assessment_under_review: >
+        "Generic nation-level ('Iranian hackers') attribution CONTEXT — an FBI former-official's
+        provisional working assumption plus an FBI/CISA advisory on the general pattern of Iranian
+        ICS/OT targeting — can be carried alongside this finding as sourced situational CONTEXT
+        WITHOUT it drifting into actor-level attribution of the Minnesota incident in any downstream
+        product." (Assessment is about ATTRIBUTION-CARRIAGE DISCIPLINE, not about who conducted the
+        attacks. No actor attribution is assessed or originated; Hard Rule 2 binds.)
+      analyzed_at: 2026-07-31T16:34:00-04:00
+      analyzed_by: analyst
+      analyst_run_id: analyst-20260731-160000
+      invoking_context: >
+        Grader handoff upd-2026-07-31-0002 (investigation_goes_public_plus_attribution_context). The
+        morning event-framing KAC (A1-A7) still holds; the PM increment adds ONE assumption class —
+        the discipline of carrying generic Iran CONTEXT without sliding to actor attribution. Targeted
+        refresh per grader handoff_note; NOT a re-run of the event-framing assumptions.
+      relationship_to_prior_kac: >
+        Additive. A1-A7 (coordination / intentionality / OT-reach / scope / transfer-value / pattern-
+        awareness) are unchanged and still Qualify-class. This refresh adds A8-A11 on the attribution-
+        context dimension only. A11 is a re-score of morning A4 (A&D transfer value) in light of the
+        reaffirmed mainstream PLC families.
+      assumptions:
+        - id: A8
+          statement: "The AP/expert/FBI-CISA 'Iranian hackers' framing is genuinely GENERIC nation-level CONTEXT (an explicitly provisional working assumption + a general-pattern advisory), NOT a de-facto attribution of THIS Minnesota incident to Iran."
+          category: attribution_semantic
+          stated: true
+          why_must_be_true: "If the framing is functionally a de-facto attribution, Archimedes would be inheriting an actor/nation-level claim the sources explicitly decline to formally make — Hard Rule 2 exposure. The whole justification for recording the Iran layer at all is that it is sourced GENERIC context, not sourced attribution."
+          when_could_be_false: "A follow-on FBI/CISA advisory formally attributes the Minnesota incident to Iran/a named actor; OR later reporting drops the 'until proven otherwise' hedge and 'Iran' hardens into an assertion; OR the FBI/CISA general-pattern advisory + expert quote functionally operate as attribution in a reader's mind despite the hedge."
+          evidence_for: [securityweek, the-record, bleepingcomputer]
+          evidence_against: []
+          confidence: medium          # sources are EXPLICIT with the hedge ("until proven otherwise"; "formal attribution has not been made"), but the framing rests on one official source pool and could functionally read as attribution
+          centrality: critical         # if this is actually de-facto attribution, downstream handling + Hard Rule 2 posture change materially
+          classification: qualify      # medium confidence + critical centrality -> carry as explicit caveat, do NOT treat as settled
+        - id: A9
+          statement: "The generic-Iran CONTEXT can be carried into briefs WITHOUT sliding into actor-level attribution — i.e., it can be quarantined from the profile-fit roster mentions (CyberAv3ngers #028, Pioneer Kitten #029, Handala #014)."
+          category: attribution_discipline
+          stated: true
+          why_must_be_true: "The finding includes nation-level context only on the premise it can be held strictly separate from actor attribution. If carriage and quarantine are not achievable, the context should not be carried at all."
+          when_could_be_false: "A brief juxtaposes 'Iranian hackers hit Minnesota water' next to '#028 is the IRGC-CEC water-targeting actor' and the adjacency reads as a lean; OR profile-fit mentions get promoted from awareness to implied operator; OR the provisional hedge is dropped for brevity."
+          evidence_for: [securityweek, the-record, bleepingcomputer]
+          evidence_against: []
+          confidence: medium          # guardrails are explicit (grader briefer_note + attribution_note) but execution-dependent at the briefer layer
+          centrality: critical         # direct Hard Rule 2 breach risk if quarantine fails
+          classification: qualify      # the sharpest discipline caveat for the briefer this cycle
+        - id: A10
+          statement: "The three PM relays trace to a SHARED official-agency origin (the CISA/FBI water-OT warning), not to mutually-independent evidence bases — so they do NOT independently corroborate the Iranian framing."
+          category: source_reliability
+          stated: true
+          why_must_be_true: "If the relays were mutually independent on attribution, the Iranian framing would gain corroborative weight; the assumption that The Record + BleepingComputer are same-upstream re-reports (and AP shares the same official source pool for incident facts) is what keeps attribution-context from firming falsely."
+          when_could_be_false: "The Record or BleepingComputer turn out to have independent sourcing (own interviews / a separate advisory) rather than re-reporting the same CISA/FBI warning; OR AP developed an independent attribution basis beyond the official pool."
+          evidence_for: [the-record, bleepingcomputer, securityweek]
+          evidence_against: []
+          confidence: medium          # grader's Step-4 corroboration_note assessed the shared upstream from relay content; The Record + BC both cite the CISA warning, AP is a distinct publisher but on the same MNIT/CISA/FBI source pool for incident facts
+          centrality: material         # if wrong (relays independent on attribution), attribution CONTEXT firms — but still not to actor level, and WEP would not rise past 'likely' (primary-advisory veto still binds); event-occurrence corroboration already relaxed regardless
+          classification: qualify
+        - id: A11
+          statement: "The A&D/ITAR SCADA portability (transfer-value) argument still holds after the increment — the reaffirmed mainstream PLC families (Siemens S7-1200, Schneider Modicon M340, Rockwell CompactLogix/Micro850) are genuinely representative of A&D-manufacturing OT, not water-specific."
+          category: semantic
+          stated: true
+          why_must_be_true: "The finding's standing low-to-medium A&D relevance rests on OT-attack-surface transfer; the increment's PLC reaffirmation is the concrete transfer bridge."
+          when_could_be_false: "The technique specifics (municipal cellular-modem entry vectors, water-utility remote-access patterns) are distinct enough from A&D-manufacturing OT that operational lessons do not transfer; OR the PLC families named are deployed differently in A&D contexts."
+          evidence_for: [securityweek, the-record, bleepingcomputer]
+          evidence_against: []
+          confidence: medium          # mainstream industrial PLCs (CompactLogix/Micro850/Modicon/S7-1200) are broadly used across A&D manufacturing OT, so the portability argument is reasonably grounded — the increment mildly STRENGTHENS morning A4 vs the earlier Unitronics-class water-specificity
+          centrality: material
+          classification: qualify      # hold at low-to-medium; the PLC-family reaffirmation firms transfer value but does NOT create a targeted A&D nexus
+      classifications_summary_this_refresh:
+        sound: 0
+        qualify: 4
+        test: 0
+        reject: 0
+      classifications_summary_cumulative:   # morning A1-A7 + PM A8-A11
+        sound: 2
+        qualify: 9
+        test: 0
+        reject: 0
+      ach_decision:
+        run: false
+        status: deferred
+        reason: >
+          Full ACH DEFERRED — correct outcome under Hard Rule 2. No cited source makes an ACTOR-level
+          attribution of the Minnesota incident; the only attribution content is (a) generic nation-
+          level 'Iranian hackers' and (b) explicitly provisional ("until proven otherwise") + a general-
+          pattern FBI/CISA advisory. The Rule-2 concrete test applies: there is NO sourced actor-level
+          attribution to pressure-test, so an ACH matrix (H1=CyberAv3ngers / H1=Pioneer Kitten / H1=Iran-
+          as-operator) would ORIGINATE or harden attribution the sources decline to make. The "is this
+          Iran vs a specific actor" question is not genuinely competing-hypotheses-worthy at this
+          evidence level — no source stakes a specific-actor claim, so there is nothing diagnostic to
+          rank. Building the matrix would manufacture attribution. ACH re-opens only if a source
+          publishes a cited actor-level attribution (see tripwire).
+        ach_reopen_tripwire: "A cited A/B-source (or the FBI/CISA advisory on direct retrieval) formally attributes THIS incident to a named actor -> then run ACH on the SOURCED hypotheses (attribution inherited, not originated)."
+      remediation:
+        status: proceed
+        blocking_assumption: null
+        qualifying_caveats:
+          - "Carry the Iranian nexus ONLY as the sources' generic, explicitly-provisional framing; preserve the hedge verbatim in spirit (A8). It is nation-level CONTEXT, not an attribution of this incident."
+          - "Never let the generic-Iran context sit adjacent to the roster profile-fit mentions (CyberAv3ngers #028 / Pioneer Kitten #029 / Handala #014) in a way that reads as a lean toward a tracked actor (A9, Hard Rule 2 tripwire). No source names any of them."
+          - "The three PM publishers are NOT mutually-independent corroboration of the Iranian framing — do not present multi-publisher coverage as strengthening attribution (A10). It firms only the bare event-occurrence fact."
+          - "A&D relevance stays low-to-medium OT-attack-surface transfer; the reaffirmed mainstream PLC families firm the transfer bridge but do NOT create a targeted A&D nexus (A11)."
+        next_action: >
+          Proceed to the afternoon brief as a caveated MONITORING datum + situational-context update.
+          Re-run KAC/consider ACH only if the FBI/CISA advisory is directly retrieved OR a source
+          publishes a cited actor-level attribution.
+      tripwires_this_refresh:
+        - observation: "FBI/CISA advisory (or any A/B source) formally attributes the Minnesota incident to a named actor"
+          effect: "A8 shifts toward Reject-as-generic; attribution becomes INHERITED (sourced); open ACH on the sourced hypotheses; still no Archimedes origination"
+        - observation: "A downstream brief reads as leaning toward CyberAv3ngers/Pioneer Kitten/Handala"
+          effect: "A9 breach — Hard Rule 2 violation; halt + correct the brief before publication"
+        - observation: "The Record or BleepingComputer shown to have independent (non-CISA-warning) sourcing"
+          effect: "A10 softens; attribution-context corroboration firms (still not to actor level); WEP still capped by the primary-advisory veto"
+      recommended_wep_after_test:
+        current: likely
+        rationale: >
+          UNCHANGED at "likely." This refresh surfaced no Reject and no Test — all four new assumptions
+          are Qualify-class (framing/discipline caveats), not evidence collapse. SATs cannot lift the
+          single-source-veto grading floor, and nothing here lowers the grade either. The attribution
+          increment is generic + provisional CONTEXT that changes HOW the finding is framed downstream,
+          not the digraph or WEP. Digraph B2 and WEP "likely" preserved (grader's domain; untouched).
 
 # Handoffs
 handoffs:
@@ -270,10 +399,10 @@ handoffs:
 
 # Lifecycle
 tlp: CLEAR
-published_in_briefs: [2026-07-29-morning, 2026-07-31-morning]   # briefer appends brief_ids
+published_in_briefs: [2026-07-29-morning, 2026-07-31-morning, 2026-07-31-afternoon]   # briefer appends brief_ids
 retracted: false
 retraction_brief_id: null
-last_updated: 2026-07-31T08:16:00-04:00
+last_updated: 2026-07-31T16:18:00-04:00
 updates:
   - update_id: upd-2026-07-31-0001
     updated_at: 2026-07-31T08:16:00-04:00
@@ -326,6 +455,86 @@ updates:
       IP-change PLC disconnection, cellular-modem entry) are sector-TTP-class CONTEXT for the #028 dossier
       to adjudicate WITHOUT asserting #028 conducted this (Hard Rule 2). vuln-tracker: no CVE named.
     briefer_note: "Present as an authoritative-advisory UPDATE to the 2026-07-29 Minnesota OT item — CISA now has published mitigation guidance and named PLC targets. Carry the named PLC families + CISA's three immediate actions as the actionable OT-hardening so-what. Keep attribution absent; Iranian personas only as the source's profile-fit, never Archimedes' lean."
+  - update_id: upd-2026-07-31-0002
+    updated_at: 2026-07-31T16:18:00-04:00
+    updated_by: grader
+    grading_run_id: afternoon-20260731-160000
+    raw_signal_members:
+      - raw-2026-07-31-pm-001
+    update_type: investigation_goes_public_plus_attribution_context
+    grade_change: none                    # remains B2 / likely
+    sources_this_increment:
+      - source_yaml_id: securityweek       # carrier for the Associated Press investigation byline
+        grade: B
+        note: "Associated Press investigation piece relayed via SecurityWeek (AP byline); named victims + expert framing."
+      - source_yaml_id: the-record
+        grade: B
+        note: "Recorded Future News — CISA alert + Minnesota-probe framing (re-report of the CISA warning)."
+      - source_yaml_id: bleepingcomputer
+        grade: B
+        note: "Bill Toulas — CISA warning on the PLC-targeting spike (re-report of the same CISA warning)."
+    summary: >
+      The underlying Minnesota water-utility investigation went public. Three in-window B-grade
+      relays covered the campaign: (1) an Associated Press investigation piece (via SecurityWeek)
+      reporting named victim utilities and expert framing; (2) The Record and (3) BleepingComputer
+      both re-reporting a CISA/FBI alert warning of a spike in Iranian targeting of water/OT systems.
+      Net-new over the morning CISA mitigation advisory: population/context detail on named victims
+      (Braham ~1,700; Plymouth ~80,000; "over 30 water systems" referenced generically) and an
+      explicit Iranian-attribution CONTEXT layer — a former FBI cyber official (Cynthia Kaiser) said
+      responders would be right to "treat it like it's Iran until proven otherwise," alongside an
+      FBI/CISA advisory characterizing Iranian targeting of ICS/OT. Historical framing cited (2016 DOJ
+      charges against Iranian hackers for a New York-area dam intrusion). PLC vendors reaffirmed
+      (Siemens / Schneider / Rockwell). No CVE named; zero atomic IOCs in any relay.
+    corroboration_note: >
+      Independence test worked per skill Step 4. The Record + BleepingComputer are NOT mutually
+      independent — both re-report the SAME CISA/FBI water-OT warning (one upstream authority), which
+      is the same evidence basis already folded into this finding via the morning CISA advisory update
+      (upd-2026-07-31-0001). The AP investigation (via SecurityWeek) is a distinct publisher and a
+      distinct journalistic evidence basis (own reporting + expert interview) — this genuinely FIRMS
+      corroboration of the bare EVENT-OCCURRENCE fact (multiple distinct publishers now report the
+      campaign) relative to the original single-SecurityWeek posture. However, AP's incident facts
+      still rest on the same official-agency source pool (MNIT / CISA / FBI), the underlying FBI/CISA
+      advisory primary was NOT directly retrieved this sweep, and the analytically load-bearing new
+      content (the Iranian nexus) is generic + explicitly provisional. Net: event-occurrence
+      corroboration strengthens, but the finding's headline WEP does NOT rise.
+    grade_rationale_note: >
+      Grade unchanged at B2 / "likely." Credibility stays 2 (Probably True). The single-source-veto
+      posture is RELAXED on the bare event-occurrence fact (now corroborated by an independent AP
+      investigation + multiple distinct publishers), but the headline WEP ceiling is held at "likely"
+      because: (a) the two additional publishers (The Record, BleepingComputer) are same-upstream
+      re-reports of the CISA warning, not mutually independent evidence bases; (b) the FBI/CISA
+      advisory primary was not directly retrieved; (c) the increment's load-bearing payload is the
+      generic, explicitly-provisional Iranian-attribution CONTEXT; and (d) doctrine says err low.
+      Direct retrieval of the FBI/CISA advisory remains the firming milestone.
+    attribution_note: >
+      Hard Rule 2 BINDING and preserved. The sources attribute to generic "Iranian hackers" ONLY,
+      framed as an explicitly PROVISIONAL working assumption ("treat it like it's Iran until proven
+      otherwise") plus an FBI/CISA advisory on the general pattern of Iranian ICS/OT targeting — NOT a
+      formal attribution of THIS Minnesota incident to any specific actor. Archimedes records this
+      nation-level CONTEXT verbatim with its hedge and originates NOTHING beyond it. It is NOT hardened
+      to any roster actor. CyberAv3ngers (#028), Pioneer Kitten (#029), and Handala (#014) remain
+      profile-fit awareness ONLY — no source in this sweep names any of them. This is a step-change in
+      the finding's attribution posture ONLY in that generic nation-level CONTEXT now exists (previously
+      "no attribution made at all"); it is NOT actor attribution and must never read downstream as a
+      lean toward any tracked Iranian actor.
+    first_party_precedence:
+      applied: false
+      splunk_note: "Grader Rule 8 re-run 2026-07-31 afternoon over (index=archimedes OR defenseclaw_local) for the named PLC families (CompactLogix / Micro850 / Modicon / S7-1200) + PLC/Modbus/cellular-modem terms, -30d -> 0 events. No atomic IOCs in the PM relays to pivot on; FBI/CISA advisory IOC set (if any) not retrieved. Visibility-bounded null, NOT disconfirming (Hard Rule 8)."
+    named_victims_context:
+      - "Braham, MN (pop. ~1,700)"
+      - "Plymouth, MN (pop. ~80,000)"
+      - "'over 30 water systems in Minnesota' (referenced generically)"
+    handoff_note: >
+      analyst: refresh the KAC on the NEW attribution-context dimension — specifically the assumption
+      that generic 'Iranian hackers' CONTEXT (expert + FBI/CISA advisory) can be carried without
+      sliding into actor-level attribution (Hard Rule 2 tripwire). The morning's KAC (event framing:
+      coordination/intentionality/OT-reach/transfer-value) still holds; the increment adds one
+      assumption class (nation-level-context-vs-actor-attribution discipline). actor-profiler: the
+      generic-Iran CONTEXT + reaffirmed PLC families are sector-TTP-class CONTEXT for the #028 dossier
+      to adjudicate WITHOUT asserting #028 conducted this. vuln-tracker: no CVE. Direct-retrieval todo
+      elevated again: pull the FBI/CISA advisory on Iranian OT/ICS targeting (Siemens/Schneider/Rockwell)
+      for an independent documentary basis + any IOC/CVE appendix.
+    briefer_note: "Present as a same-day UPDATE to the Minnesota OT item: the investigation went public with named victims + an Iranian-attribution CONTEXT layer. Carry the Iranian nexus ONLY as the sources' generic, explicitly-provisional framing ('treat it like Iran until proven otherwise') — never as Archimedes' attribution and never hardened to CyberAv3ngers/Pioneer Kitten/Handala (Hard Rule 2). Grade unchanged B2/likely. Anti-repetition: this is the third increment on the same thread today (originating incident + morning CISA advisory); lead with what is genuinely new (public investigation + attribution CONTEXT), not the already-briefed mitigation guidance."
 ---
 
 # 30+ Minnesota water utilities hit by coordinated OT attacks — automated control disrupted, water reported safe (NO attribution made)
@@ -400,3 +609,31 @@ Monitoring assessment holds at low-to-medium indirect A&D relevance. Briefer mus
 **So-what (now actionable OT hardening).** Carry the named PLC families and CISA's three immediate actions as the actionable defensive guidance for OT-owning readers (including A&D-facility/manufacturing OT by attack-surface analogy). Direct-retrieval todo elevated: pull the CISA advisory + AA26-097A for an independent documentary basis (could lift credibility toward 1 / lift the veto) and the atomic IOC set for the master index and a first-party hunt.
 
 *Update source: raw-2026-07-31-am-001. Grader run morning-20260731-080000.*
+
+## Update — 2026-07-31 afternoon (investigation goes public + Iranian-attribution CONTEXT; grade unchanged B2 / likely; NO actor attribution)
+
+**Third increment on the thread today; grade unchanged.** The underlying Minnesota water-utility investigation went public. Three in-window B-grade relays covered it:
+
+- **Associated Press investigation** (via SecurityWeek, AP byline, 2026-07-31 11:17 EDT) — named victim utilities and expert framing.
+- **The Record** (Recorded Future News, 13:47 EDT) — CISA/FBI alert + Minnesota-probe framing.
+- **BleepingComputer** (Bill Toulas, 12:49 EDT) — CISA warning on the water-OT attack spike.
+
+New material this cycle:
+
+- **Victim context (not net-new victims — already named in the finding):** population/context detail — Braham, MN (~1,700) and Plymouth, MN (~80,000); "over 30 water systems" referenced generically as the incidents behind the CISA spike warning.
+- **Iranian-attribution CONTEXT (the real increment):** a former FBI cyber official (Cynthia Kaiser) said responders would be right to "treat it like it's Iran until proven otherwise"; an FBI/CISA advisory characterizes Iranian targeting of ICS/OT. Historical framing cited (2016 DOJ charges against Iranian hackers for a New York-area dam intrusion).
+- **PLC vendors reaffirmed:** Siemens, Schneider, Rockwell. **CVE:** none. **Atomic IOCs:** none in any relay.
+
+**Corroboration — why the grade does not move.** The event-occurrence fact firms: the AP investigation is a distinct publisher and a distinct journalistic evidence basis, so multiple independent publishers now report the campaign — the single-source posture relaxes on the bare fact that the attacks occurred. But The Record and BleepingComputer are **not mutually independent** (both re-report the same CISA/FBI warning — one upstream authority, the same evidence basis already folded in this morning), the FBI/CISA advisory primary was **not directly retrieved**, and the increment's load-bearing payload — the Iranian nexus — is **generic and explicitly provisional**. Credibility stays 2; digraph stays **B2**; WEP stays **"likely."** Grader Rule 8 re-run over the named PLC families across `archimedes` + `defenseclaw_local` (-30d) returned 0 events (visibility-bounded null).
+
+**Hard Rule 2 — still NO actor attribution.** This is a step-change ONLY in that generic nation-level CONTEXT now exists where before there was none at all. The sources attribute to **"Iranian hackers"** generically and explicitly provisionally ("until proven otherwise") plus an FBI/CISA advisory on the *general pattern* of Iranian ICS/OT targeting — **not** a formal attribution of this Minnesota incident to any actor. Archimedes records that nation-level context verbatim with its hedge and originates nothing further. **CyberAv3ngers (#028), Pioneer Kitten (#029), and Handala (#014) remain profile-fit awareness ONLY** — no source names any of them. Downstream must never read the generic-Iran context as a lean toward any tracked actor.
+
+**So-what.** The actionable OT-hardening guidance from the morning CISA advisory (disconnect PLCs, change defaults, allowlist IPs; named PLC families) stands. The afternoon increment adds situational context — the campaign is now a public, investigated, Iran-context-framed event — without changing the defensive so-what or introducing any attributable actor. Direct-retrieval todo elevated again: pull the FBI/CISA advisory on Iranian OT/ICS targeting for an independent documentary basis + any IOC/CVE appendix.
+
+### Sources added this increment
+
+- **Associated Press via SecurityWeek** (securityweek, digraph letter: B) — 2026-07-31 11:17 EDT — https://www.securityweek.com/cyberattacks-on-minnesota-water-systems-investigated-as-officials-warn-about-iranian-hackers/ — Key claim: Minnesota water-system cyberattacks under investigation; named victims; officials warn generically about "Iranian hackers"; expert "treat it like Iran until proven otherwise" framing; no formal actor attribution.
+- **The Record** (the-record, digraph letter: B) — 2026-07-31 13:47 EDT — https://therecord.media/cisa-warns-of-spike-in-water-system-attacks — Key claim: CISA warns of a spike in water-system attacks; Minnesota-probe framing (re-report of the CISA/FBI warning).
+- **BleepingComputer** (bleepingcomputer, digraph letter: B) — 2026-07-31 12:49 EDT — https://www.bleepingcomputer.com/news/security/cisa-warns-of-cyberattacks-disrupting-us-water-utilities/ — Author: Bill Toulas — Key claim: CISA warns of cyberattacks disrupting US water utilities via internet-exposed PLCs (re-report of the same CISA warning).
+
+*Update source: raw-2026-07-31-pm-001. Grader run afternoon-20260731-160000.*

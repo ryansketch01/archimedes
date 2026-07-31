@@ -47910,7 +47910,7 @@ entries:
     test: false
 
   - id: 2026-07-29-am-001-securityweek-minnesota-30plus-water-utilities-coordinated-ot-attacks-no-attribution-b2-likely-single-source-veto
-    covered_in: [2026-07-29-morning, 2026-07-31-morning]   # RESURFACED 2026-07-31 as UPDATE — CISA advisory follow-on + named PLC families
+    covered_in: [2026-07-29-morning, 2026-07-31-morning, 2026-07-31-afternoon]   # RESURFACED 2026-07-31 morning (CISA advisory follow-on + named PLC families) AND afternoon (investigation public + named victims + generic provisional Iranian-attribution CONTEXT)
     brief_file: threats/briefs/2026-07-29-morning.md
     headline: "SecurityWeek reports 30+ Minnesota community water systems targeted 2026-07-26/27 in what it characterizes as coordinated OT attacks — automated control disrupted, some systems briefly offline, drinking water reported safe, service maintained via manual/contingency procedures. NO attribution made (Iranian personas CyberAv3ngers/Handala named ONLY as the source's own speculation; Archimedes originates none, inherits none — Hard Rule 2). Water/wastewater sector, NOT A&D; no named A&D/DIB victim; no CVE; 0 IOCs; Splunk 0 hits. B2/likely, single-source veto (one B-grade publisher relaying MNIT + municipality statements; independence fails -> capped likely). Carried under Iran Cyber Watch as UNATTRIBUTED OT-attack-surface awareness + continuity on the corpus Iran-OT / US-water-utility advisory thread (0722-0004 / 0723-0002). A&D relevance LOW-to-MEDIUM / indirect (OT attack-surface transfer to shared manufacturing + facility OT). 'Coordinated' + 'OT attack' presented as the SOURCE's characterization, not established fact (analyst KAC A1/A2/A3 Qualify)."
     topic_tags:
@@ -47956,6 +47956,15 @@ entries:
         grade_change: none   # remains B2/likely; single-source veto still binds (CISA reached corpus via the SAME publisher, not an independent second basis)
         new_material: "CISA's 3 immediate OT actions (disconnect PLCs from internet/VPN-gate; change default creds + enable password protection; allowlist IPs) + named PLC target families (Rockwell CompactLogix/Micro850, Schneider Modicon M340, Siemens S7-1200) + technique detail (password lockout, IP-change PLC disconnection, cellular-modem entry) + AA26-097A IOC-reference (procedural, NOT an attribution). Scope reaffirmed (30+ systems, 2026-07-26/27)."
         hard_rule_2: "STILL no attribution. Iranian personas (CyberAv3ngers #028, Handala #014) remain source profile-fit speculation only; CISA's AA26-097A cross-reference is a procedural IOC pointer, NOT an attribution of this campaign. Archimedes originates and inherits none. The Active-Threats placement + Iran-Cyber-Watch unattributed disclaimer together prevent an Iran lean."
+      - brief_id: 2026-07-31-afternoon
+        date: 2026-07-31
+        trigger: new_victims_confirmed_plus_public_investigation   # AP investigation went public; named victims Braham (~1,700) + Plymouth (~80,000) among 30+; grader upd-2026-07-31-0002
+        flag: "UPDATE + 🔗 callout to 2026-07-31-morning"
+        placement: "🚨 Active Threats (LEAD) — same placement as the 2026-07-31 morning cycle; Iran Cyber Watch ran silent-day for tracked actors with an explicit note that the newly-surfaced generic-Iran framing is provisional nation-level CONTEXT only, held unattributed to any tracked actor"
+        grade_change: none   # remains B2/likely; single-source veto still binds (the two added publishers re-report the same FBI/CISA warning; AP incident facts rest on the same MNIT/CISA/FBI source pool; FBI/CISA advisory primary not directly retrieved)
+        new_material: "The investigation went PUBLIC (AP investigation via SecurityWeek) with named victim towns Braham, MN (~1,700) + Plymouth, MN (~80,000) among the 30+ MN systems + a GENERIC, explicitly-provisional Iranian-attribution CONTEXT layer — a former FBI cyber official ('treat it like it's Iran until proven otherwise') + an FBI/CISA general-pattern advisory on Iranian ICS/OT targeting + 2016 DOJ NY-dam historical framing. PLC vendors reaffirmed (Siemens/Schneider/Rockwell). No CVE; 0 atomic IOCs in any relay."
+        hard_rule_2: "BINDING. Iranian nexus carried ONLY as the sources' generic, explicitly-provisional framing ('until proven otherwise') — NEVER as Archimedes' attribution and NEVER hardened to CyberAv3ngers (#028) / Pioneer Kitten (#029) / Handala (#014); NO source in this sweep names any of them. Multi-publisher coverage presented as firming that the ATTACKS OCCURRED, NOT the attribution (The Record + BleepingComputer re-report one shared CISA/FBI warning; AP shares the same official source pool). Generic-Iran context deliberately NOT placed adjacent to the roster profile-fit mentions (analyst KAC A9 tripwire respected)."
+        one_quote: "'treat it like it's Iran until proven otherwise' (8 words, former FBI official via AP/SecurityWeek) — ONE direct quote total in the brief, Layer 1 only; Layer 2 paraphrases the same hedge without quotation marks to keep Hard Rule 6 at one quote per source per brief."
     notes: |
       2026-07-29 MORNING BRIEF, 🇮🇷 Iran Cyber Watch section (net-new monitoring finding).
       HARD RULE 2 IS THE CRITICAL CARE POINT: the source EXPLICITLY states no attribution
@@ -49049,6 +49058,140 @@ entries:
       direct quotes both layers); Rule 8 (first-party Splunk 0 hits both indices, visibility-bounded null). No red-team
       (all WEP 'likely'). PRE-FLIGHT 13-of-13 PASS (iteration 1). NOT posted/committed by briefer — librarian owns
       Discord+Teams delivery + Splunk log + git commit.
+    first_covered: 2026-07-31
+    last_covered: 2026-07-31
+    retraction: null
+    test: false
+
+  - id: 2026-07-31-pm-brief-meta
+    covered_in: [2026-07-31-afternoon]
+    brief_file: threats/briefs/2026-07-31-afternoon.md
+    headline: "AFTERNOON brief — genuinely LIGHT board; ONE real content increment (UPDATE resurface of the Minnesota water-OT thread). The underlying investigation went PUBLIC: an AP investigation (via SecurityWeek) named victim towns Braham, MN (~1,700) + Plymouth, MN (~80,000) among the 30+ MN systems, and officials framed the activity with a GENERIC, explicitly-provisional 'Iranian hackers' assumption ('treat it like it's Iran until proven otherwise' — former FBI cyber official) + an FBI/CISA general-pattern advisory on Iranian ICS/OT targeting. NO formal attribution; NO specific actor named. Grade unchanged B2/likely (single-source veto still binds). Standing sections + quiet posture reported honestly; no padding."
+    topic_tags:
+      - afternoon-brief
+      - light-day-one-real-increment-no-padding
+      - lead-minnesota-water-ot-investigation-public-named-victims-braham-plymouth
+      - update-resurface-minnesota-thread-third-increment-today-lead-with-the-delta
+      - generic-provisional-iranian-attribution-context-treat-it-like-iran-until-proven-otherwise
+      - hard-rule-2-generic-nation-level-context-only-not-actor-attribution-not-adjacent-to-cyberavengers-pioneer-kitten-handala
+      - multi-publisher-firms-attacks-occurred-not-who-shared-fbi-cisa-warning-upstream
+      - a-and-d-so-what-unchanged-ot-tradecraft-portability-siemens-schneider-rockwell-plc
+      - sector-focus-ad-silent-day-plus-structural-transfer-note
+      - iran-cyber-watch-silent-day-plus-generic-provisional-context-note-no-tracked-actor-lean
+      - other-signal-first-party-splunk-clean-plus-patch-posture-continuity-cisco-fmc-deadline-tomorrow
+      - hard-rule-6-one-quote-total-8-words-layer1-only-layer2-paraphrases-hedge
+      - hard-rule-8-first-party-splunk-0-hits-both-indices-visibility-bounded
+      - preflight-13-of-13-pass
+    related_actors: []               # NO roster actor as a graded item. Silent-day/sector template names (UNC1549/Charming Kitten/Handala/MuddyWater + APT28/Lazarus/APT41/Salt Typhoon) are boilerplate. Minnesota's generic-Iran framing is nation-level provisional CONTEXT only — CyberAv3ngers #028 / Pioneer Kitten #029 / Handala #014 deliberately NOT recorded (Hard Rule 2; no source names them).
+    related_vulns: []                # Minnesota named PLC families carry no CVE. Cisco FMC CVE-2026-20316 + Fortinet FortiOS CVE-2025-68686 are continuity patch-posture pointers only (no covered_in append, no finding).
+    related_campaigns: []
+    finding_ids: [finding-2026-07-29-0001]
+    digraph: B2                      # Minnesota B2/likely (the sole graded content item)
+    wep: likely
+    disposition:
+      net_new_findings_promoted: 0   # nothing net-new this cycle
+      updates_covered: 1             # finding-2026-07-29-0001 Minnesota water (investigation public + generic provisional Iran CONTEXT — grader upd-2026-07-31-0002)
+      new_topic_entries_created: 0
+      in_place_resurfaces: 1         # 2026-07-29-am-001 (Minnesota water) resurfaced under UPDATE flag + 🔗 callout to 2026-07-31-morning
+      covered_in_appends: 1          # Minnesota am-001 gets 2026-07-31-afternoon appended
+      published_in_briefs_back_writes: 1   # finding-2026-07-29-0001 appends 2026-07-31-afternoon
+      deliberately_excluded_anti_repetition:
+        - "CISA water-sector OT MITIGATION advisory / named PLC families (2026-07-31 AM) — already led the morning brief; the afternoon carries only the DELTA (public investigation + named victims + Iran CONTEXT), NOT a restatement of the mitigation guidance"
+        - "TeamCity CVE-2026-63077 patch (2026-07-31 AM) — no new substance"
+        - "Azure CosmosEscape (2026-07-31 AM) — no new substance"
+        - "DeepSeek/knaithe autonomous-AI (= yesterday's Unit 42 knaithe) — deduped by collector, already briefed"
+        - "AWS/DPRK Sapphire Sleet npm (= yesterday's Amazon report) — deduped by collector, already briefed"
+      rationale: >
+        GENUINELY LIGHT afternoon reported honestly per INTEL-BRIEF-STANDARDS — the ONE graded development
+        since the morning brief was grader update upd-2026-07-31-0002 (folded into finding-2026-07-29-0001).
+        LED with the DELTA, not a restatement: the Minnesota water-OT investigation went PUBLIC with named
+        victim towns (Braham ~1,700; Plymouth ~80,000) + a generic, explicitly-provisional Iranian-attribution
+        CONTEXT layer. Placement continued the morning's 🚨 Active Threats (LEAD) treatment; the morning's CISA
+        OT-hardening so-what was carried forward as UNCHANGED (not re-reported as new). CRITICAL HARD RULE 2
+        CARE POINT: the Iranian nexus is carried ONLY as the sources' generic, explicitly-provisional framing
+        ('until proven otherwise'), NEVER as Archimedes' attribution, and NEVER hardened to or placed adjacent
+        to CyberAv3ngers (#028) / Pioneer Kitten (#029) / Handala (#014) — no source in this sweep names any of
+        them (analyst KAC A9 tripwire respected). Multi-publisher coverage framed as firming that the ATTACKS
+        OCCURRED, NOT the attribution (The Record + BleepingComputer re-report one shared FBI/CISA warning; AP
+        shares the same official source pool). Standing sections + quiet posture reported plainly; NO padding,
+        NO manufactured findings, NO inflated significance. Grade unchanged B2/likely (single-source veto still
+        binds). No red-team (WEP 'likely' < very_likely).
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1                  # authored within Layer-1 400-800 band + Layer-2 150-300 words / <=1900 chars on first pass (one post-draft edit nudged Layer 2 off the 150-word floor with substantive additions — not a preflight failure)
+      word_count_layer1: 512         # 400-800 afternoon band
+      layer2_words: ~170            # 150-300 band
+      layer2_chars_est: ~1300       # <=1900 ceiling; single Discord message, no chunk needed (librarian re-verifies char count before posting)
+      check_3_note: >
+        Anti-repetition (check 3) PASS. Minnesota (2026-07-29-am-001) resurfaced under explicit UPDATE flag + 🔗
+        callout to 2026-07-31-morning on a new-victims/public-investigation trigger (grader upd-2026-07-31-0002).
+        The morning's CISA MITIGATION advisory + TeamCity patch + CosmosEscape all DROPPED (already briefed this
+        morning; carried only as the unchanged so-what, not re-reported). DeepSeek/knaithe + AWS/DPRK npm deduped
+        by collector. Logged under deliberately_excluded_anti_repetition.
+      check_5_note: "Banned phrases (check 5) PASS. Zero hot-list phrases in either layer."
+      check_7_note: "WEP (check 7) PASS. No bare hedges. WEP 'likely' cited on the finding; the one implicit forward framing (OT tradecraft portability to A&D OT) is stated as present-tense structural transfer, not a probability prediction."
+      check_9_note: >
+        Check 9 PASS. Minnesota named PLC families carry no CVE (product names, no link needed). Cisco FMC
+        CVE-2026-20316 + Fortinet FortiOS CVE-2025-68686 referenced as continuity patch-posture pointers WITHOUT
+        links (pending-index; precedent-consistent with 2026-07-29/30 handling — referenced-without-link, no broken
+        link). Iranian personas (CyberAv3ngers #028 / Pioneer Kitten #029 / Handala #014) deliberately NOT named
+        anywhere in the brief (Hard Rule 2 — carrying generic nation-level context only). Silent-day/sector template
+        actor names are boilerplate, unlinked per precedent. The morning-brief 🔗 callout links to a repo brief file,
+        not a dossier.
+      check_11_note: >
+        Single-source veto (check 11) PASS. Minnesota B2/likely — single-source-veto-bound and stated as such (the
+        two added publishers re-report the same FBI/CISA warning; AP incident facts rest on the same official source
+        pool; event-occurrence corroboration relaxed but headline WEP held at 'likely'). No 'very likely'+ anywhere.
+        red_team NOT required.
+      check_12_note: >
+        Quote discipline (check 12) PASS. EXACTLY ONE direct external-source quote in the whole brief: "treat it
+        like it's Iran until proven otherwise" (8 words, former FBI cyber official via AP/SecurityWeek), in Layer 1
+        ONLY. Layer 2 paraphrases the same hedge WITHOUT quotation marks ('treat the activity as Iranian until proven
+        otherwise') to keep the count at one quote per source per brief across both layers. Under 15 words; one source.
+      check_13_note: >
+        Discord Summary (check 13) PASS. Section present + last in file, ~170 words (150-300 band), ~1300 chars
+        (<=1900 ceiling, single message). Greeting-anchored ('Good afternoon. Here's your 1600 brief — 2026-07-31.'),
+        source-linked bolded headline (AP-via-SecurityWeek), natural-language dates ('July 26-27', 'tomorrow, Aug 1',
+        'Aug 10'), italic urgency (*tomorrow, Aug 1*), Hard Rule 2 framing preserved (provisional Iran context; no
+        formal attribution; no specific actor named). NO digraph/WEP/finding-id in Layer 2. NO standing-section
+        boilerplate (Sector Focus + Iran silent-day stay in Layer 1 only).
+      standing_sections:
+        ad_sector: silent_day_plus_structural_transfer_note   # no named watchlist victim; brief structural pointer to the Minnesota PLC-family transfer datum
+        iran_cyber_watch: silent_day_plus_generic_provisional_context_note   # no new tracked-Iranian activity in 48h; explicit note that the Minnesota item's newly-surfaced Iran framing is generic/provisional nation-level CONTEXT only, held unattributed to any tracked actor
+      hard_rule_2_confirmation: "Minnesota generic-Iran framing carried ONLY as the sources' explicitly-provisional nation-level CONTEXT ('until proven otherwise'); NEVER as Archimedes' attribution; NO specific actor named anywhere; CyberAv3ngers #028 / Pioneer Kitten #029 / Handala #014 deliberately NOT mentioned (KAC A9 tripwire). Multi-publisher coverage presented as firming the ATTACKS OCCURRED, not the attribution (shared FBI/CISA warning upstream). Archimedes originates and inherits none."
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings:
+        - {finding_id: finding-2026-07-29-0001, append_brief_id: 2026-07-31-afternoon}   # DONE by briefer (Minnesota water UPDATE — investigation public + generic provisional Iran CONTEXT)
+      resurface_updates:
+        - {topic_entry_id: 2026-07-29-am-001-securityweek-minnesota-30plus-water-utilities-coordinated-ot-attacks-no-attribution-b2-likely-single-source-veto, action: "covered_in += 2026-07-31-afternoon; last_covered stays 2026-07-31 (UPDATE — investigation public + named victims Braham/Plymouth + generic provisional Iranian-attribution CONTEXT; grade unchanged B2/likely, single-source veto still binds) — DONE by briefer"}
+      new_topic_entries: []
+      vuln_tracker_handoff_pending: []   # no CVE this cycle; Cisco FMC / Fortinet are standing patch-posture continuity pointers only
+      actor_profiler_handoff_pending:
+        - "CyberAv3ngers (#028): the Minnesota water OT incident (finding-2026-07-29-0001) remains candidate CONTEXT for the dossier as a monitoring datum — now plus the public investigation + generic provisional nation-level Iran framing. ADJUDICATE as context ONLY; do NOT assert #028 (or any Iranian actor) conducted it (NO source attributes it — Hard Rule 2)."
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 -> #intel-briefs), Teams (skip if webhook unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-07-31 AFTERNOON BRIEF (briefer phase). GENUINELY LIGHT board reported honestly — the ONE graded
+      development since the morning brief was grader update upd-2026-07-31-0002 (folded into finding-2026-07-29-0001).
+      LED with the DELTA: the Minnesota water-OT investigation went PUBLIC (AP investigation via SecurityWeek) with
+      named victim towns (Braham ~1,700; Plymouth ~80,000) + a generic, explicitly-provisional Iranian-attribution
+      CONTEXT layer (former FBI official 'treat it like it's Iran until proven otherwise' + FBI/CISA general-pattern
+      advisory). Placement continued the morning's 🚨 Active Threats (LEAD); the morning's CISA OT-hardening so-what
+      was carried forward as UNCHANGED, NOT re-reported. HARD RULE 2 was THE critical care point (binding attribution
+      discipline per the analyst KAC refresh A8-A11): the Iranian nexus is carried ONLY as the sources' generic,
+      explicitly-provisional framing; NEVER as Archimedes' attribution; NEVER adjacent to CyberAv3ngers #028 /
+      Pioneer Kitten #029 / Handala #014 (no source names them; KAC A9 tripwire respected). Multi-publisher coverage
+      framed as firming the ATTACKS OCCURRED, not the attribution (The Record + BleepingComputer re-report one shared
+      FBI/CISA warning; AP shares the same official source pool). Sector Focus A&D = silent-day + brief structural
+      transfer note; Iran Cyber Watch = silent-day for tracked actors + explicit note that the Minnesota generic-Iran
+      framing is provisional nation-level CONTEXT held unattributed to any tracked actor. Other Signal = first-party
+      Splunk clean (0 hits both indices, visibility-bounded null, Hard Rule 8) + patch-posture continuity (Cisco FMC
+      CVE-2026-20316 federal KEV deadline tomorrow Aug 1; Fortinet FortiOS CVE-2025-68686 Aug 10). NO padding, NO
+      manufactured findings, NO inflated significance. Hard Rules: Rule 2 (generic-Iran context only, no actor lean);
+      Rule 6 (ONE quote total, 8 words, Layer 1 only, Layer 2 paraphrases); Rule 8 (Splunk 0 hits both indices). No
+      red-team (WEP 'likely' < very_likely; single-source veto binds). PRE-FLIGHT 13-of-13 PASS (iteration 1). NOT
+      posted/committed by briefer — librarian owns Discord+Teams delivery + Splunk log + git commit.
     first_covered: 2026-07-31
     last_covered: 2026-07-31
     retraction: null

@@ -49815,6 +49815,125 @@ entries:
     retraction: null
     test: false
 
+  - id: 2026-08-02-pm-brief-meta
+    covered_in: [2026-08-02-afternoon]
+    brief_file: threats/briefs/2026-08-02-afternoon.md
+    headline: "Afternoon brief 2026-08-02 — QUIET BOARD UNCHANGED SINCE THE MORNING BRIEF, 0 net-new findings, 0 UPDATES, 0 resurfaces. LEAD = quiet posture reported plainly: grader promoted 0 net-new findings this cycle; nothing on the wire moved the board between briefs; the 15:30 pre-brief collection + the 12:00 FLASH sweep both cleared clean; first-party Splunk clean both indices. WHY-IT-MATTERS A&D hook = the ONE dated calendar item (Cisco Secure FMC CVE-2026-20316 CISA KEV federal deadline passed 2026-08-01) was covered in full at 0800 and carries NO new signal this window — surfaced as a one-line continuity pointer, NOT re-covered. 🚨 Active Threats = quiet one-liner (board unchanged from this morning). 🔓 Vulnerabilities = Cisco FMC one-line 'covered at 0800, no new signal' continuity pointer (A2/likely from finding-2026-07-30-0001, no covered_in append) + both weekend CVEs (Adobe 48449 / Rails 66066) unchanged no-action continuity notes. ✈️ Sector Focus A&D = silent-day + Cisco-FMC-is-the-only-A&D-patch-posture-item note. 🕵️ Actor Activity = no new tracked-actor movement (CaptiveCrunch/Storm-2945 APT29 #009 + TeamCity 63077 / CosmosEscape / DPRK npm unchanged). 🇮🇷 Iran = silent-day + Minnesota generic-provisional-context-unchanged note (Hard Rule 2). 📰 Other Signal = first-party Splunk clean 0 hits both indices + 15:30 pre-brief + 12:00 FLASH sweep clean (0 net-new content, 0 FLASH candidates, 0 CISA KEV adds; Hard Rule 8)."
+    topic_tags:
+      - brief-meta
+      - afternoon-brief
+      - quiet-board-unchanged-since-morning-brief-zero-net-new-findings-zero-updates-zero-resurfaces
+      - lead-quiet-posture-reported-plainly-grader-0-net-new-nothing-moved-board-between-briefs-splunk-clean
+      - why-it-matters-cisco-fmc-cve-2026-20316-kev-deadline-passed-08-01-covered-0800-no-new-signal-continuity-pointer-only
+      - vulnerabilities-cisco-fmc-one-line-continuity-pointer-a2-likely-no-covered-in-append
+      - both-weekend-cves-adobe-48449-rails-66066-unchanged-no-action-continuity-notes
+      - active-threats-quiet-one-liner-board-unchanged-from-morning
+      - sector-focus-ad-silent-day-plus-cisco-fmc-only-ad-patch-posture-item
+      - actor-activity-no-new-tracked-actor-movement-captivecrunch-storm2945-teamcity-cosmosescape-dprk-npm-unchanged
+      - iran-cyber-watch-silent-day-plus-minnesota-generic-provisional-context-unchanged-hard-rule-2
+      - other-signal-first-party-splunk-clean-0-hits-both-indices-clean-sweeps-hard-rule-8
+      - hard-rule-6-zero-direct-quotes-both-layers
+      - preflight-13-of-13-pass
+    related_actors: []               # no roster actor as a graded item. Silent-day/sector template names + APT29 #009 (no-new-movement pointer) are boilerplate/continuity, NOT covered items. Minnesota generic-Iran framing is nation-level provisional CONTEXT only — no tracked actor recorded (Hard Rule 2).
+    related_vulns: []                # Cisco FMC CVE-2026-20316 + both weekend CVEs (CVE-2026-48449, CVE-2026-66066) carried as standing/no-change continuity pointers only, NOT re-covered items; no net-new vuln
+    related_campaigns: []
+    finding_ids: []                  # 0 net-new findings promoted this cycle
+    disposition:
+      net_new_findings_promoted: 0
+      updates_covered: 0
+      new_topic_entries_created: 0
+      in_place_resurfaces: 0
+      covered_in_appends: 0          # morning am-brief-meta + Cisco FMC 2026-07-30-am-001 + weekend am-001/am-002 all UNTOUCHED — nothing changed this window; all carry-forward surfaced as continuity pointers only
+      published_in_briefs_back_writes: 0   # no finding referenced/re-covered -> no back-write this cycle
+      deliberately_excluded_anti_repetition:
+        - "Cisco FMC CVE-2026-20316 (covered in full 2026-08-02 AM) — deadline passed 2026-08-01, no new signal this window; surfaced as a one-line 'covered at 0800' continuity pointer (A2/likely from finding-2026-07-30-0001), NOT re-covered. No covered_in append, no back-write."
+        - "CVE-2026-48449 Adobe Campaign Classic — no state change; unchanged no-action continuity note, NOT re-covered (no covered_in append, no back-write)"
+        - "CVE-2026-66066 Rails Active Storage — no state change; unchanged no-action continuity note, NOT re-covered"
+        - "TeamCity CVE-2026-63077 / Azure CosmosEscape / DPRK npm supply-chain / CaptiveCrunch-Storm-2945 APT29 #009 — no new substance; named only as no-new-movement Actor Activity pointers"
+        - "Minnesota water-OT + CISA water advisory — no new development; generic explicitly-provisional Iran framing unchanged, carried as an Iran Cyber Watch continuity note only (Hard Rule 2)"
+      rationale: >
+        QUIET BOARD UNCHANGED between the 0800 and 1600 briefs, reported honestly per operator directive — a real
+        posture finding, not manufactured urgency. 0 net-new findings promoted, 0 rejected (15:30 pre-brief collection
+        + 12:00 FLASH sweep both cleared clean; 0 net-new content raw-signal, 0 FLASH candidates, 0 new CISA KEV adds,
+        first-party Splunk clean both indices). LED with the quiet truth (grader promoted 0 net-new; nothing on the
+        wire moved the board between briefs; sweeps clean). The WHY-IT-MATTERS A&D hook is the ONE dated calendar item:
+        Cisco Secure FMC CVE-2026-20316 CISA KEV federal deadline PASSED 2026-08-01 — already covered in FULL at 0800,
+        so surfaced here as a one-line continuity pointer (A2/likely carried from finding-2026-07-30-0001; no new signal
+        this window -> NOT re-covered, NO covered_in append). Both weekend CVEs held as unchanged no-action continuity
+        notes. No red-team (no finding at WEP very_likely+). Standing sections (Sector Focus A&D + Iran Cyber Watch)
+        rendered silent-day + honest continuity notes. Hard Rule 2 care point preserved: Minnesota generic-Iran framing
+        carried ONLY as unchanged, explicitly-provisional nation-level CONTEXT; NEVER as Archimedes' attribution;
+        CyberAv3ngers/Pioneer Kitten/Handala deliberately NOT named.
+    preflight:
+      result: passed
+      checks_passed: 13
+      checks_failed: 0
+      iterations: 1                  # authored within Layer-1 400-800 band + Layer-2 150-300 words / <=1900 chars on first pass
+      word_count_layer1: 440         # 400-800 afternoon band
+      layer2_words: ~200            # 150-300 band
+      layer2_chars_est: ~1250       # <=1900 ceiling; single Discord message, no external URLs this cycle (no net-new headline bullet), no chunk needed (librarian re-verifies char count before posting)
+      check_1_note: "Source URL (check 1) PASS. No net-new graded item this cycle -> no per-item URL required. Cisco FMC continuity pointer references the item covered in full at 0800 (SecurityWeek + CISA KEV) without re-linking; weekend-CVE and standing-section content is no-change continuity / silent-day (quiet-cycle precedent, same as AM)."
+      check_2_note: "Admiralty digraph (check 2) PASS. Cisco FMC continuity pointer cites A2/likely (carried unchanged from finding-2026-07-30-0001; no new grade asserted). No other graded item this cycle."
+      check_3_note: >
+        Anti-repetition (check 3) PASS. 0 unauthorized repeats. Cisco FMC CVE-2026-20316 explicitly framed as
+        'covered in full at 0800 and carries no new signal this window' — a one-line continuity pointer, NOT
+        re-reported as fresh news and NOT UPDATE-flagged. Consistent with the AM quiet-day patch-posture-continuity
+        precedent (no covered_in append, passes check 3). Both weekend CVEs + carry-forward threads are unchanged-status
+        notes, NOT re-reports. Logged under deliberately_excluded.
+      check_4_note: "Lead-with-impact (check 4) PASS. For a genuinely quiet cycle unchanged between briefs, the honest impact IS 'grader promoted 0 net-new; nothing moved the board between briefs; sweeps clean' — active voice, states the most important fact. Not padded, not manufactured."
+      check_5_note: "Banned phrases (check 5) PASS. Zero hot-list phrases in either layer."
+      check_7_note: "WEP (check 7) PASS. WEP:likely on the Cisco FMC continuity pointer (carried from the finding). No bare hedges (no may/might/could/possibly). 'Both stay on watch for the standard escalation triggers' is a present-tense observation, not a probability prediction."
+      check_9_note: >
+        Check 9 PASS. CVE-2026-20316 (Cisco FMC), CVE-2026-48449 (Adobe), CVE-2026-66066 (Rails) all referenced by
+        id but still pending vulnerabilities/_index.yaml — referenced-without-link, no broken links (precedent-consistent
+        with the AM brief + 08-01 briefs). No tracked actor is a graded item; APT29 #009 named as a no-new-movement
+        pointer (roster id, no hyperlink). Silent-day/sector template actor names are boilerplate, unlinked.
+      check_11_note: "Single-source veto (check 11) PASS. No 'very likely'+ anywhere. Cisco FMC A2/likely is single-source-veto-bound (CISA KEV + SecurityWeek relay of the same Cisco evidence basis), carried unchanged. red_team NOT required."
+      check_12_note: "Quote discipline (check 12) PASS. ZERO direct external-source quotes in either layer."
+      check_13_note: >
+        Discord Summary (check 13) PASS. Section present + last in file, ~200 words (150-300 band), ~1250 chars
+        (<=1900 ceiling, single message, NO external URLs this cycle). Greeting-anchored ('Good afternoon. Here's your
+        1600 brief — 2026-08-02.'), natural-language dates ('August 1', 'July 29', "Friday's FLASH", "tomorrow's 0800").
+        Prose-only (no net-new headline bullet — a legitimate quiet-afternoon shape; nothing net-new to hyperlink). NO
+        digraph/WEP/finding-id in Layer 2. NO standing-section boilerplate.
+      standing_sections:
+        ad_sector: silent_day_plus_cisco_fmc_only_ad_patch_posture_item   # no named watchlist victim; brief note that Cisco FMC deadline is the only A&D-relevant patch-posture item, closable with the 07-29 fix
+        iran_cyber_watch: silent_day_plus_minnesota_generic_provisional_context_unchanged_note   # no new tracked-Iranian activity in 48h; Minnesota generic-Iran framing unchanged, held unattributed (Hard Rule 2)
+      hard_rule_2_confirmation: "No attribution originated or inherited. No graded item carries an actor. Minnesota generic-Iran framing carried ONLY as an unchanged, explicitly-provisional nation-level CONTEXT note; NEVER as Archimedes' attribution; CyberAv3ngers #028 / Pioneer Kitten #029 / Handala #014 deliberately NOT mentioned. APT29 #009 named strictly as a no-new-movement continuity pointer to the 07-31 FLASH."
+      hard_rule_8_confirmation: "First-party Splunk clean this cycle — 0 tracked-IOC/CVE/actor hits across both indices (archimedes, defenseclaw_local). Visibility-bounded null (no corroboration, no contradiction). Reported in Other Signal."
+    librarian_handoff:
+      back_write_published_in_briefs_to_findings: []   # 0 findings referenced/re-covered this cycle -> NO back-write
+      resurface_updates: []           # no in-place resurfaces this cycle
+      new_topic_entries: []           # 0 net-new topic entries
+      vuln_tracker_handoff_pending: []   # Cisco FMC dossier open-item + weekend CVE watch-tier adds already handed off in prior entries; not re-issued
+      actor_profiler_handoff_pending: []
+      splunk_and_commit: "librarian owns Discord delivery (extract Layer 2 -> #intel-briefs), Teams (skip if webhook unset), Splunk log, git commit — briefer did NOT post or commit."
+    notes: |
+      2026-08-02 AFTERNOON BRIEF (briefer phase). QUIET BOARD UNCHANGED between the 0800 and 1600 briefs, reported
+      honestly — 0 net-new findings, 0 rejections, 0 UPDATES, 0 resurfaces. LED with the quiet truth (grader promoted
+      0 net-new this cycle; nothing on the wire moved the board between briefs; 15:30 pre-brief collection + 12:00 FLASH
+      sweep both cleared clean) — the honest impact lead for a quiet cycle, NOT manufactured urgency. The WHY-IT-MATTERS
+      A&D hook is the ONE dated calendar item: Cisco Secure FMC CVE-2026-20316 CISA KEV federal remediation deadline
+      PASSED 2026-08-01 — already covered in FULL at 0800, so surfaced here as a one-line continuity pointer (A2/likely
+      carried from finding-2026-07-30-0001; no new signal this window -> NOT re-covered, NO covered_in append). Both
+      weekend CVEs (CVE-2026-48449 Adobe + CVE-2026-66066 Rails) held as unchanged no-action continuity notes (NO
+      covered_in append to am-001/am-002, NO back-write). 🚨 Active Threats = quiet one-liner (board unchanged from
+      morning). 🔓 Vulnerabilities = Cisco FMC one-line continuity pointer + two weekend no-change notes. ✈️ Sector Focus
+      A&D = silent-day + Cisco-FMC-only-A&D-patch-posture-item note. 🕵️ Actor Activity = no new tracked-actor movement
+      (CaptiveCrunch/Storm-2945 APT29 #009 + TeamCity 63077 / CosmosEscape / DPRK npm unchanged). 🇮🇷 Iran Cyber Watch =
+      silent-day + Minnesota generic-provisional-context-unchanged note (Hard Rule 2 — CyberAv3ngers/Pioneer Kitten/
+      Handala deliberately NOT named). 📰 Other Signal = first-party Splunk clean (0 hits both indices) + clean sweeps
+      (0 net-new content, 0 FLASH candidates, 0 CISA KEV adds; visibility-bounded null, Hard Rule 8). Hard Rules:
+      Rule 2 (no attribution originated/inherited); Rule 6 (ZERO direct quotes both layers); Rule 8 (Splunk 0 hits both
+      indices). No red-team (no finding at WEP very_likely+). PRE-FLIGHT 13-of-13 PASS (iteration 1). Layer 1 440 words
+      (400-800 band); Layer 2 ~200 words / ~1250 chars (<=1900 ceiling, single message, no external URLs). NO finding
+      files touched this cycle (0 back-writes). NOT posted/committed by briefer — librarian owns Discord+Teams delivery
+      + Splunk log + git commit.
+    first_covered: 2026-08-02
+    last_covered: 2026-08-02
+    retraction: null
+    test: false
+
 # ============================================================================
 # Valid resurface_if conditions
 # ============================================================================

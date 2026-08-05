@@ -1144,6 +1144,19 @@ media_sources:
     urls:
       - https://thehackernews.com/
 
+  - id: anyrun
+    name: "ANY.RUN"
+    category: vendor
+    grade: B
+    provisional: true
+    provisional_since: 2026-08-04
+    provisional_reason: "First Archimedes-corpus citation via finding-2026-08-04-0001 (Greatness PhaaS adds OAuth device-code phishing + AiTM M365 credential/token theft — commodity tooling). ANY.RUN operates an interactive malware sandbox and a Threat Intelligence Lookup service; its Greatness overview provided platform tradecraft detail (base-domain / [target]-[token] subdomain pattern, anti-analysis gating, evasion behavior) corroborating the foundation of the finding but predating the Aug 2026 device-code capability. Sandbox-derived behavioral reporting with named research output; conservative provisional B starting grade for the security-research/sandbox-vendor tier per same precedent as SecurityWeek, Sysdig, Zellic, and the media-relay peers (The Hacker News, BleepingComputer). Cited here as secondary corroborator of the platform foundation, NOT the novel capability (single-source veto on the new-capability element carried by The Hacker News). Operator may upgrade to A on subsequent surfaces showing consistent first-party-sandbox-telemetry rigor. Pending human ratification."
+    awaiting_ratification: true
+    active: true
+    urls:
+      - https://any.run/
+      - https://intelligence.any.run/
+
   - id: helpnetsecurity
     name: "Help Net Security"
     category: media

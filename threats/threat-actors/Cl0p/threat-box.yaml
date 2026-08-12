@@ -1,0 +1,265 @@
+actor_id: "018"
+actor_name: "Cl0p"
+target_profile: "ad-prime-v1"
+scored_at: "2026-08-12"
+scored_by: "actor-profiler"
+reviewed_by: "auto-committed"        # MEDIUM overall — auto-commit with notification; Hard Rule 5 gate did NOT fire
+scoring_version: 1
+
+primary_threat_vector: supply_chain  # category HIGH (composite 8); the analytic headline despite MEDIUM overall
+
+scores:
+  espionage:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Cl0p is a financially-motivated extortion operation, not an intelligence
+        collector. No A/B-grade source documents espionage-purposed targeting of A&D
+        primes (classified R&D / ITAR-controlled collection for intelligence value).
+        Data theft occurs, but as extortion leverage, not intelligence tasking. Intent
+        floored at Target-of-Opportunity.
+      sources: [gtig-oracle-ebs-2025, cisa-aa23-158a]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Russian-speaking criminal group; no diplomatic/sanctions/LE constraint has deterred operations (2021 Ukraine arrests did not end activity)."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 0
+      evidence: |
+        Mass data-exfiltration capability is proven, and Cl0p has demonstrated long
+        covert dwell (South Staffordshire Water, ~22 months). But espionage tradecraft
+        (persistent covert intelligence collection, not bulk smash-and-grab) is not the
+        actor's competency. Scored Possible on feasibility/data-theft-adjacency, not
+        significant espionage capability.
+      sources: [finding-2026-05-11-0004, gtig-oracle-ebs-2025]
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "Custom per-platform webshells/loaders (DEWMODE, LEMURLOOT, GOLDVEIN, SAGE*) — but capability, not novelty, is the binding constraint here."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits in defenseclaw_local at scoring time (0 hits -90d; visibility-bounded null)."
+    final_intent: 1
+    final_capability: 2
+    composite: 3
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  supply_chain:
+    intent:
+      score: 3
+      label: sector-association
+      willingness_modifier: 0
+      evidence: |
+        PRIMARY THREAT VECTOR. Cl0p's signature is compromising a widely-deployed
+        enterprise platform to reach hundreds of downstream customer organizations at
+        once — textbook software-supply-chain / mass third-party compromise (T1195.002).
+        Target SELECTION is platform-driven (MFT/ERP/PLM), not sector-selective, BUT the
+        platforms Cl0p serially targets are core enterprise/manufacturing/engineering/
+        logistics infrastructure disproportionately used across the DIB: Windchill/FlexPLM
+        (PLM — the aerospace/defense engineering data platform), MOVEit/GoAnywhere/Cleo
+        (MFT — controlled-data movement), Oracle EBS (ERP). Multiple A-grade sources
+        document manufacturing/engineering/logistics victims (CISA AA23-158A, GTIG Oracle
+        EBS, Recorded Future Cleo), and MOVEit's 2023 mass compromise touched US
+        government/defense-adjacent orgs. Clears the 1-A-grade bar for Sector Association.
+        Held at 3 (not 5): no A-grade source names an A&D PRIME victim; the 2026 aerospace
+        naming is at customer-base level and the Cl0p tie on that campaign is B3/suspected.
+      sources: [cisa-aa23-158a, gtig-oracle-ebs-2025, recorded-future-cleo]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Criminal group, no constraints."
+    capability:
+      score: 5
+      label: significant
+      novelty_modifier: 0
+      evidence: |
+        World-leading. Serial zero-day mass exploitation of enterprise platforms across
+        multiple confirmed campaigns in the last 24 months (Cleo Dec 2024 — 182+ victims;
+        Oracle EBS 2025 — 29+ named, zero-day from ~Aug 9 2025). Custom per-platform
+        tooling (LEMURLOOT, GOLDVEIN.JAVA, SAGEGIFT/SAGELEAF/SAGEWAVE). Multiple A-grade
+        sources (CISA, Mandiant/GTIG, Microsoft). Meets Significant on all counts.
+      sources: [cisa-aa23-158a, gtig-oracle-ebs-2025, recorded-future-cleo, microsoft-lace-tempest]
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "Develops a fresh custom webshell/exploit chain per platform plus zero-day capability — defensively hard, prior signatures do not carry over. Novelty 0."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits in defenseclaw_local at scoring time. Capability already at ceiling regardless."
+    final_intent: 3
+    final_capability: 5
+    composite: 8
+    threat_level: HIGH
+    ioc_bonus_applied: 0
+
+  destructive:
+    intent:
+      score: 1
+      label: target-of-opportunity
+      willingness_modifier: 0
+      evidence: |
+        Destruction/wiping is not Cl0p's model. Recent campaigns are data-theft-only and
+        frequently skip even encryption. No wiper attributed. Intent floored.
+      sources: [gtig-oracle-ebs-2025]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Criminal group, no constraints."
+    capability:
+      score: 2
+      label: possible
+      novelty_modifier: 1
+      evidence: |
+        The Clop encryptor (S0611, CryptoMix-derived) is destructive-capable and was used
+        historically, but no data-destruction wiper campaign is documented and encryption
+        is now routinely skipped. Possible on the encryptor's existence.
+      sources: [mitre-s0611]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Clop encryptor is a semi-custom CryptoMix derivative with commodity lineage."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits in defenseclaw_local at scoring time."
+    final_intent: 1
+    final_capability: 1
+    composite: 2
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  disruptive:
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        When Cl0p encrypts, it disrupts operations of US/Western enterprises broadly
+        (Regional). But the recent operational model (Cleo 2024, Oracle EBS 2025, Windchill
+        2026-suspected) is data-theft extortion WITHOUT network encryption, so realized
+        operational-disruption intent is lower than the historical ransomware era.
+      sources: [gtig-oracle-ebs-2025, mitre-s0611]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Criminal group, no constraints."
+    capability:
+      score: 3
+      label: limited
+      novelty_modifier: 1
+      evidence: |
+        Network-encryption ransomware capability is extensively documented historically
+        (Clop since 2019), but deprecated in favor of data-theft-only extortion — active
+        disruptive use within the 24-month window is limited. Scored Limited, reduced by
+        semi-custom novelty.
+      sources: [mitre-s0611, cisa-aa23-158a]
+    novelty:
+      modifier: 1
+      label: semi-custom
+      evidence: "Semi-custom encryptor + commodity Cobalt Strike in hands-on-keyboard phases."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits in defenseclaw_local at scoring time."
+    final_intent: 2
+    final_capability: 2
+    composite: 4
+    threat_level: LOW
+    ioc_bonus_applied: 0
+
+  cyber_crime:
+    intent:
+      score: 2
+      label: regional-association
+      willingness_modifier: 0
+      evidence: |
+        Cl0p's core. Financially-motivated data-theft extortion of US/Western enterprises
+        broadly (Regional). Target selection is opportunistic-by-platform rather than
+        A&D-sector-selective, so held at Regional (2), not Sector (3) — the sector argument
+        is carried in the supply_chain category where the platform-mass-compromise vector
+        lives. Victim ledgers are overwhelmingly US/Western.
+      sources: [gtig-oracle-ebs-2025, recorded-future-cleo, cisa-aa23-158a]
+    willingness:
+      modifier: 0
+      label: no-constraints
+      evidence: "Russian-speaking criminal group; de-facto impunity; 2021 arrests did not stop operations."
+    capability:
+      score: 5
+      label: significant
+      novelty_modifier: 0
+      evidence: |
+        The most prolific enterprise-software mass-extortion operation of the 2020s.
+        Multiple confirmed extortion campaigns in the last 24 months with hundreds of
+        victims (Cleo 182+, Oracle EBS 29+ named and growing), custom exfiltration tooling,
+        Tor leak site with torrent-based mass data publication. Multiple A-grade sources.
+        Significant.
+      sources: [gtig-oracle-ebs-2025, recorded-future-cleo, cisa-aa23-158a, microsoft-lace-tempest]
+    novelty:
+      modifier: 0
+      label: custom-advanced
+      evidence: "Custom per-platform exfiltration webshells/loaders + zero-day acquisition — not commodity RaaS. Novelty 0 (unlike a generic Cobalt-Strike ransomware crew)."
+    ioc_corroboration:
+      observed: false
+      bonus_category: null
+      note: "No first-party IOC hits in defenseclaw_local at scoring time. Capability already at ceiling."
+    final_intent: 2
+    final_capability: 5
+    composite: 7
+    threat_level: MEDIUM
+    ioc_bonus_applied: 0
+
+overall:
+  weighted_score: 4.6
+  weights_used:
+    espionage: 0.35
+    supply_chain: 0.20
+    destructive: 0.15
+    disruptive: 0.15
+    cyber_crime: 0.15
+  threat_level: MEDIUM              # round(4.6)=5 -> MEDIUM
+  authority_level: actor-profiler-autonomous-with-notification
+  interpretation: >
+    MEDIUM overall is a WEIGHTING ARTIFACT, not a statement of low risk. The methodology
+    weights espionage at 35%, which structurally understates a pure criminal-extortion
+    actor whose espionage/destructive/disruptive categories are near-floor. The
+    analytically-correct headline is the supply_chain category HIGH (composite 8): Cl0p
+    reaches A&D primes through the ubiquitous MFT/ERP/PLM platforms the DIB runs on. This
+    parallels the roster pattern where category-HIGH criminal/OT actors (e.g. CyberAv3ngers
+    disruptive-HIGH, UNC1549 espionage-HIGH) sit under a MEDIUM/LOW weighted overall.
+
+confidence:
+  admiralty: A1
+  notes: >
+    Established campaign history (Accellion/GoAnywhere/MOVEit/PaperCut/Cleo/Oracle EBS) is
+    A1 — multiple independent A-grade primaries (CISA AA23-158A, Google Threat Intelligence
+    Group, Mandiant, Microsoft). The single most A&D-relevant recent surface — the 2026 PTC
+    Windchill/FlexPLM campaign — has CONFIRMED exploitation (A1) but a SUSPECTED-ONLY Cl0p
+    attribution (B3/possibly, ReliaQuest/SecurityWeek 'unconfirmed'); it is NOT relied upon
+    for this scoring (Hard Rule 2). Attribution to a monolithic "Cl0p" is itself qualified:
+    GTIG assesses the CL0P brand/DLS is used by >=1 actor with different TTPs.
+
+review_policy:
+  interval_days: 90
+  last_reviewed: "2026-08-12"
+  next_review_due: "2026-11-10"
+  review_triggers:
+    - new_attribution_from_a_source
+    - new_tooling_documented
+    - cve_exploitation_linked_to_actor
+    - major_campaign_disclosure
+    - first_party_ioc_observation
+    - windchill_attribution_firmed        # actor-specific: if an independent A/B source firmly attributes CVE-2026-12569 to Cl0p, rescore supply_chain/cyber_crime intent
+
+history:
+  - scored_at: 2026-08-12
+    scorer: actor-profiler
+    change: "initial first-pass scoring — weighted 4.6 MEDIUM; supply_chain category HIGH (composite 8) primary vector; replaces never-scored placeholder HIGH. Hard Rule 5 gate did NOT fire."
+
+status: scored

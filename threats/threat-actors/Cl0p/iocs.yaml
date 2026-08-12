@@ -1,0 +1,387 @@
+actor_id: "018"
+actor_name: Cl0p
+last_updated: 2026-08-12
+admiralty_grade: A1        # confirmed-campaign indicators; suspected 2026-Windchill indicators flagged inline (confidence: suspected, grade B3)
+tlp: CLEAR
+source_of_record: iocs.md
+
+ttl:
+  network_infrastructure: 90    # days — campaign-scoped IPs rotate
+  file_hashes: 730
+  registry: never
+  vulnerabilities: never
+
+indicators:
+  # ============================================================
+  # CONFIRMED — Oracle E-Business Suite 2025 (GTIG, A-grade)
+  # ============================================================
+  - id: clop-ip-200-107-207-26
+    type: ipv4
+    value: 200.107.207.26
+    role: exploitation_source
+    campaign: oracle-ebs-2025
+    related_tooling: [UiServlet, SyncServlet]
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-ip-161-97-99-49
+    type: ipv4
+    value: 161.97.99.49
+    role: exploitation_source
+    campaign: oracle-ebs-2025
+    related_tooling: [UiServlet]
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-ip-162-55-17-215
+    type: ipv4
+    value: 162.55.17.215
+    port: 443
+    role: c2
+    campaign: oracle-ebs-2025
+    related_tooling: [GOLDVEIN.JAVA]
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-ip-104-194-11-200
+    type: ipv4
+    value: 104.194.11.200
+    port: 443
+    role: c2
+    campaign: oracle-ebs-2025
+    related_tooling: [GOLDVEIN.JAVA]
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-email-pubstorm-com
+    type: email
+    value: support@pubstorm.com
+    role: extortion_contact
+    campaign: oracle-ebs-2025
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-email-pubstorm-net
+    type: email
+    value: support@pubstorm.net
+    role: extortion_contact
+    campaign: oracle-ebs-2025
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+
+  # ============================================================
+  # CONFIRMED — Webshell / malware filenames (hunt artifacts)
+  # ============================================================
+  - id: clop-file-human2-aspx
+    type: filename
+    value: human2.aspx
+    role: webshell
+    tooling: LEMURLOOT
+    campaign: moveit-2023
+    attack_technique: T1505.003
+    fidelity: high
+    confidence: confirmed
+    source_brief: cisa-aa23-158a
+  - id: clop-tool-lemurloot
+    type: malware_name
+    value: LEMURLOOT
+    role: webshell
+    platform: "Progress MOVEit Transfer"
+    campaign: moveit-2023
+    attack_technique: T1505.003
+    confidence: confirmed
+    source_brief: cisa-aa23-158a
+  - id: clop-tool-dewmode
+    type: malware_name
+    value: DEWMODE
+    role: webshell
+    platform: "Accellion FTA"
+    campaign: accellion-2020-2021
+    attack_technique: T1505.003
+    confidence: confirmed
+    source_brief: mandiant-accellion
+  - id: clop-tool-goldvein-java
+    type: malware_name
+    value: GOLDVEIN.JAVA
+    role: downloader
+    platform: "Oracle E-Business Suite / WebLogic"
+    campaign: oracle-ebs-2025
+    attack_technique: T1071.001
+    note: "Beacons to C2 disguised as a TLSv3.1 handshake"
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-tool-sagegift
+    type: malware_name
+    value: SAGEGIFT
+    role: loader
+    platform: "Oracle WebLogic"
+    campaign: oracle-ebs-2025
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-tool-sageleaf
+    type: malware_name
+    value: SAGELEAF
+    role: dropper
+    platform: "Oracle WebLogic"
+    campaign: oracle-ebs-2025
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-tool-sagewave
+    type: malware_name
+    value: SAGEWAVE
+    role: servlet_filter
+    platform: "Oracle WebLogic"
+    campaign: oracle-ebs-2025
+    note: "Malicious Java servlet filter enabling AES-encrypted ZIP payload deployment"
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-tool-clop-encryptor
+    type: malware_name
+    value: Clop
+    role: ransomware_encryptor
+    mitre_software: S0611
+    note: "CryptoMix-derived; .Clop/.CIop extension; used historically, frequently skipped in recent data-theft-only campaigns"
+    attack_technique: T1486
+    confidence: confirmed
+    source_brief: mitre-s0611
+
+  # ============================================================
+  # CONFIRMED — Exploitation endpoints (Oracle EBS 2025)
+  # ============================================================
+  - id: clop-endpoint-syncservlet
+    type: url_path
+    value: /OA_HTML/SyncServlet
+    role: exploitation_endpoint
+    campaign: oracle-ebs-2025
+    attack_technique: T1190
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-endpoint-uiservlet
+    type: url_path
+    value: /OA_HTML/configurator/UiServlet
+    role: exploitation_endpoint
+    campaign: oracle-ebs-2025
+    attack_technique: T1190
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+
+  # ============================================================
+  # CONFIRMED — Exploited CVEs (by ID only, Hard Rule 3)
+  # ============================================================
+  - id: clop-cve-2023-34362
+    type: cve
+    value: CVE-2023-34362
+    role: exploited_by_actor
+    platform: "Progress MOVEit Transfer"
+    campaign: moveit-2023
+    status: exploited
+    attack_technique: T1190
+    confidence: confirmed
+    source_brief: cisa-aa23-158a
+  - id: clop-cve-2023-0669
+    type: cve
+    value: CVE-2023-0669
+    role: exploited_by_actor
+    platform: "Fortra GoAnywhere MFT"
+    campaign: goanywhere-2023
+    status: exploited
+    attack_technique: T1190
+    confidence: confirmed
+    source_brief: mandiant-goanywhere
+  - id: clop-cve-2023-27350
+    type: cve
+    value: CVE-2023-27350
+    role: exploited_by_actor
+    platform: "PaperCut NG/MF"
+    campaign: papercut-2023
+    status: exploited
+    attack_technique: T1190
+    confidence: confirmed
+    source_brief: microsoft-lace-tempest
+  - id: clop-cve-2024-50623
+    type: cve
+    value: CVE-2024-50623
+    role: exploited_by_actor
+    platform: "Cleo Harmony/VLTrader/LexiCom"
+    campaign: cleo-2024
+    status: exploited
+    attack_technique: T1190
+    confidence: confirmed
+    source_brief: recorded-future-cleo
+  - id: clop-cve-2024-55956
+    type: cve
+    value: CVE-2024-55956
+    role: exploited_by_actor
+    platform: "Cleo (Autorun file-write)"
+    campaign: cleo-2024
+    status: exploited
+    attack_technique: T1547
+    confidence: confirmed
+    source_brief: recorded-future-cleo
+  - id: clop-cve-2025-61882
+    type: cve
+    value: CVE-2025-61882
+    role: exploited_by_actor
+    platform: "Oracle E-Business Suite"
+    campaign: oracle-ebs-2025
+    status: exploited
+    attack_technique: T1190
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-cve-2025-61884
+    type: cve
+    value: CVE-2025-61884
+    role: exploited_by_actor
+    platform: "Oracle E-Business Suite"
+    campaign: oracle-ebs-2025
+    status: exploited
+    attack_technique: T1190
+    confidence: confirmed
+    source_brief: gtig-oracle-ebs-2025
+  - id: clop-cve-2021-27101
+    type: cve
+    value: CVE-2021-27101
+    role: exploited_by_actor
+    platform: "Accellion FTA"
+    campaign: accellion-2020-2021
+    status: exploited
+    attack_technique: T1190
+    confidence: confirmed
+    source_brief: mandiant-accellion
+    note: "One of four Accellion FTA zero-days (CVE-2021-27101/-27102/-27103/-27104)"
+  - id: clop-cve-2020-1472
+    type: cve
+    value: CVE-2020-1472
+    role: exploited_by_actor
+    alias: ZeroLogon
+    campaign: south-staffordshire-water
+    status: exploited
+    attack_technique: T1068
+    confidence: confirmed
+    source_brief: finding-2026-05-11-0004
+
+  # ============================================================
+  # SUSPECTED — 2026 PTC Windchill/FlexPLM (Cl0p tie UNCONFIRMED, B3)
+  # ============================================================
+  - id: clop-cve-2026-12569-suspected
+    type: cve
+    value: CVE-2026-12569
+    role: exploited_in_campaign
+    platform: "PTC Windchill (PDMLink) + FlexPLM"
+    campaign: windchill-flexplm-2026
+    status: exploited                 # exploitation CONFIRMED (CISA KEV 2026-06-25)
+    attribution_confidence: suspected # Cl0p tie is B3/possibly — NOT confirmed
+    grade: B3
+    attack_technique: T1190
+    confidence: suspected
+    source_brief: finding-2026-07-24-flash-0600-0001
+    note: >
+      Exploitation of CVE-2026-12569 is CONFIRMED (A1, CISA KEV). The Cl0p ATTRIBUTION
+      is suspected-only (ReliaQuest/SecurityWeek 'unconfirmed / tradecraft-similarity').
+      Do NOT treat as confirmed Cl0p activity (Hard Rule 2).
+  - id: clop-email-cryptohox-suspected
+    type: email
+    value: support@cryptohox.com
+    role: extortion_contact
+    campaign: windchill-flexplm-2026
+    attribution_confidence: suspected
+    grade: B3
+    confidence: suspected
+    source_brief: finding-2026-07-24-flash-0600-0001
+    note: >
+      ReliaQuest characterizes as 'a known Clop address'; NOT independently verified
+      in-corpus. Archimedes ACH found the second source did not lift the Cl0p tie.
+  - id: clop-windchill-family-artifacts
+    type: filename_set
+    value: ["GW.class", "payload.bin", "dpr_*.jsp"]
+    role: webshell_family_guidance
+    campaign: windchill-flexplm-2026
+    confidence: related_family_guidance
+    grade: reference
+    source_brief: threats/vulnerabilities/Windchill-FlexPLM-ZeroDay
+    note: >
+      Filesystem artifacts from the tracked CVE-2026-4681 Windchill family profile;
+      NOT re-confirmed as CVE-2026-12569-specific. Hunt guidance, not confirmed IOCs.
+
+hunt_queries:
+  - id: clop-hunt-oracle-ebs-c2
+    platform: splunk
+    title: "Cl0p Oracle EBS 2025 C2 / exploitation-source IPs"
+    query_type: spl
+    query: |
+      index=defenseclaw_local
+        (dest_ip="162.55.17.215" OR dest_ip="104.194.11.200"
+         OR src_ip="200.107.207.26" OR src_ip="161.97.99.49")
+      | stats count min(_time) as first_seen max(_time) as last_seen
+              by src_ip dest_ip dest_port sourcetype host
+    false_positive_note: >
+      Campaign-scoped (2025 Oracle EBS). Network infrastructure rotates; treat as
+      historical unless recently re-observed. Any hit warrants investigation.
+    references_indicators:
+      - clop-ip-200-107-207-26
+      - clop-ip-161-97-99-49
+      - clop-ip-162-55-17-215
+      - clop-ip-104-194-11-200
+
+  - id: clop-hunt-extortion-senders
+    platform: m365
+    title: "Cl0p extortion sender addresses (mail trace)"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=o365:* OR sourcetype=email)
+        (sender="support@pubstorm.com" OR sender="support@pubstorm.net"
+         OR sender="support@cryptohox.com")
+      | stats count values(recipient) as recipients values(subject) as subjects
+              min(_time) as first_seen by sender
+    false_positive_note: >
+      pubstorm.com/.net are confirmed (Oracle EBS 2025). cryptohox.com is SUSPECTED
+      (Windchill 2026, B3) — a hit is high-signal but attribution stays as-reported.
+    references_indicators:
+      - clop-email-pubstorm-com
+      - clop-email-pubstorm-net
+      - clop-email-cryptohox-suspected
+
+  - id: clop-hunt-webshells-mft-erp-plm
+    platform: edr
+    title: "Cl0p webshell drops on internet-facing MFT/ERP/PLM web roots"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=Sysmon EventCode=11)
+        (TargetFilename="*human2.aspx"
+         OR (TargetFilename="*.aspx" AND TargetFilename="*\\MOVEit*")
+         OR (TargetFilename="*.jsp"  AND (TargetFilename="*Windchill*" OR TargetFilename="*\\ptc\\*"))
+         OR TargetFilename="*\\OA_HTML\\*.jsp")
+      | stats count values(TargetFilename) as files values(Image) as writing_process
+              min(_time) as first_seen by host
+    false_positive_note: >
+      Legit application deploys write .aspx/.jsp too — scope to internet-facing MFT/ERP/PLM
+      hosts and correlate with unexpected writing process + subsequent outbound HTTPS.
+    references_indicators:
+      - clop-file-human2-aspx
+      - clop-windchill-family-artifacts
+
+  - id: clop-hunt-oracle-ebs-endpoints
+    platform: splunk
+    title: "Cl0p Oracle EBS SyncServlet / UiServlet exploitation attempts"
+    query_type: spl
+    query: |
+      index=defenseclaw_local (sourcetype=stream:http OR sourcetype=proxy OR sourcetype=web)
+        (uri_path="/OA_HTML/SyncServlet" OR uri_path="/OA_HTML/configurator/UiServlet")
+      | stats count values(status) as statuses min(_time) as first_seen
+              by src_ip host uri_path
+    false_positive_note: >
+      SyncServlet/UiServlet can see legitimate use; alert on external src_ip + anomalous
+      volume/POST bodies. Correlate with new templates in XDO_TEMPLATES_B / XDO_LOBS.
+    references_indicators:
+      - clop-endpoint-syncservlet
+      - clop-endpoint-uiservlet
+
+first_party_observation:
+  observed: false
+  last_checked: 2026-08-12
+  lookback_days: 90
+  indices: [defenseclaw_local, archimedes]
+  note: >
+    0 hits in defenseclaw_local over -90d across all queryable Cl0p indicators
+    (extortion emails, Oracle EBS C2/source IPs, webshell filenames, CVEs). The 19
+    hits returned were in the archimedes index (sourcetype=archimedes:operation) —
+    self-referential Archimedes operational telemetry (our own briefs/findings
+    mentioning Cl0p), NOT first-party defensive observations; excluded per the
+    Splunk-is-first-party rule. Per Hard Rule 8 this silence does NOT disconfirm:
+    Frank is not a MOVEit/Cleo/Oracle-EBS/Windchill tenant. Visibility-bounded null,
+    not negative evidence. No IOC-corroboration bonus applied to scoring.
